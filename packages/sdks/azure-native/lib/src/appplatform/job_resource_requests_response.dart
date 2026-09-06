@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Job resource request payload
 class JobResourceRequestsResponse {
   /// CPU allocated to each job execution instance.
-  final pulumi.Input<String>? cpu;
+  final pulumi.Input<String?>? cpu;
   /// Memory allocated to each job execution instance.
-  final pulumi.Input<String>? memory;
+  final pulumi.Input<String?>? memory;
 
   /// Creates a new [JobResourceRequestsResponse].
   /// [cpu] CPU allocated to each job execution instance.
   /// [memory] Memory allocated to each job execution instance.
-  const JobResourceRequestsResponse({
-    this.cpu,
-    this.memory,
-  });
+  JobResourceRequestsResponse({
+    pulumi.Input<String?>? cpu,
+    pulumi.Input<String?>? memory,
+  }) : cpu = cpu ?? pulumi.Input.fromValue('1'), memory = memory ?? pulumi.Input.fromValue('2Gi');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

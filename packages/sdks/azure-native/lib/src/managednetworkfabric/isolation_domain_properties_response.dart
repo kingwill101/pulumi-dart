@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Isolation Domain Properties.
 class IsolationDomainPropertiesResponse {
   /// Type of encapsulation.
-  final pulumi.Input<String>? encapsulation;
+  final pulumi.Input<String?>? encapsulation;
   /// List of Neighbor Group IDs.
-  final pulumi.Input<List<String>>? neighborGroupIds;
+  final pulumi.Input<List<String>?>? neighborGroupIds;
 
   /// Creates a new [IsolationDomainPropertiesResponse].
   /// [encapsulation] Type of encapsulation.

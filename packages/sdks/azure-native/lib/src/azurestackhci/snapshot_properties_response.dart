@@ -7,7 +7,7 @@ import 'snapshot_status_response.dart';
 /// Properties under the snapshot resource
 class SnapshotPropertiesResponse {
   /// Data used when creating a snapshot
-  final pulumi.Input<CreationDataResponse>? creationData;
+  final pulumi.Input<CreationDataResponse?>? creationData;
   /// The size of the disk in bytes.
   final pulumi.Input<double> diskSizeBytes;
   /// Provisioning state of the snapshot.
@@ -49,7 +49,7 @@ class SnapshotPropertiesResponse {
   factory SnapshotPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SnapshotPropertiesResponse(
       creationData: (() { final guardedValue = map['creationData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CreationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      diskSizeBytes: pulumi.Input.fromValue(map['diskSizeBytes'] as double),
+      diskSizeBytes: pulumi.Input.fromValue((map['diskSizeBytes'] as num).toDouble()),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       status: pulumi.Input.fromValue(SnapshotStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>())),
       timeCreated: pulumi.Input.fromValue(map['timeCreated'] as String),

@@ -7,18 +7,18 @@ import 'registry_private_link_service_connection_state.dart';
 /// Private endpoint connection definition.
 class RegistryPrivateEndpointConnection {
   /// The group ids
-  final pulumi.Input<List<String>>? groupIds;
+  final pulumi.Input<List<String>?>? groupIds;
   /// This is the private endpoint connection name created on SRP
   /// Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Same as workspace location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The PE network resource that is linked to this PE connection.
-  final pulumi.Input<PrivateEndpointResource>? privateEndpoint;
+  final pulumi.Input<PrivateEndpointResource?>? privateEndpoint;
   /// One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// The connection state.
-  final pulumi.Input<RegistryPrivateLinkServiceConnectionState>? registryPrivateLinkServiceConnectionState;
+  final pulumi.Input<RegistryPrivateLinkServiceConnectionState?>? registryPrivateLinkServiceConnectionState;
 
   /// Creates a new [RegistryPrivateEndpointConnection].
   /// [groupIds] The group ids

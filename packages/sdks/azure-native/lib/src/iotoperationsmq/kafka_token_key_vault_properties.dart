@@ -7,7 +7,7 @@ import 'key_vault_secret_object.dart';
 /// Kafka Token KeyVault properties.
 class KafkaTokenKeyVaultProperties {
   /// Username to connect with.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
   /// KeyVault properties.
   final pulumi.Input<KeyVaultConnectionProperties> vault;
   /// KeyVault secret details.

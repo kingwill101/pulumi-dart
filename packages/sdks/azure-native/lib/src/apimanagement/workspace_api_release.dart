@@ -207,4 +207,22 @@ class WorkspaceApiRelease extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     updatedDateTime = registerOutput<String>('updatedDateTime');
   }
+
+  /// Creates a typed reference to an existing [WorkspaceApiRelease] resource.
+  WorkspaceApiRelease.reference(String urn)
+    : super(
+        'azure-native:apimanagement:WorkspaceApiRelease',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiId = registerOutput<String?>('apiId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdDateTime = registerOutput<String>('createdDateTime');
+    this.name = registerOutput<String>('name');
+    notes = registerOutput<String?>('notes');
+    type = registerOutput<String>('type');
+    updatedDateTime = registerOutput<String>('updatedDateTime');
+  }
 }

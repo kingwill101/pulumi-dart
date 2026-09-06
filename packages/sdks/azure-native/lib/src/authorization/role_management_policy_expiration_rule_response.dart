@@ -7,18 +7,18 @@ import 'user_set_response.dart';
 /// The role management policy expiration rule.
 class RoleManagementPolicyExpirationRuleResponse {
   /// The members not restricted by expiration rule.
-  final pulumi.Input<List<UserSetResponse>>? exceptionMembers;
+  final pulumi.Input<List<UserSetResponse>?>? exceptionMembers;
   /// The id of the rule.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The value indicating whether expiration is required.
-  final pulumi.Input<bool>? isExpirationRequired;
+  final pulumi.Input<bool?>? isExpirationRequired;
   /// The maximum duration of expiration in timespan.
-  final pulumi.Input<String>? maximumDuration;
+  final pulumi.Input<String?>? maximumDuration;
   /// The type of rule
   /// Expected value is 'RoleManagementPolicyExpirationRule'.
   final pulumi.Input<String> ruleType;
   /// The target of the current rule.
-  final pulumi.Input<RoleManagementPolicyRuleTargetResponse>? target;
+  final pulumi.Input<RoleManagementPolicyRuleTargetResponse?>? target;
 
   /// Creates a new [RoleManagementPolicyExpirationRuleResponse].
   /// [exceptionMembers] The members not restricted by expiration rule.

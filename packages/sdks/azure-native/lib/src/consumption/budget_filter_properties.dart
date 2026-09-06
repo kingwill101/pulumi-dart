@@ -6,9 +6,9 @@ import 'budget_comparison_expression.dart';
 /// The Dimensions or Tags to filter a budget by.
 class BudgetFilterProperties {
   /// Has comparison expression for a dimension
-  final pulumi.Input<BudgetComparisonExpression>? dimensions;
+  final pulumi.Input<BudgetComparisonExpression?>? dimensions;
   /// Has comparison expression for a tag
-  final pulumi.Input<BudgetComparisonExpression>? tags;
+  final pulumi.Input<BudgetComparisonExpression?>? tags;
 
   /// Creates a new [BudgetFilterProperties].
   /// [dimensions] Has comparison expression for a dimension

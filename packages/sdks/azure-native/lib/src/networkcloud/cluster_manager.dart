@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'cluster_available_version_response.dart';
 import 'cluster_manager_args.dart';
 import 'extended_location_response.dart';
 import 'managed_resource_group_configuration_response.dart';
@@ -251,7 +252,7 @@ class ClusterManager extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The list of the cluster versions the manager supports. It is used as input in clusterVersion property of a cluster resource.
-  late final pulumi.Output<List<Map<String, dynamic>>> clusterVersions;
+  late final pulumi.Output<List<ClusterAvailableVersionResponse>> clusterVersions;
   /// The detailed status that provides additional information about the cluster manager.
   late final pulumi.Output<String> detailedStatus;
   /// The descriptive message about the current detailed status.
@@ -296,9 +297,9 @@ class ClusterManager extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     analyticsWorkspaceId = registerOutput<String?>('analyticsWorkspaceId');
-    availabilityZones = registerOutput<List<String>?>('availabilityZones');
+    availabilityZones = registerOutput<List<String>?>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    clusterVersions = registerOutput<List<Map<String, dynamic>>>('clusterVersions');
+    clusterVersions = registerOutput<List<ClusterAvailableVersionResponse>>('clusterVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterAvailableVersionResponse>(guardedValue, (value) => ClusterAvailableVersionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     detailedStatus = registerOutput<String>('detailedStatus');
     detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
     etag = registerOutput<String>('etag');
@@ -310,7 +311,36 @@ class ClusterManager extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    vmSize = registerOutput<String?>('vmSize');
+  }
+
+  /// Creates a typed reference to an existing [ClusterManager] resource.
+  ClusterManager.reference(String urn)
+    : super(
+        'azure-native:networkcloud:ClusterManager',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    analyticsWorkspaceId = registerOutput<String?>('analyticsWorkspaceId');
+    availabilityZones = registerOutput<List<String>?>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterVersions = registerOutput<List<ClusterAvailableVersionResponse>>('clusterVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterAvailableVersionResponse>(guardedValue, (value) => ClusterAvailableVersionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    detailedStatus = registerOutput<String>('detailedStatus');
+    detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
+    etag = registerOutput<String>('etag');
+    fabricControllerId = registerOutput<String>('fabricControllerId');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    managedResourceGroupConfiguration = registerOutput<ManagedResourceGroupConfigurationResponse?>('managedResourceGroupConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedResourceGroupConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managerExtendedLocation = registerOutput<ExtendedLocationResponse>('managerExtendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     vmSize = registerOutput<String?>('vmSize');
   }

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Identity provider details.
 class IdentityProviderDetailsResponse {
   /// The base authority for Azure Active Directory authentication.
-  final pulumi.Input<String>? aadAuthority;
+  final pulumi.Input<String?>? aadAuthority;
   /// The application/client Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// The intended Audience of the service principal with which the on-premise management/data plane components would communicate with our Azure services.
-  final pulumi.Input<String>? audience;
+  final pulumi.Input<String?>? audience;
   /// The object Id of the service principal with which the on-premise management/data plane components would communicate with our Azure services.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// The tenant Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [IdentityProviderDetailsResponse].
   /// [aadAuthority] The base authority for Azure Active Directory authentication.

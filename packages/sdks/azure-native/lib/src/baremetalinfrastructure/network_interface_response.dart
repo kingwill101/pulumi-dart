@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies the network interfaces of a bare metal resource.
 class NetworkInterfaceResponse {
   /// Specifies the IP address of the network interface.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
 
   /// Creates a new [NetworkInterfaceResponse].
   /// [ipAddress] Specifies the IP address of the network interface.

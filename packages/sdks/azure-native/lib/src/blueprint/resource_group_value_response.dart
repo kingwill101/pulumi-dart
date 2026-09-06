@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents an Azure resource group.
 class ResourceGroupValueResponse {
   /// Location of the resource group.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the resource group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ResourceGroupValueResponse].
   /// [location] Location of the resource group.

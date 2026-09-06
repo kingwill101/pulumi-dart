@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum FileSystemType {
+enum FileSystemType implements pulumi.PulumiEnum<String> {
   eFS("EFS");
 
   const FileSystemType(this.wireValue);
+  @override
   final String wireValue;
 
   static FileSystemType fromValue(String value) {

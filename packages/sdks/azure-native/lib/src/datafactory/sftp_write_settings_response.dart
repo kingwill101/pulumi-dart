@@ -12,7 +12,7 @@ class SftpWriteSettingsResponse {
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
-  final pulumi.Input<List<MetadataItemResponse>>? metadata;
+  final pulumi.Input<List<MetadataItemResponse>?>? metadata;
   /// Specifies the timeout for writing each chunk to SFTP server. Default value: 01:00:00 (one hour). Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? operationTimeout;
   /// The write setting type.

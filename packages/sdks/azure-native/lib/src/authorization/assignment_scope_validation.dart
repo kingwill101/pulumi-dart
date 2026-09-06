@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The option whether validate the exemption is at or under the assignment scope.
-enum AssignmentScopeValidation {
+enum AssignmentScopeValidation implements pulumi.PulumiEnum<String> {
   valueDefault("Default"),
   valueDoNotValidate("DoNotValidate");
 
   const AssignmentScopeValidation(this.wireValue);
+  @override
   final String wireValue;
 
   static AssignmentScopeValidation fromValue(String value) {

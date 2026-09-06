@@ -9,7 +9,7 @@ class ResourceIdentityResponse {
   /// The Azure Active Directory tenant id.
   final pulumi.Input<String> tenantId;
   /// The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ResourceIdentityResponse].
   /// [principalId] The Azure Active Directory principal id.

@@ -10,13 +10,13 @@ class PrivateAtlaseArgs {
   /// The name of the Maps Account.
   final pulumi.Input<String> accountName;
   /// The location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Private Atlas instance.
-  final pulumi.Input<String>? privateAtlasName;
+  final pulumi.Input<String?>? privateAtlasName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PrivateAtlaseArgs].
   /// [accountName] The name of the Maps Account.

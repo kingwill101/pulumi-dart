@@ -9,17 +9,17 @@ import 'string_key_value_pair.dart';
 /// {@macro pulumi_networkcloud_kubernetes_cluster_feature_args_doc}
 class KubernetesClusterFeatureArgs {
   /// The name of the feature.
-  final pulumi.Input<String>? featureName;
+  final pulumi.Input<String?>? featureName;
   /// The name of the Kubernetes cluster.
   final pulumi.Input<String> kubernetesClusterName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The configured options for the feature.
-  final pulumi.Input<List<StringKeyValuePair>>? options;
+  final pulumi.Input<List<StringKeyValuePair>?>? options;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [KubernetesClusterFeatureArgs].
   /// [featureName] The name of the feature.

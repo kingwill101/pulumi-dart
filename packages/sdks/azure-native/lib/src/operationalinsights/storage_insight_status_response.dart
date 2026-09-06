@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The status of the storage insight.
 class StorageInsightStatusResponse {
   /// Description of the state of the storage insight.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The state of the storage insight connection to the workspace
   final pulumi.Input<String> state;
 

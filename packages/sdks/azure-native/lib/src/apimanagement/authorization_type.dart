@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Authorization type options
-enum AuthorizationType {
+enum AuthorizationType implements pulumi.PulumiEnum<String> {
   oAuth2("OAuth2");
 
   const AuthorizationType(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthorizationType fromValue(String value) {

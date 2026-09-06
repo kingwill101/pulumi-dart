@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Status code of the application gateway custom error.
-enum ApplicationGatewayCustomErrorStatusCode {
+enum ApplicationGatewayCustomErrorStatusCode implements pulumi.PulumiEnum<String> {
   valueHttpStatus400("HttpStatus400"),
   valueHttpStatus403("HttpStatus403"),
   valueHttpStatus404("HttpStatus404"),
@@ -11,6 +13,7 @@ enum ApplicationGatewayCustomErrorStatusCode {
   valueHttpStatus504("HttpStatus504");
 
   const ApplicationGatewayCustomErrorStatusCode(this.wireValue);
+  @override
   final String wireValue;
 
   static ApplicationGatewayCustomErrorStatusCode fromValue(String value) {

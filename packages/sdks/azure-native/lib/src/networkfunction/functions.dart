@@ -22,6 +22,17 @@ Future<GetAzureTrafficCollectorResult> getAzureTrafficCollector(
   return GetAzureTrafficCollectorResult.fromMap(result);
 }
 
+pulumi.Output<GetAzureTrafficCollectorResult> getAzureTrafficCollectorOutput(
+  GetAzureTrafficCollectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkfunction:getAzureTrafficCollector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAzureTrafficCollectorResult.fromMap);
+}
+
 /// Gets the collector policy in a specified Traffic Collector
 ///
 /// Uses Azure REST API version 2022-11-01.
@@ -38,4 +49,15 @@ Future<GetCollectorPolicyResult> getCollectorPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCollectorPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetCollectorPolicyResult> getCollectorPolicyOutput(
+  GetCollectorPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkfunction:getCollectorPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCollectorPolicyResult.fromMap);
 }

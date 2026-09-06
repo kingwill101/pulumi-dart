@@ -7,7 +7,7 @@ class DatabaseInstancePropertiesResponse {
   /// Fully qualified domain name of existing database instance
   final pulumi.Input<String> databaseFqdn;
   /// Resource Id of existing database instance
-  final pulumi.Input<String>? databaseInstanceId;
+  final pulumi.Input<String?>? databaseInstanceId;
   /// Resource Id of warehouse database on database instance
   final pulumi.Input<String> dwDatabaseId;
   /// Name of warehouse database on database instance

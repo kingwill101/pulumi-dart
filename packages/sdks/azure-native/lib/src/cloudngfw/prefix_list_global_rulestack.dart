@@ -344,7 +344,27 @@ class PrefixListGlobalRulestack extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     etag = registerOutput<String?>('etag');
     this.name = registerOutput<String>('name');
-    prefixList = registerOutput<List<String>>('prefixList');
+    prefixList = registerOutput<List<String>>('prefixList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [PrefixListGlobalRulestack] resource.
+  PrefixListGlobalRulestack.reference(String urn)
+    : super(
+        'azure-native:cloudngfw:PrefixListGlobalRulestack',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    auditComment = registerOutput<String?>('auditComment');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String?>('etag');
+    this.name = registerOutput<String>('name');
+    prefixList = registerOutput<List<String>>('prefixList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');

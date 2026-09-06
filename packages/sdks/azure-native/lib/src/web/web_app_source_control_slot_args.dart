@@ -9,23 +9,23 @@ import 'git_hub_action_configuration.dart';
 /// {@macro pulumi_web_web_app_source_control_slot_args_doc}
 class WebAppSourceControlSlotArgs {
   /// Name of branch to use for deployment.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// &lt;code&gt;true&lt;/code&gt; to enable deployment rollback; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? deploymentRollbackEnabled;
+  final pulumi.Input<bool?>? deploymentRollbackEnabled;
   /// If GitHub Action is selected, than the associated configuration.
-  final pulumi.Input<GitHubActionConfiguration>? gitHubActionConfiguration;
+  final pulumi.Input<GitHubActionConfiguration?>? gitHubActionConfiguration;
   /// &lt;code&gt;true&lt;/code&gt; if this is deployed via GitHub action.
-  final pulumi.Input<bool>? isGitHubAction;
+  final pulumi.Input<bool?>? isGitHubAction;
   /// &lt;code&gt;true&lt;/code&gt; to limit to manual integration; &lt;code&gt;false&lt;/code&gt; to enable continuous integration (which configures webhooks into online repos like GitHub).
-  final pulumi.Input<bool>? isManualIntegration;
+  final pulumi.Input<bool?>? isManualIntegration;
   /// &lt;code&gt;true&lt;/code&gt; for a Mercurial repository; &lt;code&gt;false&lt;/code&gt; for a Git repository.
-  final pulumi.Input<bool>? isMercurial;
+  final pulumi.Input<bool?>? isMercurial;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
   /// Repository or source control URL.
-  final pulumi.Input<String>? repoUrl;
+  final pulumi.Input<String?>? repoUrl;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the deployment slot. If a slot is not specified, the API will get the source control configuration for the production slot.

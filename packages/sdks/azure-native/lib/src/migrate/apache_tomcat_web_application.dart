@@ -11,33 +11,33 @@ import 'web_application_framework.dart';
 /// ApacheTomcat web application.
 class ApacheTomcatWebApplication {
   /// Gets or sets the web application id.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// Gets or sets the web application name.
-  final pulumi.Input<String>? applicationName;
+  final pulumi.Input<String?>? applicationName;
   /// Gets or sets application scratch path.
-  final pulumi.Input<String>? applicationScratchPath;
+  final pulumi.Input<String?>? applicationScratchPath;
   /// Gets or sets the bindings for the application.
-  final pulumi.Input<List<Binding>>? bindings;
+  final pulumi.Input<List<Binding>?>? bindings;
   /// Gets or sets application configuration.
-  final pulumi.Input<List<WebApplicationConfiguration>>? configurations;
+  final pulumi.Input<List<WebApplicationConfiguration>?>? configurations;
   /// Gets or sets application directories.
-  final pulumi.Input<List<WebApplicationDirectory>>? directories;
+  final pulumi.Input<List<WebApplicationDirectory>?>? directories;
   /// Gets or sets the discovered frameworks of application.
-  final pulumi.Input<List<WebApplicationFramework>>? discoveredFrameworks;
+  final pulumi.Input<List<WebApplicationFramework>?>? discoveredFrameworks;
   /// Gets or sets the display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Resource Requirements.
-  final pulumi.Input<ResourceRequirements>? limits;
+  final pulumi.Input<ResourceRequirements?>? limits;
   /// Second level entity for virtual directories.
-  final pulumi.Input<DirectoryPath>? path;
+  final pulumi.Input<DirectoryPath?>? path;
   /// Framework specific data for a web application.
-  final pulumi.Input<WebApplicationFramework>? primaryFramework;
+  final pulumi.Input<WebApplicationFramework?>? primaryFramework;
   /// Resource Requirements.
-  final pulumi.Input<ResourceRequirements>? requests;
+  final pulumi.Input<ResourceRequirements?>? requests;
   /// Gets or sets the web server id.
-  final pulumi.Input<String>? webServerId;
+  final pulumi.Input<String?>? webServerId;
   /// Gets or sets the web server name.
-  final pulumi.Input<String>? webServerName;
+  final pulumi.Input<String?>? webServerName;
 
   /// Creates a new [ApacheTomcatWebApplication].
   /// [applicationId] Gets or sets the web application id.

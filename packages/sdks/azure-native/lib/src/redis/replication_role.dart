@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Role of the linked server.
-enum ReplicationRole {
+enum ReplicationRole implements pulumi.PulumiEnum<String> {
   valuePrimary("Primary"),
   valueSecondary("Secondary");
 
   const ReplicationRole(this.wireValue);
+  @override
   final String wireValue;
 
   static ReplicationRole fromValue(String value) {

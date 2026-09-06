@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dbforpostgresql_database_args_doc}
 class DatabaseArgs {
   /// Character set of the database.
-  final pulumi.Input<String>? charset;
+  final pulumi.Input<String?>? charset;
   /// Collation of the database.
-  final pulumi.Input<String>? collation;
+  final pulumi.Input<String?>? collation;
   /// Name of the database (case-sensitive). Exact database names can be retrieved by getting the list of all existing databases in a server.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the server.

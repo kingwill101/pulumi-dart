@@ -6,15 +6,15 @@ import 'typed_error_info.dart';
 /// Error information.
 class ExtendedErrorInfo {
   /// The additional error information.
-  final pulumi.Input<List<TypedErrorInfo>>? additionalInfo;
+  final pulumi.Input<List<TypedErrorInfo>?>? additionalInfo;
   /// The error code.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// The error details.
-  final pulumi.Input<List<ExtendedErrorInfo>>? details;
+  final pulumi.Input<List<ExtendedErrorInfo>?>? details;
   /// The error message.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The target of the error.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
 
   /// Creates a new [ExtendedErrorInfo].
   /// [additionalInfo] The additional error information.

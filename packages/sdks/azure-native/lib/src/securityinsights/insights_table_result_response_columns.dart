@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightsTableResultResponseColumns {
   /// the name of the column
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// the type of the column
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [InsightsTableResultResponseColumns].
   /// [name] the name of the column

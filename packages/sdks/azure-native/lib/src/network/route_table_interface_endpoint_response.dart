@@ -7,23 +7,23 @@ import 'subnet_response.dart';
 /// Route table resource.
 class RouteTableInterfaceEndpointResponse {
   /// Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
-  final pulumi.Input<bool>? disableBgpRoutePropagation;
+  final pulumi.Input<bool?>? disableBgpRoutePropagation;
   /// Gets a unique read-only string that changes whenever the resource is updated.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource name.
   final pulumi.Input<String> name;
   /// The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// Collection of routes contained within a route table.
-  final pulumi.Input<List<RouteInterfaceEndpointResponse>>? routes;
+  final pulumi.Input<List<RouteInterfaceEndpointResponse>?>? routes;
   /// A collection of references to subnets.
   final pulumi.Input<List<SubnetResponse>> subnets;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Resource type.
   final pulumi.Input<String> type;
 

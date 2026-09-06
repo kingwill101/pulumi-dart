@@ -8,7 +8,7 @@ import 'provision_os_reported_properties_response.dart';
 /// Represents the properties of Download Os job.
 class DownloadOsJobPropertiesResponse {
   /// Deployment mode to trigger job.
-  final pulumi.Input<String>? deploymentMode;
+  final pulumi.Input<String?>? deploymentMode;
   /// Download OS request.
   final pulumi.Input<DownloadRequestResponse> downloadRequest;
   /// The UTC date and time at which the job completed.
@@ -23,7 +23,7 @@ class DownloadOsJobPropertiesResponse {
   /// Job provisioning state
   final pulumi.Input<String> provisioningState;
   /// Reported Properties for Download Os job
-  final pulumi.Input<ProvisionOsReportedPropertiesResponse>? reportedProperties;
+  final pulumi.Input<ProvisionOsReportedPropertiesResponse?>? reportedProperties;
   /// The UTC date and time at which the job started.
   final pulumi.Input<String> startTimeUtc;
   /// Status of Edge device job.

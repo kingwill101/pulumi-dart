@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the transfer acceleration status of the bucket.
-enum AccelerateConfigurationAccelerationStatus {
+enum AccelerateConfigurationAccelerationStatus implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   suspended("Suspended");
 
   const AccelerateConfigurationAccelerationStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static AccelerateConfigurationAccelerationStatus fromValue(String value) {

@@ -309,7 +309,30 @@ class AnalyticsConnector extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [AnalyticsConnector] resource.
+  AnalyticsConnector.reference(String urn)
+    : super(
+        'azure-native:healthcareapis:AnalyticsConnector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataDestinationConfiguration = registerOutput<AnalyticsConnectorDataLakeDataDestinationResponse>('dataDestinationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsConnectorDataLakeDataDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataMappingConfiguration = registerOutput<AnalyticsConnectorFhirToParquetMappingResponse>('dataMappingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsConnectorFhirToParquetMappingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataSourceConfiguration = registerOutput<AnalyticsConnectorFhirServiceDataSourceResponse>('dataSourceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsConnectorFhirServiceDataSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String?>('etag');
+    identity = registerOutput<ServiceManagedIdentityResponseIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceManagedIdentityResponseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

@@ -9,15 +9,15 @@ import 'database_migration_service_replication_instance_properties.dart';
 /// {@macro pulumi_awsconnector_database_migration_service_replication_instance_args_doc}
 class DatabaseMigrationServiceReplicationInstanceArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of DatabaseMigrationServiceReplicationInstance
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<DatabaseMigrationServiceReplicationInstanceProperties>? properties;
+  final pulumi.Input<DatabaseMigrationServiceReplicationInstanceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DatabaseMigrationServiceReplicationInstanceArgs].
   /// [location] The geo-location where the resource lives

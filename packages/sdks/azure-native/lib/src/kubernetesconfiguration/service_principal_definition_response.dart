@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Parameters to authenticate using Service Principal.
 class ServicePrincipalDefinitionResponse {
   /// Base64-encoded certificate used to authenticate a Service Principal
-  final pulumi.Input<String>? clientCertificate;
+  final pulumi.Input<String?>? clientCertificate;
   /// The password for the certificate used to authenticate a Service Principal
-  final pulumi.Input<String>? clientCertificatePassword;
+  final pulumi.Input<String?>? clientCertificatePassword;
   /// Specifies whether to include x5c header in client claims when acquiring a token to enable subject name / issuer based authentication for the Client Certificate
-  final pulumi.Input<bool>? clientCertificateSendChain;
+  final pulumi.Input<bool?>? clientCertificateSendChain;
   /// The client Id for authenticating a Service Principal.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The client secret for authenticating a Service Principal
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// The tenant Id for authenticating a Service Principal
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ServicePrincipalDefinitionResponse].
   /// [clientCertificate] Base64-encoded certificate used to authenticate a Service Principal
@@ -24,14 +24,14 @@ class ServicePrincipalDefinitionResponse {
   /// [clientId] The client Id for authenticating a Service Principal.
   /// [clientSecret] The client secret for authenticating a Service Principal
   /// [tenantId] The tenant Id for authenticating a Service Principal
-  const ServicePrincipalDefinitionResponse({
+  ServicePrincipalDefinitionResponse({
     this.clientCertificate,
     this.clientCertificatePassword,
-    this.clientCertificateSendChain,
+    pulumi.Input<bool?>? clientCertificateSendChain,
     this.clientId,
     this.clientSecret,
     this.tenantId,
-  });
+  }) : clientCertificateSendChain = clientCertificateSendChain ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

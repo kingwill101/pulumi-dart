@@ -8,19 +8,19 @@ class ResourceMetricSignalDefinitionPropertiesResponse {
   /// Type of aggregation to apply to the metric
   final pulumi.Input<String> aggregationType;
   /// Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
-  final pulumi.Input<String>? dataUnit;
+  final pulumi.Input<String?>? dataUnit;
   /// Date when the signal definition was (soft-)deleted
   final pulumi.Input<String> deletionDate;
   /// Optional: Dimension to split by
-  final pulumi.Input<String>? dimension;
+  final pulumi.Input<String?>? dimension;
   /// Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
-  final pulumi.Input<String>? dimensionFilter;
+  final pulumi.Input<String?>? dimensionFilter;
   /// Display name
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Evaluation rules for the signal definition
   final pulumi.Input<EvaluationRuleResponse> evaluationRules;
   /// Optional set of labels (key-value pairs)
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the metric
   final pulumi.Input<String> metricName;
   /// Metric namespace
@@ -28,7 +28,7 @@ class ResourceMetricSignalDefinitionPropertiesResponse {
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
-  final pulumi.Input<String>? refreshInterval;
+  final pulumi.Input<String?>? refreshInterval;
   /// Supported signal kinds as discriminator
   /// Expected value is 'AzureResourceMetric'.
   final pulumi.Input<String> signalKind;
@@ -50,7 +50,7 @@ class ResourceMetricSignalDefinitionPropertiesResponse {
   /// [refreshInterval] Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
   /// [signalKind] Supported signal kinds as discriminator
   /// [timeGrain] Time range of signal. ISO duration format like PT10M.
-  const ResourceMetricSignalDefinitionPropertiesResponse({
+  ResourceMetricSignalDefinitionPropertiesResponse({
     required this.aggregationType,
     this.dataUnit,
     required this.deletionDate,
@@ -62,10 +62,10 @@ class ResourceMetricSignalDefinitionPropertiesResponse {
     required this.metricName,
     required this.metricNamespace,
     required this.provisioningState,
-    this.refreshInterval,
+    pulumi.Input<String?>? refreshInterval,
     required this.signalKind,
     required this.timeGrain,
-  });
+  }) : refreshInterval = refreshInterval ?? pulumi.Input.fromValue('PT1M');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

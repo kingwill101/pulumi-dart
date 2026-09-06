@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// User identity details.
 class UserIdentityContract {
   /// Identifier value within provider.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Identity provider name.
-  final pulumi.Input<String>? provider;
+  final pulumi.Input<String?>? provider;
 
   /// Creates a new [UserIdentityContract].
   /// [id] Identifier value within provider.

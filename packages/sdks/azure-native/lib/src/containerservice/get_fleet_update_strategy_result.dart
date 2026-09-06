@@ -6,21 +6,21 @@ import 'update_run_strategy_response.dart';
 /// Result data returned by getFleetUpdateStrategy.
 class GetFleetUpdateStrategyResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
-  final String eTag;
+  final String? eTag;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The provisioning state of the UpdateStrategy resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Defines the update sequence of the clusters.
-  final UpdateRunStrategyResponse strategy;
+  final UpdateRunStrategyResponse? strategy;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetFleetUpdateStrategyResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -32,39 +32,39 @@ class GetFleetUpdateStrategyResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetFleetUpdateStrategyResult({
-    required this.azureApiVersion,
-    required this.eTag,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
-    required this.strategy,
-    required this.systemData,
-    required this.type,
+    this.azureApiVersion,
+    this.eTag,
+    this.id,
+    this.name,
+    this.provisioningState,
+    this.strategy,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'eTag': eTag,
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
-      'strategy': strategy.toMap(),
-      'systemData': systemData.toMap(),
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'eTag': ?eTag,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'strategy': ?strategy?.toMap(),
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetFleetUpdateStrategyResult.fromMap(Map<String, dynamic> map) {
     return GetFleetUpdateStrategyResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      eTag: map['eTag'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      strategy: UpdateRunStrategyResponse.fromMap((map['strategy']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      strategy: (() { final guardedValue = map['strategy']; if (guardedValue == null) return null; return UpdateRunStrategyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

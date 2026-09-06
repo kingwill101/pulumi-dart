@@ -5,7 +5,7 @@ import 'volume_mount.dart';
 
 /// container properties
 class NGroupCGPropertyContainerProperties {
-  final pulumi.Input<List<VolumeMount>>? volumeMounts;
+  final pulumi.Input<List<VolumeMount>?>? volumeMounts;
 
   /// Creates a new [NGroupCGPropertyContainerProperties].
   /// [volumeMounts] Optional.

@@ -9,17 +9,17 @@ import 'cluster_sku.dart';
 /// {@macro pulumi_eventhub_cluster_args_doc}
 class ClusterArgs {
   /// The name of the Event Hubs Cluster.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
   /// Properties of the cluster SKU.
-  final pulumi.Input<ClusterSku>? sku;
+  final pulumi.Input<ClusterSku?>? sku;
   /// A value that indicates whether Scaling is Supported.
-  final pulumi.Input<bool>? supportsScaling;
+  final pulumi.Input<bool?>? supportsScaling;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ClusterArgs].
   /// [clusterName] The name of the Event Hubs Cluster.

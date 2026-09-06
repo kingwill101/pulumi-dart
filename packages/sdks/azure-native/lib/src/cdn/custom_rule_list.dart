@@ -6,7 +6,7 @@ import 'custom_rule.dart';
 /// Defines contents of custom rules
 class CustomRuleList {
   /// List of rules
-  final pulumi.Input<List<CustomRule>>? rules;
+  final pulumi.Input<List<CustomRule>?>? rules;
 
   /// Creates a new [CustomRuleList].
   /// [rules] List of rules

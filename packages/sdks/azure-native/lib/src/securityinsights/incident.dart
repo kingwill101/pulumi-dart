@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'incident_additional_data_response.dart';
 import 'incident_args.dart';
+import 'incident_label_response.dart';
 import 'incident_owner_info_response.dart';
 import 'system_data_response.dart';
 
@@ -260,7 +261,7 @@ class Incident extends pulumi.CustomResource {
   /// The deep-link url to the incident in Azure portal
   late final pulumi.Output<String> incidentUrl;
   /// List of labels relevant to this incident
-  late final pulumi.Output<List<Map<String, dynamic>>?> labels;
+  late final pulumi.Output<List<IncidentLabelResponse>?> labels;
   /// The time of the last activity in the incident
   late final pulumi.Output<String?> lastActivityTimeUtc;
   /// The last time the incident was updated
@@ -311,14 +312,49 @@ class Incident extends pulumi.CustomResource {
     firstActivityTimeUtc = registerOutput<String?>('firstActivityTimeUtc');
     incidentNumber = registerOutput<int>('incidentNumber');
     incidentUrl = registerOutput<String>('incidentUrl');
-    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    labels = registerOutput<List<IncidentLabelResponse>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IncidentLabelResponse>(guardedValue, (value) => IncidentLabelResponse.fromMap((value as Map).cast<String, dynamic>())); });
     lastActivityTimeUtc = registerOutput<String?>('lastActivityTimeUtc');
     lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
     this.name = registerOutput<String>('name');
     owner = registerOutput<IncidentOwnerInfoResponse?>('owner', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IncidentOwnerInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     providerIncidentId = registerOutput<String>('providerIncidentId');
     providerName = registerOutput<String>('providerName');
-    relatedAnalyticRuleIds = registerOutput<List<String>>('relatedAnalyticRuleIds');
+    relatedAnalyticRuleIds = registerOutput<List<String>>('relatedAnalyticRuleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    severity = registerOutput<String>('severity');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    title = registerOutput<String>('title');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Incident] resource.
+  Incident.reference(String urn)
+    : super(
+        'azure-native:securityinsights:Incident',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalData = registerOutput<IncidentAdditionalDataResponse>('additionalData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IncidentAdditionalDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    classification = registerOutput<String?>('classification');
+    classificationComment = registerOutput<String?>('classificationComment');
+    classificationReason = registerOutput<String?>('classificationReason');
+    createdTimeUtc = registerOutput<String>('createdTimeUtc');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String?>('etag');
+    firstActivityTimeUtc = registerOutput<String?>('firstActivityTimeUtc');
+    incidentNumber = registerOutput<int>('incidentNumber');
+    incidentUrl = registerOutput<String>('incidentUrl');
+    labels = registerOutput<List<IncidentLabelResponse>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IncidentLabelResponse>(guardedValue, (value) => IncidentLabelResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    lastActivityTimeUtc = registerOutput<String?>('lastActivityTimeUtc');
+    lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
+    this.name = registerOutput<String>('name');
+    owner = registerOutput<IncidentOwnerInfoResponse?>('owner', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IncidentOwnerInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    providerIncidentId = registerOutput<String>('providerIncidentId');
+    providerName = registerOutput<String>('providerName');
+    relatedAnalyticRuleIds = registerOutput<List<String>>('relatedAnalyticRuleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     severity = registerOutput<String>('severity');
     status = registerOutput<String>('status');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

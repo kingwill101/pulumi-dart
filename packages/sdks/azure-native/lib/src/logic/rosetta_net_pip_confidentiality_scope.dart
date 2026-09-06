@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The persistent confidentiality encryption scope.
-enum RosettaNetPipConfidentialityScope {
+enum RosettaNetPipConfidentialityScope implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueNone("None"),
   valuePayload("Payload"),
   valuePayloadContainer("PayloadContainer");
 
   const RosettaNetPipConfidentialityScope(this.wireValue);
+  @override
   final String wireValue;
 
   static RosettaNetPipConfidentialityScope fromValue(String value) {

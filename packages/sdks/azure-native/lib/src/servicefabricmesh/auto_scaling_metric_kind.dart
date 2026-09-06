@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of auto scaling metric
-enum AutoScalingMetricKind {
+enum AutoScalingMetricKind implements pulumi.PulumiEnum<String> {
   valueResource("Resource");
 
   const AutoScalingMetricKind(this.wireValue);
+  @override
   final String wireValue;
 
   static AutoScalingMetricKind fromValue(String value) {

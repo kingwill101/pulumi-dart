@@ -7,11 +7,11 @@ class SystemComponentResponse {
   /// Version of the system extension is currently installed on the cluster resource.
   final pulumi.Input<String> currentVersion;
   /// Major Version of the system extension to be installed on the cluster resource.
-  final pulumi.Input<int>? majorVersion;
+  final pulumi.Input<int?>? majorVersion;
   /// Type of the system extension
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Version of the system extension to be installed on the cluster resource.
-  final pulumi.Input<String>? userSpecifiedVersion;
+  final pulumi.Input<String?>? userSpecifiedVersion;
 
   /// Creates a new [SystemComponentResponse].
   /// [currentVersion] Version of the system extension is currently installed on the cluster resource.
@@ -37,7 +37,7 @@ class SystemComponentResponse {
   factory SystemComponentResponse.fromMap(Map<String, dynamic> map) {
     return SystemComponentResponse(
       currentVersion: pulumi.Input.fromValue(map['currentVersion'] as String),
-      majorVersion: (() { final guardedValue = map['majorVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      majorVersion: (() { final guardedValue = map['majorVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       userSpecifiedVersion: (() { final guardedValue = map['userSpecifiedVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

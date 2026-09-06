@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates if the traffic matched against the rule in inbound or outbound.
-enum SecurityConfigurationRuleDirection {
+enum SecurityConfigurationRuleDirection implements pulumi.PulumiEnum<String> {
   valueInbound("Inbound"),
   valueOutbound("Outbound");
 
   const SecurityConfigurationRuleDirection(this.wireValue);
+  @override
   final String wireValue;
 
   static SecurityConfigurationRuleDirection fromValue(String value) {

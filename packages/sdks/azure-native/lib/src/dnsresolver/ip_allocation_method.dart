@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Private IP address allocation method.
-enum IpAllocationMethod {
+enum IpAllocationMethod implements pulumi.PulumiEnum<String> {
   valueStatic("Static"),
   valueDynamic("Dynamic");
 
   const IpAllocationMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static IpAllocationMethod fromValue(String value) {

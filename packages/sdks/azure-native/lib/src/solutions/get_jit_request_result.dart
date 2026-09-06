@@ -9,35 +9,35 @@ import 'system_data_response.dart';
 /// Result data returned by getJitRequest.
 class GetJitRequestResult {
   /// The parent application id.
-  final String applicationResourceId;
+  final String? applicationResourceId;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The client entity that created the JIT request.
-  final ApplicationClientDetailsResponse createdBy;
+  final ApplicationClientDetailsResponse? createdBy;
   /// Resource ID
-  final String id;
+  final String? id;
   /// The JIT authorization policies.
-  final List<JitAuthorizationPoliciesResponse> jitAuthorizationPolicies;
+  final List<JitAuthorizationPoliciesResponse>? jitAuthorizationPolicies;
   /// The JIT request state.
-  final String jitRequestState;
+  final String? jitRequestState;
   /// The JIT request properties.
-  final JitSchedulingPolicyResponse jitSchedulingPolicy;
+  final JitSchedulingPolicyResponse? jitSchedulingPolicy;
   /// Resource location
   final String? location;
   /// Resource name
-  final String name;
+  final String? name;
   /// The JIT request provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// The publisher tenant id.
-  final String publisherTenantId;
+  final String? publisherTenantId;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags
   final Map<String, String>? tags;
   /// Resource type
-  final String type;
+  final String? type;
   /// The client entity that last updated the JIT request.
-  final ApplicationClientDetailsResponse updatedBy;
+  final ApplicationClientDetailsResponse? updatedBy;
 
   /// Creates a new [GetJitRequestResult].
   /// [applicationResourceId] The parent application id.
@@ -56,60 +56,60 @@ class GetJitRequestResult {
   /// [type] Resource type
   /// [updatedBy] The client entity that last updated the JIT request.
   const GetJitRequestResult({
-    required this.applicationResourceId,
-    required this.azureApiVersion,
-    required this.createdBy,
-    required this.id,
-    required this.jitAuthorizationPolicies,
-    required this.jitRequestState,
-    required this.jitSchedulingPolicy,
+    this.applicationResourceId,
+    this.azureApiVersion,
+    this.createdBy,
+    this.id,
+    this.jitAuthorizationPolicies,
+    this.jitRequestState,
+    this.jitSchedulingPolicy,
     this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.publisherTenantId,
-    required this.systemData,
+    this.name,
+    this.provisioningState,
+    this.publisherTenantId,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.updatedBy,
+    this.type,
+    this.updatedBy,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationResourceId': applicationResourceId,
-      'azureApiVersion': azureApiVersion,
-      'createdBy': createdBy.toMap(),
-      'id': id,
-      'jitAuthorizationPolicies': pulumi.Input.encodeList<JitAuthorizationPoliciesResponse, Map<String, dynamic>>(jitAuthorizationPolicies, (value) => value.toMap()),
-      'jitRequestState': jitRequestState,
-      'jitSchedulingPolicy': jitSchedulingPolicy.toMap(),
+      'applicationResourceId': ?applicationResourceId,
+      'azureApiVersion': ?azureApiVersion,
+      'createdBy': ?createdBy?.toMap(),
+      'id': ?id,
+      'jitAuthorizationPolicies': ?(() { final guardedValue = jitAuthorizationPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<JitAuthorizationPoliciesResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'jitRequestState': ?jitRequestState,
+      'jitSchedulingPolicy': ?jitSchedulingPolicy?.toMap(),
       'location': ?location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'publisherTenantId': publisherTenantId,
-      'systemData': systemData.toMap(),
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'publisherTenantId': ?publisherTenantId,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'updatedBy': updatedBy.toMap(),
+      'type': ?type,
+      'updatedBy': ?updatedBy?.toMap(),
     };
   }
 
   factory GetJitRequestResult.fromMap(Map<String, dynamic> map) {
     return GetJitRequestResult(
-      applicationResourceId: map['applicationResourceId'] as String,
-      azureApiVersion: map['azureApiVersion'] as String,
-      createdBy: ApplicationClientDetailsResponse.fromMap((map['createdBy']! as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      jitAuthorizationPolicies: pulumi.Input.decodeList<JitAuthorizationPoliciesResponse>(map['jitAuthorizationPolicies']!, (value) => JitAuthorizationPoliciesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      jitRequestState: map['jitRequestState'] as String,
-      jitSchedulingPolicy: JitSchedulingPolicyResponse.fromMap((map['jitSchedulingPolicy']! as Map).cast<String, dynamic>()),
+      applicationResourceId: (() { final guardedValue = map['applicationResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return ApplicationClientDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      jitAuthorizationPolicies: (() { final guardedValue = map['jitAuthorizationPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<JitAuthorizationPoliciesResponse>(guardedValue, (value) => JitAuthorizationPoliciesResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      jitRequestState: (() { final guardedValue = map['jitRequestState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      jitSchedulingPolicy: (() { final guardedValue = map['jitSchedulingPolicy']; if (guardedValue == null) return null; return JitSchedulingPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      publisherTenantId: map['publisherTenantId'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      publisherTenantId: (() { final guardedValue = map['publisherTenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      updatedBy: ApplicationClientDetailsResponse.fromMap((map['updatedBy']! as Map).cast<String, dynamic>()),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updatedBy: (() { final guardedValue = map['updatedBy']; if (guardedValue == null) return null; return ApplicationClientDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

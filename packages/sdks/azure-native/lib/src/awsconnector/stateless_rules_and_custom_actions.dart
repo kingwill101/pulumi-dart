@@ -7,9 +7,9 @@ import 'stateless_rule.dart';
 /// Definition of StatelessRulesAndCustomActions
 class StatelessRulesAndCustomActions {
   /// Property customActions
-  final pulumi.Input<List<CustomAction>>? customActions;
+  final pulumi.Input<List<CustomAction>?>? customActions;
   /// Property statelessRules
-  final pulumi.Input<List<StatelessRule>>? statelessRules;
+  final pulumi.Input<List<StatelessRule>?>? statelessRules;
 
   /// Creates a new [StatelessRulesAndCustomActions].
   /// [customActions] Property customActions

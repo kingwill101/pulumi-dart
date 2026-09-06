@@ -11,19 +11,19 @@ import 'postgres_instance_sku.dart';
 /// {@macro pulumi_azurearcdata_postgres_instance_args_doc}
 class PostgresInstanceArgs {
   /// The extendedLocation of the resource.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of Postgres Instance
-  final pulumi.Input<String>? postgresInstanceName;
+  final pulumi.Input<String?>? postgresInstanceName;
   /// null
   final pulumi.Input<PostgresInstanceProperties> properties;
   /// The name of the Azure resource group
   final pulumi.Input<String> resourceGroupName;
   /// Resource sku.
-  final pulumi.Input<PostgresInstanceSku>? sku;
+  final pulumi.Input<PostgresInstanceSku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PostgresInstanceArgs].
   /// [extendedLocation] The extendedLocation of the resource.

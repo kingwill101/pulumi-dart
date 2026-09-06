@@ -12,9 +12,9 @@ class DeviceArgs {
   /// Name of device group.
   final pulumi.Input<String> deviceGroupName;
   /// Device ID
-  final pulumi.Input<String>? deviceId;
+  final pulumi.Input<String?>? deviceId;
   /// Device name
-  final pulumi.Input<String>? deviceName;
+  final pulumi.Input<String?>? deviceName;
   /// Name of product.
   final pulumi.Input<String> productName;
   /// The name of the resource group. The name is case insensitive.

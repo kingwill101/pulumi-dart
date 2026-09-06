@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the secret used for authentication.
-enum SecretType {
+enum SecretType implements pulumi.PulumiEnum<String> {
   keyVault("KeyVault"),
   sshPubKey("SshPubKey");
 
   const SecretType(this.wireValue);
+  @override
   final String wireValue;
 
   static SecretType fromValue(String value) {

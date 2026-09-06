@@ -217,4 +217,23 @@ class ApiTagDescription extends pulumi.CustomResource {
     tagId = registerOutput<String?>('tagId');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ApiTagDescription] resource.
+  ApiTagDescription.reference(String urn)
+    : super(
+        'azure-native:apimanagement:ApiTagDescription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    externalDocsDescription = registerOutput<String?>('externalDocsDescription');
+    externalDocsUrl = registerOutput<String?>('externalDocsUrl');
+    this.name = registerOutput<String>('name');
+    tagId = registerOutput<String?>('tagId');
+    type = registerOutput<String>('type');
+  }
 }

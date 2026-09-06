@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of backup policy type
-enum PolicyType {
+enum PolicyType implements pulumi.PulumiEnum<String> {
   valueInvalid("Invalid"),
   valueFull("Full"),
   valueDifferential("Differential"),
@@ -10,6 +12,7 @@ enum PolicyType {
   valueSnapshotCopyOnlyFull("SnapshotCopyOnlyFull");
 
   const PolicyType(this.wireValue);
+  @override
   final String wireValue;
 
   static PolicyType fromValue(String value) {

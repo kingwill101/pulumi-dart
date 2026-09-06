@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SharePoint data type connection.
 class OfficeDataConnectorDataTypesSharePoint {
   /// Describe whether this data type connection is enabled or not.
-  final pulumi.Input<String> state;
+  final pulumi.Input<dynamic> state;
 
   /// Creates a new [OfficeDataConnectorDataTypesSharePoint].
   /// [state] Describe whether this data type connection is enabled or not.
@@ -21,7 +21,7 @@ class OfficeDataConnectorDataTypesSharePoint {
 
   factory OfficeDataConnectorDataTypesSharePoint.fromMap(Map<String, dynamic> map) {
     return OfficeDataConnectorDataTypesSharePoint(
-      state: pulumi.Input.fromValue(map['state'] as String),
+      state: pulumi.Input.fromValue(map['state']),
     );
   }
 }

@@ -15,7 +15,7 @@ class ListIntegrationAccountKeyVaultKeysArgs {
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// The skip token.
-  final pulumi.Input<String>? skipToken;
+  final pulumi.Input<String?>? skipToken;
 
   /// Creates a new [ListIntegrationAccountKeyVaultKeysArgs].
   /// [integrationAccountName] The integration account name.

@@ -16,9 +16,9 @@ class OrderArgs {
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// ShipmentType of the order
-  final pulumi.Input<String>? shipmentType;
+  final pulumi.Input<dynamic>? shipmentType;
   /// The shipping address.
-  final pulumi.Input<Address>? shippingAddress;
+  final pulumi.Input<Address?>? shippingAddress;
 
   /// Creates a new [OrderArgs].
   /// [contactInformation] The contact details.
@@ -49,7 +49,7 @@ class OrderArgs {
       contactInformation: pulumi.Input.fromValue(ContactDetails.fromMap((map['contactInformation']! as Map).cast<String, dynamic>())),
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      shipmentType: (() { final guardedValue = map['shipmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      shipmentType: (() { final guardedValue = map['shipmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       shippingAddress: (() { final guardedValue = map['shippingAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Address.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -6,7 +6,7 @@ import 'placement_v1_cluster_resource_placement_spec.dart';
 /// The configuration profile for default ClusterResourcePlacement for placement.
 class PlacementProfile {
   /// The default ClusterResourcePlacement policy configuration.
-  final pulumi.Input<PlacementV1ClusterResourcePlacementSpec>? defaultClusterResourcePlacement;
+  final pulumi.Input<PlacementV1ClusterResourcePlacementSpec?>? defaultClusterResourcePlacement;
 
   /// Creates a new [PlacementProfile].
   /// [defaultClusterResourcePlacement] The default ClusterResourcePlacement policy configuration.

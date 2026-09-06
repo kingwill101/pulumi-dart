@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Marketplace options.
 class ResourceTypeRegistrationPropertiesMarketplaceOptionsResponse {
   /// Add-on plan conversion allowed.
-  final pulumi.Input<bool>? addOnPlanConversionAllowed;
+  final pulumi.Input<bool?>? addOnPlanConversionAllowed;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesMarketplaceOptionsResponse].
   /// [addOnPlanConversionAllowed] Add-on plan conversion allowed.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The status.
-enum PrivateEndpointConnectionStatus {
+enum PrivateEndpointConnectionStatus implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   pending("Pending"),
   approved("Approved"),
@@ -7,6 +9,7 @@ enum PrivateEndpointConnectionStatus {
   disconnected("Disconnected");
 
   const PrivateEndpointConnectionStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static PrivateEndpointConnectionStatus fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Azure Resource ID for a Logical Network.
 class LogicalNetworkArmReferenceResponse {
   /// The Azure Resource ID for a Logical Network.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [LogicalNetworkArmReferenceResponse].
   /// [id] The Azure Resource ID for a Logical Network.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Edge Machine type.
-enum EdgeMachineKind {
+enum EdgeMachineKind implements pulumi.PulumiEnum<String> {
   standard("Standard"),
   dedicated("Dedicated");
 
   const EdgeMachineKind(this.wireValue);
+  @override
   final String wireValue;
 
   static EdgeMachineKind fromValue(String value) {

@@ -72,6 +72,17 @@ Future<GetAFDCustomDomainResult> getAFDCustomDomain(
   return GetAFDCustomDomainResult.fromMap(result);
 }
 
+pulumi.Output<GetAFDCustomDomainResult> getAFDCustomDomainOutput(
+  GetAFDCustomDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getAFDCustomDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAFDCustomDomainResult.fromMap);
+}
+
 /// Gets an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -90,6 +101,17 @@ Future<GetAFDEndpointResult> getAFDEndpoint(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAFDEndpointResult.fromMap(result);
+}
+
+pulumi.Output<GetAFDEndpointResult> getAFDEndpointOutput(
+  GetAFDEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getAFDEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAFDEndpointResult.fromMap);
 }
 
 /// Gets an existing origin within an origin group.
@@ -112,6 +134,17 @@ Future<GetAFDOriginResult> getAFDOrigin(
   return GetAFDOriginResult.fromMap(result);
 }
 
+pulumi.Output<GetAFDOriginResult> getAFDOriginOutput(
+  GetAFDOriginArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getAFDOrigin',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAFDOriginResult.fromMap);
+}
+
 /// Gets an existing origin group within a profile.
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -132,6 +165,17 @@ Future<GetAFDOriginGroupResult> getAFDOriginGroup(
   return GetAFDOriginGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetAFDOriginGroupResult> getAFDOriginGroupOutput(
+  GetAFDOriginGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getAFDOriginGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAFDOriginGroupResult.fromMap);
+}
+
 /// Gets an existing target group within a profile.
 ///
 /// Uses Azure REST API version 2024-06-01-preview.
@@ -148,6 +192,17 @@ Future<GetAFDTargetGroupResult> getAFDTargetGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAFDTargetGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetAFDTargetGroupResult> getAFDTargetGroupOutput(
+  GetAFDTargetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getAFDTargetGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAFDTargetGroupResult.fromMap);
 }
 
 /// Gets an existing custom domain within an endpoint.
@@ -170,6 +225,17 @@ Future<GetCustomDomainResult> getCustomDomain(
   return GetCustomDomainResult.fromMap(result);
 }
 
+pulumi.Output<GetCustomDomainResult> getCustomDomainOutput(
+  GetCustomDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getCustomDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomDomainResult.fromMap);
+}
+
 /// Get a EdgeAction
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
@@ -188,6 +254,17 @@ Future<GetEdgeActionResult> getEdgeAction(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEdgeActionResult.fromMap(result);
+}
+
+pulumi.Output<GetEdgeActionResult> getEdgeActionOutput(
+  GetEdgeActionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getEdgeAction',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEdgeActionResult.fromMap);
 }
 
 /// Get a EdgeActionExecutionFilter
@@ -210,6 +287,17 @@ Future<GetEdgeActionExecutionFilterResult> getEdgeActionExecutionFilter(
   return GetEdgeActionExecutionFilterResult.fromMap(result);
 }
 
+pulumi.Output<GetEdgeActionExecutionFilterResult> getEdgeActionExecutionFilterOutput(
+  GetEdgeActionExecutionFilterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getEdgeActionExecutionFilter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEdgeActionExecutionFilterResult.fromMap);
+}
+
 /// Get a EdgeActionVersion
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
@@ -228,6 +316,17 @@ Future<GetEdgeActionVersionResult> getEdgeActionVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEdgeActionVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetEdgeActionVersionResult> getEdgeActionVersionOutput(
+  GetEdgeActionVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getEdgeActionVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEdgeActionVersionResult.fromMap);
 }
 
 /// Get the version code for the edge action version.
@@ -250,6 +349,17 @@ Future<GetEdgeActionVersionCodeResult> getEdgeActionVersionCode(
   return GetEdgeActionVersionCodeResult.fromMap(result);
 }
 
+pulumi.Output<GetEdgeActionVersionCodeResult> getEdgeActionVersionCodeOutput(
+  GetEdgeActionVersionCodeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getEdgeActionVersionCode',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEdgeActionVersionCodeResult.fromMap);
+}
+
 /// Gets an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -268,6 +378,17 @@ Future<GetEndpointResult> getEndpoint(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEndpointResult.fromMap(result);
+}
+
+pulumi.Output<GetEndpointResult> getEndpointOutput(
+  GetEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEndpointResult.fromMap);
 }
 
 /// Gets an existing KeyGroup within a profile.
@@ -290,6 +411,17 @@ Future<GetKeyGroupResult> getKeyGroup(
   return GetKeyGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetKeyGroupResult> getKeyGroupOutput(
+  GetKeyGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getKeyGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKeyGroupResult.fromMap);
+}
+
 /// Gets a knowledge source with the specified name within a web agent.
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
@@ -306,6 +438,17 @@ Future<GetKnowledgeSourceResult> getKnowledgeSource(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKnowledgeSourceResult.fromMap(result);
+}
+
+pulumi.Output<GetKnowledgeSourceResult> getKnowledgeSourceOutput(
+  GetKnowledgeSourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getKnowledgeSource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKnowledgeSourceResult.fromMap);
 }
 
 /// Gets an existing origin within an endpoint.
@@ -328,6 +471,17 @@ Future<GetOriginResult> getOrigin(
   return GetOriginResult.fromMap(result);
 }
 
+pulumi.Output<GetOriginResult> getOriginOutput(
+  GetOriginArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getOrigin',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOriginResult.fromMap);
+}
+
 /// Gets an existing origin group within an endpoint.
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -346,6 +500,17 @@ Future<GetOriginGroupResult> getOriginGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOriginGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetOriginGroupResult> getOriginGroupOutput(
+  GetOriginGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getOriginGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOriginGroupResult.fromMap);
 }
 
 /// Retrieve protection policy with specified name within a resource group.
@@ -368,6 +533,17 @@ Future<GetPolicyResult> getPolicy(
   return GetPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetPolicyResult> getPolicyOutput(
+  GetPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyResult.fromMap);
+}
+
 /// Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -388,6 +564,17 @@ Future<GetProfileResult> getProfile(
   return GetProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetProfileResult> getProfileOutput(
+  GetProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProfileResult.fromMap);
+}
+
 /// Gets an agent link (web agent association) within a CDN profile.
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
@@ -404,6 +591,17 @@ Future<GetProfileAgentResult> getProfileAgent(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProfileAgentResult.fromMap(result);
+}
+
+pulumi.Output<GetProfileAgentResult> getProfileAgentOutput(
+  GetProfileAgentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getProfileAgent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProfileAgentResult.fromMap);
 }
 
 /// Gets the supported optimization types for the current profile. A user can create an endpoint with an optimization type from the listed values.
@@ -426,6 +624,17 @@ Future<GetProfileSupportedOptimizationTypesResult> getProfileSupportedOptimizati
   return GetProfileSupportedOptimizationTypesResult.fromMap(result);
 }
 
+pulumi.Output<GetProfileSupportedOptimizationTypesResult> getProfileSupportedOptimizationTypesOutput(
+  GetProfileSupportedOptimizationTypesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getProfileSupportedOptimizationTypes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProfileSupportedOptimizationTypesResult.fromMap);
+}
+
 /// Gets an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -444,6 +653,17 @@ Future<GetRouteResult> getRoute(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRouteResult.fromMap(result);
+}
+
+pulumi.Output<GetRouteResult> getRouteOutput(
+  GetRouteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getRoute',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouteResult.fromMap);
 }
 
 /// Gets an existing delivery rule within a rule set.
@@ -466,6 +686,17 @@ Future<GetRuleResult> getRule(
   return GetRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetRuleResult> getRuleOutput(
+  GetRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRuleResult.fromMap);
+}
+
 /// Gets an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -484,6 +715,17 @@ Future<GetRuleSetResult> getRuleSet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRuleSetResult.fromMap(result);
+}
+
+pulumi.Output<GetRuleSetResult> getRuleSetOutput(
+  GetRuleSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getRuleSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRuleSetResult.fromMap);
 }
 
 /// Gets an existing Secret within a profile.
@@ -506,6 +748,17 @@ Future<GetSecretResult> getSecret(
   return GetSecretResult.fromMap(result);
 }
 
+pulumi.Output<GetSecretResult> getSecretOutput(
+  GetSecretArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getSecret',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretResult.fromMap);
+}
+
 /// Gets an existing security policy within a profile.
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -526,6 +779,17 @@ Future<GetSecurityPolicyResult> getSecurityPolicy(
   return GetSecurityPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetSecurityPolicyResult> getSecurityPolicyOutput(
+  GetSecurityPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getSecurityPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityPolicyResult.fromMap);
+}
+
 /// Gets an existing tunnel policy within a profile.
 ///
 /// Uses Azure REST API version 2024-06-01-preview.
@@ -544,6 +808,17 @@ Future<GetTunnelPolicyResult> getTunnelPolicy(
   return GetTunnelPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetTunnelPolicyResult> getTunnelPolicyOutput(
+  GetTunnelPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getTunnelPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTunnelPolicyResult.fromMap);
+}
+
 /// Gets a web agent with the specified name within a resource group.
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
@@ -560,4 +835,15 @@ Future<GetWebAgentResult> getWebAgent(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAgentResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAgentResult> getWebAgentOutput(
+  GetWebAgentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cdn:getWebAgent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAgentResult.fromMap);
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Username and password for basic login authentication.
 class BasicLoginInformation {
   /// Login password.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Login username.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [BasicLoginInformation].
   /// [password] Login password.

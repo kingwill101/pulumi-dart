@@ -7,11 +7,11 @@ import 'self_managed_upgrade_profile_response.dart';
 /// AppLinkMember upgrade profile.
 class UpgradeProfileResponse {
   /// Fully managed upgrade profile.
-  final pulumi.Input<FullyManagedUpgradeProfileResponse>? fullyManagedUpgradeProfile;
+  final pulumi.Input<FullyManagedUpgradeProfileResponse?>? fullyManagedUpgradeProfile;
   /// Upgrade mode.
   final pulumi.Input<String> mode;
   /// Self managed upgrade profile.
-  final pulumi.Input<SelfManagedUpgradeProfileResponse>? selfManagedUpgradeProfile;
+  final pulumi.Input<SelfManagedUpgradeProfileResponse?>? selfManagedUpgradeProfile;
 
   /// Creates a new [UpgradeProfileResponse].
   /// [fullyManagedUpgradeProfile] Fully managed upgrade profile.

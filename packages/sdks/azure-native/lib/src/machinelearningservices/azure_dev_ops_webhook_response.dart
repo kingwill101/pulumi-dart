@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Webhook details specific for Azure DevOps
 class AzureDevOpsWebhookResponse {
   /// Send callback on a specified notification event
-  final pulumi.Input<String>? eventType;
+  final pulumi.Input<String?>? eventType;
   /// Enum to determine the webhook callback service type.
   /// Expected value is 'AzureDevOps'.
   final pulumi.Input<String> webhookType;

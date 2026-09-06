@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AsyncTimeoutRuleResponse {
-  final pulumi.Input<String>? actionName;
+  final pulumi.Input<String?>? actionName;
   /// This is a TimeSpan property
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [AsyncTimeoutRuleResponse].
   /// [actionName] Optional.

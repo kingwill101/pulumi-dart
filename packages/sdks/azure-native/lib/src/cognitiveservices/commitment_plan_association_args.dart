@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cognitiveservices_commitment_plan_association_args_doc}
 class CommitmentPlanAssociationArgs {
   /// The Azure resource id of the account.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// The name of the commitment plan association with the Cognitive Services Account
-  final pulumi.Input<String>? commitmentPlanAssociationName;
+  final pulumi.Input<String?>? commitmentPlanAssociationName;
   /// The name of the commitmentPlan associated with the Cognitive Services Account
   final pulumi.Input<String> commitmentPlanName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CommitmentPlanAssociationArgs].
   /// [accountId] The Azure resource id of the account.

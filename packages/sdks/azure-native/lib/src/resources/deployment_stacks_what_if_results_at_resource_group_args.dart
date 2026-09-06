@@ -9,15 +9,15 @@ import 'deployment_stacks_what_if_result_properties.dart';
 /// {@macro pulumi_resources_deployment_stacks_what_if_results_at_resource_group_args_doc}
 class DeploymentStacksWhatIfResultsAtResourceGroupArgs {
   /// Name of the deployment stack what-if result.
-  final pulumi.Input<String>? deploymentStacksWhatIfResultName;
+  final pulumi.Input<String?>? deploymentStacksWhatIfResultName;
   /// The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<DeploymentStacksWhatIfResultProperties>? properties;
+  final pulumi.Input<DeploymentStacksWhatIfResultProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DeploymentStacksWhatIfResultsAtResourceGroupArgs].
   /// [deploymentStacksWhatIfResultName] Name of the deployment stack what-if result.

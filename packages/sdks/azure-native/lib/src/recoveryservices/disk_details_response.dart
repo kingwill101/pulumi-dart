@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Onprem disk details data.
 class DiskDetailsResponse {
   /// The hard disk max size in MB.
-  final pulumi.Input<double>? maxSizeMB;
+  final pulumi.Input<double?>? maxSizeMB;
   /// The VHD Id.
-  final pulumi.Input<String>? vhdId;
+  final pulumi.Input<String?>? vhdId;
   /// The VHD name.
-  final pulumi.Input<String>? vhdName;
+  final pulumi.Input<String?>? vhdName;
   /// The type of the volume.
-  final pulumi.Input<String>? vhdType;
+  final pulumi.Input<String?>? vhdType;
 
   /// Creates a new [DiskDetailsResponse].
   /// [maxSizeMB] The hard disk max size in MB.
@@ -36,7 +36,7 @@ class DiskDetailsResponse {
 
   factory DiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DiskDetailsResponse(
-      maxSizeMB: (() { final guardedValue = map['maxSizeMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maxSizeMB: (() { final guardedValue = map['maxSizeMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       vhdId: (() { final guardedValue = map['vhdId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vhdName: (() { final guardedValue = map['vhdName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vhdType: (() { final guardedValue = map['vhdType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

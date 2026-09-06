@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Ipv4PrefixSpecification
 class Ipv4PrefixSpecificationResponse {
   /// Property ipv4Prefix
-  final pulumi.Input<String>? ipv4Prefix;
+  final pulumi.Input<String?>? ipv4Prefix;
 
   /// Creates a new [Ipv4PrefixSpecificationResponse].
   /// [ipv4Prefix] Property ipv4Prefix

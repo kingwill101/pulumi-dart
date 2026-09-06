@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The rule type of the governance rule, defines the source of the rule e.g. Integrated
-enum GovernanceRuleType {
+enum GovernanceRuleType implements pulumi.PulumiEnum<String> {
   integrated("Integrated"),
   serviceNow("ServiceNow");
 
   const GovernanceRuleType(this.wireValue);
+  @override
   final String wireValue;
 
   static GovernanceRuleType fromValue(String value) {

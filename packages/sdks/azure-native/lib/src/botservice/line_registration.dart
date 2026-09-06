@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties corresponding to a line channel registration
 class LineRegistration {
   /// Access token for the line channel registration
-  final pulumi.Input<String>? channelAccessToken;
+  final pulumi.Input<String?>? channelAccessToken;
   /// Secret for the line channel registration
-  final pulumi.Input<String>? channelSecret;
+  final pulumi.Input<String?>? channelSecret;
 
   /// Creates a new [LineRegistration].
   /// [channelAccessToken] Access token for the line channel registration

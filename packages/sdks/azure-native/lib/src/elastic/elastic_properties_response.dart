@@ -7,9 +7,9 @@ import 'elastic_cloud_user_response.dart';
 /// Elastic Resource Properties.
 class ElasticPropertiesResponse {
   /// Details of the elastic cloud deployment.
-  final pulumi.Input<ElasticCloudDeploymentResponse>? elasticCloudDeployment;
+  final pulumi.Input<ElasticCloudDeploymentResponse?>? elasticCloudDeployment;
   /// Details of the user's elastic account.
-  final pulumi.Input<ElasticCloudUserResponse>? elasticCloudUser;
+  final pulumi.Input<ElasticCloudUserResponse?>? elasticCloudUser;
 
   /// Creates a new [ElasticPropertiesResponse].
   /// [elasticCloudDeployment] Details of the elastic cloud deployment.

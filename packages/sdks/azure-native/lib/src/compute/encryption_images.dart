@@ -7,9 +7,9 @@ import 'osdisk_image_encryption.dart';
 /// Optional. Allows users to provide customer managed keys for encrypting the OS and data disks in the gallery artifact.
 class EncryptionImages {
   /// A list of encryption specifications for data disk images.
-  final pulumi.Input<List<DataDiskImageEncryption>>? dataDiskImages;
+  final pulumi.Input<List<DataDiskImageEncryption>?>? dataDiskImages;
   /// Contains encryption settings for an OS disk image.
-  final pulumi.Input<OSDiskImageEncryption>? osDiskImage;
+  final pulumi.Input<OSDiskImageEncryption?>? osDiskImage;
 
   /// Creates a new [EncryptionImages].
   /// [dataDiskImages] A list of encryption specifications for data disk images.

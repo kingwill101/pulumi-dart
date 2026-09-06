@@ -10,21 +10,21 @@ import 'non_compliant_summary.dart';
 /// Definition of awsSsmResourceComplianceSummaryItem
 class AwsSsmResourceComplianceSummaryItemProperties {
   /// &lt;p&gt;The compliance type.&lt;/p&gt;
-  final pulumi.Input<String>? complianceType;
+  final pulumi.Input<String?>? complianceType;
   /// &lt;p&gt;A list of items that are compliant for the resource.&lt;/p&gt;
-  final pulumi.Input<CompliantSummary>? compliantSummary;
+  final pulumi.Input<CompliantSummary?>? compliantSummary;
   /// &lt;p&gt;Information about the execution.&lt;/p&gt;
-  final pulumi.Input<ComplianceExecutionSummary>? executionSummary;
+  final pulumi.Input<ComplianceExecutionSummary?>? executionSummary;
   /// &lt;p&gt;A list of items that aren't compliant for the resource.&lt;/p&gt;
-  final pulumi.Input<NonCompliantSummary>? nonCompliantSummary;
+  final pulumi.Input<NonCompliantSummary?>? nonCompliantSummary;
   /// &lt;p&gt;The highest severity item found for the resource. The resource is compliant for this item.&lt;/p&gt;
-  final pulumi.Input<ComplianceSeverityEnumValue>? overallSeverity;
+  final pulumi.Input<ComplianceSeverityEnumValue?>? overallSeverity;
   /// &lt;p&gt;The resource ID.&lt;/p&gt;
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// &lt;p&gt;The resource type.&lt;/p&gt;
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
   /// &lt;p&gt;The compliance status for the resource.&lt;/p&gt;
-  final pulumi.Input<ComplianceStatusEnumValue>? status;
+  final pulumi.Input<ComplianceStatusEnumValue?>? status;
 
   /// Creates a new [AwsSsmResourceComplianceSummaryItemProperties].
   /// [complianceType] &lt;p&gt;The compliance type.&lt;/p&gt;

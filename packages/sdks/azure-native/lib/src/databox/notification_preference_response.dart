@@ -12,10 +12,10 @@ class NotificationPreferenceResponse {
   /// Creates a new [NotificationPreferenceResponse].
   /// [sendNotification] Notification is required or not.
   /// [stageName] Name of the stage.
-  const NotificationPreferenceResponse({
-    required this.sendNotification,
+  NotificationPreferenceResponse({
+    pulumi.Input<bool>? sendNotification,
     required this.stageName,
-  });
+  }) : sendNotification = sendNotification ?? pulumi.Input.fromValue(true);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

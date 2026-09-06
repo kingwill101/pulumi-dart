@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A Firewall rule properties.
 class FirewallRulePropertiesResponse {
   /// End IP address.
-  final pulumi.Input<String>? endIpAddress;
+  final pulumi.Input<String?>? endIpAddress;
   /// Provisioning state.
   final pulumi.Input<String> provisioningState;
   /// Start IP address.
-  final pulumi.Input<String>? startIpAddress;
+  final pulumi.Input<String?>? startIpAddress;
 
   /// Creates a new [FirewallRulePropertiesResponse].
   /// [endIpAddress] End IP address.

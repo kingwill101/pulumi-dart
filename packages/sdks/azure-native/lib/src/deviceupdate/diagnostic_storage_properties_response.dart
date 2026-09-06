@@ -7,7 +7,7 @@ class DiagnosticStoragePropertiesResponse {
   /// Authentication Type
   final pulumi.Input<String> authenticationType;
   /// ConnectionString of the diagnostic storage account
-  final pulumi.Input<String>? connectionString;
+  final pulumi.Input<String?>? connectionString;
   /// ResourceId of the diagnostic storage account
   final pulumi.Input<String> resourceId;
 

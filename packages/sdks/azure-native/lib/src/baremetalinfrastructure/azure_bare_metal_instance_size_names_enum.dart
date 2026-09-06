@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the Azure Bare Metal Instance SKU.
-enum AzureBareMetalInstanceSizeNamesEnum {
+enum AzureBareMetalInstanceSizeNamesEnum implements pulumi.PulumiEnum<String> {
   valueS72m("S72m"),
   valueS144m("S144m"),
   valueS72("S72"),
@@ -46,6 +48,7 @@ enum AzureBareMetalInstanceSizeNamesEnum {
   valueS960m("S960m");
 
   const AzureBareMetalInstanceSizeNamesEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureBareMetalInstanceSizeNamesEnum fromValue(String value) {

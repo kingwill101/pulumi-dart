@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes properties of an component as related to the standard
 class StandardComponentPropertiesResponse {
   /// Component Key matching componentMetadata
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
 
   /// Creates a new [StandardComponentPropertiesResponse].
   /// [key] Component Key matching componentMetadata

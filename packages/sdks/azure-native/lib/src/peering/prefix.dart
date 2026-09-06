@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'peering_service_prefix_event_response.dart';
 import 'prefix_args.dart';
 
 /// The peering service prefix class.
@@ -168,7 +169,7 @@ class Prefix extends pulumi.CustomResource {
   /// The error message for validation state
   late final pulumi.Output<String> errorMessage;
   /// The list of events for peering service prefix
-  late final pulumi.Output<List<Map<String, dynamic>>> events;
+  late final pulumi.Output<List<PeeringServicePrefixEventResponse>> events;
   /// The prefix learned type
   late final pulumi.Output<String> learnedType;
   /// The name of the resource.
@@ -200,7 +201,28 @@ class Prefix extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     errorMessage = registerOutput<String>('errorMessage');
-    events = registerOutput<List<Map<String, dynamic>>>('events');
+    events = registerOutput<List<PeeringServicePrefixEventResponse>>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PeeringServicePrefixEventResponse>(guardedValue, (value) => PeeringServicePrefixEventResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    learnedType = registerOutput<String>('learnedType');
+    this.name = registerOutput<String>('name');
+    peeringServicePrefixKey = registerOutput<String?>('peeringServicePrefixKey');
+    prefix = registerOutput<String?>('prefix');
+    prefixValidationState = registerOutput<String>('prefixValidationState');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Prefix] resource.
+  Prefix.reference(String urn)
+    : super(
+        'azure-native:peering:Prefix',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    errorMessage = registerOutput<String>('errorMessage');
+    events = registerOutput<List<PeeringServicePrefixEventResponse>>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PeeringServicePrefixEventResponse>(guardedValue, (value) => PeeringServicePrefixEventResponse.fromMap((value as Map).cast<String, dynamic>())); });
     learnedType = registerOutput<String>('learnedType');
     this.name = registerOutput<String>('name');
     peeringServicePrefixKey = registerOutput<String?>('peeringServicePrefixKey');

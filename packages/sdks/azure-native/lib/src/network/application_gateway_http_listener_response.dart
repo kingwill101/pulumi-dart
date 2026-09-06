@@ -7,33 +7,33 @@ import 'sub_resource_response.dart';
 /// Http listener of an application gateway.
 class ApplicationGatewayHttpListenerResponse {
   /// Custom error configurations of the HTTP listener.
-  final pulumi.Input<List<ApplicationGatewayCustomErrorResponse>>? customErrorConfigurations;
+  final pulumi.Input<List<ApplicationGatewayCustomErrorResponse>?>? customErrorConfigurations;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Reference to the FirewallPolicy resource.
-  final pulumi.Input<SubResourceResponse>? firewallPolicy;
+  final pulumi.Input<SubResourceResponse?>? firewallPolicy;
   /// Frontend IP configuration resource of an application gateway.
-  final pulumi.Input<SubResourceResponse>? frontendIPConfiguration;
+  final pulumi.Input<SubResourceResponse?>? frontendIPConfiguration;
   /// Frontend port resource of an application gateway.
-  final pulumi.Input<SubResourceResponse>? frontendPort;
+  final pulumi.Input<SubResourceResponse?>? frontendPort;
   /// Host name of HTTP listener.
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// List of Host names for HTTP Listener that allows special wildcard characters as well.
-  final pulumi.Input<List<String>>? hostNames;
+  final pulumi.Input<List<String>?>? hostNames;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the HTTP listener that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Protocol of the HTTP listener.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// The provisioning state of the HTTP listener resource.
   final pulumi.Input<String> provisioningState;
   /// Applicable only if protocol is https. Enables SNI for multi-hosting.
-  final pulumi.Input<bool>? requireServerNameIndication;
+  final pulumi.Input<bool?>? requireServerNameIndication;
   /// SSL certificate resource of an application gateway.
-  final pulumi.Input<SubResourceResponse>? sslCertificate;
+  final pulumi.Input<SubResourceResponse?>? sslCertificate;
   /// SSL profile resource of the application gateway.
-  final pulumi.Input<SubResourceResponse>? sslProfile;
+  final pulumi.Input<SubResourceResponse?>? sslProfile;
   /// Type of the resource.
   final pulumi.Input<String> type;
 

@@ -10,13 +10,13 @@ import 'managed_identity_properties.dart';
 /// {@macro pulumi_appplatform_app_args_doc}
 class AppArgs {
   /// The name of the App resource.
-  final pulumi.Input<String>? appName;
+  final pulumi.Input<String?>? appName;
   /// The Managed Identity type of the app resource
-  final pulumi.Input<ManagedIdentityProperties>? identity;
+  final pulumi.Input<ManagedIdentityProperties?>? identity;
   /// The GEO location of the application, always the same with its parent resource
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Properties of the App resource
-  final pulumi.Input<AppResourceProperties>? properties;
+  final pulumi.Input<AppResourceProperties?>? properties;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Service resource.

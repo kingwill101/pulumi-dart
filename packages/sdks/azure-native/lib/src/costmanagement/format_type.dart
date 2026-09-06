@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The format of the report being delivered.
-enum FormatType {
+enum FormatType implements pulumi.PulumiEnum<String> {
   valueCsv("Csv");
 
   const FormatType(this.wireValue);
+  @override
   final String wireValue;
 
   static FormatType fromValue(String value) {

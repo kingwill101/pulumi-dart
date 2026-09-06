@@ -12,17 +12,17 @@ class KustoPoolDatabasePrincipalAssignmentArgs {
   /// The name of the Kusto pool.
   final pulumi.Input<String> kustoPoolName;
   /// The name of the Kusto principalAssignment.
-  final pulumi.Input<String>? principalAssignmentName;
+  final pulumi.Input<String?>? principalAssignmentName;
   /// The principal ID assigned to the database principal. It can be a user email, application ID, or security group name.
   final pulumi.Input<String> principalId;
   /// Principal type.
-  final pulumi.Input<String> principalType;
+  final pulumi.Input<dynamic> principalType;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Database principal role.
-  final pulumi.Input<String> role;
+  final pulumi.Input<dynamic> role;
   /// The tenant id of the principal
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -68,9 +68,9 @@ class KustoPoolDatabasePrincipalAssignmentArgs {
       kustoPoolName: pulumi.Input.fromValue(map['kustoPoolName'] as String),
       principalAssignmentName: (() { final guardedValue = map['principalAssignmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
-      principalType: pulumi.Input.fromValue(map['principalType'] as String),
+      principalType: pulumi.Input.fromValue(map['principalType']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      role: pulumi.Input.fromValue(map['role'] as String),
+      role: pulumi.Input.fromValue(map['role']),
       tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );

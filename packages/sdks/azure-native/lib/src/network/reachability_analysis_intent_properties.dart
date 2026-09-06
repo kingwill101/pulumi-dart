@@ -5,7 +5,7 @@ import 'iptraffic.dart';
 
 /// Represents the Reachability Analysis Intent properties.
 class ReachabilityAnalysisIntentProperties {
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Destination resource id to verify the reachability path of.
   final pulumi.Input<String> destinationResourceId;
   /// IP traffic information.

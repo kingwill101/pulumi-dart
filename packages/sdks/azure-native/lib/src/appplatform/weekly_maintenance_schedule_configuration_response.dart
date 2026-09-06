@@ -40,7 +40,7 @@ class WeeklyMaintenanceScheduleConfigurationResponse {
       day: pulumi.Input.fromValue(map['day'] as String),
       duration: pulumi.Input.fromValue(map['duration'] as String),
       frequency: pulumi.Input.fromValue(map['frequency'] as String),
-      hour: pulumi.Input.fromValue(map['hour'] as int),
+      hour: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['hour'])),
     );
   }
 }

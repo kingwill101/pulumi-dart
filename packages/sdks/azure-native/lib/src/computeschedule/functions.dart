@@ -21,3 +21,14 @@ Future<GetScheduledActionResult> getScheduledAction(
   );
   return GetScheduledActionResult.fromMap(result);
 }
+
+pulumi.Output<GetScheduledActionResult> getScheduledActionOutput(
+  GetScheduledActionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:computeschedule:getScheduledAction',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScheduledActionResult.fromMap);
+}

@@ -6,9 +6,9 @@ import 'day_of_week.dart';
 /// Maintenance window starting hour and day of week.
 class MaintenanceWindowProperties {
   /// Day of the week.
-  final pulumi.Input<DayOfWeek>? dayOfWeek;
+  final pulumi.Input<DayOfWeek?>? dayOfWeek;
   /// The update start hour of the day. (0 - 23)
-  final pulumi.Input<int>? hour;
+  final pulumi.Input<int?>? hour;
 
   /// Creates a new [MaintenanceWindowProperties].
   /// [dayOfWeek] Day of the week.
@@ -28,7 +28,7 @@ class MaintenanceWindowProperties {
   factory MaintenanceWindowProperties.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowProperties(
       dayOfWeek: (() { final guardedValue = map['dayOfWeek']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DayOfWeek.fromValue(guardedValue as String)); })(),
-      hour: (() { final guardedValue = map['hour']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      hour: (() { final guardedValue = map['hour']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

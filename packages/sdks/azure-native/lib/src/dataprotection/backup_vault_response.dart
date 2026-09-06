@@ -12,17 +12,17 @@ class BackupVaultResponse {
   /// Security Level of Backup Vault
   final pulumi.Input<String> bcdrSecurityLevel;
   /// Feature Settings
-  final pulumi.Input<FeatureSettingsResponse>? featureSettings;
+  final pulumi.Input<FeatureSettingsResponse?>? featureSettings;
   /// Is vault protected by resource guard
   final pulumi.Input<bool> isVaultProtectedByResourceGuard;
   /// Monitoring Settings
-  final pulumi.Input<MonitoringSettingsResponse>? monitoringSettings;
+  final pulumi.Input<MonitoringSettingsResponse?>? monitoringSettings;
   /// Provisioning state of the BackupVault resource
   final pulumi.Input<String> provisioningState;
   /// List of replicated regions for Backup Vault
-  final pulumi.Input<List<String>>? replicatedRegions;
+  final pulumi.Input<List<String>?>? replicatedRegions;
   /// ResourceGuardOperationRequests on which LAC check will be performed
-  final pulumi.Input<List<String>>? resourceGuardOperationRequests;
+  final pulumi.Input<List<String>?>? resourceGuardOperationRequests;
   /// Resource move details for backup vault
   final pulumi.Input<ResourceMoveDetailsResponse> resourceMoveDetails;
   /// Resource move state for backup vault
@@ -30,7 +30,7 @@ class BackupVaultResponse {
   /// Secure Score of Backup Vault
   final pulumi.Input<String> secureScore;
   /// Security Settings
-  final pulumi.Input<SecuritySettingsResponse>? securitySettings;
+  final pulumi.Input<SecuritySettingsResponse?>? securitySettings;
   /// Storage Settings
   final pulumi.Input<List<StorageSettingResponse>> storageSettings;
 

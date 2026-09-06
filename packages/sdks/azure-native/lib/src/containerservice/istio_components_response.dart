@@ -7,9 +7,9 @@ import 'istio_ingress_gateway_response.dart';
 /// Istio components configuration.
 class IstioComponentsResponse {
   /// Istio egress gateways.
-  final pulumi.Input<List<IstioEgressGatewayResponse>>? egressGateways;
+  final pulumi.Input<List<IstioEgressGatewayResponse>?>? egressGateways;
   /// Istio ingress gateways.
-  final pulumi.Input<List<IstioIngressGatewayResponse>>? ingressGateways;
+  final pulumi.Input<List<IstioIngressGatewayResponse>?>? ingressGateways;
 
   /// Creates a new [IstioComponentsResponse].
   /// [egressGateways] Istio egress gateways.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Sku name
-enum AzureDiskSkuName {
+enum AzureDiskSkuName implements pulumi.PulumiEnum<String> {
   premiumLRS("Premium_LRS"),
   standardLRS("Standard_LRS"),
   standardSSDLRS("StandardSSD_LRS"),
@@ -9,6 +11,7 @@ enum AzureDiskSkuName {
   standardSSDZRS("StandardSSD_ZRS");
 
   const AzureDiskSkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureDiskSkuName fromValue(String value) {

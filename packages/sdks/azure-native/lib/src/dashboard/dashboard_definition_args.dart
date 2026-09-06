@@ -11,9 +11,9 @@ class DashboardDefinitionArgs {
   /// The name of the Azure Managed Dashboard.
   final pulumi.Input<String> dashboardName;
   /// The name of the Dashboard Definition.
-  final pulumi.Input<String>? definitionName;
+  final pulumi.Input<String?>? definitionName;
   /// Properties specific to the dashboard definition resource.
-  final pulumi.Input<DashboardDefinitionProperties>? properties;
+  final pulumi.Input<DashboardDefinitionProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

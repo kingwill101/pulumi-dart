@@ -7,21 +7,21 @@ import 'address.dart';
 /// directories as per ICANN requirements.
 class Contact {
   /// Mailing address.
-  final pulumi.Input<Address>? addressMailing;
+  final pulumi.Input<Address?>? addressMailing;
   /// Email address.
   final pulumi.Input<String> email;
   /// Fax number.
-  final pulumi.Input<String>? fax;
+  final pulumi.Input<String?>? fax;
   /// Job title.
-  final pulumi.Input<String>? jobTitle;
+  final pulumi.Input<String?>? jobTitle;
   /// First name.
   final pulumi.Input<String> nameFirst;
   /// Last name.
   final pulumi.Input<String> nameLast;
   /// Middle name.
-  final pulumi.Input<String>? nameMiddle;
+  final pulumi.Input<String?>? nameMiddle;
   /// Organization contact belongs to.
-  final pulumi.Input<String>? organization;
+  final pulumi.Input<String?>? organization;
   /// Phone number.
   final pulumi.Input<String> phone;
 

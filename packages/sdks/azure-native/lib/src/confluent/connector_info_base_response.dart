@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Connector Info Base properties
 class ConnectorInfoBaseResponse {
   /// Connector Class
-  final pulumi.Input<String>? connectorClass;
+  final pulumi.Input<String?>? connectorClass;
   /// Connector Id
-  final pulumi.Input<String>? connectorId;
+  final pulumi.Input<String?>? connectorId;
   /// Connector Name
-  final pulumi.Input<String>? connectorName;
+  final pulumi.Input<String?>? connectorName;
   /// Connector Status
-  final pulumi.Input<String>? connectorState;
+  final pulumi.Input<String?>? connectorState;
   /// Connector Type
-  final pulumi.Input<String>? connectorType;
+  final pulumi.Input<String?>? connectorType;
 
   /// Creates a new [ConnectorInfoBaseResponse].
   /// [connectorClass] Connector Class

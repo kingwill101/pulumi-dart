@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the server that represents the environment.
-enum EnvironmentServerType {
+enum EnvironmentServerType implements pulumi.PulumiEnum<String> {
   azureAPIManagement("Azure API Management"),
   azureComputeService("Azure compute service"),
   apigeeAPIManagement("Apigee API Management"),
@@ -9,6 +11,7 @@ enum EnvironmentServerType {
   muleSoftAPIManagement("MuleSoft API Management");
 
   const EnvironmentServerType(this.wireValue);
+  @override
   final String wireValue;
 
   static EnvironmentServerType fromValue(String value) {

@@ -8,7 +8,7 @@ class DiskPoolVolume {
   final pulumi.Input<String> lunName;
   /// Mode that describes whether the LUN has to be mounted as a datastore or
   /// attached as a LUN
-  final pulumi.Input<String>? mountOption;
+  final pulumi.Input<dynamic>? mountOption;
   /// Azure resource ID of the iSCSI target
   final pulumi.Input<String> targetId;
 
@@ -16,11 +16,11 @@ class DiskPoolVolume {
   /// [lunName] Name of the LUN to be used for datastore
   /// [mountOption] Mode that describes whether the LUN has to be mounted as a datastore or
   /// [targetId] Azure resource ID of the iSCSI target
-  const DiskPoolVolume({
+  DiskPoolVolume({
     required this.lunName,
-    this.mountOption,
+    pulumi.Input<dynamic>? mountOption,
     required this.targetId,
-  });
+  }) : mountOption = mountOption ?? pulumi.Input.fromValue('MOUNT');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,7 +33,7 @@ class DiskPoolVolume {
   factory DiskPoolVolume.fromMap(Map<String, dynamic> map) {
     return DiskPoolVolume(
       lunName: pulumi.Input.fromValue(map['lunName'] as String),
-      mountOption: (() { final guardedValue = map['mountOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mountOption: (() { final guardedValue = map['mountOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       targetId: pulumi.Input.fromValue(map['targetId'] as String),
     );
   }

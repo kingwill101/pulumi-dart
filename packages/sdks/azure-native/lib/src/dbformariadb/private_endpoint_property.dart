@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PrivateEndpointProperty {
   /// Resource id of the private endpoint.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [PrivateEndpointProperty].
   /// [id] Resource id of the private endpoint.

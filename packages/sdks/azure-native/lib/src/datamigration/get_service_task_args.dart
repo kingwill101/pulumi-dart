@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_datamigration_get_service_task_args_doc}
 class GetServiceTaskArgs {
   /// Expand the response
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// Name of the resource group
   final pulumi.Input<String> groupName;
   /// Name of the service

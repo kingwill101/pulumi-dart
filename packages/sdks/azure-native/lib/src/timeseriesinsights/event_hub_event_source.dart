@@ -485,7 +485,34 @@ class EventHubEventSource extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     serviceBusNamespace = registerOutput<String>('serviceBusNamespace');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    time = registerOutput<String?>('time');
+    timestampPropertyName = registerOutput<String?>('timestampPropertyName');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [EventHubEventSource] resource.
+  EventHubEventSource.reference(String urn)
+    : super(
+        'azure-native:timeseriesinsights:EventHubEventSource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    consumerGroupName = registerOutput<String>('consumerGroupName');
+    creationTime = registerOutput<String>('creationTime');
+    eventHubName = registerOutput<String>('eventHubName');
+    eventSourceResourceId = registerOutput<String>('eventSourceResourceId');
+    keyName = registerOutput<String>('keyName');
+    kind = registerOutput<String>('kind');
+    localTimestamp = registerOutput<LocalTimestampResponse?>('localTimestamp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalTimestampResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    serviceBusNamespace = registerOutput<String>('serviceBusNamespace');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     time = registerOutput<String?>('time');
     timestampPropertyName = registerOutput<String?>('timestampPropertyName');
     type = registerOutput<String>('type');

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Polling type.
-enum PollingType {
+enum PollingType implements pulumi.PulumiEnum<String> {
   valuePull("Pull"),
   valuePush("Push");
 
   const PollingType(this.wireValue);
+  @override
   final String wireValue;
 
   static PollingType fromValue(String value) {

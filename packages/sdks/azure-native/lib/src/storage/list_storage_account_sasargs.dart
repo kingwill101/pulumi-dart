@@ -11,23 +11,23 @@ class ListStorageAccountSASArgs {
   /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   final pulumi.Input<String> accountName;
   /// An IP address or a range of IP addresses from which to accept requests.
-  final pulumi.Input<String>? iPAddressOrRange;
+  final pulumi.Input<String?>? iPAddressOrRange;
   /// The key to sign the account SAS token with.
-  final pulumi.Input<String>? keyToSign;
+  final pulumi.Input<String?>? keyToSign;
   /// The signed permissions for the account SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a), Create (c), Update (u) and Process (p).
-  final pulumi.Input<String> permissions;
+  final pulumi.Input<dynamic> permissions;
   /// The protocol permitted for a request made with the account SAS.
-  final pulumi.Input<HttpProtocol>? protocols;
+  final pulumi.Input<HttpProtocol?>? protocols;
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The signed resource types that are accessible with the account SAS. Service (s): Access to service-level APIs; Container (c): Access to container-level APIs; Object (o): Access to object-level APIs for blobs, queue messages, table entities, and files.
-  final pulumi.Input<String> resourceTypes;
+  final pulumi.Input<dynamic> resourceTypes;
   /// The signed services accessible with the account SAS. Possible values include: Blob (b), Queue (q), Table (t), File (f).
-  final pulumi.Input<String> services;
+  final pulumi.Input<dynamic> services;
   /// The time at which the shared access signature becomes invalid.
   final pulumi.Input<String> sharedAccessExpiryTime;
   /// The time at which the SAS becomes valid.
-  final pulumi.Input<String>? sharedAccessStartTime;
+  final pulumi.Input<String?>? sharedAccessStartTime;
 
   /// Creates a new [ListStorageAccountSASArgs].
   /// [accountName] The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
@@ -73,11 +73,11 @@ class ListStorageAccountSASArgs {
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       iPAddressOrRange: (() { final guardedValue = map['iPAddressOrRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keyToSign: (() { final guardedValue = map['keyToSign']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      permissions: pulumi.Input.fromValue(map['permissions'] as String),
+      permissions: pulumi.Input.fromValue(map['permissions']),
       protocols: (() { final guardedValue = map['protocols']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HttpProtocol.fromValue(guardedValue as String)); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      resourceTypes: pulumi.Input.fromValue(map['resourceTypes'] as String),
-      services: pulumi.Input.fromValue(map['services'] as String),
+      resourceTypes: pulumi.Input.fromValue(map['resourceTypes']),
+      services: pulumi.Input.fromValue(map['services']),
       sharedAccessExpiryTime: pulumi.Input.fromValue(map['sharedAccessExpiryTime'] as String),
       sharedAccessStartTime: (() { final guardedValue = map['sharedAccessStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

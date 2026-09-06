@@ -351,7 +351,31 @@ class Query extends pulumi.CustomResource {
     properties = registerOutput<dynamic>('properties');
     related = registerOutput<LogAnalyticsQueryPackQueryPropertiesResponseRelated?>('related', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogAnalyticsQueryPackQueryPropertiesResponseRelated.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, List<String>>?>('tags');
+    tags = registerOutput<Map<String, List<String>>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });
+    timeCreated = registerOutput<String>('timeCreated');
+    timeModified = registerOutput<String>('timeModified');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Query] resource.
+  Query.reference(String urn)
+    : super(
+        'azure-native:operationalinsights:Query',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    author = registerOutput<String>('author');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    body = registerOutput<String>('body');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<dynamic>('properties');
+    related = registerOutput<LogAnalyticsQueryPackQueryPropertiesResponseRelated?>('related', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogAnalyticsQueryPackQueryPropertiesResponseRelated.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, List<String>>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });
     timeCreated = registerOutput<String>('timeCreated');
     timeModified = registerOutput<String>('timeModified');
     type = registerOutput<String>('type');

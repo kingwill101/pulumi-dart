@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines a GitHub organization
 class GitHubOrganizationResponse {
   /// Optional list of repositories in which the pool should be created.
-  final pulumi.Input<List<String>>? repositories;
+  final pulumi.Input<List<String>?>? repositories;
   /// The GitHub organization URL in which the pool should be created.
   final pulumi.Input<String> url;
 

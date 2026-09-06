@@ -7,11 +7,11 @@ import 'job_resource_requests_response.dart';
 /// Job's execution template, containing configuration for an execution
 class JobExecutionTemplateResponse {
   /// Arguments for the Job execution.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// Environment variables of Job execution
-  final pulumi.Input<List<EnvVarResponse>>? environmentVariables;
+  final pulumi.Input<List<EnvVarResponse>?>? environmentVariables;
   /// The requested resource quantity for required CPU and Memory.
-  final pulumi.Input<JobResourceRequestsResponse>? resourceRequests;
+  final pulumi.Input<JobResourceRequestsResponse?>? resourceRequests;
 
   /// Creates a new [JobExecutionTemplateResponse].
   /// [args] Arguments for the Job execution.

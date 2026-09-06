@@ -6,19 +6,19 @@ import 'job_target_group_membership_type.dart';
 /// A job target, for example a specific database or a container of databases that is evaluated during job execution.
 class JobTarget {
   /// The target database name.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// The target elastic pool name.
-  final pulumi.Input<String>? elasticPoolName;
+  final pulumi.Input<String?>? elasticPoolName;
   /// Whether the target is included or excluded from the group.
-  final pulumi.Input<JobTargetGroupMembershipType>? membershipType;
+  final pulumi.Input<JobTargetGroupMembershipType?>? membershipType;
   /// The resource ID of the credential that is used during job execution to connect to the target and determine the list of databases inside the target.
-  final pulumi.Input<String>? refreshCredential;
+  final pulumi.Input<String?>? refreshCredential;
   /// The target server name.
-  final pulumi.Input<String>? serverName;
+  final pulumi.Input<String?>? serverName;
   /// The target shard map.
-  final pulumi.Input<String>? shardMapName;
+  final pulumi.Input<String?>? shardMapName;
   /// The target type.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [JobTarget].
   /// [databaseName] The target database name.
@@ -28,15 +28,15 @@ class JobTarget {
   /// [serverName] The target server name.
   /// [shardMapName] The target shard map.
   /// [type] The target type.
-  const JobTarget({
+  JobTarget({
     this.databaseName,
     this.elasticPoolName,
-    this.membershipType,
+    pulumi.Input<JobTargetGroupMembershipType?>? membershipType,
     this.refreshCredential,
     this.serverName,
     this.shardMapName,
     required this.type,
-  });
+  }) : membershipType = membershipType ?? pulumi.Input.fromValue(JobTargetGroupMembershipType.fromValue('Include'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,7 +58,7 @@ class JobTarget {
       refreshCredential: (() { final guardedValue = map['refreshCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverName: (() { final guardedValue = map['serverName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       shardMapName: (() { final guardedValue = map['shardMapName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

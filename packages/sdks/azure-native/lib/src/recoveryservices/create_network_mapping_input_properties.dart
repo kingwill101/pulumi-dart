@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_to_azure_create_network_mapping_input.dart';
 
 /// Common input details for network mapping operation.
 class CreateNetworkMappingInputProperties {
   /// Fabric specific input properties.
-  final pulumi.Input<AzureToAzureCreateNetworkMappingInput>? fabricSpecificDetails;
+  final pulumi.Input<dynamic>? fabricSpecificDetails;
   /// Recovery fabric Name.
-  final pulumi.Input<String>? recoveryFabricName;
+  final pulumi.Input<String?>? recoveryFabricName;
   /// Recovery network Id.
   final pulumi.Input<String> recoveryNetworkId;
 
@@ -24,7 +23,7 @@ class CreateNetworkMappingInputProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fabricSpecificDetails': ?pulumi.Input.mapOptionalInputValue<AzureToAzureCreateNetworkMappingInput, Map<String, dynamic>>(fabricSpecificDetails, (value) => value.toMap()),
+      'fabricSpecificDetails': ?fabricSpecificDetails,
       'recoveryFabricName': ?recoveryFabricName,
       'recoveryNetworkId': recoveryNetworkId,
     };
@@ -32,7 +31,7 @@ class CreateNetworkMappingInputProperties {
 
   factory CreateNetworkMappingInputProperties.fromMap(Map<String, dynamic> map) {
     return CreateNetworkMappingInputProperties(
-      fabricSpecificDetails: (() { final guardedValue = map['fabricSpecificDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureToAzureCreateNetworkMappingInput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      fabricSpecificDetails: (() { final guardedValue = map['fabricSpecificDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       recoveryFabricName: (() { final guardedValue = map['recoveryFabricName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recoveryNetworkId: pulumi.Input.fromValue(map['recoveryNetworkId'] as String),
     );

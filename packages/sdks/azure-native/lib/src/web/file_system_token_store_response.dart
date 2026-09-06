@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration settings of the storage of the tokens if a file system is used.
 class FileSystemTokenStoreResponse {
   /// The directory in which the tokens will be stored.
-  final pulumi.Input<String>? directory;
+  final pulumi.Input<String?>? directory;
 
   /// Creates a new [FileSystemTokenStoreResponse].
   /// [directory] The directory in which the tokens will be stored.

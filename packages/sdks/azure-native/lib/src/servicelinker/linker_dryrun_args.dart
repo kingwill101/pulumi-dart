@@ -9,9 +9,9 @@ import 'create_or_update_dryrun_parameters.dart';
 /// {@macro pulumi_servicelinker_linker_dryrun_args_doc}
 class LinkerDryrunArgs {
   /// The name of dryrun.
-  final pulumi.Input<String>? dryrunName;
+  final pulumi.Input<String?>? dryrunName;
   /// The parameters of the dryrun
-  final pulumi.Input<CreateOrUpdateDryrunParameters>? parameters;
+  final pulumi.Input<CreateOrUpdateDryrunParameters?>? parameters;
   /// The fully qualified Azure Resource manager identifier of the resource to be connected.
   final pulumi.Input<String> resourceUri;
 

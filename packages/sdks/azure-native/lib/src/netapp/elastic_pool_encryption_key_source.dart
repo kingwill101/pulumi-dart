@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Pool Encryption Key Source.
-enum ElasticPoolEncryptionKeySource {
+enum ElasticPoolEncryptionKeySource implements pulumi.PulumiEnum<String> {
   netApp("NetApp"),
   keyVault("KeyVault");
 
   const ElasticPoolEncryptionKeySource(this.wireValue);
+  @override
   final String wireValue;
 
   static ElasticPoolEncryptionKeySource fromValue(String value) {

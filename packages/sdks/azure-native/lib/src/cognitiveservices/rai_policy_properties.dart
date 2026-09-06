@@ -8,15 +8,15 @@ import 'safety_provider_config.dart';
 /// Azure OpenAI Content Filters properties.
 class RaiPolicyProperties {
   /// Name of Rai policy.
-  final pulumi.Input<String>? basePolicyName;
+  final pulumi.Input<String?>? basePolicyName;
   /// The list of Content Filters.
-  final pulumi.Input<List<RaiPolicyContentFilter>>? contentFilters;
+  final pulumi.Input<List<RaiPolicyContentFilter>?>? contentFilters;
   /// The list of custom Blocklist.
-  final pulumi.Input<List<CustomBlocklistConfig>>? customBlocklists;
+  final pulumi.Input<List<CustomBlocklistConfig>?>? customBlocklists;
   /// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2025-06-01. It is the same as 'Deferred' in previous version.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<dynamic>? mode;
   /// The list of Safety Providers.
-  final pulumi.Input<List<SafetyProviderConfig>>? safetyProviders;
+  final pulumi.Input<List<SafetyProviderConfig>?>? safetyProviders;
 
   /// Creates a new [RaiPolicyProperties].
   /// [basePolicyName] Name of Rai policy.
@@ -47,7 +47,7 @@ class RaiPolicyProperties {
       basePolicyName: (() { final guardedValue = map['basePolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       contentFilters: (() { final guardedValue = map['contentFilters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RaiPolicyContentFilter>(guardedValue, (value) => RaiPolicyContentFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
       customBlocklists: (() { final guardedValue = map['customBlocklists']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CustomBlocklistConfig>(guardedValue, (value) => CustomBlocklistConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       safetyProviders: (() { final guardedValue = map['safetyProviders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SafetyProviderConfig>(guardedValue, (value) => SafetyProviderConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

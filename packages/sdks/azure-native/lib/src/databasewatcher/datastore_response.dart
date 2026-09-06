@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of a data store.
 class DatastoreResponse {
   /// The Azure resource ID of an Azure Data Explorer cluster.
-  final pulumi.Input<String>? adxClusterResourceId;
+  final pulumi.Input<String?>? adxClusterResourceId;
   /// The Kusto cluster display name.
-  final pulumi.Input<String>? kustoClusterDisplayName;
+  final pulumi.Input<String?>? kustoClusterDisplayName;
   /// The Kusto cluster URI.
   final pulumi.Input<String> kustoClusterUri;
   /// The Kusto data ingestion URI.

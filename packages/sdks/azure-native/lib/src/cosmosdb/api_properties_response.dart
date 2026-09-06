@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiPropertiesResponse {
   /// Describes the version of the MongoDB account.
-  final pulumi.Input<String>? serverVersion;
+  final pulumi.Input<String?>? serverVersion;
 
   /// Creates a new [ApiPropertiesResponse].
   /// [serverVersion] Describes the version of the MongoDB account.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations
-enum NetworkApiVersion {
+enum NetworkApiVersion implements pulumi.PulumiEnum<String> {
   resource20201101("2020-11-01"),
   resource20221101("2022-11-01");
 
   const NetworkApiVersion(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkApiVersion fromValue(String value) {

@@ -6,17 +6,17 @@ import 'third_party_extension_response.dart';
 
 class ResourceProviderAuthorizationResponse {
   /// The allowed third party extensions.
-  final pulumi.Input<List<ThirdPartyExtensionResponse>>? allowedThirdPartyExtensions;
+  final pulumi.Input<List<ThirdPartyExtensionResponse>?>? allowedThirdPartyExtensions;
   /// The application id.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// The grouping tag.
-  final pulumi.Input<String>? groupingTag;
+  final pulumi.Input<String?>? groupingTag;
   /// Managed by authorization.
-  final pulumi.Input<ResourceProviderAuthorizationManagedByAuthorizationResponse>? managedByAuthorization;
+  final pulumi.Input<ResourceProviderAuthorizationManagedByAuthorizationResponse?>? managedByAuthorization;
   /// The managed by role definition id.
-  final pulumi.Input<String>? managedByRoleDefinitionId;
+  final pulumi.Input<String?>? managedByRoleDefinitionId;
   /// The role definition id.
-  final pulumi.Input<String>? roleDefinitionId;
+  final pulumi.Input<String?>? roleDefinitionId;
 
   /// Creates a new [ResourceProviderAuthorizationResponse].
   /// [allowedThirdPartyExtensions] The allowed third party extensions.

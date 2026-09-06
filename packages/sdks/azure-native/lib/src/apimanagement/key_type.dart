@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The Key to be used to generate token for user.
-enum KeyType {
+enum KeyType implements pulumi.PulumiEnum<String> {
   valuePrimary("primary"),
   valueSecondary("secondary");
 
   const KeyType(this.wireValue);
+  @override
   final String wireValue;
 
   static KeyType fromValue(String value) {

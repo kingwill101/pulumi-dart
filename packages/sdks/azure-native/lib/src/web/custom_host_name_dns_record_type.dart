@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Custom DNS record type.
-enum CustomHostNameDnsRecordType {
+enum CustomHostNameDnsRecordType implements pulumi.PulumiEnum<String> {
   valueCName("CName"),
   valueA("A");
 
   const CustomHostNameDnsRecordType(this.wireValue);
+  @override
   final String wireValue;
 
   static CustomHostNameDnsRecordType fromValue(String value) {

@@ -1,9 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'aml_token.dart';
-import 'classification.dart';
-import 'custom_model_job_output.dart';
 import 'job_resource_configuration.dart';
 import 'job_service.dart';
 import 'notification_setting.dart';
@@ -14,45 +11,45 @@ import 'queue_settings.dart';
 /// See TaskType enum for all the tasks supported.
 class AutoMLJob {
   /// ARM resource ID of the component resource.
-  final pulumi.Input<String>? componentId;
+  final pulumi.Input<String?>? componentId;
   /// ARM resource ID of the compute resource.
-  final pulumi.Input<String>? computeId;
+  final pulumi.Input<String?>? computeId;
   /// The asset description text.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name of job.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The ARM resource ID of the Environment specification for the job.
   /// This is optional value to provide, if not provided, AutoML will default this to Production AutoML curated environment version when running the job.
-  final pulumi.Input<String>? environmentId;
+  final pulumi.Input<String?>? environmentId;
   /// Environment variables included in the job.
-  final pulumi.Input<Map<String, String>>? environmentVariables;
+  final pulumi.Input<Map<String, String>?>? environmentVariables;
   /// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-  final pulumi.Input<String>? experimentName;
+  final pulumi.Input<String?>? experimentName;
   /// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
   /// Defaults to AmlToken if null.
-  final pulumi.Input<AmlToken>? identity;
+  final pulumi.Input<dynamic>? identity;
   /// Is the asset archived?
-  final pulumi.Input<bool>? isArchived;
+  final pulumi.Input<bool?>? isArchived;
   /// Enum to determine the type of job.
   /// Expected value is 'AutoML'.
   final pulumi.Input<String> jobType;
   /// Notification setting for the job
-  final pulumi.Input<NotificationSetting>? notificationSetting;
+  final pulumi.Input<NotificationSetting?>? notificationSetting;
   /// Mapping of output data bindings used in the job.
-  final pulumi.Input<Map<String, CustomModelJobOutput>>? outputs;
+  final pulumi.Input<Map<String, dynamic>?>? outputs;
   /// The asset property dictionary.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Queue settings for the job
-  final pulumi.Input<QueueSettings>? queueSettings;
+  final pulumi.Input<QueueSettings?>? queueSettings;
   /// Compute Resource configuration for the job.
-  final pulumi.Input<JobResourceConfiguration>? resources;
+  final pulumi.Input<JobResourceConfiguration?>? resources;
   /// List of JobEndpoints.
   /// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-  final pulumi.Input<Map<String, JobService>>? services;
+  final pulumi.Input<Map<String, JobService>?>? services;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// [Required] This represents scenario which can be one of Tables/NLP/Image
-  final pulumi.Input<Classification> taskDetails;
+  final pulumi.Input<dynamic> taskDetails;
 
   /// Creates a new [AutoMLJob].
   /// [componentId] ARM resource ID of the component resource.
@@ -73,16 +70,16 @@ class AutoMLJob {
   /// [services] List of JobEndpoints.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
   /// [taskDetails] [Required] This represents scenario which can be one of Tables/NLP/Image
-  const AutoMLJob({
+  AutoMLJob({
     this.componentId,
     this.computeId,
     this.description,
     this.displayName,
     this.environmentId,
     this.environmentVariables,
-    this.experimentName,
+    pulumi.Input<String?>? experimentName,
     this.identity,
-    this.isArchived,
+    pulumi.Input<bool?>? isArchived,
     required this.jobType,
     this.notificationSetting,
     this.outputs,
@@ -92,7 +89,7 @@ class AutoMLJob {
     this.services,
     this.tags,
     required this.taskDetails,
-  });
+  }) : experimentName = experimentName ?? pulumi.Input.fromValue('Default'), isArchived = isArchived ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -103,17 +100,17 @@ class AutoMLJob {
       'environmentId': ?environmentId,
       'environmentVariables': ?environmentVariables,
       'experimentName': ?experimentName,
-      'identity': ?pulumi.Input.mapOptionalInputValue<AmlToken, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity': ?identity,
       'isArchived': ?isArchived,
       'jobType': jobType,
       'notificationSetting': ?pulumi.Input.mapOptionalInputValue<NotificationSetting, Map<String, dynamic>>(notificationSetting, (value) => value.toMap()),
-      'outputs': ?pulumi.Input.mapOptionalInputValue<Map<String, CustomModelJobOutput>, Map<String, Map<String, dynamic>>>(outputs, (value) => pulumi.Input.encodeMapValues<CustomModelJobOutput, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'outputs': ?outputs,
       'properties': ?properties,
       'queueSettings': ?pulumi.Input.mapOptionalInputValue<QueueSettings, Map<String, dynamic>>(queueSettings, (value) => value.toMap()),
       'resources': ?pulumi.Input.mapOptionalInputValue<JobResourceConfiguration, Map<String, dynamic>>(resources, (value) => value.toMap()),
       'services': ?pulumi.Input.mapOptionalInputValue<Map<String, JobService>, Map<String, Map<String, dynamic>>>(services, (value) => pulumi.Input.encodeMapValues<JobService, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': ?tags,
-      'taskDetails': pulumi.Input.mapInputValue<Classification, Map<String, dynamic>>(taskDetails, (value) => value.toMap()),
+      'taskDetails': taskDetails,
     };
   }
 
@@ -126,17 +123,17 @@ class AutoMLJob {
       environmentId: (() { final guardedValue = map['environmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environmentVariables: (() { final guardedValue = map['environmentVariables']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       experimentName: (() { final guardedValue = map['experimentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AmlToken.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       isArchived: (() { final guardedValue = map['isArchived']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       jobType: pulumi.Input.fromValue(map['jobType'] as String),
       notificationSetting: (() { final guardedValue = map['notificationSetting']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NotificationSetting.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      outputs: (() { final guardedValue = map['outputs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<CustomModelJobOutput>(guardedValue, (value) => CustomModelJobOutput.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      outputs: (() { final guardedValue = map['outputs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       queueSettings: (() { final guardedValue = map['queueSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(QueueSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobResourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       services: (() { final guardedValue = map['services']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<JobService>(guardedValue, (value) => JobService.fromMap((value as Map).cast<String, dynamic>()))); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      taskDetails: pulumi.Input.fromValue(Classification.fromMap((map['taskDetails']! as Map).cast<String, dynamic>())),
+      taskDetails: pulumi.Input.fromValue(map['taskDetails']),
     );
   }
 }

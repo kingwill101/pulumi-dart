@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of an hourly schedule.
 class HourDetails {
   /// Minutes of the hour the schedule will run.
-  final pulumi.Input<int>? minute;
+  final pulumi.Input<int?>? minute;
 
   /// Creates a new [HourDetails].
   /// [minute] Minutes of the hour the schedule will run.
@@ -21,7 +21,7 @@ class HourDetails {
 
   factory HourDetails.fromMap(Map<String, dynamic> map) {
     return HourDetails(
-      minute: (() { final guardedValue = map['minute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minute: (() { final guardedValue = map['minute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

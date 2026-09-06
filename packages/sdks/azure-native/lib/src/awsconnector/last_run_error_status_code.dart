@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum LastRunErrorStatusCode {
+enum LastRunErrorStatusCode implements pulumi.PulumiEnum<String> {
   eRROR("ERROR"),
   nONE("NONE");
 
   const LastRunErrorStatusCode(this.wireValue);
+  @override
   final String wireValue;
 
   static LastRunErrorStatusCode fromValue(String value) {

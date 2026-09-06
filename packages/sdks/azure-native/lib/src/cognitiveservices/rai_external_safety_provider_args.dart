@@ -9,9 +9,9 @@ import 'rai_external_safety_provider_schema_properties.dart';
 /// {@macro pulumi_cognitiveservices_rai_external_safety_provider_args_doc}
 class RaiExternalSafetyProviderArgs {
   /// Properties of Cognitive Services Rai External Safety provider.
-  final pulumi.Input<RaiExternalSafetyProviderSchemaProperties>? properties;
+  final pulumi.Input<RaiExternalSafetyProviderSchemaProperties?>? properties;
   /// The name of the Rai External Safety Provider associated with the Cognitive Services Account
-  final pulumi.Input<String>? safetyProviderName;
+  final pulumi.Input<String?>? safetyProviderName;
 
   /// Creates a new [RaiExternalSafetyProviderArgs].
   /// [properties] Properties of Cognitive Services Rai External Safety provider.

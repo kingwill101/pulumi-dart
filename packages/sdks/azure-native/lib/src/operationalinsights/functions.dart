@@ -50,6 +50,17 @@ Future<GetClusterResult> getCluster(
   return GetClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:operationalinsights:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
+}
+
 /// Gets a data export instance.
 ///
 /// Uses Azure REST API version 2023-09-01.
@@ -68,6 +79,17 @@ Future<GetDataExportResult> getDataExport(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDataExportResult.fromMap(result);
+}
+
+pulumi.Output<GetDataExportResult> getDataExportOutput(
+  GetDataExportArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:operationalinsights:getDataExport',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataExportResult.fromMap);
 }
 
 /// Gets a datasource instance.
@@ -90,6 +112,17 @@ Future<GetDataSourceResult> getDataSource(
   return GetDataSourceResult.fromMap(result);
 }
 
+pulumi.Output<GetDataSourceResult> getDataSourceOutput(
+  GetDataSourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:operationalinsights:getDataSource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataSourceResult.fromMap);
+}
+
 /// Gets a linked service instance.
 ///
 /// Uses Azure REST API version 2023-09-01.
@@ -108,6 +141,17 @@ Future<GetLinkedServiceResult> getLinkedService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLinkedServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetLinkedServiceResult> getLinkedServiceOutput(
+  GetLinkedServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:operationalinsights:getLinkedService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLinkedServiceResult.fromMap);
 }
 
 /// Gets all linked storage account of a specific data source type associated with the specified workspace.
@@ -130,6 +174,17 @@ Future<GetLinkedStorageAccountResult> getLinkedStorageAccount(
   return GetLinkedStorageAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetLinkedStorageAccountResult> getLinkedStorageAccountOutput(
+  GetLinkedStorageAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:operationalinsights:getLinkedStorageAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLinkedStorageAccountResult.fromMap);
+}
+
 /// Returns the specified machine group as it existed during the specified time interval.
 ///
 /// Uses Azure REST API version 2015-11-01-preview.
@@ -146,6 +201,17 @@ Future<GetMachineGroupResult> getMachineGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMachineGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetMachineGroupResult> getMachineGroupOutput(
+  GetMachineGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:operationalinsights:getMachineGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMachineGroupResult.fromMap);
 }
 
 /// Gets a specific Log Analytics Query defined within a Log Analytics QueryPack.
@@ -168,6 +234,17 @@ Future<GetQueryResult> getQuery(
   return GetQueryResult.fromMap(result);
 }
 
+pulumi.Output<GetQueryResult> getQueryOutput(
+  GetQueryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:operationalinsights:getQuery',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetQueryResult.fromMap);
+}
+
 /// Returns a Log Analytics QueryPack.
 ///
 /// Uses Azure REST API version 2023-09-01.
@@ -186,6 +263,17 @@ Future<GetQueryPackResult> getQueryPack(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetQueryPackResult.fromMap(result);
+}
+
+pulumi.Output<GetQueryPackResult> getQueryPackOutput(
+  GetQueryPackArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:operationalinsights:getQueryPack',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetQueryPackResult.fromMap);
 }
 
 /// Gets the specified saved search for a given workspace.
@@ -208,6 +296,17 @@ Future<GetSavedSearchResult> getSavedSearch(
   return GetSavedSearchResult.fromMap(result);
 }
 
+pulumi.Output<GetSavedSearchResult> getSavedSearchOutput(
+  GetSavedSearchArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:operationalinsights:getSavedSearch',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSavedSearchResult.fromMap);
+}
+
 /// Gets the shared keys for a workspace.
 ///
 /// Uses Azure REST API version 2023-09-01.
@@ -226,6 +325,17 @@ Future<GetSharedKeysResult> getSharedKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSharedKeysResult.fromMap(result);
+}
+
+pulumi.Output<GetSharedKeysResult> getSharedKeysOutput(
+  GetSharedKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:operationalinsights:getSharedKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSharedKeysResult.fromMap);
 }
 
 /// Gets a storage insight instance.
@@ -248,6 +358,17 @@ Future<GetStorageInsightConfigResult> getStorageInsightConfig(
   return GetStorageInsightConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetStorageInsightConfigResult> getStorageInsightConfigOutput(
+  GetStorageInsightConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:operationalinsights:getStorageInsightConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageInsightConfigResult.fromMap);
+}
+
 /// Gets Log Analytics workspace Summary rules.
 ///
 /// Uses Azure REST API version 2025-07-01.
@@ -264,6 +385,17 @@ Future<GetSummaryLogResult> getSummaryLog(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSummaryLogResult.fromMap(result);
+}
+
+pulumi.Output<GetSummaryLogResult> getSummaryLogOutput(
+  GetSummaryLogArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:operationalinsights:getSummaryLog',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSummaryLogResult.fromMap);
 }
 
 /// Gets a Log Analytics workspace table.
@@ -286,6 +418,17 @@ Future<GetTableResult> getTable(
   return GetTableResult.fromMap(result);
 }
 
+pulumi.Output<GetTableResult> getTableOutput(
+  GetTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:operationalinsights:getTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTableResult.fromMap);
+}
+
 /// Gets a workspace instance.
 ///
 /// Uses Azure REST API version 2023-09-01.
@@ -306,6 +449,17 @@ Future<GetWorkspaceResult> getWorkspace(
   return GetWorkspaceResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:operationalinsights:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
+}
+
 /// Gets the shared keys for a workspace.
 ///
 /// Uses Azure REST API version 2015-11-01-preview.
@@ -322,4 +476,15 @@ Future<GetWorkspaceSharedKeysResult> getWorkspaceSharedKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspaceSharedKeysResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspaceSharedKeysResult> getWorkspaceSharedKeysOutput(
+  GetWorkspaceSharedKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:operationalinsights:getWorkspaceSharedKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceSharedKeysResult.fromMap);
 }

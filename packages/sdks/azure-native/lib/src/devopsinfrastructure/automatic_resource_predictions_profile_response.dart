@@ -8,7 +8,7 @@ class AutomaticResourcePredictionsProfileResponse {
   /// Expected value is 'Automatic'.
   final pulumi.Input<String> kind;
   /// Determines the balance between cost and performance.
-  final pulumi.Input<String>? predictionPreference;
+  final pulumi.Input<String?>? predictionPreference;
 
   /// Creates a new [AutomaticResourcePredictionsProfileResponse].
   /// [kind] Determines how the stand-by scheme should be provided.

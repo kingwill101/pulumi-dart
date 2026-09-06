@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the frontend configurations for the node type.
 class FrontendConfigurationResponse {
   /// The resource Id of application gateway backend address pool. The format of the resource Id is '/subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Network/applicationGateways/&lt;applicationGatewayName&gt;/backendAddressPools/&lt;backendAddressPoolName&gt;'.
-  final pulumi.Input<String>? applicationGatewayBackendAddressPoolId;
+  final pulumi.Input<String?>? applicationGatewayBackendAddressPoolId;
   /// The IP address type of this frontend configuration. If omitted the default value is IPv4.
-  final pulumi.Input<String>? ipAddressType;
+  final pulumi.Input<String?>? ipAddressType;
   /// The resource Id of the Load Balancer backend address pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Network/loadBalancers/&lt;loadBalancerName&gt;/backendAddressPools/&lt;backendAddressPoolName&gt;'.
-  final pulumi.Input<String>? loadBalancerBackendAddressPoolId;
+  final pulumi.Input<String?>? loadBalancerBackendAddressPoolId;
   /// The resource Id of the Load Balancer inbound NAT pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Network/loadBalancers/&lt;loadBalancerName&gt;/inboundNatPools/&lt;inboundNatPoolName&gt;'.
-  final pulumi.Input<String>? loadBalancerInboundNatPoolId;
+  final pulumi.Input<String?>? loadBalancerInboundNatPoolId;
 
   /// Creates a new [FrontendConfigurationResponse].
   /// [applicationGatewayBackendAddressPoolId] The resource Id of application gateway backend address pool. The format of the resource Id is '/subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Network/applicationGateways/&lt;applicationGatewayName&gt;/backendAddressPools/&lt;backendAddressPoolName&gt;'.

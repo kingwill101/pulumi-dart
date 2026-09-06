@@ -925,4 +925,33 @@ class Agent extends pulumi.CustomResource {
     uploadLimitSchedule = registerOutput<UploadLimitScheduleResponse?>('uploadLimitSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UploadLimitScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uptimeInSeconds = registerOutput<double>('uptimeInSeconds');
   }
+
+  /// Creates a typed reference to an existing [Agent] resource.
+  Agent.reference(String urn)
+    : super(
+        'azure-native:storagemover:Agent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentStatus = registerOutput<String>('agentStatus');
+    agentVersion = registerOutput<String>('agentVersion');
+    arcResourceId = registerOutput<String>('arcResourceId');
+    arcVmUuid = registerOutput<String>('arcVmUuid');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    errorDetails = registerOutput<AgentPropertiesErrorDetailsResponse>('errorDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentPropertiesErrorDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastStatusUpdate = registerOutput<String>('lastStatusUpdate');
+    localIPAddress = registerOutput<String>('localIPAddress');
+    memoryInMB = registerOutput<double>('memoryInMB');
+    this.name = registerOutput<String>('name');
+    numberOfCores = registerOutput<double>('numberOfCores');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeZone = registerOutput<String>('timeZone');
+    type = registerOutput<String>('type');
+    uploadLimitSchedule = registerOutput<UploadLimitScheduleResponse?>('uploadLimitSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UploadLimitScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uptimeInSeconds = registerOutput<double>('uptimeInSeconds');
+  }
 }

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of EventBridgeConfiguration
 class EventBridgeConfigurationResponse {
   /// Enables delivery of events to Amazon EventBridge.
-  final pulumi.Input<bool>? eventBridgeEnabled;
+  final pulumi.Input<bool?>? eventBridgeEnabled;
 
   /// Creates a new [EventBridgeConfigurationResponse].
   /// [eventBridgeEnabled] Enables delivery of events to Amazon EventBridge.
-  const EventBridgeConfigurationResponse({
-    this.eventBridgeEnabled,
-  });
+  EventBridgeConfigurationResponse({
+    pulumi.Input<bool?>? eventBridgeEnabled,
+  }) : eventBridgeEnabled = eventBridgeEnabled ?? pulumi.Input.fromValue(true);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

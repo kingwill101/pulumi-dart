@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Capacity policy.
-enum CapacityPolicy {
+enum CapacityPolicy implements pulumi.PulumiEnum<String> {
   default_("Default"),
   restricted("Restricted");
 
   const CapacityPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static CapacityPolicy fromValue(String value) {

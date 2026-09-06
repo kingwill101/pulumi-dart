@@ -7,9 +7,9 @@ import 'origin_group_override_response.dart';
 /// Defines the parameters for the route configuration override action.
 class RouteConfigurationOverrideActionParametersResponse {
   /// The caching configuration associated with this rule. To disable caching, do not provide a cacheConfiguration object.
-  final pulumi.Input<CacheConfigurationResponse>? cacheConfiguration;
+  final pulumi.Input<CacheConfigurationResponse?>? cacheConfiguration;
   /// A reference to the origin group override configuration. Leave empty to use the default origin group on route.
-  final pulumi.Input<OriginGroupOverrideResponse>? originGroupOverride;
+  final pulumi.Input<OriginGroupOverrideResponse?>? originGroupOverride;
   /// Expected value is 'DeliveryRuleRouteConfigurationOverrideActionParameters'.
   final pulumi.Input<String> typeName;
 

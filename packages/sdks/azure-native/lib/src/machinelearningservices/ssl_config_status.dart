@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enable or disable ssl for scoring
-enum SslConfigStatus {
+enum SslConfigStatus implements pulumi.PulumiEnum<String> {
   disabled("Disabled"),
   enabled("Enabled"),
   auto("Auto");
 
   const SslConfigStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static SslConfigStatus fromValue(String value) {

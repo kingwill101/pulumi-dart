@@ -5,7 +5,7 @@ import 'file_share_response.dart';
 
 /// Storage profile for storage related settings of a container group profile.
 class StorageProfileResponse {
-  final pulumi.Input<List<FileShareResponse>>? fileShares;
+  final pulumi.Input<List<FileShareResponse>?>? fileShares;
 
   /// Creates a new [StorageProfileResponse].
   /// [fileShares] Optional.

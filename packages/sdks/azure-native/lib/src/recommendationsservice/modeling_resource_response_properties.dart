@@ -6,15 +6,15 @@ import 'modeling_input_data_response.dart';
 /// Modeling resource properties.
 class ModelingResourceResponseProperties {
   /// Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation.
-  final pulumi.Input<String>? features;
+  final pulumi.Input<String?>? features;
   /// Modeling frequency controls the modeling compute frequency.
-  final pulumi.Input<String>? frequency;
+  final pulumi.Input<String?>? frequency;
   /// The configuration to raw CDM data to be used as Modeling resource input.
-  final pulumi.Input<ModelingInputDataResponse>? inputData;
+  final pulumi.Input<ModelingInputDataResponse?>? inputData;
   /// The resource provisioning state.
   final pulumi.Input<String> provisioningState;
   /// Modeling size controls the maximum supported input data size.
-  final pulumi.Input<String>? size;
+  final pulumi.Input<String?>? size;
 
   /// Creates a new [ModelingResourceResponseProperties].
   /// [features] Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation.

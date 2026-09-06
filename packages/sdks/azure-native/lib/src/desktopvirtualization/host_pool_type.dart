@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// HostPool type for desktop.
-enum HostPoolType {
+enum HostPoolType implements pulumi.PulumiEnum<String> {
   valuePersonal("Personal"),
   valuePooled("Pooled"),
   valueBYODesktop("BYODesktop");
 
   const HostPoolType(this.wireValue);
+  @override
   final String wireValue;
 
   static HostPoolType fromValue(String value) {

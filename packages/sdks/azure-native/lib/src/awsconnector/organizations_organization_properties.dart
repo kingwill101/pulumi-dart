@@ -6,21 +6,21 @@ import 'aws_organizations_organization_properties.dart';
 /// Definition of OrganizationsOrganization
 class OrganizationsOrganizationProperties {
   /// Amazon Resource Name (ARN)
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// AWS Account ID
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// AWS Properties
-  final pulumi.Input<AwsOrganizationsOrganizationProperties>? awsProperties;
+  final pulumi.Input<AwsOrganizationsOrganizationProperties?>? awsProperties;
   /// AWS Region
-  final pulumi.Input<String>? awsRegion;
+  final pulumi.Input<String?>? awsRegion;
   /// AWS Source Schema
-  final pulumi.Input<String>? awsSourceSchema;
+  final pulumi.Input<String?>? awsSourceSchema;
   /// AWS Tags
-  final pulumi.Input<Map<String, String>>? awsTags;
+  final pulumi.Input<Map<String, String>?>? awsTags;
   /// Public Cloud Connectors Resource ID
-  final pulumi.Input<String>? publicCloudConnectorsResourceId;
+  final pulumi.Input<String?>? publicCloudConnectorsResourceId;
   /// Public Cloud Resource Name
-  final pulumi.Input<String>? publicCloudResourceName;
+  final pulumi.Input<String?>? publicCloudResourceName;
 
   /// Creates a new [OrganizationsOrganizationProperties].
   /// [arn] Amazon Resource Name (ARN)

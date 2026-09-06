@@ -9,15 +9,15 @@ import 'elastic_load_balancing_v2_load_balancer_properties.dart';
 /// {@macro pulumi_awsconnector_elastic_load_balancing_v2_load_balancer_args_doc}
 class ElasticLoadBalancingV2LoadBalancerArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of ElasticLoadBalancingV2LoadBalancer
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ElasticLoadBalancingV2LoadBalancerProperties>? properties;
+  final pulumi.Input<ElasticLoadBalancingV2LoadBalancerProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ElasticLoadBalancingV2LoadBalancerArgs].
   /// [location] The geo-location where the resource lives

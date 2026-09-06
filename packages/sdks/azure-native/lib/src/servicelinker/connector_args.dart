@@ -1,8 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'access_key_info_base.dart';
-import 'azure_resource.dart';
 import 'configuration_info.dart';
 import 'public_network_solution.dart';
 import 'secret_store.dart';
@@ -14,29 +12,29 @@ import 'vnet_solution.dart';
 /// {@macro pulumi_servicelinker_connector_args_doc}
 class ConnectorArgs {
   /// The authentication type.
-  final pulumi.Input<AccessKeyInfoBase>? authInfo;
+  final pulumi.Input<dynamic>? authInfo;
   /// The application client type
-  final pulumi.Input<String>? clientType;
+  final pulumi.Input<dynamic>? clientType;
   /// The connection information consumed by applications, including secrets, connection strings.
-  final pulumi.Input<ConfigurationInfo>? configurationInfo;
+  final pulumi.Input<ConfigurationInfo?>? configurationInfo;
   /// The name of resource.
-  final pulumi.Input<String>? connectorName;
+  final pulumi.Input<String?>? connectorName;
   /// The name of Azure region.
   final pulumi.Input<String> location;
   /// The network solution.
-  final pulumi.Input<PublicNetworkSolution>? publicNetworkSolution;
+  final pulumi.Input<PublicNetworkSolution?>? publicNetworkSolution;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// connection scope in source service.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// An option to store secret value in secure place
-  final pulumi.Input<SecretStore>? secretStore;
+  final pulumi.Input<SecretStore?>? secretStore;
   /// The ID of the target subscription.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// The target service properties
-  final pulumi.Input<AzureResource>? targetService;
+  final pulumi.Input<dynamic>? targetService;
   /// The VNet solution.
-  final pulumi.Input<VNetSolution>? vNetSolution;
+  final pulumi.Input<VNetSolution?>? vNetSolution;
 
   /// Creates a new [ConnectorArgs].
   /// [authInfo] The authentication type.
@@ -68,7 +66,7 @@ class ConnectorArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authInfo': ?pulumi.Input.mapOptionalInputValue<AccessKeyInfoBase, Map<String, dynamic>>(authInfo, (value) => value.toMap()),
+      'authInfo': ?authInfo,
       'clientType': ?clientType,
       'configurationInfo': ?pulumi.Input.mapOptionalInputValue<ConfigurationInfo, Map<String, dynamic>>(configurationInfo, (value) => value.toMap()),
       'connectorName': ?connectorName,
@@ -78,15 +76,15 @@ class ConnectorArgs {
       'scope': ?scope,
       'secretStore': ?pulumi.Input.mapOptionalInputValue<SecretStore, Map<String, dynamic>>(secretStore, (value) => value.toMap()),
       'subscriptionId': ?subscriptionId,
-      'targetService': ?pulumi.Input.mapOptionalInputValue<AzureResource, Map<String, dynamic>>(targetService, (value) => value.toMap()),
+      'targetService': ?targetService,
       'vNetSolution': ?pulumi.Input.mapOptionalInputValue<VNetSolution, Map<String, dynamic>>(vNetSolution, (value) => value.toMap()),
     };
   }
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      authInfo: (() { final guardedValue = map['authInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessKeyInfoBase.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      clientType: (() { final guardedValue = map['clientType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authInfo: (() { final guardedValue = map['authInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      clientType: (() { final guardedValue = map['clientType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       configurationInfo: (() { final guardedValue = map['configurationInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       connectorName: (() { final guardedValue = map['connectorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
@@ -95,7 +93,7 @@ class ConnectorArgs {
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretStore: (() { final guardedValue = map['secretStore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecretStore.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      targetService: (() { final guardedValue = map['targetService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      targetService: (() { final guardedValue = map['targetService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       vNetSolution: (() { final guardedValue = map['vNetSolution']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VNetSolution.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

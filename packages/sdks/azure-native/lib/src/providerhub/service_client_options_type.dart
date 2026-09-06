@@ -1,8 +1,11 @@
-enum ServiceClientOptionsType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ServiceClientOptionsType implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   disableAutomaticDecompression("DisableAutomaticDecompression");
 
   const ServiceClientOptionsType(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceClientOptionsType fromValue(String value) {

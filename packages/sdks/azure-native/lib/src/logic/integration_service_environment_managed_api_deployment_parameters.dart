@@ -6,7 +6,7 @@ import 'content_link.dart';
 /// The integration service environment managed api deployment parameters.
 class IntegrationServiceEnvironmentManagedApiDeploymentParameters {
   /// The integration service environment managed api content link for deployment.
-  final pulumi.Input<ContentLink>? contentLinkDefinition;
+  final pulumi.Input<ContentLink?>? contentLinkDefinition;
 
   /// Creates a new [IntegrationServiceEnvironmentManagedApiDeploymentParameters].
   /// [contentLinkDefinition] The integration service environment managed api content link for deployment.

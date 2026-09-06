@@ -6,25 +6,25 @@ import 'machine_extension_instance_view_response.dart';
 /// Describes the properties of a Machine Extension.
 class MachineExtensionPropertiesResponse {
   /// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-  final pulumi.Input<bool>? autoUpgradeMinorVersion;
+  final pulumi.Input<bool?>? autoUpgradeMinorVersion;
   /// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
-  final pulumi.Input<bool>? enableAutomaticUpgrade;
+  final pulumi.Input<bool?>? enableAutomaticUpgrade;
   /// How the extension handler should be forced to update even if the extension configuration has not changed.
-  final pulumi.Input<String>? forceUpdateTag;
+  final pulumi.Input<String?>? forceUpdateTag;
   /// The machine extension instance view.
-  final pulumi.Input<MachineExtensionInstanceViewResponse>? instanceView;
+  final pulumi.Input<MachineExtensionInstanceViewResponse?>? instanceView;
   /// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
   final pulumi.Input<dynamic>? protectedSettings;
   /// The provisioning state, which only appears in the response.
   final pulumi.Input<String> provisioningState;
   /// The name of the extension handler publisher.
-  final pulumi.Input<String>? publisher;
+  final pulumi.Input<String?>? publisher;
   /// Json formatted public settings for the extension.
   final pulumi.Input<dynamic>? settings;
   /// Specifies the type of the extension; an example is "CustomScriptExtension".
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Specifies the version of the script handler.
-  final pulumi.Input<String>? typeHandlerVersion;
+  final pulumi.Input<String?>? typeHandlerVersion;
 
   /// Creates a new [MachineExtensionPropertiesResponse].
   /// [autoUpgradeMinorVersion] Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.

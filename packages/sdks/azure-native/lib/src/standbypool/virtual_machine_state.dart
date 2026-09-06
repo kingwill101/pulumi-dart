@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the desired state of virtual machines in the pool.
-enum VirtualMachineState {
+enum VirtualMachineState implements pulumi.PulumiEnum<String> {
   running("Running"),
   deallocated("Deallocated");
 
   const VirtualMachineState(this.wireValue);
+  @override
   final String wireValue;
 
   static VirtualMachineState fromValue(String value) {

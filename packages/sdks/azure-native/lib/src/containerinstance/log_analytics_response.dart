@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Container group log analytics information.
 class LogAnalyticsResponse {
   /// The log type to be used.
-  final pulumi.Input<String>? logType;
+  final pulumi.Input<String?>? logType;
   /// Metadata for log analytics.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The workspace id for log analytics
   final pulumi.Input<String> workspaceId;
   /// The workspace key for log analytics
   final pulumi.Input<String> workspaceKey;
   /// The workspace resource id for log analytics
-  final pulumi.Input<String>? workspaceResourceId;
+  final pulumi.Input<String?>? workspaceResourceId;
 
   /// Creates a new [LogAnalyticsResponse].
   /// [logType] The log type to be used.

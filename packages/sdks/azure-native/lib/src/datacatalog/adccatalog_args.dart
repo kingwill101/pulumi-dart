@@ -9,25 +9,25 @@ import 'principals.dart';
 /// {@macro pulumi_datacatalog_adccatalog_args_doc}
 class ADCCatalogArgs {
   /// Azure data catalog admin list.
-  final pulumi.Input<List<Principals>>? admins;
+  final pulumi.Input<List<Principals>?>? admins;
   /// The name of the data catalog in the specified subscription and resource group.
-  final pulumi.Input<String>? catalogName;
+  final pulumi.Input<String?>? catalogName;
   /// Automatic unit adjustment enabled or not.
-  final pulumi.Input<bool>? enableAutomaticUnitAdjustment;
+  final pulumi.Input<bool?>? enableAutomaticUnitAdjustment;
   /// Resource location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Azure data catalog SKU.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<dynamic>? sku;
   /// Azure data catalog provision status.
-  final pulumi.Input<bool>? successfullyProvisioned;
+  final pulumi.Input<bool?>? successfullyProvisioned;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Azure data catalog units.
-  final pulumi.Input<int>? units;
+  final pulumi.Input<int?>? units;
   /// Azure data catalog user list.
-  final pulumi.Input<List<Principals>>? users;
+  final pulumi.Input<List<Principals>?>? users;
 
   /// Creates a new [ADCCatalogArgs].
   /// [admins] Azure data catalog admin list.
@@ -75,10 +75,10 @@ class ADCCatalogArgs {
       enableAutomaticUnitAdjustment: (() { final guardedValue = map['enableAutomaticUnitAdjustment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       successfullyProvisioned: (() { final guardedValue = map['successfullyProvisioned']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      units: (() { final guardedValue = map['units']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      units: (() { final guardedValue = map['units']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       users: (() { final guardedValue = map['users']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Principals>(guardedValue, (value) => Principals.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

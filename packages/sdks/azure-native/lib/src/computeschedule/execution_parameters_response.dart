@@ -6,9 +6,9 @@ import 'retry_policy_response.dart';
 /// Extra details needed to run the user's request
 class ExecutionParametersResponse {
   /// Details that could optimize the user's request
-  final pulumi.Input<String>? optimizationPreference;
+  final pulumi.Input<String?>? optimizationPreference;
   /// Retry policy the user can pass
-  final pulumi.Input<RetryPolicyResponse>? retryPolicy;
+  final pulumi.Input<RetryPolicyResponse?>? retryPolicy;
 
   /// Creates a new [ExecutionParametersResponse].
   /// [optimizationPreference] Details that could optimize the user's request

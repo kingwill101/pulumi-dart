@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Value.
 class WorkspaceCustomStringParameterResponse {
   /// The type of variable that this is
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The value which should be used for this field.
   final pulumi.Input<String> value;
 

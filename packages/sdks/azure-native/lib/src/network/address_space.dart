@@ -6,9 +6,9 @@ import 'ipam_pool_prefix_allocation.dart';
 /// AddressSpace contains an array of IP address ranges that can be used by subnets of the virtual network.
 class AddressSpace {
   /// A list of address blocks reserved for this virtual network in CIDR notation.
-  final pulumi.Input<List<String>>? addressPrefixes;
+  final pulumi.Input<List<String>?>? addressPrefixes;
   /// A list of IPAM Pools allocating IP address prefixes.
-  final pulumi.Input<List<IpamPoolPrefixAllocation>>? ipamPoolPrefixAllocations;
+  final pulumi.Input<List<IpamPoolPrefixAllocation>?>? ipamPoolPrefixAllocations;
 
   /// Creates a new [AddressSpace].
   /// [addressPrefixes] A list of address blocks reserved for this virtual network in CIDR notation.

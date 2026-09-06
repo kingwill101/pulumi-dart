@@ -10,17 +10,17 @@ import 'managed_service_identity.dart';
 /// {@macro pulumi_app_agent_args_doc}
 class AgentArgs {
   /// The name of the Agent
-  final pulumi.Input<String>? agentName;
+  final pulumi.Input<String?>? agentName;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<AgentProperties>? properties;
+  final pulumi.Input<AgentProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AgentArgs].
   /// [agentName] The name of the Agent

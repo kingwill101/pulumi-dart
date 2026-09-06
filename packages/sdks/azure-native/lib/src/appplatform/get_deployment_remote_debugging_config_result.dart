@@ -26,7 +26,7 @@ class GetDeploymentRemoteDebuggingConfigResult {
   factory GetDeploymentRemoteDebuggingConfigResult.fromMap(Map<String, dynamic> map) {
     return GetDeploymentRemoteDebuggingConfigResult(
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

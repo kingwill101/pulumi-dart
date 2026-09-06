@@ -26,8 +26,8 @@ class DynamicThresholdFailingPeriodsResponse {
 
   factory DynamicThresholdFailingPeriodsResponse.fromMap(Map<String, dynamic> map) {
     return DynamicThresholdFailingPeriodsResponse(
-      minFailingPeriodsToAlert: pulumi.Input.fromValue(map['minFailingPeriodsToAlert'] as double),
-      numberOfEvaluationPeriods: pulumi.Input.fromValue(map['numberOfEvaluationPeriods'] as double),
+      minFailingPeriodsToAlert: pulumi.Input.fromValue((map['minFailingPeriodsToAlert'] as num).toDouble()),
+      numberOfEvaluationPeriods: pulumi.Input.fromValue((map['numberOfEvaluationPeriods'] as num).toDouble()),
     );
   }
 }

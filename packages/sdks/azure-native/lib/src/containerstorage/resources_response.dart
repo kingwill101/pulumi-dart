@@ -6,7 +6,7 @@ import 'requests_response.dart';
 /// Resource Requests for the pool.
 class ResourcesResponse {
   /// Requests for capacity for the pool.
-  final pulumi.Input<RequestsResponse>? requests;
+  final pulumi.Input<RequestsResponse?>? requests;
 
   /// Creates a new [ResourcesResponse].
   /// [requests] Requests for capacity for the pool.

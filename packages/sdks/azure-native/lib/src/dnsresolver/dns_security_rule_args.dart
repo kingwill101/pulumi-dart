@@ -16,17 +16,17 @@ class DnsSecurityRuleArgs {
   /// The name of the DNS resolver policy.
   final pulumi.Input<String> dnsResolverPolicyName;
   /// The name of the DNS security rule.
-  final pulumi.Input<String>? dnsSecurityRuleName;
+  final pulumi.Input<String?>? dnsSecurityRuleName;
   /// The state of DNS security rule.
-  final pulumi.Input<String>? dnsSecurityRuleState;
+  final pulumi.Input<dynamic>? dnsSecurityRuleState;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The priority of the DNS security rule.
   final pulumi.Input<int> priority;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DnsSecurityRuleArgs].
   /// [action] The action to take on DNS requests that match the DNS security rule.
@@ -70,9 +70,9 @@ class DnsSecurityRuleArgs {
       dnsResolverDomainLists: pulumi.Input.fromValue(pulumi.Input.decodeList<SubResource>(map['dnsResolverDomainLists']!, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))),
       dnsResolverPolicyName: pulumi.Input.fromValue(map['dnsResolverPolicyName'] as String),
       dnsSecurityRuleName: (() { final guardedValue = map['dnsSecurityRuleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dnsSecurityRuleState: (() { final guardedValue = map['dnsSecurityRuleState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dnsSecurityRuleState: (() { final guardedValue = map['dnsSecurityRuleState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

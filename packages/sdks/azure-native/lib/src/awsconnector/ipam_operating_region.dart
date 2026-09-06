@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of IpamOperatingRegion
 class IpamOperatingRegion {
   /// &lt;p&gt;The name of the operating Region.&lt;/p&gt;
-  final pulumi.Input<String>? regionName;
+  final pulumi.Input<String?>? regionName;
 
   /// Creates a new [IpamOperatingRegion].
   /// [regionName] &lt;p&gt;The name of the operating Region.&lt;/p&gt;

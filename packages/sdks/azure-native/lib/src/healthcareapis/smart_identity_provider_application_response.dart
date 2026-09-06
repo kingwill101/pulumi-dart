@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An Application configured in the Identity Provider used to access FHIR resources.
 class SmartIdentityProviderApplicationResponse {
   /// The actions that are permitted to be performed on FHIR resources for the application.
-  final pulumi.Input<List<String>>? allowedDataActions;
+  final pulumi.Input<List<String>?>? allowedDataActions;
   /// The audience that will be used to validate bearer tokens against the given authority.
-  final pulumi.Input<String>? audience;
+  final pulumi.Input<String?>? audience;
   /// The application client id defined in the identity provider. This value will be used to validate bearer tokens against the given authority.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
 
   /// Creates a new [SmartIdentityProviderApplicationResponse].
   /// [allowedDataActions] The actions that are permitted to be performed on FHIR resources for the application.

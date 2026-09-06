@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration group schema properties.
 class ConfigurationGroupSchemaPropertiesFormatResponse {
   /// Description of what schema can contain.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The provisioning state of the Configuration group schema resource.
   final pulumi.Input<String> provisioningState;
   /// Name and value pairs that define the configuration value. It can be a well formed escaped JSON string.
-  final pulumi.Input<String>? schemaDefinition;
+  final pulumi.Input<String?>? schemaDefinition;
   /// The configuration group schema version state.
   final pulumi.Input<String> versionState;
 

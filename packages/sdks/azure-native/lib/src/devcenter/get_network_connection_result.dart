@@ -5,9 +5,9 @@ import 'system_data_response.dart';
 /// Result data returned by getNetworkConnection.
 class GetNetworkConnectionResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// AAD Join type.
-  final String domainJoinType;
+  final String? domainJoinType;
   /// Active Directory domain name
   final String? domainName;
   /// The password for the account used to join domain
@@ -15,27 +15,27 @@ class GetNetworkConnectionResult {
   /// The username of an Active Directory account (user or service account) that has permissions to create computer objects in Active Directory. Required format: admin@contoso.com.
   final String? domainUsername;
   /// Overall health status of the network connection. Health checks are run on creation, update, and periodically to validate the network connection.
-  final String healthCheckStatus;
+  final String? healthCheckStatus;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The name for resource group where NICs will be placed.
   final String? networkingResourceGroupName;
   /// Active Directory domain Organization Unit (OU)
   final String? organizationUnit;
   /// The provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The subnet to attach Virtual Machines to
-  final String subnetId;
+  final String? subnetId;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetNetworkConnectionResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -55,63 +55,63 @@ class GetNetworkConnectionResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetNetworkConnectionResult({
-    required this.azureApiVersion,
-    required this.domainJoinType,
+    this.azureApiVersion,
+    this.domainJoinType,
     this.domainName,
     this.domainPassword,
     this.domainUsername,
-    required this.healthCheckStatus,
-    required this.id,
-    required this.location,
-    required this.name,
+    this.healthCheckStatus,
+    this.id,
+    this.location,
+    this.name,
     this.networkingResourceGroupName,
     this.organizationUnit,
-    required this.provisioningState,
-    required this.subnetId,
-    required this.systemData,
+    this.provisioningState,
+    this.subnetId,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'domainJoinType': domainJoinType,
+      'azureApiVersion': ?azureApiVersion,
+      'domainJoinType': ?domainJoinType,
       'domainName': ?domainName,
       'domainPassword': ?domainPassword,
       'domainUsername': ?domainUsername,
-      'healthCheckStatus': healthCheckStatus,
-      'id': id,
-      'location': location,
-      'name': name,
+      'healthCheckStatus': ?healthCheckStatus,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
       'networkingResourceGroupName': ?networkingResourceGroupName,
       'organizationUnit': ?organizationUnit,
-      'provisioningState': provisioningState,
-      'subnetId': subnetId,
-      'systemData': systemData.toMap(),
+      'provisioningState': ?provisioningState,
+      'subnetId': ?subnetId,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetNetworkConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkConnectionResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      domainJoinType: map['domainJoinType'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      domainJoinType: (() { final guardedValue = map['domainJoinType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       domainPassword: (() { final guardedValue = map['domainPassword']; if (guardedValue == null) return null; return guardedValue as String; })(),
       domainUsername: (() { final guardedValue = map['domainUsername']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      healthCheckStatus: map['healthCheckStatus'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
+      healthCheckStatus: (() { final guardedValue = map['healthCheckStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkingResourceGroupName: (() { final guardedValue = map['networkingResourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       organizationUnit: (() { final guardedValue = map['organizationUnit']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
-      subnetId: map['subnetId'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

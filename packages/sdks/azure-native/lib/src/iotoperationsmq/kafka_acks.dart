@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kafka acks to use.
-enum KafkaAcks {
+enum KafkaAcks implements pulumi.PulumiEnum<String> {
   zero("zero"),
   one("one"),
   all("all");
 
   const KafkaAcks(this.wireValue);
+  @override
   final String wireValue;
 
   static KafkaAcks fromValue(String value) {

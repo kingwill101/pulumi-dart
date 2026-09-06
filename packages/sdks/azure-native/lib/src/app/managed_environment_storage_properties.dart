@@ -7,9 +7,9 @@ import 'nfs_azure_file_properties.dart';
 /// Storage properties
 class ManagedEnvironmentStorageProperties {
   /// Azure file properties
-  final pulumi.Input<AzureFileProperties>? azureFile;
+  final pulumi.Input<AzureFileProperties?>? azureFile;
   /// NFS Azure file properties
-  final pulumi.Input<NfsAzureFileProperties>? nfsAzureFile;
+  final pulumi.Input<NfsAzureFileProperties?>? nfsAzureFile;
 
   /// Creates a new [ManagedEnvironmentStorageProperties].
   /// [azureFile] Azure file properties

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduleBase {
   /// A system assigned id for the schedule.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The current deployment state of schedule.
-  final pulumi.Input<String>? provisioningStatus;
+  final pulumi.Input<dynamic>? provisioningStatus;
   /// Is the schedule enabled or disabled?
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [ScheduleBase].
   /// [id] A system assigned id for the schedule.
@@ -31,8 +31,8 @@ class ScheduleBase {
   factory ScheduleBase.fromMap(Map<String, dynamic> map) {
     return ScheduleBase(
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      provisioningStatus: (() { final guardedValue = map['provisioningStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningStatus: (() { final guardedValue = map['provisioningStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

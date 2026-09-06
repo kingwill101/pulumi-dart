@@ -8,9 +8,9 @@ class AzureToAzureNetworkMappingSettingsResponse {
   /// Expected value is 'AzureToAzure'.
   final pulumi.Input<String> instanceType;
   /// The primary fabric location.
-  final pulumi.Input<String>? primaryFabricLocation;
+  final pulumi.Input<String?>? primaryFabricLocation;
   /// The recovery fabric location.
-  final pulumi.Input<String>? recoveryFabricLocation;
+  final pulumi.Input<String?>? recoveryFabricLocation;
 
   /// Creates a new [AzureToAzureNetworkMappingSettingsResponse].
   /// [instanceType] Gets the Instance type.

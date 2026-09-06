@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Object representing DeploymentType for Managed CCF.
 class DeploymentTypeResponse {
   /// Source Uri containing ManagedCCF code
-  final pulumi.Input<String>? appSourceUri;
+  final pulumi.Input<String?>? appSourceUri;
   /// Unique name for the Managed CCF.
-  final pulumi.Input<String>? languageRuntime;
+  final pulumi.Input<String?>? languageRuntime;
 
   /// Creates a new [DeploymentTypeResponse].
   /// [appSourceUri] Source Uri containing ManagedCCF code

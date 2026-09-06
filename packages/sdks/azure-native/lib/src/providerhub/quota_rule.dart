@@ -5,11 +5,11 @@ import 'location_quota_rule.dart';
 
 class QuotaRule {
   /// The location rules.
-  final pulumi.Input<List<LocationQuotaRule>>? locationRules;
+  final pulumi.Input<List<LocationQuotaRule>?>? locationRules;
   /// The quota policy.
-  final pulumi.Input<String>? quotaPolicy;
+  final pulumi.Input<dynamic>? quotaPolicy;
   /// The required features.
-  final pulumi.Input<List<String>>? requiredFeatures;
+  final pulumi.Input<List<String>?>? requiredFeatures;
 
   /// Creates a new [QuotaRule].
   /// [locationRules] The location rules.
@@ -32,7 +32,7 @@ class QuotaRule {
   factory QuotaRule.fromMap(Map<String, dynamic> map) {
     return QuotaRule(
       locationRules: (() { final guardedValue = map['locationRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LocationQuotaRule>(guardedValue, (value) => LocationQuotaRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      quotaPolicy: (() { final guardedValue = map['quotaPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      quotaPolicy: (() { final guardedValue = map['quotaPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       requiredFeatures: (() { final guardedValue = map['requiredFeatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

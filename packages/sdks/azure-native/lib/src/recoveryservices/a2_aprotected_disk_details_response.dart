@@ -5,51 +5,51 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A2A protected disk details.
 class A2AProtectedDiskDetailsResponse {
   /// The disk level operations list.
-  final pulumi.Input<List<String>>? allowedDiskLevelOperation;
+  final pulumi.Input<List<String>?>? allowedDiskLevelOperation;
   /// The data pending at source virtual machine in MB.
-  final pulumi.Input<double>? dataPendingAtSourceAgentInMB;
+  final pulumi.Input<double?>? dataPendingAtSourceAgentInMB;
   /// The data pending for replication in MB at staging account.
-  final pulumi.Input<double>? dataPendingInStagingStorageAccountInMB;
+  final pulumi.Input<double?>? dataPendingInStagingStorageAccountInMB;
   /// The KeyVault resource id for secret (BEK).
-  final pulumi.Input<String>? dekKeyVaultArmId;
+  final pulumi.Input<String?>? dekKeyVaultArmId;
   /// The disk capacity in bytes.
-  final pulumi.Input<double>? diskCapacityInBytes;
+  final pulumi.Input<double?>? diskCapacityInBytes;
   /// The disk name.
-  final pulumi.Input<String>? diskName;
+  final pulumi.Input<String?>? diskName;
   /// The disk state.
-  final pulumi.Input<String>? diskState;
+  final pulumi.Input<String?>? diskState;
   /// The type of disk.
-  final pulumi.Input<String>? diskType;
+  final pulumi.Input<String?>? diskType;
   /// The disk uri.
-  final pulumi.Input<String>? diskUri;
+  final pulumi.Input<String?>? diskUri;
   /// The failover name for the managed disk.
-  final pulumi.Input<String>? failoverDiskName;
+  final pulumi.Input<String?>? failoverDiskName;
   /// A value indicating whether vm has encrypted os disk or not.
-  final pulumi.Input<bool>? isDiskEncrypted;
+  final pulumi.Input<bool?>? isDiskEncrypted;
   /// A value indicating whether disk key got encrypted or not.
-  final pulumi.Input<bool>? isDiskKeyEncrypted;
+  final pulumi.Input<bool?>? isDiskKeyEncrypted;
   /// The KeyVault resource id for key (KEK).
-  final pulumi.Input<String>? kekKeyVaultArmId;
+  final pulumi.Input<String?>? kekKeyVaultArmId;
   /// The key URL / identifier (KEK).
-  final pulumi.Input<String>? keyIdentifier;
+  final pulumi.Input<String?>? keyIdentifier;
   /// The type of the monitoring job. The progress is contained in MonitoringPercentageCompletion property.
-  final pulumi.Input<String>? monitoringJobType;
+  final pulumi.Input<String?>? monitoringJobType;
   /// The percentage of the monitoring job. The type of the monitoring job is defined by MonitoringJobType property.
-  final pulumi.Input<int>? monitoringPercentageCompletion;
+  final pulumi.Input<int?>? monitoringPercentageCompletion;
   /// The primary disk storage account.
-  final pulumi.Input<String>? primaryDiskAzureStorageAccountId;
+  final pulumi.Input<String?>? primaryDiskAzureStorageAccountId;
   /// The primary staging storage account.
-  final pulumi.Input<String>? primaryStagingAzureStorageAccountId;
+  final pulumi.Input<String?>? primaryStagingAzureStorageAccountId;
   /// The recovery disk storage account.
-  final pulumi.Input<String>? recoveryAzureStorageAccountId;
+  final pulumi.Input<String?>? recoveryAzureStorageAccountId;
   /// Recovery disk uri.
-  final pulumi.Input<String>? recoveryDiskUri;
+  final pulumi.Input<String?>? recoveryDiskUri;
   /// A value indicating whether resync is required for this disk.
-  final pulumi.Input<bool>? resyncRequired;
+  final pulumi.Input<bool?>? resyncRequired;
   /// The secret URL / identifier (BEK).
-  final pulumi.Input<String>? secretIdentifier;
+  final pulumi.Input<String?>? secretIdentifier;
   /// The test failover name for the managed disk.
-  final pulumi.Input<String>? tfoDiskName;
+  final pulumi.Input<String?>? tfoDiskName;
 
   /// Creates a new [A2AProtectedDiskDetailsResponse].
   /// [allowedDiskLevelOperation] The disk level operations list.
@@ -132,10 +132,10 @@ class A2AProtectedDiskDetailsResponse {
   factory A2AProtectedDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return A2AProtectedDiskDetailsResponse(
       allowedDiskLevelOperation: (() { final guardedValue = map['allowedDiskLevelOperation']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      dataPendingAtSourceAgentInMB: (() { final guardedValue = map['dataPendingAtSourceAgentInMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      dataPendingInStagingStorageAccountInMB: (() { final guardedValue = map['dataPendingInStagingStorageAccountInMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      dataPendingAtSourceAgentInMB: (() { final guardedValue = map['dataPendingAtSourceAgentInMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      dataPendingInStagingStorageAccountInMB: (() { final guardedValue = map['dataPendingInStagingStorageAccountInMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       dekKeyVaultArmId: (() { final guardedValue = map['dekKeyVaultArmId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      diskCapacityInBytes: (() { final guardedValue = map['diskCapacityInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      diskCapacityInBytes: (() { final guardedValue = map['diskCapacityInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       diskName: (() { final guardedValue = map['diskName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskState: (() { final guardedValue = map['diskState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskType: (() { final guardedValue = map['diskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -146,7 +146,7 @@ class A2AProtectedDiskDetailsResponse {
       kekKeyVaultArmId: (() { final guardedValue = map['kekKeyVaultArmId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keyIdentifier: (() { final guardedValue = map['keyIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       monitoringJobType: (() { final guardedValue = map['monitoringJobType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      monitoringPercentageCompletion: (() { final guardedValue = map['monitoringPercentageCompletion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      monitoringPercentageCompletion: (() { final guardedValue = map['monitoringPercentageCompletion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       primaryDiskAzureStorageAccountId: (() { final guardedValue = map['primaryDiskAzureStorageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       primaryStagingAzureStorageAccountId: (() { final guardedValue = map['primaryStagingAzureStorageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recoveryAzureStorageAccountId: (() { final guardedValue = map['recoveryAzureStorageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

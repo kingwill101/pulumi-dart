@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Single status.
 class StatusItemResponse {
   /// Status name - e.g. "Active", "Failed".
-  final pulumi.Input<String>? statusName;
+  final pulumi.Input<String?>? statusName;
   /// Status value. e.g. "100", or "100%".
-  final pulumi.Input<String>? statusValue;
+  final pulumi.Input<String?>? statusValue;
 
   /// Creates a new [StatusItemResponse].
   /// [statusName] Status name - e.g. "Active", "Failed".

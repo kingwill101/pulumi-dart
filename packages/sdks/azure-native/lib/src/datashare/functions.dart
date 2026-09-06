@@ -92,6 +92,17 @@ Future<GetADLSGen1FileDataSetResult> getADLSGen1FileDataSet(
   return GetADLSGen1FileDataSetResult.fromMap(result);
 }
 
+pulumi.Output<GetADLSGen1FileDataSetResult> getADLSGen1FileDataSetOutput(
+  GetADLSGen1FileDataSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getADLSGen1FileDataSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetADLSGen1FileDataSetResult.fromMap);
+}
+
 /// Get a DataSet in a share
 ///
 /// Uses Azure REST API version 2021-08-01.
@@ -108,6 +119,17 @@ Future<GetADLSGen1FolderDataSetResult> getADLSGen1FolderDataSet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetADLSGen1FolderDataSetResult.fromMap(result);
+}
+
+pulumi.Output<GetADLSGen1FolderDataSetResult> getADLSGen1FolderDataSetOutput(
+  GetADLSGen1FolderDataSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getADLSGen1FolderDataSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetADLSGen1FolderDataSetResult.fromMap);
 }
 
 /// Get a DataSet in a share
@@ -128,6 +150,17 @@ Future<GetADLSGen2FileDataSetResult> getADLSGen2FileDataSet(
   return GetADLSGen2FileDataSetResult.fromMap(result);
 }
 
+pulumi.Output<GetADLSGen2FileDataSetResult> getADLSGen2FileDataSetOutput(
+  GetADLSGen2FileDataSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getADLSGen2FileDataSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetADLSGen2FileDataSetResult.fromMap);
+}
+
 /// Get a DataSetMapping in a shareSubscription
 ///
 /// Uses Azure REST API version 2021-08-01.
@@ -144,6 +177,17 @@ Future<GetADLSGen2FileDataSetMappingResult> getADLSGen2FileDataSetMapping(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetADLSGen2FileDataSetMappingResult.fromMap(result);
+}
+
+pulumi.Output<GetADLSGen2FileDataSetMappingResult> getADLSGen2FileDataSetMappingOutput(
+  GetADLSGen2FileDataSetMappingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getADLSGen2FileDataSetMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetADLSGen2FileDataSetMappingResult.fromMap);
 }
 
 /// Get a DataSet in a share
@@ -164,6 +208,17 @@ Future<GetADLSGen2FileSystemDataSetResult> getADLSGen2FileSystemDataSet(
   return GetADLSGen2FileSystemDataSetResult.fromMap(result);
 }
 
+pulumi.Output<GetADLSGen2FileSystemDataSetResult> getADLSGen2FileSystemDataSetOutput(
+  GetADLSGen2FileSystemDataSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getADLSGen2FileSystemDataSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetADLSGen2FileSystemDataSetResult.fromMap);
+}
+
 /// Get a DataSetMapping in a shareSubscription
 ///
 /// Uses Azure REST API version 2021-08-01.
@@ -180,6 +235,17 @@ Future<GetADLSGen2FileSystemDataSetMappingResult> getADLSGen2FileSystemDataSetMa
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetADLSGen2FileSystemDataSetMappingResult.fromMap(result);
+}
+
+pulumi.Output<GetADLSGen2FileSystemDataSetMappingResult> getADLSGen2FileSystemDataSetMappingOutput(
+  GetADLSGen2FileSystemDataSetMappingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getADLSGen2FileSystemDataSetMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetADLSGen2FileSystemDataSetMappingResult.fromMap);
 }
 
 /// Get a DataSet in a share
@@ -200,6 +266,17 @@ Future<GetADLSGen2FolderDataSetResult> getADLSGen2FolderDataSet(
   return GetADLSGen2FolderDataSetResult.fromMap(result);
 }
 
+pulumi.Output<GetADLSGen2FolderDataSetResult> getADLSGen2FolderDataSetOutput(
+  GetADLSGen2FolderDataSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getADLSGen2FolderDataSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetADLSGen2FolderDataSetResult.fromMap);
+}
+
 /// Get a DataSetMapping in a shareSubscription
 ///
 /// Uses Azure REST API version 2021-08-01.
@@ -216,6 +293,17 @@ Future<GetADLSGen2FolderDataSetMappingResult> getADLSGen2FolderDataSetMapping(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetADLSGen2FolderDataSetMappingResult.fromMap(result);
+}
+
+pulumi.Output<GetADLSGen2FolderDataSetMappingResult> getADLSGen2FolderDataSetMappingOutput(
+  GetADLSGen2FolderDataSetMappingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getADLSGen2FolderDataSetMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetADLSGen2FolderDataSetMappingResult.fromMap);
 }
 
 /// Get an account
@@ -236,6 +324,17 @@ Future<GetAccountResult> getAccount(
   return GetAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountResult> getAccountOutput(
+  GetAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountResult.fromMap);
+}
+
 /// Get a DataSet in a share
 ///
 /// Uses Azure REST API version 2021-08-01.
@@ -252,6 +351,17 @@ Future<GetBlobContainerDataSetResult> getBlobContainerDataSet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBlobContainerDataSetResult.fromMap(result);
+}
+
+pulumi.Output<GetBlobContainerDataSetResult> getBlobContainerDataSetOutput(
+  GetBlobContainerDataSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getBlobContainerDataSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBlobContainerDataSetResult.fromMap);
 }
 
 /// Get a DataSetMapping in a shareSubscription
@@ -272,6 +382,17 @@ Future<GetBlobContainerDataSetMappingResult> getBlobContainerDataSetMapping(
   return GetBlobContainerDataSetMappingResult.fromMap(result);
 }
 
+pulumi.Output<GetBlobContainerDataSetMappingResult> getBlobContainerDataSetMappingOutput(
+  GetBlobContainerDataSetMappingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getBlobContainerDataSetMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBlobContainerDataSetMappingResult.fromMap);
+}
+
 /// Get a DataSet in a share
 ///
 /// Uses Azure REST API version 2021-08-01.
@@ -288,6 +409,17 @@ Future<GetBlobDataSetResult> getBlobDataSet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBlobDataSetResult.fromMap(result);
+}
+
+pulumi.Output<GetBlobDataSetResult> getBlobDataSetOutput(
+  GetBlobDataSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getBlobDataSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBlobDataSetResult.fromMap);
 }
 
 /// Get a DataSetMapping in a shareSubscription
@@ -308,6 +440,17 @@ Future<GetBlobDataSetMappingResult> getBlobDataSetMapping(
   return GetBlobDataSetMappingResult.fromMap(result);
 }
 
+pulumi.Output<GetBlobDataSetMappingResult> getBlobDataSetMappingOutput(
+  GetBlobDataSetMappingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getBlobDataSetMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBlobDataSetMappingResult.fromMap);
+}
+
 /// Get a DataSet in a share
 ///
 /// Uses Azure REST API version 2021-08-01.
@@ -324,6 +467,17 @@ Future<GetBlobFolderDataSetResult> getBlobFolderDataSet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBlobFolderDataSetResult.fromMap(result);
+}
+
+pulumi.Output<GetBlobFolderDataSetResult> getBlobFolderDataSetOutput(
+  GetBlobFolderDataSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getBlobFolderDataSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBlobFolderDataSetResult.fromMap);
 }
 
 /// Get a DataSetMapping in a shareSubscription
@@ -344,6 +498,17 @@ Future<GetBlobFolderDataSetMappingResult> getBlobFolderDataSetMapping(
   return GetBlobFolderDataSetMappingResult.fromMap(result);
 }
 
+pulumi.Output<GetBlobFolderDataSetMappingResult> getBlobFolderDataSetMappingOutput(
+  GetBlobFolderDataSetMappingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getBlobFolderDataSetMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBlobFolderDataSetMappingResult.fromMap);
+}
+
 /// Get an invitation in a share
 ///
 /// Uses Azure REST API version 2021-08-01.
@@ -360,6 +525,17 @@ Future<GetInvitationResult> getInvitation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInvitationResult.fromMap(result);
+}
+
+pulumi.Output<GetInvitationResult> getInvitationOutput(
+  GetInvitationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getInvitation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInvitationResult.fromMap);
 }
 
 /// Get a DataSet in a share
@@ -380,6 +556,17 @@ Future<GetKustoClusterDataSetResult> getKustoClusterDataSet(
   return GetKustoClusterDataSetResult.fromMap(result);
 }
 
+pulumi.Output<GetKustoClusterDataSetResult> getKustoClusterDataSetOutput(
+  GetKustoClusterDataSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getKustoClusterDataSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKustoClusterDataSetResult.fromMap);
+}
+
 /// Get a DataSetMapping in a shareSubscription
 ///
 /// Uses Azure REST API version 2021-08-01.
@@ -396,6 +583,17 @@ Future<GetKustoClusterDataSetMappingResult> getKustoClusterDataSetMapping(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKustoClusterDataSetMappingResult.fromMap(result);
+}
+
+pulumi.Output<GetKustoClusterDataSetMappingResult> getKustoClusterDataSetMappingOutput(
+  GetKustoClusterDataSetMappingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getKustoClusterDataSetMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKustoClusterDataSetMappingResult.fromMap);
 }
 
 /// Get a DataSet in a share
@@ -416,6 +614,17 @@ Future<GetKustoDatabaseDataSetResult> getKustoDatabaseDataSet(
   return GetKustoDatabaseDataSetResult.fromMap(result);
 }
 
+pulumi.Output<GetKustoDatabaseDataSetResult> getKustoDatabaseDataSetOutput(
+  GetKustoDatabaseDataSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getKustoDatabaseDataSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKustoDatabaseDataSetResult.fromMap);
+}
+
 /// Get a DataSetMapping in a shareSubscription
 ///
 /// Uses Azure REST API version 2021-08-01.
@@ -432,6 +641,17 @@ Future<GetKustoDatabaseDataSetMappingResult> getKustoDatabaseDataSetMapping(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKustoDatabaseDataSetMappingResult.fromMap(result);
+}
+
+pulumi.Output<GetKustoDatabaseDataSetMappingResult> getKustoDatabaseDataSetMappingOutput(
+  GetKustoDatabaseDataSetMappingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getKustoDatabaseDataSetMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKustoDatabaseDataSetMappingResult.fromMap);
 }
 
 /// Get a DataSet in a share
@@ -452,6 +672,17 @@ Future<GetKustoTableDataSetResult> getKustoTableDataSet(
   return GetKustoTableDataSetResult.fromMap(result);
 }
 
+pulumi.Output<GetKustoTableDataSetResult> getKustoTableDataSetOutput(
+  GetKustoTableDataSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getKustoTableDataSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKustoTableDataSetResult.fromMap);
+}
+
 /// Get a DataSetMapping in a shareSubscription
 ///
 /// Uses Azure REST API version 2021-08-01.
@@ -468,6 +699,17 @@ Future<GetKustoTableDataSetMappingResult> getKustoTableDataSetMapping(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKustoTableDataSetMappingResult.fromMap(result);
+}
+
+pulumi.Output<GetKustoTableDataSetMappingResult> getKustoTableDataSetMappingOutput(
+  GetKustoTableDataSetMappingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getKustoTableDataSetMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKustoTableDataSetMappingResult.fromMap);
 }
 
 /// Get a synchronizationSetting in a share
@@ -488,6 +730,17 @@ Future<GetScheduledSynchronizationSettingResult> getScheduledSynchronizationSett
   return GetScheduledSynchronizationSettingResult.fromMap(result);
 }
 
+pulumi.Output<GetScheduledSynchronizationSettingResult> getScheduledSynchronizationSettingOutput(
+  GetScheduledSynchronizationSettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getScheduledSynchronizationSetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScheduledSynchronizationSettingResult.fromMap);
+}
+
 /// Get a Trigger in a shareSubscription
 ///
 /// Uses Azure REST API version 2021-08-01.
@@ -504,6 +757,17 @@ Future<GetScheduledTriggerResult> getScheduledTrigger(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetScheduledTriggerResult.fromMap(result);
+}
+
+pulumi.Output<GetScheduledTriggerResult> getScheduledTriggerOutput(
+  GetScheduledTriggerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getScheduledTrigger',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScheduledTriggerResult.fromMap);
 }
 
 /// Get a share
@@ -524,6 +788,17 @@ Future<GetShareResult> getShare(
   return GetShareResult.fromMap(result);
 }
 
+pulumi.Output<GetShareResult> getShareOutput(
+  GetShareArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getShare',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetShareResult.fromMap);
+}
+
 /// Get a shareSubscription in an account
 ///
 /// Uses Azure REST API version 2021-08-01.
@@ -540,6 +815,17 @@ Future<GetShareSubscriptionResult> getShareSubscription(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetShareSubscriptionResult.fromMap(result);
+}
+
+pulumi.Output<GetShareSubscriptionResult> getShareSubscriptionOutput(
+  GetShareSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getShareSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetShareSubscriptionResult.fromMap);
 }
 
 /// Get a DataSet in a share
@@ -560,6 +846,17 @@ Future<GetSqlDBTableDataSetResult> getSqlDBTableDataSet(
   return GetSqlDBTableDataSetResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlDBTableDataSetResult> getSqlDBTableDataSetOutput(
+  GetSqlDBTableDataSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getSqlDBTableDataSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlDBTableDataSetResult.fromMap);
+}
+
 /// Get a DataSetMapping in a shareSubscription
 ///
 /// Uses Azure REST API version 2021-08-01.
@@ -576,6 +873,17 @@ Future<GetSqlDBTableDataSetMappingResult> getSqlDBTableDataSetMapping(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSqlDBTableDataSetMappingResult.fromMap(result);
+}
+
+pulumi.Output<GetSqlDBTableDataSetMappingResult> getSqlDBTableDataSetMappingOutput(
+  GetSqlDBTableDataSetMappingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getSqlDBTableDataSetMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlDBTableDataSetMappingResult.fromMap);
 }
 
 /// Get a DataSet in a share
@@ -596,6 +904,17 @@ Future<GetSqlDWTableDataSetResult> getSqlDWTableDataSet(
   return GetSqlDWTableDataSetResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlDWTableDataSetResult> getSqlDWTableDataSetOutput(
+  GetSqlDWTableDataSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getSqlDWTableDataSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlDWTableDataSetResult.fromMap);
+}
+
 /// Get a DataSetMapping in a shareSubscription
 ///
 /// Uses Azure REST API version 2021-08-01.
@@ -612,6 +931,17 @@ Future<GetSqlDWTableDataSetMappingResult> getSqlDWTableDataSetMapping(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSqlDWTableDataSetMappingResult.fromMap(result);
+}
+
+pulumi.Output<GetSqlDWTableDataSetMappingResult> getSqlDWTableDataSetMappingOutput(
+  GetSqlDWTableDataSetMappingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getSqlDWTableDataSetMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlDWTableDataSetMappingResult.fromMap);
 }
 
 /// Get a DataSet in a share
@@ -632,6 +962,17 @@ Future<GetSynapseWorkspaceSqlPoolTableDataSetResult> getSynapseWorkspaceSqlPoolT
   return GetSynapseWorkspaceSqlPoolTableDataSetResult.fromMap(result);
 }
 
+pulumi.Output<GetSynapseWorkspaceSqlPoolTableDataSetResult> getSynapseWorkspaceSqlPoolTableDataSetOutput(
+  GetSynapseWorkspaceSqlPoolTableDataSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getSynapseWorkspaceSqlPoolTableDataSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSynapseWorkspaceSqlPoolTableDataSetResult.fromMap);
+}
+
 /// Get a DataSetMapping in a shareSubscription
 ///
 /// Uses Azure REST API version 2021-08-01.
@@ -648,6 +989,17 @@ Future<GetSynapseWorkspaceSqlPoolTableDataSetMappingResult> getSynapseWorkspaceS
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSynapseWorkspaceSqlPoolTableDataSetMappingResult.fromMap(result);
+}
+
+pulumi.Output<GetSynapseWorkspaceSqlPoolTableDataSetMappingResult> getSynapseWorkspaceSqlPoolTableDataSetMappingOutput(
+  GetSynapseWorkspaceSqlPoolTableDataSetMappingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:getSynapseWorkspaceSqlPoolTableDataSetMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSynapseWorkspaceSqlPoolTableDataSetMappingResult.fromMap);
 }
 
 /// Get synchronization settings set on a share
@@ -668,6 +1020,17 @@ Future<ListShareSubscriptionSourceShareSynchronizationSettingsResult> listShareS
   return ListShareSubscriptionSourceShareSynchronizationSettingsResult.fromMap(result);
 }
 
+pulumi.Output<ListShareSubscriptionSourceShareSynchronizationSettingsResult> listShareSubscriptionSourceShareSynchronizationSettingsOutput(
+  ListShareSubscriptionSourceShareSynchronizationSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:listShareSubscriptionSourceShareSynchronizationSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListShareSubscriptionSourceShareSynchronizationSettingsResult.fromMap);
+}
+
 /// List synchronization details
 ///
 /// Uses Azure REST API version 2021-08-01.
@@ -684,6 +1047,17 @@ Future<ListShareSubscriptionSynchronizationDetailsResult> listShareSubscriptionS
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListShareSubscriptionSynchronizationDetailsResult.fromMap(result);
+}
+
+pulumi.Output<ListShareSubscriptionSynchronizationDetailsResult> listShareSubscriptionSynchronizationDetailsOutput(
+  ListShareSubscriptionSynchronizationDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:listShareSubscriptionSynchronizationDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListShareSubscriptionSynchronizationDetailsResult.fromMap);
 }
 
 /// List synchronizations of a share subscription
@@ -704,6 +1078,17 @@ Future<ListShareSubscriptionSynchronizationsResult> listShareSubscriptionSynchro
   return ListShareSubscriptionSynchronizationsResult.fromMap(result);
 }
 
+pulumi.Output<ListShareSubscriptionSynchronizationsResult> listShareSubscriptionSynchronizationsOutput(
+  ListShareSubscriptionSynchronizationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:listShareSubscriptionSynchronizations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListShareSubscriptionSynchronizationsResult.fromMap);
+}
+
 /// List synchronization details
 ///
 /// Uses Azure REST API version 2021-08-01.
@@ -722,6 +1107,17 @@ Future<ListShareSynchronizationDetailsResult> listShareSynchronizationDetails(
   return ListShareSynchronizationDetailsResult.fromMap(result);
 }
 
+pulumi.Output<ListShareSynchronizationDetailsResult> listShareSynchronizationDetailsOutput(
+  ListShareSynchronizationDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:listShareSynchronizationDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListShareSynchronizationDetailsResult.fromMap);
+}
+
 /// List synchronizations of a share
 ///
 /// Uses Azure REST API version 2021-08-01.
@@ -738,4 +1134,15 @@ Future<ListShareSynchronizationsResult> listShareSynchronizations(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListShareSynchronizationsResult.fromMap(result);
+}
+
+pulumi.Output<ListShareSynchronizationsResult> listShareSynchronizationsOutput(
+  ListShareSynchronizationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datashare:listShareSynchronizations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListShareSynchronizationsResult.fromMap);
 }

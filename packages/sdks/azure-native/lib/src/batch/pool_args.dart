@@ -24,51 +24,51 @@ class PoolArgs {
   /// A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
   final pulumi.Input<String> accountName;
   /// The list of application licenses must be a subset of available Batch service application licenses. If a license is requested which is not supported, pool creation will fail.
-  final pulumi.Input<List<String>>? applicationLicenses;
+  final pulumi.Input<List<String>?>? applicationLicenses;
   /// Changes to application package references affect all new compute nodes joining the pool, but do not affect compute nodes that are already in the pool until they are rebooted or reimaged. There is a maximum of 10 application package references on any given pool.
-  final pulumi.Input<List<ApplicationPackageReference>>? applicationPackages;
+  final pulumi.Input<List<ApplicationPackageReference>?>? applicationPackages;
   /// For Windows compute nodes, the Batch service installs the certificates to the specified certificate store and location. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
   ///
   /// Warning: This property is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
-  final pulumi.Input<List<CertificateReference>>? certificates;
+  final pulumi.Input<List<CertificateReference>?>? certificates;
   /// Deployment configuration properties.
-  final pulumi.Input<DeploymentConfiguration>? deploymentConfiguration;
+  final pulumi.Input<DeploymentConfiguration?>? deploymentConfiguration;
   /// The display name need not be unique and can contain any Unicode characters up to a maximum length of 1024.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The type of identity used for the Batch Pool.
-  final pulumi.Input<BatchPoolIdentity>? identity;
+  final pulumi.Input<BatchPoolIdentity?>? identity;
   /// This imposes restrictions on which nodes can be assigned to the pool. Enabling this value can reduce the chance of the requested number of nodes to be allocated in the pool. If not specified, this value defaults to 'Disabled'.
-  final pulumi.Input<InterNodeCommunicationState>? interNodeCommunication;
+  final pulumi.Input<InterNodeCommunicationState?>? interNodeCommunication;
   /// The Batch service does not assign any meaning to metadata; it is solely for the use of user code.
-  final pulumi.Input<List<MetadataItem>>? metadata;
+  final pulumi.Input<List<MetadataItem>?>? metadata;
   /// This supports Azure Files, NFS, CIFS/SMB, and Blobfuse.
-  final pulumi.Input<List<MountConfiguration>>? mountConfiguration;
+  final pulumi.Input<List<MountConfiguration>?>? mountConfiguration;
   /// The network configuration for a pool.
-  final pulumi.Input<NetworkConfiguration>? networkConfiguration;
+  final pulumi.Input<NetworkConfiguration?>? networkConfiguration;
   /// The pool name. This must be unique within the account.
-  final pulumi.Input<String>? poolName;
+  final pulumi.Input<String?>? poolName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The user-defined tags to be associated with the Azure Batch Pool. When specified, these tags are propagated to the backing Azure resources associated with the pool. This property can only be specified when the Batch account was created with the poolAllocationMode property set to 'UserSubscription'.
-  final pulumi.Input<Map<String, String>>? resourceTags;
+  final pulumi.Input<Map<String, String>?>? resourceTags;
   /// Defines the desired size of the pool. This can either be 'fixedScale' where the requested targetDedicatedNodes is specified, or 'autoScale' which defines a formula which is periodically reevaluated. If this property is not specified, the pool will have a fixed scale with 0 targetDedicatedNodes.
-  final pulumi.Input<ScaleSettings>? scaleSettings;
+  final pulumi.Input<ScaleSettings?>? scaleSettings;
   /// In an PATCH (update) operation, this property can be set to an empty object to remove the start task from the pool.
-  final pulumi.Input<StartTask>? startTask;
+  final pulumi.Input<StartTask?>? startTask;
   /// The tags of the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// If omitted, the default value is Default.
-  final pulumi.Input<NodeCommunicationMode>? targetNodeCommunicationMode;
+  final pulumi.Input<NodeCommunicationMode?>? targetNodeCommunicationMode;
   /// If not specified, the default is spread.
-  final pulumi.Input<TaskSchedulingPolicy>? taskSchedulingPolicy;
+  final pulumi.Input<TaskSchedulingPolicy?>? taskSchedulingPolicy;
   /// The default value is 1. The maximum value is the smaller of 4 times the number of cores of the vmSize of the pool or 256.
-  final pulumi.Input<int>? taskSlotsPerNode;
+  final pulumi.Input<int?>? taskSlotsPerNode;
   /// Describes an upgrade policy - automatic, manual, or rolling.
-  final pulumi.Input<UpgradePolicy>? upgradePolicy;
+  final pulumi.Input<UpgradePolicy?>? upgradePolicy;
   /// The list of user accounts to be created on each node in the pool.
-  final pulumi.Input<List<UserAccount>>? userAccounts;
+  final pulumi.Input<List<UserAccount>?>? userAccounts;
   /// For information about available VM sizes, see Sizes for Virtual Machines in Azure (https://learn.microsoft.com/azure/virtual-machines/sizes/overview). Batch supports all Azure VM sizes except STANDARD_A0 and those with premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
-  final pulumi.Input<String>? vmSize;
+  final pulumi.Input<String?>? vmSize;
 
   /// Creates a new [PoolArgs].
   /// [accountName] A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
@@ -94,7 +94,7 @@ class PoolArgs {
   /// [upgradePolicy] Describes an upgrade policy - automatic, manual, or rolling.
   /// [userAccounts] The list of user accounts to be created on each node in the pool.
   /// [vmSize] For information about available VM sizes, see Sizes for Virtual Machines in Azure (https://learn.microsoft.com/azure/virtual-machines/sizes/overview). Batch supports all Azure VM sizes except STANDARD_A0 and those with premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
-  const PoolArgs({
+  PoolArgs({
     required this.accountName,
     this.applicationLicenses,
     this.applicationPackages,
@@ -114,11 +114,11 @@ class PoolArgs {
     this.tags,
     this.targetNodeCommunicationMode,
     this.taskSchedulingPolicy,
-    this.taskSlotsPerNode,
+    pulumi.Input<int?>? taskSlotsPerNode,
     this.upgradePolicy,
     this.userAccounts,
     this.vmSize,
-  });
+  }) : taskSlotsPerNode = taskSlotsPerNode ?? pulumi.Input.fromValue(1);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -169,7 +169,7 @@ class PoolArgs {
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       targetNodeCommunicationMode: (() { final guardedValue = map['targetNodeCommunicationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeCommunicationMode.fromValue(guardedValue as String)); })(),
       taskSchedulingPolicy: (() { final guardedValue = map['taskSchedulingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TaskSchedulingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      taskSlotsPerNode: (() { final guardedValue = map['taskSlotsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      taskSlotsPerNode: (() { final guardedValue = map['taskSlotsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       upgradePolicy: (() { final guardedValue = map['upgradePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       userAccounts: (() { final guardedValue = map['userAccounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserAccount>(guardedValue, (value) => UserAccount.fromMap((value as Map).cast<String, dynamic>()))); })(),
       vmSize: (() { final guardedValue = map['vmSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

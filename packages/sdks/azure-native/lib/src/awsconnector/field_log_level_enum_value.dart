@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of FieldLogLevelEnumValue
 class FieldLogLevelEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [FieldLogLevelEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class FieldLogLevelEnumValue {
 
   factory FieldLogLevelEnumValue.fromMap(Map<String, dynamic> map) {
     return FieldLogLevelEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

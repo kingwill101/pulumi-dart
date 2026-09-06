@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of a active directory administrator.
 class ServerExternalAdministratorResponse {
   /// Type of the sever administrator.
-  final pulumi.Input<String>? administratorType;
+  final pulumi.Input<String?>? administratorType;
   /// Azure Active Directory only Authentication enabled.
-  final pulumi.Input<bool>? azureADOnlyAuthentication;
+  final pulumi.Input<bool?>? azureADOnlyAuthentication;
   /// Login name of the server administrator.
-  final pulumi.Input<String>? login;
+  final pulumi.Input<String?>? login;
   /// Principal Type of the sever administrator.
-  final pulumi.Input<String>? principalType;
+  final pulumi.Input<String?>? principalType;
   /// SID (object ID) of the server administrator.
-  final pulumi.Input<String>? sid;
+  final pulumi.Input<String?>? sid;
   /// Tenant ID of the administrator.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ServerExternalAdministratorResponse].
   /// [administratorType] Type of the sever administrator.

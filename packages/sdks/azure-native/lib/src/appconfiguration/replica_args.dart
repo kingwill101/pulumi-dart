@@ -10,9 +10,9 @@ class ReplicaArgs {
   /// The name of the configuration store.
   final pulumi.Input<String> configStoreName;
   /// The location of the replica.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the replica.
-  final pulumi.Input<String>? replicaName;
+  final pulumi.Input<String?>? replicaName;
   /// The name of the resource group to which the container registry belongs.
   final pulumi.Input<String> resourceGroupName;
 

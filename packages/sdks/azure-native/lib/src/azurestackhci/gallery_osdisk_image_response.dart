@@ -21,7 +21,7 @@ class GalleryOSDiskImageResponse {
 
   factory GalleryOSDiskImageResponse.fromMap(Map<String, dynamic> map) {
     return GalleryOSDiskImageResponse(
-      sizeInMB: pulumi.Input.fromValue(map['sizeInMB'] as double),
+      sizeInMB: pulumi.Input.fromValue((map['sizeInMB'] as num).toDouble()),
     );
   }
 }

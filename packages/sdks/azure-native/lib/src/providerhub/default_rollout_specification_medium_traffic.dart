@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The medium traffic region configuration.
 class DefaultRolloutSpecificationMediumTraffic {
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
   /// The wait duration.
-  final pulumi.Input<String>? waitDuration;
+  final pulumi.Input<String?>? waitDuration;
 
   /// Creates a new [DefaultRolloutSpecificationMediumTraffic].
   /// [regions] Optional.

@@ -8,21 +8,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_deviceregistry_schema_args_doc}
 class SchemaArgs {
   /// Human-readable description of the schema.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Human-readable display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Format of the schema.
-  final pulumi.Input<String> format;
+  final pulumi.Input<dynamic> format;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Schema name parameter.
-  final pulumi.Input<String>? schemaName;
+  final pulumi.Input<String?>? schemaName;
   /// Schema registry name parameter.
   final pulumi.Input<String> schemaRegistryName;
   /// Type of the schema.
-  final pulumi.Input<String> schemaType;
+  final pulumi.Input<dynamic> schemaType;
   /// Schema tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SchemaArgs].
   /// [description] Human-readable description of the schema.
@@ -61,11 +61,11 @@ class SchemaArgs {
     return SchemaArgs(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      format: pulumi.Input.fromValue(map['format'] as String),
+      format: pulumi.Input.fromValue(map['format']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       schemaName: (() { final guardedValue = map['schemaName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       schemaRegistryName: pulumi.Input.fromValue(map['schemaRegistryName'] as String),
-      schemaType: pulumi.Input.fromValue(map['schemaType'] as String),
+      schemaType: pulumi.Input.fromValue(map['schemaType']),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

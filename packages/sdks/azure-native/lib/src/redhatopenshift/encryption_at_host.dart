@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether master virtual machines are encrypted at host.
-enum EncryptionAtHost {
+enum EncryptionAtHost implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
   const EncryptionAtHost(this.wireValue);
+  @override
   final String wireValue;
 
   static EncryptionAtHost fromValue(String value) {

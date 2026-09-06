@@ -6,9 +6,9 @@ import 'ipconfiguration_arm_reference.dart';
 /// LoadBalancer Backend Address properties
 class LoadBalancerBackendAddressProperties {
   /// admin state - if set to false, the address is removed from the pool
-  final pulumi.Input<String>? adminState;
+  final pulumi.Input<dynamic>? adminState;
   /// Nic Based backend-ip association
-  final pulumi.Input<IPConfigurationArmReference>? networkInterfaceIPConfiguration;
+  final pulumi.Input<IPConfigurationArmReference?>? networkInterfaceIPConfiguration;
 
   /// Creates a new [LoadBalancerBackendAddressProperties].
   /// [adminState] admin state - if set to false, the address is removed from the pool
@@ -27,7 +27,7 @@ class LoadBalancerBackendAddressProperties {
 
   factory LoadBalancerBackendAddressProperties.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendAddressProperties(
-      adminState: (() { final guardedValue = map['adminState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      adminState: (() { final guardedValue = map['adminState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       networkInterfaceIPConfiguration: (() { final guardedValue = map['networkInterfaceIPConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IPConfigurationArmReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

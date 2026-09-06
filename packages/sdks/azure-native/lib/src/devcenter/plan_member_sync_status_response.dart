@@ -6,7 +6,7 @@ import 'error_detail_response.dart';
 /// The sync status of the plan member.
 class PlanMemberSyncStatusResponse {
   /// Error response describing why the sync failed.
-  final pulumi.Input<ErrorDetailResponse>? lastSyncError;
+  final pulumi.Input<ErrorDetailResponse?>? lastSyncError;
   /// When the plan member was last synced.
   final pulumi.Input<String> lastSyncTime;
   /// The synchronization state of the plan member.

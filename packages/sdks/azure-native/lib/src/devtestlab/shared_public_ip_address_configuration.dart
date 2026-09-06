@@ -6,7 +6,7 @@ import 'inbound_nat_rule.dart';
 /// Properties of a virtual machine that determine how it is connected to a load balancer.
 class SharedPublicIpAddressConfiguration {
   /// The incoming NAT rules
-  final pulumi.Input<List<InboundNatRule>>? inboundNatRules;
+  final pulumi.Input<List<InboundNatRule>?>? inboundNatRules;
 
   /// Creates a new [SharedPublicIpAddressConfiguration].
   /// [inboundNatRules] The incoming NAT rules

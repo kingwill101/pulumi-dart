@@ -6,9 +6,9 @@ import 'key_vault_secret_properties_response.dart';
 /// BrokerAuthenticatorMethodX509Attributes properties. NOTE - Enum only type supported at a time.
 class BrokerAuthenticatorMethodX509AttributesResponse {
   /// Keyvault x509 attributes secret properties.
-  final pulumi.Input<KeyVaultSecretPropertiesResponse>? keyVault;
+  final pulumi.Input<KeyVaultSecretPropertiesResponse?>? keyVault;
   /// Secret where x509 attributes are stored.
-  final pulumi.Input<String>? secretName;
+  final pulumi.Input<String?>? secretName;
 
   /// Creates a new [BrokerAuthenticatorMethodX509AttributesResponse].
   /// [keyVault] Keyvault x509 attributes secret properties.

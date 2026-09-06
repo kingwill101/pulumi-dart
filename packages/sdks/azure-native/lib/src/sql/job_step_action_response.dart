@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The action to be executed by a job step.
 class JobStepActionResponse {
   /// The source of the action to execute.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// Type of action being executed by the job step.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The action value, for example the text of the T-SQL script to execute.
   final pulumi.Input<String> value;
 
@@ -15,11 +15,11 @@ class JobStepActionResponse {
   /// [source] The source of the action to execute.
   /// [type] Type of action being executed by the job step.
   /// [value] The action value, for example the text of the T-SQL script to execute.
-  const JobStepActionResponse({
-    this.source,
-    this.type,
+  JobStepActionResponse({
+    pulumi.Input<String?>? source,
+    pulumi.Input<String?>? type,
     required this.value,
-  });
+  }) : source = source ?? pulumi.Input.fromValue('Inline'), type = type ?? pulumi.Input.fromValue('TSql');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

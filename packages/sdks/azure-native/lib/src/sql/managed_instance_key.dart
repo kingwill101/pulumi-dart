@@ -200,4 +200,22 @@ class ManagedInstanceKey extends pulumi.CustomResource {
     thumbprint = registerOutput<String>('thumbprint');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ManagedInstanceKey] resource.
+  ManagedInstanceKey.reference(String urn)
+    : super(
+        'azure-native:sql:ManagedInstanceKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoRotationEnabled = registerOutput<bool>('autoRotationEnabled');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationDate = registerOutput<String>('creationDate');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    thumbprint = registerOutput<String>('thumbprint');
+    type = registerOutput<String>('type');
+  }
 }

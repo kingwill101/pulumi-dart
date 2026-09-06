@@ -15,11 +15,11 @@ class TermCommitmentInformationResponse {
   /// [pendingDaysForTerm] Number of Days Pending for Term Commitment
   /// [termCommitmentType] Term Commitment Type
   /// [termCommitmentTypeDuration] Term Commitment Duration. Currently Supporting P365D, P1095D
-  const TermCommitmentInformationResponse({
-    required this.pendingDaysForTerm,
+  TermCommitmentInformationResponse({
+    pulumi.Input<int>? pendingDaysForTerm,
     required this.termCommitmentType,
     required this.termCommitmentTypeDuration,
-  });
+  }) : pendingDaysForTerm = pendingDaysForTerm ?? pulumi.Input.fromValue(0);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,7 +31,7 @@ class TermCommitmentInformationResponse {
 
   factory TermCommitmentInformationResponse.fromMap(Map<String, dynamic> map) {
     return TermCommitmentInformationResponse(
-      pendingDaysForTerm: pulumi.Input.fromValue(map['pendingDaysForTerm'] as int),
+      pendingDaysForTerm: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['pendingDaysForTerm'])),
       termCommitmentType: pulumi.Input.fromValue(map['termCommitmentType'] as String),
       termCommitmentTypeDuration: pulumi.Input.fromValue(map['termCommitmentTypeDuration'] as String),
     );

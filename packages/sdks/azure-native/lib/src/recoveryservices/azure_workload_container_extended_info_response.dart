@@ -7,11 +7,11 @@ import 'inquiry_info_response.dart';
 /// Extended information of the container.
 class AzureWorkloadContainerExtendedInfoResponse {
   /// Host Os Name in case of Stand Alone and Cluster Name in case of distributed container.
-  final pulumi.Input<String>? hostServerName;
+  final pulumi.Input<String?>? hostServerName;
   /// Inquiry Status for the container.
-  final pulumi.Input<InquiryInfoResponse>? inquiryInfo;
+  final pulumi.Input<InquiryInfoResponse?>? inquiryInfo;
   /// List of the nodes in case of distributed container.
-  final pulumi.Input<List<DistributedNodesInfoResponse>>? nodesList;
+  final pulumi.Input<List<DistributedNodesInfoResponse>?>? nodesList;
 
   /// Creates a new [AzureWorkloadContainerExtendedInfoResponse].
   /// [hostServerName] Host Os Name in case of Stand Alone and Cluster Name in case of distributed container.

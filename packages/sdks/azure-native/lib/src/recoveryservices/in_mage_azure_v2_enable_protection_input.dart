@@ -6,60 +6,60 @@ import 'in_mage_azure_v2_disk_input_details.dart';
 /// VMware Azure specific enable protection input.
 class InMageAzureV2EnableProtectionInput {
   /// The DiskEncryptionSet ARM Id.
-  final pulumi.Input<String>? diskEncryptionSetId;
+  final pulumi.Input<String?>? diskEncryptionSetId;
   /// The disk type.
-  final pulumi.Input<String>? diskType;
+  final pulumi.Input<dynamic>? diskType;
   /// The disks to include list.
-  final pulumi.Input<List<InMageAzureV2DiskInputDetails>>? disksToInclude;
+  final pulumi.Input<List<InMageAzureV2DiskInputDetails>?>? disksToInclude;
   /// The selected option to enable RDP\SSH on target VM after failover. String value of SrsDataContract.EnableRDPOnTargetOption enum.
-  final pulumi.Input<String>? enableRdpOnTargetOption;
+  final pulumi.Input<String?>? enableRdpOnTargetOption;
   /// The class type.
   /// Expected value is 'InMageAzureV2'.
   final pulumi.Input<String> instanceType;
   /// License type.
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<dynamic>? licenseType;
   /// The storage account to be used for logging during replication.
-  final pulumi.Input<String>? logStorageAccountId;
+  final pulumi.Input<String?>? logStorageAccountId;
   /// The Master target Id.
-  final pulumi.Input<String>? masterTargetId;
+  final pulumi.Input<String?>? masterTargetId;
   /// The multi VM group Id.
-  final pulumi.Input<String>? multiVmGroupId;
+  final pulumi.Input<String?>? multiVmGroupId;
   /// The multi VM group name.
-  final pulumi.Input<String>? multiVmGroupName;
+  final pulumi.Input<String?>? multiVmGroupName;
   /// The Process Server Id.
-  final pulumi.Input<String>? processServerId;
+  final pulumi.Input<String?>? processServerId;
   /// The CS account Id.
-  final pulumi.Input<String>? runAsAccountId;
+  final pulumi.Input<String?>? runAsAccountId;
   /// The tags for the seed managed disks.
-  final pulumi.Input<Map<String, String>>? seedManagedDiskTags;
+  final pulumi.Input<Map<String, String>?>? seedManagedDiskTags;
   /// The SQL Server license type.
-  final pulumi.Input<String>? sqlServerLicenseType;
+  final pulumi.Input<dynamic>? sqlServerLicenseType;
   /// The storage account Id.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// The target availability set ARM Id for resource manager deployment.
-  final pulumi.Input<String>? targetAvailabilitySetId;
+  final pulumi.Input<String?>? targetAvailabilitySetId;
   /// The target availability zone.
-  final pulumi.Input<String>? targetAvailabilityZone;
+  final pulumi.Input<String?>? targetAvailabilityZone;
   /// The selected target Azure network Id.
-  final pulumi.Input<String>? targetAzureNetworkId;
+  final pulumi.Input<String?>? targetAzureNetworkId;
   /// The selected target Azure subnet Id.
-  final pulumi.Input<String>? targetAzureSubnetId;
+  final pulumi.Input<String?>? targetAzureSubnetId;
   /// The Id of the target resource group (for classic deployment) in which the failover VM is to be created.
-  final pulumi.Input<String>? targetAzureV1ResourceGroupId;
+  final pulumi.Input<String?>? targetAzureV1ResourceGroupId;
   /// The Id of the target resource group (for resource manager deployment) in which the failover VM is to be created.
-  final pulumi.Input<String>? targetAzureV2ResourceGroupId;
+  final pulumi.Input<String?>? targetAzureV2ResourceGroupId;
   /// The target azure VM Name.
-  final pulumi.Input<String>? targetAzureVmName;
+  final pulumi.Input<String?>? targetAzureVmName;
   /// The tags for the target managed disks.
-  final pulumi.Input<Map<String, String>>? targetManagedDiskTags;
+  final pulumi.Input<Map<String, String>?>? targetManagedDiskTags;
   /// The tags for the target NICs.
-  final pulumi.Input<Map<String, String>>? targetNicTags;
+  final pulumi.Input<Map<String, String>?>? targetNicTags;
   /// The proximity placement group ARM Id.
-  final pulumi.Input<String>? targetProximityPlacementGroupId;
+  final pulumi.Input<String?>? targetProximityPlacementGroupId;
   /// The target VM size.
-  final pulumi.Input<String>? targetVmSize;
+  final pulumi.Input<String?>? targetVmSize;
   /// The target VM tags.
-  final pulumi.Input<Map<String, String>>? targetVmTags;
+  final pulumi.Input<Map<String, String>?>? targetVmTags;
 
   /// Creates a new [InMageAzureV2EnableProtectionInput].
   /// [diskEncryptionSetId] The DiskEncryptionSet ARM Id.
@@ -154,11 +154,11 @@ class InMageAzureV2EnableProtectionInput {
   factory InMageAzureV2EnableProtectionInput.fromMap(Map<String, dynamic> map) {
     return InMageAzureV2EnableProtectionInput(
       diskEncryptionSetId: (() { final guardedValue = map['diskEncryptionSetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      diskType: (() { final guardedValue = map['diskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      diskType: (() { final guardedValue = map['diskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       disksToInclude: (() { final guardedValue = map['disksToInclude']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InMageAzureV2DiskInputDetails>(guardedValue, (value) => InMageAzureV2DiskInputDetails.fromMap((value as Map).cast<String, dynamic>()))); })(),
       enableRdpOnTargetOption: (() { final guardedValue = map['enableRdpOnTargetOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       logStorageAccountId: (() { final guardedValue = map['logStorageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       masterTargetId: (() { final guardedValue = map['masterTargetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       multiVmGroupId: (() { final guardedValue = map['multiVmGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -166,7 +166,7 @@ class InMageAzureV2EnableProtectionInput {
       processServerId: (() { final guardedValue = map['processServerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       runAsAccountId: (() { final guardedValue = map['runAsAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       seedManagedDiskTags: (() { final guardedValue = map['seedManagedDiskTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      sqlServerLicenseType: (() { final guardedValue = map['sqlServerLicenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sqlServerLicenseType: (() { final guardedValue = map['sqlServerLicenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetAvailabilitySetId: (() { final guardedValue = map['targetAvailabilitySetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetAvailabilityZone: (() { final guardedValue = map['targetAvailabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

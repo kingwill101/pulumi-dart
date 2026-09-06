@@ -11,19 +11,19 @@ import 'sku.dart';
 /// {@macro pulumi_healthbot_bot_args_doc}
 class BotArgs {
   /// The name of the Bot resource.
-  final pulumi.Input<String>? botName;
+  final pulumi.Input<String?>? botName;
   /// The identity of the Azure Health Bot.
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The set of properties specific to Azure Health Bot resource.
-  final pulumi.Input<HealthBotProperties>? properties;
+  final pulumi.Input<HealthBotProperties?>? properties;
   /// The name of the Bot resource group in the user subscription.
   final pulumi.Input<String> resourceGroupName;
   /// SKU of the Azure Health Bot.
   final pulumi.Input<Sku> sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [BotArgs].
   /// [botName] The name of the Bot resource.

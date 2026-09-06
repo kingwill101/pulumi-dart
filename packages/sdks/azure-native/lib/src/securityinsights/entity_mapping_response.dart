@@ -6,9 +6,9 @@ import 'field_mapping_response.dart';
 /// Single entity mapping for the alert rule
 class EntityMappingResponse {
   /// The V3 type of the mapped entity
-  final pulumi.Input<String>? entityType;
+  final pulumi.Input<String?>? entityType;
   /// array of field mappings for the given entity mapping
-  final pulumi.Input<List<FieldMappingResponse>>? fieldMappings;
+  final pulumi.Input<List<FieldMappingResponse>?>? fieldMappings;
 
   /// Creates a new [EntityMappingResponse].
   /// [entityType] The V3 type of the mapped entity

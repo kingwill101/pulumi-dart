@@ -20,9 +20,9 @@ class GetAzureFirewallResult {
   /// Properties to provide a custom autoscale configuration to this azure firewall.
   final AzureFirewallAutoscaleConfigurationResponse? autoscaleConfiguration;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// The firewallPolicy associated with this azure firewall.
   final SubResourceResponse? firewallPolicy;
   /// IP addresses associated with AzureFirewall.
@@ -32,19 +32,19 @@ class GetAzureFirewallResult {
   /// IP configuration of the Azure Firewall resource.
   final List<AzureFirewallIPConfigurationResponse>? ipConfigurations;
   /// IpGroups associated with AzureFirewall.
-  final List<AzureFirewallIpGroupsResponse> ipGroups;
+  final List<AzureFirewallIpGroupsResponse>? ipGroups;
   /// Resource location.
   final String? location;
   /// IP configuration of the Azure Firewall used for management traffic.
   final AzureFirewallIPConfigurationResponse? managementIpConfiguration;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Collection of NAT rule collections used by Azure Firewall.
   final List<AzureFirewallNatRuleCollectionResponse>? natRuleCollections;
   /// Collection of network rule collections used by Azure Firewall.
   final List<AzureFirewallNetworkRuleCollectionResponse>? networkRuleCollections;
   /// The provisioning state of the Azure firewall resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The Azure Firewall Resource SKU.
   final AzureFirewallSkuResponse? sku;
   /// Resource tags.
@@ -52,7 +52,7 @@ class GetAzureFirewallResult {
   /// The operation mode for Threat Intelligence.
   final String? threatIntelMode;
   /// Resource type.
-  final String type;
+  final String? type;
   /// The virtualHub to which the firewall belongs.
   final SubResourceResponse? virtualHub;
   /// A list of availability zones denoting where the resource needs to come from.
@@ -85,23 +85,23 @@ class GetAzureFirewallResult {
     this.additionalProperties,
     this.applicationRuleCollections,
     this.autoscaleConfiguration,
-    required this.azureApiVersion,
-    required this.etag,
+    this.azureApiVersion,
+    this.etag,
     this.firewallPolicy,
     this.hubIPAddresses,
     this.id,
     this.ipConfigurations,
-    required this.ipGroups,
+    this.ipGroups,
     this.location,
     this.managementIpConfiguration,
-    required this.name,
+    this.name,
     this.natRuleCollections,
     this.networkRuleCollections,
-    required this.provisioningState,
+    this.provisioningState,
     this.sku,
     this.tags,
     this.threatIntelMode,
-    required this.type,
+    this.type,
     this.virtualHub,
     this.zones,
   });
@@ -111,23 +111,23 @@ class GetAzureFirewallResult {
       'additionalProperties': ?additionalProperties,
       'applicationRuleCollections': ?(() { final guardedValue = applicationRuleCollections; if (guardedValue == null) return null; return pulumi.Input.encodeList<AzureFirewallApplicationRuleCollectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'autoscaleConfiguration': ?autoscaleConfiguration?.toMap(),
-      'azureApiVersion': azureApiVersion,
-      'etag': etag,
+      'azureApiVersion': ?azureApiVersion,
+      'etag': ?etag,
       'firewallPolicy': ?firewallPolicy?.toMap(),
       'hubIPAddresses': ?hubIPAddresses?.toMap(),
       'id': ?id,
       'ipConfigurations': ?(() { final guardedValue = ipConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<AzureFirewallIPConfigurationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'ipGroups': pulumi.Input.encodeList<AzureFirewallIpGroupsResponse, Map<String, dynamic>>(ipGroups, (value) => value.toMap()),
+      'ipGroups': ?(() { final guardedValue = ipGroups; if (guardedValue == null) return null; return pulumi.Input.encodeList<AzureFirewallIpGroupsResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'location': ?location,
       'managementIpConfiguration': ?managementIpConfiguration?.toMap(),
-      'name': name,
+      'name': ?name,
       'natRuleCollections': ?(() { final guardedValue = natRuleCollections; if (guardedValue == null) return null; return pulumi.Input.encodeList<AzureFirewallNatRuleCollectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'networkRuleCollections': ?(() { final guardedValue = networkRuleCollections; if (guardedValue == null) return null; return pulumi.Input.encodeList<AzureFirewallNetworkRuleCollectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'sku': ?sku?.toMap(),
       'tags': ?tags,
       'threatIntelMode': ?threatIntelMode,
-      'type': type,
+      'type': ?type,
       'virtualHub': ?virtualHub?.toMap(),
       'zones': ?zones,
     };
@@ -138,23 +138,23 @@ class GetAzureFirewallResult {
       additionalProperties: (() { final guardedValue = map['additionalProperties']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       applicationRuleCollections: (() { final guardedValue = map['applicationRuleCollections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<AzureFirewallApplicationRuleCollectionResponse>(guardedValue, (value) => AzureFirewallApplicationRuleCollectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       autoscaleConfiguration: (() { final guardedValue = map['autoscaleConfiguration']; if (guardedValue == null) return null; return AzureFirewallAutoscaleConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       firewallPolicy: (() { final guardedValue = map['firewallPolicy']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       hubIPAddresses: (() { final guardedValue = map['hubIPAddresses']; if (guardedValue == null) return null; return HubIPAddressesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipConfigurations: (() { final guardedValue = map['ipConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<AzureFirewallIPConfigurationResponse>(guardedValue, (value) => AzureFirewallIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      ipGroups: pulumi.Input.decodeList<AzureFirewallIpGroupsResponse>(map['ipGroups']!, (value) => AzureFirewallIpGroupsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      ipGroups: (() { final guardedValue = map['ipGroups']; if (guardedValue == null) return null; return pulumi.Input.decodeList<AzureFirewallIpGroupsResponse>(guardedValue, (value) => AzureFirewallIpGroupsResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       managementIpConfiguration: (() { final guardedValue = map['managementIpConfiguration']; if (guardedValue == null) return null; return AzureFirewallIPConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       natRuleCollections: (() { final guardedValue = map['natRuleCollections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<AzureFirewallNatRuleCollectionResponse>(guardedValue, (value) => AzureFirewallNatRuleCollectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       networkRuleCollections: (() { final guardedValue = map['networkRuleCollections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<AzureFirewallNetworkRuleCollectionResponse>(guardedValue, (value) => AzureFirewallNetworkRuleCollectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return AzureFirewallSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       threatIntelMode: (() { final guardedValue = map['threatIntelMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       virtualHub: (() { final guardedValue = map['virtualHub']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );

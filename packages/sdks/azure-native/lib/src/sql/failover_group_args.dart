@@ -11,23 +11,23 @@ import 'partner_info.dart';
 /// {@macro pulumi_sql_failover_group_args_doc}
 class FailoverGroupArgs {
   /// List of databases in the failover group.
-  final pulumi.Input<List<String>>? databases;
+  final pulumi.Input<List<String>?>? databases;
   /// The name of the failover group.
-  final pulumi.Input<String>? failoverGroupName;
+  final pulumi.Input<String?>? failoverGroupName;
   /// List of partner server information for the failover group.
   final pulumi.Input<List<PartnerInfo>> partnerServers;
   /// Read-only endpoint of the failover group instance.
-  final pulumi.Input<FailoverGroupReadOnlyEndpoint>? readOnlyEndpoint;
+  final pulumi.Input<FailoverGroupReadOnlyEndpoint?>? readOnlyEndpoint;
   /// Read-write endpoint of the failover group instance.
   final pulumi.Input<FailoverGroupReadWriteEndpoint> readWriteEndpoint;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// Databases secondary type on partner server.
-  final pulumi.Input<String>? secondaryType;
+  final pulumi.Input<dynamic>? secondaryType;
   /// The name of the server containing the failover group.
   final pulumi.Input<String> serverName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FailoverGroupArgs].
   /// [databases] List of databases in the failover group.
@@ -73,7 +73,7 @@ class FailoverGroupArgs {
       readOnlyEndpoint: (() { final guardedValue = map['readOnlyEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FailoverGroupReadOnlyEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       readWriteEndpoint: pulumi.Input.fromValue(FailoverGroupReadWriteEndpoint.fromMap((map['readWriteEndpoint']! as Map).cast<String, dynamic>())),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      secondaryType: (() { final guardedValue = map['secondaryType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secondaryType: (() { final guardedValue = map['secondaryType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

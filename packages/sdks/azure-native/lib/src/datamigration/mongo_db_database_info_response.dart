@@ -52,10 +52,10 @@ class MongoDbDatabaseInfoResponse {
 
   factory MongoDbDatabaseInfoResponse.fromMap(Map<String, dynamic> map) {
     return MongoDbDatabaseInfoResponse(
-      averageDocumentSize: pulumi.Input.fromValue(map['averageDocumentSize'] as double),
+      averageDocumentSize: pulumi.Input.fromValue((map['averageDocumentSize'] as num).toDouble()),
       collections: pulumi.Input.fromValue(pulumi.Input.decodeList<MongoDbCollectionInfoResponse>(map['collections']!, (value) => MongoDbCollectionInfoResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      dataSize: pulumi.Input.fromValue(map['dataSize'] as double),
-      documentCount: pulumi.Input.fromValue(map['documentCount'] as double),
+      dataSize: pulumi.Input.fromValue((map['dataSize'] as num).toDouble()),
+      documentCount: pulumi.Input.fromValue((map['documentCount'] as num).toDouble()),
       name: pulumi.Input.fromValue(map['name'] as String),
       qualifiedName: pulumi.Input.fromValue(map['qualifiedName'] as String),
       supportsSharding: pulumi.Input.fromValue(map['supportsSharding'] as bool),

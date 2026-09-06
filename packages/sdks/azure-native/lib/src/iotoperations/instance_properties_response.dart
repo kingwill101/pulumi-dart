@@ -6,7 +6,7 @@ import 'schema_registry_ref_response.dart';
 /// The properties of the Instance resource.
 class InstancePropertiesResponse {
   /// Detailed description of the Instance.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// The reference to the Schema Registry for this AIO Instance.

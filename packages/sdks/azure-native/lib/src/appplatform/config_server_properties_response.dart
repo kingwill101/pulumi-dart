@@ -7,11 +7,11 @@ import 'error_response.dart';
 /// Config server git properties payload
 class ConfigServerPropertiesResponse {
   /// Settings of config server.
-  final pulumi.Input<ConfigServerSettingsResponse>? configServer;
+  final pulumi.Input<ConfigServerSettingsResponse?>? configServer;
   /// Enabled state of the config server. This is only used in Consumption tier.
-  final pulumi.Input<String>? enabledState;
+  final pulumi.Input<String?>? enabledState;
   /// Error when apply config server settings.
-  final pulumi.Input<ErrorResponse>? error;
+  final pulumi.Input<ErrorResponse?>? error;
   /// State of the config server.
   final pulumi.Input<String> provisioningState;
 

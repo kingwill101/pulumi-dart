@@ -34,7 +34,7 @@ class RecoveryPlanPropertiesOfDrillResponse {
     return RecoveryPlanPropertiesOfDrillResponse(
       identity: pulumi.Input.fromValue(AssociatedIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())),
       recoveryPlanId: pulumi.Input.fromValue(map['recoveryPlanId'] as String),
-      recoveryPlanResourceExcludedCount: pulumi.Input.fromValue(map['recoveryPlanResourceExcludedCount'] as int),
+      recoveryPlanResourceExcludedCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['recoveryPlanResourceExcludedCount'])),
     );
   }
 }

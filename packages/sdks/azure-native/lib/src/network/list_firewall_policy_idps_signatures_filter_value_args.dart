@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_list_firewall_policy_idps_signatures_filter_value_args_doc}
 class ListFirewallPolicyIdpsSignaturesFilterValueArgs {
   /// Describes the name of the column which values will be returned
-  final pulumi.Input<String>? filterName;
+  final pulumi.Input<String?>? filterName;
   /// The name of the Firewall Policy.
   final pulumi.Input<String> firewallPolicyName;
   /// The name of the resource group.

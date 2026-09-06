@@ -6,25 +6,25 @@ import 'self_tracing_response.dart';
 /// Broker Diagnostic Trace properties
 class TracesResponse {
   /// The cache size in megabytes.
-  final pulumi.Input<int>? cacheSizeMegabytes;
+  final pulumi.Input<int?>? cacheSizeMegabytes;
   /// The toggle to enable/disable traces.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The self tracing properties.
-  final pulumi.Input<SelfTracingResponse>? selfTracing;
+  final pulumi.Input<SelfTracingResponse?>? selfTracing;
   /// The span channel capacity.
-  final pulumi.Input<int>? spanChannelCapacity;
+  final pulumi.Input<int?>? spanChannelCapacity;
 
   /// Creates a new [TracesResponse].
   /// [cacheSizeMegabytes] The cache size in megabytes.
   /// [mode] The toggle to enable/disable traces.
   /// [selfTracing] The self tracing properties.
   /// [spanChannelCapacity] The span channel capacity.
-  const TracesResponse({
-    this.cacheSizeMegabytes,
-    this.mode,
+  TracesResponse({
+    pulumi.Input<int?>? cacheSizeMegabytes,
+    pulumi.Input<String?>? mode,
     this.selfTracing,
-    this.spanChannelCapacity,
-  });
+    pulumi.Input<int?>? spanChannelCapacity,
+  }) : cacheSizeMegabytes = cacheSizeMegabytes ?? pulumi.Input.fromValue(16), mode = mode ?? pulumi.Input.fromValue('Enabled'), spanChannelCapacity = spanChannelCapacity ?? pulumi.Input.fromValue(1000);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,10 +37,10 @@ class TracesResponse {
 
   factory TracesResponse.fromMap(Map<String, dynamic> map) {
     return TracesResponse(
-      cacheSizeMegabytes: (() { final guardedValue = map['cacheSizeMegabytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cacheSizeMegabytes: (() { final guardedValue = map['cacheSizeMegabytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       selfTracing: (() { final guardedValue = map['selfTracing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SelfTracingResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      spanChannelCapacity: (() { final guardedValue = map['spanChannelCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      spanChannelCapacity: (() { final guardedValue = map['spanChannelCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

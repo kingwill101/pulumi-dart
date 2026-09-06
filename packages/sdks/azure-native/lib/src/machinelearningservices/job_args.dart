@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'auto_mljob.dart';
 
 /// {@template pulumi_machinelearningservices_job_args_doc}
 /// The set of arguments for Job.
@@ -9,9 +8,9 @@ import 'auto_mljob.dart';
 /// {@macro pulumi_machinelearningservices_job_args_doc}
 class JobArgs {
   /// The name and identifier for the Job. This is case-sensitive.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// [Required] Additional attributes of the entity.
-  final pulumi.Input<AutoMLJob> properties;
+  final pulumi.Input<dynamic> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Azure Machine Learning Workspace Name
@@ -32,7 +31,7 @@ class JobArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'properties': pulumi.Input.mapInputValue<AutoMLJob, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': properties,
       'resourceGroupName': resourceGroupName,
       'workspaceName': workspaceName,
     };
@@ -41,7 +40,7 @@ class JobArgs {
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      properties: pulumi.Input.fromValue(AutoMLJob.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.fromValue(map['properties']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );

@@ -24,6 +24,17 @@ Future<GetGuestSubscriptionResult> getGuestSubscription(
   return GetGuestSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetGuestSubscriptionResult> getGuestSubscriptionOutput(
+  GetGuestSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:computelimit:getGuestSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGuestSubscriptionResult.fromMap);
+}
+
 /// Gets the properties of a compute limit shared by the host subscription with its guest subscriptions.
 ///
 /// Uses Azure REST API version 2025-08-15.
@@ -42,4 +53,15 @@ Future<GetSharedLimitResult> getSharedLimit(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSharedLimitResult.fromMap(result);
+}
+
+pulumi.Output<GetSharedLimitResult> getSharedLimitOutput(
+  GetSharedLimitArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:computelimit:getSharedLimit',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSharedLimitResult.fromMap);
 }

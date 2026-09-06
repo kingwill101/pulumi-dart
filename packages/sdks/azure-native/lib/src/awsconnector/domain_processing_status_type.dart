@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum DomainProcessingStatusType {
+enum DomainProcessingStatusType implements pulumi.PulumiEnum<String> {
   active("Active"),
   creating("Creating"),
   deleting("Deleting"),
@@ -9,6 +11,7 @@ enum DomainProcessingStatusType {
   upgradingEngineVersion("UpgradingEngineVersion");
 
   const DomainProcessingStatusType(this.wireValue);
+  @override
   final String wireValue;
 
   static DomainProcessingStatusType fromValue(String value) {

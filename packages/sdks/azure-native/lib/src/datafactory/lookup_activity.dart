@@ -3,7 +3,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'activity_dependency.dart';
 import 'activity_policy.dart';
-import 'amazon_mwssource.dart';
 import 'dataset_reference.dart';
 import 'linked_service_reference.dart';
 import 'user_property.dart';
@@ -13,30 +12,30 @@ class LookupActivity {
   /// Lookup activity dataset reference.
   final pulumi.Input<DatasetReference> dataset;
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependency>>? dependsOn;
+  final pulumi.Input<List<ActivityDependency>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether to return first row or all rows. Default value is true. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? firstRowOnly;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReference>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReference?>? linkedServiceName;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<dynamic>? onInactiveMarkAs;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicy>? policy;
+  final pulumi.Input<ActivityPolicy?>? policy;
   /// Dataset-specific source properties, same as copy activity source.
-  final pulumi.Input<AmazonMWSSource> source;
+  final pulumi.Input<dynamic> source;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? treatDecimalAsString;
   /// Type of activity.
   /// Expected value is 'Lookup'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserProperty>>? userProperties;
+  final pulumi.Input<List<UserProperty>?>? userProperties;
 
   /// Creates a new [LookupActivity].
   /// [dataset] Lookup activity dataset reference.
@@ -78,7 +77,7 @@ class LookupActivity {
       'name': name,
       'onInactiveMarkAs': ?onInactiveMarkAs,
       'policy': ?pulumi.Input.mapOptionalInputValue<ActivityPolicy, Map<String, dynamic>>(policy, (value) => value.toMap()),
-      'source': pulumi.Input.mapInputValue<AmazonMWSSource, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'source': source,
       'state': ?state,
       'treatDecimalAsString': ?treatDecimalAsString,
       'type': type,
@@ -94,10 +93,10 @@ class LookupActivity {
       firstRowOnly: (() { final guardedValue = map['firstRowOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       linkedServiceName: (() { final guardedValue = map['linkedServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActivityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      source: pulumi.Input.fromValue(AmazonMWSSource.fromMap((map['source']! as Map).cast<String, dynamic>())),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      source: pulumi.Input.fromValue(map['source']),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       treatDecimalAsString: (() { final guardedValue = map['treatDecimalAsString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       userProperties: (() { final guardedValue = map['userProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserProperty>(guardedValue, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))); })(),

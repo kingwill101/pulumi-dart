@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The binding to a JavaScript function.
 class JavaScriptFunctionBindingResponse {
   /// The JavaScript code containing a single function definition. For example: 'function (x, y) { return x + y; }'
-  final pulumi.Input<String>? script;
+  final pulumi.Input<String?>? script;
   /// Indicates the function binding type.
   /// Expected value is 'Microsoft.StreamAnalytics/JavascriptUdf'.
   final pulumi.Input<String> type;

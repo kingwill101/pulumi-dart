@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The mode of generation to be used for generating Dockerfiles.
-enum DockerfileGenerationMode {
+enum DockerfileGenerationMode implements pulumi.PulumiEnum<String> {
   valueEnabled("enabled"),
   valueDisabled("disabled");
 
   const DockerfileGenerationMode(this.wireValue);
+  @override
   final String wireValue;
 
   static DockerfileGenerationMode fromValue(String value) {

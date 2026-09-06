@@ -12,29 +12,29 @@ class LocalUserArgs {
   /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   final pulumi.Input<String> accountName;
   /// Indicates whether ACL authorization is allowed for this user. Set it to false to disallow using ACL authorization.
-  final pulumi.Input<bool>? allowAclAuthorization;
+  final pulumi.Input<bool?>? allowAclAuthorization;
   /// Supplementary group membership. Only applicable for local users enabled for NFSv3 access.
-  final pulumi.Input<List<int>>? extendedGroups;
+  final pulumi.Input<List<int>?>? extendedGroups;
   /// An identifier for associating a group of users.
-  final pulumi.Input<int>? groupId;
+  final pulumi.Input<int?>? groupId;
   /// Indicates whether shared key exists. Set it to false to remove existing shared key.
-  final pulumi.Input<bool>? hasSharedKey;
+  final pulumi.Input<bool?>? hasSharedKey;
   /// Indicates whether ssh key exists. Set it to false to remove existing SSH key.
-  final pulumi.Input<bool>? hasSshKey;
+  final pulumi.Input<bool?>? hasSshKey;
   /// Indicates whether ssh password exists. Set it to false to remove existing SSH password.
-  final pulumi.Input<bool>? hasSshPassword;
+  final pulumi.Input<bool?>? hasSshPassword;
   /// Optional, local user home directory.
-  final pulumi.Input<String>? homeDirectory;
+  final pulumi.Input<String?>? homeDirectory;
   /// Indicates if the local user is enabled for access with NFSv3 protocol.
-  final pulumi.Input<bool>? isNFSv3Enabled;
+  final pulumi.Input<bool?>? isNFSv3Enabled;
   /// The permission scopes of the local user.
-  final pulumi.Input<List<PermissionScope>>? permissionScopes;
+  final pulumi.Input<List<PermissionScope>?>? permissionScopes;
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Optional, local user ssh authorized keys for SFTP.
-  final pulumi.Input<List<SshPublicKey>>? sshAuthorizedKeys;
+  final pulumi.Input<List<SshPublicKey>?>? sshAuthorizedKeys;
   /// The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [LocalUserArgs].
   /// [accountName] The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
@@ -89,7 +89,7 @@ class LocalUserArgs {
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       allowAclAuthorization: (() { final guardedValue = map['allowAclAuthorization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       extendedGroups: (() { final guardedValue = map['extendedGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
-      groupId: (() { final guardedValue = map['groupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      groupId: (() { final guardedValue = map['groupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       hasSharedKey: (() { final guardedValue = map['hasSharedKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       hasSshKey: (() { final guardedValue = map['hasSshKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       hasSshPassword: (() { final guardedValue = map['hasSshPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

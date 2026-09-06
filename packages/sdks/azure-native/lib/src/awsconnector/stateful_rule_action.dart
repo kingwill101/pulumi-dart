@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property action
-enum StatefulRuleAction {
+enum StatefulRuleAction implements pulumi.PulumiEnum<String> {
   aLERT("ALERT"),
   dROP("DROP"),
   pASS("PASS"),
   rEJECT("REJECT");
 
   const StatefulRuleAction(this.wireValue);
+  @override
   final String wireValue;
 
   static StatefulRuleAction fromValue(String value) {

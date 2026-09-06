@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Kind of this capability host.
-enum CapabilityHostKind {
+enum CapabilityHostKind implements pulumi.PulumiEnum<String> {
   agents("Agents");
 
   const CapabilityHostKind(this.wireValue);
+  @override
   final String wireValue;
 
   static CapabilityHostKind fromValue(String value) {

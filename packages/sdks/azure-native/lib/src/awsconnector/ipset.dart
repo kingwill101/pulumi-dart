@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of IPSet
 class IPSet {
   /// Property definition
-  final pulumi.Input<List<String>>? definition;
+  final pulumi.Input<List<String>?>? definition;
 
   /// Creates a new [IPSet].
   /// [definition] Property definition

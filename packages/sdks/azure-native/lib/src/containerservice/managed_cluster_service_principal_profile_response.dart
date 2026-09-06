@@ -7,7 +7,7 @@ class ManagedClusterServicePrincipalProfileResponse {
   /// The ID for the service principal.
   final pulumi.Input<String> clientId;
   /// The secret password associated with the service principal in plain text.
-  final pulumi.Input<String>? secret;
+  final pulumi.Input<String?>? secret;
 
   /// Creates a new [ManagedClusterServicePrincipalProfileResponse].
   /// [clientId] The ID for the service principal.

@@ -17,49 +17,49 @@ import 'wsfc_domain_credentials.dart';
 /// {@macro pulumi_sqlvirtualmachine_sql_virtual_machine_args_doc}
 class SqlVirtualMachineArgs {
   /// SQL best practices Assessment Settings.
-  final pulumi.Input<AssessmentSettings>? assessmentSettings;
+  final pulumi.Input<AssessmentSettings?>? assessmentSettings;
   /// Auto backup settings for SQL Server.
-  final pulumi.Input<AutoBackupSettings>? autoBackupSettings;
+  final pulumi.Input<AutoBackupSettings?>? autoBackupSettings;
   /// Auto patching settings for applying critical security updates to SQL virtual machine.
-  final pulumi.Input<AutoPatchingSettings>? autoPatchingSettings;
+  final pulumi.Input<AutoPatchingSettings?>? autoPatchingSettings;
   /// Enable automatic upgrade of Sql IaaS extension Agent.
-  final pulumi.Input<bool>? enableAutomaticUpgrade;
+  final pulumi.Input<bool?>? enableAutomaticUpgrade;
   /// DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server.
-  final pulumi.Input<ResourceIdentity>? identity;
+  final pulumi.Input<ResourceIdentity?>? identity;
   /// Key vault credential settings.
-  final pulumi.Input<KeyVaultCredentialSettings>? keyVaultCredentialSettings;
+  final pulumi.Input<KeyVaultCredentialSettings?>? keyVaultCredentialSettings;
   /// SQL IaaS Agent least privilege mode.
-  final pulumi.Input<String>? leastPrivilegeMode;
+  final pulumi.Input<dynamic>? leastPrivilegeMode;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// SQL Server configuration management settings.
-  final pulumi.Input<ServerConfigurationsManagementSettings>? serverConfigurationsManagementSettings;
+  final pulumi.Input<ServerConfigurationsManagementSettings?>? serverConfigurationsManagementSettings;
   /// SQL image offer. Examples include SQL2016-WS2016, SQL2017-WS2016.
-  final pulumi.Input<String>? sqlImageOffer;
+  final pulumi.Input<String?>? sqlImageOffer;
   /// SQL Server edition type.
-  final pulumi.Input<String>? sqlImageSku;
+  final pulumi.Input<dynamic>? sqlImageSku;
   /// SQL Server Management type. NOTE: This parameter is not used anymore. API will automatically detect the Sql Management, refrain from using it.
-  final pulumi.Input<String>? sqlManagement;
+  final pulumi.Input<dynamic>? sqlManagement;
   /// SQL Server license type.
-  final pulumi.Input<String>? sqlServerLicenseType;
+  final pulumi.Input<dynamic>? sqlServerLicenseType;
   /// ARM resource id of the SQL virtual machine group this SQL virtual machine is or will be part of.
-  final pulumi.Input<String>? sqlVirtualMachineGroupResourceId;
+  final pulumi.Input<String?>? sqlVirtualMachineGroupResourceId;
   /// Name of the SQL virtual machine.
-  final pulumi.Input<String>? sqlVirtualMachineName;
+  final pulumi.Input<String?>? sqlVirtualMachineName;
   /// Storage Configuration Settings.
-  final pulumi.Input<StorageConfigurationSettings>? storageConfigurationSettings;
+  final pulumi.Input<StorageConfigurationSettings?>? storageConfigurationSettings;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Virtual Machine Identity details used for Sql IaaS extension configurations.
-  final pulumi.Input<VirtualMachineIdentity>? virtualMachineIdentitySettings;
+  final pulumi.Input<VirtualMachineIdentity?>? virtualMachineIdentitySettings;
   /// ARM Resource id of underlying virtual machine created from SQL marketplace image.
-  final pulumi.Input<String>? virtualMachineResourceId;
+  final pulumi.Input<String?>? virtualMachineResourceId;
   /// Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
-  final pulumi.Input<WsfcDomainCredentials>? wsfcDomainCredentials;
+  final pulumi.Input<WsfcDomainCredentials?>? wsfcDomainCredentials;
   /// Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
-  final pulumi.Input<String>? wsfcStaticIp;
+  final pulumi.Input<String?>? wsfcStaticIp;
 
   /// Creates a new [SqlVirtualMachineArgs].
   /// [assessmentSettings] SQL best practices Assessment Settings.
@@ -84,14 +84,14 @@ class SqlVirtualMachineArgs {
   /// [virtualMachineResourceId] ARM Resource id of underlying virtual machine created from SQL marketplace image.
   /// [wsfcDomainCredentials] Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
   /// [wsfcStaticIp] Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
-  const SqlVirtualMachineArgs({
+  SqlVirtualMachineArgs({
     this.assessmentSettings,
     this.autoBackupSettings,
     this.autoPatchingSettings,
-    this.enableAutomaticUpgrade,
+    pulumi.Input<bool?>? enableAutomaticUpgrade,
     this.identity,
     this.keyVaultCredentialSettings,
-    this.leastPrivilegeMode,
+    pulumi.Input<dynamic>? leastPrivilegeMode,
     this.location,
     required this.resourceGroupName,
     this.serverConfigurationsManagementSettings,
@@ -107,7 +107,7 @@ class SqlVirtualMachineArgs {
     this.virtualMachineResourceId,
     this.wsfcDomainCredentials,
     this.wsfcStaticIp,
-  });
+  }) : enableAutomaticUpgrade = enableAutomaticUpgrade ?? pulumi.Input.fromValue(false), leastPrivilegeMode = leastPrivilegeMode ?? pulumi.Input.fromValue('NotSet');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -144,14 +144,14 @@ class SqlVirtualMachineArgs {
       enableAutomaticUpgrade: (() { final guardedValue = map['enableAutomaticUpgrade']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       keyVaultCredentialSettings: (() { final guardedValue = map['keyVaultCredentialSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyVaultCredentialSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      leastPrivilegeMode: (() { final guardedValue = map['leastPrivilegeMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      leastPrivilegeMode: (() { final guardedValue = map['leastPrivilegeMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverConfigurationsManagementSettings: (() { final guardedValue = map['serverConfigurationsManagementSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServerConfigurationsManagementSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sqlImageOffer: (() { final guardedValue = map['sqlImageOffer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sqlImageSku: (() { final guardedValue = map['sqlImageSku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sqlManagement: (() { final guardedValue = map['sqlManagement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sqlServerLicenseType: (() { final guardedValue = map['sqlServerLicenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sqlImageSku: (() { final guardedValue = map['sqlImageSku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sqlManagement: (() { final guardedValue = map['sqlManagement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sqlServerLicenseType: (() { final guardedValue = map['sqlServerLicenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sqlVirtualMachineGroupResourceId: (() { final guardedValue = map['sqlVirtualMachineGroupResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sqlVirtualMachineName: (() { final guardedValue = map['sqlVirtualMachineName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageConfigurationSettings: (() { final guardedValue = map['storageConfigurationSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StorageConfigurationSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

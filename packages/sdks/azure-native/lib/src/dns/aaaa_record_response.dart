@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An AAAA record.
 class AaaaRecordResponse {
   /// The IPv6 address of this AAAA record.
-  final pulumi.Input<String>? ipv6Address;
+  final pulumi.Input<String?>? ipv6Address;
 
   /// Creates a new [AaaaRecordResponse].
   /// [ipv6Address] The IPv6 address of this AAAA record.

@@ -6,7 +6,7 @@ import 'aml_filesystem_hsm_settings.dart';
 /// Hydration and archive settings and status
 class AmlFilesystemHsm {
   /// Specifies HSM settings of the AML file system.
-  final pulumi.Input<AmlFilesystemHsmSettings>? settings;
+  final pulumi.Input<AmlFilesystemHsmSettings?>? settings;
 
   /// Creates a new [AmlFilesystemHsm].
   /// [settings] Specifies HSM settings of the AML file system.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An Azure Cosmos DB Mongo DB Resource.
 class PrivilegeResource {
   /// The collection name the role is applied.
-  final pulumi.Input<String>? collection;
+  final pulumi.Input<String?>? collection;
   /// The database name the role is applied.
-  final pulumi.Input<String>? db;
+  final pulumi.Input<String?>? db;
 
   /// Creates a new [PrivilegeResource].
   /// [collection] The collection name the role is applied.

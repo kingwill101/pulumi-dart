@@ -6,11 +6,11 @@ import 'customer_subscription_registered_features.dart';
 /// Holds Customer subscription details. Clients can display available products to unregistered customers by explicitly passing subscription details.
 class CustomerSubscriptionDetails {
   /// Location placement Id of a subscription.
-  final pulumi.Input<String>? locationPlacementId;
+  final pulumi.Input<String?>? locationPlacementId;
   /// Quota ID of a subscription.
   final pulumi.Input<String> quotaId;
   /// List of registered feature flags for subscription.
-  final pulumi.Input<List<CustomerSubscriptionRegisteredFeatures>>? registeredFeatures;
+  final pulumi.Input<List<CustomerSubscriptionRegisteredFeatures>?>? registeredFeatures;
 
   /// Creates a new [CustomerSubscriptionDetails].
   /// [locationPlacementId] Location placement Id of a subscription.

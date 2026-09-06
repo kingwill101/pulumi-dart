@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// When matchVariable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.
-enum OwaspCrsExclusionEntrySelectorMatchOperator {
+enum OwaspCrsExclusionEntrySelectorMatchOperator implements pulumi.PulumiEnum<String> {
   valueEquals("Equals"),
   valueContains("Contains"),
   valueStartsWith("StartsWith"),
@@ -7,6 +9,7 @@ enum OwaspCrsExclusionEntrySelectorMatchOperator {
   valueEqualsAny("EqualsAny");
 
   const OwaspCrsExclusionEntrySelectorMatchOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static OwaspCrsExclusionEntrySelectorMatchOperator fromValue(String value) {

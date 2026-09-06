@@ -7,7 +7,7 @@ class HyperVToAzStackHCINicInput {
   /// Gets or sets the NIC Id.
   final pulumi.Input<String> nicId;
   /// Gets or sets the selection type of the NIC.
-  final pulumi.Input<String> selectionTypeForFailover;
+  final pulumi.Input<dynamic> selectionTypeForFailover;
   /// Gets or sets the target network Id within AzStackHCI Cluster.
   final pulumi.Input<String> targetNetworkId;
   /// Gets or sets the target test network Id within AzStackHCI Cluster.
@@ -37,7 +37,7 @@ class HyperVToAzStackHCINicInput {
   factory HyperVToAzStackHCINicInput.fromMap(Map<String, dynamic> map) {
     return HyperVToAzStackHCINicInput(
       nicId: pulumi.Input.fromValue(map['nicId'] as String),
-      selectionTypeForFailover: pulumi.Input.fromValue(map['selectionTypeForFailover'] as String),
+      selectionTypeForFailover: pulumi.Input.fromValue(map['selectionTypeForFailover']),
       targetNetworkId: pulumi.Input.fromValue(map['targetNetworkId'] as String),
       testNetworkId: pulumi.Input.fromValue(map['testNetworkId'] as String),
     );

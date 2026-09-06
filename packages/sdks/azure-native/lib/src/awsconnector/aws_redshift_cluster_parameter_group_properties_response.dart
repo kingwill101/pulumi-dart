@@ -7,15 +7,15 @@ import 'tag_response.dart';
 /// Definition of awsRedshiftClusterParameterGroup
 class AwsRedshiftClusterParameterGroupPropertiesResponse {
   /// A description of the parameter group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Amazon Redshift engine version to which the cluster parameter group applies. The cluster engine version determines the set of parameters.
-  final pulumi.Input<String>? parameterGroupFamily;
+  final pulumi.Input<String?>? parameterGroupFamily;
   /// The name of the cluster parameter group.
-  final pulumi.Input<String>? parameterGroupName;
+  final pulumi.Input<String?>? parameterGroupName;
   /// An array of parameters to be modified. A maximum of 20 parameters can be modified in a single request.
-  final pulumi.Input<List<ParameterRedshiftClusterParameterGroupResponse>>? parameters;
+  final pulumi.Input<List<ParameterRedshiftClusterParameterGroupResponse>?>? parameters;
   /// An array of key-value pairs to apply to this resource.
-  final pulumi.Input<List<TagResponse>>? tags;
+  final pulumi.Input<List<TagResponse>?>? tags;
 
   /// Creates a new [AwsRedshiftClusterParameterGroupPropertiesResponse].
   /// [description] A description of the parameter group.

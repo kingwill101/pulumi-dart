@@ -79,7 +79,43 @@ class WebAppSiteExtension extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    authors = registerOutput<List<String>?>('authors');
+    authors = registerOutput<List<String>?>('authors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    comment = registerOutput<String?>('comment');
+    description = registerOutput<String?>('description');
+    downloadCount = registerOutput<int?>('downloadCount');
+    extensionId = registerOutput<String?>('extensionId');
+    extensionType = registerOutput<String?>('extensionType');
+    extensionUrl = registerOutput<String?>('extensionUrl');
+    feedUrl = registerOutput<String?>('feedUrl');
+    iconUrl = registerOutput<String?>('iconUrl');
+    installedDateTime = registerOutput<String?>('installedDateTime');
+    installerCommandLineParams = registerOutput<String?>('installerCommandLineParams');
+    kind = registerOutput<String?>('kind');
+    licenseUrl = registerOutput<String?>('licenseUrl');
+    localIsLatestVersion = registerOutput<bool?>('localIsLatestVersion');
+    localPath = registerOutput<String?>('localPath');
+    this.name = registerOutput<String>('name');
+    projectUrl = registerOutput<String?>('projectUrl');
+    provisioningState = registerOutput<String?>('provisioningState');
+    publishedDateTime = registerOutput<String?>('publishedDateTime');
+    summary = registerOutput<String?>('summary');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    title = registerOutput<String?>('title');
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [WebAppSiteExtension] resource.
+  WebAppSiteExtension.reference(String urn)
+    : super(
+        'azure-native:web:WebAppSiteExtension',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authors = registerOutput<List<String>?>('authors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     comment = registerOutput<String?>('comment');
     description = registerOutput<String?>('description');

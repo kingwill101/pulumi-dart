@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Custom Domain binding type.
-enum BindingType {
+enum BindingType implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueSniEnabled("SniEnabled"),
   valueAuto("Auto");
 
   const BindingType(this.wireValue);
+  @override
   final String wireValue;
 
   static BindingType fromValue(String value) {

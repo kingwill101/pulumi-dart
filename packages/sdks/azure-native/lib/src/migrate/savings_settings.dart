@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Savings settings class.
 class SavingsSettings {
   /// Gets or sets the Azure offer code.
-  final pulumi.Input<String>? azureOfferCode;
+  final pulumi.Input<dynamic>? azureOfferCode;
   /// Gets or sets the savings options.
-  final pulumi.Input<String>? savingsOptions;
+  final pulumi.Input<dynamic>? savingsOptions;
 
   /// Creates a new [SavingsSettings].
   /// [azureOfferCode] Gets or sets the Azure offer code.
@@ -26,8 +26,8 @@ class SavingsSettings {
 
   factory SavingsSettings.fromMap(Map<String, dynamic> map) {
     return SavingsSettings(
-      azureOfferCode: (() { final guardedValue = map['azureOfferCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      savingsOptions: (() { final guardedValue = map['savingsOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      azureOfferCode: (() { final guardedValue = map['azureOfferCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      savingsOptions: (() { final guardedValue = map['savingsOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

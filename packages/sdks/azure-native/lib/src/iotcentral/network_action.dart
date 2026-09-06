@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The default network action to apply.
-enum NetworkAction {
+enum NetworkAction implements pulumi.PulumiEnum<String> {
   valueAllow("Allow"),
   valueDeny("Deny");
 
   const NetworkAction(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkAction fromValue(String value) {

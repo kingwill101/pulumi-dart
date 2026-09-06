@@ -201,4 +201,22 @@ class WorkspaceManagerMember extends pulumi.CustomResource {
     targetWorkspaceTenantId = registerOutput<String>('targetWorkspaceTenantId');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [WorkspaceManagerMember] resource.
+  WorkspaceManagerMember.reference(String urn)
+    : super(
+        'azure-native:securityinsights:WorkspaceManagerMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetWorkspaceResourceId = registerOutput<String>('targetWorkspaceResourceId');
+    targetWorkspaceTenantId = registerOutput<String>('targetWorkspaceTenantId');
+    type = registerOutput<String>('type');
+  }
 }

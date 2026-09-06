@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies the linux configuration for update management.
 class OsProfileLinuxConfiguration {
   /// Specifies the assessment mode.
-  final pulumi.Input<String>? assessmentMode;
+  final pulumi.Input<String?>? assessmentMode;
   /// Specifies the patch mode.
-  final pulumi.Input<String>? patchMode;
+  final pulumi.Input<String?>? patchMode;
 
   /// Creates a new [OsProfileLinuxConfiguration].
   /// [assessmentMode] Specifies the assessment mode.

@@ -14,34 +14,34 @@ import 'backend_tls_properties.dart';
 /// {@macro pulumi_apimanagement_backend_args_doc}
 class BackendArgs {
   /// Identifier of the Backend entity. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? backendId;
+  final pulumi.Input<String?>? backendId;
   /// Backend Circuit Breaker Configuration
-  final pulumi.Input<BackendCircuitBreaker>? circuitBreaker;
+  final pulumi.Input<BackendCircuitBreaker?>? circuitBreaker;
   /// Backend Credentials Contract Properties
-  final pulumi.Input<BackendCredentialsContract>? credentials;
+  final pulumi.Input<BackendCredentialsContract?>? credentials;
   /// Backend Description.
-  final pulumi.Input<String>? description;
-  final pulumi.Input<BackendBaseParametersPool>? pool;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<BackendBaseParametersPool?>? pool;
   /// Backend Properties contract
-  final pulumi.Input<BackendProperties>? properties;
+  final pulumi.Input<BackendProperties?>? properties;
   /// Backend communication protocol. Required when backend type is 'Single'.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<dynamic>? protocol;
   /// Backend gateway Contract Properties
-  final pulumi.Input<BackendProxyContract>? proxy;
+  final pulumi.Input<BackendProxyContract?>? proxy;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Management Uri of the Resource in External System. This URL can be the Arm Resource Id of Logic Apps, Function Apps or API Apps.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
   /// Backend Title.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
   /// Backend TLS Properties
-  final pulumi.Input<BackendTlsProperties>? tls;
+  final pulumi.Input<BackendTlsProperties?>? tls;
   /// Type of the backend. A backend can be either Single or Pool.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
   /// Runtime Url of the Backend. Required when backend type is 'Single'.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [BackendArgs].
   /// [backendId] Identifier of the Backend entity. Must be unique in the current API Management service instance.
@@ -105,14 +105,14 @@ class BackendArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pool: (() { final guardedValue = map['pool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackendBaseParametersPool.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackendProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       proxy: (() { final guardedValue = map['proxy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackendProxyContract.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
       title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tls: (() { final guardedValue = map['tls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackendTlsProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

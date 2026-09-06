@@ -8,27 +8,27 @@ class SapNetWeaverProviderInstanceProperties {
   /// Expected value is 'SapNetWeaver'.
   final pulumi.Input<String> providerType;
   /// Gets or sets the SAP Client ID.
-  final pulumi.Input<String>? sapClientId;
+  final pulumi.Input<String?>? sapClientId;
   /// Gets or sets the list of HostFile Entries
-  final pulumi.Input<List<String>>? sapHostFileEntries;
+  final pulumi.Input<List<String>?>? sapHostFileEntries;
   /// Gets or sets the target virtual machine IP Address/FQDN.
-  final pulumi.Input<String>? sapHostname;
+  final pulumi.Input<String?>? sapHostname;
   /// Gets or sets the instance number of SAP NetWeaver.
-  final pulumi.Input<String>? sapInstanceNr;
+  final pulumi.Input<String?>? sapInstanceNr;
   /// Sets the SAP password.
-  final pulumi.Input<String>? sapPassword;
+  final pulumi.Input<String?>? sapPassword;
   /// Gets or sets the key vault URI to secret with the SAP password.
-  final pulumi.Input<String>? sapPasswordUri;
+  final pulumi.Input<String?>? sapPasswordUri;
   /// Gets or sets the SAP HTTP port number.
-  final pulumi.Input<String>? sapPortNumber;
+  final pulumi.Input<String?>? sapPortNumber;
   /// Gets or sets the SAP System Identifier
-  final pulumi.Input<String>? sapSid;
+  final pulumi.Input<String?>? sapSid;
   /// Gets or sets the SAP user name.
-  final pulumi.Input<String>? sapUsername;
+  final pulumi.Input<String?>? sapUsername;
   /// Gets or sets the blob URI to SSL certificate for the SAP system.
-  final pulumi.Input<String>? sslCertificateUri;
+  final pulumi.Input<String?>? sslCertificateUri;
   /// Gets or sets certificate preference if secure communication is enabled.
-  final pulumi.Input<String>? sslPreference;
+  final pulumi.Input<dynamic>? sslPreference;
 
   /// Creates a new [SapNetWeaverProviderInstanceProperties].
   /// [providerType] The provider type. For example, the value can be SapHana.
@@ -88,7 +88,7 @@ class SapNetWeaverProviderInstanceProperties {
       sapSid: (() { final guardedValue = map['sapSid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sapUsername: (() { final guardedValue = map['sapUsername']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sslCertificateUri: (() { final guardedValue = map['sslCertificateUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sslPreference: (() { final guardedValue = map['sslPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sslPreference: (() { final guardedValue = map['sslPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Disk Encryption Key Information (BitLocker Encryption Key (BEK) on Windows).
 class DiskEncryptionKeyInfo {
   /// The KeyVault resource ARM id for secret.
-  final pulumi.Input<String>? keyVaultResourceArmId;
+  final pulumi.Input<String?>? keyVaultResourceArmId;
   /// The secret url / identifier.
-  final pulumi.Input<String>? secretIdentifier;
+  final pulumi.Input<String?>? secretIdentifier;
 
   /// Creates a new [DiskEncryptionKeyInfo].
   /// [keyVaultResourceArmId] The KeyVault resource ARM id for secret.

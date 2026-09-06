@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Fields for tracking resource move
 class ResourceMoveDetailsResponse {
   /// Denotes whether move operation is in progress
-  final pulumi.Input<String>? operationInProgress;
+  final pulumi.Input<String?>? operationInProgress;
   /// Denotes the timeout of the operation to finish
-  final pulumi.Input<String>? operationInProgressLockTimeoutInUTC;
+  final pulumi.Input<String?>? operationInProgressLockTimeoutInUTC;
 
   /// Creates a new [ResourceMoveDetailsResponse].
   /// [operationInProgress] Denotes whether move operation is in progress

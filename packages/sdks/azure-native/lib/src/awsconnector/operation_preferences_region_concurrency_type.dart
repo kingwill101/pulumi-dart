@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The concurrency type of deploying StackSets operations in regions, could be in parallel or one region at a time
-enum OperationPreferencesRegionConcurrencyType {
+enum OperationPreferencesRegionConcurrencyType implements pulumi.PulumiEnum<String> {
   pARALLEL("PARALLEL"),
   sEQUENTIAL("SEQUENTIAL");
 
   const OperationPreferencesRegionConcurrencyType(this.wireValue);
+  @override
   final String wireValue;
 
   static OperationPreferencesRegionConcurrencyType fromValue(String value) {

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The protection policy of a virtual machine scale set VM.
 class VirtualMachineScaleSetVMProtectionPolicyResponse {
   /// Indicates that the virtual machine scale set VM shouldn't be considered for deletion during a scale-in operation.
-  final pulumi.Input<bool>? protectFromScaleIn;
+  final pulumi.Input<bool?>? protectFromScaleIn;
   /// Indicates that model updates or actions (including scale-in) initiated on the virtual machine scale set should not be applied to the virtual machine scale set VM.
-  final pulumi.Input<bool>? protectFromScaleSetActions;
+  final pulumi.Input<bool?>? protectFromScaleSetActions;
 
   /// Creates a new [VirtualMachineScaleSetVMProtectionPolicyResponse].
   /// [protectFromScaleIn] Indicates that the virtual machine scale set VM shouldn't be considered for deletion during a scale-in operation.

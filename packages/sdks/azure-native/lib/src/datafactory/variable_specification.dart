@@ -7,7 +7,7 @@ class VariableSpecification {
   /// Default value of variable.
   final pulumi.Input<dynamic>? defaultValue;
   /// Variable type.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [VariableSpecification].
   /// [defaultValue] Default value of variable.
@@ -27,7 +27,7 @@ class VariableSpecification {
   factory VariableSpecification.fromMap(Map<String, dynamic> map) {
     return VariableSpecification(
       defaultValue: (() { final guardedValue = map['defaultValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

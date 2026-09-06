@@ -11,7 +11,7 @@ class ReplicationNetworkMappingArgs {
   /// Primary fabric name.
   final pulumi.Input<String> fabricName;
   /// Network mapping name.
-  final pulumi.Input<String>? networkMappingName;
+  final pulumi.Input<String?>? networkMappingName;
   /// Primary network name.
   final pulumi.Input<String> networkName;
   /// Input properties for creating network mapping.

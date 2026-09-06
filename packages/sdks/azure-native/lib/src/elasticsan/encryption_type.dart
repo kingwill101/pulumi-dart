@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of encryption
-enum EncryptionType {
+enum EncryptionType implements pulumi.PulumiEnum<String> {
   valueEncryptionAtRestWithPlatformKey("EncryptionAtRestWithPlatformKey"),
   valueEncryptionAtRestWithCustomerManagedKey("EncryptionAtRestWithCustomerManagedKey");
 
   const EncryptionType(this.wireValue);
+  @override
   final String wireValue;
 
   static EncryptionType fromValue(String value) {

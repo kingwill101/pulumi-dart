@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Routing identity type for topic spaces configuration.
-enum RoutingIdentityType {
+enum RoutingIdentityType implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueSystemAssigned("SystemAssigned"),
   valueUserAssigned("UserAssigned");
 
   const RoutingIdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static RoutingIdentityType fromValue(String value) {

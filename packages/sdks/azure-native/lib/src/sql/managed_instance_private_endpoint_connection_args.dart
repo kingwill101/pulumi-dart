@@ -12,10 +12,10 @@ class ManagedInstancePrivateEndpointConnectionArgs {
   /// The name of the managed instance.
   final pulumi.Input<String> managedInstanceName;
   /// Private endpoint which the connection belongs to.
-  final pulumi.Input<ManagedInstancePrivateEndpointProperty>? privateEndpoint;
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<ManagedInstancePrivateEndpointProperty?>? privateEndpoint;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// Connection State of the Private Endpoint Connection.
-  final pulumi.Input<ManagedInstancePrivateLinkServiceConnectionStateProperty>? privateLinkServiceConnectionState;
+  final pulumi.Input<ManagedInstancePrivateLinkServiceConnectionStateProperty?>? privateLinkServiceConnectionState;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
 

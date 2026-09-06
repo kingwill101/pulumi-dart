@@ -8,41 +8,41 @@ import 'system_data_response.dart';
 /// Result data returned by getKustoPool.
 class GetKustoPoolResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The Kusto Pool data ingestion URI.
-  final String dataIngestionUri;
+  final String? dataIngestionUri;
   /// A boolean value that indicates if the purge operations are enabled.
   final bool? enablePurge;
   /// A boolean value that indicates if the streaming ingest is enabled.
   final bool? enableStreamingIngest;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// List of the Kusto Pool's language extensions.
-  final LanguageExtensionsListResponse languageExtensions;
+  final LanguageExtensionsListResponse? languageExtensions;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Optimized auto scale definition.
   final OptimizedAutoscaleResponse? optimizedAutoscale;
   /// The provisioned state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The SKU of the kusto pool.
-  final AzureSkuResponse sku;
+  final AzureSkuResponse? sku;
   /// The state of the resource.
-  final String state;
+  final String? state;
   /// The reason for the Kusto Pool's current state.
-  final String stateReason;
+  final String? stateReason;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// The Kusto Pool URI.
-  final String uri;
+  final String? uri;
   /// The workspace unique identifier.
   final String? workspaceUID;
 
@@ -66,72 +66,72 @@ class GetKustoPoolResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uri] The Kusto Pool URI.
   /// [workspaceUID] The workspace unique identifier.
-  const GetKustoPoolResult({
-    required this.azureApiVersion,
-    required this.dataIngestionUri,
-    this.enablePurge,
-    this.enableStreamingIngest,
-    required this.etag,
-    required this.id,
-    required this.languageExtensions,
-    required this.location,
-    required this.name,
+  GetKustoPoolResult({
+    this.azureApiVersion,
+    this.dataIngestionUri,
+    bool? enablePurge,
+    bool? enableStreamingIngest,
+    this.etag,
+    this.id,
+    this.languageExtensions,
+    this.location,
+    this.name,
     this.optimizedAutoscale,
-    required this.provisioningState,
-    required this.sku,
-    required this.state,
-    required this.stateReason,
-    required this.systemData,
+    this.provisioningState,
+    this.sku,
+    this.state,
+    this.stateReason,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.uri,
+    this.type,
+    this.uri,
     this.workspaceUID,
-  });
+  }) : enablePurge = enablePurge ?? false, enableStreamingIngest = enableStreamingIngest ?? false;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'dataIngestionUri': dataIngestionUri,
+      'azureApiVersion': ?azureApiVersion,
+      'dataIngestionUri': ?dataIngestionUri,
       'enablePurge': ?enablePurge,
       'enableStreamingIngest': ?enableStreamingIngest,
-      'etag': etag,
-      'id': id,
-      'languageExtensions': languageExtensions.toMap(),
-      'location': location,
-      'name': name,
+      'etag': ?etag,
+      'id': ?id,
+      'languageExtensions': ?languageExtensions?.toMap(),
+      'location': ?location,
+      'name': ?name,
       'optimizedAutoscale': ?optimizedAutoscale?.toMap(),
-      'provisioningState': provisioningState,
-      'sku': sku.toMap(),
-      'state': state,
-      'stateReason': stateReason,
-      'systemData': systemData.toMap(),
+      'provisioningState': ?provisioningState,
+      'sku': ?sku?.toMap(),
+      'state': ?state,
+      'stateReason': ?stateReason,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'uri': uri,
+      'type': ?type,
+      'uri': ?uri,
       'workspaceUID': ?workspaceUID,
     };
   }
 
   factory GetKustoPoolResult.fromMap(Map<String, dynamic> map) {
     return GetKustoPoolResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      dataIngestionUri: map['dataIngestionUri'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dataIngestionUri: (() { final guardedValue = map['dataIngestionUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enablePurge: (() { final guardedValue = map['enablePurge']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       enableStreamingIngest: (() { final guardedValue = map['enableStreamingIngest']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      languageExtensions: LanguageExtensionsListResponse.fromMap((map['languageExtensions']! as Map).cast<String, dynamic>()),
-      location: map['location'] as String,
-      name: map['name'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      languageExtensions: (() { final guardedValue = map['languageExtensions']; if (guardedValue == null) return null; return LanguageExtensionsListResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       optimizedAutoscale: (() { final guardedValue = map['optimizedAutoscale']; if (guardedValue == null) return null; return OptimizedAutoscaleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      provisioningState: map['provisioningState'] as String,
-      sku: AzureSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      state: map['state'] as String,
-      stateReason: map['stateReason'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return AzureSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      stateReason: (() { final guardedValue = map['stateReason']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      uri: map['uri'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return guardedValue as String; })(),
       workspaceUID: (() { final guardedValue = map['workspaceUID']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

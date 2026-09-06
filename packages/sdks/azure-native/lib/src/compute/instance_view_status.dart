@@ -6,15 +6,15 @@ import 'status_level_types.dart';
 /// Instance view status.
 class InstanceViewStatus {
   /// The status code.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// The short localizable label for the status.
-  final pulumi.Input<String>? displayStatus;
+  final pulumi.Input<String?>? displayStatus;
   /// The level code.
-  final pulumi.Input<StatusLevelTypes>? level;
+  final pulumi.Input<StatusLevelTypes?>? level;
   /// The detailed status message, including for alerts and error messages.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The time of the status.
-  final pulumi.Input<String>? time;
+  final pulumi.Input<String?>? time;
 
   /// Creates a new [InstanceViewStatus].
   /// [code] The status code.

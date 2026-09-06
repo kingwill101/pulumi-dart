@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The role definition assigned to the environment creator on backing resources.
 class ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment {
   /// A map of roles to assign to the environment creator.
-  final pulumi.Input<List<String>>? roles;
+  final pulumi.Input<List<String>?>? roles;
 
   /// Creates a new [ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment].
   /// [roles] A map of roles to assign to the environment creator.

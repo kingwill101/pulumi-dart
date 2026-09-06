@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Action when client IP address is matched.
-enum IPRuleAction {
+enum IPRuleAction implements pulumi.PulumiEnum<String> {
   allow("Allow");
 
   const IPRuleAction(this.wireValue);
+  @override
   final String wireValue;
 
   static IPRuleAction fromValue(String value) {

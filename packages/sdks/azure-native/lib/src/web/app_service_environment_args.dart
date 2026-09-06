@@ -12,41 +12,41 @@ import 'virtual_network_profile.dart';
 /// {@macro pulumi_web_app_service_environment_args_doc}
 class AppServiceEnvironmentArgs {
   /// Custom settings for changing the behavior of the App Service Environment.
-  final pulumi.Input<List<NameValuePair>>? clusterSettings;
+  final pulumi.Input<List<NameValuePair>?>? clusterSettings;
   /// Full view of the custom domain suffix configuration for ASEv3.
-  final pulumi.Input<CustomDnsSuffixConfiguration>? customDnsSuffixConfiguration;
+  final pulumi.Input<CustomDnsSuffixConfiguration?>? customDnsSuffixConfiguration;
   /// Dedicated Host Count
-  final pulumi.Input<int>? dedicatedHostCount;
+  final pulumi.Input<int?>? dedicatedHostCount;
   /// DNS suffix of the App Service Environment.
-  final pulumi.Input<String>? dnsSuffix;
+  final pulumi.Input<String?>? dnsSuffix;
   /// Scale factor for front-ends.
-  final pulumi.Input<int>? frontEndScaleFactor;
+  final pulumi.Input<int?>? frontEndScaleFactor;
   /// Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
-  final pulumi.Input<String>? internalLoadBalancingMode;
+  final pulumi.Input<dynamic>? internalLoadBalancingMode;
   /// Number of IP SSL addresses reserved for the App Service Environment.
-  final pulumi.Input<int>? ipsslAddressCount;
+  final pulumi.Input<int?>? ipsslAddressCount;
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Front-end VM size, e.g. "Medium", "Large".
-  final pulumi.Input<String>? multiSize;
+  final pulumi.Input<String?>? multiSize;
   /// Name of the App Service Environment.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Full view of networking configuration for an ASE.
-  final pulumi.Input<AseV3NetworkingConfiguration>? networkingConfiguration;
+  final pulumi.Input<AseV3NetworkingConfiguration?>? networkingConfiguration;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Upgrade Preference
-  final pulumi.Input<String>? upgradePreference;
+  final pulumi.Input<dynamic>? upgradePreference;
   /// User added ip ranges to whitelist on ASE db
-  final pulumi.Input<List<String>>? userWhitelistedIpRanges;
+  final pulumi.Input<List<String>?>? userWhitelistedIpRanges;
   /// Description of the Virtual Network.
   final pulumi.Input<VirtualNetworkProfile> virtualNetwork;
   /// Whether or not this App Service Environment is zone-redundant.
-  final pulumi.Input<bool>? zoneRedundant;
+  final pulumi.Input<bool?>? zoneRedundant;
 
   /// Creates a new [AppServiceEnvironmentArgs].
   /// [clusterSettings] Custom settings for changing the behavior of the App Service Environment.
@@ -67,7 +67,7 @@ class AppServiceEnvironmentArgs {
   /// [userWhitelistedIpRanges] User added ip ranges to whitelist on ASE db
   /// [virtualNetwork] Description of the Virtual Network.
   /// [zoneRedundant] Whether or not this App Service Environment is zone-redundant.
-  const AppServiceEnvironmentArgs({
+  AppServiceEnvironmentArgs({
     this.clusterSettings,
     this.customDnsSuffixConfiguration,
     this.dedicatedHostCount,
@@ -82,11 +82,11 @@ class AppServiceEnvironmentArgs {
     this.networkingConfiguration,
     required this.resourceGroupName,
     this.tags,
-    this.upgradePreference,
+    pulumi.Input<dynamic>? upgradePreference,
     this.userWhitelistedIpRanges,
     required this.virtualNetwork,
     this.zoneRedundant,
-  });
+  }) : upgradePreference = upgradePreference ?? pulumi.Input.fromValue('None');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -115,11 +115,11 @@ class AppServiceEnvironmentArgs {
     return AppServiceEnvironmentArgs(
       clusterSettings: (() { final guardedValue = map['clusterSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NameValuePair>(guardedValue, (value) => NameValuePair.fromMap((value as Map).cast<String, dynamic>()))); })(),
       customDnsSuffixConfiguration: (() { final guardedValue = map['customDnsSuffixConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomDnsSuffixConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      dedicatedHostCount: (() { final guardedValue = map['dedicatedHostCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dedicatedHostCount: (() { final guardedValue = map['dedicatedHostCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       dnsSuffix: (() { final guardedValue = map['dnsSuffix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      frontEndScaleFactor: (() { final guardedValue = map['frontEndScaleFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      internalLoadBalancingMode: (() { final guardedValue = map['internalLoadBalancingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ipsslAddressCount: (() { final guardedValue = map['ipsslAddressCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      frontEndScaleFactor: (() { final guardedValue = map['frontEndScaleFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      internalLoadBalancingMode: (() { final guardedValue = map['internalLoadBalancingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      ipsslAddressCount: (() { final guardedValue = map['ipsslAddressCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       multiSize: (() { final guardedValue = map['multiSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -127,7 +127,7 @@ class AppServiceEnvironmentArgs {
       networkingConfiguration: (() { final guardedValue = map['networkingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AseV3NetworkingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      upgradePreference: (() { final guardedValue = map['upgradePreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      upgradePreference: (() { final guardedValue = map['upgradePreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       userWhitelistedIpRanges: (() { final guardedValue = map['userWhitelistedIpRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       virtualNetwork: pulumi.Input.fromValue(VirtualNetworkProfile.fromMap((map['virtualNetwork']! as Map).cast<String, dynamic>())),
       zoneRedundant: (() { final guardedValue = map['zoneRedundant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

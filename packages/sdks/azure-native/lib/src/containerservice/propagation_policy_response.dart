@@ -6,7 +6,7 @@ import 'placement_profile_response.dart';
 /// The propagation to be used for provisioning the namespace among the fleet.
 class PropagationPolicyResponse {
   /// The profile to be used for propagation via placement.
-  final pulumi.Input<PlacementProfileResponse>? placementProfile;
+  final pulumi.Input<PlacementProfileResponse?>? placementProfile;
   /// The type of the policy to be used. Default is Placement.
   final pulumi.Input<String> type;
 

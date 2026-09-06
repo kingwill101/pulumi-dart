@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Cert based security principal with Ledger RoleName
 class CertBasedSecurityPrincipalResponse {
   /// Public key of the user cert (.pem or .cer)
-  final pulumi.Input<String>? cert;
+  final pulumi.Input<String?>? cert;
   /// LedgerRole associated with the Security Principal of Ledger
-  final pulumi.Input<String>? ledgerRoleName;
+  final pulumi.Input<String?>? ledgerRoleName;
 
   /// Creates a new [CertBasedSecurityPrincipalResponse].
   /// [cert] Public key of the user cert (.pem or .cer)

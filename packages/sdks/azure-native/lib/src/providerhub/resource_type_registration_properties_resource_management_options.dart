@@ -8,11 +8,11 @@ import 'resource_type_registration_properties_resource_management_options_nested
 /// Resource management options.
 class ResourceTypeRegistrationPropertiesResourceManagementOptions {
   /// Batch provisioning support.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport>? batchProvisioningSupport;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport?>? batchProvisioningSupport;
   /// Delete dependencies.
-  final pulumi.Input<List<DeleteDependency>>? deleteDependencies;
+  final pulumi.Input<List<DeleteDependency>?>? deleteDependencies;
   /// Nested provisioning support.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupport>? nestedProvisioningSupport;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupport?>? nestedProvisioningSupport;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceManagementOptions].
   /// [batchProvisioningSupport] Batch provisioning support.

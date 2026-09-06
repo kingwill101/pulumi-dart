@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_delegatednetwork_controller_details_args_doc}
 class ControllerDetailsArgs {
   /// Location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The purpose of the dnc controller resource.
-  final pulumi.Input<String>? purpose;
+  final pulumi.Input<dynamic>? purpose;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ControllerDetailsArgs].
   /// [location] Location of the resource.
@@ -24,13 +24,13 @@ class ControllerDetailsArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
   /// [tags] The resource tags.
-  const ControllerDetailsArgs({
+  ControllerDetailsArgs({
     this.location,
-    this.purpose,
+    pulumi.Input<dynamic>? purpose,
     required this.resourceGroupName,
     this.resourceName,
     this.tags,
-  });
+  }) : purpose = purpose ?? pulumi.Input.fromValue('prod');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,7 +45,7 @@ class ControllerDetailsArgs {
   factory ControllerDetailsArgs.fromMap(Map<String, dynamic> map) {
     return ControllerDetailsArgs(
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      purpose: (() { final guardedValue = map['purpose']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      purpose: (() { final guardedValue = map['purpose']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: (() { final guardedValue = map['resourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

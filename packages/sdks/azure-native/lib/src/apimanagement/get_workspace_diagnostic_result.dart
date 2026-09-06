@@ -8,7 +8,7 @@ class GetWorkspaceDiagnosticResult {
   /// Specifies for what type of messages sampling settings should not apply.
   final String? alwaysLog;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Diagnostic settings for incoming/outgoing HTTP messages to the Backend
   final PipelineDiagnosticSettingsResponse? backend;
   /// Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
@@ -16,21 +16,21 @@ class GetWorkspaceDiagnosticResult {
   /// Sets correlation protocol to use for Application Insights diagnostics.
   final String? httpCorrelationProtocol;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Log the ClientIP. Default is false.
   final bool? logClientIp;
   /// Resource Id of a target logger.
-  final String loggerId;
+  final String? loggerId;
   /// Emit custom metrics via emit-metric policy. Applicable only to Application Insights diagnostic settings.
   final bool? metrics;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The format of the Operation Name for Application Insights telemetries. Default is Name.
   final String? operationNameFormat;
   /// Sampling settings for Diagnostic.
   final SamplingSettingsResponse? sampling;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// The verbosity level applied to traces emitted by trace policies.
   final String? verbosity;
 
@@ -51,36 +51,36 @@ class GetWorkspaceDiagnosticResult {
   /// [verbosity] The verbosity level applied to traces emitted by trace policies.
   const GetWorkspaceDiagnosticResult({
     this.alwaysLog,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.backend,
     this.frontend,
     this.httpCorrelationProtocol,
-    required this.id,
+    this.id,
     this.logClientIp,
-    required this.loggerId,
+    this.loggerId,
     this.metrics,
-    required this.name,
+    this.name,
     this.operationNameFormat,
     this.sampling,
-    required this.type,
+    this.type,
     this.verbosity,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'alwaysLog': ?alwaysLog,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'backend': ?backend?.toMap(),
       'frontend': ?frontend?.toMap(),
       'httpCorrelationProtocol': ?httpCorrelationProtocol,
-      'id': id,
+      'id': ?id,
       'logClientIp': ?logClientIp,
-      'loggerId': loggerId,
+      'loggerId': ?loggerId,
       'metrics': ?metrics,
-      'name': name,
+      'name': ?name,
       'operationNameFormat': ?operationNameFormat,
       'sampling': ?sampling?.toMap(),
-      'type': type,
+      'type': ?type,
       'verbosity': ?verbosity,
     };
   }
@@ -88,18 +88,18 @@ class GetWorkspaceDiagnosticResult {
   factory GetWorkspaceDiagnosticResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceDiagnosticResult(
       alwaysLog: (() { final guardedValue = map['alwaysLog']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       backend: (() { final guardedValue = map['backend']; if (guardedValue == null) return null; return PipelineDiagnosticSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       frontend: (() { final guardedValue = map['frontend']; if (guardedValue == null) return null; return PipelineDiagnosticSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       httpCorrelationProtocol: (() { final guardedValue = map['httpCorrelationProtocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       logClientIp: (() { final guardedValue = map['logClientIp']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      loggerId: map['loggerId'] as String,
+      loggerId: (() { final guardedValue = map['loggerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       metrics: (() { final guardedValue = map['metrics']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       operationNameFormat: (() { final guardedValue = map['operationNameFormat']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sampling: (() { final guardedValue = map['sampling']; if (guardedValue == null) return null; return SamplingSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       verbosity: (() { final guardedValue = map['verbosity']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

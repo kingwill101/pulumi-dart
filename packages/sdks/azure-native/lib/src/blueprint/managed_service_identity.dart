@@ -6,13 +6,13 @@ import 'user_assigned_identity.dart';
 /// Managed identity generic object.
 class ManagedServiceIdentity {
   /// Azure Active Directory principal ID associated with this Identity.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// ID of the Azure Active Directory.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Type of the managed identity.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
   /// The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity.
-  final pulumi.Input<Map<String, UserAssignedIdentity>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentity>?>? userAssignedIdentities;
 
   /// Creates a new [ManagedServiceIdentity].
   /// [principalId] Azure Active Directory principal ID associated with this Identity.
@@ -39,7 +39,7 @@ class ManagedServiceIdentity {
     return ManagedServiceIdentity(
       principalId: (() { final guardedValue = map['principalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
       userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<UserAssignedIdentity>(guardedValue, (value) => UserAssignedIdentity.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

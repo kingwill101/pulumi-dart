@@ -8,9 +8,9 @@ class AzureArcSettingsResponse {
   /// AzureArc state indicates whether to include azure arc related costs in on-premises or not.
   final pulumi.Input<String> azureArcState;
   /// Gets Azure arc labour cost percentage.
-  final pulumi.Input<double>? laborCostPercentage;
+  final pulumi.Input<double?>? laborCostPercentage;
   /// Management settings.
-  final pulumi.Input<AzureArcManagementSettingsResponse>? managementSettings;
+  final pulumi.Input<AzureArcManagementSettingsResponse?>? managementSettings;
 
   /// Creates a new [AzureArcSettingsResponse].
   /// [azureArcState] AzureArc state indicates whether to include azure arc related costs in on-premises or not.
@@ -33,7 +33,7 @@ class AzureArcSettingsResponse {
   factory AzureArcSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AzureArcSettingsResponse(
       azureArcState: pulumi.Input.fromValue(map['azureArcState'] as String),
-      laborCostPercentage: (() { final guardedValue = map['laborCostPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      laborCostPercentage: (() { final guardedValue = map['laborCostPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       managementSettings: (() { final guardedValue = map['managementSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureArcManagementSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

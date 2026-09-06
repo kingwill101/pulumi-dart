@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Wraps data-residency related information for edge-resource and this should be used with ARM layer.
 class DataResidencyResponse {
   /// DataResidencyType enum
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DataResidencyResponse].
   /// [type] DataResidencyType enum

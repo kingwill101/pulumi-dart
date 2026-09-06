@@ -9,13 +9,13 @@ class OfferDetailsResponse {
   /// Plan Id for the marketplace offer
   final pulumi.Input<String> planId;
   /// Plan Name for the marketplace offer
-  final pulumi.Input<String>? planName;
+  final pulumi.Input<String?>? planName;
   /// Publisher Id for the marketplace offer
   final pulumi.Input<String> publisherId;
   /// Plan Display Name for the marketplace offer
-  final pulumi.Input<String>? termId;
+  final pulumi.Input<String?>? termId;
   /// Plan Display Name for the marketplace offer
-  final pulumi.Input<String>? termUnit;
+  final pulumi.Input<String?>? termUnit;
 
   /// Creates a new [OfferDetailsResponse].
   /// [offerId] Offer Id for the marketplace offer

@@ -7,7 +7,7 @@ class SoftwareAssurancePropertiesResponse {
   /// TimeStamp denoting the latest SA benefit applicability is validated.
   final pulumi.Input<String> lastUpdated;
   /// Customer Intent for Software Assurance Benefit.
-  final pulumi.Input<String>? softwareAssuranceIntent;
+  final pulumi.Input<String?>? softwareAssuranceIntent;
   /// Status of the Software Assurance for the cluster.
   final pulumi.Input<String> softwareAssuranceStatus;
 

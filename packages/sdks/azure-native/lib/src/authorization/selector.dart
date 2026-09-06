@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The selector expression.
 class Selector {
   /// The list of values to filter in.
-  final pulumi.Input<List<String>>? in_;
+  final pulumi.Input<List<String>?>? in_;
   /// The selector kind.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<dynamic>? kind;
   /// The list of values to filter out.
-  final pulumi.Input<List<String>>? notIn;
+  final pulumi.Input<List<String>?>? notIn;
 
   /// Creates a new [Selector].
   /// [in_] The list of values to filter in.
@@ -32,7 +32,7 @@ class Selector {
   factory Selector.fromMap(Map<String, dynamic> map) {
     return Selector(
       in_: (() { final guardedValue = map['in']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       notIn: (() { final guardedValue = map['notIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of DeadLetterConfig
 class DeadLetterConfig {
   /// The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic.
-  final pulumi.Input<String>? targetArn;
+  final pulumi.Input<String?>? targetArn;
 
   /// Creates a new [DeadLetterConfig].
   /// [targetArn] The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic.

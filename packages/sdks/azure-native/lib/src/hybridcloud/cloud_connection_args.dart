@@ -9,21 +9,21 @@ import 'resource_reference.dart';
 /// {@macro pulumi_hybridcloud_cloud_connection_args_doc}
 class CloudConnectionArgs {
   /// The name of the cloud connection resource
-  final pulumi.Input<String>? cloudConnectionName;
+  final pulumi.Input<String?>? cloudConnectionName;
   /// The cloud connector which discovered the remote resource.
-  final pulumi.Input<ResourceReference>? cloudConnector;
+  final pulumi.Input<ResourceReference?>? cloudConnector;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier for the remote cloud resource
-  final pulumi.Input<String>? remoteResourceId;
+  final pulumi.Input<String?>? remoteResourceId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Shared key of the cloud connection.
-  final pulumi.Input<String>? sharedKey;
+  final pulumi.Input<String?>? sharedKey;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The virtualHub to which the cloud connection belongs.
-  final pulumi.Input<ResourceReference>? virtualHub;
+  final pulumi.Input<ResourceReference?>? virtualHub;
 
   /// Creates a new [CloudConnectionArgs].
   /// [cloudConnectionName] The name of the cloud connection resource

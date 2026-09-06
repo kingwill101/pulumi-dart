@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Intrusion detection signatures specification states.
 class FirewallPolicyIntrusionDetectionSignatureSpecification {
   /// Signature id.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The signature state.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<dynamic>? mode;
 
   /// Creates a new [FirewallPolicyIntrusionDetectionSignatureSpecification].
   /// [id] Signature id.
@@ -27,7 +27,7 @@ class FirewallPolicyIntrusionDetectionSignatureSpecification {
   factory FirewallPolicyIntrusionDetectionSignatureSpecification.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyIntrusionDetectionSignatureSpecification(
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

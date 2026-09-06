@@ -6,9 +6,9 @@ import 'location_spec_response.dart';
 /// Failover configuration on this endpoint. This property is READ-ONLY.
 class DataCollectionEndpointResponseFailoverConfiguration {
   /// Active location where data flow will occur.
-  final pulumi.Input<String>? activeLocation;
+  final pulumi.Input<String?>? activeLocation;
   /// Locations that are configured for failover.
-  final pulumi.Input<List<LocationSpecResponse>>? locations;
+  final pulumi.Input<List<LocationSpecResponse>?>? locations;
 
   /// Creates a new [DataCollectionEndpointResponseFailoverConfiguration].
   /// [activeLocation] Active location where data flow will occur.

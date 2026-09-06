@@ -16,7 +16,7 @@ class GetCommunityResult {
   /// Approval requirements for various actions on the community's resources.
   final ApprovalSettingsResponse? approvalSettings;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Community role assignments
   final List<RoleAssignmentItemResponse>? communityRoleAssignments;
   /// DNS Servers.
@@ -26,31 +26,31 @@ class GetCommunityResult {
   /// List of services governed by a community.
   final List<GovernedServiceItemResponse>? governedServiceList;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The managed service identities assigned to this resource.
   final ManagedServiceIdentityResponse? identity;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// Maintenance Mode configuration.
   final MaintenanceModeConfigurationModelResponse? maintenanceModeConfiguration;
   /// Managed On Behalf Of Configuration.
-  final ManagedOnBehalfOfConfigurationResponse managedOnBehalfOfConfiguration;
+  final ManagedOnBehalfOfConfigurationResponse? managedOnBehalfOfConfiguration;
   /// Managed resource group name.
-  final String managedResourceGroupName;
+  final String? managedResourceGroupName;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Policy override setting for the community. Specifies whether to apply enclave-specific policies or disable policy enforcement.
   final String? policyOverride;
   /// Provisioning State.
-  final String provisioningState;
+  final String? provisioningState;
   /// List of resource ids created by communities.
-  final List<String> resourceCollection;
+  final List<String>? resourceCollection;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetCommunityResult].
   /// [addressSpace] Address Space.
@@ -73,51 +73,51 @@ class GetCommunityResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  const GetCommunityResult({
+  GetCommunityResult({
     this.addressSpace,
     this.approvalSettings,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.communityRoleAssignments,
     this.dnsServers,
-    this.firewallSku,
+    String? firewallSku,
     this.governedServiceList,
-    required this.id,
+    this.id,
     this.identity,
-    required this.location,
+    this.location,
     this.maintenanceModeConfiguration,
-    required this.managedOnBehalfOfConfiguration,
-    required this.managedResourceGroupName,
-    required this.name,
+    this.managedOnBehalfOfConfiguration,
+    this.managedResourceGroupName,
+    this.name,
     this.policyOverride,
-    required this.provisioningState,
-    required this.resourceCollection,
-    required this.systemData,
+    this.provisioningState,
+    this.resourceCollection,
+    this.systemData,
     this.tags,
-    required this.type,
-  });
+    this.type,
+  }) : firewallSku = firewallSku ?? 'Standard';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'addressSpace': ?addressSpace,
       'approvalSettings': ?approvalSettings?.toMap(),
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'communityRoleAssignments': ?(() { final guardedValue = communityRoleAssignments; if (guardedValue == null) return null; return pulumi.Input.encodeList<RoleAssignmentItemResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'dnsServers': ?dnsServers,
       'firewallSku': ?firewallSku,
       'governedServiceList': ?(() { final guardedValue = governedServiceList; if (guardedValue == null) return null; return pulumi.Input.encodeList<GovernedServiceItemResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
+      'id': ?id,
       'identity': ?identity?.toMap(),
-      'location': location,
+      'location': ?location,
       'maintenanceModeConfiguration': ?maintenanceModeConfiguration?.toMap(),
-      'managedOnBehalfOfConfiguration': managedOnBehalfOfConfiguration.toMap(),
-      'managedResourceGroupName': managedResourceGroupName,
-      'name': name,
+      'managedOnBehalfOfConfiguration': ?managedOnBehalfOfConfiguration?.toMap(),
+      'managedResourceGroupName': ?managedResourceGroupName,
+      'name': ?name,
       'policyOverride': ?policyOverride,
-      'provisioningState': provisioningState,
-      'resourceCollection': resourceCollection,
-      'systemData': systemData.toMap(),
+      'provisioningState': ?provisioningState,
+      'resourceCollection': ?resourceCollection,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
@@ -125,24 +125,24 @@ class GetCommunityResult {
     return GetCommunityResult(
       addressSpace: (() { final guardedValue = map['addressSpace']; if (guardedValue == null) return null; return guardedValue as String; })(),
       approvalSettings: (() { final guardedValue = map['approvalSettings']; if (guardedValue == null) return null; return ApprovalSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       communityRoleAssignments: (() { final guardedValue = map['communityRoleAssignments']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoleAssignmentItemResponse>(guardedValue, (value) => RoleAssignmentItemResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       dnsServers: (() { final guardedValue = map['dnsServers']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       firewallSku: (() { final guardedValue = map['firewallSku']; if (guardedValue == null) return null; return guardedValue as String; })(),
       governedServiceList: (() { final guardedValue = map['governedServiceList']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GovernedServiceItemResponse>(guardedValue, (value) => GovernedServiceItemResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      location: map['location'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       maintenanceModeConfiguration: (() { final guardedValue = map['maintenanceModeConfiguration']; if (guardedValue == null) return null; return MaintenanceModeConfigurationModelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      managedOnBehalfOfConfiguration: ManagedOnBehalfOfConfigurationResponse.fromMap((map['managedOnBehalfOfConfiguration']! as Map).cast<String, dynamic>()),
-      managedResourceGroupName: map['managedResourceGroupName'] as String,
-      name: map['name'] as String,
+      managedOnBehalfOfConfiguration: (() { final guardedValue = map['managedOnBehalfOfConfiguration']; if (guardedValue == null) return null; return ManagedOnBehalfOfConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      managedResourceGroupName: (() { final guardedValue = map['managedResourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       policyOverride: (() { final guardedValue = map['policyOverride']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
-      resourceCollection: (map['resourceCollection'] as List).cast<String>(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceCollection: (() { final guardedValue = map['resourceCollection']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

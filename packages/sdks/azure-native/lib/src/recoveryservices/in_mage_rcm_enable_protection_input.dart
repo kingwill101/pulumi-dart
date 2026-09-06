@@ -9,60 +9,60 @@ import 'user_created_resource_tag.dart';
 /// InMageRcm specific enable protection input.
 class InMageRcmEnableProtectionInput {
   /// The default disk input.
-  final pulumi.Input<InMageRcmDisksDefaultInput>? disksDefault;
+  final pulumi.Input<InMageRcmDisksDefaultInput?>? disksDefault;
   /// The disks to include list.
-  final pulumi.Input<List<InMageRcmDiskInput>>? disksToInclude;
+  final pulumi.Input<List<InMageRcmDiskInput>?>? disksToInclude;
   /// The ARM Id of discovered machine.
   final pulumi.Input<String> fabricDiscoveryMachineId;
   /// The class type.
   /// Expected value is 'InMageRcm'.
   final pulumi.Input<String> instanceType;
   /// The license type.
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<dynamic>? licenseType;
   /// The license type for Linux VM's.
-  final pulumi.Input<String>? linuxLicenseType;
+  final pulumi.Input<dynamic>? linuxLicenseType;
   /// The multi VM group name.
-  final pulumi.Input<String>? multiVmGroupName;
+  final pulumi.Input<String?>? multiVmGroupName;
   /// The process server Id.
   final pulumi.Input<String> processServerId;
   /// The run-as account Id.
-  final pulumi.Input<String>? runAsAccountId;
+  final pulumi.Input<String?>? runAsAccountId;
   /// The tags for the seed managed disks.
-  final pulumi.Input<List<UserCreatedResourceTag>>? seedManagedDiskTags;
+  final pulumi.Input<List<UserCreatedResourceTag>?>? seedManagedDiskTags;
   /// The SQL Server license type.
-  final pulumi.Input<String>? sqlServerLicenseType;
+  final pulumi.Input<dynamic>? sqlServerLicenseType;
   /// The target availability set ARM Id.
-  final pulumi.Input<String>? targetAvailabilitySetId;
+  final pulumi.Input<String?>? targetAvailabilitySetId;
   /// The target availability zone.
-  final pulumi.Input<String>? targetAvailabilityZone;
+  final pulumi.Input<String?>? targetAvailabilityZone;
   /// The target boot diagnostics storage account ARM Id.
-  final pulumi.Input<String>? targetBootDiagnosticsStorageAccountId;
+  final pulumi.Input<String?>? targetBootDiagnosticsStorageAccountId;
   /// The tags for the target managed disks.
-  final pulumi.Input<List<UserCreatedResourceTag>>? targetManagedDiskTags;
+  final pulumi.Input<List<UserCreatedResourceTag>?>? targetManagedDiskTags;
   /// The selected target network ARM Id.
-  final pulumi.Input<String>? targetNetworkId;
+  final pulumi.Input<String?>? targetNetworkId;
   /// The tags for the target NICs.
-  final pulumi.Input<List<UserCreatedResourceTag>>? targetNicTags;
+  final pulumi.Input<List<UserCreatedResourceTag>?>? targetNicTags;
   /// The target proximity placement group Id.
-  final pulumi.Input<String>? targetProximityPlacementGroupId;
+  final pulumi.Input<String?>? targetProximityPlacementGroupId;
   /// The target resource group ARM Id.
   final pulumi.Input<String> targetResourceGroupId;
   /// The selected target subnet name.
-  final pulumi.Input<String>? targetSubnetName;
+  final pulumi.Input<String?>? targetSubnetName;
   /// The target VM name.
-  final pulumi.Input<String>? targetVmName;
+  final pulumi.Input<String?>? targetVmName;
   /// The target VM security profile.
-  final pulumi.Input<SecurityProfileProperties>? targetVmSecurityProfile;
+  final pulumi.Input<SecurityProfileProperties?>? targetVmSecurityProfile;
   /// The target VM size.
-  final pulumi.Input<String>? targetVmSize;
+  final pulumi.Input<String?>? targetVmSize;
   /// The target VM tags.
-  final pulumi.Input<List<UserCreatedResourceTag>>? targetVmTags;
+  final pulumi.Input<List<UserCreatedResourceTag>?>? targetVmTags;
   /// The selected test network ARM Id.
-  final pulumi.Input<String>? testNetworkId;
+  final pulumi.Input<String?>? testNetworkId;
   /// The selected test subnet name.
-  final pulumi.Input<String>? testSubnetName;
+  final pulumi.Input<String?>? testSubnetName;
   /// The OS name selected by user.
-  final pulumi.Input<String>? userSelectedOSName;
+  final pulumi.Input<String?>? userSelectedOSName;
 
   /// Creates a new [InMageRcmEnableProtectionInput].
   /// [disksDefault] The default disk input.
@@ -160,13 +160,13 @@ class InMageRcmEnableProtectionInput {
       disksToInclude: (() { final guardedValue = map['disksToInclude']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InMageRcmDiskInput>(guardedValue, (value) => InMageRcmDiskInput.fromMap((value as Map).cast<String, dynamic>()))); })(),
       fabricDiscoveryMachineId: pulumi.Input.fromValue(map['fabricDiscoveryMachineId'] as String),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      linuxLicenseType: (() { final guardedValue = map['linuxLicenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      linuxLicenseType: (() { final guardedValue = map['linuxLicenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       multiVmGroupName: (() { final guardedValue = map['multiVmGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       processServerId: pulumi.Input.fromValue(map['processServerId'] as String),
       runAsAccountId: (() { final guardedValue = map['runAsAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       seedManagedDiskTags: (() { final guardedValue = map['seedManagedDiskTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserCreatedResourceTag>(guardedValue, (value) => UserCreatedResourceTag.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      sqlServerLicenseType: (() { final guardedValue = map['sqlServerLicenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sqlServerLicenseType: (() { final guardedValue = map['sqlServerLicenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       targetAvailabilitySetId: (() { final guardedValue = map['targetAvailabilitySetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetAvailabilityZone: (() { final guardedValue = map['targetAvailabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetBootDiagnosticsStorageAccountId: (() { final guardedValue = map['targetBootDiagnosticsStorageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

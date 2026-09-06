@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Site address properties
 class SiteAddressPropertiesResponse {
   /// City of the address
-  final pulumi.Input<String>? city;
+  final pulumi.Input<String?>? city;
   /// Country of the address
-  final pulumi.Input<String>? country;
+  final pulumi.Input<String?>? country;
   /// Postal or ZIP code of the address
-  final pulumi.Input<String>? postalCode;
+  final pulumi.Input<String?>? postalCode;
   /// State or province of the address
-  final pulumi.Input<String>? stateOrProvince;
+  final pulumi.Input<String?>? stateOrProvince;
   /// First line of the street address
-  final pulumi.Input<String>? streetAddress1;
+  final pulumi.Input<String?>? streetAddress1;
   /// Second line of the street address
-  final pulumi.Input<String>? streetAddress2;
+  final pulumi.Input<String?>? streetAddress2;
 
   /// Creates a new [SiteAddressPropertiesResponse].
   /// [city] City of the address

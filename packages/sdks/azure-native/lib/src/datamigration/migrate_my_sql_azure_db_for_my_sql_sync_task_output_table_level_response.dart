@@ -94,18 +94,18 @@ class MigrateMySqlAzureDbForMySqlSyncTaskOutputTableLevelResponse {
       cdcDeleteCounter: pulumi.Input.fromValue(map['cdcDeleteCounter'] as String),
       cdcInsertCounter: pulumi.Input.fromValue(map['cdcInsertCounter'] as String),
       cdcUpdateCounter: pulumi.Input.fromValue(map['cdcUpdateCounter'] as String),
-      dataErrorsCounter: pulumi.Input.fromValue(map['dataErrorsCounter'] as double),
+      dataErrorsCounter: pulumi.Input.fromValue((map['dataErrorsCounter'] as num).toDouble()),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
       fullLoadEndedOn: pulumi.Input.fromValue(map['fullLoadEndedOn'] as String),
       fullLoadEstFinishTime: pulumi.Input.fromValue(map['fullLoadEstFinishTime'] as String),
       fullLoadStartedOn: pulumi.Input.fromValue(map['fullLoadStartedOn'] as String),
-      fullLoadTotalRows: pulumi.Input.fromValue(map['fullLoadTotalRows'] as double),
+      fullLoadTotalRows: pulumi.Input.fromValue((map['fullLoadTotalRows'] as num).toDouble()),
       id: pulumi.Input.fromValue(map['id'] as String),
       lastModifiedTime: pulumi.Input.fromValue(map['lastModifiedTime'] as String),
       resultType: pulumi.Input.fromValue(map['resultType'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
       tableName: pulumi.Input.fromValue(map['tableName'] as String),
-      totalChangesApplied: pulumi.Input.fromValue(map['totalChangesApplied'] as double),
+      totalChangesApplied: pulumi.Input.fromValue((map['totalChangesApplied'] as num).toDouble()),
     );
   }
 }

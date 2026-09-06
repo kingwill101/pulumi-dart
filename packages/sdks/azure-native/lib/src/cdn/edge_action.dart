@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'edge_action_args.dart';
+import 'edge_action_attachment_response.dart';
 import 'sku_type_response.dart';
 import 'system_data_response.dart';
 
@@ -181,7 +182,7 @@ import 'system_data_response.dart';
 /// ```
 class EdgeAction extends pulumi.CustomResource {
   /// A list of attachments for the edge action
-  late final pulumi.Output<List<Map<String, dynamic>>> attachments;
+  late final pulumi.Output<List<EdgeActionAttachmentResponse>> attachments;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The geo-location where the resource lives
@@ -213,14 +214,34 @@ class EdgeAction extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    attachments = registerOutput<List<Map<String, dynamic>>>('attachments');
+    attachments = registerOutput<List<EdgeActionAttachmentResponse>>('attachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EdgeActionAttachmentResponse>(guardedValue, (value) => EdgeActionAttachmentResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     sku = registerOutput<SkuTypeResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuTypeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [EdgeAction] resource.
+  EdgeAction.reference(String urn)
+    : super(
+        'azure-native:cdn:EdgeAction',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attachments = registerOutput<List<EdgeActionAttachmentResponse>>('attachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EdgeActionAttachmentResponse>(guardedValue, (value) => EdgeActionAttachmentResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<SkuTypeResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuTypeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

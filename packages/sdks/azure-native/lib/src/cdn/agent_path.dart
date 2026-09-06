@@ -7,7 +7,7 @@ class AgentPath {
   /// The actual path value.
   final pulumi.Input<String> path;
   /// The type of the path.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [AgentPath].
   /// [path] The actual path value.
@@ -27,7 +27,7 @@ class AgentPath {
   factory AgentPath.fromMap(Map<String, dynamic> map) {
     return AgentPath(
       path: pulumi.Input.fromValue(map['path'] as String),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

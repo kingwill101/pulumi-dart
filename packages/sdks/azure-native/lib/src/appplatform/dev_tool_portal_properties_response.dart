@@ -10,13 +10,13 @@ class DevToolPortalPropertiesResponse {
   /// Collection of components belong to Dev Tool Portal.
   final pulumi.Input<List<DevToolPortalComponentResponse>> components;
   /// Settings for Dev Tool Portal
-  final pulumi.Input<DevToolPortalFeatureSettingsResponse>? features;
+  final pulumi.Input<DevToolPortalFeatureSettingsResponse?>? features;
   /// State of the Dev Tool Portal.
   final pulumi.Input<String> provisioningState;
   /// Indicates whether the resource exposes public endpoint
-  final pulumi.Input<bool>? public;
+  final pulumi.Input<bool?>? public;
   /// Single sign-on related configuration
-  final pulumi.Input<DevToolPortalSsoPropertiesResponse>? ssoProperties;
+  final pulumi.Input<DevToolPortalSsoPropertiesResponse?>? ssoProperties;
   /// URL of the resource, exposed when 'public' is true.
   final pulumi.Input<String> url;
 
@@ -27,14 +27,14 @@ class DevToolPortalPropertiesResponse {
   /// [public] Indicates whether the resource exposes public endpoint
   /// [ssoProperties] Single sign-on related configuration
   /// [url] URL of the resource, exposed when 'public' is true.
-  const DevToolPortalPropertiesResponse({
+  DevToolPortalPropertiesResponse({
     required this.components,
     this.features,
     required this.provisioningState,
-    this.public,
+    pulumi.Input<bool?>? public,
     this.ssoProperties,
     required this.url,
-  });
+  }) : public = public ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -11,15 +11,15 @@ class ServiceEndpointArgs {
   /// The name of the RecommendationsService Account resource.
   final pulumi.Input<String> accountName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// ServiceEndpoint resource properties.
-  final pulumi.Input<ServiceEndpointResourceProperties>? properties;
+  final pulumi.Input<ServiceEndpointResourceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the ServiceEndpoint resource.
-  final pulumi.Input<String>? serviceEndpointName;
+  final pulumi.Input<String?>? serviceEndpointName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ServiceEndpointArgs].
   /// [accountName] The name of the RecommendationsService Account resource.

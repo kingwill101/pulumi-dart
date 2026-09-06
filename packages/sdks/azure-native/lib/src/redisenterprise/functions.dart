@@ -32,6 +32,17 @@ Future<GetAccessPolicyAssignmentResult> getAccessPolicyAssignment(
   return GetAccessPolicyAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessPolicyAssignmentResult> getAccessPolicyAssignmentOutput(
+  GetAccessPolicyAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redisenterprise:getAccessPolicyAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPolicyAssignmentResult.fromMap);
+}
+
 /// Gets information about a database in a Redis Enterprise cluster.
 ///
 /// Uses Azure REST API version 2025-07-01.
@@ -50,6 +61,17 @@ Future<GetDatabaseResult> getDatabase(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseResult> getDatabaseOutput(
+  GetDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redisenterprise:getDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseResult.fromMap);
 }
 
 /// Gets the specified private endpoint connection associated with the Redis Enterprise cluster.
@@ -72,6 +94,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redisenterprise:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Gets information about a Redis Enterprise cluster
 ///
 /// Uses Azure REST API version 2025-07-01.
@@ -90,6 +123,17 @@ Future<GetRedisEnterpriseResult> getRedisEnterprise(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRedisEnterpriseResult.fromMap(result);
+}
+
+pulumi.Output<GetRedisEnterpriseResult> getRedisEnterpriseOutput(
+  GetRedisEnterpriseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redisenterprise:getRedisEnterprise',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRedisEnterpriseResult.fromMap);
 }
 
 /// Retrieves the access keys for the Redis Enterprise database.
@@ -112,6 +156,17 @@ Future<ListDatabaseKeysResult> listDatabaseKeys(
   return ListDatabaseKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListDatabaseKeysResult> listDatabaseKeysOutput(
+  ListDatabaseKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redisenterprise:listDatabaseKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListDatabaseKeysResult.fromMap);
+}
+
 /// Lists the available SKUs for scaling the Redis Enterprise cluster.
 ///
 /// Uses Azure REST API version 2025-07-01.
@@ -130,4 +185,15 @@ Future<ListRedisEnterpriseSkusForScalingResult> listRedisEnterpriseSkusForScalin
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListRedisEnterpriseSkusForScalingResult.fromMap(result);
+}
+
+pulumi.Output<ListRedisEnterpriseSkusForScalingResult> listRedisEnterpriseSkusForScalingOutput(
+  ListRedisEnterpriseSkusForScalingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redisenterprise:listRedisEnterpriseSkusForScaling',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListRedisEnterpriseSkusForScalingResult.fromMap);
 }

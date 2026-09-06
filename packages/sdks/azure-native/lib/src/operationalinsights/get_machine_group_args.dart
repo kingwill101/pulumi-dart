@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_operationalinsights_get_machine_group_args_doc}
 class GetMachineGroupArgs {
   /// UTC date and time specifying the end time of an interval. When not specified the service uses DateTime.UtcNow
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Machine Group resource name.
   final pulumi.Input<String> machineGroupName;
   /// Resource group name within the specified subscriptionId.
   final pulumi.Input<String> resourceGroupName;
   /// UTC date and time specifying the start time of an interval. When not specified the service uses DateTime.UtcNow - 10m
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// OMS workspace containing the resources of interest.
   final pulumi.Input<String> workspaceName;
 

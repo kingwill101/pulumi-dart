@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_profile_args.dart';
+import 'certificate_response.dart';
 import 'system_data_response.dart';
 
 /// Certificate profile resource.
@@ -181,7 +182,7 @@ class CertificateProfile extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// List of renewed certificates.
-  late final pulumi.Output<List<Map<String, dynamic>>> certificates;
+  late final pulumi.Output<List<CertificateResponse>> certificates;
   /// Identity validation id used for the certificate subject name.
   late final pulumi.Output<String> identityValidationId;
   /// Whether to include L in the certificate subject name. Applicable only for private trust, private trust ci profile types
@@ -222,7 +223,32 @@ class CertificateProfile extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    certificates = registerOutput<List<Map<String, dynamic>>>('certificates');
+    certificates = registerOutput<List<CertificateResponse>>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateResponse>(guardedValue, (value) => CertificateResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    identityValidationId = registerOutput<String>('identityValidationId');
+    includeCity = registerOutput<bool?>('includeCity');
+    includeCountry = registerOutput<bool?>('includeCountry');
+    includePostalCode = registerOutput<bool?>('includePostalCode');
+    includeState = registerOutput<bool?>('includeState');
+    includeStreetAddress = registerOutput<bool?>('includeStreetAddress');
+    this.name = registerOutput<String>('name');
+    profileType = registerOutput<String>('profileType');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [CertificateProfile] resource.
+  CertificateProfile.reference(String urn)
+    : super(
+        'azure-native:codesigning:CertificateProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    certificates = registerOutput<List<CertificateResponse>>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateResponse>(guardedValue, (value) => CertificateResponse.fromMap((value as Map).cast<String, dynamic>())); });
     identityValidationId = registerOutput<String>('identityValidationId');
     includeCity = registerOutput<bool?>('includeCity');
     includeCountry = registerOutput<bool?>('includeCountry');

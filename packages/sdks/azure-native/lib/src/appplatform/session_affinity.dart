@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the affinity, set this to Cookie to enable session affinity.
-enum SessionAffinity {
+enum SessionAffinity implements pulumi.PulumiEnum<String> {
   valueCookie("Cookie"),
   valueNone("None");
 
   const SessionAffinity(this.wireValue);
+  @override
   final String wireValue;
 
   static SessionAffinity fromValue(String value) {

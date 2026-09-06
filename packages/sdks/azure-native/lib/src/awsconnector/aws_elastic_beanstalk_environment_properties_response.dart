@@ -8,31 +8,31 @@ import 'tier_response.dart';
 /// Definition of awsElasticBeanstalkEnvironment
 class AwsElasticBeanstalkEnvironmentPropertiesResponse {
   /// The name of the application that is associated with this environment.
-  final pulumi.Input<String>? applicationName;
+  final pulumi.Input<String?>? applicationName;
   /// If specified, the environment attempts to use this value as the prefix for the CNAME in your Elastic Beanstalk environment URL. If not specified, the CNAME is generated automatically by appending a random alphanumeric string to the environment name.
-  final pulumi.Input<String>? cnamePrefix;
+  final pulumi.Input<String?>? cnamePrefix;
   /// Your description for this environment.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Property endpointURL
-  final pulumi.Input<String>? endpointURL;
+  final pulumi.Input<String?>? endpointURL;
   /// A unique name for the environment.
-  final pulumi.Input<String>? environmentName;
+  final pulumi.Input<String?>? environmentName;
   /// The Amazon Resource Name (ARN) of an existing IAM role to be used as the environment's operations role.
-  final pulumi.Input<String>? operationsRole;
+  final pulumi.Input<String?>? operationsRole;
   /// Key-value pairs defining configuration options for this environment, such as the instance type.
-  final pulumi.Input<List<OptionSettingResponse>>? optionSettings;
+  final pulumi.Input<List<OptionSettingResponse>?>? optionSettings;
   /// The Amazon Resource Name (ARN) of the custom platform to use with the environment.
-  final pulumi.Input<String>? platformArn;
+  final pulumi.Input<String?>? platformArn;
   /// The name of an Elastic Beanstalk solution stack (platform version) to use with the environment.
-  final pulumi.Input<String>? solutionStackName;
+  final pulumi.Input<String?>? solutionStackName;
   /// Specifies the tags applied to resources in the environment.
-  final pulumi.Input<List<TagResponse>>? tags;
+  final pulumi.Input<List<TagResponse>?>? tags;
   /// The name of the Elastic Beanstalk configuration template to use with the environment.
-  final pulumi.Input<String>? templateName;
+  final pulumi.Input<String?>? templateName;
   /// Specifies the tier to use in creating this environment. The environment tier that you choose determines whether Elastic Beanstalk provisions resources to support a web application that handles HTTP(S) requests or a web application that handles background-processing tasks.
-  final pulumi.Input<TierResponse>? tier;
+  final pulumi.Input<TierResponse?>? tier;
   /// The name of the application version to deploy.
-  final pulumi.Input<String>? versionLabel;
+  final pulumi.Input<String?>? versionLabel;
 
   /// Creates a new [AwsElasticBeanstalkEnvironmentPropertiesResponse].
   /// [applicationName] The name of the application that is associated with this environment.

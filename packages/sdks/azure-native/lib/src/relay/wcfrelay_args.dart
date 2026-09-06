@@ -11,17 +11,17 @@ class WCFRelayArgs {
   /// The namespace name
   final pulumi.Input<String> namespaceName;
   /// The relay name.
-  final pulumi.Input<String>? relayName;
+  final pulumi.Input<String?>? relayName;
   /// WCF relay type.
-  final pulumi.Input<Relaytype>? relayType;
+  final pulumi.Input<Relaytype?>? relayType;
   /// Returns true if client authorization is needed for this relay; otherwise, false.
-  final pulumi.Input<bool>? requiresClientAuthorization;
+  final pulumi.Input<bool?>? requiresClientAuthorization;
   /// Returns true if transport security is needed for this relay; otherwise, false.
-  final pulumi.Input<bool>? requiresTransportSecurity;
+  final pulumi.Input<bool?>? requiresTransportSecurity;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The usermetadata is a placeholder to store user-defined string data for the WCF Relay endpoint. For example, it can be used to store descriptive data, such as list of teams and their contact information. Also, user-defined configuration settings can be stored.
-  final pulumi.Input<String>? userMetadata;
+  final pulumi.Input<String?>? userMetadata;
 
   /// Creates a new [WCFRelayArgs].
   /// [namespaceName] The namespace name

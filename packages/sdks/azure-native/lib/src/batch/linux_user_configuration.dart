@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties used to create a user account on a Linux node.
 class LinuxUserConfiguration {
   /// The uid and gid properties must be specified together or not at all. If not specified the underlying operating system picks the gid.
-  final pulumi.Input<int>? gid;
+  final pulumi.Input<int?>? gid;
   /// The private key must not be password protected. The private key is used to automatically configure asymmetric-key based authentication for SSH between nodes in a Linux pool when the pool's enableInterNodeCommunication property is true (it is ignored if enableInterNodeCommunication is false). It does this by placing the key pair into the user's .ssh directory. If not specified, password-less SSH is not configured between nodes (no modification of the user's .ssh directory is done).
-  final pulumi.Input<String>? sshPrivateKey;
+  final pulumi.Input<String?>? sshPrivateKey;
   /// The uid and gid properties must be specified together or not at all. If not specified the underlying operating system picks the uid.
-  final pulumi.Input<int>? uid;
+  final pulumi.Input<int?>? uid;
 
   /// Creates a new [LinuxUserConfiguration].
   /// [gid] The uid and gid properties must be specified together or not at all. If not specified the underlying operating system picks the gid.
@@ -31,9 +31,9 @@ class LinuxUserConfiguration {
 
   factory LinuxUserConfiguration.fromMap(Map<String, dynamic> map) {
     return LinuxUserConfiguration(
-      gid: (() { final guardedValue = map['gid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      gid: (() { final guardedValue = map['gid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sshPrivateKey: (() { final guardedValue = map['sshPrivateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

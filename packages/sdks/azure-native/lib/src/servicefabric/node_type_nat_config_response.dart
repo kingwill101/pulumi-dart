@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Provides information about NAT configuration on the default public Load Balancer for the node type.
 class NodeTypeNatConfigResponse {
   /// The internal port for the NAT configuration.
-  final pulumi.Input<int>? backendPort;
+  final pulumi.Input<int?>? backendPort;
   /// The port range end for the external endpoint.
-  final pulumi.Input<int>? frontendPortRangeEnd;
+  final pulumi.Input<int?>? frontendPortRangeEnd;
   /// The port range start for the external endpoint.
-  final pulumi.Input<int>? frontendPortRangeStart;
+  final pulumi.Input<int?>? frontendPortRangeStart;
 
   /// Creates a new [NodeTypeNatConfigResponse].
   /// [backendPort] The internal port for the NAT configuration.
@@ -31,9 +31,9 @@ class NodeTypeNatConfigResponse {
 
   factory NodeTypeNatConfigResponse.fromMap(Map<String, dynamic> map) {
     return NodeTypeNatConfigResponse(
-      backendPort: (() { final guardedValue = map['backendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      frontendPortRangeEnd: (() { final guardedValue = map['frontendPortRangeEnd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      frontendPortRangeStart: (() { final guardedValue = map['frontendPortRangeStart']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      backendPort: (() { final guardedValue = map['backendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      frontendPortRangeEnd: (() { final guardedValue = map['frontendPortRangeEnd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      frontendPortRangeStart: (() { final guardedValue = map['frontendPortRangeStart']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

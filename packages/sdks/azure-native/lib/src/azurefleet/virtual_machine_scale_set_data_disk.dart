@@ -8,39 +8,39 @@ class VirtualMachineScaleSetDataDisk {
   /// Specifies the caching requirements. Possible values are: **None,**
   /// **ReadOnly,** **ReadWrite.** The default values are: **None for Standard
   /// storage. ReadOnly for Premium storage.**
-  final pulumi.Input<String>? caching;
+  final pulumi.Input<dynamic>? caching;
   /// The create option.
-  final pulumi.Input<String> createOption;
+  final pulumi.Input<dynamic> createOption;
   /// Specifies whether data disk should be deleted or detached upon VMSS Flex
   /// deletion (This feature is available for VMSS with Flexible OrchestrationMode
   /// only).&lt;br&gt;&lt;br&gt; Possible values: &lt;br&gt;&lt;br&gt; **Delete** If this value is used, the
   /// data disk is deleted when the VMSS Flex VM is deleted.&lt;br&gt;&lt;br&gt; **Detach** If
   /// this value is used, the data disk is retained after VMSS Flex VM is
   /// deleted.&lt;br&gt;&lt;br&gt; The default value is set to **Delete**.
-  final pulumi.Input<String>? deleteOption;
+  final pulumi.Input<dynamic>? deleteOption;
   /// Specifies the Read-Write IOPS for the managed disk. Should be used only when
   /// StorageAccountType is UltraSSD_LRS. If not specified, a default value would be
   /// assigned based on diskSizeGB.
-  final pulumi.Input<double>? diskIOPSReadWrite;
+  final pulumi.Input<double?>? diskIOPSReadWrite;
   /// Specifies the bandwidth in MB per second for the managed disk. Should be used
   /// only when StorageAccountType is UltraSSD_LRS. If not specified, a default value
   /// would be assigned based on diskSizeGB.
-  final pulumi.Input<double>? diskMBpsReadWrite;
+  final pulumi.Input<double?>? diskMBpsReadWrite;
   /// Specifies the size of an empty data disk in gigabytes. This element can be used
   /// to overwrite the size of the disk in a virtual machine image. The property
   /// diskSizeGB is the number of bytes x 1024^3 for the disk and the value cannot be
   /// larger than 1023.
-  final pulumi.Input<int>? diskSizeGB;
+  final pulumi.Input<int?>? diskSizeGB;
   /// Specifies the logical unit number of the data disk. This value is used to
   /// identify data disks within the VM and therefore must be unique for each data
   /// disk attached to a VM.
   final pulumi.Input<int> lun;
   /// The managed disk parameters.
-  final pulumi.Input<VirtualMachineScaleSetManagedDiskParameters>? managedDisk;
+  final pulumi.Input<VirtualMachineScaleSetManagedDiskParameters?>? managedDisk;
   /// The disk name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies whether writeAccelerator should be enabled or disabled on the disk.
-  final pulumi.Input<bool>? writeAcceleratorEnabled;
+  final pulumi.Input<bool?>? writeAcceleratorEnabled;
 
   /// Creates a new [VirtualMachineScaleSetDataDisk].
   /// [caching] Specifies the caching requirements. Possible values are: **None,**
@@ -83,13 +83,13 @@ class VirtualMachineScaleSetDataDisk {
 
   factory VirtualMachineScaleSetDataDisk.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetDataDisk(
-      caching: (() { final guardedValue = map['caching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      createOption: pulumi.Input.fromValue(map['createOption'] as String),
-      deleteOption: (() { final guardedValue = map['deleteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      diskIOPSReadWrite: (() { final guardedValue = map['diskIOPSReadWrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      diskMBpsReadWrite: (() { final guardedValue = map['diskMBpsReadWrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      diskSizeGB: (() { final guardedValue = map['diskSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      lun: pulumi.Input.fromValue(map['lun'] as int),
+      caching: (() { final guardedValue = map['caching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      createOption: pulumi.Input.fromValue(map['createOption']),
+      deleteOption: (() { final guardedValue = map['deleteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      diskIOPSReadWrite: (() { final guardedValue = map['diskIOPSReadWrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      diskMBpsReadWrite: (() { final guardedValue = map['diskMBpsReadWrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      diskSizeGB: (() { final guardedValue = map['diskSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      lun: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['lun'])),
       managedDisk: (() { final guardedValue = map['managedDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineScaleSetManagedDiskParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       writeAcceleratorEnabled: (() { final guardedValue = map['writeAcceleratorEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

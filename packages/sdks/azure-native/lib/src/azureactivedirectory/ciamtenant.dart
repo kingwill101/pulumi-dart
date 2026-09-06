@@ -258,7 +258,31 @@ class CIAMTenant extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     sku = registerOutput<CIAMResourceSKUResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CIAMResourceSKUResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantId = registerOutput<String?>('tenantId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [CIAMTenant] resource.
+  CIAMTenant.reference(String urn)
+    : super(
+        'azure-native:azureactivedirectory:CIAMTenant',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    billingType = registerOutput<String>('billingType');
+    createTenantProperties = registerOutput<CreateCIAMTenantPropertiesResponse>('createTenantProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CreateCIAMTenantPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    domainName = registerOutput<String>('domainName');
+    effectiveStartDateUtc = registerOutput<String>('effectiveStartDateUtc');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<CIAMResourceSKUResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CIAMResourceSKUResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String?>('tenantId');
     type = registerOutput<String>('type');
   }

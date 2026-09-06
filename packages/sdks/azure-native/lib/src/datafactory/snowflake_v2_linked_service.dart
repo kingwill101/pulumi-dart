@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_key_vault_secret_reference.dart';
 import 'integration_runtime_reference.dart';
 import 'parameter_specification.dart';
 
@@ -10,31 +9,31 @@ class SnowflakeV2LinkedService {
   /// The account identifier of your Snowflake account, e.g. xy12345.east-us-2.azure
   final pulumi.Input<dynamic> accountIdentifier;
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The type used for authentication. Type: string.
-  final pulumi.Input<String>? authenticationType;
+  final pulumi.Input<dynamic>? authenticationType;
   /// The client ID of the application registered in Azure Active Directory for AADServicePrincipal authentication.
   final pulumi.Input<dynamic>? clientId;
   /// The Azure key vault secret reference of client secret for AADServicePrincipal authentication.
-  final pulumi.Input<AzureKeyVaultSecretReference>? clientSecret;
+  final pulumi.Input<dynamic>? clientSecret;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference?>? connectVia;
   /// The name of the Snowflake database.
   final pulumi.Input<dynamic> database;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// The host name of the Snowflake account. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? host;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>?>? parameters;
   /// The Azure key vault secret reference of password in connection string.
-  final pulumi.Input<AzureKeyVaultSecretReference>? password;
+  final pulumi.Input<dynamic>? password;
   /// The Azure key vault secret reference of privateKey for KeyPair auth.
-  final pulumi.Input<AzureKeyVaultSecretReference>? privateKey;
+  final pulumi.Input<dynamic>? privateKey;
   /// The Azure key vault secret reference of private key password for KeyPair auth with encrypted private key.
-  final pulumi.Input<AzureKeyVaultSecretReference>? privateKeyPassphrase;
+  final pulumi.Input<dynamic>? privateKeyPassphrase;
   /// The default access control role to use in the Snowflake session. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? role;
   /// Schema name for connection. Type: string (or Expression with resultType string).
@@ -51,7 +50,7 @@ class SnowflakeV2LinkedService {
   /// The name of the Snowflake user.
   final pulumi.Input<dynamic>? user;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// The name of the Snowflake warehouse.
   final pulumi.Input<dynamic> warehouse;
 
@@ -79,10 +78,10 @@ class SnowflakeV2LinkedService {
   /// [user] The name of the Snowflake user.
   /// [version] Version of the linked service.
   /// [warehouse] The name of the Snowflake warehouse.
-  const SnowflakeV2LinkedService({
+  SnowflakeV2LinkedService({
     required this.accountIdentifier,
     this.annotations,
-    this.authenticationType,
+    pulumi.Input<dynamic>? authenticationType,
     this.clientId,
     this.clientSecret,
     this.connectVia,
@@ -103,7 +102,7 @@ class SnowflakeV2LinkedService {
     this.user,
     this.version,
     required this.warehouse,
-  });
+  }) : authenticationType = authenticationType ?? pulumi.Input.fromValue('Basic');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -111,16 +110,16 @@ class SnowflakeV2LinkedService {
       'annotations': ?annotations,
       'authenticationType': ?authenticationType,
       'clientId': ?clientId,
-      'clientSecret': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(clientSecret, (value) => value.toMap()),
+      'clientSecret': ?clientSecret,
       'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReference, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'database': database,
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'host': ?host,
       'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(password, (value) => value.toMap()),
-      'privateKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(privateKey, (value) => value.toMap()),
-      'privateKeyPassphrase': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(privateKeyPassphrase, (value) => value.toMap()),
+      'password': ?password,
+      'privateKey': ?privateKey,
+      'privateKeyPassphrase': ?privateKeyPassphrase,
       'role': ?role,
       'schema': ?schema,
       'scope': ?scope,
@@ -137,18 +136,18 @@ class SnowflakeV2LinkedService {
     return SnowflakeV2LinkedService(
       accountIdentifier: pulumi.Input.fromValue(map['accountIdentifier']),
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
-      authenticationType: (() { final guardedValue = map['authenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authenticationType: (() { final guardedValue = map['authenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      clientSecret: (() { final guardedValue = map['clientSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      clientSecret: (() { final guardedValue = map['clientSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       connectVia: (() { final guardedValue = map['connectVia']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationRuntimeReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       database: pulumi.Input.fromValue(map['database']),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encryptedCredential: (() { final guardedValue = map['encryptedCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecification>(guardedValue, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      privateKeyPassphrase: (() { final guardedValue = map['privateKeyPassphrase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      privateKeyPassphrase: (() { final guardedValue = map['privateKeyPassphrase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       schema: (() { final guardedValue = map['schema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

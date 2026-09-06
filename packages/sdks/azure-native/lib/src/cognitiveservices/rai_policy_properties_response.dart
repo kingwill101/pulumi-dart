@@ -7,13 +7,13 @@ import 'rai_policy_content_filter_response.dart';
 /// Azure OpenAI Content Filters properties.
 class RaiPolicyPropertiesResponse {
   /// Name of Rai policy.
-  final pulumi.Input<String>? basePolicyName;
+  final pulumi.Input<String?>? basePolicyName;
   /// The list of Content Filters.
-  final pulumi.Input<List<RaiPolicyContentFilterResponse>>? contentFilters;
+  final pulumi.Input<List<RaiPolicyContentFilterResponse>?>? contentFilters;
   /// The list of custom Blocklist.
-  final pulumi.Input<List<CustomBlocklistConfigResponse>>? customBlocklists;
+  final pulumi.Input<List<CustomBlocklistConfigResponse>?>? customBlocklists;
   /// Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2025-06-01. It is the same as 'Deferred' in previous version.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Content Filters policy type.
   final pulumi.Input<String> type;
 

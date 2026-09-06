@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Contains SKU in an ExpressRouteCircuit.
 class ExpressRouteCircuitSku {
   /// The family of the SKU.
-  final pulumi.Input<String>? family;
+  final pulumi.Input<dynamic>? family;
   /// The name of the SKU.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The tier of the SKU.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<dynamic>? tier;
 
   /// Creates a new [ExpressRouteCircuitSku].
   /// [family] The family of the SKU.
@@ -31,9 +31,9 @@ class ExpressRouteCircuitSku {
 
   factory ExpressRouteCircuitSku.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitSku(
-      family: (() { final guardedValue = map['family']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      family: (() { final guardedValue = map['family']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

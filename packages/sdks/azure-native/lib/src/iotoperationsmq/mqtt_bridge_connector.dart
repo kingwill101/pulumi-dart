@@ -714,7 +714,34 @@ class MqttBridgeConnector extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     remoteBrokerConnection = registerOutput<MqttBridgeRemoteBrokerConnectionSpecResponse>('remoteBrokerConnection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MqttBridgeRemoteBrokerConnectionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [MqttBridgeConnector] resource.
+  MqttBridgeConnector.reference(String urn)
+    : super(
+        'azure-native:iotoperationsmq:MqttBridgeConnector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bridgeInstances = registerOutput<int?>('bridgeInstances');
+    clientIdPrefix = registerOutput<String?>('clientIdPrefix');
+    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    image = registerOutput<ContainerImageResponse>('image', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localBrokerConnection = registerOutput<LocalBrokerConnectionSpecResponse?>('localBrokerConnection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalBrokerConnectionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    logLevel = registerOutput<String?>('logLevel');
+    this.name = registerOutput<String>('name');
+    nodeTolerations = registerOutput<NodeTolerationsResponse?>('nodeTolerations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeTolerationsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    protocol = registerOutput<String>('protocol');
+    provisioningState = registerOutput<String>('provisioningState');
+    remoteBrokerConnection = registerOutput<MqttBridgeRemoteBrokerConnectionSpecResponse>('remoteBrokerConnection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MqttBridgeRemoteBrokerConnectionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

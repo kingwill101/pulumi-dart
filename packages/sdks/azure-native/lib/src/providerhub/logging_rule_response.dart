@@ -11,7 +11,7 @@ class LoggingRuleResponse {
   /// The direction.
   final pulumi.Input<String> direction;
   /// The hidden property paths.
-  final pulumi.Input<LoggingRuleHiddenPropertyPathsResponse>? hiddenPropertyPaths;
+  final pulumi.Input<LoggingRuleHiddenPropertyPathsResponse?>? hiddenPropertyPaths;
 
   /// Creates a new [LoggingRuleResponse].
   /// [action] The action.

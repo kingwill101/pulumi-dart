@@ -6,9 +6,9 @@ import 'runtime_response_logging.dart';
 /// Diagnostic capabilities achieved by java agent
 class RuntimeResponseJavaAgent {
   /// Enable java agent injection for the java app.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Capabilities on the java logging scenario.
-  final pulumi.Input<RuntimeResponseLogging>? logging;
+  final pulumi.Input<RuntimeResponseLogging?>? logging;
 
   /// Creates a new [RuntimeResponseJavaAgent].
   /// [enabled] Enable java agent injection for the java app.

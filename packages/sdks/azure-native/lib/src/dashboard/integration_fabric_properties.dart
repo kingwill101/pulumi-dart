@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IntegrationFabricProperties {
   /// The resource Id of the Azure resource which is used to configure Grafana data source. E.g., an Azure Monitor Workspace, an Azure Data Explorer cluster, etc.
-  final pulumi.Input<String>? dataSourceResourceId;
+  final pulumi.Input<String?>? dataSourceResourceId;
   /// A list of integration scenarios covered by this integration fabric
-  final pulumi.Input<List<String>>? scenarios;
+  final pulumi.Input<List<String>?>? scenarios;
   /// The resource Id of the Azure resource being integrated with Azure Managed Grafana. E.g., an Azure Kubernetes Service cluster.
-  final pulumi.Input<String>? targetResourceId;
+  final pulumi.Input<String?>? targetResourceId;
 
   /// Creates a new [IntegrationFabricProperties].
   /// [dataSourceResourceId] The resource Id of the Azure resource which is used to configure Grafana data source. E.g., an Azure Monitor Workspace, an Azure Data Explorer cluster, etc.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Trusted Root certificates properties for tls.
 class FirewallPolicyCertificateAuthorityResponse {
   /// Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
-  final pulumi.Input<String>? keyVaultSecretId;
+  final pulumi.Input<String?>? keyVaultSecretId;
   /// Name of the CA certificate.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [FirewallPolicyCertificateAuthorityResponse].
   /// [keyVaultSecretId] Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.

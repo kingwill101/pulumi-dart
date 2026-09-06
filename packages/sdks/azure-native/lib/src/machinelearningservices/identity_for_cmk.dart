@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Identity object used for encryption.
 class IdentityForCmk {
   /// UserAssignedIdentity to be used to fetch the encryption key from keyVault
-  final pulumi.Input<String>? userAssignedIdentity;
+  final pulumi.Input<String?>? userAssignedIdentity;
 
   /// Creates a new [IdentityForCmk].
   /// [userAssignedIdentity] UserAssignedIdentity to be used to fetch the encryption key from keyVault

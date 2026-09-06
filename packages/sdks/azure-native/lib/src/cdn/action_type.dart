@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes what action to be applied when rule matches
-enum ActionType {
+enum ActionType implements pulumi.PulumiEnum<String> {
   allow("Allow"),
   block("Block"),
   log("Log"),
   redirect("Redirect");
 
   const ActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static ActionType fromValue(String value) {

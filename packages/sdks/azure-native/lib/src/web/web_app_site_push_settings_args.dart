@@ -8,22 +8,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_web_web_app_site_push_settings_args_doc}
 class WebAppSitePushSettingsArgs {
   /// Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
-  final pulumi.Input<String>? dynamicTagsJson;
+  final pulumi.Input<String?>? dynamicTagsJson;
   /// Gets or sets a flag indicating whether the Push endpoint is enabled.
   final pulumi.Input<bool> isPushEnabled;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
-  final pulumi.Input<String>? tagWhitelistJson;
+  final pulumi.Input<String?>? tagWhitelistJson;
   /// Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
   /// Tags can consist of alphanumeric characters and the following:
   /// '_', '@', '#', '.', ':', '-'.
   /// Validation should be performed at the PushRequestHandler.
-  final pulumi.Input<String>? tagsRequiringAuth;
+  final pulumi.Input<String?>? tagsRequiringAuth;
 
   /// Creates a new [WebAppSitePushSettingsArgs].
   /// [dynamicTagsJson] Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.

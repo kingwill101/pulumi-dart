@@ -24,6 +24,17 @@ Future<GetManagementAssociationResult> getManagementAssociation(
   return GetManagementAssociationResult.fromMap(result);
 }
 
+pulumi.Output<GetManagementAssociationResult> getManagementAssociationOutput(
+  GetManagementAssociationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:operationsmanagement:getManagementAssociation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagementAssociationResult.fromMap);
+}
+
 /// Retrieves the user ManagementConfiguration.
 ///
 /// Uses Azure REST API version 2015-11-01-preview.
@@ -42,6 +53,17 @@ Future<GetManagementConfigurationResult> getManagementConfiguration(
   return GetManagementConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetManagementConfigurationResult> getManagementConfigurationOutput(
+  GetManagementConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:operationsmanagement:getManagementConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagementConfigurationResult.fromMap);
+}
+
 /// Retrieves the user solution.
 ///
 /// Uses Azure REST API version 2015-11-01-preview.
@@ -58,4 +80,15 @@ Future<GetSolutionResult> getSolution(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSolutionResult.fromMap(result);
+}
+
+pulumi.Output<GetSolutionResult> getSolutionOutput(
+  GetSolutionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:operationsmanagement:getSolution',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSolutionResult.fromMap);
 }

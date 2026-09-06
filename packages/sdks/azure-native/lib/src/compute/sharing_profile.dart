@@ -6,9 +6,9 @@ import 'community_gallery_info.dart';
 /// Profile for gallery sharing to subscription or tenant
 class SharingProfile {
   /// Information of community gallery if current gallery is shared to community.
-  final pulumi.Input<CommunityGalleryInfo>? communityGalleryInfo;
+  final pulumi.Input<CommunityGalleryInfo?>? communityGalleryInfo;
   /// This property allows you to specify the permission of sharing gallery. Possible values are: **Private,** **Groups,** **Community.**
-  final pulumi.Input<String>? permissions;
+  final pulumi.Input<dynamic>? permissions;
 
   /// Creates a new [SharingProfile].
   /// [communityGalleryInfo] Information of community gallery if current gallery is shared to community.
@@ -28,7 +28,7 @@ class SharingProfile {
   factory SharingProfile.fromMap(Map<String, dynamic> map) {
     return SharingProfile(
       communityGalleryInfo: (() { final guardedValue = map['communityGalleryInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CommunityGalleryInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      permissions: (() { final guardedValue = map['permissions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      permissions: (() { final guardedValue = map['permissions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

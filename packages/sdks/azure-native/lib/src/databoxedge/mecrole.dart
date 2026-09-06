@@ -193,4 +193,24 @@ class MECRole extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [MECRole] resource.
+  MECRole.reference(String urn)
+    : super(
+        'azure-native:databoxedge:MECRole',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectionString = registerOutput<AsymmetricEncryptedSecretResponse?>('connectionString', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AsymmetricEncryptedSecretResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    controllerEndpoint = registerOutput<String?>('controllerEndpoint');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    resourceUniqueId = registerOutput<String?>('resourceUniqueId');
+    roleStatus = registerOutput<String>('roleStatus');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

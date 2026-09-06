@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The segment terminator suffix.
-enum SegmentTerminatorSuffix {
+enum SegmentTerminatorSuffix implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueNone("None"),
   valueCR("CR"),
@@ -7,6 +9,7 @@ enum SegmentTerminatorSuffix {
   valueCRLF("CRLF");
 
   const SegmentTerminatorSuffix(this.wireValue);
+  @override
   final String wireValue;
 
   static SegmentTerminatorSuffix fromValue(String value) {

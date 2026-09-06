@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Indicates public network solution. If enable, enable public network access of target service with best try. Default is enable. If optOut, opt out public network access configuration.
-enum ActionType {
+enum ActionType implements pulumi.PulumiEnum<String> {
   valueEnable("enable"),
   valueOptOut("optOut");
 
   const ActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static ActionType fromValue(String value) {

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Network Virtual Appliance Sku Properties.
 class VirtualApplianceSkuProperties {
   /// Virtual Appliance Scale Unit.
-  final pulumi.Input<String>? bundledScaleUnit;
+  final pulumi.Input<String?>? bundledScaleUnit;
   /// Virtual Appliance Version.
-  final pulumi.Input<String>? marketPlaceVersion;
+  final pulumi.Input<String?>? marketPlaceVersion;
   /// Virtual Appliance Vendor.
-  final pulumi.Input<String>? vendor;
+  final pulumi.Input<String?>? vendor;
 
   /// Creates a new [VirtualApplianceSkuProperties].
   /// [bundledScaleUnit] Virtual Appliance Scale Unit.

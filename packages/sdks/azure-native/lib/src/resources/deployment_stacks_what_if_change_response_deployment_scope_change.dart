@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Predicted changes to the deployment scope for the deployment stack.
 class DeploymentStacksWhatIfChangeResponseDeploymentScopeChange {
   /// The predicted value after the deployment is executed.
-  final pulumi.Input<String>? after;
+  final pulumi.Input<String?>? after;
   /// The predicted value before the deployment is executed.
-  final pulumi.Input<String>? before;
+  final pulumi.Input<String?>? before;
 
   /// Creates a new [DeploymentStacksWhatIfChangeResponseDeploymentScopeChange].
   /// [after] The predicted value after the deployment is executed.

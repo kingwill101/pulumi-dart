@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An alert action. Only relevant for alerts.
 class PrometheusRuleGroupAction {
   /// The resource id of the action group to use.
-  final pulumi.Input<String>? actionGroupId;
+  final pulumi.Input<String?>? actionGroupId;
   /// The properties of an action group object.
-  final pulumi.Input<Map<String, String>>? actionProperties;
+  final pulumi.Input<Map<String, String>?>? actionProperties;
 
   /// Creates a new [PrometheusRuleGroupAction].
   /// [actionGroupId] The resource id of the action group to use.

@@ -10,13 +10,13 @@ class EnvironmentTypeArgs {
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
   /// The display name of the environment type.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The name of the environment type.
-  final pulumi.Input<String>? environmentTypeName;
+  final pulumi.Input<String?>? environmentTypeName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EnvironmentTypeArgs].
   /// [devCenterName] The name of the devcenter.

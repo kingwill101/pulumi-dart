@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines the rule set action.
-enum ManagedRuleSetActionType {
+enum ManagedRuleSetActionType implements pulumi.PulumiEnum<String> {
   block("Block"),
   log("Log"),
   redirect("Redirect");
 
   const ManagedRuleSetActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static ManagedRuleSetActionType fromValue(String value) {

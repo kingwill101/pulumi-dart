@@ -7,7 +7,7 @@ class ApplicationGatewayFirewallDisabledRuleGroupResponse {
   /// The name of the rule group that will be disabled.
   final pulumi.Input<String> ruleGroupName;
   /// The list of rules that will be disabled. If null, all rules of the rule group will be disabled.
-  final pulumi.Input<List<int>>? rules;
+  final pulumi.Input<List<int>?>? rules;
 
   /// Creates a new [ApplicationGatewayFirewallDisabledRuleGroupResponse].
   /// [ruleGroupName] The name of the rule group that will be disabled.

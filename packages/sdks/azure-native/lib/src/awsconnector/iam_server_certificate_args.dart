@@ -9,15 +9,15 @@ import 'iam_server_certificate_properties.dart';
 /// {@macro pulumi_awsconnector_iam_server_certificate_args_doc}
 class IamServerCertificateArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of IamServerCertificate
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<IamServerCertificateProperties>? properties;
+  final pulumi.Input<IamServerCertificateProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [IamServerCertificateArgs].
   /// [location] The geo-location where the resource lives

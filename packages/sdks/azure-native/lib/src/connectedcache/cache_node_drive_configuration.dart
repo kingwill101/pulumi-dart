@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Drive configuration for cache node
 class CacheNodeDriveConfiguration {
   /// corresponding nginx cache number. Valid cache numbers are 1 - 20
-  final pulumi.Input<int>? cacheNumber;
+  final pulumi.Input<int?>? cacheNumber;
   /// full binding for corresponding nginx cache drive
-  final pulumi.Input<String>? nginxMapping;
+  final pulumi.Input<String?>? nginxMapping;
   /// physical path location of the folder used for caching content
-  final pulumi.Input<String>? physicalPath;
+  final pulumi.Input<String?>? physicalPath;
   /// physical size of the drive used for caching content
-  final pulumi.Input<int>? sizeInGb;
+  final pulumi.Input<int?>? sizeInGb;
 
   /// Creates a new [CacheNodeDriveConfiguration].
   /// [cacheNumber] corresponding nginx cache number. Valid cache numbers are 1 - 20
@@ -36,10 +36,10 @@ class CacheNodeDriveConfiguration {
 
   factory CacheNodeDriveConfiguration.fromMap(Map<String, dynamic> map) {
     return CacheNodeDriveConfiguration(
-      cacheNumber: (() { final guardedValue = map['cacheNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cacheNumber: (() { final guardedValue = map['cacheNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nginxMapping: (() { final guardedValue = map['nginxMapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       physicalPath: (() { final guardedValue = map['physicalPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sizeInGb: (() { final guardedValue = map['sizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sizeInGb: (() { final guardedValue = map['sizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

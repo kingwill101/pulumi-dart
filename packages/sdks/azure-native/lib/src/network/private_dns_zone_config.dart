@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// PrivateDnsZoneConfig resource.
 class PrivateDnsZoneConfig {
   /// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource id of the private dns zone.
-  final pulumi.Input<String>? privateDnsZoneId;
+  final pulumi.Input<String?>? privateDnsZoneId;
 
   /// Creates a new [PrivateDnsZoneConfig].
   /// [name] Name of the resource that is unique within a resource group. This name can be used to access the resource.

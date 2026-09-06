@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Toleration allows ClusterResourcePlacement to tolerate any taint that matches the triple &lt;key,value,effect&gt; using the matching operator &lt;operator&gt;.
 class TolerationResponse {
   /// Effect indicates the taint effect to match. Empty means match all taint effects. When specified, only allowed value is NoSchedule.
-  final pulumi.Input<String>? effect;
+  final pulumi.Input<String?>? effect;
   /// Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a ClusterResourcePlacement can tolerate all taints of a particular category.
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
   /// Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TolerationResponse].
   /// [effect] Effect indicates the taint effect to match. Empty means match all taint effects. When specified, only allowed value is NoSchedule.

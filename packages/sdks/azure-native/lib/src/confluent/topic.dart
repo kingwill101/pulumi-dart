@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'system_data_response.dart';
 import 'topic_args.dart';
 import 'topic_metadata_entity_response.dart';
+import 'topics_input_config_response.dart';
 import 'topics_related_link_response.dart';
 
 /// Details of topic record
@@ -251,7 +252,7 @@ class Topic extends pulumi.CustomResource {
   /// Config Specification of the topic
   late final pulumi.Output<TopicsRelatedLinkResponse?> configs;
   /// Input Config Specification of the topic
-  late final pulumi.Output<List<Map<String, dynamic>>?> inputConfigs;
+  late final pulumi.Output<List<TopicsInputConfigResponse>?> inputConfigs;
   /// Type of topic
   late final pulumi.Output<String?> kind;
   /// Metadata of the record
@@ -289,7 +290,31 @@ class Topic extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     configs = registerOutput<TopicsRelatedLinkResponse?>('configs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicsRelatedLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    inputConfigs = registerOutput<List<Map<String, dynamic>>?>('inputConfigs');
+    inputConfigs = registerOutput<List<TopicsInputConfigResponse>?>('inputConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TopicsInputConfigResponse>(guardedValue, (value) => TopicsInputConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<TopicMetadataEntityResponse?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicMetadataEntityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    partitions = registerOutput<TopicsRelatedLinkResponse?>('partitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicsRelatedLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    partitionsCount = registerOutput<String?>('partitionsCount');
+    partitionsReassignments = registerOutput<TopicsRelatedLinkResponse?>('partitionsReassignments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicsRelatedLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    replicationFactor = registerOutput<String?>('replicationFactor');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    topicId = registerOutput<String?>('topicId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Topic] resource.
+  Topic.reference(String urn)
+    : super(
+        'azure-native:confluent:Topic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configs = registerOutput<TopicsRelatedLinkResponse?>('configs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicsRelatedLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inputConfigs = registerOutput<List<TopicsInputConfigResponse>?>('inputConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TopicsInputConfigResponse>(guardedValue, (value) => TopicsInputConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
     kind = registerOutput<String?>('kind');
     metadata = registerOutput<TopicMetadataEntityResponse?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicMetadataEntityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

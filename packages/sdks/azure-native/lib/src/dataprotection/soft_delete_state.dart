@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// State of soft delete
-enum SoftDeleteState {
+enum SoftDeleteState implements pulumi.PulumiEnum<String> {
   valueOff("Off"),
   valueOn("On"),
   valueAlwaysOn("AlwaysOn");
 
   const SoftDeleteState(this.wireValue);
+  @override
   final String wireValue;
 
   static SoftDeleteState fromValue(String value) {

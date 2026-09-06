@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The expedited rollout definition.
 class DefaultRolloutSpecificationExpeditedRolloutResponse {
   /// Indicates whether expedited rollout is enabled/disabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [DefaultRolloutSpecificationExpeditedRolloutResponse].
   /// [enabled] Indicates whether expedited rollout is enabled/disabled

@@ -7,7 +7,7 @@ class VirtualNetworkProfile {
   /// Resource id of the Virtual Network.
   final pulumi.Input<String> id;
   /// Subnet within the Virtual Network.
-  final pulumi.Input<String>? subnet;
+  final pulumi.Input<String?>? subnet;
 
   /// Creates a new [VirtualNetworkProfile].
   /// [id] Resource id of the Virtual Network.

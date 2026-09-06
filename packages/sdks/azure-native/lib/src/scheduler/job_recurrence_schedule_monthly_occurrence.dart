@@ -5,9 +5,9 @@ import 'job_schedule_day.dart';
 
 class JobRecurrenceScheduleMonthlyOccurrence {
   /// Gets or sets the day. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
-  final pulumi.Input<JobScheduleDay>? day;
+  final pulumi.Input<JobScheduleDay?>? day;
   /// Gets or sets the occurrence. Must be between -5 and 5.
-  final pulumi.Input<int>? occurrence;
+  final pulumi.Input<int?>? occurrence;
 
   /// Creates a new [JobRecurrenceScheduleMonthlyOccurrence].
   /// [day] Gets or sets the day. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
@@ -27,7 +27,7 @@ class JobRecurrenceScheduleMonthlyOccurrence {
   factory JobRecurrenceScheduleMonthlyOccurrence.fromMap(Map<String, dynamic> map) {
     return JobRecurrenceScheduleMonthlyOccurrence(
       day: (() { final guardedValue = map['day']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobScheduleDay.fromValue(guardedValue as String)); })(),
-      occurrence: (() { final guardedValue = map['occurrence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      occurrence: (() { final guardedValue = map['occurrence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

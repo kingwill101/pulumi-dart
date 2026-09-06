@@ -6,10 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// is selected in Windows patch settings.
 class WindowsVMGuestPatchAutomaticByPlatformSettingsResponse {
   /// Enables customer to schedule patching without accidental upgrades
-  final pulumi.Input<bool>? bypassPlatformSafetyChecksOnUserSchedule;
+  final pulumi.Input<bool?>? bypassPlatformSafetyChecksOnUserSchedule;
   /// Specifies the reboot setting for all AutomaticByPlatform patch installation
   /// operations.
-  final pulumi.Input<String>? rebootSetting;
+  final pulumi.Input<String?>? rebootSetting;
 
   /// Creates a new [WindowsVMGuestPatchAutomaticByPlatformSettingsResponse].
   /// [bypassPlatformSafetyChecksOnUserSchedule] Enables customer to schedule patching without accidental upgrades

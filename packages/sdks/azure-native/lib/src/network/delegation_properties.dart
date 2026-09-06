@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of the delegation.
 class DelegationProperties {
   /// The service name to which the NVA is delegated.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
 
   /// Creates a new [DelegationProperties].
   /// [serviceName] The service name to which the NVA is delegated.

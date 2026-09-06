@@ -6,11 +6,11 @@ import 'virtual_network_gateway_policy_group_member.dart';
 /// Parameters for VirtualNetworkGatewayPolicyGroup.
 class VirtualNetworkGatewayPolicyGroup {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Shows if this is a Default VirtualNetworkGatewayPolicyGroup or not.
   final pulumi.Input<bool> isDefault;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Multiple PolicyMembers for VirtualNetworkGatewayPolicyGroup.
   final pulumi.Input<List<VirtualNetworkGatewayPolicyGroupMember>> policyMembers;
   /// Priority for VirtualNetworkGatewayPolicyGroup.
@@ -46,7 +46,7 @@ class VirtualNetworkGatewayPolicyGroup {
       isDefault: pulumi.Input.fromValue(map['isDefault'] as bool),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyMembers: pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualNetworkGatewayPolicyGroupMember>(map['policyMembers']!, (value) => VirtualNetworkGatewayPolicyGroupMember.fromMap((value as Map).cast<String, dynamic>()))),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
     );
   }
 }

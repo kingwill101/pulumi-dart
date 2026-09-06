@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes an Azure Table output data source.
 class AzureTableOutputDataSourceResponse {
   /// The account key for the Azure Storage account. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? accountKey;
+  final pulumi.Input<String?>? accountKey;
   /// The name of the Azure Storage account. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// The number of rows to write to the Azure Table at a time.
-  final pulumi.Input<int>? batchSize;
+  final pulumi.Input<int?>? batchSize;
   /// If specified, each item in the array is the name of a column to remove (if present) from output event entities.
-  final pulumi.Input<List<String>>? columnsToRemove;
+  final pulumi.Input<List<String>?>? columnsToRemove;
   /// This element indicates the name of a column from the SELECT statement in the query that will be used as the partition key for the Azure Table. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? partitionKey;
+  final pulumi.Input<String?>? partitionKey;
   /// This element indicates the name of a column from the SELECT statement in the query that will be used as the row key for the Azure Table. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? rowKey;
+  final pulumi.Input<String?>? rowKey;
   /// The name of the Azure Table. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? table;
+  final pulumi.Input<String?>? table;
   /// Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'Microsoft.Storage/Table'.
   final pulumi.Input<String> type;
@@ -59,7 +59,7 @@ class AzureTableOutputDataSourceResponse {
     return AzureTableOutputDataSourceResponse(
       accountKey: (() { final guardedValue = map['accountKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       columnsToRemove: (() { final guardedValue = map['columnsToRemove']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       partitionKey: (() { final guardedValue = map['partitionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rowKey: (() { final guardedValue = map['rowKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

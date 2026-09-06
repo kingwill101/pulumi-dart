@@ -18,39 +18,39 @@ import 'sub_resource_response.dart';
 /// Subnet in a virtual network resource.
 class SubnetResponse {
   /// The address prefix for the subnet.
-  final pulumi.Input<String>? addressPrefix;
+  final pulumi.Input<String?>? addressPrefix;
   /// List of address prefixes for the subnet.
-  final pulumi.Input<List<String>>? addressPrefixes;
+  final pulumi.Input<List<String>?>? addressPrefixes;
   /// Application gateway IP configurations of virtual network resource.
-  final pulumi.Input<List<ApplicationGatewayIPConfigurationResponse>>? applicationGatewayIPConfigurations;
+  final pulumi.Input<List<ApplicationGatewayIPConfigurationResponse>?>? applicationGatewayIPConfigurations;
   /// Set this property to false to disable default outbound connectivity for all VMs in the subnet. This property can only be set at the time of subnet creation and cannot be updated for an existing subnet.
-  final pulumi.Input<bool>? defaultOutboundAccess;
+  final pulumi.Input<bool?>? defaultOutboundAccess;
   /// An array of references to the delegations on the subnet.
-  final pulumi.Input<List<DelegationResponse>>? delegations;
+  final pulumi.Input<List<DelegationResponse>?>? delegations;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Array of IpAllocation which reference this subnet.
-  final pulumi.Input<List<SubResourceResponse>>? ipAllocations;
+  final pulumi.Input<List<SubResourceResponse>?>? ipAllocations;
   /// Array of IP configuration profiles which reference this subnet.
   final pulumi.Input<List<IPConfigurationProfileResponse>> ipConfigurationProfiles;
   /// An array of references to the network interface IP configurations using subnet.
   final pulumi.Input<List<IPConfigurationResponse>> ipConfigurations;
   /// A list of IPAM Pools for allocating IP address prefixes.
-  final pulumi.Input<List<IpamPoolPrefixAllocationResponse>>? ipamPoolPrefixAllocations;
+  final pulumi.Input<List<IpamPoolPrefixAllocationResponse>?>? ipamPoolPrefixAllocations;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Nat gateway associated with this subnet.
-  final pulumi.Input<SubResourceResponse>? natGateway;
+  final pulumi.Input<SubResourceResponse?>? natGateway;
   /// The reference to the NetworkSecurityGroup resource.
-  final pulumi.Input<NetworkSecurityGroupResponse>? networkSecurityGroup;
+  final pulumi.Input<NetworkSecurityGroupResponse?>? networkSecurityGroup;
   /// Enable or Disable apply network policies on private end point in the subnet.
-  final pulumi.Input<String>? privateEndpointNetworkPolicies;
+  final pulumi.Input<String?>? privateEndpointNetworkPolicies;
   /// An array of references to private endpoints.
   final pulumi.Input<List<PrivateEndpointResponse>> privateEndpoints;
   /// Enable or Disable apply network policies on private link service in the subnet.
-  final pulumi.Input<String>? privateLinkServiceNetworkPolicies;
+  final pulumi.Input<String?>? privateLinkServiceNetworkPolicies;
   /// The provisioning state of the subnet resource.
   final pulumi.Input<String> provisioningState;
   /// A read-only string identifying the intention of use for this subnet based on delegations and other user-defined properties.
@@ -58,17 +58,17 @@ class SubnetResponse {
   /// An array of references to the external resources using subnet.
   final pulumi.Input<List<ResourceNavigationLinkResponse>> resourceNavigationLinks;
   /// The reference to the RouteTable resource.
-  final pulumi.Input<RouteTableResponse>? routeTable;
+  final pulumi.Input<RouteTableResponse?>? routeTable;
   /// An array of references to services injecting into this subnet.
   final pulumi.Input<List<ServiceAssociationLinkResponse>> serviceAssociationLinks;
   /// An array of service endpoint policies.
-  final pulumi.Input<List<ServiceEndpointPolicyResponse>>? serviceEndpointPolicies;
+  final pulumi.Input<List<ServiceEndpointPolicyResponse>?>? serviceEndpointPolicies;
   /// An array of service endpoints.
-  final pulumi.Input<List<ServiceEndpointPropertiesFormatResponse>>? serviceEndpoints;
+  final pulumi.Input<List<ServiceEndpointPropertiesFormatResponse>?>? serviceEndpoints;
   /// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
-  final pulumi.Input<String>? sharingScope;
+  final pulumi.Input<String?>? sharingScope;
   /// Resource type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [SubnetResponse].
   /// [addressPrefix] The address prefix for the subnet.
@@ -97,7 +97,7 @@ class SubnetResponse {
   /// [serviceEndpoints] An array of service endpoints.
   /// [sharingScope] Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
   /// [type] Resource type.
-  const SubnetResponse({
+  SubnetResponse({
     this.addressPrefix,
     this.addressPrefixes,
     this.applicationGatewayIPConfigurations,
@@ -112,9 +112,9 @@ class SubnetResponse {
     this.name,
     this.natGateway,
     this.networkSecurityGroup,
-    this.privateEndpointNetworkPolicies,
+    pulumi.Input<String?>? privateEndpointNetworkPolicies,
     required this.privateEndpoints,
-    this.privateLinkServiceNetworkPolicies,
+    pulumi.Input<String?>? privateLinkServiceNetworkPolicies,
     required this.provisioningState,
     required this.purpose,
     required this.resourceNavigationLinks,
@@ -124,7 +124,7 @@ class SubnetResponse {
     this.serviceEndpoints,
     this.sharingScope,
     this.type,
-  });
+  }) : privateEndpointNetworkPolicies = privateEndpointNetworkPolicies ?? pulumi.Input.fromValue('Disabled'), privateLinkServiceNetworkPolicies = privateLinkServiceNetworkPolicies ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

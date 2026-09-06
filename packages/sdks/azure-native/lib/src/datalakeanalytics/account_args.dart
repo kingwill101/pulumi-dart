@@ -15,39 +15,39 @@ import 'tier_type.dart';
 /// {@macro pulumi_datalakeanalytics_account_args_doc}
 class AccountArgs {
   /// The name of the Data Lake Analytics account.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// The list of compute policies associated with this account.
-  final pulumi.Input<List<CreateComputePolicyWithAccountParameters>>? computePolicies;
+  final pulumi.Input<List<CreateComputePolicyWithAccountParameters>?>? computePolicies;
   /// The list of Data Lake Store accounts associated with this account.
   final pulumi.Input<List<AddDataLakeStoreWithAccountParameters>> dataLakeStoreAccounts;
   /// The default Data Lake Store account associated with this account.
   final pulumi.Input<String> defaultDataLakeStoreAccount;
   /// The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced.
-  final pulumi.Input<FirewallAllowAzureIpsState>? firewallAllowAzureIps;
+  final pulumi.Input<FirewallAllowAzureIpsState?>? firewallAllowAzureIps;
   /// The list of firewall rules associated with this account.
-  final pulumi.Input<List<CreateFirewallRuleWithAccountParameters>>? firewallRules;
+  final pulumi.Input<List<CreateFirewallRuleWithAccountParameters>?>? firewallRules;
   /// The current state of the IP address firewall for this account.
-  final pulumi.Input<FirewallState>? firewallState;
+  final pulumi.Input<FirewallState?>? firewallState;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The maximum supported degree of parallelism for this account.
-  final pulumi.Input<int>? maxDegreeOfParallelism;
+  final pulumi.Input<int?>? maxDegreeOfParallelism;
   /// The maximum supported degree of parallelism per job for this account.
-  final pulumi.Input<int>? maxDegreeOfParallelismPerJob;
+  final pulumi.Input<int?>? maxDegreeOfParallelismPerJob;
   /// The maximum supported jobs running under the account at the same time.
-  final pulumi.Input<int>? maxJobCount;
+  final pulumi.Input<int?>? maxJobCount;
   /// The minimum supported priority per job for this account.
-  final pulumi.Input<int>? minPriorityPerJob;
+  final pulumi.Input<int?>? minPriorityPerJob;
   /// The commitment tier for the next month.
-  final pulumi.Input<TierType>? newTier;
+  final pulumi.Input<TierType?>? newTier;
   /// The number of days that job metadata is retained.
-  final pulumi.Input<int>? queryStoreRetention;
+  final pulumi.Input<int?>? queryStoreRetention;
   /// The name of the Azure resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The list of Azure Blob Storage accounts associated with this account.
-  final pulumi.Input<List<AddStorageAccountWithAccountParameters>>? storageAccounts;
+  final pulumi.Input<List<AddStorageAccountWithAccountParameters>?>? storageAccounts;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccountArgs].
   /// [accountName] The name of the Data Lake Analytics account.
@@ -67,25 +67,25 @@ class AccountArgs {
   /// [resourceGroupName] The name of the Azure resource group.
   /// [storageAccounts] The list of Azure Blob Storage accounts associated with this account.
   /// [tags] The resource tags.
-  const AccountArgs({
+  AccountArgs({
     this.accountName,
     this.computePolicies,
     required this.dataLakeStoreAccounts,
     required this.defaultDataLakeStoreAccount,
-    this.firewallAllowAzureIps,
+    pulumi.Input<FirewallAllowAzureIpsState?>? firewallAllowAzureIps,
     this.firewallRules,
-    this.firewallState,
+    pulumi.Input<FirewallState?>? firewallState,
     this.location,
-    this.maxDegreeOfParallelism,
-    this.maxDegreeOfParallelismPerJob,
-    this.maxJobCount,
+    pulumi.Input<int?>? maxDegreeOfParallelism,
+    pulumi.Input<int?>? maxDegreeOfParallelismPerJob,
+    pulumi.Input<int?>? maxJobCount,
     this.minPriorityPerJob,
-    this.newTier,
-    this.queryStoreRetention,
+    pulumi.Input<TierType?>? newTier,
+    pulumi.Input<int?>? queryStoreRetention,
     required this.resourceGroupName,
     this.storageAccounts,
     this.tags,
-  });
+  }) : firewallAllowAzureIps = firewallAllowAzureIps ?? pulumi.Input.fromValue(FirewallAllowAzureIpsState.fromValue('Disabled')), firewallState = firewallState ?? pulumi.Input.fromValue(FirewallState.fromValue('Disabled')), maxDegreeOfParallelism = maxDegreeOfParallelism ?? pulumi.Input.fromValue(30), maxDegreeOfParallelismPerJob = maxDegreeOfParallelismPerJob ?? pulumi.Input.fromValue(32), maxJobCount = maxJobCount ?? pulumi.Input.fromValue(3), newTier = newTier ?? pulumi.Input.fromValue(TierType.fromValue('Consumption')), queryStoreRetention = queryStoreRetention ?? pulumi.Input.fromValue(30);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -119,12 +119,12 @@ class AccountArgs {
       firewallRules: (() { final guardedValue = map['firewallRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CreateFirewallRuleWithAccountParameters>(guardedValue, (value) => CreateFirewallRuleWithAccountParameters.fromMap((value as Map).cast<String, dynamic>()))); })(),
       firewallState: (() { final guardedValue = map['firewallState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallState.fromValue(guardedValue as String)); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxDegreeOfParallelism: (() { final guardedValue = map['maxDegreeOfParallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxDegreeOfParallelismPerJob: (() { final guardedValue = map['maxDegreeOfParallelismPerJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxJobCount: (() { final guardedValue = map['maxJobCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minPriorityPerJob: (() { final guardedValue = map['minPriorityPerJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxDegreeOfParallelism: (() { final guardedValue = map['maxDegreeOfParallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxDegreeOfParallelismPerJob: (() { final guardedValue = map['maxDegreeOfParallelismPerJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxJobCount: (() { final guardedValue = map['maxJobCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minPriorityPerJob: (() { final guardedValue = map['minPriorityPerJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       newTier: (() { final guardedValue = map['newTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TierType.fromValue(guardedValue as String)); })(),
-      queryStoreRetention: (() { final guardedValue = map['queryStoreRetention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      queryStoreRetention: (() { final guardedValue = map['queryStoreRetention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       storageAccounts: (() { final guardedValue = map['storageAccounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AddStorageAccountWithAccountParameters>(guardedValue, (value) => AddStorageAccountWithAccountParameters.fromMap((value as Map).cast<String, dynamic>()))); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

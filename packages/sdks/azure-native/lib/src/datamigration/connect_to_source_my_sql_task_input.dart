@@ -6,25 +6,25 @@ import 'my_sql_connection_info.dart';
 /// Input for the task that validates MySQL database connection
 class ConnectToSourceMySqlTaskInput {
   /// Permission group for validations
-  final pulumi.Input<String>? checkPermissionsGroup;
+  final pulumi.Input<dynamic>? checkPermissionsGroup;
   /// Flag for whether or not the migration is offline
-  final pulumi.Input<bool>? isOfflineMigration;
+  final pulumi.Input<bool?>? isOfflineMigration;
   /// Information for connecting to MySQL source
   final pulumi.Input<MySqlConnectionInfo> sourceConnectionInfo;
   /// Target Platform for the migration
-  final pulumi.Input<String>? targetPlatform;
+  final pulumi.Input<dynamic>? targetPlatform;
 
   /// Creates a new [ConnectToSourceMySqlTaskInput].
   /// [checkPermissionsGroup] Permission group for validations
   /// [isOfflineMigration] Flag for whether or not the migration is offline
   /// [sourceConnectionInfo] Information for connecting to MySQL source
   /// [targetPlatform] Target Platform for the migration
-  const ConnectToSourceMySqlTaskInput({
+  ConnectToSourceMySqlTaskInput({
     this.checkPermissionsGroup,
-    this.isOfflineMigration,
+    pulumi.Input<bool?>? isOfflineMigration,
     required this.sourceConnectionInfo,
     this.targetPlatform,
-  });
+  }) : isOfflineMigration = isOfflineMigration ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,10 +37,10 @@ class ConnectToSourceMySqlTaskInput {
 
   factory ConnectToSourceMySqlTaskInput.fromMap(Map<String, dynamic> map) {
     return ConnectToSourceMySqlTaskInput(
-      checkPermissionsGroup: (() { final guardedValue = map['checkPermissionsGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      checkPermissionsGroup: (() { final guardedValue = map['checkPermissionsGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       isOfflineMigration: (() { final guardedValue = map['isOfflineMigration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sourceConnectionInfo: pulumi.Input.fromValue(MySqlConnectionInfo.fromMap((map['sourceConnectionInfo']! as Map).cast<String, dynamic>())),
-      targetPlatform: (() { final guardedValue = map['targetPlatform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetPlatform: (() { final guardedValue = map['targetPlatform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

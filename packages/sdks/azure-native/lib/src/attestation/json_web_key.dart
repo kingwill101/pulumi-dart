@@ -8,19 +8,19 @@ class JsonWebKey {
   /// IANA "JSON Web Signature and Encryption Algorithms" registry
   /// established by [JWA] or be a value that contains a Collision-
   /// Resistant Name.
-  final pulumi.Input<String>? alg;
+  final pulumi.Input<String?>? alg;
   /// The "crv" (curve) parameter identifies the curve type
-  final pulumi.Input<String>? crv;
+  final pulumi.Input<String?>? crv;
   /// RSA private exponent or ECC private key
-  final pulumi.Input<String>? d;
+  final pulumi.Input<String?>? d;
   /// RSA Private Key Parameter
-  final pulumi.Input<String>? dp;
+  final pulumi.Input<String?>? dp;
   /// RSA Private Key Parameter
-  final pulumi.Input<String>? dq;
+  final pulumi.Input<String?>? dq;
   /// RSA public exponent, in Base64
-  final pulumi.Input<String>? e;
+  final pulumi.Input<String?>? e;
   /// Symmetric key
-  final pulumi.Input<String>? k;
+  final pulumi.Input<String?>? k;
   /// The "kid" (key ID) parameter is used to match a specific key.  This
   /// is used, for instance, to choose among a set of keys within a JWK Set
   /// during key rollover.  The structure of the "kid" value is
@@ -30,7 +30,7 @@ class JsonWebKey {
   /// they have different "kty" (key type) values but are considered to be
   /// equivalent alternatives by the application using them.)  The "kid"
   /// value is a case-sensitive string.
-  final pulumi.Input<String>? kid;
+  final pulumi.Input<String?>? kid;
   /// The "kty" (key type) parameter identifies the cryptographic algorithm
   /// family used with the key, such as "RSA" or "EC". "kty" values should
   /// either be registered in the IANA "JSON Web Key Types" registry
@@ -38,20 +38,20 @@ class JsonWebKey {
   /// Resistant Name.  The "kty" value is a case-sensitive string.
   final pulumi.Input<String> kty;
   /// RSA modulus, in Base64
-  final pulumi.Input<String>? n;
+  final pulumi.Input<String?>? n;
   /// RSA secret prime
-  final pulumi.Input<String>? p;
+  final pulumi.Input<String?>? p;
   /// RSA secret prime, with p &lt; q
-  final pulumi.Input<String>? q;
+  final pulumi.Input<String?>? q;
   /// RSA Private Key Parameter
-  final pulumi.Input<String>? qi;
+  final pulumi.Input<String?>? qi;
   /// Use ("public key use") identifies the intended use of
   /// the public key. The "use" parameter is employed to indicate whether
   /// a public key is used for encrypting data or verifying the signature
   /// on data. Values are commonly "sig" (signature) or "enc" (encryption).
-  final pulumi.Input<String>? use;
+  final pulumi.Input<String?>? use;
   /// X coordinate for the Elliptic Curve point
-  final pulumi.Input<String>? x;
+  final pulumi.Input<String?>? x;
   /// The "x5c" (X.509 certificate chain) parameter contains a chain of one
   /// or more PKIX certificates [RFC5280].  The certificate chain is
   /// represented as a JSON array of certificate value strings.  Each
@@ -59,9 +59,9 @@ class JsonWebKey {
   /// not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value.
   /// The PKIX certificate containing the key value MUST be the first
   /// certificate.
-  final pulumi.Input<List<String>>? x5C;
+  final pulumi.Input<List<String>?>? x5C;
   /// Y coordinate for the Elliptic Curve point
-  final pulumi.Input<String>? y;
+  final pulumi.Input<String?>? y;
 
   /// Creates a new [JsonWebKey].
   /// [alg] The "alg" (algorithm) parameter identifies the algorithm intended for

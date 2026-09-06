@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// A value indicating whether trusted platform module to be enabled.
-enum SecurityConfiguration {
+enum SecurityConfiguration implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
   const SecurityConfiguration(this.wireValue);
+  @override
   final String wireValue;
 
   static SecurityConfiguration fromValue(String value) {

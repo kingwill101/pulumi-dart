@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] Task type for AutoMLJob.
-enum TaskType {
+enum TaskType implements pulumi.PulumiEnum<String> {
   classification("Classification"),
   regression("Regression"),
   forecasting("Forecasting"),
@@ -12,6 +14,7 @@ enum TaskType {
   textNER("TextNER");
 
   const TaskType(this.wireValue);
+  @override
   final String wireValue;
 
   static TaskType fromValue(String value) {

@@ -9,25 +9,25 @@ import 'progress_properties_response.dart';
 /// The response properties returned for a pipeline run.
 class PipelineRunResponseResponse {
   /// The digest of the tar used to transfer the artifacts.
-  final pulumi.Input<String>? catalogDigest;
+  final pulumi.Input<String?>? catalogDigest;
   /// The time the pipeline run finished.
-  final pulumi.Input<String>? finishTime;
+  final pulumi.Input<String?>? finishTime;
   /// The artifacts imported in the pipeline run.
-  final pulumi.Input<List<String>>? importedArtifacts;
+  final pulumi.Input<List<String>?>? importedArtifacts;
   /// The detailed error message for the pipeline run in the case of failure.
-  final pulumi.Input<String>? pipelineRunErrorMessage;
+  final pulumi.Input<String?>? pipelineRunErrorMessage;
   /// The current progress of the copy operation.
-  final pulumi.Input<ProgressPropertiesResponse>? progress;
+  final pulumi.Input<ProgressPropertiesResponse?>? progress;
   /// The source of the pipeline run.
-  final pulumi.Input<ImportPipelineSourcePropertiesResponse>? source;
+  final pulumi.Input<ImportPipelineSourcePropertiesResponse?>? source;
   /// The time the pipeline run started.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// The current status of the pipeline run.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The target of the pipeline run.
-  final pulumi.Input<ExportPipelineTargetPropertiesResponse>? target;
+  final pulumi.Input<ExportPipelineTargetPropertiesResponse?>? target;
   /// The trigger that caused the pipeline run.
-  final pulumi.Input<PipelineTriggerDescriptorResponse>? trigger;
+  final pulumi.Input<PipelineTriggerDescriptorResponse?>? trigger;
 
   /// Creates a new [PipelineRunResponseResponse].
   /// [catalogDigest] The digest of the tar used to transfer the artifacts.

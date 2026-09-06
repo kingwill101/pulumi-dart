@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enable or disable websockets.
-enum BrokerProtocolType {
+enum BrokerProtocolType implements pulumi.PulumiEnum<String> {
   mqtt("Mqtt"),
   webSockets("WebSockets");
 
   const BrokerProtocolType(this.wireValue);
+  @override
   final String wireValue;
 
   static BrokerProtocolType fromValue(String value) {

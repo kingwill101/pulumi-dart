@@ -8,9 +8,9 @@ class DevCenterSkuResponse {
   /// Collection of name/value pairs to describe the SKU capabilities.
   final pulumi.Input<List<CapabilityResponse>> capabilities;
   /// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
   /// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// SKU supported locations.
   final pulumi.Input<List<String>> locations;
   /// The name of the SKU. E.g. P3. It is typically a letter+number code
@@ -18,9 +18,9 @@ class DevCenterSkuResponse {
   /// The name of the resource type
   final pulumi.Input<String> resourceType;
   /// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-  final pulumi.Input<String>? size;
+  final pulumi.Input<String?>? size;
   /// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [DevCenterSkuResponse].
   /// [capabilities] Collection of name/value pairs to describe the SKU capabilities.
@@ -58,7 +58,7 @@ class DevCenterSkuResponse {
   factory DevCenterSkuResponse.fromMap(Map<String, dynamic> map) {
     return DevCenterSkuResponse(
       capabilities: pulumi.Input.fromValue(pulumi.Input.decodeList<CapabilityResponse>(map['capabilities']!, (value) => CapabilityResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       family: (() { final guardedValue = map['family']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       locations: pulumi.Input.fromValue((map['locations'] as List).cast<String>()),
       name: pulumi.Input.fromValue(map['name'] as String),

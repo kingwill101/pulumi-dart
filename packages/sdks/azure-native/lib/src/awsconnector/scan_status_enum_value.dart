@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ScanStatusEnumValue
 class ScanStatusEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [ScanStatusEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class ScanStatusEnumValue {
 
   factory ScanStatusEnumValue.fromMap(Map<String, dynamic> map) {
     return ScanStatusEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

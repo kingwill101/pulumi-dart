@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AllowedUnauthorizedActionsExtensionResponse {
   /// The action.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// The intent.
-  final pulumi.Input<String>? intent;
+  final pulumi.Input<String?>? intent;
 
   /// Creates a new [AllowedUnauthorizedActionsExtensionResponse].
   /// [action] The action.

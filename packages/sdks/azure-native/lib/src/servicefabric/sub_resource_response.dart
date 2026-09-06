@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Azure resource identifier.
 class SubResourceResponse {
   /// Azure resource identifier.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [SubResourceResponse].
   /// [id] Azure resource identifier.

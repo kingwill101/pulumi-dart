@@ -6,7 +6,7 @@ import 'managed_cluster_ingress_profile_web_app_routing_response.dart';
 /// Ingress profile for the container service cluster.
 class ManagedClusterIngressProfileResponse {
   /// App Routing settings for the ingress profile. You can find an overview and onboarding guide for this feature at https://learn.microsoft.com/en-us/azure/aks/app-routing?tabs=default%2Cdeploy-app-default.
-  final pulumi.Input<ManagedClusterIngressProfileWebAppRoutingResponse>? webAppRouting;
+  final pulumi.Input<ManagedClusterIngressProfileWebAppRoutingResponse?>? webAppRouting;
 
   /// Creates a new [ManagedClusterIngressProfileResponse].
   /// [webAppRouting] App Routing settings for the ingress profile. You can find an overview and onboarding guide for this feature at https://learn.microsoft.com/en-us/azure/aks/app-routing?tabs=default%2Cdeploy-app-default.

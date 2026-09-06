@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Extended location of the resource.
 class RegisteredClusterNodesResponse {
   /// The BIOS ID.
-  final pulumi.Input<String>? biosId;
+  final pulumi.Input<String?>? biosId;
   /// The cluster node name.
-  final pulumi.Input<String>? clusterNodeFqdn;
+  final pulumi.Input<String?>? clusterNodeFqdn;
   /// A value indicating whether this represents virtual entity hosting all the shared disks.
-  final pulumi.Input<bool>? isSharedDiskVirtualNode;
+  final pulumi.Input<bool?>? isSharedDiskVirtualNode;
   /// The machine ID.
-  final pulumi.Input<String>? machineId;
+  final pulumi.Input<String?>? machineId;
 
   /// Creates a new [RegisteredClusterNodesResponse].
   /// [biosId] The BIOS ID.

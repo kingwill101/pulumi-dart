@@ -6,9 +6,9 @@ import 'match_attributes.dart';
 /// Definition of RuleDefinition
 class RuleDefinition {
   /// Property actions
-  final pulumi.Input<List<String>>? actions;
+  final pulumi.Input<List<String>?>? actions;
   /// Property matchAttributes
-  final pulumi.Input<MatchAttributes>? matchAttributes;
+  final pulumi.Input<MatchAttributes?>? matchAttributes;
 
   /// Creates a new [RuleDefinition].
   /// [actions] Property actions

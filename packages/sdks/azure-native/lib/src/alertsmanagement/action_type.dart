@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Action that should be applied.
-enum ActionType {
+enum ActionType implements pulumi.PulumiEnum<String> {
   addActionGroups("AddActionGroups"),
   removeAllActionGroups("RemoveAllActionGroups");
 
   const ActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static ActionType fromValue(String value) {

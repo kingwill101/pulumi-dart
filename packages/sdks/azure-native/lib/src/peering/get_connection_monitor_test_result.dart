@@ -4,27 +4,27 @@
 /// Result data returned by getConnectionMonitorTest.
 class GetConnectionMonitorTestResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The Connection Monitor test destination
   final String? destination;
   /// The Connection Monitor test destination port
   final int? destinationPort;
   /// The ID of the resource.
-  final String id;
+  final String? id;
   /// The flag that indicates if the Connection Monitor test is successful or not.
-  final bool isTestSuccessful;
+  final bool? isTestSuccessful;
   /// The name of the resource.
-  final String name;
+  final String? name;
   /// The path representing the Connection Monitor test.
-  final List<String> path;
+  final List<String>? path;
   /// The provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The Connection Monitor test source agent
   final String? sourceAgent;
   /// The Connection Monitor test frequency in seconds
   final int? testFrequencyInSec;
   /// The type of the resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetConnectionMonitorTestResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -39,48 +39,48 @@ class GetConnectionMonitorTestResult {
   /// [testFrequencyInSec] The Connection Monitor test frequency in seconds
   /// [type] The type of the resource.
   const GetConnectionMonitorTestResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.destination,
     this.destinationPort,
-    required this.id,
-    required this.isTestSuccessful,
-    required this.name,
-    required this.path,
-    required this.provisioningState,
+    this.id,
+    this.isTestSuccessful,
+    this.name,
+    this.path,
+    this.provisioningState,
     this.sourceAgent,
     this.testFrequencyInSec,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'destination': ?destination,
       'destinationPort': ?destinationPort,
-      'id': id,
-      'isTestSuccessful': isTestSuccessful,
-      'name': name,
-      'path': path,
-      'provisioningState': provisioningState,
+      'id': ?id,
+      'isTestSuccessful': ?isTestSuccessful,
+      'name': ?name,
+      'path': ?path,
+      'provisioningState': ?provisioningState,
       'sourceAgent': ?sourceAgent,
       'testFrequencyInSec': ?testFrequencyInSec,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetConnectionMonitorTestResult.fromMap(Map<String, dynamic> map) {
     return GetConnectionMonitorTestResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      destinationPort: (() { final guardedValue = map['destinationPort']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      id: map['id'] as String,
-      isTestSuccessful: map['isTestSuccessful'] as bool,
-      name: map['name'] as String,
-      path: (map['path'] as List).cast<String>(),
-      provisioningState: map['provisioningState'] as String,
+      destinationPort: (() { final guardedValue = map['destinationPort']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      isTestSuccessful: (() { final guardedValue = map['isTestSuccessful']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sourceAgent: (() { final guardedValue = map['sourceAgent']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      testFrequencyInSec: (() { final guardedValue = map['testFrequencyInSec']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      type: map['type'] as String,
+      testFrequencyInSec: (() { final guardedValue = map['testFrequencyInSec']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'property_definition_response.dart';
 import 'relationship_args.dart';
+import 'relationship_type_mapping_response.dart';
 
 /// The relationship resource format.
 ///
@@ -223,9 +225,9 @@ class Relationship extends pulumi.CustomResource {
   /// The expiry date time in UTC.
   late final pulumi.Output<String?> expiryDateTimeUtc;
   /// The properties of the Relationship.
-  late final pulumi.Output<List<Map<String, dynamic>>?> fields;
+  late final pulumi.Output<List<PropertyDefinitionResponse>?> fields;
   /// Optional property to be used to map fields in profile to their strong ids in related profile.
-  late final pulumi.Output<List<Map<String, dynamic>>?> lookupMappings;
+  late final pulumi.Output<List<RelationshipTypeMappingResponse>?> lookupMappings;
   /// Resource name.
   late final pulumi.Output<String> name;
   /// Profile type.
@@ -259,11 +261,37 @@ class Relationship extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     cardinality = registerOutput<String?>('cardinality');
-    description = registerOutput<Map<String, String>?>('description');
-    displayName = registerOutput<Map<String, String>?>('displayName');
+    description = registerOutput<Map<String, String>?>('description', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    displayName = registerOutput<Map<String, String>?>('displayName', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     expiryDateTimeUtc = registerOutput<String?>('expiryDateTimeUtc');
-    fields = registerOutput<List<Map<String, dynamic>>?>('fields');
-    lookupMappings = registerOutput<List<Map<String, dynamic>>?>('lookupMappings');
+    fields = registerOutput<List<PropertyDefinitionResponse>?>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PropertyDefinitionResponse>(guardedValue, (value) => PropertyDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    lookupMappings = registerOutput<List<RelationshipTypeMappingResponse>?>('lookupMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RelationshipTypeMappingResponse>(guardedValue, (value) => RelationshipTypeMappingResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    profileType = registerOutput<String>('profileType');
+    provisioningState = registerOutput<String>('provisioningState');
+    relatedProfileType = registerOutput<String>('relatedProfileType');
+    relationshipGuidId = registerOutput<String>('relationshipGuidId');
+    relationshipName = registerOutput<String>('relationshipName');
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Relationship] resource.
+  Relationship.reference(String urn)
+    : super(
+        'azure-native:customerinsights:Relationship',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cardinality = registerOutput<String?>('cardinality');
+    description = registerOutput<Map<String, String>?>('description', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    displayName = registerOutput<Map<String, String>?>('displayName', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    expiryDateTimeUtc = registerOutput<String?>('expiryDateTimeUtc');
+    fields = registerOutput<List<PropertyDefinitionResponse>?>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PropertyDefinitionResponse>(guardedValue, (value) => PropertyDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    lookupMappings = registerOutput<List<RelationshipTypeMappingResponse>?>('lookupMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RelationshipTypeMappingResponse>(guardedValue, (value) => RelationshipTypeMappingResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     profileType = registerOutput<String>('profileType');
     provisioningState = registerOutput<String>('provisioningState');

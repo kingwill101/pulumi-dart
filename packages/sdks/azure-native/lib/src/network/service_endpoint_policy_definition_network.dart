@@ -230,7 +230,26 @@ class ServiceEndpointPolicyDefinitionNetwork extends pulumi.CustomResource {
     this.name = registerOutput<String?>('name');
     provisioningState = registerOutput<String>('provisioningState');
     service = registerOutput<String?>('service');
-    serviceResources = registerOutput<List<String>?>('serviceResources');
+    serviceResources = registerOutput<List<String>?>('serviceResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [ServiceEndpointPolicyDefinitionNetwork] resource.
+  ServiceEndpointPolicyDefinitionNetwork.reference(String urn)
+    : super(
+        'azure-native:network:ServiceEndpointPolicyDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String?>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    service = registerOutput<String?>('service');
+    serviceResources = registerOutput<List<String>?>('serviceResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String?>('type');
   }
 }

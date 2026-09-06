@@ -10,7 +10,7 @@ class GetReplicationFabricArgs {
   /// Fabric name.
   final pulumi.Input<String> fabricName;
   /// OData filter options.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the recovery services vault.

@@ -535,13 +535,39 @@ class RosettaNetProcessConfiguration extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     initiatorRoleSettings = registerOutput<RosettaNetPipRoleSettingsResponse>('initiatorRoleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RosettaNetPipRoleSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     processCode = registerOutput<String>('processCode');
     processName = registerOutput<String>('processName');
     processVersion = registerOutput<String>('processVersion');
     responderRoleSettings = registerOutput<RosettaNetPipRoleSettingsResponse>('responderRoleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RosettaNetPipRoleSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [RosettaNetProcessConfiguration] resource.
+  RosettaNetProcessConfiguration.reference(String urn)
+    : super(
+        'azure-native:logic:RosettaNetProcessConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activitySettings = registerOutput<RosettaNetPipActivitySettingsResponse>('activitySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RosettaNetPipActivitySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    changedTime = registerOutput<String>('changedTime');
+    createdTime = registerOutput<String>('createdTime');
+    description = registerOutput<String?>('description');
+    initiatorRoleSettings = registerOutput<RosettaNetPipRoleSettingsResponse>('initiatorRoleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RosettaNetPipRoleSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    processCode = registerOutput<String>('processCode');
+    processName = registerOutput<String>('processName');
+    processVersion = registerOutput<String>('processVersion');
+    responderRoleSettings = registerOutput<RosettaNetPipRoleSettingsResponse>('responderRoleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RosettaNetPipRoleSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

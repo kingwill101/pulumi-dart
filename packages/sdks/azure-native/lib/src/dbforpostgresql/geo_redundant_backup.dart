@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enable Geo-redundant or not for server backup.
-enum GeoRedundantBackup {
+enum GeoRedundantBackup implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const GeoRedundantBackup(this.wireValue);
+  @override
   final String wireValue;
 
   static GeoRedundantBackup fromValue(String value) {

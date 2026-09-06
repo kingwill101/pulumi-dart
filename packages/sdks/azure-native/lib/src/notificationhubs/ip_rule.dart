@@ -7,7 +7,7 @@ class IpRule {
   /// IP mask.
   final pulumi.Input<String> ipMask;
   /// List of access rights.
-  final pulumi.Input<List<String>> rights;
+  final pulumi.Input<List<dynamic>> rights;
 
   /// Creates a new [IpRule].
   /// [ipMask] IP mask.
@@ -27,7 +27,7 @@ class IpRule {
   factory IpRule.fromMap(Map<String, dynamic> map) {
     return IpRule(
       ipMask: pulumi.Input.fromValue(map['ipMask'] as String),
-      rights: pulumi.Input.fromValue((map['rights'] as List).cast<String>()),
+      rights: pulumi.Input.fromValue((map['rights'] as List).cast<dynamic>()),
     );
   }
 }

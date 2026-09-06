@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The status of the hunt.
-enum Status {
+enum Status implements pulumi.PulumiEnum<String> {
   valueNew("New"),
   valueActive("Active"),
   valueClosed("Closed"),
@@ -7,6 +9,7 @@ enum Status {
   valueApproved("Approved");
 
   const Status(this.wireValue);
+  @override
   final String wireValue;
 
   static Status fromValue(String value) {

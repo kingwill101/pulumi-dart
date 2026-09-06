@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines values for NamespaceType.
-enum NamespaceType {
+enum NamespaceType implements pulumi.PulumiEnum<String> {
   messaging("Messaging"),
   notificationHub("NotificationHub");
 
   const NamespaceType(this.wireValue);
+  @override
   final String wireValue;
 
   static NamespaceType fromValue(String value) {

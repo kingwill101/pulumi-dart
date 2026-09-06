@@ -6,9 +6,9 @@ import 'encryption_response_key_encryption_key_identity.dart';
 /// All Customer-managed key encryption properties for the resource.
 class EncryptionResponseCustomerManagedKeyEncryption {
   /// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
-  final pulumi.Input<EncryptionResponseKeyEncryptionKeyIdentity>? keyEncryptionKeyIdentity;
+  final pulumi.Input<EncryptionResponseKeyEncryptionKeyIdentity?>? keyEncryptionKeyIdentity;
   /// key encryption key Url, versioned or unversioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
-  final pulumi.Input<String>? keyEncryptionKeyUrl;
+  final pulumi.Input<String?>? keyEncryptionKeyUrl;
 
   /// Creates a new [EncryptionResponseCustomerManagedKeyEncryption].
   /// [keyEncryptionKeyIdentity] All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.

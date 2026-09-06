@@ -26,6 +26,17 @@ Future<GetBgpPeerResult> getBgpPeer(
   return GetBgpPeerResult.fromMap(result);
 }
 
+pulumi.Output<GetBgpPeerResult> getBgpPeerOutput(
+  GetBgpPeerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kubernetesruntime:getBgpPeer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBgpPeerResult.fromMap);
+}
+
 /// Get a LoadBalancer
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -42,6 +53,17 @@ Future<GetLoadBalancerResult> getLoadBalancer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLoadBalancerResult.fromMap(result);
+}
+
+pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
+  GetLoadBalancerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kubernetesruntime:getLoadBalancer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLoadBalancerResult.fromMap);
 }
 
 /// Get a ServiceResource
@@ -62,6 +84,17 @@ Future<GetServiceResult> getService(
   return GetServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kubernetesruntime:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
+}
+
 /// Get a StorageClassResource
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -78,4 +111,15 @@ Future<GetStorageClassResult> getStorageClass(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStorageClassResult.fromMap(result);
+}
+
+pulumi.Output<GetStorageClassResult> getStorageClassOutput(
+  GetStorageClassArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kubernetesruntime:getStorageClass',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageClassResult.fromMap);
 }

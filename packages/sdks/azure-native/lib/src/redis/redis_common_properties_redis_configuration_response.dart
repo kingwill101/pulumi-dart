@@ -5,41 +5,41 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc.
 class RedisCommonPropertiesRedisConfigurationResponse {
   /// Specifies whether AAD based authentication has been enabled or disabled for the cache
-  final pulumi.Input<String>? aadEnabled;
+  final pulumi.Input<String?>? aadEnabled;
   /// Specifies whether the aof backup is enabled
-  final pulumi.Input<String>? aofBackupEnabled;
+  final pulumi.Input<String?>? aofBackupEnabled;
   /// First storage account connection string
-  final pulumi.Input<String>? aofStorageConnectionString0;
+  final pulumi.Input<String?>? aofStorageConnectionString0;
   /// Second storage account connection string
-  final pulumi.Input<String>? aofStorageConnectionString1;
+  final pulumi.Input<String?>? aofStorageConnectionString1;
   /// Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view; you should never disable authentication using this property!
-  final pulumi.Input<String>? authnotrequired;
+  final pulumi.Input<String?>? authnotrequired;
   /// The max clients config
   final pulumi.Input<String> maxclients;
   /// Value in megabytes reserved for fragmentation per shard
-  final pulumi.Input<String>? maxfragmentationmemoryReserved;
+  final pulumi.Input<String?>? maxfragmentationmemoryReserved;
   /// Value in megabytes reserved for non-cache usage per shard e.g. failover.
-  final pulumi.Input<String>? maxmemoryDelta;
+  final pulumi.Input<String?>? maxmemoryDelta;
   /// The eviction strategy used when your data won't fit within its memory limit.
-  final pulumi.Input<String>? maxmemoryPolicy;
+  final pulumi.Input<String?>? maxmemoryPolicy;
   /// Value in megabytes reserved for non-cache usage per shard e.g. failover.
-  final pulumi.Input<String>? maxmemoryReserved;
+  final pulumi.Input<String?>? maxmemoryReserved;
   /// The keyspace events which should be monitored.
-  final pulumi.Input<String>? notifyKeyspaceEvents;
+  final pulumi.Input<String?>? notifyKeyspaceEvents;
   /// Preferred auth method to communicate to storage account used for data archive, specify SAS or ManagedIdentity, default value is SAS
   final pulumi.Input<String> preferredDataArchiveAuthMethod;
   /// Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
-  final pulumi.Input<String>? preferredDataPersistenceAuthMethod;
+  final pulumi.Input<String?>? preferredDataPersistenceAuthMethod;
   /// Specifies whether the RDB backup is enabled
-  final pulumi.Input<String>? rdbBackupEnabled;
+  final pulumi.Input<String?>? rdbBackupEnabled;
   /// Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
-  final pulumi.Input<String>? rdbBackupFrequency;
+  final pulumi.Input<String?>? rdbBackupFrequency;
   /// Specifies the maximum number of snapshots for rdb backup
-  final pulumi.Input<String>? rdbBackupMaxSnapshotCount;
+  final pulumi.Input<String?>? rdbBackupMaxSnapshotCount;
   /// The storage account connection string for storing rdb file
-  final pulumi.Input<String>? rdbStorageConnectionString;
+  final pulumi.Input<String?>? rdbStorageConnectionString;
   /// SubscriptionId of the storage account for persistence (aof/rdb) using ManagedIdentity.
-  final pulumi.Input<String>? storageSubscriptionId;
+  final pulumi.Input<String?>? storageSubscriptionId;
   /// Zonal Configuration
   final pulumi.Input<String> zonalConfiguration;
 

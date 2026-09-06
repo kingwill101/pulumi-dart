@@ -11,29 +11,29 @@ import 'secret.dart';
 /// {@macro pulumi_app_connected_environments_dapr_component_args_doc}
 class ConnectedEnvironmentsDaprComponentArgs {
   /// Name of the Dapr Component.
-  final pulumi.Input<String>? componentName;
+  final pulumi.Input<String?>? componentName;
   /// Component type
-  final pulumi.Input<String>? componentType;
+  final pulumi.Input<String?>? componentType;
   /// Name of the connected environment.
   final pulumi.Input<String> connectedEnvironmentName;
   /// Boolean describing if the component errors are ignores
-  final pulumi.Input<bool>? ignoreErrors;
+  final pulumi.Input<bool?>? ignoreErrors;
   /// Initialization timeout
-  final pulumi.Input<String>? initTimeout;
+  final pulumi.Input<String?>? initTimeout;
   /// Component metadata
-  final pulumi.Input<List<DaprMetadata>>? metadata;
+  final pulumi.Input<List<DaprMetadata>?>? metadata;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Names of container apps that can use this Dapr component
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
   /// Name of a Dapr component to retrieve component secrets from
-  final pulumi.Input<String>? secretStoreComponent;
+  final pulumi.Input<String?>? secretStoreComponent;
   /// Collection of secrets used by a Dapr component
-  final pulumi.Input<List<Secret>>? secrets;
+  final pulumi.Input<List<Secret>?>? secrets;
   /// List of container app services that are bound to the Dapr component
-  final pulumi.Input<List<DaprComponentServiceBinding>>? serviceComponentBind;
+  final pulumi.Input<List<DaprComponentServiceBinding>?>? serviceComponentBind;
   /// Component version
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ConnectedEnvironmentsDaprComponentArgs].
   /// [componentName] Name of the Dapr Component.
@@ -48,11 +48,11 @@ class ConnectedEnvironmentsDaprComponentArgs {
   /// [secrets] Collection of secrets used by a Dapr component
   /// [serviceComponentBind] List of container app services that are bound to the Dapr component
   /// [version] Component version
-  const ConnectedEnvironmentsDaprComponentArgs({
+  ConnectedEnvironmentsDaprComponentArgs({
     this.componentName,
     this.componentType,
     required this.connectedEnvironmentName,
-    this.ignoreErrors,
+    pulumi.Input<bool?>? ignoreErrors,
     this.initTimeout,
     this.metadata,
     required this.resourceGroupName,
@@ -61,7 +61,7 @@ class ConnectedEnvironmentsDaprComponentArgs {
     this.secrets,
     this.serviceComponentBind,
     this.version,
-  });
+  }) : ignoreErrors = ignoreErrors ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

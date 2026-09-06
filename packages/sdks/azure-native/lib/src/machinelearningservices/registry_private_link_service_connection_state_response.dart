@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The connection state.
 class RegistryPrivateLinkServiceConnectionStateResponse {
   /// Some RP chose "None". Other RPs use this for region expansion.
-  final pulumi.Input<String>? actionsRequired;
+  final pulumi.Input<String?>? actionsRequired;
   /// User-defined message that, per NRP doc, may be used for approval-related message.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Connection status of the service consumer with the service provider
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [RegistryPrivateLinkServiceConnectionStateResponse].
   /// [actionsRequired] Some RP chose "None". Other RPs use this for region expansion.

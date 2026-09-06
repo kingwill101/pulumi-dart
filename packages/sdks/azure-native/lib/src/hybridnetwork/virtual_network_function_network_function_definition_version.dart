@@ -1,16 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_core_network_function_template.dart';
 
 /// Virtual network function network function definition version properties.
 class VirtualNetworkFunctionNetworkFunctionDefinitionVersion {
   /// The deployment parameters of the network function definition version.
-  final pulumi.Input<String>? deployParameters;
+  final pulumi.Input<String?>? deployParameters;
   /// The network function definition version description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Virtual network function template.
-  final pulumi.Input<AzureCoreNetworkFunctionTemplate>? networkFunctionTemplate;
+  final pulumi.Input<dynamic>? networkFunctionTemplate;
   /// The network function type.
   /// Expected value is 'VirtualNetworkFunction'.
   final pulumi.Input<String> networkFunctionType;
@@ -31,7 +30,7 @@ class VirtualNetworkFunctionNetworkFunctionDefinitionVersion {
     return <String, dynamic>{
       'deployParameters': ?deployParameters,
       'description': ?description,
-      'networkFunctionTemplate': ?pulumi.Input.mapOptionalInputValue<AzureCoreNetworkFunctionTemplate, Map<String, dynamic>>(networkFunctionTemplate, (value) => value.toMap()),
+      'networkFunctionTemplate': ?networkFunctionTemplate,
       'networkFunctionType': networkFunctionType,
     };
   }
@@ -40,7 +39,7 @@ class VirtualNetworkFunctionNetworkFunctionDefinitionVersion {
     return VirtualNetworkFunctionNetworkFunctionDefinitionVersion(
       deployParameters: (() { final guardedValue = map['deployParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      networkFunctionTemplate: (() { final guardedValue = map['networkFunctionTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureCoreNetworkFunctionTemplate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      networkFunctionTemplate: (() { final guardedValue = map['networkFunctionTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       networkFunctionType: pulumi.Input.fromValue(map['networkFunctionType'] as String),
     );
   }

@@ -11,39 +11,39 @@ import 'workload_identity_federation_response.dart';
 /// Result data returned by getSourceControl.
 class GetSourceControlResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Array of source control content types.
-  final List<String> contentTypes;
+  final List<String>? contentTypes;
   /// A description of the source control
   final String? description;
   /// The display name of the source control
-  final String displayName;
+  final String? displayName;
   /// Etag of the azure resource
   final String? etag;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Information regarding the latest deployment for the source control.
-  final DeploymentInfoResponse lastDeploymentInfo;
+  final DeploymentInfoResponse? lastDeploymentInfo;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Information regarding the pull request of the source control.
-  final PullRequestResponse pullRequest;
+  final PullRequestResponse? pullRequest;
   /// The repository type of the source control
-  final String repoType;
+  final String? repoType;
   /// Repository metadata.
-  final RepositoryResponse repository;
+  final RepositoryResponse? repository;
   /// Information regarding the resources created in user's repository.
   final RepositoryResourceInfoResponse? repositoryResourceInfo;
   /// Service principal metadata.
   final ServicePrincipalResponse? servicePrincipal;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// The version number associated with the source control
-  final String version;
+  final String? version;
   /// Workload Identity metadata.
-  final WorkloadIdentityFederationResponse workloadIdentityFederation;
+  final WorkloadIdentityFederationResponse? workloadIdentityFederation;
 
   /// Creates a new [GetSourceControlResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -64,66 +64,66 @@ class GetSourceControlResult {
   /// [version] The version number associated with the source control
   /// [workloadIdentityFederation] Workload Identity metadata.
   const GetSourceControlResult({
-    required this.azureApiVersion,
-    required this.contentTypes,
+    this.azureApiVersion,
+    this.contentTypes,
     this.description,
-    required this.displayName,
+    this.displayName,
     this.etag,
-    required this.id,
-    required this.lastDeploymentInfo,
-    required this.name,
-    required this.pullRequest,
-    required this.repoType,
-    required this.repository,
+    this.id,
+    this.lastDeploymentInfo,
+    this.name,
+    this.pullRequest,
+    this.repoType,
+    this.repository,
     this.repositoryResourceInfo,
     this.servicePrincipal,
-    required this.systemData,
-    required this.type,
-    required this.version,
-    required this.workloadIdentityFederation,
+    this.systemData,
+    this.type,
+    this.version,
+    this.workloadIdentityFederation,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'contentTypes': contentTypes,
+      'azureApiVersion': ?azureApiVersion,
+      'contentTypes': ?contentTypes,
       'description': ?description,
-      'displayName': displayName,
+      'displayName': ?displayName,
       'etag': ?etag,
-      'id': id,
-      'lastDeploymentInfo': lastDeploymentInfo.toMap(),
-      'name': name,
-      'pullRequest': pullRequest.toMap(),
-      'repoType': repoType,
-      'repository': repository.toMap(),
+      'id': ?id,
+      'lastDeploymentInfo': ?lastDeploymentInfo?.toMap(),
+      'name': ?name,
+      'pullRequest': ?pullRequest?.toMap(),
+      'repoType': ?repoType,
+      'repository': ?repository?.toMap(),
       'repositoryResourceInfo': ?repositoryResourceInfo?.toMap(),
       'servicePrincipal': ?servicePrincipal?.toMap(),
-      'systemData': systemData.toMap(),
-      'type': type,
-      'version': version,
-      'workloadIdentityFederation': workloadIdentityFederation.toMap(),
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
+      'version': ?version,
+      'workloadIdentityFederation': ?workloadIdentityFederation?.toMap(),
     };
   }
 
   factory GetSourceControlResult.fromMap(Map<String, dynamic> map) {
     return GetSourceControlResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      contentTypes: (map['contentTypes'] as List).cast<String>(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      contentTypes: (() { final guardedValue = map['contentTypes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      displayName: map['displayName'] as String,
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      lastDeploymentInfo: DeploymentInfoResponse.fromMap((map['lastDeploymentInfo']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      pullRequest: PullRequestResponse.fromMap((map['pullRequest']! as Map).cast<String, dynamic>()),
-      repoType: map['repoType'] as String,
-      repository: RepositoryResponse.fromMap((map['repository']! as Map).cast<String, dynamic>()),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastDeploymentInfo: (() { final guardedValue = map['lastDeploymentInfo']; if (guardedValue == null) return null; return DeploymentInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pullRequest: (() { final guardedValue = map['pullRequest']; if (guardedValue == null) return null; return PullRequestResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      repoType: (() { final guardedValue = map['repoType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      repository: (() { final guardedValue = map['repository']; if (guardedValue == null) return null; return RepositoryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       repositoryResourceInfo: (() { final guardedValue = map['repositoryResourceInfo']; if (guardedValue == null) return null; return RepositoryResourceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       servicePrincipal: (() { final guardedValue = map['servicePrincipal']; if (guardedValue == null) return null; return ServicePrincipalResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      version: map['version'] as String,
-      workloadIdentityFederation: WorkloadIdentityFederationResponse.fromMap((map['workloadIdentityFederation']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      workloadIdentityFederation: (() { final guardedValue = map['workloadIdentityFederation']; if (guardedValue == null) return null; return WorkloadIdentityFederationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

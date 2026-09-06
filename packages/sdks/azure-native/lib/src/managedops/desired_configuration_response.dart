@@ -11,9 +11,9 @@ class DesiredConfigurationResponse {
   /// Configuration for the Change Tracking and Inventory service.
   final pulumi.Input<ChangeTrackingConfigurationResponse> changeTrackingAndInventory;
   /// Desired enablement state of the Defender Cloud Security Posture Management (CSPM) service.
-  final pulumi.Input<String>? defenderCspm;
+  final pulumi.Input<String?>? defenderCspm;
   /// Desired enablement state of the Defender For Servers service.
-  final pulumi.Input<String>? defenderForServers;
+  final pulumi.Input<String?>? defenderForServers;
   /// User assigned Managed Identity used to perform operations on machines managed by Ops360.
   final pulumi.Input<String> userAssignedManagedIdentityId;
 

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The instance type that the image version runs on.
-enum ResourceSpecInstanceType {
+enum ResourceSpecInstanceType implements pulumi.PulumiEnum<String> {
   mlC512xlarge("ml.c5.12xlarge"),
   mlC518xlarge("ml.c5.18xlarge"),
   mlC524xlarge("ml.c5.24xlarge"),
@@ -65,6 +67,7 @@ enum ResourceSpecInstanceType {
   system("system");
 
   const ResourceSpecInstanceType(this.wireValue);
+  @override
   final String wireValue;
 
   static ResourceSpecInstanceType fromValue(String value) {

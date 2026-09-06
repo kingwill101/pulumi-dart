@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The plan object in Azure Resource Manager, represents a marketplace plan.
 class ArmPlanResponse {
   /// The name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The product.
-  final pulumi.Input<String>? product;
+  final pulumi.Input<String?>? product;
   /// The promotion code.
-  final pulumi.Input<String>? promotionCode;
+  final pulumi.Input<String?>? promotionCode;
   /// The publisher.
-  final pulumi.Input<String>? publisher;
+  final pulumi.Input<String?>? publisher;
   /// Version of product.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ArmPlanResponse].
   /// [name] The name.

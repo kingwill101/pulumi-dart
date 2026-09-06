@@ -619,4 +619,29 @@ class ScheduledActionByScope extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     viewId = registerOutput<String>('viewId');
   }
+
+  /// Creates a typed reference to an existing [ScheduledActionByScope] resource.
+  ScheduledActionByScope.reference(String urn)
+    : super(
+        'azure-native:costmanagement:ScheduledActionByScope',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    displayName = registerOutput<String>('displayName');
+    eTag = registerOutput<String>('eTag');
+    fileDestination = registerOutput<FileDestinationResponse?>('fileDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String?>('kind');
+    this.name = registerOutput<String>('name');
+    notification = registerOutput<NotificationPropertiesResponse>('notification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    notificationEmail = registerOutput<String?>('notificationEmail');
+    schedule = registerOutput<SchedulePropertiesResponse>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchedulePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scope = registerOutput<String?>('scope');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    viewId = registerOutput<String>('viewId');
+  }
 }

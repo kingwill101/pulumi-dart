@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of InstanceAutoRecoveryStateEnumValue
 class InstanceAutoRecoveryStateEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [InstanceAutoRecoveryStateEnumValueResponse].
   /// [value] Property value

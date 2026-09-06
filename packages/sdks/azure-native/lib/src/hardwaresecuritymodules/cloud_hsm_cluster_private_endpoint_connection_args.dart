@@ -11,7 +11,7 @@ class CloudHsmClusterPrivateEndpointConnectionArgs {
   /// The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
   final pulumi.Input<String> cloudHsmClusterName;
   /// Name of the private endpoint connection associated with the Cloud HSM Cluster.
-  final pulumi.Input<String>? peConnectionName;
+  final pulumi.Input<String?>? peConnectionName;
   /// A collection of information about the state of the connection between service consumer and provider.
   final pulumi.Input<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState;
   /// The name of the resource group. The name is case insensitive.

@@ -4,29 +4,29 @@
 /// Result data returned by listRedisKeys.
 class ListRedisKeysResult {
   /// The current primary key that clients can use to authenticate with Redis cache.
-  final String primaryKey;
+  final String? primaryKey;
   /// The current secondary key that clients can use to authenticate with Redis cache.
-  final String secondaryKey;
+  final String? secondaryKey;
 
   /// Creates a new [ListRedisKeysResult].
   /// [primaryKey] The current primary key that clients can use to authenticate with Redis cache.
   /// [secondaryKey] The current secondary key that clients can use to authenticate with Redis cache.
   const ListRedisKeysResult({
-    required this.primaryKey,
-    required this.secondaryKey,
+    this.primaryKey,
+    this.secondaryKey,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'primaryKey': primaryKey,
-      'secondaryKey': secondaryKey,
+      'primaryKey': ?primaryKey,
+      'secondaryKey': ?secondaryKey,
     };
   }
 
   factory ListRedisKeysResult.fromMap(Map<String, dynamic> map) {
     return ListRedisKeysResult(
-      primaryKey: map['primaryKey'] as String,
-      secondaryKey: map['secondaryKey'] as String,
+      primaryKey: (() { final guardedValue = map['primaryKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secondaryKey: (() { final guardedValue = map['secondaryKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

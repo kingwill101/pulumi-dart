@@ -4,16 +4,16 @@
 /// Result data returned by listNamespaceKeys.
 class ListNamespaceKeysResult {
   /// Gets or sets keyName of the created AuthorizationRule
-  final String keyName;
+  final String? keyName;
   /// Gets or sets primaryConnectionString of the AuthorizationRule.
-  final String primaryConnectionString;
+  final String? primaryConnectionString;
   /// Gets or sets primaryKey of the created AuthorizationRule.
-  final String primaryKey;
+  final String? primaryKey;
   /// Gets or sets secondaryConnectionString of the created
   /// AuthorizationRule
-  final String secondaryConnectionString;
+  final String? secondaryConnectionString;
   /// Gets or sets secondaryKey of the created AuthorizationRule
-  final String secondaryKey;
+  final String? secondaryKey;
 
   /// Creates a new [ListNamespaceKeysResult].
   /// [keyName] Gets or sets keyName of the created AuthorizationRule
@@ -22,30 +22,30 @@ class ListNamespaceKeysResult {
   /// [secondaryConnectionString] Gets or sets secondaryConnectionString of the created
   /// [secondaryKey] Gets or sets secondaryKey of the created AuthorizationRule
   const ListNamespaceKeysResult({
-    required this.keyName,
-    required this.primaryConnectionString,
-    required this.primaryKey,
-    required this.secondaryConnectionString,
-    required this.secondaryKey,
+    this.keyName,
+    this.primaryConnectionString,
+    this.primaryKey,
+    this.secondaryConnectionString,
+    this.secondaryKey,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyName': keyName,
-      'primaryConnectionString': primaryConnectionString,
-      'primaryKey': primaryKey,
-      'secondaryConnectionString': secondaryConnectionString,
-      'secondaryKey': secondaryKey,
+      'keyName': ?keyName,
+      'primaryConnectionString': ?primaryConnectionString,
+      'primaryKey': ?primaryKey,
+      'secondaryConnectionString': ?secondaryConnectionString,
+      'secondaryKey': ?secondaryKey,
     };
   }
 
   factory ListNamespaceKeysResult.fromMap(Map<String, dynamic> map) {
     return ListNamespaceKeysResult(
-      keyName: map['keyName'] as String,
-      primaryConnectionString: map['primaryConnectionString'] as String,
-      primaryKey: map['primaryKey'] as String,
-      secondaryConnectionString: map['secondaryConnectionString'] as String,
-      secondaryKey: map['secondaryKey'] as String,
+      keyName: (() { final guardedValue = map['keyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      primaryConnectionString: (() { final guardedValue = map['primaryConnectionString']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      primaryKey: (() { final guardedValue = map['primaryKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secondaryConnectionString: (() { final guardedValue = map['secondaryConnectionString']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secondaryKey: (() { final guardedValue = map['secondaryKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

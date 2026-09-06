@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the dependency override of the move resource.
 class MoveResourceDependencyOverrideResponse {
   /// Gets or sets the ARM ID of the dependent resource.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Gets or sets the resource ARM id of either the MoveResource or the resource ARM ID of
   /// the dependent resource.
-  final pulumi.Input<String>? targetId;
+  final pulumi.Input<String?>? targetId;
 
   /// Creates a new [MoveResourceDependencyOverrideResponse].
   /// [id] Gets or sets the ARM ID of the dependent resource.

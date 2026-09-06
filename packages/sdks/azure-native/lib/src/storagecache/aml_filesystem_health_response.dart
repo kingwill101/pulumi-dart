@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An indication of AML file system health. Gives more information about health than just that related to provisioning.
 class AmlFilesystemHealthResponse {
   /// List of AML file system health states.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Server-defined error code for the AML file system health
-  final pulumi.Input<String>? statusCode;
+  final pulumi.Input<String?>? statusCode;
   /// Describes the health state.
-  final pulumi.Input<String>? statusDescription;
+  final pulumi.Input<String?>? statusDescription;
 
   /// Creates a new [AmlFilesystemHealthResponse].
   /// [state] List of AML file system health states.

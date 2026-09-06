@@ -10,17 +10,17 @@ import 'generate_resource_limits_response.dart';
 /// Broker Resource properties
 class BrokerPropertiesResponse {
   /// Advanced settings of Broker.
-  final pulumi.Input<AdvancedSettingsResponse>? advanced;
+  final pulumi.Input<AdvancedSettingsResponse?>? advanced;
   /// The cardinality details of the broker.
-  final pulumi.Input<CardinalityResponse>? cardinality;
+  final pulumi.Input<CardinalityResponse?>? cardinality;
   /// Spec defines the desired identities of Broker diagnostics settings.
-  final pulumi.Input<BrokerDiagnosticsResponse>? diagnostics;
+  final pulumi.Input<BrokerDiagnosticsResponse?>? diagnostics;
   /// Settings of Disk Backed Message Buffer.
-  final pulumi.Input<DiskBackedMessageBufferResponse>? diskBackedMessageBuffer;
+  final pulumi.Input<DiskBackedMessageBufferResponse?>? diskBackedMessageBuffer;
   /// This setting controls whether Kubernetes CPU resource limits are requested. Increasing the number of replicas or workers proportionally increases the amount of CPU resources requested. If this setting is enabled and there are insufficient CPU resources, an error will be emitted.
-  final pulumi.Input<GenerateResourceLimitsResponse>? generateResourceLimits;
+  final pulumi.Input<GenerateResourceLimitsResponse?>? generateResourceLimits;
   /// Memory profile of Broker.
-  final pulumi.Input<String>? memoryProfile;
+  final pulumi.Input<String?>? memoryProfile;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
 
@@ -32,15 +32,15 @@ class BrokerPropertiesResponse {
   /// [generateResourceLimits] This setting controls whether Kubernetes CPU resource limits are requested. Increasing the number of replicas or workers proportionally increases the amount of CPU resources requested. If this setting is enabled and there are insufficient CPU resources, an error will be emitted.
   /// [memoryProfile] Memory profile of Broker.
   /// [provisioningState] The status of the last operation.
-  const BrokerPropertiesResponse({
+  BrokerPropertiesResponse({
     this.advanced,
     this.cardinality,
     this.diagnostics,
     this.diskBackedMessageBuffer,
     this.generateResourceLimits,
-    this.memoryProfile,
+    pulumi.Input<String?>? memoryProfile,
     required this.provisioningState,
-  });
+  }) : memoryProfile = memoryProfile ?? pulumi.Input.fromValue('Medium');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

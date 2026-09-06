@@ -14,11 +14,11 @@ class RecommendationConfigurationPropertiesResponse {
   /// [name] Required.
   /// [recommendationType] The type of IoT Security recommendation.
   /// [status] Recommendation status. When the recommendation status is disabled recommendations are not generated.
-  const RecommendationConfigurationPropertiesResponse({
+  RecommendationConfigurationPropertiesResponse({
     required this.name,
     required this.recommendationType,
-    required this.status,
-  });
+    pulumi.Input<String>? status,
+  }) : status = status ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

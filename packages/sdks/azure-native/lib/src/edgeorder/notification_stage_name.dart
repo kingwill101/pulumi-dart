@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Name of the stage.
-enum NotificationStageName {
+enum NotificationStageName implements pulumi.PulumiEnum<String> {
   shipped("Shipped"),
   delivered("Delivered");
 
   const NotificationStageName(this.wireValue);
+  @override
   final String wireValue;
 
   static NotificationStageName fromValue(String value) {

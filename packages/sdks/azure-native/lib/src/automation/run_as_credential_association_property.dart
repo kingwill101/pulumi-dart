@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of RunAs credential to use for hybrid worker.
 class RunAsCredentialAssociationProperty {
   /// Gets or sets the name of the credential.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [RunAsCredentialAssociationProperty].
   /// [name] Gets or sets the name of the credential.

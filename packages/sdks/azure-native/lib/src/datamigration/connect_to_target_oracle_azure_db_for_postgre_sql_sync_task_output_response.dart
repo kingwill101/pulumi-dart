@@ -7,7 +7,7 @@ import 'reportable_exception_response.dart';
 /// Output for the task that validates connection to Azure Database for PostgreSQL and target server requirements for Oracle source.
 class ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponse {
   /// Mapping of schemas per database
-  final pulumi.Input<List<ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap>>? databaseSchemaMap;
+  final pulumi.Input<List<ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap>?>? databaseSchemaMap;
   /// List of databases on target server
   final pulumi.Input<List<String>> databases;
   /// Target server brand version

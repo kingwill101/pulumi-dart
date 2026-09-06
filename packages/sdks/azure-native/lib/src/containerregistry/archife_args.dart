@@ -9,16 +9,16 @@ import 'archive_package_source_properties.dart';
 /// {@macro pulumi_containerregistry_archife_args_doc}
 class ArchifeArgs {
   /// The name of the archive resource.
-  final pulumi.Input<String>? archiveName;
+  final pulumi.Input<String?>? archiveName;
   /// The package source of the archive.
-  final pulumi.Input<ArchivePackageSourceProperties>? packageSource;
+  final pulumi.Input<ArchivePackageSourceProperties?>? packageSource;
   /// The type of the package resource.
   final pulumi.Input<String> packageType;
   /// The published version of the archive.
-  final pulumi.Input<String>? publishedVersion;
+  final pulumi.Input<String?>? publishedVersion;
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
-  final pulumi.Input<String>? repositoryEndpointPrefix;
+  final pulumi.Input<String?>? repositoryEndpointPrefix;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

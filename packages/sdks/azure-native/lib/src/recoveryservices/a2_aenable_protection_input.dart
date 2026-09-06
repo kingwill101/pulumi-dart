@@ -9,48 +9,48 @@ import 'extended_location.dart';
 /// A2A enable protection input.
 class A2AEnableProtectionInput {
   /// A value indicating whether the auto protection is enabled.
-  final pulumi.Input<String>? autoProtectionOfDataDisk;
+  final pulumi.Input<dynamic>? autoProtectionOfDataDisk;
   /// The recovery disk encryption information (for two pass flows).
-  final pulumi.Input<DiskEncryptionInfo>? diskEncryptionInfo;
+  final pulumi.Input<DiskEncryptionInfo?>? diskEncryptionInfo;
   /// The fabric specific object Id of the virtual machine.
   final pulumi.Input<String> fabricObjectId;
   /// The class type.
   /// Expected value is 'A2A'.
   final pulumi.Input<String> instanceType;
   /// The multi vm group id.
-  final pulumi.Input<String>? multiVmGroupId;
+  final pulumi.Input<String?>? multiVmGroupId;
   /// The multi vm group name.
-  final pulumi.Input<String>? multiVmGroupName;
+  final pulumi.Input<String?>? multiVmGroupName;
   /// The replication protection cluster Id.
-  final pulumi.Input<String>? protectionClusterId;
+  final pulumi.Input<String?>? protectionClusterId;
   /// The recovery availability set Id.
-  final pulumi.Input<String>? recoveryAvailabilitySetId;
+  final pulumi.Input<String?>? recoveryAvailabilitySetId;
   /// The recovery availability zone.
-  final pulumi.Input<String>? recoveryAvailabilityZone;
+  final pulumi.Input<String?>? recoveryAvailabilityZone;
   /// The recovery Azure virtual network ARM id.
-  final pulumi.Input<String>? recoveryAzureNetworkId;
+  final pulumi.Input<String?>? recoveryAzureNetworkId;
   /// The boot diagnostic storage account.
-  final pulumi.Input<String>? recoveryBootDiagStorageAccountId;
+  final pulumi.Input<String?>? recoveryBootDiagStorageAccountId;
   /// The recovery capacity reservation group Id.
-  final pulumi.Input<String>? recoveryCapacityReservationGroupId;
+  final pulumi.Input<String?>? recoveryCapacityReservationGroupId;
   /// The recovery cloud service Id. Valid for V1 scenarios.
-  final pulumi.Input<String>? recoveryCloudServiceId;
+  final pulumi.Input<String?>? recoveryCloudServiceId;
   /// The recovery container Id.
-  final pulumi.Input<String>? recoveryContainerId;
+  final pulumi.Input<String?>? recoveryContainerId;
   /// The recovery extended location.
-  final pulumi.Input<ExtendedLocation>? recoveryExtendedLocation;
+  final pulumi.Input<ExtendedLocation?>? recoveryExtendedLocation;
   /// The recovery proximity placement group Id.
-  final pulumi.Input<String>? recoveryProximityPlacementGroupId;
+  final pulumi.Input<String?>? recoveryProximityPlacementGroupId;
   /// The recovery resource group Id. Valid for V2 scenarios.
-  final pulumi.Input<String>? recoveryResourceGroupId;
+  final pulumi.Input<String?>? recoveryResourceGroupId;
   /// The recovery subnet name.
-  final pulumi.Input<String>? recoverySubnetName;
+  final pulumi.Input<String?>? recoverySubnetName;
   /// The virtual machine scale set Id.
-  final pulumi.Input<String>? recoveryVirtualMachineScaleSetId;
+  final pulumi.Input<String?>? recoveryVirtualMachineScaleSetId;
   /// The list of vm disk details.
-  final pulumi.Input<List<A2AVmDiskInputDetails>>? vmDisks;
+  final pulumi.Input<List<A2AVmDiskInputDetails>?>? vmDisks;
   /// The list of vm managed disk details.
-  final pulumi.Input<List<A2AVmManagedDiskInputDetails>>? vmManagedDisks;
+  final pulumi.Input<List<A2AVmManagedDiskInputDetails>?>? vmManagedDisks;
 
   /// Creates a new [A2AEnableProtectionInput].
   /// [autoProtectionOfDataDisk] A value indicating whether the auto protection is enabled.
@@ -126,7 +126,7 @@ class A2AEnableProtectionInput {
 
   factory A2AEnableProtectionInput.fromMap(Map<String, dynamic> map) {
     return A2AEnableProtectionInput(
-      autoProtectionOfDataDisk: (() { final guardedValue = map['autoProtectionOfDataDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      autoProtectionOfDataDisk: (() { final guardedValue = map['autoProtectionOfDataDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       diskEncryptionInfo: (() { final guardedValue = map['diskEncryptionInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiskEncryptionInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       fabricObjectId: pulumi.Input.fromValue(map['fabricObjectId'] as String),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),

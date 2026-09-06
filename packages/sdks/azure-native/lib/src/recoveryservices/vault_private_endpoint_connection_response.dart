@@ -7,7 +7,7 @@ import 'vault_private_link_service_connection_state_response.dart';
 /// Private Endpoint Connection Response Properties.
 class VaultPrivateEndpointConnectionResponse {
   /// Group Ids for the Private Endpoint
-  final pulumi.Input<List<String>>? groupIds;
+  final pulumi.Input<List<String>?>? groupIds;
   /// The Private Endpoint network resource that is linked to the Private Endpoint connection.
   final pulumi.Input<PrivateEndpointVaultResponse> privateEndpoint;
   /// Gets or sets private link service connection state.

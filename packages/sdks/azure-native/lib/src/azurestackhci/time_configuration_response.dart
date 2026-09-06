@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Time configuration.
 class TimeConfigurationResponse {
   /// Primary NTP server.
-  final pulumi.Input<String>? primaryTimeServer;
+  final pulumi.Input<String?>? primaryTimeServer;
   /// Secondary NTP server.
-  final pulumi.Input<String>? secondaryTimeServer;
+  final pulumi.Input<String?>? secondaryTimeServer;
   /// Time zone.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [TimeConfigurationResponse].
   /// [primaryTimeServer] Primary NTP server.

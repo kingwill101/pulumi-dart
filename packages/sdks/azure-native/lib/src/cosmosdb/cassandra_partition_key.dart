@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Cosmos DB Cassandra table partition key
 class CassandraPartitionKey {
   /// Name of the Cosmos DB Cassandra table partition key
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [CassandraPartitionKey].
   /// [name] Name of the Cosmos DB Cassandra table partition key

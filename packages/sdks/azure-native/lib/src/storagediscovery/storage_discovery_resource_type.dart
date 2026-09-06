@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Storage Discovery Resource Type
-enum StorageDiscoveryResourceType {
+enum StorageDiscoveryResourceType implements pulumi.PulumiEnum<String> {
   storageAccounts("Microsoft.Storage/storageAccounts");
 
   const StorageDiscoveryResourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageDiscoveryResourceType fromValue(String value) {

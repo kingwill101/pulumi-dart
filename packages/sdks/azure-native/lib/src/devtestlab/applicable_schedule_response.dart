@@ -9,17 +9,17 @@ class ApplicableScheduleResponse {
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final pulumi.Input<String> id;
   /// The auto-shutdown schedule, if one has been set at the lab or lab resource level.
-  final pulumi.Input<ScheduleResponse>? labVmsShutdown;
+  final pulumi.Input<ScheduleResponse?>? labVmsShutdown;
   /// The auto-startup schedule, if one has been set at the lab or lab resource level.
-  final pulumi.Input<ScheduleResponse>? labVmsStartup;
+  final pulumi.Input<ScheduleResponse?>? labVmsStartup;
   /// The location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource
   final pulumi.Input<String> name;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
   /// The tags of the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
 

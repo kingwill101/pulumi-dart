@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A managed identity assigned by the user.
 class UserAssignedIdentityResponse {
   /// The active directory client identifier for this principal.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The active directory identifier for this principal.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
 
   /// Creates a new [UserAssignedIdentityResponse].
   /// [clientId] The active directory client identifier for this principal.

@@ -182,4 +182,19 @@ class NamespaceVirtualNetworkRule extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
   }
+
+  /// Creates a typed reference to an existing [NamespaceVirtualNetworkRule] resource.
+  NamespaceVirtualNetworkRule.reference(String urn)
+    : super(
+        'azure-native:servicebus:NamespaceVirtualNetworkRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+    virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
+  }
 }

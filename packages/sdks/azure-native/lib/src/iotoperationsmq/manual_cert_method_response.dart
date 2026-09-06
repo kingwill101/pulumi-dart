@@ -7,7 +7,7 @@ class ManualCertMethodResponse {
   /// secret containing TLS cert.
   final pulumi.Input<String> secretName;
   /// namespace of secret; omit to use default namespace.
-  final pulumi.Input<String>? secretNamespace;
+  final pulumi.Input<String?>? secretNamespace;
 
   /// Creates a new [ManualCertMethodResponse].
   /// [secretName] secret containing TLS cert.

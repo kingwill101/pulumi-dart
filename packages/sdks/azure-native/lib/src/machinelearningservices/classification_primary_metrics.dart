@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Primary metrics for classification tasks.
-enum ClassificationPrimaryMetrics {
+enum ClassificationPrimaryMetrics implements pulumi.PulumiEnum<String> {
   aUCWeighted("AUCWeighted"),
   accuracy("Accuracy"),
   normMacroRecall("NormMacroRecall"),
@@ -7,6 +9,7 @@ enum ClassificationPrimaryMetrics {
   precisionScoreWeighted("PrecisionScoreWeighted");
 
   const ClassificationPrimaryMetrics(this.wireValue);
+  @override
   final String wireValue;
 
   static ClassificationPrimaryMetrics fromValue(String value) {

@@ -7,28 +7,28 @@ import 'metric_dimension.dart';
 /// Criterion for dynamic threshold.
 class DynamicMetricCriteria {
   /// The extent of deviation required to trigger an alert. This will affect how tight the threshold is to the metric series pattern.
-  final pulumi.Input<String> alertSensitivity;
+  final pulumi.Input<dynamic> alertSensitivity;
   /// Specifies the type of threshold criteria
   /// Expected value is 'DynamicThresholdCriterion'.
   final pulumi.Input<String> criterionType;
   /// List of dimension conditions.
-  final pulumi.Input<List<MetricDimension>>? dimensions;
+  final pulumi.Input<List<MetricDimension>?>? dimensions;
   /// The minimum number of violations required within the selected lookback time window required to raise an alert.
   final pulumi.Input<DynamicThresholdFailingPeriods> failingPeriods;
   /// Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format)
-  final pulumi.Input<String>? ignoreDataBefore;
+  final pulumi.Input<String?>? ignoreDataBefore;
   /// Name of the metric.
   final pulumi.Input<String> metricName;
   /// Namespace of the metric.
-  final pulumi.Input<String>? metricNamespace;
+  final pulumi.Input<String?>? metricNamespace;
   /// Name of the criteria.
   final pulumi.Input<String> name;
   /// The operator used to compare the metric value against the threshold.
-  final pulumi.Input<String> operator;
+  final pulumi.Input<dynamic> operator;
   /// Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.
-  final pulumi.Input<bool>? skipMetricValidation;
+  final pulumi.Input<bool?>? skipMetricValidation;
   /// the criteria time aggregation types.
-  final pulumi.Input<String> timeAggregation;
+  final pulumi.Input<dynamic> timeAggregation;
 
   /// Creates a new [DynamicMetricCriteria].
   /// [alertSensitivity] The extent of deviation required to trigger an alert. This will affect how tight the threshold is to the metric series pattern.
@@ -74,7 +74,7 @@ class DynamicMetricCriteria {
 
   factory DynamicMetricCriteria.fromMap(Map<String, dynamic> map) {
     return DynamicMetricCriteria(
-      alertSensitivity: pulumi.Input.fromValue(map['alertSensitivity'] as String),
+      alertSensitivity: pulumi.Input.fromValue(map['alertSensitivity']),
       criterionType: pulumi.Input.fromValue(map['criterionType'] as String),
       dimensions: (() { final guardedValue = map['dimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MetricDimension>(guardedValue, (value) => MetricDimension.fromMap((value as Map).cast<String, dynamic>()))); })(),
       failingPeriods: pulumi.Input.fromValue(DynamicThresholdFailingPeriods.fromMap((map['failingPeriods']! as Map).cast<String, dynamic>())),
@@ -82,9 +82,9 @@ class DynamicMetricCriteria {
       metricName: pulumi.Input.fromValue(map['metricName'] as String),
       metricNamespace: (() { final guardedValue = map['metricNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      operator: pulumi.Input.fromValue(map['operator'] as String),
+      operator: pulumi.Input.fromValue(map['operator']),
       skipMetricValidation: (() { final guardedValue = map['skipMetricValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      timeAggregation: pulumi.Input.fromValue(map['timeAggregation'] as String),
+      timeAggregation: pulumi.Input.fromValue(map['timeAggregation']),
     );
   }
 }

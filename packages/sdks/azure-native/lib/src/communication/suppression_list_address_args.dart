@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_communication_suppression_list_address_args_doc}
 class SuppressionListAddressArgs {
   /// The id of the address in a suppression list.
-  final pulumi.Input<String>? addressId;
+  final pulumi.Input<String?>? addressId;
   /// The name of the Domains resource.
   final pulumi.Input<String> domainName;
   /// Email address of the recipient.
@@ -16,11 +16,11 @@ class SuppressionListAddressArgs {
   /// The name of the EmailService resource.
   final pulumi.Input<String> emailServiceName;
   /// The first name of the email recipient.
-  final pulumi.Input<String>? firstName;
+  final pulumi.Input<String?>? firstName;
   /// The last name of the email recipient.
-  final pulumi.Input<String>? lastName;
+  final pulumi.Input<String?>? lastName;
   /// An optional property to provide contextual notes or a description for an address.
-  final pulumi.Input<String>? notes;
+  final pulumi.Input<String?>? notes;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the suppression list.

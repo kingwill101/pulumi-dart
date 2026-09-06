@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Container App registry information.
 class RegistryInfo {
   /// registry secret.
-  final pulumi.Input<String>? registryPassword;
+  final pulumi.Input<String?>? registryPassword;
   /// registry server Url.
-  final pulumi.Input<String>? registryUrl;
+  final pulumi.Input<String?>? registryUrl;
   /// registry username.
-  final pulumi.Input<String>? registryUserName;
+  final pulumi.Input<String?>? registryUserName;
 
   /// Creates a new [RegistryInfo].
   /// [registryPassword] registry secret.

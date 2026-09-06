@@ -8,31 +8,31 @@ import 'system_data_response.dart';
 /// Result data returned by getDevCenter.
 class GetDevCenterResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The URI of the Dev Center.
-  final String devCenterUri;
+  final String? devCenterUri;
   /// The display name of the devcenter.
   final String? displayName;
   /// Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations).
   final EncryptionResponse? encryption;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Managed identity properties
   final ManagedServiceIdentityResponse? identity;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Dev Center settings to be used when associating a project with a catalog.
   final DevCenterProjectCatalogSettingsResponse? projectCatalogSettings;
   /// The provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetDevCenterResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -49,54 +49,54 @@ class GetDevCenterResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetDevCenterResult({
-    required this.azureApiVersion,
-    required this.devCenterUri,
+    this.azureApiVersion,
+    this.devCenterUri,
     this.displayName,
     this.encryption,
-    required this.id,
+    this.id,
     this.identity,
-    required this.location,
-    required this.name,
+    this.location,
+    this.name,
     this.projectCatalogSettings,
-    required this.provisioningState,
-    required this.systemData,
+    this.provisioningState,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'devCenterUri': devCenterUri,
+      'azureApiVersion': ?azureApiVersion,
+      'devCenterUri': ?devCenterUri,
       'displayName': ?displayName,
       'encryption': ?encryption?.toMap(),
-      'id': id,
+      'id': ?id,
       'identity': ?identity?.toMap(),
-      'location': location,
-      'name': name,
+      'location': ?location,
+      'name': ?name,
       'projectCatalogSettings': ?projectCatalogSettings?.toMap(),
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetDevCenterResult.fromMap(Map<String, dynamic> map) {
     return GetDevCenterResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      devCenterUri: map['devCenterUri'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      devCenterUri: (() { final guardedValue = map['devCenterUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return EncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      location: map['location'] as String,
-      name: map['name'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       projectCatalogSettings: (() { final guardedValue = map['projectCatalogSettings']; if (guardedValue == null) return null; return DevCenterProjectCatalogSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

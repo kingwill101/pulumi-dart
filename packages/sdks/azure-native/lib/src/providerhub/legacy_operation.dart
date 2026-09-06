@@ -1,4 +1,6 @@
-enum LegacyOperation {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum LegacyOperation implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   create("Create"),
   delete("Delete"),
@@ -11,6 +13,7 @@ enum LegacyOperation {
   deploymentCleanup("DeploymentCleanup");
 
   const LegacyOperation(this.wireValue);
+  @override
   final String wireValue;
 
   static LegacyOperation fromValue(String value) {

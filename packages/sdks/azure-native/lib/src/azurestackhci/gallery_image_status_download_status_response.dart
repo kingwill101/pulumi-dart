@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The download status of the gallery image
 class GalleryImageStatusDownloadStatusResponse {
   /// The downloaded sized of the image in MB
-  final pulumi.Input<double>? downloadSizeInMB;
+  final pulumi.Input<double?>? downloadSizeInMB;
 
   /// Creates a new [GalleryImageStatusDownloadStatusResponse].
   /// [downloadSizeInMB] The downloaded sized of the image in MB
@@ -21,7 +21,7 @@ class GalleryImageStatusDownloadStatusResponse {
 
   factory GalleryImageStatusDownloadStatusResponse.fromMap(Map<String, dynamic> map) {
     return GalleryImageStatusDownloadStatusResponse(
-      downloadSizeInMB: (() { final guardedValue = map['downloadSizeInMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      downloadSizeInMB: (() { final guardedValue = map['downloadSizeInMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

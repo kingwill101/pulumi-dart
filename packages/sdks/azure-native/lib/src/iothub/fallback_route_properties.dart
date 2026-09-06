@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of the fallback route. IoT Hub uses these properties when it routes messages to the fallback endpoint.
 class FallbackRouteProperties {
   /// The condition which is evaluated in order to apply the fallback route. If the condition is not provided it will evaluate to true by default. For grammar, See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language
-  final pulumi.Input<String>? condition;
+  final pulumi.Input<String?>? condition;
   /// The list of endpoints to which the messages that satisfy the condition are routed to. Currently only 1 endpoint is allowed.
   final pulumi.Input<List<String>> endpointNames;
   /// Used to specify whether the fallback route is enabled.
   final pulumi.Input<bool> isEnabled;
   /// The name of the route. The name can only include alphanumeric characters, periods, underscores, hyphens, has a maximum length of 64 characters, and must be unique.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The source to which the routing rule is to be applied to. For example, DeviceMessages
-  final pulumi.Input<String> source;
+  final pulumi.Input<dynamic> source;
 
   /// Creates a new [FallbackRouteProperties].
   /// [condition] The condition which is evaluated in order to apply the fallback route. If the condition is not provided it will evaluate to true by default. For grammar, See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language
@@ -45,7 +45,7 @@ class FallbackRouteProperties {
       endpointNames: pulumi.Input.fromValue((map['endpointNames'] as List).cast<String>()),
       isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      source: pulumi.Input.fromValue(map['source'] as String),
+      source: pulumi.Input.fromValue(map['source']),
     );
   }
 }

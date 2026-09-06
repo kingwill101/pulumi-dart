@@ -38,6 +38,17 @@ Future<GetApprovalResult> getApproval(
   return GetApprovalResult.fromMap(result);
 }
 
+pulumi.Output<GetApprovalResult> getApprovalOutput(
+  GetApprovalArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:mission:getApproval',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApprovalResult.fromMap);
+}
+
 /// Get a CommunityResource
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
@@ -56,6 +67,17 @@ Future<GetCommunityResult> getCommunity(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCommunityResult.fromMap(result);
+}
+
+pulumi.Output<GetCommunityResult> getCommunityOutput(
+  GetCommunityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:mission:getCommunity',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCommunityResult.fromMap);
 }
 
 /// Get a CommunityEndpointResource
@@ -78,6 +100,17 @@ Future<GetCommunityEndpointResult> getCommunityEndpoint(
   return GetCommunityEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetCommunityEndpointResult> getCommunityEndpointOutput(
+  GetCommunityEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:mission:getCommunityEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCommunityEndpointResult.fromMap);
+}
+
 /// Get a DedicatedHubResource
 ///
 /// Uses Azure REST API version 2025-11-01-preview.
@@ -96,6 +129,17 @@ Future<GetDedicatedHubResult> getDedicatedHub(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDedicatedHubResult.fromMap(result);
+}
+
+pulumi.Output<GetDedicatedHubResult> getDedicatedHubOutput(
+  GetDedicatedHubArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:mission:getDedicatedHub',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDedicatedHubResult.fromMap);
 }
 
 /// Get a EnclaveConnectionResource
@@ -118,6 +162,17 @@ Future<GetEnclaveConnectionResult> getEnclaveConnection(
   return GetEnclaveConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetEnclaveConnectionResult> getEnclaveConnectionOutput(
+  GetEnclaveConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:mission:getEnclaveConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnclaveConnectionResult.fromMap);
+}
+
 /// Get a EnclaveEndpointResource
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
@@ -136,6 +191,17 @@ Future<GetEnclaveEndpointResult> getEnclaveEndpoint(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEnclaveEndpointResult.fromMap(result);
+}
+
+pulumi.Output<GetEnclaveEndpointResult> getEnclaveEndpointOutput(
+  GetEnclaveEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:mission:getEnclaveEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnclaveEndpointResult.fromMap);
 }
 
 /// Get a TransitHubResource
@@ -158,6 +224,17 @@ Future<GetTransitHubResult> getTransitHub(
   return GetTransitHubResult.fromMap(result);
 }
 
+pulumi.Output<GetTransitHubResult> getTransitHubOutput(
+  GetTransitHubArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:mission:getTransitHub',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTransitHubResult.fromMap);
+}
+
 /// Get a EnclaveResource
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
@@ -178,6 +255,17 @@ Future<GetVirtualEnclaveResult> getVirtualEnclave(
   return GetVirtualEnclaveResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualEnclaveResult> getVirtualEnclaveOutput(
+  GetVirtualEnclaveArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:mission:getVirtualEnclave',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualEnclaveResult.fromMap);
+}
+
 /// Get a WorkloadResource
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
@@ -196,4 +284,15 @@ Future<GetWorkloadResult> getWorkload(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkloadResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkloadResult> getWorkloadOutput(
+  GetWorkloadArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:mission:getWorkload',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadResult.fromMap);
 }

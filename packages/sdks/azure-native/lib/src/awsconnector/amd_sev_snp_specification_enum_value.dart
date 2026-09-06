@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of AmdSevSnpSpecificationEnumValue
 class AmdSevSnpSpecificationEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [AmdSevSnpSpecificationEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class AmdSevSnpSpecificationEnumValue {
 
   factory AmdSevSnpSpecificationEnumValue.fromMap(Map<String, dynamic> map) {
     return AmdSevSnpSpecificationEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

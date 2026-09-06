@@ -14,9 +14,9 @@ class MqttToKafkaRoutesResponse {
   /// The name of the route.
   final pulumi.Input<String> name;
   /// The qos to use for mqtt.
-  final pulumi.Input<int>? qos;
+  final pulumi.Input<int?>? qos;
   /// The properties for shared subscription.
-  final pulumi.Input<KafkaSharedSubscriptionPropertiesResponse>? sharedSubscription;
+  final pulumi.Input<KafkaSharedSubscriptionPropertiesResponse?>? sharedSubscription;
 
   /// Creates a new [MqttToKafkaRoutesResponse].
   /// [kafkaAcks] The kafka acks to use.
@@ -25,14 +25,14 @@ class MqttToKafkaRoutesResponse {
   /// [name] The name of the route.
   /// [qos] The qos to use for mqtt.
   /// [sharedSubscription] The properties for shared subscription.
-  const MqttToKafkaRoutesResponse({
+  MqttToKafkaRoutesResponse({
     required this.kafkaAcks,
     required this.kafkaTopic,
     required this.mqttTopic,
     required this.name,
-    this.qos,
+    pulumi.Input<int?>? qos,
     this.sharedSubscription,
-  });
+  }) : qos = qos ?? pulumi.Input.fromValue(1);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,7 +51,7 @@ class MqttToKafkaRoutesResponse {
       kafkaTopic: pulumi.Input.fromValue(map['kafkaTopic'] as String),
       mqttTopic: pulumi.Input.fromValue(map['mqttTopic'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      qos: (() { final guardedValue = map['qos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      qos: (() { final guardedValue = map['qos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sharedSubscription: (() { final guardedValue = map['sharedSubscription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KafkaSharedSubscriptionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

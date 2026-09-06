@@ -10,7 +10,7 @@ class AzureMonitorWorkspaceSignalGroupResponse {
   /// Azure Monitor workspace resource ID
   final pulumi.Input<String> azureMonitorWorkspaceResourceId;
   /// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
-  final pulumi.Input<List<SignalAssignmentResponse>>? signalAssignments;
+  final pulumi.Input<List<SignalAssignmentResponse>?>? signalAssignments;
 
   /// Creates a new [AzureMonitorWorkspaceSignalGroupResponse].
   /// [authenticationSetting] Reference to the name of the authentication setting which is used for querying the data source

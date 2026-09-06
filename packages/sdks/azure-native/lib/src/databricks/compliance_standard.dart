@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Compliance standard that can be associated with a workspace.
-enum ComplianceStandard {
+enum ComplianceStandard implements pulumi.PulumiEnum<String> {
   valueNONE("NONE"),
   valueHIPAA("HIPAA"),
   valuePCIDSS("PCI_DSS"),
@@ -12,6 +14,7 @@ enum ComplianceStandard {
   valueKFSI("K_FSI");
 
   const ComplianceStandard(this.wireValue);
+  @override
   final String wireValue;
 
   static ComplianceStandard fromValue(String value) {

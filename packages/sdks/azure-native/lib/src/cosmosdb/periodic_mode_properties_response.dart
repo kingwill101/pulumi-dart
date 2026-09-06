@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration values for periodic mode backup
 class PeriodicModePropertiesResponse {
   /// An integer representing the interval in minutes between two backups
-  final pulumi.Input<int>? backupIntervalInMinutes;
+  final pulumi.Input<int?>? backupIntervalInMinutes;
   /// An integer representing the time (in hours) that each backup is retained
-  final pulumi.Input<int>? backupRetentionIntervalInHours;
+  final pulumi.Input<int?>? backupRetentionIntervalInHours;
   /// Enum to indicate type of backup residency
-  final pulumi.Input<String>? backupStorageRedundancy;
+  final pulumi.Input<String?>? backupStorageRedundancy;
 
   /// Creates a new [PeriodicModePropertiesResponse].
   /// [backupIntervalInMinutes] An integer representing the interval in minutes between two backups
@@ -31,8 +31,8 @@ class PeriodicModePropertiesResponse {
 
   factory PeriodicModePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PeriodicModePropertiesResponse(
-      backupIntervalInMinutes: (() { final guardedValue = map['backupIntervalInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      backupRetentionIntervalInHours: (() { final guardedValue = map['backupRetentionIntervalInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      backupIntervalInMinutes: (() { final guardedValue = map['backupIntervalInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      backupRetentionIntervalInHours: (() { final guardedValue = map['backupRetentionIntervalInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       backupStorageRedundancy: (() { final guardedValue = map['backupStorageRedundancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

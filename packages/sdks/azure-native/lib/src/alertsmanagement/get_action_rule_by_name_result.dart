@@ -1,23 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'action_group_response.dart';
 
 /// Result data returned by getActionRuleByName.
 class GetActionRuleByNameResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Azure resource Id
-  final String id;
+  final String? id;
   /// Resource location
-  final String location;
+  final String? location;
   /// Azure resource name
-  final String name;
+  final String? name;
   /// action rule properties
-  final ActionGroupResponse properties;
+  final dynamic properties;
   /// Resource tags
   final Map<String, String>? tags;
   /// Azure resource type
-  final String type;
+  final String? type;
 
   /// Creates a new [GetActionRuleByNameResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -28,36 +27,36 @@ class GetActionRuleByNameResult {
   /// [tags] Resource tags
   /// [type] Azure resource type
   const GetActionRuleByNameResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.properties,
+    this.azureApiVersion,
+    this.id,
+    this.location,
+    this.name,
+    this.properties,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'location': location,
-      'name': name,
-      'properties': properties.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'properties': ?properties,
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetActionRuleByNameResult.fromMap(Map<String, dynamic> map) {
     return GetActionRuleByNameResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      properties: ActionGroupResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return guardedValue; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

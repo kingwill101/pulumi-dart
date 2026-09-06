@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'application_server_vm_details_response.dart';
 import 'load_balancer_details_response.dart';
 import 'sap_application_server_instance_args.dart';
 import 'sapvirtual_instance_error_response.dart';
@@ -353,7 +354,7 @@ class SapApplicationServerInstance extends pulumi.CustomResource {
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The list of virtual machines.
-  late final pulumi.Output<List<Map<String, dynamic>>> vmDetails;
+  late final pulumi.Output<List<ApplicationServerVmDetailsResponse>> vmDetails;
 
   /// Creates a new [SapApplicationServerInstance].
   /// [name] The Pulumi resource name.
@@ -388,8 +389,41 @@ class SapApplicationServerInstance extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     subnet = registerOutput<String>('subnet');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    vmDetails = registerOutput<List<Map<String, dynamic>>>('vmDetails');
+    vmDetails = registerOutput<List<ApplicationServerVmDetailsResponse>>('vmDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationServerVmDetailsResponse>(guardedValue, (value) => ApplicationServerVmDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [SapApplicationServerInstance] resource.
+  SapApplicationServerInstance.reference(String urn)
+    : super(
+        'azure-native:workloads:SapApplicationServerInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dispatcherStatus = registerOutput<String>('dispatcherStatus');
+    errors = registerOutput<SAPVirtualInstanceErrorResponse>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SAPVirtualInstanceErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gatewayPort = registerOutput<double>('gatewayPort');
+    health = registerOutput<String>('health');
+    hostname = registerOutput<String>('hostname');
+    icmHttpPort = registerOutput<double>('icmHttpPort');
+    icmHttpsPort = registerOutput<double>('icmHttpsPort');
+    instanceNo = registerOutput<String>('instanceNo');
+    ipAddress = registerOutput<String>('ipAddress');
+    kernelPatch = registerOutput<String>('kernelPatch');
+    kernelVersion = registerOutput<String>('kernelVersion');
+    loadBalancerDetails = registerOutput<LoadBalancerDetailsResponse>('loadBalancerDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<String>('status');
+    subnet = registerOutput<String>('subnet');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    vmDetails = registerOutput<List<ApplicationServerVmDetailsResponse>>('vmDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationServerVmDetailsResponse>(guardedValue, (value) => ApplicationServerVmDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

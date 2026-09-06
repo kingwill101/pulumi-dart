@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] Specifies the type of distribution framework.
-enum DistributionType {
+enum DistributionType implements pulumi.PulumiEnum<String> {
   pyTorch("PyTorch"),
   tensorFlow("TensorFlow"),
   mpi("Mpi");
 
   const DistributionType(this.wireValue);
+  @override
   final String wireValue;
 
   static DistributionType fromValue(String value) {

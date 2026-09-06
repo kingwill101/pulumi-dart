@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// PersonalDesktopAssignment type for HostPool.
-enum PersonalDesktopAssignmentType {
+enum PersonalDesktopAssignmentType implements pulumi.PulumiEnum<String> {
   valueAutomatic("Automatic"),
   valueDirect("Direct");
 
   const PersonalDesktopAssignmentType(this.wireValue);
+  @override
   final String wireValue;
 
   static PersonalDesktopAssignmentType fromValue(String value) {

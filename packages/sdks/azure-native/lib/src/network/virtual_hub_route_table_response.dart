@@ -6,7 +6,7 @@ import 'virtual_hub_route_response.dart';
 /// VirtualHub route table.
 class VirtualHubRouteTableResponse {
   /// List of all routes.
-  final pulumi.Input<List<VirtualHubRouteResponse>>? routes;
+  final pulumi.Input<List<VirtualHubRouteResponse>?>? routes;
 
   /// Creates a new [VirtualHubRouteTableResponse].
   /// [routes] List of all routes.

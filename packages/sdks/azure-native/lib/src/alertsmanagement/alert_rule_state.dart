@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The alert rule state.
-enum AlertRuleState {
+enum AlertRuleState implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const AlertRuleState(this.wireValue);
+  @override
   final String wireValue;
 
   static AlertRuleState fromValue(String value) {

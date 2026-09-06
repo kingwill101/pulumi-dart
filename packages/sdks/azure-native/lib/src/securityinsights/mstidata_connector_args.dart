@@ -9,7 +9,7 @@ import 'mstidata_connector_data_types.dart';
 /// {@macro pulumi_securityinsights_mstidata_connector_args_doc}
 class MSTIDataConnectorArgs {
   /// Connector ID
-  final pulumi.Input<String>? dataConnectorId;
+  final pulumi.Input<String?>? dataConnectorId;
   /// The available data types for the connector.
   final pulumi.Input<MSTIDataConnectorDataTypes> dataTypes;
   /// The kind of the data connector

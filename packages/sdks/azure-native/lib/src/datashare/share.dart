@@ -218,4 +218,26 @@ class Share extends pulumi.CustomResource {
     userEmail = registerOutput<String>('userEmail');
     userName = registerOutput<String>('userName');
   }
+
+  /// Creates a typed reference to an existing [Share] resource.
+  Share.reference(String urn)
+    : super(
+        'azure-native:datashare:Share',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    shareKind = registerOutput<String?>('shareKind');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    terms = registerOutput<String?>('terms');
+    type = registerOutput<String>('type');
+    userEmail = registerOutput<String>('userEmail');
+    userName = registerOutput<String>('userName');
+  }
 }

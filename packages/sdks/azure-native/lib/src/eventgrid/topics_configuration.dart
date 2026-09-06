@@ -6,7 +6,7 @@ import 'custom_domain_configuration.dart';
 /// Properties of the Topics Configuration.
 class TopicsConfiguration {
   /// List of custom domain configurations for the namespace.
-  final pulumi.Input<List<CustomDomainConfiguration>>? customDomains;
+  final pulumi.Input<List<CustomDomainConfiguration>?>? customDomains;
 
   /// Creates a new [TopicsConfiguration].
   /// [customDomains] List of custom domain configurations for the namespace.

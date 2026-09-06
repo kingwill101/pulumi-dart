@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of Digital Twins endpoint
-enum EndpointType {
+enum EndpointType implements pulumi.PulumiEnum<String> {
   valueEventHub("EventHub"),
   valueEventGrid("EventGrid"),
   valueServiceBus("ServiceBus");
 
   const EndpointType(this.wireValue);
+  @override
   final String wireValue;
 
   static EndpointType fromValue(String value) {

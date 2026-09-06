@@ -6,9 +6,9 @@ import 'dapr_component_resiliency_policy_http_retry_back_off_configuration_respo
 /// Dapr Component Resiliency Policy HTTP Retry Policy Configuration.
 class DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse {
   /// The optional maximum number of retries
-  final pulumi.Input<int>? maxRetries;
+  final pulumi.Input<int?>? maxRetries;
   /// The optional retry backoff configuration
-  final pulumi.Input<DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse>? retryBackOff;
+  final pulumi.Input<DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse?>? retryBackOff;
 
   /// Creates a new [DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse].
   /// [maxRetries] The optional maximum number of retries
@@ -27,7 +27,7 @@ class DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse {
 
   factory DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse(
-      maxRetries: (() { final guardedValue = map['maxRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxRetries: (() { final guardedValue = map['maxRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       retryBackOff: (() { final guardedValue = map['retryBackOff']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

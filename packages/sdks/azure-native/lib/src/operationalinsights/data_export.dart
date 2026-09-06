@@ -212,7 +212,28 @@ class DataExport extends pulumi.CustomResource {
     lastModifiedDate = registerOutput<String?>('lastModifiedDate');
     this.name = registerOutput<String>('name');
     resourceId = registerOutput<String>('resourceId');
-    tableNames = registerOutput<List<String>>('tableNames');
+    tableNames = registerOutput<List<String>>('tableNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DataExport] resource.
+  DataExport.reference(String urn)
+    : super(
+        'azure-native:operationalinsights:DataExport',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdDate = registerOutput<String?>('createdDate');
+    dataExportId = registerOutput<String?>('dataExportId');
+    enable = registerOutput<bool?>('enable');
+    eventHubName = registerOutput<String?>('eventHubName');
+    lastModifiedDate = registerOutput<String?>('lastModifiedDate');
+    this.name = registerOutput<String>('name');
+    resourceId = registerOutput<String>('resourceId');
+    tableNames = registerOutput<List<String>>('tableNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
   }
 }

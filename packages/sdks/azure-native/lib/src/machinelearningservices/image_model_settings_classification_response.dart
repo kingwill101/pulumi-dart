@@ -8,87 +8,87 @@ import 'mlflow_model_job_input_response.dart';
 /// https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
 class ImageModelSettingsClassificationResponse {
   /// Settings for advanced scenarios.
-  final pulumi.Input<String>? advancedSettings;
+  final pulumi.Input<String?>? advancedSettings;
   /// Enable AMSGrad when optimizer is 'adam' or 'adamw'.
-  final pulumi.Input<bool>? amsGradient;
+  final pulumi.Input<bool?>? amsGradient;
   /// Settings for using Augmentations.
-  final pulumi.Input<String>? augmentations;
+  final pulumi.Input<String?>? augmentations;
   /// Value of 'beta1' when optimizer is 'adam' or 'adamw'. Must be a float in the range [0, 1].
-  final pulumi.Input<double>? beta1;
+  final pulumi.Input<double?>? beta1;
   /// Value of 'beta2' when optimizer is 'adam' or 'adamw'. Must be a float in the range [0, 1].
-  final pulumi.Input<double>? beta2;
+  final pulumi.Input<double?>? beta2;
   /// Frequency to store model checkpoints. Must be a positive integer.
-  final pulumi.Input<int>? checkpointFrequency;
+  final pulumi.Input<int?>? checkpointFrequency;
   /// The pretrained checkpoint model for incremental training.
-  final pulumi.Input<MLFlowModelJobInputResponse>? checkpointModel;
+  final pulumi.Input<MLFlowModelJobInputResponse?>? checkpointModel;
   /// The id of a previous run that has a pretrained checkpoint for incremental training.
-  final pulumi.Input<String>? checkpointRunId;
+  final pulumi.Input<String?>? checkpointRunId;
   /// Whether to use distributed training.
-  final pulumi.Input<bool>? distributed;
+  final pulumi.Input<bool?>? distributed;
   /// Enable early stopping logic during training.
-  final pulumi.Input<bool>? earlyStopping;
+  final pulumi.Input<bool?>? earlyStopping;
   /// Minimum number of epochs or validation evaluations to wait before primary metric improvement
   /// is tracked for early stopping. Must be a positive integer.
-  final pulumi.Input<int>? earlyStoppingDelay;
+  final pulumi.Input<int?>? earlyStoppingDelay;
   /// Minimum number of epochs or validation evaluations with no primary metric improvement before
   /// the run is stopped. Must be a positive integer.
-  final pulumi.Input<int>? earlyStoppingPatience;
+  final pulumi.Input<int?>? earlyStoppingPatience;
   /// Enable normalization when exporting ONNX model.
-  final pulumi.Input<bool>? enableOnnxNormalization;
+  final pulumi.Input<bool?>? enableOnnxNormalization;
   /// Frequency to evaluate validation dataset to get metric scores. Must be a positive integer.
-  final pulumi.Input<int>? evaluationFrequency;
+  final pulumi.Input<int?>? evaluationFrequency;
   /// Gradient accumulation means running a configured number of "GradAccumulationStep" steps without
   /// updating the model weights while accumulating the gradients of those steps, and then using
   /// the accumulated gradients to compute the weight updates. Must be a positive integer.
-  final pulumi.Input<int>? gradientAccumulationStep;
+  final pulumi.Input<int?>? gradientAccumulationStep;
   /// Number of layers to freeze for the model. Must be a positive integer.
   /// For instance, passing 2 as value for 'seresnext' means
   /// freezing layer0 and layer1. For a full list of models supported and details on layer freeze, please
   /// see: https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
-  final pulumi.Input<int>? layersToFreeze;
+  final pulumi.Input<int?>? layersToFreeze;
   /// Initial learning rate. Must be a float in the range [0, 1].
-  final pulumi.Input<double>? learningRate;
+  final pulumi.Input<double?>? learningRate;
   /// Learning rate scheduler enum.
-  final pulumi.Input<String>? learningRateScheduler;
+  final pulumi.Input<String?>? learningRateScheduler;
   /// Name of the model to use for training.
   /// For more information on the available models please visit the official documentation:
   /// https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
-  final pulumi.Input<String>? modelName;
+  final pulumi.Input<String?>? modelName;
   /// Value of momentum when optimizer is 'sgd'. Must be a float in the range [0, 1].
-  final pulumi.Input<double>? momentum;
+  final pulumi.Input<double?>? momentum;
   /// Enable nesterov when optimizer is 'sgd'.
-  final pulumi.Input<bool>? nesterov;
+  final pulumi.Input<bool?>? nesterov;
   /// Number of training epochs. Must be a positive integer.
-  final pulumi.Input<int>? numberOfEpochs;
+  final pulumi.Input<int?>? numberOfEpochs;
   /// Number of data loader workers. Must be a non-negative integer.
-  final pulumi.Input<int>? numberOfWorkers;
+  final pulumi.Input<int?>? numberOfWorkers;
   /// Stochastic optimizer for image models.
-  final pulumi.Input<String>? optimizer;
+  final pulumi.Input<String?>? optimizer;
   /// Random seed to be used when using deterministic training.
-  final pulumi.Input<int>? randomSeed;
+  final pulumi.Input<int?>? randomSeed;
   /// Value of gamma when learning rate scheduler is 'step'. Must be a float in the range [0, 1].
-  final pulumi.Input<double>? stepLRGamma;
+  final pulumi.Input<double?>? stepLRGamma;
   /// Value of step size when learning rate scheduler is 'step'. Must be a positive integer.
-  final pulumi.Input<int>? stepLRStepSize;
+  final pulumi.Input<int?>? stepLRStepSize;
   /// Training batch size. Must be a positive integer.
-  final pulumi.Input<int>? trainingBatchSize;
+  final pulumi.Input<int?>? trainingBatchSize;
   /// Image crop size that is input to the neural network for the training dataset. Must be a positive integer.
-  final pulumi.Input<int>? trainingCropSize;
+  final pulumi.Input<int?>? trainingCropSize;
   /// Validation batch size. Must be a positive integer.
-  final pulumi.Input<int>? validationBatchSize;
+  final pulumi.Input<int?>? validationBatchSize;
   /// Image crop size that is input to the neural network for the validation dataset. Must be a positive integer.
-  final pulumi.Input<int>? validationCropSize;
+  final pulumi.Input<int?>? validationCropSize;
   /// Image size to which to resize before cropping for validation dataset. Must be a positive integer.
-  final pulumi.Input<int>? validationResizeSize;
+  final pulumi.Input<int?>? validationResizeSize;
   /// Value of cosine cycle when learning rate scheduler is 'warmup_cosine'. Must be a float in the range [0, 1].
-  final pulumi.Input<double>? warmupCosineLRCycles;
+  final pulumi.Input<double?>? warmupCosineLRCycles;
   /// Value of warmup epochs when learning rate scheduler is 'warmup_cosine'. Must be a positive integer.
-  final pulumi.Input<int>? warmupCosineLRWarmupEpochs;
+  final pulumi.Input<int?>? warmupCosineLRWarmupEpochs;
   /// Value of weight decay when optimizer is 'sgd', 'adam', or 'adamw'. Must be a float in the range[0, 1].
-  final pulumi.Input<double>? weightDecay;
+  final pulumi.Input<double?>? weightDecay;
   /// Weighted loss. The accepted values are 0 for no weighted loss.
   /// 1 for weighted loss with sqrt.(class_weights). 2 for weighted loss with class_weights. Must be 0 or 1 or 2.
-  final pulumi.Input<int>? weightedLoss;
+  final pulumi.Input<int?>? weightedLoss;
 
   /// Creates a new [ImageModelSettingsClassificationResponse].
   /// [advancedSettings] Settings for advanced scenarios.
@@ -127,7 +127,7 @@ class ImageModelSettingsClassificationResponse {
   /// [warmupCosineLRWarmupEpochs] Value of warmup epochs when learning rate scheduler is 'warmup_cosine'. Must be a positive integer.
   /// [weightDecay] Value of weight decay when optimizer is 'sgd', 'adam', or 'adamw'. Must be a float in the range[0, 1].
   /// [weightedLoss] Weighted loss. The accepted values are 0 for no weighted loss.
-  const ImageModelSettingsClassificationResponse({
+  ImageModelSettingsClassificationResponse({
     this.advancedSettings,
     this.amsGradient,
     this.augmentations,
@@ -145,13 +145,13 @@ class ImageModelSettingsClassificationResponse {
     this.gradientAccumulationStep,
     this.layersToFreeze,
     this.learningRate,
-    this.learningRateScheduler,
+    pulumi.Input<String?>? learningRateScheduler,
     this.modelName,
     this.momentum,
     this.nesterov,
     this.numberOfEpochs,
     this.numberOfWorkers,
-    this.optimizer,
+    pulumi.Input<String?>? optimizer,
     this.randomSeed,
     this.stepLRGamma,
     this.stepLRStepSize,
@@ -164,7 +164,7 @@ class ImageModelSettingsClassificationResponse {
     this.warmupCosineLRWarmupEpochs,
     this.weightDecay,
     this.weightedLoss,
-  });
+  }) : learningRateScheduler = learningRateScheduler ?? pulumi.Input.fromValue('None'), optimizer = optimizer ?? pulumi.Input.fromValue('None');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -212,39 +212,39 @@ class ImageModelSettingsClassificationResponse {
       advancedSettings: (() { final guardedValue = map['advancedSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       amsGradient: (() { final guardedValue = map['amsGradient']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       augmentations: (() { final guardedValue = map['augmentations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      beta1: (() { final guardedValue = map['beta1']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      beta2: (() { final guardedValue = map['beta2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      checkpointFrequency: (() { final guardedValue = map['checkpointFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      beta1: (() { final guardedValue = map['beta1']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      beta2: (() { final guardedValue = map['beta2']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      checkpointFrequency: (() { final guardedValue = map['checkpointFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       checkpointModel: (() { final guardedValue = map['checkpointModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MLFlowModelJobInputResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       checkpointRunId: (() { final guardedValue = map['checkpointRunId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       distributed: (() { final guardedValue = map['distributed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       earlyStopping: (() { final guardedValue = map['earlyStopping']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      earlyStoppingDelay: (() { final guardedValue = map['earlyStoppingDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      earlyStoppingPatience: (() { final guardedValue = map['earlyStoppingPatience']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      earlyStoppingDelay: (() { final guardedValue = map['earlyStoppingDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      earlyStoppingPatience: (() { final guardedValue = map['earlyStoppingPatience']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       enableOnnxNormalization: (() { final guardedValue = map['enableOnnxNormalization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      evaluationFrequency: (() { final guardedValue = map['evaluationFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      gradientAccumulationStep: (() { final guardedValue = map['gradientAccumulationStep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      layersToFreeze: (() { final guardedValue = map['layersToFreeze']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      learningRate: (() { final guardedValue = map['learningRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      evaluationFrequency: (() { final guardedValue = map['evaluationFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      gradientAccumulationStep: (() { final guardedValue = map['gradientAccumulationStep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      layersToFreeze: (() { final guardedValue = map['layersToFreeze']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      learningRate: (() { final guardedValue = map['learningRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       learningRateScheduler: (() { final guardedValue = map['learningRateScheduler']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       modelName: (() { final guardedValue = map['modelName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      momentum: (() { final guardedValue = map['momentum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      momentum: (() { final guardedValue = map['momentum']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       nesterov: (() { final guardedValue = map['nesterov']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      numberOfEpochs: (() { final guardedValue = map['numberOfEpochs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      numberOfWorkers: (() { final guardedValue = map['numberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numberOfEpochs: (() { final guardedValue = map['numberOfEpochs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      numberOfWorkers: (() { final guardedValue = map['numberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       optimizer: (() { final guardedValue = map['optimizer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      randomSeed: (() { final guardedValue = map['randomSeed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      stepLRGamma: (() { final guardedValue = map['stepLRGamma']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      stepLRStepSize: (() { final guardedValue = map['stepLRStepSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      trainingBatchSize: (() { final guardedValue = map['trainingBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      trainingCropSize: (() { final guardedValue = map['trainingCropSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      validationBatchSize: (() { final guardedValue = map['validationBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      validationCropSize: (() { final guardedValue = map['validationCropSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      validationResizeSize: (() { final guardedValue = map['validationResizeSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      warmupCosineLRCycles: (() { final guardedValue = map['warmupCosineLRCycles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      warmupCosineLRWarmupEpochs: (() { final guardedValue = map['warmupCosineLRWarmupEpochs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      weightDecay: (() { final guardedValue = map['weightDecay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      weightedLoss: (() { final guardedValue = map['weightedLoss']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      randomSeed: (() { final guardedValue = map['randomSeed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      stepLRGamma: (() { final guardedValue = map['stepLRGamma']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      stepLRStepSize: (() { final guardedValue = map['stepLRStepSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      trainingBatchSize: (() { final guardedValue = map['trainingBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      trainingCropSize: (() { final guardedValue = map['trainingCropSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      validationBatchSize: (() { final guardedValue = map['validationBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      validationCropSize: (() { final guardedValue = map['validationCropSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      validationResizeSize: (() { final guardedValue = map['validationResizeSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      warmupCosineLRCycles: (() { final guardedValue = map['warmupCosineLRCycles']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      warmupCosineLRWarmupEpochs: (() { final guardedValue = map['warmupCosineLRWarmupEpochs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      weightDecay: (() { final guardedValue = map['weightDecay']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      weightedLoss: (() { final guardedValue = map['weightedLoss']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

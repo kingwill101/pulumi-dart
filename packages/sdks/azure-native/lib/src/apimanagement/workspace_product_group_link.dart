@@ -198,4 +198,19 @@ class WorkspaceProductGroupLink extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [WorkspaceProductGroupLink] resource.
+  WorkspaceProductGroupLink.reference(String urn)
+    : super(
+        'azure-native:apimanagement:WorkspaceProductGroupLink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    groupId = registerOutput<String>('groupId');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+  }
 }

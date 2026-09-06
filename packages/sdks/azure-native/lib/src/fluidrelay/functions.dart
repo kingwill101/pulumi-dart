@@ -24,6 +24,17 @@ Future<GetFluidRelayPrivateEndpointConnectionResult> getFluidRelayPrivateEndpoin
   return GetFluidRelayPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetFluidRelayPrivateEndpointConnectionResult> getFluidRelayPrivateEndpointConnectionOutput(
+  GetFluidRelayPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:fluidrelay:getFluidRelayPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFluidRelayPrivateEndpointConnectionResult.fromMap);
+}
+
 /// A FluidRelay Server.
 ///
 /// Uses Azure REST API version 2022-06-01.
@@ -44,6 +55,17 @@ Future<GetFluidRelayServerResult> getFluidRelayServer(
   return GetFluidRelayServerResult.fromMap(result);
 }
 
+pulumi.Output<GetFluidRelayServerResult> getFluidRelayServerOutput(
+  GetFluidRelayServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:fluidrelay:getFluidRelayServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFluidRelayServerResult.fromMap);
+}
+
 /// The set of available keys for this server.
 ///
 /// Uses Azure REST API version 2022-06-01.
@@ -62,4 +84,15 @@ Future<ListFluidRelayServerKeysResult> listFluidRelayServerKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListFluidRelayServerKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListFluidRelayServerKeysResult> listFluidRelayServerKeysOutput(
+  ListFluidRelayServerKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:fluidrelay:listFluidRelayServerKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListFluidRelayServerKeysResult.fromMap);
 }

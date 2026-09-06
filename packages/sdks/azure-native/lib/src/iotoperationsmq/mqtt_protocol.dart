@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The protocol to use for connecting with Brokers.
-enum MqttProtocol {
+enum MqttProtocol implements pulumi.PulumiEnum<String> {
   v3("v3"),
   v5("v5");
 
   const MqttProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static MqttProtocol fromValue(String value) {

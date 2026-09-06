@@ -5,30 +5,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The partner connector type is KafkaAzureBlobStorageSink
 class KafkaAzureBlobStorageSinkConnectorInfoResponse {
   /// Kafka API Key
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
   /// Kafka API Key Secret
-  final pulumi.Input<String>? apiSecret;
+  final pulumi.Input<String?>? apiSecret;
   /// Kafka Auth Type
-  final pulumi.Input<String>? authType;
+  final pulumi.Input<String?>? authType;
   /// Flush size
-  final pulumi.Input<String>? flushSize;
+  final pulumi.Input<String?>? flushSize;
   /// Kafka Input Data Format Type
-  final pulumi.Input<String>? inputFormat;
+  final pulumi.Input<String?>? inputFormat;
   /// Maximum Tasks
-  final pulumi.Input<String>? maxTasks;
+  final pulumi.Input<String?>? maxTasks;
   /// Kafka Output Data Format Type
-  final pulumi.Input<String>? outputFormat;
+  final pulumi.Input<String?>? outputFormat;
   /// Partner Connector type.
   /// Expected value is 'KafkaAzureBlobStorageSink'.
   final pulumi.Input<String> partnerConnectorType;
   /// Kafka Service Account Id
-  final pulumi.Input<String>? serviceAccountId;
+  final pulumi.Input<String?>? serviceAccountId;
   /// Time Interval
-  final pulumi.Input<String>? timeInterval;
+  final pulumi.Input<String?>? timeInterval;
   /// Kafka topics list
-  final pulumi.Input<List<String>>? topics;
+  final pulumi.Input<List<String>?>? topics;
   /// Kafka topics directory
-  final pulumi.Input<String>? topicsDir;
+  final pulumi.Input<String?>? topicsDir;
 
   /// Creates a new [KafkaAzureBlobStorageSinkConnectorInfoResponse].
   /// [apiKey] Kafka API Key

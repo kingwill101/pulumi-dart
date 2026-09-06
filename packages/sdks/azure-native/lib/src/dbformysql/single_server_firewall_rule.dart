@@ -192,4 +192,20 @@ class SingleServerFirewallRule extends pulumi.CustomResource {
     startIpAddress = registerOutput<String>('startIpAddress');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [SingleServerFirewallRule] resource.
+  SingleServerFirewallRule.reference(String urn)
+    : super(
+        'azure-native:dbformysql:SingleServerFirewallRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    endIpAddress = registerOutput<String>('endIpAddress');
+    this.name = registerOutput<String>('name');
+    startIpAddress = registerOutput<String>('startIpAddress');
+    type = registerOutput<String>('type');
+  }
 }

@@ -102,4 +102,35 @@ class PimRoleEligibilitySchedule extends pulumi.CustomResource {
     ticketInfo = registerOutput<RoleEligibilityScheduleRequestPropertiesResponseTicketInfo?>('ticketInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoleEligibilityScheduleRequestPropertiesResponseTicketInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [PimRoleEligibilitySchedule] resource.
+  PimRoleEligibilitySchedule.reference(String urn)
+    : super(
+        'azure-native:authorization:PimRoleEligibilitySchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    approvalId = registerOutput<String>('approvalId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    condition = registerOutput<String?>('condition');
+    conditionVersion = registerOutput<String?>('conditionVersion');
+    createdOn = registerOutput<String>('createdOn');
+    expandedProperties = registerOutput<ExpandedPropertiesResponse>('expandedProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpandedPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    justification = registerOutput<String?>('justification');
+    this.name = registerOutput<String>('name');
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String>('principalType');
+    requestType = registerOutput<String?>('requestType');
+    requestorId = registerOutput<String>('requestorId');
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+    scheduleInfo = registerOutput<RoleEligibilityScheduleRequestPropertiesResponseScheduleInfo?>('scheduleInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoleEligibilityScheduleRequestPropertiesResponseScheduleInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scope = registerOutput<String>('scope');
+    status = registerOutput<String>('status');
+    targetRoleEligibilityScheduleId = registerOutput<String?>('targetRoleEligibilityScheduleId');
+    targetRoleEligibilityScheduleInstanceId = registerOutput<String?>('targetRoleEligibilityScheduleInstanceId');
+    ticketInfo = registerOutput<RoleEligibilityScheduleRequestPropertiesResponseTicketInfo?>('ticketInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoleEligibilityScheduleRequestPropertiesResponseTicketInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

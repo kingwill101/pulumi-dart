@@ -6,11 +6,11 @@ import 'connect_to_target_sql_db_task_input.dart';
 /// Properties for the task that validates connection to SQL DB and target server requirements
 class ConnectToTargetSqlDbTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// DateTime in UTC when the task was created
-  final pulumi.Input<String>? createdOn;
+  final pulumi.Input<String?>? createdOn;
   /// Task input
-  final pulumi.Input<ConnectToTargetSqlDbTaskInput>? input;
+  final pulumi.Input<ConnectToTargetSqlDbTaskInput?>? input;
   /// Task type.
   /// Expected value is 'ConnectToTarget.SqlDb'.
   final pulumi.Input<String> taskType;

@@ -10,19 +10,19 @@ import 'extended_location.dart';
 /// {@macro pulumi_iotoperationsorchestrator_solution_args_doc}
 class SolutionArgs {
   /// A list of components
-  final pulumi.Input<List<ComponentProperties>>? components;
+  final pulumi.Input<List<ComponentProperties>?>? components;
   /// Edge location of the resource.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of solution.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Version of the particular resource.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [SolutionArgs].
   /// [components] A list of components

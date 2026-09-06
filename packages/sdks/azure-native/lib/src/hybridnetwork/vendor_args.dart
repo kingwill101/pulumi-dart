@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_hybridnetwork_vendor_args_doc}
 class VendorArgs {
   /// The name of the vendor.
-  final pulumi.Input<String>? vendorName;
+  final pulumi.Input<String?>? vendorName;
 
   /// Creates a new [VendorArgs].
   /// [vendorName] The name of the vendor.

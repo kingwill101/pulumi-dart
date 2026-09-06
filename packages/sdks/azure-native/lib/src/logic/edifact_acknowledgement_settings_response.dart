@@ -7,9 +7,9 @@ class EdifactAcknowledgementSettingsResponse {
   /// The acknowledgement control number lower bound.
   final pulumi.Input<int> acknowledgementControlNumberLowerBound;
   /// The acknowledgement control number prefix.
-  final pulumi.Input<String>? acknowledgementControlNumberPrefix;
+  final pulumi.Input<String?>? acknowledgementControlNumberPrefix;
   /// The acknowledgement control number suffix.
-  final pulumi.Input<String>? acknowledgementControlNumberSuffix;
+  final pulumi.Input<String?>? acknowledgementControlNumberSuffix;
   /// The acknowledgement control number upper bound.
   final pulumi.Input<int> acknowledgementControlNumberUpperBound;
   /// The value indicating whether to batch functional acknowledgements.
@@ -71,10 +71,10 @@ class EdifactAcknowledgementSettingsResponse {
 
   factory EdifactAcknowledgementSettingsResponse.fromMap(Map<String, dynamic> map) {
     return EdifactAcknowledgementSettingsResponse(
-      acknowledgementControlNumberLowerBound: pulumi.Input.fromValue(map['acknowledgementControlNumberLowerBound'] as int),
+      acknowledgementControlNumberLowerBound: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['acknowledgementControlNumberLowerBound'])),
       acknowledgementControlNumberPrefix: (() { final guardedValue = map['acknowledgementControlNumberPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       acknowledgementControlNumberSuffix: (() { final guardedValue = map['acknowledgementControlNumberSuffix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      acknowledgementControlNumberUpperBound: pulumi.Input.fromValue(map['acknowledgementControlNumberUpperBound'] as int),
+      acknowledgementControlNumberUpperBound: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['acknowledgementControlNumberUpperBound'])),
       batchFunctionalAcknowledgements: pulumi.Input.fromValue(map['batchFunctionalAcknowledgements'] as bool),
       batchTechnicalAcknowledgements: pulumi.Input.fromValue(map['batchTechnicalAcknowledgements'] as bool),
       needFunctionalAcknowledgement: pulumi.Input.fromValue(map['needFunctionalAcknowledgement'] as bool),

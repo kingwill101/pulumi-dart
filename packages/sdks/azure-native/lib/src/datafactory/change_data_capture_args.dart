@@ -12,15 +12,15 @@ import 'mapper_target_connections_info.dart';
 /// {@macro pulumi_datafactory_change_data_capture_args_doc}
 class ChangeDataCaptureArgs {
   /// A boolean to determine if the vnet configuration needs to be overwritten.
-  final pulumi.Input<bool>? allowVNetOverride;
+  final pulumi.Input<bool?>? allowVNetOverride;
   /// The change data capture name.
-  final pulumi.Input<String>? changeDataCaptureName;
+  final pulumi.Input<String?>? changeDataCaptureName;
   /// The description of the change data capture.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The factory name.
   final pulumi.Input<String> factoryName;
   /// The folder that this CDC is in. If not specified, CDC will appear at the root level.
-  final pulumi.Input<ChangeDataCaptureFolder>? folder;
+  final pulumi.Input<ChangeDataCaptureFolder?>? folder;
   /// CDC policy
   final pulumi.Input<MapperPolicy> policy;
   /// The name of the resource group. The name is case insensitive.
@@ -28,7 +28,7 @@ class ChangeDataCaptureArgs {
   /// List of sources connections that can be used as sources in the CDC.
   final pulumi.Input<List<MapperSourceConnectionsInfo>> sourceConnectionsInfo;
   /// Status of the CDC as to if it is running or stopped.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// List of target connections that can be used as sources in the CDC.
   final pulumi.Input<List<MapperTargetConnectionsInfo>> targetConnectionsInfo;
 

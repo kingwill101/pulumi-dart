@@ -7,25 +7,25 @@ import 'system_data_response.dart';
 /// Result data returned by getAzureTrafficCollector.
 class GetAzureTrafficCollectorResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Collector Policies for Azure Traffic Collector.
-  final List<ResourceReferenceResponse> collectorPolicies;
+  final List<ResourceReferenceResponse>? collectorPolicies;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Resource location.
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The provisioning state of the application rule collection resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// The virtualHub to which the Azure Traffic Collector belongs.
   final ResourceReferenceResponse? virtualHub;
 
@@ -42,47 +42,47 @@ class GetAzureTrafficCollectorResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualHub] The virtualHub to which the Azure Traffic Collector belongs.
   const GetAzureTrafficCollectorResult({
-    required this.azureApiVersion,
-    required this.collectorPolicies,
-    required this.etag,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
+    this.azureApiVersion,
+    this.collectorPolicies,
+    this.etag,
+    this.id,
+    this.location,
+    this.name,
+    this.provisioningState,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
     this.virtualHub,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'collectorPolicies': pulumi.Input.encodeList<ResourceReferenceResponse, Map<String, dynamic>>(collectorPolicies, (value) => value.toMap()),
-      'etag': etag,
-      'id': id,
-      'location': location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'collectorPolicies': ?(() { final guardedValue = collectorPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<ResourceReferenceResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'etag': ?etag,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'virtualHub': ?virtualHub?.toMap(),
     };
   }
 
   factory GetAzureTrafficCollectorResult.fromMap(Map<String, dynamic> map) {
     return GetAzureTrafficCollectorResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      collectorPolicies: pulumi.Input.decodeList<ResourceReferenceResponse>(map['collectorPolicies']!, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      collectorPolicies: (() { final guardedValue = map['collectorPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceReferenceResponse>(guardedValue, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       virtualHub: (() { final guardedValue = map['virtualHub']; if (guardedValue == null) return null; return ResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }

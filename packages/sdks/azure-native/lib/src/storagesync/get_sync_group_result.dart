@@ -5,19 +5,19 @@ import 'system_data_response.dart';
 /// Result data returned by getSyncGroup.
 class GetSyncGroupResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Sync group status
-  final String syncGroupStatus;
+  final String? syncGroupStatus;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Unique Id
-  final String uniqueId;
+  final String? uniqueId;
 
   /// Creates a new [GetSyncGroupResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -28,36 +28,36 @@ class GetSyncGroupResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uniqueId] Unique Id
   const GetSyncGroupResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
-    required this.syncGroupStatus,
-    required this.systemData,
-    required this.type,
-    required this.uniqueId,
+    this.azureApiVersion,
+    this.id,
+    this.name,
+    this.syncGroupStatus,
+    this.systemData,
+    this.type,
+    this.uniqueId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
-      'syncGroupStatus': syncGroupStatus,
-      'systemData': systemData.toMap(),
-      'type': type,
-      'uniqueId': uniqueId,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
+      'syncGroupStatus': ?syncGroupStatus,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
+      'uniqueId': ?uniqueId,
     };
   }
 
   factory GetSyncGroupResult.fromMap(Map<String, dynamic> map) {
     return GetSyncGroupResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      syncGroupStatus: map['syncGroupStatus'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      uniqueId: map['uniqueId'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      syncGroupStatus: (() { final guardedValue = map['syncGroupStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uniqueId: (() { final guardedValue = map['uniqueId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

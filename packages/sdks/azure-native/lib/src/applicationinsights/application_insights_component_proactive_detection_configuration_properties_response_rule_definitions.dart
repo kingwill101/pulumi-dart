@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Static definitions of the ProactiveDetection configuration rule (same values for all components).
 class ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions {
   /// The rule description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The rule name as it is displayed in UI
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// URL which displays additional info about the proactive detection rule
-  final pulumi.Input<String>? helpUrl;
+  final pulumi.Input<String?>? helpUrl;
   /// A flag indicating whether the rule is enabled by default
-  final pulumi.Input<bool>? isEnabledByDefault;
+  final pulumi.Input<bool?>? isEnabledByDefault;
   /// A flag indicating whether the rule is hidden (from the UI)
-  final pulumi.Input<bool>? isHidden;
+  final pulumi.Input<bool?>? isHidden;
   /// A flag indicating whether the rule is in preview
-  final pulumi.Input<bool>? isInPreview;
+  final pulumi.Input<bool?>? isInPreview;
   /// The rule name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A flag indicating whether email notifications are supported for detections for this rule
-  final pulumi.Input<bool>? supportsEmailNotifications;
+  final pulumi.Input<bool?>? supportsEmailNotifications;
 
   /// Creates a new [ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions].
   /// [description] The rule description

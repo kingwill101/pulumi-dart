@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_type_info_response.dart';
 import 'identity_info_response.dart';
+import 'inbound_ip_rule_response.dart';
 import 'json_input_schema_mapping_response.dart';
+import 'private_endpoint_connection_response.dart';
 import 'system_data_response.dart';
 import 'topic_args.dart';
 
@@ -268,7 +270,7 @@ class Topic extends pulumi.CustomResource {
   /// Identity information for the resource.
   late final pulumi.Output<IdentityInfoResponse?> identity;
   /// This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
-  late final pulumi.Output<List<Map<String, dynamic>>?> inboundIpRules;
+  late final pulumi.Output<List<InboundIpRuleResponse>?> inboundIpRules;
   /// This determines the format that Event Grid should expect for incoming events published to the topic.
   late final pulumi.Output<String?> inputSchema;
   /// This enables publishing using custom event schemas. An InputSchemaMapping can be specified to map various properties of a source schema to various required properties of the EventGridEvent schema.
@@ -282,7 +284,7 @@ class Topic extends pulumi.CustomResource {
   /// Name of the resource.
   late final pulumi.Output<String> name;
   /// List of private endpoint connections.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// Provisioning state of the topic.
   late final pulumi.Output<String> provisioningState;
   /// This determines if traffic is allowed over public network. By default it is enabled.
@@ -315,18 +317,48 @@ class Topic extends pulumi.CustomResource {
     endpoint = registerOutput<String>('endpoint');
     eventTypeInfo = registerOutput<EventTypeInfoResponse?>('eventTypeInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventTypeInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identity = registerOutput<IdentityInfoResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>('inboundIpRules');
+    inboundIpRules = registerOutput<List<InboundIpRuleResponse>?>('inboundIpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InboundIpRuleResponse>(guardedValue, (value) => InboundIpRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     inputSchema = registerOutput<String?>('inputSchema');
     inputSchemaMapping = registerOutput<JsonInputSchemaMappingResponse?>('inputSchemaMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JsonInputSchemaMappingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     metricResourceId = registerOutput<String>('metricResourceId');
     minimumTlsVersionAllowed = registerOutput<String?>('minimumTlsVersionAllowed');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Topic] resource.
+  Topic.reference(String urn)
+    : super(
+        'azure-native:eventgrid:Topic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataResidencyBoundary = registerOutput<String?>('dataResidencyBoundary');
+    disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
+    endpoint = registerOutput<String>('endpoint');
+    eventTypeInfo = registerOutput<EventTypeInfoResponse?>('eventTypeInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventTypeInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<IdentityInfoResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inboundIpRules = registerOutput<List<InboundIpRuleResponse>?>('inboundIpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InboundIpRuleResponse>(guardedValue, (value) => InboundIpRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    inputSchema = registerOutput<String?>('inputSchema');
+    inputSchemaMapping = registerOutput<JsonInputSchemaMappingResponse?>('inputSchemaMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JsonInputSchemaMappingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    metricResourceId = registerOutput<String>('metricResourceId');
+    minimumTlsVersionAllowed = registerOutput<String?>('minimumTlsVersionAllowed');
+    this.name = registerOutput<String>('name');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

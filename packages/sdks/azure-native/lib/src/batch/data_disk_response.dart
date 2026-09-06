@@ -11,7 +11,7 @@ class DataDiskResponse {
   /// readWrite - The caching mode for the disk is read and write.
   ///
   /// The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
-  final pulumi.Input<String>? caching;
+  final pulumi.Input<String?>? caching;
   /// The initial disk size in GB when creating new data disk.
   final pulumi.Input<int> diskSizeGB;
   /// The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun. The value must be between 0 and 63, inclusive.
@@ -20,7 +20,7 @@ class DataDiskResponse {
   ///
   /// Standard_LRS - The data disk should use standard locally redundant storage.
   /// Premium_LRS - The data disk should use premium locally redundant storage.
-  final pulumi.Input<String>? storageAccountType;
+  final pulumi.Input<String?>? storageAccountType;
 
   /// Creates a new [DataDiskResponse].
   /// [caching] Values are:
@@ -46,8 +46,8 @@ class DataDiskResponse {
   factory DataDiskResponse.fromMap(Map<String, dynamic> map) {
     return DataDiskResponse(
       caching: (() { final guardedValue = map['caching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      diskSizeGB: pulumi.Input.fromValue(map['diskSizeGB'] as int),
-      lun: pulumi.Input.fromValue(map['lun'] as int),
+      diskSizeGB: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskSizeGB'])),
+      lun: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['lun'])),
       storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

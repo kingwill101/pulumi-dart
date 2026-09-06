@@ -66,9 +66,9 @@ class GetExtendedDatabaseBlobAuditingPolicyResult {
   /// For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
   final List<String>? auditActionsAndGroups;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Specifies whether audit events are sent to Azure Monitor.
   /// In order to send the events to Azure Monitor, specify 'State' as 'Enabled' and 'IsAzureMonitorTargetEnabled' as true.
   ///
@@ -86,7 +86,7 @@ class GetExtendedDatabaseBlobAuditingPolicyResult {
   /// Specifies whether storageAccountAccessKey value is the storage's secondary key.
   final bool? isStorageSecondaryKeyInUse;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Specifies condition of where clause when creating an audit.
   final String? predicateExpression;
   /// Specifies the amount of time in milliseconds that can elapse before audit actions are forced to be processed.
@@ -95,13 +95,13 @@ class GetExtendedDatabaseBlobAuditingPolicyResult {
   /// Specifies the number of days to keep in the audit logs in the storage account.
   final int? retentionDays;
   /// Specifies the state of the audit. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
-  final String state;
+  final String? state;
   /// Specifies the blob storage subscription Id.
   final String? storageAccountSubscriptionId;
   /// Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled is required.
   final String? storageEndpoint;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetExtendedDatabaseBlobAuditingPolicyResult].
   /// [auditActionsAndGroups] Specifies the Actions-Groups and Actions to audit.
@@ -120,56 +120,56 @@ class GetExtendedDatabaseBlobAuditingPolicyResult {
   /// [type] Resource type.
   const GetExtendedDatabaseBlobAuditingPolicyResult({
     this.auditActionsAndGroups,
-    required this.azureApiVersion,
-    required this.id,
+    this.azureApiVersion,
+    this.id,
     this.isAzureMonitorTargetEnabled,
     this.isManagedIdentityInUse,
     this.isStorageSecondaryKeyInUse,
-    required this.name,
+    this.name,
     this.predicateExpression,
     this.queueDelayMs,
     this.retentionDays,
-    required this.state,
+    this.state,
     this.storageAccountSubscriptionId,
     this.storageEndpoint,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'auditActionsAndGroups': ?auditActionsAndGroups,
-      'azureApiVersion': azureApiVersion,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
       'isAzureMonitorTargetEnabled': ?isAzureMonitorTargetEnabled,
       'isManagedIdentityInUse': ?isManagedIdentityInUse,
       'isStorageSecondaryKeyInUse': ?isStorageSecondaryKeyInUse,
-      'name': name,
+      'name': ?name,
       'predicateExpression': ?predicateExpression,
       'queueDelayMs': ?queueDelayMs,
       'retentionDays': ?retentionDays,
-      'state': state,
+      'state': ?state,
       'storageAccountSubscriptionId': ?storageAccountSubscriptionId,
       'storageEndpoint': ?storageEndpoint,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetExtendedDatabaseBlobAuditingPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetExtendedDatabaseBlobAuditingPolicyResult(
       auditActionsAndGroups: (() { final guardedValue = map['auditActionsAndGroups']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isAzureMonitorTargetEnabled: (() { final guardedValue = map['isAzureMonitorTargetEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       isManagedIdentityInUse: (() { final guardedValue = map['isManagedIdentityInUse']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       isStorageSecondaryKeyInUse: (() { final guardedValue = map['isStorageSecondaryKeyInUse']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       predicateExpression: (() { final guardedValue = map['predicateExpression']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      queueDelayMs: (() { final guardedValue = map['queueDelayMs']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      state: map['state'] as String,
+      queueDelayMs: (() { final guardedValue = map['queueDelayMs']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storageAccountSubscriptionId: (() { final guardedValue = map['storageAccountSubscriptionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storageEndpoint: (() { final guardedValue = map['storageEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

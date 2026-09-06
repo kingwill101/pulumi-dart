@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of SingleHeaderModelProperties
 class SingleHeaderModelPropertiesResponse {
   /// The name of the query header to inspect.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [SingleHeaderModelPropertiesResponse].
   /// [name] The name of the query header to inspect.

@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExtendedLocationOptionsResponse {
-  final pulumi.Input<String>? supportedPolicy;
+  final pulumi.Input<String?>? supportedPolicy;
   /// The type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ExtendedLocationOptionsResponse].
   /// [supportedPolicy] Optional.

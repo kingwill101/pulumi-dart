@@ -6,11 +6,11 @@ import 'active_directory_properties.dart';
 /// Settings for Azure Files identity based authentication.
 class AzureFilesIdentityBasedAuthentication {
   /// Required if directoryServiceOptions are AD, optional if they are AADKERB.
-  final pulumi.Input<ActiveDirectoryProperties>? activeDirectoryProperties;
+  final pulumi.Input<ActiveDirectoryProperties?>? activeDirectoryProperties;
   /// Default share permission for users using Kerberos authentication if RBAC role is not assigned.
-  final pulumi.Input<String>? defaultSharePermission;
+  final pulumi.Input<dynamic>? defaultSharePermission;
   /// Indicates the directory service used. Note that this enum may be extended in the future.
-  final pulumi.Input<String> directoryServiceOptions;
+  final pulumi.Input<dynamic> directoryServiceOptions;
 
   /// Creates a new [AzureFilesIdentityBasedAuthentication].
   /// [activeDirectoryProperties] Required if directoryServiceOptions are AD, optional if they are AADKERB.
@@ -33,8 +33,8 @@ class AzureFilesIdentityBasedAuthentication {
   factory AzureFilesIdentityBasedAuthentication.fromMap(Map<String, dynamic> map) {
     return AzureFilesIdentityBasedAuthentication(
       activeDirectoryProperties: (() { final guardedValue = map['activeDirectoryProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActiveDirectoryProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      defaultSharePermission: (() { final guardedValue = map['defaultSharePermission']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      directoryServiceOptions: pulumi.Input.fromValue(map['directoryServiceOptions'] as String),
+      defaultSharePermission: (() { final guardedValue = map['defaultSharePermission']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      directoryServiceOptions: pulumi.Input.fromValue(map['directoryServiceOptions']),
     );
   }
 }

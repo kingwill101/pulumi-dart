@@ -5,11 +5,11 @@ import 'arm_resource_id_response.dart';
 
 class SystemCreatedAcrAccountResponse {
   /// Name of the ACR account
-  final pulumi.Input<String>? acrAccountName;
+  final pulumi.Input<String?>? acrAccountName;
   /// SKU of the ACR account
-  final pulumi.Input<String>? acrAccountSku;
+  final pulumi.Input<String?>? acrAccountSku;
   /// This is populated once the ACR account is created.
-  final pulumi.Input<ArmResourceIdResponse>? armResourceId;
+  final pulumi.Input<ArmResourceIdResponse?>? armResourceId;
 
   /// Creates a new [SystemCreatedAcrAccountResponse].
   /// [acrAccountName] Name of the ACR account

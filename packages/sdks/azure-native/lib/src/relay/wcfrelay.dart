@@ -226,4 +226,28 @@ class WCFRelay extends pulumi.CustomResource {
     updatedAt = registerOutput<String>('updatedAt');
     userMetadata = registerOutput<String?>('userMetadata');
   }
+
+  /// Creates a typed reference to an existing [WCFRelay] resource.
+  WCFRelay.reference(String urn)
+    : super(
+        'azure-native:relay:WCFRelay',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdAt = registerOutput<String>('createdAt');
+    isDynamic = registerOutput<bool>('isDynamic');
+    listenerCount = registerOutput<int>('listenerCount');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    relayType = registerOutput<String?>('relayType');
+    requiresClientAuthorization = registerOutput<bool?>('requiresClientAuthorization');
+    requiresTransportSecurity = registerOutput<bool?>('requiresTransportSecurity');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    updatedAt = registerOutput<String>('updatedAt');
+    userMetadata = registerOutput<String?>('userMetadata');
+  }
 }

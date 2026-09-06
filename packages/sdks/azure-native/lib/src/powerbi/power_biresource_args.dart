@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'private_endpoint_connection_powerbi.dart';
+import 'private_endpoint_connection.dart';
 
 /// {@template pulumi_powerbi_power_biresource_args_doc}
 /// The set of arguments for PowerBIResource.
@@ -9,18 +9,18 @@ import 'private_endpoint_connection_powerbi.dart';
 /// {@macro pulumi_powerbi_power_biresource_args_doc}
 class PowerBIResourceArgs {
   /// The name of the Azure resource.
-  final pulumi.Input<String>? azureResourceName;
+  final pulumi.Input<String?>? azureResourceName;
   /// Specifies the location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the private endpoint connections of the resource.
   /// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
-  final pulumi.Input<List<PrivateEndpointConnectionPowerbi>>? privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnection>?>? privateEndpointConnections;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the tags of the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the tenant id of the resource.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [PowerBIResourceArgs].
   /// [azureResourceName] The name of the Azure resource.
@@ -42,7 +42,7 @@ class PowerBIResourceArgs {
     return <String, dynamic>{
       'azureResourceName': ?azureResourceName,
       'location': ?location,
-      'privateEndpointConnections': ?privateEndpointConnections,
+      'privateEndpointConnections': ?pulumi.Input.mapOptionalInputValue<List<PrivateEndpointConnection>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<PrivateEndpointConnection, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
       'tenantId': ?tenantId,
@@ -53,7 +53,7 @@ class PowerBIResourceArgs {
     return PowerBIResourceArgs(
       azureResourceName: (() { final guardedValue = map['azureResourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<PrivateEndpointConnectionPowerbi>()); })(),
+      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PrivateEndpointConnection>(guardedValue, (value) => PrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

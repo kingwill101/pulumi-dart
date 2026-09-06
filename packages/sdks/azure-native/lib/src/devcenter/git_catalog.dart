@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties for a Git repository catalog.
 class GitCatalog {
   /// Git branch.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// The folder where the catalog items can be found inside the repository.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
-  final pulumi.Input<String>? secretIdentifier;
+  final pulumi.Input<String?>? secretIdentifier;
   /// Git URI.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [GitCatalog].
   /// [branch] Git branch.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Approver Metadata for approvals request.
 class ApproverResponse {
   /// Action Performed by approver
-  final pulumi.Input<String>? actionPerformed;
+  final pulumi.Input<String?>? actionPerformed;
   /// Entra ObjectID of the approver
   final pulumi.Input<String> approverEntraId;
   /// approval request last updated at

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The computation function for the KPI.
-enum KpiFunctions {
+enum KpiFunctions implements pulumi.PulumiEnum<String> {
   valueSum("Sum"),
   valueAvg("Avg"),
   valueMin("Min"),
@@ -10,6 +12,7 @@ enum KpiFunctions {
   valueCountDistinct("CountDistinct");
 
   const KpiFunctions(this.wireValue);
+  @override
   final String wireValue;
 
   static KpiFunctions fromValue(String value) {

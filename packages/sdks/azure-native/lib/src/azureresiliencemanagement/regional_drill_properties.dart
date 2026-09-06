@@ -12,24 +12,24 @@ import 'recovery_plan_properties_of_drill.dart';
 /// Definition of Regional Drill properties.
 class RegionalDrillProperties {
   /// Chaos Experiment properties.
-  final pulumi.Input<ChaosExperimentPropertiesOfDrill>? chaosExperimentProperties;
+  final pulumi.Input<ChaosExperimentPropertiesOfDrill?>? chaosExperimentProperties;
   /// Chaos Resource properties.
-  final pulumi.Input<ChaosResourcePropertiesOfDrill>? chaosResourceProperties;
+  final pulumi.Input<ChaosResourcePropertiesOfDrill?>? chaosResourceProperties;
   /// Properties for internal resources that are created for the Drill.
-  final pulumi.Input<AssetPropertiesOfDrill>? drillAssetProperties;
+  final pulumi.Input<AssetPropertiesOfDrill?>? drillAssetProperties;
   /// Enum for Drill type object hierarchy.
   /// Expected value is 'Regional'.
   final pulumi.Input<String> drillType;
   /// HealthModel properties.
-  final pulumi.Input<HealthModelPropertiesOfDrill>? healthModelProperties;
+  final pulumi.Input<HealthModelPropertiesOfDrill?>? healthModelProperties;
   /// Metric properties.
-  final pulumi.Input<MetricsPropertiesOfDrill>? metricsProperties;
+  final pulumi.Input<MetricsPropertiesOfDrill?>? metricsProperties;
   /// Monitoring properties of the Drill.
-  final pulumi.Input<MonitoringPropertiesOfDrill>? monitoringProperties;
+  final pulumi.Input<MonitoringPropertiesOfDrill?>? monitoringProperties;
   /// RBAC setup mode.
-  final pulumi.Input<String>? rbacSetupMode;
+  final pulumi.Input<dynamic>? rbacSetupMode;
   /// ROPlan properties.
-  final pulumi.Input<RecoveryPlanPropertiesOfDrill>? recoveryPlanProperties;
+  final pulumi.Input<RecoveryPlanPropertiesOfDrill?>? recoveryPlanProperties;
 
   /// Creates a new [RegionalDrillProperties].
   /// [chaosExperimentProperties] Chaos Experiment properties.
@@ -76,7 +76,7 @@ class RegionalDrillProperties {
       healthModelProperties: (() { final guardedValue = map['healthModelProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HealthModelPropertiesOfDrill.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       metricsProperties: (() { final guardedValue = map['metricsProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetricsPropertiesOfDrill.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       monitoringProperties: (() { final guardedValue = map['monitoringProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MonitoringPropertiesOfDrill.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      rbacSetupMode: (() { final guardedValue = map['rbacSetupMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rbacSetupMode: (() { final guardedValue = map['rbacSetupMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       recoveryPlanProperties: (() { final guardedValue = map['recoveryPlanProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RecoveryPlanPropertiesOfDrill.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

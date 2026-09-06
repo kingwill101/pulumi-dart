@@ -7,9 +7,9 @@ import 'shipping_address.dart';
 /// Reverse Shipping Address and contact details for a job.
 class ReverseShippingDetails {
   /// Contact Info.
-  final pulumi.Input<ContactInfo>? contactDetails;
+  final pulumi.Input<ContactInfo?>? contactDetails;
   /// Shipping address where customer wishes to receive the device.
-  final pulumi.Input<ShippingAddress>? shippingAddress;
+  final pulumi.Input<ShippingAddress?>? shippingAddress;
 
   /// Creates a new [ReverseShippingDetails].
   /// [contactDetails] Contact Info.

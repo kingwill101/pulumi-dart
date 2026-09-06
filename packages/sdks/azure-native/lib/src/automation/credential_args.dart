@@ -10,9 +10,9 @@ class CredentialArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
   /// The name of credential.
-  final pulumi.Input<String>? credentialName;
+  final pulumi.Input<String?>? credentialName;
   /// Gets or sets the description of the credential.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Gets or sets the name of the credential.
   final pulumi.Input<String> name;
   /// Gets or sets the password of the credential.

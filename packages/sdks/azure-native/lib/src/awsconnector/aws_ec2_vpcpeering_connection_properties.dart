@@ -6,19 +6,19 @@ import 'tag.dart';
 /// Definition of awsEc2VPCPeeringConnection
 class AwsEc2VPCPeeringConnectionProperties {
   /// Property id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The AWS account ID of the owner of the accepter VPC.
-  final pulumi.Input<String>? peerOwnerId;
+  final pulumi.Input<String?>? peerOwnerId;
   /// The Region code for the accepter VPC, if the accepter VPC is located in a Region other than the Region in which you make the request.
-  final pulumi.Input<String>? peerRegion;
+  final pulumi.Input<String?>? peerRegion;
   /// The Amazon Resource Name (ARN) of the VPC peer role for the peering connection in another AWS account.
-  final pulumi.Input<String>? peerRoleArn;
+  final pulumi.Input<String?>? peerRoleArn;
   /// The ID of the VPC with which you are creating the VPC peering connection. You must specify this parameter in the request.
-  final pulumi.Input<String>? peerVpcId;
+  final pulumi.Input<String?>? peerVpcId;
   /// Property tags
-  final pulumi.Input<List<Tag>>? tags;
+  final pulumi.Input<List<Tag>?>? tags;
   /// The ID of the VPC.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [AwsEc2VPCPeeringConnectionProperties].
   /// [id] Property id

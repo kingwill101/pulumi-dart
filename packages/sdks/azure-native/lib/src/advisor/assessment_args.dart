@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_advisor_assessment_args_doc}
 class AssessmentArgs {
   /// Advisor assessment name.
-  final pulumi.Input<String>? assessmentName;
+  final pulumi.Input<String?>? assessmentName;
   /// Assessment Type Locale.
-  final pulumi.Input<String>? locale;
+  final pulumi.Input<String?>? locale;
   /// Assessment Type Id.
-  final pulumi.Input<String>? typeId;
+  final pulumi.Input<String?>? typeId;
   /// Workload Id.
-  final pulumi.Input<String>? workloadId;
+  final pulumi.Input<String?>? workloadId;
 
   /// Creates a new [AssessmentArgs].
   /// [assessmentName] Advisor assessment name.

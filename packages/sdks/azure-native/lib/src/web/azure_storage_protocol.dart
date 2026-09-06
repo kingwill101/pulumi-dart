@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Mounting protocol to use for the storage account.
-enum AzureStorageProtocol {
+enum AzureStorageProtocol implements pulumi.PulumiEnum<String> {
   smb("Smb"),
   http("Http"),
   nfs("Nfs");
 
   const AzureStorageProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureStorageProtocol fromValue(String value) {

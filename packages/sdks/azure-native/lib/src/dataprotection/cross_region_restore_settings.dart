@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CrossRegionRestoreSettings {
   /// CrossRegionRestore state
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
 
   /// Creates a new [CrossRegionRestoreSettings].
   /// [state] CrossRegionRestore state
@@ -20,7 +20,7 @@ class CrossRegionRestoreSettings {
 
   factory CrossRegionRestoreSettings.fromMap(Map<String, dynamic> map) {
     return CrossRegionRestoreSettings(
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

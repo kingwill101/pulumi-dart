@@ -9,21 +9,21 @@ import 'key_vault_key_reference.dart';
 /// {@macro pulumi_logic_integration_account_certificate_args_doc}
 class IntegrationAccountCertificateArgs {
   /// The integration account certificate name.
-  final pulumi.Input<String>? certificateName;
+  final pulumi.Input<String?>? certificateName;
   /// The integration account name.
   final pulumi.Input<String> integrationAccountName;
   /// The key details in the key vault.
-  final pulumi.Input<KeyVaultKeyReference>? key;
+  final pulumi.Input<KeyVaultKeyReference?>? key;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The metadata.
   final pulumi.Input<dynamic>? metadata;
   /// The public certificate.
-  final pulumi.Input<String>? publicCertificate;
+  final pulumi.Input<String?>? publicCertificate;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [IntegrationAccountCertificateArgs].
   /// [certificateName] The integration account certificate name.

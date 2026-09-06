@@ -6,11 +6,11 @@ import 'database_identity.dart';
 /// Database Identity.
 class Identity {
   /// The federated client id for the SQL Database. It is used for cross tenant CMK scenario.
-  final pulumi.Input<String>? federatedClientId;
+  final pulumi.Input<String?>? federatedClientId;
   /// Identity type of the main principal.
-  final pulumi.Input<String>? identityType;
+  final pulumi.Input<dynamic>? identityType;
   /// User identity ids
-  final pulumi.Input<List<DatabaseIdentity>>? userAssignedIdentities;
+  final pulumi.Input<List<DatabaseIdentity>?>? userAssignedIdentities;
 
   /// Creates a new [Identity].
   /// [federatedClientId] The federated client id for the SQL Database. It is used for cross tenant CMK scenario.
@@ -33,7 +33,7 @@ class Identity {
   factory Identity.fromMap(Map<String, dynamic> map) {
     return Identity(
       federatedClientId: (() { final guardedValue = map['federatedClientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      identityType: (() { final guardedValue = map['identityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identityType: (() { final guardedValue = map['identityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DatabaseIdentity>(guardedValue, (value) => DatabaseIdentity.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

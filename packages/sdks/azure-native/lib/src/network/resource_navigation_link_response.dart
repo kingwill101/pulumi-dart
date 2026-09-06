@@ -9,11 +9,11 @@ class ResourceNavigationLinkResponse {
   /// Resource ID.
   final pulumi.Input<String> id;
   /// Link to the external resource.
-  final pulumi.Input<String>? link;
+  final pulumi.Input<String?>? link;
   /// Resource type of the linked resource.
-  final pulumi.Input<String>? linkedResourceType;
+  final pulumi.Input<String?>? linkedResourceType;
   /// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The provisioning state of the resource navigation link resource.
   final pulumi.Input<String> provisioningState;
   /// Resource type.

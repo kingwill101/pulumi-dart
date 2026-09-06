@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Optional throttling information for the alert rule.
 class ThrottlingInformationResponse {
   /// The required duration (in ISO8601 format) to wait before notifying on the alert rule again. The time granularity must be in minutes and minimum value is 0 minutes
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
 
   /// Creates a new [ThrottlingInformationResponse].
   /// [duration] The required duration (in ISO8601 format) to wait before notifying on the alert rule again. The time granularity must be in minutes and minimum value is 0 minutes

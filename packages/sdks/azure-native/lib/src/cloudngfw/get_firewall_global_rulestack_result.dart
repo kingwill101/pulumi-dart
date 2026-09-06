@@ -4,23 +4,23 @@
 /// Result data returned by getFirewallGlobalRulestack.
 class GetFirewallGlobalRulestackResult {
   /// rulestack description
-  final String azureId;
+  final String? azureId;
 
   /// Creates a new [GetFirewallGlobalRulestackResult].
   /// [azureId] rulestack description
   const GetFirewallGlobalRulestackResult({
-    required this.azureId,
+    this.azureId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureId': azureId,
+      'azureId': ?azureId,
     };
   }
 
   factory GetFirewallGlobalRulestackResult.fromMap(Map<String, dynamic> map) {
     return GetFirewallGlobalRulestackResult(
-      azureId: map['azureId'] as String,
+      azureId: (() { final guardedValue = map['azureId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

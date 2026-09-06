@@ -6,7 +6,7 @@ import 'role_response.dart';
 /// Describes the compute profile.
 class ComputeProfileResponse {
   /// The list of roles in the cluster.
-  final pulumi.Input<List<RoleResponse>>? roles;
+  final pulumi.Input<List<RoleResponse>?>? roles;
 
   /// Creates a new [ComputeProfileResponse].
   /// [roles] The list of roles in the cluster.

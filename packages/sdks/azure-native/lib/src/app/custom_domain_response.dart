@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Custom Domain of a Container App
 class CustomDomainResponse {
   /// Custom Domain binding type.
-  final pulumi.Input<String>? bindingType;
+  final pulumi.Input<String?>? bindingType;
   /// Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment.
-  final pulumi.Input<String>? certificateId;
+  final pulumi.Input<String?>? certificateId;
   /// Hostname.
   final pulumi.Input<String> name;
 

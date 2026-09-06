@@ -6,15 +6,15 @@ import 'azure_storage_info_value_response.dart';
 /// Result data returned by listWebAppAzureStorageAccountsSlot.
 class ListWebAppAzureStorageAccountsSlotResult {
   /// Resource Id.
-  final String id;
+  final String? id;
   /// Kind of resource.
   final String? kind;
   /// Resource Name.
-  final String name;
+  final String? name;
   /// Azure storage accounts.
-  final Map<String, AzureStorageInfoValueResponse> properties;
+  final Map<String, AzureStorageInfoValueResponse>? properties;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [ListWebAppAzureStorageAccountsSlotResult].
   /// [id] Resource Id.
@@ -23,30 +23,30 @@ class ListWebAppAzureStorageAccountsSlotResult {
   /// [properties] Azure storage accounts.
   /// [type] Resource type.
   const ListWebAppAzureStorageAccountsSlotResult({
-    required this.id,
+    this.id,
     this.kind,
-    required this.name,
-    required this.properties,
-    required this.type,
+    this.name,
+    this.properties,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'id': ?id,
       'kind': ?kind,
-      'name': name,
-      'properties': pulumi.Input.encodeMapValues<AzureStorageInfoValueResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
-      'type': type,
+      'name': ?name,
+      'properties': ?(() { final guardedValue = properties; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<AzureStorageInfoValueResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'type': ?type,
     };
   }
 
   factory ListWebAppAzureStorageAccountsSlotResult.fromMap(Map<String, dynamic> map) {
     return ListWebAppAzureStorageAccountsSlotResult(
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      properties: pulumi.Input.decodeMapValues<AzureStorageInfoValueResponse>(map['properties']!, (value) => AzureStorageInfoValueResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<AzureStorageInfoValueResponse>(guardedValue, (value) => AzureStorageInfoValueResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

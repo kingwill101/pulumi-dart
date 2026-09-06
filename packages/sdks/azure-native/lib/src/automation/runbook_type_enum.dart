@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the type of the runbook.
-enum RunbookTypeEnum {
+enum RunbookTypeEnum implements pulumi.PulumiEnum<String> {
   script("Script"),
   graph("Graph"),
   powerShellWorkflow("PowerShellWorkflow"),
@@ -12,6 +14,7 @@ enum RunbookTypeEnum {
   powerShell72("PowerShell72");
 
   const RunbookTypeEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static RunbookTypeEnum fromValue(String value) {

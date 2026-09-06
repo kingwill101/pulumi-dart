@@ -9,9 +9,9 @@ import 'job_resource_properties.dart';
 /// {@macro pulumi_appplatform_job_args_doc}
 class JobArgs {
   /// The name of the Job resource.
-  final pulumi.Input<String>? jobName;
+  final pulumi.Input<String?>? jobName;
   /// Properties of the Job resource
-  final pulumi.Input<JobResourceProperties>? properties;
+  final pulumi.Input<JobResourceProperties?>? properties;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Service resource.

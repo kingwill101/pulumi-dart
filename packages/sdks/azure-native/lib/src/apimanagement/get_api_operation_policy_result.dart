@@ -4,17 +4,17 @@
 /// Result data returned by getApiOperationPolicy.
 class GetApiOperationPolicyResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Format of the policyContent.
   final String? format;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Contents of the Policy as defined by the format.
-  final String value;
+  final String? value;
 
   /// Creates a new [GetApiOperationPolicyResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -23,34 +23,34 @@ class GetApiOperationPolicyResult {
   /// [name] The name of the resource
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [value] Contents of the Policy as defined by the format.
-  const GetApiOperationPolicyResult({
-    required this.azureApiVersion,
-    this.format,
-    required this.id,
-    required this.name,
-    required this.type,
-    required this.value,
-  });
+  GetApiOperationPolicyResult({
+    this.azureApiVersion,
+    String? format,
+    this.id,
+    this.name,
+    this.type,
+    this.value,
+  }) : format = format ?? 'xml';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'format': ?format,
-      'id': id,
-      'name': name,
-      'type': type,
-      'value': value,
+      'id': ?id,
+      'name': ?name,
+      'type': ?type,
+      'value': ?value,
     };
   }
 
   factory GetApiOperationPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetApiOperationPolicyResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      type: map['type'] as String,
-      value: map['value'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

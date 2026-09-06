@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Settings schema for the project
 class ProjectSettings {
   /// Default preferences to guide AI behaviors in this project.
-  final pulumi.Input<String>? behaviorPreferences;
+  final pulumi.Input<String?>? behaviorPreferences;
 
   /// Creates a new [ProjectSettings].
   /// [behaviorPreferences] Default preferences to guide AI behaviors in this project.

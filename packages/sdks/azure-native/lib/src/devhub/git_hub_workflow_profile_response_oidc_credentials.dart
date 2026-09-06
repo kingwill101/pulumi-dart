@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The fields needed for OIDC with GitHub.
 class GitHubWorkflowProfileResponseOidcCredentials {
   /// Azure Application Client ID
-  final pulumi.Input<String>? azureClientId;
+  final pulumi.Input<String?>? azureClientId;
   /// Azure Directory (tenant) ID
-  final pulumi.Input<String>? azureTenantId;
+  final pulumi.Input<String?>? azureTenantId;
 
   /// Creates a new [GitHubWorkflowProfileResponseOidcCredentials].
   /// [azureClientId] Azure Application Client ID

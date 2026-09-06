@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enable egress NAT, enabled by default
-enum EgressNat {
+enum EgressNat implements pulumi.PulumiEnum<String> {
   valueDISABLED("DISABLED"),
   valueENABLED("ENABLED");
 
   const EgressNat(this.wireValue);
+  @override
   final String wireValue;
 
   static EgressNat fromValue(String value) {

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of an Access Control Rule Identity.
 class AccessControlRulesIdentity {
   /// The path to the executable.
-  final pulumi.Input<String>? exePath;
+  final pulumi.Input<String?>? exePath;
   /// The groupName corresponding to this identity.
-  final pulumi.Input<String>? groupName;
+  final pulumi.Input<String?>? groupName;
   /// The name of the identity.
   final pulumi.Input<String> name;
   /// The process name of the executable.
-  final pulumi.Input<String>? processName;
+  final pulumi.Input<String?>? processName;
   /// The username corresponding to this identity.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [AccessControlRulesIdentity].
   /// [exePath] The path to the executable.

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The service properties for soft delete.
 class DeleteRetentionPolicyResponse {
   /// This property when set to true allows deletion of the soft deleted blob versions and snapshots. This property cannot be used blob restore policy. This property only applies to blob service and does not apply to containers or file share.
-  final pulumi.Input<bool>? allowPermanentDelete;
+  final pulumi.Input<bool?>? allowPermanentDelete;
   /// Indicates the number of days that the deleted item should be retained. The minimum specified value can be 1 and the maximum value can be 365.
-  final pulumi.Input<int>? days;
+  final pulumi.Input<int?>? days;
   /// Indicates whether DeleteRetentionPolicy is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [DeleteRetentionPolicyResponse].
   /// [allowPermanentDelete] This property when set to true allows deletion of the soft deleted blob versions and snapshots. This property cannot be used blob restore policy. This property only applies to blob service and does not apply to containers or file share.
@@ -32,7 +32,7 @@ class DeleteRetentionPolicyResponse {
   factory DeleteRetentionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return DeleteRetentionPolicyResponse(
       allowPermanentDelete: (() { final guardedValue = map['allowPermanentDelete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

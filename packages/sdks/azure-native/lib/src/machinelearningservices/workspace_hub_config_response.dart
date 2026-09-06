@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// WorkspaceHub's configuration object.
 class WorkspaceHubConfigResponse {
-  final pulumi.Input<List<String>>? additionalWorkspaceStorageAccounts;
-  final pulumi.Input<String>? defaultWorkspaceResourceGroup;
+  final pulumi.Input<List<String>?>? additionalWorkspaceStorageAccounts;
+  final pulumi.Input<String?>? defaultWorkspaceResourceGroup;
 
   /// Creates a new [WorkspaceHubConfigResponse].
   /// [additionalWorkspaceStorageAccounts] Optional.

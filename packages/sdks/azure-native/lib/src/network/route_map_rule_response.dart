@@ -7,13 +7,13 @@ import 'criterion_response.dart';
 /// A RouteMap Rule.
 class RouteMapRuleResponse {
   /// List of actions which will be applied on a match.
-  final pulumi.Input<List<ActionResponse>>? actions;
+  final pulumi.Input<List<ActionResponse>?>? actions;
   /// List of matching criterion which will be applied to traffic.
-  final pulumi.Input<List<CriterionResponse>>? matchCriteria;
+  final pulumi.Input<List<CriterionResponse>?>? matchCriteria;
   /// The unique name for the rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Next step after rule is evaluated. Current supported behaviors are 'Continue'(to next rule) and 'Terminate'.
-  final pulumi.Input<String>? nextStepIfMatched;
+  final pulumi.Input<String?>? nextStepIfMatched;
 
   /// Creates a new [RouteMapRuleResponse].
   /// [actions] List of actions which will be applied on a match.

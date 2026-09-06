@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Replication mode of the link
-enum ReplicationModeType {
+enum ReplicationModeType implements pulumi.PulumiEnum<String> {
   valueAsync("Async"),
   valueSync("Sync");
 
   const ReplicationModeType(this.wireValue);
+  @override
   final String wireValue;
 
   static ReplicationModeType fromValue(String value) {

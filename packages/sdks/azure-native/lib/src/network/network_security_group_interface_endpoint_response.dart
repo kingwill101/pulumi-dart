@@ -8,27 +8,27 @@ import 'subnet_response.dart';
 /// NetworkSecurityGroup resource.
 class NetworkSecurityGroupInterfaceEndpointResponse {
   /// The default security rules of network security group.
-  final pulumi.Input<List<SecurityRuleInterfaceEndpointResponse>>? defaultSecurityRules;
+  final pulumi.Input<List<SecurityRuleInterfaceEndpointResponse>?>? defaultSecurityRules;
   /// A unique read-only string that changes whenever the resource is updated.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource name.
   final pulumi.Input<String> name;
   /// A collection of references to network interfaces.
   final pulumi.Input<List<NetworkInterfaceResponse>> networkInterfaces;
   /// The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// The resource GUID property of the network security group resource.
-  final pulumi.Input<String>? resourceGuid;
+  final pulumi.Input<String?>? resourceGuid;
   /// A collection of security rules of the network security group.
-  final pulumi.Input<List<SecurityRuleInterfaceEndpointResponse>>? securityRules;
+  final pulumi.Input<List<SecurityRuleInterfaceEndpointResponse>?>? securityRules;
   /// A collection of references to subnets.
   final pulumi.Input<List<SubnetResponse>> subnets;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Resource type.
   final pulumi.Input<String> type;
 

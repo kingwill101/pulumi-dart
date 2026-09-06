@@ -12,23 +12,23 @@ import 'storage_configuration.dart';
 /// {@macro pulumi_healthcareapis_dicom_service_args_doc}
 class DicomServiceArgs {
   /// Dicom Service Cors configuration.
-  final pulumi.Input<CorsConfiguration>? corsConfiguration;
+  final pulumi.Input<CorsConfiguration?>? corsConfiguration;
   /// The name of DICOM Service resource.
-  final pulumi.Input<String>? dicomServiceName;
+  final pulumi.Input<String?>? dicomServiceName;
   /// If data partitions is enabled or not.
-  final pulumi.Input<bool>? enableDataPartitions;
+  final pulumi.Input<bool?>? enableDataPartitions;
   /// The encryption settings of the DICOM service
-  final pulumi.Input<Encryption>? encryption;
+  final pulumi.Input<Encryption?>? encryption;
   /// Setting indicating whether the service has a managed identity associated with it.
-  final pulumi.Input<ServiceManagedIdentityIdentity>? identity;
+  final pulumi.Input<ServiceManagedIdentityIdentity?>? identity;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group that contains the service instance.
   final pulumi.Input<String> resourceGroupName;
   /// The configuration of external storage account
-  final pulumi.Input<StorageConfiguration>? storageConfiguration;
+  final pulumi.Input<StorageConfiguration?>? storageConfiguration;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of workspace resource.
   final pulumi.Input<String> workspaceName;
 

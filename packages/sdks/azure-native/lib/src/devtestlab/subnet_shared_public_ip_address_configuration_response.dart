@@ -6,7 +6,7 @@ import 'port_response.dart';
 /// Configuration for public IP address sharing.
 class SubnetSharedPublicIpAddressConfigurationResponse {
   /// Backend ports that virtual machines on this subnet are allowed to expose
-  final pulumi.Input<List<PortResponse>>? allowedPorts;
+  final pulumi.Input<List<PortResponse>?>? allowedPorts;
 
   /// Creates a new [SubnetSharedPublicIpAddressConfigurationResponse].
   /// [allowedPorts] Backend ports that virtual machines on this subnet are allowed to expose

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Second level entity for virtual directories.
 class DirectoryPath {
   /// Gets or sets the physical path of the directory on the web server.
-  final pulumi.Input<String>? physical;
+  final pulumi.Input<String?>? physical;
   /// Gets or sets the virtual path for the directory.
-  final pulumi.Input<String>? virtual;
+  final pulumi.Input<String?>? virtual;
 
   /// Creates a new [DirectoryPath].
   /// [physical] Gets or sets the physical path of the directory on the web server.

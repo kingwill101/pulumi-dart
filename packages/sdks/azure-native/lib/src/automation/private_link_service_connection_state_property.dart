@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Connection State of the Private Endpoint Connection.
 class PrivateLinkServiceConnectionStateProperty {
   /// The private link service connection description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The private link service connection status.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [PrivateLinkServiceConnectionStateProperty].
   /// [description] The private link service connection description.

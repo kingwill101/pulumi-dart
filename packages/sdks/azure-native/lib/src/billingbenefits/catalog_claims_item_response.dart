@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Catalog claim for a discount.
 class CatalogClaimsItemResponse {
-  final pulumi.Input<String>? catalogClaimsItemType;
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? catalogClaimsItemType;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [CatalogClaimsItemResponse].
   /// [catalogClaimsItemType] Optional.

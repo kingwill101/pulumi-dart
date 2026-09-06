@@ -11,15 +11,15 @@ class KeyValueArgs {
   final pulumi.Input<String> configStoreName;
   /// The content type of the key-value's value.
   /// Providing a proper content-type can enable transformations of values when they are retrieved by applications.
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
-  final pulumi.Input<String>? keyValueName;
+  final pulumi.Input<String?>? keyValueName;
   /// The name of the resource group to which the container registry belongs.
   final pulumi.Input<String> resourceGroupName;
   /// A dictionary of tags that can help identify what a key-value may be applicable for.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The value of the key-value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [KeyValueArgs].
   /// [configStoreName] The name of the configuration store.

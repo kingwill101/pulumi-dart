@@ -7,9 +7,9 @@ import 'proposed_multi_region_access_point_policy.dart';
 /// Definition of awsS3ControlMultiRegionAccessPointPolicyDocument
 class AwsS3ControlMultiRegionAccessPointPolicyDocumentProperties {
   /// &lt;p&gt;The last established policy for the Multi-Region Access Point.&lt;/p&gt;
-  final pulumi.Input<EstablishedMultiRegionAccessPointPolicy>? established;
+  final pulumi.Input<EstablishedMultiRegionAccessPointPolicy?>? established;
   /// &lt;p&gt;The proposed policy for the Multi-Region Access Point.&lt;/p&gt;
-  final pulumi.Input<ProposedMultiRegionAccessPointPolicy>? proposed;
+  final pulumi.Input<ProposedMultiRegionAccessPointPolicy?>? proposed;
 
   /// Creates a new [AwsS3ControlMultiRegionAccessPointPolicyDocumentProperties].
   /// [established] &lt;p&gt;The last established policy for the Multi-Region Access Point.&lt;/p&gt;

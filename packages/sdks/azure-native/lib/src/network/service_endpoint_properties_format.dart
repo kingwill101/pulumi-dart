@@ -6,13 +6,13 @@ import 'sub_resource.dart';
 /// The service endpoint properties.
 class ServiceEndpointPropertiesFormat {
   /// A list of locations.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// SubResource as network identifier.
-  final pulumi.Input<SubResource>? networkIdentifier;
+  final pulumi.Input<SubResource?>? networkIdentifier;
   /// The provisioning state of the resource.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// The type of the endpoint service.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
 
   /// Creates a new [ServiceEndpointPropertiesFormat].
   /// [locations] A list of locations.

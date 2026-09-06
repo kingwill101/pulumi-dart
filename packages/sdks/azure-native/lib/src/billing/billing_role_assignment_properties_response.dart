@@ -45,11 +45,11 @@ class BillingRoleAssignmentPropertiesResponse {
   /// The display name of the principal to whom the role was assigned.
   final pulumi.Input<String> principalDisplayName;
   /// The object id of the user to whom the role was assigned.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// The principal PUID of the user to whom the role was assigned.
-  final pulumi.Input<String>? principalPuid;
+  final pulumi.Input<String?>? principalPuid;
   /// The principal tenant id of the user to whom the role was assigned.
-  final pulumi.Input<String>? principalTenantId;
+  final pulumi.Input<String?>? principalTenantId;
   /// The friendly name of the tenant of the user to whom the role was assigned. This will be 'Primary Tenant' for the primary tenant of the billing account.
   final pulumi.Input<String> principalTenantName;
   /// The type of a role Assignment.
@@ -59,11 +59,11 @@ class BillingRoleAssignmentPropertiesResponse {
   /// The ID of the role definition.
   final pulumi.Input<String> roleDefinitionId;
   /// The scope at which the role was assigned.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
-  final pulumi.Input<String>? userAuthenticationType;
+  final pulumi.Input<String?>? userAuthenticationType;
   /// The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
-  final pulumi.Input<String>? userEmailAddress;
+  final pulumi.Input<String?>? userEmailAddress;
 
   /// Creates a new [BillingRoleAssignmentPropertiesResponse].
   /// [billingAccountDisplayName] The name of the billing account.

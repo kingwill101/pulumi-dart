@@ -38,9 +38,9 @@ class AddRemoveIncrementalNamedPartitionScalingMechanism {
   factory AddRemoveIncrementalNamedPartitionScalingMechanism.fromMap(Map<String, dynamic> map) {
     return AddRemoveIncrementalNamedPartitionScalingMechanism(
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      maxPartitionCount: pulumi.Input.fromValue(map['maxPartitionCount'] as int),
-      minPartitionCount: pulumi.Input.fromValue(map['minPartitionCount'] as int),
-      scaleIncrement: pulumi.Input.fromValue(map['scaleIncrement'] as int),
+      maxPartitionCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxPartitionCount'])),
+      minPartitionCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minPartitionCount'])),
+      scaleIncrement: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scaleIncrement'])),
     );
   }
 }

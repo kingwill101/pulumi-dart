@@ -9,15 +9,15 @@ import 'iam_role_properties.dart';
 /// {@macro pulumi_awsconnector_iam_role_args_doc}
 class IamRoleArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of IamRole
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<IamRoleProperties>? properties;
+  final pulumi.Input<IamRoleProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [IamRoleArgs].
   /// [location] The geo-location where the resource lives

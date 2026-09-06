@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets user preference indicating intent of async commit mode.
-enum AsyncCommitModeIntent {
+enum AsyncCommitModeIntent implements pulumi.PulumiEnum<String> {
   none("None"),
   highAvailability("HighAvailability"),
   disasterRecovery("DisasterRecovery");
 
   const AsyncCommitModeIntent(this.wireValue);
+  @override
   final String wireValue;
 
   static AsyncCommitModeIntent fromValue(String value) {

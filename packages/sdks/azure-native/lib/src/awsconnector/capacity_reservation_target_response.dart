@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of CapacityReservationTargetResponse
 class CapacityReservationTargetResponse {
   /// &lt;p&gt;The ID of the targeted Capacity Reservation.&lt;/p&gt;
-  final pulumi.Input<String>? capacityReservationId;
+  final pulumi.Input<String?>? capacityReservationId;
   /// &lt;p&gt;The ARN of the targeted Capacity Reservation group.&lt;/p&gt;
-  final pulumi.Input<String>? capacityReservationResourceGroupArn;
+  final pulumi.Input<String?>? capacityReservationResourceGroupArn;
 
   /// Creates a new [CapacityReservationTargetResponse].
   /// [capacityReservationId] &lt;p&gt;The ID of the targeted Capacity Reservation.&lt;/p&gt;

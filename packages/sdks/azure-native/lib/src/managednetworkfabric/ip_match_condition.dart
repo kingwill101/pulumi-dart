@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the condition that can be filtered using the selected IPs.
 class IpMatchCondition {
   /// The List of IP Group Names that need to be matched.
-  final pulumi.Input<List<String>>? ipGroupNames;
+  final pulumi.Input<List<String>?>? ipGroupNames;
   /// The list of IP Prefixes that need to be matched.
-  final pulumi.Input<List<String>>? ipPrefixValues;
+  final pulumi.Input<List<String>?>? ipPrefixValues;
   /// IP Prefix Type that needs to be matched.
-  final pulumi.Input<String>? prefixType;
+  final pulumi.Input<dynamic>? prefixType;
   /// IP Address type that needs to be matched.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [IpMatchCondition].
   /// [ipGroupNames] The List of IP Group Names that need to be matched.
@@ -38,8 +38,8 @@ class IpMatchCondition {
     return IpMatchCondition(
       ipGroupNames: (() { final guardedValue = map['ipGroupNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       ipPrefixValues: (() { final guardedValue = map['ipPrefixValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      prefixType: (() { final guardedValue = map['prefixType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prefixType: (() { final guardedValue = map['prefixType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

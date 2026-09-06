@@ -24,6 +24,17 @@ Future<GetAppServiceCertificateOrderResult> getAppServiceCertificateOrder(
   return GetAppServiceCertificateOrderResult.fromMap(result);
 }
 
+pulumi.Output<GetAppServiceCertificateOrderResult> getAppServiceCertificateOrderOutput(
+  GetAppServiceCertificateOrderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:certificateregistration:getAppServiceCertificateOrder',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppServiceCertificateOrderResult.fromMap);
+}
+
 /// Description for Get the certificate associated with a certificate order.
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -42,4 +53,15 @@ Future<GetAppServiceCertificateOrderCertificateResult> getAppServiceCertificateO
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAppServiceCertificateOrderCertificateResult.fromMap(result);
+}
+
+pulumi.Output<GetAppServiceCertificateOrderCertificateResult> getAppServiceCertificateOrderCertificateOutput(
+  GetAppServiceCertificateOrderCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:certificateregistration:getAppServiceCertificateOrderCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppServiceCertificateOrderCertificateResult.fromMap);
 }

@@ -6,21 +6,21 @@ import 'repository_ref_definition.dart';
 /// Parameters to reconcile to the GitRepository source kind type.
 class GitRepositoryDefinition {
   /// Base64-encoded HTTPS certificate authority contents used to access git private git repositories over HTTPS
-  final pulumi.Input<String>? httpsCACert;
+  final pulumi.Input<String?>? httpsCACert;
   /// Plaintext HTTPS username used to access private git repositories over HTTPS
-  final pulumi.Input<String>? httpsUser;
+  final pulumi.Input<String?>? httpsUser;
   /// Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets.
-  final pulumi.Input<String>? localAuthRef;
+  final pulumi.Input<String?>? localAuthRef;
   /// The source reference for the GitRepository object.
-  final pulumi.Input<RepositoryRefDefinition>? repositoryRef;
+  final pulumi.Input<RepositoryRefDefinition?>? repositoryRef;
   /// Base64-encoded known_hosts value containing public SSH keys required to access private git repositories over SSH
-  final pulumi.Input<String>? sshKnownHosts;
+  final pulumi.Input<String?>? sshKnownHosts;
   /// The interval at which to re-reconcile the cluster git repository source with the remote.
-  final pulumi.Input<double>? syncIntervalInSeconds;
+  final pulumi.Input<double?>? syncIntervalInSeconds;
   /// The maximum time to attempt to reconcile the cluster git repository source with the remote.
-  final pulumi.Input<double>? timeoutInSeconds;
+  final pulumi.Input<double?>? timeoutInSeconds;
   /// The URL to sync for the flux configuration git repository.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [GitRepositoryDefinition].
   /// [httpsCACert] Base64-encoded HTTPS certificate authority contents used to access git private git repositories over HTTPS
@@ -31,16 +31,16 @@ class GitRepositoryDefinition {
   /// [syncIntervalInSeconds] The interval at which to re-reconcile the cluster git repository source with the remote.
   /// [timeoutInSeconds] The maximum time to attempt to reconcile the cluster git repository source with the remote.
   /// [url] The URL to sync for the flux configuration git repository.
-  const GitRepositoryDefinition({
+  GitRepositoryDefinition({
     this.httpsCACert,
     this.httpsUser,
     this.localAuthRef,
     this.repositoryRef,
     this.sshKnownHosts,
-    this.syncIntervalInSeconds,
-    this.timeoutInSeconds,
+    pulumi.Input<double?>? syncIntervalInSeconds,
+    pulumi.Input<double?>? timeoutInSeconds,
     this.url,
-  });
+  }) : syncIntervalInSeconds = syncIntervalInSeconds ?? pulumi.Input.fromValue(600), timeoutInSeconds = timeoutInSeconds ?? pulumi.Input.fromValue(600);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,8 +62,8 @@ class GitRepositoryDefinition {
       localAuthRef: (() { final guardedValue = map['localAuthRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repositoryRef: (() { final guardedValue = map['repositoryRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryRefDefinition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sshKnownHosts: (() { final guardedValue = map['sshKnownHosts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      syncIntervalInSeconds: (() { final guardedValue = map['syncIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      syncIntervalInSeconds: (() { final guardedValue = map['syncIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

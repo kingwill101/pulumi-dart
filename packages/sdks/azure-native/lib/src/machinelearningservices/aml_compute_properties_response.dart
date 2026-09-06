@@ -17,33 +17,33 @@ class AmlComputePropertiesResponse {
   /// The number of compute nodes currently assigned to the compute.
   final pulumi.Input<int> currentNodeCount;
   /// Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
-  final pulumi.Input<bool>? enableNodePublicIp;
+  final pulumi.Input<bool?>? enableNodePublicIp;
   /// Collection of errors encountered by various compute nodes during node setup.
   final pulumi.Input<List<ErrorResponseResponse>> errors;
   /// Network is isolated or not
-  final pulumi.Input<bool>? isolatedNetwork;
+  final pulumi.Input<bool?>? isolatedNetwork;
   /// Counts of various node states on the compute.
   final pulumi.Input<NodeStateCountsResponse> nodeStateCounts;
   /// Compute OS Type
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// A property bag containing additional properties.
   final pulumi.Input<dynamic>? propertyBag;
   /// State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on all nodes of the cluster. Enabled - Indicates that the public ssh port is open on all nodes of the cluster. NotSpecified - Indicates that the public ssh port is closed on all nodes of the cluster if VNet is defined, else is open all public nodes. It can be default only during cluster creation time, after creation it will be either enabled or disabled.
-  final pulumi.Input<String>? remoteLoginPortPublicAccess;
+  final pulumi.Input<String?>? remoteLoginPortPublicAccess;
   /// Scale settings for AML Compute
-  final pulumi.Input<ScaleSettingsResponse>? scaleSettings;
+  final pulumi.Input<ScaleSettingsResponse?>? scaleSettings;
   /// Virtual network subnet resource ID the compute nodes belong to.
-  final pulumi.Input<ResourceIdResponse>? subnet;
+  final pulumi.Input<ResourceIdResponse?>? subnet;
   /// The target number of compute nodes for the compute. If the allocationState is resizing, this property denotes the target node count for the ongoing resize operation. If the allocationState is steady, this property denotes the target node count for the previous resize operation.
   final pulumi.Input<int> targetNodeCount;
   /// Credentials for an administrator user account that will be created on each compute node.
-  final pulumi.Input<UserAccountCredentialsResponse>? userAccountCredentials;
+  final pulumi.Input<UserAccountCredentialsResponse?>? userAccountCredentials;
   /// Virtual Machine image for AML Compute - windows only
-  final pulumi.Input<VirtualMachineImageResponse>? virtualMachineImage;
+  final pulumi.Input<VirtualMachineImageResponse?>? virtualMachineImage;
   /// Virtual Machine priority
-  final pulumi.Input<String>? vmPriority;
+  final pulumi.Input<String?>? vmPriority;
   /// Virtual Machine Size
-  final pulumi.Input<String>? vmSize;
+  final pulumi.Input<String?>? vmSize;
 
   /// Creates a new [AmlComputePropertiesResponse].
   /// [allocationState] Allocation state of the compute. Possible values are: steady - Indicates that the compute is not resizing. There are no changes to the number of compute nodes in the compute in progress. A compute enters this state when it is created and when no operations are being performed on the compute to change the number of compute nodes. resizing - Indicates that the compute is resizing; that is, compute nodes are being added to or removed from the compute.
@@ -63,17 +63,17 @@ class AmlComputePropertiesResponse {
   /// [virtualMachineImage] Virtual Machine image for AML Compute - windows only
   /// [vmPriority] Virtual Machine priority
   /// [vmSize] Virtual Machine Size
-  const AmlComputePropertiesResponse({
+  AmlComputePropertiesResponse({
     required this.allocationState,
     required this.allocationStateTransitionTime,
     required this.currentNodeCount,
-    this.enableNodePublicIp,
+    pulumi.Input<bool?>? enableNodePublicIp,
     required this.errors,
     this.isolatedNetwork,
     required this.nodeStateCounts,
-    this.osType,
+    pulumi.Input<String?>? osType,
     this.propertyBag,
-    this.remoteLoginPortPublicAccess,
+    pulumi.Input<String?>? remoteLoginPortPublicAccess,
     this.scaleSettings,
     this.subnet,
     required this.targetNodeCount,
@@ -81,7 +81,7 @@ class AmlComputePropertiesResponse {
     this.virtualMachineImage,
     this.vmPriority,
     this.vmSize,
-  });
+  }) : enableNodePublicIp = enableNodePublicIp ?? pulumi.Input.fromValue(true), osType = osType ?? pulumi.Input.fromValue('Linux'), remoteLoginPortPublicAccess = remoteLoginPortPublicAccess ?? pulumi.Input.fromValue('NotSpecified');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -109,7 +109,7 @@ class AmlComputePropertiesResponse {
     return AmlComputePropertiesResponse(
       allocationState: pulumi.Input.fromValue(map['allocationState'] as String),
       allocationStateTransitionTime: pulumi.Input.fromValue(map['allocationStateTransitionTime'] as String),
-      currentNodeCount: pulumi.Input.fromValue(map['currentNodeCount'] as int),
+      currentNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['currentNodeCount'])),
       enableNodePublicIp: (() { final guardedValue = map['enableNodePublicIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       errors: pulumi.Input.fromValue(pulumi.Input.decodeList<ErrorResponseResponse>(map['errors']!, (value) => ErrorResponseResponse.fromMap((value as Map).cast<String, dynamic>()))),
       isolatedNetwork: (() { final guardedValue = map['isolatedNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -119,7 +119,7 @@ class AmlComputePropertiesResponse {
       remoteLoginPortPublicAccess: (() { final guardedValue = map['remoteLoginPortPublicAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scaleSettings: (() { final guardedValue = map['scaleSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScaleSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceIdResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      targetNodeCount: pulumi.Input.fromValue(map['targetNodeCount'] as int),
+      targetNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetNodeCount'])),
       userAccountCredentials: (() { final guardedValue = map['userAccountCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UserAccountCredentialsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       virtualMachineImage: (() { final guardedValue = map['virtualMachineImage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       vmPriority: (() { final guardedValue = map['vmPriority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

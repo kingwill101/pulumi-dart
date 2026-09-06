@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Custom Keys credential object
 class CustomKeys {
-  final pulumi.Input<Map<String, String>>? keys;
+  final pulumi.Input<Map<String, String>?>? keys;
 
   /// Creates a new [CustomKeys].
   /// [keys] Optional.

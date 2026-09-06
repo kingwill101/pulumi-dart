@@ -6,7 +6,7 @@ import 'azure_monitor_alert_settings_response.dart';
 /// Monitoring Settings
 class MonitoringSettingsResponse {
   /// Settings for Azure Monitor based alerts
-  final pulumi.Input<AzureMonitorAlertSettingsResponse>? azureMonitorAlertSettings;
+  final pulumi.Input<AzureMonitorAlertSettingsResponse?>? azureMonitorAlertSettings;
 
   /// Creates a new [MonitoringSettingsResponse].
   /// [azureMonitorAlertSettings] Settings for Azure Monitor based alerts

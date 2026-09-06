@@ -7,13 +7,13 @@ import 'scmetadata_entity_response.dart';
 /// Details of region record
 class RegionRecordResponse {
   /// Id of the cluster
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Kind of the cluster
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Metadata of the record
-  final pulumi.Input<SCMetadataEntityResponse>? metadata;
+  final pulumi.Input<SCMetadataEntityResponse?>? metadata;
   /// Specification of the region
-  final pulumi.Input<RegionSpecEntityResponse>? spec;
+  final pulumi.Input<RegionSpecEntityResponse?>? spec;
 
   /// Creates a new [RegionRecordResponse].
   /// [id] Id of the cluster

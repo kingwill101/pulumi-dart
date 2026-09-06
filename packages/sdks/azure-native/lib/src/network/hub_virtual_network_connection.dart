@@ -515,4 +515,24 @@ class HubVirtualNetworkConnection extends pulumi.CustomResource {
     remoteVirtualNetwork = registerOutput<SubResourceResponse?>('remoteVirtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     routingConfiguration = registerOutput<RoutingConfigurationHubVirtualNetworkConnectionResponse?>('routingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutingConfigurationHubVirtualNetworkConnectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [HubVirtualNetworkConnection] resource.
+  HubVirtualNetworkConnection.reference(String urn)
+    : super(
+        'azure-native:network:HubVirtualNetworkConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowHubToRemoteVnetTransit = registerOutput<bool?>('allowHubToRemoteVnetTransit');
+    allowRemoteVnetToUseHubVnetGateways = registerOutput<bool?>('allowRemoteVnetToUseHubVnetGateways');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    enableInternetSecurity = registerOutput<bool?>('enableInternetSecurity');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String?>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    remoteVirtualNetwork = registerOutput<SubResourceResponse?>('remoteVirtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    routingConfiguration = registerOutput<RoutingConfigurationHubVirtualNetworkConnectionResponse?>('routingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutingConfigurationHubVirtualNetworkConnectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

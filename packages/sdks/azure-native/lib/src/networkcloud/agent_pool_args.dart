@@ -14,35 +14,35 @@ import 'kubernetes_label.dart';
 /// {@macro pulumi_networkcloud_agent_pool_args_doc}
 class AgentPoolArgs {
   /// The administrator credentials to be used for the nodes in this agent pool.
-  final pulumi.Input<AdministratorConfiguration>? administratorConfiguration;
+  final pulumi.Input<AdministratorConfiguration?>? administratorConfiguration;
   /// The configurations that will be applied to each agent in this agent pool.
-  final pulumi.Input<AgentOptions>? agentOptions;
+  final pulumi.Input<AgentOptions?>? agentOptions;
   /// The name of the Kubernetes cluster agent pool.
-  final pulumi.Input<String>? agentPoolName;
+  final pulumi.Input<String?>? agentPoolName;
   /// The configuration of networks being attached to the agent pool for use by the workloads that run on this Kubernetes cluster.
-  final pulumi.Input<AttachedNetworkConfiguration>? attachedNetworkConfiguration;
+  final pulumi.Input<AttachedNetworkConfiguration?>? attachedNetworkConfiguration;
   /// The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used.
-  final pulumi.Input<List<String>>? availabilityZones;
+  final pulumi.Input<List<String>?>? availabilityZones;
   /// The number of virtual machines that use this configuration.
   final pulumi.Input<double> count;
   /// The extended location of the cluster associated with the resource.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// The name of the Kubernetes cluster.
   final pulumi.Input<String> kubernetesClusterName;
   /// The labels applied to the nodes in this agent pool.
-  final pulumi.Input<List<KubernetesLabel>>? labels;
+  final pulumi.Input<List<KubernetesLabel>?>? labels;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node.
-  final pulumi.Input<String> mode;
+  final pulumi.Input<dynamic> mode;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The taints applied to the nodes in this agent pool.
-  final pulumi.Input<List<KubernetesLabel>>? taints;
+  final pulumi.Input<List<KubernetesLabel>?>? taints;
   /// The configuration of the agent pool.
-  final pulumi.Input<AgentPoolUpgradeSettings>? upgradeSettings;
+  final pulumi.Input<AgentPoolUpgradeSettings?>? upgradeSettings;
   /// The name of the VM SKU that determines the size of resources allocated for node VMs.
   final pulumi.Input<String> vmSkuName;
 
@@ -110,12 +110,12 @@ class AgentPoolArgs {
       agentPoolName: (() { final guardedValue = map['agentPoolName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       attachedNetworkConfiguration: (() { final guardedValue = map['attachedNetworkConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AttachedNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       availabilityZones: (() { final guardedValue = map['availabilityZones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      count: pulumi.Input.fromValue(map['count'] as double),
+      count: pulumi.Input.fromValue((map['count'] as num).toDouble()),
       extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       kubernetesClusterName: pulumi.Input.fromValue(map['kubernetesClusterName'] as String),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<KubernetesLabel>(guardedValue, (value) => KubernetesLabel.fromMap((value as Map).cast<String, dynamic>()))); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      mode: pulumi.Input.fromValue(map['mode'] as String),
+      mode: pulumi.Input.fromValue(map['mode']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       taints: (() { final guardedValue = map['taints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<KubernetesLabel>(guardedValue, (value) => KubernetesLabel.fromMap((value as Map).cast<String, dynamic>()))); })(),

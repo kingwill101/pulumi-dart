@@ -9,19 +9,19 @@ import 'identity_info.dart';
 /// {@macro pulumi_eventgrid_system_topic_args_doc}
 class SystemTopicArgs {
   /// Identity information for the resource.
-  final pulumi.Input<IdentityInfo>? identity;
+  final pulumi.Input<IdentityInfo?>? identity;
   /// Location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
   /// Source for the system topic.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// Name of the system topic.
-  final pulumi.Input<String>? systemTopicName;
+  final pulumi.Input<String?>? systemTopicName;
   /// Tags of the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// TopicType for the system topic.
-  final pulumi.Input<String>? topicType;
+  final pulumi.Input<String?>? topicType;
 
   /// Creates a new [SystemTopicArgs].
   /// [identity] Identity information for the resource.

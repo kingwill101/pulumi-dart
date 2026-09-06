@@ -10,9 +10,9 @@ class ApiDefinitionArgs {
   /// The name of the API.
   final pulumi.Input<String> apiName;
   /// The name of the API definition.
-  final pulumi.Input<String>? definitionName;
+  final pulumi.Input<String?>? definitionName;
   /// API definition description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of Azure API Center service.

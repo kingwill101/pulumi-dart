@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
 class RelativeMonthlySchedule {
   /// Specifies on which day of the week the maintenance occurs.
-  final pulumi.Input<String> dayOfWeek;
+  final pulumi.Input<dynamic> dayOfWeek;
   /// Specifies the number of months between each set of occurrences.
   final pulumi.Input<int> intervalMonths;
   /// The week index. Specifies on which week of the month the dayOfWeek applies.
-  final pulumi.Input<String> weekIndex;
+  final pulumi.Input<dynamic> weekIndex;
 
   /// Creates a new [RelativeMonthlySchedule].
   /// [dayOfWeek] Specifies on which day of the week the maintenance occurs.
@@ -31,9 +31,9 @@ class RelativeMonthlySchedule {
 
   factory RelativeMonthlySchedule.fromMap(Map<String, dynamic> map) {
     return RelativeMonthlySchedule(
-      dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
-      intervalMonths: pulumi.Input.fromValue(map['intervalMonths'] as int),
-      weekIndex: pulumi.Input.fromValue(map['weekIndex'] as String),
+      dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek']),
+      intervalMonths: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['intervalMonths'])),
+      weekIndex: pulumi.Input.fromValue(map['weekIndex']),
     );
   }
 }

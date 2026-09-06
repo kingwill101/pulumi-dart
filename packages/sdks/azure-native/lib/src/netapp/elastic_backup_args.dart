@@ -11,11 +11,11 @@ class ElasticBackupArgs {
   /// The name of the ElasticAccount
   final pulumi.Input<String> accountName;
   /// The name of the ElasticBackup
-  final pulumi.Input<String>? backupName;
+  final pulumi.Input<String?>? backupName;
   /// The name of the ElasticBackupVault
   final pulumi.Input<String> backupVaultName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ElasticBackupProperties>? properties;
+  final pulumi.Input<ElasticBackupProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

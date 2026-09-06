@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiReferenceResponse {
   /// Brand color
-  final pulumi.Input<String>? brandColor;
+  final pulumi.Input<String?>? brandColor;
   /// The custom API description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The icon URI
-  final pulumi.Input<String>? iconUri;
+  final pulumi.Input<String?>? iconUri;
   /// Resource reference id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the API
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The JSON representation of the swagger
   final pulumi.Input<dynamic>? swagger;
   /// Resource reference type
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ApiReferenceResponse].
   /// [brandColor] Brand color

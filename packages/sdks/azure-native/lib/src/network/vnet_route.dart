@@ -7,9 +7,9 @@ import 'static_routes_config.dart';
 /// List of routes that control routing from VirtualHub into a virtual network connection.
 class VnetRoute {
   /// List of all Static Routes.
-  final pulumi.Input<List<StaticRoute>>? staticRoutes;
+  final pulumi.Input<List<StaticRoute>?>? staticRoutes;
   /// Configuration for static routes on this HubVnetConnection.
-  final pulumi.Input<StaticRoutesConfig>? staticRoutesConfig;
+  final pulumi.Input<StaticRoutesConfig?>? staticRoutesConfig;
 
   /// Creates a new [VnetRoute].
   /// [staticRoutes] List of all Static Routes.

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Full view of networking configuration for an ASE.
 class AseV3NetworkingConfiguration {
   /// Property to enable and disable new private endpoint connection creation on ASE
-  final pulumi.Input<bool>? allowNewPrivateEndpointConnections;
+  final pulumi.Input<bool?>? allowNewPrivateEndpointConnections;
   /// Property to enable and disable FTP on ASEV3
-  final pulumi.Input<bool>? ftpEnabled;
+  final pulumi.Input<bool?>? ftpEnabled;
   /// Customer provided Inbound IP Address. Only able to be set on Ase create.
-  final pulumi.Input<String>? inboundIpAddressOverride;
+  final pulumi.Input<String?>? inboundIpAddressOverride;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Property to enable and disable Remote Debug on ASEV3
-  final pulumi.Input<bool>? remoteDebugEnabled;
+  final pulumi.Input<bool?>? remoteDebugEnabled;
 
   /// Creates a new [AseV3NetworkingConfiguration].
   /// [allowNewPrivateEndpointConnections] Property to enable and disable new private endpoint connection creation on ASE

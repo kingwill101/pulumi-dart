@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Webhook status.
-enum WebhookStatus {
+enum WebhookStatus implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const WebhookStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static WebhookStatus fromValue(String value) {

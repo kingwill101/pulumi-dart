@@ -12,21 +12,21 @@ class PublishedBlueprintArgs {
   /// Name of the published blueprint definition.
   final pulumi.Input<String> blueprintName;
   /// Version-specific change notes.
-  final pulumi.Input<String>? changeNotes;
+  final pulumi.Input<String?>? changeNotes;
   /// Multi-line explain this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// One-liner string explain this resource.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Parameters required by this blueprint definition.
-  final pulumi.Input<Map<String, ParameterDefinition>>? parameters;
+  final pulumi.Input<Map<String, ParameterDefinition>?>? parameters;
   /// Resource group placeholders defined by this blueprint definition.
-  final pulumi.Input<Map<String, ResourceGroupDefinition>>? resourceGroups;
+  final pulumi.Input<Map<String, ResourceGroupDefinition>?>? resourceGroups;
   /// The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   final pulumi.Input<String> resourceScope;
   /// The scope where this blueprint definition can be assigned.
-  final pulumi.Input<String>? targetScope;
+  final pulumi.Input<dynamic>? targetScope;
   /// Version of the published blueprint definition.
-  final pulumi.Input<String>? versionId;
+  final pulumi.Input<String?>? versionId;
 
   /// Creates a new [PublishedBlueprintArgs].
   /// [blueprintName] Name of the published blueprint definition.
@@ -73,7 +73,7 @@ class PublishedBlueprintArgs {
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterDefinition>(guardedValue, (value) => ParameterDefinition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       resourceGroups: (() { final guardedValue = map['resourceGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ResourceGroupDefinition>(guardedValue, (value) => ResourceGroupDefinition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       resourceScope: pulumi.Input.fromValue(map['resourceScope'] as String),
-      targetScope: (() { final guardedValue = map['targetScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetScope: (() { final guardedValue = map['targetScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       versionId: (() { final guardedValue = map['versionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

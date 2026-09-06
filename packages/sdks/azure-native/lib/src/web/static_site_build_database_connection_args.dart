@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_web_static_site_build_database_connection_args_doc}
 class StaticSiteBuildDatabaseConnectionArgs {
   /// If present, the identity is used in conjunction with connection string to connect to the database. Use of the system-assigned managed identity is indicated with the string 'SystemAssigned', while use of a user-assigned managed identity is indicated with the resource id of the managed identity resource.
-  final pulumi.Input<String>? connectionIdentity;
+  final pulumi.Input<String?>? connectionIdentity;
   /// The connection string to use to connect to the database.
-  final pulumi.Input<String>? connectionString;
+  final pulumi.Input<String?>? connectionString;
   /// Name of the database connection.
-  final pulumi.Input<String>? databaseConnectionName;
+  final pulumi.Input<String?>? databaseConnectionName;
   /// The stage site identifier.
   final pulumi.Input<String> environmentName;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the static site
   final pulumi.Input<String> name;
   /// The region of the database resource.

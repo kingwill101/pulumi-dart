@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The business process reference.
 class BusinessProcessReferenceResponse {
   /// The business process name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The business process version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [BusinessProcessReferenceResponse].
   /// [name] The business process name.

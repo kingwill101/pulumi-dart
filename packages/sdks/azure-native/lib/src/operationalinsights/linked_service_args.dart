@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_operationalinsights_linked_service_args_doc}
 class LinkedServiceArgs {
   /// Name of the linkedServices resource
-  final pulumi.Input<String>? linkedServiceName;
+  final pulumi.Input<String?>? linkedServiceName;
   /// The provisioning state of the linked service.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<dynamic>? provisioningState;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require read access
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
   /// The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require write access
-  final pulumi.Input<String>? writeAccessResourceId;
+  final pulumi.Input<String?>? writeAccessResourceId;
 
   /// Creates a new [LinkedServiceArgs].
   /// [linkedServiceName] Name of the linkedServices resource
@@ -55,7 +55,7 @@ class LinkedServiceArgs {
   factory LinkedServiceArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServiceArgs(
       linkedServiceName: (() { final guardedValue = map['linkedServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

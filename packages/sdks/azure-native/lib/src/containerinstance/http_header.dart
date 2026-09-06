@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The HTTP header.
 class HttpHeader {
   /// The header name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The header value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [HttpHeader].
   /// [name] The header name.

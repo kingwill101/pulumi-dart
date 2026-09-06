@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum GraphQLApiVisibility {
+enum GraphQLApiVisibility implements pulumi.PulumiEnum<String> {
   gLOBAL("GLOBAL"),
   pRIVATE("PRIVATE");
 
   const GraphQLApiVisibility(this.wireValue);
+  @override
   final String wireValue;
 
   static GraphQLApiVisibility fromValue(String value) {

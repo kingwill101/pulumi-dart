@@ -11,11 +11,11 @@ class InstancePropertiesResponse {
   /// Marketplace details of the resource.
   final pulumi.Input<MarketplaceDetailsResponse> marketplace;
   /// partner properties
-  final pulumi.Input<PartnerPropertiesResponse>? partnerProperties;
+  final pulumi.Input<PartnerPropertiesResponse?>? partnerProperties;
   /// Provisioning state of the resource.
   final pulumi.Input<String> provisioningState;
   /// Single sign-on properties
-  final pulumi.Input<SingleSignOnPropertiesV2Response>? singleSignOnProperties;
+  final pulumi.Input<SingleSignOnPropertiesV2Response?>? singleSignOnProperties;
   /// Details of the user.
   final pulumi.Input<UserDetailsResponse> user;
 

@@ -6,16 +6,16 @@ import 'iac_template_details.dart';
 /// Properties of a IacTemplate.
 class IacTemplateProperties {
   /// the sample instance name of the template
-  final pulumi.Input<String>? instanceName;
+  final pulumi.Input<String?>? instanceName;
   /// the source stage of the template
-  final pulumi.Input<String>? instanceStage;
+  final pulumi.Input<String?>? instanceStage;
   /// Determines the authorization status of requests.
-  final pulumi.Input<String>? quickStartTemplateType;
+  final pulumi.Input<dynamic>? quickStartTemplateType;
   /// the source store of the template
-  final pulumi.Input<String>? sourceResourceId;
-  final pulumi.Input<List<IacTemplateDetails>>? templateDetails;
+  final pulumi.Input<String?>? sourceResourceId;
+  final pulumi.Input<List<IacTemplateDetails>?>? templateDetails;
   /// Template Name
-  final pulumi.Input<String>? templateName;
+  final pulumi.Input<String?>? templateName;
 
   /// Creates a new [IacTemplateProperties].
   /// [instanceName] the sample instance name of the template
@@ -48,7 +48,7 @@ class IacTemplateProperties {
     return IacTemplateProperties(
       instanceName: (() { final guardedValue = map['instanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceStage: (() { final guardedValue = map['instanceStage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      quickStartTemplateType: (() { final guardedValue = map['quickStartTemplateType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      quickStartTemplateType: (() { final guardedValue = map['quickStartTemplateType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sourceResourceId: (() { final guardedValue = map['sourceResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       templateDetails: (() { final guardedValue = map['templateDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IacTemplateDetails>(guardedValue, (value) => IacTemplateDetails.fromMap((value as Map).cast<String, dynamic>()))); })(),
       templateName: (() { final guardedValue = map['templateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

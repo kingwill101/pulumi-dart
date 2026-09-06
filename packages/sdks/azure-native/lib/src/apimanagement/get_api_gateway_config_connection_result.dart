@@ -4,23 +4,23 @@
 /// Result data returned by getApiGatewayConfigConnection.
 class GetApiGatewayConfigConnectionResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The default hostname of the data-plane gateway.
-  final String defaultHostname;
+  final String? defaultHostname;
   /// ETag of the resource.
-  final String etag;
+  final String? etag;
   /// The hostnames of the data-plane gateway to which requests can be sent.
   final List<String>? hostnames;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The current provisioning state of the API Management gateway config connection
-  final String provisioningState;
+  final String? provisioningState;
   /// The link to the API Management service workspace.
   final String? sourceId;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetApiGatewayConfigConnectionResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -33,42 +33,42 @@ class GetApiGatewayConfigConnectionResult {
   /// [sourceId] The link to the API Management service workspace.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetApiGatewayConfigConnectionResult({
-    required this.azureApiVersion,
-    required this.defaultHostname,
-    required this.etag,
+    this.azureApiVersion,
+    this.defaultHostname,
+    this.etag,
     this.hostnames,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
+    this.id,
+    this.name,
+    this.provisioningState,
     this.sourceId,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'defaultHostname': defaultHostname,
-      'etag': etag,
+      'azureApiVersion': ?azureApiVersion,
+      'defaultHostname': ?defaultHostname,
+      'etag': ?etag,
       'hostnames': ?hostnames,
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'sourceId': ?sourceId,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetApiGatewayConfigConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetApiGatewayConfigConnectionResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      defaultHostname: map['defaultHostname'] as String,
-      etag: map['etag'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultHostname: (() { final guardedValue = map['defaultHostname']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       hostnames: (() { final guardedValue = map['hostnames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sourceId: (() { final guardedValue = map['sourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

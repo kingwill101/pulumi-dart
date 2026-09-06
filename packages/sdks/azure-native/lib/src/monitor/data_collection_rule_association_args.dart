@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_monitor_data_collection_rule_association_args_doc}
 class DataCollectionRuleAssociationArgs {
   /// The name of the association. The name is case insensitive.
-  final pulumi.Input<String>? associationName;
+  final pulumi.Input<String?>? associationName;
   /// The resource ID of the data collection endpoint that is to be associated.
-  final pulumi.Input<String>? dataCollectionEndpointId;
+  final pulumi.Input<String?>? dataCollectionEndpointId;
   /// The resource ID of the data collection rule that is to be associated.
-  final pulumi.Input<String>? dataCollectionRuleId;
+  final pulumi.Input<String?>? dataCollectionRuleId;
   /// Description of the association.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The identifier of the resource.
   final pulumi.Input<String> resourceUri;
 

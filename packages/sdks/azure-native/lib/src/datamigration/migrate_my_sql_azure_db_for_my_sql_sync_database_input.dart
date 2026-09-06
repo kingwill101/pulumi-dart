@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Database specific information for MySQL to Azure Database for MySQL migration task inputs
 class MigrateMySqlAzureDbForMySqlSyncDatabaseInput {
   /// Migration settings which tune the migration behavior
-  final pulumi.Input<Map<String, String>>? migrationSetting;
+  final pulumi.Input<Map<String, String>?>? migrationSetting;
   /// Name of the database
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Source settings to tune source endpoint migration behavior
-  final pulumi.Input<Map<String, String>>? sourceSetting;
+  final pulumi.Input<Map<String, String>?>? sourceSetting;
   /// Mapping of source to target tables
-  final pulumi.Input<Map<String, String>>? tableMap;
+  final pulumi.Input<Map<String, String>?>? tableMap;
   /// Name of target database. Note: Target database will be truncated before starting migration.
-  final pulumi.Input<String>? targetDatabaseName;
+  final pulumi.Input<String?>? targetDatabaseName;
   /// Target settings to tune target endpoint migration behavior
-  final pulumi.Input<Map<String, String>>? targetSetting;
+  final pulumi.Input<Map<String, String>?>? targetSetting;
 
   /// Creates a new [MigrateMySqlAzureDbForMySqlSyncDatabaseInput].
   /// [migrationSetting] Migration settings which tune the migration behavior

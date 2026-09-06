@@ -1,4 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'agent_path_response.dart';
+import 'resource_reference_response.dart';
 import 'system_data_response.dart';
 import 'web_agent_args.dart';
 
@@ -256,9 +258,9 @@ class WebAgent extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// List of paths associated with the web agent.
-  late final pulumi.Output<List<Map<String, dynamic>>?> paths;
+  late final pulumi.Output<List<AgentPathResponse>?> paths;
   /// References to agent links in CDN profiles.
-  late final pulumi.Output<List<Map<String, dynamic>>> profileAgentLinks;
+  late final pulumi.Output<List<ResourceReferenceResponse>> profileAgentLinks;
   /// Provisioning status of the web agent.
   late final pulumi.Output<String> provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -288,12 +290,34 @@ class WebAgent extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    paths = registerOutput<List<Map<String, dynamic>>?>('paths');
-    profileAgentLinks = registerOutput<List<Map<String, dynamic>>>('profileAgentLinks');
+    paths = registerOutput<List<AgentPathResponse>?>('paths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentPathResponse>(guardedValue, (value) => AgentPathResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    profileAgentLinks = registerOutput<List<ResourceReferenceResponse>>('profileAgentLinks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceReferenceResponse>(guardedValue, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemPrompt = registerOutput<String?>('systemPrompt');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [WebAgent] resource.
+  WebAgent.reference(String urn)
+    : super(
+        'azure-native:cdn:WebAgent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    paths = registerOutput<List<AgentPathResponse>?>('paths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentPathResponse>(guardedValue, (value) => AgentPathResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    profileAgentLinks = registerOutput<List<ResourceReferenceResponse>>('profileAgentLinks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceReferenceResponse>(guardedValue, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemPrompt = registerOutput<String?>('systemPrompt');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

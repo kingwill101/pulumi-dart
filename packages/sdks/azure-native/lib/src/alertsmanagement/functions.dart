@@ -32,6 +32,17 @@ Future<GetActionRuleByNameResult> getActionRuleByName(
   return GetActionRuleByNameResult.fromMap(result);
 }
 
+pulumi.Output<GetActionRuleByNameResult> getActionRuleByNameOutput(
+  GetActionRuleByNameArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:alertsmanagement:getActionRuleByName',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetActionRuleByNameResult.fromMap);
+}
+
 /// Get an alert processing rule by name.
 ///
 /// Uses Azure REST API version 2021-08-08.
@@ -52,6 +63,17 @@ Future<GetAlertProcessingRuleByNameResult> getAlertProcessingRuleByName(
   return GetAlertProcessingRuleByNameResult.fromMap(result);
 }
 
+pulumi.Output<GetAlertProcessingRuleByNameResult> getAlertProcessingRuleByNameOutput(
+  GetAlertProcessingRuleByNameArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:alertsmanagement:getAlertProcessingRuleByName',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAlertProcessingRuleByNameResult.fromMap);
+}
+
 /// Get issue properties
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
@@ -68,6 +90,17 @@ Future<GetIssueResult> getIssue(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIssueResult.fromMap(result);
+}
+
+pulumi.Output<GetIssueResult> getIssueOutput(
+  GetIssueArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:alertsmanagement:getIssue',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIssueResult.fromMap);
 }
 
 /// Retrieve a Prometheus rule group definition.
@@ -90,6 +123,17 @@ Future<GetPrometheusRuleGroupResult> getPrometheusRuleGroup(
   return GetPrometheusRuleGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetPrometheusRuleGroupResult> getPrometheusRuleGroupOutput(
+  GetPrometheusRuleGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:alertsmanagement:getPrometheusRuleGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrometheusRuleGroupResult.fromMap);
+}
+
 /// Get a specific Smart Detector alert rule.
 ///
 /// Uses Azure REST API version 2021-04-01.
@@ -110,6 +154,17 @@ Future<GetSmartDetectorAlertRuleResult> getSmartDetectorAlertRule(
   return GetSmartDetectorAlertRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetSmartDetectorAlertRuleResult> getSmartDetectorAlertRuleOutput(
+  GetSmartDetectorAlertRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:alertsmanagement:getSmartDetectorAlertRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSmartDetectorAlertRuleResult.fromMap);
+}
+
 /// List all alerts in the issue - this method uses pagination to return all alerts
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
@@ -128,6 +183,17 @@ Future<ListIssueAlertsResult> listIssueAlerts(
   return ListIssueAlertsResult.fromMap(result);
 }
 
+pulumi.Output<ListIssueAlertsResult> listIssueAlertsOutput(
+  ListIssueAlertsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:alertsmanagement:listIssueAlerts',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListIssueAlertsResult.fromMap);
+}
+
 /// List all resources in the issue - this method uses pagination to return all resources
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
@@ -144,4 +210,15 @@ Future<ListIssueResourcesResult> listIssueResources(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListIssueResourcesResult.fromMap(result);
+}
+
+pulumi.Output<ListIssueResourcesResult> listIssueResourcesOutput(
+  ListIssueResourcesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:alertsmanagement:listIssueResources',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListIssueResourcesResult.fromMap);
 }

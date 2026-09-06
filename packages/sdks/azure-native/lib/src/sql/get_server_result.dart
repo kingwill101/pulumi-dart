@@ -12,15 +12,15 @@ class GetServerResult {
   /// The Azure Active Directory administrator of the server. This can only be used at server create time. If used for server update, it will be ignored or it will result in an error. For updates individual APIs will need to be used.
   final ServerExternalAdministratorResponse? administrators;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Status of external governance.
-  final String externalGovernanceStatus;
+  final String? externalGovernanceStatus;
   /// The Client id used for cross tenant CMK scenario
   final String? federatedClientId;
   /// The fully qualified domain name of the server.
-  final String fullyQualifiedDomainName;
+  final String? fullyQualifiedDomainName;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// The Azure Active Directory identity of the server.
   final ResourceIdentityResponse? identity;
   /// Whether or not to enable IPv6 support for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
@@ -28,31 +28,31 @@ class GetServerResult {
   /// A CMK URI of the key to use for encryption.
   final String? keyId;
   /// Kind of sql server. This is metadata used for the Azure portal experience.
-  final String kind;
+  final String? kind;
   /// Resource location.
-  final String location;
+  final String? location;
   /// Minimal TLS version. Allowed values: 'None', 1.0', '1.1', '1.2', '1.3'
   final String? minimalTlsVersion;
   /// Resource name.
-  final String name;
+  final String? name;
   /// The resource id of a user assigned identity to be used by default.
   final String? primaryUserAssignedIdentityId;
   /// List of private endpoint connections on a server
-  final List<ServerPrivateEndpointConnectionResponse> privateEndpointConnections;
+  final List<ServerPrivateEndpointConnectionResponse>? privateEndpointConnections;
   /// Whether or not public endpoint access is allowed for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled' or 'SecuredByPerimeter'
   final String? publicNetworkAccess;
   /// Whether or not to restrict outbound network access for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
   final String? restrictOutboundNetworkAccess;
   /// The state of the server.
-  final String state;
+  final String? state;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Resource type.
-  final String type;
+  final String? type;
   /// The version of the server.
   final String? version;
   /// Whether or not existing server has a workspace created and if it allows connection from workspace
-  final String workspaceFeature;
+  final String? workspaceFeature;
 
   /// Creates a new [GetServerResult].
   /// [administratorLogin] Administrator username for the server. Once created it cannot be changed.
@@ -81,54 +81,54 @@ class GetServerResult {
   const GetServerResult({
     this.administratorLogin,
     this.administrators,
-    required this.azureApiVersion,
-    required this.externalGovernanceStatus,
+    this.azureApiVersion,
+    this.externalGovernanceStatus,
     this.federatedClientId,
-    required this.fullyQualifiedDomainName,
-    required this.id,
+    this.fullyQualifiedDomainName,
+    this.id,
     this.identity,
     this.isIPv6Enabled,
     this.keyId,
-    required this.kind,
-    required this.location,
+    this.kind,
+    this.location,
     this.minimalTlsVersion,
-    required this.name,
+    this.name,
     this.primaryUserAssignedIdentityId,
-    required this.privateEndpointConnections,
+    this.privateEndpointConnections,
     this.publicNetworkAccess,
     this.restrictOutboundNetworkAccess,
-    required this.state,
+    this.state,
     this.tags,
-    required this.type,
+    this.type,
     this.version,
-    required this.workspaceFeature,
+    this.workspaceFeature,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'administratorLogin': ?administratorLogin,
       'administrators': ?administrators?.toMap(),
-      'azureApiVersion': azureApiVersion,
-      'externalGovernanceStatus': externalGovernanceStatus,
+      'azureApiVersion': ?azureApiVersion,
+      'externalGovernanceStatus': ?externalGovernanceStatus,
       'federatedClientId': ?federatedClientId,
-      'fullyQualifiedDomainName': fullyQualifiedDomainName,
-      'id': id,
+      'fullyQualifiedDomainName': ?fullyQualifiedDomainName,
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'isIPv6Enabled': ?isIPv6Enabled,
       'keyId': ?keyId,
-      'kind': kind,
-      'location': location,
+      'kind': ?kind,
+      'location': ?location,
       'minimalTlsVersion': ?minimalTlsVersion,
-      'name': name,
+      'name': ?name,
       'primaryUserAssignedIdentityId': ?primaryUserAssignedIdentityId,
-      'privateEndpointConnections': pulumi.Input.encodeList<ServerPrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
+      'privateEndpointConnections': ?(() { final guardedValue = privateEndpointConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<ServerPrivateEndpointConnectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'publicNetworkAccess': ?publicNetworkAccess,
       'restrictOutboundNetworkAccess': ?restrictOutboundNetworkAccess,
-      'state': state,
+      'state': ?state,
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'version': ?version,
-      'workspaceFeature': workspaceFeature,
+      'workspaceFeature': ?workspaceFeature,
     };
   }
 
@@ -136,27 +136,27 @@ class GetServerResult {
     return GetServerResult(
       administratorLogin: (() { final guardedValue = map['administratorLogin']; if (guardedValue == null) return null; return guardedValue as String; })(),
       administrators: (() { final guardedValue = map['administrators']; if (guardedValue == null) return null; return ServerExternalAdministratorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      externalGovernanceStatus: map['externalGovernanceStatus'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      externalGovernanceStatus: (() { final guardedValue = map['externalGovernanceStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       federatedClientId: (() { final guardedValue = map['federatedClientId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      fullyQualifiedDomainName: map['fullyQualifiedDomainName'] as String,
-      id: map['id'] as String,
+      fullyQualifiedDomainName: (() { final guardedValue = map['fullyQualifiedDomainName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       isIPv6Enabled: (() { final guardedValue = map['isIPv6Enabled']; if (guardedValue == null) return null; return guardedValue as String; })(),
       keyId: (() { final guardedValue = map['keyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      kind: map['kind'] as String,
-      location: map['location'] as String,
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       minimalTlsVersion: (() { final guardedValue = map['minimalTlsVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       primaryUserAssignedIdentityId: (() { final guardedValue = map['primaryUserAssignedIdentityId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      privateEndpointConnections: pulumi.Input.decodeList<ServerPrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => ServerPrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerPrivateEndpointConnectionResponse>(guardedValue, (value) => ServerPrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
       restrictOutboundNetworkAccess: (() { final guardedValue = map['restrictOutboundNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      state: map['state'] as String,
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      workspaceFeature: map['workspaceFeature'] as String,
+      workspaceFeature: (() { final guardedValue = map['workspaceFeature']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

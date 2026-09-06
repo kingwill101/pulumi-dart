@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored.
 class FilteringTagResponse {
   /// Valid actions for a filtering tag.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// The name (also known as the key) of the tag.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value of the tag.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [FilteringTagResponse].
   /// [action] Valid actions for a filtering tag.

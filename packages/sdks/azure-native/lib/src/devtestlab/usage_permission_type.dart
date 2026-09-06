@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates whether public IP addresses can be assigned to virtual machines on this subnet (i.e. Allow, Deny).
-enum UsagePermissionType {
+enum UsagePermissionType implements pulumi.PulumiEnum<String> {
   default_("Default"),
   deny("Deny"),
   allow("Allow");
 
   const UsagePermissionType(this.wireValue);
+  @override
   final String wireValue;
 
   static UsagePermissionType fromValue(String value) {

@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Network interface IP configuration properties.
 class NetworkInterfaceIPConfiguration {
   /// The list of DNS servers IP addresses.
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// The value of the gateway.
-  final pulumi.Input<String>? gateway;
+  final pulumi.Input<String?>? gateway;
   /// The value of the IP address.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// IP address allocation method.
-  final pulumi.Input<String>? ipAllocationMethod;
+  final pulumi.Input<dynamic>? ipAllocationMethod;
   /// IP address version.
-  final pulumi.Input<String>? ipVersion;
+  final pulumi.Input<dynamic>? ipVersion;
   /// The value of the subnet.
-  final pulumi.Input<String>? subnet;
+  final pulumi.Input<String?>? subnet;
 
   /// Creates a new [NetworkInterfaceIPConfiguration].
   /// [dnsServers] The list of DNS servers IP addresses.
@@ -49,8 +49,8 @@ class NetworkInterfaceIPConfiguration {
       dnsServers: (() { final guardedValue = map['dnsServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       gateway: (() { final guardedValue = map['gateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ipAllocationMethod: (() { final guardedValue = map['ipAllocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ipVersion: (() { final guardedValue = map['ipVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipAllocationMethod: (() { final guardedValue = map['ipAllocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      ipVersion: (() { final guardedValue = map['ipVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of Network Interface resource.
-enum NetworkInterfaceNicType {
+enum NetworkInterfaceNicType implements pulumi.PulumiEnum<String> {
   valueStandard("Standard"),
   valueElastic("Elastic");
 
   const NetworkInterfaceNicType(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkInterfaceNicType fromValue(String value) {

@@ -9,15 +9,15 @@ import 'azure_resource_manager_common_types_extended_location.dart';
 /// {@macro pulumi_edge_workflow_v2_args_doc}
 class WorkflowV2Args {
   /// The complex type of the extended location.
-  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation>? extendedLocation;
+  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation?>? extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Name of the workflow
-  final pulumi.Input<String>? workflowName;
+  final pulumi.Input<String?>? workflowName;
 
   /// Creates a new [WorkflowV2Args].
   /// [extendedLocation] The complex type of the extended location.

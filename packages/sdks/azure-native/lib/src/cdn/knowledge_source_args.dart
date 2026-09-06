@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cdn_knowledge_source_args_doc}
 class KnowledgeSourceArgs {
   /// Description of the knowledge source.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the knowledge source.
-  final pulumi.Input<String>? knowledgeSourceName;
+  final pulumi.Input<String?>? knowledgeSourceName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Format or origin of the knowledge source.
-  final pulumi.Input<String> sourceType;
+  final pulumi.Input<dynamic> sourceType;
   /// Specifies the units of time for scheduling update intervals for the knowledge source.
-  final pulumi.Input<String>? updateFrequency;
+  final pulumi.Input<dynamic>? updateFrequency;
   /// Endpoint or location of the knowledge source.
   final pulumi.Input<String> url;
   /// The name of the web agent.
@@ -57,8 +57,8 @@ class KnowledgeSourceArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       knowledgeSourceName: (() { final guardedValue = map['knowledgeSourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      sourceType: pulumi.Input.fromValue(map['sourceType'] as String),
-      updateFrequency: (() { final guardedValue = map['updateFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceType: pulumi.Input.fromValue(map['sourceType']),
+      updateFrequency: (() { final guardedValue = map['updateFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       url: pulumi.Input.fromValue(map['url'] as String),
       webAgentName: pulumi.Input.fromValue(map['webAgentName'] as String),
     );

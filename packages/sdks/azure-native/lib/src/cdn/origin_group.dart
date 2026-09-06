@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'health_probe_parameters_response.dart';
 import 'origin_group_args.dart';
+import 'resource_reference_response.dart';
 import 'response_based_origin_error_detection_parameters_response.dart';
 import 'system_data_response.dart';
 
@@ -265,7 +266,7 @@ class OriginGroup extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The source of the content being delivered via CDN within given origin group.
-  late final pulumi.Output<List<Map<String, dynamic>>?> origins;
+  late final pulumi.Output<List<ResourceReferenceResponse>?> origins;
   /// Provisioning status of the origin group.
   late final pulumi.Output<String> provisioningState;
   /// Resource status of the origin group.
@@ -296,7 +297,28 @@ class OriginGroup extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     healthProbeSettings = registerOutput<HealthProbeParametersResponse?>('healthProbeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HealthProbeParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    origins = registerOutput<List<Map<String, dynamic>>?>('origins');
+    origins = registerOutput<List<ResourceReferenceResponse>?>('origins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceReferenceResponse>(guardedValue, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceState = registerOutput<String>('resourceState');
+    responseBasedOriginErrorDetectionSettings = registerOutput<ResponseBasedOriginErrorDetectionParametersResponse?>('responseBasedOriginErrorDetectionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResponseBasedOriginErrorDetectionParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trafficRestorationTimeToHealedOrNewEndpointsInMinutes = registerOutput<int?>('trafficRestorationTimeToHealedOrNewEndpointsInMinutes');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [OriginGroup] resource.
+  OriginGroup.reference(String urn)
+    : super(
+        'azure-native:cdn:OriginGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    healthProbeSettings = registerOutput<HealthProbeParametersResponse?>('healthProbeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HealthProbeParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    origins = registerOutput<List<ResourceReferenceResponse>?>('origins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceReferenceResponse>(guardedValue, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     resourceState = registerOutput<String>('resourceState');
     responseBasedOriginErrorDetectionSettings = registerOutput<ResponseBasedOriginErrorDetectionParametersResponse?>('responseBasedOriginErrorDetectionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResponseBasedOriginErrorDetectionParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

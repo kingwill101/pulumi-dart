@@ -8,17 +8,17 @@ import 'tag_item.dart';
 /// Definition of awsGuardDutyDetector
 class AwsGuardDutyDetectorProperties {
   /// Property dataSources
-  final pulumi.Input<CFNDataSourceConfigurations>? dataSources;
+  final pulumi.Input<CFNDataSourceConfigurations?>? dataSources;
   /// Property enable
-  final pulumi.Input<bool>? enable;
+  final pulumi.Input<bool?>? enable;
   /// Property features
-  final pulumi.Input<List<CFNFeatureConfiguration>>? features;
+  final pulumi.Input<List<CFNFeatureConfiguration>?>? features;
   /// Property findingPublishingFrequency
-  final pulumi.Input<String>? findingPublishingFrequency;
+  final pulumi.Input<String?>? findingPublishingFrequency;
   /// Property id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Property tags
-  final pulumi.Input<List<TagItem>>? tags;
+  final pulumi.Input<List<TagItem>?>? tags;
 
   /// Creates a new [AwsGuardDutyDetectorProperties].
   /// [dataSources] Property dataSources

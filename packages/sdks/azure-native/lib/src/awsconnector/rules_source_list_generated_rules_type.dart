@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property generatedRulesType
-enum RulesSourceListGeneratedRulesType {
+enum RulesSourceListGeneratedRulesType implements pulumi.PulumiEnum<String> {
   aLLOWLIST("ALLOWLIST"),
   dENYLIST("DENYLIST");
 
   const RulesSourceListGeneratedRulesType(this.wireValue);
+  @override
   final String wireValue;
 
   static RulesSourceListGeneratedRulesType fromValue(String value) {

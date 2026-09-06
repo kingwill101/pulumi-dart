@@ -9,15 +9,15 @@ import 'configuration_profile_properties.dart';
 /// {@macro pulumi_automanage_configuration_profile_args_doc}
 class ConfigurationProfileArgs {
   /// Name of the configuration profile.
-  final pulumi.Input<String>? configurationProfileName;
+  final pulumi.Input<String?>? configurationProfileName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Properties of the configuration profile.
-  final pulumi.Input<ConfigurationProfileProperties>? properties;
+  final pulumi.Input<ConfigurationProfileProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ConfigurationProfileArgs].
   /// [configurationProfileName] Name of the configuration profile.

@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Method of cost allocation for the rule
-enum CostAllocationPolicyType {
+enum CostAllocationPolicyType implements pulumi.PulumiEnum<String> {
   valueFixedProportion("FixedProportion");
 
   const CostAllocationPolicyType(this.wireValue);
+  @override
   final String wireValue;
 
   static CostAllocationPolicyType fromValue(String value) {

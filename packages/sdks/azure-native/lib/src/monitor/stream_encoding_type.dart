@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The encoding of the stream being received.
-enum StreamEncodingType {
+enum StreamEncodingType implements pulumi.PulumiEnum<String> {
   nop("nop"),
   utf8("utf-8"),
   utf16le("utf-16le"),
@@ -8,6 +10,7 @@ enum StreamEncodingType {
   big5("big5");
 
   const StreamEncodingType(this.wireValue);
+  @override
   final String wireValue;
 
   static StreamEncodingType fromValue(String value) {

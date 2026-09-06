@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Gmsa Details
 class GmsaDetailsResponse {
   /// Frontend DNS name for Load Balancer which will be used by Agents to initiate communication
-  final pulumi.Input<String>? dnsName;
+  final pulumi.Input<String?>? dnsName;
   /// gMSA account under which context all Management Server services will run
-  final pulumi.Input<String>? gmsaAccount;
+  final pulumi.Input<String?>? gmsaAccount;
   /// Frontend IP configuration for Load Balancer, which should be an available IP in customer VNet
-  final pulumi.Input<String>? loadBalancerIP;
+  final pulumi.Input<String?>? loadBalancerIP;
   /// OnPrem AD Computer Group where we will join VMs for ease of management
-  final pulumi.Input<String>? managementServerGroupName;
+  final pulumi.Input<String?>? managementServerGroupName;
 
   /// Creates a new [GmsaDetailsResponse].
   /// [dnsName] Frontend DNS name for Load Balancer which will be used by Agents to initiate communication

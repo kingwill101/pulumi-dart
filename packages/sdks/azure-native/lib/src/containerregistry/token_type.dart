@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of Auth token.
-enum TokenType {
+enum TokenType implements pulumi.PulumiEnum<String> {
   valuePAT("PAT"),
   valueOAuth("OAuth");
 
   const TokenType(this.wireValue);
+  @override
   final String wireValue;
 
   static TokenType fromValue(String value) {

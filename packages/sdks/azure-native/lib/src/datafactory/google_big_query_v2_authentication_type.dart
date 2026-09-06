@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The OAuth 2.0 authentication mechanism used for authentication.
-enum GoogleBigQueryV2AuthenticationType {
+enum GoogleBigQueryV2AuthenticationType implements pulumi.PulumiEnum<String> {
   serviceAuthentication("ServiceAuthentication"),
   userAuthentication("UserAuthentication");
 
   const GoogleBigQueryV2AuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleBigQueryV2AuthenticationType fromValue(String value) {

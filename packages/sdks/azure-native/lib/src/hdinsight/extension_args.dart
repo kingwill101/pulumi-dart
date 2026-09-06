@@ -10,13 +10,13 @@ class ExtensionArgs {
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
   /// The name of the cluster extension.
-  final pulumi.Input<String>? extensionName;
+  final pulumi.Input<String?>? extensionName;
   /// The certificate for the cluster monitoring extensions.
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The workspace ID for the cluster monitoring extension.
-  final pulumi.Input<String>? workspaceId;
+  final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [ExtensionArgs].
   /// [clusterName] The name of the cluster.

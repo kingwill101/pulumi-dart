@@ -6,13 +6,13 @@ import 'blob_inventory_policy_filter.dart';
 /// An object that defines the blob inventory rule.
 class BlobInventoryPolicyDefinition {
   /// An object that defines the filter set.
-  final pulumi.Input<BlobInventoryPolicyFilter>? filters;
+  final pulumi.Input<BlobInventoryPolicyFilter?>? filters;
   /// This is a required field, it specifies the format for the inventory files.
-  final pulumi.Input<String> format;
+  final pulumi.Input<dynamic> format;
   /// This is a required field. This field specifies the scope of the inventory created either at the blob or container level.
-  final pulumi.Input<String> objectType;
+  final pulumi.Input<dynamic> objectType;
   /// This is a required field. This field is used to schedule an inventory formation.
-  final pulumi.Input<String> schedule;
+  final pulumi.Input<dynamic> schedule;
   /// This is a required field. This field specifies the fields and properties of the object to be included in the inventory. The Schema field value 'Name' is always required. The valid values for this field for the 'Blob' definition.objectType include 'Name, Creation-Time, Last-Modified, Content-Length, Content-MD5, BlobType, AccessTier, AccessTierChangeTime, AccessTierInferred, Tags, Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl, Snapshot, VersionId, IsCurrentVersion, Metadata, LastAccessTime, Tags, Etag, ContentType, ContentEncoding, ContentLanguage, ContentCRC64, CacheControl, ContentDisposition, LeaseStatus, LeaseState, LeaseDuration, ServerEncrypted, Deleted, DeletionId, DeletedTime, RemainingRetentionDays, ImmutabilityPolicyUntilDate, ImmutabilityPolicyMode, LegalHold, CopyId, CopyStatus, CopySource, CopyProgress, CopyCompletionTime, CopyStatusDescription, CustomerProvidedKeySha256, RehydratePriority, ArchiveStatus, XmsBlobSequenceNumber, EncryptionScope, IncrementalCopy, TagCount'. For Blob object type schema field value 'DeletedTime' is applicable only for Hns enabled accounts. The valid values for 'Container' definition.objectType include 'Name, Last-Modified, Metadata, LeaseStatus, LeaseState, LeaseDuration, PublicAccess, HasImmutabilityPolicy, HasLegalHold, Etag, DefaultEncryptionScope, DenyEncryptionScopeOverride, ImmutableStorageWithVersioningEnabled, Deleted, Version, DeletedTime, RemainingRetentionDays'. Schema field values 'Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl, DeletionId' are valid only for Hns enabled accounts.Schema field values 'Tags, TagCount' are only valid for Non-Hns accounts.
   final pulumi.Input<List<String>> schemaFields;
 
@@ -43,9 +43,9 @@ class BlobInventoryPolicyDefinition {
   factory BlobInventoryPolicyDefinition.fromMap(Map<String, dynamic> map) {
     return BlobInventoryPolicyDefinition(
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BlobInventoryPolicyFilter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      format: pulumi.Input.fromValue(map['format'] as String),
-      objectType: pulumi.Input.fromValue(map['objectType'] as String),
-      schedule: pulumi.Input.fromValue(map['schedule'] as String),
+      format: pulumi.Input.fromValue(map['format']),
+      objectType: pulumi.Input.fromValue(map['objectType']),
+      schedule: pulumi.Input.fromValue(map['schedule']),
       schemaFields: pulumi.Input.fromValue((map['schemaFields'] as List).cast<String>()),
     );
   }

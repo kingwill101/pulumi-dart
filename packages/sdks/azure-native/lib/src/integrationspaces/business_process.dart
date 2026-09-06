@@ -760,4 +760,27 @@ class BusinessProcess extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');
   }
+
+  /// Creates a typed reference to an existing [BusinessProcess] resource.
+  BusinessProcess.reference(String urn)
+    : super(
+        'azure-native:integrationspaces:BusinessProcess',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    businessProcessMapping = registerOutput<Map<String, BusinessProcessMappingItemResponse>?>('businessProcessMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<BusinessProcessMappingItemResponse>(guardedValue, (value) => BusinessProcessMappingItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    businessProcessStages = registerOutput<Map<String, BusinessProcessStageResponse>?>('businessProcessStages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<BusinessProcessStageResponse>(guardedValue, (value) => BusinessProcessStageResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    identifier = registerOutput<BusinessProcessIdentifierResponse?>('identifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BusinessProcessIdentifierResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tableName = registerOutput<String?>('tableName');
+    trackingDataStoreReferenceName = registerOutput<String?>('trackingDataStoreReferenceName');
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
+  }
 }

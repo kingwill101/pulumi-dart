@@ -11,7 +11,7 @@ import 'business_identity.dart';
 /// {@macro pulumi_logic_integration_account_agreement_args_doc}
 class IntegrationAccountAgreementArgs {
   /// The integration account agreement name.
-  final pulumi.Input<String>? agreementName;
+  final pulumi.Input<String?>? agreementName;
   /// The agreement type.
   final pulumi.Input<AgreementType> agreementType;
   /// The agreement content.
@@ -27,13 +27,13 @@ class IntegrationAccountAgreementArgs {
   /// The integration account name.
   final pulumi.Input<String> integrationAccountName;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The metadata.
   final pulumi.Input<dynamic>? metadata;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [IntegrationAccountAgreementArgs].
   /// [agreementName] The integration account agreement name.

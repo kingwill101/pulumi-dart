@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_key_vault_secret_reference_response.dart';
 
 /// The custom setup of installing 3rd party components.
 class ComponentSetupResponse {
   /// The name of the 3rd party component.
   final pulumi.Input<String> componentName;
   /// The license key to activate the component.
-  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? licenseKey;
+  final pulumi.Input<dynamic>? licenseKey;
   /// The type of custom setup.
   /// Expected value is 'ComponentSetup'.
   final pulumi.Input<String> type;
@@ -26,7 +25,7 @@ class ComponentSetupResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'componentName': componentName,
-      'licenseKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(licenseKey, (value) => value.toMap()),
+      'licenseKey': ?licenseKey,
       'type': type,
     };
   }
@@ -34,7 +33,7 @@ class ComponentSetupResponse {
   factory ComponentSetupResponse.fromMap(Map<String, dynamic> map) {
     return ComponentSetupResponse(
       componentName: pulumi.Input.fromValue(map['componentName'] as String),
-      licenseKey: (() { final guardedValue = map['licenseKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      licenseKey: (() { final guardedValue = map['licenseKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

@@ -6,7 +6,7 @@ import 'export_policy_rule_volume_group_response.dart';
 /// Set of export policy rules
 class VolumePropertiesResponseExportPolicyV1 {
   /// Export policy rule
-  final pulumi.Input<List<ExportPolicyRuleVolumeGroupResponse>>? rules;
+  final pulumi.Input<List<ExportPolicyRuleVolumeGroupResponse>?>? rules;
 
   /// Creates a new [VolumePropertiesResponseExportPolicyV1].
   /// [rules] Export policy rule

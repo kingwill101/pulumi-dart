@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointInformationResponse {
   /// The endpoint.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// The endpoint type.
-  final pulumi.Input<String>? endpointType;
+  final pulumi.Input<String?>? endpointType;
   /// The schema version.
-  final pulumi.Input<String>? schemaVersion;
+  final pulumi.Input<String?>? schemaVersion;
 
   /// Creates a new [EndpointInformationResponse].
   /// [endpoint] The endpoint.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Environment information
 class ComputeInstanceEnvironmentInfoResponse {
   /// name of environment.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// version of environment.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ComputeInstanceEnvironmentInfoResponse].
   /// [name] name of environment.

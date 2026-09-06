@@ -7,11 +7,11 @@ import 'private_endpoint_response.dart';
 /// The properties of a private endpoint connection.
 class ConnectionPropertiesResponse {
   /// The list of group ids for the private endpoint connection.
-  final pulumi.Input<List<String>>? groupIds;
+  final pulumi.Input<List<String>?>? groupIds;
   /// The private endpoint.
-  final pulumi.Input<PrivateEndpointResponse>? privateEndpoint;
+  final pulumi.Input<PrivateEndpointResponse?>? privateEndpoint;
   /// The connection state.
-  final pulumi.Input<ConnectionPropertiesResponsePrivateLinkServiceConnectionState>? privateLinkServiceConnectionState;
+  final pulumi.Input<ConnectionPropertiesResponsePrivateLinkServiceConnectionState?>? privateLinkServiceConnectionState;
   /// The provisioning state.
   final pulumi.Input<String> provisioningState;
 

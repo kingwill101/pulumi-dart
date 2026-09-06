@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of DeleteMarkerReplication
 class DeleteMarkerReplicationResponse {
   /// Indicates whether to replicate delete markers. Disabled by default.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [DeleteMarkerReplicationResponse].
   /// [status] Indicates whether to replicate delete markers. Disabled by default.

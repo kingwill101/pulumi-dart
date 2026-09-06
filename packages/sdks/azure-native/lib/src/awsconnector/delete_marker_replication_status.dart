@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates whether to replicate delete markers. Disabled by default.
-enum DeleteMarkerReplicationStatus {
+enum DeleteMarkerReplicationStatus implements pulumi.PulumiEnum<String> {
   disabled("Disabled"),
   enabled("Enabled");
 
   const DeleteMarkerReplicationStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static DeleteMarkerReplicationStatus fromValue(String value) {

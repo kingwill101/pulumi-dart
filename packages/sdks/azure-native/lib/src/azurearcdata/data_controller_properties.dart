@@ -11,29 +11,29 @@ import 'upload_watermark.dart';
 /// The data controller properties.
 class DataControllerProperties {
   /// Deprecated. Azure Arc Data Services data controller no longer expose any endpoint. All traffic are exposed through Kubernetes native API.
-  final pulumi.Input<BasicLoginInformation>? basicLoginInformation;
+  final pulumi.Input<BasicLoginInformation?>? basicLoginInformation;
   /// If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to.
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to.
-  final pulumi.Input<String>? extensionId;
+  final pulumi.Input<String?>? extensionId;
   /// The infrastructure the data controller is running on.
-  final pulumi.Input<Infrastructure>? infrastructure;
+  final pulumi.Input<Infrastructure?>? infrastructure;
   /// The raw kubernetes information
   final pulumi.Input<dynamic>? k8sRaw;
   /// Last uploaded date from Kubernetes cluster. Defaults to current date time
-  final pulumi.Input<String>? lastUploadedDate;
+  final pulumi.Input<String?>? lastUploadedDate;
   /// Log analytics workspace id and primary key
-  final pulumi.Input<LogAnalyticsWorkspaceConfig>? logAnalyticsWorkspaceConfig;
+  final pulumi.Input<LogAnalyticsWorkspaceConfig?>? logAnalyticsWorkspaceConfig;
   /// Login credential for logs dashboard on the Kubernetes cluster.
-  final pulumi.Input<BasicLoginInformation>? logsDashboardCredential;
+  final pulumi.Input<BasicLoginInformation?>? logsDashboardCredential;
   /// Login credential for metrics dashboard on the Kubernetes cluster.
-  final pulumi.Input<BasicLoginInformation>? metricsDashboardCredential;
+  final pulumi.Input<BasicLoginInformation?>? metricsDashboardCredential;
   /// Properties from the Kubernetes data controller
-  final pulumi.Input<OnPremiseProperty>? onPremiseProperty;
+  final pulumi.Input<OnPremiseProperty?>? onPremiseProperty;
   /// Deprecated. Service principal is deprecated in favor of Arc Kubernetes service extension managed identity.
-  final pulumi.Input<UploadServicePrincipal>? uploadServicePrincipal;
+  final pulumi.Input<UploadServicePrincipal?>? uploadServicePrincipal;
   /// Properties on upload watermark.  Mostly timestamp for each upload data type
-  final pulumi.Input<UploadWatermark>? uploadWatermark;
+  final pulumi.Input<UploadWatermark?>? uploadWatermark;
 
   /// Creates a new [DataControllerProperties].
   /// [basicLoginInformation] Deprecated. Azure Arc Data Services data controller no longer expose any endpoint. All traffic are exposed through Kubernetes native API.
@@ -48,11 +48,11 @@ class DataControllerProperties {
   /// [onPremiseProperty] Properties from the Kubernetes data controller
   /// [uploadServicePrincipal] Deprecated. Service principal is deprecated in favor of Arc Kubernetes service extension managed identity.
   /// [uploadWatermark] Properties on upload watermark.  Mostly timestamp for each upload data type
-  const DataControllerProperties({
+  DataControllerProperties({
     this.basicLoginInformation,
     this.clusterId,
     this.extensionId,
-    this.infrastructure,
+    pulumi.Input<Infrastructure?>? infrastructure,
     this.k8sRaw,
     this.lastUploadedDate,
     this.logAnalyticsWorkspaceConfig,
@@ -61,7 +61,7 @@ class DataControllerProperties {
     this.onPremiseProperty,
     this.uploadServicePrincipal,
     this.uploadWatermark,
-  });
+  }) : infrastructure = infrastructure ?? pulumi.Input.fromValue(Infrastructure.fromValue('other'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

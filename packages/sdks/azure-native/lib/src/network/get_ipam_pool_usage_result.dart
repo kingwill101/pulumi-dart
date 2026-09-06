@@ -6,23 +6,23 @@ import 'resource_basics_response.dart';
 /// Result data returned by getIpamPoolUsage.
 class GetIpamPoolUsageResult {
   /// List of IP address prefixes of the resource.
-  final List<String> addressPrefixes;
+  final List<String>? addressPrefixes;
   /// List of assigned IP address prefixes.
-  final List<String> allocatedAddressPrefixes;
+  final List<String>? allocatedAddressPrefixes;
   /// List of available IP address prefixes.
-  final List<String> availableAddressPrefixes;
+  final List<String>? availableAddressPrefixes;
   /// List of IpamPool that are children of this IpamPool.
-  final List<ResourceBasicsResponse> childPools;
+  final List<ResourceBasicsResponse>? childPools;
   /// Total number of assigned IP addresses in the IpamPool.
-  final String numberOfAllocatedIPAddresses;
+  final String? numberOfAllocatedIPAddresses;
   /// Total number of available IP addresses in the IpamPool.
-  final String numberOfAvailableIPAddresses;
+  final String? numberOfAvailableIPAddresses;
   /// Total number of reserved IP addresses in the IpamPool.
-  final String numberOfReservedIPAddresses;
+  final String? numberOfReservedIPAddresses;
   /// List of reserved IP address prefixes. These IP addresses could be reclaimed if not assigned in the given time.
-  final List<String> reservedAddressPrefixes;
+  final List<String>? reservedAddressPrefixes;
   /// Total number of IP addresses managed in the IpamPool.
-  final String totalNumberOfIPAddresses;
+  final String? totalNumberOfIPAddresses;
 
   /// Creates a new [GetIpamPoolUsageResult].
   /// [addressPrefixes] List of IP address prefixes of the resource.
@@ -35,42 +35,42 @@ class GetIpamPoolUsageResult {
   /// [reservedAddressPrefixes] List of reserved IP address prefixes. These IP addresses could be reclaimed if not assigned in the given time.
   /// [totalNumberOfIPAddresses] Total number of IP addresses managed in the IpamPool.
   const GetIpamPoolUsageResult({
-    required this.addressPrefixes,
-    required this.allocatedAddressPrefixes,
-    required this.availableAddressPrefixes,
-    required this.childPools,
-    required this.numberOfAllocatedIPAddresses,
-    required this.numberOfAvailableIPAddresses,
-    required this.numberOfReservedIPAddresses,
-    required this.reservedAddressPrefixes,
-    required this.totalNumberOfIPAddresses,
+    this.addressPrefixes,
+    this.allocatedAddressPrefixes,
+    this.availableAddressPrefixes,
+    this.childPools,
+    this.numberOfAllocatedIPAddresses,
+    this.numberOfAvailableIPAddresses,
+    this.numberOfReservedIPAddresses,
+    this.reservedAddressPrefixes,
+    this.totalNumberOfIPAddresses,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addressPrefixes': addressPrefixes,
-      'allocatedAddressPrefixes': allocatedAddressPrefixes,
-      'availableAddressPrefixes': availableAddressPrefixes,
-      'childPools': pulumi.Input.encodeList<ResourceBasicsResponse, Map<String, dynamic>>(childPools, (value) => value.toMap()),
-      'numberOfAllocatedIPAddresses': numberOfAllocatedIPAddresses,
-      'numberOfAvailableIPAddresses': numberOfAvailableIPAddresses,
-      'numberOfReservedIPAddresses': numberOfReservedIPAddresses,
-      'reservedAddressPrefixes': reservedAddressPrefixes,
-      'totalNumberOfIPAddresses': totalNumberOfIPAddresses,
+      'addressPrefixes': ?addressPrefixes,
+      'allocatedAddressPrefixes': ?allocatedAddressPrefixes,
+      'availableAddressPrefixes': ?availableAddressPrefixes,
+      'childPools': ?(() { final guardedValue = childPools; if (guardedValue == null) return null; return pulumi.Input.encodeList<ResourceBasicsResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'numberOfAllocatedIPAddresses': ?numberOfAllocatedIPAddresses,
+      'numberOfAvailableIPAddresses': ?numberOfAvailableIPAddresses,
+      'numberOfReservedIPAddresses': ?numberOfReservedIPAddresses,
+      'reservedAddressPrefixes': ?reservedAddressPrefixes,
+      'totalNumberOfIPAddresses': ?totalNumberOfIPAddresses,
     };
   }
 
   factory GetIpamPoolUsageResult.fromMap(Map<String, dynamic> map) {
     return GetIpamPoolUsageResult(
-      addressPrefixes: (map['addressPrefixes'] as List).cast<String>(),
-      allocatedAddressPrefixes: (map['allocatedAddressPrefixes'] as List).cast<String>(),
-      availableAddressPrefixes: (map['availableAddressPrefixes'] as List).cast<String>(),
-      childPools: pulumi.Input.decodeList<ResourceBasicsResponse>(map['childPools']!, (value) => ResourceBasicsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      numberOfAllocatedIPAddresses: map['numberOfAllocatedIPAddresses'] as String,
-      numberOfAvailableIPAddresses: map['numberOfAvailableIPAddresses'] as String,
-      numberOfReservedIPAddresses: map['numberOfReservedIPAddresses'] as String,
-      reservedAddressPrefixes: (map['reservedAddressPrefixes'] as List).cast<String>(),
-      totalNumberOfIPAddresses: map['totalNumberOfIPAddresses'] as String,
+      addressPrefixes: (() { final guardedValue = map['addressPrefixes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      allocatedAddressPrefixes: (() { final guardedValue = map['allocatedAddressPrefixes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      availableAddressPrefixes: (() { final guardedValue = map['availableAddressPrefixes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      childPools: (() { final guardedValue = map['childPools']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceBasicsResponse>(guardedValue, (value) => ResourceBasicsResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      numberOfAllocatedIPAddresses: (() { final guardedValue = map['numberOfAllocatedIPAddresses']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      numberOfAvailableIPAddresses: (() { final guardedValue = map['numberOfAvailableIPAddresses']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      numberOfReservedIPAddresses: (() { final guardedValue = map['numberOfReservedIPAddresses']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      reservedAddressPrefixes: (() { final guardedValue = map['reservedAddressPrefixes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      totalNumberOfIPAddresses: (() { final guardedValue = map['totalNumberOfIPAddresses']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

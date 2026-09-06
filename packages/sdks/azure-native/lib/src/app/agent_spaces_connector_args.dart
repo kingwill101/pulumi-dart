@@ -11,9 +11,9 @@ class AgentSpacesConnectorArgs {
   /// The name of the AgentSpace
   final pulumi.Input<String> agentSpaceName;
   /// The name of the AgentSpaceConnector
-  final pulumi.Input<String>? connectorName;
+  final pulumi.Input<String?>? connectorName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<AgentSpaceConnectorProperties>? properties;
+  final pulumi.Input<AgentSpaceConnectorProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

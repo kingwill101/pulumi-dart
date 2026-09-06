@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the machine group
-enum MachineGroupType {
+enum MachineGroupType implements pulumi.PulumiEnum<String> {
   valueUnknown("unknown"),
   valueAzureCs("azure-cs"),
   valueAzureSf("azure-sf"),
@@ -7,6 +9,7 @@ enum MachineGroupType {
   valueUserStatic("user-static");
 
   const MachineGroupType(this.wireValue);
+  @override
   final String wireValue;
 
   static MachineGroupType fromValue(String value) {

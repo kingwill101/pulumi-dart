@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ACL for a private endpoint
 class PrivateEndpointACLResponse {
   /// Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-  final pulumi.Input<List<String>>? allow;
+  final pulumi.Input<List<String>?>? allow;
   /// Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-  final pulumi.Input<List<String>>? deny;
+  final pulumi.Input<List<String>?>? deny;
   /// Name of the private endpoint connection
   final pulumi.Input<String> name;
 

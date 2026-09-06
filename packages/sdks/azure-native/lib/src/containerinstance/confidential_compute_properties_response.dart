@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties for confidential container group
 class ConfidentialComputePropertiesResponse {
   /// The base64 encoded confidential compute enforcement policy
-  final pulumi.Input<String>? ccePolicy;
+  final pulumi.Input<String?>? ccePolicy;
 
   /// Creates a new [ConfidentialComputePropertiesResponse].
   /// [ccePolicy] The base64 encoded confidential compute enforcement policy

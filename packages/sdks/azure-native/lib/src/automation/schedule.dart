@@ -272,4 +272,33 @@ class Schedule extends pulumi.CustomResource {
     timeZone = registerOutput<String?>('timeZone');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [Schedule] resource.
+  Schedule.reference(String urn)
+    : super(
+        'azure-native:automation:Schedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    advancedSchedule = registerOutput<AdvancedScheduleResponse?>('advancedSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AdvancedScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationTime = registerOutput<String?>('creationTime');
+    description = registerOutput<String?>('description');
+    expiryTime = registerOutput<String?>('expiryTime');
+    expiryTimeOffsetMinutes = registerOutput<double?>('expiryTimeOffsetMinutes');
+    frequency = registerOutput<String?>('frequency');
+    interval = registerOutput<dynamic>('interval');
+    isEnabled = registerOutput<bool?>('isEnabled');
+    lastModifiedTime = registerOutput<String?>('lastModifiedTime');
+    this.name = registerOutput<String>('name');
+    nextRun = registerOutput<String?>('nextRun');
+    nextRunOffsetMinutes = registerOutput<double?>('nextRunOffsetMinutes');
+    startTime = registerOutput<String?>('startTime');
+    startTimeOffsetMinutes = registerOutput<double>('startTimeOffsetMinutes');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeZone = registerOutput<String?>('timeZone');
+    type = registerOutput<String>('type');
+  }
 }

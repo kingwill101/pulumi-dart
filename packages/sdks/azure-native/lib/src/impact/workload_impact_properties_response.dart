@@ -12,29 +12,29 @@ class WorkloadImpactPropertiesResponse {
   /// Additional fields related to impact, applicable fields per resource type are list under /impactCategories API
   final pulumi.Input<dynamic>? additionalProperties;
   /// The ARM correlation ids, this is important field for control plane related impacts
-  final pulumi.Input<List<String>>? armCorrelationIds;
+  final pulumi.Input<List<String>?>? armCorrelationIds;
   /// Client incident details ex: incidentId , incident source
-  final pulumi.Input<ClientIncidentDetailsResponse>? clientIncidentDetails;
+  final pulumi.Input<ClientIncidentDetailsResponse?>? clientIncidentDetails;
   /// Degree of confidence on the impact being a platform issue
-  final pulumi.Input<String>? confidenceLevel;
+  final pulumi.Input<String?>? confidenceLevel;
   /// Details about connectivity issue. Applicable when root resource causing the issue is not identified. For example, when a VM is impacted due to a network issue, the impacted resource is identified as the VM, but the root cause is the network. In such cases, the connectivity field will have the details about the network issue
-  final pulumi.Input<ConnectivityResponse>? connectivity;
+  final pulumi.Input<ConnectivityResponse?>? connectivity;
   /// Time at which impact has ended
-  final pulumi.Input<String>? endDateTime;
+  final pulumi.Input<String?>? endDateTime;
   /// ARM error code and error message associated with the impact
-  final pulumi.Input<ErrorDetailPropertiesResponse>? errorDetails;
+  final pulumi.Input<ErrorDetailPropertiesResponse?>? errorDetails;
   /// Category of the impact,  details can found from /impactCategories API
   final pulumi.Input<String> impactCategory;
   /// A detailed description of the impact
-  final pulumi.Input<String>? impactDescription;
+  final pulumi.Input<String?>? impactDescription;
   /// Use this field to group impacts
-  final pulumi.Input<String>? impactGroupId;
+  final pulumi.Input<String?>? impactGroupId;
   /// Unique ID of the impact (UUID)
   final pulumi.Input<String> impactUniqueId;
   /// Azure resource id of the impacted resource
   final pulumi.Input<String> impactedResourceId;
   /// Details about performance issue. Applicable for performance impacts.
-  final pulumi.Input<List<PerformanceResponse>>? performance;
+  final pulumi.Input<List<PerformanceResponse>?>? performance;
   /// Resource provisioning state.
   final pulumi.Input<String> provisioningState;
   /// Time at which impact is reported
@@ -42,7 +42,7 @@ class WorkloadImpactPropertiesResponse {
   /// Time at which impact was observed
   final pulumi.Input<String> startDateTime;
   /// Information about the impacted workload
-  final pulumi.Input<WorkloadResponse>? workload;
+  final pulumi.Input<WorkloadResponse?>? workload;
 
   /// Creates a new [WorkloadImpactPropertiesResponse].
   /// [additionalProperties] Additional fields related to impact, applicable fields per resource type are list under /impactCategories API

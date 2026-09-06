@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// placement policy affinity type
-enum AffinityType {
+enum AffinityType implements pulumi.PulumiEnum<String> {
   affinity("Affinity"),
   antiAffinity("AntiAffinity");
 
   const AffinityType(this.wireValue);
+  @override
   final String wireValue;
 
   static AffinityType fromValue(String value) {

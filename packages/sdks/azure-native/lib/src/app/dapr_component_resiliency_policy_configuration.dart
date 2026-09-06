@@ -8,11 +8,11 @@ import 'dapr_component_resiliency_policy_timeout_policy_configuration.dart';
 /// Dapr Component Resiliency Policy Configuration.
 class DaprComponentResiliencyPolicyConfiguration {
   /// The optional circuit breaker policy configuration
-  final pulumi.Input<DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration>? circuitBreakerPolicy;
+  final pulumi.Input<DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration?>? circuitBreakerPolicy;
   /// The optional HTTP retry policy configuration
-  final pulumi.Input<DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration>? httpRetryPolicy;
+  final pulumi.Input<DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration?>? httpRetryPolicy;
   /// The optional timeout policy configuration
-  final pulumi.Input<DaprComponentResiliencyPolicyTimeoutPolicyConfiguration>? timeoutPolicy;
+  final pulumi.Input<DaprComponentResiliencyPolicyTimeoutPolicyConfiguration?>? timeoutPolicy;
 
   /// Creates a new [DaprComponentResiliencyPolicyConfiguration].
   /// [circuitBreakerPolicy] The optional circuit breaker policy configuration

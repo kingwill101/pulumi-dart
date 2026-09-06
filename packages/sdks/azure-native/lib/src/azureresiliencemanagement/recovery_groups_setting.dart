@@ -6,7 +6,7 @@ import 'recovery_group.dart';
 /// Settings for the recovery orchestration groups.
 class RecoveryGroupsSetting {
   /// Additional recovery orchestration group settings.
-  final pulumi.Input<List<RecoveryGroup>>? additionalGroups;
+  final pulumi.Input<List<RecoveryGroup>?>? additionalGroups;
   /// The default recovery orchestration group setting. Every recovery orchestration plan has a default recovery orchestration group.
   final pulumi.Input<RecoveryGroup> defaultGroup;
 

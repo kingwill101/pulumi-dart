@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the device.
-enum DeviceType {
+enum DeviceType implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueAzureStackEdge("AzureStackEdge");
 
   const DeviceType(this.wireValue);
+  @override
   final String wireValue;
 
   static DeviceType fromValue(String value) {

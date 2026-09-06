@@ -4,29 +4,29 @@
 /// Result data returned by getEdgeActionVersionCode.
 class GetEdgeActionVersionCodeResult {
   /// The version code deployment content
-  final String content;
+  final String? content;
   /// The version code name
-  final String name;
+  final String? name;
 
   /// Creates a new [GetEdgeActionVersionCodeResult].
   /// [content] The version code deployment content
   /// [name] The version code name
   const GetEdgeActionVersionCodeResult({
-    required this.content,
-    required this.name,
+    this.content,
+    this.name,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'content': content,
-      'name': name,
+      'content': ?content,
+      'name': ?name,
     };
   }
 
   factory GetEdgeActionVersionCodeResult.fromMap(Map<String, dynamic> map) {
     return GetEdgeActionVersionCodeResult(
-      content: map['content'] as String,
-      name: map['name'] as String,
+      content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

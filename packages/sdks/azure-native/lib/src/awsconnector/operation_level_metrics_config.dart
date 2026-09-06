@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum OperationLevelMetricsConfig {
+enum OperationLevelMetricsConfig implements pulumi.PulumiEnum<String> {
   dISABLED("DISABLED"),
   eNABLED("ENABLED");
 
   const OperationLevelMetricsConfig(this.wireValue);
+  @override
   final String wireValue;
 
   static OperationLevelMetricsConfig fromValue(String value) {

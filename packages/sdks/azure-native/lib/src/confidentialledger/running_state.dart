@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Object representing RunningState for Managed CCF.
-enum RunningState {
+enum RunningState implements pulumi.PulumiEnum<String> {
   valueActive("Active"),
   valuePaused("Paused"),
   valueUnknown("Unknown"),
@@ -7,6 +9,7 @@ enum RunningState {
   valueResuming("Resuming");
 
   const RunningState(this.wireValue);
+  @override
   final String wireValue;
 
   static RunningState fromValue(String value) {

@@ -320,10 +320,34 @@ class SmartDetectorAlertRule extends pulumi.CustomResource {
     frequency = registerOutput<String>('frequency');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    scope = registerOutput<List<String>>('scope');
+    scope = registerOutput<List<String>>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     severity = registerOutput<String>('severity');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    throttling = registerOutput<ThrottlingInformationResponse?>('throttling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ThrottlingInformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SmartDetectorAlertRule] resource.
+  SmartDetectorAlertRule.reference(String urn)
+    : super(
+        'azure-native:alertsmanagement:SmartDetectorAlertRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actionGroups = registerOutput<ActionGroupsInformationResponse>('actionGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActionGroupsInformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    detector = registerOutput<DetectorResponse>('detector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DetectorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    frequency = registerOutput<String>('frequency');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    scope = registerOutput<List<String>>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    severity = registerOutput<String>('severity');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throttling = registerOutput<ThrottlingInformationResponse?>('throttling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ThrottlingInformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

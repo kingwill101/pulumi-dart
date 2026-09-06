@@ -7,11 +7,11 @@ import 'login_scopes_response.dart';
 /// The configuration settings of the Apple provider.
 class AppleResponse {
   /// &lt;code&gt;false&lt;/code&gt; if the Apple provider should not be enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The configuration settings of the login flow.
-  final pulumi.Input<LoginScopesResponse>? login;
+  final pulumi.Input<LoginScopesResponse?>? login;
   /// The configuration settings of the Apple registration.
-  final pulumi.Input<AppleRegistrationResponse>? registration;
+  final pulumi.Input<AppleRegistrationResponse?>? registration;
 
   /// Creates a new [AppleResponse].
   /// [enabled] &lt;code&gt;false&lt;/code&gt; if the Apple provider should not be enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.

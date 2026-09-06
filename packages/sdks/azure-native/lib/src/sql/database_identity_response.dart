@@ -8,9 +8,9 @@ class DatabaseIdentityResponse {
   /// The Azure Active Directory tenant id.
   final pulumi.Input<String> tenantId;
   /// The identity type
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The resource ids of the user assigned identities to use
-  final pulumi.Input<Map<String, DatabaseUserIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, DatabaseUserIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [DatabaseIdentityResponse].
   /// [tenantId] The Azure Active Directory tenant id.

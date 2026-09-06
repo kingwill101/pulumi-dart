@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Model that represents the Simple filter parameters.
 class SimpleFilterParameters {
   /// List of Azure availability zones to filter targets by.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [SimpleFilterParameters].
   /// [zones] List of Azure availability zones to filter targets by.

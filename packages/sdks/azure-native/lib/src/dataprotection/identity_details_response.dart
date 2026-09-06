@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IdentityDetailsResponse {
   /// Specifies if the BI is protected by System Identity.
-  final pulumi.Input<bool>? useSystemAssignedIdentity;
+  final pulumi.Input<bool?>? useSystemAssignedIdentity;
   /// ARM URL for User Assigned Identity.
-  final pulumi.Input<String>? userAssignedIdentityArmUrl;
+  final pulumi.Input<String?>? userAssignedIdentityArmUrl;
 
   /// Creates a new [IdentityDetailsResponse].
   /// [useSystemAssignedIdentity] Specifies if the BI is protected by System Identity.

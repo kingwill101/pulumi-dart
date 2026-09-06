@@ -10,23 +10,23 @@ import 'lab_virtual_machine_creation_parameter.dart';
 /// {@macro pulumi_devtestlab_formula_args_doc}
 class FormulaArgs {
   /// The description of the formula.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The content of the formula.
-  final pulumi.Input<LabVirtualMachineCreationParameter>? formulaContent;
+  final pulumi.Input<LabVirtualMachineCreationParameter?>? formulaContent;
   /// The name of the lab.
   final pulumi.Input<String> labName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the formula.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The OS type of the formula.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Information about a VM from which a formula is to be created.
-  final pulumi.Input<FormulaPropertiesFromVm>? vm;
+  final pulumi.Input<FormulaPropertiesFromVm?>? vm;
 
   /// Creates a new [FormulaArgs].
   /// [description] The description of the formula.

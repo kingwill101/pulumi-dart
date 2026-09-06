@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ACL for a private endpoint
 class PrivateEndpointACL {
   /// Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-  final pulumi.Input<List<String>>? allow;
+  final pulumi.Input<List<dynamic>?>? allow;
   /// Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-  final pulumi.Input<List<String>>? deny;
+  final pulumi.Input<List<dynamic>?>? deny;
   /// Name of the private endpoint connection
   final pulumi.Input<String> name;
 
@@ -31,8 +31,8 @@ class PrivateEndpointACL {
 
   factory PrivateEndpointACL.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointACL(
-      allow: (() { final guardedValue = map['allow']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      deny: (() { final guardedValue = map['deny']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      allow: (() { final guardedValue = map['allow']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      deny: (() { final guardedValue = map['deny']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

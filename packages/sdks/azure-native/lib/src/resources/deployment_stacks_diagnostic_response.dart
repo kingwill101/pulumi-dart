@@ -6,7 +6,7 @@ import 'error_additional_info_response.dart';
 /// The error additional info
 class DeploymentStacksDiagnosticResponse {
   /// Additional error information.
-  final pulumi.Input<List<ErrorAdditionalInfoResponse>>? additionalInfo;
+  final pulumi.Input<List<ErrorAdditionalInfoResponse>?>? additionalInfo;
   /// The error code.
   final pulumi.Input<String> code;
   /// Denotes the additional response level.
@@ -14,7 +14,7 @@ class DeploymentStacksDiagnosticResponse {
   /// The error message.
   final pulumi.Input<String> message;
   /// The error target.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
 
   /// Creates a new [DeploymentStacksDiagnosticResponse].
   /// [additionalInfo] Additional error information.

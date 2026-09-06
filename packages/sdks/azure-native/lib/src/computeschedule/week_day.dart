@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Representation of the possible selection of days in a week in a gregorian calendar
-enum WeekDay {
+enum WeekDay implements pulumi.PulumiEnum<String> {
   monday("Monday"),
   tuesday("Tuesday"),
   wednesday("Wednesday"),
@@ -10,6 +12,7 @@ enum WeekDay {
   all("All");
 
   const WeekDay(this.wireValue);
+  @override
   final String wireValue;
 
   static WeekDay fromValue(String value) {

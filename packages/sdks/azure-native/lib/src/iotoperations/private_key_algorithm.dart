@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// algorithm for private key.
-enum PrivateKeyAlgorithm {
+enum PrivateKeyAlgorithm implements pulumi.PulumiEnum<String> {
   ec256("Ec256"),
   ec384("Ec384"),
   ec521("Ec521"),
@@ -9,6 +11,7 @@ enum PrivateKeyAlgorithm {
   rsa8192("Rsa8192");
 
   const PrivateKeyAlgorithm(this.wireValue);
+  @override
   final String wireValue;
 
   static PrivateKeyAlgorithm fromValue(String value) {

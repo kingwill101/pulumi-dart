@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The managed identity auth properties for dataShare connection.
 class ManagedIdentityAuthProperties {
   /// ARM ResourceId of the managed identity that should be used to authenticate to the backing data source.
-  final pulumi.Input<String>? identityResourceId;
+  final pulumi.Input<String?>? identityResourceId;
   /// The auth type supported for bucket connection in storage connector.
   /// Expected value is 'ManagedIdentity'.
   final pulumi.Input<String> type;

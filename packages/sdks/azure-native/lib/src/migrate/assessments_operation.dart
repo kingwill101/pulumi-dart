@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'assessments_operation_args.dart';
+import 'cost_component_response.dart';
 import 'system_data_response.dart';
 import 'vm_uptime_assessments_operation_response.dart';
 
@@ -410,7 +411,7 @@ class AssessmentsOperation extends pulumi.CustomResource {
   /// Confidence Rating in Percentage.
   late final pulumi.Output<double> confidenceRatingInPercentage;
   /// Gets the collection of cost components.
-  late final pulumi.Output<List<Map<String, dynamic>>> costComponents;
+  late final pulumi.Output<List<CostComponentResponse>> costComponents;
   /// Date and Time when assessment was created.
   late final pulumi.Output<String> createdTimestamp;
   /// Currency in which prices should be reported.
@@ -503,24 +504,24 @@ class AssessmentsOperation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    assessmentErrorSummary = registerOutput<Map<String, int>>('assessmentErrorSummary');
+    assessmentErrorSummary = registerOutput<Map<String, int>>('assessmentErrorSummary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, int>(); });
     assessmentType = registerOutput<String>('assessmentType');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    azureDiskTypes = registerOutput<List<String>?>('azureDiskTypes');
+    azureDiskTypes = registerOutput<List<String>?>('azureDiskTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureHybridUseBenefit = registerOutput<String?>('azureHybridUseBenefit');
     azureLocation = registerOutput<String?>('azureLocation');
     azureOfferCode = registerOutput<String?>('azureOfferCode');
     azurePricingTier = registerOutput<String?>('azurePricingTier');
     azureStorageRedundancy = registerOutput<String?>('azureStorageRedundancy');
-    azureVmFamilies = registerOutput<List<String>?>('azureVmFamilies');
+    azureVmFamilies = registerOutput<List<String>?>('azureVmFamilies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     confidenceRatingInPercentage = registerOutput<double>('confidenceRatingInPercentage');
-    costComponents = registerOutput<List<Map<String, dynamic>>>('costComponents');
+    costComponents = registerOutput<List<CostComponentResponse>>('costComponents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CostComponentResponse>(guardedValue, (value) => CostComponentResponse.fromMap((value as Map).cast<String, dynamic>())); });
     createdTimestamp = registerOutput<String>('createdTimestamp');
     currency = registerOutput<String?>('currency');
     discountPercentage = registerOutput<double?>('discountPercentage');
-    distributionByOsName = registerOutput<Map<String, int>>('distributionByOsName');
-    distributionByServicePackInsight = registerOutput<Map<String, int>>('distributionByServicePackInsight');
-    distributionBySupportStatus = registerOutput<Map<String, int>>('distributionBySupportStatus');
+    distributionByOsName = registerOutput<Map<String, int>>('distributionByOsName', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, int>(); });
+    distributionByServicePackInsight = registerOutput<Map<String, int>>('distributionByServicePackInsight', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, int>(); });
+    distributionBySupportStatus = registerOutput<Map<String, int>>('distributionBySupportStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, int>(); });
     eaSubscriptionId = registerOutput<String?>('eaSubscriptionId');
     groupType = registerOutput<String>('groupType');
     linuxAzureHybridUseBenefit = registerOutput<String?>('linuxAzureHybridUseBenefit');
@@ -543,7 +544,64 @@ class AssessmentsOperation extends pulumi.CustomResource {
     sizingCriterion = registerOutput<String?>('sizingCriterion');
     stage = registerOutput<String>('stage');
     status = registerOutput<String>('status');
-    suitabilitySummary = registerOutput<Map<String, int>>('suitabilitySummary');
+    suitabilitySummary = registerOutput<Map<String, int>>('suitabilitySummary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, int>(); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeRange = registerOutput<String?>('timeRange');
+    type = registerOutput<String>('type');
+    updatedTimestamp = registerOutput<String>('updatedTimestamp');
+    vmUptime = registerOutput<VmUptimeAssessmentsOperationResponse?>('vmUptime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmUptimeAssessmentsOperationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AssessmentsOperation] resource.
+  AssessmentsOperation.reference(String urn)
+    : super(
+        'azure-native:migrate:AssessmentsOperation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assessmentErrorSummary = registerOutput<Map<String, int>>('assessmentErrorSummary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, int>(); });
+    assessmentType = registerOutput<String>('assessmentType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureDiskTypes = registerOutput<List<String>?>('azureDiskTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureHybridUseBenefit = registerOutput<String?>('azureHybridUseBenefit');
+    azureLocation = registerOutput<String?>('azureLocation');
+    azureOfferCode = registerOutput<String?>('azureOfferCode');
+    azurePricingTier = registerOutput<String?>('azurePricingTier');
+    azureStorageRedundancy = registerOutput<String?>('azureStorageRedundancy');
+    azureVmFamilies = registerOutput<List<String>?>('azureVmFamilies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    confidenceRatingInPercentage = registerOutput<double>('confidenceRatingInPercentage');
+    costComponents = registerOutput<List<CostComponentResponse>>('costComponents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CostComponentResponse>(guardedValue, (value) => CostComponentResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    currency = registerOutput<String?>('currency');
+    discountPercentage = registerOutput<double?>('discountPercentage');
+    distributionByOsName = registerOutput<Map<String, int>>('distributionByOsName', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, int>(); });
+    distributionByServicePackInsight = registerOutput<Map<String, int>>('distributionByServicePackInsight', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, int>(); });
+    distributionBySupportStatus = registerOutput<Map<String, int>>('distributionBySupportStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, int>(); });
+    eaSubscriptionId = registerOutput<String?>('eaSubscriptionId');
+    groupType = registerOutput<String>('groupType');
+    linuxAzureHybridUseBenefit = registerOutput<String?>('linuxAzureHybridUseBenefit');
+    monthlyBandwidthCost = registerOutput<double>('monthlyBandwidthCost');
+    monthlyComputeCost = registerOutput<double>('monthlyComputeCost');
+    monthlyPremiumStorageCost = registerOutput<double>('monthlyPremiumStorageCost');
+    monthlyStandardSsdStorageCost = registerOutput<double>('monthlyStandardSsdStorageCost');
+    monthlyStorageCost = registerOutput<double>('monthlyStorageCost');
+    monthlyUltraStorageCost = registerOutput<double>('monthlyUltraStorageCost');
+    this.name = registerOutput<String>('name');
+    numberOfMachines = registerOutput<int>('numberOfMachines');
+    percentile = registerOutput<String?>('percentile');
+    perfDataEndTime = registerOutput<String?>('perfDataEndTime');
+    perfDataStartTime = registerOutput<String?>('perfDataStartTime');
+    pricesTimestamp = registerOutput<String>('pricesTimestamp');
+    provisioningState = registerOutput<String?>('provisioningState');
+    reservedInstance = registerOutput<String?>('reservedInstance');
+    scalingFactor = registerOutput<double?>('scalingFactor');
+    schemaVersion = registerOutput<String>('schemaVersion');
+    sizingCriterion = registerOutput<String?>('sizingCriterion');
+    stage = registerOutput<String>('stage');
+    status = registerOutput<String>('status');
+    suitabilitySummary = registerOutput<Map<String, int>>('suitabilitySummary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, int>(); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeRange = registerOutput<String?>('timeRange');
     type = registerOutput<String>('type');

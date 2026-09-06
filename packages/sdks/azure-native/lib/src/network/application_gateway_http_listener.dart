@@ -7,29 +7,29 @@ import 'sub_resource.dart';
 /// Http listener of an application gateway.
 class ApplicationGatewayHttpListener {
   /// Custom error configurations of the HTTP listener.
-  final pulumi.Input<List<ApplicationGatewayCustomError>>? customErrorConfigurations;
+  final pulumi.Input<List<ApplicationGatewayCustomError>?>? customErrorConfigurations;
   /// Reference to the FirewallPolicy resource.
-  final pulumi.Input<SubResource>? firewallPolicy;
+  final pulumi.Input<SubResource?>? firewallPolicy;
   /// Frontend IP configuration resource of an application gateway.
-  final pulumi.Input<SubResource>? frontendIPConfiguration;
+  final pulumi.Input<SubResource?>? frontendIPConfiguration;
   /// Frontend port resource of an application gateway.
-  final pulumi.Input<SubResource>? frontendPort;
+  final pulumi.Input<SubResource?>? frontendPort;
   /// Host name of HTTP listener.
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// List of Host names for HTTP Listener that allows special wildcard characters as well.
-  final pulumi.Input<List<String>>? hostNames;
+  final pulumi.Input<List<String>?>? hostNames;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the HTTP listener that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Protocol of the HTTP listener.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<dynamic>? protocol;
   /// Applicable only if protocol is https. Enables SNI for multi-hosting.
-  final pulumi.Input<bool>? requireServerNameIndication;
+  final pulumi.Input<bool?>? requireServerNameIndication;
   /// SSL certificate resource of an application gateway.
-  final pulumi.Input<SubResource>? sslCertificate;
+  final pulumi.Input<SubResource?>? sslCertificate;
   /// SSL profile resource of the application gateway.
-  final pulumi.Input<SubResource>? sslProfile;
+  final pulumi.Input<SubResource?>? sslProfile;
 
   /// Creates a new [ApplicationGatewayHttpListener].
   /// [customErrorConfigurations] Custom error configurations of the HTTP listener.
@@ -86,7 +86,7 @@ class ApplicationGatewayHttpListener {
       hostNames: (() { final guardedValue = map['hostNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       requireServerNameIndication: (() { final guardedValue = map['requireServerNameIndication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sslCertificate: (() { final guardedValue = map['sslCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sslProfile: (() { final guardedValue = map['sslProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

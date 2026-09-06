@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_cloudngfw_get_post_rule_counters_args_doc}
 class GetPostRuleCountersArgs {
-  final pulumi.Input<String>? firewallName;
+  final pulumi.Input<String?>? firewallName;
   /// GlobalRulestack resource name
   final pulumi.Input<String> globalRulestackName;
   /// Post Rule priority

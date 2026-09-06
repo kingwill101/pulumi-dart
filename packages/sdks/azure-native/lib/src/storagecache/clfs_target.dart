@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties pertaining to the ClfsTarget
 class ClfsTarget {
   /// Resource ID of storage container.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
 
   /// Creates a new [ClfsTarget].
   /// [target] Resource ID of storage container.

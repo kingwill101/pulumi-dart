@@ -41,11 +41,11 @@ class OverviewStatusResponse {
 
   factory OverviewStatusResponse.fromMap(Map<String, dynamic> map) {
     return OverviewStatusResponse(
-      failedCount: pulumi.Input.fromValue(map['failedCount'] as int),
-      manualCount: pulumi.Input.fromValue(map['manualCount'] as int),
-      notApplicableCount: pulumi.Input.fromValue(map['notApplicableCount'] as int),
-      passedCount: pulumi.Input.fromValue(map['passedCount'] as int),
-      pendingCount: pulumi.Input.fromValue(map['pendingCount'] as int),
+      failedCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['failedCount'])),
+      manualCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['manualCount'])),
+      notApplicableCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['notApplicableCount'])),
+      passedCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['passedCount'])),
+      pendingCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['pendingCount'])),
     );
   }
 }

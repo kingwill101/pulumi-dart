@@ -11,23 +11,23 @@ import 'managed_service_identity.dart';
 /// {@macro pulumi_deviceprovisioningservices_iot_dps_resource_args_doc}
 class IotDpsResourceArgs {
   /// The managed identities for a provisioning service.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Service specific properties for a provisioning service
   final pulumi.Input<IotDpsPropertiesDescription> properties;
   /// Name of provisioning service to create or update.
-  final pulumi.Input<String>? provisioningServiceName;
+  final pulumi.Input<String?>? provisioningServiceName;
   /// Resource group identifier.
   final pulumi.Input<String> resourceGroupName;
   /// The resource group of the resource.
-  final pulumi.Input<String>? resourcegroup;
+  final pulumi.Input<String?>? resourcegroup;
   /// Sku info for a provisioning Service.
   final pulumi.Input<IotDpsSkuInfo> sku;
   /// The subscription id of the resource.
-  final pulumi.Input<String>? subscriptionid;
+  final pulumi.Input<String?>? subscriptionid;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [IotDpsResourceArgs].
   /// [identity] The managed identities for a provisioning service.

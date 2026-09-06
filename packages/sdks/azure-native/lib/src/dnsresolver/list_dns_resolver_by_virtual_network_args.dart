@@ -10,7 +10,7 @@ class ListDnsResolverByVirtualNetworkArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The maximum number of results to return. If not specified, returns up to 100 results.
-  final pulumi.Input<int>? top;
+  final pulumi.Input<int?>? top;
   /// The name of the virtual network.
   final pulumi.Input<String> virtualNetworkName;
 
@@ -35,7 +35,7 @@ class ListDnsResolverByVirtualNetworkArgs {
   factory ListDnsResolverByVirtualNetworkArgs.fromMap(Map<String, dynamic> map) {
     return ListDnsResolverByVirtualNetworkArgs(
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       virtualNetworkName: pulumi.Input.fromValue(map['virtualNetworkName'] as String),
     );
   }

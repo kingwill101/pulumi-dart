@@ -5,7 +5,7 @@ import 'jit_network_access_request_virtual_machine.dart';
 
 class JitNetworkAccessRequest {
   /// The justification for making the initiate request
-  final pulumi.Input<String>? justification;
+  final pulumi.Input<String?>? justification;
   /// The identity of the person who made the request
   final pulumi.Input<String> requestor;
   /// The start time of the request in UTC

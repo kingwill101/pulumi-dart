@@ -6,11 +6,11 @@ import 'encryption_response.dart';
 /// Elastic San Pool Properties
 class ElasticSanResponse {
   /// Encryption specifies the encryption configuration for the Azure Disk pool
-  final pulumi.Input<EncryptionResponse>? encryption;
+  final pulumi.Input<EncryptionResponse?>? encryption;
   /// Managed resource group for the pool.
   final pulumi.Input<String> resourceGroup;
   /// Sku name
-  final pulumi.Input<String>? skuName;
+  final pulumi.Input<String?>? skuName;
 
   /// Creates a new [ElasticSanResponse].
   /// [encryption] Encryption specifies the encryption configuration for the Azure Disk pool

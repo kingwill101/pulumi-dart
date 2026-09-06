@@ -4,27 +4,27 @@
 /// Result data returned by getView.
 class GetViewResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Date time when view was last modified.
-  final String changed;
+  final String? changed;
   /// Date time when view was created.
-  final String created;
+  final String? created;
   /// View definition.
-  final String definition;
+  final String? definition;
   /// Localized display name for the view.
   final Map<String, String>? displayName;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Resource name.
-  final String name;
+  final String? name;
   /// the hub name.
-  final String tenantId;
+  final String? tenantId;
   /// Resource type.
-  final String type;
+  final String? type;
   /// the user ID.
   final String? userId;
   /// Name of the view.
-  final String viewName;
+  final String? viewName;
 
   /// Creates a new [GetViewResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -39,48 +39,48 @@ class GetViewResult {
   /// [userId] the user ID.
   /// [viewName] Name of the view.
   const GetViewResult({
-    required this.azureApiVersion,
-    required this.changed,
-    required this.created,
-    required this.definition,
+    this.azureApiVersion,
+    this.changed,
+    this.created,
+    this.definition,
     this.displayName,
-    required this.id,
-    required this.name,
-    required this.tenantId,
-    required this.type,
+    this.id,
+    this.name,
+    this.tenantId,
+    this.type,
     this.userId,
-    required this.viewName,
+    this.viewName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'changed': changed,
-      'created': created,
-      'definition': definition,
+      'azureApiVersion': ?azureApiVersion,
+      'changed': ?changed,
+      'created': ?created,
+      'definition': ?definition,
       'displayName': ?displayName,
-      'id': id,
-      'name': name,
-      'tenantId': tenantId,
-      'type': type,
+      'id': ?id,
+      'name': ?name,
+      'tenantId': ?tenantId,
+      'type': ?type,
       'userId': ?userId,
-      'viewName': viewName,
+      'viewName': ?viewName,
     };
   }
 
   factory GetViewResult.fromMap(Map<String, dynamic> map) {
     return GetViewResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      changed: map['changed'] as String,
-      created: map['created'] as String,
-      definition: map['definition'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      changed: (() { final guardedValue = map['changed']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      created: (() { final guardedValue = map['created']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      definition: (() { final guardedValue = map['definition']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       userId: (() { final guardedValue = map['userId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      viewName: map['viewName'] as String,
+      viewName: (() { final guardedValue = map['viewName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

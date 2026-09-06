@@ -48,6 +48,17 @@ Future<GetAssetResult> getAsset(
   return GetAssetResult.fromMap(result);
 }
 
+pulumi.Output<GetAssetResult> getAssetOutput(
+  GetAssetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:deviceregistry:getAsset',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAssetResult.fromMap);
+}
+
 /// Get a AssetEndpointProfile
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -66,6 +77,17 @@ Future<GetAssetEndpointProfileResult> getAssetEndpointProfile(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAssetEndpointProfileResult.fromMap(result);
+}
+
+pulumi.Output<GetAssetEndpointProfileResult> getAssetEndpointProfileOutput(
+  GetAssetEndpointProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:deviceregistry:getAssetEndpointProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAssetEndpointProfileResult.fromMap);
 }
 
 /// Get a Credential
@@ -88,6 +110,17 @@ Future<GetCredentialResult> getCredential(
   return GetCredentialResult.fromMap(result);
 }
 
+pulumi.Output<GetCredentialResult> getCredentialOutput(
+  GetCredentialArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:deviceregistry:getCredential',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCredentialResult.fromMap);
+}
+
 /// Get a DiscoveredAsset
 ///
 /// Uses Azure REST API version 2024-09-01-preview.
@@ -106,6 +139,17 @@ Future<GetDiscoveredAssetResult> getDiscoveredAsset(
   return GetDiscoveredAssetResult.fromMap(result);
 }
 
+pulumi.Output<GetDiscoveredAssetResult> getDiscoveredAssetOutput(
+  GetDiscoveredAssetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:deviceregistry:getDiscoveredAsset',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiscoveredAssetResult.fromMap);
+}
+
 /// Get a DiscoveredAssetEndpointProfile
 ///
 /// Uses Azure REST API version 2024-09-01-preview.
@@ -122,6 +166,17 @@ Future<GetDiscoveredAssetEndpointProfileResult> getDiscoveredAssetEndpointProfil
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDiscoveredAssetEndpointProfileResult.fromMap(result);
+}
+
+pulumi.Output<GetDiscoveredAssetEndpointProfileResult> getDiscoveredAssetEndpointProfileOutput(
+  GetDiscoveredAssetEndpointProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:deviceregistry:getDiscoveredAssetEndpointProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiscoveredAssetEndpointProfileResult.fromMap);
 }
 
 /// Get a Namespace
@@ -144,6 +199,17 @@ Future<GetNamespaceResult> getNamespace(
   return GetNamespaceResult.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceResult> getNamespaceOutput(
+  GetNamespaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:deviceregistry:getNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceResult.fromMap);
+}
+
 /// Get a NamespaceAsset
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
@@ -162,6 +228,17 @@ Future<GetNamespaceAssetResult> getNamespaceAsset(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNamespaceAssetResult.fromMap(result);
+}
+
+pulumi.Output<GetNamespaceAssetResult> getNamespaceAssetOutput(
+  GetNamespaceAssetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:deviceregistry:getNamespaceAsset',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceAssetResult.fromMap);
 }
 
 /// Get a NamespaceDevice
@@ -184,6 +261,17 @@ Future<GetNamespaceDeviceResult> getNamespaceDevice(
   return GetNamespaceDeviceResult.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceDeviceResult> getNamespaceDeviceOutput(
+  GetNamespaceDeviceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:deviceregistry:getNamespaceDevice',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceDeviceResult.fromMap);
+}
+
 /// Get a NamespaceDiscoveredAsset
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
@@ -202,6 +290,17 @@ Future<GetNamespaceDiscoveredAssetResult> getNamespaceDiscoveredAsset(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNamespaceDiscoveredAssetResult.fromMap(result);
+}
+
+pulumi.Output<GetNamespaceDiscoveredAssetResult> getNamespaceDiscoveredAssetOutput(
+  GetNamespaceDiscoveredAssetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:deviceregistry:getNamespaceDiscoveredAsset',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceDiscoveredAssetResult.fromMap);
 }
 
 /// Get a NamespaceDiscoveredDevice
@@ -224,6 +323,17 @@ Future<GetNamespaceDiscoveredDeviceResult> getNamespaceDiscoveredDevice(
   return GetNamespaceDiscoveredDeviceResult.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceDiscoveredDeviceResult> getNamespaceDiscoveredDeviceOutput(
+  GetNamespaceDiscoveredDeviceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:deviceregistry:getNamespaceDiscoveredDevice',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceDiscoveredDeviceResult.fromMap);
+}
+
 /// Get a Policy
 ///
 /// Uses Azure REST API version 2025-11-01-preview.
@@ -242,6 +352,17 @@ Future<GetPolicyResult> getPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetPolicyResult> getPolicyOutput(
+  GetPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:deviceregistry:getPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyResult.fromMap);
 }
 
 /// Get a Schema
@@ -264,6 +385,17 @@ Future<GetSchemaResult> getSchema(
   return GetSchemaResult.fromMap(result);
 }
 
+pulumi.Output<GetSchemaResult> getSchemaOutput(
+  GetSchemaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:deviceregistry:getSchema',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSchemaResult.fromMap);
+}
+
 /// Get a SchemaRegistry
 ///
 /// Uses Azure REST API version 2024-09-01-preview.
@@ -284,6 +416,17 @@ Future<GetSchemaRegistryResult> getSchemaRegistry(
   return GetSchemaRegistryResult.fromMap(result);
 }
 
+pulumi.Output<GetSchemaRegistryResult> getSchemaRegistryOutput(
+  GetSchemaRegistryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:deviceregistry:getSchemaRegistry',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSchemaRegistryResult.fromMap);
+}
+
 /// Get a SchemaVersion
 ///
 /// Uses Azure REST API version 2024-09-01-preview.
@@ -302,4 +445,15 @@ Future<GetSchemaVersionResult> getSchemaVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSchemaVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetSchemaVersionResult> getSchemaVersionOutput(
+  GetSchemaVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:deviceregistry:getSchemaVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSchemaVersionResult.fromMap);
 }

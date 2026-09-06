@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The springbootsites resource definition.
 class SpringbootsitesPropertiesResponse {
   /// The master site ID from Azure Migrate.
-  final pulumi.Input<String>? masterSiteId;
+  final pulumi.Input<String?>? masterSiteId;
   /// The migrate project ID from Azure Migrate.
-  final pulumi.Input<String>? migrateProjectId;
+  final pulumi.Input<String?>? migrateProjectId;
   /// The resource provisioning state.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
 
   /// Creates a new [SpringbootsitesPropertiesResponse].
   /// [masterSiteId] The master site ID from Azure Migrate.

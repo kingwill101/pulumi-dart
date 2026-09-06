@@ -8,9 +8,9 @@ class AutomationActionLogicAppResponse {
   /// Expected value is 'LogicApp'.
   final pulumi.Input<String> actionType;
   /// The triggered Logic App Azure Resource ID. This can also reside on other subscriptions, given that you have permissions to trigger the Logic App
-  final pulumi.Input<String>? logicAppResourceId;
+  final pulumi.Input<String?>? logicAppResourceId;
   /// The Logic App trigger URI endpoint (it will not be included in any response).
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [AutomationActionLogicAppResponse].
   /// [actionType] Enum. Indicates the action type.

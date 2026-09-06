@@ -21,3 +21,14 @@ Future<GetStorageTaskResult> getStorageTask(
   );
   return GetStorageTaskResult.fromMap(result);
 }
+
+pulumi.Output<GetStorageTaskResult> getStorageTaskOutput(
+  GetStorageTaskArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storageactions:getStorageTask',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageTaskResult.fromMap);
+}

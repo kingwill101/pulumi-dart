@@ -8,25 +8,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_costmanagement_connector_args_doc}
 class ConnectorArgs {
   /// Connector Name.
-  final pulumi.Input<String>? connectorName;
+  final pulumi.Input<String?>? connectorName;
   /// Credentials authentication key (eg AWS ARN)
-  final pulumi.Input<String>? credentialsKey;
+  final pulumi.Input<String?>? credentialsKey;
   /// Credentials secret (eg AWS ExternalId)
-  final pulumi.Input<String>? credentialsSecret;
+  final pulumi.Input<String?>? credentialsSecret;
   /// Connector DisplayName (defaults to Name)
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Connector kind (eg aws)
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Connector location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifying source report. (For AWS this is a CUR report name, defined with Daily and with Resources)
-  final pulumi.Input<String>? reportId;
+  final pulumi.Input<String?>? reportId;
   /// Azure Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
   /// Connector status
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ConnectorArgs].
   /// [connectorName] Connector Name.
@@ -77,7 +77,7 @@ class ConnectorArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       reportId: (() { final guardedValue = map['reportId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

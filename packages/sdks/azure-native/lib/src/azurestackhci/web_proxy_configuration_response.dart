@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Web proxy configuration.
 class WebProxyConfigurationResponse {
   /// Bypass list for the web proxy.
-  final pulumi.Input<List<String>>? bypassList;
+  final pulumi.Input<List<String>?>? bypassList;
   /// Connection URI of the web proxy.
-  final pulumi.Input<String>? connectionUri;
+  final pulumi.Input<String?>? connectionUri;
   /// Port of the web proxy.
-  final pulumi.Input<String>? port;
+  final pulumi.Input<String?>? port;
 
   /// Creates a new [WebProxyConfigurationResponse].
   /// [bypassList] Bypass list for the web proxy.

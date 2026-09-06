@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// InMageAzureV2 Managed disk details.
 class InMageAzureV2ManagedDiskDetailsResponse {
   /// The DiskEncryptionSet ARM ID.
-  final pulumi.Input<String>? diskEncryptionSetId;
+  final pulumi.Input<String?>? diskEncryptionSetId;
   /// The disk id.
-  final pulumi.Input<String>? diskId;
+  final pulumi.Input<String?>? diskId;
   /// The replica disk type.
-  final pulumi.Input<String>? replicaDiskType;
+  final pulumi.Input<String?>? replicaDiskType;
   /// Seed managed disk Id.
-  final pulumi.Input<String>? seedManagedDiskId;
+  final pulumi.Input<String?>? seedManagedDiskId;
   /// The target disk name.
-  final pulumi.Input<String>? targetDiskName;
+  final pulumi.Input<String?>? targetDiskName;
 
   /// Creates a new [InMageAzureV2ManagedDiskDetailsResponse].
   /// [diskEncryptionSetId] The DiskEncryptionSet ARM ID.

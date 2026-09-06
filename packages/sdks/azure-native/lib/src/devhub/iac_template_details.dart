@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IacTemplateDetails {
   /// Count of the product
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
   /// Naming convention of this product
-  final pulumi.Input<String>? namingConvention;
+  final pulumi.Input<String?>? namingConvention;
   /// The name of the products.
-  final pulumi.Input<String>? productName;
+  final pulumi.Input<String?>? productName;
 
   /// Creates a new [IacTemplateDetails].
   /// [count] Count of the product
@@ -30,7 +30,7 @@ class IacTemplateDetails {
 
   factory IacTemplateDetails.fromMap(Map<String, dynamic> map) {
     return IacTemplateDetails(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       namingConvention: (() { final guardedValue = map['namingConvention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       productName: (() { final guardedValue = map['productName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

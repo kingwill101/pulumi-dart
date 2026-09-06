@@ -218,4 +218,21 @@ class ApiIssueAttachment extends pulumi.CustomResource {
     title = registerOutput<String>('title');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ApiIssueAttachment] resource.
+  ApiIssueAttachment.reference(String urn)
+    : super(
+        'azure-native:apimanagement:ApiIssueAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    content = registerOutput<String>('content');
+    contentFormat = registerOutput<String>('contentFormat');
+    this.name = registerOutput<String>('name');
+    title = registerOutput<String>('title');
+    type = registerOutput<String>('type');
+  }
 }

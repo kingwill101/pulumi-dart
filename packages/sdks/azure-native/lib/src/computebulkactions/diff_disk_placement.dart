@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the ephemeral disk placement for operating system disk. Possible values are: CacheDisk, ResourceDisk, NvmeDisk. The defaulting behavior is: CacheDisk if one is configured for the VM size otherwise ResourceDisk or NvmeDisk is used. Minimum api-version for NvmeDisk: 2024-03-01.
-enum DiffDiskPlacement {
+enum DiffDiskPlacement implements pulumi.PulumiEnum<String> {
   cacheDisk("CacheDisk"),
   resourceDisk("ResourceDisk"),
   nvmeDisk("NvmeDisk");
 
   const DiffDiskPlacement(this.wireValue);
+  @override
   final String wireValue;
 
   static DiffDiskPlacement fromValue(String value) {

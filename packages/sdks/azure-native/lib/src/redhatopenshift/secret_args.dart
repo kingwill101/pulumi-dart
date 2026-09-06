@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_redhatopenshift_secret_args_doc}
 class SecretArgs {
   /// The name of the Secret resource.
-  final pulumi.Input<String>? childResourceName;
+  final pulumi.Input<String?>? childResourceName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the OpenShift cluster resource.
   final pulumi.Input<String> resourceName;
   /// The Secrets Resources.
-  final pulumi.Input<String>? secretResources;
+  final pulumi.Input<String?>? secretResources;
 
   /// Creates a new [SecretArgs].
   /// [childResourceName] The name of the Secret resource.

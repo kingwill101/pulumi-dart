@@ -11,45 +11,45 @@ import 'tag.dart';
 /// Definition of awsLightsailInstance
 class AwsLightsailInstanceProperties {
   /// An array of objects representing the add-ons to enable for the new instance.
-  final pulumi.Input<List<AddOn>>? addOns;
+  final pulumi.Input<List<AddOn>?>? addOns;
   /// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// The ID for a virtual private server image (e.g., app_wordpress_4_4 or app_lamp_7_0 ). Use the get blueprints operation to return a list of available images (or blueprints ).
-  final pulumi.Input<String>? blueprintId;
+  final pulumi.Input<String?>? blueprintId;
   /// The bundle of specification information for your virtual private server (or instance ), including the pricing plan (e.g., micro_1_0 ).
-  final pulumi.Input<String>? bundleId;
+  final pulumi.Input<String?>? bundleId;
   /// Hardware of the Instance.
-  final pulumi.Input<Hardware>? hardware;
+  final pulumi.Input<Hardware?>? hardware;
   /// Property instanceArn
-  final pulumi.Input<String>? instanceArn;
+  final pulumi.Input<String?>? instanceArn;
   /// The names to use for your new Lightsail instance.
-  final pulumi.Input<String>? instanceName;
+  final pulumi.Input<String?>? instanceName;
   /// Is the IP Address of the Instance is the static IP
-  final pulumi.Input<bool>? isStaticIp;
+  final pulumi.Input<bool?>? isStaticIp;
   /// The name of your key pair.
-  final pulumi.Input<String>? keyPairName;
+  final pulumi.Input<String?>? keyPairName;
   /// Location of a resource.
-  final pulumi.Input<Location>? location;
+  final pulumi.Input<Location?>? location;
   /// Networking of the Instance.
-  final pulumi.Input<Networking>? networking;
+  final pulumi.Input<Networking?>? networking;
   /// Private IP Address of the Instance
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
   /// Public IP Address of the Instance
-  final pulumi.Input<String>? publicIpAddress;
+  final pulumi.Input<String?>? publicIpAddress;
   /// Resource type of Lightsail instance.
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
   /// SSH Key Name of the  Lightsail instance.
-  final pulumi.Input<String>? sshKeyName;
+  final pulumi.Input<String?>? sshKeyName;
   /// Current State of the Instance.
-  final pulumi.Input<State>? state;
+  final pulumi.Input<State?>? state;
   /// Support code to help identify any issues
-  final pulumi.Input<String>? supportCode;
+  final pulumi.Input<String?>? supportCode;
   /// An array of key-value pairs to apply to this resource.
-  final pulumi.Input<List<Tag>>? tags;
+  final pulumi.Input<List<Tag>?>? tags;
   /// A launch script you can create that configures a server with additional user data. For example, you might want to run apt-get -y update.
-  final pulumi.Input<String>? userData;
+  final pulumi.Input<String?>? userData;
   /// Username of the  Lightsail instance.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [AwsLightsailInstanceProperties].
   /// [addOns] An array of objects representing the add-ons to enable for the new instance.

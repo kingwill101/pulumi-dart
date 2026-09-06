@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the sever administrator.
-enum AdministratorType {
+enum AdministratorType implements pulumi.PulumiEnum<String> {
   valueActiveDirectory("ActiveDirectory");
 
   const AdministratorType(this.wireValue);
+  @override
   final String wireValue;
 
   static AdministratorType fromValue(String value) {

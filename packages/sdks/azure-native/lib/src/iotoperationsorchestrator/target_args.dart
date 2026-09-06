@@ -12,25 +12,25 @@ import 'topologies_properties.dart';
 /// {@macro pulumi_iotoperationsorchestrator_target_args_doc}
 class TargetArgs {
   /// A list of components.
-  final pulumi.Input<List<ComponentProperties>>? components;
+  final pulumi.Input<List<ComponentProperties>?>? components;
   /// Edge location of the resource.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of target.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Reconciliation Policy.
-  final pulumi.Input<ReconciliationPolicy>? reconciliationPolicy;
+  final pulumi.Input<ReconciliationPolicy?>? reconciliationPolicy;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Deployment scope (such as Kubernetes namespace).
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Defines the device topology for a target or instance.
-  final pulumi.Input<List<TopologiesProperties>>? topologies;
+  final pulumi.Input<List<TopologiesProperties>?>? topologies;
   /// Version of the particular resource.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [TargetArgs].
   /// [components] A list of components.

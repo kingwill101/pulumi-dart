@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClientCertAuthenticationResponse {
   /// Gets or sets the certificate expiration date.
-  final pulumi.Input<String>? certificateExpirationDate;
+  final pulumi.Input<String?>? certificateExpirationDate;
   /// Gets or sets the certificate subject name.
-  final pulumi.Input<String>? certificateSubjectName;
+  final pulumi.Input<String?>? certificateSubjectName;
   /// Gets or sets the certificate thumbprint.
-  final pulumi.Input<String>? certificateThumbprint;
+  final pulumi.Input<String?>? certificateThumbprint;
   /// Gets or sets the certificate password, return value will always be empty.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Gets or sets the pfx certificate. Accepts certification in base64 encoding, return value will always be empty.
-  final pulumi.Input<String>? pfx;
+  final pulumi.Input<String?>? pfx;
   /// Gets or sets the HTTP authentication type.
   /// Expected value is 'ClientCertificate'.
   final pulumi.Input<String> type;

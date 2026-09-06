@@ -11,7 +11,7 @@ class X12EnvelopeSettingsResponse {
   /// The value indicating whether to enable default group headers.
   final pulumi.Input<bool> enableDefaultGroupHeaders;
   /// The functional group id.
-  final pulumi.Input<String>? functionalGroupId;
+  final pulumi.Input<String?>? functionalGroupId;
   /// The group control number lower bound.
   final pulumi.Input<int> groupControlNumberLowerBound;
   /// The group control number upper bound.
@@ -43,9 +43,9 @@ class X12EnvelopeSettingsResponse {
   /// The transaction set control number lower bound.
   final pulumi.Input<int> transactionSetControlNumberLowerBound;
   /// The transaction set control number prefix.
-  final pulumi.Input<String>? transactionSetControlNumberPrefix;
+  final pulumi.Input<String?>? transactionSetControlNumberPrefix;
   /// The transaction set control number suffix.
-  final pulumi.Input<String>? transactionSetControlNumberSuffix;
+  final pulumi.Input<String?>? transactionSetControlNumberSuffix;
   /// The transaction set control number upper bound.
   final pulumi.Input<int> transactionSetControlNumberUpperBound;
   /// The usage indicator.
@@ -136,28 +136,28 @@ class X12EnvelopeSettingsResponse {
 
   factory X12EnvelopeSettingsResponse.fromMap(Map<String, dynamic> map) {
     return X12EnvelopeSettingsResponse(
-      controlStandardsId: pulumi.Input.fromValue(map['controlStandardsId'] as int),
+      controlStandardsId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['controlStandardsId'])),
       controlVersionNumber: pulumi.Input.fromValue(map['controlVersionNumber'] as String),
       enableDefaultGroupHeaders: pulumi.Input.fromValue(map['enableDefaultGroupHeaders'] as bool),
       functionalGroupId: (() { final guardedValue = map['functionalGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      groupControlNumberLowerBound: pulumi.Input.fromValue(map['groupControlNumberLowerBound'] as int),
-      groupControlNumberUpperBound: pulumi.Input.fromValue(map['groupControlNumberUpperBound'] as int),
+      groupControlNumberLowerBound: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['groupControlNumberLowerBound'])),
+      groupControlNumberUpperBound: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['groupControlNumberUpperBound'])),
       groupHeaderAgencyCode: pulumi.Input.fromValue(map['groupHeaderAgencyCode'] as String),
       groupHeaderDateFormat: pulumi.Input.fromValue(map['groupHeaderDateFormat'] as String),
       groupHeaderTimeFormat: pulumi.Input.fromValue(map['groupHeaderTimeFormat'] as String),
       groupHeaderVersion: pulumi.Input.fromValue(map['groupHeaderVersion'] as String),
-      interchangeControlNumberLowerBound: pulumi.Input.fromValue(map['interchangeControlNumberLowerBound'] as int),
-      interchangeControlNumberUpperBound: pulumi.Input.fromValue(map['interchangeControlNumberUpperBound'] as int),
+      interchangeControlNumberLowerBound: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['interchangeControlNumberLowerBound'])),
+      interchangeControlNumberUpperBound: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['interchangeControlNumberUpperBound'])),
       overwriteExistingTransactionSetControlNumber: pulumi.Input.fromValue(map['overwriteExistingTransactionSetControlNumber'] as bool),
       receiverApplicationId: pulumi.Input.fromValue(map['receiverApplicationId'] as String),
       rolloverGroupControlNumber: pulumi.Input.fromValue(map['rolloverGroupControlNumber'] as bool),
       rolloverInterchangeControlNumber: pulumi.Input.fromValue(map['rolloverInterchangeControlNumber'] as bool),
       rolloverTransactionSetControlNumber: pulumi.Input.fromValue(map['rolloverTransactionSetControlNumber'] as bool),
       senderApplicationId: pulumi.Input.fromValue(map['senderApplicationId'] as String),
-      transactionSetControlNumberLowerBound: pulumi.Input.fromValue(map['transactionSetControlNumberLowerBound'] as int),
+      transactionSetControlNumberLowerBound: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['transactionSetControlNumberLowerBound'])),
       transactionSetControlNumberPrefix: (() { final guardedValue = map['transactionSetControlNumberPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       transactionSetControlNumberSuffix: (() { final guardedValue = map['transactionSetControlNumberSuffix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      transactionSetControlNumberUpperBound: pulumi.Input.fromValue(map['transactionSetControlNumberUpperBound'] as int),
+      transactionSetControlNumberUpperBound: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['transactionSetControlNumberUpperBound'])),
       usageIndicator: pulumi.Input.fromValue(map['usageIndicator'] as String),
       useControlStandardsIdAsRepetitionCharacter: pulumi.Input.fromValue(map['useControlStandardsIdAsRepetitionCharacter'] as bool),
     );

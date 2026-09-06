@@ -6,13 +6,13 @@ import 'application_gateway_load_distribution_target.dart';
 /// Load Distribution Policy of an application gateway.
 class ApplicationGatewayLoadDistributionPolicy {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Load Distribution Targets resource of an application gateway.
-  final pulumi.Input<String>? loadDistributionAlgorithm;
+  final pulumi.Input<dynamic>? loadDistributionAlgorithm;
   /// Load Distribution Targets resource of an application gateway.
-  final pulumi.Input<List<ApplicationGatewayLoadDistributionTarget>>? loadDistributionTargets;
+  final pulumi.Input<List<ApplicationGatewayLoadDistributionTarget>?>? loadDistributionTargets;
   /// Name of the load distribution policy that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ApplicationGatewayLoadDistributionPolicy].
   /// [id] Resource ID.
@@ -38,7 +38,7 @@ class ApplicationGatewayLoadDistributionPolicy {
   factory ApplicationGatewayLoadDistributionPolicy.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayLoadDistributionPolicy(
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      loadDistributionAlgorithm: (() { final guardedValue = map['loadDistributionAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loadDistributionAlgorithm: (() { final guardedValue = map['loadDistributionAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       loadDistributionTargets: (() { final guardedValue = map['loadDistributionTargets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ApplicationGatewayLoadDistributionTarget>(guardedValue, (value) => ApplicationGatewayLoadDistributionTarget.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

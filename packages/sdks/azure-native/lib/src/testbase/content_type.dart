@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of command content.
-enum ContentType {
+enum ContentType implements pulumi.PulumiEnum<String> {
   valueInline("Inline"),
   valueFile("File"),
   valuePath("Path");
 
   const ContentType(this.wireValue);
+  @override
   final String wireValue;
 
   static ContentType fromValue(String value) {

@@ -9,31 +9,31 @@ import 'subscription_state.dart';
 /// {@macro pulumi_apimanagement_workspace_subscription_args_doc}
 class WorkspaceSubscriptionArgs {
   /// Determines whether tracing can be enabled
-  final pulumi.Input<bool>? allowTracing;
+  final pulumi.Input<bool?>? allowTracing;
   /// Determines the type of application which send the create user request. Default is legacy publisher portal.
-  final pulumi.Input<String>? appType;
+  final pulumi.Input<String?>? appType;
   /// Subscription name.
   final pulumi.Input<String> displayName;
   /// Notify change in Subscription State.
   /// - If false, do not send any email notification for change of state of subscription
   /// - If true, send email notification of change of state of subscription
-  final pulumi.Input<bool>? notify;
+  final pulumi.Input<bool?>? notify;
   /// User (user id path) for whom subscription is being created in form /users/{userId}
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// Primary subscription key. If not specified during request key will be generated automatically.
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Scope like /products/{productId} or /apis or /apis/{apiId}.
   final pulumi.Input<String> scope;
   /// Secondary subscription key. If not specified during request key will be generated automatically.
-  final pulumi.Input<String>? secondaryKey;
+  final pulumi.Input<String?>? secondaryKey;
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
   /// Subscription entity Identifier. The entity represents the association between a user and a product in API Management.
-  final pulumi.Input<String>? sid;
+  final pulumi.Input<String?>? sid;
   /// Initial subscription state. If no value is specified, subscription is created with Submitted state. Possible states are * active – the subscription is active, * suspended – the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted – the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected – the subscription request has been denied by an administrator, * cancelled – the subscription has been cancelled by the developer or administrator, * expired – the subscription reached its expiration date and was deactivated.
-  final pulumi.Input<SubscriptionState>? state;
+  final pulumi.Input<SubscriptionState?>? state;
   /// Workspace identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> workspaceId;
 

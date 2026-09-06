@@ -32,7 +32,7 @@ class EstimatedVMPriceResponse {
   factory EstimatedVMPriceResponse.fromMap(Map<String, dynamic> map) {
     return EstimatedVMPriceResponse(
       osType: pulumi.Input.fromValue(map['osType'] as String),
-      retailPrice: pulumi.Input.fromValue(map['retailPrice'] as double),
+      retailPrice: pulumi.Input.fromValue((map['retailPrice'] as num).toDouble()),
       vmTier: pulumi.Input.fromValue(map['vmTier'] as String),
     );
   }

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings for Azure Monitor based alerts
 class AzureMonitorAlertSettings {
-  final pulumi.Input<String>? alertsForAllJobFailures;
+  final pulumi.Input<dynamic>? alertsForAllJobFailures;
 
   /// Creates a new [AzureMonitorAlertSettings].
   /// [alertsForAllJobFailures] Optional.
@@ -20,7 +20,7 @@ class AzureMonitorAlertSettings {
 
   factory AzureMonitorAlertSettings.fromMap(Map<String, dynamic> map) {
     return AzureMonitorAlertSettings(
-      alertsForAllJobFailures: (() { final guardedValue = map['alertsForAllJobFailures']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      alertsForAllJobFailures: (() { final guardedValue = map['alertsForAllJobFailures']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

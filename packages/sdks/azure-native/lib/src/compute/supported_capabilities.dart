@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// List of supported capabilities persisted on the disk resource for VM use.
 class SupportedCapabilities {
   /// True if the image from which the OS disk is created supports accelerated networking.
-  final pulumi.Input<bool>? acceleratedNetwork;
+  final pulumi.Input<bool?>? acceleratedNetwork;
   /// CPU architecture supported by an OS disk.
-  final pulumi.Input<String>? architecture;
+  final pulumi.Input<dynamic>? architecture;
   /// The disk controllers that an OS disk supports. If set it can be SCSI or SCSI, NVME or NVME, SCSI.
-  final pulumi.Input<String>? diskControllerTypes;
+  final pulumi.Input<String?>? diskControllerTypes;
 
   /// Creates a new [SupportedCapabilities].
   /// [acceleratedNetwork] True if the image from which the OS disk is created supports accelerated networking.
@@ -32,7 +32,7 @@ class SupportedCapabilities {
   factory SupportedCapabilities.fromMap(Map<String, dynamic> map) {
     return SupportedCapabilities(
       acceleratedNetwork: (() { final guardedValue = map['acceleratedNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      architecture: (() { final guardedValue = map['architecture']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      architecture: (() { final guardedValue = map['architecture']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       diskControllerTypes: (() { final guardedValue = map['diskControllerTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

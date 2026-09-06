@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Provisioning state of the partner configuration.
-enum PartnerConfigurationProvisioningState {
+enum PartnerConfigurationProvisioningState implements pulumi.PulumiEnum<String> {
   valueCreating("Creating"),
   valueUpdating("Updating"),
   valueDeleting("Deleting"),
@@ -8,6 +10,7 @@ enum PartnerConfigurationProvisioningState {
   valueFailed("Failed");
 
   const PartnerConfigurationProvisioningState(this.wireValue);
+  @override
   final String wireValue;
 
   static PartnerConfigurationProvisioningState fromValue(String value) {

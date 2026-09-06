@@ -9,7 +9,7 @@ class LoadBalancerProfileResponse {
   /// The list of effective outbound IP addresses of the public load balancer.
   final pulumi.Input<List<EffectiveOutboundIPResponse>> effectiveOutboundIps;
   /// The desired managed outbound IPs for the cluster public load balancer.
-  final pulumi.Input<ManagedOutboundIPsResponse>? managedOutboundIps;
+  final pulumi.Input<ManagedOutboundIPsResponse?>? managedOutboundIps;
 
   /// Creates a new [LoadBalancerProfileResponse].
   /// [effectiveOutboundIps] The list of effective outbound IP addresses of the public load balancer.

@@ -9,7 +9,7 @@ class JsonWebKeySet {
   /// an order of preference among them, although applications of JWK Sets
   /// can choose to assign a meaning to the order for their purposes, if
   /// desired.
-  final pulumi.Input<List<JsonWebKey>>? keys;
+  final pulumi.Input<List<JsonWebKey>?>? keys;
 
   /// Creates a new [JsonWebKeySet].
   /// [keys] The value of the "keys" parameter is an array of JWK values.  By

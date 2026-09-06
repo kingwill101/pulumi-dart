@@ -12,29 +12,29 @@ import 'user_access_right.dart';
 /// {@macro pulumi_databoxedge_share_args_doc}
 class ShareArgs {
   /// Access protocol to be used by the share.
-  final pulumi.Input<String> accessProtocol;
+  final pulumi.Input<dynamic> accessProtocol;
   /// Azure container mapping for the share.
-  final pulumi.Input<AzureContainerInfo>? azureContainerInfo;
+  final pulumi.Input<AzureContainerInfo?>? azureContainerInfo;
   /// List of IP addresses and corresponding access rights on the share(required for NFS protocol).
-  final pulumi.Input<List<ClientAccessRight>>? clientAccessRights;
+  final pulumi.Input<List<ClientAccessRight>?>? clientAccessRights;
   /// Data policy of the share.
-  final pulumi.Input<String>? dataPolicy;
+  final pulumi.Input<dynamic>? dataPolicy;
   /// Description for the share.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The device name.
   final pulumi.Input<String> deviceName;
   /// Current monitoring status of the share.
-  final pulumi.Input<String> monitoringStatus;
+  final pulumi.Input<dynamic> monitoringStatus;
   /// The share name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Details of the refresh job on this share.
-  final pulumi.Input<RefreshDetails>? refreshDetails;
+  final pulumi.Input<RefreshDetails?>? refreshDetails;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// Current status of the share.
-  final pulumi.Input<String> shareStatus;
+  final pulumi.Input<dynamic> shareStatus;
   /// Mapping of users and corresponding access rights on the share (required for SMB protocol).
-  final pulumi.Input<List<UserAccessRight>>? userAccessRights;
+  final pulumi.Input<List<UserAccessRight>?>? userAccessRights;
 
   /// Creates a new [ShareArgs].
   /// [accessProtocol] Access protocol to be used by the share.
@@ -83,17 +83,17 @@ class ShareArgs {
 
   factory ShareArgs.fromMap(Map<String, dynamic> map) {
     return ShareArgs(
-      accessProtocol: pulumi.Input.fromValue(map['accessProtocol'] as String),
+      accessProtocol: pulumi.Input.fromValue(map['accessProtocol']),
       azureContainerInfo: (() { final guardedValue = map['azureContainerInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureContainerInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       clientAccessRights: (() { final guardedValue = map['clientAccessRights']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClientAccessRight>(guardedValue, (value) => ClientAccessRight.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      dataPolicy: (() { final guardedValue = map['dataPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataPolicy: (() { final guardedValue = map['dataPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
-      monitoringStatus: pulumi.Input.fromValue(map['monitoringStatus'] as String),
+      monitoringStatus: pulumi.Input.fromValue(map['monitoringStatus']),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       refreshDetails: (() { final guardedValue = map['refreshDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RefreshDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      shareStatus: pulumi.Input.fromValue(map['shareStatus'] as String),
+      shareStatus: pulumi.Input.fromValue(map['shareStatus']),
       userAccessRights: (() { final guardedValue = map['userAccessRights']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserAccessRight>(guardedValue, (value) => UserAccessRight.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

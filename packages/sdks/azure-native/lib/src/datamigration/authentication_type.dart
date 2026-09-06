@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Authentication type to use for connection
-enum AuthenticationType {
+enum AuthenticationType implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueWindowsAuthentication("WindowsAuthentication"),
   valueSqlAuthentication("SqlAuthentication"),
@@ -7,6 +9,7 @@ enum AuthenticationType {
   valueActiveDirectoryPassword("ActiveDirectoryPassword");
 
   const AuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthenticationType fromValue(String value) {

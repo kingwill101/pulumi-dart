@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The class of storage used to store the object.
-enum NoncurrentVersionTransitionStorageClass {
+enum NoncurrentVersionTransitionStorageClass implements pulumi.PulumiEnum<String> {
   dEEPARCHIVE("DEEP_ARCHIVE"),
   gLACIER("GLACIER"),
   gLACIERIR("GLACIER_IR"),
@@ -8,6 +10,7 @@ enum NoncurrentVersionTransitionStorageClass {
   sTANDARDIA("STANDARD_IA");
 
   const NoncurrentVersionTransitionStorageClass(this.wireValue);
+  @override
   final String wireValue;
 
   static NoncurrentVersionTransitionStorageClass fromValue(String value) {

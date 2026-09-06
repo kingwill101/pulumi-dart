@@ -6,7 +6,7 @@ import 'associated_identity.dart';
 /// Drill monitoring properties.
 class MonitoringPropertiesOfDrill {
   /// Identity to use for Drill monitoring operations.
-  final pulumi.Input<AssociatedIdentity>? identity;
+  final pulumi.Input<AssociatedIdentity?>? identity;
 
   /// Creates a new [MonitoringPropertiesOfDrill].
   /// [identity] Identity to use for Drill monitoring operations.

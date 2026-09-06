@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'prediction_args.dart';
+import 'prediction_response_grades.dart';
 import 'prediction_response_mappings.dart';
 import 'prediction_response_system_generated_entities.dart';
 
@@ -301,7 +302,7 @@ class Prediction extends pulumi.CustomResource {
   /// Display name of the prediction.
   late final pulumi.Output<Map<String, String>?> displayName;
   /// The prediction grades.
-  late final pulumi.Output<List<Map<String, dynamic>>?> grades;
+  late final pulumi.Output<List<PredictionResponseGrades>?> grades;
   /// Interaction types involved in the prediction.
   late final pulumi.Output<List<String>?> involvedInteractionTypes;
   /// KPI types involved in the prediction.
@@ -349,12 +350,43 @@ class Prediction extends pulumi.CustomResource {
         ) {
     autoAnalyze = registerOutput<bool>('autoAnalyze');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    description = registerOutput<Map<String, String>?>('description');
-    displayName = registerOutput<Map<String, String>?>('displayName');
-    grades = registerOutput<List<Map<String, dynamic>>?>('grades');
-    involvedInteractionTypes = registerOutput<List<String>?>('involvedInteractionTypes');
-    involvedKpiTypes = registerOutput<List<String>?>('involvedKpiTypes');
-    involvedRelationships = registerOutput<List<String>?>('involvedRelationships');
+    description = registerOutput<Map<String, String>?>('description', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    displayName = registerOutput<Map<String, String>?>('displayName', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    grades = registerOutput<List<PredictionResponseGrades>?>('grades', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PredictionResponseGrades>(guardedValue, (value) => PredictionResponseGrades.fromMap((value as Map).cast<String, dynamic>())); });
+    involvedInteractionTypes = registerOutput<List<String>?>('involvedInteractionTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    involvedKpiTypes = registerOutput<List<String>?>('involvedKpiTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    involvedRelationships = registerOutput<List<String>?>('involvedRelationships', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    mappings = registerOutput<PredictionResponseMappings>('mappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PredictionResponseMappings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    negativeOutcomeExpression = registerOutput<String>('negativeOutcomeExpression');
+    positiveOutcomeExpression = registerOutput<String>('positiveOutcomeExpression');
+    predictionName = registerOutput<String?>('predictionName');
+    primaryProfileType = registerOutput<String>('primaryProfileType');
+    provisioningState = registerOutput<String>('provisioningState');
+    scopeExpression = registerOutput<String>('scopeExpression');
+    scoreLabel = registerOutput<String>('scoreLabel');
+    systemGeneratedEntities = registerOutput<PredictionResponseSystemGeneratedEntities>('systemGeneratedEntities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PredictionResponseSystemGeneratedEntities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Prediction] resource.
+  Prediction.reference(String urn)
+    : super(
+        'azure-native:customerinsights:Prediction',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoAnalyze = registerOutput<bool>('autoAnalyze');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<Map<String, String>?>('description', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    displayName = registerOutput<Map<String, String>?>('displayName', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    grades = registerOutput<List<PredictionResponseGrades>?>('grades', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PredictionResponseGrades>(guardedValue, (value) => PredictionResponseGrades.fromMap((value as Map).cast<String, dynamic>())); });
+    involvedInteractionTypes = registerOutput<List<String>?>('involvedInteractionTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    involvedKpiTypes = registerOutput<List<String>?>('involvedKpiTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    involvedRelationships = registerOutput<List<String>?>('involvedRelationships', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     mappings = registerOutput<PredictionResponseMappings>('mappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PredictionResponseMappings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     negativeOutcomeExpression = registerOutput<String>('negativeOutcomeExpression');

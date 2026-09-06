@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_kusto_sandbox_custom_image_args_doc}
 class SandboxCustomImageArgs {
   /// The base image name on which the custom image is built on top of. It can be one of the LanguageExtensionImageName (e.g.: 'Python3_10_8', 'Python3_10_8_DL') or the name of an existing custom image. Either this property or languageVersion should be specified.
-  final pulumi.Input<String>? baseImageName;
+  final pulumi.Input<String?>? baseImageName;
   /// The name of the Kusto cluster.
   final pulumi.Input<String> clusterName;
   /// The language name, for example Python.
-  final pulumi.Input<String> language;
+  final pulumi.Input<dynamic> language;
   /// The version of the language. Either this property or baseImageName should be specified.
-  final pulumi.Input<String>? languageVersion;
+  final pulumi.Input<String?>? languageVersion;
   /// The requirements file content.
-  final pulumi.Input<String>? requirementsFileContent;
+  final pulumi.Input<String?>? requirementsFileContent;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the sandbox custom image.
-  final pulumi.Input<String>? sandboxCustomImageName;
+  final pulumi.Input<String?>? sandboxCustomImageName;
 
   /// Creates a new [SandboxCustomImageArgs].
   /// [baseImageName] The base image name on which the custom image is built on top of. It can be one of the LanguageExtensionImageName (e.g.: 'Python3_10_8', 'Python3_10_8_DL') or the name of an existing custom image. Either this property or languageVersion should be specified.
@@ -56,7 +56,7 @@ class SandboxCustomImageArgs {
     return SandboxCustomImageArgs(
       baseImageName: (() { final guardedValue = map['baseImageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
-      language: pulumi.Input.fromValue(map['language'] as String),
+      language: pulumi.Input.fromValue(map['language']),
       languageVersion: (() { final guardedValue = map['languageVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       requirementsFileContent: (() { final guardedValue = map['requirementsFileContent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

@@ -9,21 +9,21 @@ import 'extended_location.dart';
 /// {@macro pulumi_scvmm_cloud_args_doc}
 class CloudArgs {
   /// Name of the Cloud.
-  final pulumi.Input<String>? cloudName;
+  final pulumi.Input<String?>? cloudName;
   /// The extended location.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// Gets or sets the inventory Item ID for the resource.
-  final pulumi.Input<String>? inventoryItemId;
+  final pulumi.Input<String?>? inventoryItemId;
   /// Gets or sets the location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Unique ID of the cloud.
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
   /// ARM Id of the vmmServer resource in which this resource resides.
-  final pulumi.Input<String>? vmmServerId;
+  final pulumi.Input<String?>? vmmServerId;
 
   /// Creates a new [CloudArgs].
   /// [cloudName] Name of the Cloud.

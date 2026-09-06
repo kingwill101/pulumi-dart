@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Azure OpenAI blocklist config.
 class RaiBlocklistConfigResponse {
   /// If blocking would occur.
-  final pulumi.Input<bool>? blocking;
+  final pulumi.Input<bool?>? blocking;
   /// Name of ContentFilter.
-  final pulumi.Input<String>? blocklistName;
+  final pulumi.Input<String?>? blocklistName;
 
   /// Creates a new [RaiBlocklistConfigResponse].
   /// [blocking] If blocking would occur.

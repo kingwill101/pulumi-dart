@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_devtestlab_get_policy_args_doc}
 class GetPolicyArgs {
   /// Specify the $expand query. Example: 'properties($select=description)'
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// labs
   final pulumi.Input<String> labName;
   /// The name of the Policy

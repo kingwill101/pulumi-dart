@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// IP Group properties.
 class IpGroupPropertiesResponse {
   /// IP Address type.
-  final pulumi.Input<String>? ipAddressType;
+  final pulumi.Input<String?>? ipAddressType;
   /// List of IP Prefixes.
-  final pulumi.Input<List<String>>? ipPrefixes;
+  final pulumi.Input<List<String>?>? ipPrefixes;
   /// IP Group name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [IpGroupPropertiesResponse].
   /// [ipAddressType] IP Address type.

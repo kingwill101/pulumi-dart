@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Parameter example.
 class ParameterExampleContract {
   /// Long description for the example
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A URL that points to the literal example
-  final pulumi.Input<String>? externalValue;
+  final pulumi.Input<String?>? externalValue;
   /// Short description for the example
-  final pulumi.Input<String>? summary;
+  final pulumi.Input<String?>? summary;
   /// Example value. May be a primitive value, or an object.
   final pulumi.Input<dynamic>? value;
 

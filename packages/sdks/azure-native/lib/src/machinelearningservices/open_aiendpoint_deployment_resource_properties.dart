@@ -6,17 +6,17 @@ import 'endpoint_deployment_model.dart';
 
 class OpenAIEndpointDeploymentResourceProperties {
   /// The failure reason if the creation failed.
-  final pulumi.Input<String>? failureReason;
+  final pulumi.Input<String?>? failureReason;
   /// Model used for the endpoint deployment.
   final pulumi.Input<EndpointDeploymentModel> model;
   /// The name of RAI policy.
-  final pulumi.Input<String>? raiPolicyName;
-  final pulumi.Input<CognitiveServicesSku>? sku;
+  final pulumi.Input<String?>? raiPolicyName;
+  final pulumi.Input<CognitiveServicesSku?>? sku;
   /// Kind of the deployment.
   /// Expected value is 'Azure.OpenAI'.
   final pulumi.Input<String> type;
   /// Deployment model version upgrade option.
-  final pulumi.Input<String>? versionUpgradeOption;
+  final pulumi.Input<dynamic>? versionUpgradeOption;
 
   /// Creates a new [OpenAIEndpointDeploymentResourceProperties].
   /// [failureReason] The failure reason if the creation failed.
@@ -52,7 +52,7 @@ class OpenAIEndpointDeploymentResourceProperties {
       raiPolicyName: (() { final guardedValue = map['raiPolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CognitiveServicesSku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      versionUpgradeOption: (() { final guardedValue = map['versionUpgradeOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      versionUpgradeOption: (() { final guardedValue = map['versionUpgradeOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

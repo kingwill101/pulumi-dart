@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_securityinsights_action_args_doc}
 class ActionArgs {
   /// Action ID
-  final pulumi.Input<String>? actionId;
+  final pulumi.Input<String?>? actionId;
   /// Logic App Resource Id, /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.
   final pulumi.Input<String> logicAppResourceId;
   /// The name of the resource group. The name is case insensitive.

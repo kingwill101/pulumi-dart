@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'discount_args.dart';
-import 'entity_type_affiliate_discount_response.dart';
 import 'managed_service_identity_response.dart';
 import 'plan_response.dart';
 import 'sku_response.dart';
@@ -2149,7 +2148,7 @@ class Discount extends pulumi.CustomResource {
   /// Plan for the resource.
   late final pulumi.Output<PlanResponse?> plan;
   /// Discount properties
-  late final pulumi.Output<EntityTypeAffiliateDiscountResponse> properties;
+  late final pulumi.Output<dynamic> properties;
   /// The resource model definition representing SKU
   late final pulumi.Output<SkuResponse?> sku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -2181,10 +2180,34 @@ class Discount extends pulumi.CustomResource {
     managedBy = registerOutput<String?>('managedBy');
     this.name = registerOutput<String>('name');
     plan = registerOutput<PlanResponse?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    properties = registerOutput<EntityTypeAffiliateDiscountResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntityTypeAffiliateDiscountResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<dynamic>('properties');
     sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Discount] resource.
+  Discount.reference(String urn)
+    : super(
+        'azure-native:billingbenefits:Discount',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    managedBy = registerOutput<String?>('managedBy');
+    this.name = registerOutput<String>('name');
+    plan = registerOutput<PlanResponse?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<dynamic>('properties');
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

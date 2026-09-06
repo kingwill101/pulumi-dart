@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A DataFactory compute.
 class DataFactory {
   /// Location for the underlying compute
-  final pulumi.Input<String>? computeLocation;
+  final pulumi.Input<String?>? computeLocation;
   /// The type of compute
   /// Expected value is 'DataFactory'.
   final pulumi.Input<String> computeType;
   /// The description of the Machine Learning compute.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-  final pulumi.Input<bool>? disableLocalAuth;
+  final pulumi.Input<bool?>? disableLocalAuth;
   /// ARM resource id of the underlying compute
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [DataFactory].
   /// [computeLocation] Location for the underlying compute

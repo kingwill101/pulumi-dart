@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Workload discovery source.
-enum DiscoverySource {
+enum DiscoverySource implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   appliance("Appliance"),
   import("Import");
 
   const DiscoverySource(this.wireValue);
+  @override
   final String wireValue;
 
   static DiscoverySource fromValue(String value) {

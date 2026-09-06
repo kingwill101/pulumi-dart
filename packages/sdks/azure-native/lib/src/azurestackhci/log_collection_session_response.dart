@@ -68,7 +68,7 @@ class LogCollectionSessionResponse {
       logCollectionJobType: pulumi.Input.fromValue(map['logCollectionJobType'] as String),
       logCollectionStatus: pulumi.Input.fromValue(map['logCollectionStatus'] as String),
       logEndTime: pulumi.Input.fromValue(map['logEndTime'] as String),
-      logSize: pulumi.Input.fromValue(map['logSize'] as double),
+      logSize: pulumi.Input.fromValue((map['logSize'] as num).toDouble()),
       logStartTime: pulumi.Input.fromValue(map['logStartTime'] as String),
       timeCollected: pulumi.Input.fromValue(map['timeCollected'] as String),
     );

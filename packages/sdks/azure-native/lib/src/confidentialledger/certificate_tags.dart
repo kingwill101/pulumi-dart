@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Tags for Managed CCF Certificates
 class CertificateTags {
   /// Additional tags for Managed CCF Certificates
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CertificateTags].
   /// [tags] Additional tags for Managed CCF Certificates

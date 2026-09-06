@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Dsc configuration property associated with the entity.
 class DscConfigurationAssociationPropertyResponse {
   /// Gets or sets the name of the Dsc configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [DscConfigurationAssociationPropertyResponse].
   /// [name] Gets or sets the name of the Dsc configuration.

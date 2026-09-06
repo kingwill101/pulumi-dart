@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The provider extended location.
 class ProviderExtendedLocationResponse {
   /// The extended locations for the azure location.
-  final pulumi.Input<List<String>>? extendedLocations;
+  final pulumi.Input<List<String>?>? extendedLocations;
   /// The azure location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The extended location type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ProviderExtendedLocationResponse].
   /// [extendedLocations] The extended locations for the azure location.

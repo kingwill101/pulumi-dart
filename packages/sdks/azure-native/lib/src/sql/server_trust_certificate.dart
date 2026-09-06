@@ -190,4 +190,21 @@ class ServerTrustCertificate extends pulumi.CustomResource {
     thumbprint = registerOutput<String>('thumbprint');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ServerTrustCertificate] resource.
+  ServerTrustCertificate.reference(String urn)
+    : super(
+        'azure-native:sql:ServerTrustCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    certificateName = registerOutput<String>('certificateName');
+    this.name = registerOutput<String>('name');
+    publicBlob = registerOutput<String?>('publicBlob');
+    thumbprint = registerOutput<String>('thumbprint');
+    type = registerOutput<String>('type');
+  }
 }

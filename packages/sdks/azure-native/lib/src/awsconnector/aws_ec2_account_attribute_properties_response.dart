@@ -6,9 +6,9 @@ import 'account_attribute_value_response.dart';
 /// Definition of awsEc2AccountAttribute
 class AwsEc2AccountAttributePropertiesResponse {
   /// &lt;p&gt;The name of the account attribute.&lt;/p&gt;
-  final pulumi.Input<String>? attributeName;
+  final pulumi.Input<String?>? attributeName;
   /// &lt;p&gt;The values for the account attribute.&lt;/p&gt;
-  final pulumi.Input<List<AccountAttributeValueResponse>>? attributeValues;
+  final pulumi.Input<List<AccountAttributeValueResponse>?>? attributeValues;
 
   /// Creates a new [AwsEc2AccountAttributePropertiesResponse].
   /// [attributeName] &lt;p&gt;The name of the account attribute.&lt;/p&gt;

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Cloud HSM Properties
 class CloudHsmPropertiesResponse {
   /// FQDN of the Cloud HSM
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// The Cloud HSM State. Values are: Deploying, ConfiguringSlb, Starting, Starting, Failed, Failed, Deleting, DeletingSlbEntry, InitialProvisioning, Updating
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The Cloud HSM State message
-  final pulumi.Input<String>? stateMessage;
+  final pulumi.Input<String?>? stateMessage;
 
   /// Creates a new [CloudHsmPropertiesResponse].
   /// [fqdn] FQDN of the Cloud HSM

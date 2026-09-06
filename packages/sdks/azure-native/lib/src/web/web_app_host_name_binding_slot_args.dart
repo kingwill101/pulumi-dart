@@ -12,31 +12,31 @@ import 'ssl_state.dart';
 /// {@macro pulumi_web_web_app_host_name_binding_slot_args_doc}
 class WebAppHostNameBindingSlotArgs {
   /// Azure resource name.
-  final pulumi.Input<String>? azureResourceName;
+  final pulumi.Input<String?>? azureResourceName;
   /// Azure resource type.
-  final pulumi.Input<AzureResourceType>? azureResourceType;
+  final pulumi.Input<AzureResourceType?>? azureResourceType;
   /// Custom DNS record type.
-  final pulumi.Input<CustomHostNameDnsRecordType>? customHostNameDnsRecordType;
+  final pulumi.Input<CustomHostNameDnsRecordType?>? customHostNameDnsRecordType;
   /// Fully qualified ARM domain resource URI.
-  final pulumi.Input<String>? domainId;
+  final pulumi.Input<String?>? domainId;
   /// Hostname in the hostname binding.
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// Hostname type.
-  final pulumi.Input<HostNameType>? hostNameType;
+  final pulumi.Input<HostNameType?>? hostNameType;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// App Service app name.
-  final pulumi.Input<String>? siteName;
+  final pulumi.Input<String?>? siteName;
   /// Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
   final pulumi.Input<String> slot;
   /// SSL type
-  final pulumi.Input<SslState>? sslState;
+  final pulumi.Input<SslState?>? sslState;
   /// SSL certificate thumbprint
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [WebAppHostNameBindingSlotArgs].
   /// [azureResourceName] Azure resource name.

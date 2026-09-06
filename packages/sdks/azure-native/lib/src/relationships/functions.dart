@@ -22,6 +22,17 @@ Future<GetDependencyOfRelationshipResult> getDependencyOfRelationship(
   return GetDependencyOfRelationshipResult.fromMap(result);
 }
 
+pulumi.Output<GetDependencyOfRelationshipResult> getDependencyOfRelationshipOutput(
+  GetDependencyOfRelationshipArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:relationships:getDependencyOfRelationship',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDependencyOfRelationshipResult.fromMap);
+}
+
 /// Get a ServiceGroupMemberRelationship
 ///
 /// Uses Azure REST API version 2023-09-01-preview.
@@ -38,4 +49,15 @@ Future<GetServiceGroupMemberRelationshipResult> getServiceGroupMemberRelationshi
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceGroupMemberRelationshipResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceGroupMemberRelationshipResult> getServiceGroupMemberRelationshipOutput(
+  GetServiceGroupMemberRelationshipArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:relationships:getServiceGroupMemberRelationship',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceGroupMemberRelationshipResult.fromMap);
 }

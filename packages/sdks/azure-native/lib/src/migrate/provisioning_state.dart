@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The status of the last operation.
-enum ProvisioningState {
+enum ProvisioningState implements pulumi.PulumiEnum<String> {
   succeeded("Succeeded"),
   failed("Failed"),
   canceled("Canceled"),
@@ -9,6 +11,7 @@ enum ProvisioningState {
   accepted("Accepted");
 
   const ProvisioningState(this.wireValue);
+  @override
   final String wireValue;
 
   static ProvisioningState fromValue(String value) {

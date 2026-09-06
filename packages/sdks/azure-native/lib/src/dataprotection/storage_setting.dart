@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Storage setting
 class StorageSetting {
   /// Gets or sets the type of the datastore.
-  final pulumi.Input<String>? datastoreType;
+  final pulumi.Input<dynamic>? datastoreType;
   /// Gets or sets the type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [StorageSetting].
   /// [datastoreType] Gets or sets the type of the datastore.
@@ -26,8 +26,8 @@ class StorageSetting {
 
   factory StorageSetting.fromMap(Map<String, dynamic> map) {
     return StorageSetting(
-      datastoreType: (() { final guardedValue = map['datastoreType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      datastoreType: (() { final guardedValue = map['datastoreType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

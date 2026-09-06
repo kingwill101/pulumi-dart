@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// VMwareCbt provider specific container mapping details.
 class VMwareCbtProtectionContainerMappingDetailsResponse {
   /// The SKUs to be excluded.
-  final pulumi.Input<List<String>>? excludedSkus;
+  final pulumi.Input<List<String>?>? excludedSkus;
   /// Gets the class type. Overridden in derived classes.
   /// Expected value is 'VMwareCbt'.
   final pulumi.Input<String> instanceType;

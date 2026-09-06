@@ -7,23 +7,23 @@ class InfrastructureProfileResponse {
   /// Gets the name of the corresponding resource in Kubernetes.
   final pulumi.Input<String> customResourceName;
   /// Firmware type
-  final pulumi.Input<String>? firmwareType;
+  final pulumi.Input<String?>? firmwareType;
   /// Gets or sets the folder path of the vm.
   final pulumi.Input<String> folderPath;
   /// Gets or sets the instance uuid of the vm.
   final pulumi.Input<String> instanceUuid;
   /// Gets or sets the inventory Item ID for the virtual machine.
-  final pulumi.Input<String>? inventoryItemId;
+  final pulumi.Input<String?>? inventoryItemId;
   /// Gets or sets the vCenter Managed Object name for the virtual machine.
   final pulumi.Input<String> moName;
   /// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual machine.
   final pulumi.Input<String> moRefId;
   /// Gets or sets the SMBIOS UUID of the vm.
-  final pulumi.Input<String>? smbiosUuid;
+  final pulumi.Input<String?>? smbiosUuid;
   /// Gets or sets the ARM Id of the template resource to deploy the virtual machine.
-  final pulumi.Input<String>? templateId;
+  final pulumi.Input<String?>? templateId;
   /// Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
-  final pulumi.Input<String>? vCenterId;
+  final pulumi.Input<String?>? vCenterId;
 
   /// Creates a new [InfrastructureProfileResponse].
   /// [customResourceName] Gets the name of the corresponding resource in Kubernetes.

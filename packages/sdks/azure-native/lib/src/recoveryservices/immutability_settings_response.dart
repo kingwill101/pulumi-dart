@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Immutability Settings of vault
 class ImmutabilitySettingsResponse {
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [ImmutabilitySettingsResponse].
   /// [state] Optional.

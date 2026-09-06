@@ -5,34 +5,34 @@ import 'system_data_response.dart';
 /// Result data returned by getArcAddon.
 class GetArcAddonResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Host OS supported by the Arc addon.
-  final String hostPlatform;
+  final String? hostPlatform;
   /// Platform where the runtime is hosted.
-  final String hostPlatformType;
+  final String? hostPlatformType;
   /// The path ID that uniquely identifies the object.
-  final String id;
+  final String? id;
   /// Addon type.
   /// Expected value is 'ArcForKubernetes'.
-  final String kind;
+  final String? kind;
   /// The object name.
-  final String name;
+  final String? name;
   /// Addon Provisioning State
-  final String provisioningState;
+  final String? provisioningState;
   /// Arc resource group name
-  final String resourceGroupName;
+  final String? resourceGroupName;
   /// Arc resource location
-  final String resourceLocation;
+  final String? resourceLocation;
   /// Arc resource Name
-  final String resourceName;
+  final String? resourceName;
   /// Arc resource subscription Id
-  final String subscriptionId;
+  final String? subscriptionId;
   /// Metadata pertaining to creation and last modification of Addon
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The hierarchical type of the object.
-  final String type;
+  final String? type;
   /// Arc resource version
-  final String version;
+  final String? version;
 
   /// Creates a new [GetArcAddonResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -50,57 +50,57 @@ class GetArcAddonResult {
   /// [type] The hierarchical type of the object.
   /// [version] Arc resource version
   const GetArcAddonResult({
-    required this.azureApiVersion,
-    required this.hostPlatform,
-    required this.hostPlatformType,
-    required this.id,
-    required this.kind,
-    required this.name,
-    required this.provisioningState,
-    required this.resourceGroupName,
-    required this.resourceLocation,
-    required this.resourceName,
-    required this.subscriptionId,
-    required this.systemData,
-    required this.type,
-    required this.version,
+    this.azureApiVersion,
+    this.hostPlatform,
+    this.hostPlatformType,
+    this.id,
+    this.kind,
+    this.name,
+    this.provisioningState,
+    this.resourceGroupName,
+    this.resourceLocation,
+    this.resourceName,
+    this.subscriptionId,
+    this.systemData,
+    this.type,
+    this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'hostPlatform': hostPlatform,
-      'hostPlatformType': hostPlatformType,
-      'id': id,
-      'kind': kind,
-      'name': name,
-      'provisioningState': provisioningState,
-      'resourceGroupName': resourceGroupName,
-      'resourceLocation': resourceLocation,
-      'resourceName': resourceName,
-      'subscriptionId': subscriptionId,
-      'systemData': systemData.toMap(),
-      'type': type,
-      'version': version,
+      'azureApiVersion': ?azureApiVersion,
+      'hostPlatform': ?hostPlatform,
+      'hostPlatformType': ?hostPlatformType,
+      'id': ?id,
+      'kind': ?kind,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'resourceGroupName': ?resourceGroupName,
+      'resourceLocation': ?resourceLocation,
+      'resourceName': ?resourceName,
+      'subscriptionId': ?subscriptionId,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
+      'version': ?version,
     };
   }
 
   factory GetArcAddonResult.fromMap(Map<String, dynamic> map) {
     return GetArcAddonResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      hostPlatform: map['hostPlatform'] as String,
-      hostPlatformType: map['hostPlatformType'] as String,
-      id: map['id'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      resourceLocation: map['resourceLocation'] as String,
-      resourceName: map['resourceName'] as String,
-      subscriptionId: map['subscriptionId'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      version: map['version'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hostPlatform: (() { final guardedValue = map['hostPlatform']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hostPlatformType: (() { final guardedValue = map['hostPlatformType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceLocation: (() { final guardedValue = map['resourceLocation']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceName: (() { final guardedValue = map['resourceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

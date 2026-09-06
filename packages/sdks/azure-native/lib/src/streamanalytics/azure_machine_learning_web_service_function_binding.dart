@@ -7,15 +7,15 @@ import 'azure_machine_learning_web_service_output_column.dart';
 /// The binding to an Azure Machine Learning web service.
 class AzureMachineLearningWebServiceFunctionBinding {
   /// The API key used to authenticate with Request-Response endpoint.
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
   /// Number between 1 and 10000 describing maximum number of rows for every Azure ML RRS execute request. Default is 1000.
-  final pulumi.Input<int>? batchSize;
+  final pulumi.Input<int?>? batchSize;
   /// The Request-Response execute endpoint of the Azure Machine Learning web service. Find out more here: https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-consume-web-services#request-response-service-rrs
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// The inputs for the Azure Machine Learning web service endpoint.
-  final pulumi.Input<AzureMachineLearningWebServiceInputs>? inputs;
+  final pulumi.Input<AzureMachineLearningWebServiceInputs?>? inputs;
   /// A list of outputs from the Azure Machine Learning web service endpoint execution.
-  final pulumi.Input<List<AzureMachineLearningWebServiceOutputColumn>>? outputs;
+  final pulumi.Input<List<AzureMachineLearningWebServiceOutputColumn>?>? outputs;
   /// Indicates the function binding type.
   /// Expected value is 'Microsoft.MachineLearning/WebService'.
   final pulumi.Input<String> type;
@@ -50,7 +50,7 @@ class AzureMachineLearningWebServiceFunctionBinding {
   factory AzureMachineLearningWebServiceFunctionBinding.fromMap(Map<String, dynamic> map) {
     return AzureMachineLearningWebServiceFunctionBinding(
       apiKey: (() { final guardedValue = map['apiKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       inputs: (() { final guardedValue = map['inputs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureMachineLearningWebServiceInputs.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       outputs: (() { final guardedValue = map['outputs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AzureMachineLearningWebServiceOutputColumn>(guardedValue, (value) => AzureMachineLearningWebServiceOutputColumn.fromMap((value as Map).cast<String, dynamic>()))); })(),

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The NSP logging configuration properties.
 class NspLoggingConfigurationProperties {
   /// The log categories to enable in the NSP logging configuration.
-  final pulumi.Input<List<String>>? enabledLogCategories;
+  final pulumi.Input<List<String>?>? enabledLogCategories;
   /// The version of the NSP logging configuration.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [NspLoggingConfigurationProperties].
   /// [enabledLogCategories] The log categories to enable in the NSP logging configuration.

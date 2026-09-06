@@ -6,15 +6,15 @@ import 'instance_view_status.dart';
 /// The instance view of a virtual machine extension.
 class VirtualMachineExtensionInstanceView {
   /// The virtual machine extension name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource status information.
-  final pulumi.Input<List<InstanceViewStatus>>? statuses;
+  final pulumi.Input<List<InstanceViewStatus>?>? statuses;
   /// The resource status information.
-  final pulumi.Input<List<InstanceViewStatus>>? substatuses;
+  final pulumi.Input<List<InstanceViewStatus>?>? substatuses;
   /// Specifies the type of the extension; an example is "CustomScriptExtension".
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Specifies the version of the script handler.
-  final pulumi.Input<String>? typeHandlerVersion;
+  final pulumi.Input<String?>? typeHandlerVersion;
 
   /// Creates a new [VirtualMachineExtensionInstanceView].
   /// [name] The virtual machine extension name.

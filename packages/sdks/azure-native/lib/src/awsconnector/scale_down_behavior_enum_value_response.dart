@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ScaleDownBehaviorEnumValue
 class ScaleDownBehaviorEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ScaleDownBehaviorEnumValueResponse].
   /// [value] Property value

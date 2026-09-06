@@ -6,7 +6,7 @@ import 'migration_configuration_response.dart';
 /// ModernizeProject properties.
 class ModernizeProjectModelPropertiesResponse {
   /// MigrationConfiguration properties.
-  final pulumi.Input<MigrationConfigurationResponse>? migrationConfiguration;
+  final pulumi.Input<MigrationConfigurationResponse?>? migrationConfiguration;
   /// Gets or sets the provisioning state of the ModernizeProject.
   final pulumi.Input<String> provisioningState;
   /// Gets or sets the service endpoint.

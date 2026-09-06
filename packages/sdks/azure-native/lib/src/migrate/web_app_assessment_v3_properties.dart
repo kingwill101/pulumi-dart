@@ -7,11 +7,11 @@ import 'web_app_assessment_settings.dart';
 /// WebApp assessment resource properties.
 class WebAppAssessmentV3Properties {
   /// Gets or sets the machine assessment ARM ID for VM fallback.
-  final pulumi.Input<String>? fallbackMachineAssessmentArmId;
+  final pulumi.Input<String?>? fallbackMachineAssessmentArmId;
   /// Gets or sets the scope of assessment.
-  final pulumi.Input<Scope>? scope;
+  final pulumi.Input<Scope?>? scope;
   /// Gets or sets the settings for the assessment.
-  final pulumi.Input<WebAppAssessmentSettings>? settings;
+  final pulumi.Input<WebAppAssessmentSettings?>? settings;
 
   /// Creates a new [WebAppAssessmentV3Properties].
   /// [fallbackMachineAssessmentArmId] Gets or sets the machine assessment ARM ID for VM fallback.

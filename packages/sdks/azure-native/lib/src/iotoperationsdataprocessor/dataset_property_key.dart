@@ -7,7 +7,7 @@ class DatasetPropertyKey {
   /// Path to the input value from the message.
   final pulumi.Input<String> path;
   /// If true the property will be used as a primary key. At most one primary key can exists.
-  final pulumi.Input<bool>? primaryKey;
+  final pulumi.Input<bool?>? primaryKey;
 
   /// Creates a new [DatasetPropertyKey].
   /// [path] Path to the input value from the message.

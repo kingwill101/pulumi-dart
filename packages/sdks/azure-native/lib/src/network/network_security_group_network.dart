@@ -1,5 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'flow_log_response.dart';
+import 'network_interface_response.dart';
 import 'network_security_group_args.dart';
+import 'security_rule_response.dart';
+import 'subnet_response.dart';
 
 /// NetworkSecurityGroup resource.
 ///
@@ -365,11 +369,11 @@ class NetworkSecurityGroupNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The default security rules of network security group.
-  late final pulumi.Output<List<Map<String, dynamic>>> defaultSecurityRules;
+  late final pulumi.Output<List<SecurityRuleResponse>> defaultSecurityRules;
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
   /// A collection of references to flow log resources.
-  late final pulumi.Output<List<Map<String, dynamic>>> flowLogs;
+  late final pulumi.Output<List<FlowLogResponse>> flowLogs;
   /// When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
   late final pulumi.Output<bool?> flushConnection;
   /// Resource location.
@@ -377,15 +381,15 @@ class NetworkSecurityGroupNetwork extends pulumi.CustomResource {
   /// Resource name.
   late final pulumi.Output<String> name;
   /// A collection of references to network interfaces.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
+  late final pulumi.Output<List<NetworkInterfaceResponse>> networkInterfaces;
   /// The provisioning state of the network security group resource.
   late final pulumi.Output<String> provisioningState;
   /// The resource GUID property of the network security group resource.
   late final pulumi.Output<String> resourceGuid;
   /// A collection of security rules of the network security group.
-  late final pulumi.Output<List<Map<String, dynamic>>?> securityRules;
+  late final pulumi.Output<List<SecurityRuleResponse>?> securityRules;
   /// A collection of references to subnets.
-  late final pulumi.Output<List<Map<String, dynamic>>> subnets;
+  late final pulumi.Output<List<SubnetResponse>> subnets;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Resource type.
@@ -406,18 +410,43 @@ class NetworkSecurityGroupNetwork extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    defaultSecurityRules = registerOutput<List<Map<String, dynamic>>>('defaultSecurityRules');
+    defaultSecurityRules = registerOutput<List<SecurityRuleResponse>>('defaultSecurityRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityRuleResponse>(guardedValue, (value) => SecurityRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
-    flowLogs = registerOutput<List<Map<String, dynamic>>>('flowLogs');
+    flowLogs = registerOutput<List<FlowLogResponse>>('flowLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlowLogResponse>(guardedValue, (value) => FlowLogResponse.fromMap((value as Map).cast<String, dynamic>())); });
     flushConnection = registerOutput<bool?>('flushConnection');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
+    networkInterfaces = registerOutput<List<NetworkInterfaceResponse>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceResponse>(guardedValue, (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
-    securityRules = registerOutput<List<Map<String, dynamic>>?>('securityRules');
-    subnets = registerOutput<List<Map<String, dynamic>>>('subnets');
-    tags = registerOutput<Map<String, String>?>('tags');
+    securityRules = registerOutput<List<SecurityRuleResponse>?>('securityRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityRuleResponse>(guardedValue, (value) => SecurityRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    subnets = registerOutput<List<SubnetResponse>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetResponse>(guardedValue, (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [NetworkSecurityGroupNetwork] resource.
+  NetworkSecurityGroupNetwork.reference(String urn)
+    : super(
+        'azure-native:network:NetworkSecurityGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultSecurityRules = registerOutput<List<SecurityRuleResponse>>('defaultSecurityRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityRuleResponse>(guardedValue, (value) => SecurityRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String>('etag');
+    flowLogs = registerOutput<List<FlowLogResponse>>('flowLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlowLogResponse>(guardedValue, (value) => FlowLogResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    flushConnection = registerOutput<bool?>('flushConnection');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    networkInterfaces = registerOutput<List<NetworkInterfaceResponse>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceResponse>(guardedValue, (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    securityRules = registerOutput<List<SecurityRuleResponse>?>('securityRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityRuleResponse>(guardedValue, (value) => SecurityRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    subnets = registerOutput<List<SubnetResponse>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetResponse>(guardedValue, (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

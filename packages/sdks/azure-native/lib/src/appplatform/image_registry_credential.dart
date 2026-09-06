@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Credential of the image registry
 class ImageRegistryCredential {
   /// The password of the image registry credential
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The username of the image registry credential
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [ImageRegistryCredential].
   /// [password] The password of the image registry credential

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Unit of the metric ex: Bytes, Percentage, Count, Seconds, Milliseconds, Bytes/Second, Count/Second, etc.., Other
-enum MetricUnit {
+enum MetricUnit implements pulumi.PulumiEnum<String> {
   byteSeconds("ByteSeconds"),
   bytes("Bytes"),
   bytesPerSecond("BytesPerSecond"),
@@ -14,6 +16,7 @@ enum MetricUnit {
   other("Other");
 
   const MetricUnit(this.wireValue);
+  @override
   final String wireValue;
 
   static MetricUnit fromValue(String value) {

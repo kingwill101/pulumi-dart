@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Scale and concurrency settings for the HTTP trigger.
 class FunctionsScaleAndConcurrencyTriggersHttp {
   /// The maximum number of concurrent HTTP trigger invocations per instance.
-  final pulumi.Input<int>? perInstanceConcurrency;
+  final pulumi.Input<int?>? perInstanceConcurrency;
 
   /// Creates a new [FunctionsScaleAndConcurrencyTriggersHttp].
   /// [perInstanceConcurrency] The maximum number of concurrent HTTP trigger invocations per instance.
@@ -21,7 +21,7 @@ class FunctionsScaleAndConcurrencyTriggersHttp {
 
   factory FunctionsScaleAndConcurrencyTriggersHttp.fromMap(Map<String, dynamic> map) {
     return FunctionsScaleAndConcurrencyTriggersHttp(
-      perInstanceConcurrency: (() { final guardedValue = map['perInstanceConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      perInstanceConcurrency: (() { final guardedValue = map['perInstanceConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

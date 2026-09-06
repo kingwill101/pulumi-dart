@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LegacyDisallowedCondition {
   /// The disallowed legacy operations.
-  final pulumi.Input<List<String>>? disallowedLegacyOperations;
+  final pulumi.Input<List<dynamic>?>? disallowedLegacyOperations;
   /// Feature string.
-  final pulumi.Input<String>? feature;
+  final pulumi.Input<String?>? feature;
 
   /// Creates a new [LegacyDisallowedCondition].
   /// [disallowedLegacyOperations] The disallowed legacy operations.
@@ -25,7 +25,7 @@ class LegacyDisallowedCondition {
 
   factory LegacyDisallowedCondition.fromMap(Map<String, dynamic> map) {
     return LegacyDisallowedCondition(
-      disallowedLegacyOperations: (() { final guardedValue = map['disallowedLegacyOperations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      disallowedLegacyOperations: (() { final guardedValue = map['disallowedLegacyOperations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       feature: (() { final guardedValue = map['feature']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

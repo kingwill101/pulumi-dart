@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Level of the logs to be collected.
-enum LogCollectionLevel {
+enum LogCollectionLevel implements pulumi.PulumiEnum<String> {
   valueError("Error"),
   valueVerbose("Verbose");
 
   const LogCollectionLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static LogCollectionLevel fromValue(String value) {

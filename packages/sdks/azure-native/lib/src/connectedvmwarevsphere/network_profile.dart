@@ -6,7 +6,7 @@ import 'network_interface.dart';
 /// Specifies the network interfaces of the virtual machine.
 class NetworkProfile {
   /// Gets or sets the list of network interfaces associated with the virtual machine.
-  final pulumi.Input<List<NetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterface>?>? networkInterfaces;
 
   /// Creates a new [NetworkProfile].
   /// [networkInterfaces] Gets or sets the list of network interfaces associated with the virtual machine.

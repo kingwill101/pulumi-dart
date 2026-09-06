@@ -1,4 +1,6 @@
-enum AuthorizationMethod {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum AuthorizationMethod implements pulumi.PulumiEnum<String> {
   valueHEAD("HEAD"),
   valueOPTIONS("OPTIONS"),
   valueTRACE("TRACE"),
@@ -9,6 +11,7 @@ enum AuthorizationMethod {
   valueDELETE("DELETE");
 
   const AuthorizationMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthorizationMethod fromValue(String value) {

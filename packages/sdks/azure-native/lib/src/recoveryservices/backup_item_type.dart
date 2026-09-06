@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of backup items associated with this container.
-enum BackupItemType {
+enum BackupItemType implements pulumi.PulumiEnum<String> {
   valueInvalid("Invalid"),
   valueVM("VM"),
   valueFileFolder("FileFolder"),
@@ -18,6 +20,7 @@ enum BackupItemType {
   valueSAPHanaDBInstance("SAPHanaDBInstance");
 
   const BackupItemType(this.wireValue);
+  @override
   final String wireValue;
 
   static BackupItemType fromValue(String value) {

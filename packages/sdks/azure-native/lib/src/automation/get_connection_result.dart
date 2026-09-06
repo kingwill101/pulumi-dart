@@ -6,25 +6,25 @@ import 'system_data_response.dart';
 /// Result data returned by getConnection.
 class GetConnectionResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Gets or sets the connectionType of the connection.
   final ConnectionTypeAssociationPropertyResponse? connectionType;
   /// Gets the creation time.
-  final String creationTime;
+  final String? creationTime;
   /// Gets or sets the description.
   final String? description;
   /// Gets the field definition values of the connection.
-  final Map<String, String> fieldDefinitionValues;
+  final Map<String, String>? fieldDefinitionValues;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Gets the last modified time.
-  final String lastModifiedTime;
+  final String? lastModifiedTime;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetConnectionResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -38,45 +38,45 @@ class GetConnectionResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetConnectionResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.connectionType,
-    required this.creationTime,
+    this.creationTime,
     this.description,
-    required this.fieldDefinitionValues,
-    required this.id,
-    required this.lastModifiedTime,
-    required this.name,
-    required this.systemData,
-    required this.type,
+    this.fieldDefinitionValues,
+    this.id,
+    this.lastModifiedTime,
+    this.name,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'connectionType': ?connectionType?.toMap(),
-      'creationTime': creationTime,
+      'creationTime': ?creationTime,
       'description': ?description,
-      'fieldDefinitionValues': fieldDefinitionValues,
-      'id': id,
-      'lastModifiedTime': lastModifiedTime,
-      'name': name,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'fieldDefinitionValues': ?fieldDefinitionValues,
+      'id': ?id,
+      'lastModifiedTime': ?lastModifiedTime,
+      'name': ?name,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetConnectionResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       connectionType: (() { final guardedValue = map['connectionType']; if (guardedValue == null) return null; return ConnectionTypeAssociationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      creationTime: map['creationTime'] as String,
+      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      fieldDefinitionValues: (map['fieldDefinitionValues'] as Map).cast<String, String>(),
-      id: map['id'] as String,
-      lastModifiedTime: map['lastModifiedTime'] as String,
-      name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      fieldDefinitionValues: (() { final guardedValue = map['fieldDefinitionValues']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

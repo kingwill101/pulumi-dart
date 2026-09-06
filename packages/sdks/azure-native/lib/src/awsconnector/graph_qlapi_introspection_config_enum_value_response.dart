@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of GraphQLApiIntrospectionConfigEnumValue
 class GraphQLApiIntrospectionConfigEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [GraphQLApiIntrospectionConfigEnumValueResponse].
   /// [value] Property value

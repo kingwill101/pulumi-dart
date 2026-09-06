@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Flag if global mesh is supported.
-enum IsGlobal {
+enum IsGlobal implements pulumi.PulumiEnum<String> {
   valueFalse("False"),
   valueTrue("True");
 
   const IsGlobal(this.wireValue);
+  @override
   final String wireValue;
 
   static IsGlobal fromValue(String value) {

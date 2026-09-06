@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Business case Currency.
-enum BusinessCaseCurrency {
+enum BusinessCaseCurrency implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   uSD("USD"),
   dKK("DKK"),
@@ -28,6 +30,7 @@ enum BusinessCaseCurrency {
   cNY("CNY");
 
   const BusinessCaseCurrency(this.wireValue);
+  @override
   final String wireValue;
 
   static BusinessCaseCurrency fromValue(String value) {

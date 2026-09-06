@@ -8,23 +8,23 @@ import 'virtual_switch_configuration_overrides_response.dart';
 /// The Intents of a cluster.
 class IntentsResponse {
   /// Array of network interfaces used for the network intent.
-  final pulumi.Input<List<String>>? adapter;
+  final pulumi.Input<List<String>?>? adapter;
   /// Set Adapter PropertyOverrides for cluster.
-  final pulumi.Input<AdapterPropertyOverridesResponse>? adapterPropertyOverrides;
+  final pulumi.Input<AdapterPropertyOverridesResponse?>? adapterPropertyOverrides;
   /// Name of the network intent you wish to create.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-  final pulumi.Input<bool>? overrideAdapterProperty;
+  final pulumi.Input<bool?>? overrideAdapterProperty;
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-  final pulumi.Input<bool>? overrideQosPolicy;
+  final pulumi.Input<bool?>? overrideQosPolicy;
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-  final pulumi.Input<bool>? overrideVirtualSwitchConfiguration;
+  final pulumi.Input<bool?>? overrideVirtualSwitchConfiguration;
   /// Set QoS PolicyOverrides for cluster.
-  final pulumi.Input<QosPolicyOverridesResponse>? qosPolicyOverrides;
+  final pulumi.Input<QosPolicyOverridesResponse?>? qosPolicyOverrides;
   /// List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'.
-  final pulumi.Input<List<String>>? trafficType;
+  final pulumi.Input<List<String>?>? trafficType;
   /// Set virtualSwitch ConfigurationOverrides for cluster.
-  final pulumi.Input<VirtualSwitchConfigurationOverridesResponse>? virtualSwitchConfigurationOverrides;
+  final pulumi.Input<VirtualSwitchConfigurationOverridesResponse?>? virtualSwitchConfigurationOverrides;
 
   /// Creates a new [IntentsResponse].
   /// [adapter] Array of network interfaces used for the network intent.
@@ -36,17 +36,17 @@ class IntentsResponse {
   /// [qosPolicyOverrides] Set QoS PolicyOverrides for cluster.
   /// [trafficType] List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'.
   /// [virtualSwitchConfigurationOverrides] Set virtualSwitch ConfigurationOverrides for cluster.
-  const IntentsResponse({
+  IntentsResponse({
     this.adapter,
     this.adapterPropertyOverrides,
     this.name,
-    this.overrideAdapterProperty,
-    this.overrideQosPolicy,
-    this.overrideVirtualSwitchConfiguration,
+    pulumi.Input<bool?>? overrideAdapterProperty,
+    pulumi.Input<bool?>? overrideQosPolicy,
+    pulumi.Input<bool?>? overrideVirtualSwitchConfiguration,
     this.qosPolicyOverrides,
     this.trafficType,
     this.virtualSwitchConfigurationOverrides,
-  });
+  }) : overrideAdapterProperty = overrideAdapterProperty ?? pulumi.Input.fromValue(false), overrideQosPolicy = overrideQosPolicy ?? pulumi.Input.fromValue(false), overrideVirtualSwitchConfiguration = overrideVirtualSwitchConfiguration ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

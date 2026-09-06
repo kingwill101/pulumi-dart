@@ -12,7 +12,7 @@ class RoutingRuleArgs {
   /// The name of the network manager Routing Configuration.
   final pulumi.Input<String> configurationName;
   /// A description for this rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Indicates the destination for this particular rule.
   final pulumi.Input<RoutingRuleRouteDestination> destination;
   /// The name of the network manager.
@@ -24,7 +24,7 @@ class RoutingRuleArgs {
   /// The name of the network manager routing Configuration rule collection.
   final pulumi.Input<String> ruleCollectionName;
   /// The name of the rule.
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
 
   /// Creates a new [RoutingRuleArgs].
   /// [configurationName] The name of the network manager Routing Configuration.

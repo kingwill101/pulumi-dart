@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Datastore certificate secrets.
 class CertificateDatastoreSecrets {
   /// Service principal certificate.
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// Enum to determine the datastore secrets type.
   /// Expected value is 'Certificate'.
   final pulumi.Input<String> secretsType;

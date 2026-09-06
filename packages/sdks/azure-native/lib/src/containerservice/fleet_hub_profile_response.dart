@@ -7,11 +7,11 @@ import 'apiserver_access_profile_response.dart';
 /// The FleetHubProfile configures the fleet hub.
 class FleetHubProfileResponse {
   /// The agent profile for the Fleet hub.
-  final pulumi.Input<AgentProfileResponse>? agentProfile;
+  final pulumi.Input<AgentProfileResponse?>? agentProfile;
   /// The access profile for the Fleet hub API server.
-  final pulumi.Input<APIServerAccessProfileResponse>? apiServerAccessProfile;
+  final pulumi.Input<APIServerAccessProfileResponse?>? apiServerAccessProfile;
   /// DNS prefix used to create the FQDN for the Fleet hub.
-  final pulumi.Input<String>? dnsPrefix;
+  final pulumi.Input<String?>? dnsPrefix;
   /// The FQDN of the Fleet hub.
   final pulumi.Input<String> fqdn;
   /// The Kubernetes version of the Fleet hub.

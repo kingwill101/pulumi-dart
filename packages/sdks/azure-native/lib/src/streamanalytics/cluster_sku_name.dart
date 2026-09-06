@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the SKU name of the cluster. Required on PUT (CreateOrUpdate) requests.
-enum ClusterSkuName {
+enum ClusterSkuName implements pulumi.PulumiEnum<String> {
   valueDefault("Default");
 
   const ClusterSkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static ClusterSkuName fromValue(String value) {

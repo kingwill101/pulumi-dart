@@ -6,7 +6,7 @@ import 'nfs_access_policy_response.dart';
 /// Cache security settings.
 class CacheSecuritySettingsResponse {
   /// NFS access policies defined for this cache.
-  final pulumi.Input<List<NfsAccessPolicyResponse>>? accessPolicies;
+  final pulumi.Input<List<NfsAccessPolicyResponse>?>? accessPolicies;
 
   /// Creates a new [CacheSecuritySettingsResponse].
   /// [accessPolicies] NFS access policies defined for this cache.

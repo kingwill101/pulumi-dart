@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// A flag to determine whether or not ChannelBinding is enabled or disabled.
-enum ChannelBinding {
+enum ChannelBinding implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const ChannelBinding(this.wireValue);
+  @override
   final String wireValue;
 
   static ChannelBinding fromValue(String value) {

@@ -6,9 +6,9 @@ import 'service_configuration.dart';
 /// Connectivity related configuration required by arc server.
 class ArcConnectivityProperties {
   /// True indicates ARC connectivity is enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Service configurations associated with the connectivity resource. They are only processed by the server if 'enabled' property is set to 'true'.
-  final pulumi.Input<List<ServiceConfiguration>>? serviceConfigurations;
+  final pulumi.Input<List<ServiceConfiguration>?>? serviceConfigurations;
 
   /// Creates a new [ArcConnectivityProperties].
   /// [enabled] True indicates ARC connectivity is enabled

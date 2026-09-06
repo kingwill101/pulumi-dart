@@ -6,15 +6,15 @@ import 'geneva_action_config.dart';
 /// Geneva Actions policy configuration for Agent Space
 class GenevaActionsPolicy {
   /// ACIS (Azure Container Instance Service) endpoint URL
-  final pulumi.Input<String>? acisEndpoint;
+  final pulumi.Input<String?>? acisEndpoint;
   /// Collection of allowed Geneva actions
-  final pulumi.Input<List<GenevaActionConfig>>? allowedActions;
+  final pulumi.Input<List<GenevaActionConfig>?>? allowedActions;
   /// Authentication mode for Geneva Actions
-  final pulumi.Input<String>? authenticationMode;
+  final pulumi.Input<dynamic>? authenticationMode;
   /// Subject name of the certificate used for authentication
-  final pulumi.Input<String>? certificateSubjectName;
+  final pulumi.Input<String?>? certificateSubjectName;
   /// Client ID for authentication
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Name of the Geneva extension
   final pulumi.Input<String> extensionName;
 
@@ -49,7 +49,7 @@ class GenevaActionsPolicy {
     return GenevaActionsPolicy(
       acisEndpoint: (() { final guardedValue = map['acisEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       allowedActions: (() { final guardedValue = map['allowedActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GenevaActionConfig>(guardedValue, (value) => GenevaActionConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      authenticationMode: (() { final guardedValue = map['authenticationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authenticationMode: (() { final guardedValue = map['authenticationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       certificateSubjectName: (() { final guardedValue = map['certificateSubjectName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       extensionName: pulumi.Input.fromValue(map['extensionName'] as String),

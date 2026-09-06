@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Employee properties
 class EmployeePropertiesResponse {
   /// Age of employee
-  final pulumi.Input<int>? age;
+  final pulumi.Input<int?>? age;
   /// City of employee
-  final pulumi.Input<String>? city;
+  final pulumi.Input<String?>? city;
   /// Profile of employee
-  final pulumi.Input<String>? profile;
+  final pulumi.Input<String?>? profile;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
 
@@ -36,7 +36,7 @@ class EmployeePropertiesResponse {
 
   factory EmployeePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EmployeePropertiesResponse(
-      age: (() { final guardedValue = map['age']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      age: (() { final guardedValue = map['age']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       city: (() { final guardedValue = map['city']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       profile: (() { final guardedValue = map['profile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),

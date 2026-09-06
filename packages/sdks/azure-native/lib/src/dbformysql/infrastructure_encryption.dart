@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Status showing whether the server enabled infrastructure encryption.
-enum InfrastructureEncryption {
+enum InfrastructureEncryption implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const InfrastructureEncryption(this.wireValue);
+  @override
   final String wireValue;
 
   static InfrastructureEncryption fromValue(String value) {

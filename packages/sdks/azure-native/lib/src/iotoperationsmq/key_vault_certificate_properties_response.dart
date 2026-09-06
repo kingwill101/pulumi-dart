@@ -9,7 +9,7 @@ class KeyVaultCertificatePropertiesResponse {
   /// KeyVault properties.
   final pulumi.Input<KeyVaultConnectionPropertiesResponse> vault;
   /// KeyVault CA chain secret details.
-  final pulumi.Input<KeyVaultSecretObjectResponse>? vaultCaChainSecret;
+  final pulumi.Input<KeyVaultSecretObjectResponse?>? vaultCaChainSecret;
   /// KeyVault Cert secret details.
   final pulumi.Input<KeyVaultSecretObjectResponse> vaultCert;
 

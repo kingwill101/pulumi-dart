@@ -6,11 +6,11 @@ import 'get_user_tables_sql_task_input.dart';
 /// Properties for the task that collects user tables for the given list of databases
 class GetUserTablesSqlTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// Task input
-  final pulumi.Input<GetUserTablesSqlTaskInput>? input;
+  final pulumi.Input<GetUserTablesSqlTaskInput?>? input;
   /// Task id
-  final pulumi.Input<String>? taskId;
+  final pulumi.Input<String?>? taskId;
   /// Task type.
   /// Expected value is 'GetUserTables.Sql'.
   final pulumi.Input<String> taskType;

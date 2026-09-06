@@ -6,7 +6,7 @@ import 'managed_network_settings_ex_response.dart';
 /// The properties of the managed network settings of a cognitive services account.
 class ManagedNetworkSettingsPropertiesResponse {
   /// Managed Network settings for a cognitive services account.
-  final pulumi.Input<ManagedNetworkSettingsExResponse>? managedNetwork;
+  final pulumi.Input<ManagedNetworkSettingsExResponse?>? managedNetwork;
   /// The current deployment state of the managed network resource. The provisioningState is to indicate states for resource provisioning.
   final pulumi.Input<String> provisioningState;
 

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes parameters for creating application-scoped volumes provided by Service Fabric Volume Disks
 class ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse {
   /// User readable description of the volume.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the application-scoped volume kind.
   /// Expected value is 'ServiceFabricVolumeDisk'.
   final pulumi.Input<String> kind;

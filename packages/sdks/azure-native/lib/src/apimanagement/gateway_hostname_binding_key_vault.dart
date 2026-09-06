@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GatewayHostnameBindingKeyVault {
   /// The default hostname of the data-plane gateway.
-  final pulumi.Input<String>? identityClientId;
+  final pulumi.Input<String?>? identityClientId;
   /// The current provisioning state of the API Management gateway hostname binding.
   final pulumi.Input<String> secretId;
 

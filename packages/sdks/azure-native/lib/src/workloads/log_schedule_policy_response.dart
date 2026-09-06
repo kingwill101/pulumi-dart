@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Log policy schedule.
 class LogSchedulePolicyResponse {
   /// Frequency of the log schedule operation of this policy in minutes.
-  final pulumi.Input<int>? scheduleFrequencyInMins;
+  final pulumi.Input<int?>? scheduleFrequencyInMins;
   /// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
   /// Expected value is 'LogSchedulePolicy'.
   final pulumi.Input<String> schedulePolicyType;
@@ -27,7 +27,7 @@ class LogSchedulePolicyResponse {
 
   factory LogSchedulePolicyResponse.fromMap(Map<String, dynamic> map) {
     return LogSchedulePolicyResponse(
-      scheduleFrequencyInMins: (() { final guardedValue = map['scheduleFrequencyInMins']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scheduleFrequencyInMins: (() { final guardedValue = map['scheduleFrequencyInMins']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       schedulePolicyType: pulumi.Input.fromValue(map['schedulePolicyType'] as String),
     );
   }

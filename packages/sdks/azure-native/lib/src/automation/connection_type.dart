@@ -327,4 +327,24 @@ class ConnectionType extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ConnectionType] resource.
+  ConnectionType.reference(String urn)
+    : super(
+        'azure-native:automation:ConnectionType',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationTime = registerOutput<String>('creationTime');
+    description = registerOutput<String?>('description');
+    fieldDefinitions = registerOutput<Map<String, FieldDefinitionResponse>>('fieldDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<FieldDefinitionResponse>(guardedValue, (value) => FieldDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    isGlobal = registerOutput<bool?>('isGlobal');
+    lastModifiedTime = registerOutput<String?>('lastModifiedTime');
+    this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

@@ -282,7 +282,36 @@ class KustoPool extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     stateReason = registerOutput<String>('stateReason');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    uri = registerOutput<String>('uri');
+    workspaceUID = registerOutput<String?>('workspaceUID');
+  }
+
+  /// Creates a typed reference to an existing [KustoPool] resource.
+  KustoPool.reference(String urn)
+    : super(
+        'azure-native:synapse:KustoPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataIngestionUri = registerOutput<String>('dataIngestionUri');
+    enablePurge = registerOutput<bool?>('enablePurge');
+    enableStreamingIngest = registerOutput<bool?>('enableStreamingIngest');
+    etag = registerOutput<String>('etag');
+    languageExtensions = registerOutput<LanguageExtensionsListResponse>('languageExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LanguageExtensionsListResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    optimizedAutoscale = registerOutput<OptimizedAutoscaleResponse?>('optimizedAutoscale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OptimizedAutoscaleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<AzureSkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    stateReason = registerOutput<String>('stateReason');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uri = registerOutput<String>('uri');
     workspaceUID = registerOutput<String?>('workspaceUID');

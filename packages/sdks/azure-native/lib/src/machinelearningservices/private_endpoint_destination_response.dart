@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
 class PrivateEndpointDestinationResponse {
   /// A type definition that refers the id to an Azure Resource Manager resource.
-  final pulumi.Input<String>? serviceResourceId;
-  final pulumi.Input<bool>? sparkEnabled;
+  final pulumi.Input<String?>? serviceResourceId;
+  final pulumi.Input<bool?>? sparkEnabled;
   /// Type of a managed network Outbound Rule of a machine learning workspace.
-  final pulumi.Input<String>? sparkStatus;
-  final pulumi.Input<String>? subresourceTarget;
+  final pulumi.Input<String?>? sparkStatus;
+  final pulumi.Input<String?>? subresourceTarget;
 
   /// Creates a new [PrivateEndpointDestinationResponse].
   /// [serviceResourceId] A type definition that refers the id to an Azure Resource Manager resource.

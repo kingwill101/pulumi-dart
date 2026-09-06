@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Status of Enhanced Security Monitoring feature.
 class EnhancedSecurityMonitoringDefinition {
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [EnhancedSecurityMonitoringDefinition].
   /// [value] Optional.
@@ -20,7 +20,7 @@ class EnhancedSecurityMonitoringDefinition {
 
   factory EnhancedSecurityMonitoringDefinition.fromMap(Map<String, dynamic> map) {
     return EnhancedSecurityMonitoringDefinition(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

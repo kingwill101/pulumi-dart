@@ -12,7 +12,7 @@ import 'service_managed_identity_identity.dart';
 /// {@macro pulumi_healthcareapis_analytics_connector_args_doc}
 class AnalyticsConnectorArgs {
   /// The name of Analytics Connector resource.
-  final pulumi.Input<String>? analyticsConnectorName;
+  final pulumi.Input<String?>? analyticsConnectorName;
   /// Data destination configuration for Analytics Connector.
   final pulumi.Input<AnalyticsConnectorDataLakeDataDestination> dataDestinationConfiguration;
   /// Data mapping configuration for Analytics Connector.
@@ -20,13 +20,13 @@ class AnalyticsConnectorArgs {
   /// Data source for Analytics Connector.
   final pulumi.Input<AnalyticsConnectorFhirServiceDataSource> dataSourceConfiguration;
   /// Setting indicating whether the service has a managed identity associated with it.
-  final pulumi.Input<ServiceManagedIdentityIdentity>? identity;
+  final pulumi.Input<ServiceManagedIdentityIdentity?>? identity;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group that contains the service instance.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of workspace resource.
   final pulumi.Input<String> workspaceName;
 

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enable or Disable public network access to workspace
-enum WorkspacePublicNetworkAccess {
+enum WorkspacePublicNetworkAccess implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const WorkspacePublicNetworkAccess(this.wireValue);
+  @override
   final String wireValue;
 
   static WorkspacePublicNetworkAccess fromValue(String value) {

@@ -9,9 +9,9 @@ import 'dev_tool_portal_properties.dart';
 /// {@macro pulumi_appplatform_dev_tool_portal_args_doc}
 class DevToolPortalArgs {
   /// The name of Dev Tool Portal.
-  final pulumi.Input<String>? devToolPortalName;
+  final pulumi.Input<String?>? devToolPortalName;
   /// Dev Tool Portal properties payload
-  final pulumi.Input<DevToolPortalProperties>? properties;
+  final pulumi.Input<DevToolPortalProperties?>? properties;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Service resource.

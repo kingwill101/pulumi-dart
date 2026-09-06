@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Entra Authentication configuration.
 class EntraAuthenticationResponse {
   /// The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The method used for Entra authentication
-  final pulumi.Input<String>? identityType;
+  final pulumi.Input<String?>? identityType;
 
   /// Creates a new [EntraAuthenticationResponse].
   /// [clientId] The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity.

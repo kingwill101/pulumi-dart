@@ -7,7 +7,7 @@ class StorageAssetProperties {
   /// The description
   final pulumi.Input<String> description;
   /// The path to the data within its parent container. This should be relative to the root of the parent container.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [StorageAssetProperties].
   /// [description] The description

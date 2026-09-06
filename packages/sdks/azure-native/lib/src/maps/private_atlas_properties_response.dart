@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Private Atlas resource properties
 class PrivateAtlasPropertiesResponse {
   /// The state of the resource provisioning, terminal states: Succeeded, Failed, Canceled
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
 
   /// Creates a new [PrivateAtlasPropertiesResponse].
   /// [provisioningState] The state of the resource provisioning, terminal states: Succeeded, Failed, Canceled

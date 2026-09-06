@@ -6,7 +6,7 @@ import 'sync_group_schema_response.dart';
 /// Result data returned by getSyncGroup.
 class GetSyncGroupResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Conflict logging retention period.
   final int? conflictLoggingRetentionInDays;
   /// Conflict resolution policy of the sync group.
@@ -16,15 +16,15 @@ class GetSyncGroupResult {
   /// User name for the sync group hub database credential.
   final String? hubDatabaseUserName;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Sync interval of the sync group.
   final int? interval;
   /// Last sync time of the sync group.
-  final String lastSyncTime;
+  final String? lastSyncTime;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Private endpoint name of the sync group if use private link connection is enabled.
-  final String privateEndpointName;
+  final String? privateEndpointName;
   /// Sync schema of the sync group.
   final SyncGroupSchemaResponse? schema;
   /// The name and capacity of the SKU.
@@ -32,9 +32,9 @@ class GetSyncGroupResult {
   /// ARM resource id of the sync database in the sync group.
   final String? syncDatabaseId;
   /// Sync state of the sync group.
-  final String syncState;
+  final String? syncState;
   /// Resource type.
-  final String type;
+  final String? type;
   /// If use private link connection is enabled.
   final bool? usePrivateLinkConnection;
 
@@ -56,62 +56,62 @@ class GetSyncGroupResult {
   /// [type] Resource type.
   /// [usePrivateLinkConnection] If use private link connection is enabled.
   const GetSyncGroupResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.conflictLoggingRetentionInDays,
     this.conflictResolutionPolicy,
     this.enableConflictLogging,
     this.hubDatabaseUserName,
-    required this.id,
+    this.id,
     this.interval,
-    required this.lastSyncTime,
-    required this.name,
-    required this.privateEndpointName,
+    this.lastSyncTime,
+    this.name,
+    this.privateEndpointName,
     this.schema,
     this.sku,
     this.syncDatabaseId,
-    required this.syncState,
-    required this.type,
+    this.syncState,
+    this.type,
     this.usePrivateLinkConnection,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'conflictLoggingRetentionInDays': ?conflictLoggingRetentionInDays,
       'conflictResolutionPolicy': ?conflictResolutionPolicy,
       'enableConflictLogging': ?enableConflictLogging,
       'hubDatabaseUserName': ?hubDatabaseUserName,
-      'id': id,
+      'id': ?id,
       'interval': ?interval,
-      'lastSyncTime': lastSyncTime,
-      'name': name,
-      'privateEndpointName': privateEndpointName,
+      'lastSyncTime': ?lastSyncTime,
+      'name': ?name,
+      'privateEndpointName': ?privateEndpointName,
       'schema': ?schema?.toMap(),
       'sku': ?sku?.toMap(),
       'syncDatabaseId': ?syncDatabaseId,
-      'syncState': syncState,
-      'type': type,
+      'syncState': ?syncState,
+      'type': ?type,
       'usePrivateLinkConnection': ?usePrivateLinkConnection,
     };
   }
 
   factory GetSyncGroupResult.fromMap(Map<String, dynamic> map) {
     return GetSyncGroupResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      conflictLoggingRetentionInDays: (() { final guardedValue = map['conflictLoggingRetentionInDays']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      conflictLoggingRetentionInDays: (() { final guardedValue = map['conflictLoggingRetentionInDays']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       conflictResolutionPolicy: (() { final guardedValue = map['conflictResolutionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enableConflictLogging: (() { final guardedValue = map['enableConflictLogging']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       hubDatabaseUserName: (() { final guardedValue = map['hubDatabaseUserName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      lastSyncTime: map['lastSyncTime'] as String,
-      name: map['name'] as String,
-      privateEndpointName: map['privateEndpointName'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      lastSyncTime: (() { final guardedValue = map['lastSyncTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateEndpointName: (() { final guardedValue = map['privateEndpointName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       schema: (() { final guardedValue = map['schema']; if (guardedValue == null) return null; return SyncGroupSchemaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       syncDatabaseId: (() { final guardedValue = map['syncDatabaseId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      syncState: map['syncState'] as String,
-      type: map['type'] as String,
+      syncState: (() { final guardedValue = map['syncState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       usePrivateLinkConnection: (() { final guardedValue = map['usePrivateLinkConnection']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }

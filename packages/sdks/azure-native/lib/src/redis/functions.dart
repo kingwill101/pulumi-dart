@@ -40,6 +40,17 @@ Future<GetAccessPolicyResult> getAccessPolicy(
   return GetAccessPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessPolicyResult> getAccessPolicyOutput(
+  GetAccessPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redis:getAccessPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPolicyResult.fromMap);
+}
+
 /// Gets the list of assignments for an access policy of a redis cache
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -58,6 +69,17 @@ Future<GetAccessPolicyAssignmentResult> getAccessPolicyAssignment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAccessPolicyAssignmentResult.fromMap(result);
+}
+
+pulumi.Output<GetAccessPolicyAssignmentResult> getAccessPolicyAssignmentOutput(
+  GetAccessPolicyAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redis:getAccessPolicyAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPolicyAssignmentResult.fromMap);
 }
 
 /// Gets a single firewall rule in a specified redis cache.
@@ -80,6 +102,17 @@ Future<GetFirewallRuleResult> getFirewallRule(
   return GetFirewallRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallRuleResult> getFirewallRuleOutput(
+  GetFirewallRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redis:getFirewallRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallRuleResult.fromMap);
+}
+
 /// Gets the detailed information about a linked server of a redis cache (requires Premium SKU).
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -98,6 +131,17 @@ Future<GetLinkedServerResult> getLinkedServer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLinkedServerResult.fromMap(result);
+}
+
+pulumi.Output<GetLinkedServerResult> getLinkedServerOutput(
+  GetLinkedServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redis:getLinkedServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLinkedServerResult.fromMap);
 }
 
 /// Gets the patching schedule of a redis cache.
@@ -120,6 +164,17 @@ Future<GetPatchScheduleResult> getPatchSchedule(
   return GetPatchScheduleResult.fromMap(result);
 }
 
+pulumi.Output<GetPatchScheduleResult> getPatchScheduleOutput(
+  GetPatchScheduleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redis:getPatchSchedule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPatchScheduleResult.fromMap);
+}
+
 /// Gets the specified private endpoint connection associated with the redis cache.
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -138,6 +193,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redis:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Gets a Redis cache (resource description).
@@ -160,6 +226,17 @@ Future<GetRedisResult> getRedis(
   return GetRedisResult.fromMap(result);
 }
 
+pulumi.Output<GetRedisResult> getRedisOutput(
+  GetRedisArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redis:getRedis',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRedisResult.fromMap);
+}
+
 /// Gets a single firewall rule in a specified redis cache.
 ///
 /// Uses Azure REST API version 2016-04-01.
@@ -176,6 +253,17 @@ Future<GetRedisFirewallRuleResult> getRedisFirewallRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRedisFirewallRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetRedisFirewallRuleResult> getRedisFirewallRuleOutput(
+  GetRedisFirewallRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redis:getRedisFirewallRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRedisFirewallRuleResult.fromMap);
 }
 
 /// Gets the detailed information about a linked server of a redis cache (requires Premium SKU).
@@ -196,6 +284,17 @@ Future<GetRedisLinkedServerResult> getRedisLinkedServer(
   return GetRedisLinkedServerResult.fromMap(result);
 }
 
+pulumi.Output<GetRedisLinkedServerResult> getRedisLinkedServerOutput(
+  GetRedisLinkedServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redis:getRedisLinkedServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRedisLinkedServerResult.fromMap);
+}
+
 /// Retrieve a Redis cache's access keys. This operation requires write permission to the cache resource.
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -214,4 +313,15 @@ Future<ListRedisKeysResult> listRedisKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListRedisKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListRedisKeysResult> listRedisKeysOutput(
+  ListRedisKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redis:listRedisKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListRedisKeysResult.fromMap);
 }

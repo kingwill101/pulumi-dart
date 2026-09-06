@@ -9,41 +9,41 @@ import 'git_hub_workflow_profile.dart';
 /// {@macro pulumi_devhub_workflow_args_doc}
 class WorkflowArgs {
   /// The name of the app.
-  final pulumi.Input<String>? appName;
+  final pulumi.Input<String?>? appName;
   /// The version of the language image used for building the code in the generated dockerfile.
-  final pulumi.Input<String>? builderVersion;
+  final pulumi.Input<String?>? builderVersion;
   /// The mode of generation to be used for generating Dockerfiles.
-  final pulumi.Input<String>? dockerfileGenerationMode;
+  final pulumi.Input<dynamic>? dockerfileGenerationMode;
   /// The directory to output the generated Dockerfile to.
-  final pulumi.Input<String>? dockerfileOutputDirectory;
+  final pulumi.Input<String?>? dockerfileOutputDirectory;
   /// The programming language used.
-  final pulumi.Input<String>? generationLanguage;
+  final pulumi.Input<dynamic>? generationLanguage;
   /// Profile of a github workflow.
-  final pulumi.Input<GitHubWorkflowProfile>? githubWorkflowProfile;
+  final pulumi.Input<GitHubWorkflowProfile?>? githubWorkflowProfile;
   /// The name of the image to be generated.
-  final pulumi.Input<String>? imageName;
+  final pulumi.Input<String?>? imageName;
   /// The tag to apply to the generated image.
-  final pulumi.Input<String>? imageTag;
+  final pulumi.Input<String?>? imageTag;
   /// The version of the language image used for execution in the generated dockerfile.
-  final pulumi.Input<String>? languageVersion;
+  final pulumi.Input<String?>? languageVersion;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The mode of generation to be used for generating Manifest.
-  final pulumi.Input<String>? manifestGenerationMode;
+  final pulumi.Input<dynamic>? manifestGenerationMode;
   /// The directory to output the generated manifests to.
-  final pulumi.Input<String>? manifestOutputDirectory;
+  final pulumi.Input<String?>? manifestOutputDirectory;
   /// Determines the type of manifests to be generated.
-  final pulumi.Input<String>? manifestType;
+  final pulumi.Input<dynamic>? manifestType;
   /// The namespace to deploy the application to.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// The port the application is exposed on.
-  final pulumi.Input<String>? port;
+  final pulumi.Input<String?>? port;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the workflow resource.
-  final pulumi.Input<String>? workflowName;
+  final pulumi.Input<String?>? workflowName;
 
   /// Creates a new [WorkflowArgs].
   /// [appName] The name of the app.
@@ -112,17 +112,17 @@ class WorkflowArgs {
     return WorkflowArgs(
       appName: (() { final guardedValue = map['appName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       builderVersion: (() { final guardedValue = map['builderVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dockerfileGenerationMode: (() { final guardedValue = map['dockerfileGenerationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dockerfileGenerationMode: (() { final guardedValue = map['dockerfileGenerationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       dockerfileOutputDirectory: (() { final guardedValue = map['dockerfileOutputDirectory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      generationLanguage: (() { final guardedValue = map['generationLanguage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      generationLanguage: (() { final guardedValue = map['generationLanguage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       githubWorkflowProfile: (() { final guardedValue = map['githubWorkflowProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GitHubWorkflowProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       imageName: (() { final guardedValue = map['imageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       imageTag: (() { final guardedValue = map['imageTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       languageVersion: (() { final guardedValue = map['languageVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      manifestGenerationMode: (() { final guardedValue = map['manifestGenerationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      manifestGenerationMode: (() { final guardedValue = map['manifestGenerationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       manifestOutputDirectory: (() { final guardedValue = map['manifestOutputDirectory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      manifestType: (() { final guardedValue = map['manifestType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      manifestType: (() { final guardedValue = map['manifestType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

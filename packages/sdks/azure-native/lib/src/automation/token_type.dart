@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The token type. Must be either PersonalAccessToken or Oauth.
-enum TokenType {
+enum TokenType implements pulumi.PulumiEnum<String> {
   personalAccessToken("PersonalAccessToken"),
   oauth("Oauth");
 
   const TokenType(this.wireValue);
+  @override
   final String wireValue;
 
   static TokenType fromValue(String value) {

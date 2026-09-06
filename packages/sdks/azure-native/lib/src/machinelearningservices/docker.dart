@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Docker {
   /// Indicate whether container shall run in privileged or non-privileged mode.
-  final pulumi.Input<bool>? privileged;
+  final pulumi.Input<bool?>? privileged;
 
   /// Creates a new [Docker].
   /// [privileged] Indicate whether container shall run in privileged or non-privileged mode.

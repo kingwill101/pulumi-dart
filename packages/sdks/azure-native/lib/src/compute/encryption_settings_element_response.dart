@@ -7,9 +7,9 @@ import 'key_vault_and_secret_reference_response.dart';
 /// Encryption settings for one disk volume.
 class EncryptionSettingsElementResponse {
   /// Key Vault Secret Url and vault id of the disk encryption key
-  final pulumi.Input<KeyVaultAndSecretReferenceResponse>? diskEncryptionKey;
+  final pulumi.Input<KeyVaultAndSecretReferenceResponse?>? diskEncryptionKey;
   /// Key Vault Key Url and vault id of the key encryption key. KeyEncryptionKey is optional and when provided is used to unwrap the disk encryption key.
-  final pulumi.Input<KeyVaultAndKeyReferenceResponse>? keyEncryptionKey;
+  final pulumi.Input<KeyVaultAndKeyReferenceResponse?>? keyEncryptionKey;
 
   /// Creates a new [EncryptionSettingsElementResponse].
   /// [diskEncryptionKey] Key Vault Secret Url and vault id of the disk encryption key

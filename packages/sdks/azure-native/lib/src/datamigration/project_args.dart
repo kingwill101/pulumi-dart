@@ -3,7 +3,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_active_directory_app.dart';
 import 'database_info.dart';
-import 'mi_sql_connection_info.dart';
 
 /// {@template pulumi_datamigration_project_args_doc}
 /// The set of arguments for Project.
@@ -11,25 +10,25 @@ import 'mi_sql_connection_info.dart';
 /// {@macro pulumi_datamigration_project_args_doc}
 class ProjectArgs {
   /// Field that defines the Azure active directory application info, used to connect to the target Azure resource
-  final pulumi.Input<AzureActiveDirectoryApp>? azureAuthenticationInfo;
+  final pulumi.Input<AzureActiveDirectoryApp?>? azureAuthenticationInfo;
   /// List of DatabaseInfo
-  final pulumi.Input<List<DatabaseInfo>>? databasesInfo;
+  final pulumi.Input<List<DatabaseInfo>?>? databasesInfo;
   /// Name of the resource group
   final pulumi.Input<String> groupName;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the project
-  final pulumi.Input<String>? projectName;
+  final pulumi.Input<String?>? projectName;
   /// Name of the service
   final pulumi.Input<String> serviceName;
   /// Information for connecting to source
-  final pulumi.Input<MiSqlConnectionInfo>? sourceConnectionInfo;
+  final pulumi.Input<dynamic>? sourceConnectionInfo;
   /// Source platform for the project
-  final pulumi.Input<String> sourcePlatform;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<dynamic> sourcePlatform;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Information for connecting to target
-  final pulumi.Input<MiSqlConnectionInfo>? targetConnectionInfo;
+  final pulumi.Input<dynamic>? targetConnectionInfo;
   /// Target platform for the project
-  final pulumi.Input<String> targetPlatform;
+  final pulumi.Input<dynamic> targetPlatform;
 
   /// Creates a new [ProjectArgs].
   /// [azureAuthenticationInfo] Field that defines the Azure active directory application info, used to connect to the target Azure resource
@@ -65,10 +64,10 @@ class ProjectArgs {
       'location': ?location,
       'projectName': ?projectName,
       'serviceName': serviceName,
-      'sourceConnectionInfo': ?pulumi.Input.mapOptionalInputValue<MiSqlConnectionInfo, Map<String, dynamic>>(sourceConnectionInfo, (value) => value.toMap()),
+      'sourceConnectionInfo': ?sourceConnectionInfo,
       'sourcePlatform': sourcePlatform,
       'tags': ?tags,
-      'targetConnectionInfo': ?pulumi.Input.mapOptionalInputValue<MiSqlConnectionInfo, Map<String, dynamic>>(targetConnectionInfo, (value) => value.toMap()),
+      'targetConnectionInfo': ?targetConnectionInfo,
       'targetPlatform': targetPlatform,
     };
   }
@@ -81,11 +80,11 @@ class ProjectArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectName: (() { final guardedValue = map['projectName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
-      sourceConnectionInfo: (() { final guardedValue = map['sourceConnectionInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MiSqlConnectionInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      sourcePlatform: pulumi.Input.fromValue(map['sourcePlatform'] as String),
+      sourceConnectionInfo: (() { final guardedValue = map['sourceConnectionInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sourcePlatform: pulumi.Input.fromValue(map['sourcePlatform']),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      targetConnectionInfo: (() { final guardedValue = map['targetConnectionInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MiSqlConnectionInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      targetPlatform: pulumi.Input.fromValue(map['targetPlatform'] as String),
+      targetConnectionInfo: (() { final guardedValue = map['targetConnectionInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      targetPlatform: pulumi.Input.fromValue(map['targetPlatform']),
     );
   }
 }

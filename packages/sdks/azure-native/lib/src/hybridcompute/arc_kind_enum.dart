@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
-enum ArcKindEnum {
+enum ArcKindEnum implements pulumi.PulumiEnum<String> {
   valueAVS("AVS"),
   valueHCI("HCI"),
   valueSCVMM("SCVMM"),
@@ -9,6 +11,7 @@ enum ArcKindEnum {
   valueAWS("AWS");
 
   const ArcKindEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static ArcKindEnum fromValue(String value) {

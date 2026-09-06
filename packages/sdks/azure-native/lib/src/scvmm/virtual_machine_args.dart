@@ -17,47 +17,47 @@ import 'virtual_machine_properties_availability_sets.dart';
 /// {@macro pulumi_scvmm_virtual_machine_args_doc}
 class VirtualMachineArgs {
   /// Availability Sets in vm.
-  final pulumi.Input<List<VirtualMachinePropertiesAvailabilitySets>>? availabilitySets;
+  final pulumi.Input<List<VirtualMachinePropertiesAvailabilitySets>?>? availabilitySets;
   /// Type of checkpoint supported for the vm.
-  final pulumi.Input<String>? checkpointType;
+  final pulumi.Input<String?>? checkpointType;
   /// Checkpoints in the vm.
-  final pulumi.Input<List<Checkpoint>>? checkpoints;
+  final pulumi.Input<List<Checkpoint>?>? checkpoints;
   /// ARM Id of the cloud resource to use for deploying the vm.
-  final pulumi.Input<String>? cloudId;
+  final pulumi.Input<String?>? cloudId;
   /// The extended location.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// Gets or sets the generation for the vm.
-  final pulumi.Input<int>? generation;
+  final pulumi.Input<int?>? generation;
   /// Guest agent status properties.
-  final pulumi.Input<GuestAgentProfile>? guestAgentProfile;
+  final pulumi.Input<GuestAgentProfile?>? guestAgentProfile;
   /// Hardware properties.
-  final pulumi.Input<HardwareProfile>? hardwareProfile;
+  final pulumi.Input<HardwareProfile?>? hardwareProfile;
   /// The identity of the resource.
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// Gets or sets the inventory Item ID for the resource.
-  final pulumi.Input<String>? inventoryItemId;
+  final pulumi.Input<String?>? inventoryItemId;
   /// Gets or sets the location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Network properties.
-  final pulumi.Input<NetworkProfile>? networkProfile;
+  final pulumi.Input<NetworkProfile?>? networkProfile;
   /// OS properties.
-  final pulumi.Input<OsProfile>? osProfile;
+  final pulumi.Input<OsProfile?>? osProfile;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Storage properties.
-  final pulumi.Input<StorageProfile>? storageProfile;
+  final pulumi.Input<StorageProfile?>? storageProfile;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// ARM Id of the template resource to use for deploying the vm.
-  final pulumi.Input<String>? templateId;
+  final pulumi.Input<String?>? templateId;
   /// Unique ID of the virtual machine.
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
   /// Name of the VirtualMachine.
-  final pulumi.Input<String>? virtualMachineName;
+  final pulumi.Input<String?>? virtualMachineName;
   /// VMName is the name of VM on the SCVMM server.
-  final pulumi.Input<String>? vmName;
+  final pulumi.Input<String?>? vmName;
   /// ARM Id of the vmmServer resource in which this resource resides.
-  final pulumi.Input<String>? vmmServerId;
+  final pulumi.Input<String?>? vmmServerId;
 
   /// Creates a new [VirtualMachineArgs].
   /// [availabilitySets] Availability Sets in vm.
@@ -138,7 +138,7 @@ class VirtualMachineArgs {
       checkpoints: (() { final guardedValue = map['checkpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Checkpoint>(guardedValue, (value) => Checkpoint.fromMap((value as Map).cast<String, dynamic>()))); })(),
       cloudId: (() { final guardedValue = map['cloudId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       extendedLocation: pulumi.Input.fromValue(ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())),
-      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       guestAgentProfile: (() { final guardedValue = map['guestAgentProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GuestAgentProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       hardwareProfile: (() { final guardedValue = map['hardwareProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HardwareProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Identity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

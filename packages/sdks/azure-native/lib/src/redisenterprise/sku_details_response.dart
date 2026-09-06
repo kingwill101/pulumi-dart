@@ -27,7 +27,7 @@ class SkuDetailsResponse {
   factory SkuDetailsResponse.fromMap(Map<String, dynamic> map) {
     return SkuDetailsResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
-      sizeInGB: pulumi.Input.fromValue(map['sizeInGB'] as double),
+      sizeInGB: pulumi.Input.fromValue((map['sizeInGB'] as num).toDouble()),
     );
   }
 }

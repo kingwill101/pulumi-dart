@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Access mode for storage
-enum AccessMode {
+enum AccessMode implements pulumi.PulumiEnum<String> {
   valueReadOnly("ReadOnly"),
   valueReadWrite("ReadWrite");
 
   const AccessMode(this.wireValue);
+  @override
   final String wireValue;
 
   static AccessMode fromValue(String value) {

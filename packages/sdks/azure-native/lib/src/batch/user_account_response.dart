@@ -7,15 +7,15 @@ import 'windows_user_configuration_response.dart';
 /// Properties used to create a user on an Azure Batch node.
 class UserAccountResponse {
   /// nonAdmin - The auto user is a standard user without elevated access. admin - The auto user is a user with elevated access and operates with full Administrator permissions. The default value is nonAdmin.
-  final pulumi.Input<String>? elevationLevel;
+  final pulumi.Input<String?>? elevationLevel;
   /// This property is ignored if specified on a Windows pool. If not specified, the user is created with the default options.
-  final pulumi.Input<LinuxUserConfigurationResponse>? linuxUserConfiguration;
+  final pulumi.Input<LinuxUserConfigurationResponse?>? linuxUserConfiguration;
   /// The name of the user account. Names can contain any Unicode characters up to a maximum length of 20.
   final pulumi.Input<String> name;
   /// The password for the user account.
   final pulumi.Input<String> password;
   /// This property can only be specified if the user is on a Windows pool. If not specified and on a Windows pool, the user is created with the default options.
-  final pulumi.Input<WindowsUserConfigurationResponse>? windowsUserConfiguration;
+  final pulumi.Input<WindowsUserConfigurationResponse?>? windowsUserConfiguration;
 
   /// Creates a new [UserAccountResponse].
   /// [elevationLevel] nonAdmin - The auto user is a standard user without elevated access. admin - The auto user is a user with elevated access and operates with full Administrator permissions. The default value is nonAdmin.

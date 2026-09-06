@@ -9,41 +9,41 @@ import 'version_details_response.dart';
 /// Details of a Master Target Server.
 class MasterTargetServerResponse {
   /// Agent expiry date.
-  final pulumi.Input<String>? agentExpiryDate;
+  final pulumi.Input<String?>? agentExpiryDate;
   /// The version of the scout component on the server.
-  final pulumi.Input<String>? agentVersion;
+  final pulumi.Input<String?>? agentVersion;
   /// Agent version details.
-  final pulumi.Input<VersionDetailsResponse>? agentVersionDetails;
+  final pulumi.Input<VersionDetailsResponse?>? agentVersionDetails;
   /// The list of data stores in the fabric.
-  final pulumi.Input<List<DataStoreResponse>>? dataStores;
+  final pulumi.Input<List<DataStoreResponse>?>? dataStores;
   /// Disk count of the master target.
-  final pulumi.Input<int>? diskCount;
+  final pulumi.Input<int?>? diskCount;
   /// Health errors.
-  final pulumi.Input<List<HealthErrorResponse>>? healthErrors;
+  final pulumi.Input<List<HealthErrorResponse>?>? healthErrors;
   /// The server Id.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The IP address of the server.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// The last heartbeat received from the server.
-  final pulumi.Input<String>? lastHeartbeat;
+  final pulumi.Input<String?>? lastHeartbeat;
   /// MARS agent expiry date.
-  final pulumi.Input<String>? marsAgentExpiryDate;
+  final pulumi.Input<String?>? marsAgentExpiryDate;
   /// MARS agent version.
-  final pulumi.Input<String>? marsAgentVersion;
+  final pulumi.Input<String?>? marsAgentVersion;
   /// Mars agent version details.
-  final pulumi.Input<VersionDetailsResponse>? marsAgentVersionDetails;
+  final pulumi.Input<VersionDetailsResponse?>? marsAgentVersionDetails;
   /// The server name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The OS type of the server.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// OS Version of the master target.
-  final pulumi.Input<String>? osVersion;
+  final pulumi.Input<String?>? osVersion;
   /// The retention volumes of Master target Server.
-  final pulumi.Input<List<RetentionVolumeResponse>>? retentionVolumes;
+  final pulumi.Input<List<RetentionVolumeResponse>?>? retentionVolumes;
   /// Validation errors.
-  final pulumi.Input<List<HealthErrorResponse>>? validationErrors;
+  final pulumi.Input<List<HealthErrorResponse>?>? validationErrors;
   /// Version status.
-  final pulumi.Input<String>? versionStatus;
+  final pulumi.Input<String?>? versionStatus;
 
   /// Creates a new [MasterTargetServerResponse].
   /// [agentExpiryDate] Agent expiry date.
@@ -114,7 +114,7 @@ class MasterTargetServerResponse {
       agentVersion: (() { final guardedValue = map['agentVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       agentVersionDetails: (() { final guardedValue = map['agentVersionDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VersionDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataStores: (() { final guardedValue = map['dataStores']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataStoreResponse>(guardedValue, (value) => DataStoreResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      diskCount: (() { final guardedValue = map['diskCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      diskCount: (() { final guardedValue = map['diskCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       healthErrors: (() { final guardedValue = map['healthErrors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HealthErrorResponse>(guardedValue, (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

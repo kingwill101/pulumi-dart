@@ -9,29 +9,29 @@ import 'wsdl_definition.dart';
 /// Custom API properties
 class CustomApiPropertiesDefinition {
   /// API Definitions
-  final pulumi.Input<ApiResourceDefinitions>? apiDefinitions;
+  final pulumi.Input<ApiResourceDefinitions?>? apiDefinitions;
   /// The API type
-  final pulumi.Input<String>? apiType;
+  final pulumi.Input<dynamic>? apiType;
   /// The API backend service
-  final pulumi.Input<ApiResourceBackendService>? backendService;
+  final pulumi.Input<ApiResourceBackendService?>? backendService;
   /// Brand color
-  final pulumi.Input<String>? brandColor;
+  final pulumi.Input<String?>? brandColor;
   /// The custom API capabilities
-  final pulumi.Input<List<String>>? capabilities;
+  final pulumi.Input<List<String>?>? capabilities;
   /// Connection parameters
-  final pulumi.Input<Map<String, ConnectionParameter>>? connectionParameters;
+  final pulumi.Input<Map<String, ConnectionParameter>?>? connectionParameters;
   /// The custom API description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The icon URI
-  final pulumi.Input<String>? iconUri;
+  final pulumi.Input<String?>? iconUri;
   /// Runtime URLs
-  final pulumi.Input<List<String>>? runtimeUrls;
+  final pulumi.Input<List<String>?>? runtimeUrls;
   /// The JSON representation of the swagger
   final pulumi.Input<dynamic>? swagger;
   /// The WSDL definition
-  final pulumi.Input<WsdlDefinition>? wsdlDefinition;
+  final pulumi.Input<WsdlDefinition?>? wsdlDefinition;
 
   /// Creates a new [CustomApiPropertiesDefinition].
   /// [apiDefinitions] API Definitions
@@ -81,7 +81,7 @@ class CustomApiPropertiesDefinition {
   factory CustomApiPropertiesDefinition.fromMap(Map<String, dynamic> map) {
     return CustomApiPropertiesDefinition(
       apiDefinitions: (() { final guardedValue = map['apiDefinitions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApiResourceDefinitions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      apiType: (() { final guardedValue = map['apiType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      apiType: (() { final guardedValue = map['apiType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       backendService: (() { final guardedValue = map['backendService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApiResourceBackendService.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       brandColor: (() { final guardedValue = map['brandColor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       capabilities: (() { final guardedValue = map['capabilities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

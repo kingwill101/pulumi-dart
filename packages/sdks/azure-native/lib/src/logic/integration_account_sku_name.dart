@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The sku name.
-enum IntegrationAccountSkuName {
+enum IntegrationAccountSkuName implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueFree("Free"),
   valueBasic("Basic"),
   valueStandard("Standard");
 
   const IntegrationAccountSkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static IntegrationAccountSkuName fromValue(String value) {

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Status of the Provisioning for the managed network of a machine learning workspace.
 class ManagedNetworkProvisionStatus {
-  final pulumi.Input<bool>? sparkReady;
+  final pulumi.Input<bool?>? sparkReady;
   /// Status for the managed network of a machine learning workspace.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [ManagedNetworkProvisionStatus].
   /// [sparkReady] Optional.
@@ -26,7 +26,7 @@ class ManagedNetworkProvisionStatus {
   factory ManagedNetworkProvisionStatus.fromMap(Map<String, dynamic> map) {
     return ManagedNetworkProvisionStatus(
       sparkReady: (() { final guardedValue = map['sparkReady']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

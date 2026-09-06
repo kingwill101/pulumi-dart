@@ -9,7 +9,7 @@ import 'eks_cluster_properties.dart';
 /// {@macro pulumi_awsconnector_eks_cluster_args_doc}
 class EksClusterArgs {
   /// The resource-specific properties for this resource.
-  final pulumi.Input<EksClusterProperties>? properties;
+  final pulumi.Input<EksClusterProperties?>? properties;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 

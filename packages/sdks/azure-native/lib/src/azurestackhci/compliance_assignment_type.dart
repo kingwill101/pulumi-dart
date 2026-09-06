@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// WDAC Compliance Assignment
-enum ComplianceAssignmentType {
+enum ComplianceAssignmentType implements pulumi.PulumiEnum<String> {
   audit("Audit"),
   applyAndAutoCorrect("ApplyAndAutoCorrect");
 
   const ComplianceAssignmentType(this.wireValue);
+  @override
   final String wireValue;
 
   static ComplianceAssignmentType fromValue(String value) {

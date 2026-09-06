@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the Power State of the cluster
 class PowerState {
   /// Tells whether the cluster is Running or Stopped
-  final pulumi.Input<String>? code;
+  final pulumi.Input<dynamic>? code;
 
   /// Creates a new [PowerState].
   /// [code] Tells whether the cluster is Running or Stopped
@@ -21,7 +21,7 @@ class PowerState {
 
   factory PowerState.fromMap(Map<String, dynamic> map) {
     return PowerState(
-      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -5,30 +5,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The partner connector type is KafkaAzureSynapseAnalyticsSink
 class KafkaAzureSynapseAnalyticsSinkConnectorInfo {
   /// Kafka API Key
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
   /// Kafka API Key Secret
-  final pulumi.Input<String>? apiSecret;
+  final pulumi.Input<String?>? apiSecret;
   /// Kafka Auth Type
-  final pulumi.Input<String>? authType;
+  final pulumi.Input<dynamic>? authType;
   /// Flush size
-  final pulumi.Input<String>? flushSize;
+  final pulumi.Input<String?>? flushSize;
   /// Kafka Input Data Format Type
-  final pulumi.Input<String>? inputFormat;
+  final pulumi.Input<dynamic>? inputFormat;
   /// Maximum Tasks
-  final pulumi.Input<String>? maxTasks;
+  final pulumi.Input<String?>? maxTasks;
   /// Kafka Output Data Format Type
-  final pulumi.Input<String>? outputFormat;
+  final pulumi.Input<dynamic>? outputFormat;
   /// Partner Connector type.
   /// Expected value is 'KafkaAzureSynapseAnalyticsSink'.
   final pulumi.Input<String> partnerConnectorType;
   /// Kafka Service Account Id
-  final pulumi.Input<String>? serviceAccountId;
+  final pulumi.Input<String?>? serviceAccountId;
   /// Time Interval
-  final pulumi.Input<String>? timeInterval;
+  final pulumi.Input<String?>? timeInterval;
   /// Kafka topics list
-  final pulumi.Input<List<String>>? topics;
+  final pulumi.Input<List<String>?>? topics;
   /// Kafka topics directory
-  final pulumi.Input<String>? topicsDir;
+  final pulumi.Input<String?>? topicsDir;
 
   /// Creates a new [KafkaAzureSynapseAnalyticsSinkConnectorInfo].
   /// [apiKey] Kafka API Key
@@ -79,11 +79,11 @@ class KafkaAzureSynapseAnalyticsSinkConnectorInfo {
     return KafkaAzureSynapseAnalyticsSinkConnectorInfo(
       apiKey: (() { final guardedValue = map['apiKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       apiSecret: (() { final guardedValue = map['apiSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      authType: (() { final guardedValue = map['authType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authType: (() { final guardedValue = map['authType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       flushSize: (() { final guardedValue = map['flushSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      inputFormat: (() { final guardedValue = map['inputFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      inputFormat: (() { final guardedValue = map['inputFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       maxTasks: (() { final guardedValue = map['maxTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      outputFormat: (() { final guardedValue = map['outputFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputFormat: (() { final guardedValue = map['outputFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       partnerConnectorType: pulumi.Input.fromValue(map['partnerConnectorType'] as String),
       serviceAccountId: (() { final guardedValue = map['serviceAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeInterval: (() { final guardedValue = map['timeInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

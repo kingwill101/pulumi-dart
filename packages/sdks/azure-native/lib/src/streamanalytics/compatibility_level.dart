@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Controls certain runtime behaviors of the streaming job.
-enum CompatibilityLevel {
+enum CompatibilityLevel implements pulumi.PulumiEnum<String> {
   value10("1.0"),
   value12("1.2");
 
   const CompatibilityLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static CompatibilityLevel fromValue(String value) {

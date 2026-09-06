@@ -13,11 +13,11 @@ class InvoiceSectionArgs {
   /// The ID that uniquely identifies a billing profile.
   final pulumi.Input<String> billingProfileName;
   /// The ID that uniquely identifies an invoice section.
-  final pulumi.Input<String>? invoiceSectionName;
+  final pulumi.Input<String?>? invoiceSectionName;
   /// An invoice section.
-  final pulumi.Input<InvoiceSectionProperties>? properties;
+  final pulumi.Input<InvoiceSectionProperties?>? properties;
   /// Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain &lt; &gt; % & \ ? /
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [InvoiceSectionArgs].
   /// [billingAccountName] The ID that uniquely identifies a billing account.

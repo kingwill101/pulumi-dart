@@ -10,11 +10,11 @@ class ListGatewayDebugCredentialsArgs {
   /// Full resource Id of an API.
   final pulumi.Input<String> apiId;
   /// Credentials expiration in ISO8601 format. Maximum duration of the credentials is PT1H. When property is not specified, them value PT1H is used.
-  final pulumi.Input<String>? credentialsExpireAfter;
+  final pulumi.Input<String?>? credentialsExpireAfter;
   /// Gateway entity identifier. Must be unique in the current API Management service instance. Must not have value 'managed'
   final pulumi.Input<String> gatewayId;
   /// Purposes of debug credential.
-  final pulumi.Input<List<String>> purposes;
+  final pulumi.Input<List<dynamic>> purposes;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.
@@ -52,7 +52,7 @@ class ListGatewayDebugCredentialsArgs {
       apiId: pulumi.Input.fromValue(map['apiId'] as String),
       credentialsExpireAfter: (() { final guardedValue = map['credentialsExpireAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gatewayId: pulumi.Input.fromValue(map['gatewayId'] as String),
-      purposes: pulumi.Input.fromValue((map['purposes'] as List).cast<String>()),
+      purposes: pulumi.Input.fromValue((map['purposes'] as List).cast<dynamic>()),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );

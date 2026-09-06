@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Certificate {
   /// PEM formatted public key.
-  final pulumi.Input<String>? pem;
+  final pulumi.Input<String?>? pem;
 
   /// Creates a new [Certificate].
   /// [pem] PEM formatted public key.

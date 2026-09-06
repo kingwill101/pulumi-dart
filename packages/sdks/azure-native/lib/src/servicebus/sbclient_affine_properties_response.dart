@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties specific to client affine subscriptions.
 class SBClientAffinePropertiesResponse {
   /// Indicates the Client ID of the application that created the client-affine subscription.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// For client-affine subscriptions, this value indicates whether the subscription is durable or not.
-  final pulumi.Input<bool>? isDurable;
+  final pulumi.Input<bool?>? isDurable;
   /// For client-affine subscriptions, this value indicates whether the subscription is shared or not.
-  final pulumi.Input<bool>? isShared;
+  final pulumi.Input<bool?>? isShared;
 
   /// Creates a new [SBClientAffinePropertiesResponse].
   /// [clientId] Indicates the Client ID of the application that created the client-affine subscription.

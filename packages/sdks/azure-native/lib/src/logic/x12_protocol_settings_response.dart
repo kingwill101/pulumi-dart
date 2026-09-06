@@ -19,7 +19,7 @@ class X12ProtocolSettingsResponse {
   /// The X12 acknowledgment settings.
   final pulumi.Input<X12AcknowledgementSettingsResponse> acknowledgementSettings;
   /// The X12 envelope override settings.
-  final pulumi.Input<List<X12EnvelopeOverrideResponse>>? envelopeOverrides;
+  final pulumi.Input<List<X12EnvelopeOverrideResponse>?>? envelopeOverrides;
   /// The X12 envelope settings.
   final pulumi.Input<X12EnvelopeSettingsResponse> envelopeSettings;
   /// The X12 framing settings.
@@ -27,7 +27,7 @@ class X12ProtocolSettingsResponse {
   /// The X12 message filter.
   final pulumi.Input<X12MessageFilterResponse> messageFilter;
   /// The X12 message filter list.
-  final pulumi.Input<List<X12MessageIdentifierResponse>>? messageFilterList;
+  final pulumi.Input<List<X12MessageIdentifierResponse>?>? messageFilterList;
   /// The X12 processing settings.
   final pulumi.Input<X12ProcessingSettingsResponse> processingSettings;
   /// The X12 schema references.
@@ -35,11 +35,11 @@ class X12ProtocolSettingsResponse {
   /// The X12 security settings.
   final pulumi.Input<X12SecuritySettingsResponse> securitySettings;
   /// The X12 validation override settings.
-  final pulumi.Input<List<X12ValidationOverrideResponse>>? validationOverrides;
+  final pulumi.Input<List<X12ValidationOverrideResponse>?>? validationOverrides;
   /// The X12 validation settings.
   final pulumi.Input<X12ValidationSettingsResponse> validationSettings;
   /// The X12 delimiter override settings.
-  final pulumi.Input<List<X12DelimiterOverridesResponse>>? x12DelimiterOverrides;
+  final pulumi.Input<List<X12DelimiterOverridesResponse>?>? x12DelimiterOverrides;
 
   /// Creates a new [X12ProtocolSettingsResponse].
   /// [acknowledgementSettings] The X12 acknowledgment settings.

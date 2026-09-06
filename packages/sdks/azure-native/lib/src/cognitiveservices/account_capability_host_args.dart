@@ -11,7 +11,7 @@ class AccountCapabilityHostArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
   /// The name of the capability host associated with the Cognitive Services Resource
-  final pulumi.Input<String>? capabilityHostName;
+  final pulumi.Input<String?>? capabilityHostName;
   /// [Required] Additional attributes of the entity.
   final pulumi.Input<CapabilityHost> capabilityHostProperties;
   /// The name of the resource group. The name is case insensitive.

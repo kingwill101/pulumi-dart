@@ -7,25 +7,25 @@ import 'storage_networks_response.dart';
 /// The HostNetwork of a cluster.
 class HostNetworkResponse {
   /// Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
-  final pulumi.Input<bool>? enableStorageAutoIp;
+  final pulumi.Input<bool?>? enableStorageAutoIp;
   /// The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
-  final pulumi.Input<List<IntentsResponse>>? intents;
+  final pulumi.Input<List<IntentsResponse>?>? intents;
   /// Defines how the storage adapters between nodes are connected either switch or switch less..
-  final pulumi.Input<bool>? storageConnectivitySwitchless;
+  final pulumi.Input<bool?>? storageConnectivitySwitchless;
   /// List of StorageNetworks config to deploy AzureStackHCI Cluster.
-  final pulumi.Input<List<StorageNetworksResponse>>? storageNetworks;
+  final pulumi.Input<List<StorageNetworksResponse>?>? storageNetworks;
 
   /// Creates a new [HostNetworkResponse].
   /// [enableStorageAutoIp] Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
   /// [intents] The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
   /// [storageConnectivitySwitchless] Defines how the storage adapters between nodes are connected either switch or switch less..
   /// [storageNetworks] List of StorageNetworks config to deploy AzureStackHCI Cluster.
-  const HostNetworkResponse({
-    this.enableStorageAutoIp,
+  HostNetworkResponse({
+    pulumi.Input<bool?>? enableStorageAutoIp,
     this.intents,
-    this.storageConnectivitySwitchless,
+    pulumi.Input<bool?>? storageConnectivitySwitchless,
     this.storageNetworks,
-  });
+  }) : enableStorageAutoIp = enableStorageAutoIp ?? pulumi.Input.fromValue(false), storageConnectivitySwitchless = storageConnectivitySwitchless ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

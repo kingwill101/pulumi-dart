@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StorageBlobDestination {
   /// The container name of the Storage Blob.
-  final pulumi.Input<String>? containerName;
+  final pulumi.Input<String?>? containerName;
   /// A friendly name for the destination.
   /// This name should be unique across all destinations (regardless of type) within the data collection rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource ID of the storage account.
-  final pulumi.Input<String>? storageAccountResourceId;
+  final pulumi.Input<String?>? storageAccountResourceId;
 
   /// Creates a new [StorageBlobDestination].
   /// [containerName] The container name of the Storage Blob.

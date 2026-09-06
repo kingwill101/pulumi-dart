@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Operates on the allowed values for the matchVariable
-enum ExceptionEntryValueMatchOperator {
+enum ExceptionEntryValueMatchOperator implements pulumi.PulumiEnum<String> {
   valueEquals("Equals"),
   valueContains("Contains"),
   valueStartsWith("StartsWith"),
@@ -7,6 +9,7 @@ enum ExceptionEntryValueMatchOperator {
   valueIPMatch("IPMatch");
 
   const ExceptionEntryValueMatchOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static ExceptionEntryValueMatchOperator fromValue(String value) {

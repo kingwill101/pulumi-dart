@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_key_vault_secret_reference.dart';
 import 'integration_runtime_reference.dart';
 import 'parameter_specification.dart';
 import 'sql_always_encrypted_properties.dart';
@@ -9,13 +8,13 @@ import 'sql_always_encrypted_properties.dart';
 /// Amazon RDS for SQL Server linked service.
 class AmazonRdsForSqlServerLinkedService {
   /// Sql always encrypted properties.
-  final pulumi.Input<SqlAlwaysEncryptedProperties>? alwaysEncryptedSettings;
+  final pulumi.Input<SqlAlwaysEncryptedProperties?>? alwaysEncryptedSettings;
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? applicationIntent;
   /// The type used for authentication. Type: string.
-  final pulumi.Input<String>? authenticationType;
+  final pulumi.Input<dynamic>? authenticationType;
   /// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? commandTimeout;
   /// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
@@ -25,17 +24,17 @@ class AmazonRdsForSqlServerLinkedService {
   /// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? connectTimeout;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference?>? connectVia;
   /// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
   final pulumi.Input<dynamic>? connectionString;
   /// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? database;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? encrypt;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? failoverPartner;
   /// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
@@ -55,9 +54,9 @@ class AmazonRdsForSqlServerLinkedService {
   /// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? packetSize;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>?>? parameters;
   /// The on-premises Windows authentication password.
-  final pulumi.Input<AzureKeyVaultSecretReference>? password;
+  final pulumi.Input<dynamic>? password;
   /// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? pooling;
   /// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
@@ -70,7 +69,7 @@ class AmazonRdsForSqlServerLinkedService {
   /// The on-premises Windows authentication user name. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? userName;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [AmazonRdsForSqlServerLinkedService].
   /// [alwaysEncryptedSettings] Sql always encrypted properties.
@@ -164,7 +163,7 @@ class AmazonRdsForSqlServerLinkedService {
       'multipleActiveResultSets': ?multipleActiveResultSets,
       'packetSize': ?packetSize,
       'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(password, (value) => value.toMap()),
+      'password': ?password,
       'pooling': ?pooling,
       'server': ?server,
       'trustServerCertificate': ?trustServerCertificate,
@@ -179,7 +178,7 @@ class AmazonRdsForSqlServerLinkedService {
       alwaysEncryptedSettings: (() { final guardedValue = map['alwaysEncryptedSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SqlAlwaysEncryptedProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       applicationIntent: (() { final guardedValue = map['applicationIntent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      authenticationType: (() { final guardedValue = map['authenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authenticationType: (() { final guardedValue = map['authenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       commandTimeout: (() { final guardedValue = map['commandTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       connectRetryCount: (() { final guardedValue = map['connectRetryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       connectRetryInterval: (() { final guardedValue = map['connectRetryInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
@@ -200,7 +199,7 @@ class AmazonRdsForSqlServerLinkedService {
       multipleActiveResultSets: (() { final guardedValue = map['multipleActiveResultSets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       packetSize: (() { final guardedValue = map['packetSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecification>(guardedValue, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       pooling: (() { final guardedValue = map['pooling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       server: (() { final guardedValue = map['server']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       trustServerCertificate: (() { final guardedValue = map['trustServerCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

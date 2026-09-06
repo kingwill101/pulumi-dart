@@ -10,17 +10,17 @@ import 'migrate_project_tags.dart';
 /// {@macro pulumi_migrate_migrate_project_args_doc}
 class MigrateProjectArgs {
   /// Gets or sets the eTag for concurrency control.
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// Gets or sets the Azure location in which migrate project is created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the Azure Migrate project.
-  final pulumi.Input<String>? migrateProjectName;
+  final pulumi.Input<String?>? migrateProjectName;
   /// Gets or sets the nested properties.
-  final pulumi.Input<MigrateProjectProperties>? properties;
+  final pulumi.Input<MigrateProjectProperties?>? properties;
   /// Name of the Azure Resource Group that migrate project is part of.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the tags.
-  final pulumi.Input<MigrateProjectTags>? tags;
+  final pulumi.Input<MigrateProjectTags?>? tags;
 
   /// Creates a new [MigrateProjectArgs].
   /// [eTag] Gets or sets the eTag for concurrency control.

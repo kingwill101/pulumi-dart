@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Metadata for a Link's property mapping.
 class TypePropertiesMappingResponse {
   /// Link type.
-  final pulumi.Input<String>? linkType;
+  final pulumi.Input<String?>? linkType;
   /// Property name on the source Entity Type.
   final pulumi.Input<String> sourcePropertyName;
   /// Property name on the target Entity Type.

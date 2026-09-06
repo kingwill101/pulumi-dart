@@ -7,13 +7,13 @@ import 'smb_storage_response.dart';
 /// Storage properties
 class ConnectedEnvironmentStorageResponseProperties {
   /// Azure file properties
-  final pulumi.Input<AzureFilePropertiesResponse>? azureFile;
+  final pulumi.Input<AzureFilePropertiesResponse?>? azureFile;
   /// Any errors that occurred during deployment or deployment validation
   final pulumi.Input<String> deploymentErrors;
   /// Provisioning state of the storage.
   final pulumi.Input<String> provisioningState;
   /// SMB storage properties
-  final pulumi.Input<SmbStorageResponse>? smb;
+  final pulumi.Input<SmbStorageResponse?>? smb;
 
   /// Creates a new [ConnectedEnvironmentStorageResponseProperties].
   /// [azureFile] Azure file properties

@@ -22,6 +22,17 @@ Future<GetDeidServiceResult> getDeidService(
   return GetDeidServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetDeidServiceResult> getDeidServiceOutput(
+  GetDeidServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:healthdataaiservices:getDeidService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeidServiceResult.fromMap);
+}
+
 /// Get a specific private connection
 ///
 /// Uses Azure REST API version 2024-09-20.
@@ -38,4 +49,15 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:healthdataaiservices:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }

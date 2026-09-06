@@ -6,17 +6,17 @@ import 'solution_details.dart';
 /// Class for solution properties.
 class SolutionProperties {
   /// Gets or sets the cleanup state of the solution.
-  final pulumi.Input<String>? cleanupState;
+  final pulumi.Input<String?>? cleanupState;
   /// Gets or sets the details of the solution.
-  final pulumi.Input<SolutionDetails>? details;
+  final pulumi.Input<SolutionDetails?>? details;
   /// Gets or sets the goal of the solution.
-  final pulumi.Input<String>? goal;
+  final pulumi.Input<String?>? goal;
   /// Gets or sets the purpose of the solution.
-  final pulumi.Input<String>? purpose;
+  final pulumi.Input<String?>? purpose;
   /// Gets or sets the current status of the solution.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Gets or sets the tool being used in the solution.
-  final pulumi.Input<String>? tool;
+  final pulumi.Input<String?>? tool;
 
   /// Creates a new [SolutionProperties].
   /// [cleanupState] Gets or sets the cleanup state of the solution.

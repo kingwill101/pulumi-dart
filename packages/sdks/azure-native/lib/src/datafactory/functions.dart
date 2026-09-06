@@ -60,6 +60,17 @@ Future<GetChangeDataCaptureResult> getChangeDataCapture(
   return GetChangeDataCaptureResult.fromMap(result);
 }
 
+pulumi.Output<GetChangeDataCaptureResult> getChangeDataCaptureOutput(
+  GetChangeDataCaptureArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:getChangeDataCapture',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetChangeDataCaptureResult.fromMap);
+}
+
 /// Gets a credential.
 ///
 /// Uses Azure REST API version 2018-06-01.
@@ -76,6 +87,17 @@ Future<GetCredentialOperationResult> getCredentialOperation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCredentialOperationResult.fromMap(result);
+}
+
+pulumi.Output<GetCredentialOperationResult> getCredentialOperationOutput(
+  GetCredentialOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:getCredentialOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCredentialOperationResult.fromMap);
 }
 
 /// Gets a data flow.
@@ -96,6 +118,17 @@ Future<GetDataFlowResult> getDataFlow(
   return GetDataFlowResult.fromMap(result);
 }
 
+pulumi.Output<GetDataFlowResult> getDataFlowOutput(
+  GetDataFlowArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:getDataFlow',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataFlowResult.fromMap);
+}
+
 /// Gets a dataset.
 ///
 /// Uses Azure REST API version 2018-06-01.
@@ -112,6 +145,17 @@ Future<GetDatasetResult> getDataset(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatasetResult.fromMap(result);
+}
+
+pulumi.Output<GetDatasetResult> getDatasetOutput(
+  GetDatasetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:getDataset',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatasetResult.fromMap);
 }
 
 /// Get exposure control feature for specific location.
@@ -132,6 +176,17 @@ Future<GetExposureControlFeatureValueResult> getExposureControlFeatureValue(
   return GetExposureControlFeatureValueResult.fromMap(result);
 }
 
+pulumi.Output<GetExposureControlFeatureValueResult> getExposureControlFeatureValueOutput(
+  GetExposureControlFeatureValueArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:getExposureControlFeatureValue',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExposureControlFeatureValueResult.fromMap);
+}
+
 /// Get exposure control feature for specific factory.
 ///
 /// Uses Azure REST API version 2018-06-01.
@@ -148,6 +203,17 @@ Future<GetExposureControlFeatureValueByFactoryResult> getExposureControlFeatureV
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExposureControlFeatureValueByFactoryResult.fromMap(result);
+}
+
+pulumi.Output<GetExposureControlFeatureValueByFactoryResult> getExposureControlFeatureValueByFactoryOutput(
+  GetExposureControlFeatureValueByFactoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:getExposureControlFeatureValueByFactory',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExposureControlFeatureValueByFactoryResult.fromMap);
 }
 
 /// Gets a factory.
@@ -168,6 +234,17 @@ Future<GetFactoryResult> getFactory(
   return GetFactoryResult.fromMap(result);
 }
 
+pulumi.Output<GetFactoryResult> getFactoryOutput(
+  GetFactoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:getFactory',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFactoryResult.fromMap);
+}
+
 /// Get Data Plane access.
 ///
 /// Uses Azure REST API version 2018-06-01.
@@ -184,6 +261,17 @@ Future<GetFactoryDataPlaneAccessResult> getFactoryDataPlaneAccess(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFactoryDataPlaneAccessResult.fromMap(result);
+}
+
+pulumi.Output<GetFactoryDataPlaneAccessResult> getFactoryDataPlaneAccessOutput(
+  GetFactoryDataPlaneAccessArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:getFactoryDataPlaneAccess',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFactoryDataPlaneAccessResult.fromMap);
 }
 
 /// Get GitHub Access Token.
@@ -204,6 +292,17 @@ Future<GetFactoryGitHubAccessTokenResult> getFactoryGitHubAccessToken(
   return GetFactoryGitHubAccessTokenResult.fromMap(result);
 }
 
+pulumi.Output<GetFactoryGitHubAccessTokenResult> getFactoryGitHubAccessTokenOutput(
+  GetFactoryGitHubAccessTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:getFactoryGitHubAccessToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFactoryGitHubAccessTokenResult.fromMap);
+}
+
 /// Gets a Global parameter
 ///
 /// Uses Azure REST API version 2018-06-01.
@@ -220,6 +319,17 @@ Future<GetGlobalParameterResult> getGlobalParameter(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGlobalParameterResult.fromMap(result);
+}
+
+pulumi.Output<GetGlobalParameterResult> getGlobalParameterOutput(
+  GetGlobalParameterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:getGlobalParameter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalParameterResult.fromMap);
 }
 
 /// Gets an integration runtime.
@@ -240,6 +350,17 @@ Future<GetIntegrationRuntimeResult> getIntegrationRuntime(
   return GetIntegrationRuntimeResult.fromMap(result);
 }
 
+pulumi.Output<GetIntegrationRuntimeResult> getIntegrationRuntimeOutput(
+  GetIntegrationRuntimeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:getIntegrationRuntime',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationRuntimeResult.fromMap);
+}
+
 /// Gets the on-premises integration runtime connection information for encrypting the on-premises data source credentials.
 ///
 /// Uses Azure REST API version 2018-06-01.
@@ -256,6 +377,17 @@ Future<GetIntegrationRuntimeConnectionInfoResult> getIntegrationRuntimeConnectio
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIntegrationRuntimeConnectionInfoResult.fromMap(result);
+}
+
+pulumi.Output<GetIntegrationRuntimeConnectionInfoResult> getIntegrationRuntimeConnectionInfoOutput(
+  GetIntegrationRuntimeConnectionInfoArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:getIntegrationRuntimeConnectionInfo',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationRuntimeConnectionInfoResult.fromMap);
 }
 
 /// Get a SSIS integration runtime object metadata by specified path. The return is pageable metadata list.
@@ -276,6 +408,17 @@ Future<GetIntegrationRuntimeObjectMetadatumResult> getIntegrationRuntimeObjectMe
   return GetIntegrationRuntimeObjectMetadatumResult.fromMap(result);
 }
 
+pulumi.Output<GetIntegrationRuntimeObjectMetadatumResult> getIntegrationRuntimeObjectMetadatumOutput(
+  GetIntegrationRuntimeObjectMetadatumArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:getIntegrationRuntimeObjectMetadatum',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationRuntimeObjectMetadatumResult.fromMap);
+}
+
 /// Gets detailed status information for an integration runtime.
 ///
 /// Uses Azure REST API version 2018-06-01.
@@ -292,6 +435,17 @@ Future<GetIntegrationRuntimeStatusResult> getIntegrationRuntimeStatus(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIntegrationRuntimeStatusResult.fromMap(result);
+}
+
+pulumi.Output<GetIntegrationRuntimeStatusResult> getIntegrationRuntimeStatusOutput(
+  GetIntegrationRuntimeStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:getIntegrationRuntimeStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationRuntimeStatusResult.fromMap);
 }
 
 /// Gets a linked service.
@@ -312,6 +466,17 @@ Future<GetLinkedServiceResult> getLinkedService(
   return GetLinkedServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetLinkedServiceResult> getLinkedServiceOutput(
+  GetLinkedServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:getLinkedService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLinkedServiceResult.fromMap);
+}
+
 /// Gets a managed private endpoint.
 ///
 /// Uses Azure REST API version 2018-06-01.
@@ -328,6 +493,17 @@ Future<GetManagedPrivateEndpointResult> getManagedPrivateEndpoint(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedPrivateEndpointResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedPrivateEndpointResult> getManagedPrivateEndpointOutput(
+  GetManagedPrivateEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:getManagedPrivateEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedPrivateEndpointResult.fromMap);
 }
 
 /// Gets a pipeline.
@@ -348,6 +524,17 @@ Future<GetPipelineResult> getPipeline(
   return GetPipelineResult.fromMap(result);
 }
 
+pulumi.Output<GetPipelineResult> getPipelineOutput(
+  GetPipelineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:getPipeline',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPipelineResult.fromMap);
+}
+
 /// Gets a private endpoint connection
 ///
 /// Uses Azure REST API version 2018-06-01.
@@ -364,6 +551,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Gets a trigger.
@@ -384,6 +582,17 @@ Future<GetTriggerResult> getTrigger(
   return GetTriggerResult.fromMap(result);
 }
 
+pulumi.Output<GetTriggerResult> getTriggerOutput(
+  GetTriggerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:getTrigger',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTriggerResult.fromMap);
+}
+
 /// Get a trigger's event subscription status.
 ///
 /// Uses Azure REST API version 2018-06-01.
@@ -402,6 +611,17 @@ Future<GetTriggerEventSubscriptionStatusResult> getTriggerEventSubscriptionStatu
   return GetTriggerEventSubscriptionStatusResult.fromMap(result);
 }
 
+pulumi.Output<GetTriggerEventSubscriptionStatusResult> getTriggerEventSubscriptionStatusOutput(
+  GetTriggerEventSubscriptionStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:getTriggerEventSubscriptionStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTriggerEventSubscriptionStatusResult.fromMap);
+}
+
 /// Retrieves the authentication keys for an integration runtime.
 ///
 /// Uses Azure REST API version 2018-06-01.
@@ -418,4 +638,15 @@ Future<ListIntegrationRuntimeAuthKeysResult> listIntegrationRuntimeAuthKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListIntegrationRuntimeAuthKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListIntegrationRuntimeAuthKeysResult> listIntegrationRuntimeAuthKeysOutput(
+  ListIntegrationRuntimeAuthKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datafactory:listIntegrationRuntimeAuthKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListIntegrationRuntimeAuthKeysResult.fromMap);
 }

@@ -6,9 +6,9 @@ import 'encryption.dart';
 /// The object that contains details of encryption used on the workspace.
 class WorkspaceEncryptionParameter {
   /// The type of variable that this is
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
   /// The value which should be used for this field.
-  final pulumi.Input<Encryption>? value;
+  final pulumi.Input<Encryption?>? value;
 
   /// Creates a new [WorkspaceEncryptionParameter].
   /// [type] The type of variable that this is
@@ -27,7 +27,7 @@ class WorkspaceEncryptionParameter {
 
   factory WorkspaceEncryptionParameter.fromMap(Map<String, dynamic> map) {
     return WorkspaceEncryptionParameter(
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Encryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

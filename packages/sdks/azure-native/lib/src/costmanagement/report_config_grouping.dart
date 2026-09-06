@@ -7,7 +7,7 @@ class ReportConfigGrouping {
   /// The name of the column to group. This version supports subscription lowest possible grain.
   final pulumi.Input<String> name;
   /// Has type of the column to group.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [ReportConfigGrouping].
   /// [name] The name of the column to group. This version supports subscription lowest possible grain.
@@ -27,7 +27,7 @@ class ReportConfigGrouping {
   factory ReportConfigGrouping.fromMap(Map<String, dynamic> map) {
     return ReportConfigGrouping(
       name: pulumi.Input.fromValue(map['name'] as String),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

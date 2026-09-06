@@ -9,15 +9,15 @@ import 'file_share_properties.dart';
 /// {@macro pulumi_fileshares_file_share_args_doc}
 class FileShareArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<FileShareProperties>? properties;
+  final pulumi.Input<FileShareProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The resource name of the file share, as seen by the administrator through Azure Resource Manager.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FileShareArgs].
   /// [location] The geo-location where the resource lives

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SKU name.
-enum SkuName {
+enum SkuName implements pulumi.PulumiEnum<String> {
   valueComputeOptimized("Compute optimized"),
   valueStorageOptimized("Storage optimized");
 
   const SkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static SkuName fromValue(String value) {

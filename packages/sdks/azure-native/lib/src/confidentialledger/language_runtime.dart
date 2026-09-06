@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Unique name for the Managed CCF.
-enum LanguageRuntime {
+enum LanguageRuntime implements pulumi.PulumiEnum<String> {
   valueCPP("CPP"),
   valueJS("JS");
 
   const LanguageRuntime(this.wireValue);
+  @override
   final String wireValue;
 
   static LanguageRuntime fromValue(String value) {

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Reason for the specified invoice section status.
-enum InvoiceSectionStateReasonCode {
+enum InvoiceSectionStateReasonCode implements pulumi.PulumiEnum<String> {
   other("Other"),
   pastDue("PastDue"),
   unusualActivity("UnusualActivity"),
@@ -7,6 +9,7 @@ enum InvoiceSectionStateReasonCode {
   spendingLimitExpired("SpendingLimitExpired");
 
   const InvoiceSectionStateReasonCode(this.wireValue);
+  @override
   final String wireValue;
 
   static InvoiceSectionStateReasonCode fromValue(String value) {

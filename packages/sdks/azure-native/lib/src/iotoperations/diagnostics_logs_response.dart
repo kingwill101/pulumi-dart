@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Diagnostic Log properties
 class DiagnosticsLogsResponse {
   /// The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
-  final pulumi.Input<String>? level;
+  final pulumi.Input<String?>? level;
 
   /// Creates a new [DiagnosticsLogsResponse].
   /// [level] The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
-  const DiagnosticsLogsResponse({
-    this.level,
-  });
+  DiagnosticsLogsResponse({
+    pulumi.Input<String?>? level,
+  }) : level = level ?? pulumi.Input.fromValue('info');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

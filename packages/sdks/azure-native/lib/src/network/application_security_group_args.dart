@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_application_security_group_args_doc}
 class ApplicationSecurityGroupArgs {
   /// The name of the application security group.
-  final pulumi.Input<String>? applicationSecurityGroupName;
+  final pulumi.Input<String?>? applicationSecurityGroupName;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ApplicationSecurityGroupArgs].
   /// [applicationSecurityGroupName] The name of the application security group.

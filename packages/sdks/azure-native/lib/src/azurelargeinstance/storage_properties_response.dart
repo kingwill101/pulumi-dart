@@ -6,19 +6,19 @@ import 'storage_billing_properties_response.dart';
 /// described the storage properties of the azure large storage instance
 class StoragePropertiesResponse {
   /// the kind of storage instance
-  final pulumi.Input<String>? generation;
+  final pulumi.Input<String?>? generation;
   /// the hardware type of the storage instance
-  final pulumi.Input<String>? hardwareType;
+  final pulumi.Input<String?>? hardwareType;
   /// the offering type for which the resource is getting provisioned
-  final pulumi.Input<String>? offeringType;
+  final pulumi.Input<String?>? offeringType;
   /// State of provisioning of the AzureLargeStorageInstance
   final pulumi.Input<String> provisioningState;
   /// the billing related information for the resource
-  final pulumi.Input<StorageBillingPropertiesResponse>? storageBillingProperties;
+  final pulumi.Input<StorageBillingPropertiesResponse?>? storageBillingProperties;
   /// the storage protocol for which the resource is getting provisioned
-  final pulumi.Input<String>? storageType;
+  final pulumi.Input<String?>? storageType;
   /// the workload for which the resource is getting provisioned
-  final pulumi.Input<String>? workloadType;
+  final pulumi.Input<String?>? workloadType;
 
   /// Creates a new [StoragePropertiesResponse].
   /// [generation] the kind of storage instance

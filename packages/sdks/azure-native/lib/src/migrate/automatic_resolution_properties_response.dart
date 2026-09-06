@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutomaticResolutionPropertiesResponse {
   /// Gets the MoveResource ARM ID of
   /// the dependent resource if the resolution type is Automatic.
-  final pulumi.Input<String>? moveResourceId;
+  final pulumi.Input<String?>? moveResourceId;
 
   /// Creates a new [AutomaticResolutionPropertiesResponse].
   /// [moveResourceId] Gets the MoveResource ARM ID of

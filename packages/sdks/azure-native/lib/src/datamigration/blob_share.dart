@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Blob container storage information.
 class BlobShare {
   /// SAS URI of Azure Storage Account Container.
-  final pulumi.Input<String>? sasUri;
+  final pulumi.Input<String?>? sasUri;
 
   /// Creates a new [BlobShare].
   /// [sasUri] SAS URI of Azure Storage Account Container.

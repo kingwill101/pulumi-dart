@@ -53,11 +53,11 @@ class MessageServerPropertiesResponse {
     return MessageServerPropertiesResponse(
       health: pulumi.Input.fromValue(map['health'] as String),
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
-      httpPort: pulumi.Input.fromValue(map['httpPort'] as double),
-      httpsPort: pulumi.Input.fromValue(map['httpsPort'] as double),
-      internalMsPort: pulumi.Input.fromValue(map['internalMsPort'] as double),
+      httpPort: pulumi.Input.fromValue((map['httpPort'] as num).toDouble()),
+      httpsPort: pulumi.Input.fromValue((map['httpsPort'] as num).toDouble()),
+      internalMsPort: pulumi.Input.fromValue((map['internalMsPort'] as num).toDouble()),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
-      msPort: pulumi.Input.fromValue(map['msPort'] as double),
+      msPort: pulumi.Input.fromValue((map['msPort'] as num).toDouble()),
     );
   }
 }

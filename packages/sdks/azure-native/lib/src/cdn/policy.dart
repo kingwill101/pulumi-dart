@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'cdn_endpoint_response.dart';
 import 'custom_rule_list_response.dart';
 import 'managed_rule_set_list_response.dart';
 import 'policy_args.dart';
@@ -785,7 +786,7 @@ class Policy extends pulumi.CustomResource {
   /// Describes custom rules inside the policy.
   late final pulumi.Output<CustomRuleListResponse?> customRules;
   /// Describes Azure CDN endpoints associated with this Web Application Firewall policy.
-  late final pulumi.Output<List<Map<String, dynamic>>> endpointLinks;
+  late final pulumi.Output<List<CdnEndpointResponse>> endpointLinks;
   /// Gets a unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String?> etag;
   /// Key-Value pair representing additional properties for Web Application Firewall policy.
@@ -829,9 +830,9 @@ class Policy extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     customRules = registerOutput<CustomRuleListResponse?>('customRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomRuleListResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    endpointLinks = registerOutput<List<Map<String, dynamic>>>('endpointLinks');
+    endpointLinks = registerOutput<List<CdnEndpointResponse>>('endpointLinks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CdnEndpointResponse>(guardedValue, (value) => CdnEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String?>('etag');
-    extendedProperties = registerOutput<Map<String, String>?>('extendedProperties');
+    extendedProperties = registerOutput<Map<String, String>?>('extendedProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     managedRules = registerOutput<ManagedRuleSetListResponse?>('managedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedRuleSetListResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -841,7 +842,34 @@ class Policy extends pulumi.CustomResource {
     resourceState = registerOutput<String>('resourceState');
     sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Policy] resource.
+  Policy.reference(String urn)
+    : super(
+        'azure-native:cdn:Policy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customRules = registerOutput<CustomRuleListResponse?>('customRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomRuleListResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpointLinks = registerOutput<List<CdnEndpointResponse>>('endpointLinks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CdnEndpointResponse>(guardedValue, (value) => CdnEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String?>('etag');
+    extendedProperties = registerOutput<Map<String, String>?>('extendedProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    managedRules = registerOutput<ManagedRuleSetListResponse?>('managedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedRuleSetListResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    policySettings = registerOutput<PolicySettingsResponse?>('policySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    rateLimitRules = registerOutput<RateLimitRuleListResponse?>('rateLimitRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RateLimitRuleListResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceState = registerOutput<String>('resourceState');
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

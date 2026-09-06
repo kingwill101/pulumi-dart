@@ -8,27 +8,27 @@ class ListProductsAndConfigurationProductFamiliesResult {
   /// The link to the next page of items
   final String? nextLink;
   /// The ProductFamily items on this page
-  final List<ProductFamilyResponse> value;
+  final List<ProductFamilyResponse>? value;
 
   /// Creates a new [ListProductsAndConfigurationProductFamiliesResult].
   /// [nextLink] The link to the next page of items
   /// [value] The ProductFamily items on this page
   const ListProductsAndConfigurationProductFamiliesResult({
     this.nextLink,
-    required this.value,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': pulumi.Input.encodeList<ProductFamilyResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<ProductFamilyResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory ListProductsAndConfigurationProductFamiliesResult.fromMap(Map<String, dynamic> map) {
     return ListProductsAndConfigurationProductFamiliesResult(
       nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      value: pulumi.Input.decodeList<ProductFamilyResponse>(map['value']!, (value) => ProductFamilyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProductFamilyResponse>(guardedValue, (value) => ProductFamilyResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

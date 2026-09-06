@@ -11,11 +11,11 @@ class PrivateEndpointConnectionResponse {
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final pulumi.Input<String> id;
   /// The location of the private endpoint connection
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource
   final pulumi.Input<String> name;
   /// Resource properties.
-  final pulumi.Input<PrivateEndpointConnectionPropertiesResponse>? properties;
+  final pulumi.Input<PrivateEndpointConnectionPropertiesResponse?>? properties;
   /// Metadata pertaining to creation and last modification of the resource.
   final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

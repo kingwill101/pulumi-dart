@@ -6,9 +6,9 @@ import 'encryption.dart';
 /// Elastic San Pool Properties
 class ElasticSan {
   /// Encryption specifies the encryption configuration for the Azure Disk pool
-  final pulumi.Input<Encryption>? encryption;
+  final pulumi.Input<Encryption?>? encryption;
   /// Sku name
-  final pulumi.Input<String>? skuName;
+  final pulumi.Input<dynamic>? skuName;
 
   /// Creates a new [ElasticSan].
   /// [encryption] Encryption specifies the encryption configuration for the Azure Disk pool
@@ -28,7 +28,7 @@ class ElasticSan {
   factory ElasticSan.fromMap(Map<String, dynamic> map) {
     return ElasticSan(
       encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Encryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      skuName: (() { final guardedValue = map['skuName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      skuName: (() { final guardedValue = map['skuName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

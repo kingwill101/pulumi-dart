@@ -6,17 +6,17 @@ import 'exclusion_managed_rule_set_response.dart';
 /// Adds exception to allow a request when the condition is satisfied.
 class ExceptionEntryResponse {
   /// The managed rule sets that are associated with the exception.
-  final pulumi.Input<List<ExclusionManagedRuleSetResponse>>? exceptionManagedRuleSets;
+  final pulumi.Input<List<ExclusionManagedRuleSetResponse>?>? exceptionManagedRuleSets;
   /// The variable on which we evaluate the exception condition
   final pulumi.Input<String> matchVariable;
   /// When the matchVariable points to a key-value pair (e.g, RequestHeader), this identifies the key.
-  final pulumi.Input<String>? selector;
+  final pulumi.Input<String?>? selector;
   /// When the matchVariable points to a key-value pair (e.g, RequestHeader), this operates on the selector
-  final pulumi.Input<String>? selectorMatchOperator;
+  final pulumi.Input<String?>? selectorMatchOperator;
   /// Operates on the allowed values for the matchVariable
   final pulumi.Input<String> valueMatchOperator;
   /// Allowed values for the matchVariable
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [ExceptionEntryResponse].
   /// [exceptionManagedRuleSets] The managed rule sets that are associated with the exception.

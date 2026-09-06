@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum DomainType {
+enum DomainType implements pulumi.PulumiEnum<String> {
   standard("standard"),
   vpc("vpc");
 
   const DomainType(this.wireValue);
+  @override
   final String wireValue;
 
   static DomainType fromValue(String value) {

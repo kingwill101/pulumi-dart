@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ConnectorConfigResponse
 class ConnectorConfigResponseResponse {
   /// &lt;p&gt;A unique code associated with the cluster for registration purposes.&lt;/p&gt;
-  final pulumi.Input<String>? activationCode;
+  final pulumi.Input<String?>? activationCode;
   /// &lt;p&gt;The expiration time of the connected cluster. The cluster's YAML file must be applied through the native provider.&lt;/p&gt;
-  final pulumi.Input<String>? activationExpiry;
+  final pulumi.Input<String?>? activationExpiry;
   /// &lt;p&gt;A unique ID associated with the cluster for registration purposes.&lt;/p&gt;
-  final pulumi.Input<String>? activationId;
+  final pulumi.Input<String?>? activationId;
   /// &lt;p&gt;The cluster's cloud service provider.&lt;/p&gt;
-  final pulumi.Input<String>? provider;
+  final pulumi.Input<String?>? provider;
   /// &lt;p&gt;The Amazon Resource Name (ARN) of the role to communicate with services from the connected Kubernetes cluster.&lt;/p&gt;
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
 
   /// Creates a new [ConnectorConfigResponseResponse].
   /// [activationCode] &lt;p&gt;A unique code associated with the cluster for registration purposes.&lt;/p&gt;

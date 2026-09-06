@@ -6,11 +6,11 @@ import 'nsdartifact_profile_response.dart';
 /// The arm template RE.
 class ArmResourceDefinitionResourceElementTemplateResponse {
   /// Artifact profile properties.
-  final pulumi.Input<NSDArtifactProfileResponse>? artifactProfile;
+  final pulumi.Input<NSDArtifactProfileResponse?>? artifactProfile;
   /// Name and value pairs that define the parameter values. It can be  a well formed escaped JSON string.
-  final pulumi.Input<String>? parameterValues;
+  final pulumi.Input<String?>? parameterValues;
   /// The template type.
-  final pulumi.Input<String>? templateType;
+  final pulumi.Input<String?>? templateType;
 
   /// Creates a new [ArmResourceDefinitionResourceElementTemplateResponse].
   /// [artifactProfile] Artifact profile properties.

@@ -9,13 +9,13 @@ import 'key_vault_contract_create_properties.dart';
 /// {@macro pulumi_apimanagement_certificate_args_doc}
 class CertificateArgs {
   /// Identifier of the certificate entity. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? certificateId;
+  final pulumi.Input<String?>? certificateId;
   /// Base 64 encoded certificate using the application/x-pkcs12 representation.
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   /// KeyVault location details of the certificate.
-  final pulumi.Input<KeyVaultContractCreateProperties>? keyVault;
+  final pulumi.Input<KeyVaultContractCreateProperties?>? keyVault;
   /// Password for the Certificate
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.

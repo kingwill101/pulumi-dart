@@ -10,7 +10,7 @@ class GetCapacityReservationGroupArgs {
   /// The name of the capacity reservation group.
   final pulumi.Input<String> capacityReservationGroupName;
   /// The expand expression to apply on the operation. 'InstanceView' will retrieve the list of instance views of the capacity reservations under the capacity reservation group which is a snapshot of the runtime properties of a capacity reservation that is managed by the platform and can change outside of control plane operations.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

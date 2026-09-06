@@ -11,11 +11,11 @@ class HybridRunbookWorkerGroupArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
   /// Sets the credential of a worker group.
-  final pulumi.Input<RunAsCredentialAssociationProperty>? credential;
+  final pulumi.Input<RunAsCredentialAssociationProperty?>? credential;
   /// The hybrid runbook worker group name
-  final pulumi.Input<String>? hybridRunbookWorkerGroupName;
+  final pulumi.Input<String?>? hybridRunbookWorkerGroupName;
   /// Gets or sets the name of the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

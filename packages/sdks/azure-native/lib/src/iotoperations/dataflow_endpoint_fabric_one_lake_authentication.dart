@@ -9,9 +9,9 @@ class DataflowEndpointFabricOneLakeAuthentication {
   /// Mode of Authentication.
   final pulumi.Input<dynamic> method;
   /// System-assigned managed identity authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentity>? systemAssignedManagedIdentitySettings;
+  final pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentity?>? systemAssignedManagedIdentitySettings;
   /// User-assigned managed identity authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentity>? userAssignedManagedIdentitySettings;
+  final pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentity?>? userAssignedManagedIdentitySettings;
 
   /// Creates a new [DataflowEndpointFabricOneLakeAuthentication].
   /// [method] Mode of Authentication.

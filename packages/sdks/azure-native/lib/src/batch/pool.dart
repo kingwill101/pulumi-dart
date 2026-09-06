@@ -1,7 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'application_package_reference_response.dart';
 import 'auto_scale_run_response.dart';
 import 'batch_pool_identity_response.dart';
+import 'certificate_reference_response.dart';
 import 'deployment_configuration_response.dart';
+import 'metadata_item_response.dart';
+import 'mount_configuration_response.dart';
 import 'network_configuration_response.dart';
 import 'pool_args.dart';
 import 'resize_operation_status_response.dart';
@@ -10,6 +14,7 @@ import 'start_task_response.dart';
 import 'system_data_response.dart';
 import 'task_scheduling_policy_response.dart';
 import 'upgrade_policy_response.dart';
+import 'user_account_response.dart';
 
 /// Contains information about a pool.
 ///
@@ -4262,7 +4267,7 @@ class Pool extends pulumi.CustomResource {
   /// The list of application licenses must be a subset of available Batch service application licenses. If a license is requested which is not supported, pool creation will fail.
   late final pulumi.Output<List<String>?> applicationLicenses;
   /// Changes to application package references affect all new compute nodes joining the pool, but do not affect compute nodes that are already in the pool until they are rebooted or reimaged. There is a maximum of 10 application package references on any given pool.
-  late final pulumi.Output<List<Map<String, dynamic>>?> applicationPackages;
+  late final pulumi.Output<List<ApplicationPackageReferenceResponse>?> applicationPackages;
   /// This property is set only if the pool automatically scales, i.e. autoScaleSettings are used.
   late final pulumi.Output<AutoScaleRunResponse> autoScaleRun;
   /// The Azure API version of the resource.
@@ -4270,7 +4275,7 @@ class Pool extends pulumi.CustomResource {
   /// For Windows compute nodes, the Batch service installs the certificates to the specified certificate store and location. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
   ///
   /// Warning: This property is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
-  late final pulumi.Output<List<Map<String, dynamic>>?> certificates;
+  late final pulumi.Output<List<CertificateReferenceResponse>?> certificates;
   /// The creation time of the pool.
   late final pulumi.Output<String> creationTime;
   /// The number of dedicated compute nodes currently in the pool.
@@ -4292,9 +4297,9 @@ class Pool extends pulumi.CustomResource {
   /// This is the last time at which the pool level data, such as the targetDedicatedNodes or autoScaleSettings, changed. It does not factor in node-level changes such as a compute node changing state.
   late final pulumi.Output<String> lastModified;
   /// The Batch service does not assign any meaning to metadata; it is solely for the use of user code.
-  late final pulumi.Output<List<Map<String, dynamic>>?> metadata;
+  late final pulumi.Output<List<MetadataItemResponse>?> metadata;
   /// This supports Azure Files, NFS, CIFS/SMB, and Blobfuse.
-  late final pulumi.Output<List<Map<String, dynamic>>?> mountConfiguration;
+  late final pulumi.Output<List<MountConfigurationResponse>?> mountConfiguration;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The network configuration for a pool.
@@ -4326,7 +4331,7 @@ class Pool extends pulumi.CustomResource {
   /// Describes an upgrade policy - automatic, manual, or rolling.
   late final pulumi.Output<UpgradePolicyResponse?> upgradePolicy;
   /// The list of user accounts to be created on each node in the pool.
-  late final pulumi.Output<List<Map<String, dynamic>>?> userAccounts;
+  late final pulumi.Output<List<UserAccountResponse>?> userAccounts;
   /// For information about available VM sizes, see Sizes for Virtual Machines in Azure (https://learn.microsoft.com/azure/virtual-machines/sizes/overview). Batch supports all Azure VM sizes except STANDARD_A0 and those with premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
   late final pulumi.Output<String?> vmSize;
 
@@ -4346,11 +4351,11 @@ class Pool extends pulumi.CustomResource {
         ) {
     allocationState = registerOutput<String>('allocationState');
     allocationStateTransitionTime = registerOutput<String>('allocationStateTransitionTime');
-    applicationLicenses = registerOutput<List<String>?>('applicationLicenses');
-    applicationPackages = registerOutput<List<Map<String, dynamic>>?>('applicationPackages');
+    applicationLicenses = registerOutput<List<String>?>('applicationLicenses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    applicationPackages = registerOutput<List<ApplicationPackageReferenceResponse>?>('applicationPackages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationPackageReferenceResponse>(guardedValue, (value) => ApplicationPackageReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     autoScaleRun = registerOutput<AutoScaleRunResponse>('autoScaleRun', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoScaleRunResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
+    certificates = registerOutput<List<CertificateReferenceResponse>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateReferenceResponse>(guardedValue, (value) => CertificateReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<String>('creationTime');
     currentDedicatedNodes = registerOutput<int>('currentDedicatedNodes');
     currentLowPriorityNodes = registerOutput<int>('currentLowPriorityNodes');
@@ -4361,24 +4366,71 @@ class Pool extends pulumi.CustomResource {
     identity = registerOutput<BatchPoolIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchPoolIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     interNodeCommunication = registerOutput<String?>('interNodeCommunication');
     lastModified = registerOutput<String>('lastModified');
-    metadata = registerOutput<List<Map<String, dynamic>>?>('metadata');
-    mountConfiguration = registerOutput<List<Map<String, dynamic>>?>('mountConfiguration');
+    metadata = registerOutput<List<MetadataItemResponse>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetadataItemResponse>(guardedValue, (value) => MetadataItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    mountConfiguration = registerOutput<List<MountConfigurationResponse>?>('mountConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MountConfigurationResponse>(guardedValue, (value) => MountConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<NetworkConfigurationResponse?>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     provisioningStateTransitionTime = registerOutput<String>('provisioningStateTransitionTime');
     resizeOperationStatus = registerOutput<ResizeOperationStatusResponse>('resizeOperationStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResizeOperationStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    resourceTags = registerOutput<Map<String, String>?>('resourceTags');
+    resourceTags = registerOutput<Map<String, String>?>('resourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     scaleSettings = registerOutput<ScaleSettingsResponse?>('scaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startTask = registerOutput<StartTaskResponse?>('startTask', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StartTaskResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetNodeCommunicationMode = registerOutput<String?>('targetNodeCommunicationMode');
     taskSchedulingPolicy = registerOutput<TaskSchedulingPolicyResponse?>('taskSchedulingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskSchedulingPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     taskSlotsPerNode = registerOutput<int?>('taskSlotsPerNode');
     type = registerOutput<String>('type');
     upgradePolicy = registerOutput<UpgradePolicyResponse?>('upgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UpgradePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    userAccounts = registerOutput<List<Map<String, dynamic>>?>('userAccounts');
+    userAccounts = registerOutput<List<UserAccountResponse>?>('userAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserAccountResponse>(guardedValue, (value) => UserAccountResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    vmSize = registerOutput<String?>('vmSize');
+  }
+
+  /// Creates a typed reference to an existing [Pool] resource.
+  Pool.reference(String urn)
+    : super(
+        'azure-native:batch:Pool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allocationState = registerOutput<String>('allocationState');
+    allocationStateTransitionTime = registerOutput<String>('allocationStateTransitionTime');
+    applicationLicenses = registerOutput<List<String>?>('applicationLicenses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    applicationPackages = registerOutput<List<ApplicationPackageReferenceResponse>?>('applicationPackages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationPackageReferenceResponse>(guardedValue, (value) => ApplicationPackageReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    autoScaleRun = registerOutput<AutoScaleRunResponse>('autoScaleRun', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoScaleRunResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    certificates = registerOutput<List<CertificateReferenceResponse>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateReferenceResponse>(guardedValue, (value) => CertificateReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    creationTime = registerOutput<String>('creationTime');
+    currentDedicatedNodes = registerOutput<int>('currentDedicatedNodes');
+    currentLowPriorityNodes = registerOutput<int>('currentLowPriorityNodes');
+    currentNodeCommunicationMode = registerOutput<String>('currentNodeCommunicationMode');
+    deploymentConfiguration = registerOutput<DeploymentConfigurationResponse?>('deploymentConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String?>('displayName');
+    etag = registerOutput<String>('etag');
+    identity = registerOutput<BatchPoolIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchPoolIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    interNodeCommunication = registerOutput<String?>('interNodeCommunication');
+    lastModified = registerOutput<String>('lastModified');
+    metadata = registerOutput<List<MetadataItemResponse>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetadataItemResponse>(guardedValue, (value) => MetadataItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    mountConfiguration = registerOutput<List<MountConfigurationResponse>?>('mountConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MountConfigurationResponse>(guardedValue, (value) => MountConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    networkConfiguration = registerOutput<NetworkConfigurationResponse?>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    provisioningStateTransitionTime = registerOutput<String>('provisioningStateTransitionTime');
+    resizeOperationStatus = registerOutput<ResizeOperationStatusResponse>('resizeOperationStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResizeOperationStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceTags = registerOutput<Map<String, String>?>('resourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    scaleSettings = registerOutput<ScaleSettingsResponse?>('scaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startTask = registerOutput<StartTaskResponse?>('startTask', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StartTaskResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetNodeCommunicationMode = registerOutput<String?>('targetNodeCommunicationMode');
+    taskSchedulingPolicy = registerOutput<TaskSchedulingPolicyResponse?>('taskSchedulingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskSchedulingPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    taskSlotsPerNode = registerOutput<int?>('taskSlotsPerNode');
+    type = registerOutput<String>('type');
+    upgradePolicy = registerOutput<UpgradePolicyResponse?>('upgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UpgradePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    userAccounts = registerOutput<List<UserAccountResponse>?>('userAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserAccountResponse>(guardedValue, (value) => UserAccountResponse.fromMap((value as Map).cast<String, dynamic>())); });
     vmSize = registerOutput<String?>('vmSize');
   }
 }

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Identifies the unique system identifier for each Azure resource.
 class SkuResponse {
   /// The sku capacity
-  final pulumi.Input<String>? capacity;
+  final pulumi.Input<String?>? capacity;
   /// The sku family
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// Name of SKU is RS0 (Recovery Services 0th version) and the tier is standard tier. They do not have affect on backend storage redundancy or any other vault settings. To manage storage redundancy, use the backupstorageconfig
   final pulumi.Input<String> name;
   /// The sku size
-  final pulumi.Input<String>? size;
+  final pulumi.Input<String?>? size;
   /// The Sku tier.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [SkuResponse].
   /// [capacity] The sku capacity

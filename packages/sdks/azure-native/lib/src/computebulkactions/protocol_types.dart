@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the protocol of WinRM listener. Possible values are: **http,** **https.**
-enum ProtocolTypes {
+enum ProtocolTypes implements pulumi.PulumiEnum<String> {
   http("Http"),
   https("Https");
 
   const ProtocolTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static ProtocolTypes fromValue(String value) {

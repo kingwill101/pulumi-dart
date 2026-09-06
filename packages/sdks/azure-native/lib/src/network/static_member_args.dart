@@ -14,9 +14,9 @@ class StaticMemberArgs {
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource Id.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// The name of the static member.
-  final pulumi.Input<String>? staticMemberName;
+  final pulumi.Input<String?>? staticMemberName;
 
   /// Creates a new [StaticMemberArgs].
   /// [networkGroupName] The name of the network group.

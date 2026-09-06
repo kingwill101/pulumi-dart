@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Onboarding information
 class OnboardingResponse {
   /// The location of the development portal
-  final pulumi.Input<List<String>>? developerPortalUri;
+  final pulumi.Input<List<String>?>? developerPortalUri;
   /// Onboarding guide.
-  final pulumi.Input<String>? instructions;
+  final pulumi.Input<String?>? instructions;
 
   /// Creates a new [OnboardingResponse].
   /// [developerPortalUri] The location of the development portal

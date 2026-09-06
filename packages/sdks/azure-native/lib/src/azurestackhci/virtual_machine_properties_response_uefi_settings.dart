@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachinePropertiesResponseUefiSettings {
   /// Specifies whether secure boot should be enabled on the virtual machine.
-  final pulumi.Input<bool>? secureBootEnabled;
+  final pulumi.Input<bool?>? secureBootEnabled;
 
   /// Creates a new [VirtualMachinePropertiesResponseUefiSettings].
   /// [secureBootEnabled] Specifies whether secure boot should be enabled on the virtual machine.
-  const VirtualMachinePropertiesResponseUefiSettings({
-    this.secureBootEnabled,
-  });
+  VirtualMachinePropertiesResponseUefiSettings({
+    pulumi.Input<bool?>? secureBootEnabled,
+  }) : secureBootEnabled = secureBootEnabled ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

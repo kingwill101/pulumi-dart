@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The operating system type. The default is Linux.
-enum OSType {
+enum OSType implements pulumi.PulumiEnum<String> {
   valueLinux("Linux"),
   valueWindows("Windows");
 
   const OSType(this.wireValue);
+  @override
   final String wireValue;
 
   static OSType fromValue(String value) {

@@ -13,7 +13,7 @@ class DatabaseAccountGremlinGraphArgs {
   /// Cosmos DB database name.
   final pulumi.Input<String> databaseName;
   /// Cosmos DB graph name.
-  final pulumi.Input<String>? graphName;
+  final pulumi.Input<String?>? graphName;
   /// A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request.
   final pulumi.Input<Map<String, String>> options;
   /// The standard JSON format of a Gremlin graph

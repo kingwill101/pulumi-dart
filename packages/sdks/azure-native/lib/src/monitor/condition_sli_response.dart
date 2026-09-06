@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a filtering condition.
 class ConditionSliResponse {
   /// Dimension name used in filtering.
-  final pulumi.Input<String>? dimensionName;
+  final pulumi.Input<String?>? dimensionName;
   /// Operator used in the filtering condition.
   final pulumi.Input<String> operator;
   /// Defines the sampling type.
-  final pulumi.Input<String>? samplingType;
+  final pulumi.Input<String?>? samplingType;
   /// Scalar function applied for filtering.
-  final pulumi.Input<String>? scalarFunction;
+  final pulumi.Input<String?>? scalarFunction;
   /// Value used in filtering. For most operators (eq, ne, lt, lte, gt, gte, startswith, notstartswith, contains, notcontains) this is a single value (for example "GetContosoUsers"). For the `in` and `notin` operators, multiple values must be joined by the delimiter `^^` (for example "east^^west^^north").
   final pulumi.Input<String> value;
 

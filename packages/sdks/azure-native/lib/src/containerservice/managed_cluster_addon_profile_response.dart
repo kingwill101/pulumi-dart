@@ -6,7 +6,7 @@ import 'managed_cluster_addon_profile_response_identity.dart';
 /// A Kubernetes add-on profile for a managed cluster.
 class ManagedClusterAddonProfileResponse {
   /// Key-value pairs for configuring an add-on.
-  final pulumi.Input<Map<String, String>>? config;
+  final pulumi.Input<Map<String, String>?>? config;
   /// Whether the add-on is enabled or not.
   final pulumi.Input<bool> enabled;
   /// Information of user assigned identity used by this add-on.

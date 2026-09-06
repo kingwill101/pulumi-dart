@@ -7,7 +7,7 @@ class ZonePreference {
   /// The rank of the zone. This is used with 'Prioritized' ZoneDistributionStrategy.
   /// The lower the number, the higher the priority, starting with 0.
   /// 0 is the highest rank. If not specified, defaults to lowest rank.
-  final pulumi.Input<int>? rank;
+  final pulumi.Input<int?>? rank;
   /// Name of the zone.
   final pulumi.Input<String> zone;
 
@@ -28,7 +28,7 @@ class ZonePreference {
 
   factory ZonePreference.fromMap(Map<String, dynamic> map) {
     return ZonePreference(
-      rank: (() { final guardedValue = map['rank']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rank: (() { final guardedValue = map['rank']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }

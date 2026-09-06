@@ -8,17 +8,17 @@ class FactoryGitHubConfigurationResponse {
   /// Account name.
   final pulumi.Input<String> accountName;
   /// GitHub bring your own app client id.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// GitHub bring your own app client secret information.
-  final pulumi.Input<GitHubClientSecretResponse>? clientSecret;
+  final pulumi.Input<GitHubClientSecretResponse?>? clientSecret;
   /// Collaboration branch.
   final pulumi.Input<String> collaborationBranch;
   /// Disable manual publish operation in ADF studio to favor automated publish.
-  final pulumi.Input<bool>? disablePublish;
+  final pulumi.Input<bool?>? disablePublish;
   /// GitHub Enterprise host name. For example: `https://github.mydomain.com`
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// Last commit id.
-  final pulumi.Input<String>? lastCommitId;
+  final pulumi.Input<String?>? lastCommitId;
   /// Repository name.
   final pulumi.Input<String> repositoryName;
   /// Root folder.

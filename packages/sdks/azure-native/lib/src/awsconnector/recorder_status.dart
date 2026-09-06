@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum RecorderStatus {
+enum RecorderStatus implements pulumi.PulumiEnum<String> {
   failure("Failure"),
   pending("Pending"),
   success("Success");
 
   const RecorderStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static RecorderStatus fromValue(String value) {

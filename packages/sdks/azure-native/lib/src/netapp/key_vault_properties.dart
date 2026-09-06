@@ -7,7 +7,7 @@ class KeyVaultProperties {
   /// The name of KeyVault key.
   final pulumi.Input<String> keyName;
   /// The resource ID of KeyVault.
-  final pulumi.Input<String>? keyVaultResourceId;
+  final pulumi.Input<String?>? keyVaultResourceId;
   /// The Uri of KeyVault.
   final pulumi.Input<String> keyVaultUri;
 

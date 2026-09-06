@@ -10,19 +10,19 @@ import 'storage_services_for_put_request.dart';
 /// {@macro pulumi_videoindexer_account_args_doc}
 class AccountArgs {
   /// The account's data-plane ID. This can be set only when connecting an existing classic account
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// The name of the Azure Video Indexer account.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// Managed service identity (system assigned and/or user assigned identities)
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The storage services details
-  final pulumi.Input<StorageServicesForPutRequest>? storageServices;
+  final pulumi.Input<StorageServicesForPutRequest?>? storageServices;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccountArgs].
   /// [accountId] The account's data-plane ID. This can be set only when connecting an existing classic account
@@ -32,15 +32,15 @@ class AccountArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageServices] The storage services details
   /// [tags] Resource tags.
-  const AccountArgs({
-    this.accountId,
+  AccountArgs({
+    pulumi.Input<String?>? accountId,
     this.accountName,
     this.identity,
     this.location,
     required this.resourceGroupName,
     this.storageServices,
     this.tags,
-  });
+  }) : accountId = accountId ?? pulumi.Input.fromValue('00000000-0000-0000-0000-000000000000');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

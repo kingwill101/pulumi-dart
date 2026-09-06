@@ -9,7 +9,7 @@ class MigrateMySqlAzureDbForMySqlOfflineTaskOutputMigrationLevelResponse {
   /// Summary of database results in the migration
   final pulumi.Input<Map<String, DatabaseSummaryResultResponse>> databaseSummary;
   /// Selected databases as a map from database name to database id
-  final pulumi.Input<Map<String, String>>? databases;
+  final pulumi.Input<Map<String, String>?>? databases;
   /// Duration of task execution in seconds.
   final pulumi.Input<double> durationInSeconds;
   /// Migration end time
@@ -23,7 +23,7 @@ class MigrateMySqlAzureDbForMySqlOfflineTaskOutputMigrationLevelResponse {
   /// Migration progress message
   final pulumi.Input<String> message;
   /// Migration Report Result, provides unique url for downloading your migration report.
-  final pulumi.Input<MigrationReportResultResponse>? migrationReportResult;
+  final pulumi.Input<MigrationReportResultResponse?>? migrationReportResult;
   /// Result type
   /// Expected value is 'MigrationLevelOutput'.
   final pulumi.Input<String> resultType;
@@ -106,7 +106,7 @@ class MigrateMySqlAzureDbForMySqlOfflineTaskOutputMigrationLevelResponse {
     return MigrateMySqlAzureDbForMySqlOfflineTaskOutputMigrationLevelResponse(
       databaseSummary: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<DatabaseSummaryResultResponse>(map['databaseSummary']!, (value) => DatabaseSummaryResultResponse.fromMap((value as Map).cast<String, dynamic>()))),
       databases: (() { final guardedValue = map['databases']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      durationInSeconds: pulumi.Input.fromValue(map['durationInSeconds'] as double),
+      durationInSeconds: pulumi.Input.fromValue((map['durationInSeconds'] as num).toDouble()),
       endedOn: pulumi.Input.fromValue(map['endedOn'] as String),
       exceptionsAndWarnings: pulumi.Input.fromValue(pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings']!, (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))),
       id: pulumi.Input.fromValue(map['id'] as String),

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of IPConfigurationBgpPeeringAddress.
 class IPConfigurationBgpPeeringAddress {
   /// The list of custom BGP peering addresses which belong to IP configuration.
-  final pulumi.Input<List<String>>? customBgpIpAddresses;
+  final pulumi.Input<List<String>?>? customBgpIpAddresses;
   /// The ID of IP configuration which belongs to gateway.
-  final pulumi.Input<String>? ipconfigurationId;
+  final pulumi.Input<String?>? ipconfigurationId;
 
   /// Creates a new [IPConfigurationBgpPeeringAddress].
   /// [customBgpIpAddresses] The list of custom BGP peering addresses which belong to IP configuration.

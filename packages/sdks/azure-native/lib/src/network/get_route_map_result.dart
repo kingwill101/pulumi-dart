@@ -10,19 +10,19 @@ class GetRouteMapResult {
   /// List of connections which have this RoutMap associated for outbound traffic.
   final List<String>? associatedOutboundConnections;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String name;
+  final String? name;
   /// The provisioning state of the RouteMap resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// List of RouteMap rules to be applied.
   final List<RouteMapRuleResponse>? rules;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetRouteMapResult].
   /// [associatedInboundConnections] List of connections which have this RoutMap associated for inbound traffic.
@@ -37,26 +37,26 @@ class GetRouteMapResult {
   const GetRouteMapResult({
     this.associatedInboundConnections,
     this.associatedOutboundConnections,
-    required this.azureApiVersion,
-    required this.etag,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
+    this.azureApiVersion,
+    this.etag,
+    this.id,
+    this.name,
+    this.provisioningState,
     this.rules,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'associatedInboundConnections': ?associatedInboundConnections,
       'associatedOutboundConnections': ?associatedOutboundConnections,
-      'azureApiVersion': azureApiVersion,
-      'etag': etag,
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
+      'azureApiVersion': ?azureApiVersion,
+      'etag': ?etag,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'rules': ?(() { final guardedValue = rules; if (guardedValue == null) return null; return pulumi.Input.encodeList<RouteMapRuleResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'type': type,
+      'type': ?type,
     };
   }
 
@@ -64,13 +64,13 @@ class GetRouteMapResult {
     return GetRouteMapResult(
       associatedInboundConnections: (() { final guardedValue = map['associatedInboundConnections']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       associatedOutboundConnections: (() { final guardedValue = map['associatedOutboundConnections']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteMapRuleResponse>(guardedValue, (value) => RouteMapRuleResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

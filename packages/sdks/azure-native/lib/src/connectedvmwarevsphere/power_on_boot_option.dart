@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the power on boot.
-enum PowerOnBootOption {
+enum PowerOnBootOption implements pulumi.PulumiEnum<String> {
   valueEnabled("enabled"),
   valueDisabled("disabled");
 
   const PowerOnBootOption(this.wireValue);
+  @override
   final String wireValue;
 
   static PowerOnBootOption fromValue(String value) {

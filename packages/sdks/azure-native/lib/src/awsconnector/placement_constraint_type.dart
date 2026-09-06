@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of constraint. Use ``distinctInstance`` to ensure that each task in a particular group is running on a different container instance. Use ``memberOf`` to restrict the selection to a group of valid candidates.
-enum PlacementConstraintType {
+enum PlacementConstraintType implements pulumi.PulumiEnum<String> {
   distinctInstance("distinctInstance"),
   memberOf("memberOf");
 
   const PlacementConstraintType(this.wireValue);
+  @override
   final String wireValue;
 
   static PlacementConstraintType fromValue(String value) {

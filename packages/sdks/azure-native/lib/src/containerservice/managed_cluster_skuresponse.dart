@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The SKU of a Managed Cluster.
 class ManagedClusterSKUResponse {
   /// The name of a managed cluster SKU.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers) for more details.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [ManagedClusterSKUResponse].
   /// [name] The name of a managed cluster SKU.

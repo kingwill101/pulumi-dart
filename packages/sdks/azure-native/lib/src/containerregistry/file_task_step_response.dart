@@ -9,18 +9,18 @@ class FileTaskStepResponse {
   /// List of base image dependencies for a step.
   final pulumi.Input<List<BaseImageDependencyResponse>> baseImageDependencies;
   /// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
-  final pulumi.Input<String>? contextAccessToken;
+  final pulumi.Input<String?>? contextAccessToken;
   /// The URL(absolute or relative) of the source context for the task step.
-  final pulumi.Input<String>? contextPath;
+  final pulumi.Input<String?>? contextPath;
   /// The task template/definition file path relative to the source context.
   final pulumi.Input<String> taskFilePath;
   /// The type of the step.
   /// Expected value is 'FileTask'.
   final pulumi.Input<String> type;
   /// The collection of overridable values that can be passed when running a task.
-  final pulumi.Input<List<SetValueResponse>>? values;
+  final pulumi.Input<List<SetValueResponse>?>? values;
   /// The task values/parameters file path relative to the source context.
-  final pulumi.Input<String>? valuesFilePath;
+  final pulumi.Input<String?>? valuesFilePath;
 
   /// Creates a new [FileTaskStepResponse].
   /// [baseImageDependencies] List of base image dependencies for a step.

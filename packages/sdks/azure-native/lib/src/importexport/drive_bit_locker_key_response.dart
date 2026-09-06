@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// BitLocker recovery key or password to the specified drive
 class DriveBitLockerKeyResponse {
   /// BitLocker recovery key or password
-  final pulumi.Input<String>? bitLockerKey;
+  final pulumi.Input<String?>? bitLockerKey;
   /// Drive ID
-  final pulumi.Input<String>? driveId;
+  final pulumi.Input<String?>? driveId;
 
   /// Creates a new [DriveBitLockerKeyResponse].
   /// [bitLockerKey] BitLocker recovery key or password

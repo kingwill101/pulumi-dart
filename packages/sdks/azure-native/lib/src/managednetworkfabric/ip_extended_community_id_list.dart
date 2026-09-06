@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// IP Extended Community Id list properties.
 class IpExtendedCommunityIdList {
   /// List of IP Extended Community resource IDs.
-  final pulumi.Input<List<String>>? ipExtendedCommunityIds;
+  final pulumi.Input<List<String>?>? ipExtendedCommunityIds;
 
   /// Creates a new [IpExtendedCommunityIdList].
   /// [ipExtendedCommunityIds] List of IP Extended Community resource IDs.

@@ -9,9 +9,9 @@ import 'certificate_properties.dart';
 /// {@macro pulumi_iothub_certificate_args_doc}
 class CertificateArgs {
   /// The name of the certificate
-  final pulumi.Input<String>? certificateName;
+  final pulumi.Input<String?>? certificateName;
   /// The description of an X509 CA Certificate.
-  final pulumi.Input<CertificateProperties>? properties;
+  final pulumi.Input<CertificateProperties?>? properties;
   /// The name of the resource group that contains the IoT hub.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the IoT hub.

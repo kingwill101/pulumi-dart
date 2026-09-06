@@ -17,46 +17,46 @@ class ExecuteSSISPackageActivity {
   /// The integration runtime reference.
   final pulumi.Input<IntegrationRuntimeReference> connectVia;
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependency>>? dependsOn;
+  final pulumi.Input<List<ActivityDependency>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The environment path to execute the SSIS package. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? environmentPath;
   /// The package execution credential.
-  final pulumi.Input<SSISExecutionCredential>? executionCredential;
+  final pulumi.Input<SSISExecutionCredential?>? executionCredential;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReference>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReference?>? linkedServiceName;
   /// SSIS package execution log location.
-  final pulumi.Input<SSISLogLocation>? logLocation;
+  final pulumi.Input<SSISLogLocation?>? logLocation;
   /// The logging level of SSIS package execution. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? loggingLevel;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<dynamic>? onInactiveMarkAs;
   /// The package level connection managers to execute the SSIS package.
-  final pulumi.Input<Map<String, Map<String, SSISExecutionParameter>>>? packageConnectionManagers;
+  final pulumi.Input<Map<String, Map<String, SSISExecutionParameter>>?>? packageConnectionManagers;
   /// SSIS package location.
   final pulumi.Input<SSISPackageLocation> packageLocation;
   /// The package level parameters to execute the SSIS package.
-  final pulumi.Input<Map<String, SSISExecutionParameter>>? packageParameters;
+  final pulumi.Input<Map<String, SSISExecutionParameter>?>? packageParameters;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicy>? policy;
+  final pulumi.Input<ActivityPolicy?>? policy;
   /// The project level connection managers to execute the SSIS package.
-  final pulumi.Input<Map<String, Map<String, SSISExecutionParameter>>>? projectConnectionManagers;
+  final pulumi.Input<Map<String, Map<String, SSISExecutionParameter>>?>? projectConnectionManagers;
   /// The project level parameters to execute the SSIS package.
-  final pulumi.Input<Map<String, SSISExecutionParameter>>? projectParameters;
+  final pulumi.Input<Map<String, SSISExecutionParameter>?>? projectParameters;
   /// The property overrides to execute the SSIS package.
-  final pulumi.Input<Map<String, SSISPropertyOverride>>? propertyOverrides;
+  final pulumi.Input<Map<String, SSISPropertyOverride>?>? propertyOverrides;
   /// Specifies the runtime to execute SSIS package. The value should be "x86" or "x64". Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? runtime;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// Type of activity.
   /// Expected value is 'ExecuteSSISPackage'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserProperty>>? userProperties;
+  final pulumi.Input<List<UserProperty>?>? userProperties;
 
   /// Creates a new [ExecuteSSISPackageActivity].
   /// [connectVia] The integration runtime reference.
@@ -141,7 +141,7 @@ class ExecuteSSISPackageActivity {
       logLocation: (() { final guardedValue = map['logLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SSISLogLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       loggingLevel: (() { final guardedValue = map['loggingLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       packageConnectionManagers: (() { final guardedValue = map['packageConnectionManagers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<Map<String, SSISExecutionParameter>>(guardedValue, (value) => pulumi.Input.decodeMapValues<SSISExecutionParameter>(value, (value) => SSISExecutionParameter.fromMap((value as Map).cast<String, dynamic>())))); })(),
       packageLocation: pulumi.Input.fromValue(SSISPackageLocation.fromMap((map['packageLocation']! as Map).cast<String, dynamic>())),
       packageParameters: (() { final guardedValue = map['packageParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<SSISExecutionParameter>(guardedValue, (value) => SSISExecutionParameter.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -150,7 +150,7 @@ class ExecuteSSISPackageActivity {
       projectParameters: (() { final guardedValue = map['projectParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<SSISExecutionParameter>(guardedValue, (value) => SSISExecutionParameter.fromMap((value as Map).cast<String, dynamic>()))); })(),
       propertyOverrides: (() { final guardedValue = map['propertyOverrides']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<SSISPropertyOverride>(guardedValue, (value) => SSISPropertyOverride.fromMap((value as Map).cast<String, dynamic>()))); })(),
       runtime: (() { final guardedValue = map['runtime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       userProperties: (() { final guardedValue = map['userProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserProperty>(guardedValue, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

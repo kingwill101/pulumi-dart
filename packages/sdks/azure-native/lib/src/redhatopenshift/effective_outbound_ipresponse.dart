@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// EffectiveOutboundIP represents an effective outbound IP resource of the cluster public load balancer.
 class EffectiveOutboundIPResponse {
   /// The fully qualified Azure resource id of an IP address resource.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [EffectiveOutboundIPResponse].
   /// [id] The fully qualified Azure resource id of an IP address resource.

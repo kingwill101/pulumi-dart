@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The sequencer action details.
 class SequencerActionResponse {
   /// The unique identifier of the sequencer action.
-  final pulumi.Input<String>? actionId;
+  final pulumi.Input<String?>? actionId;
   /// The result of the sequencer action.
-  final pulumi.Input<String>? result;
+  final pulumi.Input<String?>? result;
   /// The state of the sequencer action.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [SequencerActionResponse].
   /// [actionId] The unique identifier of the sequencer action.

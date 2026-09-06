@@ -22,6 +22,17 @@ Future<GetLabelByWorkspaceResult> getLabelByWorkspace(
   return GetLabelByWorkspaceResult.fromMap(result);
 }
 
+pulumi.Output<GetLabelByWorkspaceResult> getLabelByWorkspaceOutput(
+  GetLabelByWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:easm:getLabelByWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLabelByWorkspaceResult.fromMap);
+}
+
 /// Returns a workspace with the given name.
 ///
 /// Uses Azure REST API version 2023-04-01-preview.
@@ -38,4 +49,15 @@ Future<GetWorkspaceResult> getWorkspace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspaceResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:easm:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
 }

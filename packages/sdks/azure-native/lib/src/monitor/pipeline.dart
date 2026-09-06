@@ -9,11 +9,11 @@ class Pipeline {
   /// Name of the pipeline.
   final pulumi.Input<String> name;
   /// Reference to processors configured for the pipeline.
-  final pulumi.Input<List<String>>? processors;
+  final pulumi.Input<List<String>?>? processors;
   /// Reference to receivers configured for the pipeline.
   final pulumi.Input<List<String>> receivers;
   /// The type of pipeline
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [Pipeline].
   /// [exporters] Reference to exporters configured for the pipeline.
@@ -45,7 +45,7 @@ class Pipeline {
       name: pulumi.Input.fromValue(map['name'] as String),
       processors: (() { final guardedValue = map['processors']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       receivers: pulumi.Input.fromValue((map['receivers'] as List).cast<String>()),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

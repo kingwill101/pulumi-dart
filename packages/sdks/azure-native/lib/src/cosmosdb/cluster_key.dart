@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Cosmos DB Cassandra table cluster key
 class ClusterKey {
   /// Name of the Cosmos DB Cassandra table cluster key
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Order of the Cosmos DB Cassandra table cluster key, only support "Asc" and "Desc"
-  final pulumi.Input<String>? orderBy;
+  final pulumi.Input<String?>? orderBy;
 
   /// Creates a new [ClusterKey].
   /// [name] Name of the Cosmos DB Cassandra table cluster key

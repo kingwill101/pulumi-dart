@@ -128,6 +128,17 @@ Future<GetCassandraClusterResult> getCassandraCluster(
   return GetCassandraClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetCassandraClusterResult> getCassandraClusterOutput(
+  GetCassandraClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getCassandraCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCassandraClusterResult.fromMap);
+}
+
 /// Get the properties of a managed Cassandra data center.
 ///
 /// Uses Azure REST API version 2025-10-15.
@@ -146,6 +157,17 @@ Future<GetCassandraDataCenterResult> getCassandraDataCenter(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCassandraDataCenterResult.fromMap(result);
+}
+
+pulumi.Output<GetCassandraDataCenterResult> getCassandraDataCenterOutput(
+  GetCassandraDataCenterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getCassandraDataCenter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCassandraDataCenterResult.fromMap);
 }
 
 /// Gets the Cassandra keyspaces under an existing Azure Cosmos DB database account with the provided name.
@@ -168,6 +190,17 @@ Future<GetCassandraResourceCassandraKeyspaceResult> getCassandraResourceCassandr
   return GetCassandraResourceCassandraKeyspaceResult.fromMap(result);
 }
 
+pulumi.Output<GetCassandraResourceCassandraKeyspaceResult> getCassandraResourceCassandraKeyspaceOutput(
+  GetCassandraResourceCassandraKeyspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getCassandraResourceCassandraKeyspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCassandraResourceCassandraKeyspaceResult.fromMap);
+}
+
 /// Retrieves the properties of an existing Azure Cosmos DB Cassandra Role Assignment with the given Id.
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
@@ -186,6 +219,17 @@ Future<GetCassandraResourceCassandraRoleAssignmentResult> getCassandraResourceCa
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCassandraResourceCassandraRoleAssignmentResult.fromMap(result);
+}
+
+pulumi.Output<GetCassandraResourceCassandraRoleAssignmentResult> getCassandraResourceCassandraRoleAssignmentOutput(
+  GetCassandraResourceCassandraRoleAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getCassandraResourceCassandraRoleAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCassandraResourceCassandraRoleAssignmentResult.fromMap);
 }
 
 /// Retrieves the properties of an existing Azure Cosmos DB Cassandra Role Definition with the given Id.
@@ -208,6 +252,17 @@ Future<GetCassandraResourceCassandraRoleDefinitionResult> getCassandraResourceCa
   return GetCassandraResourceCassandraRoleDefinitionResult.fromMap(result);
 }
 
+pulumi.Output<GetCassandraResourceCassandraRoleDefinitionResult> getCassandraResourceCassandraRoleDefinitionOutput(
+  GetCassandraResourceCassandraRoleDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getCassandraResourceCassandraRoleDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCassandraResourceCassandraRoleDefinitionResult.fromMap);
+}
+
 /// Gets the Cassandra table under an existing Azure Cosmos DB database account.
 ///
 /// Uses Azure REST API version 2025-10-15.
@@ -226,6 +281,17 @@ Future<GetCassandraResourceCassandraTableResult> getCassandraResourceCassandraTa
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCassandraResourceCassandraTableResult.fromMap(result);
+}
+
+pulumi.Output<GetCassandraResourceCassandraTableResult> getCassandraResourceCassandraTableOutput(
+  GetCassandraResourceCassandraTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getCassandraResourceCassandraTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCassandraResourceCassandraTableResult.fromMap);
 }
 
 /// Gets the Cassandra view under an existing Azure Cosmos DB database account.
@@ -248,6 +314,17 @@ Future<GetCassandraResourceCassandraViewResult> getCassandraResourceCassandraVie
   return GetCassandraResourceCassandraViewResult.fromMap(result);
 }
 
+pulumi.Output<GetCassandraResourceCassandraViewResult> getCassandraResourceCassandraViewOutput(
+  GetCassandraResourceCassandraViewArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getCassandraResourceCassandraView',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCassandraResourceCassandraViewResult.fromMap);
+}
+
 /// Retrieves the properties of an existing Azure Cosmos DB database account.
 ///
 /// Uses Azure REST API version 2025-10-15.
@@ -266,6 +343,17 @@ Future<GetDatabaseAccountResult> getDatabaseAccount(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseAccountResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseAccountResult> getDatabaseAccountOutput(
+  GetDatabaseAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getDatabaseAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseAccountResult.fromMap);
 }
 
 /// Gets the Cassandra keyspaces under an existing Azure Cosmos DB database account with the provided name.
@@ -288,6 +376,17 @@ Future<GetDatabaseAccountCassandraKeyspaceResult> getDatabaseAccountCassandraKey
   return GetDatabaseAccountCassandraKeyspaceResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseAccountCassandraKeyspaceResult> getDatabaseAccountCassandraKeyspaceOutput(
+  GetDatabaseAccountCassandraKeyspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getDatabaseAccountCassandraKeyspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseAccountCassandraKeyspaceResult.fromMap);
+}
+
 /// Gets the Cassandra table under an existing Azure Cosmos DB database account.
 ///
 /// Uses Azure REST API version 2016-03-31.
@@ -306,6 +405,17 @@ Future<GetDatabaseAccountCassandraTableResult> getDatabaseAccountCassandraTable(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseAccountCassandraTableResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseAccountCassandraTableResult> getDatabaseAccountCassandraTableOutput(
+  GetDatabaseAccountCassandraTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getDatabaseAccountCassandraTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseAccountCassandraTableResult.fromMap);
 }
 
 /// Gets the Gremlin databases under an existing Azure Cosmos DB database account with the provided name.
@@ -328,6 +438,17 @@ Future<GetDatabaseAccountGremlinDatabaseResult> getDatabaseAccountGremlinDatabas
   return GetDatabaseAccountGremlinDatabaseResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseAccountGremlinDatabaseResult> getDatabaseAccountGremlinDatabaseOutput(
+  GetDatabaseAccountGremlinDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getDatabaseAccountGremlinDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseAccountGremlinDatabaseResult.fromMap);
+}
+
 /// Gets the Gremlin graph under an existing Azure Cosmos DB database account.
 ///
 /// Uses Azure REST API version 2016-03-31.
@@ -346,6 +467,17 @@ Future<GetDatabaseAccountGremlinGraphResult> getDatabaseAccountGremlinGraph(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseAccountGremlinGraphResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseAccountGremlinGraphResult> getDatabaseAccountGremlinGraphOutput(
+  GetDatabaseAccountGremlinGraphArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getDatabaseAccountGremlinGraph',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseAccountGremlinGraphResult.fromMap);
 }
 
 /// Gets the MongoDB collection under an existing Azure Cosmos DB database account.
@@ -368,6 +500,17 @@ Future<GetDatabaseAccountMongoDBCollectionResult> getDatabaseAccountMongoDBColle
   return GetDatabaseAccountMongoDBCollectionResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseAccountMongoDBCollectionResult> getDatabaseAccountMongoDBCollectionOutput(
+  GetDatabaseAccountMongoDBCollectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getDatabaseAccountMongoDBCollection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseAccountMongoDBCollectionResult.fromMap);
+}
+
 /// Gets the MongoDB databases under an existing Azure Cosmos DB database account with the provided name.
 ///
 /// Uses Azure REST API version 2016-03-31.
@@ -386,6 +529,17 @@ Future<GetDatabaseAccountMongoDBDatabaseResult> getDatabaseAccountMongoDBDatabas
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseAccountMongoDBDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseAccountMongoDBDatabaseResult> getDatabaseAccountMongoDBDatabaseOutput(
+  GetDatabaseAccountMongoDBDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getDatabaseAccountMongoDBDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseAccountMongoDBDatabaseResult.fromMap);
 }
 
 /// Gets the SQL container under an existing Azure Cosmos DB database account.
@@ -408,6 +562,17 @@ Future<GetDatabaseAccountSqlContainerResult> getDatabaseAccountSqlContainer(
   return GetDatabaseAccountSqlContainerResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseAccountSqlContainerResult> getDatabaseAccountSqlContainerOutput(
+  GetDatabaseAccountSqlContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getDatabaseAccountSqlContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseAccountSqlContainerResult.fromMap);
+}
+
 /// Gets the SQL database under an existing Azure Cosmos DB database account with the provided name.
 ///
 /// Uses Azure REST API version 2016-03-31.
@@ -426,6 +591,17 @@ Future<GetDatabaseAccountSqlDatabaseResult> getDatabaseAccountSqlDatabase(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseAccountSqlDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseAccountSqlDatabaseResult> getDatabaseAccountSqlDatabaseOutput(
+  GetDatabaseAccountSqlDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getDatabaseAccountSqlDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseAccountSqlDatabaseResult.fromMap);
 }
 
 /// Gets the Tables under an existing Azure Cosmos DB database account with the provided name.
@@ -448,6 +624,17 @@ Future<GetDatabaseAccountTableResult> getDatabaseAccountTable(
   return GetDatabaseAccountTableResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseAccountTableResult> getDatabaseAccountTableOutput(
+  GetDatabaseAccountTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getDatabaseAccountTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseAccountTableResult.fromMap);
+}
+
 /// Retrieves the properties of an existing Azure Cosmos DB fleet under a subscription
 ///
 /// Uses Azure REST API version 2025-10-15.
@@ -466,6 +653,17 @@ Future<GetFleetResult> getFleet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFleetResult.fromMap(result);
+}
+
+pulumi.Output<GetFleetResult> getFleetOutput(
+  GetFleetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getFleet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFleetResult.fromMap);
 }
 
 /// Retrieves the properties of an existing Azure Cosmos DB FleetAnalytics under a fleet
@@ -488,6 +686,17 @@ Future<GetFleetAnalyticResult> getFleetAnalytic(
   return GetFleetAnalyticResult.fromMap(result);
 }
 
+pulumi.Output<GetFleetAnalyticResult> getFleetAnalyticOutput(
+  GetFleetAnalyticArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getFleetAnalytic',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFleetAnalyticResult.fromMap);
+}
+
 /// Retrieves the properties of an existing Azure Cosmos DB fleetspace under a fleet
 ///
 /// Uses Azure REST API version 2025-10-15.
@@ -506,6 +715,17 @@ Future<GetFleetspaceResult> getFleetspace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFleetspaceResult.fromMap(result);
+}
+
+pulumi.Output<GetFleetspaceResult> getFleetspaceOutput(
+  GetFleetspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getFleetspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFleetspaceResult.fromMap);
 }
 
 /// Retrieves the properties of an existing Azure Cosmos DB fleetspace account under a fleetspace
@@ -528,6 +748,17 @@ Future<GetFleetspaceAccountResult> getFleetspaceAccount(
   return GetFleetspaceAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetFleetspaceAccountResult> getFleetspaceAccountOutput(
+  GetFleetspaceAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getFleetspaceAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFleetspaceAccountResult.fromMap);
+}
+
 /// Get the properties of a Garnet cache cluster.
 ///
 /// Uses Azure REST API version 2025-11-01-preview.
@@ -546,6 +777,17 @@ Future<GetGarnetClusterResult> getGarnetCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGarnetClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetGarnetClusterResult> getGarnetClusterOutput(
+  GetGarnetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getGarnetCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGarnetClusterResult.fromMap);
 }
 
 /// Gets the Graph resource under an existing Azure Cosmos DB database account with the provided name.
@@ -568,6 +810,17 @@ Future<GetGraphResourceGraphResult> getGraphResourceGraph(
   return GetGraphResourceGraphResult.fromMap(result);
 }
 
+pulumi.Output<GetGraphResourceGraphResult> getGraphResourceGraphOutput(
+  GetGraphResourceGraphArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getGraphResourceGraph',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGraphResourceGraphResult.fromMap);
+}
+
 /// Gets the Gremlin databases under an existing Azure Cosmos DB database account with the provided name.
 ///
 /// Uses Azure REST API version 2025-10-15.
@@ -586,6 +839,17 @@ Future<GetGremlinResourceGremlinDatabaseResult> getGremlinResourceGremlinDatabas
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGremlinResourceGremlinDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetGremlinResourceGremlinDatabaseResult> getGremlinResourceGremlinDatabaseOutput(
+  GetGremlinResourceGremlinDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getGremlinResourceGremlinDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGremlinResourceGremlinDatabaseResult.fromMap);
 }
 
 /// Gets the Gremlin graph under an existing Azure Cosmos DB database account.
@@ -608,6 +872,17 @@ Future<GetGremlinResourceGremlinGraphResult> getGremlinResourceGremlinGraph(
   return GetGremlinResourceGremlinGraphResult.fromMap(result);
 }
 
+pulumi.Output<GetGremlinResourceGremlinGraphResult> getGremlinResourceGremlinGraphOutput(
+  GetGremlinResourceGremlinGraphArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getGremlinResourceGremlinGraph',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGremlinResourceGremlinGraphResult.fromMap);
+}
+
 /// Retrieves the properties of an existing Azure Cosmos DB Gremlin Role Assignment with the given Id.
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
@@ -626,6 +901,17 @@ Future<GetGremlinResourceGremlinRoleAssignmentResult> getGremlinResourceGremlinR
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGremlinResourceGremlinRoleAssignmentResult.fromMap(result);
+}
+
+pulumi.Output<GetGremlinResourceGremlinRoleAssignmentResult> getGremlinResourceGremlinRoleAssignmentOutput(
+  GetGremlinResourceGremlinRoleAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getGremlinResourceGremlinRoleAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGremlinResourceGremlinRoleAssignmentResult.fromMap);
 }
 
 /// Retrieves the properties of an existing Azure Cosmos DB Gremlin Role Definition with the given Id.
@@ -648,6 +934,17 @@ Future<GetGremlinResourceGremlinRoleDefinitionResult> getGremlinResourceGremlinR
   return GetGremlinResourceGremlinRoleDefinitionResult.fromMap(result);
 }
 
+pulumi.Output<GetGremlinResourceGremlinRoleDefinitionResult> getGremlinResourceGremlinRoleDefinitionOutput(
+  GetGremlinResourceGremlinRoleDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getGremlinResourceGremlinRoleDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGremlinResourceGremlinRoleDefinitionResult.fromMap);
+}
+
 /// Gets information about a mongo cluster.
 ///
 /// Uses Azure REST API version 2024-02-15-preview.
@@ -666,6 +963,17 @@ Future<GetMongoClusterResult> getMongoCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMongoClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetMongoClusterResult> getMongoClusterOutput(
+  GetMongoClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getMongoCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMongoClusterResult.fromMap);
 }
 
 /// Gets information about a mongo cluster firewall rule.
@@ -688,6 +996,17 @@ Future<GetMongoClusterFirewallRuleResult> getMongoClusterFirewallRule(
   return GetMongoClusterFirewallRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetMongoClusterFirewallRuleResult> getMongoClusterFirewallRuleOutput(
+  GetMongoClusterFirewallRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getMongoClusterFirewallRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMongoClusterFirewallRuleResult.fromMap);
+}
+
 /// Gets the MongoDB collection under an existing Azure Cosmos DB database account.
 ///
 /// Uses Azure REST API version 2025-10-15.
@@ -706,6 +1025,17 @@ Future<GetMongoDBResourceMongoDBCollectionResult> getMongoDBResourceMongoDBColle
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMongoDBResourceMongoDBCollectionResult.fromMap(result);
+}
+
+pulumi.Output<GetMongoDBResourceMongoDBCollectionResult> getMongoDBResourceMongoDBCollectionOutput(
+  GetMongoDBResourceMongoDBCollectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getMongoDBResourceMongoDBCollection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMongoDBResourceMongoDBCollectionResult.fromMap);
 }
 
 /// Gets the MongoDB databases under an existing Azure Cosmos DB database account with the provided name.
@@ -728,6 +1058,17 @@ Future<GetMongoDBResourceMongoDBDatabaseResult> getMongoDBResourceMongoDBDatabas
   return GetMongoDBResourceMongoDBDatabaseResult.fromMap(result);
 }
 
+pulumi.Output<GetMongoDBResourceMongoDBDatabaseResult> getMongoDBResourceMongoDBDatabaseOutput(
+  GetMongoDBResourceMongoDBDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getMongoDBResourceMongoDBDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMongoDBResourceMongoDBDatabaseResult.fromMap);
+}
+
 /// Retrieves the properties of an existing Azure Cosmos DB Mongo Role Definition with the given Id.
 ///
 /// Uses Azure REST API version 2025-10-15.
@@ -746,6 +1087,17 @@ Future<GetMongoDBResourceMongoRoleDefinitionResult> getMongoDBResourceMongoRoleD
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMongoDBResourceMongoRoleDefinitionResult.fromMap(result);
+}
+
+pulumi.Output<GetMongoDBResourceMongoRoleDefinitionResult> getMongoDBResourceMongoRoleDefinitionOutput(
+  GetMongoDBResourceMongoRoleDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getMongoDBResourceMongoRoleDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMongoDBResourceMongoRoleDefinitionResult.fromMap);
 }
 
 /// Retrieves the properties of an existing Azure Cosmos DB Mongo User Definition with the given Id.
@@ -768,6 +1120,17 @@ Future<GetMongoDBResourceMongoUserDefinitionResult> getMongoDBResourceMongoUserD
   return GetMongoDBResourceMongoUserDefinitionResult.fromMap(result);
 }
 
+pulumi.Output<GetMongoDBResourceMongoUserDefinitionResult> getMongoDBResourceMongoUserDefinitionOutput(
+  GetMongoDBResourceMongoUserDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getMongoDBResourceMongoUserDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMongoDBResourceMongoUserDefinitionResult.fromMap);
+}
+
 /// Retrieves the properties of an existing Azure Cosmos DB MongoMI Role Assignment with the given Id.
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
@@ -786,6 +1149,17 @@ Future<GetMongoMIResourceMongoMIRoleAssignmentResult> getMongoMIResourceMongoMIR
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMongoMIResourceMongoMIRoleAssignmentResult.fromMap(result);
+}
+
+pulumi.Output<GetMongoMIResourceMongoMIRoleAssignmentResult> getMongoMIResourceMongoMIRoleAssignmentOutput(
+  GetMongoMIResourceMongoMIRoleAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getMongoMIResourceMongoMIRoleAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMongoMIResourceMongoMIRoleAssignmentResult.fromMap);
 }
 
 /// Retrieves the properties of an existing Azure Cosmos DB MongoMI Role Definition with the given Id.
@@ -808,6 +1182,17 @@ Future<GetMongoMIResourceMongoMIRoleDefinitionResult> getMongoMIResourceMongoMIR
   return GetMongoMIResourceMongoMIRoleDefinitionResult.fromMap(result);
 }
 
+pulumi.Output<GetMongoMIResourceMongoMIRoleDefinitionResult> getMongoMIResourceMongoMIRoleDefinitionOutput(
+  GetMongoMIResourceMongoMIRoleDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getMongoMIResourceMongoMIRoleDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMongoMIResourceMongoMIRoleDefinitionResult.fromMap);
+}
+
 /// Gets the notebook workspace for a Cosmos DB account.
 ///
 /// Uses Azure REST API version 2025-10-15.
@@ -826,6 +1211,17 @@ Future<GetNotebookWorkspaceResult> getNotebookWorkspace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNotebookWorkspaceResult.fromMap(result);
+}
+
+pulumi.Output<GetNotebookWorkspaceResult> getNotebookWorkspaceOutput(
+  GetNotebookWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getNotebookWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNotebookWorkspaceResult.fromMap);
 }
 
 /// Gets a private endpoint connection.
@@ -848,6 +1244,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Gets the status of service.
 ///
 /// Uses Azure REST API version 2025-10-15.
@@ -866,6 +1273,17 @@ Future<GetServiceResult> getService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
 }
 
 /// Gets the SQL container under an existing Azure Cosmos DB database account.
@@ -888,6 +1306,17 @@ Future<GetSqlResourceSqlContainerResult> getSqlResourceSqlContainer(
   return GetSqlResourceSqlContainerResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlResourceSqlContainerResult> getSqlResourceSqlContainerOutput(
+  GetSqlResourceSqlContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getSqlResourceSqlContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlResourceSqlContainerResult.fromMap);
+}
+
 /// Gets the SQL database under an existing Azure Cosmos DB database account with the provided name.
 ///
 /// Uses Azure REST API version 2025-10-15.
@@ -906,6 +1335,17 @@ Future<GetSqlResourceSqlDatabaseResult> getSqlResourceSqlDatabase(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSqlResourceSqlDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetSqlResourceSqlDatabaseResult> getSqlResourceSqlDatabaseOutput(
+  GetSqlResourceSqlDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getSqlResourceSqlDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlResourceSqlDatabaseResult.fromMap);
 }
 
 /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Assignment with the given Id.
@@ -928,6 +1368,17 @@ Future<GetSqlResourceSqlRoleAssignmentResult> getSqlResourceSqlRoleAssignment(
   return GetSqlResourceSqlRoleAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlResourceSqlRoleAssignmentResult> getSqlResourceSqlRoleAssignmentOutput(
+  GetSqlResourceSqlRoleAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getSqlResourceSqlRoleAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlResourceSqlRoleAssignmentResult.fromMap);
+}
+
 /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition with the given Id.
 ///
 /// Uses Azure REST API version 2025-10-15.
@@ -946,6 +1397,17 @@ Future<GetSqlResourceSqlRoleDefinitionResult> getSqlResourceSqlRoleDefinition(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSqlResourceSqlRoleDefinitionResult.fromMap(result);
+}
+
+pulumi.Output<GetSqlResourceSqlRoleDefinitionResult> getSqlResourceSqlRoleDefinitionOutput(
+  GetSqlResourceSqlRoleDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getSqlResourceSqlRoleDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlResourceSqlRoleDefinitionResult.fromMap);
 }
 
 /// Gets the SQL storedProcedure under an existing Azure Cosmos DB database account.
@@ -968,6 +1430,17 @@ Future<GetSqlResourceSqlStoredProcedureResult> getSqlResourceSqlStoredProcedure(
   return GetSqlResourceSqlStoredProcedureResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlResourceSqlStoredProcedureResult> getSqlResourceSqlStoredProcedureOutput(
+  GetSqlResourceSqlStoredProcedureArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getSqlResourceSqlStoredProcedure',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlResourceSqlStoredProcedureResult.fromMap);
+}
+
 /// Gets the SQL trigger under an existing Azure Cosmos DB database account.
 ///
 /// Uses Azure REST API version 2025-10-15.
@@ -986,6 +1459,17 @@ Future<GetSqlResourceSqlTriggerResult> getSqlResourceSqlTrigger(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSqlResourceSqlTriggerResult.fromMap(result);
+}
+
+pulumi.Output<GetSqlResourceSqlTriggerResult> getSqlResourceSqlTriggerOutput(
+  GetSqlResourceSqlTriggerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getSqlResourceSqlTrigger',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlResourceSqlTriggerResult.fromMap);
 }
 
 /// Gets the SQL userDefinedFunction under an existing Azure Cosmos DB database account.
@@ -1008,6 +1492,17 @@ Future<GetSqlResourceSqlUserDefinedFunctionResult> getSqlResourceSqlUserDefinedF
   return GetSqlResourceSqlUserDefinedFunctionResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlResourceSqlUserDefinedFunctionResult> getSqlResourceSqlUserDefinedFunctionOutput(
+  GetSqlResourceSqlUserDefinedFunctionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getSqlResourceSqlUserDefinedFunction',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlResourceSqlUserDefinedFunctionResult.fromMap);
+}
+
 /// Gets the Tables under an existing Azure Cosmos DB database account with the provided name.
 ///
 /// Uses Azure REST API version 2025-10-15.
@@ -1026,6 +1521,17 @@ Future<GetTableResourceTableResult> getTableResourceTable(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTableResourceTableResult.fromMap(result);
+}
+
+pulumi.Output<GetTableResourceTableResult> getTableResourceTableOutput(
+  GetTableResourceTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getTableResourceTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTableResourceTableResult.fromMap);
 }
 
 /// Retrieves the properties of an existing Azure Cosmos DB Table Role Assignment with the given Id.
@@ -1048,6 +1554,17 @@ Future<GetTableResourceTableRoleAssignmentResult> getTableResourceTableRoleAssig
   return GetTableResourceTableRoleAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetTableResourceTableRoleAssignmentResult> getTableResourceTableRoleAssignmentOutput(
+  GetTableResourceTableRoleAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getTableResourceTableRoleAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTableResourceTableRoleAssignmentResult.fromMap);
+}
+
 /// Retrieves the properties of an existing Azure Cosmos DB Table Role Definition with the given Id.
 ///
 /// Uses Azure REST API version 2024-12-01-preview.
@@ -1066,6 +1583,17 @@ Future<GetTableResourceTableRoleDefinitionResult> getTableResourceTableRoleDefin
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTableResourceTableRoleDefinitionResult.fromMap(result);
+}
+
+pulumi.Output<GetTableResourceTableRoleDefinitionResult> getTableResourceTableRoleDefinitionOutput(
+  GetTableResourceTableRoleDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getTableResourceTableRoleDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTableResourceTableRoleDefinitionResult.fromMap);
 }
 
 /// Retrieves the properties of an existing Azure Cosmos DB Throughput Pool
@@ -1088,6 +1616,17 @@ Future<GetThroughputPoolResult> getThroughputPool(
   return GetThroughputPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetThroughputPoolResult> getThroughputPoolOutput(
+  GetThroughputPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getThroughputPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetThroughputPoolResult.fromMap);
+}
+
 /// Retrieves the properties of an existing Azure Cosmos DB Throughput Pool
 ///
 /// Uses Azure REST API version 2024-12-01-preview.
@@ -1106,6 +1645,17 @@ Future<GetThroughputPoolAccountResult> getThroughputPoolAccount(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetThroughputPoolAccountResult.fromMap(result);
+}
+
+pulumi.Output<GetThroughputPoolAccountResult> getThroughputPoolAccountOutput(
+  GetThroughputPoolAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:getThroughputPoolAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetThroughputPoolAccountResult.fromMap);
 }
 
 /// Lists the connection strings for the specified Azure Cosmos DB database account.
@@ -1128,6 +1678,17 @@ Future<ListDatabaseAccountConnectionStringsResult> listDatabaseAccountConnection
   return ListDatabaseAccountConnectionStringsResult.fromMap(result);
 }
 
+pulumi.Output<ListDatabaseAccountConnectionStringsResult> listDatabaseAccountConnectionStringsOutput(
+  ListDatabaseAccountConnectionStringsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:listDatabaseAccountConnectionStrings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListDatabaseAccountConnectionStringsResult.fromMap);
+}
+
 /// Lists the access keys for the specified Azure Cosmos DB database account.
 ///
 /// Uses Azure REST API version 2025-10-15.
@@ -1146,6 +1707,17 @@ Future<ListDatabaseAccountKeysResult> listDatabaseAccountKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListDatabaseAccountKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListDatabaseAccountKeysResult> listDatabaseAccountKeysOutput(
+  ListDatabaseAccountKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:listDatabaseAccountKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListDatabaseAccountKeysResult.fromMap);
 }
 
 /// List mongo cluster connection strings. This includes the default connection string using SCRAM-SHA-256, as well as other connection strings supported by the cluster.
@@ -1168,6 +1740,17 @@ Future<ListMongoClusterConnectionStringsResult> listMongoClusterConnectionString
   return ListMongoClusterConnectionStringsResult.fromMap(result);
 }
 
+pulumi.Output<ListMongoClusterConnectionStringsResult> listMongoClusterConnectionStringsOutput(
+  ListMongoClusterConnectionStringsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:listMongoClusterConnectionStrings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListMongoClusterConnectionStringsResult.fromMap);
+}
+
 /// Retrieves the connection info for the notebook workspace
 ///
 /// Uses Azure REST API version 2025-10-15.
@@ -1186,4 +1769,15 @@ Future<ListNotebookWorkspaceConnectionInfoResult> listNotebookWorkspaceConnectio
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListNotebookWorkspaceConnectionInfoResult.fromMap(result);
+}
+
+pulumi.Output<ListNotebookWorkspaceConnectionInfoResult> listNotebookWorkspaceConnectionInfoOutput(
+  ListNotebookWorkspaceConnectionInfoArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cosmosdb:listNotebookWorkspaceConnectionInfo',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListNotebookWorkspaceConnectionInfoResult.fromMap);
 }

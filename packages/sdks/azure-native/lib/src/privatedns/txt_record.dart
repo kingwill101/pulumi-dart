@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A TXT record.
 class TxtRecord {
   /// The text value of this TXT record.
-  final pulumi.Input<List<String>>? value;
+  final pulumi.Input<List<String>?>? value;
 
   /// Creates a new [TxtRecord].
   /// [value] The text value of this TXT record.

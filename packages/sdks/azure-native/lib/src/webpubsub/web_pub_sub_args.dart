@@ -17,47 +17,47 @@ class WebPubSubArgs {
   /// DisableLocalAuth
   /// Enable or disable aad auth
   /// When set as true, connection with AuthType=aad won't work.
-  final pulumi.Input<bool>? disableAadAuth;
+  final pulumi.Input<bool?>? disableAadAuth;
   /// DisableLocalAuth
   /// Enable or disable local auth with AccessKey
   /// When set as true, connection with AccessKey=xxx won't work.
-  final pulumi.Input<bool>? disableLocalAuth;
+  final pulumi.Input<bool?>? disableLocalAuth;
   /// A class represent managed identities used for request and response
-  final pulumi.Input<ManagedIdentity>? identity;
+  final pulumi.Input<ManagedIdentity?>? identity;
   /// The kind of the service
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<dynamic>? kind;
   /// Live trace configuration of a Microsoft.SignalRService resource.
-  final pulumi.Input<LiveTraceConfiguration>? liveTraceConfiguration;
+  final pulumi.Input<LiveTraceConfiguration?>? liveTraceConfiguration;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Network ACLs for the resource
-  final pulumi.Input<WebPubSubNetworkACLs>? networkACLs;
+  final pulumi.Input<WebPubSubNetworkACLs?>? networkACLs;
   /// Enable or disable public network access. Default to "Enabled".
   /// When it's Enabled, network ACLs still apply.
   /// When it's Disabled, public network access is always disabled no matter what you set in network ACLs.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// Enable or disable the regional endpoint. Default to "Enabled".
   /// When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected.
   /// This property is replica specific. Disable the regional endpoint without replica is not allowed.
-  final pulumi.Input<String>? regionEndpointEnabled;
+  final pulumi.Input<String?>? regionEndpointEnabled;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource log configuration of a Microsoft.SignalRService resource.
-  final pulumi.Input<ResourceLogConfiguration>? resourceLogConfiguration;
+  final pulumi.Input<ResourceLogConfiguration?>? resourceLogConfiguration;
   /// The name of the resource.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// Stop or start the resource.  Default to "False".
   /// When it's true, the data plane of the resource is shutdown.
   /// When it's false, the data plane of the resource is started.
-  final pulumi.Input<String>? resourceStopped;
+  final pulumi.Input<String?>? resourceStopped;
   /// The billing information of the resource.
-  final pulumi.Input<ResourceSku>? sku;
+  final pulumi.Input<ResourceSku?>? sku;
   /// SocketIO settings for the resource
-  final pulumi.Input<WebPubSubSocketIOSettings>? socketIO;
+  final pulumi.Input<WebPubSubSocketIOSettings?>? socketIO;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// TLS settings for the resource
-  final pulumi.Input<WebPubSubTlsSettings>? tls;
+  final pulumi.Input<WebPubSubTlsSettings?>? tls;
 
   /// Creates a new [WebPubSubArgs].
   /// [disableAadAuth] DisableLocalAuth
@@ -77,25 +77,25 @@ class WebPubSubArgs {
   /// [socketIO] SocketIO settings for the resource
   /// [tags] Resource tags.
   /// [tls] TLS settings for the resource
-  const WebPubSubArgs({
-    this.disableAadAuth,
-    this.disableLocalAuth,
+  WebPubSubArgs({
+    pulumi.Input<bool?>? disableAadAuth,
+    pulumi.Input<bool?>? disableLocalAuth,
     this.identity,
     this.kind,
     this.liveTraceConfiguration,
     this.location,
     this.networkACLs,
-    this.publicNetworkAccess,
-    this.regionEndpointEnabled,
+    pulumi.Input<String?>? publicNetworkAccess,
+    pulumi.Input<String?>? regionEndpointEnabled,
     required this.resourceGroupName,
     this.resourceLogConfiguration,
     this.resourceName,
-    this.resourceStopped,
+    pulumi.Input<String?>? resourceStopped,
     this.sku,
     this.socketIO,
     this.tags,
     this.tls,
-  });
+  }) : disableAadAuth = disableAadAuth ?? pulumi.Input.fromValue(false), disableLocalAuth = disableLocalAuth ?? pulumi.Input.fromValue(false), publicNetworkAccess = publicNetworkAccess ?? pulumi.Input.fromValue('Enabled'), regionEndpointEnabled = regionEndpointEnabled ?? pulumi.Input.fromValue('Enabled'), resourceStopped = resourceStopped ?? pulumi.Input.fromValue('false');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -124,7 +124,7 @@ class WebPubSubArgs {
       disableAadAuth: (() { final guardedValue = map['disableAadAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       disableLocalAuth: (() { final guardedValue = map['disableLocalAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       liveTraceConfiguration: (() { final guardedValue = map['liveTraceConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LiveTraceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkACLs: (() { final guardedValue = map['networkACLs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebPubSubNetworkACLs.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -20,7 +20,7 @@ class GetFhirServiceResult {
   /// Fhir Service authentication configuration.
   final FhirServiceAuthenticationConfigurationResponse? authenticationConfiguration;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fhir Service Cors configuration.
   final FhirServiceCorsConfigurationResponse? corsConfiguration;
   /// The encryption settings of the FHIR service
@@ -28,11 +28,11 @@ class GetFhirServiceResult {
   /// An etag associated with the resource, used for optimistic concurrency when editing it.
   final String? etag;
   /// Fhir Service event support status.
-  final String eventState;
+  final String? eventState;
   /// Fhir Service export configuration.
   final FhirServiceExportConfigurationResponse? exportConfiguration;
   /// The resource identifier.
-  final String id;
+  final String? id;
   /// Setting indicating whether the service has a managed identity associated with it.
   final ServiceManagedIdentityResponseIdentity? identity;
   /// Implementation Guides configuration.
@@ -44,21 +44,21 @@ class GetFhirServiceResult {
   /// The resource location.
   final String? location;
   /// The resource name.
-  final String name;
+  final String? name;
   /// The list of private endpoint connections that are set up for this resource.
-  final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
+  final List<PrivateEndpointConnectionResponse>? privateEndpointConnections;
   /// The provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
-  final String publicNetworkAccess;
+  final String? publicNetworkAccess;
   /// Determines tracking of history for resources.
   final ResourceVersionPolicyConfigurationResponse? resourceVersionPolicyConfiguration;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetFhirServiceResult].
   /// [acrConfiguration] Fhir Service Azure container registry configuration.
@@ -86,52 +86,52 @@ class GetFhirServiceResult {
   const GetFhirServiceResult({
     this.acrConfiguration,
     this.authenticationConfiguration,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.corsConfiguration,
     this.encryption,
     this.etag,
-    required this.eventState,
+    this.eventState,
     this.exportConfiguration,
-    required this.id,
+    this.id,
     this.identity,
     this.implementationGuidesConfiguration,
     this.importConfiguration,
     this.kind,
     this.location,
-    required this.name,
-    required this.privateEndpointConnections,
-    required this.provisioningState,
-    required this.publicNetworkAccess,
+    this.name,
+    this.privateEndpointConnections,
+    this.provisioningState,
+    this.publicNetworkAccess,
     this.resourceVersionPolicyConfiguration,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'acrConfiguration': ?acrConfiguration?.toMap(),
       'authenticationConfiguration': ?authenticationConfiguration?.toMap(),
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'corsConfiguration': ?corsConfiguration?.toMap(),
       'encryption': ?encryption?.toMap(),
       'etag': ?etag,
-      'eventState': eventState,
+      'eventState': ?eventState,
       'exportConfiguration': ?exportConfiguration?.toMap(),
-      'id': id,
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'implementationGuidesConfiguration': ?implementationGuidesConfiguration?.toMap(),
       'importConfiguration': ?importConfiguration?.toMap(),
       'kind': ?kind,
       'location': ?location,
-      'name': name,
-      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
-      'provisioningState': provisioningState,
-      'publicNetworkAccess': publicNetworkAccess,
+      'name': ?name,
+      'privateEndpointConnections': ?(() { final guardedValue = privateEndpointConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'provisioningState': ?provisioningState,
+      'publicNetworkAccess': ?publicNetworkAccess,
       'resourceVersionPolicyConfiguration': ?resourceVersionPolicyConfiguration?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
@@ -139,26 +139,26 @@ class GetFhirServiceResult {
     return GetFhirServiceResult(
       acrConfiguration: (() { final guardedValue = map['acrConfiguration']; if (guardedValue == null) return null; return FhirServiceAcrConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       authenticationConfiguration: (() { final guardedValue = map['authenticationConfiguration']; if (guardedValue == null) return null; return FhirServiceAuthenticationConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       corsConfiguration: (() { final guardedValue = map['corsConfiguration']; if (guardedValue == null) return null; return FhirServiceCorsConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return EncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      eventState: map['eventState'] as String,
+      eventState: (() { final guardedValue = map['eventState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       exportConfiguration: (() { final guardedValue = map['exportConfiguration']; if (guardedValue == null) return null; return FhirServiceExportConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ServiceManagedIdentityResponseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       implementationGuidesConfiguration: (() { final guardedValue = map['implementationGuidesConfiguration']; if (guardedValue == null) return null; return ImplementationGuidesConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       importConfiguration: (() { final guardedValue = map['importConfiguration']; if (guardedValue == null) return null; return FhirServiceImportConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resourceVersionPolicyConfiguration: (() { final guardedValue = map['resourceVersionPolicyConfiguration']; if (guardedValue == null) return null; return ResourceVersionPolicyConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

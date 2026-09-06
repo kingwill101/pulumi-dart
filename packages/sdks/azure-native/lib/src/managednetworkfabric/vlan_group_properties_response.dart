@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Vlan group properties.
 class VlanGroupPropertiesResponse {
   /// Vlan group name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of vlans.
-  final pulumi.Input<List<String>>? vlans;
+  final pulumi.Input<List<String>?>? vlans;
 
   /// Creates a new [VlanGroupPropertiesResponse].
   /// [name] Vlan group name.

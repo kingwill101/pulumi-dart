@@ -9,23 +9,23 @@ import 'extended_location.dart';
 /// {@macro pulumi_connectedvmwarevsphere_virtual_network_args_doc}
 class VirtualNetworkArgs {
   /// Gets or sets the extended location.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// Gets or sets the inventory Item ID for the virtual network.
-  final pulumi.Input<String>? inventoryItemId;
+  final pulumi.Input<String?>? inventoryItemId;
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Gets or sets the location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual network.
-  final pulumi.Input<String>? moRefId;
+  final pulumi.Input<String?>? moRefId;
   /// The Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Gets or sets the ARM Id of the vCenter resource in which this template resides.
-  final pulumi.Input<String>? vCenterId;
+  final pulumi.Input<String?>? vCenterId;
   /// Name of the virtual network resource.
-  final pulumi.Input<String>? virtualNetworkName;
+  final pulumi.Input<String?>? virtualNetworkName;
 
   /// Creates a new [VirtualNetworkArgs].
   /// [extendedLocation] Gets or sets the extended location.

@@ -9,15 +9,15 @@ import 'managed_ccfproperties.dart';
 /// {@macro pulumi_confidentialledger_managed_ccfargs_doc}
 class ManagedCCFArgs {
   /// Name of the Managed CCF
-  final pulumi.Input<String>? appName;
+  final pulumi.Input<String?>? appName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Properties of Managed CCF Resource.
-  final pulumi.Input<ManagedCCFProperties>? properties;
+  final pulumi.Input<ManagedCCFProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ManagedCCFArgs].
   /// [appName] Name of the Managed CCF

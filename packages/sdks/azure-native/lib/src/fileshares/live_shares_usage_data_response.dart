@@ -21,7 +21,7 @@ class LiveSharesUsageDataResponse {
 
   factory LiveSharesUsageDataResponse.fromMap(Map<String, dynamic> map) {
     return LiveSharesUsageDataResponse(
-      fileShareCount: pulumi.Input.fromValue(map['fileShareCount'] as int),
+      fileShareCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['fileShareCount'])),
     );
   }
 }

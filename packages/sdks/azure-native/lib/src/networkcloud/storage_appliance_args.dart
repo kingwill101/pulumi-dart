@@ -14,7 +14,7 @@ class StorageApplianceArgs {
   /// The extended location of the cluster associated with the resource.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource ID of the rack where this storage appliance resides.
   final pulumi.Input<String> rackId;
   /// The slot the storage appliance is in the rack based on the BOM configuration.
@@ -24,11 +24,11 @@ class StorageApplianceArgs {
   /// The serial number for the storage appliance.
   final pulumi.Input<String> serialNumber;
   /// The name of the storage appliance.
-  final pulumi.Input<String>? storageApplianceName;
+  final pulumi.Input<String?>? storageApplianceName;
   /// The SKU for the storage appliance.
   final pulumi.Input<String> storageApplianceSkuId;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [StorageApplianceArgs].
   /// [administratorCredentials] The credentials of the administrative interface on this storage appliance.
@@ -75,7 +75,7 @@ class StorageApplianceArgs {
       extendedLocation: pulumi.Input.fromValue(ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rackId: pulumi.Input.fromValue(map['rackId'] as String),
-      rackSlot: pulumi.Input.fromValue(map['rackSlot'] as double),
+      rackSlot: pulumi.Input.fromValue((map['rackSlot'] as num).toDouble()),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serialNumber: pulumi.Input.fromValue(map['serialNumber'] as String),
       storageApplianceName: (() { final guardedValue = map['storageApplianceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

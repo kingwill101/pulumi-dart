@@ -6,25 +6,25 @@ import 'site_response.dart';
 /// Channel settings definition
 class ChannelSettingsResponse {
   /// The bot icon url
-  final pulumi.Input<String>? botIconUrl;
+  final pulumi.Input<String?>? botIconUrl;
   /// The bot id
-  final pulumi.Input<String>? botId;
+  final pulumi.Input<String?>? botId;
   /// The channel display name
-  final pulumi.Input<String>? channelDisplayName;
+  final pulumi.Input<String?>? channelDisplayName;
   /// The channel id
-  final pulumi.Input<String>? channelId;
+  final pulumi.Input<String?>? channelId;
   /// Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
-  final pulumi.Input<bool>? disableLocalAuth;
+  final pulumi.Input<bool?>? disableLocalAuth;
   /// The extensionKey1
-  final pulumi.Input<String>? extensionKey1;
+  final pulumi.Input<String?>? extensionKey1;
   /// The extensionKey2
-  final pulumi.Input<String>? extensionKey2;
+  final pulumi.Input<String?>? extensionKey2;
   /// Whether this channel is enabled for the bot
-  final pulumi.Input<bool>? isEnabled;
+  final pulumi.Input<bool?>? isEnabled;
   /// Whether customer needs to agree to new terms.
-  final pulumi.Input<bool>? requireTermsAgreement;
+  final pulumi.Input<bool?>? requireTermsAgreement;
   /// The list of sites
-  final pulumi.Input<List<SiteResponse>>? sites;
+  final pulumi.Input<List<SiteResponse>?>? sites;
 
   /// Creates a new [ChannelSettingsResponse].
   /// [botIconUrl] The bot icon url
@@ -37,18 +37,18 @@ class ChannelSettingsResponse {
   /// [isEnabled] Whether this channel is enabled for the bot
   /// [requireTermsAgreement] Whether customer needs to agree to new terms.
   /// [sites] The list of sites
-  const ChannelSettingsResponse({
+  ChannelSettingsResponse({
     this.botIconUrl,
     this.botId,
     this.channelDisplayName,
     this.channelId,
     this.disableLocalAuth,
-    this.extensionKey1,
-    this.extensionKey2,
+    pulumi.Input<String?>? extensionKey1,
+    pulumi.Input<String?>? extensionKey2,
     this.isEnabled,
     this.requireTermsAgreement,
     this.sites,
-  });
+  }) : extensionKey1 = extensionKey1 ?? pulumi.Input.fromValue(''), extensionKey2 = extensionKey2 ?? pulumi.Input.fromValue('');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Mode for Target connectivity.
-enum IscsiTargetAclMode {
+enum IscsiTargetAclMode implements pulumi.PulumiEnum<String> {
   valueDynamic("Dynamic"),
   valueStatic("Static");
 
   const IscsiTargetAclMode(this.wireValue);
+  @override
   final String wireValue;
 
   static IscsiTargetAclMode fromValue(String value) {

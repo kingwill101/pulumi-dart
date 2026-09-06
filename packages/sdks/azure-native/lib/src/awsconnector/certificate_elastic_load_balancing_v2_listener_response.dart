@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Certificate
 class CertificateElasticLoadBalancingV2ListenerResponse {
   /// The Amazon Resource Name (ARN) of the certificate.
-  final pulumi.Input<String>? certificateArn;
+  final pulumi.Input<String?>? certificateArn;
 
   /// Creates a new [CertificateElasticLoadBalancingV2ListenerResponse].
   /// [certificateArn] The Amazon Resource Name (ARN) of the certificate.

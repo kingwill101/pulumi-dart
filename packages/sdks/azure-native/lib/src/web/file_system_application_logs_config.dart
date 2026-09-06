@@ -6,13 +6,13 @@ import 'log_level.dart';
 /// Application logs to file system configuration.
 class FileSystemApplicationLogsConfig {
   /// Log level.
-  final pulumi.Input<LogLevel>? level;
+  final pulumi.Input<LogLevel?>? level;
 
   /// Creates a new [FileSystemApplicationLogsConfig].
   /// [level] Log level.
-  const FileSystemApplicationLogsConfig({
-    this.level,
-  });
+  FileSystemApplicationLogsConfig({
+    pulumi.Input<LogLevel?>? level,
+  }) : level = level ?? pulumi.Input.fromValue(LogLevel.fromValue('Off'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

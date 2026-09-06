@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enum to determine how batch inferencing will handle output
-enum BatchOutputAction {
+enum BatchOutputAction implements pulumi.PulumiEnum<String> {
   summaryOnly("SummaryOnly"),
   appendRow("AppendRow");
 
   const BatchOutputAction(this.wireValue);
+  @override
   final String wireValue;
 
   static BatchOutputAction fromValue(String value) {

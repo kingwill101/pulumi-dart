@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the properties for manual resolution.
 class ManualResolutionPropertiesResponse {
   /// Gets or sets the target resource ARM ID of the dependent resource if the resource type is Manual.
-  final pulumi.Input<String>? targetId;
+  final pulumi.Input<String?>? targetId;
 
   /// Creates a new [ManualResolutionPropertiesResponse].
   /// [targetId] Gets or sets the target resource ARM ID of the dependent resource if the resource type is Manual.

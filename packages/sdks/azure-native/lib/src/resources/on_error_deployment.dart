@@ -6,9 +6,9 @@ import 'on_error_deployment_type.dart';
 /// Deployment on error behavior.
 class OnErrorDeployment {
   /// The deployment to be used on error case.
-  final pulumi.Input<String>? deploymentName;
+  final pulumi.Input<String?>? deploymentName;
   /// The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-  final pulumi.Input<OnErrorDeploymentType>? type;
+  final pulumi.Input<OnErrorDeploymentType?>? type;
 
   /// Creates a new [OnErrorDeployment].
   /// [deploymentName] The deployment to be used on error case.

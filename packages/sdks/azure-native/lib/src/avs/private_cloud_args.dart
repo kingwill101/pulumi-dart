@@ -14,24 +14,24 @@ import 'system_assigned_service_identity.dart';
 /// {@macro pulumi_avs_private_cloud_args_doc}
 class PrivateCloudArgs {
   /// Properties describing how the cloud is distributed across availability zones
-  final pulumi.Input<AvailabilityProperties>? availability;
+  final pulumi.Input<AvailabilityProperties?>? availability;
   /// The type of DNS zone to use.
-  final pulumi.Input<String>? dnsZoneType;
+  final pulumi.Input<dynamic>? dnsZoneType;
   /// Customer managed key encryption, can be enabled or disabled
-  final pulumi.Input<Encryption>? encryption;
+  final pulumi.Input<Encryption?>? encryption;
   /// Array of additional networks noncontiguous with networkBlock. Networks must be
   /// unique and non-overlapping across VNet in your subscription, on-premise, and
   /// this privateCloud networkBlock attribute. Make sure the CIDR format conforms to
   /// (A.B.C.D/X).
-  final pulumi.Input<List<String>>? extendedNetworkBlocks;
+  final pulumi.Input<List<String>?>? extendedNetworkBlocks;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<SystemAssignedServiceIdentity>? identity;
+  final pulumi.Input<SystemAssignedServiceIdentity?>? identity;
   /// vCenter Single Sign On Identity Sources
-  final pulumi.Input<List<IdentitySource>>? identitySources;
+  final pulumi.Input<List<IdentitySource>?>? identitySources;
   /// Connectivity to internet is enabled or disabled
-  final pulumi.Input<String>? internet;
+  final pulumi.Input<dynamic>? internet;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The default cluster used for management
   final pulumi.Input<ManagementCluster> managementCluster;
   /// The block of addresses should be unique across VNet in your subscription as
@@ -39,19 +39,19 @@ class PrivateCloudArgs {
   /// A,B,C,D are between 0 and 255, and X is between 0 and 22
   final pulumi.Input<String> networkBlock;
   /// Optionally, set the NSX-T Manager password when the private cloud is created
-  final pulumi.Input<String>? nsxtPassword;
+  final pulumi.Input<String?>? nsxtPassword;
   /// Name of the private cloud
-  final pulumi.Input<String>? privateCloudName;
+  final pulumi.Input<String?>? privateCloudName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU (Stock Keeping Unit) assigned to this resource.
   final pulumi.Input<Sku> sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Optionally, set the vCenter admin password when the private cloud is created
-  final pulumi.Input<String>? vcenterPassword;
+  final pulumi.Input<String?>? vcenterPassword;
   /// Azure resource ID of the virtual network
-  final pulumi.Input<String>? virtualNetworkId;
+  final pulumi.Input<String?>? virtualNetworkId;
 
   /// Creates a new [PrivateCloudArgs].
   /// [availability] Properties describing how the cloud is distributed across availability zones
@@ -71,14 +71,14 @@ class PrivateCloudArgs {
   /// [tags] Resource tags.
   /// [vcenterPassword] Optionally, set the vCenter admin password when the private cloud is created
   /// [virtualNetworkId] Azure resource ID of the virtual network
-  const PrivateCloudArgs({
+  PrivateCloudArgs({
     this.availability,
     this.dnsZoneType,
     this.encryption,
     this.extendedNetworkBlocks,
     this.identity,
     this.identitySources,
-    this.internet,
+    pulumi.Input<dynamic>? internet,
     this.location,
     required this.managementCluster,
     required this.networkBlock,
@@ -89,7 +89,7 @@ class PrivateCloudArgs {
     this.tags,
     this.vcenterPassword,
     this.virtualNetworkId,
-  });
+  }) : internet = internet ?? pulumi.Input.fromValue('Disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -116,12 +116,12 @@ class PrivateCloudArgs {
   factory PrivateCloudArgs.fromMap(Map<String, dynamic> map) {
     return PrivateCloudArgs(
       availability: (() { final guardedValue = map['availability']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AvailabilityProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      dnsZoneType: (() { final guardedValue = map['dnsZoneType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dnsZoneType: (() { final guardedValue = map['dnsZoneType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Encryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       extendedNetworkBlocks: (() { final guardedValue = map['extendedNetworkBlocks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SystemAssignedServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       identitySources: (() { final guardedValue = map['identitySources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IdentitySource>(guardedValue, (value) => IdentitySource.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      internet: (() { final guardedValue = map['internet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      internet: (() { final guardedValue = map['internet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managementCluster: pulumi.Input.fromValue(ManagementCluster.fromMap((map['managementCluster']! as Map).cast<String, dynamic>())),
       networkBlock: pulumi.Input.fromValue(map['networkBlock'] as String),

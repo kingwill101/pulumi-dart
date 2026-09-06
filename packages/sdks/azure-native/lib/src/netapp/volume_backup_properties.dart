@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Volume Backup Properties
 class VolumeBackupProperties {
   /// Backup Policy Resource ID
-  final pulumi.Input<String>? backupPolicyId;
+  final pulumi.Input<String?>? backupPolicyId;
   /// Backup Vault Resource ID
-  final pulumi.Input<String>? backupVaultId;
+  final pulumi.Input<String?>? backupVaultId;
   /// Policy Enforced
-  final pulumi.Input<bool>? policyEnforced;
+  final pulumi.Input<bool?>? policyEnforced;
 
   /// Creates a new [VolumeBackupProperties].
   /// [backupPolicyId] Backup Policy Resource ID

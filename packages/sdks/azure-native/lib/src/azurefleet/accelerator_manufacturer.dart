@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Accelerator manufacturers supported by Azure VMs.
-enum AcceleratorManufacturer {
+enum AcceleratorManufacturer implements pulumi.PulumiEnum<String> {
   aMD("AMD"),
   nvidia("Nvidia"),
   xilinx("Xilinx");
 
   const AcceleratorManufacturer(this.wireValue);
+  @override
   final String wireValue;
 
   static AcceleratorManufacturer fromValue(String value) {

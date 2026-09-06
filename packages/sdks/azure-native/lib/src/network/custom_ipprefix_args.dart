@@ -10,39 +10,39 @@ import 'sub_resource.dart';
 /// {@macro pulumi_network_custom_ipprefix_args_doc}
 class CustomIPPrefixArgs {
   /// The ASN for CIDR advertising. Should be an integer as string.
-  final pulumi.Input<String>? asn;
+  final pulumi.Input<String?>? asn;
   /// Authorization message for WAN validation.
-  final pulumi.Input<String>? authorizationMessage;
+  final pulumi.Input<String?>? authorizationMessage;
   /// The prefix range in CIDR notation. Should include the start address and the prefix length.
-  final pulumi.Input<String>? cidr;
+  final pulumi.Input<String?>? cidr;
   /// The commissioned state of the Custom IP Prefix.
-  final pulumi.Input<String>? commissionedState;
+  final pulumi.Input<dynamic>? commissionedState;
   /// The name of the custom IP prefix.
-  final pulumi.Input<String>? customIpPrefixName;
+  final pulumi.Input<String?>? customIpPrefixName;
   /// The Parent CustomIpPrefix for IPv6 /64 CustomIpPrefix.
-  final pulumi.Input<SubResource>? customIpPrefixParent;
+  final pulumi.Input<SubResource?>? customIpPrefixParent;
   /// Whether to do express route advertise.
-  final pulumi.Input<bool>? expressRouteAdvertise;
+  final pulumi.Input<bool?>? expressRouteAdvertise;
   /// The extended location of the custom IP prefix.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// The Geo for CIDR advertising. Should be an Geo code.
-  final pulumi.Input<String>? geo;
+  final pulumi.Input<dynamic>? geo;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Whether to Advertise the range to Internet.
-  final pulumi.Input<bool>? noInternetAdvertise;
+  final pulumi.Input<bool?>? noInternetAdvertise;
   /// Type of custom IP prefix. Should be Singular, Parent, or Child.
-  final pulumi.Input<String>? prefixType;
+  final pulumi.Input<dynamic>? prefixType;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Signed message for WAN validation.
-  final pulumi.Input<String>? signedMessage;
+  final pulumi.Input<String?>? signedMessage;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A list of availability zones denoting the IP allocated for the resource needs to come from.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [CustomIPPrefixArgs].
   /// [asn] The ASN for CIDR advertising. Should be an integer as string.
@@ -109,16 +109,16 @@ class CustomIPPrefixArgs {
       asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       authorizationMessage: (() { final guardedValue = map['authorizationMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cidr: (() { final guardedValue = map['cidr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      commissionedState: (() { final guardedValue = map['commissionedState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      commissionedState: (() { final guardedValue = map['commissionedState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       customIpPrefixName: (() { final guardedValue = map['customIpPrefixName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customIpPrefixParent: (() { final guardedValue = map['customIpPrefixParent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       expressRouteAdvertise: (() { final guardedValue = map['expressRouteAdvertise']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      geo: (() { final guardedValue = map['geo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      geo: (() { final guardedValue = map['geo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       noInternetAdvertise: (() { final guardedValue = map['noInternetAdvertise']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      prefixType: (() { final guardedValue = map['prefixType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prefixType: (() { final guardedValue = map['prefixType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       signedMessage: (() { final guardedValue = map['signedMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

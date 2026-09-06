@@ -6,7 +6,7 @@ import 'disk_volume_configuration_response.dart';
 /// The Disk Configuration Details.
 class DiskConfigurationResponse {
   /// The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].
-  final pulumi.Input<Map<String, DiskVolumeConfigurationResponse>>? diskVolumeConfigurations;
+  final pulumi.Input<Map<String, DiskVolumeConfigurationResponse>?>? diskVolumeConfigurations;
 
   /// Creates a new [DiskConfigurationResponse].
   /// [diskVolumeConfigurations] The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].

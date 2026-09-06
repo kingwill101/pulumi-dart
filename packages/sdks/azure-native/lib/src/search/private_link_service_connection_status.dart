@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Status of the the private link service connection. Valid values are Pending, Approved, Rejected, or Disconnected.
-enum PrivateLinkServiceConnectionStatus {
+enum PrivateLinkServiceConnectionStatus implements pulumi.PulumiEnum<String> {
   pending("Pending"),
   approved("Approved"),
   rejected("Rejected"),
   disconnected("Disconnected");
 
   const PrivateLinkServiceConnectionStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static PrivateLinkServiceConnectionStatus fromValue(String value) {

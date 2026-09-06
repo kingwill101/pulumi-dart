@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The exposure status of the connector to the customers.
 class ConnectorDefinitionsAvailability {
   /// Gets or sets a value indicating whether the connector is preview.
-  final pulumi.Input<bool>? isPreview;
+  final pulumi.Input<bool?>? isPreview;
   /// The exposure status of the connector to the customers. Available values are 0-4 (0=None, 1=Available, 2=FeatureFlag, 3=Internal).
-  final pulumi.Input<int>? status;
+  final pulumi.Input<int?>? status;
 
   /// Creates a new [ConnectorDefinitionsAvailability].
   /// [isPreview] Gets or sets a value indicating whether the connector is preview.
@@ -27,7 +27,7 @@ class ConnectorDefinitionsAvailability {
   factory ConnectorDefinitionsAvailability.fromMap(Map<String, dynamic> map) {
     return ConnectorDefinitionsAvailability(
       isPreview: (() { final guardedValue = map['isPreview']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

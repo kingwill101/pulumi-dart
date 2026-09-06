@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ResourceRecordSetRegionEnumValue
 class ResourceRecordSetRegionEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ResourceRecordSetRegionEnumValueResponse].
   /// [value] Property value

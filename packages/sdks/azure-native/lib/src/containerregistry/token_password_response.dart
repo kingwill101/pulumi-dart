@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The password that will be used for authenticating the token of a container registry.
 class TokenPasswordResponse {
   /// The creation datetime of the password.
-  final pulumi.Input<String>? creationTime;
+  final pulumi.Input<String?>? creationTime;
   /// The expiry datetime of the password.
-  final pulumi.Input<String>? expiry;
+  final pulumi.Input<String?>? expiry;
   /// The password name "password1" or "password2"
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The password value.
   final pulumi.Input<String> value;
 

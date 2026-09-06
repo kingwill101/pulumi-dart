@@ -10,55 +10,55 @@ import 'virtual_network_rule_response.dart';
 /// Result data returned by getAccount.
 class GetAccountResult {
   /// The unique identifier associated with this Data Lake Store account.
-  final String accountId;
+  final String? accountId;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The account creation time.
-  final String creationTime;
+  final String? creationTime;
   /// The commitment tier in use for the current month.
-  final String currentTier;
+  final String? currentTier;
   /// The default owner group for all new folders and files created in the Data Lake Store account.
-  final String defaultGroup;
+  final String? defaultGroup;
   /// The Key Vault encryption configuration.
-  final EncryptionConfigResponse encryptionConfig;
+  final EncryptionConfigResponse? encryptionConfig;
   /// The current state of encryption provisioning for this Data Lake Store account.
-  final String encryptionProvisioningState;
+  final String? encryptionProvisioningState;
   /// The current state of encryption for this Data Lake Store account.
-  final String encryptionState;
+  final String? encryptionState;
   /// The full CName endpoint for this account.
-  final String endpoint;
+  final String? endpoint;
   /// The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced.
-  final String firewallAllowAzureIps;
+  final String? firewallAllowAzureIps;
   /// The list of firewall rules associated with this Data Lake Store account.
-  final List<FirewallRuleResponse> firewallRules;
+  final List<FirewallRuleResponse>? firewallRules;
   /// The current state of the IP address firewall for this Data Lake Store account.
-  final String firewallState;
+  final String? firewallState;
   /// The resource identifier.
-  final String id;
+  final String? id;
   /// The Key Vault encryption identity, if any.
-  final EncryptionIdentityResponse identity;
+  final EncryptionIdentityResponse? identity;
   /// The account last modified time.
-  final String lastModifiedTime;
+  final String? lastModifiedTime;
   /// The resource location.
-  final String location;
+  final String? location;
   /// The resource name.
-  final String name;
+  final String? name;
   /// The commitment tier to use for next month.
-  final String newTier;
+  final String? newTier;
   /// The provisioning status of the Data Lake Store account.
-  final String provisioningState;
+  final String? provisioningState;
   /// The state of the Data Lake Store account.
-  final String state;
+  final String? state;
   /// The resource tags.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// The current state of the trusted identity provider feature for this Data Lake Store account.
-  final String trustedIdProviderState;
+  final String? trustedIdProviderState;
   /// The list of trusted identity providers associated with this Data Lake Store account.
-  final List<TrustedIdProviderResponse> trustedIdProviders;
+  final List<TrustedIdProviderResponse>? trustedIdProviders;
   /// The resource type.
-  final String type;
+  final String? type;
   /// The list of virtual network rules associated with this Data Lake Store account.
-  final List<VirtualNetworkRuleResponse> virtualNetworkRules;
+  final List<VirtualNetworkRuleResponse>? virtualNetworkRules;
 
   /// Creates a new [GetAccountResult].
   /// [accountId] The unique identifier associated with this Data Lake Store account.
@@ -87,90 +87,90 @@ class GetAccountResult {
   /// [type] The resource type.
   /// [virtualNetworkRules] The list of virtual network rules associated with this Data Lake Store account.
   const GetAccountResult({
-    required this.accountId,
-    required this.azureApiVersion,
-    required this.creationTime,
-    required this.currentTier,
-    required this.defaultGroup,
-    required this.encryptionConfig,
-    required this.encryptionProvisioningState,
-    required this.encryptionState,
-    required this.endpoint,
-    required this.firewallAllowAzureIps,
-    required this.firewallRules,
-    required this.firewallState,
-    required this.id,
-    required this.identity,
-    required this.lastModifiedTime,
-    required this.location,
-    required this.name,
-    required this.newTier,
-    required this.provisioningState,
-    required this.state,
-    required this.tags,
-    required this.trustedIdProviderState,
-    required this.trustedIdProviders,
-    required this.type,
-    required this.virtualNetworkRules,
+    this.accountId,
+    this.azureApiVersion,
+    this.creationTime,
+    this.currentTier,
+    this.defaultGroup,
+    this.encryptionConfig,
+    this.encryptionProvisioningState,
+    this.encryptionState,
+    this.endpoint,
+    this.firewallAllowAzureIps,
+    this.firewallRules,
+    this.firewallState,
+    this.id,
+    this.identity,
+    this.lastModifiedTime,
+    this.location,
+    this.name,
+    this.newTier,
+    this.provisioningState,
+    this.state,
+    this.tags,
+    this.trustedIdProviderState,
+    this.trustedIdProviders,
+    this.type,
+    this.virtualNetworkRules,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountId': accountId,
-      'azureApiVersion': azureApiVersion,
-      'creationTime': creationTime,
-      'currentTier': currentTier,
-      'defaultGroup': defaultGroup,
-      'encryptionConfig': encryptionConfig.toMap(),
-      'encryptionProvisioningState': encryptionProvisioningState,
-      'encryptionState': encryptionState,
-      'endpoint': endpoint,
-      'firewallAllowAzureIps': firewallAllowAzureIps,
-      'firewallRules': pulumi.Input.encodeList<FirewallRuleResponse, Map<String, dynamic>>(firewallRules, (value) => value.toMap()),
-      'firewallState': firewallState,
-      'id': id,
-      'identity': identity.toMap(),
-      'lastModifiedTime': lastModifiedTime,
-      'location': location,
-      'name': name,
-      'newTier': newTier,
-      'provisioningState': provisioningState,
-      'state': state,
-      'tags': tags,
-      'trustedIdProviderState': trustedIdProviderState,
-      'trustedIdProviders': pulumi.Input.encodeList<TrustedIdProviderResponse, Map<String, dynamic>>(trustedIdProviders, (value) => value.toMap()),
-      'type': type,
-      'virtualNetworkRules': pulumi.Input.encodeList<VirtualNetworkRuleResponse, Map<String, dynamic>>(virtualNetworkRules, (value) => value.toMap()),
+      'accountId': ?accountId,
+      'azureApiVersion': ?azureApiVersion,
+      'creationTime': ?creationTime,
+      'currentTier': ?currentTier,
+      'defaultGroup': ?defaultGroup,
+      'encryptionConfig': ?encryptionConfig?.toMap(),
+      'encryptionProvisioningState': ?encryptionProvisioningState,
+      'encryptionState': ?encryptionState,
+      'endpoint': ?endpoint,
+      'firewallAllowAzureIps': ?firewallAllowAzureIps,
+      'firewallRules': ?(() { final guardedValue = firewallRules; if (guardedValue == null) return null; return pulumi.Input.encodeList<FirewallRuleResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'firewallState': ?firewallState,
+      'id': ?id,
+      'identity': ?identity?.toMap(),
+      'lastModifiedTime': ?lastModifiedTime,
+      'location': ?location,
+      'name': ?name,
+      'newTier': ?newTier,
+      'provisioningState': ?provisioningState,
+      'state': ?state,
+      'tags': ?tags,
+      'trustedIdProviderState': ?trustedIdProviderState,
+      'trustedIdProviders': ?(() { final guardedValue = trustedIdProviders; if (guardedValue == null) return null; return pulumi.Input.encodeList<TrustedIdProviderResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'type': ?type,
+      'virtualNetworkRules': ?(() { final guardedValue = virtualNetworkRules; if (guardedValue == null) return null; return pulumi.Input.encodeList<VirtualNetworkRuleResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetAccountResult.fromMap(Map<String, dynamic> map) {
     return GetAccountResult(
-      accountId: map['accountId'] as String,
-      azureApiVersion: map['azureApiVersion'] as String,
-      creationTime: map['creationTime'] as String,
-      currentTier: map['currentTier'] as String,
-      defaultGroup: map['defaultGroup'] as String,
-      encryptionConfig: EncryptionConfigResponse.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>()),
-      encryptionProvisioningState: map['encryptionProvisioningState'] as String,
-      encryptionState: map['encryptionState'] as String,
-      endpoint: map['endpoint'] as String,
-      firewallAllowAzureIps: map['firewallAllowAzureIps'] as String,
-      firewallRules: pulumi.Input.decodeList<FirewallRuleResponse>(map['firewallRules']!, (value) => FirewallRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      firewallState: map['firewallState'] as String,
-      id: map['id'] as String,
-      identity: EncryptionIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
-      lastModifiedTime: map['lastModifiedTime'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      newTier: map['newTier'] as String,
-      provisioningState: map['provisioningState'] as String,
-      state: map['state'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      trustedIdProviderState: map['trustedIdProviderState'] as String,
-      trustedIdProviders: pulumi.Input.decodeList<TrustedIdProviderResponse>(map['trustedIdProviders']!, (value) => TrustedIdProviderResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
-      virtualNetworkRules: pulumi.Input.decodeList<VirtualNetworkRuleResponse>(map['virtualNetworkRules']!, (value) => VirtualNetworkRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      currentTier: (() { final guardedValue = map['currentTier']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultGroup: (() { final guardedValue = map['defaultGroup']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      encryptionConfig: (() { final guardedValue = map['encryptionConfig']; if (guardedValue == null) return null; return EncryptionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      encryptionProvisioningState: (() { final guardedValue = map['encryptionProvisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      encryptionState: (() { final guardedValue = map['encryptionState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      firewallAllowAzureIps: (() { final guardedValue = map['firewallAllowAzureIps']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      firewallRules: (() { final guardedValue = map['firewallRules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallRuleResponse>(guardedValue, (value) => FirewallRuleResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      firewallState: (() { final guardedValue = map['firewallState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return EncryptionIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      newTier: (() { final guardedValue = map['newTier']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      trustedIdProviderState: (() { final guardedValue = map['trustedIdProviderState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      trustedIdProviders: (() { final guardedValue = map['trustedIdProviders']; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrustedIdProviderResponse>(guardedValue, (value) => TrustedIdProviderResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      virtualNetworkRules: (() { final guardedValue = map['virtualNetworkRules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkRuleResponse>(guardedValue, (value) => VirtualNetworkRuleResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

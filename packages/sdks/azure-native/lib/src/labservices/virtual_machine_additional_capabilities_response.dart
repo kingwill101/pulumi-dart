@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The additional capabilities for a lab VM.
 class VirtualMachineAdditionalCapabilitiesResponse {
   /// Flag to pre-install dedicated GPU drivers.
-  final pulumi.Input<String>? installGpuDrivers;
+  final pulumi.Input<String?>? installGpuDrivers;
 
   /// Creates a new [VirtualMachineAdditionalCapabilitiesResponse].
   /// [installGpuDrivers] Flag to pre-install dedicated GPU drivers.
-  const VirtualMachineAdditionalCapabilitiesResponse({
-    this.installGpuDrivers,
-  });
+  VirtualMachineAdditionalCapabilitiesResponse({
+    pulumi.Input<String?>? installGpuDrivers,
+  }) : installGpuDrivers = installGpuDrivers ?? pulumi.Input.fromValue('Disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

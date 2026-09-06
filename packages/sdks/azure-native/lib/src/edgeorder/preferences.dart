@@ -10,15 +10,15 @@ import 'transport_preferences.dart';
 /// Preferences related to the order.
 class Preferences {
   /// Preferences related to the Encryption.
-  final pulumi.Input<EncryptionPreferences>? encryptionPreferences;
+  final pulumi.Input<EncryptionPreferences?>? encryptionPreferences;
   /// Preferences related to the Management resource.
-  final pulumi.Input<ManagementResourcePreferences>? managementResourcePreferences;
+  final pulumi.Input<ManagementResourcePreferences?>? managementResourcePreferences;
   /// Notification preferences.
-  final pulumi.Input<List<NotificationPreference>>? notificationPreferences;
+  final pulumi.Input<List<NotificationPreference>?>? notificationPreferences;
   /// Preferences related to the Term commitment.
-  final pulumi.Input<TermCommitmentPreferences>? termCommitmentPreferences;
+  final pulumi.Input<TermCommitmentPreferences?>? termCommitmentPreferences;
   /// Preferences related to the shipment logistics of the order.
-  final pulumi.Input<TransportPreferences>? transportPreferences;
+  final pulumi.Input<TransportPreferences?>? transportPreferences;
 
   /// Creates a new [Preferences].
   /// [encryptionPreferences] Preferences related to the Encryption.

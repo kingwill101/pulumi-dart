@@ -60,7 +60,7 @@ class StopSellOffersPlansNotificationsListPropertiesResponse {
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       icon: pulumi.Input.fromValue(map['icon'] as String),
       isEntire: pulumi.Input.fromValue(map['isEntire'] as bool),
-      messageCode: pulumi.Input.fromValue(map['messageCode'] as double),
+      messageCode: pulumi.Input.fromValue((map['messageCode'] as num).toDouble()),
       offerId: pulumi.Input.fromValue(map['offerId'] as String),
       plans: pulumi.Input.fromValue(pulumi.Input.decodeList<PlanNotificationDetailsResponse>(map['plans']!, (value) => PlanNotificationDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))),
       publicContext: pulumi.Input.fromValue(map['publicContext'] as bool),

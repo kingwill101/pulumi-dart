@@ -8,23 +8,23 @@ import 'routing_identity_info.dart';
 /// Properties of the Topic Spaces Configuration.
 class TopicSpacesConfiguration {
   /// List of custom domain configurations for the namespace.
-  final pulumi.Input<List<CustomDomainConfiguration>>? customDomains;
+  final pulumi.Input<List<CustomDomainConfiguration>?>? customDomains;
   /// The maximum number of sessions per authentication name. The property default value is 1.
   /// Min allowed value is 1 and max allowed value is 100.
-  final pulumi.Input<int>? maximumClientSessionsPerAuthenticationName;
+  final pulumi.Input<int?>? maximumClientSessionsPerAuthenticationName;
   /// The maximum session expiry in hours. The property default value is 1 hour.
   /// Min allowed value is 1 hour and max allowed value is 8 hours.
-  final pulumi.Input<int>? maximumSessionExpiryInHours;
+  final pulumi.Input<int?>? maximumSessionExpiryInHours;
   /// Fully qualified Azure Resource Id for the Event Grid Topic to which events will be routed to from TopicSpaces under a namespace.
   /// This property should be in the following format '/subscriptions/{subId}/resourcegroups/{resourceGroupName}/providers/microsoft.EventGrid/topics/{topicName}'.
   /// This topic should reside in the same region where namespace is located.
-  final pulumi.Input<String>? routeTopicResourceId;
+  final pulumi.Input<String?>? routeTopicResourceId;
   /// Routing enrichments for topic spaces configuration
-  final pulumi.Input<RoutingEnrichments>? routingEnrichments;
+  final pulumi.Input<RoutingEnrichments?>? routingEnrichments;
   /// Routing identity info for topic spaces configuration.
-  final pulumi.Input<RoutingIdentityInfo>? routingIdentityInfo;
+  final pulumi.Input<RoutingIdentityInfo?>? routingIdentityInfo;
   /// Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
 
   /// Creates a new [TopicSpacesConfiguration].
   /// [customDomains] List of custom domain configurations for the namespace.
@@ -34,15 +34,15 @@ class TopicSpacesConfiguration {
   /// [routingEnrichments] Routing enrichments for topic spaces configuration
   /// [routingIdentityInfo] Routing identity info for topic spaces configuration.
   /// [state] Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled.
-  const TopicSpacesConfiguration({
+  TopicSpacesConfiguration({
     this.customDomains,
     this.maximumClientSessionsPerAuthenticationName,
     this.maximumSessionExpiryInHours,
     this.routeTopicResourceId,
     this.routingEnrichments,
     this.routingIdentityInfo,
-    this.state,
-  });
+    pulumi.Input<dynamic>? state,
+  }) : state = state ?? pulumi.Input.fromValue('Disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,12 +59,12 @@ class TopicSpacesConfiguration {
   factory TopicSpacesConfiguration.fromMap(Map<String, dynamic> map) {
     return TopicSpacesConfiguration(
       customDomains: (() { final guardedValue = map['customDomains']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CustomDomainConfiguration>(guardedValue, (value) => CustomDomainConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      maximumClientSessionsPerAuthenticationName: (() { final guardedValue = map['maximumClientSessionsPerAuthenticationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maximumSessionExpiryInHours: (() { final guardedValue = map['maximumSessionExpiryInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maximumClientSessionsPerAuthenticationName: (() { final guardedValue = map['maximumClientSessionsPerAuthenticationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maximumSessionExpiryInHours: (() { final guardedValue = map['maximumSessionExpiryInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       routeTopicResourceId: (() { final guardedValue = map['routeTopicResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       routingEnrichments: (() { final guardedValue = map['routingEnrichments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutingEnrichments.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       routingIdentityInfo: (() { final guardedValue = map['routingIdentityInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutingIdentityInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

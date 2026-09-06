@@ -26,8 +26,8 @@ class NetworkSettings {
 
   factory NetworkSettings.fromMap(Map<String, dynamic> map) {
     return NetworkSettings(
-      hardwareSoftwareCostPercentage: pulumi.Input.fromValue(map['hardwareSoftwareCostPercentage'] as double),
-      maintenanceCostPercentage: pulumi.Input.fromValue(map['maintenanceCostPercentage'] as double),
+      hardwareSoftwareCostPercentage: pulumi.Input.fromValue((map['hardwareSoftwareCostPercentage'] as num).toDouble()),
+      maintenanceCostPercentage: pulumi.Input.fromValue((map['maintenanceCostPercentage'] as num).toDouble()),
     );
   }
 }

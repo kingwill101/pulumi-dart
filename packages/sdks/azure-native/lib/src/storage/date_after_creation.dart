@@ -7,7 +7,7 @@ class DateAfterCreation {
   /// Value indicating the age in days after creation
   final pulumi.Input<double> daysAfterCreationGreaterThan;
   /// Value indicating the age in days after last blob tier change time. This property is only applicable for tierToArchive actions and requires daysAfterCreationGreaterThan to be set for snapshots and blob version based actions. The blob will be archived if both the conditions are satisfied.
-  final pulumi.Input<double>? daysAfterLastTierChangeGreaterThan;
+  final pulumi.Input<double?>? daysAfterLastTierChangeGreaterThan;
 
   /// Creates a new [DateAfterCreation].
   /// [daysAfterCreationGreaterThan] Value indicating the age in days after creation
@@ -26,8 +26,8 @@ class DateAfterCreation {
 
   factory DateAfterCreation.fromMap(Map<String, dynamic> map) {
     return DateAfterCreation(
-      daysAfterCreationGreaterThan: pulumi.Input.fromValue(map['daysAfterCreationGreaterThan'] as double),
-      daysAfterLastTierChangeGreaterThan: (() { final guardedValue = map['daysAfterLastTierChangeGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      daysAfterCreationGreaterThan: pulumi.Input.fromValue((map['daysAfterCreationGreaterThan'] as num).toDouble()),
+      daysAfterLastTierChangeGreaterThan: (() { final guardedValue = map['daysAfterLastTierChangeGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

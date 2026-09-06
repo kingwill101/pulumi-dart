@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the type of secret store
-enum SecretStoreType {
+enum SecretStoreType implements pulumi.PulumiEnum<String> {
   valueInvalid("Invalid"),
   valueAzureKeyVault("AzureKeyVault");
 
   const SecretStoreType(this.wireValue);
+  @override
   final String wireValue;
 
   static SecretStoreType fromValue(String value) {

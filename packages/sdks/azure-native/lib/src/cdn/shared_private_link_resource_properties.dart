@@ -7,15 +7,15 @@ import 'shared_private_link_resource_status.dart';
 /// Describes the properties of an existing Shared Private Link Resource to use when connecting to a private origin.
 class SharedPrivateLinkResourceProperties {
   /// The group id from the provider of resource the shared private link resource is for.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// The resource id of the resource the shared private link resource is for.
-  final pulumi.Input<ResourceReference>? privateLink;
+  final pulumi.Input<ResourceReference?>? privateLink;
   /// The location of the shared private link resource
-  final pulumi.Input<String>? privateLinkLocation;
+  final pulumi.Input<String?>? privateLinkLocation;
   /// The request message for requesting approval of the shared private link resource.
-  final pulumi.Input<String>? requestMessage;
+  final pulumi.Input<String?>? requestMessage;
   /// Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout.
-  final pulumi.Input<SharedPrivateLinkResourceStatus>? status;
+  final pulumi.Input<SharedPrivateLinkResourceStatus?>? status;
 
   /// Creates a new [SharedPrivateLinkResourceProperties].
   /// [groupId] The group id from the provider of resource the shared private link resource is for.

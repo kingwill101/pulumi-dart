@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies Redeploy related Scheduled Event related configurations.
 class UserInitiatedRedeploy {
   /// Specifies Redeploy Scheduled Event related configurations.
-  final pulumi.Input<bool>? automaticallyApprove;
+  final pulumi.Input<bool?>? automaticallyApprove;
 
   /// Creates a new [UserInitiatedRedeploy].
   /// [automaticallyApprove] Specifies Redeploy Scheduled Event related configurations.

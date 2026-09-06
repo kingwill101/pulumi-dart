@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The source IP address and CIDR ranges of the stream
 class StreamSourceAddresses {
   /// A source IP address or CIDR range
-  final pulumi.Input<List<String>>? sourceAddresses;
+  final pulumi.Input<List<String>?>? sourceAddresses;
 
   /// Creates a new [StreamSourceAddresses].
   /// [sourceAddresses] A source IP address or CIDR range

@@ -47,6 +47,17 @@ Future<GetAzureADAdministratorResult> getAzureADAdministrator(
   return GetAzureADAdministratorResult.fromMap(result);
 }
 
+pulumi.Output<GetAzureADAdministratorResult> getAzureADAdministratorOutput(
+  GetAzureADAdministratorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbformysql:getAzureADAdministrator',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAzureADAdministratorResult.fromMap);
+}
+
 /// Gets information about a configuration of server.
 ///
 /// Uses Azure REST API version 2023-12-30.
@@ -65,6 +76,17 @@ Future<GetConfigurationResult> getConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetConfigurationResult> getConfigurationOutput(
+  GetConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbformysql:getConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationResult.fromMap);
 }
 
 /// Gets information about a database.
@@ -87,6 +109,17 @@ Future<GetDatabaseResult> getDatabase(
   return GetDatabaseResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseResult> getDatabaseOutput(
+  GetDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbformysql:getDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseResult.fromMap);
+}
+
 /// Gets information about a server firewall rule.
 ///
 /// Uses Azure REST API version 2023-12-30.
@@ -107,6 +140,17 @@ Future<GetFirewallRuleResult> getFirewallRule(
   return GetFirewallRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallRuleResult> getFirewallRuleOutput(
+  GetFirewallRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbformysql:getFirewallRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallRuleResult.fromMap);
+}
+
 /// Get private DNS zone suffix in the cloud.
 ///
 /// Uses Azure REST API version 2024-10-01-preview.
@@ -124,6 +168,17 @@ Future<GetGetPrivateDnsZoneSuffixExecuteResult> getGetPrivateDnsZoneSuffixExecut
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGetPrivateDnsZoneSuffixExecuteResult.fromMap(result);
+}
+
+pulumi.Output<GetGetPrivateDnsZoneSuffixExecuteResult> getGetPrivateDnsZoneSuffixExecuteOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbformysql:getGetPrivateDnsZoneSuffixExecute',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetGetPrivateDnsZoneSuffixExecuteResult.fromMap);
 }
 
 /// Get backup for a given server.
@@ -146,6 +201,17 @@ Future<GetLongRunningBackupResult> getLongRunningBackup(
   return GetLongRunningBackupResult.fromMap(result);
 }
 
+pulumi.Output<GetLongRunningBackupResult> getLongRunningBackupOutput(
+  GetLongRunningBackupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbformysql:getLongRunningBackup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLongRunningBackupResult.fromMap);
+}
+
 /// Gets a private endpoint connection.
 ///
 /// Uses Azure REST API version 2023-06-30.
@@ -164,6 +230,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbformysql:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Gets information about a server.
@@ -186,6 +263,17 @@ Future<GetServerResult> getServer(
   return GetServerResult.fromMap(result);
 }
 
+pulumi.Output<GetServerResult> getServerOutput(
+  GetServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbformysql:getServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerResult.fromMap);
+}
+
 /// Gets information about a server.
 ///
 /// Uses Azure REST API version 2017-12-01.
@@ -202,6 +290,17 @@ Future<GetSingleServerResult> getSingleServer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSingleServerResult.fromMap(result);
+}
+
+pulumi.Output<GetSingleServerResult> getSingleServerOutput(
+  GetSingleServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbformysql:getSingleServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSingleServerResult.fromMap);
 }
 
 /// Gets information about a configuration of server.
@@ -222,6 +321,17 @@ Future<GetSingleServerConfigurationResult> getSingleServerConfiguration(
   return GetSingleServerConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetSingleServerConfigurationResult> getSingleServerConfigurationOutput(
+  GetSingleServerConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbformysql:getSingleServerConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSingleServerConfigurationResult.fromMap);
+}
+
 /// Gets information about a database.
 ///
 /// Uses Azure REST API version 2017-12-01.
@@ -238,6 +348,17 @@ Future<GetSingleServerDatabaseResult> getSingleServerDatabase(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSingleServerDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetSingleServerDatabaseResult> getSingleServerDatabaseOutput(
+  GetSingleServerDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbformysql:getSingleServerDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSingleServerDatabaseResult.fromMap);
 }
 
 /// Gets information about a server firewall rule.
@@ -258,6 +379,17 @@ Future<GetSingleServerFirewallRuleResult> getSingleServerFirewallRule(
   return GetSingleServerFirewallRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetSingleServerFirewallRuleResult> getSingleServerFirewallRuleOutput(
+  GetSingleServerFirewallRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbformysql:getSingleServerFirewallRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSingleServerFirewallRuleResult.fromMap);
+}
+
 /// Gets information about a AAD server administrator.
 ///
 /// Uses Azure REST API version 2017-12-01.
@@ -276,6 +408,17 @@ Future<GetSingleServerServerAdministratorResult> getSingleServerServerAdministra
   return GetSingleServerServerAdministratorResult.fromMap(result);
 }
 
+pulumi.Output<GetSingleServerServerAdministratorResult> getSingleServerServerAdministratorOutput(
+  GetSingleServerServerAdministratorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbformysql:getSingleServerServerAdministrator',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSingleServerServerAdministratorResult.fromMap);
+}
+
 /// Gets a virtual network rule.
 ///
 /// Uses Azure REST API version 2017-12-01.
@@ -292,4 +435,15 @@ Future<GetSingleServerVirtualNetworkRuleResult> getSingleServerVirtualNetworkRul
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSingleServerVirtualNetworkRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetSingleServerVirtualNetworkRuleResult> getSingleServerVirtualNetworkRuleOutput(
+  GetSingleServerVirtualNetworkRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbformysql:getSingleServerVirtualNetworkRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSingleServerVirtualNetworkRuleResult.fromMap);
 }

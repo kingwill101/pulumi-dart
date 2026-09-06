@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Certificate Source.
-enum CertificateSource {
+enum CertificateSource implements pulumi.PulumiEnum<String> {
   valueManaged("Managed"),
   valueKeyVault("KeyVault"),
   valueCustom("Custom"),
   valueBuiltIn("BuiltIn");
 
   const CertificateSource(this.wireValue);
+  @override
   final String wireValue;
 
   static CertificateSource fromValue(String value) {

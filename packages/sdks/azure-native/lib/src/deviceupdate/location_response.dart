@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LocationResponse {
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether the location is primary or failover
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [LocationResponse].
   /// [name] Optional.
   /// [role] Whether the location is primary or failover
-  const LocationResponse({
+  LocationResponse({
     this.name,
-    this.role,
-  });
+    pulumi.Input<String?>? role,
+  }) : role = role ?? pulumi.Input.fromValue('Primary');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

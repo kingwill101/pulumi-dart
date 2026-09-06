@@ -7,15 +7,15 @@ import 'shipping_address_response.dart';
 /// Address Properties.
 class AddressPropertiesResponse {
   /// Type of address based on its usage context.
-  final pulumi.Input<String>? addressClassification;
+  final pulumi.Input<String?>? addressClassification;
   /// Status of address validation.
   final pulumi.Input<String> addressValidationStatus;
   /// Contact details for the address.
-  final pulumi.Input<ContactDetailsResponse>? contactDetails;
+  final pulumi.Input<ContactDetailsResponse?>? contactDetails;
   /// Provisioning state
   final pulumi.Input<String> provisioningState;
   /// Shipping details for the address.
-  final pulumi.Input<ShippingAddressResponse>? shippingAddress;
+  final pulumi.Input<ShippingAddressResponse?>? shippingAddress;
 
   /// Creates a new [AddressPropertiesResponse].
   /// [addressClassification] Type of address based on its usage context.

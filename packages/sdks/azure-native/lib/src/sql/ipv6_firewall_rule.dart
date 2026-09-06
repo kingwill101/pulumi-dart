@@ -338,4 +338,20 @@ class IPv6FirewallRule extends pulumi.CustomResource {
     startIPv6Address = registerOutput<String?>('startIPv6Address');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [IPv6FirewallRule] resource.
+  IPv6FirewallRule.reference(String urn)
+    : super(
+        'azure-native:sql:IPv6FirewallRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    endIPv6Address = registerOutput<String?>('endIPv6Address');
+    this.name = registerOutput<String?>('name');
+    startIPv6Address = registerOutput<String?>('startIPv6Address');
+    type = registerOutput<String>('type');
+  }
 }

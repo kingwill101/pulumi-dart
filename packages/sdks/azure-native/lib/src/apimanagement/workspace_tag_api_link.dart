@@ -198,4 +198,19 @@ class WorkspaceTagApiLink extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [WorkspaceTagApiLink] resource.
+  WorkspaceTagApiLink.reference(String urn)
+    : super(
+        'azure-native:apimanagement:WorkspaceTagApiLink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiId = registerOutput<String>('apiId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+  }
 }

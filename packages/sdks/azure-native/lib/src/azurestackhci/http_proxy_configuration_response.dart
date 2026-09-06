@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// HTTP Proxy configuration for the VM.
 class HttpProxyConfigurationResponse {
   /// The HTTP proxy server endpoint to use.
-  final pulumi.Input<String>? httpProxy;
+  final pulumi.Input<String?>? httpProxy;
   /// The HTTPS proxy server endpoint to use.
-  final pulumi.Input<String>? httpsProxy;
+  final pulumi.Input<String?>? httpsProxy;
   /// The endpoints that should not go through proxy.
-  final pulumi.Input<List<String>>? noProxy;
+  final pulumi.Input<List<String>?>? noProxy;
   /// Alternative CA cert to use for connecting to proxy servers.
-  final pulumi.Input<String>? trustedCa;
+  final pulumi.Input<String?>? trustedCa;
 
   /// Creates a new [HttpProxyConfigurationResponse].
   /// [httpProxy] The HTTP proxy server endpoint to use.

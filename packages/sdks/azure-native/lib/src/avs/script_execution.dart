@@ -300,7 +300,7 @@ class ScriptExecution extends pulumi.CustomResource {
   late final pulumi.Output<String> finishedAt;
   /// Parameters that will be hidden/not visible to ARM, such as passwords and
   /// credentials
-  late final pulumi.Output<List<Map<String, dynamic>>?> hiddenParameters;
+  late final pulumi.Output<List<dynamic>?> hiddenParameters;
   /// Standard information out stream from the powershell execution
   late final pulumi.Output<List<String>> information;
   /// The name of the resource
@@ -310,7 +310,7 @@ class ScriptExecution extends pulumi.CustomResource {
   /// Standard output stream from the powershell execution
   late final pulumi.Output<List<String>?> output;
   /// Parameters the script will accept
-  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+  late final pulumi.Output<List<dynamic>?> parameters;
   /// The state of the script execution resource
   late final pulumi.Output<String> provisioningState;
   /// Time to live for the resource. If not provided, will be available for 60 days
@@ -345,15 +345,15 @@ class ScriptExecution extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    errors = registerOutput<List<String>>('errors');
+    errors = registerOutput<List<String>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     failureReason = registerOutput<String?>('failureReason');
     finishedAt = registerOutput<String>('finishedAt');
-    hiddenParameters = registerOutput<List<Map<String, dynamic>>?>('hiddenParameters');
-    information = registerOutput<List<String>>('information');
+    hiddenParameters = registerOutput<List<dynamic>?>('hiddenParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    information = registerOutput<List<String>>('information', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
-    namedOutputs = registerOutput<Map<String, dynamic>?>('namedOutputs');
-    output = registerOutput<List<String>?>('output');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    namedOutputs = registerOutput<Map<String, dynamic>?>('namedOutputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); });
+    output = registerOutput<List<String>?>('output', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    parameters = registerOutput<List<dynamic>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     provisioningState = registerOutput<String>('provisioningState');
     retention = registerOutput<String?>('retention');
     scriptCmdletId = registerOutput<String?>('scriptCmdletId');
@@ -362,6 +362,36 @@ class ScriptExecution extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeout = registerOutput<String>('timeout');
     type = registerOutput<String>('type');
-    warnings = registerOutput<List<String>>('warnings');
+    warnings = registerOutput<List<String>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ScriptExecution] resource.
+  ScriptExecution.reference(String urn)
+    : super(
+        'azure-native:avs:ScriptExecution',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    errors = registerOutput<List<String>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    failureReason = registerOutput<String?>('failureReason');
+    finishedAt = registerOutput<String>('finishedAt');
+    hiddenParameters = registerOutput<List<dynamic>?>('hiddenParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    information = registerOutput<List<String>>('information', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    namedOutputs = registerOutput<Map<String, dynamic>?>('namedOutputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); });
+    output = registerOutput<List<String>?>('output', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    parameters = registerOutput<List<dynamic>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    provisioningState = registerOutput<String>('provisioningState');
+    retention = registerOutput<String?>('retention');
+    scriptCmdletId = registerOutput<String?>('scriptCmdletId');
+    startedAt = registerOutput<String>('startedAt');
+    submittedAt = registerOutput<String>('submittedAt');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeout = registerOutput<String>('timeout');
+    type = registerOutput<String>('type');
+    warnings = registerOutput<List<String>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

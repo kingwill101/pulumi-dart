@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OsDisk {
   /// The strategy for creating the OS disk.
-  final pulumi.Input<String>? createOption;
+  final pulumi.Input<dynamic>? createOption;
   /// The strategy for deleting the OS disk.
-  final pulumi.Input<String>? deleteOption;
+  final pulumi.Input<dynamic>? deleteOption;
   /// The size of the disk. Required if the createOption is Ephemeral. Allocations are measured in gibibytes.
   final pulumi.Input<double> diskSizeGB;
 
@@ -14,11 +14,11 @@ class OsDisk {
   /// [createOption] The strategy for creating the OS disk.
   /// [deleteOption] The strategy for deleting the OS disk.
   /// [diskSizeGB] The size of the disk. Required if the createOption is Ephemeral. Allocations are measured in gibibytes.
-  const OsDisk({
-    this.createOption,
-    this.deleteOption,
+  OsDisk({
+    pulumi.Input<dynamic>? createOption,
+    pulumi.Input<dynamic>? deleteOption,
     required this.diskSizeGB,
-  });
+  }) : createOption = createOption ?? pulumi.Input.fromValue('Ephemeral'), deleteOption = deleteOption ?? pulumi.Input.fromValue('Delete');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,9 +30,9 @@ class OsDisk {
 
   factory OsDisk.fromMap(Map<String, dynamic> map) {
     return OsDisk(
-      createOption: (() { final guardedValue = map['createOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      deleteOption: (() { final guardedValue = map['deleteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      diskSizeGB: pulumi.Input.fromValue(map['diskSizeGB'] as double),
+      createOption: (() { final guardedValue = map['createOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      deleteOption: (() { final guardedValue = map['deleteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      diskSizeGB: pulumi.Input.fromValue((map['diskSizeGB'] as num).toDouble()),
     );
   }
 }

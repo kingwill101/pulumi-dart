@@ -12,7 +12,7 @@ class HybridComputePrivateLinkScopePropertiesResponse {
   /// Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Provisioning ,Succeeded, Canceled and Failed.
   final pulumi.Input<String> provisioningState;
   /// Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
 
   /// Creates a new [HybridComputePrivateLinkScopePropertiesResponse].
   /// [privateEndpointConnections] The collection of associated Private Endpoint Connections.

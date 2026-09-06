@@ -7,11 +7,11 @@ class ListWorkspaceKeysResult {
   /// Indicator of enablement of the Quantum workspace Api keys.
   final bool? apiKeyEnabled;
   /// The connection string of the primary api key.
-  final String primaryConnectionString;
+  final String? primaryConnectionString;
   /// The quantum workspace primary api key.
   final ApiKeyResponse? primaryKey;
   /// The connection string of the secondary api key.
-  final String secondaryConnectionString;
+  final String? secondaryConnectionString;
   /// The quantum workspace secondary api key.
   final ApiKeyResponse? secondaryKey;
 
@@ -23,18 +23,18 @@ class ListWorkspaceKeysResult {
   /// [secondaryKey] The quantum workspace secondary api key.
   const ListWorkspaceKeysResult({
     this.apiKeyEnabled,
-    required this.primaryConnectionString,
+    this.primaryConnectionString,
     this.primaryKey,
-    required this.secondaryConnectionString,
+    this.secondaryConnectionString,
     this.secondaryKey,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiKeyEnabled': ?apiKeyEnabled,
-      'primaryConnectionString': primaryConnectionString,
+      'primaryConnectionString': ?primaryConnectionString,
       'primaryKey': ?primaryKey?.toMap(),
-      'secondaryConnectionString': secondaryConnectionString,
+      'secondaryConnectionString': ?secondaryConnectionString,
       'secondaryKey': ?secondaryKey?.toMap(),
     };
   }
@@ -42,9 +42,9 @@ class ListWorkspaceKeysResult {
   factory ListWorkspaceKeysResult.fromMap(Map<String, dynamic> map) {
     return ListWorkspaceKeysResult(
       apiKeyEnabled: (() { final guardedValue = map['apiKeyEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      primaryConnectionString: map['primaryConnectionString'] as String,
+      primaryConnectionString: (() { final guardedValue = map['primaryConnectionString']; if (guardedValue == null) return null; return guardedValue as String; })(),
       primaryKey: (() { final guardedValue = map['primaryKey']; if (guardedValue == null) return null; return ApiKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      secondaryConnectionString: map['secondaryConnectionString'] as String,
+      secondaryConnectionString: (() { final guardedValue = map['secondaryConnectionString']; if (guardedValue == null) return null; return guardedValue as String; })(),
       secondaryKey: (() { final guardedValue = map['secondaryKey']; if (guardedValue == null) return null; return ApiKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }

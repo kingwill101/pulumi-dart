@@ -7,24 +7,24 @@ import 'system_data_response.dart';
 /// Result data returned by getFileEventTrigger.
 class GetFileEventTriggerResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// A custom context tag typically used to correlate the trigger against its usage. For example, if a periodic timer trigger is intended for certain specific IoT modules in the device, the tag can be the name or the image URL of the module.
   final String? customContextTag;
   /// The path ID that uniquely identifies the object.
-  final String id;
+  final String? id;
   /// Trigger Kind.
   /// Expected value is 'FileEvent'.
-  final String kind;
+  final String? kind;
   /// The object name.
-  final String name;
+  final String? name;
   /// Role sink info.
-  final RoleSinkInfoResponse sinkInfo;
+  final RoleSinkInfoResponse? sinkInfo;
   /// File event source details.
-  final FileSourceInfoResponse sourceInfo;
+  final FileSourceInfoResponse? sourceInfo;
   /// Metadata pertaining to creation and last modification of Trigger
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The hierarchical type of the object.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetFileEventTriggerResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -37,42 +37,42 @@ class GetFileEventTriggerResult {
   /// [systemData] Metadata pertaining to creation and last modification of Trigger
   /// [type] The hierarchical type of the object.
   const GetFileEventTriggerResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.customContextTag,
-    required this.id,
-    required this.kind,
-    required this.name,
-    required this.sinkInfo,
-    required this.sourceInfo,
-    required this.systemData,
-    required this.type,
+    this.id,
+    this.kind,
+    this.name,
+    this.sinkInfo,
+    this.sourceInfo,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'customContextTag': ?customContextTag,
-      'id': id,
-      'kind': kind,
-      'name': name,
-      'sinkInfo': sinkInfo.toMap(),
-      'sourceInfo': sourceInfo.toMap(),
-      'systemData': systemData.toMap(),
-      'type': type,
+      'id': ?id,
+      'kind': ?kind,
+      'name': ?name,
+      'sinkInfo': ?sinkInfo?.toMap(),
+      'sourceInfo': ?sourceInfo?.toMap(),
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetFileEventTriggerResult.fromMap(Map<String, dynamic> map) {
     return GetFileEventTriggerResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       customContextTag: (() { final guardedValue = map['customContextTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
-      sinkInfo: RoleSinkInfoResponse.fromMap((map['sinkInfo']! as Map).cast<String, dynamic>()),
-      sourceInfo: FileSourceInfoResponse.fromMap((map['sourceInfo']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sinkInfo: (() { final guardedValue = map['sinkInfo']; if (guardedValue == null) return null; return RoleSinkInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      sourceInfo: (() { final guardedValue = map['sourceInfo']; if (guardedValue == null) return null; return FileSourceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

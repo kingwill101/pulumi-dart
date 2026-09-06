@@ -1,7 +1,10 @@
-enum MonitoringNotificationType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum MonitoringNotificationType implements pulumi.PulumiEnum<String> {
   amlNotification("AmlNotification");
 
   const MonitoringNotificationType(this.wireValue);
+  @override
   final String wireValue;
 
   static MonitoringNotificationType fromValue(String value) {

@@ -6,14 +6,14 @@ import 'auth_info.dart';
 /// The properties of the source code repository.
 class SourceProperties {
   /// The branch name of the source code.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// The full URL to the source code repository
   final pulumi.Input<String> repositoryUrl;
   /// The authorization properties for accessing the source code repository and to set up
   /// webhooks for notifications.
-  final pulumi.Input<AuthInfo>? sourceControlAuthProperties;
+  final pulumi.Input<AuthInfo?>? sourceControlAuthProperties;
   /// The type of source control service.
-  final pulumi.Input<String> sourceControlType;
+  final pulumi.Input<dynamic> sourceControlType;
 
   /// Creates a new [SourceProperties].
   /// [branch] The branch name of the source code.
@@ -41,7 +41,7 @@ class SourceProperties {
       branch: (() { final guardedValue = map['branch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repositoryUrl: pulumi.Input.fromValue(map['repositoryUrl'] as String),
       sourceControlAuthProperties: (() { final guardedValue = map['sourceControlAuthProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AuthInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      sourceControlType: pulumi.Input.fromValue(map['sourceControlType'] as String),
+      sourceControlType: pulumi.Input.fromValue(map['sourceControlType']),
     );
   }
 }

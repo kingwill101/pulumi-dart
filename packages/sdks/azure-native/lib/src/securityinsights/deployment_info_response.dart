@@ -6,11 +6,11 @@ import 'deployment_response.dart';
 /// Information regarding a deployment.
 class DeploymentInfoResponse {
   /// Deployment information.
-  final pulumi.Input<DeploymentResponse>? deployment;
+  final pulumi.Input<DeploymentResponse?>? deployment;
   /// Status while fetching the last deployment.
-  final pulumi.Input<String>? deploymentFetchStatus;
+  final pulumi.Input<String?>? deploymentFetchStatus;
   /// Additional details about the deployment that can be shown to the user.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [DeploymentInfoResponse].
   /// [deployment] Deployment information.

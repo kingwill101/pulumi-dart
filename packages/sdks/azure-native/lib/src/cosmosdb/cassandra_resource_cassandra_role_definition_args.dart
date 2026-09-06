@@ -12,19 +12,19 @@ class CassandraResourceCassandraRoleDefinitionArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
   /// A set of fully qualified Scopes at or below which Cassandra Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist.
-  final pulumi.Input<List<String>>? assignableScopes;
+  final pulumi.Input<List<String>?>? assignableScopes;
   /// The path id for the Role Definition.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The set of operations allowed through this Role Definition.
-  final pulumi.Input<List<Permission>>? permissions;
+  final pulumi.Input<List<Permission>?>? permissions;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The GUID for the Role Definition.
-  final pulumi.Input<String>? roleDefinitionId;
+  final pulumi.Input<String?>? roleDefinitionId;
   /// A user-friendly name for the Role Definition. Must be unique for the database account.
-  final pulumi.Input<String>? roleName;
+  final pulumi.Input<String?>? roleName;
   /// Indicates whether the Role Definition was built-in or user created.
-  final pulumi.Input<RoleDefinitionType>? type;
+  final pulumi.Input<RoleDefinitionType?>? type;
 
   /// Creates a new [CassandraResourceCassandraRoleDefinitionArgs].
   /// [accountName] Cosmos DB database account name.

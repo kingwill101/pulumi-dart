@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An IP rule
 class IPRuleResponse {
   /// Azure Networking ACL Action.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// An IP or CIDR or ServiceTag
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [IPRuleResponse].
   /// [action] Azure Networking ACL Action.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The access rights to be granted to the user when provisioning an environment
-enum EnvironmentPermission {
+enum EnvironmentPermission implements pulumi.PulumiEnum<String> {
   reader("Reader"),
   contributor("Contributor");
 
   const EnvironmentPermission(this.wireValue);
+  @override
   final String wireValue;
 
   static EnvironmentPermission fromValue(String value) {

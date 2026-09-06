@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringbootappsPropertiesInstances {
   /// The instance count of this app instance
-  final pulumi.Input<int>? instanceCount;
+  final pulumi.Input<int?>? instanceCount;
   /// The jvm heap memory allocated of this app instance
-  final pulumi.Input<int>? jvmMemoryInMB;
+  final pulumi.Input<int?>? jvmMemoryInMB;
   /// The machine ARM resource Id of this app instance
   final pulumi.Input<String> machineArmId;
 
@@ -30,8 +30,8 @@ class SpringbootappsPropertiesInstances {
 
   factory SpringbootappsPropertiesInstances.fromMap(Map<String, dynamic> map) {
     return SpringbootappsPropertiesInstances(
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      jvmMemoryInMB: (() { final guardedValue = map['jvmMemoryInMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      jvmMemoryInMB: (() { final guardedValue = map['jvmMemoryInMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       machineArmId: pulumi.Input.fromValue(map['machineArmId'] as String),
     );
   }

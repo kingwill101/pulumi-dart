@@ -31,8 +31,8 @@ class CloudTieringVolumeFreeSpacePolicyStatusResponse {
 
   factory CloudTieringVolumeFreeSpacePolicyStatusResponse.fromMap(Map<String, dynamic> map) {
     return CloudTieringVolumeFreeSpacePolicyStatusResponse(
-      currentVolumeFreeSpacePercent: pulumi.Input.fromValue(map['currentVolumeFreeSpacePercent'] as int),
-      effectiveVolumeFreeSpacePolicy: pulumi.Input.fromValue(map['effectiveVolumeFreeSpacePolicy'] as int),
+      currentVolumeFreeSpacePercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['currentVolumeFreeSpacePercent'])),
+      effectiveVolumeFreeSpacePolicy: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['effectiveVolumeFreeSpacePolicy'])),
       lastUpdatedTimestamp: pulumi.Input.fromValue(map['lastUpdatedTimestamp'] as String),
     );
   }

@@ -6,13 +6,13 @@ import 'report_config_comparison_expression.dart';
 /// The filter expression to be used in the report.
 class ReportConfigFilter {
   /// The logical "AND" expression. Must have at least 2 items.
-  final pulumi.Input<List<ReportConfigFilter>>? and;
+  final pulumi.Input<List<ReportConfigFilter>?>? and;
   /// Has comparison expression for a dimension
-  final pulumi.Input<ReportConfigComparisonExpression>? dimensions;
+  final pulumi.Input<ReportConfigComparisonExpression?>? dimensions;
   /// The logical "OR" expression. Must have at least 2 items.
-  final pulumi.Input<List<ReportConfigFilter>>? or;
+  final pulumi.Input<List<ReportConfigFilter>?>? or;
   /// Has comparison expression for a tag
-  final pulumi.Input<ReportConfigComparisonExpression>? tags;
+  final pulumi.Input<ReportConfigComparisonExpression?>? tags;
 
   /// Creates a new [ReportConfigFilter].
   /// [and] The logical "AND" expression. Must have at least 2 items.

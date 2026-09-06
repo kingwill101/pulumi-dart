@@ -7,9 +7,9 @@ class X12AcknowledgementSettingsResponse {
   /// The acknowledgement control number lower bound.
   final pulumi.Input<int> acknowledgementControlNumberLowerBound;
   /// The acknowledgement control number prefix.
-  final pulumi.Input<String>? acknowledgementControlNumberPrefix;
+  final pulumi.Input<String?>? acknowledgementControlNumberPrefix;
   /// The acknowledgement control number suffix.
-  final pulumi.Input<String>? acknowledgementControlNumberSuffix;
+  final pulumi.Input<String?>? acknowledgementControlNumberSuffix;
   /// The acknowledgement control number upper bound.
   final pulumi.Input<int> acknowledgementControlNumberUpperBound;
   /// The value indicating whether to batch functional acknowledgements.
@@ -19,9 +19,9 @@ class X12AcknowledgementSettingsResponse {
   /// The value indicating whether to batch the technical acknowledgements.
   final pulumi.Input<bool> batchTechnicalAcknowledgements;
   /// The functional acknowledgement version.
-  final pulumi.Input<String>? functionalAcknowledgementVersion;
+  final pulumi.Input<String?>? functionalAcknowledgementVersion;
   /// The implementation acknowledgement version.
-  final pulumi.Input<String>? implementationAcknowledgementVersion;
+  final pulumi.Input<String?>? implementationAcknowledgementVersion;
   /// The value indicating whether functional acknowledgement is needed.
   final pulumi.Input<bool> needFunctionalAcknowledgement;
   /// The value indicating whether implementation acknowledgement is needed.
@@ -91,10 +91,10 @@ class X12AcknowledgementSettingsResponse {
 
   factory X12AcknowledgementSettingsResponse.fromMap(Map<String, dynamic> map) {
     return X12AcknowledgementSettingsResponse(
-      acknowledgementControlNumberLowerBound: pulumi.Input.fromValue(map['acknowledgementControlNumberLowerBound'] as int),
+      acknowledgementControlNumberLowerBound: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['acknowledgementControlNumberLowerBound'])),
       acknowledgementControlNumberPrefix: (() { final guardedValue = map['acknowledgementControlNumberPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       acknowledgementControlNumberSuffix: (() { final guardedValue = map['acknowledgementControlNumberSuffix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      acknowledgementControlNumberUpperBound: pulumi.Input.fromValue(map['acknowledgementControlNumberUpperBound'] as int),
+      acknowledgementControlNumberUpperBound: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['acknowledgementControlNumberUpperBound'])),
       batchFunctionalAcknowledgements: pulumi.Input.fromValue(map['batchFunctionalAcknowledgements'] as bool),
       batchImplementationAcknowledgements: pulumi.Input.fromValue(map['batchImplementationAcknowledgements'] as bool),
       batchTechnicalAcknowledgements: pulumi.Input.fromValue(map['batchTechnicalAcknowledgements'] as bool),

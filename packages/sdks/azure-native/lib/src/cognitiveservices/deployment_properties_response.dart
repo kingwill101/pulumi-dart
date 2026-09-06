@@ -14,26 +14,26 @@ class DeploymentPropertiesResponse {
   /// The capabilities.
   final pulumi.Input<Map<String, String>> capabilities;
   /// Internal use only.
-  final pulumi.Input<DeploymentCapacitySettingsResponse>? capacitySettings;
+  final pulumi.Input<DeploymentCapacitySettingsResponse?>? capacitySettings;
   /// The current capacity.
-  final pulumi.Input<int>? currentCapacity;
+  final pulumi.Input<int?>? currentCapacity;
   /// If the dynamic throttling is enabled.
   final pulumi.Input<bool> dynamicThrottlingEnabled;
   /// Properties of Cognitive Services account deployment model.
-  final pulumi.Input<DeploymentModelResponse>? model;
+  final pulumi.Input<DeploymentModelResponse?>? model;
   /// The name of parent deployment.
-  final pulumi.Input<String>? parentDeploymentName;
+  final pulumi.Input<String?>? parentDeploymentName;
   /// Gets the status of the resource at the time the operation was called.
   final pulumi.Input<String> provisioningState;
   /// The name of RAI policy.
-  final pulumi.Input<String>? raiPolicyName;
+  final pulumi.Input<String?>? raiPolicyName;
   final pulumi.Input<List<ThrottlingRuleResponse>> rateLimits;
   /// Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
-  final pulumi.Input<DeploymentScaleSettingsResponse>? scaleSettings;
+  final pulumi.Input<DeploymentScaleSettingsResponse?>? scaleSettings;
   /// Specifies the deployment name that should serve requests when the request would have otherwise been throttled due to reaching current deployment throughput limit.
-  final pulumi.Input<String>? spilloverDeploymentName;
+  final pulumi.Input<String?>? spilloverDeploymentName;
   /// Deployment model version upgrade option.
-  final pulumi.Input<String>? versionUpgradeOption;
+  final pulumi.Input<String?>? versionUpgradeOption;
 
   /// Creates a new [DeploymentPropertiesResponse].
   /// [callRateLimit] The call rate limit Cognitive Services account.
@@ -88,7 +88,7 @@ class DeploymentPropertiesResponse {
       callRateLimit: pulumi.Input.fromValue(CallRateLimitResponse.fromMap((map['callRateLimit']! as Map).cast<String, dynamic>())),
       capabilities: pulumi.Input.fromValue((map['capabilities'] as Map).cast<String, String>()),
       capacitySettings: (() { final guardedValue = map['capacitySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentCapacitySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      currentCapacity: (() { final guardedValue = map['currentCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      currentCapacity: (() { final guardedValue = map['currentCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       dynamicThrottlingEnabled: pulumi.Input.fromValue(map['dynamicThrottlingEnabled'] as bool),
       model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentModelResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       parentDeploymentName: (() { final guardedValue = map['parentDeploymentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

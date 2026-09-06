@@ -8,11 +8,11 @@ import 'expanded_properties_response_scope.dart';
 /// Expanded info of resource, role and principal
 class ExpandedPropertiesResponse {
   /// Details of the principal
-  final pulumi.Input<ExpandedPropertiesResponsePrincipal>? principal;
+  final pulumi.Input<ExpandedPropertiesResponsePrincipal?>? principal;
   /// Details of role definition
-  final pulumi.Input<ExpandedPropertiesResponseRoleDefinition>? roleDefinition;
+  final pulumi.Input<ExpandedPropertiesResponseRoleDefinition?>? roleDefinition;
   /// Details of the resource scope
-  final pulumi.Input<ExpandedPropertiesResponseScope>? scope;
+  final pulumi.Input<ExpandedPropertiesResponseScope?>? scope;
 
   /// Creates a new [ExpandedPropertiesResponse].
   /// [principal] Details of the principal

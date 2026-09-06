@@ -9,13 +9,13 @@ import 'azure_data_explorer_connection_properties.dart';
 /// {@macro pulumi_digitaltwins_time_series_database_connection_args_doc}
 class TimeSeriesDatabaseConnectionArgs {
   /// Properties of a specific time series database connection.
-  final pulumi.Input<AzureDataExplorerConnectionProperties>? properties;
+  final pulumi.Input<AzureDataExplorerConnectionProperties?>? properties;
   /// The name of the resource group that contains the DigitalTwinsInstance.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the DigitalTwinsInstance.
   final pulumi.Input<String> resourceName;
   /// Name of time series database connection.
-  final pulumi.Input<String>? timeSeriesDatabaseConnectionName;
+  final pulumi.Input<String?>? timeSeriesDatabaseConnectionName;
 
   /// Creates a new [TimeSeriesDatabaseConnectionArgs].
   /// [properties] Properties of a specific time series database connection.

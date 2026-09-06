@@ -8,19 +8,19 @@ import 'shortfall_response.dart';
 /// MACC milestone represents interim targets within the period of MACC.
 class MaccMilestoneResponse {
   /// Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met.
-  final pulumi.Input<String>? automaticShortfall;
+  final pulumi.Input<String?>? automaticShortfall;
   /// Optional field to record suppression reason for automatic shortfall.
-  final pulumi.Input<AutomaticShortfallSuppressReasonResponse>? automaticShortfallSuppressReason;
+  final pulumi.Input<AutomaticShortfallSuppressReasonResponse?>? automaticShortfallSuppressReason;
   /// Commitment associated with this milestone.
-  final pulumi.Input<PriceResponse>? commitment;
+  final pulumi.Input<PriceResponse?>? commitment;
   /// End date time for the milestone. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z.
-  final pulumi.Input<String>? endAt;
+  final pulumi.Input<String?>? endAt;
   /// Globally unique identifier for the milestone. Format: {guid}
-  final pulumi.Input<String>? milestoneId;
+  final pulumi.Input<String?>? milestoneId;
   /// Details of the shortfall associated with this milestone.
-  final pulumi.Input<ShortfallResponse>? shortfall;
+  final pulumi.Input<ShortfallResponse?>? shortfall;
   /// Represents the current status of the Milestone.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [MaccMilestoneResponse].
   /// [automaticShortfall] Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met.

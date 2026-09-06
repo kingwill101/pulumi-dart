@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The policy used for monitoring the application upgrade
 class RollingUpgradeMonitoringPolicy {
   /// The compensating action to perform when a Monitored upgrade encounters monitoring policy or health policy violations. Invalid indicates the failure action is invalid. Rollback specifies that the upgrade will start rolling back automatically. Manual indicates that the upgrade will switch to UnmonitoredManual upgrade mode.
-  final pulumi.Input<String> failureAction;
+  final pulumi.Input<dynamic> failureAction;
   /// The amount of time to retry health evaluation when the application or cluster is unhealthy before FailureAction is executed. It is interpreted as a string representing an ISO 8601 duration with following format "hh:mm:ss.fff".
   final pulumi.Input<String> healthCheckRetryTimeout;
   /// The amount of time that the application or cluster must remain healthy before the upgrade proceeds to the next upgrade domain. It is interpreted as a string representing an ISO 8601 duration with following format "hh:mm:ss.fff".
@@ -46,7 +46,7 @@ class RollingUpgradeMonitoringPolicy {
 
   factory RollingUpgradeMonitoringPolicy.fromMap(Map<String, dynamic> map) {
     return RollingUpgradeMonitoringPolicy(
-      failureAction: pulumi.Input.fromValue(map['failureAction'] as String),
+      failureAction: pulumi.Input.fromValue(map['failureAction']),
       healthCheckRetryTimeout: pulumi.Input.fromValue(map['healthCheckRetryTimeout'] as String),
       healthCheckStableDuration: pulumi.Input.fromValue(map['healthCheckStableDuration'] as String),
       healthCheckWaitDuration: pulumi.Input.fromValue(map['healthCheckWaitDuration'] as String),

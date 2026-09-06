@@ -6,7 +6,7 @@ import 'messaging_endpoint.dart';
 /// The namespace messaging endpoints model.
 class Messaging {
   /// Dictionary of messaging endpoints.
-  final pulumi.Input<Map<String, MessagingEndpoint>>? endpoints;
+  final pulumi.Input<Map<String, MessagingEndpoint>?>? endpoints;
 
   /// Creates a new [Messaging].
   /// [endpoints] Dictionary of messaging endpoints.

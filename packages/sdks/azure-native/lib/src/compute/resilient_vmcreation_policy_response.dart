@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration parameters used while performing resilient VM creation.
 class ResilientVMCreationPolicyResponse {
   /// Specifies whether resilient VM creation should be enabled on the virtual machine scale set. The default value is false.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ResilientVMCreationPolicyResponse].
   /// [enabled] Specifies whether resilient VM creation should be enabled on the virtual machine scale set. The default value is false.

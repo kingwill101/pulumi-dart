@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'parameter_definitions_value_response.dart';
+import 'policy_definition_group_response.dart';
+import 'policy_definition_reference_response.dart';
 import 'policy_set_definition_version_at_management_group_args.dart';
 import 'system_data_response.dart';
 
@@ -376,9 +378,9 @@ class PolicySetDefinitionVersionAtManagementGroup extends pulumi.CustomResource 
   /// The policy set definition parameters that can be used in policy definition references.
   late final pulumi.Output<Map<String, ParameterDefinitionsValueResponse>?> parameters;
   /// The metadata describing groups of policy definition references within the policy set definition.
-  late final pulumi.Output<List<Map<String, dynamic>>?> policyDefinitionGroups;
+  late final pulumi.Output<List<PolicyDefinitionGroupResponse>?> policyDefinitionGroups;
   /// An array of policy definition references.
-  late final pulumi.Output<List<Map<String, dynamic>>> policyDefinitions;
+  late final pulumi.Output<List<PolicyDefinitionReferenceResponse>> policyDefinitions;
   /// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
   late final pulumi.Output<String?> policyType;
   /// The system metadata relating to this resource.
@@ -408,8 +410,31 @@ class PolicySetDefinitionVersionAtManagementGroup extends pulumi.CustomResource 
     metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<Map<String, ParameterDefinitionsValueResponse>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<ParameterDefinitionsValueResponse>(guardedValue, (value) => ParameterDefinitionsValueResponse.fromMap((value as Map).cast<String, dynamic>())); });
-    policyDefinitionGroups = registerOutput<List<Map<String, dynamic>>?>('policyDefinitionGroups');
-    policyDefinitions = registerOutput<List<Map<String, dynamic>>>('policyDefinitions');
+    policyDefinitionGroups = registerOutput<List<PolicyDefinitionGroupResponse>?>('policyDefinitionGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyDefinitionGroupResponse>(guardedValue, (value) => PolicyDefinitionGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    policyDefinitions = registerOutput<List<PolicyDefinitionReferenceResponse>>('policyDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyDefinitionReferenceResponse>(guardedValue, (value) => PolicyDefinitionReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    policyType = registerOutput<String?>('policyType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [PolicySetDefinitionVersionAtManagementGroup] resource.
+  PolicySetDefinitionVersionAtManagementGroup.reference(String urn)
+    : super(
+        'azure-native:authorization:PolicySetDefinitionVersionAtManagementGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    metadata = registerOutput<dynamic>('metadata');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, ParameterDefinitionsValueResponse>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<ParameterDefinitionsValueResponse>(guardedValue, (value) => ParameterDefinitionsValueResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    policyDefinitionGroups = registerOutput<List<PolicyDefinitionGroupResponse>?>('policyDefinitionGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyDefinitionGroupResponse>(guardedValue, (value) => PolicyDefinitionGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    policyDefinitions = registerOutput<List<PolicyDefinitionReferenceResponse>>('policyDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyDefinitionReferenceResponse>(guardedValue, (value) => PolicyDefinitionReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     policyType = registerOutput<String?>('policyType');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');

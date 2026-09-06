@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Indicates if the image template needs to be built on create/update
 class ImageTemplateAutoRunResponse {
   /// Enabling this field will trigger an automatic build on image template creation or update.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [ImageTemplateAutoRunResponse].
   /// [state] Enabling this field will trigger an automatic build on image template creation or update.

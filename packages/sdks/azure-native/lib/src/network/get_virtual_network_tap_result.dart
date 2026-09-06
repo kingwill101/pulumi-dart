@@ -8,7 +8,7 @@ import 'network_interface_tap_configuration_response.dart';
 /// Result data returned by getVirtualNetworkTap.
 class GetVirtualNetworkTapResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The reference to the private IP address on the internal Load Balancer that will receive the tap.
   final FrontendIPConfigurationResponse? destinationLoadBalancerFrontEndIPConfiguration;
   /// The reference to the private IP Address of the collector nic that will receive the tap.
@@ -16,23 +16,23 @@ class GetVirtualNetworkTapResult {
   /// The VXLAN destination port that will receive the tapped traffic.
   final int? destinationPort;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Resource ID.
   final String? id;
   /// Resource location.
   final String? location;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Specifies the list of resource IDs for the network interface IP configuration that needs to be tapped.
-  final List<NetworkInterfaceTapConfigurationResponse> networkInterfaceTapConfigurations;
+  final List<NetworkInterfaceTapConfigurationResponse>? networkInterfaceTapConfigurations;
   /// The provisioning state of the virtual network tap resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The resource GUID property of the virtual network tap resource.
-  final String resourceGuid;
+  final String? resourceGuid;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetVirtualNetworkTapResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -49,54 +49,54 @@ class GetVirtualNetworkTapResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   const GetVirtualNetworkTapResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.destinationLoadBalancerFrontEndIPConfiguration,
     this.destinationNetworkInterfaceIPConfiguration,
     this.destinationPort,
-    required this.etag,
+    this.etag,
     this.id,
     this.location,
-    required this.name,
-    required this.networkInterfaceTapConfigurations,
-    required this.provisioningState,
-    required this.resourceGuid,
+    this.name,
+    this.networkInterfaceTapConfigurations,
+    this.provisioningState,
+    this.resourceGuid,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'destinationLoadBalancerFrontEndIPConfiguration': ?destinationLoadBalancerFrontEndIPConfiguration?.toMap(),
       'destinationNetworkInterfaceIPConfiguration': ?destinationNetworkInterfaceIPConfiguration?.toMap(),
       'destinationPort': ?destinationPort,
-      'etag': etag,
+      'etag': ?etag,
       'id': ?id,
       'location': ?location,
-      'name': name,
-      'networkInterfaceTapConfigurations': pulumi.Input.encodeList<NetworkInterfaceTapConfigurationResponse, Map<String, dynamic>>(networkInterfaceTapConfigurations, (value) => value.toMap()),
-      'provisioningState': provisioningState,
-      'resourceGuid': resourceGuid,
+      'name': ?name,
+      'networkInterfaceTapConfigurations': ?(() { final guardedValue = networkInterfaceTapConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<NetworkInterfaceTapConfigurationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'provisioningState': ?provisioningState,
+      'resourceGuid': ?resourceGuid,
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetVirtualNetworkTapResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkTapResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       destinationLoadBalancerFrontEndIPConfiguration: (() { final guardedValue = map['destinationLoadBalancerFrontEndIPConfiguration']; if (guardedValue == null) return null; return FrontendIPConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       destinationNetworkInterfaceIPConfiguration: (() { final guardedValue = map['destinationNetworkInterfaceIPConfiguration']; if (guardedValue == null) return null; return NetworkInterfaceIPConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      destinationPort: (() { final guardedValue = map['destinationPort']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      etag: map['etag'] as String,
+      destinationPort: (() { final guardedValue = map['destinationPort']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      networkInterfaceTapConfigurations: pulumi.Input.decodeList<NetworkInterfaceTapConfigurationResponse>(map['networkInterfaceTapConfigurations']!, (value) => NetworkInterfaceTapConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      resourceGuid: map['resourceGuid'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkInterfaceTapConfigurations: (() { final guardedValue = map['networkInterfaceTapConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceTapConfigurationResponse>(guardedValue, (value) => NetworkInterfaceTapConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGuid: (() { final guardedValue = map['resourceGuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

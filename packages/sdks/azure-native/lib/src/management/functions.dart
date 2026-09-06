@@ -32,6 +32,17 @@ Future<GetEntityResult> getEntity(
   return GetEntityResult.fromMap(result);
 }
 
+pulumi.Output<GetEntityResult> getEntityOutput(
+  GetEntityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:management:getEntity',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEntityResult.fromMap);
+}
+
 /// Gets the hierarchy settings defined at the Management Group level. Settings can only be set on the root Management Group of the hierarchy.
 ///
 /// Uses Azure REST API version 2023-04-01.
@@ -50,6 +61,17 @@ Future<GetHierarchySettingResult> getHierarchySetting(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHierarchySettingResult.fromMap(result);
+}
+
+pulumi.Output<GetHierarchySettingResult> getHierarchySettingOutput(
+  GetHierarchySettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:management:getHierarchySetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHierarchySettingResult.fromMap);
 }
 
 /// Get the details of the management group.
@@ -72,6 +94,17 @@ Future<GetManagementGroupResult> getManagementGroup(
   return GetManagementGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetManagementGroupResult> getManagementGroupOutput(
+  GetManagementGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:management:getManagementGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagementGroupResult.fromMap);
+}
+
 /// Retrieves details about given subscription which is associated with the management group.
 ///
 /// Uses Azure REST API version 2023-04-01.
@@ -92,6 +125,17 @@ Future<GetManagementGroupSubscriptionResult> getManagementGroupSubscription(
   return GetManagementGroupSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetManagementGroupSubscriptionResult> getManagementGroupSubscriptionOutput(
+  GetManagementGroupSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:management:getManagementGroupSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagementGroupSubscriptionResult.fromMap);
+}
+
 /// Get the details of the serviceGroup
 ///
 /// Uses Azure REST API version 2024-02-01-preview.
@@ -110,6 +154,17 @@ Future<GetServiceGroupResult> getServiceGroup(
   return GetServiceGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceGroupResult> getServiceGroupOutput(
+  GetServiceGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:management:getServiceGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceGroupResult.fromMap);
+}
+
 /// Get the details of the serviceGroup's ancestors
 ///
 /// Uses Azure REST API version 2024-02-01-preview.
@@ -126,4 +181,15 @@ Future<ListServiceGroupAncestorsResult> listServiceGroupAncestors(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListServiceGroupAncestorsResult.fromMap(result);
+}
+
+pulumi.Output<ListServiceGroupAncestorsResult> listServiceGroupAncestorsOutput(
+  ListServiceGroupAncestorsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:management:listServiceGroupAncestors',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListServiceGroupAncestorsResult.fromMap);
 }

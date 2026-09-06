@@ -11,19 +11,19 @@ import 'online_experimentation_workspace_sku.dart';
 /// {@macro pulumi_onlineexperimentation_online_experimentation_workspace_args_doc}
 class OnlineExperimentationWorkspaceArgs {
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<OnlineExperimentationWorkspaceProperties>? properties;
+  final pulumi.Input<OnlineExperimentationWorkspaceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU (Stock Keeping Unit) assigned to this resource.
-  final pulumi.Input<OnlineExperimentationWorkspaceSku>? sku;
+  final pulumi.Input<OnlineExperimentationWorkspaceSku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the OnlineExperimentationWorkspace
-  final pulumi.Input<String>? workspaceName;
+  final pulumi.Input<String?>? workspaceName;
 
   /// Creates a new [OnlineExperimentationWorkspaceArgs].
   /// [identity] The managed service identities assigned to this resource.

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Broker Resource Rule properties. This defines the objects that represent the actions or topics, such as - method.Connect, method.Publish, etc.
 class BrokerResourceRuleResponse {
   /// A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. This subfield may be set if the method is Connect.
-  final pulumi.Input<List<String>>? clientIds;
+  final pulumi.Input<List<String>?>? clientIds;
   /// Give access for a Broker method (i.e., Connect, Subscribe, or Publish).
   final pulumi.Input<String> method;
   /// A list of topics or topic patterns that match the topics that the clients can publish or subscribe to. This subfield is required if the method is Publish or Subscribe.
-  final pulumi.Input<List<String>>? topics;
+  final pulumi.Input<List<String>?>? topics;
 
   /// Creates a new [BrokerResourceRuleResponse].
   /// [clientIds] A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. This subfield may be set if the method is Connect.

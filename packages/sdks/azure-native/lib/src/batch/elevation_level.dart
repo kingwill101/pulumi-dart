@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// nonAdmin - The auto user is a standard user without elevated access. admin - The auto user is a user with elevated access and operates with full Administrator permissions. The default value is nonAdmin.
-enum ElevationLevel {
+enum ElevationLevel implements pulumi.PulumiEnum<String> {
   nonAdmin("NonAdmin"),
   admin("Admin");
 
   const ElevationLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static ElevationLevel fromValue(String value) {

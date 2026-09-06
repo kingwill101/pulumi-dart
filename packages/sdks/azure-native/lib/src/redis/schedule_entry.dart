@@ -8,7 +8,7 @@ class ScheduleEntry {
   /// Day of the week when a cache can be patched.
   final pulumi.Input<DayOfWeek> dayOfWeek;
   /// ISO8601 timespan specifying how much time cache patching can take.
-  final pulumi.Input<String>? maintenanceWindow;
+  final pulumi.Input<String?>? maintenanceWindow;
   /// Start hour after which cache patching can start.
   final pulumi.Input<int> startHourUtc;
 
@@ -34,7 +34,7 @@ class ScheduleEntry {
     return ScheduleEntry(
       dayOfWeek: pulumi.Input.fromValue(DayOfWeek.fromValue(map['dayOfWeek']! as String)),
       maintenanceWindow: (() { final guardedValue = map['maintenanceWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      startHourUtc: pulumi.Input.fromValue(map['startHourUtc'] as int),
+      startHourUtc: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['startHourUtc'])),
     );
   }
 }

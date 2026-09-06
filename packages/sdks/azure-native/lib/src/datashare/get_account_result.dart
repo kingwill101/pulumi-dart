@@ -6,29 +6,29 @@ import 'system_data_response.dart';
 /// Result data returned by getAccount.
 class GetAccountResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Time at which the account was created.
-  final String createdAt;
+  final String? createdAt;
   /// The resource id of the azure resource
-  final String id;
+  final String? id;
   /// Identity Info on the Account
-  final IdentityResponse identity;
+  final IdentityResponse? identity;
   /// Location of the azure resource.
   final String? location;
   /// Name of the azure resource
-  final String name;
+  final String? name;
   /// Provisioning state of the Account
-  final String provisioningState;
+  final String? provisioningState;
   /// System Data of the Azure resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Tags on the azure resource.
   final Map<String, String>? tags;
   /// Type of the azure resource
-  final String type;
+  final String? type;
   /// Email of the user who created the resource
-  final String userEmail;
+  final String? userEmail;
   /// Name of the user who created the resource
-  final String userName;
+  final String? userName;
 
   /// Creates a new [GetAccountResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -44,51 +44,51 @@ class GetAccountResult {
   /// [userEmail] Email of the user who created the resource
   /// [userName] Name of the user who created the resource
   const GetAccountResult({
-    required this.azureApiVersion,
-    required this.createdAt,
-    required this.id,
-    required this.identity,
+    this.azureApiVersion,
+    this.createdAt,
+    this.id,
+    this.identity,
     this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
+    this.name,
+    this.provisioningState,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.userEmail,
-    required this.userName,
+    this.type,
+    this.userEmail,
+    this.userName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'createdAt': createdAt,
-      'id': id,
-      'identity': identity.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'createdAt': ?createdAt,
+      'id': ?id,
+      'identity': ?identity?.toMap(),
       'location': ?location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'userEmail': userEmail,
-      'userName': userName,
+      'type': ?type,
+      'userEmail': ?userEmail,
+      'userName': ?userName,
     };
   }
 
   factory GetAccountResult.fromMap(Map<String, dynamic> map) {
     return GetAccountResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      createdAt: map['createdAt'] as String,
-      id: map['id'] as String,
-      identity: IdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      userEmail: map['userEmail'] as String,
-      userName: map['userName'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userEmail: (() { final guardedValue = map['userEmail']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

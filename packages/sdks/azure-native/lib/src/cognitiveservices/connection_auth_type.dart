@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Authentication type of the connection target
-enum ConnectionAuthType {
+enum ConnectionAuthType implements pulumi.PulumiEnum<String> {
   valuePAT("PAT"),
   valueManagedIdentity("ManagedIdentity"),
   valueUsernamePassword("UsernamePassword"),
@@ -14,6 +16,7 @@ enum ConnectionAuthType {
   valueAAD("AAD");
 
   const ConnectionAuthType(this.wireValue);
+  @override
   final String wireValue;
 
   static ConnectionAuthType fromValue(String value) {

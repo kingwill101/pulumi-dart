@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The integration service environment access endpoint.
 class IntegrationServiceEnvironmentAccessEndpointResponse {
   /// The access endpoint type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [IntegrationServiceEnvironmentAccessEndpointResponse].
   /// [type] The access endpoint type.

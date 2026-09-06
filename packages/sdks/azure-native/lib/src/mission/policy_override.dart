@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Policy override setting for the community. Specifies whether to apply enclave-specific policies or disable policy enforcement.
-enum PolicyOverride {
+enum PolicyOverride implements pulumi.PulumiEnum<String> {
   valueEnclave("Enclave"),
   valueNone("None");
 
   const PolicyOverride(this.wireValue);
+  @override
   final String wireValue;
 
   static PolicyOverride fromValue(String value) {

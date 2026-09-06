@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Big data pool reference type.
-enum BigDataPoolReferenceType {
+enum BigDataPoolReferenceType implements pulumi.PulumiEnum<String> {
   bigDataPoolReference("BigDataPoolReference");
 
   const BigDataPoolReferenceType(this.wireValue);
+  @override
   final String wireValue;
 
   static BigDataPoolReferenceType fromValue(String value) {

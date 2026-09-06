@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'nat_gateway_args.dart';
 import 'nat_gateway_sku_response.dart';
+import 'sub_resource_response.dart';
 
 /// Nat Gateway resource.
 ///
@@ -238,15 +239,15 @@ class NatGatewayNetwork extends pulumi.CustomResource {
   /// The provisioning state of the NAT gateway resource.
   late final pulumi.Output<String> provisioningState;
   /// An array of public ip addresses associated with the nat gateway resource.
-  late final pulumi.Output<List<Map<String, dynamic>>?> publicIpAddresses;
+  late final pulumi.Output<List<SubResourceResponse>?> publicIpAddresses;
   /// An array of public ip prefixes associated with the nat gateway resource.
-  late final pulumi.Output<List<Map<String, dynamic>>?> publicIpPrefixes;
+  late final pulumi.Output<List<SubResourceResponse>?> publicIpPrefixes;
   /// The resource GUID property of the NAT gateway resource.
   late final pulumi.Output<String> resourceGuid;
   /// The nat gateway SKU.
   late final pulumi.Output<NatGatewaySkuResponse?> sku;
   /// An array of references to the subnets using this nat gateway resource.
-  late final pulumi.Output<List<Map<String, dynamic>>> subnets;
+  late final pulumi.Output<List<SubResourceResponse>> subnets;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Resource type.
@@ -274,13 +275,38 @@ class NatGatewayNetwork extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    publicIpAddresses = registerOutput<List<Map<String, dynamic>>?>('publicIpAddresses');
-    publicIpPrefixes = registerOutput<List<Map<String, dynamic>>?>('publicIpPrefixes');
+    publicIpAddresses = registerOutput<List<SubResourceResponse>?>('publicIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    publicIpPrefixes = registerOutput<List<SubResourceResponse>?>('publicIpPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGuid = registerOutput<String>('resourceGuid');
     sku = registerOutput<NatGatewaySkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NatGatewaySkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    subnets = registerOutput<List<Map<String, dynamic>>>('subnets');
-    tags = registerOutput<Map<String, String>?>('tags');
+    subnets = registerOutput<List<SubResourceResponse>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NatGatewayNetwork] resource.
+  NatGatewayNetwork.reference(String urn)
+    : super(
+        'azure-native:network:NatGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicIpAddresses = registerOutput<List<SubResourceResponse>?>('publicIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    publicIpPrefixes = registerOutput<List<SubResourceResponse>?>('publicIpPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceGuid = registerOutput<String>('resourceGuid');
+    sku = registerOutput<NatGatewaySkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NatGatewaySkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subnets = registerOutput<List<SubResourceResponse>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Descriptor for what needs to be reviewed
 class AccessReviewReviewer {
   /// The id of the reviewer(user/servicePrincipal)
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
 
   /// Creates a new [AccessReviewReviewer].
   /// [principalId] The id of the reviewer(user/servicePrincipal)

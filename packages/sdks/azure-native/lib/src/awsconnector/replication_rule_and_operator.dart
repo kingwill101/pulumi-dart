@@ -6,9 +6,9 @@ import 'tag_filter.dart';
 /// Definition of ReplicationRuleAndOperator
 class ReplicationRuleAndOperator {
   /// An object key name prefix that identifies the subset of objects to which the rule applies.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// An array of tags containing key and value pairs.
-  final pulumi.Input<List<TagFilter>>? tagFilters;
+  final pulumi.Input<List<TagFilter>?>? tagFilters;
 
   /// Creates a new [ReplicationRuleAndOperator].
   /// [prefix] An object key name prefix that identifies the subset of objects to which the rule applies.

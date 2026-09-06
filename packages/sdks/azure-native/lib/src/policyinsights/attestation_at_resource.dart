@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attestation_at_resource_args.dart';
+import 'attestation_evidence_response.dart';
 import 'system_data_response.dart';
 
 /// An attestation resource.
@@ -254,7 +255,7 @@ class AttestationAtResource extends pulumi.CustomResource {
   /// The compliance state that should be set on the resource.
   late final pulumi.Output<String?> complianceState;
   /// The evidence supporting the compliance state set in this attestation.
-  late final pulumi.Output<List<Map<String, dynamic>>?> evidence;
+  late final pulumi.Output<List<AttestationEvidenceResponse>?> evidence;
   /// The time the compliance state should expire.
   late final pulumi.Output<String?> expiresOn;
   /// The time the compliance state was last changed in this attestation.
@@ -294,7 +295,33 @@ class AttestationAtResource extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     comments = registerOutput<String?>('comments');
     complianceState = registerOutput<String?>('complianceState');
-    evidence = registerOutput<List<Map<String, dynamic>>?>('evidence');
+    evidence = registerOutput<List<AttestationEvidenceResponse>?>('evidence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AttestationEvidenceResponse>(guardedValue, (value) => AttestationEvidenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    expiresOn = registerOutput<String?>('expiresOn');
+    lastComplianceStateChangeAt = registerOutput<String>('lastComplianceStateChangeAt');
+    metadata = registerOutput<dynamic>('metadata');
+    this.name = registerOutput<String>('name');
+    owner = registerOutput<String?>('owner');
+    policyAssignmentId = registerOutput<String>('policyAssignmentId');
+    policyDefinitionReferenceId = registerOutput<String?>('policyDefinitionReferenceId');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [AttestationAtResource] resource.
+  AttestationAtResource.reference(String urn)
+    : super(
+        'azure-native:policyinsights:AttestationAtResource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assessmentDate = registerOutput<String?>('assessmentDate');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    comments = registerOutput<String?>('comments');
+    complianceState = registerOutput<String?>('complianceState');
+    evidence = registerOutput<List<AttestationEvidenceResponse>?>('evidence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AttestationEvidenceResponse>(guardedValue, (value) => AttestationEvidenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     expiresOn = registerOutput<String?>('expiresOn');
     lastComplianceStateChangeAt = registerOutput<String>('lastComplianceStateChangeAt');
     metadata = registerOutput<dynamic>('metadata');

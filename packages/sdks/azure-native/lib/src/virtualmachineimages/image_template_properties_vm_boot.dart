@@ -6,7 +6,7 @@ import 'vmboot_optimization_state.dart';
 /// Optimization is applied on the image for a faster VM boot.
 class ImageTemplatePropertiesVmBoot {
   /// Enabling this field will improve VM boot time by optimizing the final customized image output.
-  final pulumi.Input<VMBootOptimizationState>? state;
+  final pulumi.Input<VMBootOptimizationState?>? state;
 
   /// Creates a new [ImageTemplatePropertiesVmBoot].
   /// [state] Enabling this field will improve VM boot time by optimizing the final customized image output.

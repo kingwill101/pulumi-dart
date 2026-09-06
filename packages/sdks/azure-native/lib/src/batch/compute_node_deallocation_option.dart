@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// If omitted, the default value is Requeue.
-enum ComputeNodeDeallocationOption {
+enum ComputeNodeDeallocationOption implements pulumi.PulumiEnum<String> {
   requeue("Requeue"),
   terminate("Terminate"),
   taskCompletion("TaskCompletion"),
   retainedData("RetainedData");
 
   const ComputeNodeDeallocationOption(this.wireValue);
+  @override
   final String wireValue;
 
   static ComputeNodeDeallocationOption fromValue(String value) {

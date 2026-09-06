@@ -9,15 +9,15 @@ class AutomationRunbookReceiverResponse {
   /// Indicates whether this instance is global runbook.
   final pulumi.Input<bool> isGlobalRunbook;
   /// The principal id of the managed identity. The value can be "None", "SystemAssigned"
-  final pulumi.Input<String>? managedIdentity;
+  final pulumi.Input<String?>? managedIdentity;
   /// Indicates name of the webhook.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name for this runbook.
   final pulumi.Input<String> runbookName;
   /// The URI where webhooks should be sent.
-  final pulumi.Input<String>? serviceUri;
+  final pulumi.Input<String?>? serviceUri;
   /// Indicates whether to use common alert schema.
-  final pulumi.Input<bool>? useCommonAlertSchema;
+  final pulumi.Input<bool?>? useCommonAlertSchema;
   /// The resource id for webhook linked to this runbook.
   final pulumi.Input<String> webhookResourceId;
 
@@ -30,16 +30,16 @@ class AutomationRunbookReceiverResponse {
   /// [serviceUri] The URI where webhooks should be sent.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
   /// [webhookResourceId] The resource id for webhook linked to this runbook.
-  const AutomationRunbookReceiverResponse({
+  AutomationRunbookReceiverResponse({
     required this.automationAccountId,
     required this.isGlobalRunbook,
     this.managedIdentity,
     this.name,
     required this.runbookName,
     this.serviceUri,
-    this.useCommonAlertSchema,
+    pulumi.Input<bool?>? useCommonAlertSchema,
     required this.webhookResourceId,
-  });
+  }) : useCommonAlertSchema = useCommonAlertSchema ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

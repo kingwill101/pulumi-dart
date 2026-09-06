@@ -5,23 +5,23 @@ import 'system_data_response.dart';
 /// Result data returned by getSenderUsername.
 class GetSenderUsernameResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The location where the SenderUsername resource data is stored at rest.
-  final String dataLocation;
+  final String? dataLocation;
   /// The display name for the senderUsername.
   final String? displayName;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Provisioning state of the resource. Unknown is the default state for Communication Services.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// A sender senderUsername to be used when sending emails.
-  final String username;
+  final String? username;
 
   /// Creates a new [GetSenderUsernameResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -34,42 +34,42 @@ class GetSenderUsernameResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [username] A sender senderUsername to be used when sending emails.
   const GetSenderUsernameResult({
-    required this.azureApiVersion,
-    required this.dataLocation,
+    this.azureApiVersion,
+    this.dataLocation,
     this.displayName,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
-    required this.type,
-    required this.username,
+    this.id,
+    this.name,
+    this.provisioningState,
+    this.systemData,
+    this.type,
+    this.username,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'dataLocation': dataLocation,
+      'azureApiVersion': ?azureApiVersion,
+      'dataLocation': ?dataLocation,
       'displayName': ?displayName,
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
-      'type': type,
-      'username': username,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
+      'username': ?username,
     };
   }
 
   factory GetSenderUsernameResult.fromMap(Map<String, dynamic> map) {
     return GetSenderUsernameResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      dataLocation: map['dataLocation'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dataLocation: (() { final guardedValue = map['dataLocation']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      username: map['username'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

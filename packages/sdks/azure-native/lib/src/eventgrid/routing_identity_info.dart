@@ -5,8 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Routing identity info for topic spaces configuration.
 class RoutingIdentityInfo {
   /// Routing identity type for topic spaces configuration.
-  final pulumi.Input<String>? type;
-  final pulumi.Input<String>? userAssignedIdentity;
+  final pulumi.Input<dynamic>? type;
+  final pulumi.Input<String?>? userAssignedIdentity;
 
   /// Creates a new [RoutingIdentityInfo].
   /// [type] Routing identity type for topic spaces configuration.
@@ -25,7 +25,7 @@ class RoutingIdentityInfo {
 
   factory RoutingIdentityInfo.fromMap(Map<String, dynamic> map) {
     return RoutingIdentityInfo(
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       userAssignedIdentity: (() { final guardedValue = map['userAssignedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

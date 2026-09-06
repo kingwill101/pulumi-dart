@@ -1,10 +1,13 @@
-enum Protocol {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum Protocol implements pulumi.PulumiEnum<String> {
   valueHttp("http"),
   valueHttps("https"),
   valueWs("ws"),
   valueWss("wss");
 
   const Protocol(this.wireValue);
+  @override
   final String wireValue;
 
   static Protocol fromValue(String value) {

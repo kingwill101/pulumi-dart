@@ -8,23 +8,23 @@ import 'hub_response.dart';
 /// The network manager effective connectivity configuration
 class EffectiveConnectivityConfigurationResponse {
   /// Groups for configuration
-  final pulumi.Input<List<ConnectivityGroupItemlistEffectiveConnectivityConfigurationResponse>>? appliesToGroups;
+  final pulumi.Input<List<ConnectivityGroupItemlistEffectiveConnectivityConfigurationResponse>?>? appliesToGroups;
   /// Effective configuration groups.
-  final pulumi.Input<List<ConfigurationGroupResponse>>? configurationGroups;
+  final pulumi.Input<List<ConfigurationGroupResponse>?>? configurationGroups;
   /// Connectivity topology type.
   final pulumi.Input<String> connectivityTopology;
   /// Flag if need to remove current existing peerings.
-  final pulumi.Input<String>? deleteExistingPeering;
+  final pulumi.Input<String?>? deleteExistingPeering;
   /// A description of the connectivity configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A friendly name for the resource.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// List of hubItems
-  final pulumi.Input<List<HubResponse>>? hubs;
+  final pulumi.Input<List<HubResponse>?>? hubs;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Flag if global mesh is supported.
-  final pulumi.Input<String>? isGlobal;
+  final pulumi.Input<String?>? isGlobal;
   /// The provisioning state of the connectivity configuration resource.
   final pulumi.Input<String> provisioningState;
 

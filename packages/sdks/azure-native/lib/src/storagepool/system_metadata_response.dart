@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Metadata pertaining to creation and last modification of the resource.
 class SystemMetadataResponse {
   /// The timestamp of resource creation (UTC).
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// The identity that created the resource.
-  final pulumi.Input<String>? createdBy;
+  final pulumi.Input<String?>? createdBy;
   /// The type of identity that created the resource.
-  final pulumi.Input<String>? createdByType;
+  final pulumi.Input<String?>? createdByType;
   /// The type of identity that last modified the resource.
-  final pulumi.Input<String>? lastModifiedAt;
+  final pulumi.Input<String?>? lastModifiedAt;
   /// The identity that last modified the resource.
-  final pulumi.Input<String>? lastModifiedBy;
+  final pulumi.Input<String?>? lastModifiedBy;
   /// The type of identity that last modified the resource.
-  final pulumi.Input<String>? lastModifiedByType;
+  final pulumi.Input<String?>? lastModifiedByType;
 
   /// Creates a new [SystemMetadataResponse].
   /// [createdAt] The timestamp of resource creation (UTC).

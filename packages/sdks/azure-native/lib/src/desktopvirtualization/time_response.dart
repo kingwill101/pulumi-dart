@@ -26,8 +26,8 @@ class TimeResponse {
 
   factory TimeResponse.fromMap(Map<String, dynamic> map) {
     return TimeResponse(
-      hour: pulumi.Input.fromValue(map['hour'] as int),
-      minute: pulumi.Input.fromValue(map['minute'] as int),
+      hour: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['hour'])),
+      minute: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minute'])),
     );
   }
 }

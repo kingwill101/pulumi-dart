@@ -9,23 +9,23 @@ import 'peering_service_sku.dart';
 /// {@macro pulumi_peering_peering_service_args_doc}
 class PeeringServiceArgs {
   /// The location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The location (state/province) of the customer.
-  final pulumi.Input<String>? peeringServiceLocation;
+  final pulumi.Input<String?>? peeringServiceLocation;
   /// The name of the peering service.
-  final pulumi.Input<String>? peeringServiceName;
+  final pulumi.Input<String?>? peeringServiceName;
   /// The name of the service provider.
-  final pulumi.Input<String>? peeringServiceProvider;
+  final pulumi.Input<String?>? peeringServiceProvider;
   /// The backup peering (Microsoft/service provider) location to be used for customer traffic.
-  final pulumi.Input<String>? providerBackupPeeringLocation;
+  final pulumi.Input<String?>? providerBackupPeeringLocation;
   /// The primary peering (Microsoft/service provider) location to be used for customer traffic.
-  final pulumi.Input<String>? providerPrimaryPeeringLocation;
+  final pulumi.Input<String?>? providerPrimaryPeeringLocation;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU that defines the type of the peering service.
-  final pulumi.Input<PeeringServiceSku>? sku;
+  final pulumi.Input<PeeringServiceSku?>? sku;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PeeringServiceArgs].
   /// [location] The location of the resource.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// configuration for Vulnerability Assessment autoprovisioning
 class DefenderForServersGcpOfferingVaAutoProvisioningConfiguration {
   /// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [DefenderForServersGcpOfferingVaAutoProvisioningConfiguration].
   /// [type] The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
@@ -21,7 +21,7 @@ class DefenderForServersGcpOfferingVaAutoProvisioningConfiguration {
 
   factory DefenderForServersGcpOfferingVaAutoProvisioningConfiguration.fromMap(Map<String, dynamic> map) {
     return DefenderForServersGcpOfferingVaAutoProvisioningConfiguration(
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

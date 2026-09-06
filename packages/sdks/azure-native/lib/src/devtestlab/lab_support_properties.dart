@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of a lab's support banner
 class LabSupportProperties {
   /// Is the lab support banner active/enabled at this time?
-  final pulumi.Input<String>? enabled;
+  final pulumi.Input<dynamic>? enabled;
   /// The markdown text (if any) that this lab displays in the UI. If left empty/null, nothing will be shown.
-  final pulumi.Input<String>? markdown;
+  final pulumi.Input<String?>? markdown;
 
   /// Creates a new [LabSupportProperties].
   /// [enabled] Is the lab support banner active/enabled at this time?
@@ -26,7 +26,7 @@ class LabSupportProperties {
 
   factory LabSupportProperties.fromMap(Map<String, dynamic> map) {
     return LabSupportProperties(
-      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       markdown: (() { final guardedValue = map['markdown']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

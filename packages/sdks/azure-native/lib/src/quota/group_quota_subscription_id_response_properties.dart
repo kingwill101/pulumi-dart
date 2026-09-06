@@ -6,7 +6,7 @@ class GroupQuotaSubscriptionIdResponseProperties {
   /// Status of this subscriptionId being associated with the GroupQuotasEntity.
   final pulumi.Input<String> provisioningState;
   /// An Azure subscriptionId.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [GroupQuotaSubscriptionIdResponseProperties].
   /// [provisioningState] Status of this subscriptionId being associated with the GroupQuotasEntity.

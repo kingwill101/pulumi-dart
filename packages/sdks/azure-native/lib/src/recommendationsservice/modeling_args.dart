@@ -11,15 +11,15 @@ class ModelingArgs {
   /// The name of the RecommendationsService Account resource.
   final pulumi.Input<String> accountName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Modeling resource.
-  final pulumi.Input<String>? modelingName;
+  final pulumi.Input<String?>? modelingName;
   /// Modeling resource properties.
-  final pulumi.Input<ModelingResourceProperties>? properties;
+  final pulumi.Input<ModelingResourceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ModelingArgs].
   /// [accountName] The name of the RecommendationsService Account resource.

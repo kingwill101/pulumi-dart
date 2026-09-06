@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'blob_storage_class_type_properties_response.dart';
 import 'storage_class_args.dart';
 import 'system_data_response.dart';
 
@@ -199,7 +198,7 @@ class StorageClass extends pulumi.CustomResource {
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// Properties of the StorageClass
-  late final pulumi.Output<BlobStorageClassTypePropertiesResponse> typeProperties;
+  late final pulumi.Output<dynamic> typeProperties;
   /// Binding mode of volumes: Immediate, WaitForFirstConsumer
   late final pulumi.Output<String?> volumeBindingMode;
 
@@ -217,13 +216,13 @@ class StorageClass extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accessModes = registerOutput<List<String>?>('accessModes');
+    accessModes = registerOutput<List<String>?>('accessModes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     allowVolumeExpansion = registerOutput<String?>('allowVolumeExpansion');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dataResilience = registerOutput<String?>('dataResilience');
     failoverSpeed = registerOutput<String?>('failoverSpeed');
-    limitations = registerOutput<List<String>?>('limitations');
-    mountOptions = registerOutput<List<String>?>('mountOptions');
+    limitations = registerOutput<List<String>?>('limitations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    mountOptions = registerOutput<List<String>?>('mountOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     performance = registerOutput<String?>('performance');
     priority = registerOutput<double?>('priority');
@@ -231,7 +230,34 @@ class StorageClass extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
-    typeProperties = registerOutput<BlobStorageClassTypePropertiesResponse>('typeProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BlobStorageClassTypePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    typeProperties = registerOutput<dynamic>('typeProperties');
+    volumeBindingMode = registerOutput<String?>('volumeBindingMode');
+  }
+
+  /// Creates a typed reference to an existing [StorageClass] resource.
+  StorageClass.reference(String urn)
+    : super(
+        'azure-native:kubernetesruntime:StorageClass',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessModes = registerOutput<List<String>?>('accessModes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowVolumeExpansion = registerOutput<String?>('allowVolumeExpansion');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataResilience = registerOutput<String?>('dataResilience');
+    failoverSpeed = registerOutput<String?>('failoverSpeed');
+    limitations = registerOutput<List<String>?>('limitations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    mountOptions = registerOutput<List<String>?>('mountOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    performance = registerOutput<String?>('performance');
+    priority = registerOutput<double?>('priority');
+    provisioner = registerOutput<String?>('provisioner');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    typeProperties = registerOutput<dynamic>('typeProperties');
     volumeBindingMode = registerOutput<String?>('volumeBindingMode');
   }
 }

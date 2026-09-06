@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The ingestion type.
-enum IngestionType {
+enum IngestionType implements pulumi.PulumiEnum<String> {
   iPFIX("IPFIX");
 
   const IngestionType(this.wireValue);
+  @override
   final String wireValue;
 
   static IngestionType fromValue(String value) {

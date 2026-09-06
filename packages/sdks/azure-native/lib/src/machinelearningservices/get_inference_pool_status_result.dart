@@ -17,12 +17,12 @@ class GetInferencePoolStatusResult {
   /// [groupCount] Gets or sets the actual number of groups in the pool.
   /// [requestedCapacity] Gets or sets the requested number of instances for the pool.
   /// [reservedCapacity] Gets or sets the number of instances in the pool reserved by the system.
-  const GetInferencePoolStatusResult({
-    this.actualCapacity,
-    this.groupCount,
-    this.requestedCapacity,
-    this.reservedCapacity,
-  });
+  GetInferencePoolStatusResult({
+    int? actualCapacity,
+    int? groupCount,
+    int? requestedCapacity,
+    int? reservedCapacity,
+  }) : actualCapacity = actualCapacity ?? 0, groupCount = groupCount ?? 0, requestedCapacity = requestedCapacity ?? 0, reservedCapacity = reservedCapacity ?? 0;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,10 +35,10 @@ class GetInferencePoolStatusResult {
 
   factory GetInferencePoolStatusResult.fromMap(Map<String, dynamic> map) {
     return GetInferencePoolStatusResult(
-      actualCapacity: (() { final guardedValue = map['actualCapacity']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      groupCount: (() { final guardedValue = map['groupCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      requestedCapacity: (() { final guardedValue = map['requestedCapacity']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      reservedCapacity: (() { final guardedValue = map['reservedCapacity']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      actualCapacity: (() { final guardedValue = map['actualCapacity']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      groupCount: (() { final guardedValue = map['groupCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      requestedCapacity: (() { final guardedValue = map['requestedCapacity']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      reservedCapacity: (() { final guardedValue = map['reservedCapacity']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

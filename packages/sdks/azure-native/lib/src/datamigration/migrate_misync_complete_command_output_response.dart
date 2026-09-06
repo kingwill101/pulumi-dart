@@ -6,7 +6,7 @@ import 'reportable_exception_response.dart';
 /// Output for command that completes online migration for an Azure SQL Database Managed Instance.
 class MigrateMISyncCompleteCommandOutputResponse {
   /// List of errors that happened during the command execution
-  final pulumi.Input<List<ReportableExceptionResponse>>? errors;
+  final pulumi.Input<List<ReportableExceptionResponse>?>? errors;
 
   /// Creates a new [MigrateMISyncCompleteCommandOutputResponse].
   /// [errors] List of errors that happened during the command execution

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The opt out headers.
-enum OptOutHeaderType {
+enum OptOutHeaderType implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   systemDataCreatedByLastModifiedBy("SystemDataCreatedByLastModifiedBy");
 
   const OptOutHeaderType(this.wireValue);
+  @override
   final String wireValue;
 
   static OptOutHeaderType fromValue(String value) {

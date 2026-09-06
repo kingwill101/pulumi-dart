@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The status of the virtual network peering.
-enum VirtualNetworkPeeringState {
+enum VirtualNetworkPeeringState implements pulumi.PulumiEnum<String> {
   valueInitiated("Initiated"),
   valueConnected("Connected"),
   valueDisconnected("Disconnected");
 
   const VirtualNetworkPeeringState(this.wireValue);
+  @override
   final String wireValue;
 
   static VirtualNetworkPeeringState fromValue(String value) {

@@ -5,13 +5,13 @@ import 'front_end_configuration.dart';
 import 'storage_type.dart';
 
 class ArcConfiguration {
-  final pulumi.Input<String>? artifactStorageAccessMode;
-  final pulumi.Input<String>? artifactStorageClassName;
-  final pulumi.Input<String>? artifactStorageMountPath;
-  final pulumi.Input<String>? artifactStorageNodeName;
-  final pulumi.Input<StorageType>? artifactsStorageType;
-  final pulumi.Input<FrontEndConfiguration>? frontEndServiceConfiguration;
-  final pulumi.Input<String>? kubeConfig;
+  final pulumi.Input<String?>? artifactStorageAccessMode;
+  final pulumi.Input<String?>? artifactStorageClassName;
+  final pulumi.Input<String?>? artifactStorageMountPath;
+  final pulumi.Input<String?>? artifactStorageNodeName;
+  final pulumi.Input<StorageType?>? artifactsStorageType;
+  final pulumi.Input<FrontEndConfiguration?>? frontEndServiceConfiguration;
+  final pulumi.Input<String?>? kubeConfig;
 
   /// Creates a new [ArcConfiguration].
   /// [artifactStorageAccessMode] Optional.

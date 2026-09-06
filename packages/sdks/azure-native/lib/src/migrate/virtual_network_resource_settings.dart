@@ -6,24 +6,24 @@ import 'subnet_resource_settings.dart';
 /// Defines the virtual network resource settings.
 class VirtualNetworkResourceSettings {
   /// Gets or sets the address prefixes for the virtual network.
-  final pulumi.Input<List<String>>? addressSpace;
+  final pulumi.Input<List<String>?>? addressSpace;
   /// Gets or sets DHCPOptions that contains an array of DNS servers available to VMs
   /// deployed in the virtual network.
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// Gets or sets a value indicating whether gets or sets whether the
   /// DDOS protection should be switched on.
-  final pulumi.Input<bool>? enableDdosProtection;
+  final pulumi.Input<bool?>? enableDdosProtection;
   /// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
   /// Expected value is 'Microsoft.Network/virtualNetworks'.
   final pulumi.Input<String> resourceType;
   /// Gets or sets List of subnets in a VirtualNetwork.
-  final pulumi.Input<List<SubnetResourceSettings>>? subnets;
+  final pulumi.Input<List<SubnetResourceSettings>?>? subnets;
   /// Gets or sets the Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Gets or sets the target resource group name.
-  final pulumi.Input<String>? targetResourceGroupName;
+  final pulumi.Input<String?>? targetResourceGroupName;
   /// Gets or sets the target Resource name.
-  final pulumi.Input<String>? targetResourceName;
+  final pulumi.Input<String?>? targetResourceName;
 
   /// Creates a new [VirtualNetworkResourceSettings].
   /// [addressSpace] Gets or sets the address prefixes for the virtual network.

@@ -11,11 +11,11 @@ class ManagedEnvironmentsStorageArgs {
   /// Name of the Environment.
   final pulumi.Input<String> environmentName;
   /// Storage properties
-  final pulumi.Input<ManagedEnvironmentStorageProperties>? properties;
+  final pulumi.Input<ManagedEnvironmentStorageProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the storage.
-  final pulumi.Input<String>? storageName;
+  final pulumi.Input<String?>? storageName;
 
   /// Creates a new [ManagedEnvironmentsStorageArgs].
   /// [environmentName] Name of the Environment.

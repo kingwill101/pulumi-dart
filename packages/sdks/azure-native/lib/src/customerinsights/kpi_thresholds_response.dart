@@ -32,8 +32,8 @@ class KpiThresholdsResponse {
   factory KpiThresholdsResponse.fromMap(Map<String, dynamic> map) {
     return KpiThresholdsResponse(
       increasingKpi: pulumi.Input.fromValue(map['increasingKpi'] as bool),
-      lowerLimit: pulumi.Input.fromValue(map['lowerLimit'] as double),
-      upperLimit: pulumi.Input.fromValue(map['upperLimit'] as double),
+      lowerLimit: pulumi.Input.fromValue((map['lowerLimit'] as num).toDouble()),
+      upperLimit: pulumi.Input.fromValue((map['upperLimit'] as num).toDouble()),
     );
   }
 }

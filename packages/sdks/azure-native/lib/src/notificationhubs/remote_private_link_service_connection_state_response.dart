@@ -9,7 +9,7 @@ class RemotePrivateLinkServiceConnectionStateResponse {
   /// Human-friendly description.
   final pulumi.Input<String> description;
   /// State of Private Link Connection.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [RemotePrivateLinkServiceConnectionStateResponse].
   /// [actionsRequired] Human-friendly description of required actions.

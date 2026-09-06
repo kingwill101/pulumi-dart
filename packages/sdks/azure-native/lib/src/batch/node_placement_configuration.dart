@@ -6,7 +6,7 @@ import 'node_placement_policy_type.dart';
 /// Allocation configuration used by Batch Service to provision the nodes.
 class NodePlacementConfiguration {
   /// Allocation policy used by Batch Service to provision the nodes. If not specified, Batch will use the regional policy.
-  final pulumi.Input<NodePlacementPolicyType>? policy;
+  final pulumi.Input<NodePlacementPolicyType?>? policy;
 
   /// Creates a new [NodePlacementConfiguration].
   /// [policy] Allocation policy used by Batch Service to provision the nodes. If not specified, Batch will use the regional policy.

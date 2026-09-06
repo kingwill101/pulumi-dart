@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dbformariadb_database_args_doc}
 class DatabaseArgs {
   /// The charset of the database.
-  final pulumi.Input<String>? charset;
+  final pulumi.Input<String?>? charset;
   /// The collation of the database.
-  final pulumi.Input<String>? collation;
+  final pulumi.Input<String?>? collation;
   /// The name of the database.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the server.

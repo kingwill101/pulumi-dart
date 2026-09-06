@@ -7,9 +7,9 @@ class SyncProperties {
   /// The period of time for which a message is available to sync before it is expired. Specify the duration using the format P[n]Y[n]M[n]DT[n]H[n]M[n]S as per ISO8601.
   final pulumi.Input<String> messageTtl;
   /// The cron expression indicating the schedule that the connected registry will sync with its parent.
-  final pulumi.Input<String>? schedule;
+  final pulumi.Input<String?>? schedule;
   /// The time window during which sync is enabled for each schedule occurrence. Specify the duration using the format P[n]Y[n]M[n]DT[n]H[n]M[n]S as per ISO8601.
-  final pulumi.Input<String>? syncWindow;
+  final pulumi.Input<String?>? syncWindow;
   /// The resource ID of the ACR token used to authenticate the connected registry to its parent during sync.
   final pulumi.Input<String> tokenId;
 

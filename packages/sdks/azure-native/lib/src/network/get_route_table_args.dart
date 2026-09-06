@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_get_route_table_args_doc}
 class GetRouteTableArgs {
   /// Expands referenced resources.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the route table.

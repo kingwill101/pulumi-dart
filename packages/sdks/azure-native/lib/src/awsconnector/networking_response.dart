@@ -7,9 +7,9 @@ import 'port_response.dart';
 /// Definition of Networking
 class NetworkingResponse {
   /// Monthly Transfer of the Instance.
-  final pulumi.Input<MonthlyTransferResponse>? monthlyTransfer;
+  final pulumi.Input<MonthlyTransferResponse?>? monthlyTransfer;
   /// Ports to the Instance.
-  final pulumi.Input<List<PortResponse>>? ports;
+  final pulumi.Input<List<PortResponse>?>? ports;
 
   /// Creates a new [NetworkingResponse].
   /// [monthlyTransfer] Monthly Transfer of the Instance.

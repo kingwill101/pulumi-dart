@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Parent resource information.
 class ManagedByInfoResponse {
   /// Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [ManagedByInfoResponse].
   /// [resourceId] Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.

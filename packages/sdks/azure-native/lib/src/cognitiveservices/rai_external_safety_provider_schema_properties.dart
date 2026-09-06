@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// RAI External SafetyProvider schema properties.
 class RaiExternalSafetyProviderSchemaProperties {
   /// The Key Vault URI that contains the api key for safety provider urls.
-  final pulumi.Input<String>? keyVaultUri;
+  final pulumi.Input<String?>? keyVaultUri;
   /// The managed identity to access the Key Vault.
-  final pulumi.Input<String>? managedIdentity;
+  final pulumi.Input<String?>? managedIdentity;
   /// Safety provider mode sync/async.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The unique identifier of the safety provider.
-  final pulumi.Input<String>? providerId;
+  final pulumi.Input<String?>? providerId;
   /// Name of the safety provider.
-  final pulumi.Input<String>? providerName;
+  final pulumi.Input<String?>? providerName;
   /// The name of the secret in Key Vault that contains the api key to access the webhook.
-  final pulumi.Input<String>? secretName;
+  final pulumi.Input<String?>? secretName;
   /// Webhook URL for the safety provider.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [RaiExternalSafetyProviderSchemaProperties].
   /// [keyVaultUri] The Key Vault URI that contains the api key for safety provider urls.

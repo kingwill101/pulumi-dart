@@ -8,7 +8,7 @@ class LiftrBaseMarketplaceDetails {
   /// Offer details for the marketplace that is selected by the user
   final pulumi.Input<LiftrBaseOfferDetails> offerDetails;
   /// Azure subscription id for the the marketplace offer is purchased from
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [LiftrBaseMarketplaceDetails].
   /// [offerDetails] Offer details for the marketplace that is selected by the user

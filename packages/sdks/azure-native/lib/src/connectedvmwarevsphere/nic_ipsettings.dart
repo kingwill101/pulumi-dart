@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the network interface ip settings.
 class NicIPSettings {
   /// Gets or sets the nic allocation method.
-  final pulumi.Input<String>? allocationMethod;
+  final pulumi.Input<dynamic>? allocationMethod;
   /// Gets or sets the dns servers.
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// Gets or sets the gateway.
-  final pulumi.Input<List<String>>? gateway;
+  final pulumi.Input<List<String>?>? gateway;
   /// Gets or sets the ip address for the nic.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// Gets or sets the mask.
-  final pulumi.Input<String>? subnetMask;
+  final pulumi.Input<String?>? subnetMask;
 
   /// Creates a new [NicIPSettings].
   /// [allocationMethod] Gets or sets the nic allocation method.
@@ -41,7 +41,7 @@ class NicIPSettings {
 
   factory NicIPSettings.fromMap(Map<String, dynamic> map) {
     return NicIPSettings(
-      allocationMethod: (() { final guardedValue = map['allocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      allocationMethod: (() { final guardedValue = map['allocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       dnsServers: (() { final guardedValue = map['dnsServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       gateway: (() { final guardedValue = map['gateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

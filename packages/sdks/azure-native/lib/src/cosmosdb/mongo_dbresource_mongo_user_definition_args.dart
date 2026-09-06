@@ -11,21 +11,21 @@ class MongoDBResourceMongoUserDefinitionArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
   /// A custom definition for the USer Definition.
-  final pulumi.Input<String>? customData;
+  final pulumi.Input<String?>? customData;
   /// The database name for which access is being granted for this User Definition.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// The Mongo Auth mechanism. For now, we only support auth mechanism SCRAM-SHA-256.
-  final pulumi.Input<String>? mechanisms;
+  final pulumi.Input<String?>? mechanisms;
   /// The ID for the User Definition {dbName.userName}.
-  final pulumi.Input<String>? mongoUserDefinitionId;
+  final pulumi.Input<String?>? mongoUserDefinitionId;
   /// The password for User Definition. Response does not contain user password.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The set of roles inherited by the User Definition.
-  final pulumi.Input<List<Role>>? roles;
+  final pulumi.Input<List<Role>?>? roles;
   /// The user name for User Definition.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [MongoDBResourceMongoUserDefinitionArgs].
   /// [accountName] Cosmos DB database account name.

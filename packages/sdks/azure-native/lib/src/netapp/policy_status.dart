@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Configures if the snapshot policy is enabled on the volumes connected to the policy.
-enum PolicyStatus {
+enum PolicyStatus implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const PolicyStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static PolicyStatus fromValue(String value) {

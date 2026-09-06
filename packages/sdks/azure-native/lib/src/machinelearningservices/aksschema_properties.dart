@@ -7,21 +7,21 @@ import 'ssl_configuration.dart';
 /// AKS properties
 class AKSSchemaProperties {
   /// Number of agents
-  final pulumi.Input<int>? agentCount;
+  final pulumi.Input<int?>? agentCount;
   /// Agent virtual machine size
-  final pulumi.Input<String>? agentVmSize;
+  final pulumi.Input<String?>? agentVmSize;
   /// AKS networking configuration for vnet
-  final pulumi.Input<AksNetworkingConfiguration>? aksNetworkingConfiguration;
+  final pulumi.Input<AksNetworkingConfiguration?>? aksNetworkingConfiguration;
   /// Cluster full qualified domain name
-  final pulumi.Input<String>? clusterFqdn;
+  final pulumi.Input<String?>? clusterFqdn;
   /// Intended usage of the cluster
-  final pulumi.Input<String>? clusterPurpose;
+  final pulumi.Input<dynamic>? clusterPurpose;
   /// Load Balancer Subnet
-  final pulumi.Input<String>? loadBalancerSubnet;
+  final pulumi.Input<String?>? loadBalancerSubnet;
   /// Load Balancer Type
-  final pulumi.Input<String>? loadBalancerType;
+  final pulumi.Input<dynamic>? loadBalancerType;
   /// SSL configuration
-  final pulumi.Input<SslConfiguration>? sslConfiguration;
+  final pulumi.Input<SslConfiguration?>? sslConfiguration;
 
   /// Creates a new [AKSSchemaProperties].
   /// [agentCount] Number of agents
@@ -32,16 +32,16 @@ class AKSSchemaProperties {
   /// [loadBalancerSubnet] Load Balancer Subnet
   /// [loadBalancerType] Load Balancer Type
   /// [sslConfiguration] SSL configuration
-  const AKSSchemaProperties({
+  AKSSchemaProperties({
     this.agentCount,
     this.agentVmSize,
     this.aksNetworkingConfiguration,
     this.clusterFqdn,
-    this.clusterPurpose,
+    pulumi.Input<dynamic>? clusterPurpose,
     this.loadBalancerSubnet,
-    this.loadBalancerType,
+    pulumi.Input<dynamic>? loadBalancerType,
     this.sslConfiguration,
-  });
+  }) : clusterPurpose = clusterPurpose ?? pulumi.Input.fromValue('FastProd'), loadBalancerType = loadBalancerType ?? pulumi.Input.fromValue('PublicIp');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +58,13 @@ class AKSSchemaProperties {
 
   factory AKSSchemaProperties.fromMap(Map<String, dynamic> map) {
     return AKSSchemaProperties(
-      agentCount: (() { final guardedValue = map['agentCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      agentCount: (() { final guardedValue = map['agentCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       agentVmSize: (() { final guardedValue = map['agentVmSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       aksNetworkingConfiguration: (() { final guardedValue = map['aksNetworkingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AksNetworkingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       clusterFqdn: (() { final guardedValue = map['clusterFqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      clusterPurpose: (() { final guardedValue = map['clusterPurpose']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clusterPurpose: (() { final guardedValue = map['clusterPurpose']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       loadBalancerSubnet: (() { final guardedValue = map['loadBalancerSubnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      loadBalancerType: (() { final guardedValue = map['loadBalancerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loadBalancerType: (() { final guardedValue = map['loadBalancerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sslConfiguration: (() { final guardedValue = map['sslConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SslConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

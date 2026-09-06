@@ -7,21 +7,21 @@ import 'system_data_response.dart';
 /// Result data returned by getOrganizationEnvironmentById.
 class GetOrganizationEnvironmentByIdResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Type of environment
   final String? kind;
   /// Metadata of the record
   final SCMetadataEntityResponse? metadata;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Stream governance configuration
   final StreamGovernanceConfigResponse? streamGovernanceConfig;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetOrganizationEnvironmentByIdResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -33,39 +33,39 @@ class GetOrganizationEnvironmentByIdResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetOrganizationEnvironmentByIdResult({
-    required this.azureApiVersion,
-    required this.id,
+    this.azureApiVersion,
+    this.id,
     this.kind,
     this.metadata,
-    required this.name,
+    this.name,
     this.streamGovernanceConfig,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
       'kind': ?kind,
       'metadata': ?metadata?.toMap(),
-      'name': name,
+      'name': ?name,
       'streamGovernanceConfig': ?streamGovernanceConfig?.toMap(),
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetOrganizationEnvironmentByIdResult.fromMap(Map<String, dynamic> map) {
     return GetOrganizationEnvironmentByIdResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return SCMetadataEntityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       streamGovernanceConfig: (() { final guardedValue = map['streamGovernanceConfig']; if (guardedValue == null) return null; return StreamGovernanceConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

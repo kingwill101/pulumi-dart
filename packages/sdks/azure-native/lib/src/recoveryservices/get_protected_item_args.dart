@@ -12,7 +12,7 @@ class GetProtectedItemArgs {
   /// Fabric name associated with the backed up item.
   final pulumi.Input<String> fabricName;
   /// OData filter options.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// Backed up item name whose details are to be fetched.
   final pulumi.Input<String> protectedItemName;
   /// The name of the resource group where the recovery services vault is present.

@@ -8,23 +8,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_containerregistry_agent_pool_args_doc}
 class AgentPoolArgs {
   /// The name of the agent pool.
-  final pulumi.Input<String>? agentPoolName;
+  final pulumi.Input<String?>? agentPoolName;
   /// The count of agent machine
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
   /// The location of the resource. This cannot be changed after the resource is created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The OS of agent machine
-  final pulumi.Input<String>? os;
+  final pulumi.Input<dynamic>? os;
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
   /// The name of the resource group to which the container registry belongs.
   final pulumi.Input<String> resourceGroupName;
   /// The tags of the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The Tier of agent machine
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
   /// The Virtual Network Subnet Resource Id of the agent machine
-  final pulumi.Input<String>? virtualNetworkSubnetResourceId;
+  final pulumi.Input<String?>? virtualNetworkSubnetResourceId;
 
   /// Creates a new [AgentPoolArgs].
   /// [agentPoolName] The name of the agent pool.
@@ -65,9 +65,9 @@ class AgentPoolArgs {
   factory AgentPoolArgs.fromMap(Map<String, dynamic> map) {
     return AgentPoolArgs(
       agentPoolName: (() { final guardedValue = map['agentPoolName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      os: (() { final guardedValue = map['os']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      os: (() { final guardedValue = map['os']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       registryName: pulumi.Input.fromValue(map['registryName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

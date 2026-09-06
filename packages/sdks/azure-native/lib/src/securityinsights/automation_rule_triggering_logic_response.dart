@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'boolean_condition_properties_response.dart';
 
 /// Describes automation rule triggering logic.
 class AutomationRuleTriggeringLogicResponse {
   /// The conditions to evaluate to determine if the automation rule should be triggered on a given object.
-  final pulumi.Input<List<BooleanConditionPropertiesResponse>>? conditions;
+  final pulumi.Input<List<dynamic>?>? conditions;
   /// Determines when the automation rule should automatically expire and be disabled.
-  final pulumi.Input<String>? expirationTimeUtc;
+  final pulumi.Input<String?>? expirationTimeUtc;
   /// Determines whether the automation rule is enabled or disabled.
   final pulumi.Input<bool> isEnabled;
   final pulumi.Input<String> triggersOn;
@@ -30,7 +29,7 @@ class AutomationRuleTriggeringLogicResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?pulumi.Input.mapOptionalInputValue<List<BooleanConditionPropertiesResponse>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<BooleanConditionPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'conditions': ?conditions,
       'expirationTimeUtc': ?expirationTimeUtc,
       'isEnabled': isEnabled,
       'triggersOn': triggersOn,
@@ -40,7 +39,7 @@ class AutomationRuleTriggeringLogicResponse {
 
   factory AutomationRuleTriggeringLogicResponse.fromMap(Map<String, dynamic> map) {
     return AutomationRuleTriggeringLogicResponse(
-      conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BooleanConditionPropertiesResponse>(guardedValue, (value) => BooleanConditionPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       expirationTimeUtc: (() { final guardedValue = map['expirationTimeUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
       triggersOn: pulumi.Input.fromValue(map['triggersOn'] as String),

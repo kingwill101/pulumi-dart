@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Cluster properties of a server.
 class Cluster {
   /// Number of nodes assigned to the elastic cluster.
-  final pulumi.Input<int>? clusterSize;
+  final pulumi.Input<int?>? clusterSize;
   /// Default database name for the elastic cluster.
-  final pulumi.Input<String>? defaultDatabaseName;
+  final pulumi.Input<String?>? defaultDatabaseName;
 
   /// Creates a new [Cluster].
   /// [clusterSize] Number of nodes assigned to the elastic cluster.
   /// [defaultDatabaseName] Default database name for the elastic cluster.
-  const Cluster({
-    this.clusterSize,
+  Cluster({
+    pulumi.Input<int?>? clusterSize,
     this.defaultDatabaseName,
-  });
+  }) : clusterSize = clusterSize ?? pulumi.Input.fromValue(0);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,7 +26,7 @@ class Cluster {
 
   factory Cluster.fromMap(Map<String, dynamic> map) {
     return Cluster(
-      clusterSize: (() { final guardedValue = map['clusterSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      clusterSize: (() { final guardedValue = map['clusterSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       defaultDatabaseName: (() { final guardedValue = map['defaultDatabaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

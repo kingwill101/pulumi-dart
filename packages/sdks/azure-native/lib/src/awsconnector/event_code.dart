@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum EventCode {
+enum EventCode implements pulumi.PulumiEnum<String> {
   instanceReboot("instance-reboot"),
   instanceRetirement("instance-retirement"),
   instanceStop("instance-stop"),
@@ -7,6 +9,7 @@ enum EventCode {
   systemReboot("system-reboot");
 
   const EventCode(this.wireValue);
+  @override
   final String wireValue;
 
   static EventCode fromValue(String value) {

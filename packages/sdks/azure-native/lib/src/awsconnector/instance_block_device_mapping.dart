@@ -6,9 +6,9 @@ import 'ebs_instance_block_device.dart';
 /// Definition of InstanceBlockDeviceMapping
 class InstanceBlockDeviceMapping {
   /// &lt;p&gt;The device name (for example, &lt;code&gt;/dev/sdh&lt;/code&gt; or &lt;code&gt;xvdh&lt;/code&gt;).&lt;/p&gt;
-  final pulumi.Input<String>? deviceName;
+  final pulumi.Input<String?>? deviceName;
   /// &lt;p&gt;Parameters used to automatically set up EBS volumes when the instance is launched.&lt;/p&gt;
-  final pulumi.Input<EbsInstanceBlockDevice>? ebs;
+  final pulumi.Input<EbsInstanceBlockDevice?>? ebs;
 
   /// Creates a new [InstanceBlockDeviceMapping].
   /// [deviceName] &lt;p&gt;The device name (for example, &lt;code&gt;/dev/sdh&lt;/code&gt; or &lt;code&gt;xvdh&lt;/code&gt;).&lt;/p&gt;

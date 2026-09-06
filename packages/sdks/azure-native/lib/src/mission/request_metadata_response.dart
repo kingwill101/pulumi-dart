@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Request Metadata for approvals request.
 class RequestMetadataResponse {
   /// Payload to be sent upon any action on approval request
-  final pulumi.Input<String>? approvalCallbackPayload;
+  final pulumi.Input<String?>? approvalCallbackPayload;
   /// Route name for the approval callback
-  final pulumi.Input<String>? approvalCallbackRoute;
+  final pulumi.Input<String?>? approvalCallbackRoute;
   /// Status of the approval. Uses ApprovalStatus enum.
-  final pulumi.Input<String>? approvalStatus;
+  final pulumi.Input<String?>? approvalStatus;
   /// Resource Action of the item being approved or declined.
   final pulumi.Input<String> resourceAction;
 
@@ -18,12 +18,12 @@ class RequestMetadataResponse {
   /// [approvalCallbackRoute] Route name for the approval callback
   /// [approvalStatus] Status of the approval. Uses ApprovalStatus enum.
   /// [resourceAction] Resource Action of the item being approved or declined.
-  const RequestMetadataResponse({
+  RequestMetadataResponse({
     this.approvalCallbackPayload,
     this.approvalCallbackRoute,
-    this.approvalStatus,
+    pulumi.Input<String?>? approvalStatus,
     required this.resourceAction,
-  });
+  }) : approvalStatus = approvalStatus ?? pulumi.Input.fromValue('Pending');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

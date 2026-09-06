@@ -7,15 +7,15 @@ import 'routing_configuration.dart';
 /// P2SConnectionConfiguration Resource.
 class P2SConnectionConfiguration {
   /// Flag indicating whether the enable internet security flag is turned on for the P2S Connections or not.
-  final pulumi.Input<bool>? enableInternetSecurity;
+  final pulumi.Input<bool?>? enableInternetSecurity;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  final pulumi.Input<RoutingConfiguration>? routingConfiguration;
+  final pulumi.Input<RoutingConfiguration?>? routingConfiguration;
   /// The reference to the address space resource which represents Address space for P2S VpnClient.
-  final pulumi.Input<AddressSpace>? vpnClientAddressPool;
+  final pulumi.Input<AddressSpace?>? vpnClientAddressPool;
 
   /// Creates a new [P2SConnectionConfiguration].
   /// [enableInternetSecurity] Flag indicating whether the enable internet security flag is turned on for the P2S Connections or not.

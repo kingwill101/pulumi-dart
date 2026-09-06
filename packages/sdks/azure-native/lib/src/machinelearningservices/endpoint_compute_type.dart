@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] The compute type of the endpoint.
-enum EndpointComputeType {
+enum EndpointComputeType implements pulumi.PulumiEnum<String> {
   managed("Managed"),
   kubernetes("Kubernetes"),
   azureMLCompute("AzureMLCompute");
 
   const EndpointComputeType(this.wireValue);
+  @override
   final String wireValue;
 
   static EndpointComputeType fromValue(String value) {

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_property_response.dart';
+import 'mqtt_bridge_routes_response.dart';
 import 'mqtt_bridge_topic_map_args.dart';
 import 'system_data_response.dart';
 
@@ -304,7 +305,7 @@ class MqttBridgeTopicMap extends pulumi.CustomResource {
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
   /// The route details for MqttBridge connector.
-  late final pulumi.Output<List<Map<String, dynamic>>?> routes;
+  late final pulumi.Output<List<MqttBridgeRoutesResponse>?> routes;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
@@ -332,9 +333,30 @@ class MqttBridgeTopicMap extends pulumi.CustomResource {
     mqttBridgeConnectorRef = registerOutput<String>('mqttBridgeConnectorRef');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    routes = registerOutput<List<Map<String, dynamic>>?>('routes');
+    routes = registerOutput<List<MqttBridgeRoutesResponse>?>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MqttBridgeRoutesResponse>(guardedValue, (value) => MqttBridgeRoutesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [MqttBridgeTopicMap] resource.
+  MqttBridgeTopicMap.reference(String urn)
+    : super(
+        'azure-native:iotoperationsmq:MqttBridgeTopicMap',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    mqttBridgeConnectorRef = registerOutput<String>('mqttBridgeConnectorRef');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    routes = registerOutput<List<MqttBridgeRoutesResponse>?>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MqttBridgeRoutesResponse>(guardedValue, (value) => MqttBridgeRoutesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of identity used for the resource.
-enum AmlFilesystemIdentityType {
+enum AmlFilesystemIdentityType implements pulumi.PulumiEnum<String> {
   valueUserAssigned("UserAssigned"),
   valueNone("None");
 
   const AmlFilesystemIdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static AmlFilesystemIdentityType fromValue(String value) {

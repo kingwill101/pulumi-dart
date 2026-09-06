@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The preflight notifications.
-enum TemplateDeploymentPreflightNotifications {
+enum TemplateDeploymentPreflightNotifications implements pulumi.PulumiEnum<String> {
   none("None"),
   unregisteredSubscriptions("UnregisteredSubscriptions");
 
   const TemplateDeploymentPreflightNotifications(this.wireValue);
+  @override
   final String wireValue;
 
   static TemplateDeploymentPreflightNotifications fromValue(String value) {

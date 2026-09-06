@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The contact detail class.
 class ContactDetail {
   /// The e-mail address of the contact.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The phone number of the contact.
-  final pulumi.Input<String>? phone;
+  final pulumi.Input<String?>? phone;
   /// The role of the contact.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<dynamic>? role;
 
   /// Creates a new [ContactDetail].
   /// [email] The e-mail address of the contact.
@@ -33,7 +33,7 @@ class ContactDetail {
     return ContactDetail(
       email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       phone: (() { final guardedValue = map['phone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

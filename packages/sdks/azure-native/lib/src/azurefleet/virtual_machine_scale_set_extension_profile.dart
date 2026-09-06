@@ -6,12 +6,12 @@ import 'virtual_machine_scale_set_extension.dart';
 /// Describes a virtual machine scale set extension profile.
 class VirtualMachineScaleSetExtensionProfile {
   /// The virtual machine scale set child extension resources.
-  final pulumi.Input<List<VirtualMachineScaleSetExtension>>? extensions;
+  final pulumi.Input<List<VirtualMachineScaleSetExtension>?>? extensions;
   /// Specifies the time alloted for all extensions to start. The time duration
   /// should be between 15 minutes and 120 minutes (inclusive) and should be
   /// specified in ISO 8601 format. The default value is 90 minutes (PT1H30M).
   /// Minimum api-version: 2020-06-01.
-  final pulumi.Input<String>? extensionsTimeBudget;
+  final pulumi.Input<String?>? extensionsTimeBudget;
 
   /// Creates a new [VirtualMachineScaleSetExtensionProfile].
   /// [extensions] The virtual machine scale set child extension resources.

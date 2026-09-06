@@ -33,7 +33,7 @@ class DashboardLensResponse {
   factory DashboardLensResponse.fromMap(Map<String, dynamic> map) {
     return DashboardLensResponse(
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      order: pulumi.Input.fromValue(map['order'] as int),
+      order: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['order'])),
       parts: pulumi.Input.fromValue(pulumi.Input.decodeList<DashboardPartsResponse>(map['parts']!, (value) => DashboardPartsResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

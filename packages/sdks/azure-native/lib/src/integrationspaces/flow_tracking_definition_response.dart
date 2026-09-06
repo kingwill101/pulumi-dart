@@ -7,9 +7,9 @@ import 'tracking_event_definition_response.dart';
 /// The workflow tracking definition.
 class FlowTrackingDefinitionResponse {
   /// The tracking correlation context.
-  final pulumi.Input<TrackingCorrelationContextResponse>? correlationContext;
+  final pulumi.Input<TrackingCorrelationContextResponse?>? correlationContext;
   /// The tracking events.
-  final pulumi.Input<Map<String, TrackingEventDefinitionResponse>>? events;
+  final pulumi.Input<Map<String, TrackingEventDefinitionResponse>?>? events;
 
   /// Creates a new [FlowTrackingDefinitionResponse].
   /// [correlationContext] The tracking correlation context.

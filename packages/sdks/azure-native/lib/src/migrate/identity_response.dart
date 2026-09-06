@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the MSI properties of the Move Collection.
 class IdentityResponse {
   /// Gets or sets the principal id.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// Gets or sets the tenant id.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// The type of identity used for the resource mover service.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [IdentityResponse].
   /// [principalId] Gets or sets the principal id.

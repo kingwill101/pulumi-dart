@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_operationalinsights_data_export_args_doc}
 class DataExportArgs {
   /// The latest data export rule modification time.
-  final pulumi.Input<String>? createdDate;
+  final pulumi.Input<String?>? createdDate;
   /// The data export rule ID.
-  final pulumi.Input<String>? dataExportId;
+  final pulumi.Input<String?>? dataExportId;
   /// The data export rule name.
-  final pulumi.Input<String>? dataExportName;
+  final pulumi.Input<String?>? dataExportName;
   /// Active when enabled.
-  final pulumi.Input<bool>? enable;
+  final pulumi.Input<bool?>? enable;
   /// Optional. Allows to define an Event Hub name. Not applicable when destination is Storage Account.
-  final pulumi.Input<String>? eventHubName;
+  final pulumi.Input<String?>? eventHubName;
   /// Date and time when the export was last modified.
-  final pulumi.Input<String>? lastModifiedDate;
+  final pulumi.Input<String?>? lastModifiedDate;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The destination resource ID. This can be copied from the Properties entry of the destination resource in Azure.

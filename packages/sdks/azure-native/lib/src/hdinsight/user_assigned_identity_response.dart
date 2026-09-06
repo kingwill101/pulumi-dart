@@ -9,7 +9,7 @@ class UserAssignedIdentityResponse {
   /// The principal id of user assigned identity.
   final pulumi.Input<String> principalId;
   /// The tenant id of user assigned identity.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [UserAssignedIdentityResponse].
   /// [clientId] The client id of user assigned identity.

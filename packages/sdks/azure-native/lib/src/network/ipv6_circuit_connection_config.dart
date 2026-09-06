@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// IPv6 Circuit Connection properties for global reach.
 class Ipv6CircuitConnectionConfig {
   /// /125 IP address space to carve out customer addresses for global reach.
-  final pulumi.Input<String>? addressPrefix;
+  final pulumi.Input<String?>? addressPrefix;
 
   /// Creates a new [Ipv6CircuitConnectionConfig].
   /// [addressPrefix] /125 IP address space to carve out customer addresses for global reach.

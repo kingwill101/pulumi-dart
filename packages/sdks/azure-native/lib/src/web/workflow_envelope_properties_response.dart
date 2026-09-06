@@ -8,9 +8,9 @@ class WorkflowEnvelopePropertiesResponse {
   /// Gets or sets the files.
   final pulumi.Input<dynamic>? files;
   /// Gets or sets the state of the workflow.
-  final pulumi.Input<String>? flowState;
+  final pulumi.Input<String?>? flowState;
   /// Gets or sets workflow health.
-  final pulumi.Input<WorkflowHealthResponse>? health;
+  final pulumi.Input<WorkflowHealthResponse?>? health;
 
   /// Creates a new [WorkflowEnvelopePropertiesResponse].
   /// [files] Gets or sets the files.

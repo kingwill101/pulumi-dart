@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Name of the Sku.
-enum SkuType {
+enum SkuType implements pulumi.PulumiEnum<String> {
   valueDeveloper("Developer"),
   valueStandard("Standard"),
   valuePremium("Premium"),
@@ -10,6 +12,7 @@ enum SkuType {
   valueStandardV2("StandardV2");
 
   const SkuType(this.wireValue);
+  @override
   final String wireValue;
 
   static SkuType fromValue(String value) {

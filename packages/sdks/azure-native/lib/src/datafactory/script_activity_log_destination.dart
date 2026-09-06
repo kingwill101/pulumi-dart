@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The destination of logs. Type: string.
-enum ScriptActivityLogDestination {
+enum ScriptActivityLogDestination implements pulumi.PulumiEnum<String> {
   activityOutput("ActivityOutput"),
   externalStore("ExternalStore");
 
   const ScriptActivityLogDestination(this.wireValue);
+  @override
   final String wireValue;
 
   static ScriptActivityLogDestination fromValue(String value) {

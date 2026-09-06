@@ -9,7 +9,7 @@ import 'office_data_connector_data_types.dart';
 /// {@macro pulumi_securityinsights_office_data_connector_args_doc}
 class OfficeDataConnectorArgs {
   /// Connector ID
-  final pulumi.Input<String>? dataConnectorId;
+  final pulumi.Input<String?>? dataConnectorId;
   /// The available data types for the connector.
   final pulumi.Input<OfficeDataConnectorDataTypes> dataTypes;
   /// The kind of the data connector

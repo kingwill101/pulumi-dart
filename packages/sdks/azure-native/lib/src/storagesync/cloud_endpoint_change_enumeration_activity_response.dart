@@ -81,19 +81,19 @@ class CloudEndpointChangeEnumerationActivityResponse {
 
   factory CloudEndpointChangeEnumerationActivityResponse.fromMap(Map<String, dynamic> map) {
     return CloudEndpointChangeEnumerationActivityResponse(
-      deletesProgressPercent: pulumi.Input.fromValue(map['deletesProgressPercent'] as int),
+      deletesProgressPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['deletesProgressPercent'])),
       lastUpdatedTimestamp: pulumi.Input.fromValue(map['lastUpdatedTimestamp'] as String),
-      minutesRemaining: pulumi.Input.fromValue(map['minutesRemaining'] as int),
+      minutesRemaining: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minutesRemaining'])),
       operationState: pulumi.Input.fromValue(map['operationState'] as String),
-      processedDirectoriesCount: pulumi.Input.fromValue(map['processedDirectoriesCount'] as double),
-      processedFilesCount: pulumi.Input.fromValue(map['processedFilesCount'] as double),
-      progressPercent: pulumi.Input.fromValue(map['progressPercent'] as int),
+      processedDirectoriesCount: pulumi.Input.fromValue((map['processedDirectoriesCount'] as num).toDouble()),
+      processedFilesCount: pulumi.Input.fromValue((map['processedFilesCount'] as num).toDouble()),
+      progressPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['progressPercent'])),
       startedTimestamp: pulumi.Input.fromValue(map['startedTimestamp'] as String),
-      statusCode: pulumi.Input.fromValue(map['statusCode'] as int),
+      statusCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['statusCode'])),
       totalCountsState: pulumi.Input.fromValue(map['totalCountsState'] as String),
-      totalDirectoriesCount: pulumi.Input.fromValue(map['totalDirectoriesCount'] as double),
-      totalFilesCount: pulumi.Input.fromValue(map['totalFilesCount'] as double),
-      totalSizeBytes: pulumi.Input.fromValue(map['totalSizeBytes'] as double),
+      totalDirectoriesCount: pulumi.Input.fromValue((map['totalDirectoriesCount'] as num).toDouble()),
+      totalFilesCount: pulumi.Input.fromValue((map['totalFilesCount'] as num).toDouble()),
+      totalSizeBytes: pulumi.Input.fromValue((map['totalSizeBytes'] as num).toDouble()),
     );
   }
 }

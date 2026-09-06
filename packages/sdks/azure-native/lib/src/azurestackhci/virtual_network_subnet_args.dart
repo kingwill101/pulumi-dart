@@ -10,13 +10,13 @@ import 'virtual_network_subnet_properties.dart';
 /// {@macro pulumi_azurestackhci_virtual_network_subnet_args_doc}
 class VirtualNetworkSubnetArgs {
   /// The extendedLocation of the resource.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<VirtualNetworkSubnetProperties>? properties;
+  final pulumi.Input<VirtualNetworkSubnetProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the virtual network subnet
-  final pulumi.Input<String>? subnetName;
+  final pulumi.Input<String?>? subnetName;
   /// Name of the virtual network
   final pulumi.Input<String> virtualNetworkName;
 

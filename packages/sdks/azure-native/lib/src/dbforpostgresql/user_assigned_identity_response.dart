@@ -6,13 +6,13 @@ import 'user_identity_response.dart';
 /// Identities associated with a server.
 class UserAssignedIdentityResponse {
   /// Identifier of the object of the service principal associated to the user assigned managed identity.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// Identifier of the tenant of a server.
   final pulumi.Input<String> tenantId;
   /// Types of identities associated with a server.
   final pulumi.Input<String> type;
   /// Map of user assigned managed identities.
-  final pulumi.Input<Map<String, UserIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [UserAssignedIdentityResponse].
   /// [principalId] Identifier of the object of the service principal associated to the user assigned managed identity.

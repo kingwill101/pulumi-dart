@@ -6,12 +6,12 @@ import 'custom_container.dart';
 /// Custom container user source info
 class CustomContainerUserSourceInfo {
   /// Custom container payload
-  final pulumi.Input<CustomContainer>? customContainer;
+  final pulumi.Input<CustomContainer?>? customContainer;
   /// Type of the source uploaded
   /// Expected value is 'Container'.
   final pulumi.Input<String> type;
   /// Version of the source
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [CustomContainerUserSourceInfo].
   /// [customContainer] Custom container payload

@@ -6,11 +6,11 @@ import 'ipaddress_response.dart';
 /// DNS Proxy settings for Firewall
 class DNSSettingsResponse {
   /// List of IPs associated with the Firewall
-  final pulumi.Input<List<IPAddressResponse>>? dnsServers;
+  final pulumi.Input<List<IPAddressResponse>?>? dnsServers;
   /// Enable DNS proxy, disabled by default
-  final pulumi.Input<String>? enableDnsProxy;
+  final pulumi.Input<String?>? enableDnsProxy;
   /// Enabled DNS proxy type, disabled by default
-  final pulumi.Input<String>? enabledDnsType;
+  final pulumi.Input<String?>? enabledDnsType;
 
   /// Creates a new [DNSSettingsResponse].
   /// [dnsServers] List of IPs associated with the Firewall

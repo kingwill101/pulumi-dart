@@ -10,17 +10,17 @@ class EdgeActionExecutionFilterArgs {
   /// The name of the Edge Action
   final pulumi.Input<String> edgeActionName;
   /// The name of the execution filter
-  final pulumi.Input<String>? executionFilter;
+  final pulumi.Input<String?>? executionFilter;
   /// Custom Header Key associated with the execution filter
   final pulumi.Input<String> executionFilterIdentifierHeaderName;
   /// Custom Header Value associated with the execution filter
   final pulumi.Input<String> executionFilterIdentifierHeaderValue;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The referenced versionId of the edgeaction version
   final pulumi.Input<String> versionId;
 

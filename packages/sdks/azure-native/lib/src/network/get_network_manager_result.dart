@@ -6,31 +6,31 @@ import 'system_data_response.dart';
 /// Result data returned by getNetworkManager.
 class GetNetworkManagerResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// A description of the network manager.
   final String? description;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Resource ID.
   final String? id;
   /// Resource location.
   final String? location;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Scope Access.
   final List<String>? networkManagerScopeAccesses;
   /// Scope of Network Manager.
-  final NetworkManagerPropertiesResponseNetworkManagerScopes networkManagerScopes;
+  final NetworkManagerPropertiesResponseNetworkManagerScopes? networkManagerScopes;
   /// The provisioning state of the network manager resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Unique identifier for this resource.
-  final String resourceGuid;
+  final String? resourceGuid;
   /// The system metadata related to this resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetNetworkManagerResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -47,54 +47,54 @@ class GetNetworkManagerResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   const GetNetworkManagerResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.description,
-    required this.etag,
+    this.etag,
     this.id,
     this.location,
-    required this.name,
+    this.name,
     this.networkManagerScopeAccesses,
-    required this.networkManagerScopes,
-    required this.provisioningState,
-    required this.resourceGuid,
-    required this.systemData,
+    this.networkManagerScopes,
+    this.provisioningState,
+    this.resourceGuid,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
-      'etag': etag,
+      'etag': ?etag,
       'id': ?id,
       'location': ?location,
-      'name': name,
+      'name': ?name,
       'networkManagerScopeAccesses': ?networkManagerScopeAccesses,
-      'networkManagerScopes': networkManagerScopes.toMap(),
-      'provisioningState': provisioningState,
-      'resourceGuid': resourceGuid,
-      'systemData': systemData.toMap(),
+      'networkManagerScopes': ?networkManagerScopes?.toMap(),
+      'provisioningState': ?provisioningState,
+      'resourceGuid': ?resourceGuid,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetNetworkManagerResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkManagerResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      etag: map['etag'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkManagerScopeAccesses: (() { final guardedValue = map['networkManagerScopeAccesses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      networkManagerScopes: NetworkManagerPropertiesResponseNetworkManagerScopes.fromMap((map['networkManagerScopes']! as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      resourceGuid: map['resourceGuid'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      networkManagerScopes: (() { final guardedValue = map['networkManagerScopes']; if (guardedValue == null) return null; return NetworkManagerPropertiesResponseNetworkManagerScopes.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGuid: (() { final guardedValue = map['resourceGuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

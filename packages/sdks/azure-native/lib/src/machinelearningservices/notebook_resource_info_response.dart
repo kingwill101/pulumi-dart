@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'notebook_preparation_error_response.dart';
 
 class NotebookResourceInfoResponse {
-  final pulumi.Input<String>? fqdn;
-  final pulumi.Input<bool>? isPrivateLinkEnabled;
+  final pulumi.Input<String?>? fqdn;
+  final pulumi.Input<bool?>? isPrivateLinkEnabled;
   /// The error that occurs when preparing notebook.
-  final pulumi.Input<NotebookPreparationErrorResponse>? notebookPreparationError;
+  final pulumi.Input<NotebookPreparationErrorResponse?>? notebookPreparationError;
   /// the data plane resourceId that used to initialize notebook component
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [NotebookResourceInfoResponse].
   /// [fqdn] Optional.

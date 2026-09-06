@@ -7,25 +7,25 @@ import 'system_component_response.dart';
 /// Defines the Arc Agent properties for the clusters.
 class ArcAgentProfileResponse {
   /// Indicates whether the Arc agents on the be upgraded automatically to the latest version. Defaults to Enabled.
-  final pulumi.Input<String>? agentAutoUpgrade;
+  final pulumi.Input<String?>? agentAutoUpgrade;
   /// List of system extensions can be installed on the cluster resource.
-  final pulumi.Input<List<AgentErrorResponse>>? agentErrors;
+  final pulumi.Input<List<AgentErrorResponse>?>? agentErrors;
   /// Version of the Arc agents to be installed on the cluster resource
-  final pulumi.Input<String>? desiredAgentVersion;
+  final pulumi.Input<String?>? desiredAgentVersion;
   /// List of system extensions can be installed on the cluster resource.
-  final pulumi.Input<List<SystemComponentResponse>>? systemComponents;
+  final pulumi.Input<List<SystemComponentResponse>?>? systemComponents;
 
   /// Creates a new [ArcAgentProfileResponse].
   /// [agentAutoUpgrade] Indicates whether the Arc agents on the be upgraded automatically to the latest version. Defaults to Enabled.
   /// [agentErrors] List of system extensions can be installed on the cluster resource.
   /// [desiredAgentVersion] Version of the Arc agents to be installed on the cluster resource
   /// [systemComponents] List of system extensions can be installed on the cluster resource.
-  const ArcAgentProfileResponse({
-    this.agentAutoUpgrade,
+  ArcAgentProfileResponse({
+    pulumi.Input<String?>? agentAutoUpgrade,
     this.agentErrors,
     this.desiredAgentVersion,
     this.systemComponents,
-  });
+  }) : agentAutoUpgrade = agentAutoUpgrade ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

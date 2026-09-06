@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Possible origins of inbound traffic that can bypass the rules defined in the 'ipRules' section.
-enum SearchBypass {
+enum SearchBypass implements pulumi.PulumiEnum<String> {
   none("None"),
   azureServices("AzureServices");
 
   const SearchBypass(this.wireValue);
+  @override
   final String wireValue;
 
   static SearchBypass fromValue(String value) {

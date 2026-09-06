@@ -10,63 +10,63 @@ import 'shared_disk_replication_item_properties.dart';
 /// Replication protection cluster custom data details.
 class ReplicationProtectionClusterProperties {
   /// The Current active location of the Protection cluster.
-  final pulumi.Input<String>? activeLocation;
+  final pulumi.Input<String?>? activeLocation;
   /// The Agent cluster Id.
-  final pulumi.Input<String>? agentClusterId;
+  final pulumi.Input<String?>? agentClusterId;
   /// The allowed operations on the Replication protection cluster.
-  final pulumi.Input<List<String>>? allowedOperations;
+  final pulumi.Input<List<String>?>? allowedOperations;
   /// A value indicating whether all nodes of the cluster are registered or not.
-  final pulumi.Input<bool>? areAllClusterNodesRegistered;
+  final pulumi.Input<bool?>? areAllClusterNodesRegistered;
   /// The cluster FQDN.
-  final pulumi.Input<String>? clusterFqdn;
+  final pulumi.Input<String?>? clusterFqdn;
   /// The List of cluster Node FQDNs.
-  final pulumi.Input<List<String>>? clusterNodeFqdns;
+  final pulumi.Input<List<String>?>? clusterNodeFqdns;
   /// The List of Protected Item Id's.
-  final pulumi.Input<List<String>>? clusterProtectedItemIds;
+  final pulumi.Input<List<String>?>? clusterProtectedItemIds;
   /// The registered node details.
-  final pulumi.Input<List<RegisteredClusterNodes>>? clusterRegisteredNodes;
+  final pulumi.Input<List<RegisteredClusterNodes>?>? clusterRegisteredNodes;
   /// The current scenario.
-  final pulumi.Input<CurrentScenarioDetails>? currentScenario;
+  final pulumi.Input<CurrentScenarioDetails?>? currentScenario;
   /// List of health errors.
-  final pulumi.Input<List<HealthError>>? healthErrors;
+  final pulumi.Input<List<HealthError>?>? healthErrors;
   /// The last successful failover time.
-  final pulumi.Input<String>? lastSuccessfulFailoverTime;
+  final pulumi.Input<String?>? lastSuccessfulFailoverTime;
   /// The last successful test failover time.
-  final pulumi.Input<String>? lastSuccessfulTestFailoverTime;
+  final pulumi.Input<String?>? lastSuccessfulTestFailoverTime;
   /// The name of Policy governing this PE.
-  final pulumi.Input<String>? policyFriendlyName;
+  final pulumi.Input<String?>? policyFriendlyName;
   /// The Policy Id.
-  final pulumi.Input<String>? policyId;
+  final pulumi.Input<String?>? policyId;
   /// The friendly name of the primary fabric.
-  final pulumi.Input<String>? primaryFabricFriendlyName;
+  final pulumi.Input<String?>? primaryFabricFriendlyName;
   /// The fabric provider of the primary fabric.
-  final pulumi.Input<String>? primaryFabricProvider;
+  final pulumi.Input<String?>? primaryFabricProvider;
   /// The name of primary protection container friendly name.
-  final pulumi.Input<String>? primaryProtectionContainerFriendlyName;
+  final pulumi.Input<String?>? primaryProtectionContainerFriendlyName;
   /// The type of protection cluster type.
-  final pulumi.Input<String>? protectionClusterType;
+  final pulumi.Input<String?>? protectionClusterType;
   /// The protection status.
-  final pulumi.Input<String>? protectionState;
+  final pulumi.Input<String?>? protectionState;
   /// The protection state description.
-  final pulumi.Input<String>? protectionStateDescription;
+  final pulumi.Input<String?>? protectionStateDescription;
   /// The Replication cluster provider custom settings.
-  final pulumi.Input<A2AReplicationProtectionClusterDetails>? providerSpecificDetails;
+  final pulumi.Input<A2AReplicationProtectionClusterDetails?>? providerSpecificDetails;
   /// The recovery container Id.
-  final pulumi.Input<String>? recoveryContainerId;
+  final pulumi.Input<String?>? recoveryContainerId;
   /// The friendly name of recovery fabric.
-  final pulumi.Input<String>? recoveryFabricFriendlyName;
+  final pulumi.Input<String?>? recoveryFabricFriendlyName;
   /// The Arm Id of recovery fabric.
-  final pulumi.Input<String>? recoveryFabricId;
+  final pulumi.Input<String?>? recoveryFabricId;
   /// The name of recovery container friendly name.
-  final pulumi.Input<String>? recoveryProtectionContainerFriendlyName;
+  final pulumi.Input<String?>? recoveryProtectionContainerFriendlyName;
   /// The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
-  final pulumi.Input<String>? replicationHealth;
+  final pulumi.Input<String?>? replicationHealth;
   /// The shared disk properties.
-  final pulumi.Input<SharedDiskReplicationItemProperties>? sharedDiskProperties;
+  final pulumi.Input<SharedDiskReplicationItemProperties?>? sharedDiskProperties;
   /// The Test failover state.
-  final pulumi.Input<String>? testFailoverState;
+  final pulumi.Input<String?>? testFailoverState;
   /// The Test failover state description.
-  final pulumi.Input<String>? testFailoverStateDescription;
+  final pulumi.Input<String?>? testFailoverStateDescription;
 
   /// Creates a new [ReplicationProtectionClusterProperties].
   /// [activeLocation] The Current active location of the Protection cluster.

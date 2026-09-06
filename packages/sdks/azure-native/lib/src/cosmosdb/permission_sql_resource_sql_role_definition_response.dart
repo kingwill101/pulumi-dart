@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The set of data plane operations permitted through this Role Definition.
 class PermissionSqlResourceSqlRoleDefinitionResponse {
   /// An array of data actions that are allowed.
-  final pulumi.Input<List<String>>? dataActions;
+  final pulumi.Input<List<String>?>? dataActions;
   /// An array of data actions that are denied.
-  final pulumi.Input<List<String>>? notDataActions;
+  final pulumi.Input<List<String>?>? notDataActions;
 
   /// Creates a new [PermissionSqlResourceSqlRoleDefinitionResponse].
   /// [dataActions] An array of data actions that are allowed.

@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_cache_args_doc}
 class CacheArgs {
   /// Identifier of the Cache entity. Cache identifier (should be either 'default' or valid Azure region identifier).
-  final pulumi.Input<String>? cacheId;
+  final pulumi.Input<String?>? cacheId;
   /// Runtime connection string to cache
   final pulumi.Input<String> connectionString;
   /// Cache description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Original uri of entity in external system cache points to
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
   /// Location identifier to use cache from (should be either 'default' or valid Azure region identifier)

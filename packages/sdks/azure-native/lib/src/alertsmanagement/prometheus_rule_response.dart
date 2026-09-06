@@ -7,25 +7,25 @@ import 'prometheus_rule_resolve_configuration_response.dart';
 /// An Azure Prometheus alerting or recording rule.
 class PrometheusRuleResponse {
   /// Actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
-  final pulumi.Input<List<PrometheusRuleGroupActionResponse>>? actions;
+  final pulumi.Input<List<PrometheusRuleGroupActionResponse>?>? actions;
   /// Alert rule name.
-  final pulumi.Input<String>? alert;
+  final pulumi.Input<String?>? alert;
   /// The annotations clause specifies a set of informational labels that can be used to store longer additional information such as alert descriptions or runbook links. The annotation values can be templated.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Enable/disable rule.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The PromQL expression to evaluate. https://prometheus.io/docs/prometheus/latest/querying/basics/. Evaluated periodically as given by 'interval', and the result recorded as a new set of time series with the metric name as given by 'record'.
   final pulumi.Input<String> expression;
   /// The amount of time alert must be active before firing.
-  final pulumi.Input<String>? for_;
+  final pulumi.Input<String?>? for_;
   /// Labels to add or overwrite before storing the result.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Recorded metrics name.
-  final pulumi.Input<String>? record;
+  final pulumi.Input<String?>? record;
   /// Defines the configuration for resolving fired alerts. Only relevant for alerts.
-  final pulumi.Input<PrometheusRuleResolveConfigurationResponse>? resolveConfiguration;
+  final pulumi.Input<PrometheusRuleResolveConfigurationResponse?>? resolveConfiguration;
   /// The severity of the alerts fired by the rule. Must be between 0 and 4.
-  final pulumi.Input<int>? severity;
+  final pulumi.Input<int?>? severity;
 
   /// Creates a new [PrometheusRuleResponse].
   /// [actions] Actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
@@ -77,7 +77,7 @@ class PrometheusRuleResponse {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       record: (() { final guardedValue = map['record']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resolveConfiguration: (() { final guardedValue = map['resolveConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrometheusRuleResolveConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

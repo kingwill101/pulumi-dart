@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Analytical storage specific properties.
 class AnalyticalStorageConfigurationResponse {
   /// Describes the types of schema for analytical storage.
-  final pulumi.Input<String>? schemaType;
+  final pulumi.Input<String?>? schemaType;
 
   /// Creates a new [AnalyticalStorageConfigurationResponse].
   /// [schemaType] Describes the types of schema for analytical storage.

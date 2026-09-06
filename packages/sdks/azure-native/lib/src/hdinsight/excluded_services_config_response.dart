@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration that services will be excluded when creating cluster.
 class ExcludedServicesConfigResponse {
   /// The config id of excluded services.
-  final pulumi.Input<String>? excludedServicesConfigId;
+  final pulumi.Input<String?>? excludedServicesConfigId;
   /// The list of excluded services.
-  final pulumi.Input<String>? excludedServicesList;
+  final pulumi.Input<String?>? excludedServicesList;
 
   /// Creates a new [ExcludedServicesConfigResponse].
   /// [excludedServicesConfigId] The config id of excluded services.

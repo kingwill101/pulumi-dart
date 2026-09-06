@@ -7,15 +7,15 @@ import 'validation_summary_item_response.dart';
 /// Details for the validation for migration.
 class ValidationDetailsResponse {
   /// Details of server level validations.
-  final pulumi.Input<List<DbLevelValidationStatusResponse>>? dbLevelValidationDetails;
+  final pulumi.Input<List<DbLevelValidationStatusResponse>?>? dbLevelValidationDetails;
   /// Details of server level validations.
-  final pulumi.Input<List<ValidationSummaryItemResponse>>? serverLevelValidationDetails;
+  final pulumi.Input<List<ValidationSummaryItemResponse>?>? serverLevelValidationDetails;
   /// Validation status for migration.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// End time (UTC) for validation.
-  final pulumi.Input<String>? validationEndTimeInUtc;
+  final pulumi.Input<String?>? validationEndTimeInUtc;
   /// Start time (UTC) for validation.
-  final pulumi.Input<String>? validationStartTimeInUtc;
+  final pulumi.Input<String?>? validationStartTimeInUtc;
 
   /// Creates a new [ValidationDetailsResponse].
   /// [dbLevelValidationDetails] Details of server level validations.

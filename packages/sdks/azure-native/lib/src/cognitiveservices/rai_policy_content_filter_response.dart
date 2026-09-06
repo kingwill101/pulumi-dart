@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Azure OpenAI Content Filter.
 class RaiPolicyContentFilterResponse {
   /// If blocking would occur.
-  final pulumi.Input<bool>? blocking;
+  final pulumi.Input<bool?>? blocking;
   /// If the ContentFilter is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Name of ContentFilter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Level at which content is filtered.
-  final pulumi.Input<String>? severityThreshold;
+  final pulumi.Input<String?>? severityThreshold;
   /// Content source to apply the Content Filters.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [RaiPolicyContentFilterResponse].
   /// [blocking] If blocking would occur.

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration properties for apps environment to join a Virtual Network
 class VnetConfiguration {
   /// CIDR notation IP range assigned to the Docker bridge, network. Must not overlap with any other provided IP ranges.
-  final pulumi.Input<String>? dockerBridgeCidr;
+  final pulumi.Input<String?>? dockerBridgeCidr;
   /// Resource ID of a subnet for infrastructure components. Must not overlap with any other provided IP ranges.
-  final pulumi.Input<String>? infrastructureSubnetId;
+  final pulumi.Input<String?>? infrastructureSubnetId;
   /// Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide infrastructureSubnetId if enabling this property
-  final pulumi.Input<bool>? internal;
+  final pulumi.Input<bool?>? internal;
   /// IP range in CIDR notation that can be reserved for environment infrastructure IP addresses. Must not overlap with any other provided IP ranges.
-  final pulumi.Input<String>? platformReservedCidr;
+  final pulumi.Input<String?>? platformReservedCidr;
   /// An IP address from the IP range defined by platformReservedCidr that will be reserved for the internal DNS server.
-  final pulumi.Input<String>? platformReservedDnsIP;
+  final pulumi.Input<String?>? platformReservedDnsIP;
 
   /// Creates a new [VnetConfiguration].
   /// [dockerBridgeCidr] CIDR notation IP range assigned to the Docker bridge, network. Must not overlap with any other provided IP ranges.

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Managed identity credential.
 class ManagedIdentityCredential {
   /// List of tags that can be used for describing the Credential.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// Credential description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The resource id of user assigned managed identity
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Type of credential.
   /// Expected value is 'ManagedIdentity'.
   final pulumi.Input<String> type;

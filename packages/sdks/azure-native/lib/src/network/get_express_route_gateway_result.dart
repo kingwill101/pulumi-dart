@@ -12,9 +12,9 @@ class GetExpressRouteGatewayResult {
   /// Configuration for auto scaling.
   final ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration? autoScaleConfiguration;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// List of ExpressRoute connections to the ExpressRoute gateway.
   final List<ExpressRouteConnectionResponse>? expressRouteConnections;
   /// Resource ID.
@@ -22,15 +22,15 @@ class GetExpressRouteGatewayResult {
   /// Resource location.
   final String? location;
   /// Resource name.
-  final String name;
+  final String? name;
   /// The provisioning state of the express route gateway resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Resource type.
-  final String type;
+  final String? type;
   /// The Virtual Hub where the ExpressRoute gateway is or will be deployed.
-  final VirtualHubIdResponse virtualHub;
+  final VirtualHubIdResponse? virtualHub;
 
   /// Creates a new [GetExpressRouteGatewayResult].
   /// [allowNonVirtualWanTraffic] Configures this gateway to accept traffic from non Virtual WAN networks.
@@ -48,32 +48,32 @@ class GetExpressRouteGatewayResult {
   const GetExpressRouteGatewayResult({
     this.allowNonVirtualWanTraffic,
     this.autoScaleConfiguration,
-    required this.azureApiVersion,
-    required this.etag,
+    this.azureApiVersion,
+    this.etag,
     this.expressRouteConnections,
     this.id,
     this.location,
-    required this.name,
-    required this.provisioningState,
+    this.name,
+    this.provisioningState,
     this.tags,
-    required this.type,
-    required this.virtualHub,
+    this.type,
+    this.virtualHub,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowNonVirtualWanTraffic': ?allowNonVirtualWanTraffic,
       'autoScaleConfiguration': ?autoScaleConfiguration?.toMap(),
-      'azureApiVersion': azureApiVersion,
-      'etag': etag,
+      'azureApiVersion': ?azureApiVersion,
+      'etag': ?etag,
       'expressRouteConnections': ?(() { final guardedValue = expressRouteConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<ExpressRouteConnectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': ?id,
       'location': ?location,
-      'name': name,
-      'provisioningState': provisioningState,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'tags': ?tags,
-      'type': type,
-      'virtualHub': virtualHub.toMap(),
+      'type': ?type,
+      'virtualHub': ?virtualHub?.toMap(),
     };
   }
 
@@ -81,16 +81,16 @@ class GetExpressRouteGatewayResult {
     return GetExpressRouteGatewayResult(
       allowNonVirtualWanTraffic: (() { final guardedValue = map['allowNonVirtualWanTraffic']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       autoScaleConfiguration: (() { final guardedValue = map['autoScaleConfiguration']; if (guardedValue == null) return null; return ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       expressRouteConnections: (() { final guardedValue = map['expressRouteConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressRouteConnectionResponse>(guardedValue, (value) => ExpressRouteConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      virtualHub: VirtualHubIdResponse.fromMap((map['virtualHub']! as Map).cast<String, dynamic>()),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      virtualHub: (() { final guardedValue = map['virtualHub']; if (guardedValue == null) return null; return VirtualHubIdResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of BootModeValuesEnumValue
 class BootModeValuesEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [BootModeValuesEnumValueResponse].
   /// [value] Property value

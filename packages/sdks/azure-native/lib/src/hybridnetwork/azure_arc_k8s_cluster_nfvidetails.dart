@@ -6,9 +6,9 @@ import 'referenced_resource.dart';
 /// The AzureArcK8sCluster NFVI detail.
 class AzureArcK8sClusterNFVIDetails {
   /// The reference to the custom location.
-  final pulumi.Input<ReferencedResource>? customLocationReference;
+  final pulumi.Input<ReferencedResource?>? customLocationReference;
   /// Name of the nfvi.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The NFVI type.
   /// Expected value is 'AzureArcKubernetes'.
   final pulumi.Input<String> nfviType;

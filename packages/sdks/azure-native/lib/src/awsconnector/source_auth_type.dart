@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum SourceAuthType {
+enum SourceAuthType implements pulumi.PulumiEnum<String> {
   cODECONNECTIONS("CODECONNECTIONS"),
   oAUTH("OAUTH");
 
   const SourceAuthType(this.wireValue);
+  @override
   final String wireValue;
 
   static SourceAuthType fromValue(String value) {

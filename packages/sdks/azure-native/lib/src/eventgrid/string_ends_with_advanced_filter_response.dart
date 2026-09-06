@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// StringEndsWith Advanced Filter.
 class StringEndsWithAdvancedFilterResponse {
   /// The field/property in the event based on which you want to filter.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
   /// Expected value is 'StringEndsWith'.
   final pulumi.Input<String> operatorType;
   /// The set of filter values.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [StringEndsWithAdvancedFilterResponse].
   /// [key] The field/property in the event based on which you want to filter.

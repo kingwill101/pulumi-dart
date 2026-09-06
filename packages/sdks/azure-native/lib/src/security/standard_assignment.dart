@@ -459,7 +459,31 @@ class StandardAssignment extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     effect = registerOutput<String?>('effect');
-    excludedScopes = registerOutput<List<String>?>('excludedScopes');
+    excludedScopes = registerOutput<List<String>?>('excludedScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    exemptionData = registerOutput<StandardAssignmentPropertiesExemptionDataResponse?>('exemptionData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAssignmentPropertiesExemptionDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    expiresOn = registerOutput<String?>('expiresOn');
+    metadata = registerOutput<StandardAssignmentMetadataResponse?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAssignmentMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [StandardAssignment] resource.
+  StandardAssignment.reference(String urn)
+    : super(
+        'azure-native:security:StandardAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assignedStandard = registerOutput<AssignedStandardItemResponse?>('assignedStandard', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignedStandardItemResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    attestationData = registerOutput<StandardAssignmentPropertiesAttestationDataResponse?>('attestationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAssignmentPropertiesAttestationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    effect = registerOutput<String?>('effect');
+    excludedScopes = registerOutput<List<String>?>('excludedScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     exemptionData = registerOutput<StandardAssignmentPropertiesExemptionDataResponse?>('exemptionData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAssignmentPropertiesExemptionDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     expiresOn = registerOutput<String?>('expiresOn');
     metadata = registerOutput<StandardAssignmentMetadataResponse?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAssignmentMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

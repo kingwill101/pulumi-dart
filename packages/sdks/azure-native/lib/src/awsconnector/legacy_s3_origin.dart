@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of LegacyS3Origin
 class LegacyS3Origin {
   /// Property dnsName
-  final pulumi.Input<String>? dnsName;
+  final pulumi.Input<String?>? dnsName;
   /// Property originAccessIdentity
-  final pulumi.Input<String>? originAccessIdentity;
+  final pulumi.Input<String?>? originAccessIdentity;
 
   /// Creates a new [LegacyS3Origin].
   /// [dnsName] Property dnsName

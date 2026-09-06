@@ -663,7 +663,31 @@ class DatabaseBlobAuditingPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    auditActionsAndGroups = registerOutput<List<String>?>('auditActionsAndGroups');
+    auditActionsAndGroups = registerOutput<List<String>?>('auditActionsAndGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    isAzureMonitorTargetEnabled = registerOutput<bool?>('isAzureMonitorTargetEnabled');
+    isManagedIdentityInUse = registerOutput<bool?>('isManagedIdentityInUse');
+    isStorageSecondaryKeyInUse = registerOutput<bool?>('isStorageSecondaryKeyInUse');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    queueDelayMs = registerOutput<int?>('queueDelayMs');
+    retentionDays = registerOutput<int?>('retentionDays');
+    state = registerOutput<String>('state');
+    storageAccountSubscriptionId = registerOutput<String?>('storageAccountSubscriptionId');
+    storageEndpoint = registerOutput<String?>('storageEndpoint');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseBlobAuditingPolicy] resource.
+  DatabaseBlobAuditingPolicy.reference(String urn)
+    : super(
+        'azure-native:sql:DatabaseBlobAuditingPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    auditActionsAndGroups = registerOutput<List<String>?>('auditActionsAndGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     isAzureMonitorTargetEnabled = registerOutput<bool?>('isAzureMonitorTargetEnabled');
     isManagedIdentityInUse = registerOutput<bool?>('isManagedIdentityInUse');

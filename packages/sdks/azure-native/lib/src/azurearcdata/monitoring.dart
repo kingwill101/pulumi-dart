@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The monitoring configuration.
 class Monitoring {
   /// Indicates if monitoring is enabled for this SQL Server instance.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [Monitoring].
   /// [enabled] Indicates if monitoring is enabled for this SQL Server instance.

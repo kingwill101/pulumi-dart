@@ -12,13 +12,13 @@ class SpringCloudGatewayComponent {
   /// Expected value is 'SpringCloudGateway'.
   final pulumi.Input<String> componentType;
   /// List of Java Components configuration properties
-  final pulumi.Input<List<JavaComponentConfigurationProperty>>? configurations;
+  final pulumi.Input<List<JavaComponentConfigurationProperty>?>? configurations;
   /// Java component scaling configurations
-  final pulumi.Input<JavaComponentPropertiesScale>? scale;
+  final pulumi.Input<JavaComponentPropertiesScale?>? scale;
   /// List of Java Components that are bound to the Java component
-  final pulumi.Input<List<JavaComponentServiceBind>>? serviceBinds;
+  final pulumi.Input<List<JavaComponentServiceBind>?>? serviceBinds;
   /// Gateway route definition
-  final pulumi.Input<List<ScgRoute>>? springCloudGatewayRoutes;
+  final pulumi.Input<List<ScgRoute>?>? springCloudGatewayRoutes;
 
   /// Creates a new [SpringCloudGatewayComponent].
   /// [componentType] Type of the Java Component.

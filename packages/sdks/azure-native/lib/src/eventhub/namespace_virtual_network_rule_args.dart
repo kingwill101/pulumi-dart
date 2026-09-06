@@ -12,9 +12,9 @@ class NamespaceVirtualNetworkRuleArgs {
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
   /// The Virtual Network Rule name.
-  final pulumi.Input<String>? virtualNetworkRuleName;
+  final pulumi.Input<String?>? virtualNetworkRuleName;
   /// ARM ID of Virtual Network Subnet
-  final pulumi.Input<String>? virtualNetworkSubnetId;
+  final pulumi.Input<String?>? virtualNetworkSubnetId;
 
   /// Creates a new [NamespaceVirtualNetworkRuleArgs].
   /// [namespaceName] The Namespace name

@@ -6,11 +6,11 @@ import 'firewall_policy_intrusion_detection_configuration.dart';
 /// Configuration for intrusion detection mode and rules.
 class FirewallPolicyIntrusionDetection {
   /// Intrusion detection configuration properties.
-  final pulumi.Input<FirewallPolicyIntrusionDetectionConfiguration>? configuration;
+  final pulumi.Input<FirewallPolicyIntrusionDetectionConfiguration?>? configuration;
   /// Intrusion detection general state. When attached to a parent policy, the firewall's effective IDPS mode is the stricter mode of the two.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<dynamic>? mode;
   /// IDPS profile name. When attached to a parent policy, the firewall's effective profile is the profile name of the parent policy.
-  final pulumi.Input<String>? profile;
+  final pulumi.Input<dynamic>? profile;
 
   /// Creates a new [FirewallPolicyIntrusionDetection].
   /// [configuration] Intrusion detection configuration properties.
@@ -33,8 +33,8 @@ class FirewallPolicyIntrusionDetection {
   factory FirewallPolicyIntrusionDetection.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyIntrusionDetection(
       configuration: (() { final guardedValue = map['configuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallPolicyIntrusionDetectionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      profile: (() { final guardedValue = map['profile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      profile: (() { final guardedValue = map['profile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

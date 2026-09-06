@@ -7,7 +7,7 @@ class SourceCostAllocationResource {
   /// If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
   final pulumi.Input<String> name;
   /// Type of resources contained in this cost allocation rule
-  final pulumi.Input<String> resourceType;
+  final pulumi.Input<dynamic> resourceType;
   /// Source Resources for cost allocation. This list cannot contain more than 25 values.
   final pulumi.Input<List<String>> values;
 
@@ -32,7 +32,7 @@ class SourceCostAllocationResource {
   factory SourceCostAllocationResource.fromMap(Map<String, dynamic> map) {
     return SourceCostAllocationResource(
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
+      resourceType: pulumi.Input.fromValue(map['resourceType']),
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }

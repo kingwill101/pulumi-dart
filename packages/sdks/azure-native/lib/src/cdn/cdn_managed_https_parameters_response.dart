@@ -11,7 +11,7 @@ class CdnManagedHttpsParametersResponse {
   /// Defines the certificate source parameters using CDN managed certificate for enabling SSL.
   final pulumi.Input<CdnCertificateSourceParametersResponse> certificateSourceParameters;
   /// TLS protocol version that will be used for Https
-  final pulumi.Input<String>? minimumTlsVersion;
+  final pulumi.Input<String?>? minimumTlsVersion;
   /// Defines the TLS extension protocol that is used for secure delivery.
   final pulumi.Input<String> protocolType;
 

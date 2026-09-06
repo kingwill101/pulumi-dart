@@ -10,7 +10,7 @@ class DataflowEndpointFabricOneLakeResponse {
   /// Authentication configuration. NOTE - only one authentication property is allowed per entry.
   final pulumi.Input<DataflowEndpointFabricOneLakeAuthenticationResponse> authentication;
   /// Batching configuration.
-  final pulumi.Input<BatchingConfigurationResponse>? batching;
+  final pulumi.Input<BatchingConfigurationResponse?>? batching;
   /// Host of the Microsoft Fabric in the form of https://&lt;host&gt;.fabric.microsoft.com.
   final pulumi.Input<String> host;
   /// Names of the workspace and lakehouse.

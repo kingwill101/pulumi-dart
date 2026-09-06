@@ -40,7 +40,7 @@ class Pav2MeterDetailsResponse {
       billingType: pulumi.Input.fromValue(map['billingType'] as String),
       chargingType: pulumi.Input.fromValue(map['chargingType'] as String),
       meterGuid: pulumi.Input.fromValue(map['meterGuid'] as String),
-      multiplier: pulumi.Input.fromValue(map['multiplier'] as double),
+      multiplier: pulumi.Input.fromValue((map['multiplier'] as num).toDouble()),
     );
   }
 }

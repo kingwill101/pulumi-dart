@@ -232,4 +232,33 @@ class CloudConnector extends pulumi.CustomResource {
     subscriptionId = registerOutput<String?>('subscriptionId');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [CloudConnector] resource.
+  CloudConnector.reference(String urn)
+    : super(
+        'azure-native:costmanagement:CloudConnector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    billingModel = registerOutput<String?>('billingModel');
+    collectionInfo = registerOutput<ConnectorCollectionInfoResponse>('collectionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorCollectionInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdOn = registerOutput<String>('createdOn');
+    credentialsKey = registerOutput<String?>('credentialsKey');
+    daysTrialRemaining = registerOutput<int>('daysTrialRemaining');
+    defaultManagementGroupId = registerOutput<String?>('defaultManagementGroupId');
+    displayName = registerOutput<String?>('displayName');
+    externalBillingAccountId = registerOutput<String>('externalBillingAccountId');
+    kind = registerOutput<String?>('kind');
+    modifiedOn = registerOutput<String>('modifiedOn');
+    this.name = registerOutput<String>('name');
+    providerBillingAccountDisplayName = registerOutput<String>('providerBillingAccountDisplayName');
+    providerBillingAccountId = registerOutput<String>('providerBillingAccountId');
+    reportId = registerOutput<String?>('reportId');
+    status = registerOutput<String>('status');
+    subscriptionId = registerOutput<String?>('subscriptionId');
+    type = registerOutput<String>('type');
+  }
 }

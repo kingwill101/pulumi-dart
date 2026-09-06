@@ -8,17 +8,17 @@ import 'san_for_cert.dart';
 /// Automatic TLS server certificate management with cert-manager
 class CertManagerCertificateSpec {
   /// Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
   /// cert-manager issuerRef.
   final pulumi.Input<CertManagerIssuerRef> issuerRef;
   /// Type of certificate private key.
-  final pulumi.Input<CertManagerPrivateKey>? privateKey;
+  final pulumi.Input<CertManagerPrivateKey?>? privateKey;
   /// When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-  final pulumi.Input<String>? renewBefore;
+  final pulumi.Input<String?>? renewBefore;
   /// Additional Subject Alternative Names (SANs) to include in the certificate.
-  final pulumi.Input<SanForCert>? san;
+  final pulumi.Input<SanForCert?>? san;
   /// Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
-  final pulumi.Input<String>? secretName;
+  final pulumi.Input<String?>? secretName;
 
   /// Creates a new [CertManagerCertificateSpec].
   /// [duration] Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.

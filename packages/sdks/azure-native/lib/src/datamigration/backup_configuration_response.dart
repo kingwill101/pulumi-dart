@@ -7,9 +7,9 @@ import 'target_location_response.dart';
 /// Backup Configuration
 class BackupConfigurationResponse {
   /// Source location of backups.
-  final pulumi.Input<SourceLocationResponse>? sourceLocation;
+  final pulumi.Input<SourceLocationResponse?>? sourceLocation;
   /// Target location for copying backups.
-  final pulumi.Input<TargetLocationResponse>? targetLocation;
+  final pulumi.Input<TargetLocationResponse?>? targetLocation;
 
   /// Creates a new [BackupConfigurationResponse].
   /// [sourceLocation] Source location of backups.

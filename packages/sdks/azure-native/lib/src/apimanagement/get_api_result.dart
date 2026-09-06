@@ -25,7 +25,7 @@ class GetApiResult {
   /// Collection of authentication settings included into this API.
   final AuthenticationSettingsContractResponse? authenticationSettings;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Contact information for the API.
   final ApiContactInformationResponse? contact;
   /// Description of the API. May include HTML formatting tags.
@@ -33,21 +33,21 @@ class GetApiResult {
   /// API name. Must be 1 to 300 characters long.
   final String? displayName;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Indicates if API revision is current api revision.
   final bool? isCurrent;
   /// Indicates if API revision is accessible via the gateway.
-  final bool isOnline;
+  final bool? isOnline;
   /// License information for the API.
   final ApiLicenseInformationResponse? license;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Relative URL uniquely identifying this API and all of its resource paths within the API Management service instance. It is appended to the API endpoint base URL specified during the service instance creation to form a public URL for this API.
-  final String path;
+  final String? path;
   /// Describes on which protocols the operations in this API can be invoked.
   final List<String>? protocols;
   /// The provisioning state
-  final String provisioningState;
+  final String? provisioningState;
   /// Absolute URL of the backend service implementing this API. Cannot be more than 2000 characters long.
   final String? serviceUrl;
   /// API identifier of the source API.
@@ -59,7 +59,7 @@ class GetApiResult {
   /// A URL to the Terms of Service for the API. MUST be in the format of a URL.
   final String? termsOfServiceUrl;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetApiResult].
   /// [apiRevision] Describes the revision of the API. If no value is provided, default revision 1 is created
@@ -97,24 +97,24 @@ class GetApiResult {
     this.apiVersionSet,
     this.apiVersionSetId,
     this.authenticationSettings,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.contact,
     this.description,
     this.displayName,
-    required this.id,
+    this.id,
     this.isCurrent,
-    required this.isOnline,
+    this.isOnline,
     this.license,
-    required this.name,
-    required this.path,
+    this.name,
+    this.path,
     this.protocols,
-    required this.provisioningState,
+    this.provisioningState,
     this.serviceUrl,
     this.sourceApiId,
     this.subscriptionKeyParameterNames,
     this.subscriptionRequired,
     this.termsOfServiceUrl,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
@@ -127,24 +127,24 @@ class GetApiResult {
       'apiVersionSet': ?apiVersionSet?.toMap(),
       'apiVersionSetId': ?apiVersionSetId,
       'authenticationSettings': ?authenticationSettings?.toMap(),
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'contact': ?contact?.toMap(),
       'description': ?description,
       'displayName': ?displayName,
-      'id': id,
+      'id': ?id,
       'isCurrent': ?isCurrent,
-      'isOnline': isOnline,
+      'isOnline': ?isOnline,
       'license': ?license?.toMap(),
-      'name': name,
-      'path': path,
+      'name': ?name,
+      'path': ?path,
       'protocols': ?protocols,
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'serviceUrl': ?serviceUrl,
       'sourceApiId': ?sourceApiId,
       'subscriptionKeyParameterNames': ?subscriptionKeyParameterNames?.toMap(),
       'subscriptionRequired': ?subscriptionRequired,
       'termsOfServiceUrl': ?termsOfServiceUrl,
-      'type': type,
+      'type': ?type,
     };
   }
 
@@ -158,24 +158,24 @@ class GetApiResult {
       apiVersionSet: (() { final guardedValue = map['apiVersionSet']; if (guardedValue == null) return null; return ApiVersionSetContractDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       apiVersionSetId: (() { final guardedValue = map['apiVersionSetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       authenticationSettings: (() { final guardedValue = map['authenticationSettings']; if (guardedValue == null) return null; return AuthenticationSettingsContractResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       contact: (() { final guardedValue = map['contact']; if (guardedValue == null) return null; return ApiContactInformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isCurrent: (() { final guardedValue = map['isCurrent']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      isOnline: map['isOnline'] as bool,
+      isOnline: (() { final guardedValue = map['isOnline']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       license: (() { final guardedValue = map['license']; if (guardedValue == null) return null; return ApiLicenseInformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      name: map['name'] as String,
-      path: map['path'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return guardedValue as String; })(),
       protocols: (() { final guardedValue = map['protocols']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serviceUrl: (() { final guardedValue = map['serviceUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sourceApiId: (() { final guardedValue = map['sourceApiId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       subscriptionKeyParameterNames: (() { final guardedValue = map['subscriptionKeyParameterNames']; if (guardedValue == null) return null; return SubscriptionKeyParameterNamesContractResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       subscriptionRequired: (() { final guardedValue = map['subscriptionRequired']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       termsOfServiceUrl: (() { final guardedValue = map['termsOfServiceUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

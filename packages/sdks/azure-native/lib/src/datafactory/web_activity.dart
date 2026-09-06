@@ -12,46 +12,46 @@ import 'web_activity_authentication.dart';
 /// Web activity.
 class WebActivity {
   /// Authentication method used for calling the endpoint.
-  final pulumi.Input<WebActivityAuthentication>? authentication;
+  final pulumi.Input<WebActivityAuthentication?>? authentication;
   /// Represents the payload that will be sent to the endpoint. Required for POST/PUT method, not allowed for GET method Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? body;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference?>? connectVia;
   /// List of datasets passed to web endpoint.
-  final pulumi.Input<List<DatasetReference>>? datasets;
+  final pulumi.Input<List<DatasetReference>?>? datasets;
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependency>>? dependsOn;
+  final pulumi.Input<List<ActivityDependency>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// When set to true, Certificate validation will be disabled.
-  final pulumi.Input<bool>? disableCertValidation;
+  final pulumi.Input<bool?>? disableCertValidation;
   /// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? headers;
   /// Timeout for the HTTP request to get a response. Format is in TimeSpan (hh:mm:ss). This value is the timeout to get a response, not the activity timeout. The default value is 00:01:00 (1 minute). The range is from 1 to 10 minutes
   final pulumi.Input<dynamic>? httpRequestTimeout;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReference>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReference?>? linkedServiceName;
   /// List of linked services passed to web endpoint.
-  final pulumi.Input<List<LinkedServiceReference>>? linkedServices;
+  final pulumi.Input<List<LinkedServiceReference>?>? linkedServices;
   /// Rest API method for target endpoint.
-  final pulumi.Input<String> method;
+  final pulumi.Input<dynamic> method;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<dynamic>? onInactiveMarkAs;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicy>? policy;
+  final pulumi.Input<ActivityPolicy?>? policy;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// Option to disable invoking HTTP GET on location given in response header of a HTTP 202 Response. If set true, it stops invoking HTTP GET on http location given in response header. If set false then continues to invoke HTTP GET call on location given in http response headers.
-  final pulumi.Input<bool>? turnOffAsync;
+  final pulumi.Input<bool?>? turnOffAsync;
   /// Type of activity.
   /// Expected value is 'WebActivity'.
   final pulumi.Input<String> type;
   /// Web activity target endpoint and path. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> url;
   /// Activity user properties.
-  final pulumi.Input<List<UserProperty>>? userProperties;
+  final pulumi.Input<List<UserProperty>?>? userProperties;
 
   /// Creates a new [WebActivity].
   /// [authentication] Authentication method used for calling the endpoint.
@@ -135,11 +135,11 @@ class WebActivity {
       httpRequestTimeout: (() { final guardedValue = map['httpRequestTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       linkedServiceName: (() { final guardedValue = map['linkedServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       linkedServices: (() { final guardedValue = map['linkedServices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LinkedServiceReference>(guardedValue, (value) => LinkedServiceReference.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      method: pulumi.Input.fromValue(map['method'] as String),
+      method: pulumi.Input.fromValue(map['method']),
       name: pulumi.Input.fromValue(map['name'] as String),
-      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActivityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       turnOffAsync: (() { final guardedValue = map['turnOffAsync']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       url: pulumi.Input.fromValue(map['url']),

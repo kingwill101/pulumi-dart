@@ -6,9 +6,9 @@ import 'get_tde_certificates_sql_task_input.dart';
 /// Properties for the task that gets TDE certificates in Base64 encoded format.
 class GetTdeCertificatesSqlTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// Task input
-  final pulumi.Input<GetTdeCertificatesSqlTaskInput>? input;
+  final pulumi.Input<GetTdeCertificatesSqlTaskInput?>? input;
   /// Task type.
   /// Expected value is 'GetTDECertificates.Sql'.
   final pulumi.Input<String> taskType;

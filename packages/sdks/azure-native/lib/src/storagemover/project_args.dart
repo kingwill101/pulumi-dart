@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storagemover_project_args_doc}
 class ProjectArgs {
   /// A description for the Project.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the Project resource.
-  final pulumi.Input<String>? projectName;
+  final pulumi.Input<String?>? projectName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Storage Mover resource.

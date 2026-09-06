@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The Running Mode of the Broker Deployment.
-enum RunMode {
+enum RunMode implements pulumi.PulumiEnum<String> {
   auto("auto"),
   distributed("distributed");
 
   const RunMode(this.wireValue);
+  @override
   final String wireValue;
 
   static RunMode fromValue(String value) {

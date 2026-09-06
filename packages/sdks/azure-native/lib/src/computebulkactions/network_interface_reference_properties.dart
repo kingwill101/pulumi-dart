@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes a network interface reference properties.
 class NetworkInterfaceReferenceProperties {
   /// Specify what happens to the network interface when the VM is deleted
-  final pulumi.Input<String>? deleteOption;
+  final pulumi.Input<dynamic>? deleteOption;
   /// Specifies the primary network interface in case the virtual machine has more than 1 network interface.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
 
   /// Creates a new [NetworkInterfaceReferenceProperties].
   /// [deleteOption] Specify what happens to the network interface when the VM is deleted
@@ -26,7 +26,7 @@ class NetworkInterfaceReferenceProperties {
 
   factory NetworkInterfaceReferenceProperties.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceReferenceProperties(
-      deleteOption: (() { final guardedValue = map['deleteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deleteOption: (() { final guardedValue = map['deleteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       primary: (() { final guardedValue = map['primary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

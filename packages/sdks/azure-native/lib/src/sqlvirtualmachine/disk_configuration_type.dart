@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Disk configuration to apply to SQL Server.
-enum DiskConfigurationType {
+enum DiskConfigurationType implements pulumi.PulumiEnum<String> {
   nEW("NEW"),
   eXTEND("EXTEND"),
   aDD("ADD");
 
   const DiskConfigurationType(this.wireValue);
+  @override
   final String wireValue;
 
   static DiskConfigurationType fromValue(String value) {

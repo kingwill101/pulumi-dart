@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Access Review History Definition Instance.
 class AccessReviewHistoryInstance {
   /// The display name for the parent history definition.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Date time when history data report expires and the associated data is deleted.
-  final pulumi.Input<String>? expiration;
+  final pulumi.Input<String?>? expiration;
   /// Date time when the history data report is scheduled to be generated.
-  final pulumi.Input<String>? fulfilledDateTime;
+  final pulumi.Input<String?>? fulfilledDateTime;
   /// Date time used when selecting review data, all reviews included in data end on or before this date. For use only with one-time/non-recurring reports.
-  final pulumi.Input<String>? reviewHistoryPeriodEndDateTime;
+  final pulumi.Input<String?>? reviewHistoryPeriodEndDateTime;
   /// Date time used when selecting review data, all reviews included in data start on or after this date. For use only with one-time/non-recurring reports.
-  final pulumi.Input<String>? reviewHistoryPeriodStartDateTime;
+  final pulumi.Input<String?>? reviewHistoryPeriodStartDateTime;
   /// Date time when the history data report is scheduled to be generated.
-  final pulumi.Input<String>? runDateTime;
+  final pulumi.Input<String?>? runDateTime;
 
   /// Creates a new [AccessReviewHistoryInstance].
   /// [displayName] The display name for the parent history definition.

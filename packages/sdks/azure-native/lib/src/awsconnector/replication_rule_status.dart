@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies whether the rule is enabled.
-enum ReplicationRuleStatus {
+enum ReplicationRuleStatus implements pulumi.PulumiEnum<String> {
   disabled("Disabled"),
   enabled("Enabled");
 
   const ReplicationRuleStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static ReplicationRuleStatus fromValue(String value) {

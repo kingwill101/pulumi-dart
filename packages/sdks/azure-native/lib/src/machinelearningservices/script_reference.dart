@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Script reference
 class ScriptReference {
   /// Optional command line arguments passed to the script to run.
-  final pulumi.Input<String>? scriptArguments;
+  final pulumi.Input<String?>? scriptArguments;
   /// The location of scripts in the mounted volume.
-  final pulumi.Input<String>? scriptData;
+  final pulumi.Input<String?>? scriptData;
   /// The storage source of the script: inline, workspace.
-  final pulumi.Input<String>? scriptSource;
+  final pulumi.Input<String?>? scriptSource;
   /// Optional time period passed to timeout command.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [ScriptReference].
   /// [scriptArguments] Optional command line arguments passed to the script to run.

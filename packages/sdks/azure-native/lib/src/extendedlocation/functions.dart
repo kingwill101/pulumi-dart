@@ -24,6 +24,17 @@ Future<GetCustomLocationResult> getCustomLocation(
   return GetCustomLocationResult.fromMap(result);
 }
 
+pulumi.Output<GetCustomLocationResult> getCustomLocationOutput(
+  GetCustomLocationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:extendedlocation:getCustomLocation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomLocationResult.fromMap);
+}
+
 /// Gets the details of the resourceSyncRule with a specified resource group, subscription id Custom Location resource name and Resource Sync Rule name.
 ///
 /// Uses Azure REST API version 2021-08-31-preview.
@@ -42,4 +53,15 @@ Future<GetResourceSyncRuleResult> getResourceSyncRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourceSyncRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetResourceSyncRuleResult> getResourceSyncRuleOutput(
+  GetResourceSyncRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:extendedlocation:getResourceSyncRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourceSyncRuleResult.fromMap);
 }

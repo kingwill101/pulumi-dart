@@ -9,23 +9,23 @@ class DirectLineSpeechChannel {
   /// Expected value is 'DirectLineSpeechChannel'.
   final pulumi.Input<String> channelName;
   /// Entity Tag of the resource
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Specifies the location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The set of properties specific to DirectLine Speech channel resource
-  final pulumi.Input<DirectLineSpeechChannelProperties>? properties;
+  final pulumi.Input<DirectLineSpeechChannelProperties?>? properties;
 
   /// Creates a new [DirectLineSpeechChannel].
   /// [channelName] The channel name
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to DirectLine Speech channel resource
-  const DirectLineSpeechChannel({
+  DirectLineSpeechChannel({
     required this.channelName,
     this.etag,
-    this.location,
+    pulumi.Input<String?>? location,
     this.properties,
-  });
+  }) : location = location ?? pulumi.Input.fromValue('global');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Additional, external documentation for the API.
 class ExternalDocumentation {
   /// Description of the documentation.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Title of the documentation.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
   /// URL pointing to the documentation.
   final pulumi.Input<String> url;
 

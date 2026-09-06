@@ -212,4 +212,21 @@ class ApiVersion extends pulumi.CustomResource {
     title = registerOutput<String>('title');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ApiVersion] resource.
+  ApiVersion.reference(String urn)
+    : super(
+        'azure-native:apicenter:ApiVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    lifecycleStage = registerOutput<String>('lifecycleStage');
+    this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    title = registerOutput<String>('title');
+    type = registerOutput<String>('type');
+  }
 }

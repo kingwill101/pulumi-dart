@@ -12,15 +12,15 @@ class ServerGroupRoleArgs {
   /// A type definition that refers the id to an Azure Resource Manager resource.
   final pulumi.Input<String> objectId;
   /// The password of the cluster role. If an identity is used, password will not be required.
-  final pulumi.Input<String>? password;
-  final pulumi.Input<String> principalType;
+  final pulumi.Input<String?>? password;
+  final pulumi.Input<dynamic> principalType;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the cluster role.
-  final pulumi.Input<String>? roleName;
-  final pulumi.Input<String>? roleType;
+  final pulumi.Input<String?>? roleName;
+  final pulumi.Input<dynamic>? roleType;
   /// A type definition that refers the id to an Azure Resource Manager resource.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ServerGroupRoleArgs].
   /// [clusterName] The name of the cluster.
@@ -31,16 +31,16 @@ class ServerGroupRoleArgs {
   /// [roleName] The name of the cluster role.
   /// [roleType] Optional.
   /// [tenantId] A type definition that refers the id to an Azure Resource Manager resource.
-  const ServerGroupRoleArgs({
+  ServerGroupRoleArgs({
     required this.clusterName,
     required this.objectId,
     this.password,
     required this.principalType,
     required this.resourceGroupName,
     this.roleName,
-    this.roleType,
+    pulumi.Input<dynamic>? roleType,
     this.tenantId,
-  });
+  }) : roleType = roleType ?? pulumi.Input.fromValue('user');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,10 +60,10 @@ class ServerGroupRoleArgs {
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
       objectId: pulumi.Input.fromValue(map['objectId'] as String),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      principalType: pulumi.Input.fromValue(map['principalType'] as String),
+      principalType: pulumi.Input.fromValue(map['principalType']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       roleName: (() { final guardedValue = map['roleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      roleType: (() { final guardedValue = map['roleType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      roleType: (() { final guardedValue = map['roleType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

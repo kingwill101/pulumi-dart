@@ -6,21 +6,21 @@ import 'extensions_resource_status_response.dart';
 /// The instance view of a machine run command.
 class MachineRunCommandInstanceViewResponse {
   /// Script end time.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Script error stream.
-  final pulumi.Input<String>? error;
+  final pulumi.Input<String?>? error;
   /// Communicate script configuration errors or execution messages.
-  final pulumi.Input<String>? executionMessage;
+  final pulumi.Input<String?>? executionMessage;
   /// Script execution status.
-  final pulumi.Input<String>? executionState;
+  final pulumi.Input<String?>? executionState;
   /// Exit code returned from script execution.
-  final pulumi.Input<int>? exitCode;
+  final pulumi.Input<int?>? exitCode;
   /// Script output stream.
-  final pulumi.Input<String>? output;
+  final pulumi.Input<String?>? output;
   /// Script start time.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// The  status information.
-  final pulumi.Input<List<ExtensionsResourceStatusResponse>>? statuses;
+  final pulumi.Input<List<ExtensionsResourceStatusResponse>?>? statuses;
 
   /// Creates a new [MachineRunCommandInstanceViewResponse].
   /// [endTime] Script end time.
@@ -61,7 +61,7 @@ class MachineRunCommandInstanceViewResponse {
       error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       executionMessage: (() { final guardedValue = map['executionMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       executionState: (() { final guardedValue = map['executionState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      exitCode: (() { final guardedValue = map['exitCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      exitCode: (() { final guardedValue = map['exitCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       output: (() { final guardedValue = map['output']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       statuses: (() { final guardedValue = map['statuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ExtensionsResourceStatusResponse>(guardedValue, (value) => ExtensionsResourceStatusResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),

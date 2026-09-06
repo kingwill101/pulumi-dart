@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The source type.
-enum DraftPackageSourceType {
+enum DraftPackageSourceType implements pulumi.PulumiEnum<String> {
   valueNative("Native"),
   valueIntuneWin("IntuneWin"),
   valueTestBasePackage("TestBasePackage"),
@@ -7,6 +9,7 @@ enum DraftPackageSourceType {
   valueIntuneEnrollment("IntuneEnrollment");
 
   const DraftPackageSourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static DraftPackageSourceType fromValue(String value) {

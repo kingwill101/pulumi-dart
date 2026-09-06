@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The message filter type.
-enum MessageFilterType {
+enum MessageFilterType implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueInclude("Include"),
   valueExclude("Exclude");
 
   const MessageFilterType(this.wireValue);
+  @override
   final String wireValue;
 
   static MessageFilterType fromValue(String value) {

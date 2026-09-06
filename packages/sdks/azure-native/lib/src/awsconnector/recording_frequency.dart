@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum RecordingFrequency {
+enum RecordingFrequency implements pulumi.PulumiEnum<String> {
   cONTINUOUS("CONTINUOUS"),
   dAILY("DAILY");
 
   const RecordingFrequency(this.wireValue);
+  @override
   final String wireValue;
 
   static RecordingFrequency fromValue(String value) {

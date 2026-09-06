@@ -10,19 +10,19 @@ import 'dedicated_capacity_administrators.dart';
 /// {@macro pulumi_powerbidedicated_capacity_details_args_doc}
 class CapacityDetailsArgs {
   /// A collection of Dedicated capacity administrators
-  final pulumi.Input<DedicatedCapacityAdministrators>? administration;
+  final pulumi.Input<DedicatedCapacityAdministrators?>? administration;
   /// The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
-  final pulumi.Input<String>? dedicatedCapacityName;
+  final pulumi.Input<String?>? dedicatedCapacityName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the generation of the Power BI Embedded capacity. If no value is specified, the default value 'Gen2' is used. [Learn More](https://docs.microsoft.com/power-bi/developer/embedded/power-bi-embedded-generation-2)
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<dynamic>? mode;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU of the PowerBI Dedicated capacity resource.
   final pulumi.Input<CapacitySku> sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CapacityDetailsArgs].
   /// [administration] A collection of Dedicated capacity administrators
@@ -59,7 +59,7 @@ class CapacityDetailsArgs {
       administration: (() { final guardedValue = map['administration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DedicatedCapacityAdministrators.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dedicatedCapacityName: (() { final guardedValue = map['dedicatedCapacityName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sku: pulumi.Input.fromValue(CapacitySku.fromMap((map['sku']! as Map).cast<String, dynamic>())),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

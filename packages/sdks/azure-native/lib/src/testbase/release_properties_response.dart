@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of an operating system release.
 class ReleasePropertiesResponse {
   /// The build number of the OS release.
-  final pulumi.Input<String>? buildNumber;
+  final pulumi.Input<String?>? buildNumber;
   /// The build revision of the OS release.
-  final pulumi.Input<String>? buildRevision;
+  final pulumi.Input<String?>? buildRevision;
   /// The name of the OS release.
-  final pulumi.Input<String>? releaseName;
+  final pulumi.Input<String?>? releaseName;
   /// The release version date of the OS release.
-  final pulumi.Input<String>? releaseVersionDate;
+  final pulumi.Input<String?>? releaseVersionDate;
 
   /// Creates a new [ReleasePropertiesResponse].
   /// [buildNumber] The build number of the OS release.

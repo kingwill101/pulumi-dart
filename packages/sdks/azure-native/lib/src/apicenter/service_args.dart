@@ -9,17 +9,17 @@ import 'managed_service_identity.dart';
 /// {@macro pulumi_apicenter_service_args_doc}
 class ServiceArgs {
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Flag used to restore soft-deleted API Center service. If specified and set to 'true' all other properties will be ignored.
-  final pulumi.Input<bool>? restore;
+  final pulumi.Input<bool?>? restore;
   /// The name of Azure API Center service.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ServiceArgs].
   /// [identity] The managed service identities assigned to this resource.
@@ -28,14 +28,14 @@ class ServiceArgs {
   /// [restore] Flag used to restore soft-deleted API Center service. If specified and set to 'true' all other properties will be ignored.
   /// [serviceName] The name of Azure API Center service.
   /// [tags] Resource tags.
-  const ServiceArgs({
+  ServiceArgs({
     this.identity,
     this.location,
     required this.resourceGroupName,
-    this.restore,
+    pulumi.Input<bool?>? restore,
     this.serviceName,
     this.tags,
-  });
+  }) : restore = restore ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

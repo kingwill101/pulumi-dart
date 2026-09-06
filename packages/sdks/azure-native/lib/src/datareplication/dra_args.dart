@@ -9,7 +9,7 @@ import 'dra_model_properties.dart';
 /// {@macro pulumi_datareplication_dra_args_doc}
 class DraArgs {
   /// The fabric agent (Dra) name.
-  final pulumi.Input<String>? fabricAgentName;
+  final pulumi.Input<String?>? fabricAgentName;
   /// The fabric name.
   final pulumi.Input<String> fabricName;
   /// Dra model properties.

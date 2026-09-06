@@ -6,9 +6,9 @@ import 'virtual_appliance_ipconfiguration_properties.dart';
 /// Represents a single IP configuration.
 class VirtualApplianceIPConfiguration {
   /// Name of the IP configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Represents a single IP configuration properties.
-  final pulumi.Input<VirtualApplianceIPConfigurationProperties>? properties;
+  final pulumi.Input<VirtualApplianceIPConfigurationProperties?>? properties;
 
   /// Creates a new [VirtualApplianceIPConfiguration].
   /// [name] Name of the IP configuration.

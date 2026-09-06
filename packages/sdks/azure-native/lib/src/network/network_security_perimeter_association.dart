@@ -243,7 +243,28 @@ class NetworkSecurityPerimeterAssociation extends pulumi.CustomResource {
     privateLinkResource = registerOutput<SubResourceResponse?>('privateLinkResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     profile = registerOutput<SubResourceResponse?>('profile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [NetworkSecurityPerimeterAssociation] resource.
+  NetworkSecurityPerimeterAssociation.reference(String urn)
+    : super(
+        'azure-native:network:NetworkSecurityPerimeterAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessMode = registerOutput<String?>('accessMode');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    hasProvisioningIssues = registerOutput<String>('hasProvisioningIssues');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    privateLinkResource = registerOutput<SubResourceResponse?>('privateLinkResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    profile = registerOutput<SubResourceResponse?>('profile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration values for periodic mode backup
 class ContinuousModePropertiesResponse {
   /// Enum to indicate type of Continuous backup mode
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [ContinuousModePropertiesResponse].
   /// [tier] Enum to indicate type of Continuous backup mode

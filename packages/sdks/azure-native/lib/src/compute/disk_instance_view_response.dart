@@ -7,11 +7,11 @@ import 'instance_view_status_response.dart';
 /// The instance view of the disk.
 class DiskInstanceViewResponse {
   /// Specifies the encryption settings for the OS Disk. &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15
-  final pulumi.Input<List<DiskEncryptionSettingsResponse>>? encryptionSettings;
+  final pulumi.Input<List<DiskEncryptionSettingsResponse>?>? encryptionSettings;
   /// The disk name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource status information.
-  final pulumi.Input<List<InstanceViewStatusResponse>>? statuses;
+  final pulumi.Input<List<InstanceViewStatusResponse>?>? statuses;
 
   /// Creates a new [DiskInstanceViewResponse].
   /// [encryptionSettings] Specifies the encryption settings for the OS Disk. &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15

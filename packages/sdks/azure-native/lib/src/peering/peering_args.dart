@@ -11,23 +11,23 @@ import 'peering_sku.dart';
 /// {@macro pulumi_peering_peering_args_doc}
 class PeeringArgs {
   /// The properties that define a direct peering.
-  final pulumi.Input<PeeringPropertiesDirect>? direct;
+  final pulumi.Input<PeeringPropertiesDirect?>? direct;
   /// The properties that define an exchange peering.
-  final pulumi.Input<PeeringPropertiesExchange>? exchange;
+  final pulumi.Input<PeeringPropertiesExchange?>? exchange;
   /// The kind of the peering.
-  final pulumi.Input<String> kind;
+  final pulumi.Input<dynamic> kind;
   /// The location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The location of the peering.
-  final pulumi.Input<String>? peeringLocation;
+  final pulumi.Input<String?>? peeringLocation;
   /// The name of the peering.
-  final pulumi.Input<String>? peeringName;
+  final pulumi.Input<String?>? peeringName;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU that defines the tier and kind of the peering.
   final pulumi.Input<PeeringSku> sku;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PeeringArgs].
   /// [direct] The properties that define a direct peering.
@@ -69,7 +69,7 @@ class PeeringArgs {
     return PeeringArgs(
       direct: (() { final guardedValue = map['direct']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PeeringPropertiesDirect.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       exchange: (() { final guardedValue = map['exchange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PeeringPropertiesExchange.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      kind: pulumi.Input.fromValue(map['kind'] as String),
+      kind: pulumi.Input.fromValue(map['kind']),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       peeringLocation: (() { final guardedValue = map['peeringLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       peeringName: (() { final guardedValue = map['peeringName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Labeling data configuration definition
 class LabelingDataConfigurationResponse {
   /// Resource Id of the data asset to perform labeling.
-  final pulumi.Input<String>? dataId;
+  final pulumi.Input<String?>? dataId;
   /// Indicates whether to enable incremental data refresh.
-  final pulumi.Input<String>? incrementalDataRefresh;
+  final pulumi.Input<String?>? incrementalDataRefresh;
 
   /// Creates a new [LabelingDataConfigurationResponse].
   /// [dataId] Resource Id of the data asset to perform labeling.
   /// [incrementalDataRefresh] Indicates whether to enable incremental data refresh.
-  const LabelingDataConfigurationResponse({
+  LabelingDataConfigurationResponse({
     this.dataId,
-    this.incrementalDataRefresh,
-  });
+    pulumi.Input<String?>? incrementalDataRefresh,
+  }) : incrementalDataRefresh = incrementalDataRefresh ?? pulumi.Input.fromValue('Disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

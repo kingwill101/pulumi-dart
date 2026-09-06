@@ -14,7 +14,7 @@ class TrustedIdProviderArgs {
   /// The name of the Azure resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the trusted identity provider. This is used for differentiation of providers in the account.
-  final pulumi.Input<String>? trustedIdProviderName;
+  final pulumi.Input<String?>? trustedIdProviderName;
 
   /// Creates a new [TrustedIdProviderArgs].
   /// [accountName] The name of the Data Lake Store account.

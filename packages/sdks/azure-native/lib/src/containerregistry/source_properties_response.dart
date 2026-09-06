@@ -6,12 +6,12 @@ import 'auth_info_response.dart';
 /// The properties of the source code repository.
 class SourcePropertiesResponse {
   /// The branch name of the source code.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// The full URL to the source code repository
   final pulumi.Input<String> repositoryUrl;
   /// The authorization properties for accessing the source code repository and to set up
   /// webhooks for notifications.
-  final pulumi.Input<AuthInfoResponse>? sourceControlAuthProperties;
+  final pulumi.Input<AuthInfoResponse?>? sourceControlAuthProperties;
   /// The type of source control service.
   final pulumi.Input<String> sourceControlType;
 

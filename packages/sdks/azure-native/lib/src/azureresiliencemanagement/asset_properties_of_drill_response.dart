@@ -7,7 +7,7 @@ class AssetPropertiesOfDrillResponse {
   /// Region where Drill's internal resources will be created.
   final pulumi.Input<String> region;
   /// Resource group where Drill's internal resources will be created. If not specified, defaults to 'AzureResilienceManagementDrills'. This value is immutable after drill creation.
-  final pulumi.Input<String>? resourceGroup;
+  final pulumi.Input<String?>? resourceGroup;
   /// Subscription where Drill's internal resources will be created.
   final pulumi.Input<String> subscription;
 

@@ -7,29 +7,29 @@ import 'peering_sku_response.dart';
 /// Result data returned by getPeering.
 class GetPeeringResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The properties that define a direct peering.
   final PeeringPropertiesDirectResponse? direct;
   /// The properties that define an exchange peering.
   final PeeringPropertiesExchangeResponse? exchange;
   /// The ID of the resource.
-  final String id;
+  final String? id;
   /// The kind of the peering.
-  final String kind;
+  final String? kind;
   /// The location of the resource.
-  final String location;
+  final String? location;
   /// The name of the resource.
-  final String name;
+  final String? name;
   /// The location of the peering.
   final String? peeringLocation;
   /// The provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The SKU that defines the tier and kind of the peering.
-  final PeeringSkuResponse sku;
+  final PeeringSkuResponse? sku;
   /// The resource tags.
   final Map<String, String>? tags;
   /// The type of the resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetPeeringResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -45,51 +45,51 @@ class GetPeeringResult {
   /// [tags] The resource tags.
   /// [type] The type of the resource.
   const GetPeeringResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.direct,
     this.exchange,
-    required this.id,
-    required this.kind,
-    required this.location,
-    required this.name,
+    this.id,
+    this.kind,
+    this.location,
+    this.name,
     this.peeringLocation,
-    required this.provisioningState,
-    required this.sku,
+    this.provisioningState,
+    this.sku,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'direct': ?direct?.toMap(),
       'exchange': ?exchange?.toMap(),
-      'id': id,
-      'kind': kind,
-      'location': location,
-      'name': name,
+      'id': ?id,
+      'kind': ?kind,
+      'location': ?location,
+      'name': ?name,
       'peeringLocation': ?peeringLocation,
-      'provisioningState': provisioningState,
-      'sku': sku.toMap(),
+      'provisioningState': ?provisioningState,
+      'sku': ?sku?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetPeeringResult.fromMap(Map<String, dynamic> map) {
     return GetPeeringResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       direct: (() { final guardedValue = map['direct']; if (guardedValue == null) return null; return PeeringPropertiesDirectResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       exchange: (() { final guardedValue = map['exchange']; if (guardedValue == null) return null; return PeeringPropertiesExchangeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
-      kind: map['kind'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       peeringLocation: (() { final guardedValue = map['peeringLocation']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
-      sku: PeeringSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return PeeringSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

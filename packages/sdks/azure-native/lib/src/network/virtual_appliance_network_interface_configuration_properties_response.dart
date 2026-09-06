@@ -5,7 +5,7 @@ import 'virtual_appliance_ipconfiguration_response.dart';
 
 /// Represents a single NIC configuration properties.
 class VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse {
-  final pulumi.Input<List<VirtualApplianceIPConfigurationResponse>>? ipConfigurations;
+  final pulumi.Input<List<VirtualApplianceIPConfigurationResponse>?>? ipConfigurations;
 
   /// Creates a new [VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse].
   /// [ipConfigurations] Optional.

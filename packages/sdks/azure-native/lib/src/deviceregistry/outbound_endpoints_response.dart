@@ -8,7 +8,7 @@ class OutboundEndpointsResponse {
   /// Endpoints the device can connect to.
   final pulumi.Input<Map<String, DeviceMessagingEndpointResponse>> assigned;
   /// Set of most recently removed endpoints.
-  final pulumi.Input<Map<String, DeviceMessagingEndpointResponse>>? unassigned;
+  final pulumi.Input<Map<String, DeviceMessagingEndpointResponse>?>? unassigned;
 
   /// Creates a new [OutboundEndpointsResponse].
   /// [assigned] Endpoints the device can connect to.

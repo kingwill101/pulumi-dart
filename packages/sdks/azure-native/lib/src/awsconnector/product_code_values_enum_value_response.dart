@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ProductCodeValuesEnumValue
 class ProductCodeValuesEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ProductCodeValuesEnumValueResponse].
   /// [value] Property value

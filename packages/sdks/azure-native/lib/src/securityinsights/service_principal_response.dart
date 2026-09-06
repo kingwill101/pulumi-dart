@@ -7,7 +7,7 @@ class ServicePrincipalResponse {
   /// App id of service principal.
   final pulumi.Input<String> appId;
   /// Expiration time of service principal credentials.
-  final pulumi.Input<String>? credentialsExpireOn;
+  final pulumi.Input<String?>? credentialsExpireOn;
   /// Id of service principal.
   final pulumi.Input<String> id;
   /// Tenant id of service principal.

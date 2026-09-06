@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Action if Kubernetes namespace with same name already exists.
-enum AdoptionPolicy {
+enum AdoptionPolicy implements pulumi.PulumiEnum<String> {
   valueNever("Never"),
   valueIfIdentical("IfIdentical"),
   valueAlways("Always");
 
   const AdoptionPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static AdoptionPolicy fromValue(String value) {

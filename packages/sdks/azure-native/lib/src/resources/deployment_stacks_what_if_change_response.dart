@@ -10,7 +10,7 @@ class DeploymentStacksWhatIfChangeResponse {
   /// Predicted changes to the deployment stack deny settings.
   final pulumi.Input<DeploymentStacksWhatIfChangeResponseDenySettingsChange> denySettingsChange;
   /// Predicted changes to the deployment scope for the deployment stack.
-  final pulumi.Input<DeploymentStacksWhatIfChangeResponseDeploymentScopeChange>? deploymentScopeChange;
+  final pulumi.Input<DeploymentStacksWhatIfChangeResponseDeploymentScopeChange?>? deploymentScopeChange;
   /// List of resource changes predicted by What-If operation.
   final pulumi.Input<List<DeploymentStacksWhatIfResourceChangeResponse>> resourceChanges;
 

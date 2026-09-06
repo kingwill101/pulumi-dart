@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Frequency of full backups. In both cases, full backups begin during the next scheduled time window.
-enum FullBackupFrequencyType {
+enum FullBackupFrequencyType implements pulumi.PulumiEnum<String> {
   daily("Daily"),
   weekly("Weekly");
 
   const FullBackupFrequencyType(this.wireValue);
+  @override
   final String wireValue;
 
   static FullBackupFrequencyType fromValue(String value) {

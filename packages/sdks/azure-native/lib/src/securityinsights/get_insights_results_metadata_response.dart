@@ -6,7 +6,7 @@ import 'get_insights_error_kind_response.dart';
 /// Get Insights result metadata.
 class GetInsightsResultsMetadataResponse {
   /// information about the failed queries
-  final pulumi.Input<List<GetInsightsErrorKindResponse>>? errors;
+  final pulumi.Input<List<GetInsightsErrorKindResponse>?>? errors;
   /// the total items found for the insights request
   final pulumi.Input<int> totalCount;
 
@@ -28,7 +28,7 @@ class GetInsightsResultsMetadataResponse {
   factory GetInsightsResultsMetadataResponse.fromMap(Map<String, dynamic> map) {
     return GetInsightsResultsMetadataResponse(
       errors: (() { final guardedValue = map['errors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetInsightsErrorKindResponse>(guardedValue, (value) => GetInsightsErrorKindResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      totalCount: pulumi.Input.fromValue(map['totalCount'] as int),
+      totalCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalCount'])),
     );
   }
 }

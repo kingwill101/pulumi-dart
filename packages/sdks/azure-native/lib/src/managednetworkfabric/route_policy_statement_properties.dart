@@ -9,7 +9,7 @@ class RoutePolicyStatementProperties {
   /// Route policy action properties.
   final pulumi.Input<StatementActionProperties> action;
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// Route policy condition properties.
   final pulumi.Input<StatementConditionProperties> condition;
   /// Sequence to insert to/delete from existing route.
@@ -41,7 +41,7 @@ class RoutePolicyStatementProperties {
       action: pulumi.Input.fromValue(StatementActionProperties.fromMap((map['action']! as Map).cast<String, dynamic>())),
       annotation: (() { final guardedValue = map['annotation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       condition: pulumi.Input.fromValue(StatementConditionProperties.fromMap((map['condition']! as Map).cast<String, dynamic>())),
-      sequenceNumber: pulumi.Input.fromValue(map['sequenceNumber'] as double),
+      sequenceNumber: pulumi.Input.fromValue((map['sequenceNumber'] as num).toDouble()),
     );
   }
 }

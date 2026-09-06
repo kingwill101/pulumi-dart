@@ -9,17 +9,17 @@ import 'job_collection_properties.dart';
 /// {@macro pulumi_scheduler_job_collection_args_doc}
 class JobCollectionArgs {
   /// The job collection name.
-  final pulumi.Input<String>? jobCollectionName;
+  final pulumi.Input<String?>? jobCollectionName;
   /// Gets or sets the storage account location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Gets or sets the job collection resource name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Gets or sets the job collection properties.
-  final pulumi.Input<JobCollectionProperties>? properties;
+  final pulumi.Input<JobCollectionProperties?>? properties;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [JobCollectionArgs].
   /// [jobCollectionName] The job collection name.

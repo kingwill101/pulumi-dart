@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Deny assignment principal.
 class DenyAssignmentPrincipal {
   /// The object ID of the principal.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The type of the principal such as user, group, servicePrincipal, etc.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DenyAssignmentPrincipal].
   /// [id] The object ID of the principal.

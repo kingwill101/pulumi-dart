@@ -15,26 +15,26 @@ class BudgetArgs {
   /// Supported for CategoryType(s): Cost.
   ///
   /// Required for CategoryType(s): Cost.
-  final pulumi.Input<double>? amount;
+  final pulumi.Input<double?>? amount;
   /// Budget Name.
-  final pulumi.Input<String>? budgetName;
+  final pulumi.Input<String?>? budgetName;
   /// The category of the budget.
   /// - 'Cost' defines a Budget.
   /// - 'ReservationUtilization' defines a Reservation Utilization Alert Rule.
-  final pulumi.Input<String> category;
+  final pulumi.Input<dynamic> category;
   /// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// May be used to filter budgets by user-specified dimensions and/or tags.
   ///
   /// Supported for CategoryType(s): Cost, ReservationUtilization.
-  final pulumi.Input<BudgetFilter>? filter;
+  final pulumi.Input<BudgetFilter?>? filter;
   /// Dictionary of notifications associated with the budget.
   ///
   /// Supported for CategoryType(s): Cost, ReservationUtilization.
   ///
   /// - Constraints for **CategoryType: Cost** - Budget can have up to 5 notifications with thresholdType: Actual and 5 notifications with thresholdType: Forecasted.
   /// - Constraints for **CategoryType: ReservationUtilization** - Only one notification allowed. thresholdType is not applicable.
-  final pulumi.Input<Map<String, Notification>>? notifications;
+  final pulumi.Input<Map<String, Notification>?>? notifications;
   /// The scope associated with budget operations.
   ///
   /// Supported scopes for **CategoryType: Cost**
@@ -85,7 +85,7 @@ class BudgetArgs {
   /// - Last30Days
   ///
   /// Required for CategoryType(s): Cost, ReservationUtilization.
-  final pulumi.Input<String> timeGrain;
+  final pulumi.Input<dynamic> timeGrain;
   /// The time period that defines the active period of the budget. The budget will evaluate data on or after the startDate and will expire on the endDate.
   ///
   /// Supported for CategoryType(s): Cost, ReservationUtilization.
@@ -131,14 +131,14 @@ class BudgetArgs {
 
   factory BudgetArgs.fromMap(Map<String, dynamic> map) {
     return BudgetArgs(
-      amount: (() { final guardedValue = map['amount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      amount: (() { final guardedValue = map['amount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       budgetName: (() { final guardedValue = map['budgetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      category: pulumi.Input.fromValue(map['category'] as String),
+      category: pulumi.Input.fromValue(map['category']),
       eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BudgetFilter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       notifications: (() { final guardedValue = map['notifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<Notification>(guardedValue, (value) => Notification.fromMap((value as Map).cast<String, dynamic>()))); })(),
       scope: pulumi.Input.fromValue(map['scope'] as String),
-      timeGrain: pulumi.Input.fromValue(map['timeGrain'] as String),
+      timeGrain: pulumi.Input.fromValue(map['timeGrain']),
       timePeriod: pulumi.Input.fromValue(BudgetTimePeriod.fromMap((map['timePeriod']! as Map).cast<String, dynamic>())),
     );
   }

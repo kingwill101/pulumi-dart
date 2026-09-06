@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Azure quantum workspace Api key details.
 class ApiKeyResponse {
   /// The creation time of the api key.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// The Api key.
   final pulumi.Input<String> key;
 

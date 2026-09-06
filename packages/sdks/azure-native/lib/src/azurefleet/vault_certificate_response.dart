@@ -12,7 +12,7 @@ class VaultCertificateResponse {
   /// &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and
   /// &lt;UppercaseThumbprint&gt;.prv for private key. Both of these files are .pem
   /// formatted.
-  final pulumi.Input<String>? certificateStore;
+  final pulumi.Input<String?>? certificateStore;
   /// This is the URL of a certificate that has been uploaded to Key Vault as a
   /// secret. For adding a secret to the Key Vault, see [Add a key or secret to the
   /// key
@@ -26,7 +26,7 @@ class VaultCertificateResponse {
   /// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
   /// or the [Azure Key Vault virtual machine extension for
   /// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
-  final pulumi.Input<String>? certificateUrl;
+  final pulumi.Input<String?>? certificateUrl;
 
   /// Creates a new [VaultCertificateResponse].
   /// [certificateStore] For Windows VMs, specifies the certificate store on the Virtual Machine to

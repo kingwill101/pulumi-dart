@@ -9,15 +9,15 @@ import 'waf_web_aclsummary_properties.dart';
 /// {@macro pulumi_awsconnector_waf_web_acl_summary_args_doc}
 class WafWebAclSummaryArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of WafWebACLSummary
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<WafWebACLSummaryProperties>? properties;
+  final pulumi.Input<WafWebACLSummaryProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [WafWebAclSummaryArgs].
   /// [location] The geo-location where the resource lives

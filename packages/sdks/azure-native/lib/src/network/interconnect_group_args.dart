@@ -9,19 +9,19 @@ import 'subgroup_profile.dart';
 /// {@macro pulumi_network_interconnect_group_args_doc}
 class InterconnectGroupArgs {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the interconnect group.
-  final pulumi.Input<String>? interconnectGroupName;
+  final pulumi.Input<String?>? interconnectGroupName;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Scope of interconnect group resource.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<dynamic>? scope;
   /// The subgroup profile of the interconnect group resource.
   final pulumi.Input<SubgroupProfile> subgroupProfile;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [InterconnectGroupArgs].
   /// [id] Resource ID.
@@ -59,7 +59,7 @@ class InterconnectGroupArgs {
       interconnectGroupName: (() { final guardedValue = map['interconnectGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       subgroupProfile: pulumi.Input.fromValue(SubgroupProfile.fromMap((map['subgroupProfile']! as Map).cast<String, dynamic>())),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

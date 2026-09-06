@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Default AI model configuration
 class DefaultModel {
   /// Model name (e.g., gpt-5, claude-opus-4-5, claude-sonnet-4-5)
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// AI provider name (e.g., MicrosoftFoundry, Anthropic)
-  final pulumi.Input<String>? provider;
+  final pulumi.Input<String?>? provider;
 
   /// Creates a new [DefaultModel].
   /// [name] Model name (e.g., gpt-5, claude-opus-4-5, claude-sonnet-4-5)

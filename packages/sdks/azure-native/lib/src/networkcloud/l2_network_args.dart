@@ -11,19 +11,19 @@ class L2NetworkArgs {
   /// The extended location of the cluster associated with the resource.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
-  final pulumi.Input<String>? hybridAksPluginType;
+  final pulumi.Input<dynamic>? hybridAksPluginType;
   /// The default interface name for this L2 network in the virtual machine. This name can be overridden by the name supplied in the network attachment configuration of that virtual machine.
-  final pulumi.Input<String>? interfaceName;
+  final pulumi.Input<String?>? interfaceName;
   /// The resource ID of the Network Fabric l2IsolationDomain.
   final pulumi.Input<String> l2IsolationDomainId;
   /// The name of the L2 network.
-  final pulumi.Input<String>? l2NetworkName;
+  final pulumi.Input<String?>? l2NetworkName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [L2NetworkArgs].
   /// [extendedLocation] The extended location of the cluster associated with the resource.
@@ -34,16 +34,16 @@ class L2NetworkArgs {
   /// [location] The geo-location where the resource lives
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  const L2NetworkArgs({
+  L2NetworkArgs({
     required this.extendedLocation,
-    this.hybridAksPluginType,
+    pulumi.Input<dynamic>? hybridAksPluginType,
     this.interfaceName,
     required this.l2IsolationDomainId,
     this.l2NetworkName,
     this.location,
     required this.resourceGroupName,
     this.tags,
-  });
+  }) : hybridAksPluginType = hybridAksPluginType ?? pulumi.Input.fromValue('SRIOV');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,7 +61,7 @@ class L2NetworkArgs {
   factory L2NetworkArgs.fromMap(Map<String, dynamic> map) {
     return L2NetworkArgs(
       extendedLocation: pulumi.Input.fromValue(ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())),
-      hybridAksPluginType: (() { final guardedValue = map['hybridAksPluginType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hybridAksPluginType: (() { final guardedValue = map['hybridAksPluginType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       interfaceName: (() { final guardedValue = map['interfaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       l2IsolationDomainId: pulumi.Input.fromValue(map['l2IsolationDomainId'] as String),
       l2NetworkName: (() { final guardedValue = map['l2NetworkName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

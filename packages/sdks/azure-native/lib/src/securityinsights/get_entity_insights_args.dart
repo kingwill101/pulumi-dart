@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_securityinsights_get_entity_insights_args_doc}
 class GetEntityInsightsArgs {
   /// Indicates if query time range should be extended with default time range of the query. Default value is false
-  final pulumi.Input<bool>? addDefaultExtendedTimeRange;
+  final pulumi.Input<bool?>? addDefaultExtendedTimeRange;
   /// The end timeline date, so the results returned are before this date.
   final pulumi.Input<String> endTime;
   /// entity ID
   final pulumi.Input<String> entityId;
   /// List of Insights Query Id. If empty, default value is all insights of this entity
-  final pulumi.Input<List<String>>? insightQueryIds;
+  final pulumi.Input<List<String>?>? insightQueryIds;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The start timeline date, so the results returned are after this date.

@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// InMageRcm specific policy details.
 class InMageRcmPolicyDetailsResponse {
   /// The app consistent snapshot frequency in minutes.
-  final pulumi.Input<int>? appConsistentFrequencyInMinutes;
+  final pulumi.Input<int?>? appConsistentFrequencyInMinutes;
   /// The crash consistent snapshot frequency in minutes.
-  final pulumi.Input<int>? crashConsistentFrequencyInMinutes;
+  final pulumi.Input<int?>? crashConsistentFrequencyInMinutes;
   /// A value indicating whether multi-VM sync has to be enabled.
-  final pulumi.Input<String>? enableMultiVmSync;
+  final pulumi.Input<String?>? enableMultiVmSync;
   /// Gets the class type. Overridden in derived classes.
   /// Expected value is 'InMageRcm'.
   final pulumi.Input<String> instanceType;
   /// The duration in minutes until which the recovery points need to be stored.
-  final pulumi.Input<int>? recoveryPointHistoryInMinutes;
+  final pulumi.Input<int?>? recoveryPointHistoryInMinutes;
 
   /// Creates a new [InMageRcmPolicyDetailsResponse].
   /// [appConsistentFrequencyInMinutes] The app consistent snapshot frequency in minutes.
@@ -42,11 +42,11 @@ class InMageRcmPolicyDetailsResponse {
 
   factory InMageRcmPolicyDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmPolicyDetailsResponse(
-      appConsistentFrequencyInMinutes: (() { final guardedValue = map['appConsistentFrequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      crashConsistentFrequencyInMinutes: (() { final guardedValue = map['crashConsistentFrequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      appConsistentFrequencyInMinutes: (() { final guardedValue = map['appConsistentFrequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      crashConsistentFrequencyInMinutes: (() { final guardedValue = map['crashConsistentFrequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       enableMultiVmSync: (() { final guardedValue = map['enableMultiVmSync']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      recoveryPointHistoryInMinutes: (() { final guardedValue = map['recoveryPointHistoryInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      recoveryPointHistoryInMinutes: (() { final guardedValue = map['recoveryPointHistoryInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

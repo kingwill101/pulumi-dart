@@ -17,7 +17,7 @@ class RegistryEnvironmentVersionArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Version identifier. This is case-sensitive.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [RegistryEnvironmentVersionArgs].
   /// [environmentName] Container name. This is case-sensitive.

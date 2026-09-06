@@ -1281,7 +1281,32 @@ class IntegrationAccountAgreement extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [IntegrationAccountAgreement] resource.
+  IntegrationAccountAgreement.reference(String urn)
+    : super(
+        'azure-native:logic:IntegrationAccountAgreement',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agreementType = registerOutput<String>('agreementType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    changedTime = registerOutput<String>('changedTime');
+    content = registerOutput<AgreementContentResponse>('content', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgreementContentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdTime = registerOutput<String>('createdTime');
+    guestIdentity = registerOutput<BusinessIdentityResponse>('guestIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BusinessIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    guestPartner = registerOutput<String>('guestPartner');
+    hostIdentity = registerOutput<BusinessIdentityResponse>('hostIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BusinessIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hostPartner = registerOutput<String>('hostPartner');
+    location = registerOutput<String?>('location');
+    metadata = registerOutput<dynamic>('metadata');
+    this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

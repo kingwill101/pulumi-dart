@@ -7,11 +7,11 @@ import 'shipping_address.dart';
 /// Address Properties.
 class AddressProperties {
   /// Type of address based on its usage context.
-  final pulumi.Input<String>? addressClassification;
+  final pulumi.Input<dynamic>? addressClassification;
   /// Contact details for the address.
-  final pulumi.Input<ContactDetails>? contactDetails;
+  final pulumi.Input<ContactDetails?>? contactDetails;
   /// Shipping details for the address.
-  final pulumi.Input<ShippingAddress>? shippingAddress;
+  final pulumi.Input<ShippingAddress?>? shippingAddress;
 
   /// Creates a new [AddressProperties].
   /// [addressClassification] Type of address based on its usage context.
@@ -33,7 +33,7 @@ class AddressProperties {
 
   factory AddressProperties.fromMap(Map<String, dynamic> map) {
     return AddressProperties(
-      addressClassification: (() { final guardedValue = map['addressClassification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      addressClassification: (() { final guardedValue = map['addressClassification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       contactDetails: (() { final guardedValue = map['contactDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContactDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       shippingAddress: (() { final guardedValue = map['shippingAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ShippingAddress.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

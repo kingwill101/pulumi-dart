@@ -1,6 +1,8 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can
 /// only be used with data disks, it cannot be used with OS Disk.
-enum StorageAccountTypes {
+enum StorageAccountTypes implements pulumi.PulumiEnum<String> {
   standardLRS("Standard_LRS"),
   premiumLRS("Premium_LRS"),
   standardSSDLRS("StandardSSD_LRS"),
@@ -10,6 +12,7 @@ enum StorageAccountTypes {
   premiumV2LRS("PremiumV2_LRS");
 
   const StorageAccountTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageAccountTypes fromValue(String value) {

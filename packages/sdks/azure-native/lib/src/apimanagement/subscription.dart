@@ -234,4 +234,31 @@ class Subscription extends pulumi.CustomResource {
     stateComment = registerOutput<String?>('stateComment');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [Subscription] resource.
+  Subscription.reference(String urn)
+    : super(
+        'azure-native:apimanagement:Subscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowTracing = registerOutput<bool?>('allowTracing');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdDate = registerOutput<String>('createdDate');
+    displayName = registerOutput<String?>('displayName');
+    endDate = registerOutput<String?>('endDate');
+    expirationDate = registerOutput<String?>('expirationDate');
+    this.name = registerOutput<String>('name');
+    notificationDate = registerOutput<String?>('notificationDate');
+    ownerId = registerOutput<String?>('ownerId');
+    primaryKey = registerOutput<String?>('primaryKey');
+    scope = registerOutput<String>('scope');
+    secondaryKey = registerOutput<String?>('secondaryKey');
+    startDate = registerOutput<String?>('startDate');
+    state = registerOutput<String>('state');
+    stateComment = registerOutput<String?>('stateComment');
+    type = registerOutput<String>('type');
+  }
 }

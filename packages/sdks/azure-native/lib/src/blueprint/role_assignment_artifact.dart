@@ -890,7 +890,28 @@ class RoleAssignmentArtifact extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    dependsOn = registerOutput<List<String>?>('dependsOn');
+    dependsOn = registerOutput<List<String>?>('dependsOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    principalIds = registerOutput<dynamic>('principalIds');
+    resourceGroup = registerOutput<String?>('resourceGroup');
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [RoleAssignmentArtifact] resource.
+  RoleAssignmentArtifact.reference(String urn)
+    : super(
+        'azure-native:blueprint:RoleAssignmentArtifact',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dependsOn = registerOutput<List<String>?>('dependsOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     kind = registerOutput<String>('kind');

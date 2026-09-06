@@ -6,9 +6,9 @@ import 'deployment_extension_config_item_response.dart';
 /// Details about the usage of a deployment extension.
 class DeploymentExtensionResponse {
   /// The configuration used for deployment. The keys of this object should align with the extension config schema.
-  final pulumi.Input<Map<String, DeploymentExtensionConfigItemResponse>>? config;
+  final pulumi.Input<Map<String, DeploymentExtensionConfigItemResponse>?>? config;
   /// The configuration ID of the extension usage. It uniquely identifies a target the extension deploys to.
-  final pulumi.Input<String>? configId;
+  final pulumi.Input<String?>? configId;
   /// The extension name.
   final pulumi.Input<String> name;
   /// The extension version.

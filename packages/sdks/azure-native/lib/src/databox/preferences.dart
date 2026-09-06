@@ -7,15 +7,15 @@ import 'transport_preferences.dart';
 /// Preferences related to the order
 class Preferences {
   /// Preferences related to the Encryption.
-  final pulumi.Input<EncryptionPreferences>? encryptionPreferences;
+  final pulumi.Input<EncryptionPreferences?>? encryptionPreferences;
   /// Preferred data center region.
-  final pulumi.Input<List<String>>? preferredDataCenterRegion;
+  final pulumi.Input<List<String>?>? preferredDataCenterRegion;
   /// Optional Preferences related to the reverse shipment logistics of the sku.
-  final pulumi.Input<TransportPreferences>? reverseTransportPreferences;
+  final pulumi.Input<TransportPreferences?>? reverseTransportPreferences;
   /// Preferences related to the Access Tier of storage accounts.
-  final pulumi.Input<List<String>>? storageAccountAccessTierPreferences;
+  final pulumi.Input<List<dynamic>?>? storageAccountAccessTierPreferences;
   /// Preferences related to the shipment logistics of the sku.
-  final pulumi.Input<TransportPreferences>? transportPreferences;
+  final pulumi.Input<TransportPreferences?>? transportPreferences;
 
   /// Creates a new [Preferences].
   /// [encryptionPreferences] Preferences related to the Encryption.
@@ -46,7 +46,7 @@ class Preferences {
       encryptionPreferences: (() { final guardedValue = map['encryptionPreferences']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EncryptionPreferences.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       preferredDataCenterRegion: (() { final guardedValue = map['preferredDataCenterRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       reverseTransportPreferences: (() { final guardedValue = map['reverseTransportPreferences']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TransportPreferences.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      storageAccountAccessTierPreferences: (() { final guardedValue = map['storageAccountAccessTierPreferences']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      storageAccountAccessTierPreferences: (() { final guardedValue = map['storageAccountAccessTierPreferences']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       transportPreferences: (() { final guardedValue = map['transportPreferences']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TransportPreferences.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

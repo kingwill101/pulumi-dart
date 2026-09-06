@@ -6,9 +6,9 @@ import 'disk_encryption_configuration_auth.dart';
 /// The Key Vault that contains your key to use for disk encryption. The Key Vault must be in the same region as the Managed Environment.
 class DiskEncryptionConfigurationKeyVaultConfiguration {
   /// Configuration properties for the authentication to the Key Vault
-  final pulumi.Input<DiskEncryptionConfigurationAuth>? auth;
+  final pulumi.Input<DiskEncryptionConfigurationAuth?>? auth;
   /// Key URL pointing to a key in KeyVault. Version segment of the Url is required.
-  final pulumi.Input<String>? keyUrl;
+  final pulumi.Input<String?>? keyUrl;
 
   /// Creates a new [DiskEncryptionConfigurationKeyVaultConfiguration].
   /// [auth] Configuration properties for the authentication to the Key Vault

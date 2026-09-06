@@ -375,4 +375,18 @@ class NetworkVirtualApplianceConnection extends pulumi.CustomResource {
     this.name = registerOutput<String?>('name');
     properties = registerOutput<NetworkVirtualApplianceConnectionPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkVirtualApplianceConnectionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [NetworkVirtualApplianceConnection] resource.
+  NetworkVirtualApplianceConnection.reference(String urn)
+    : super(
+        'azure-native:network:NetworkVirtualApplianceConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String?>('name');
+    properties = registerOutput<NetworkVirtualApplianceConnectionPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkVirtualApplianceConnectionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

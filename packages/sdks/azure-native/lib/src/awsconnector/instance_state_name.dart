@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum InstanceStateName {
+enum InstanceStateName implements pulumi.PulumiEnum<String> {
   pending("pending"),
   running("running"),
   shuttingDown("shutting-down"),
@@ -8,6 +10,7 @@ enum InstanceStateName {
   terminated("terminated");
 
   const InstanceStateName(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceStateName fromValue(String value) {

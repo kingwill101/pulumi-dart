@@ -14,35 +14,35 @@ import 'resource_forest_settings.dart';
 /// {@macro pulumi_aad_domain_service_args_doc}
 class DomainServiceArgs {
   /// Configuration diagnostics data containing latest execution from client.
-  final pulumi.Input<ConfigDiagnostics>? configDiagnostics;
+  final pulumi.Input<ConfigDiagnostics?>? configDiagnostics;
   /// Domain Configuration Type
-  final pulumi.Input<String>? domainConfigurationType;
+  final pulumi.Input<String?>? domainConfigurationType;
   /// The name of the Azure domain that the user would like to deploy Domain Services to.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// DomainSecurity Settings
-  final pulumi.Input<DomainSecuritySettings>? domainSecuritySettings;
+  final pulumi.Input<DomainSecuritySettings?>? domainSecuritySettings;
   /// The name of the domain service.
-  final pulumi.Input<String>? domainServiceName;
+  final pulumi.Input<String?>? domainServiceName;
   /// Enabled or Disabled flag to turn on Group-based filtered sync
-  final pulumi.Input<String>? filteredSync;
+  final pulumi.Input<dynamic>? filteredSync;
   /// Secure LDAP Settings
-  final pulumi.Input<LdapsSettings>? ldapsSettings;
+  final pulumi.Input<LdapsSettings?>? ldapsSettings;
   /// Resource location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Notification Settings
-  final pulumi.Input<NotificationSettings>? notificationSettings;
+  final pulumi.Input<NotificationSettings?>? notificationSettings;
   /// List of ReplicaSets
-  final pulumi.Input<List<ReplicaSet>>? replicaSets;
+  final pulumi.Input<List<ReplicaSet>?>? replicaSets;
   /// Resource Forest Settings
-  final pulumi.Input<ResourceForestSettings>? resourceForestSettings;
+  final pulumi.Input<ResourceForestSettings?>? resourceForestSettings;
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Sku Type
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud
-  final pulumi.Input<String>? syncScope;
+  final pulumi.Input<dynamic>? syncScope;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DomainServiceArgs].
   /// [configDiagnostics] Configuration diagnostics data containing latest execution from client.
@@ -60,7 +60,7 @@ class DomainServiceArgs {
   /// [sku] Sku Type
   /// [syncScope] All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud
   /// [tags] Resource tags
-  const DomainServiceArgs({
+  DomainServiceArgs({
     this.configDiagnostics,
     this.domainConfigurationType,
     this.domainName,
@@ -74,9 +74,9 @@ class DomainServiceArgs {
     this.resourceForestSettings,
     required this.resourceGroupName,
     this.sku,
-    this.syncScope,
+    pulumi.Input<dynamic>? syncScope,
     this.tags,
-  });
+  }) : syncScope = syncScope ?? pulumi.Input.fromValue('All');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,7 +105,7 @@ class DomainServiceArgs {
       domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       domainSecuritySettings: (() { final guardedValue = map['domainSecuritySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainSecuritySettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       domainServiceName: (() { final guardedValue = map['domainServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      filteredSync: (() { final guardedValue = map['filteredSync']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filteredSync: (() { final guardedValue = map['filteredSync']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       ldapsSettings: (() { final guardedValue = map['ldapsSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LdapsSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notificationSettings: (() { final guardedValue = map['notificationSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NotificationSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -113,7 +113,7 @@ class DomainServiceArgs {
       resourceForestSettings: (() { final guardedValue = map['resourceForestSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceForestSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      syncScope: (() { final guardedValue = map['syncScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      syncScope: (() { final guardedValue = map['syncScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

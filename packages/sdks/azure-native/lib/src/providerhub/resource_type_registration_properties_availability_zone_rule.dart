@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The availability zone rule.
 class ResourceTypeRegistrationPropertiesAvailabilityZoneRule {
-  final pulumi.Input<String>? availabilityZonePolicy;
+  final pulumi.Input<dynamic>? availabilityZonePolicy;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesAvailabilityZoneRule].
   /// [availabilityZonePolicy] Optional.
@@ -20,7 +20,7 @@ class ResourceTypeRegistrationPropertiesAvailabilityZoneRule {
 
   factory ResourceTypeRegistrationPropertiesAvailabilityZoneRule.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesAvailabilityZoneRule(
-      availabilityZonePolicy: (() { final guardedValue = map['availabilityZonePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      availabilityZonePolicy: (() { final guardedValue = map['availabilityZonePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

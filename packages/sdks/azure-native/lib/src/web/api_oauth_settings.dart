@@ -6,19 +6,19 @@ import 'api_oauth_settings_parameter.dart';
 /// OAuth settings for the connection provider
 class ApiOAuthSettings {
   /// Resource provider client id
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Client Secret needed for OAuth
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// OAuth parameters key is the name of parameter
-  final pulumi.Input<Map<String, ApiOAuthSettingsParameter>>? customParameters;
+  final pulumi.Input<Map<String, ApiOAuthSettingsParameter>?>? customParameters;
   /// Identity provider
-  final pulumi.Input<String>? identityProvider;
+  final pulumi.Input<String?>? identityProvider;
   /// Read only properties for this oauth setting.
   final pulumi.Input<dynamic>? properties;
   /// Url
-  final pulumi.Input<String>? redirectUrl;
+  final pulumi.Input<String?>? redirectUrl;
   /// OAuth scopes
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
 
   /// Creates a new [ApiOAuthSettings].
   /// [clientId] Resource provider client id

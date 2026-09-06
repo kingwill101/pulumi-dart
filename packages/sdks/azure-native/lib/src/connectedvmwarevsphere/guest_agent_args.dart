@@ -10,15 +10,15 @@ import 'http_proxy_configuration.dart';
 /// {@macro pulumi_connectedvmwarevsphere_guest_agent_args_doc}
 class GuestAgentArgs {
   /// Username / Password Credentials to provision guest agent.
-  final pulumi.Input<GuestCredential>? credentials;
+  final pulumi.Input<GuestCredential?>? credentials;
   /// HTTP Proxy configuration for the VM.
-  final pulumi.Input<HttpProxyConfiguration>? httpProxyConfig;
+  final pulumi.Input<HttpProxyConfiguration?>? httpProxyConfig;
   /// Name of the guestAgents.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource id of the private link scope this machine is assigned to, if any.
-  final pulumi.Input<String>? privateLinkScopeResourceId;
+  final pulumi.Input<String?>? privateLinkScopeResourceId;
   /// Gets or sets the guest agent provisioning action.
-  final pulumi.Input<String>? provisioningAction;
+  final pulumi.Input<dynamic>? provisioningAction;
   /// The Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the vm.
@@ -60,7 +60,7 @@ class GuestAgentArgs {
       httpProxyConfig: (() { final guardedValue = map['httpProxyConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HttpProxyConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateLinkScopeResourceId: (() { final guardedValue = map['privateLinkScopeResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      provisioningAction: (() { final guardedValue = map['provisioningAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningAction: (() { final guardedValue = map['provisioningAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       virtualMachineName: pulumi.Input.fromValue(map['virtualMachineName'] as String),
     );

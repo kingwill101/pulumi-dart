@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Set the access level and network port settings for SQL Server.
 class SqlConnectivityUpdateSettings {
   /// SQL Server connectivity option.
-  final pulumi.Input<String>? connectivityType;
+  final pulumi.Input<dynamic>? connectivityType;
   /// SQL Server port.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// SQL Server sysadmin login password.
-  final pulumi.Input<String>? sqlAuthUpdatePassword;
+  final pulumi.Input<String?>? sqlAuthUpdatePassword;
   /// SQL Server sysadmin login to create.
-  final pulumi.Input<String>? sqlAuthUpdateUserName;
+  final pulumi.Input<String?>? sqlAuthUpdateUserName;
 
   /// Creates a new [SqlConnectivityUpdateSettings].
   /// [connectivityType] SQL Server connectivity option.
@@ -36,8 +36,8 @@ class SqlConnectivityUpdateSettings {
 
   factory SqlConnectivityUpdateSettings.fromMap(Map<String, dynamic> map) {
     return SqlConnectivityUpdateSettings(
-      connectivityType: (() { final guardedValue = map['connectivityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      connectivityType: (() { final guardedValue = map['connectivityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sqlAuthUpdatePassword: (() { final guardedValue = map['sqlAuthUpdatePassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sqlAuthUpdateUserName: (() { final guardedValue = map['sqlAuthUpdateUserName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

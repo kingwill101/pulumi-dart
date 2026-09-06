@@ -10,7 +10,7 @@ class GalleryArgs {
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
   /// The name of the gallery.
-  final pulumi.Input<String>? galleryName;
+  final pulumi.Input<String?>? galleryName;
   /// The resource ID of the backing Azure Compute Gallery.
   final pulumi.Input<String> galleryResourceId;
   /// The name of the resource group. The name is case insensitive.

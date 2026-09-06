@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Source with uploaded location
 class UploadedUserSourceInfo {
   /// Relative path of the storage which stores the source
-  final pulumi.Input<String>? relativePath;
+  final pulumi.Input<String?>? relativePath;
   /// Type of the source uploaded
   /// Expected value is 'UploadedUserSourceInfo'.
   final pulumi.Input<String> type;
   /// Version of the source
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [UploadedUserSourceInfo].
   /// [relativePath] Relative path of the storage which stores the source

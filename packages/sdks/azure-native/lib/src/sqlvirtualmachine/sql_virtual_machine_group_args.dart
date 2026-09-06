@@ -9,19 +9,19 @@ import 'wsfc_domain_profile.dart';
 /// {@macro pulumi_sqlvirtualmachine_sql_virtual_machine_group_args_doc}
 class SqlVirtualMachineGroupArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// SQL image offer. Examples may include SQL2016-WS2016, SQL2017-WS2016.
-  final pulumi.Input<String>? sqlImageOffer;
+  final pulumi.Input<String?>? sqlImageOffer;
   /// SQL image sku.
-  final pulumi.Input<String>? sqlImageSku;
+  final pulumi.Input<dynamic>? sqlImageSku;
   /// Name of the SQL virtual machine group.
-  final pulumi.Input<String>? sqlVirtualMachineGroupName;
+  final pulumi.Input<String?>? sqlVirtualMachineGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Cluster Active Directory domain profile.
-  final pulumi.Input<WsfcDomainProfile>? wsfcDomainProfile;
+  final pulumi.Input<WsfcDomainProfile?>? wsfcDomainProfile;
 
   /// Creates a new [SqlVirtualMachineGroupArgs].
   /// [location] The geo-location where the resource lives
@@ -58,7 +58,7 @@ class SqlVirtualMachineGroupArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sqlImageOffer: (() { final guardedValue = map['sqlImageOffer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sqlImageSku: (() { final guardedValue = map['sqlImageSku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sqlImageSku: (() { final guardedValue = map['sqlImageSku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sqlVirtualMachineGroupName: (() { final guardedValue = map['sqlVirtualMachineGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       wsfcDomainProfile: (() { final guardedValue = map['wsfcDomainProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WsfcDomainProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -6,9 +6,9 @@ import 'parameter_response.dart';
 /// Action to be taken on a route matching a RouteMap criterion.
 class ActionResponse {
   /// List of parameters relevant to the action.For instance if type is drop then parameters has list of prefixes to be dropped.If type is add, parameters would have list of ASN numbers to be added
-  final pulumi.Input<List<ParameterResponse>>? parameters;
+  final pulumi.Input<List<ParameterResponse>?>? parameters;
   /// Type of action to be taken. Supported types are 'Remove', 'Add', 'Replace', and 'Drop.'
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ActionResponse].
   /// [parameters] List of parameters relevant to the action.For instance if type is drop then parameters has list of prefixes to be dropped.If type is add, parameters would have list of ASN numbers to be added

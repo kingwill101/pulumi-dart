@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Pairs of Managed Instances in the failover group.
 class ManagedInstancePairInfoResponse {
   /// Id of Partner Managed Instance in pair.
-  final pulumi.Input<String>? partnerManagedInstanceId;
+  final pulumi.Input<String?>? partnerManagedInstanceId;
   /// Id of Primary Managed Instance in pair.
-  final pulumi.Input<String>? primaryManagedInstanceId;
+  final pulumi.Input<String?>? primaryManagedInstanceId;
 
   /// Creates a new [ManagedInstancePairInfoResponse].
   /// [partnerManagedInstanceId] Id of Partner Managed Instance in pair.

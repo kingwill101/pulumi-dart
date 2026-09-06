@@ -7,11 +7,11 @@ import 'flow_tracking_definition_response.dart';
 /// The tracking profile for the business process
 class TrackingProfileDefinitionResponse {
   /// The business process reference.
-  final pulumi.Input<BusinessProcessReferenceResponse>? businessProcess;
+  final pulumi.Input<BusinessProcessReferenceResponse?>? businessProcess;
   /// The tracking definition schema uri.
-  final pulumi.Input<String>? schema;
+  final pulumi.Input<String?>? schema;
   /// The tracking definitions.
-  final pulumi.Input<Map<String, FlowTrackingDefinitionResponse>>? trackingDefinitions;
+  final pulumi.Input<Map<String, FlowTrackingDefinitionResponse>?>? trackingDefinitions;
 
   /// Creates a new [TrackingProfileDefinitionResponse].
   /// [businessProcess] The business process reference.

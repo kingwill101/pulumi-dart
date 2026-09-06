@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates whether the Role Definition was built-in or user created.
-enum RoleDefinitionType {
+enum RoleDefinitionType implements pulumi.PulumiEnum<String> {
   valueBuiltInRole("BuiltInRole"),
   valueCustomRole("CustomRole");
 
   const RoleDefinitionType(this.wireValue);
+  @override
   final String wireValue;
 
   static RoleDefinitionType fromValue(String value) {

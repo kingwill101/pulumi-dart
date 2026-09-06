@@ -8,11 +8,11 @@ import 'column_response.dart';
 /// Cosmos DB Cassandra table schema
 class CassandraSchemaResponse {
   /// List of cluster key.
-  final pulumi.Input<List<ClusterKeyResponse>>? clusterKeys;
+  final pulumi.Input<List<ClusterKeyResponse>?>? clusterKeys;
   /// List of Cassandra table columns.
-  final pulumi.Input<List<ColumnResponse>>? columns;
+  final pulumi.Input<List<ColumnResponse>?>? columns;
   /// List of partition key.
-  final pulumi.Input<List<CassandraPartitionKeyResponse>>? partitionKeys;
+  final pulumi.Input<List<CassandraPartitionKeyResponse>?>? partitionKeys;
 
   /// Creates a new [CassandraSchemaResponse].
   /// [clusterKeys] List of cluster key.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ESU key
 class EsuKeyResponse {
   /// The current status of the license profile key. Represented by the same integer value that is presented on the machine itself when querying the license key status.
-  final pulumi.Input<int>? licenseStatus;
+  final pulumi.Input<int?>? licenseStatus;
   /// SKU number.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
 
   /// Creates a new [EsuKeyResponse].
   /// [licenseStatus] The current status of the license profile key. Represented by the same integer value that is presented on the machine itself when querying the license key status.
@@ -26,7 +26,7 @@ class EsuKeyResponse {
 
   factory EsuKeyResponse.fromMap(Map<String, dynamic> map) {
     return EsuKeyResponse(
-      licenseStatus: (() { final guardedValue = map['licenseStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      licenseStatus: (() { final guardedValue = map['licenseStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

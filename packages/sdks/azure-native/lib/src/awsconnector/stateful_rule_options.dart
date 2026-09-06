@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of StatefulRuleOptions
 class StatefulRuleOptions {
   /// Property ruleOrder
-  final pulumi.Input<String>? ruleOrder;
+  final pulumi.Input<dynamic>? ruleOrder;
 
   /// Creates a new [StatefulRuleOptions].
   /// [ruleOrder] Property ruleOrder
@@ -21,7 +21,7 @@ class StatefulRuleOptions {
 
   factory StatefulRuleOptions.fromMap(Map<String, dynamic> map) {
     return StatefulRuleOptions(
-      ruleOrder: (() { final guardedValue = map['ruleOrder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ruleOrder: (() { final guardedValue = map['ruleOrder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -107,7 +107,7 @@ class IntentsHciEdgeDeviceResponse {
       adapterPropertyOverrides: pulumi.Input.fromValue(AdapterPropertyOverridesHciEdgeDeviceResponse.fromMap((map['adapterPropertyOverrides']! as Map).cast<String, dynamic>())),
       intentAdapters: pulumi.Input.fromValue((map['intentAdapters'] as List).cast<String>()),
       intentName: pulumi.Input.fromValue(map['intentName'] as String),
-      intentType: pulumi.Input.fromValue(map['intentType'] as double),
+      intentType: pulumi.Input.fromValue((map['intentType'] as num).toDouble()),
       isComputeIntentSet: pulumi.Input.fromValue(map['isComputeIntentSet'] as bool),
       isManagementIntentSet: pulumi.Input.fromValue(map['isManagementIntentSet'] as bool),
       isNetworkIntentType: pulumi.Input.fromValue(map['isNetworkIntentType'] as bool),
@@ -119,7 +119,7 @@ class IntentsHciEdgeDeviceResponse {
       overrideQosPolicy: pulumi.Input.fromValue(map['overrideQosPolicy'] as bool),
       overrideVirtualSwitchConfiguration: pulumi.Input.fromValue(map['overrideVirtualSwitchConfiguration'] as bool),
       qosPolicyOverrides: pulumi.Input.fromValue(QosPolicyOverridesResponse.fromMap((map['qosPolicyOverrides']! as Map).cast<String, dynamic>())),
-      scope: pulumi.Input.fromValue(map['scope'] as double),
+      scope: pulumi.Input.fromValue((map['scope'] as num).toDouble()),
       virtualSwitchConfigurationOverrides: pulumi.Input.fromValue(VirtualSwitchConfigurationOverridesHciEdgeDeviceResponse.fromMap((map['virtualSwitchConfigurationOverrides']! as Map).cast<String, dynamic>())),
     );
   }

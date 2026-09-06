@@ -5,31 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Git repository property payload for Application Configuration Service
 class ConfigurationServiceGitRepositoryResponse {
   /// Resource Id of CA certificate for https URL of Git repository.
-  final pulumi.Input<String>? caCertResourceId;
+  final pulumi.Input<String?>? caCertResourceId;
   /// Git libraries used to support various repository providers
-  final pulumi.Input<String>? gitImplementation;
+  final pulumi.Input<String?>? gitImplementation;
   /// Public sshKey of git repository.
-  final pulumi.Input<String>? hostKey;
+  final pulumi.Input<String?>? hostKey;
   /// SshKey algorithm of git repository.
-  final pulumi.Input<String>? hostKeyAlgorithm;
+  final pulumi.Input<String?>? hostKeyAlgorithm;
   /// Label of the repository
   final pulumi.Input<String> label;
   /// Name of the repository
   final pulumi.Input<String> name;
   /// Password of git repository basic auth.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Collection of patterns of the repository
   final pulumi.Input<List<String>> patterns;
   /// Private sshKey algorithm of git repository.
-  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String?>? privateKey;
   /// Searching path of the repository
-  final pulumi.Input<List<String>>? searchPaths;
+  final pulumi.Input<List<String>?>? searchPaths;
   /// Strict host key checking or not.
-  final pulumi.Input<bool>? strictHostKeyChecking;
+  final pulumi.Input<bool?>? strictHostKeyChecking;
   /// URI of the repository
   final pulumi.Input<String> uri;
   /// Username of git repository basic auth.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [ConfigurationServiceGitRepositoryResponse].
   /// [caCertResourceId] Resource Id of CA certificate for https URL of Git repository.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Key Encryption Key (KEK) information.
 class KeyEncryptionKeyInfo {
   /// The key URL / identifier.
-  final pulumi.Input<String>? keyIdentifier;
+  final pulumi.Input<String?>? keyIdentifier;
   /// The KeyVault resource ARM Id for key.
-  final pulumi.Input<String>? keyVaultResourceArmId;
+  final pulumi.Input<String?>? keyVaultResourceArmId;
 
   /// Creates a new [KeyEncryptionKeyInfo].
   /// [keyIdentifier] The key URL / identifier.

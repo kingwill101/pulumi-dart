@@ -14,24 +14,24 @@ import 'twitter.dart';
 /// The configuration settings of each of the identity providers used to configure App Service Authentication/Authorization.
 class IdentityProviders {
   /// The configuration settings of the Apple provider.
-  final pulumi.Input<Apple>? apple;
+  final pulumi.Input<Apple?>? apple;
   /// The configuration settings of the Azure Active directory provider.
-  final pulumi.Input<AzureActiveDirectory>? azureActiveDirectory;
+  final pulumi.Input<AzureActiveDirectory?>? azureActiveDirectory;
   /// The configuration settings of the Azure Static Web Apps provider.
-  final pulumi.Input<AzureStaticWebApps>? azureStaticWebApps;
+  final pulumi.Input<AzureStaticWebApps?>? azureStaticWebApps;
   /// The map of the name of the alias of each custom Open ID Connect provider to the
   /// configuration settings of the custom Open ID Connect provider.
-  final pulumi.Input<Map<String, CustomOpenIdConnectProvider>>? customOpenIdConnectProviders;
+  final pulumi.Input<Map<String, CustomOpenIdConnectProvider>?>? customOpenIdConnectProviders;
   /// The configuration settings of the Facebook provider.
-  final pulumi.Input<Facebook>? facebook;
+  final pulumi.Input<Facebook?>? facebook;
   /// The configuration settings of the GitHub provider.
-  final pulumi.Input<GitHub>? gitHub;
+  final pulumi.Input<GitHub?>? gitHub;
   /// The configuration settings of the Google provider.
-  final pulumi.Input<Google>? google;
+  final pulumi.Input<Google?>? google;
   /// The configuration settings of the legacy Microsoft Account provider.
-  final pulumi.Input<LegacyMicrosoftAccount>? legacyMicrosoftAccount;
+  final pulumi.Input<LegacyMicrosoftAccount?>? legacyMicrosoftAccount;
   /// The configuration settings of the Twitter provider.
-  final pulumi.Input<Twitter>? twitter;
+  final pulumi.Input<Twitter?>? twitter;
 
   /// Creates a new [IdentityProviders].
   /// [apple] The configuration settings of the Apple provider.

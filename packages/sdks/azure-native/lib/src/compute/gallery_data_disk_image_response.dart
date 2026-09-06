@@ -6,13 +6,13 @@ import 'gallery_disk_image_source_response.dart';
 /// This is the data disk image.
 class GalleryDataDiskImageResponse {
   /// The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
-  final pulumi.Input<String>? hostCaching;
+  final pulumi.Input<String?>? hostCaching;
   /// This property specifies the logical unit number of the data disk. This value is used to identify data disks within the Virtual Machine and therefore must be unique for each data disk attached to the Virtual Machine.
   final pulumi.Input<int> lun;
   /// This property indicates the size of the VHD to be created.
   final pulumi.Input<int> sizeInGB;
   /// The source for the disk image.
-  final pulumi.Input<GalleryDiskImageSourceResponse>? source;
+  final pulumi.Input<GalleryDiskImageSourceResponse?>? source;
 
   /// Creates a new [GalleryDataDiskImageResponse].
   /// [hostCaching] The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
@@ -38,8 +38,8 @@ class GalleryDataDiskImageResponse {
   factory GalleryDataDiskImageResponse.fromMap(Map<String, dynamic> map) {
     return GalleryDataDiskImageResponse(
       hostCaching: (() { final guardedValue = map['hostCaching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      lun: pulumi.Input.fromValue(map['lun'] as int),
-      sizeInGB: pulumi.Input.fromValue(map['sizeInGB'] as int),
+      lun: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['lun'])),
+      sizeInGB: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeInGB'])),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GalleryDiskImageSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

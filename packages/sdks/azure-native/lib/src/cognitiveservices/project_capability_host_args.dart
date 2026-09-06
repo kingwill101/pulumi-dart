@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'project_capability_host_cognitiveservices.dart';
+import 'project_capability_host.dart';
 
 /// {@template pulumi_cognitiveservices_project_capability_host_args_doc}
 /// The set of arguments for ProjectCapabilityHost.
@@ -11,9 +11,9 @@ class ProjectCapabilityHostArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
   /// The name of the capability host associated with the Cognitive Services Resource
-  final pulumi.Input<String>? capabilityHostName;
+  final pulumi.Input<String?>? capabilityHostName;
   /// [Required] Additional attributes of the entity.
-  final pulumi.Input<ProjectCapabilityHostCognitiveservices> projectCapabilityHostProperties;
+  final pulumi.Input<ProjectCapabilityHost> projectCapabilityHostProperties;
   /// The name of Cognitive Services account's project.
   final pulumi.Input<String> projectName;
   /// The name of the resource group. The name is case insensitive.
@@ -37,7 +37,7 @@ class ProjectCapabilityHostArgs {
     return <String, dynamic>{
       'accountName': accountName,
       'capabilityHostName': ?capabilityHostName,
-      'projectCapabilityHostProperties': projectCapabilityHostProperties,
+      'projectCapabilityHostProperties': pulumi.Input.mapInputValue<ProjectCapabilityHost, Map<String, dynamic>>(projectCapabilityHostProperties, (value) => value.toMap()),
       'projectName': projectName,
       'resourceGroupName': resourceGroupName,
     };
@@ -47,7 +47,7 @@ class ProjectCapabilityHostArgs {
     return ProjectCapabilityHostArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       capabilityHostName: (() { final guardedValue = map['capabilityHostName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      projectCapabilityHostProperties: pulumi.Input.fromValue(map['projectCapabilityHostProperties'] as ProjectCapabilityHostCognitiveservices),
+      projectCapabilityHostProperties: pulumi.Input.fromValue(ProjectCapabilityHost.fromMap((map['projectCapabilityHostProperties']! as Map).cast<String, dynamic>())),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );

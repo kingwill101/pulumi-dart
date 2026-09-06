@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sku_recommendation_results_azure_sql_managed_instance_response_category.dart';
 
 class SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku {
-  final pulumi.Input<SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory>? category;
+  final pulumi.Input<SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory?>? category;
 
   /// Creates a new [SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku].
   /// [category] Optional.

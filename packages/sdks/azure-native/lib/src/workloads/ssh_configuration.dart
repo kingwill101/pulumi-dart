@@ -6,7 +6,7 @@ import 'ssh_public_key.dart';
 /// SSH configuration for Linux based VMs running on Azure
 class SshConfiguration {
   /// The list of SSH public keys used to authenticate with linux based VMs.
-  final pulumi.Input<List<SshPublicKey>>? publicKeys;
+  final pulumi.Input<List<SshPublicKey>?>? publicKeys;
 
   /// Creates a new [SshConfiguration].
   /// [publicKeys] The list of SSH public keys used to authenticate with linux based VMs.

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the node.
-enum DataflowGraphNodeType {
+enum DataflowGraphNodeType implements pulumi.PulumiEnum<String> {
   source("Source"),
   graph("Graph"),
   destination("Destination");
 
   const DataflowGraphNodeType(this.wireValue);
+  @override
   final String wireValue;
 
   static DataflowGraphNodeType fromValue(String value) {

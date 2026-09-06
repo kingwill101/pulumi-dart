@@ -6,27 +6,27 @@ import 'station_connection_properties_response.dart';
 /// BGP Monitoring Protocol (BMP) Configuration properties.
 class BmpConfigurationPropertiesResponse {
   /// Export Policy for the BMP Configuration.
-  final pulumi.Input<String>? exportPolicy;
+  final pulumi.Input<String?>? exportPolicy;
   /// Monitored Address Families for the BMP Configuration.
-  final pulumi.Input<List<String>>? monitoredAddressFamilies;
+  final pulumi.Input<List<String>?>? monitoredAddressFamilies;
   /// The List of Network ID's that need to be monitored.
-  final pulumi.Input<List<String>>? monitoredNetworks;
+  final pulumi.Input<List<String>?>? monitoredNetworks;
   /// Scope resource ARM Identifier.
-  final pulumi.Input<String>? scopeResourceId;
+  final pulumi.Input<String?>? scopeResourceId;
   /// Enabling a station. Either True/False.
-  final pulumi.Input<String>? stationConfigurationState;
+  final pulumi.Input<String?>? stationConfigurationState;
   /// Station Connection Mode.
-  final pulumi.Input<String>? stationConnectionMode;
+  final pulumi.Input<String?>? stationConnectionMode;
   /// Station Connection Properties.
-  final pulumi.Input<StationConnectionPropertiesResponse>? stationConnectionProperties;
+  final pulumi.Input<StationConnectionPropertiesResponse?>? stationConnectionProperties;
   /// IP Address of the station.
-  final pulumi.Input<String>? stationIp;
+  final pulumi.Input<String?>? stationIp;
   /// Name of the station.
-  final pulumi.Input<String>? stationName;
+  final pulumi.Input<String?>? stationName;
   /// Network of the station
-  final pulumi.Input<String>? stationNetwork;
+  final pulumi.Input<String?>? stationNetwork;
   /// Port of the station. Default value is 5000.
-  final pulumi.Input<int>? stationPort;
+  final pulumi.Input<int?>? stationPort;
 
   /// Creates a new [BmpConfigurationPropertiesResponse].
   /// [exportPolicy] Export Policy for the BMP Configuration.
@@ -40,8 +40,8 @@ class BmpConfigurationPropertiesResponse {
   /// [stationName] Name of the station.
   /// [stationNetwork] Network of the station
   /// [stationPort] Port of the station. Default value is 5000.
-  const BmpConfigurationPropertiesResponse({
-    this.exportPolicy,
+  BmpConfigurationPropertiesResponse({
+    pulumi.Input<String?>? exportPolicy,
     this.monitoredAddressFamilies,
     this.monitoredNetworks,
     this.scopeResourceId,
@@ -51,8 +51,8 @@ class BmpConfigurationPropertiesResponse {
     this.stationIp,
     this.stationName,
     this.stationNetwork,
-    this.stationPort,
-  });
+    pulumi.Input<int?>? stationPort,
+  }) : exportPolicy = exportPolicy ?? pulumi.Input.fromValue('All'), stationPort = stationPort ?? pulumi.Input.fromValue(5000);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,7 +82,7 @@ class BmpConfigurationPropertiesResponse {
       stationIp: (() { final guardedValue = map['stationIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       stationName: (() { final guardedValue = map['stationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       stationNetwork: (() { final guardedValue = map['stationNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      stationPort: (() { final guardedValue = map['stationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      stationPort: (() { final guardedValue = map['stationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

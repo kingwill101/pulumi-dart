@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The license type to apply for this elastic pool.
-enum ElasticPoolLicenseType {
+enum ElasticPoolLicenseType implements pulumi.PulumiEnum<String> {
   valueLicenseIncluded("LicenseIncluded"),
   valueBasePrice("BasePrice");
 
   const ElasticPoolLicenseType(this.wireValue);
+  @override
   final String wireValue;
 
   static ElasticPoolLicenseType fromValue(String value) {

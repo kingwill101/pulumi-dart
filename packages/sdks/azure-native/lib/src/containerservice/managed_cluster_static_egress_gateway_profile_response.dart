@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Static Egress Gateway addon configuration for the cluster.
 class ManagedClusterStaticEgressGatewayProfileResponse {
   /// Enable Static Egress Gateway addon. Indicates if Static Egress Gateway addon is enabled or not.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ManagedClusterStaticEgressGatewayProfileResponse].
   /// [enabled] Enable Static Egress Gateway addon. Indicates if Static Egress Gateway addon is enabled or not.

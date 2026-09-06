@@ -41,4 +41,20 @@ class WorkflowAccessKey extends pulumi.CustomResource {
     notBefore = registerOutput<String?>('notBefore');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [WorkflowAccessKey] resource.
+  WorkflowAccessKey.reference(String urn)
+    : super(
+        'azure-native:logic:WorkflowAccessKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    notAfter = registerOutput<String?>('notAfter');
+    notBefore = registerOutput<String?>('notBefore');
+    type = registerOutput<String>('type');
+  }
 }

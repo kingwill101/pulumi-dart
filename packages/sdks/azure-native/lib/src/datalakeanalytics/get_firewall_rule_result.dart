@@ -4,17 +4,17 @@
 /// Result data returned by getFirewallRule.
 class GetFirewallRuleResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
-  final String endIpAddress;
+  final String? endIpAddress;
   /// The resource identifier.
-  final String id;
+  final String? id;
   /// The resource name.
-  final String name;
+  final String? name;
   /// The start IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
-  final String startIpAddress;
+  final String? startIpAddress;
   /// The resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetFirewallRuleResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -24,33 +24,33 @@ class GetFirewallRuleResult {
   /// [startIpAddress] The start IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
   /// [type] The resource type.
   const GetFirewallRuleResult({
-    required this.azureApiVersion,
-    required this.endIpAddress,
-    required this.id,
-    required this.name,
-    required this.startIpAddress,
-    required this.type,
+    this.azureApiVersion,
+    this.endIpAddress,
+    this.id,
+    this.name,
+    this.startIpAddress,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'endIpAddress': endIpAddress,
-      'id': id,
-      'name': name,
-      'startIpAddress': startIpAddress,
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'endIpAddress': ?endIpAddress,
+      'id': ?id,
+      'name': ?name,
+      'startIpAddress': ?startIpAddress,
+      'type': ?type,
     };
   }
 
   factory GetFirewallRuleResult.fromMap(Map<String, dynamic> map) {
     return GetFirewallRuleResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      endIpAddress: map['endIpAddress'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      startIpAddress: map['startIpAddress'] as String,
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endIpAddress: (() { final guardedValue = map['endIpAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      startIpAddress: (() { final guardedValue = map['startIpAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -3193,7 +3193,65 @@ class Database extends pulumi.CustomResource {
     secondaryType = registerOutput<String?>('secondaryType');
     sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    useFreeLimit = registerOutput<bool?>('useFreeLimit');
+    zoneRedundant = registerOutput<bool?>('zoneRedundant');
+  }
+
+  /// Creates a typed reference to an existing [Database] resource.
+  Database.reference(String urn)
+    : super(
+        'azure-native:sql:Database',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoPauseDelay = registerOutput<int?>('autoPauseDelay');
+    availabilityZone = registerOutput<String?>('availabilityZone');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    catalogCollation = registerOutput<String?>('catalogCollation');
+    collation = registerOutput<String?>('collation');
+    creationDate = registerOutput<String>('creationDate');
+    currentBackupStorageRedundancy = registerOutput<String>('currentBackupStorageRedundancy');
+    currentServiceObjectiveName = registerOutput<String>('currentServiceObjectiveName');
+    currentSku = registerOutput<SkuResponse>('currentSku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    databaseId = registerOutput<String>('databaseId');
+    defaultSecondaryLocation = registerOutput<String>('defaultSecondaryLocation');
+    earliestRestoreDate = registerOutput<String>('earliestRestoreDate');
+    elasticPoolId = registerOutput<String?>('elasticPoolId');
+    encryptionProtector = registerOutput<String?>('encryptionProtector');
+    encryptionProtectorAutoRotation = registerOutput<bool?>('encryptionProtectorAutoRotation');
+    failoverGroupId = registerOutput<String>('failoverGroupId');
+    federatedClientId = registerOutput<String?>('federatedClientId');
+    freeLimitExhaustionBehavior = registerOutput<String?>('freeLimitExhaustionBehavior');
+    highAvailabilityReplicaCount = registerOutput<int?>('highAvailabilityReplicaCount');
+    identity = registerOutput<DatabaseIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isInfraEncryptionEnabled = registerOutput<bool>('isInfraEncryptionEnabled');
+    isLedgerOn = registerOutput<bool?>('isLedgerOn');
+    keys = registerOutput<Map<String, DatabaseKeyResponse>?>('keys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<DatabaseKeyResponse>(guardedValue, (value) => DatabaseKeyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    kind = registerOutput<String>('kind');
+    licenseType = registerOutput<String?>('licenseType');
+    location = registerOutput<String>('location');
+    maintenanceConfigurationId = registerOutput<String?>('maintenanceConfigurationId');
+    managedBy = registerOutput<String>('managedBy');
+    manualCutover = registerOutput<bool?>('manualCutover');
+    maxLogSizeBytes = registerOutput<double>('maxLogSizeBytes');
+    maxSizeBytes = registerOutput<double?>('maxSizeBytes');
+    minCapacity = registerOutput<double?>('minCapacity');
+    this.name = registerOutput<String>('name');
+    pausedDate = registerOutput<String>('pausedDate');
+    performCutover = registerOutput<bool?>('performCutover');
+    preferredEnclaveType = registerOutput<String?>('preferredEnclaveType');
+    readScale = registerOutput<String?>('readScale');
+    requestedBackupStorageRedundancy = registerOutput<String?>('requestedBackupStorageRedundancy');
+    requestedServiceObjectiveName = registerOutput<String>('requestedServiceObjectiveName');
+    resumedDate = registerOutput<String>('resumedDate');
+    secondaryType = registerOutput<String?>('secondaryType');
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     useFreeLimit = registerOutput<bool?>('useFreeLimit');
     zoneRedundant = registerOutput<bool?>('zoneRedundant');

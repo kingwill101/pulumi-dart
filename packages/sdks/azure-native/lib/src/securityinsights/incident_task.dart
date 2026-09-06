@@ -231,4 +231,27 @@ class IncidentTask extends pulumi.CustomResource {
     title = registerOutput<String>('title');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [IncidentTask] resource.
+  IncidentTask.reference(String urn)
+    : super(
+        'azure-native:securityinsights:IncidentTask',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdBy = registerOutput<ClientInfoResponse?>('createdBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdTimeUtc = registerOutput<String>('createdTimeUtc');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String?>('etag');
+    lastModifiedBy = registerOutput<ClientInfoResponse?>('lastModifiedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
+    this.name = registerOutput<String>('name');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    title = registerOutput<String>('title');
+    type = registerOutput<String>('type');
+  }
 }

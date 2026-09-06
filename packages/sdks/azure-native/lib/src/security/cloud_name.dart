@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The multi cloud resource's cloud name.
-enum CloudName {
+enum CloudName implements pulumi.PulumiEnum<String> {
   azure("Azure"),
   aWS("AWS"),
   gCP("GCP"),
@@ -10,6 +12,7 @@ enum CloudName {
   jFrog("JFrog");
 
   const CloudName(this.wireValue);
+  @override
   final String wireValue;
 
   static CloudName fromValue(String value) {

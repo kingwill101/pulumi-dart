@@ -6,23 +6,23 @@ import 'ip_address_range_response.dart';
 /// Network adapter configuration.
 class NetworkAdapterResponse {
   /// Adapter Name.
-  final pulumi.Input<String>? adapterName;
+  final pulumi.Input<String?>? adapterName;
   /// Array of DNS addresses.
-  final pulumi.Input<List<String>>? dnsAddressArray;
+  final pulumi.Input<List<String>?>? dnsAddressArray;
   /// Gateway id.
-  final pulumi.Input<String>? gateway;
+  final pulumi.Input<String?>? gateway;
   /// IP address.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// IP address range.
-  final pulumi.Input<IpAddressRangeResponse>? ipAddressRange;
+  final pulumi.Input<IpAddressRangeResponse?>? ipAddressRange;
   /// Type of IP assignment.
   final pulumi.Input<String> ipAssignmentType;
   /// MAC address.
-  final pulumi.Input<String>? macAddress;
+  final pulumi.Input<String?>? macAddress;
   /// Subnet mask.
-  final pulumi.Input<String>? subnetMask;
+  final pulumi.Input<String?>? subnetMask;
   /// VLAN ID for the network setup.
-  final pulumi.Input<String>? vlanId;
+  final pulumi.Input<String?>? vlanId;
 
   /// Creates a new [NetworkAdapterResponse].
   /// [adapterName] Adapter Name.

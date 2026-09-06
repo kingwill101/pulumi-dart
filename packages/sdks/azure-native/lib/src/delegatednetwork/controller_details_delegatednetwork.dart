@@ -202,7 +202,29 @@ class ControllerDetailsDelegatednetwork extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     purpose = registerOutput<String?>('purpose');
     resourceGuid = registerOutput<String>('resourceGuid');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ControllerDetailsDelegatednetwork] resource.
+  ControllerDetailsDelegatednetwork.reference(String urn)
+    : super(
+        'azure-native:delegatednetwork:ControllerDetails',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dncAppId = registerOutput<String>('dncAppId');
+    dncEndpoint = registerOutput<String>('dncEndpoint');
+    dncTenantId = registerOutput<String>('dncTenantId');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    purpose = registerOutput<String?>('purpose');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

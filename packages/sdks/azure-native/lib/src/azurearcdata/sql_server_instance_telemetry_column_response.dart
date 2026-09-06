@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The telemetry column for the SQL Server instance.
 class SqlServerInstanceTelemetryColumnResponse {
   /// The name of the telemetry column.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The type of the telemetry column.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [SqlServerInstanceTelemetryColumnResponse].
   /// [name] The name of the telemetry column.

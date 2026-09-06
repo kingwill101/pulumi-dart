@@ -536,7 +536,7 @@ class LocalRulestack extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    associatedSubscriptions = registerOutput<List<String>?>('associatedSubscriptions');
+    associatedSubscriptions = registerOutput<List<String>?>('associatedSubscriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     defaultMode = registerOutput<String?>('defaultMode');
     description = registerOutput<String?>('description');
@@ -550,7 +550,34 @@ class LocalRulestack extends pulumi.CustomResource {
     scope = registerOutput<String?>('scope');
     securityServices = registerOutput<SecurityServicesResponse?>('securityServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityServicesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [LocalRulestack] resource.
+  LocalRulestack.reference(String urn)
+    : super(
+        'azure-native:cloudngfw:LocalRulestack',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    associatedSubscriptions = registerOutput<List<String>?>('associatedSubscriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultMode = registerOutput<String?>('defaultMode');
+    description = registerOutput<String?>('description');
+    identity = registerOutput<ManagedIdentityPropertiesResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedIdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    minAppIdVersion = registerOutput<String?>('minAppIdVersion');
+    this.name = registerOutput<String>('name');
+    panEtag = registerOutput<String?>('panEtag');
+    panLocation = registerOutput<String?>('panLocation');
+    provisioningState = registerOutput<String>('provisioningState');
+    scope = registerOutput<String?>('scope');
+    securityServices = registerOutput<SecurityServicesResponse?>('securityServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityServicesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

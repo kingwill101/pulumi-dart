@@ -11,19 +11,19 @@ import 'service_managed_identity_identity.dart';
 /// {@macro pulumi_healthcareapis_iot_connector_args_doc}
 class IotConnectorArgs {
   /// Device Mappings.
-  final pulumi.Input<IotMappingProperties>? deviceMapping;
+  final pulumi.Input<IotMappingProperties?>? deviceMapping;
   /// Setting indicating whether the service has a managed identity associated with it.
-  final pulumi.Input<ServiceManagedIdentityIdentity>? identity;
+  final pulumi.Input<ServiceManagedIdentityIdentity?>? identity;
   /// Source configuration.
-  final pulumi.Input<IotEventHubIngestionEndpointConfiguration>? ingestionEndpointConfiguration;
+  final pulumi.Input<IotEventHubIngestionEndpointConfiguration?>? ingestionEndpointConfiguration;
   /// The name of IoT Connector resource.
-  final pulumi.Input<String>? iotConnectorName;
+  final pulumi.Input<String?>? iotConnectorName;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group that contains the service instance.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of workspace resource.
   final pulumi.Input<String> workspaceName;
 

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// admin state - if set to false, the address is removed from the pool
-enum LoadBalancerBackendAddressAdminState {
+enum LoadBalancerBackendAddressAdminState implements pulumi.PulumiEnum<String> {
   up("Up"),
   down("Down");
 
   const LoadBalancerBackendAddressAdminState(this.wireValue);
+  @override
   final String wireValue;
 
   static LoadBalancerBackendAddressAdminState fromValue(String value) {

@@ -8,21 +8,21 @@ import 'schedule_base_response.dart';
 /// Compute start stop schedule properties
 class ComputeStartStopScheduleResponse {
   /// [Required] The compute power action.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// Required if triggerType is Cron.
-  final pulumi.Input<CronResponse>? cron;
+  final pulumi.Input<CronResponse?>? cron;
   /// A system assigned id for the schedule.
   final pulumi.Input<String> id;
   /// The current deployment state of schedule.
   final pulumi.Input<String> provisioningStatus;
   /// Required if triggerType is Recurrence.
-  final pulumi.Input<RecurrenceResponse>? recurrence;
+  final pulumi.Input<RecurrenceResponse?>? recurrence;
   /// [Deprecated] Not used any more.
-  final pulumi.Input<ScheduleBaseResponse>? schedule;
+  final pulumi.Input<ScheduleBaseResponse?>? schedule;
   /// Is the schedule enabled or disabled?
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// [Required] The schedule trigger type.
-  final pulumi.Input<String>? triggerType;
+  final pulumi.Input<String?>? triggerType;
 
   /// Creates a new [ComputeStartStopScheduleResponse].
   /// [action] [Required] The compute power action.

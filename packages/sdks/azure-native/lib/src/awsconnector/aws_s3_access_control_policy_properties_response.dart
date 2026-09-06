@@ -7,9 +7,9 @@ import 'owner_response.dart';
 /// Definition of awsS3AccessControlPolicy
 class AwsS3AccessControlPolicyPropertiesResponse {
   /// &lt;p&gt;A list of grants.&lt;/p&gt;
-  final pulumi.Input<List<GrantResponse>>? grants;
+  final pulumi.Input<List<GrantResponse>?>? grants;
   /// &lt;p&gt;Container for the bucket owner's display name and ID.&lt;/p&gt;
-  final pulumi.Input<OwnerResponse>? owner;
+  final pulumi.Input<OwnerResponse?>? owner;
 
   /// Creates a new [AwsS3AccessControlPolicyPropertiesResponse].
   /// [grants] &lt;p&gt;A list of grants.&lt;/p&gt;

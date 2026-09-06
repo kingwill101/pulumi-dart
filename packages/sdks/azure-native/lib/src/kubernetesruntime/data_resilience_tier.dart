@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Allow single data node failure
-enum DataResilienceTier {
+enum DataResilienceTier implements pulumi.PulumiEnum<String> {
   notDataResilient("NotDataResilient"),
   dataResilient("DataResilient");
 
   const DataResilienceTier(this.wireValue);
+  @override
   final String wireValue;
 
   static DataResilienceTier fromValue(String value) {

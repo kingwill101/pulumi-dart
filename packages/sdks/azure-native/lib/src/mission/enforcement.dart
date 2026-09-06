@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Initiative enforcement (Enabled or Disabled).
-enum Enforcement {
+enum Enforcement implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const Enforcement(this.wireValue);
+  @override
   final String wireValue;
 
   static Enforcement fromValue(String value) {

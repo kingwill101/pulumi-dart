@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The security profile which contains Ssh public key for the HDInsight cluster.
 class SecurityProfileResponse {
   /// The resource ID of the user's Azure Active Directory Domain Service.
-  final pulumi.Input<String>? aaddsResourceId;
+  final pulumi.Input<String?>? aaddsResourceId;
   /// Optional. The Distinguished Names for cluster user groups
-  final pulumi.Input<List<String>>? clusterUsersGroupDNs;
+  final pulumi.Input<List<String>?>? clusterUsersGroupDNs;
   /// The directory type.
-  final pulumi.Input<String>? directoryType;
+  final pulumi.Input<String?>? directoryType;
   /// The organization's active directory domain.
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
   /// The domain admin password.
-  final pulumi.Input<String>? domainUserPassword;
+  final pulumi.Input<String?>? domainUserPassword;
   /// The domain user account that will have admin privileges on the cluster.
-  final pulumi.Input<String>? domainUsername;
+  final pulumi.Input<String?>? domainUsername;
   /// The LDAPS protocol URLs to communicate with the Active Directory.
-  final pulumi.Input<List<String>>? ldapsUrls;
+  final pulumi.Input<List<String>?>? ldapsUrls;
   /// User assigned identity that has permissions to read and create cluster-related artifacts in the user's AADDS.
-  final pulumi.Input<String>? msiResourceId;
+  final pulumi.Input<String?>? msiResourceId;
   /// The organizational unit within the Active Directory to place the cluster and service accounts.
-  final pulumi.Input<String>? organizationalUnitDN;
+  final pulumi.Input<String?>? organizationalUnitDN;
 
   /// Creates a new [SecurityProfileResponse].
   /// [aaddsResourceId] The resource ID of the user's Azure Active Directory Domain Service.

@@ -9,13 +9,13 @@ import 'traces_response.dart';
 /// Broker Diagnostic Setting properties
 class BrokerDiagnosticsResponse {
   /// Diagnostic log settings for the resource.
-  final pulumi.Input<DiagnosticsLogsResponse>? logs;
+  final pulumi.Input<DiagnosticsLogsResponse?>? logs;
   /// The metrics settings for the resource.
-  final pulumi.Input<MetricsResponse>? metrics;
+  final pulumi.Input<MetricsResponse?>? metrics;
   /// The self check properties.
-  final pulumi.Input<SelfCheckResponse>? selfCheck;
+  final pulumi.Input<SelfCheckResponse?>? selfCheck;
   /// The trace properties.
-  final pulumi.Input<TracesResponse>? traces;
+  final pulumi.Input<TracesResponse?>? traces;
 
   /// Creates a new [BrokerDiagnosticsResponse].
   /// [logs] Diagnostic log settings for the resource.

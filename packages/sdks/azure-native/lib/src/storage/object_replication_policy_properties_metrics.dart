@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Optional. The object replication policy metrics feature options.
 class ObjectReplicationPolicyPropertiesMetrics {
   /// Indicates whether object replication metrics feature is enabled for the policy.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ObjectReplicationPolicyPropertiesMetrics].
   /// [enabled] Indicates whether object replication metrics feature is enabled for the policy.

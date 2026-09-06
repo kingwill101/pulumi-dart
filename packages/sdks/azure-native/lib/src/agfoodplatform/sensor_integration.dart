@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Sensor integration request model.
 class SensorIntegration {
   /// Sensor integration enable state.
-  final pulumi.Input<String>? enabled;
+  final pulumi.Input<String?>? enabled;
 
   /// Creates a new [SensorIntegration].
   /// [enabled] Sensor integration enable state.

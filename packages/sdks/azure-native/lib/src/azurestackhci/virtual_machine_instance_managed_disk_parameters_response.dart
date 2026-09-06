@@ -6,7 +6,7 @@ import 'vmdisk_security_profile_response.dart';
 /// The parameters of a managed disk.
 class VirtualMachineInstanceManagedDiskParametersResponse {
   /// Specifies the security profile for the managed disk.
-  final pulumi.Input<VMDiskSecurityProfileResponse>? securityProfile;
+  final pulumi.Input<VMDiskSecurityProfileResponse?>? securityProfile;
 
   /// Creates a new [VirtualMachineInstanceManagedDiskParametersResponse].
   /// [securityProfile] Specifies the security profile for the managed disk.

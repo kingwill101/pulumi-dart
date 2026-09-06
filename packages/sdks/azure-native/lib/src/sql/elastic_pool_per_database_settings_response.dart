@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Per database settings of an elastic pool.
 class ElasticPoolPerDatabaseSettingsResponse {
   /// Auto Pause Delay for per database within pool
-  final pulumi.Input<int>? autoPauseDelay;
+  final pulumi.Input<int?>? autoPauseDelay;
   /// The maximum capacity any one database can consume.
-  final pulumi.Input<double>? maxCapacity;
+  final pulumi.Input<double?>? maxCapacity;
   /// The minimum capacity all databases are guaranteed.
-  final pulumi.Input<double>? minCapacity;
+  final pulumi.Input<double?>? minCapacity;
 
   /// Creates a new [ElasticPoolPerDatabaseSettingsResponse].
   /// [autoPauseDelay] Auto Pause Delay for per database within pool
@@ -31,9 +31,9 @@ class ElasticPoolPerDatabaseSettingsResponse {
 
   factory ElasticPoolPerDatabaseSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ElasticPoolPerDatabaseSettingsResponse(
-      autoPauseDelay: (() { final guardedValue = map['autoPauseDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxCapacity: (() { final guardedValue = map['maxCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      minCapacity: (() { final guardedValue = map['minCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      autoPauseDelay: (() { final guardedValue = map['autoPauseDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxCapacity: (() { final guardedValue = map['maxCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      minCapacity: (() { final guardedValue = map['minCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_azuredatatransfer_list_azure_data_transfer_approved_schemas_args_doc}
 class ListAzureDataTransferApprovedSchemasArgs {
   /// The direction pipeline to filter approved schemas.
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<dynamic>? direction;
   /// The name of the pipeline to filter approved schemas.
-  final pulumi.Input<String>? pipeline;
+  final pulumi.Input<String?>? pipeline;
 
   /// Creates a new [ListAzureDataTransferApprovedSchemasArgs].
   /// [direction] The direction pipeline to filter approved schemas.
@@ -29,7 +29,7 @@ class ListAzureDataTransferApprovedSchemasArgs {
 
   factory ListAzureDataTransferApprovedSchemasArgs.fromMap(Map<String, dynamic> map) {
     return ListAzureDataTransferApprovedSchemasArgs(
-      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       pipeline: (() { final guardedValue = map['pipeline']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

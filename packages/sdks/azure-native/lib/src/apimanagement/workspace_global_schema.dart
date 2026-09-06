@@ -330,4 +330,22 @@ class WorkspaceGlobalSchema extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     value = registerOutput<dynamic>('value');
   }
+
+  /// Creates a typed reference to an existing [WorkspaceGlobalSchema] resource.
+  WorkspaceGlobalSchema.reference(String urn)
+    : super(
+        'azure-native:apimanagement:WorkspaceGlobalSchema',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    schemaType = registerOutput<String>('schemaType');
+    type = registerOutput<String>('type');
+    value = registerOutput<dynamic>('value');
+  }
 }

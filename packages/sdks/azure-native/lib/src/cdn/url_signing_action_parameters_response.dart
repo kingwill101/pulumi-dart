@@ -6,9 +6,9 @@ import 'url_signing_param_identifier_response.dart';
 /// Defines the parameters for the Url Signing action.
 class UrlSigningActionParametersResponse {
   /// Algorithm to use for URL signing
-  final pulumi.Input<String>? algorithm;
+  final pulumi.Input<String?>? algorithm;
   /// Defines which query string parameters in the url to be considered for expires, key id etc.
-  final pulumi.Input<List<UrlSigningParamIdentifierResponse>>? parameterNameOverride;
+  final pulumi.Input<List<UrlSigningParamIdentifierResponse>?>? parameterNameOverride;
   /// Expected value is 'DeliveryRuleUrlSigningActionParameters'.
   final pulumi.Input<String> typeName;
 

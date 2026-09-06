@@ -30,6 +30,17 @@ Future<GetApplicationResult> getApplication(
   return GetApplicationResult.fromMap(result);
 }
 
+pulumi.Output<GetApplicationResult> getApplicationOutput(
+  GetApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:batch:getApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationResult.fromMap);
+}
+
 /// Gets information about the specified application package.
 ///
 /// Uses Azure REST API version 2024-07-01.
@@ -48,6 +59,17 @@ Future<GetApplicationPackageResult> getApplicationPackage(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApplicationPackageResult.fromMap(result);
+}
+
+pulumi.Output<GetApplicationPackageResult> getApplicationPackageOutput(
+  GetApplicationPackageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:batch:getApplicationPackage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationPackageResult.fromMap);
 }
 
 /// Gets information about the specified Batch account.
@@ -70,6 +92,17 @@ Future<GetBatchAccountResult> getBatchAccount(
   return GetBatchAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetBatchAccountResult> getBatchAccountOutput(
+  GetBatchAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:batch:getBatchAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBatchAccountResult.fromMap);
+}
+
 /// Gets information about the specified pool.
 ///
 /// Uses Azure REST API version 2024-07-01.
@@ -90,6 +123,17 @@ Future<GetPoolResult> getPool(
   return GetPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetPoolResult> getPoolOutput(
+  GetPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:batch:getPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPoolResult.fromMap);
+}
+
 /// This operation applies only to Batch accounts with allowedAuthenticationModes containing 'SharedKey'. If the Batch account doesn't contain 'SharedKey' in its allowedAuthenticationMode, clients cannot use shared keys to authenticate, and must use another allowedAuthenticationModes instead. In this case, getting the keys will fail.
 ///
 /// Uses Azure REST API version 2024-07-01.
@@ -108,4 +152,15 @@ Future<ListBatchAccountKeysResult> listBatchAccountKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListBatchAccountKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListBatchAccountKeysResult> listBatchAccountKeysOutput(
+  ListBatchAccountKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:batch:listBatchAccountKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListBatchAccountKeysResult.fromMap);
 }

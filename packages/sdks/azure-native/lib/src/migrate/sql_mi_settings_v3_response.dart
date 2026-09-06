@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SQL managed instance assessment settings V3.
 class SqlMiSettingsV3Response {
   /// Gets or sets the azure PAAS SQL instance type.
-  final pulumi.Input<String>? azureSqlInstanceType;
+  final pulumi.Input<String?>? azureSqlInstanceType;
   /// Gets or sets the azure SQL service tier.
-  final pulumi.Input<String>? azureSqlServiceTier;
+  final pulumi.Input<String?>? azureSqlServiceTier;
 
   /// Creates a new [SqlMiSettingsV3Response].
   /// [azureSqlInstanceType] Gets or sets the azure PAAS SQL instance type.

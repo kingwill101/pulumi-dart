@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Caching option for a data disk (i.e. None, ReadOnly, ReadWrite).
-enum HostCachingOptions {
+enum HostCachingOptions implements pulumi.PulumiEnum<String> {
   none("None"),
   readOnly("ReadOnly"),
   readWrite("ReadWrite");
 
   const HostCachingOptions(this.wireValue);
+  @override
   final String wireValue;
 
   static HostCachingOptions fromValue(String value) {

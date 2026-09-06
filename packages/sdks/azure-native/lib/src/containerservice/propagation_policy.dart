@@ -6,9 +6,9 @@ import 'placement_profile.dart';
 /// The propagation to be used for provisioning the namespace among the fleet.
 class PropagationPolicy {
   /// The profile to be used for propagation via placement.
-  final pulumi.Input<PlacementProfile>? placementProfile;
+  final pulumi.Input<PlacementProfile?>? placementProfile;
   /// The type of the policy to be used. Default is Placement.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [PropagationPolicy].
   /// [placementProfile] The profile to be used for propagation via placement.
@@ -28,7 +28,7 @@ class PropagationPolicy {
   factory PropagationPolicy.fromMap(Map<String, dynamic> map) {
     return PropagationPolicy(
       placementProfile: (() { final guardedValue = map['placementProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PlacementProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

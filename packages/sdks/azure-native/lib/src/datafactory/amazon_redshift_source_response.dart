@@ -16,7 +16,7 @@ class AmazonRedshiftSourceResponse {
   /// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? queryTimeout;
   /// The Amazon S3 settings needed for the interim Amazon S3 when copying from Amazon Redshift with unload. With this, data from Amazon Redshift source will be unloaded into S3 first and then copied into the targeted sink from the interim S3.
-  final pulumi.Input<RedshiftUnloadSettingsResponse>? redshiftUnloadSettings;
+  final pulumi.Input<RedshiftUnloadSettingsResponse?>? redshiftUnloadSettings;
   /// Source retry count. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? sourceRetryCount;
   /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).

@@ -76,6 +76,17 @@ Future<GetIntegrationAccountResult> getIntegrationAccount(
   return GetIntegrationAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetIntegrationAccountResult> getIntegrationAccountOutput(
+  GetIntegrationAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:getIntegrationAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationAccountResult.fromMap);
+}
+
 /// Gets an integration account agreement.
 ///
 /// Uses Azure REST API version 2019-05-01.
@@ -94,6 +105,17 @@ Future<GetIntegrationAccountAgreementResult> getIntegrationAccountAgreement(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIntegrationAccountAgreementResult.fromMap(result);
+}
+
+pulumi.Output<GetIntegrationAccountAgreementResult> getIntegrationAccountAgreementOutput(
+  GetIntegrationAccountAgreementArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:getIntegrationAccountAgreement',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationAccountAgreementResult.fromMap);
 }
 
 /// Get an assembly for an integration account.
@@ -116,6 +138,17 @@ Future<GetIntegrationAccountAssemblyResult> getIntegrationAccountAssembly(
   return GetIntegrationAccountAssemblyResult.fromMap(result);
 }
 
+pulumi.Output<GetIntegrationAccountAssemblyResult> getIntegrationAccountAssemblyOutput(
+  GetIntegrationAccountAssemblyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:getIntegrationAccountAssembly',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationAccountAssemblyResult.fromMap);
+}
+
 /// Get a batch configuration for an integration account.
 ///
 /// Uses Azure REST API version 2019-05-01.
@@ -134,6 +167,17 @@ Future<GetIntegrationAccountBatchConfigurationResult> getIntegrationAccountBatch
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIntegrationAccountBatchConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetIntegrationAccountBatchConfigurationResult> getIntegrationAccountBatchConfigurationOutput(
+  GetIntegrationAccountBatchConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:getIntegrationAccountBatchConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationAccountBatchConfigurationResult.fromMap);
 }
 
 /// Gets an integration account certificate.
@@ -156,6 +200,17 @@ Future<GetIntegrationAccountCertificateResult> getIntegrationAccountCertificate(
   return GetIntegrationAccountCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetIntegrationAccountCertificateResult> getIntegrationAccountCertificateOutput(
+  GetIntegrationAccountCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:getIntegrationAccountCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationAccountCertificateResult.fromMap);
+}
+
 /// Gets an integration account map.
 ///
 /// Uses Azure REST API version 2019-05-01.
@@ -174,6 +229,17 @@ Future<GetIntegrationAccountMapResult> getIntegrationAccountMap(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIntegrationAccountMapResult.fromMap(result);
+}
+
+pulumi.Output<GetIntegrationAccountMapResult> getIntegrationAccountMapOutput(
+  GetIntegrationAccountMapArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:getIntegrationAccountMap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationAccountMapResult.fromMap);
 }
 
 /// Gets an integration account partner.
@@ -196,6 +262,17 @@ Future<GetIntegrationAccountPartnerResult> getIntegrationAccountPartner(
   return GetIntegrationAccountPartnerResult.fromMap(result);
 }
 
+pulumi.Output<GetIntegrationAccountPartnerResult> getIntegrationAccountPartnerOutput(
+  GetIntegrationAccountPartnerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:getIntegrationAccountPartner',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationAccountPartnerResult.fromMap);
+}
+
 /// Gets an integration account schema.
 ///
 /// Uses Azure REST API version 2019-05-01.
@@ -214,6 +291,17 @@ Future<GetIntegrationAccountSchemaResult> getIntegrationAccountSchema(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIntegrationAccountSchemaResult.fromMap(result);
+}
+
+pulumi.Output<GetIntegrationAccountSchemaResult> getIntegrationAccountSchemaOutput(
+  GetIntegrationAccountSchemaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:getIntegrationAccountSchema',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationAccountSchemaResult.fromMap);
 }
 
 /// Gets an integration account session.
@@ -236,6 +324,17 @@ Future<GetIntegrationAccountSessionResult> getIntegrationAccountSession(
   return GetIntegrationAccountSessionResult.fromMap(result);
 }
 
+pulumi.Output<GetIntegrationAccountSessionResult> getIntegrationAccountSessionOutput(
+  GetIntegrationAccountSessionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:getIntegrationAccountSession',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationAccountSessionResult.fromMap);
+}
+
 /// Gets an integration service environment.
 ///
 /// Uses Azure REST API version 2019-05-01.
@@ -252,6 +351,17 @@ Future<GetIntegrationServiceEnvironmentResult> getIntegrationServiceEnvironment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIntegrationServiceEnvironmentResult.fromMap(result);
+}
+
+pulumi.Output<GetIntegrationServiceEnvironmentResult> getIntegrationServiceEnvironmentOutput(
+  GetIntegrationServiceEnvironmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:getIntegrationServiceEnvironment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationServiceEnvironmentResult.fromMap);
 }
 
 /// Gets the integration service environment managed Api.
@@ -272,6 +382,17 @@ Future<GetIntegrationServiceEnvironmentManagedApiResult> getIntegrationServiceEn
   return GetIntegrationServiceEnvironmentManagedApiResult.fromMap(result);
 }
 
+pulumi.Output<GetIntegrationServiceEnvironmentManagedApiResult> getIntegrationServiceEnvironmentManagedApiOutput(
+  GetIntegrationServiceEnvironmentManagedApiArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:getIntegrationServiceEnvironmentManagedApi',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationServiceEnvironmentManagedApiResult.fromMap);
+}
+
 /// Gets an integration account RosettaNetProcessConfiguration.
 ///
 /// Uses Azure REST API version 2016-06-01.
@@ -288,6 +409,17 @@ Future<GetRosettaNetProcessConfigurationResult> getRosettaNetProcessConfiguratio
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRosettaNetProcessConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetRosettaNetProcessConfigurationResult> getRosettaNetProcessConfigurationOutput(
+  GetRosettaNetProcessConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:getRosettaNetProcessConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRosettaNetProcessConfigurationResult.fromMap);
 }
 
 /// Gets a workflow.
@@ -310,6 +442,17 @@ Future<GetWorkflowResult> getWorkflow(
   return GetWorkflowResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkflowResult> getWorkflowOutput(
+  GetWorkflowArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:getWorkflow',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkflowResult.fromMap);
+}
+
 /// Gets a workflow access key.
 ///
 /// Uses Azure REST API version 2015-02-01-preview.
@@ -326,6 +469,17 @@ Future<GetWorkflowAccessKeyResult> getWorkflowAccessKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkflowAccessKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkflowAccessKeyResult> getWorkflowAccessKeyOutput(
+  GetWorkflowAccessKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:getWorkflowAccessKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkflowAccessKeyResult.fromMap);
 }
 
 /// Get the content callback url.
@@ -348,6 +502,17 @@ Future<ListIntegrationAccountAgreementContentCallbackUrlResult> listIntegrationA
   return ListIntegrationAccountAgreementContentCallbackUrlResult.fromMap(result);
 }
 
+pulumi.Output<ListIntegrationAccountAgreementContentCallbackUrlResult> listIntegrationAccountAgreementContentCallbackUrlOutput(
+  ListIntegrationAccountAgreementContentCallbackUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:listIntegrationAccountAgreementContentCallbackUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListIntegrationAccountAgreementContentCallbackUrlResult.fromMap);
+}
+
 /// Get the content callback url for an integration account assembly.
 ///
 /// Uses Azure REST API version 2019-05-01.
@@ -366,6 +531,17 @@ Future<ListIntegrationAccountAssemblyContentCallbackUrlResult> listIntegrationAc
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListIntegrationAccountAssemblyContentCallbackUrlResult.fromMap(result);
+}
+
+pulumi.Output<ListIntegrationAccountAssemblyContentCallbackUrlResult> listIntegrationAccountAssemblyContentCallbackUrlOutput(
+  ListIntegrationAccountAssemblyContentCallbackUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:listIntegrationAccountAssemblyContentCallbackUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListIntegrationAccountAssemblyContentCallbackUrlResult.fromMap);
 }
 
 /// Gets the integration account callback URL.
@@ -388,6 +564,17 @@ Future<ListIntegrationAccountCallbackUrlResult> listIntegrationAccountCallbackUr
   return ListIntegrationAccountCallbackUrlResult.fromMap(result);
 }
 
+pulumi.Output<ListIntegrationAccountCallbackUrlResult> listIntegrationAccountCallbackUrlOutput(
+  ListIntegrationAccountCallbackUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:listIntegrationAccountCallbackUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListIntegrationAccountCallbackUrlResult.fromMap);
+}
+
 /// Gets the integration account's Key Vault keys.
 ///
 /// Uses Azure REST API version 2019-05-01.
@@ -406,6 +593,17 @@ Future<ListIntegrationAccountKeyVaultKeysResult> listIntegrationAccountKeyVaultK
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListIntegrationAccountKeyVaultKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListIntegrationAccountKeyVaultKeysResult> listIntegrationAccountKeyVaultKeysOutput(
+  ListIntegrationAccountKeyVaultKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:listIntegrationAccountKeyVaultKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListIntegrationAccountKeyVaultKeysResult.fromMap);
 }
 
 /// Get the content callback url.
@@ -428,6 +626,17 @@ Future<ListIntegrationAccountMapContentCallbackUrlResult> listIntegrationAccount
   return ListIntegrationAccountMapContentCallbackUrlResult.fromMap(result);
 }
 
+pulumi.Output<ListIntegrationAccountMapContentCallbackUrlResult> listIntegrationAccountMapContentCallbackUrlOutput(
+  ListIntegrationAccountMapContentCallbackUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:listIntegrationAccountMapContentCallbackUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListIntegrationAccountMapContentCallbackUrlResult.fromMap);
+}
+
 /// Get the content callback url.
 ///
 /// Uses Azure REST API version 2019-05-01.
@@ -446,6 +655,17 @@ Future<ListIntegrationAccountPartnerContentCallbackUrlResult> listIntegrationAcc
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListIntegrationAccountPartnerContentCallbackUrlResult.fromMap(result);
+}
+
+pulumi.Output<ListIntegrationAccountPartnerContentCallbackUrlResult> listIntegrationAccountPartnerContentCallbackUrlOutput(
+  ListIntegrationAccountPartnerContentCallbackUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:listIntegrationAccountPartnerContentCallbackUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListIntegrationAccountPartnerContentCallbackUrlResult.fromMap);
 }
 
 /// Get the content callback url.
@@ -468,6 +688,17 @@ Future<ListIntegrationAccountSchemaContentCallbackUrlResult> listIntegrationAcco
   return ListIntegrationAccountSchemaContentCallbackUrlResult.fromMap(result);
 }
 
+pulumi.Output<ListIntegrationAccountSchemaContentCallbackUrlResult> listIntegrationAccountSchemaContentCallbackUrlOutput(
+  ListIntegrationAccountSchemaContentCallbackUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:listIntegrationAccountSchemaContentCallbackUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListIntegrationAccountSchemaContentCallbackUrlResult.fromMap);
+}
+
 /// Lists secret keys.
 ///
 /// Uses Azure REST API version 2015-02-01-preview.
@@ -484,6 +715,17 @@ Future<ListWorkflowAccessKeySecretKeysResult> listWorkflowAccessKeySecretKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWorkflowAccessKeySecretKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListWorkflowAccessKeySecretKeysResult> listWorkflowAccessKeySecretKeysOutput(
+  ListWorkflowAccessKeySecretKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:listWorkflowAccessKeySecretKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWorkflowAccessKeySecretKeysResult.fromMap);
 }
 
 /// Get the workflow callback Url.
@@ -506,6 +748,17 @@ Future<ListWorkflowCallbackUrlResult> listWorkflowCallbackUrl(
   return ListWorkflowCallbackUrlResult.fromMap(result);
 }
 
+pulumi.Output<ListWorkflowCallbackUrlResult> listWorkflowCallbackUrlOutput(
+  ListWorkflowCallbackUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:listWorkflowCallbackUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWorkflowCallbackUrlResult.fromMap);
+}
+
 /// Lists a workflow run expression trace.
 ///
 /// Uses Azure REST API version 2019-05-01.
@@ -524,6 +777,17 @@ Future<ListWorkflowRunActionExpressionTracesResult> listWorkflowRunActionExpress
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWorkflowRunActionExpressionTracesResult.fromMap(result);
+}
+
+pulumi.Output<ListWorkflowRunActionExpressionTracesResult> listWorkflowRunActionExpressionTracesOutput(
+  ListWorkflowRunActionExpressionTracesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:listWorkflowRunActionExpressionTraces',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWorkflowRunActionExpressionTracesResult.fromMap);
 }
 
 /// Lists a workflow run expression trace.
@@ -546,6 +810,17 @@ Future<ListWorkflowRunActionRepetitionExpressionTracesResult> listWorkflowRunAct
   return ListWorkflowRunActionRepetitionExpressionTracesResult.fromMap(result);
 }
 
+pulumi.Output<ListWorkflowRunActionRepetitionExpressionTracesResult> listWorkflowRunActionRepetitionExpressionTracesOutput(
+  ListWorkflowRunActionRepetitionExpressionTracesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:listWorkflowRunActionRepetitionExpressionTraces',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWorkflowRunActionRepetitionExpressionTracesResult.fromMap);
+}
+
 /// Get the callback URL for a workflow trigger.
 ///
 /// Uses Azure REST API version 2019-05-01.
@@ -566,6 +841,17 @@ Future<ListWorkflowTriggerCallbackUrlResult> listWorkflowTriggerCallbackUrl(
   return ListWorkflowTriggerCallbackUrlResult.fromMap(result);
 }
 
+pulumi.Output<ListWorkflowTriggerCallbackUrlResult> listWorkflowTriggerCallbackUrlOutput(
+  ListWorkflowTriggerCallbackUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:listWorkflowTriggerCallbackUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWorkflowTriggerCallbackUrlResult.fromMap);
+}
+
 /// Get the callback url for a trigger of a workflow version.
 ///
 /// Uses Azure REST API version 2016-06-01.
@@ -582,6 +868,17 @@ Future<ListWorkflowVersionCallbackUrlResult> listWorkflowVersionCallbackUrl(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWorkflowVersionCallbackUrlResult.fromMap(result);
+}
+
+pulumi.Output<ListWorkflowVersionCallbackUrlResult> listWorkflowVersionCallbackUrlOutput(
+  ListWorkflowVersionCallbackUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:listWorkflowVersionCallbackUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWorkflowVersionCallbackUrlResult.fromMap);
 }
 
 /// Get the callback url for a trigger of a workflow version.
@@ -602,4 +899,15 @@ Future<ListWorkflowVersionTriggerCallbackUrlResult> listWorkflowVersionTriggerCa
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWorkflowVersionTriggerCallbackUrlResult.fromMap(result);
+}
+
+pulumi.Output<ListWorkflowVersionTriggerCallbackUrlResult> listWorkflowVersionTriggerCallbackUrlOutput(
+  ListWorkflowVersionTriggerCallbackUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:logic:listWorkflowVersionTriggerCallbackUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWorkflowVersionTriggerCallbackUrlResult.fromMap);
 }

@@ -8,19 +8,19 @@ class VirtualMachineResourceSettingsResponse {
   /// Expected value is 'Microsoft.Compute/virtualMachines'.
   final pulumi.Input<String> resourceType;
   /// Gets or sets the Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Gets or sets the target availability set id for virtual machines not in an availability set at source.
-  final pulumi.Input<String>? targetAvailabilitySetId;
+  final pulumi.Input<String?>? targetAvailabilitySetId;
   /// Gets or sets the target availability zone.
-  final pulumi.Input<String>? targetAvailabilityZone;
+  final pulumi.Input<String?>? targetAvailabilityZone;
   /// Gets or sets the target resource group name.
-  final pulumi.Input<String>? targetResourceGroupName;
+  final pulumi.Input<String?>? targetResourceGroupName;
   /// Gets or sets the target Resource name.
-  final pulumi.Input<String>? targetResourceName;
+  final pulumi.Input<String?>? targetResourceName;
   /// Gets or sets the target virtual machine size.
-  final pulumi.Input<String>? targetVmSize;
+  final pulumi.Input<String?>? targetVmSize;
   /// Gets or sets user-managed identities
-  final pulumi.Input<List<String>>? userManagedIdentities;
+  final pulumi.Input<List<String>?>? userManagedIdentities;
 
   /// Creates a new [VirtualMachineResourceSettingsResponse].
   /// [resourceType] The resource type. For example, the value can be Microsoft.Compute/virtualMachines.

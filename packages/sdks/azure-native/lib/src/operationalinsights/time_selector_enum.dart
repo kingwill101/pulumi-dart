@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The time cursor used in Summary rules bins processing, e.g. TimeGenerated.
-enum TimeSelectorEnum {
+enum TimeSelectorEnum implements pulumi.PulumiEnum<String> {
   timeGenerated("TimeGenerated");
 
   const TimeSelectorEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static TimeSelectorEnum fromValue(String value) {

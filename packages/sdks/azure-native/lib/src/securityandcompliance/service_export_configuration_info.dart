@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Export operation configuration information
 class ServiceExportConfigurationInfo {
   /// The name of the default export storage account.
-  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String?>? storageAccountName;
 
   /// Creates a new [ServiceExportConfigurationInfo].
   /// [storageAccountName] The name of the default export storage account.

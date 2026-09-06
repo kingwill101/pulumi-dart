@@ -4,53 +4,52 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'batch_pipeline_component_deployment_configuration.dart';
 import 'batch_retry_settings.dart';
 import 'code_configuration.dart';
-import 'data_path_asset_reference.dart';
 import 'deployment_resource_configuration.dart';
 
 /// Batch inference settings per deployment.
 class BatchDeploymentProperties {
   /// Code configuration for the endpoint deployment.
-  final pulumi.Input<CodeConfiguration>? codeConfiguration;
+  final pulumi.Input<CodeConfiguration?>? codeConfiguration;
   /// Compute target for batch inference operation.
-  final pulumi.Input<String>? compute;
+  final pulumi.Input<String?>? compute;
   /// Properties relevant to different deployment types.
-  final pulumi.Input<BatchPipelineComponentDeploymentConfiguration>? deploymentConfiguration;
+  final pulumi.Input<BatchPipelineComponentDeploymentConfiguration?>? deploymentConfiguration;
   /// Description of the endpoint deployment.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// ARM resource ID or AssetId of the environment specification for the endpoint deployment.
-  final pulumi.Input<String>? environmentId;
+  final pulumi.Input<String?>? environmentId;
   /// Environment variables configuration for the deployment.
-  final pulumi.Input<Map<String, String>>? environmentVariables;
+  final pulumi.Input<Map<String, String>?>? environmentVariables;
   /// Error threshold, if the error count for the entire input goes above this value,
   /// the batch inference will be aborted. Range is [-1, int.MaxValue].
   /// For FileDataset, this value is the count of file failures.
   /// For TabularDataset, this value is the count of record failures.
   /// If set to -1 (the lower bound), all failures during batch inference will be ignored.
-  final pulumi.Input<int>? errorThreshold;
+  final pulumi.Input<int?>? errorThreshold;
   /// Log verbosity for batch inferencing.
   /// Increasing verbosity order for logging is : Warning, Info and Debug.
   /// The default value is Info.
-  final pulumi.Input<String>? loggingLevel;
+  final pulumi.Input<dynamic>? loggingLevel;
   /// Indicates maximum number of parallelism per instance.
-  final pulumi.Input<int>? maxConcurrencyPerInstance;
+  final pulumi.Input<int?>? maxConcurrencyPerInstance;
   /// Size of the mini-batch passed to each batch invocation.
   /// For FileDataset, this is the number of files per mini-batch.
   /// For TabularDataset, this is the size of the records in bytes, per mini-batch.
-  final pulumi.Input<double>? miniBatchSize;
+  final pulumi.Input<double?>? miniBatchSize;
   /// Reference to the model asset for the endpoint deployment.
-  final pulumi.Input<DataPathAssetReference>? model;
+  final pulumi.Input<dynamic>? model;
   /// Enum to determine how batch inferencing will handle output
-  final pulumi.Input<String>? outputAction;
+  final pulumi.Input<dynamic>? outputAction;
   /// Customized output file name for append_row output action.
-  final pulumi.Input<String>? outputFileName;
+  final pulumi.Input<String?>? outputFileName;
   /// Property dictionary. Properties can be added, but not removed or altered.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Indicates compute configuration for the job.
   /// If not provided, will default to the defaults defined in ResourceConfiguration.
-  final pulumi.Input<DeploymentResourceConfiguration>? resources;
+  final pulumi.Input<DeploymentResourceConfiguration?>? resources;
   /// Retry Settings for the batch inference operation.
   /// If not provided, will default to the defaults defined in BatchRetrySettings.
-  final pulumi.Input<BatchRetrySettings>? retrySettings;
+  final pulumi.Input<BatchRetrySettings?>? retrySettings;
 
   /// Creates a new [BatchDeploymentProperties].
   /// [codeConfiguration] Code configuration for the endpoint deployment.
@@ -69,24 +68,24 @@ class BatchDeploymentProperties {
   /// [properties] Property dictionary. Properties can be added, but not removed or altered.
   /// [resources] Indicates compute configuration for the job.
   /// [retrySettings] Retry Settings for the batch inference operation.
-  const BatchDeploymentProperties({
+  BatchDeploymentProperties({
     this.codeConfiguration,
     this.compute,
     this.deploymentConfiguration,
     this.description,
     this.environmentId,
     this.environmentVariables,
-    this.errorThreshold,
-    this.loggingLevel,
-    this.maxConcurrencyPerInstance,
-    this.miniBatchSize,
+    pulumi.Input<int?>? errorThreshold,
+    pulumi.Input<dynamic>? loggingLevel,
+    pulumi.Input<int?>? maxConcurrencyPerInstance,
+    pulumi.Input<double?>? miniBatchSize,
     this.model,
-    this.outputAction,
-    this.outputFileName,
+    pulumi.Input<dynamic>? outputAction,
+    pulumi.Input<String?>? outputFileName,
     this.properties,
     this.resources,
     this.retrySettings,
-  });
+  }) : errorThreshold = errorThreshold ?? pulumi.Input.fromValue(-1), loggingLevel = loggingLevel ?? pulumi.Input.fromValue('Info'), maxConcurrencyPerInstance = maxConcurrencyPerInstance ?? pulumi.Input.fromValue(1), miniBatchSize = miniBatchSize ?? pulumi.Input.fromValue(10), outputAction = outputAction ?? pulumi.Input.fromValue('AppendRow'), outputFileName = outputFileName ?? pulumi.Input.fromValue('predictions.csv');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,7 +99,7 @@ class BatchDeploymentProperties {
       'loggingLevel': ?loggingLevel,
       'maxConcurrencyPerInstance': ?maxConcurrencyPerInstance,
       'miniBatchSize': ?miniBatchSize,
-      'model': ?pulumi.Input.mapOptionalInputValue<DataPathAssetReference, Map<String, dynamic>>(model, (value) => value.toMap()),
+      'model': ?model,
       'outputAction': ?outputAction,
       'outputFileName': ?outputFileName,
       'properties': ?properties,
@@ -117,12 +116,12 @@ class BatchDeploymentProperties {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environmentId: (() { final guardedValue = map['environmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environmentVariables: (() { final guardedValue = map['environmentVariables']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      errorThreshold: (() { final guardedValue = map['errorThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      loggingLevel: (() { final guardedValue = map['loggingLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxConcurrencyPerInstance: (() { final guardedValue = map['maxConcurrencyPerInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      miniBatchSize: (() { final guardedValue = map['miniBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataPathAssetReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      outputAction: (() { final guardedValue = map['outputAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      errorThreshold: (() { final guardedValue = map['errorThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      loggingLevel: (() { final guardedValue = map['loggingLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      maxConcurrencyPerInstance: (() { final guardedValue = map['maxConcurrencyPerInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      miniBatchSize: (() { final guardedValue = map['miniBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      outputAction: (() { final guardedValue = map['outputAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       outputFileName: (() { final guardedValue = map['outputFileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentResourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

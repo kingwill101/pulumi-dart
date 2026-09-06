@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'nat_rule_args.dart';
+import 'sub_resource_response.dart';
+import 'vpn_nat_rule_mapping_response.dart';
 
 /// VpnGatewayNatRule Resource.
 ///
@@ -226,15 +228,15 @@ class NatRuleNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// List of egress VpnSiteLinkConnections.
-  late final pulumi.Output<List<Map<String, dynamic>>> egressVpnSiteLinkConnections;
+  late final pulumi.Output<List<SubResourceResponse>> egressVpnSiteLinkConnections;
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
   /// The private IP address external mapping for NAT.
-  late final pulumi.Output<List<Map<String, dynamic>>?> externalMappings;
+  late final pulumi.Output<List<VpnNatRuleMappingResponse>?> externalMappings;
   /// List of ingress VpnSiteLinkConnections.
-  late final pulumi.Output<List<Map<String, dynamic>>> ingressVpnSiteLinkConnections;
+  late final pulumi.Output<List<SubResourceResponse>> ingressVpnSiteLinkConnections;
   /// The private IP address internal mapping for NAT.
-  late final pulumi.Output<List<Map<String, dynamic>>?> internalMappings;
+  late final pulumi.Output<List<VpnNatRuleMappingResponse>?> internalMappings;
   /// The IP Configuration ID this NAT rule applies to.
   late final pulumi.Output<String?> ipConfigurationId;
   /// The Source NAT direction of a VPN NAT.
@@ -261,11 +263,33 @@ class NatRuleNetwork extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    egressVpnSiteLinkConnections = registerOutput<List<Map<String, dynamic>>>('egressVpnSiteLinkConnections');
+    egressVpnSiteLinkConnections = registerOutput<List<SubResourceResponse>>('egressVpnSiteLinkConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
-    externalMappings = registerOutput<List<Map<String, dynamic>>?>('externalMappings');
-    ingressVpnSiteLinkConnections = registerOutput<List<Map<String, dynamic>>>('ingressVpnSiteLinkConnections');
-    internalMappings = registerOutput<List<Map<String, dynamic>>?>('internalMappings');
+    externalMappings = registerOutput<List<VpnNatRuleMappingResponse>?>('externalMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnNatRuleMappingResponse>(guardedValue, (value) => VpnNatRuleMappingResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    ingressVpnSiteLinkConnections = registerOutput<List<SubResourceResponse>>('ingressVpnSiteLinkConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    internalMappings = registerOutput<List<VpnNatRuleMappingResponse>?>('internalMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnNatRuleMappingResponse>(guardedValue, (value) => VpnNatRuleMappingResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    ipConfigurationId = registerOutput<String?>('ipConfigurationId');
+    mode = registerOutput<String?>('mode');
+    this.name = registerOutput<String?>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [NatRuleNetwork] resource.
+  NatRuleNetwork.reference(String urn)
+    : super(
+        'azure-native:network:NatRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    egressVpnSiteLinkConnections = registerOutput<List<SubResourceResponse>>('egressVpnSiteLinkConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String>('etag');
+    externalMappings = registerOutput<List<VpnNatRuleMappingResponse>?>('externalMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnNatRuleMappingResponse>(guardedValue, (value) => VpnNatRuleMappingResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    ingressVpnSiteLinkConnections = registerOutput<List<SubResourceResponse>>('ingressVpnSiteLinkConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    internalMappings = registerOutput<List<VpnNatRuleMappingResponse>?>('internalMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnNatRuleMappingResponse>(guardedValue, (value) => VpnNatRuleMappingResponse.fromMap((value as Map).cast<String, dynamic>())); });
     ipConfigurationId = registerOutput<String?>('ipConfigurationId');
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String?>('name');

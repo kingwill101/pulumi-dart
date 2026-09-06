@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The SAP Software configuration Input when the software is installed externally outside the service.
 class ExternalInstallationSoftwareConfiguration {
   /// The resource ID of the virtual machine containing the central server instance.
-  final pulumi.Input<String>? centralServerVmId;
+  final pulumi.Input<String?>? centralServerVmId;
   /// The SAP software installation Type.
   /// Expected value is 'External'.
   final pulumi.Input<String> softwareInstallationType;

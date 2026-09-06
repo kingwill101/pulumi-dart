@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The managed application management mode.
-enum ApplicationManagementMode {
+enum ApplicationManagementMode implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueUnmanaged("Unmanaged"),
   valueManaged("Managed");
 
   const ApplicationManagementMode(this.wireValue);
+  @override
   final String wireValue;
 
   static ApplicationManagementMode fromValue(String value) {

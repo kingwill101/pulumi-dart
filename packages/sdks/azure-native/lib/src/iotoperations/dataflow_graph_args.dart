@@ -10,15 +10,15 @@ import 'extended_location.dart';
 /// {@macro pulumi_iotoperations_dataflow_graph_args_doc}
 class DataflowGraphArgs {
   /// Name of Instance dataflowEndpoint resource.
-  final pulumi.Input<String>? dataflowGraphName;
+  final pulumi.Input<String?>? dataflowGraphName;
   /// Name of Instance dataflowProfile resource
   final pulumi.Input<String> dataflowProfileName;
   /// Edge location of the resource.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// Name of instance.
   final pulumi.Input<String> instanceName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<DataflowGraphProperties>? properties;
+  final pulumi.Input<DataflowGraphProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

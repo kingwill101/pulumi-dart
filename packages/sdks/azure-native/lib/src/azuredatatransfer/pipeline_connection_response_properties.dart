@@ -6,7 +6,7 @@ import 'internal_metadata_properties_response.dart';
 /// Connection properties inside pipeline
 class PipelineConnectionResponseProperties {
   /// Internal metadata of the connection inside pipeline.
-  final pulumi.Input<InternalMetadataPropertiesResponse>? internalMetadata;
+  final pulumi.Input<InternalMetadataPropertiesResponse?>? internalMetadata;
 
   /// Creates a new [PipelineConnectionResponseProperties].
   /// [internalMetadata] Internal metadata of the connection inside pipeline.

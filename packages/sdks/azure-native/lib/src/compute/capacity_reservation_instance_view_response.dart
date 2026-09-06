@@ -7,9 +7,9 @@ import 'instance_view_status_response.dart';
 /// The instance view of a capacity reservation that provides as snapshot of the runtime properties of the capacity reservation that is managed by the platform and can change outside of control plane operations.
 class CapacityReservationInstanceViewResponse {
   /// The resource status information.
-  final pulumi.Input<List<InstanceViewStatusResponse>>? statuses;
+  final pulumi.Input<List<InstanceViewStatusResponse>?>? statuses;
   /// Unutilized capacity of the capacity reservation.
-  final pulumi.Input<CapacityReservationUtilizationResponse>? utilizationInfo;
+  final pulumi.Input<CapacityReservationUtilizationResponse?>? utilizationInfo;
 
   /// Creates a new [CapacityReservationInstanceViewResponse].
   /// [statuses] The resource status information.

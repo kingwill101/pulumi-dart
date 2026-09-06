@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration settings of the checks that should be made while validating the JWT Claims.
 class JwtClaimChecksResponse {
   /// The list of the allowed client applications.
-  final pulumi.Input<List<String>>? allowedClientApplications;
+  final pulumi.Input<List<String>?>? allowedClientApplications;
   /// The list of the allowed groups.
-  final pulumi.Input<List<String>>? allowedGroups;
+  final pulumi.Input<List<String>?>? allowedGroups;
 
   /// Creates a new [JwtClaimChecksResponse].
   /// [allowedClientApplications] The list of the allowed client applications.

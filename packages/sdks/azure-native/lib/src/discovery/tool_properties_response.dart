@@ -7,7 +7,7 @@ class ToolPropertiesResponse {
   /// The JSON content for defining a resource
   final pulumi.Input<dynamic> definitionContent;
   /// Environment variables to make available
-  final pulumi.Input<Map<String, String>>? environmentVariables;
+  final pulumi.Input<Map<String, String>?>? environmentVariables;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// The version of a resource definition

@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex dependencies.
 class MetadataDependencies {
   /// Id of the content item we depend on
-  final pulumi.Input<String>? contentId;
+  final pulumi.Input<String?>? contentId;
   /// This is the list of dependencies we must fulfill, according to the AND/OR operator
-  final pulumi.Input<List<MetadataDependencies>>? criteria;
+  final pulumi.Input<List<MetadataDependencies>?>? criteria;
   /// Type of the content item we depend on
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<dynamic>? kind;
   /// Name of the content item
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Operator used for list of dependencies in criteria array.
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<dynamic>? operator;
   /// Version of the the content item we depend on.  Can be blank, * or missing to indicate any version fulfills the dependency.  If version does not match our defined numeric format then an exact match is required.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [MetadataDependencies].
   /// [contentId] Id of the content item we depend on
@@ -48,9 +48,9 @@ class MetadataDependencies {
     return MetadataDependencies(
       contentId: (() { final guardedValue = map['contentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       criteria: (() { final guardedValue = map['criteria']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MetadataDependencies>(guardedValue, (value) => MetadataDependencies.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      operator: (() { final guardedValue = map['operator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operator: (() { final guardedValue = map['operator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

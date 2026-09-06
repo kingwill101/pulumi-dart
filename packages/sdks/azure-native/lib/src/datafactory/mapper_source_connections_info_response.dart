@@ -7,9 +7,9 @@ import 'mapper_table_response.dart';
 /// A object which contains list of tables and connection details for a source connection.
 class MapperSourceConnectionsInfoResponse {
   /// Source connection details.
-  final pulumi.Input<MapperConnectionResponse>? connection;
+  final pulumi.Input<MapperConnectionResponse?>? connection;
   /// List of source tables for a source connection.
-  final pulumi.Input<List<MapperTableResponse>>? sourceEntities;
+  final pulumi.Input<List<MapperTableResponse>?>? sourceEntities;
 
   /// Creates a new [MapperSourceConnectionsInfoResponse].
   /// [connection] Source connection details.

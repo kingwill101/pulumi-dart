@@ -9,9 +9,9 @@ import 'metadata_assignment.dart';
 /// {@macro pulumi_apicenter_metadata_schema_args_doc}
 class MetadataSchemaArgs {
   /// The assignees
-  final pulumi.Input<List<MetadataAssignment>>? assignedTo;
+  final pulumi.Input<List<MetadataAssignment>?>? assignedTo;
   /// The name of the metadata schema.
-  final pulumi.Input<String>? metadataSchemaName;
+  final pulumi.Input<String?>? metadataSchemaName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The schema defining the type.

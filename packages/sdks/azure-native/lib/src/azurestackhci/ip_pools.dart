@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The dnsServers of a device.
 class IpPools {
   /// Ending IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
-  final pulumi.Input<String>? endingAddress;
+  final pulumi.Input<String?>? endingAddress;
   /// Starting IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
-  final pulumi.Input<String>? startingAddress;
+  final pulumi.Input<String?>? startingAddress;
 
   /// Creates a new [IpPools].
   /// [endingAddress] Ending IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.

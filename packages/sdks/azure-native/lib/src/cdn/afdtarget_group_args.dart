@@ -15,7 +15,7 @@ class AFDTargetGroupArgs {
   /// TargetEndpoint list referenced by this target group.
   final pulumi.Input<List<TargetEndpoint>> targetEndpoints;
   /// Name of the Target Group under the profile.
-  final pulumi.Input<String>? targetGroupName;
+  final pulumi.Input<String?>? targetGroupName;
 
   /// Creates a new [AFDTargetGroupArgs].
   /// [profileName] Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.

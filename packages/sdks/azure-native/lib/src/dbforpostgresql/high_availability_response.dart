@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// High availability properties of a server.
 class HighAvailabilityResponse {
   /// High availability mode for a server.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Availability zone associated to the standby server created when high availability is set to SameZone or ZoneRedundant.
-  final pulumi.Input<String>? standbyAvailabilityZone;
+  final pulumi.Input<String?>? standbyAvailabilityZone;
   /// Possible states of the standby server created when high availability is set to SameZone or ZoneRedundant.
   final pulumi.Input<String> state;
 
@@ -15,11 +15,11 @@ class HighAvailabilityResponse {
   /// [mode] High availability mode for a server.
   /// [standbyAvailabilityZone] Availability zone associated to the standby server created when high availability is set to SameZone or ZoneRedundant.
   /// [state] Possible states of the standby server created when high availability is set to SameZone or ZoneRedundant.
-  const HighAvailabilityResponse({
-    this.mode,
-    this.standbyAvailabilityZone,
+  HighAvailabilityResponse({
+    pulumi.Input<String?>? mode,
+    pulumi.Input<String?>? standbyAvailabilityZone,
     required this.state,
-  });
+  }) : mode = mode ?? pulumi.Input.fromValue('Disabled'), standbyAvailabilityZone = standbyAvailabilityZone ?? pulumi.Input.fromValue('');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

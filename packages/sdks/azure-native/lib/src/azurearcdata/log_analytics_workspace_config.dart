@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Log analytics workspace id and primary key
 class LogAnalyticsWorkspaceConfig {
   /// Primary key of the workspace
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// Azure Log Analytics workspace ID
-  final pulumi.Input<String>? workspaceId;
+  final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [LogAnalyticsWorkspaceConfig].
   /// [primaryKey] Primary key of the workspace

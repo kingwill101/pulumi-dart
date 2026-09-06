@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties that are associated with a SKU.
 class SkuResponse {
   /// The name of the SKU. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [SkuResponse].
   /// [name] The name of the SKU. Required on PUT (CreateOrReplace) requests.

@@ -11,11 +11,11 @@ class WaveArgs {
   /// Migrate Project Name
   final pulumi.Input<String> projectName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<WaveProperties>? properties;
+  final pulumi.Input<WaveProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Migration Wave Resource
-  final pulumi.Input<String>? waveName;
+  final pulumi.Input<String?>? waveName;
 
   /// Creates a new [WaveArgs].
   /// [projectName] Migrate Project Name

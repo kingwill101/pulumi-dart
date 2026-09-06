@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Currency in which prices should be reported.
-enum AzureCurrency {
+enum AzureCurrency implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   uSD("USD"),
   dKK("DKK"),
@@ -28,6 +30,7 @@ enum AzureCurrency {
   cNY("CNY");
 
   const AzureCurrency(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureCurrency fromValue(String value) {

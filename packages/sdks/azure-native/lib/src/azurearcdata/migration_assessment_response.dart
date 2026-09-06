@@ -9,7 +9,7 @@ class MigrationAssessmentResponse {
   /// The time when Migration Assessment Report upload was last performed.
   final pulumi.Input<String> assessmentUploadTime;
   /// Indicates if migration assessment is enabled for this SQL Server instance.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Issues and warnings impacting the migration of SQL Server instance to particular Azure Migration Target.
   final pulumi.Input<List<MigrationAssessmentResponseServerAssessments>> serverAssessments;
   /// SKU Recommendation results for Azure migration targets for SQL Server.

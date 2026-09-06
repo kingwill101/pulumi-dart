@@ -9,7 +9,7 @@ import 'failover_group_properties.dart';
 /// {@macro pulumi_azurearcdata_failover_group_args_doc}
 class FailoverGroupArgs {
   /// The name of the Failover Group
-  final pulumi.Input<String>? failoverGroupName;
+  final pulumi.Input<String?>? failoverGroupName;
   /// null
   final pulumi.Input<FailoverGroupProperties> properties;
   /// The name of the Azure resource group

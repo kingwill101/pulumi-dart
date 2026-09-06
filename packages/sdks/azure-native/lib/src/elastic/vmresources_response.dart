@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The vm resource properties that is currently being monitored by the Elastic monitor resource.
 class VMResourcesResponse {
   /// The ARM id of the VM resource.
-  final pulumi.Input<String>? vmResourceId;
+  final pulumi.Input<String?>? vmResourceId;
 
   /// Creates a new [VMResourcesResponse].
   /// [vmResourceId] The ARM id of the VM resource.

@@ -6,13 +6,13 @@ import 'status_type_enum_value_response.dart';
 /// Definition of awsIamAccessKeyMetadata
 class AwsIamAccessKeyMetadataPropertiesResponse {
   /// &lt;p&gt;The ID for this access key.&lt;/p&gt;
-  final pulumi.Input<String>? accessKeyId;
+  final pulumi.Input<String?>? accessKeyId;
   /// &lt;p&gt;The date when the access key was created.&lt;/p&gt;
-  final pulumi.Input<String>? createDate;
+  final pulumi.Input<String?>? createDate;
   /// &lt;p&gt;The status of the access key. &lt;code&gt;Active&lt;/code&gt; means that the key is valid for API calls; &lt;code&gt;Inactive&lt;/code&gt; means it is not.&lt;/p&gt;
-  final pulumi.Input<StatusTypeEnumValueResponse>? status;
+  final pulumi.Input<StatusTypeEnumValueResponse?>? status;
   /// &lt;p&gt;The name of the IAM user that the key is associated with.&lt;/p&gt;
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [AwsIamAccessKeyMetadataPropertiesResponse].
   /// [accessKeyId] &lt;p&gt;The ID for this access key.&lt;/p&gt;

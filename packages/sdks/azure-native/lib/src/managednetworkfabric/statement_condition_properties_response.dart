@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Route policy statement condition properties.
 class StatementConditionPropertiesResponse {
   /// List of IP Community resource IDs.
-  final pulumi.Input<List<String>>? ipCommunityIds;
+  final pulumi.Input<List<String>?>? ipCommunityIds;
   /// List of IP Extended Community resource IDs.
-  final pulumi.Input<List<String>>? ipExtendedCommunityIds;
+  final pulumi.Input<List<String>?>? ipExtendedCommunityIds;
   /// Arm Resource Id of IpPrefix.
-  final pulumi.Input<String>? ipPrefixId;
+  final pulumi.Input<String?>? ipPrefixId;
   /// Type of the condition used.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [StatementConditionPropertiesResponse].
   /// [ipCommunityIds] List of IP Community resource IDs.
   /// [ipExtendedCommunityIds] List of IP Extended Community resource IDs.
   /// [ipPrefixId] Arm Resource Id of IpPrefix.
   /// [type] Type of the condition used.
-  const StatementConditionPropertiesResponse({
+  StatementConditionPropertiesResponse({
     this.ipCommunityIds,
     this.ipExtendedCommunityIds,
     this.ipPrefixId,
-    this.type,
-  });
+    pulumi.Input<String?>? type,
+  }) : type = type ?? pulumi.Input.fromValue('Or');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

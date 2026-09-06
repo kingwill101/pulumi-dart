@@ -9,7 +9,7 @@ class DataflowEndpointDataLakeStorage {
   /// Authentication configuration. NOTE - only authentication property is allowed per entry.
   final pulumi.Input<DataflowEndpointDataLakeStorageAuthentication> authentication;
   /// Azure Data Lake endpoint batching configuration.
-  final pulumi.Input<BatchingConfiguration>? batching;
+  final pulumi.Input<BatchingConfiguration?>? batching;
   /// Host of the Azure Data Lake in the form of &lt;account&gt;.blob.core.windows.net .
   final pulumi.Input<String> host;
 

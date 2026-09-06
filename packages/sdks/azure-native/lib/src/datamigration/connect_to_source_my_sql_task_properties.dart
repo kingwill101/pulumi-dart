@@ -6,9 +6,9 @@ import 'connect_to_source_my_sql_task_input.dart';
 /// Properties for the task that validates MySQL database connection
 class ConnectToSourceMySqlTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// Task input
-  final pulumi.Input<ConnectToSourceMySqlTaskInput>? input;
+  final pulumi.Input<ConnectToSourceMySqlTaskInput?>? input;
   /// Task type.
   /// Expected value is 'ConnectToSource.MySql'.
   final pulumi.Input<String> taskType;

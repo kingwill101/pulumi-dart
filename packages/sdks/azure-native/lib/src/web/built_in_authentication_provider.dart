@@ -1,7 +1,9 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The default authentication provider to use when multiple providers are configured.
 /// This setting is only needed if multiple providers are configured and the unauthenticated client
 /// action is set to "RedirectToLoginPage".
-enum BuiltInAuthenticationProvider {
+enum BuiltInAuthenticationProvider implements pulumi.PulumiEnum<String> {
   valueAzureActiveDirectory("AzureActiveDirectory"),
   valueFacebook("Facebook"),
   valueGoogle("Google"),
@@ -10,6 +12,7 @@ enum BuiltInAuthenticationProvider {
   valueGithub("Github");
 
   const BuiltInAuthenticationProvider(this.wireValue);
+  @override
   final String wireValue;
 
   static BuiltInAuthenticationProvider fromValue(String value) {

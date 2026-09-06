@@ -3,37 +3,36 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_active_directory_app_response.dart';
 import 'database_info_response.dart';
-import 'mi_sql_connection_info_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getProject.
 class GetProjectResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Field that defines the Azure active directory application info, used to connect to the target Azure resource
   final AzureActiveDirectoryAppResponse? azureAuthenticationInfo;
   /// UTC Date and time when project was created
-  final String creationTime;
+  final String? creationTime;
   /// List of DatabaseInfo
   final List<DatabaseInfoResponse>? databasesInfo;
   /// HTTP strong entity tag value. This is ignored if submitted.
   final String? etag;
-  final String id;
+  final String? id;
   final String? location;
-  final String name;
+  final String? name;
   /// The project's provisioning state
-  final String provisioningState;
+  final String? provisioningState;
   /// Information for connecting to source
-  final MiSqlConnectionInfoResponse? sourceConnectionInfo;
+  final dynamic sourceConnectionInfo;
   /// Source platform for the project
-  final String sourcePlatform;
-  final SystemDataResponse systemData;
+  final String? sourcePlatform;
+  final SystemDataResponse? systemData;
   final Map<String, String>? tags;
   /// Information for connecting to target
-  final MiSqlConnectionInfoResponse? targetConnectionInfo;
+  final dynamic targetConnectionInfo;
   /// Target platform for the project
-  final String targetPlatform;
-  final String type;
+  final String? targetPlatform;
+  final String? type;
 
   /// Creates a new [GetProjectResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -41,75 +40,75 @@ class GetProjectResult {
   /// [creationTime] UTC Date and time when project was created
   /// [databasesInfo] List of DatabaseInfo
   /// [etag] HTTP strong entity tag value. This is ignored if submitted.
-  /// [id] Required.
+  /// [id] Optional.
   /// [location] Optional.
-  /// [name] Required.
+  /// [name] Optional.
   /// [provisioningState] The project's provisioning state
   /// [sourceConnectionInfo] Information for connecting to source
   /// [sourcePlatform] Source platform for the project
-  /// [systemData] Required.
+  /// [systemData] Optional.
   /// [tags] Optional.
   /// [targetConnectionInfo] Information for connecting to target
   /// [targetPlatform] Target platform for the project
-  /// [type] Required.
+  /// [type] Optional.
   const GetProjectResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.azureAuthenticationInfo,
-    required this.creationTime,
+    this.creationTime,
     this.databasesInfo,
     this.etag,
-    required this.id,
+    this.id,
     this.location,
-    required this.name,
-    required this.provisioningState,
+    this.name,
+    this.provisioningState,
     this.sourceConnectionInfo,
-    required this.sourcePlatform,
-    required this.systemData,
+    this.sourcePlatform,
+    this.systemData,
     this.tags,
     this.targetConnectionInfo,
-    required this.targetPlatform,
-    required this.type,
+    this.targetPlatform,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'azureAuthenticationInfo': ?azureAuthenticationInfo?.toMap(),
-      'creationTime': creationTime,
+      'creationTime': ?creationTime,
       'databasesInfo': ?(() { final guardedValue = databasesInfo; if (guardedValue == null) return null; return pulumi.Input.encodeList<DatabaseInfoResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'etag': ?etag,
-      'id': id,
+      'id': ?id,
       'location': ?location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'sourceConnectionInfo': ?sourceConnectionInfo?.toMap(),
-      'sourcePlatform': sourcePlatform,
-      'systemData': systemData.toMap(),
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'sourceConnectionInfo': ?sourceConnectionInfo,
+      'sourcePlatform': ?sourcePlatform,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'targetConnectionInfo': ?targetConnectionInfo?.toMap(),
-      'targetPlatform': targetPlatform,
-      'type': type,
+      'targetConnectionInfo': ?targetConnectionInfo,
+      'targetPlatform': ?targetPlatform,
+      'type': ?type,
     };
   }
 
   factory GetProjectResult.fromMap(Map<String, dynamic> map) {
     return GetProjectResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureAuthenticationInfo: (() { final guardedValue = map['azureAuthenticationInfo']; if (guardedValue == null) return null; return AzureActiveDirectoryAppResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      creationTime: map['creationTime'] as String,
+      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       databasesInfo: (() { final guardedValue = map['databasesInfo']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInfoResponse>(guardedValue, (value) => DatabaseInfoResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      sourceConnectionInfo: (() { final guardedValue = map['sourceConnectionInfo']; if (guardedValue == null) return null; return MiSqlConnectionInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      sourcePlatform: map['sourcePlatform'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceConnectionInfo: (() { final guardedValue = map['sourceConnectionInfo']; if (guardedValue == null) return null; return guardedValue; })(),
+      sourcePlatform: (() { final guardedValue = map['sourcePlatform']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      targetConnectionInfo: (() { final guardedValue = map['targetConnectionInfo']; if (guardedValue == null) return null; return MiSqlConnectionInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      targetPlatform: map['targetPlatform'] as String,
-      type: map['type'] as String,
+      targetConnectionInfo: (() { final guardedValue = map['targetConnectionInfo']; if (guardedValue == null) return null; return guardedValue; })(),
+      targetPlatform: (() { final guardedValue = map['targetPlatform']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

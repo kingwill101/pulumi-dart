@@ -7,13 +7,13 @@ import 'cmk_key_vault_properties.dart';
 /// Customer Managed Key details of the resource.
 class EncryptionSettings {
   /// Enabling/Disabling the Double Encryption state
-  final pulumi.Input<String>? infrastructureEncryption;
+  final pulumi.Input<dynamic>? infrastructureEncryption;
   /// The details of the managed identity used for CMK
-  final pulumi.Input<CmkKekIdentity>? kekIdentity;
+  final pulumi.Input<CmkKekIdentity?>? kekIdentity;
   /// The properties of the Key Vault which hosts CMK
-  final pulumi.Input<CmkKeyVaultProperties>? keyVaultProperties;
+  final pulumi.Input<CmkKeyVaultProperties?>? keyVaultProperties;
   /// Encryption state of the Backup Vault.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
 
   /// Creates a new [EncryptionSettings].
   /// [infrastructureEncryption] Enabling/Disabling the Double Encryption state
@@ -38,10 +38,10 @@ class EncryptionSettings {
 
   factory EncryptionSettings.fromMap(Map<String, dynamic> map) {
     return EncryptionSettings(
-      infrastructureEncryption: (() { final guardedValue = map['infrastructureEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      infrastructureEncryption: (() { final guardedValue = map['infrastructureEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       kekIdentity: (() { final guardedValue = map['kekIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CmkKekIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       keyVaultProperties: (() { final guardedValue = map['keyVaultProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CmkKeyVaultProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

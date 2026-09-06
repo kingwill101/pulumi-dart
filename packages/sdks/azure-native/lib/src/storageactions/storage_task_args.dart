@@ -18,13 +18,13 @@ class StorageTaskArgs {
   /// The managed service identity of the resource.
   final pulumi.Input<ManagedServiceIdentity> identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only.
-  final pulumi.Input<String>? storageTaskName;
+  final pulumi.Input<String?>? storageTaskName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [StorageTaskArgs].
   /// [action] The storage task action that is executed

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Error and status message
 class StatusMessageResponse {
   /// The error code
-  final pulumi.Input<double>? errorCode;
+  final pulumi.Input<double?>? errorCode;
   /// The error or status message
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [StatusMessageResponse].
   /// [errorCode] The error code
@@ -26,7 +26,7 @@ class StatusMessageResponse {
 
   factory StatusMessageResponse.fromMap(Map<String, dynamic> map) {
     return StatusMessageResponse(
-      errorCode: (() { final guardedValue = map['errorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      errorCode: (() { final guardedValue = map['errorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

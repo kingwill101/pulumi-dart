@@ -6,9 +6,9 @@ import 'asymmetric_encrypted_secret_response.dart';
 /// Holds device secret either as a KeyVault reference or as an encrypted value.
 class SecretResponse {
   /// Encrypted (using device public key) secret value.
-  final pulumi.Input<AsymmetricEncryptedSecretResponse>? encryptedSecret;
+  final pulumi.Input<AsymmetricEncryptedSecretResponse?>? encryptedSecret;
   /// Id of the Key-Vault where secret is stored (ex: secrets/AuthClientSecret/82ef4346187a4033a10d629cde07d740).
-  final pulumi.Input<String>? keyVaultId;
+  final pulumi.Input<String?>? keyVaultId;
 
   /// Creates a new [SecretResponse].
   /// [encryptedSecret] Encrypted (using device public key) secret value.

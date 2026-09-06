@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration of dataset in the report.
 class ReportDatasetConfigurationResponse {
   /// Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
-  final pulumi.Input<List<String>>? columns;
+  final pulumi.Input<List<String>?>? columns;
 
   /// Creates a new [ReportDatasetConfigurationResponse].
   /// [columns] Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.

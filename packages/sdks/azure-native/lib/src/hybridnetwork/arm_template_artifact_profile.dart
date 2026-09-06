@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Template artifact profile.
 class ArmTemplateArtifactProfile {
   /// Template name.
-  final pulumi.Input<String>? templateName;
+  final pulumi.Input<String?>? templateName;
   /// Template version.
-  final pulumi.Input<String>? templateVersion;
+  final pulumi.Input<String?>? templateVersion;
 
   /// Creates a new [ArmTemplateArtifactProfile].
   /// [templateName] Template name.

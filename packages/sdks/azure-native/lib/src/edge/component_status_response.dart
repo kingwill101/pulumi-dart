@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Component Status
 class ComponentStatusResponse {
   /// Component name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Component status
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [ComponentStatusResponse].
   /// [name] Component name

@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_recovery_service_vault_protection_intent_response.dart';
 import 'protection_intent_args.dart';
 
 /// Base class for backup ProtectionIntent.
@@ -201,7 +200,7 @@ class ProtectionIntent extends pulumi.CustomResource {
   /// Resource name associated with the resource.
   late final pulumi.Output<String> name;
   /// ProtectionIntentResource properties
-  late final pulumi.Output<AzureRecoveryServiceVaultProtectionIntentResponse> properties;
+  late final pulumi.Output<dynamic> properties;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
@@ -225,8 +224,26 @@ class ProtectionIntent extends pulumi.CustomResource {
     eTag = registerOutput<String?>('eTag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<AzureRecoveryServiceVaultProtectionIntentResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureRecoveryServiceVaultProtectionIntentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    properties = registerOutput<dynamic>('properties');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ProtectionIntent] resource.
+  ProtectionIntent.reference(String urn)
+    : super(
+        'azure-native:recoveryservices:ProtectionIntent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eTag = registerOutput<String?>('eTag');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<dynamic>('properties');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

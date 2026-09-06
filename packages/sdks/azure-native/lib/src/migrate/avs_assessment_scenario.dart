@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// AVS Assessment Scenario.
-enum AvsAssessmentScenario {
+enum AvsAssessmentScenario implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   newAvsSddc("NewAvsSddc"),
   avsSddcExpansion("AvsSddcExpansion");
 
   const AvsAssessmentScenario(this.wireValue);
+  @override
   final String wireValue;
 
   static AvsAssessmentScenario fromValue(String value) {

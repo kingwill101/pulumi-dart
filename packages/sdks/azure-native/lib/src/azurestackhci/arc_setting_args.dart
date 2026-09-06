@@ -9,21 +9,21 @@ import 'arc_connectivity_properties.dart';
 /// {@macro pulumi_azurestackhci_arc_setting_args_doc}
 class ArcSettingArgs {
   /// App id of arc AAD identity.
-  final pulumi.Input<String>? arcApplicationClientId;
+  final pulumi.Input<String?>? arcApplicationClientId;
   /// Object id of arc AAD identity.
-  final pulumi.Input<String>? arcApplicationObjectId;
+  final pulumi.Input<String?>? arcApplicationObjectId;
   /// Tenant id of arc AAD identity.
-  final pulumi.Input<String>? arcApplicationTenantId;
+  final pulumi.Input<String?>? arcApplicationTenantId;
   /// The resource group that hosts the Arc agents, ie. Hybrid Compute Machine resources.
-  final pulumi.Input<String>? arcInstanceResourceGroup;
+  final pulumi.Input<String?>? arcInstanceResourceGroup;
   /// Object id of arc AAD service principal.
-  final pulumi.Input<String>? arcServicePrincipalObjectId;
+  final pulumi.Input<String?>? arcServicePrincipalObjectId;
   /// The name of the proxy resource holding details of HCI ArcSetting information.
-  final pulumi.Input<String>? arcSettingName;
+  final pulumi.Input<String?>? arcSettingName;
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
   /// contains connectivity related configuration for ARC resources
-  final pulumi.Input<List<ArcConnectivityProperties>>? connectivityProperties;
+  final pulumi.Input<List<ArcConnectivityProperties>?>? connectivityProperties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

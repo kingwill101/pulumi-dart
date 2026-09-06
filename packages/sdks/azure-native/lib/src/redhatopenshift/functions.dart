@@ -34,6 +34,17 @@ Future<GetMachinePoolResult> getMachinePool(
   return GetMachinePoolResult.fromMap(result);
 }
 
+pulumi.Output<GetMachinePoolResult> getMachinePoolOutput(
+  GetMachinePoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redhatopenshift:getMachinePool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMachinePoolResult.fromMap);
+}
+
 /// The operation returns properties of a OpenShift cluster.
 ///
 /// Uses Azure REST API version 2023-11-22.
@@ -52,6 +63,17 @@ Future<GetOpenShiftClusterResult> getOpenShiftCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOpenShiftClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetOpenShiftClusterResult> getOpenShiftClusterOutput(
+  GetOpenShiftClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redhatopenshift:getOpenShiftCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOpenShiftClusterResult.fromMap);
 }
 
 /// The operation returns properties of a Secret.
@@ -74,6 +96,17 @@ Future<GetSecretResult> getSecret(
   return GetSecretResult.fromMap(result);
 }
 
+pulumi.Output<GetSecretResult> getSecretOutput(
+  GetSecretArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redhatopenshift:getSecret',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretResult.fromMap);
+}
+
 /// The operation returns properties of a SyncIdentityProvider.
 ///
 /// Uses Azure REST API version 2023-11-22.
@@ -92,6 +125,17 @@ Future<GetSyncIdentityProviderResult> getSyncIdentityProvider(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSyncIdentityProviderResult.fromMap(result);
+}
+
+pulumi.Output<GetSyncIdentityProviderResult> getSyncIdentityProviderOutput(
+  GetSyncIdentityProviderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redhatopenshift:getSyncIdentityProvider',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSyncIdentityProviderResult.fromMap);
 }
 
 /// The operation returns properties of a SyncSet.
@@ -114,6 +158,17 @@ Future<GetSyncSetResult> getSyncSet(
   return GetSyncSetResult.fromMap(result);
 }
 
+pulumi.Output<GetSyncSetResult> getSyncSetOutput(
+  GetSyncSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redhatopenshift:getSyncSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSyncSetResult.fromMap);
+}
+
 /// The operation returns the admin kubeconfig.
 ///
 /// Uses Azure REST API version 2023-11-22.
@@ -134,6 +189,17 @@ Future<ListOpenShiftClusterAdminCredentialsResult> listOpenShiftClusterAdminCred
   return ListOpenShiftClusterAdminCredentialsResult.fromMap(result);
 }
 
+pulumi.Output<ListOpenShiftClusterAdminCredentialsResult> listOpenShiftClusterAdminCredentialsOutput(
+  ListOpenShiftClusterAdminCredentialsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redhatopenshift:listOpenShiftClusterAdminCredentials',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListOpenShiftClusterAdminCredentialsResult.fromMap);
+}
+
 /// The operation returns the credentials.
 ///
 /// Uses Azure REST API version 2023-11-22.
@@ -152,4 +218,15 @@ Future<ListOpenShiftClusterCredentialsResult> listOpenShiftClusterCredentials(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListOpenShiftClusterCredentialsResult.fromMap(result);
+}
+
+pulumi.Output<ListOpenShiftClusterCredentialsResult> listOpenShiftClusterCredentialsOutput(
+  ListOpenShiftClusterCredentialsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:redhatopenshift:listOpenShiftClusterCredentials',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListOpenShiftClusterCredentialsResult.fromMap);
 }

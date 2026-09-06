@@ -6,9 +6,9 @@ import 'ingestion_sources_properties_format_response.dart';
 /// Ingestion Policy properties.
 class IngestionPolicyPropertiesFormatResponse {
   /// Ingestion Sources.
-  final pulumi.Input<List<IngestionSourcesPropertiesFormatResponse>>? ingestionSources;
+  final pulumi.Input<List<IngestionSourcesPropertiesFormatResponse>?>? ingestionSources;
   /// The ingestion type.
-  final pulumi.Input<String>? ingestionType;
+  final pulumi.Input<String?>? ingestionType;
 
   /// Creates a new [IngestionPolicyPropertiesFormatResponse].
   /// [ingestionSources] Ingestion Sources.

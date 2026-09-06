@@ -7,19 +7,19 @@ import 'azure_firewall_nat_rule_response.dart';
 /// NAT rule collection resource.
 class AzureFirewallNatRuleCollectionResponse {
   /// The action type of a NAT rule collection.
-  final pulumi.Input<AzureFirewallNatRCActionResponse>? action;
+  final pulumi.Input<AzureFirewallNatRCActionResponse?>? action;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within the Azure firewall. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Priority of the NAT rule collection resource.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// The provisioning state of the NAT rule collection resource.
   final pulumi.Input<String> provisioningState;
   /// Collection of rules used by a NAT rule collection.
-  final pulumi.Input<List<AzureFirewallNatRuleResponse>>? rules;
+  final pulumi.Input<List<AzureFirewallNatRuleResponse>?>? rules;
 
   /// Creates a new [AzureFirewallNatRuleCollectionResponse].
   /// [action] The action type of a NAT rule collection.
@@ -57,7 +57,7 @@ class AzureFirewallNatRuleCollectionResponse {
       etag: pulumi.Input.fromValue(map['etag'] as String),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AzureFirewallNatRuleResponse>(guardedValue, (value) => AzureFirewallNatRuleResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

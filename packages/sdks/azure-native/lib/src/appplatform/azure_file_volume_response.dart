@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of the Azure File volume. Azure File shares are mounted as volumes.
 class AzureFileVolumeResponse {
   /// If set to true, it will create and mount a dedicated directory for every individual app instance.
-  final pulumi.Input<bool>? enableSubPath;
+  final pulumi.Input<bool?>? enableSubPath;
   /// These are the mount options for a persistent disk.
-  final pulumi.Input<List<String>>? mountOptions;
+  final pulumi.Input<List<String>?>? mountOptions;
   /// The mount path of the persistent disk.
   final pulumi.Input<String> mountPath;
   /// Indicates whether the persistent disk is a readOnly one.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// The share name of the Azure File share.
-  final pulumi.Input<String>? shareName;
+  final pulumi.Input<String?>? shareName;
   /// The type of the underlying resource to mount as a persistent disk.
   /// Expected value is 'AzureFileVolume'.
   final pulumi.Input<String> type;
@@ -25,14 +25,14 @@ class AzureFileVolumeResponse {
   /// [readOnly] Indicates whether the persistent disk is a readOnly one.
   /// [shareName] The share name of the Azure File share.
   /// [type] The type of the underlying resource to mount as a persistent disk.
-  const AzureFileVolumeResponse({
-    this.enableSubPath,
+  AzureFileVolumeResponse({
+    pulumi.Input<bool?>? enableSubPath,
     this.mountOptions,
     required this.mountPath,
     this.readOnly,
     this.shareName,
     required this.type,
-  });
+  }) : enableSubPath = enableSubPath ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

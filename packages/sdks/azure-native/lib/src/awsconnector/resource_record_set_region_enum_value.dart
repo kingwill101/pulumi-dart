@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ResourceRecordSetRegionEnumValue
 class ResourceRecordSetRegionEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [ResourceRecordSetRegionEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class ResourceRecordSetRegionEnumValue {
 
   factory ResourceRecordSetRegionEnumValue.fromMap(Map<String, dynamic> map) {
     return ResourceRecordSetRegionEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

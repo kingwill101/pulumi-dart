@@ -54,6 +54,17 @@ Future<GetAzureCliScriptResult> getAzureCliScript(
   return GetAzureCliScriptResult.fromMap(result);
 }
 
+pulumi.Output<GetAzureCliScriptResult> getAzureCliScriptOutput(
+  GetAzureCliScriptArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resources:getAzureCliScript',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAzureCliScriptResult.fromMap);
+}
+
 /// Gets a deployment script with a given name.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -70,6 +81,17 @@ Future<GetAzurePowerShellScriptResult> getAzurePowerShellScript(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAzurePowerShellScriptResult.fromMap(result);
+}
+
+pulumi.Output<GetAzurePowerShellScriptResult> getAzurePowerShellScriptOutput(
+  GetAzurePowerShellScriptArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resources:getAzurePowerShellScript',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAzurePowerShellScriptResult.fromMap);
 }
 
 /// Gets a deployment.
@@ -92,6 +114,17 @@ Future<GetDeploymentResult> getDeployment(
   return GetDeploymentResult.fromMap(result);
 }
 
+pulumi.Output<GetDeploymentResult> getDeploymentOutput(
+  GetDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resources:getDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentResult.fromMap);
+}
+
 /// Gets a deployment.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -110,6 +143,17 @@ Future<GetDeploymentAtManagementGroupScopeResult> getDeploymentAtManagementGroup
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeploymentAtManagementGroupScopeResult.fromMap(result);
+}
+
+pulumi.Output<GetDeploymentAtManagementGroupScopeResult> getDeploymentAtManagementGroupScopeOutput(
+  GetDeploymentAtManagementGroupScopeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resources:getDeploymentAtManagementGroupScope',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentAtManagementGroupScopeResult.fromMap);
 }
 
 /// Gets a deployment.
@@ -132,6 +176,17 @@ Future<GetDeploymentAtScopeResult> getDeploymentAtScope(
   return GetDeploymentAtScopeResult.fromMap(result);
 }
 
+pulumi.Output<GetDeploymentAtScopeResult> getDeploymentAtScopeOutput(
+  GetDeploymentAtScopeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resources:getDeploymentAtScope',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentAtScopeResult.fromMap);
+}
+
 /// Gets a deployment.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -150,6 +205,17 @@ Future<GetDeploymentAtSubscriptionScopeResult> getDeploymentAtSubscriptionScope(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeploymentAtSubscriptionScopeResult.fromMap(result);
+}
+
+pulumi.Output<GetDeploymentAtSubscriptionScopeResult> getDeploymentAtSubscriptionScopeOutput(
+  GetDeploymentAtSubscriptionScopeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resources:getDeploymentAtSubscriptionScope',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentAtSubscriptionScopeResult.fromMap);
 }
 
 /// Gets a deployment.
@@ -172,6 +238,17 @@ Future<GetDeploymentAtTenantScopeResult> getDeploymentAtTenantScope(
   return GetDeploymentAtTenantScopeResult.fromMap(result);
 }
 
+pulumi.Output<GetDeploymentAtTenantScopeResult> getDeploymentAtTenantScopeOutput(
+  GetDeploymentAtTenantScopeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resources:getDeploymentAtTenantScope',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentAtTenantScopeResult.fromMap);
+}
+
 /// Gets the Deployment stack with the given name.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -190,6 +267,17 @@ Future<GetDeploymentStackAtManagementGroupResult> getDeploymentStackAtManagement
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeploymentStackAtManagementGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetDeploymentStackAtManagementGroupResult> getDeploymentStackAtManagementGroupOutput(
+  GetDeploymentStackAtManagementGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resources:getDeploymentStackAtManagementGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentStackAtManagementGroupResult.fromMap);
 }
 
 /// Gets the Deployment stack with the given name.
@@ -212,6 +300,17 @@ Future<GetDeploymentStackAtResourceGroupResult> getDeploymentStackAtResourceGrou
   return GetDeploymentStackAtResourceGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetDeploymentStackAtResourceGroupResult> getDeploymentStackAtResourceGroupOutput(
+  GetDeploymentStackAtResourceGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resources:getDeploymentStackAtResourceGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentStackAtResourceGroupResult.fromMap);
+}
+
 /// Gets the Deployment stack with the given name.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -232,6 +331,17 @@ Future<GetDeploymentStackAtSubscriptionResult> getDeploymentStackAtSubscription(
   return GetDeploymentStackAtSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetDeploymentStackAtSubscriptionResult> getDeploymentStackAtSubscriptionOutput(
+  GetDeploymentStackAtSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resources:getDeploymentStackAtSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentStackAtSubscriptionResult.fromMap);
+}
+
 /// Gets the Deployment stack with the given name.
 ///
 /// Uses Azure REST API version 2025-07-01.
@@ -248,6 +358,17 @@ Future<GetDeploymentStacksWhatIfResultsAtManagementGroupResult> getDeploymentSta
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeploymentStacksWhatIfResultsAtManagementGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetDeploymentStacksWhatIfResultsAtManagementGroupResult> getDeploymentStacksWhatIfResultsAtManagementGroupOutput(
+  GetDeploymentStacksWhatIfResultsAtManagementGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resources:getDeploymentStacksWhatIfResultsAtManagementGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentStacksWhatIfResultsAtManagementGroupResult.fromMap);
 }
 
 /// Gets the Deployment stack with the given name.
@@ -268,6 +389,17 @@ Future<GetDeploymentStacksWhatIfResultsAtResourceGroupResult> getDeploymentStack
   return GetDeploymentStacksWhatIfResultsAtResourceGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetDeploymentStacksWhatIfResultsAtResourceGroupResult> getDeploymentStacksWhatIfResultsAtResourceGroupOutput(
+  GetDeploymentStacksWhatIfResultsAtResourceGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resources:getDeploymentStacksWhatIfResultsAtResourceGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentStacksWhatIfResultsAtResourceGroupResult.fromMap);
+}
+
 /// Gets the Deployment stack with the given name.
 ///
 /// Uses Azure REST API version 2025-07-01.
@@ -284,6 +416,17 @@ Future<GetDeploymentStacksWhatIfResultsAtSubscriptionResult> getDeploymentStacks
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeploymentStacksWhatIfResultsAtSubscriptionResult.fromMap(result);
+}
+
+pulumi.Output<GetDeploymentStacksWhatIfResultsAtSubscriptionResult> getDeploymentStacksWhatIfResultsAtSubscriptionOutput(
+  GetDeploymentStacksWhatIfResultsAtSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resources:getDeploymentStacksWhatIfResultsAtSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentStacksWhatIfResultsAtSubscriptionResult.fromMap);
 }
 
 /// Gets a resource.
@@ -306,6 +449,17 @@ Future<GetResourceResult> getResource(
   return GetResourceResult.fromMap(result);
 }
 
+pulumi.Output<GetResourceResult> getResourceOutput(
+  GetResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resources:getResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourceResult.fromMap);
+}
+
 /// Gets a resource group.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -324,6 +478,17 @@ Future<GetResourceGroupResult> getResourceGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourceGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetResourceGroupResult> getResourceGroupOutput(
+  GetResourceGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resources:getResourceGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourceGroupResult.fromMap);
 }
 
 /// Wrapper resource for tags API requests and responses.
@@ -346,6 +511,17 @@ Future<GetTagAtScopeResult> getTagAtScope(
   return GetTagAtScopeResult.fromMap(result);
 }
 
+pulumi.Output<GetTagAtScopeResult> getTagAtScopeOutput(
+  GetTagAtScopeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resources:getTagAtScope',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTagAtScopeResult.fromMap);
+}
+
 /// Gets a Template Spec with a given name.
 ///
 /// Uses Azure REST API version 2022-02-01.
@@ -366,6 +542,17 @@ Future<GetTemplateSpecResult> getTemplateSpec(
   return GetTemplateSpecResult.fromMap(result);
 }
 
+pulumi.Output<GetTemplateSpecResult> getTemplateSpecOutput(
+  GetTemplateSpecArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resources:getTemplateSpec',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTemplateSpecResult.fromMap);
+}
+
 /// Gets a Template Spec version from a specific Template Spec.
 ///
 /// Uses Azure REST API version 2022-02-01.
@@ -384,4 +571,15 @@ Future<GetTemplateSpecVersionResult> getTemplateSpecVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTemplateSpecVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetTemplateSpecVersionResult> getTemplateSpecVersionOutput(
+  GetTemplateSpecVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resources:getTemplateSpecVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTemplateSpecVersionResult.fromMap);
 }

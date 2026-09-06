@@ -11,23 +11,23 @@ import 'sku.dart';
 /// {@macro pulumi_machinelearningservices_batch_deployment_args_doc}
 class BatchDeploymentArgs {
   /// The identifier for the Batch deployments.
-  final pulumi.Input<String>? deploymentName;
+  final pulumi.Input<String?>? deploymentName;
   /// Name for the Batch Endpoint.
   final pulumi.Input<String> endpointName;
   /// Managed service identity (system assigned and/or user assigned identities)
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// [Required] Additional attributes of the entity.
   final pulumi.Input<BatchDeploymentProperties> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Sku details required for ARM contract for Autoscaling.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 

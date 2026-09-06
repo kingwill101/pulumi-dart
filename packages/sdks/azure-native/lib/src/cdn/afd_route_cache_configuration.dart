@@ -6,11 +6,11 @@ import 'compression_settings.dart';
 /// Caching settings for a caching-type route. To disable caching, do not provide a cacheConfiguration object.
 class AfdRouteCacheConfiguration {
   /// compression settings.
-  final pulumi.Input<CompressionSettings>? compressionSettings;
+  final pulumi.Input<CompressionSettings?>? compressionSettings;
   /// query parameters to include or exclude (comma separated).
-  final pulumi.Input<String>? queryParameters;
+  final pulumi.Input<String?>? queryParameters;
   /// Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings.
-  final pulumi.Input<String>? queryStringCachingBehavior;
+  final pulumi.Input<dynamic>? queryStringCachingBehavior;
 
   /// Creates a new [AfdRouteCacheConfiguration].
   /// [compressionSettings] compression settings.
@@ -34,7 +34,7 @@ class AfdRouteCacheConfiguration {
     return AfdRouteCacheConfiguration(
       compressionSettings: (() { final guardedValue = map['compressionSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CompressionSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       queryParameters: (() { final guardedValue = map['queryParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      queryStringCachingBehavior: (() { final guardedValue = map['queryStringCachingBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      queryStringCachingBehavior: (() { final guardedValue = map['queryStringCachingBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

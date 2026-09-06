@@ -8,23 +8,23 @@ class OnlineEndpointPropertiesResponse {
   final pulumi.Input<String> authMode;
   /// ARM resource ID of the compute if it exists.
   /// optional
-  final pulumi.Input<String>? compute;
+  final pulumi.Input<String?>? compute;
   /// Description of the inference endpoint.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Percentage of traffic to be mirrored to each deployment without using returned scoring. Traffic values need to sum to utmost 50.
-  final pulumi.Input<Map<String, int>>? mirrorTraffic;
+  final pulumi.Input<Map<String, int>?>? mirrorTraffic;
   /// Property dictionary. Properties can be added, but not removed or altered.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Provisioning state for the endpoint.
   final pulumi.Input<String> provisioningState;
   /// Enum to determine whether PublicNetworkAccess is Enabled or Disabled.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// Endpoint URI.
   final pulumi.Input<String> scoringUri;
   /// Endpoint Swagger URI.
   final pulumi.Input<String> swaggerUri;
   /// Percentage of traffic from endpoint to divert to each deployment. Traffic values need to sum to 100.
-  final pulumi.Input<Map<String, int>>? traffic;
+  final pulumi.Input<Map<String, int>?>? traffic;
 
   /// Creates a new [OnlineEndpointPropertiesResponse].
   /// [authMode] [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
@@ -37,18 +37,18 @@ class OnlineEndpointPropertiesResponse {
   /// [scoringUri] Endpoint URI.
   /// [swaggerUri] Endpoint Swagger URI.
   /// [traffic] Percentage of traffic from endpoint to divert to each deployment. Traffic values need to sum to 100.
-  const OnlineEndpointPropertiesResponse({
+  OnlineEndpointPropertiesResponse({
     required this.authMode,
     this.compute,
     this.description,
     this.mirrorTraffic,
     this.properties,
     required this.provisioningState,
-    this.publicNetworkAccess,
+    pulumi.Input<String?>? publicNetworkAccess,
     required this.scoringUri,
     required this.swaggerUri,
     this.traffic,
-  });
+  }) : publicNetworkAccess = publicNetworkAccess ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

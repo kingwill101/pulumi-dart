@@ -6,11 +6,11 @@ import 'nsdartifact_profile.dart';
 /// The arm template RE.
 class ArmResourceDefinitionResourceElementTemplate {
   /// Artifact profile properties.
-  final pulumi.Input<NSDArtifactProfile>? artifactProfile;
+  final pulumi.Input<NSDArtifactProfile?>? artifactProfile;
   /// Name and value pairs that define the parameter values. It can be  a well formed escaped JSON string.
-  final pulumi.Input<String>? parameterValues;
+  final pulumi.Input<String?>? parameterValues;
   /// The template type.
-  final pulumi.Input<String>? templateType;
+  final pulumi.Input<dynamic>? templateType;
 
   /// Creates a new [ArmResourceDefinitionResourceElementTemplate].
   /// [artifactProfile] Artifact profile properties.
@@ -34,7 +34,7 @@ class ArmResourceDefinitionResourceElementTemplate {
     return ArmResourceDefinitionResourceElementTemplate(
       artifactProfile: (() { final guardedValue = map['artifactProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NSDArtifactProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       parameterValues: (() { final guardedValue = map['parameterValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      templateType: (() { final guardedValue = map['templateType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      templateType: (() { final guardedValue = map['templateType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

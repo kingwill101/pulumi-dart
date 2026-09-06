@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The subscription role receiver value.
 class SubscriptionReceiverValue {
   /// The role of the notification receiver.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// The subscription id of the notification receiver.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// The subscription name of the notification receiver.
-  final pulumi.Input<String>? subscriptionName;
+  final pulumi.Input<String?>? subscriptionName;
 
   /// Creates a new [SubscriptionReceiverValue].
   /// [role] The role of the notification receiver.

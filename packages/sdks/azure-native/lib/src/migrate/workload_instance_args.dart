@@ -11,15 +11,15 @@ class WorkloadInstanceArgs {
   /// ModernizeProject name.
   final pulumi.Input<String> modernizeProjectName;
   /// Workload instance model properties.
-  final pulumi.Input<WorkloadInstanceModelProperties>? properties;
+  final pulumi.Input<WorkloadInstanceModelProperties?>? properties;
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
   /// Azure Subscription Id in which project was created.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// Gets or sets the resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Workload instance name.
-  final pulumi.Input<String>? workloadInstanceName;
+  final pulumi.Input<String?>? workloadInstanceName;
 
   /// Creates a new [WorkloadInstanceArgs].
   /// [modernizeProjectName] ModernizeProject name.

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The validation level of the deployment stack
-enum ValidationLevel {
+enum ValidationLevel implements pulumi.PulumiEnum<String> {
   template("Template"),
   provider("Provider"),
   providerNoRbac("ProviderNoRbac");
 
   const ValidationLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static ValidationLevel fromValue(String value) {

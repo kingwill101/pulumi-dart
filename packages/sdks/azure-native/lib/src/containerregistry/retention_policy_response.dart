@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The retention policy for a container registry.
 class RetentionPolicyResponse {
   /// The number of days to retain an untagged manifest after which it gets purged.
-  final pulumi.Input<int>? days;
+  final pulumi.Input<int?>? days;
   /// The timestamp when the policy was last updated.
   final pulumi.Input<String> lastUpdatedTime;
   /// The value that indicates whether the policy is enabled or not.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [RetentionPolicyResponse].
   /// [days] The number of days to retain an untagged manifest after which it gets purged.
   /// [lastUpdatedTime] The timestamp when the policy was last updated.
   /// [status] The value that indicates whether the policy is enabled or not.
-  const RetentionPolicyResponse({
-    this.days,
+  RetentionPolicyResponse({
+    pulumi.Input<int?>? days,
     required this.lastUpdatedTime,
-    this.status,
-  });
+    pulumi.Input<String?>? status,
+  }) : days = days ?? pulumi.Input.fromValue(7), status = status ?? pulumi.Input.fromValue('disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,7 +31,7 @@ class RetentionPolicyResponse {
 
   factory RetentionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return RetentionPolicyResponse(
-      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       lastUpdatedTime: pulumi.Input.fromValue(map['lastUpdatedTime'] as String),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

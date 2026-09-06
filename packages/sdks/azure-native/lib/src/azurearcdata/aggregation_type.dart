@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The aggregation type to use for the numerical columns in the dataset.
-enum AggregationType {
+enum AggregationType implements pulumi.PulumiEnum<String> {
   valueAverage("Average"),
   valueMinimum("Minimum"),
   valueMaximum("Maximum"),
@@ -7,6 +9,7 @@ enum AggregationType {
   valueCount("Count");
 
   const AggregationType(this.wireValue);
+  @override
   final String wireValue;
 
   static AggregationType fromValue(String value) {

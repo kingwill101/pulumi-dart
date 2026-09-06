@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'connected_subnet_response.dart';
 import 'export_route_policy_response.dart';
 import 'import_route_policy_response.dart';
 import 'internal_network_args.dart';
@@ -638,9 +639,9 @@ class InternalNetwork extends pulumi.CustomResource {
   /// Configuration state of the resource.
   late final pulumi.Output<String> configurationState;
   /// List of Connected IPv4 Subnets.
-  late final pulumi.Output<List<Map<String, dynamic>>?> connectedIPv4Subnets;
+  late final pulumi.Output<List<ConnectedSubnetResponse>?> connectedIPv4Subnets;
   /// List of connected IPv6 Subnets.
-  late final pulumi.Output<List<Map<String, dynamic>>?> connectedIPv6Subnets;
+  late final pulumi.Output<List<ConnectedSubnetResponse>?> connectedIPv6Subnets;
   /// Egress Acl. ARM resource ID of Access Control Lists.
   late final pulumi.Output<String?> egressAclId;
   /// Export Route Policy either IPv4 or IPv6.
@@ -691,8 +692,41 @@ class InternalNetwork extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     bgpConfiguration = registerOutput<InternalNetworkPropertiesResponseBgpConfiguration?>('bgpConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternalNetworkPropertiesResponseBgpConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     configurationState = registerOutput<String>('configurationState');
-    connectedIPv4Subnets = registerOutput<List<Map<String, dynamic>>?>('connectedIPv4Subnets');
-    connectedIPv6Subnets = registerOutput<List<Map<String, dynamic>>?>('connectedIPv6Subnets');
+    connectedIPv4Subnets = registerOutput<List<ConnectedSubnetResponse>?>('connectedIPv4Subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectedSubnetResponse>(guardedValue, (value) => ConnectedSubnetResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    connectedIPv6Subnets = registerOutput<List<ConnectedSubnetResponse>?>('connectedIPv6Subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectedSubnetResponse>(guardedValue, (value) => ConnectedSubnetResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    egressAclId = registerOutput<String?>('egressAclId');
+    exportRoutePolicy = registerOutput<ExportRoutePolicyResponse?>('exportRoutePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportRoutePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    exportRoutePolicyId = registerOutput<String?>('exportRoutePolicyId');
+    extension = registerOutput<String?>('extension');
+    importRoutePolicy = registerOutput<ImportRoutePolicyResponse?>('importRoutePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImportRoutePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    importRoutePolicyId = registerOutput<String?>('importRoutePolicyId');
+    ingressAclId = registerOutput<String?>('ingressAclId');
+    isMonitoringEnabled = registerOutput<String?>('isMonitoringEnabled');
+    mtu = registerOutput<int?>('mtu');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    staticRouteConfiguration = registerOutput<InternalNetworkPropertiesResponseStaticRouteConfiguration?>('staticRouteConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternalNetworkPropertiesResponseStaticRouteConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    vlanId = registerOutput<int>('vlanId');
+  }
+
+  /// Creates a typed reference to an existing [InternalNetwork] resource.
+  InternalNetwork.reference(String urn)
+    : super(
+        'azure-native:managednetworkfabric:InternalNetwork',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    administrativeState = registerOutput<String>('administrativeState');
+    annotation = registerOutput<String?>('annotation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bgpConfiguration = registerOutput<InternalNetworkPropertiesResponseBgpConfiguration?>('bgpConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternalNetworkPropertiesResponseBgpConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    configurationState = registerOutput<String>('configurationState');
+    connectedIPv4Subnets = registerOutput<List<ConnectedSubnetResponse>?>('connectedIPv4Subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectedSubnetResponse>(guardedValue, (value) => ConnectedSubnetResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    connectedIPv6Subnets = registerOutput<List<ConnectedSubnetResponse>?>('connectedIPv6Subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectedSubnetResponse>(guardedValue, (value) => ConnectedSubnetResponse.fromMap((value as Map).cast<String, dynamic>())); });
     egressAclId = registerOutput<String?>('egressAclId');
     exportRoutePolicy = registerOutput<ExportRoutePolicyResponse?>('exportRoutePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportRoutePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     exportRoutePolicyId = registerOutput<String?>('exportRoutePolicyId');

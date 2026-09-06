@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The data type of the parameter.
-enum ParameterType {
+enum ParameterType implements pulumi.PulumiEnum<String> {
   valueString("String"),
   valueArray("Array"),
   valueObject("Object"),
@@ -9,6 +11,7 @@ enum ParameterType {
   valueDateTime("DateTime");
 
   const ParameterType(this.wireValue);
+  @override
   final String wireValue;
 
   static ParameterType fromValue(String value) {

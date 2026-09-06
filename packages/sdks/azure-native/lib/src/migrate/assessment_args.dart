@@ -9,9 +9,9 @@ import 'assessment_properties.dart';
 /// {@macro pulumi_migrate_assessment_args_doc}
 class AssessmentArgs {
   /// Unique name of an assessment within a project.
-  final pulumi.Input<String>? assessmentName;
+  final pulumi.Input<String?>? assessmentName;
   /// For optimistic concurrency control.
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// Unique name of a group within a project.
   final pulumi.Input<String> groupName;
   /// Name of the Azure Migrate project.

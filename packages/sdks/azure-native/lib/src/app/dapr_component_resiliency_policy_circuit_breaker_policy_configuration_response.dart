@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Dapr Component Resiliency Policy Circuit Breaker Policy Configuration.
 class DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse {
   /// The number of consecutive errors before the circuit is opened.
-  final pulumi.Input<int>? consecutiveErrors;
+  final pulumi.Input<int?>? consecutiveErrors;
   /// The optional interval in seconds after which the error count resets to 0. An interval of 0 will never reset. If not specified, the timeoutInSeconds value will be used.
-  final pulumi.Input<int>? intervalInSeconds;
+  final pulumi.Input<int?>? intervalInSeconds;
   /// The interval in seconds until a retry attempt is made after the circuit is opened.
-  final pulumi.Input<int>? timeoutInSeconds;
+  final pulumi.Input<int?>? timeoutInSeconds;
 
   /// Creates a new [DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse].
   /// [consecutiveErrors] The number of consecutive errors before the circuit is opened.
@@ -31,9 +31,9 @@ class DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse {
 
   factory DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse(
-      consecutiveErrors: (() { final guardedValue = map['consecutiveErrors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      intervalInSeconds: (() { final guardedValue = map['intervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      consecutiveErrors: (() { final guardedValue = map['consecutiveErrors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      intervalInSeconds: (() { final guardedValue = map['intervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -7,21 +7,21 @@ import 'volume_options_response.dart';
 
 class VolumeDefinitionResponse {
   /// Bind Options of the mount
-  final pulumi.Input<BindOptionsResponse>? bind;
+  final pulumi.Input<BindOptionsResponse?>? bind;
   /// Consistency of the volume
-  final pulumi.Input<String>? consistency;
+  final pulumi.Input<String?>? consistency;
   /// Indicate whether to mount volume as readOnly. Default value for this is false.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// Source of the mount. For bind mounts this is the host path.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// Target of the mount. For bind mounts this is the path in the container.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
   /// tmpfs option of the mount
-  final pulumi.Input<TmpfsOptionsResponse>? tmpfs;
+  final pulumi.Input<TmpfsOptionsResponse?>? tmpfs;
   /// Type of Volume Definition. Possible Values: bind,volume,tmpfs,npipe
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Volume Options of the mount
-  final pulumi.Input<VolumeOptionsResponse>? volume;
+  final pulumi.Input<VolumeOptionsResponse?>? volume;
 
   /// Creates a new [VolumeDefinitionResponse].
   /// [bind] Bind Options of the mount
@@ -32,16 +32,16 @@ class VolumeDefinitionResponse {
   /// [tmpfs] tmpfs option of the mount
   /// [type] Type of Volume Definition. Possible Values: bind,volume,tmpfs,npipe
   /// [volume] Volume Options of the mount
-  const VolumeDefinitionResponse({
+  VolumeDefinitionResponse({
     this.bind,
     this.consistency,
     this.readOnly,
     this.source,
     this.target,
     this.tmpfs,
-    this.type,
+    pulumi.Input<String?>? type,
     this.volume,
-  });
+  }) : type = type ?? pulumi.Input.fromValue('bind');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

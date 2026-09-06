@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of product filter.
-enum SupportedFilterTypes {
+enum SupportedFilterTypes implements pulumi.PulumiEnum<String> {
   shipToCountries("ShipToCountries"),
   doubleEncryptionStatus("DoubleEncryptionStatus");
 
   const SupportedFilterTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static SupportedFilterTypes fromValue(String value) {

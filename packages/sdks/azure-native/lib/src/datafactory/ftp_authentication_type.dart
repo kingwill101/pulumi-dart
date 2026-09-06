@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The authentication type to be used to connect to the FTP server.
-enum FtpAuthenticationType {
+enum FtpAuthenticationType implements pulumi.PulumiEnum<String> {
   basic("Basic"),
   anonymous("Anonymous");
 
   const FtpAuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static FtpAuthenticationType fromValue(String value) {

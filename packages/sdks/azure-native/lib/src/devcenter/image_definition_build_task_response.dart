@@ -6,7 +6,7 @@ import 'image_definition_build_task_response_parameters.dart';
 /// A task executed during the image definition build.
 class ImageDefinitionBuildTaskResponse {
   /// Display name to help differentiate multiple instances of the same task.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// End time of the task.
   final pulumi.Input<String> endTime;
   /// ID of the task instance.
@@ -14,9 +14,9 @@ class ImageDefinitionBuildTaskResponse {
   /// The URI for retrieving logs for the task execution.
   final pulumi.Input<String> logUri;
   /// The name of the task.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Parameters for the task.
-  final pulumi.Input<List<ImageDefinitionBuildTaskResponseParameters>>? parameters;
+  final pulumi.Input<List<ImageDefinitionBuildTaskResponseParameters>?>? parameters;
   /// Start time of the task.
   final pulumi.Input<String> startTime;
   /// The status of the task.

@@ -10,23 +10,23 @@ class CapacityPoolArgs {
   /// The name of the NetApp account
   final pulumi.Input<String> accountName;
   /// If enabled (true) the pool can contain cool Access enabled volumes.
-  final pulumi.Input<bool>? coolAccess;
+  final pulumi.Input<bool?>? coolAccess;
   /// Encryption type of the capacity pool, set encryption type for data at rest for this pool and all volumes in it. This value can only be set when creating new pool.
-  final pulumi.Input<String>? encryptionType;
+  final pulumi.Input<dynamic>? encryptionType;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the capacity pool
-  final pulumi.Input<String>? poolName;
+  final pulumi.Input<String?>? poolName;
   /// The qos type of the pool
-  final pulumi.Input<String>? qosType;
+  final pulumi.Input<dynamic>? qosType;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The service level of the file system
-  final pulumi.Input<String> serviceLevel;
+  final pulumi.Input<dynamic> serviceLevel;
   /// Provisioned size of the pool (in bytes). Allowed values are in 1TiB chunks (value must be multiple of 1099511627776).
   final pulumi.Input<double> size;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CapacityPoolArgs].
   /// [accountName] The name of the NetApp account
@@ -39,18 +39,18 @@ class CapacityPoolArgs {
   /// [serviceLevel] The service level of the file system
   /// [size] Provisioned size of the pool (in bytes). Allowed values are in 1TiB chunks (value must be multiple of 1099511627776).
   /// [tags] Resource tags.
-  const CapacityPoolArgs({
+  CapacityPoolArgs({
     required this.accountName,
-    this.coolAccess,
-    this.encryptionType,
+    pulumi.Input<bool?>? coolAccess,
+    pulumi.Input<dynamic>? encryptionType,
     this.location,
     this.poolName,
-    this.qosType,
+    pulumi.Input<dynamic>? qosType,
     required this.resourceGroupName,
     required this.serviceLevel,
-    required this.size,
+    pulumi.Input<double>? size,
     this.tags,
-  });
+  }) : coolAccess = coolAccess ?? pulumi.Input.fromValue(false), encryptionType = encryptionType ?? pulumi.Input.fromValue('Single'), qosType = qosType ?? pulumi.Input.fromValue('Auto'), size = size ?? pulumi.Input.fromValue(4.398046511104e+12);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,13 +71,13 @@ class CapacityPoolArgs {
     return CapacityPoolArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       coolAccess: (() { final guardedValue = map['coolAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      encryptionType: (() { final guardedValue = map['encryptionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encryptionType: (() { final guardedValue = map['encryptionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       poolName: (() { final guardedValue = map['poolName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      qosType: (() { final guardedValue = map['qosType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      qosType: (() { final guardedValue = map['qosType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      serviceLevel: pulumi.Input.fromValue(map['serviceLevel'] as String),
-      size: pulumi.Input.fromValue(map['size'] as double),
+      serviceLevel: pulumi.Input.fromValue(map['serviceLevel']),
+      size: pulumi.Input.fromValue((map['size'] as num).toDouble()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

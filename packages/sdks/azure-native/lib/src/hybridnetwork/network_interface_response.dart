@@ -6,13 +6,13 @@ import 'network_interface_ipconfiguration_response.dart';
 /// Network interface properties.
 class NetworkInterfaceResponse {
   /// A list of IP configurations of the network interface.
-  final pulumi.Input<List<NetworkInterfaceIPConfigurationResponse>>? ipConfigurations;
+  final pulumi.Input<List<NetworkInterfaceIPConfigurationResponse>?>? ipConfigurations;
   /// The MAC address of the network interface.
-  final pulumi.Input<String>? macAddress;
+  final pulumi.Input<String?>? macAddress;
   /// The name of the network interface.
-  final pulumi.Input<String>? networkInterfaceName;
+  final pulumi.Input<String?>? networkInterfaceName;
   /// The type of the VM switch.
-  final pulumi.Input<String>? vmSwitchType;
+  final pulumi.Input<String?>? vmSwitchType;
 
   /// Creates a new [NetworkInterfaceResponse].
   /// [ipConfigurations] A list of IP configurations of the network interface.

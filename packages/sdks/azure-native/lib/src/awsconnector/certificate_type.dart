@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum CertificateType {
+enum CertificateType implements pulumi.PulumiEnum<String> {
   aMAZONISSUED("AMAZON_ISSUED"),
   iMPORTED("IMPORTED"),
   pRIVATE("PRIVATE");
 
   const CertificateType(this.wireValue);
+  @override
   final String wireValue;
 
   static CertificateType fromValue(String value) {

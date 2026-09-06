@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Temporary disk payload
 class TemporaryDiskResponse {
   /// Mount path of the temporary disk
-  final pulumi.Input<String>? mountPath;
+  final pulumi.Input<String?>? mountPath;
   /// Size of the temporary disk in GB
-  final pulumi.Input<int>? sizeInGB;
+  final pulumi.Input<int?>? sizeInGB;
 
   /// Creates a new [TemporaryDiskResponse].
   /// [mountPath] Mount path of the temporary disk
   /// [sizeInGB] Size of the temporary disk in GB
-  const TemporaryDiskResponse({
-    this.mountPath,
+  TemporaryDiskResponse({
+    pulumi.Input<String?>? mountPath,
     this.sizeInGB,
-  });
+  }) : mountPath = mountPath ?? pulumi.Input.fromValue('/tmp');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,7 +27,7 @@ class TemporaryDiskResponse {
   factory TemporaryDiskResponse.fromMap(Map<String, dynamic> map) {
     return TemporaryDiskResponse(
       mountPath: (() { final guardedValue = map['mountPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sizeInGB: (() { final guardedValue = map['sizeInGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sizeInGB: (() { final guardedValue = map['sizeInGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

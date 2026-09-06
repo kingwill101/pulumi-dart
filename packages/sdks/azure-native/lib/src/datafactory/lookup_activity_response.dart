@@ -3,7 +3,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'activity_dependency_response.dart';
 import 'activity_policy_response.dart';
-import 'amazon_mwssource_response.dart';
 import 'dataset_reference_response.dart';
 import 'linked_service_reference_response.dart';
 import 'user_property_response.dart';
@@ -13,30 +12,30 @@ class LookupActivityResponse {
   /// Lookup activity dataset reference.
   final pulumi.Input<DatasetReferenceResponse> dataset;
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether to return first row or all rows. Default value is true. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? firstRowOnly;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReferenceResponse?>? linkedServiceName;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<String?>? onInactiveMarkAs;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicyResponse>? policy;
+  final pulumi.Input<ActivityPolicyResponse?>? policy;
   /// Dataset-specific source properties, same as copy activity source.
-  final pulumi.Input<AmazonMWSSourceResponse> source;
+  final pulumi.Input<dynamic> source;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? treatDecimalAsString;
   /// Type of activity.
   /// Expected value is 'Lookup'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>?>? userProperties;
 
   /// Creates a new [LookupActivityResponse].
   /// [dataset] Lookup activity dataset reference.
@@ -78,7 +77,7 @@ class LookupActivityResponse {
       'name': name,
       'onInactiveMarkAs': ?onInactiveMarkAs,
       'policy': ?pulumi.Input.mapOptionalInputValue<ActivityPolicyResponse, Map<String, dynamic>>(policy, (value) => value.toMap()),
-      'source': pulumi.Input.mapInputValue<AmazonMWSSourceResponse, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'source': source,
       'state': ?state,
       'treatDecimalAsString': ?treatDecimalAsString,
       'type': type,
@@ -96,7 +95,7 @@ class LookupActivityResponse {
       name: pulumi.Input.fromValue(map['name'] as String),
       onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActivityPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      source: pulumi.Input.fromValue(AmazonMWSSourceResponse.fromMap((map['source']! as Map).cast<String, dynamic>())),
+      source: pulumi.Input.fromValue(map['source']),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       treatDecimalAsString: (() { final guardedValue = map['treatDecimalAsString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),

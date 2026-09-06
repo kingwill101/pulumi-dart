@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SKU of a public IP address
 class PublicIPAddressSkuInterfaceEndpointResponse {
   /// Name of a public IP address SKU.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [PublicIPAddressSkuInterfaceEndpointResponse].
   /// [name] Name of a public IP address SKU.

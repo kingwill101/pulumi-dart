@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// User assigned managed identity properties.
 class UserAssignedIdentityProperties {
-  final pulumi.Input<String>? clientId;
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? clientId;
+  final pulumi.Input<String?>? principalId;
 
   /// Creates a new [UserAssignedIdentityProperties].
   /// [clientId] Optional.

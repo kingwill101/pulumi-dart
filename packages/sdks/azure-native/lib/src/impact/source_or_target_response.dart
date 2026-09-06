@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resource details
 class SourceOrTargetResponse {
   /// Azure resource id, example /subscription/{subscription}/resourceGroup/{rg}/Microsoft.compute/virtualMachine/{vmName}
-  final pulumi.Input<String>? azureResourceId;
+  final pulumi.Input<String?>? azureResourceId;
 
   /// Creates a new [SourceOrTargetResponse].
   /// [azureResourceId] Azure resource id, example /subscription/{subscription}/resourceGroup/{rg}/Microsoft.compute/virtualMachine/{vmName}

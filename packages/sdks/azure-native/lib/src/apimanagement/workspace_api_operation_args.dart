@@ -13,25 +13,25 @@ class WorkspaceApiOperationArgs {
   /// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
   final pulumi.Input<String> apiId;
   /// Description of the operation. May include HTML formatting tags.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Operation Name.
   final pulumi.Input<String> displayName;
   /// A Valid HTTP Operation Method. Typical Http Methods like GET, PUT, POST but not limited by only them.
   final pulumi.Input<String> method;
   /// Operation identifier within an API. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? operationId;
+  final pulumi.Input<String?>? operationId;
   /// Operation Policies
-  final pulumi.Input<String>? policies;
+  final pulumi.Input<String?>? policies;
   /// An entity containing request details.
-  final pulumi.Input<RequestContract>? request;
+  final pulumi.Input<RequestContract?>? request;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Array of Operation responses.
-  final pulumi.Input<List<ResponseContract>>? responses;
+  final pulumi.Input<List<ResponseContract>?>? responses;
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
   /// Collection of URL template parameters.
-  final pulumi.Input<List<ParameterContract>>? templateParameters;
+  final pulumi.Input<List<ParameterContract>?>? templateParameters;
   /// Relative URL template identifying the target resource for this operation. May include parameters. Example: /customers/{cid}/orders/{oid}/?date={date}
   final pulumi.Input<String> urlTemplate;
   /// Workspace identifier. Must be unique in the current API Management service instance.

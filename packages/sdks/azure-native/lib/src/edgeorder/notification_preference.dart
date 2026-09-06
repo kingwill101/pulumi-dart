@@ -7,7 +7,7 @@ class NotificationPreference {
   /// Notification is required or not.
   final pulumi.Input<bool> sendNotification;
   /// Name of the stage.
-  final pulumi.Input<String> stageName;
+  final pulumi.Input<dynamic> stageName;
 
   /// Creates a new [NotificationPreference].
   /// [sendNotification] Notification is required or not.
@@ -27,7 +27,7 @@ class NotificationPreference {
   factory NotificationPreference.fromMap(Map<String, dynamic> map) {
     return NotificationPreference(
       sendNotification: pulumi.Input.fromValue(map['sendNotification'] as bool),
-      stageName: pulumi.Input.fromValue(map['stageName'] as String),
+      stageName: pulumi.Input.fromValue(map['stageName']),
     );
   }
 }

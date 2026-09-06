@@ -13,35 +13,35 @@ import 'storage_properties_response.dart';
 /// The properties of a mongo cluster.
 class MongoClusterPropertiesResponse {
   /// The local administrator properties for the mongo cluster.
-  final pulumi.Input<AdministratorPropertiesResponse>? administrator;
+  final pulumi.Input<AdministratorPropertiesResponse?>? administrator;
   /// The backup properties of the mongo cluster.
-  final pulumi.Input<BackupPropertiesResponse>? backup;
+  final pulumi.Input<BackupPropertiesResponse?>? backup;
   /// The status of the mongo cluster.
   final pulumi.Input<String> clusterStatus;
   /// The compute properties of the mongo cluster.
-  final pulumi.Input<ComputePropertiesResponse>? compute;
+  final pulumi.Input<ComputePropertiesResponse?>? compute;
   /// The default mongo connection string for the cluster.
   final pulumi.Input<String> connectionString;
   /// The high availability properties of the mongo cluster.
-  final pulumi.Input<HighAvailabilityPropertiesResponse>? highAvailability;
+  final pulumi.Input<HighAvailabilityPropertiesResponse?>? highAvailability;
   /// The infrastructure version the cluster is provisioned on.
   final pulumi.Input<String> infrastructureVersion;
   /// List of private endpoint connections.
-  final pulumi.Input<List<String>>? previewFeatures;
+  final pulumi.Input<List<String>?>? previewFeatures;
   /// List of private endpoint connections.
   final pulumi.Input<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// The provisioning state of the mongo cluster.
   final pulumi.Input<String> provisioningState;
   /// Whether or not public endpoint access is allowed for this mongo cluster.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// The replication properties for the mongo cluster
   final pulumi.Input<ReplicationPropertiesResponse> replica;
   /// The Mongo DB server version. Defaults to the latest available version if not specified.
-  final pulumi.Input<String>? serverVersion;
+  final pulumi.Input<String?>? serverVersion;
   /// The sharding properties of the mongo cluster.
-  final pulumi.Input<ShardingPropertiesResponse>? sharding;
+  final pulumi.Input<ShardingPropertiesResponse?>? sharding;
   /// The storage properties of the mongo cluster.
-  final pulumi.Input<StoragePropertiesResponse>? storage;
+  final pulumi.Input<StoragePropertiesResponse?>? storage;
 
   /// Creates a new [MongoClusterPropertiesResponse].
   /// [administrator] The local administrator properties for the mongo cluster.

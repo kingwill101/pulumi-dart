@@ -9,7 +9,7 @@ import 'sku.dart';
 /// {@macro pulumi_softwareplan_hybrid_use_benefit_args_doc}
 class HybridUseBenefitArgs {
   /// This is a unique identifier for a plan. Should be a guid.
-  final pulumi.Input<String>? planId;
+  final pulumi.Input<String?>? planId;
   /// The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now
   final pulumi.Input<String> scope;
   /// Hybrid use benefit SKU

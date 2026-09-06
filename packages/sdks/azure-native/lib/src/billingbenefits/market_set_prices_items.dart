@@ -32,7 +32,7 @@ class MarketSetPricesItems {
     return MarketSetPricesItems(
       currency: pulumi.Input.fromValue(map['currency'] as String),
       markets: pulumi.Input.fromValue((map['markets'] as List).cast<String>()),
-      value: pulumi.Input.fromValue(map['value'] as double),
+      value: pulumi.Input.fromValue((map['value'] as num).toDouble()),
     );
   }
 }

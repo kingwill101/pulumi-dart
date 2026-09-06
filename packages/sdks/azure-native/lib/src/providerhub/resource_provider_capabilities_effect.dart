@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The effect.
-enum ResourceProviderCapabilitiesEffect {
+enum ResourceProviderCapabilitiesEffect implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   allow("Allow"),
   disallow("Disallow");
 
   const ResourceProviderCapabilitiesEffect(this.wireValue);
+  @override
   final String wireValue;
 
   static ResourceProviderCapabilitiesEffect fromValue(String value) {

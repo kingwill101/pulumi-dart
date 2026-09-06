@@ -9,17 +9,17 @@ import 'site_appliance_properties.dart';
 /// {@macro pulumi_offazure_web_app_sites_controller_args_doc}
 class WebAppSitesControllerArgs {
   /// Gets or sets the discovery scenario.
-  final pulumi.Input<String>? discoveryScenario;
+  final pulumi.Input<dynamic>? discoveryScenario;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the appliance details used by service to communicate
   ///
   /// to the appliance.
-  final pulumi.Input<List<SiteApplianceProperties>>? siteAppliancePropertiesCollection;
+  final pulumi.Input<List<SiteApplianceProperties>?>? siteAppliancePropertiesCollection;
   /// Site name
   final pulumi.Input<String> siteName;
   /// Web app site name.
-  final pulumi.Input<String>? webAppSiteName;
+  final pulumi.Input<String?>? webAppSiteName;
 
   /// Creates a new [WebAppSitesControllerArgs].
   /// [discoveryScenario] Gets or sets the discovery scenario.
@@ -47,7 +47,7 @@ class WebAppSitesControllerArgs {
 
   factory WebAppSitesControllerArgs.fromMap(Map<String, dynamic> map) {
     return WebAppSitesControllerArgs(
-      discoveryScenario: (() { final guardedValue = map['discoveryScenario']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      discoveryScenario: (() { final guardedValue = map['discoveryScenario']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       siteAppliancePropertiesCollection: (() { final guardedValue = map['siteAppliancePropertiesCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SiteApplianceProperties>(guardedValue, (value) => SiteApplianceProperties.fromMap((value as Map).cast<String, dynamic>()))); })(),
       siteName: pulumi.Input.fromValue(map['siteName'] as String),

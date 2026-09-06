@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of PartitionedPrefix
 class PartitionedPrefixResponse {
   /// Specifies the partition date source for the partitioned prefix. PartitionDateSource can be EventTime or DeliveryTime.
-  final pulumi.Input<String>? partitionDateSource;
+  final pulumi.Input<String?>? partitionDateSource;
 
   /// Creates a new [PartitionedPrefixResponse].
   /// [partitionDateSource] Specifies the partition date source for the partitioned prefix. PartitionDateSource can be EventTime or DeliveryTime.

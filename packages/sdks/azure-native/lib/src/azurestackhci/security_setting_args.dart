@@ -12,13 +12,13 @@ class SecuritySettingArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Secured Core Compliance Assignment
-  final pulumi.Input<String>? securedCoreComplianceAssignment;
+  final pulumi.Input<dynamic>? securedCoreComplianceAssignment;
   /// Name of security setting
-  final pulumi.Input<String>? securitySettingsName;
+  final pulumi.Input<String?>? securitySettingsName;
   /// SMB encryption for intra-cluster traffic Compliance Assignment
-  final pulumi.Input<String>? smbEncryptionForIntraClusterTrafficComplianceAssignment;
+  final pulumi.Input<dynamic>? smbEncryptionForIntraClusterTrafficComplianceAssignment;
   /// WDAC Compliance Assignment
-  final pulumi.Input<String>? wdacComplianceAssignment;
+  final pulumi.Input<dynamic>? wdacComplianceAssignment;
 
   /// Creates a new [SecuritySettingArgs].
   /// [clusterName] The name of the cluster.
@@ -27,14 +27,14 @@ class SecuritySettingArgs {
   /// [securitySettingsName] Name of security setting
   /// [smbEncryptionForIntraClusterTrafficComplianceAssignment] SMB encryption for intra-cluster traffic Compliance Assignment
   /// [wdacComplianceAssignment] WDAC Compliance Assignment
-  const SecuritySettingArgs({
+  SecuritySettingArgs({
     required this.clusterName,
     required this.resourceGroupName,
-    this.securedCoreComplianceAssignment,
+    pulumi.Input<dynamic>? securedCoreComplianceAssignment,
     this.securitySettingsName,
-    this.smbEncryptionForIntraClusterTrafficComplianceAssignment,
-    this.wdacComplianceAssignment,
-  });
+    pulumi.Input<dynamic>? smbEncryptionForIntraClusterTrafficComplianceAssignment,
+    pulumi.Input<dynamic>? wdacComplianceAssignment,
+  }) : securedCoreComplianceAssignment = securedCoreComplianceAssignment ?? pulumi.Input.fromValue('Audit'), smbEncryptionForIntraClusterTrafficComplianceAssignment = smbEncryptionForIntraClusterTrafficComplianceAssignment ?? pulumi.Input.fromValue('Audit'), wdacComplianceAssignment = wdacComplianceAssignment ?? pulumi.Input.fromValue('Audit');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,10 +51,10 @@ class SecuritySettingArgs {
     return SecuritySettingArgs(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      securedCoreComplianceAssignment: (() { final guardedValue = map['securedCoreComplianceAssignment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securedCoreComplianceAssignment: (() { final guardedValue = map['securedCoreComplianceAssignment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       securitySettingsName: (() { final guardedValue = map['securitySettingsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      smbEncryptionForIntraClusterTrafficComplianceAssignment: (() { final guardedValue = map['smbEncryptionForIntraClusterTrafficComplianceAssignment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      wdacComplianceAssignment: (() { final guardedValue = map['wdacComplianceAssignment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      smbEncryptionForIntraClusterTrafficComplianceAssignment: (() { final guardedValue = map['smbEncryptionForIntraClusterTrafficComplianceAssignment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      wdacComplianceAssignment: (() { final guardedValue = map['wdacComplianceAssignment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -6,13 +6,13 @@ import 'instance_network_interface_association_response.dart';
 /// Definition of InstancePrivateIpAddress
 class InstancePrivateIpAddressResponse {
   /// &lt;p&gt;The association information for an Elastic IP address for the network interface.&lt;/p&gt;
-  final pulumi.Input<InstanceNetworkInterfaceAssociationResponse>? association;
+  final pulumi.Input<InstanceNetworkInterfaceAssociationResponse?>? association;
   /// &lt;p&gt;Indicates whether this IPv4 address is the primary private IP address of the network interface.&lt;/p&gt;
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
   /// &lt;p&gt;The private IPv4 DNS name.&lt;/p&gt;
-  final pulumi.Input<String>? privateDnsName;
+  final pulumi.Input<String?>? privateDnsName;
   /// &lt;p&gt;The private IPv4 address of the network interface.&lt;/p&gt;
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
 
   /// Creates a new [InstancePrivateIpAddressResponse].
   /// [association] &lt;p&gt;The association information for an Elastic IP address for the network interface.&lt;/p&gt;

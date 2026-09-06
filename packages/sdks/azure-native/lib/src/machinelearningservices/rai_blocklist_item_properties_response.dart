@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// RAI Custom Blocklist Item properties.
 class RaiBlocklistItemPropertiesResponse {
   /// If the pattern is a regex pattern.
-  final pulumi.Input<bool>? isRegex;
+  final pulumi.Input<bool?>? isRegex;
   /// Pattern to match against.
-  final pulumi.Input<String>? pattern;
+  final pulumi.Input<String?>? pattern;
 
   /// Creates a new [RaiBlocklistItemPropertiesResponse].
   /// [isRegex] If the pattern is a regex pattern.

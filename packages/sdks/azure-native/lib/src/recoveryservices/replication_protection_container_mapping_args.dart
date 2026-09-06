@@ -11,9 +11,9 @@ class ReplicationProtectionContainerMappingArgs {
   /// Fabric name.
   final pulumi.Input<String> fabricName;
   /// Protection container mapping name.
-  final pulumi.Input<String>? mappingName;
+  final pulumi.Input<String?>? mappingName;
   /// Configure protection input properties.
-  final pulumi.Input<CreateProtectionContainerMappingInputProperties>? properties;
+  final pulumi.Input<CreateProtectionContainerMappingInputProperties?>? properties;
   /// Protection container name.
   final pulumi.Input<String> protectionContainerName;
   /// The name of the resource group where the recovery services vault is present.

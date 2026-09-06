@@ -19,3 +19,14 @@ Future<GetEnterpriseKnowledgeGraphResult> getEnterpriseKnowledgeGraph(
   );
   return GetEnterpriseKnowledgeGraphResult.fromMap(result);
 }
+
+pulumi.Output<GetEnterpriseKnowledgeGraphResult> getEnterpriseKnowledgeGraphOutput(
+  GetEnterpriseKnowledgeGraphArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:enterpriseknowledgegraph:getEnterpriseKnowledgeGraph',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnterpriseKnowledgeGraphResult.fromMap);
+}

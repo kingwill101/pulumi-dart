@@ -1,55 +1,53 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'named_partition_scheme_response.dart';
 import 'scaling_policy_response.dart';
 import 'service_correlation_response.dart';
 import 'service_load_metric_response.dart';
-import 'service_placement_invalid_domain_policy_response.dart';
 
 /// The properties of a stateful service resource.
 class StatefulServicePropertiesResponse {
   /// A list that describes the correlation of the service with other services.
-  final pulumi.Input<List<ServiceCorrelationResponse>>? correlationScheme;
+  final pulumi.Input<List<ServiceCorrelationResponse>?>? correlationScheme;
   /// Specifies the move cost for the service.
-  final pulumi.Input<String>? defaultMoveCost;
+  final pulumi.Input<String?>? defaultMoveCost;
   /// A flag indicating whether this is a persistent service which stores states on the local disk. If it is then the value of this property is true, if not it is false.
-  final pulumi.Input<bool>? hasPersistedState;
+  final pulumi.Input<bool?>? hasPersistedState;
   /// The minimum replica set size as a number.
-  final pulumi.Input<int>? minReplicaSetSize;
+  final pulumi.Input<int?>? minReplicaSetSize;
   /// Describes how the service is partitioned.
-  final pulumi.Input<NamedPartitionSchemeResponse> partitionDescription;
+  final pulumi.Input<dynamic> partitionDescription;
   /// The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: "NodeColor == blue)".
-  final pulumi.Input<String>? placementConstraints;
+  final pulumi.Input<String?>? placementConstraints;
   /// The current deployment or provisioning state, which only appears in the response
   final pulumi.Input<String> provisioningState;
   /// The maximum duration for which a partition is allowed to be in a state of quorum loss, represented in ISO 8601 format "hh:mm:ss".
-  final pulumi.Input<String>? quorumLossWaitDuration;
+  final pulumi.Input<String?>? quorumLossWaitDuration;
   /// The duration between when a replica goes down and when a new replica is created, represented in ISO 8601 format "hh:mm:ss".
-  final pulumi.Input<String>? replicaRestartWaitDuration;
+  final pulumi.Input<String?>? replicaRestartWaitDuration;
   /// Scaling policies for this service.
-  final pulumi.Input<List<ScalingPolicyResponse>>? scalingPolicies;
+  final pulumi.Input<List<ScalingPolicyResponse>?>? scalingPolicies;
   /// Dns name used for the service. If this is specified, then the DNS name can be used to return the IP addresses of service endpoints for application layer protocols (e.g., HTTP).
   /// When updating serviceDnsName, old name may be temporarily resolvable. However, rely on new name.
   /// When removing serviceDnsName, removed name may temporarily be resolvable. Do not rely on the name being unresolvable.
-  final pulumi.Input<String>? serviceDnsName;
+  final pulumi.Input<String?>? serviceDnsName;
   /// The kind of service (Stateless or Stateful).
   /// Expected value is 'Stateful'.
   final pulumi.Input<String> serviceKind;
   /// The service load metrics is given as an array of ServiceLoadMetric objects.
-  final pulumi.Input<List<ServiceLoadMetricResponse>>? serviceLoadMetrics;
+  final pulumi.Input<List<ServiceLoadMetricResponse>?>? serviceLoadMetrics;
   /// The activation Mode of the service package
-  final pulumi.Input<String>? servicePackageActivationMode;
+  final pulumi.Input<String?>? servicePackageActivationMode;
   /// A list that describes the correlation of the service with other services.
-  final pulumi.Input<List<ServicePlacementInvalidDomainPolicyResponse>>? servicePlacementPolicies;
+  final pulumi.Input<List<dynamic>?>? servicePlacementPolicies;
   /// The duration for which replicas can stay InBuild before reporting that build is stuck, represented in ISO 8601 format "hh:mm:ss".
-  final pulumi.Input<String>? servicePlacementTimeLimit;
+  final pulumi.Input<String?>? servicePlacementTimeLimit;
   /// The name of the service type
   final pulumi.Input<String> serviceTypeName;
   /// The definition on how long StandBy replicas should be maintained before being removed, represented in ISO 8601 format "hh:mm:ss".
-  final pulumi.Input<String>? standByReplicaKeepDuration;
+  final pulumi.Input<String?>? standByReplicaKeepDuration;
   /// The target replica set size as a number.
-  final pulumi.Input<int>? targetReplicaSetSize;
+  final pulumi.Input<int?>? targetReplicaSetSize;
 
   /// Creates a new [StatefulServicePropertiesResponse].
   /// [correlationScheme] A list that describes the correlation of the service with other services.
@@ -99,7 +97,7 @@ class StatefulServicePropertiesResponse {
       'defaultMoveCost': ?defaultMoveCost,
       'hasPersistedState': ?hasPersistedState,
       'minReplicaSetSize': ?minReplicaSetSize,
-      'partitionDescription': pulumi.Input.mapInputValue<NamedPartitionSchemeResponse, Map<String, dynamic>>(partitionDescription, (value) => value.toMap()),
+      'partitionDescription': partitionDescription,
       'placementConstraints': ?placementConstraints,
       'provisioningState': provisioningState,
       'quorumLossWaitDuration': ?quorumLossWaitDuration,
@@ -109,7 +107,7 @@ class StatefulServicePropertiesResponse {
       'serviceKind': serviceKind,
       'serviceLoadMetrics': ?pulumi.Input.mapOptionalInputValue<List<ServiceLoadMetricResponse>, List<Map<String, dynamic>>>(serviceLoadMetrics, (value) => pulumi.Input.encodeList<ServiceLoadMetricResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'servicePackageActivationMode': ?servicePackageActivationMode,
-      'servicePlacementPolicies': ?pulumi.Input.mapOptionalInputValue<List<ServicePlacementInvalidDomainPolicyResponse>, List<Map<String, dynamic>>>(servicePlacementPolicies, (value) => pulumi.Input.encodeList<ServicePlacementInvalidDomainPolicyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'servicePlacementPolicies': ?servicePlacementPolicies,
       'servicePlacementTimeLimit': ?servicePlacementTimeLimit,
       'serviceTypeName': serviceTypeName,
       'standByReplicaKeepDuration': ?standByReplicaKeepDuration,
@@ -122,8 +120,8 @@ class StatefulServicePropertiesResponse {
       correlationScheme: (() { final guardedValue = map['correlationScheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceCorrelationResponse>(guardedValue, (value) => ServiceCorrelationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       defaultMoveCost: (() { final guardedValue = map['defaultMoveCost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hasPersistedState: (() { final guardedValue = map['hasPersistedState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      minReplicaSetSize: (() { final guardedValue = map['minReplicaSetSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      partitionDescription: pulumi.Input.fromValue(NamedPartitionSchemeResponse.fromMap((map['partitionDescription']! as Map).cast<String, dynamic>())),
+      minReplicaSetSize: (() { final guardedValue = map['minReplicaSetSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      partitionDescription: pulumi.Input.fromValue(map['partitionDescription']),
       placementConstraints: (() { final guardedValue = map['placementConstraints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       quorumLossWaitDuration: (() { final guardedValue = map['quorumLossWaitDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -133,11 +131,11 @@ class StatefulServicePropertiesResponse {
       serviceKind: pulumi.Input.fromValue(map['serviceKind'] as String),
       serviceLoadMetrics: (() { final guardedValue = map['serviceLoadMetrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceLoadMetricResponse>(guardedValue, (value) => ServiceLoadMetricResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       servicePackageActivationMode: (() { final guardedValue = map['servicePackageActivationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      servicePlacementPolicies: (() { final guardedValue = map['servicePlacementPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServicePlacementInvalidDomainPolicyResponse>(guardedValue, (value) => ServicePlacementInvalidDomainPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      servicePlacementPolicies: (() { final guardedValue = map['servicePlacementPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       servicePlacementTimeLimit: (() { final guardedValue = map['servicePlacementTimeLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceTypeName: pulumi.Input.fromValue(map['serviceTypeName'] as String),
       standByReplicaKeepDuration: (() { final guardedValue = map['standByReplicaKeepDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      targetReplicaSetSize: (() { final guardedValue = map['targetReplicaSetSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetReplicaSetSize: (() { final guardedValue = map['targetReplicaSetSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

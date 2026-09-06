@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Debug info option.
-enum HDInsightActivityDebugInfoOption {
+enum HDInsightActivityDebugInfoOption implements pulumi.PulumiEnum<String> {
   none("None"),
   always("Always"),
   failure("Failure");
 
   const HDInsightActivityDebugInfoOption(this.wireValue);
+  @override
   final String wireValue;
 
   static HDInsightActivityDebugInfoOption fromValue(String value) {

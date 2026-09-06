@@ -6,9 +6,9 @@ import 'action_definition_network_firewall_rule_group_response.dart';
 /// Definition of CustomAction
 class CustomActionNetworkFirewallRuleGroupResponse {
   /// Property actionDefinition
-  final pulumi.Input<ActionDefinitionNetworkFirewallRuleGroupResponse>? actionDefinition;
+  final pulumi.Input<ActionDefinitionNetworkFirewallRuleGroupResponse?>? actionDefinition;
   /// Property actionName
-  final pulumi.Input<String>? actionName;
+  final pulumi.Input<String?>? actionName;
 
   /// Creates a new [CustomActionNetworkFirewallRuleGroupResponse].
   /// [actionDefinition] Property actionDefinition

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property fileFormat
-enum FileFormat {
+enum FileFormat implements pulumi.PulumiEnum<String> {
   parquet("parquet"),
   plainText("plain-text");
 
   const FileFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static FileFormat fromValue(String value) {

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Error response of an operation failure
 class AutomationErrorResponseResponse {
   /// Error code
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// Error message indicating why the operation failed.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [AutomationErrorResponseResponse].
   /// [code] Error code

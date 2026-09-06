@@ -7,11 +7,11 @@ class SelectedResourceResponse {
   /// Id of the connection
   final pulumi.Input<String> id;
   /// Location of the connection
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the connection
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Name of the subscription with the connection
-  final pulumi.Input<String>? subscriptionName;
+  final pulumi.Input<String?>? subscriptionName;
 
   /// Creates a new [SelectedResourceResponse].
   /// [id] Id of the connection

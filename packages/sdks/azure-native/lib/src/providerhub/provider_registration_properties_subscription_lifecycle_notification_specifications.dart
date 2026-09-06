@@ -6,9 +6,9 @@ import 'subscription_state_override_action.dart';
 /// The subscription lifecycle notification specifications.
 class ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications {
   /// The soft delete TTL.
-  final pulumi.Input<String>? softDeleteTTL;
+  final pulumi.Input<String?>? softDeleteTTL;
   /// The subscription state override actions.
-  final pulumi.Input<List<SubscriptionStateOverrideAction>>? subscriptionStateOverrideActions;
+  final pulumi.Input<List<SubscriptionStateOverrideAction>?>? subscriptionStateOverrideActions;
 
   /// Creates a new [ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications].
   /// [softDeleteTTL] The soft delete TTL.

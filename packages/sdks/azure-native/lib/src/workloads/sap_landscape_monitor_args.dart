@@ -10,13 +10,13 @@ import 'sap_landscape_monitor_properties_grouping.dart';
 /// {@macro pulumi_workloads_sap_landscape_monitor_args_doc}
 class SapLandscapeMonitorArgs {
   /// Gets or sets the SID groupings by landscape and Environment.
-  final pulumi.Input<SapLandscapeMonitorPropertiesGrouping>? grouping;
+  final pulumi.Input<SapLandscapeMonitorPropertiesGrouping?>? grouping;
   /// Name of the SAP monitor resource.
   final pulumi.Input<String> monitorName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
-  final pulumi.Input<List<SapLandscapeMonitorMetricThresholds>>? topMetricsThresholds;
+  final pulumi.Input<List<SapLandscapeMonitorMetricThresholds>?>? topMetricsThresholds;
 
   /// Creates a new [SapLandscapeMonitorArgs].
   /// [grouping] Gets or sets the SID groupings by landscape and Environment.

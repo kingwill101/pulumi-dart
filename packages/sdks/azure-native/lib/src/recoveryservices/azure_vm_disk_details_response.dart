@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Disk details for E2A provider.
 class AzureVmDiskDetailsResponse {
   /// The custom target Azure disk name.
-  final pulumi.Input<String>? customTargetDiskName;
+  final pulumi.Input<String?>? customTargetDiskName;
   /// The DiskEncryptionSet ARM ID.
-  final pulumi.Input<String>? diskEncryptionSetId;
+  final pulumi.Input<String?>? diskEncryptionSetId;
   /// The disk resource id.
-  final pulumi.Input<String>? diskId;
+  final pulumi.Input<String?>? diskId;
   /// Ordinal\LunId of the disk for the Azure VM.
-  final pulumi.Input<String>? lunId;
+  final pulumi.Input<String?>? lunId;
   /// Max side in MB.
-  final pulumi.Input<String>? maxSizeMB;
+  final pulumi.Input<String?>? maxSizeMB;
   /// Blob uri of the Azure disk.
-  final pulumi.Input<String>? targetDiskLocation;
+  final pulumi.Input<String?>? targetDiskLocation;
   /// The target Azure disk name.
-  final pulumi.Input<String>? targetDiskName;
+  final pulumi.Input<String?>? targetDiskName;
   /// The VHD id.
-  final pulumi.Input<String>? vhdId;
+  final pulumi.Input<String?>? vhdId;
   /// VHD name.
-  final pulumi.Input<String>? vhdName;
+  final pulumi.Input<String?>? vhdName;
   /// VHD type.
-  final pulumi.Input<String>? vhdType;
+  final pulumi.Input<String?>? vhdType;
 
   /// Creates a new [AzureVmDiskDetailsResponse].
   /// [customTargetDiskName] The custom target Azure disk name.

@@ -18,39 +18,39 @@ import 'virtual_machine_scale_set_storage_profile.dart';
 /// Describes a virtual machine scale set virtual machine profile.
 class VirtualMachineScaleSetVMProfile {
   /// Specifies the gallery applications that should be made available to the VM/VMSS
-  final pulumi.Input<ApplicationProfile>? applicationProfile;
+  final pulumi.Input<ApplicationProfile?>? applicationProfile;
   /// Specifies the billing related details of a Azure Spot VMSS. Minimum api-version: 2019-03-01.
-  final pulumi.Input<BillingProfile>? billingProfile;
+  final pulumi.Input<BillingProfile?>? billingProfile;
   /// Specifies the capacity reservation related details of a scale set. Minimum api-version: 2021-04-01.
-  final pulumi.Input<CapacityReservationProfile>? capacityReservation;
+  final pulumi.Input<CapacityReservationProfile?>? capacityReservation;
   /// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
-  final pulumi.Input<DiagnosticsProfile>? diagnosticsProfile;
+  final pulumi.Input<DiagnosticsProfile?>? diagnosticsProfile;
   /// Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
-  final pulumi.Input<String>? evictionPolicy;
+  final pulumi.Input<dynamic>? evictionPolicy;
   /// Specifies a collection of settings for extensions installed on virtual machines in the scale set.
-  final pulumi.Input<VirtualMachineScaleSetExtensionProfile>? extensionProfile;
+  final pulumi.Input<VirtualMachineScaleSetExtensionProfile?>? extensionProfile;
   /// Specifies the hardware profile related details of a scale set. Minimum api-version: 2021-11-01.
-  final pulumi.Input<VirtualMachineScaleSetHardwareProfile>? hardwareProfile;
+  final pulumi.Input<VirtualMachineScaleSetHardwareProfile?>? hardwareProfile;
   /// Specifies that the image or disk that is being used was licensed on-premises. &lt;br&gt;&lt;br&gt; Possible values for Windows Server operating system are: &lt;br&gt;&lt;br&gt; Windows_Client &lt;br&gt;&lt;br&gt; Windows_Server &lt;br&gt;&lt;br&gt; Possible values for Linux Server operating system are: &lt;br&gt;&lt;br&gt; RHEL_BYOS (for RHEL) &lt;br&gt;&lt;br&gt; SLES_BYOS (for SUSE) &lt;br&gt;&lt;br&gt; For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) &lt;br&gt;&lt;br&gt; [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<String?>? licenseType;
   /// Specifies properties of the network interfaces of the virtual machines in the scale set.
-  final pulumi.Input<VirtualMachineScaleSetNetworkProfile>? networkProfile;
+  final pulumi.Input<VirtualMachineScaleSetNetworkProfile?>? networkProfile;
   /// Specifies the operating system settings for the virtual machines in the scale set.
-  final pulumi.Input<VirtualMachineScaleSetOSProfile>? osProfile;
+  final pulumi.Input<VirtualMachineScaleSetOSProfile?>? osProfile;
   /// Specifies the priority for the virtual machines in the scale set. Minimum api-version: 2017-10-30-preview.
-  final pulumi.Input<String>? priority;
+  final pulumi.Input<dynamic>? priority;
   /// Specifies Scheduled Event related configurations.
-  final pulumi.Input<ScheduledEventsProfile>? scheduledEventsProfile;
+  final pulumi.Input<ScheduledEventsProfile?>? scheduledEventsProfile;
   /// Specifies the security posture to be used in the scale set. Minimum api-version: 2023-03-01
-  final pulumi.Input<SecurityPostureReference>? securityPostureReference;
+  final pulumi.Input<SecurityPostureReference?>? securityPostureReference;
   /// Specifies the Security related profile settings for the virtual machines in the scale set.
-  final pulumi.Input<SecurityProfile>? securityProfile;
+  final pulumi.Input<SecurityProfile?>? securityProfile;
   /// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version. Minimum api-version: 2022-11-01
-  final pulumi.Input<ServiceArtifactReference>? serviceArtifactReference;
+  final pulumi.Input<ServiceArtifactReference?>? serviceArtifactReference;
   /// Specifies the storage settings for the virtual machine disks.
-  final pulumi.Input<VirtualMachineScaleSetStorageProfile>? storageProfile;
+  final pulumi.Input<VirtualMachineScaleSetStorageProfile?>? storageProfile;
   /// UserData for the virtual machines in the scale set, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
-  final pulumi.Input<String>? userData;
+  final pulumi.Input<String?>? userData;
 
   /// Creates a new [VirtualMachineScaleSetVMProfile].
   /// [applicationProfile] Specifies the gallery applications that should be made available to the VM/VMSS
@@ -118,13 +118,13 @@ class VirtualMachineScaleSetVMProfile {
       billingProfile: (() { final guardedValue = map['billingProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BillingProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       capacityReservation: (() { final guardedValue = map['capacityReservation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CapacityReservationProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       diagnosticsProfile: (() { final guardedValue = map['diagnosticsProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiagnosticsProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      evictionPolicy: (() { final guardedValue = map['evictionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      evictionPolicy: (() { final guardedValue = map['evictionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       extensionProfile: (() { final guardedValue = map['extensionProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineScaleSetExtensionProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       hardwareProfile: (() { final guardedValue = map['hardwareProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineScaleSetHardwareProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkProfile: (() { final guardedValue = map['networkProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineScaleSetNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       osProfile: (() { final guardedValue = map['osProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineScaleSetOSProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       scheduledEventsProfile: (() { final guardedValue = map['scheduledEventsProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScheduledEventsProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       securityPostureReference: (() { final guardedValue = map['securityPostureReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityPostureReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       securityProfile: (() { final guardedValue = map['securityProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

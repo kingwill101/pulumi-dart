@@ -9,7 +9,7 @@ import 'connection_properties.dart';
 /// {@macro pulumi_storagemover_connection_args_doc}
 class ConnectionArgs {
   /// The name of the Connection resource.
-  final pulumi.Input<String>? connectionName;
+  final pulumi.Input<String?>? connectionName;
   /// Connection properties.
   final pulumi.Input<ConnectionProperties> properties;
   /// The name of the resource group. The name is case insensitive.

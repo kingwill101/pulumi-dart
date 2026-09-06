@@ -38,6 +38,17 @@ Future<GetNamespaceResult> getNamespace(
   return GetNamespaceResult.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceResult> getNamespaceOutput(
+  GetNamespaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:notificationhubs:getNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceResult.fromMap);
+}
+
 /// Gets an authorization rule for a namespace by name.
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -56,6 +67,17 @@ Future<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNamespaceAuthorizationRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRuleOutput(
+  GetNamespaceAuthorizationRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:notificationhubs:getNamespaceAuthorizationRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceAuthorizationRuleResult.fromMap);
 }
 
 /// Lists the PNS credentials associated with a namespace.
@@ -78,6 +100,17 @@ Future<GetNamespacePnsCredentialsResult> getNamespacePnsCredentials(
   return GetNamespacePnsCredentialsResult.fromMap(result);
 }
 
+pulumi.Output<GetNamespacePnsCredentialsResult> getNamespacePnsCredentialsOutput(
+  GetNamespacePnsCredentialsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:notificationhubs:getNamespacePnsCredentials',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespacePnsCredentialsResult.fromMap);
+}
+
 /// Gets the notification hub.
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -96,6 +129,17 @@ Future<GetNotificationHubResult> getNotificationHub(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNotificationHubResult.fromMap(result);
+}
+
+pulumi.Output<GetNotificationHubResult> getNotificationHubOutput(
+  GetNotificationHubArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:notificationhubs:getNotificationHub',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNotificationHubResult.fromMap);
 }
 
 /// Gets an authorization rule for a NotificationHub by name.
@@ -118,6 +162,17 @@ Future<GetNotificationHubAuthorizationRuleResult> getNotificationHubAuthorizatio
   return GetNotificationHubAuthorizationRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetNotificationHubAuthorizationRuleResult> getNotificationHubAuthorizationRuleOutput(
+  GetNotificationHubAuthorizationRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:notificationhubs:getNotificationHubAuthorizationRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNotificationHubAuthorizationRuleResult.fromMap);
+}
+
 /// Lists the PNS Credentials associated with a notification hub.
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -136,6 +191,17 @@ Future<GetNotificationHubPnsCredentialsResult> getNotificationHubPnsCredentials(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNotificationHubPnsCredentialsResult.fromMap(result);
+}
+
+pulumi.Output<GetNotificationHubPnsCredentialsResult> getNotificationHubPnsCredentialsOutput(
+  GetNotificationHubPnsCredentialsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:notificationhubs:getNotificationHubPnsCredentials',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNotificationHubPnsCredentialsResult.fromMap);
 }
 
 /// Returns a Private Endpoint Connection with a given name.
@@ -159,6 +225,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:notificationhubs:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Gets the Primary and Secondary ConnectionStrings to the namespace.
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -179,6 +256,17 @@ Future<ListNamespaceKeysResult> listNamespaceKeys(
   return ListNamespaceKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListNamespaceKeysResult> listNamespaceKeysOutput(
+  ListNamespaceKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:notificationhubs:listNamespaceKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListNamespaceKeysResult.fromMap);
+}
+
 /// Gets the Primary and Secondary ConnectionStrings to the NotificationHub
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -197,4 +285,15 @@ Future<ListNotificationHubKeysResult> listNotificationHubKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListNotificationHubKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListNotificationHubKeysResult> listNotificationHubKeysOutput(
+  ListNotificationHubKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:notificationhubs:listNotificationHubKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListNotificationHubKeysResult.fromMap);
 }

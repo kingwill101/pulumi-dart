@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The runbook property associated with the entity.
 class RunbookAssociationProperty {
   /// Gets or sets the name of the runbook.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [RunbookAssociationProperty].
   /// [name] Gets or sets the name of the runbook.

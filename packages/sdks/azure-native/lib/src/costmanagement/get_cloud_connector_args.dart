@@ -10,7 +10,7 @@ class GetCloudConnectorArgs {
   /// Connector Name.
   final pulumi.Input<String> connectorName;
   /// May be used to expand the collectionInfo property. By default, collectionInfo is not included.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
 
   /// Creates a new [GetCloudConnectorArgs].
   /// [connectorName] Connector Name.

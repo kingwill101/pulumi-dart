@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The load-based autoscale request parameters
 class AutoscaleCapacityResponse {
   /// The maximum instance count of the cluster
-  final pulumi.Input<int>? maxInstanceCount;
+  final pulumi.Input<int?>? maxInstanceCount;
   /// The minimum instance count of the cluster
-  final pulumi.Input<int>? minInstanceCount;
+  final pulumi.Input<int?>? minInstanceCount;
 
   /// Creates a new [AutoscaleCapacityResponse].
   /// [maxInstanceCount] The maximum instance count of the cluster
@@ -26,8 +26,8 @@ class AutoscaleCapacityResponse {
 
   factory AutoscaleCapacityResponse.fromMap(Map<String, dynamic> map) {
     return AutoscaleCapacityResponse(
-      maxInstanceCount: (() { final guardedValue = map['maxInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minInstanceCount: (() { final guardedValue = map['minInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxInstanceCount: (() { final guardedValue = map['maxInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minInstanceCount: (() { final guardedValue = map['minInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

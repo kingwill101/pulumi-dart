@@ -6,19 +6,19 @@ import 'azure_firewall_application_rule_protocol.dart';
 /// Properties of an application rule.
 class AzureFirewallApplicationRule {
   /// Description of the rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of FQDN Tags for this rule.
-  final pulumi.Input<List<String>>? fqdnTags;
+  final pulumi.Input<List<String>?>? fqdnTags;
   /// Name of the application rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Array of ApplicationRuleProtocols.
-  final pulumi.Input<List<AzureFirewallApplicationRuleProtocol>>? protocols;
+  final pulumi.Input<List<AzureFirewallApplicationRuleProtocol>?>? protocols;
   /// List of source IP addresses for this rule.
-  final pulumi.Input<List<String>>? sourceAddresses;
+  final pulumi.Input<List<String>?>? sourceAddresses;
   /// List of source IpGroups for this rule.
-  final pulumi.Input<List<String>>? sourceIpGroups;
+  final pulumi.Input<List<String>?>? sourceIpGroups;
   /// List of FQDNs for this rule.
-  final pulumi.Input<List<String>>? targetFqdns;
+  final pulumi.Input<List<String>?>? targetFqdns;
 
   /// Creates a new [AzureFirewallApplicationRule].
   /// [description] Description of the rule.

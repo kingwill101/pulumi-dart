@@ -12,7 +12,7 @@ class BmcKeySetArgs {
   /// The object ID of Azure Active Directory group that all users in the list must be in for access to be granted. Users that are not in the group will not have access.
   final pulumi.Input<String> azureGroupId;
   /// The name of the baseboard management controller key set.
-  final pulumi.Input<String>? bmcKeySetName;
+  final pulumi.Input<String?>? bmcKeySetName;
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
   /// The date and time after which the users in this key set will be removed from the baseboard management controllers.
@@ -20,13 +20,13 @@ class BmcKeySetArgs {
   /// The extended location of the cluster associated with the resource.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The access level allowed for the users in this key set.
-  final pulumi.Input<String> privilegeLevel;
+  final pulumi.Input<dynamic> privilegeLevel;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The unique list of permitted users.
   final pulumi.Input<List<KeySetUser>> userList;
 
@@ -77,7 +77,7 @@ class BmcKeySetArgs {
       expiration: pulumi.Input.fromValue(map['expiration'] as String),
       extendedLocation: pulumi.Input.fromValue(ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      privilegeLevel: pulumi.Input.fromValue(map['privilegeLevel'] as String),
+      privilegeLevel: pulumi.Input.fromValue(map['privilegeLevel']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       userList: pulumi.Input.fromValue(pulumi.Input.decodeList<KeySetUser>(map['userList']!, (value) => KeySetUser.fromMap((value as Map).cast<String, dynamic>()))),

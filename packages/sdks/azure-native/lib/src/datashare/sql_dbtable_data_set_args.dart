@@ -10,7 +10,7 @@ class SqlDBTableDataSetArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
   /// The name of the dataSet.
-  final pulumi.Input<String>? dataSetName;
+  final pulumi.Input<String?>? dataSetName;
   /// Database name of the source data set
   final pulumi.Input<String> databaseName;
   /// Kind of data set.

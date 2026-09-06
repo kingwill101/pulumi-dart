@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of NFS share endpoint.
 class NfsMountEndpointPropertiesResponse {
   /// A description for the Endpoint.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Endpoint resource type.
   /// Expected value is 'NfsMount'.
   final pulumi.Input<String> endpointType;
@@ -14,7 +14,7 @@ class NfsMountEndpointPropertiesResponse {
   /// The host name or IP address of the server exporting the file system.
   final pulumi.Input<String> host;
   /// The NFS protocol version.
-  final pulumi.Input<String>? nfsVersion;
+  final pulumi.Input<String?>? nfsVersion;
   /// The provisioning state of this resource.
   final pulumi.Input<String> provisioningState;
 

@@ -7,11 +7,11 @@ class RestoredLogsResponse {
   /// Search results table async operation id.
   final pulumi.Input<String> azureAsyncOperationId;
   /// The timestamp to end the restore by (UTC).
-  final pulumi.Input<String>? endRestoreTime;
+  final pulumi.Input<String?>? endRestoreTime;
   /// The table to restore data from.
-  final pulumi.Input<String>? sourceTable;
+  final pulumi.Input<String?>? sourceTable;
   /// The timestamp to start the restore from (UTC).
-  final pulumi.Input<String>? startRestoreTime;
+  final pulumi.Input<String?>? startRestoreTime;
 
   /// Creates a new [RestoredLogsResponse].
   /// [azureAsyncOperationId] Search results table async operation id.

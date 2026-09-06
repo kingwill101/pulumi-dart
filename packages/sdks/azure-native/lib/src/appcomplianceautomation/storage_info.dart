@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The information of 'bring your own storage' account binding to the report
 class StorageInfo {
   /// 'bring your own storage' account name
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// The region of 'bring your own storage' account
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resourceGroup which 'bring your own storage' account belongs to
-  final pulumi.Input<String>? resourceGroup;
+  final pulumi.Input<String?>? resourceGroup;
   /// The subscription id which 'bring your own storage' account belongs to
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [StorageInfo].
   /// [accountName] 'bring your own storage' account name

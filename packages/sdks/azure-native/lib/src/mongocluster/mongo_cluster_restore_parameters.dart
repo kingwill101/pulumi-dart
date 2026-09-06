@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Parameters used for restore operations
 class MongoClusterRestoreParameters {
   /// UTC point in time to restore a mongo cluster
-  final pulumi.Input<String>? pointInTimeUTC;
+  final pulumi.Input<String?>? pointInTimeUTC;
   /// Resource ID to locate the source cluster to restore
-  final pulumi.Input<String>? sourceResourceId;
+  final pulumi.Input<String?>? sourceResourceId;
 
   /// Creates a new [MongoClusterRestoreParameters].
   /// [pointInTimeUTC] UTC point in time to restore a mongo cluster

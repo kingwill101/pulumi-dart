@@ -10,11 +10,11 @@ class ExtensionMonitoringStatusArgs {
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
   /// The cluster monitor workspace key.
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The cluster monitor workspace ID.
-  final pulumi.Input<String>? workspaceId;
+  final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [ExtensionMonitoringStatusArgs].
   /// [clusterName] The name of the cluster.

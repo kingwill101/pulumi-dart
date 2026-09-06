@@ -6,9 +6,9 @@ import 'dapr_subscription_route_rule.dart';
 /// Dapr PubSub Event Subscription Routes configuration.
 class DaprSubscriptionRoutes {
   /// The default path to deliver events that do not match any of the rules.
-  final pulumi.Input<String>? default_;
+  final pulumi.Input<String?>? default_;
   /// The list of Dapr PubSub Event Subscription Route Rules.
-  final pulumi.Input<List<DaprSubscriptionRouteRule>>? rules;
+  final pulumi.Input<List<DaprSubscriptionRouteRule>?>? rules;
 
   /// Creates a new [DaprSubscriptionRoutes].
   /// [default_] The default path to deliver events that do not match any of the rules.

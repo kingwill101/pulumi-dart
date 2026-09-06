@@ -5,21 +5,21 @@ import 'system_data_response.dart';
 /// Result data returned by getReplica.
 class GetReplicaResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The URI of the replica where the replica API will be available.
-  final String endpoint;
+  final String? endpoint;
   /// The resource ID.
-  final String id;
+  final String? id;
   /// The location of the replica.
   final String? location;
   /// The name of the replica.
-  final String name;
+  final String? name;
   /// The provisioning state of the replica.
-  final String provisioningState;
+  final String? provisioningState;
   /// Resource system metadata.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetReplicaResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -31,39 +31,39 @@ class GetReplicaResult {
   /// [systemData] Resource system metadata.
   /// [type] The type of the resource.
   const GetReplicaResult({
-    required this.azureApiVersion,
-    required this.endpoint,
-    required this.id,
+    this.azureApiVersion,
+    this.endpoint,
+    this.id,
     this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
-    required this.type,
+    this.name,
+    this.provisioningState,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'endpoint': endpoint,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'endpoint': ?endpoint,
+      'id': ?id,
       'location': ?location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetReplicaResult.fromMap(Map<String, dynamic> map) {
     return GetReplicaResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      endpoint: map['endpoint'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Capacity rule.
 class ResourceTypeRegistrationPropertiesCapacityRule {
   /// Capacity policy.
-  final pulumi.Input<String>? capacityPolicy;
+  final pulumi.Input<dynamic>? capacityPolicy;
   /// Sku alias
-  final pulumi.Input<String>? skuAlias;
+  final pulumi.Input<String?>? skuAlias;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesCapacityRule].
   /// [capacityPolicy] Capacity policy.
@@ -26,7 +26,7 @@ class ResourceTypeRegistrationPropertiesCapacityRule {
 
   factory ResourceTypeRegistrationPropertiesCapacityRule.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesCapacityRule(
-      capacityPolicy: (() { final guardedValue = map['capacityPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      capacityPolicy: (() { final guardedValue = map['capacityPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       skuAlias: (() { final guardedValue = map['skuAlias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

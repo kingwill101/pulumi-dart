@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of orchestrator
 class SubnetDetailsResponse {
   /// subnet arm resource id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [SubnetDetailsResponse].
   /// [id] subnet arm resource id

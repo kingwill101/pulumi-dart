@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// MonitorLog configurations
 class MonitorLogResponse {
   /// Resource ID of MonitorLog
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Primary Key value for Monitor
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// Secondary Key value for Monitor
-  final pulumi.Input<String>? secondaryKey;
+  final pulumi.Input<String?>? secondaryKey;
   /// Subscription Id
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// MonitorLog workspace
-  final pulumi.Input<String>? workspace;
+  final pulumi.Input<String?>? workspace;
 
   /// Creates a new [MonitorLogResponse].
   /// [id] Resource ID of MonitorLog

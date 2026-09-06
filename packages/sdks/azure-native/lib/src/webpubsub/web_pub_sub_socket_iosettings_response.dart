@@ -7,7 +7,7 @@ class WebPubSubSocketIOSettingsResponse {
   /// The service mode of Web PubSub for Socket.IO. Values allowed:
   /// "Default": have your own backend Socket.IO server
   /// "Serverless": your application doesn't have a backend server
-  final pulumi.Input<String>? serviceMode;
+  final pulumi.Input<String?>? serviceMode;
 
   /// Creates a new [WebPubSubSocketIOSettingsResponse].
   /// [serviceMode] The service mode of Web PubSub for Socket.IO. Values allowed:

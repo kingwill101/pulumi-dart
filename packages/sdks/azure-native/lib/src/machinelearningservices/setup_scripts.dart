@@ -6,7 +6,7 @@ import 'scripts_to_execute.dart';
 /// Details of customized scripts to execute for setting up the cluster.
 class SetupScripts {
   /// Customized setup scripts
-  final pulumi.Input<ScriptsToExecute>? scripts;
+  final pulumi.Input<ScriptsToExecute?>? scripts;
 
   /// Creates a new [SetupScripts].
   /// [scripts] Customized setup scripts

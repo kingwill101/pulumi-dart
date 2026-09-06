@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Primary metrics for Regression task.
-enum RegressionPrimaryMetrics {
+enum RegressionPrimaryMetrics implements pulumi.PulumiEnum<String> {
   spearmanCorrelation("SpearmanCorrelation"),
   normalizedRootMeanSquaredError("NormalizedRootMeanSquaredError"),
   r2Score("R2Score"),
   normalizedMeanAbsoluteError("NormalizedMeanAbsoluteError");
 
   const RegressionPrimaryMetrics(this.wireValue);
+  @override
   final String wireValue;
 
   static RegressionPrimaryMetrics fromValue(String value) {

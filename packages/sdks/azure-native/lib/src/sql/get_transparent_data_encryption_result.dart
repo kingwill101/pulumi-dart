@@ -4,15 +4,15 @@
 /// Result data returned by getTransparentDataEncryption.
 class GetTransparentDataEncryptionResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Specifies the state of the transparent data encryption.
-  final String state;
+  final String? state;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetTransparentDataEncryptionResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -21,30 +21,30 @@ class GetTransparentDataEncryptionResult {
   /// [state] Specifies the state of the transparent data encryption.
   /// [type] Resource type.
   const GetTransparentDataEncryptionResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
-    required this.state,
-    required this.type,
+    this.azureApiVersion,
+    this.id,
+    this.name,
+    this.state,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
-      'state': state,
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
+      'state': ?state,
+      'type': ?type,
     };
   }
 
   factory GetTransparentDataEncryptionResult.fromMap(Map<String, dynamic> map) {
     return GetTransparentDataEncryptionResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      state: map['state'] as String,
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

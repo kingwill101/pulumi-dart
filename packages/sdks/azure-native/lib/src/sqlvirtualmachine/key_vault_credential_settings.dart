@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configure your SQL virtual machine to be able to connect to the Azure Key Vault service.
 class KeyVaultCredentialSettings {
   /// Azure Key Vault url.
-  final pulumi.Input<String>? azureKeyVaultUrl;
+  final pulumi.Input<String?>? azureKeyVaultUrl;
   /// Credential name.
-  final pulumi.Input<String>? credentialName;
+  final pulumi.Input<String?>? credentialName;
   /// Enable or disable key vault credential setting.
-  final pulumi.Input<bool>? enable;
+  final pulumi.Input<bool?>? enable;
   /// Service principal name to access key vault.
-  final pulumi.Input<String>? servicePrincipalName;
+  final pulumi.Input<String?>? servicePrincipalName;
   /// Service principal name secret to access key vault.
-  final pulumi.Input<String>? servicePrincipalSecret;
+  final pulumi.Input<String?>? servicePrincipalSecret;
 
   /// Creates a new [KeyVaultCredentialSettings].
   /// [azureKeyVaultUrl] Azure Key Vault url.

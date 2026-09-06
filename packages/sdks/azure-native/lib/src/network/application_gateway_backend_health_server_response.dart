@@ -6,13 +6,13 @@ import 'network_interface_ipconfiguration_response.dart';
 /// Application gateway backendhealth http settings.
 class ApplicationGatewayBackendHealthServerResponse {
   /// IP address or FQDN of backend server.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Health of backend server.
-  final pulumi.Input<String>? health;
+  final pulumi.Input<String?>? health;
   /// Health Probe Log.
-  final pulumi.Input<String>? healthProbeLog;
+  final pulumi.Input<String?>? healthProbeLog;
   /// Reference to IP configuration of backend server.
-  final pulumi.Input<NetworkInterfaceIPConfigurationResponse>? ipConfiguration;
+  final pulumi.Input<NetworkInterfaceIPConfigurationResponse?>? ipConfiguration;
 
   /// Creates a new [ApplicationGatewayBackendHealthServerResponse].
   /// [address] IP address or FQDN of backend server.

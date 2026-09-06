@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Destination type.
-enum RoutingRuleDestinationType {
+enum RoutingRuleDestinationType implements pulumi.PulumiEnum<String> {
   valueAddressPrefix("AddressPrefix"),
   valueServiceTag("ServiceTag");
 
   const RoutingRuleDestinationType(this.wireValue);
+  @override
   final String wireValue;
 
   static RoutingRuleDestinationType fromValue(String value) {

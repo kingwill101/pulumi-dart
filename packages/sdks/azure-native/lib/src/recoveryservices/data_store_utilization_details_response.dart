@@ -32,8 +32,8 @@ class DataStoreUtilizationDetailsResponse {
   factory DataStoreUtilizationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DataStoreUtilizationDetailsResponse(
       dataStoreName: pulumi.Input.fromValue(map['dataStoreName'] as String),
-      totalSnapshotsCreated: pulumi.Input.fromValue(map['totalSnapshotsCreated'] as double),
-      totalSnapshotsSupported: pulumi.Input.fromValue(map['totalSnapshotsSupported'] as double),
+      totalSnapshotsCreated: pulumi.Input.fromValue((map['totalSnapshotsCreated'] as num).toDouble()),
+      totalSnapshotsSupported: pulumi.Input.fromValue((map['totalSnapshotsSupported'] as num).toDouble()),
     );
   }
 }

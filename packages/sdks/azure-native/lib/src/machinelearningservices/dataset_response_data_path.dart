@@ -6,7 +6,7 @@ import 'dataset_response_sql_data_path.dart';
 /// Datastore and reference to location of data such as relativePath, Sql Query and etc.
 class DatasetResponseDataPath {
   /// Additional Properties.
-  final pulumi.Input<Map<String, dynamic>>? additionalProperties;
+  final pulumi.Input<Map<String, dynamic>?>? additionalProperties;
   /// Azure path for Azure Blob or File
   final pulumi.Input<String> azureFilePath;
   /// Data store Name
@@ -22,7 +22,7 @@ class DatasetResponseDataPath {
   /// Relative path in the data store
   final pulumi.Input<String> relativePath;
   /// Sql Query/Table/Stored Procedure details.
-  final pulumi.Input<DatasetResponseSqlDataPath>? sqlDataPath;
+  final pulumi.Input<DatasetResponseSqlDataPath?>? sqlDataPath;
 
   /// Creates a new [DatasetResponseDataPath].
   /// [additionalProperties] Additional Properties.

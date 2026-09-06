@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enum for all Regression models supported by AutoML.
-enum RegressionModels {
+enum RegressionModels implements pulumi.PulumiEnum<String> {
   elasticNet("ElasticNet"),
   gradientBoosting("GradientBoosting"),
   decisionTree("DecisionTree"),
@@ -12,6 +14,7 @@ enum RegressionModels {
   xGBoostRegressor("XGBoostRegressor");
 
   const RegressionModels(this.wireValue);
+  @override
   final String wireValue;
 
   static RegressionModels fromValue(String value) {

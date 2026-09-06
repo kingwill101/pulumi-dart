@@ -6,9 +6,9 @@ import 'aml_filesystem_identity_type.dart';
 /// Managed Identity properties.
 class AmlFilesystemIdentity {
   /// The type of identity used for the resource.
-  final pulumi.Input<AmlFilesystemIdentityType>? type;
+  final pulumi.Input<AmlFilesystemIdentityType?>? type;
   /// A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
-  final pulumi.Input<List<String>>? userAssignedIdentities;
+  final pulumi.Input<List<String>?>? userAssignedIdentities;
 
   /// Creates a new [AmlFilesystemIdentity].
   /// [type] The type of identity used for the resource.

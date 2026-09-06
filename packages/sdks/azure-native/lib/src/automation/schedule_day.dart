@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Day of the occurrence. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
-enum ScheduleDay {
+enum ScheduleDay implements pulumi.PulumiEnum<String> {
   monday("Monday"),
   tuesday("Tuesday"),
   wednesday("Wednesday"),
@@ -9,6 +11,7 @@ enum ScheduleDay {
   sunday("Sunday");
 
   const ScheduleDay(this.wireValue);
+  @override
   final String wireValue;
 
   static ScheduleDay fromValue(String value) {

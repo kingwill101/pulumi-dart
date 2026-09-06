@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_applicationinsights_component_linked_storage_account_args_doc}
 class ComponentLinkedStorageAccountArgs {
   /// Linked storage account resource ID
-  final pulumi.Input<String>? linkedStorageAccount;
+  final pulumi.Input<String?>? linkedStorageAccount;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Application Insights component resource.
   final pulumi.Input<String> resourceName;
   /// The type of the Application Insights component data source for the linked storage account.
-  final pulumi.Input<String>? storageType;
+  final pulumi.Input<String?>? storageType;
 
   /// Creates a new [ComponentLinkedStorageAccountArgs].
   /// [linkedStorageAccount] Linked storage account resource ID

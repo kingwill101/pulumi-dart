@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The managed application definition artifact name.
-enum ApplicationDefinitionArtifactName {
+enum ApplicationDefinitionArtifactName implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueApplicationResourceTemplate("ApplicationResourceTemplate"),
   valueCreateUiDefinition("CreateUiDefinition"),
   valueMainTemplateParameters("MainTemplateParameters");
 
   const ApplicationDefinitionArtifactName(this.wireValue);
+  @override
   final String wireValue;
 
   static ApplicationDefinitionArtifactName fromValue(String value) {

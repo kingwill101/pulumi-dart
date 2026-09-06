@@ -7,19 +7,19 @@ class TargetRegionResponse {
   /// The name of the region.
   final pulumi.Input<String> name;
   /// The number of replicas of the Image Version to be created in this region. Omit to use the default (1).
-  final pulumi.Input<int>? replicaCount;
+  final pulumi.Input<int?>? replicaCount;
   /// Specifies the storage account type to be used to store the image in this region. Omit to use the default (Standard_LRS).
-  final pulumi.Input<String>? storageAccountType;
+  final pulumi.Input<String?>? storageAccountType;
 
   /// Creates a new [TargetRegionResponse].
   /// [name] The name of the region.
   /// [replicaCount] The number of replicas of the Image Version to be created in this region. Omit to use the default (1).
   /// [storageAccountType] Specifies the storage account type to be used to store the image in this region. Omit to use the default (Standard_LRS).
-  const TargetRegionResponse({
+  TargetRegionResponse({
     required this.name,
-    this.replicaCount,
+    pulumi.Input<int?>? replicaCount,
     this.storageAccountType,
-  });
+  }) : replicaCount = replicaCount ?? pulumi.Input.fromValue(1);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +32,7 @@ class TargetRegionResponse {
   factory TargetRegionResponse.fromMap(Map<String, dynamic> map) {
     return TargetRegionResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
-      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

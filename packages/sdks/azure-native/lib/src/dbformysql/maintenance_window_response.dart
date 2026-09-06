@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Maintenance window of a server.
 class MaintenanceWindowResponse {
   /// indicates whether custom window is enabled or disabled
-  final pulumi.Input<String>? customWindow;
+  final pulumi.Input<String?>? customWindow;
   /// day of week for maintenance window
-  final pulumi.Input<int>? dayOfWeek;
+  final pulumi.Input<int?>? dayOfWeek;
   /// start hour for maintenance window
-  final pulumi.Input<int>? startHour;
+  final pulumi.Input<int?>? startHour;
   /// start minute for maintenance window
-  final pulumi.Input<int>? startMinute;
+  final pulumi.Input<int?>? startMinute;
 
   /// Creates a new [MaintenanceWindowResponse].
   /// [customWindow] indicates whether custom window is enabled or disabled
@@ -37,9 +37,9 @@ class MaintenanceWindowResponse {
   factory MaintenanceWindowResponse.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowResponse(
       customWindow: (() { final guardedValue = map['customWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dayOfWeek: (() { final guardedValue = map['dayOfWeek']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      startHour: (() { final guardedValue = map['startHour']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      startMinute: (() { final guardedValue = map['startMinute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dayOfWeek: (() { final guardedValue = map['dayOfWeek']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      startHour: (() { final guardedValue = map['startHour']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      startMinute: (() { final guardedValue = map['startMinute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

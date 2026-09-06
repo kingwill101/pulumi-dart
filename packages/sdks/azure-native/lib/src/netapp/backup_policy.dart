@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_policy_args.dart';
 import 'system_data_response.dart';
+import 'volume_backups_response.dart';
 
 /// Backup policy information
 ///
@@ -210,7 +211,7 @@ class BackupPolicy extends pulumi.CustomResource {
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// A list of volumes assigned to this policy
-  late final pulumi.Output<List<Map<String, dynamic>>> volumeBackups;
+  late final pulumi.Output<List<VolumeBackupsResponse>> volumeBackups;
   /// Volumes using current backup policy
   late final pulumi.Output<int> volumesAssigned;
   /// Weekly backups count to keep
@@ -240,9 +241,35 @@ class BackupPolicy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    volumeBackups = registerOutput<List<Map<String, dynamic>>>('volumeBackups');
+    volumeBackups = registerOutput<List<VolumeBackupsResponse>>('volumeBackups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeBackupsResponse>(guardedValue, (value) => VolumeBackupsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    volumesAssigned = registerOutput<int>('volumesAssigned');
+    weeklyBackupsToKeep = registerOutput<int?>('weeklyBackupsToKeep');
+  }
+
+  /// Creates a typed reference to an existing [BackupPolicy] resource.
+  BackupPolicy.reference(String urn)
+    : super(
+        'azure-native:netapp:BackupPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backupPolicyId = registerOutput<String>('backupPolicyId');
+    dailyBackupsToKeep = registerOutput<int?>('dailyBackupsToKeep');
+    enabled = registerOutput<bool?>('enabled');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    monthlyBackupsToKeep = registerOutput<int?>('monthlyBackupsToKeep');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    volumeBackups = registerOutput<List<VolumeBackupsResponse>>('volumeBackups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeBackupsResponse>(guardedValue, (value) => VolumeBackupsResponse.fromMap((value as Map).cast<String, dynamic>())); });
     volumesAssigned = registerOutput<int>('volumesAssigned');
     weeklyBackupsToKeep = registerOutput<int?>('weeklyBackupsToKeep');
   }

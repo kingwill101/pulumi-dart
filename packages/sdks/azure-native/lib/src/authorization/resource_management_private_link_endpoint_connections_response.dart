@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceManagementPrivateLinkEndpointConnectionsResponse {
   /// The private endpoint connections.
-  final pulumi.Input<List<String>>? privateEndpointConnections;
+  final pulumi.Input<List<String>?>? privateEndpointConnections;
 
   /// Creates a new [ResourceManagementPrivateLinkEndpointConnectionsResponse].
   /// [privateEndpointConnections] The private endpoint connections.

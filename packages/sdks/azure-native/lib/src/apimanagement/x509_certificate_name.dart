@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of server X509Names.
 class X509CertificateName {
   /// Thumbprint for the Issuer of the Certificate.
-  final pulumi.Input<String>? issuerCertificateThumbprint;
+  final pulumi.Input<String?>? issuerCertificateThumbprint;
   /// Common Name of the Certificate.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [X509CertificateName].
   /// [issuerCertificateThumbprint] Thumbprint for the Issuer of the Certificate.

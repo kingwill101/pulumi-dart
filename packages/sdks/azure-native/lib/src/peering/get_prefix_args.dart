@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_peering_get_prefix_args_doc}
 class GetPrefixArgs {
   /// The properties to be expanded.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the peering service.
   final pulumi.Input<String> peeringServiceName;
   /// The name of the prefix.

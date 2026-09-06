@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_avs_hcx_enterprise_site_args_doc}
 class HcxEnterpriseSiteArgs {
   /// Name of the HCX Enterprise Site
-  final pulumi.Input<String>? hcxEnterpriseSiteName;
+  final pulumi.Input<String?>? hcxEnterpriseSiteName;
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
   /// The name of the resource group. The name is case insensitive.

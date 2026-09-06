@@ -6,7 +6,7 @@ import 'disk_encryption_target.dart';
 /// The disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Azure Compute Gallery Image.
 class DiskEncryptionConfiguration {
   /// On Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and "TemporaryDisk" must be specified.
-  final pulumi.Input<List<DiskEncryptionTarget>>? targets;
+  final pulumi.Input<List<DiskEncryptionTarget>?>? targets;
 
   /// Creates a new [DiskEncryptionConfiguration].
   /// [targets] On Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and "TemporaryDisk" must be specified.

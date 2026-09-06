@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ag_configuration_response.dart';
 import 'availability_group_listener_args.dart';
+import 'load_balancer_configuration_response.dart';
+import 'multi_subnet_ip_configuration_response.dart';
 import 'system_data_response.dart';
 
 /// A SQL Server availability group listener.
@@ -514,9 +516,9 @@ class AvailabilityGroupListener extends pulumi.CustomResource {
   /// Create a default availability group if it does not exist.
   late final pulumi.Output<bool?> createDefaultAvailabilityGroupIfNotExist;
   /// List of load balancer configurations for an availability group listener.
-  late final pulumi.Output<List<Map<String, dynamic>>?> loadBalancerConfigurations;
+  late final pulumi.Output<List<LoadBalancerConfigurationResponse>?> loadBalancerConfigurations;
   /// List of multi subnet IP configurations for an AG listener.
-  late final pulumi.Output<List<Map<String, dynamic>>?> multiSubnetIpConfigurations;
+  late final pulumi.Output<List<MultiSubnetIpConfigurationResponse>?> multiSubnetIpConfigurations;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Listener port.
@@ -546,8 +548,30 @@ class AvailabilityGroupListener extends pulumi.CustomResource {
     availabilityGroupName = registerOutput<String?>('availabilityGroupName');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createDefaultAvailabilityGroupIfNotExist = registerOutput<bool?>('createDefaultAvailabilityGroupIfNotExist');
-    loadBalancerConfigurations = registerOutput<List<Map<String, dynamic>>?>('loadBalancerConfigurations');
-    multiSubnetIpConfigurations = registerOutput<List<Map<String, dynamic>>?>('multiSubnetIpConfigurations');
+    loadBalancerConfigurations = registerOutput<List<LoadBalancerConfigurationResponse>?>('loadBalancerConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerConfigurationResponse>(guardedValue, (value) => LoadBalancerConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    multiSubnetIpConfigurations = registerOutput<List<MultiSubnetIpConfigurationResponse>?>('multiSubnetIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MultiSubnetIpConfigurationResponse>(guardedValue, (value) => MultiSubnetIpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    port = registerOutput<int?>('port');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [AvailabilityGroupListener] resource.
+  AvailabilityGroupListener.reference(String urn)
+    : super(
+        'azure-native:sqlvirtualmachine:AvailabilityGroupListener',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    availabilityGroupConfiguration = registerOutput<AgConfigurationResponse?>('availabilityGroupConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    availabilityGroupName = registerOutput<String?>('availabilityGroupName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createDefaultAvailabilityGroupIfNotExist = registerOutput<bool?>('createDefaultAvailabilityGroupIfNotExist');
+    loadBalancerConfigurations = registerOutput<List<LoadBalancerConfigurationResponse>?>('loadBalancerConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerConfigurationResponse>(guardedValue, (value) => LoadBalancerConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    multiSubnetIpConfigurations = registerOutput<List<MultiSubnetIpConfigurationResponse>?>('multiSubnetIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MultiSubnetIpConfigurationResponse>(guardedValue, (value) => MultiSubnetIpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     port = registerOutput<int?>('port');
     provisioningState = registerOutput<String>('provisioningState');

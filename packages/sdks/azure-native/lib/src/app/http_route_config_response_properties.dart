@@ -8,7 +8,7 @@ import 'http_route_rule_response.dart';
 /// Http Route Config properties
 class HttpRouteConfigResponseProperties {
   /// Custom domain bindings for http Routes' hostnames.
-  final pulumi.Input<List<CustomDomainResponse>>? customDomains;
+  final pulumi.Input<List<CustomDomainResponse>?>? customDomains;
   /// FQDN of the route resource.
   final pulumi.Input<String> fqdn;
   /// List of errors when trying to reconcile http routes
@@ -16,7 +16,7 @@ class HttpRouteConfigResponseProperties {
   /// The provisioning state of the Http Route Config in cluster
   final pulumi.Input<String> provisioningState;
   /// Routing Rules for http route resource.
-  final pulumi.Input<List<HttpRouteRuleResponse>>? rules;
+  final pulumi.Input<List<HttpRouteRuleResponse>?>? rules;
 
   /// Creates a new [HttpRouteConfigResponseProperties].
   /// [customDomains] Custom domain bindings for http Routes' hostnames.

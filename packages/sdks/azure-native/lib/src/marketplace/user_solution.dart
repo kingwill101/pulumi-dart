@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'product_response.dart';
 import 'system_data_response.dart';
 import 'user_solution_args.dart';
 
@@ -136,7 +137,7 @@ class UserSolution extends pulumi.CustomResource {
   late final pulumi.Output<String?> displayName;
   /// The name of the resource.
   late final pulumi.Output<String> name;
-  late final pulumi.Output<List<Map<String, dynamic>>?> products;
+  late final pulumi.Output<List<ProductResponse>?> products;
   /// Metadata pertaining to creation and last modification of the resource
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource.
@@ -159,7 +160,24 @@ class UserSolution extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    products = registerOutput<List<Map<String, dynamic>>?>('products');
+    products = registerOutput<List<ProductResponse>?>('products', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProductResponse>(guardedValue, (value) => ProductResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [UserSolution] resource.
+  UserSolution.reference(String urn)
+    : super(
+        'azure-native:marketplace:UserSolution',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    products = registerOutput<List<ProductResponse>?>('products', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProductResponse>(guardedValue, (value) => ProductResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

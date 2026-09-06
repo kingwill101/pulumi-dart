@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Additional information on the backed up item.
 class MabFileFolderProtectedItemExtendedInfoResponse {
   /// Last time when the agent data synced to service.
-  final pulumi.Input<String>? lastRefreshedAt;
+  final pulumi.Input<String?>? lastRefreshedAt;
   /// The oldest backup copy available.
-  final pulumi.Input<String>? oldestRecoveryPoint;
+  final pulumi.Input<String?>? oldestRecoveryPoint;
   /// Number of backup copies associated with the backup item.
-  final pulumi.Input<int>? recoveryPointCount;
+  final pulumi.Input<int?>? recoveryPointCount;
 
   /// Creates a new [MabFileFolderProtectedItemExtendedInfoResponse].
   /// [lastRefreshedAt] Last time when the agent data synced to service.
@@ -33,7 +33,7 @@ class MabFileFolderProtectedItemExtendedInfoResponse {
     return MabFileFolderProtectedItemExtendedInfoResponse(
       lastRefreshedAt: (() { final guardedValue = map['lastRefreshedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       oldestRecoveryPoint: (() { final guardedValue = map['oldestRecoveryPoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      recoveryPointCount: (() { final guardedValue = map['recoveryPointCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      recoveryPointCount: (() { final guardedValue = map['recoveryPointCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

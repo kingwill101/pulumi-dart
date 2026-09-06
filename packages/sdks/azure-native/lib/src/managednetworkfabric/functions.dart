@@ -74,6 +74,17 @@ Future<GetAccessControlListResult> getAccessControlList(
   return GetAccessControlListResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessControlListResult> getAccessControlListOutput(
+  GetAccessControlListArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getAccessControlList',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessControlListResult.fromMap);
+}
+
 /// Implements ExternalNetworks GET method.
 ///
 /// Uses Azure REST API version 2023-06-15.
@@ -92,6 +103,17 @@ Future<GetExternalNetworkResult> getExternalNetwork(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExternalNetworkResult.fromMap(result);
+}
+
+pulumi.Output<GetExternalNetworkResult> getExternalNetworkOutput(
+  GetExternalNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getExternalNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExternalNetworkResult.fromMap);
 }
 
 /// Gets a InternalNetworks.
@@ -114,6 +136,17 @@ Future<GetInternalNetworkResult> getInternalNetwork(
   return GetInternalNetworkResult.fromMap(result);
 }
 
+pulumi.Output<GetInternalNetworkResult> getInternalNetworkOutput(
+  GetInternalNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getInternalNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInternalNetworkResult.fromMap);
+}
+
 /// Implements Gateway GET method.
 ///
 /// Uses Azure REST API version 2023-06-15.
@@ -132,6 +165,17 @@ Future<GetInternetGatewayResult> getInternetGateway(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInternetGatewayResult.fromMap(result);
+}
+
+pulumi.Output<GetInternetGatewayResult> getInternetGatewayOutput(
+  GetInternetGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getInternetGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInternetGatewayResult.fromMap);
 }
 
 /// Gets an Internet Gateway Rule resource.
@@ -154,6 +198,17 @@ Future<GetInternetGatewayRuleResult> getInternetGatewayRule(
   return GetInternetGatewayRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetInternetGatewayRuleResult> getInternetGatewayRuleOutput(
+  GetInternetGatewayRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getInternetGatewayRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInternetGatewayRuleResult.fromMap);
+}
+
 /// Implements an IP Community GET method.
 ///
 /// Uses Azure REST API version 2023-06-15.
@@ -172,6 +227,17 @@ Future<GetIpCommunityResult> getIpCommunity(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIpCommunityResult.fromMap(result);
+}
+
+pulumi.Output<GetIpCommunityResult> getIpCommunityOutput(
+  GetIpCommunityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getIpCommunity',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIpCommunityResult.fromMap);
 }
 
 /// Implements IP Extended Community GET method.
@@ -194,6 +260,17 @@ Future<GetIpExtendedCommunityResult> getIpExtendedCommunity(
   return GetIpExtendedCommunityResult.fromMap(result);
 }
 
+pulumi.Output<GetIpExtendedCommunityResult> getIpExtendedCommunityOutput(
+  GetIpExtendedCommunityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getIpExtendedCommunity',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIpExtendedCommunityResult.fromMap);
+}
+
 /// Implements IP Prefix GET method.
 ///
 /// Uses Azure REST API version 2023-06-15.
@@ -212,6 +289,17 @@ Future<GetIpPrefixResult> getIpPrefix(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIpPrefixResult.fromMap(result);
+}
+
+pulumi.Output<GetIpPrefixResult> getIpPrefixOutput(
+  GetIpPrefixArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getIpPrefix',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIpPrefixResult.fromMap);
 }
 
 /// Implements L2 Isolation Domain GET method.
@@ -234,6 +322,17 @@ Future<GetL2IsolationDomainResult> getL2IsolationDomain(
   return GetL2IsolationDomainResult.fromMap(result);
 }
 
+pulumi.Output<GetL2IsolationDomainResult> getL2IsolationDomainOutput(
+  GetL2IsolationDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getL2IsolationDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetL2IsolationDomainResult.fromMap);
+}
+
 /// Retrieves details of this L3 Isolation Domain.
 ///
 /// Uses Azure REST API version 2023-06-15.
@@ -252,6 +351,17 @@ Future<GetL3IsolationDomainResult> getL3IsolationDomain(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetL3IsolationDomainResult.fromMap(result);
+}
+
+pulumi.Output<GetL3IsolationDomainResult> getL3IsolationDomainOutput(
+  GetL3IsolationDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getL3IsolationDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetL3IsolationDomainResult.fromMap);
 }
 
 /// Gets the Neighbor Group.
@@ -274,6 +384,17 @@ Future<GetNeighborGroupResult> getNeighborGroup(
   return GetNeighborGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetNeighborGroupResult> getNeighborGroupOutput(
+  GetNeighborGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getNeighborGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNeighborGroupResult.fromMap);
+}
+
 /// Gets a Network Bootstrap Device resource details.
 ///
 /// Uses Azure REST API version 2025-07-15.
@@ -292,6 +413,17 @@ Future<GetNetworkBootstrapDeviceResult> getNetworkBootstrapDevice(
   return GetNetworkBootstrapDeviceResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkBootstrapDeviceResult> getNetworkBootstrapDeviceOutput(
+  GetNetworkBootstrapDeviceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getNetworkBootstrapDevice',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkBootstrapDeviceResult.fromMap);
+}
+
 /// Get the Network Bootstrap Interface resource details.
 ///
 /// Uses Azure REST API version 2025-07-15.
@@ -308,6 +440,17 @@ Future<GetNetworkBootstrapInterfaceResult> getNetworkBootstrapInterface(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkBootstrapInterfaceResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkBootstrapInterfaceResult> getNetworkBootstrapInterfaceOutput(
+  GetNetworkBootstrapInterfaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getNetworkBootstrapInterface',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkBootstrapInterfaceResult.fromMap);
 }
 
 /// Gets the Network Device resource details.
@@ -330,6 +473,17 @@ Future<GetNetworkDeviceResult> getNetworkDevice(
   return GetNetworkDeviceResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkDeviceResult> getNetworkDeviceOutput(
+  GetNetworkDeviceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getNetworkDevice',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkDeviceResult.fromMap);
+}
+
 /// Get the running status of the Network Device.
 ///
 /// Uses Azure REST API version 2023-02-01-preview.
@@ -346,6 +500,17 @@ Future<GetNetworkDeviceStatusResult> getNetworkDeviceStatus(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkDeviceStatusResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkDeviceStatusResult> getNetworkDeviceStatusOutput(
+  GetNetworkDeviceStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getNetworkDeviceStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkDeviceStatusResult.fromMap);
 }
 
 /// Get Network Fabric resource details.
@@ -368,6 +533,17 @@ Future<GetNetworkFabricResult> getNetworkFabric(
   return GetNetworkFabricResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkFabricResult> getNetworkFabricOutput(
+  GetNetworkFabricArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getNetworkFabric',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkFabricResult.fromMap);
+}
+
 /// Shows the provisioning status of Network Fabric Controller.
 ///
 /// Uses Azure REST API version 2023-06-15.
@@ -386,6 +562,17 @@ Future<GetNetworkFabricControllerResult> getNetworkFabricController(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkFabricControllerResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkFabricControllerResult> getNetworkFabricControllerOutput(
+  GetNetworkFabricControllerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getNetworkFabricController',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkFabricControllerResult.fromMap);
 }
 
 /// Gets Topology of the underlying resources in the given Network Fabric instance.
@@ -408,6 +595,17 @@ Future<GetNetworkFabricTopologyResult> getNetworkFabricTopology(
   return GetNetworkFabricTopologyResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkFabricTopologyResult> getNetworkFabricTopologyOutput(
+  GetNetworkFabricTopologyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getNetworkFabricTopology',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkFabricTopologyResult.fromMap);
+}
+
 /// Get the Network Interface resource details.
 ///
 /// Uses Azure REST API version 2023-06-15.
@@ -428,6 +626,17 @@ Future<GetNetworkInterfaceResult> getNetworkInterface(
   return GetNetworkInterfaceResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkInterfaceResult> getNetworkInterfaceOutput(
+  GetNetworkInterfaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getNetworkInterface',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkInterfaceResult.fromMap);
+}
+
 /// Get the running status of the Network Interface.
 ///
 /// Uses Azure REST API version 2023-02-01-preview.
@@ -444,6 +653,17 @@ Future<GetNetworkInterfaceStatusResult> getNetworkInterfaceStatus(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkInterfaceStatusResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkInterfaceStatusResult> getNetworkInterfaceStatusOutput(
+  GetNetworkInterfaceStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getNetworkInterfaceStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkInterfaceStatusResult.fromMap);
 }
 
 /// Implements NetworkMonitor GET method.
@@ -466,6 +686,17 @@ Future<GetNetworkMonitorResult> getNetworkMonitor(
   return GetNetworkMonitorResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkMonitorResult> getNetworkMonitorOutput(
+  GetNetworkMonitorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getNetworkMonitor',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkMonitorResult.fromMap);
+}
+
 /// Retrieves details of this Network Packet Broker.
 ///
 /// Uses Azure REST API version 2023-06-15.
@@ -484,6 +715,17 @@ Future<GetNetworkPacketBrokerResult> getNetworkPacketBroker(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkPacketBrokerResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkPacketBrokerResult> getNetworkPacketBrokerOutput(
+  GetNetworkPacketBrokerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getNetworkPacketBroker',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkPacketBrokerResult.fromMap);
 }
 
 /// Get Network Rack resource details.
@@ -506,6 +748,17 @@ Future<GetNetworkRackResult> getNetworkRack(
   return GetNetworkRackResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkRackResult> getNetworkRackOutput(
+  GetNetworkRackArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getNetworkRack',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkRackResult.fromMap);
+}
+
 /// Retrieves details of this Network Tap.
 ///
 /// Uses Azure REST API version 2023-06-15.
@@ -524,6 +777,17 @@ Future<GetNetworkTapResult> getNetworkTap(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkTapResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkTapResult> getNetworkTapOutput(
+  GetNetworkTapArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getNetworkTap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkTapResult.fromMap);
 }
 
 /// Get Network Tap Rule resource details.
@@ -546,6 +810,17 @@ Future<GetNetworkTapRuleResult> getNetworkTapRule(
   return GetNetworkTapRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkTapRuleResult> getNetworkTapRuleOutput(
+  GetNetworkTapRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getNetworkTapRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkTapRuleResult.fromMap);
+}
+
 /// Implements NetworkToNetworkInterconnects GET method.
 ///
 /// Uses Azure REST API version 2023-06-15.
@@ -566,6 +841,17 @@ Future<GetNetworkToNetworkInterconnectResult> getNetworkToNetworkInterconnect(
   return GetNetworkToNetworkInterconnectResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkToNetworkInterconnectResult> getNetworkToNetworkInterconnectOutput(
+  GetNetworkToNetworkInterconnectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getNetworkToNetworkInterconnect',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkToNetworkInterconnectResult.fromMap);
+}
+
 /// Implements Route Policy GET method.
 ///
 /// Uses Azure REST API version 2023-06-15.
@@ -584,4 +870,15 @@ Future<GetRoutePolicyResult> getRoutePolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRoutePolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRoutePolicyResult> getRoutePolicyOutput(
+  GetRoutePolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetworkfabric:getRoutePolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoutePolicyResult.fromMap);
 }

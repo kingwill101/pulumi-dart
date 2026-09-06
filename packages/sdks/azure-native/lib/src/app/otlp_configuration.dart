@@ -6,13 +6,13 @@ import 'header.dart';
 /// Configuration of otlp
 class OtlpConfiguration {
   /// The endpoint of otlp configuration
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// Headers of otlp configurations
-  final pulumi.Input<List<Header>>? headers;
+  final pulumi.Input<List<Header>?>? headers;
   /// Boolean indicating if otlp configuration is insecure
-  final pulumi.Input<bool>? insecure;
+  final pulumi.Input<bool?>? insecure;
   /// The name of otlp configuration
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [OtlpConfiguration].
   /// [endpoint] The endpoint of otlp configuration

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the resource properties.
 class OsProfileForVMInstanceResponse {
   /// Gets or sets computer name.
-  final pulumi.Input<String>? computerName;
+  final pulumi.Input<String?>? computerName;
   /// Gets or sets os sku.
   final pulumi.Input<String> osSku;
   /// Gets or sets the type of the os.

@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the custom mapping
-enum InputSchemaMappingType {
+enum InputSchemaMappingType implements pulumi.PulumiEnum<String> {
   valueJson("Json");
 
   const InputSchemaMappingType(this.wireValue);
+  @override
   final String wireValue;
 
   static InputSchemaMappingType fromValue(String value) {

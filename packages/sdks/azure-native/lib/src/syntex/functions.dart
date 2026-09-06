@@ -19,3 +19,14 @@ Future<GetDocumentProcessorResult> getDocumentProcessor(
   );
   return GetDocumentProcessorResult.fromMap(result);
 }
+
+pulumi.Output<GetDocumentProcessorResult> getDocumentProcessorOutput(
+  GetDocumentProcessorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:syntex:getDocumentProcessor',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDocumentProcessorResult.fromMap);
+}

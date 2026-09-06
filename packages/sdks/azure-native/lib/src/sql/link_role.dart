@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Managed instance side link role
-enum LinkRole {
+enum LinkRole implements pulumi.PulumiEnum<String> {
   valuePrimary("Primary"),
   valueSecondary("Secondary");
 
   const LinkRole(this.wireValue);
+  @override
   final String wireValue;
 
   static LinkRole fromValue(String value) {

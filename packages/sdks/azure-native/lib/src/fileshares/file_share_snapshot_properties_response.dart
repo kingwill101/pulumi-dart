@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// FileShareSnapshot properties
 class FileShareSnapshotPropertiesResponse {
   /// The initiator of the FileShareSnapshot. This is a user-defined value.
-  final pulumi.Input<String>? initiatorId;
+  final pulumi.Input<String?>? initiatorId;
   /// The metadata
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The FileShareSnapshot time in UTC in string representation
   final pulumi.Input<String> snapshotTime;
 

@@ -7,37 +7,37 @@ import 'msix_package_dependencies_response.dart';
 /// Schema for Import Package Information properties.
 class AppAttachPackageInfoPropertiesResponse {
   /// Date certificate expires, found in the appxmanifest.xml.
-  final pulumi.Input<String>? certificateExpiry;
+  final pulumi.Input<String?>? certificateExpiry;
   /// Certificate name found in the appxmanifest.xml.
-  final pulumi.Input<String>? certificateName;
+  final pulumi.Input<String?>? certificateName;
   /// User friendly Name to be displayed in the portal.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// VHD/CIM image path on Network Share.
-  final pulumi.Input<String>? imagePath;
+  final pulumi.Input<String?>? imagePath;
   /// Make this version of the package the active one across the hostpool.
-  final pulumi.Input<bool>? isActive;
+  final pulumi.Input<bool?>? isActive;
   /// Is package timestamped so it can ignore the certificate expiry date
-  final pulumi.Input<String>? isPackageTimestamped;
+  final pulumi.Input<String?>? isPackageTimestamped;
   /// Specifies how to register Package in feed.
-  final pulumi.Input<bool>? isRegularRegistration;
+  final pulumi.Input<bool?>? isRegularRegistration;
   /// Date Package was last updated, found in the appxmanifest.xml.
-  final pulumi.Input<String>? lastUpdated;
+  final pulumi.Input<String?>? lastUpdated;
   /// Alias of App Attach Package. Assigned at import time
-  final pulumi.Input<String>? packageAlias;
+  final pulumi.Input<String?>? packageAlias;
   /// List of package applications.
-  final pulumi.Input<List<MsixPackageApplicationsResponse>>? packageApplications;
+  final pulumi.Input<List<MsixPackageApplicationsResponse>?>? packageApplications;
   /// List of package dependencies.
-  final pulumi.Input<List<MsixPackageDependenciesResponse>>? packageDependencies;
+  final pulumi.Input<List<MsixPackageDependenciesResponse>?>? packageDependencies;
   /// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
-  final pulumi.Input<String>? packageFamilyName;
+  final pulumi.Input<String?>? packageFamilyName;
   /// Package Full Name from appxmanifest.xml.
-  final pulumi.Input<String>? packageFullName;
+  final pulumi.Input<String?>? packageFullName;
   /// Package Name from appxmanifest.xml.
-  final pulumi.Input<String>? packageName;
+  final pulumi.Input<String?>? packageName;
   /// Relative Path to the package inside the image.
-  final pulumi.Input<String>? packageRelativePath;
+  final pulumi.Input<String?>? packageRelativePath;
   /// Package version found in the appxmanifest.xml.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [AppAttachPackageInfoPropertiesResponse].
   /// [certificateExpiry] Date certificate expires, found in the appxmanifest.xml.

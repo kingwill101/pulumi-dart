@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enable Or Disable state.
-enum AllowASOverride {
+enum AllowASOverride implements pulumi.PulumiEnum<String> {
   valueEnable("Enable"),
   valueDisable("Disable");
 
   const AllowASOverride(this.wireValue);
+  @override
   final String wireValue;
 
   static AllowASOverride fromValue(String value) {

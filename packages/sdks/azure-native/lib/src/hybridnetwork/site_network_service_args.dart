@@ -11,19 +11,19 @@ import 'sku.dart';
 /// {@macro pulumi_hybridnetwork_site_network_service_args_doc}
 class SiteNetworkServiceArgs {
   /// The managed identity of the Site network service, if configured.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Site network service properties.
-  final pulumi.Input<SiteNetworkServicePropertiesFormat>? properties;
+  final pulumi.Input<SiteNetworkServicePropertiesFormat?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the site network service.
-  final pulumi.Input<String>? siteNetworkServiceName;
+  final pulumi.Input<String?>? siteNetworkServiceName;
   /// Sku of the site network service.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SiteNetworkServiceArgs].
   /// [identity] The managed identity of the Site network service, if configured.

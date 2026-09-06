@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// How to handle logs that satisfy the filter's conditions and requirement.
-enum FilterBehavior {
+enum FilterBehavior implements pulumi.PulumiEnum<String> {
   dROP("DROP"),
   kEEP("KEEP");
 
   const FilterBehavior(this.wireValue);
+  @override
   final String wireValue;
 
   static FilterBehavior fromValue(String value) {

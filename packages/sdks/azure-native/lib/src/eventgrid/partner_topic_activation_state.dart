@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Activation state of the partner topic.
-enum PartnerTopicActivationState {
+enum PartnerTopicActivationState implements pulumi.PulumiEnum<String> {
   valueNeverActivated("NeverActivated"),
   valueActivated("Activated"),
   valueDeactivated("Deactivated");
 
   const PartnerTopicActivationState(this.wireValue);
+  @override
   final String wireValue;
 
   static PartnerTopicActivationState fromValue(String value) {

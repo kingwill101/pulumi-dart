@@ -5,25 +5,25 @@ import 'system_data_response.dart';
 /// Result data returned by getStaticSiteLinkedBackendForBuild.
 class GetStaticSiteLinkedBackendForBuildResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The resource id of the backend linked to the static site
   final String? backendResourceId;
   /// The date and time on which the backend was linked to the static site.
-  final String createdOn;
+  final String? createdOn;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Kind of resource.
   final String? kind;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The provisioning state of the linking process.
-  final String provisioningState;
+  final String? provisioningState;
   /// The region of the backend linked to the static site
   final String? region;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetStaticSiteLinkedBackendForBuildResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -37,45 +37,45 @@ class GetStaticSiteLinkedBackendForBuildResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetStaticSiteLinkedBackendForBuildResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.backendResourceId,
-    required this.createdOn,
-    required this.id,
+    this.createdOn,
+    this.id,
     this.kind,
-    required this.name,
-    required this.provisioningState,
+    this.name,
+    this.provisioningState,
     this.region,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'backendResourceId': ?backendResourceId,
-      'createdOn': createdOn,
-      'id': id,
+      'createdOn': ?createdOn,
+      'id': ?id,
       'kind': ?kind,
-      'name': name,
-      'provisioningState': provisioningState,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'region': ?region,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetStaticSiteLinkedBackendForBuildResult.fromMap(Map<String, dynamic> map) {
     return GetStaticSiteLinkedBackendForBuildResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       backendResourceId: (() { final guardedValue = map['backendResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      createdOn: map['createdOn'] as String,
-      id: map['id'] as String,
+      createdOn: (() { final guardedValue = map['createdOn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

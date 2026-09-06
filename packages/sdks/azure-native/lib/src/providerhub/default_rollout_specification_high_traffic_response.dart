@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The high traffic region configuration.
 class DefaultRolloutSpecificationHighTrafficResponse {
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
   /// The wait duration.
-  final pulumi.Input<String>? waitDuration;
+  final pulumi.Input<String?>? waitDuration;
 
   /// Creates a new [DefaultRolloutSpecificationHighTrafficResponse].
   /// [regions] Optional.

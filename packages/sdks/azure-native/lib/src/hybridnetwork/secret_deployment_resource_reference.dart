@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Secret deployment resource id reference.
 class SecretDeploymentResourceReference {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The resource reference arm id type.
   /// Expected value is 'Secret'.
   final pulumi.Input<String> idType;

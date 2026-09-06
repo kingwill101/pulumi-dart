@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ClusterTimeline
 class ClusterTimelineResponse {
   /// &lt;p&gt;The creation date and time of the cluster.&lt;/p&gt;
-  final pulumi.Input<String>? creationDateTime;
+  final pulumi.Input<String?>? creationDateTime;
   /// &lt;p&gt;The date and time when the cluster was terminated.&lt;/p&gt;
-  final pulumi.Input<String>? endDateTime;
+  final pulumi.Input<String?>? endDateTime;
   /// &lt;p&gt;The date and time when the cluster was ready to run steps.&lt;/p&gt;
-  final pulumi.Input<String>? readyDateTime;
+  final pulumi.Input<String?>? readyDateTime;
 
   /// Creates a new [ClusterTimelineResponse].
   /// [creationDateTime] &lt;p&gt;The creation date and time of the cluster.&lt;/p&gt;

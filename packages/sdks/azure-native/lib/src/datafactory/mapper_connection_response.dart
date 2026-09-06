@@ -7,13 +7,13 @@ import 'mapper_dsl_connector_properties_response.dart';
 /// Source connection details.
 class MapperConnectionResponse {
   /// List of name/value pairs for connection properties.
-  final pulumi.Input<List<MapperDslConnectorPropertiesResponse>>? commonDslConnectorProperties;
+  final pulumi.Input<List<MapperDslConnectorPropertiesResponse>?>? commonDslConnectorProperties;
   /// A boolean indicating whether linked service is of type inline dataset. Currently only inline datasets are supported.
-  final pulumi.Input<bool>? isInlineDataset;
+  final pulumi.Input<bool?>? isInlineDataset;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReferenceResponse>? linkedService;
+  final pulumi.Input<LinkedServiceReferenceResponse?>? linkedService;
   /// Type of the linked service e.g.: AzureBlobFS.
-  final pulumi.Input<String>? linkedServiceType;
+  final pulumi.Input<String?>? linkedServiceType;
   /// Type of connection via linked service or dataset.
   final pulumi.Input<String> type;
 

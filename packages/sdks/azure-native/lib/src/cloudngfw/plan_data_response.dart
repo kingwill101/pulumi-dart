@@ -11,7 +11,7 @@ class PlanDataResponse {
   /// plan id as published by Liftr.PAN
   final pulumi.Input<String> planId;
   /// different usage type like PAYG/COMMITTED
-  final pulumi.Input<String>? usageType;
+  final pulumi.Input<String?>? usageType;
 
   /// Creates a new [PlanDataResponse].
   /// [billingCycle] different billing cycles like MONTHLY/WEEKLY

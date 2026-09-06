@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Auto upgrade profile for a managed cluster.
 class ManagedClusterAutoUpgradeProfileResponse {
   /// Node OS Upgrade Channel. Manner in which the OS on your nodes is updated. The default is NodeImage.
-  final pulumi.Input<String>? nodeOSUpgradeChannel;
+  final pulumi.Input<String?>? nodeOSUpgradeChannel;
   /// The upgrade channel for auto upgrade. The default is 'none'. For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
-  final pulumi.Input<String>? upgradeChannel;
+  final pulumi.Input<String?>? upgradeChannel;
 
   /// Creates a new [ManagedClusterAutoUpgradeProfileResponse].
   /// [nodeOSUpgradeChannel] Node OS Upgrade Channel. Manner in which the OS on your nodes is updated. The default is NodeImage.

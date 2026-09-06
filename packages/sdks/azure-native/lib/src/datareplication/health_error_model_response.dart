@@ -8,15 +8,15 @@ class HealthErrorModelResponse {
   /// Gets or sets the list of affected resource correlation Ids. This can be used to
   /// uniquely identify the count of items affected by a specific category and severity
   /// as well as count of item affected by an specific issue.
-  final pulumi.Input<List<String>>? affectedResourceCorrelationIds;
+  final pulumi.Input<List<String>?>? affectedResourceCorrelationIds;
   /// Gets or sets the type of affected resource type.
-  final pulumi.Input<String>? affectedResourceType;
+  final pulumi.Input<String?>? affectedResourceType;
   /// Gets or sets the error category.
   final pulumi.Input<String> category;
   /// Gets or sets possible causes of the error.
   final pulumi.Input<String> causes;
   /// Gets or sets a list of child health errors associated with this error.
-  final pulumi.Input<List<InnerHealthErrorModelResponse>>? childErrors;
+  final pulumi.Input<List<InnerHealthErrorModelResponse>?>? childErrors;
   /// Gets or sets the error code.
   final pulumi.Input<String> code;
   /// Gets or sets the error creation time.

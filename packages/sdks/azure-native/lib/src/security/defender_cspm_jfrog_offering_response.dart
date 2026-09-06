@@ -8,7 +8,7 @@ class DefenderCspmJFrogOfferingResponse {
   /// The offering description.
   final pulumi.Input<String> description;
   /// The Microsoft Defender Container image assessment configuration
-  final pulumi.Input<DefenderCspmJFrogOfferingMdcContainersImageAssessmentResponse>? mdcContainersImageAssessment;
+  final pulumi.Input<DefenderCspmJFrogOfferingMdcContainersImageAssessmentResponse?>? mdcContainersImageAssessment;
   /// The type of the security offering.
   /// Expected value is 'DefenderCspmJFrog'.
   final pulumi.Input<String> offeringType;

@@ -7,7 +7,7 @@ class GalleryInVMAccessControlProfilePropertiesResponse {
   /// This property allows you to specify the Endpoint type for which this profile is defining the access control for. Possible values are: 'WireServer' or 'IMDS'
   final pulumi.Input<String> applicableHostEndpoint;
   /// The description of this gallery inVMAccessControlProfile resources. This property is updatable.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// This property allows you to specify the OS type of the VMs/VMSS for which this profile can be used against. Possible values are: 'Windows' or 'Linux'
   final pulumi.Input<String> osType;
   /// The provisioning state, which only appears in the response.

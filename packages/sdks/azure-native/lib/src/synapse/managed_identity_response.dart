@@ -10,9 +10,9 @@ class ManagedIdentityResponse {
   /// The tenant ID of the workspace managed identity
   final pulumi.Input<String> tenantId;
   /// The type of managed identity for the workspace
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The user assigned managed identities.
-  final pulumi.Input<Map<String, UserAssignedManagedIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedManagedIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [ManagedIdentityResponse].
   /// [principalId] The principal ID of the workspace managed identity

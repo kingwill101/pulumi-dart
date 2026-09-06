@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of Radius Server root certificate of VpnServerConfiguration.
 class VpnServerConfigRadiusServerRootCertificate {
   /// The certificate name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The certificate public data.
-  final pulumi.Input<String>? publicCertData;
+  final pulumi.Input<String?>? publicCertData;
 
   /// Creates a new [VpnServerConfigRadiusServerRootCertificate].
   /// [name] The certificate name.

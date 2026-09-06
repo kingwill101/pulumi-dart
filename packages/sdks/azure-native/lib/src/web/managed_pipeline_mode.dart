@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Managed pipeline mode.
-enum ManagedPipelineMode {
+enum ManagedPipelineMode implements pulumi.PulumiEnum<String> {
   valueIntegrated("Integrated"),
   valueClassic("Classic");
 
   const ManagedPipelineMode(this.wireValue);
+  @override
   final String wireValue;
 
   static ManagedPipelineMode fromValue(String value) {

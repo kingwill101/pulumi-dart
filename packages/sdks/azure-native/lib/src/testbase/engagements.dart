@@ -1,4 +1,6 @@
-enum Engagements {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum Engagements implements pulumi.PulumiEnum<String> {
   valueMVI("MVI"),
   valueMVP("MVP"),
   valueSUVP("SUVP"),
@@ -6,6 +8,7 @@ enum Engagements {
   valueOther("Other");
 
   const Engagements(this.wireValue);
+  @override
   final String wireValue;
 
   static Engagements fromValue(String value) {

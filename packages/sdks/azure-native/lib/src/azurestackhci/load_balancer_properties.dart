@@ -9,13 +9,13 @@ import 'probe.dart';
 /// Load Balancer resource properties
 class LoadBalancerProperties {
   /// backendAddressPools for the loadbalancer
-  final pulumi.Input<List<BackendAddressPool>>? backendAddressPools;
+  final pulumi.Input<List<BackendAddressPool>?>? backendAddressPools;
   /// Frontend IPs for the loadbalancer.
   final pulumi.Input<List<FrontendIPConfiguration>> frontendIPConfigurations;
   /// load balancer rules
-  final pulumi.Input<List<LoadBalancerRule>>? loadBalancingRules;
+  final pulumi.Input<List<LoadBalancerRule>?>? loadBalancingRules;
   /// load balancer health probes
-  final pulumi.Input<List<Probe>>? probes;
+  final pulumi.Input<List<Probe>?>? probes;
 
   /// Creates a new [LoadBalancerProperties].
   /// [backendAddressPools] backendAddressPools for the loadbalancer

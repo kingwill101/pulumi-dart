@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Service principal type.
-enum ServicePrincipalType {
+enum ServicePrincipalType implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueSystemAssigned("SystemAssigned");
 
   const ServicePrincipalType(this.wireValue);
+  @override
   final String wireValue;
 
   static ServicePrincipalType fromValue(String value) {

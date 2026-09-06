@@ -6,9 +6,9 @@ import 'monitored_subscription.dart';
 /// The request to update subscriptions needed to be monitored by the Elastic monitor resource.
 class SubscriptionList {
   /// List of subscriptions and the state of the monitoring.
-  final pulumi.Input<List<MonitoredSubscription>>? monitoredSubscriptionList;
+  final pulumi.Input<List<MonitoredSubscription>?>? monitoredSubscriptionList;
   /// The operation for the patch on the resource.
-  final pulumi.Input<String>? operation;
+  final pulumi.Input<dynamic>? operation;
 
   /// Creates a new [SubscriptionList].
   /// [monitoredSubscriptionList] List of subscriptions and the state of the monitoring.
@@ -28,7 +28,7 @@ class SubscriptionList {
   factory SubscriptionList.fromMap(Map<String, dynamic> map) {
     return SubscriptionList(
       monitoredSubscriptionList: (() { final guardedValue = map['monitoredSubscriptionList']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MonitoredSubscription>(guardedValue, (value) => MonitoredSubscription.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      operation: (() { final guardedValue = map['operation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operation: (() { final guardedValue = map['operation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

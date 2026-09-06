@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The FHIR service data source for Analytics Connector.
 class AnalyticsConnectorFhirServiceDataSource {
   /// The kind of FHIR Service.
-  final pulumi.Input<String> kind;
+  final pulumi.Input<dynamic> kind;
   /// Type of data source.
   /// Expected value is 'fhirservice'.
   final pulumi.Input<String> type;
@@ -32,7 +32,7 @@ class AnalyticsConnectorFhirServiceDataSource {
 
   factory AnalyticsConnectorFhirServiceDataSource.fromMap(Map<String, dynamic> map) {
     return AnalyticsConnectorFhirServiceDataSource(
-      kind: pulumi.Input.fromValue(map['kind'] as String),
+      kind: pulumi.Input.fromValue(map['kind']),
       type: pulumi.Input.fromValue(map['type'] as String),
       url: pulumi.Input.fromValue(map['url'] as String),
     );

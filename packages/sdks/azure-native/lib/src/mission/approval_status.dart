@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Status of the approval. Uses ApprovalStatus enum.
-enum ApprovalStatus {
+enum ApprovalStatus implements pulumi.PulumiEnum<String> {
   approved("Approved"),
   rejected("Rejected"),
   pending("Pending"),
@@ -7,6 +9,7 @@ enum ApprovalStatus {
   expired("Expired");
 
   const ApprovalStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static ApprovalStatus fromValue(String value) {

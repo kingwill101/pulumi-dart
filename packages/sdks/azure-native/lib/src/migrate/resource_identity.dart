@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_assigned_identity.dart';
 
 class ResourceIdentity {
-  final pulumi.Input<String>? principalId;
-  final pulumi.Input<String>? tenantId;
-  final pulumi.Input<String>? type;
-  final pulumi.Input<Map<String, UserAssignedIdentity>>? userAssignedIdentities;
+  final pulumi.Input<String?>? principalId;
+  final pulumi.Input<String?>? tenantId;
+  final pulumi.Input<dynamic>? type;
+  final pulumi.Input<Map<String, UserAssignedIdentity>?>? userAssignedIdentities;
 
   /// Creates a new [ResourceIdentity].
   /// [principalId] Optional.
@@ -34,7 +34,7 @@ class ResourceIdentity {
     return ResourceIdentity(
       principalId: (() { final guardedValue = map['principalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<UserAssignedIdentity>(guardedValue, (value) => UserAssignedIdentity.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

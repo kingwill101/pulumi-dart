@@ -9,7 +9,7 @@ class DiskPurchasePlanResponse {
   /// Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
   final pulumi.Input<String> product;
   /// The Offer Promotion Code.
-  final pulumi.Input<String>? promotionCode;
+  final pulumi.Input<String?>? promotionCode;
   /// The publisher ID.
   final pulumi.Input<String> publisher;
 

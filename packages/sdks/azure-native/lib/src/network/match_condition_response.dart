@@ -10,11 +10,11 @@ class MatchConditionResponse {
   /// List of match variables.
   final pulumi.Input<List<MatchVariableResponse>> matchVariables;
   /// Whether this is negate condition or not.
-  final pulumi.Input<bool>? negationConditon;
+  final pulumi.Input<bool?>? negationConditon;
   /// The operator to be matched.
   final pulumi.Input<String> operator;
   /// List of transforms.
-  final pulumi.Input<List<String>>? transforms;
+  final pulumi.Input<List<String>?>? transforms;
 
   /// Creates a new [MatchConditionResponse].
   /// [matchValues] Match value.

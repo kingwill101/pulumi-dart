@@ -10,13 +10,13 @@ class GraphQLApiResolverArgs {
   /// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
   final pulumi.Input<String> apiId;
   /// Description of the resolver. May include HTML formatting tags.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Resolver Name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Path is type/field being resolved.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Resolver identifier within a GraphQL API. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? resolverId;
+  final pulumi.Input<String?>? resolverId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.

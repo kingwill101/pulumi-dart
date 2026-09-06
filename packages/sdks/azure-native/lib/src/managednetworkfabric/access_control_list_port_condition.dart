@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the port condition that needs to be matched.
 class AccessControlListPortCondition {
   /// List of protocol flags that need to be matched. Example: established | initial | &lt;List-of-TCP-flags&gt;. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
-  final pulumi.Input<List<String>>? flags;
+  final pulumi.Input<List<String>?>? flags;
   /// Layer4 protocol type that needs to be matched.
-  final pulumi.Input<String> layer4Protocol;
+  final pulumi.Input<dynamic> layer4Protocol;
   /// List of the port Group Names that need to be matched.
-  final pulumi.Input<List<String>>? portGroupNames;
+  final pulumi.Input<List<String>?>? portGroupNames;
   /// Port type that needs to be matched.
-  final pulumi.Input<String>? portType;
+  final pulumi.Input<dynamic>? portType;
   /// List of the Ports that need to be matched.
-  final pulumi.Input<List<String>>? ports;
+  final pulumi.Input<List<String>?>? ports;
 
   /// Creates a new [AccessControlListPortCondition].
   /// [flags] List of protocol flags that need to be matched. Example: established | initial | &lt;List-of-TCP-flags&gt;. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
@@ -42,9 +42,9 @@ class AccessControlListPortCondition {
   factory AccessControlListPortCondition.fromMap(Map<String, dynamic> map) {
     return AccessControlListPortCondition(
       flags: (() { final guardedValue = map['flags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      layer4Protocol: pulumi.Input.fromValue(map['layer4Protocol'] as String),
+      layer4Protocol: pulumi.Input.fromValue(map['layer4Protocol']),
       portGroupNames: (() { final guardedValue = map['portGroupNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      portType: (() { final guardedValue = map['portType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      portType: (() { final guardedValue = map['portType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       ports: (() { final guardedValue = map['ports']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

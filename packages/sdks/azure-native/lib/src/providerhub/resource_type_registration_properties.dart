@@ -48,153 +48,153 @@ import 'token_auth_configuration.dart';
 
 class ResourceTypeRegistrationProperties {
   /// Add resource list target locations?
-  final pulumi.Input<bool>? addResourceListTargetLocations;
+  final pulumi.Input<bool?>? addResourceListTargetLocations;
   /// The additional options.
-  final pulumi.Input<String>? additionalOptions;
+  final pulumi.Input<dynamic>? additionalOptions;
   /// The allow empty role assignments.
-  final pulumi.Input<bool>? allowEmptyRoleAssignments;
+  final pulumi.Input<bool?>? allowEmptyRoleAssignments;
   /// The allowed resource names.
-  final pulumi.Input<List<AllowedResourceName>>? allowedResourceNames;
+  final pulumi.Input<List<AllowedResourceName>?>? allowedResourceNames;
   /// Allowed template deployment reference actions.
-  final pulumi.Input<List<String>>? allowedTemplateDeploymentReferenceActions;
+  final pulumi.Input<List<String>?>? allowedTemplateDeploymentReferenceActions;
   /// The allowed unauthorized actions.
-  final pulumi.Input<List<String>>? allowedUnauthorizedActions;
+  final pulumi.Input<List<String>?>? allowedUnauthorizedActions;
   /// The allowed unauthorized actions extensions.
-  final pulumi.Input<List<AllowedUnauthorizedActionsExtension>>? allowedUnauthorizedActionsExtensions;
+  final pulumi.Input<List<AllowedUnauthorizedActionsExtension>?>? allowedUnauthorizedActionsExtensions;
   /// The api profiles.
-  final pulumi.Input<List<ApiProfile>>? apiProfiles;
+  final pulumi.Input<List<ApiProfile>?>? apiProfiles;
   /// The async operation resource type name.
-  final pulumi.Input<String>? asyncOperationResourceTypeName;
+  final pulumi.Input<String?>? asyncOperationResourceTypeName;
   /// Async timeout rules
-  final pulumi.Input<List<AsyncTimeoutRule>>? asyncTimeoutRules;
+  final pulumi.Input<List<AsyncTimeoutRule>?>? asyncTimeoutRules;
   /// The authorization action mappings
-  final pulumi.Input<List<AuthorizationActionMapping>>? authorizationActionMappings;
+  final pulumi.Input<List<AuthorizationActionMapping>?>? authorizationActionMappings;
   /// The availability zone rule.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesAvailabilityZoneRule>? availabilityZoneRule;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesAvailabilityZoneRule?>? availabilityZoneRule;
   /// Capacity rule.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesCapacityRule>? capacityRule;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesCapacityRule?>? capacityRule;
   /// The category.
-  final pulumi.Input<String>? category;
+  final pulumi.Input<dynamic>? category;
   /// The check name availability specifications.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecifications>? checkNameAvailabilitySpecifications;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecifications?>? checkNameAvailabilitySpecifications;
   /// Common API versions for the resource type.
-  final pulumi.Input<List<String>>? commonApiVersions;
+  final pulumi.Input<List<String>?>? commonApiVersions;
   /// The cross tenant token validation.
-  final pulumi.Input<String>? crossTenantTokenValidation;
+  final pulumi.Input<dynamic>? crossTenantTokenValidation;
   /// The default api version.
-  final pulumi.Input<String>? defaultApiVersion;
+  final pulumi.Input<String?>? defaultApiVersion;
   /// The disallowed action verbs.
-  final pulumi.Input<List<String>>? disallowedActionVerbs;
+  final pulumi.Input<List<String>?>? disallowedActionVerbs;
   /// The disallowed end user operations.
-  final pulumi.Input<List<String>>? disallowedEndUserOperations;
+  final pulumi.Input<List<String>?>? disallowedEndUserOperations;
   /// The dsts configuration.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesDstsConfiguration>? dstsConfiguration;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesDstsConfiguration?>? dstsConfiguration;
   /// Whether async operation is enabled.
-  final pulumi.Input<bool>? enableAsyncOperation;
+  final pulumi.Input<bool?>? enableAsyncOperation;
   /// Whether third party S2S is enabled.
-  final pulumi.Input<bool>? enableThirdPartyS2S;
+  final pulumi.Input<bool?>? enableThirdPartyS2S;
   /// The extensions.
-  final pulumi.Input<List<ResourceTypeEndpoint>>? endpoints;
+  final pulumi.Input<List<ResourceTypeEndpoint>?>? endpoints;
   /// The extended locations.
-  final pulumi.Input<List<ExtendedLocationOptions>>? extendedLocations;
+  final pulumi.Input<List<ExtendedLocationOptions>?>? extendedLocations;
   /// The extension options.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesExtensionOptions>? extensionOptions;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesExtensionOptions?>? extensionOptions;
   /// The features rule.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesFeaturesRule>? featuresRule;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesFeaturesRule?>? featuresRule;
   /// The frontdoor request mode.
-  final pulumi.Input<String>? frontdoorRequestMode;
+  final pulumi.Input<dynamic>? frontdoorRequestMode;
   /// Grouping tag.
-  final pulumi.Input<String>? groupingTag;
+  final pulumi.Input<String?>? groupingTag;
   /// The identity management.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesIdentityManagement>? identityManagement;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesIdentityManagement?>? identityManagement;
   /// Whether it is pure proxy.
-  final pulumi.Input<bool>? isPureProxy;
+  final pulumi.Input<bool?>? isPureProxy;
   /// The legacy name.
-  final pulumi.Input<String>? legacyName;
+  final pulumi.Input<String?>? legacyName;
   /// The legacy names.
-  final pulumi.Input<List<String>>? legacyNames;
+  final pulumi.Input<List<String>?>? legacyNames;
   /// The legacy policy.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesLegacyPolicy>? legacyPolicy;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesLegacyPolicy?>? legacyPolicy;
   /// The linked access checks.
-  final pulumi.Input<List<LinkedAccessCheck>>? linkedAccessChecks;
+  final pulumi.Input<List<LinkedAccessCheck>?>? linkedAccessChecks;
   /// The linked notification rules.
-  final pulumi.Input<List<LinkedNotificationRule>>? linkedNotificationRules;
+  final pulumi.Input<List<LinkedNotificationRule>?>? linkedNotificationRules;
   /// The linked operation rules.
-  final pulumi.Input<List<LinkedOperationRule>>? linkedOperationRules;
+  final pulumi.Input<List<LinkedOperationRule>?>? linkedOperationRules;
   /// The logging rules.
-  final pulumi.Input<List<LoggingRule>>? loggingRules;
+  final pulumi.Input<List<LoggingRule>?>? loggingRules;
   /// The resource provider management.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesManagement>? management;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesManagement?>? management;
   /// Manifest link.
-  final pulumi.Input<String>? manifestLink;
+  final pulumi.Input<String?>? manifestLink;
   /// Marketplace options.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesMarketplaceOptions>? marketplaceOptions;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesMarketplaceOptions?>? marketplaceOptions;
   /// The marketplace type.
-  final pulumi.Input<MarketplaceType>? marketplaceType;
+  final pulumi.Input<MarketplaceType?>? marketplaceType;
   /// The metadata.
   final pulumi.Input<dynamic>? metadata;
   /// The notifications.
-  final pulumi.Input<List<Notification>>? notifications;
+  final pulumi.Input<List<Notification>?>? notifications;
   /// The on behalf of tokens.
-  final pulumi.Input<ResourceTypeOnBehalfOfToken>? onBehalfOfTokens;
+  final pulumi.Input<ResourceTypeOnBehalfOfToken?>? onBehalfOfTokens;
   /// The open api configuration.
-  final pulumi.Input<OpenApiConfiguration>? openApiConfiguration;
+  final pulumi.Input<OpenApiConfiguration?>? openApiConfiguration;
   /// The policy execution type.
-  final pulumi.Input<String>? policyExecutionType;
+  final pulumi.Input<dynamic>? policyExecutionType;
   /// The quota rule.
-  final pulumi.Input<QuotaRule>? quotaRule;
+  final pulumi.Input<QuotaRule?>? quotaRule;
   /// The regionality.
-  final pulumi.Input<String>? regionality;
+  final pulumi.Input<dynamic>? regionality;
   /// The request header options.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesRequestHeaderOptions>? requestHeaderOptions;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesRequestHeaderOptions?>? requestHeaderOptions;
   /// The required features.
-  final pulumi.Input<List<String>>? requiredFeatures;
+  final pulumi.Input<List<String>?>? requiredFeatures;
   /// Resource cache options.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceCache>? resourceCache;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceCache?>? resourceCache;
   /// The resource concurrency control options.
-  final pulumi.Input<Map<String, ResourceConcurrencyControlOption>>? resourceConcurrencyControlOptions;
+  final pulumi.Input<Map<String, ResourceConcurrencyControlOption>?>? resourceConcurrencyControlOptions;
   /// The resource deletion policy.
-  final pulumi.Input<String>? resourceDeletionPolicy;
+  final pulumi.Input<dynamic>? resourceDeletionPolicy;
   /// The resource graph configuration.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceGraphConfiguration>? resourceGraphConfiguration;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceGraphConfiguration?>? resourceGraphConfiguration;
   /// Resource management options.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceManagementOptions>? resourceManagementOptions;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceManagementOptions?>? resourceManagementOptions;
   /// The resource move policy.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceMovePolicy>? resourceMovePolicy;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceMovePolicy?>? resourceMovePolicy;
   /// The resource provider authorization rules.
-  final pulumi.Input<ResourceProviderAuthorizationRules>? resourceProviderAuthorizationRules;
+  final pulumi.Input<ResourceProviderAuthorizationRules?>? resourceProviderAuthorizationRules;
   /// Resource query management options.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceQueryManagement>? resourceQueryManagement;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceQueryManagement?>? resourceQueryManagement;
   /// The resource sub type.
-  final pulumi.Input<String>? resourceSubType;
+  final pulumi.Input<dynamic>? resourceSubType;
   /// Resource type common attribute management.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement>? resourceTypeCommonAttributeManagement;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement?>? resourceTypeCommonAttributeManagement;
   /// The resource validation.
-  final pulumi.Input<String>? resourceValidation;
+  final pulumi.Input<dynamic>? resourceValidation;
   /// Routing rule.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesRoutingRule>? routingRule;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesRoutingRule?>? routingRule;
   /// The resource routing type.
-  final pulumi.Input<String>? routingType;
+  final pulumi.Input<dynamic>? routingType;
   /// The service tree infos.
-  final pulumi.Input<List<ServiceTreeInfo>>? serviceTreeInfos;
+  final pulumi.Input<List<ServiceTreeInfo>?>? serviceTreeInfos;
   /// The sku link.
-  final pulumi.Input<String>? skuLink;
+  final pulumi.Input<String?>? skuLink;
   /// The subscription lifecycle notification specifications.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications>? subscriptionLifecycleNotificationSpecifications;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications?>? subscriptionLifecycleNotificationSpecifications;
   /// The subscription state rules.
-  final pulumi.Input<List<SubscriptionStateRule>>? subscriptionStateRules;
+  final pulumi.Input<List<SubscriptionStateRule>?>? subscriptionStateRules;
   /// Whether tags are supported.
-  final pulumi.Input<bool>? supportsTags;
+  final pulumi.Input<bool?>? supportsTags;
   /// The swagger specifications.
-  final pulumi.Input<List<SwaggerSpecification>>? swaggerSpecifications;
+  final pulumi.Input<List<SwaggerSpecification>?>? swaggerSpecifications;
   /// The template deployment options.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesTemplateDeploymentOptions>? templateDeploymentOptions;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesTemplateDeploymentOptions?>? templateDeploymentOptions;
   /// The template deployment policy.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesTemplateDeploymentPolicy>? templateDeploymentPolicy;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesTemplateDeploymentPolicy?>? templateDeploymentPolicy;
   /// The throttling rules.
-  final pulumi.Input<List<ThrottlingRule>>? throttlingRules;
+  final pulumi.Input<List<ThrottlingRule>?>? throttlingRules;
   /// The token auth configuration.
-  final pulumi.Input<TokenAuthConfiguration>? tokenAuthConfiguration;
+  final pulumi.Input<TokenAuthConfiguration?>? tokenAuthConfiguration;
 
   /// Creates a new [ResourceTypeRegistrationProperties].
   /// [addResourceListTargetLocations] Add resource list target locations?
@@ -430,7 +430,7 @@ class ResourceTypeRegistrationProperties {
   factory ResourceTypeRegistrationProperties.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationProperties(
       addResourceListTargetLocations: (() { final guardedValue = map['addResourceListTargetLocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      additionalOptions: (() { final guardedValue = map['additionalOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      additionalOptions: (() { final guardedValue = map['additionalOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       allowEmptyRoleAssignments: (() { final guardedValue = map['allowEmptyRoleAssignments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       allowedResourceNames: (() { final guardedValue = map['allowedResourceNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AllowedResourceName>(guardedValue, (value) => AllowedResourceName.fromMap((value as Map).cast<String, dynamic>()))); })(),
       allowedTemplateDeploymentReferenceActions: (() { final guardedValue = map['allowedTemplateDeploymentReferenceActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -442,10 +442,10 @@ class ResourceTypeRegistrationProperties {
       authorizationActionMappings: (() { final guardedValue = map['authorizationActionMappings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AuthorizationActionMapping>(guardedValue, (value) => AuthorizationActionMapping.fromMap((value as Map).cast<String, dynamic>()))); })(),
       availabilityZoneRule: (() { final guardedValue = map['availabilityZoneRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeRegistrationPropertiesAvailabilityZoneRule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       capacityRule: (() { final guardedValue = map['capacityRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeRegistrationPropertiesCapacityRule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       checkNameAvailabilitySpecifications: (() { final guardedValue = map['checkNameAvailabilitySpecifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecifications.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       commonApiVersions: (() { final guardedValue = map['commonApiVersions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      crossTenantTokenValidation: (() { final guardedValue = map['crossTenantTokenValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      crossTenantTokenValidation: (() { final guardedValue = map['crossTenantTokenValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       defaultApiVersion: (() { final guardedValue = map['defaultApiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disallowedActionVerbs: (() { final guardedValue = map['disallowedActionVerbs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       disallowedEndUserOperations: (() { final guardedValue = map['disallowedEndUserOperations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -456,7 +456,7 @@ class ResourceTypeRegistrationProperties {
       extendedLocations: (() { final guardedValue = map['extendedLocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ExtendedLocationOptions>(guardedValue, (value) => ExtendedLocationOptions.fromMap((value as Map).cast<String, dynamic>()))); })(),
       extensionOptions: (() { final guardedValue = map['extensionOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeRegistrationPropertiesExtensionOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       featuresRule: (() { final guardedValue = map['featuresRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeRegistrationPropertiesFeaturesRule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      frontdoorRequestMode: (() { final guardedValue = map['frontdoorRequestMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      frontdoorRequestMode: (() { final guardedValue = map['frontdoorRequestMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       groupingTag: (() { final guardedValue = map['groupingTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       identityManagement: (() { final guardedValue = map['identityManagement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeRegistrationPropertiesIdentityManagement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       isPureProxy: (() { final guardedValue = map['isPureProxy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -475,24 +475,24 @@ class ResourceTypeRegistrationProperties {
       notifications: (() { final guardedValue = map['notifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Notification>(guardedValue, (value) => Notification.fromMap((value as Map).cast<String, dynamic>()))); })(),
       onBehalfOfTokens: (() { final guardedValue = map['onBehalfOfTokens']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeOnBehalfOfToken.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       openApiConfiguration: (() { final guardedValue = map['openApiConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OpenApiConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      policyExecutionType: (() { final guardedValue = map['policyExecutionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyExecutionType: (() { final guardedValue = map['policyExecutionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       quotaRule: (() { final guardedValue = map['quotaRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(QuotaRule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      regionality: (() { final guardedValue = map['regionality']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regionality: (() { final guardedValue = map['regionality']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       requestHeaderOptions: (() { final guardedValue = map['requestHeaderOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeRegistrationPropertiesRequestHeaderOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       requiredFeatures: (() { final guardedValue = map['requiredFeatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       resourceCache: (() { final guardedValue = map['resourceCache']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeRegistrationPropertiesResourceCache.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceConcurrencyControlOptions: (() { final guardedValue = map['resourceConcurrencyControlOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ResourceConcurrencyControlOption>(guardedValue, (value) => ResourceConcurrencyControlOption.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      resourceDeletionPolicy: (() { final guardedValue = map['resourceDeletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceDeletionPolicy: (() { final guardedValue = map['resourceDeletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGraphConfiguration: (() { final guardedValue = map['resourceGraphConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeRegistrationPropertiesResourceGraphConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceManagementOptions: (() { final guardedValue = map['resourceManagementOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeRegistrationPropertiesResourceManagementOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceMovePolicy: (() { final guardedValue = map['resourceMovePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeRegistrationPropertiesResourceMovePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceProviderAuthorizationRules: (() { final guardedValue = map['resourceProviderAuthorizationRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceProviderAuthorizationRules.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceQueryManagement: (() { final guardedValue = map['resourceQueryManagement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeRegistrationPropertiesResourceQueryManagement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      resourceSubType: (() { final guardedValue = map['resourceSubType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceSubType: (() { final guardedValue = map['resourceSubType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceTypeCommonAttributeManagement: (() { final guardedValue = map['resourceTypeCommonAttributeManagement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      resourceValidation: (() { final guardedValue = map['resourceValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceValidation: (() { final guardedValue = map['resourceValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       routingRule: (() { final guardedValue = map['routingRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeRegistrationPropertiesRoutingRule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      routingType: (() { final guardedValue = map['routingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routingType: (() { final guardedValue = map['routingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       serviceTreeInfos: (() { final guardedValue = map['serviceTreeInfos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceTreeInfo>(guardedValue, (value) => ServiceTreeInfo.fromMap((value as Map).cast<String, dynamic>()))); })(),
       skuLink: (() { final guardedValue = map['skuLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subscriptionLifecycleNotificationSpecifications: (() { final guardedValue = map['subscriptionLifecycleNotificationSpecifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

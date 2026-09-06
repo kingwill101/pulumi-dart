@@ -37,9 +37,9 @@ class VmssDataDiskResponse {
   factory VmssDataDiskResponse.fromMap(Map<String, dynamic> map) {
     return VmssDataDiskResponse(
       diskLetter: pulumi.Input.fromValue(map['diskLetter'] as String),
-      diskSizeGB: pulumi.Input.fromValue(map['diskSizeGB'] as int),
+      diskSizeGB: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskSizeGB'])),
       diskType: pulumi.Input.fromValue(map['diskType'] as String),
-      lun: pulumi.Input.fromValue(map['lun'] as int),
+      lun: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['lun'])),
     );
   }
 }

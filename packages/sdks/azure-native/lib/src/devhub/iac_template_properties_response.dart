@@ -6,16 +6,16 @@ import 'iac_template_details_response.dart';
 /// Properties of a IacTemplate.
 class IacTemplatePropertiesResponse {
   /// the sample instance name of the template
-  final pulumi.Input<String>? instanceName;
+  final pulumi.Input<String?>? instanceName;
   /// the source stage of the template
-  final pulumi.Input<String>? instanceStage;
+  final pulumi.Input<String?>? instanceStage;
   /// Determines the authorization status of requests.
-  final pulumi.Input<String>? quickStartTemplateType;
+  final pulumi.Input<String?>? quickStartTemplateType;
   /// the source store of the template
-  final pulumi.Input<String>? sourceResourceId;
-  final pulumi.Input<List<IacTemplateDetailsResponse>>? templateDetails;
+  final pulumi.Input<String?>? sourceResourceId;
+  final pulumi.Input<List<IacTemplateDetailsResponse>?>? templateDetails;
   /// Template Name
-  final pulumi.Input<String>? templateName;
+  final pulumi.Input<String?>? templateName;
 
   /// Creates a new [IacTemplatePropertiesResponse].
   /// [instanceName] the sample instance name of the template

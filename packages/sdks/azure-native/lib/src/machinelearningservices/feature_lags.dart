@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Flag for generating lags for the numeric features.
-enum FeatureLags {
+enum FeatureLags implements pulumi.PulumiEnum<String> {
   none("None"),
   auto("Auto");
 
   const FeatureLags(this.wireValue);
+  @override
   final String wireValue;
 
   static FeatureLags fromValue(String value) {

@@ -8,23 +8,23 @@ import 'system_data_response.dart';
 /// Result data returned by getIacProfile.
 class GetIacProfileResult {
   /// Determines the authorization status of requests.
-  final String authStatus;
+  final String? authStatus;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Repository Branch Name
   final String? branchName;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The status of the Pull Request submitted against the users repository.
-  final String prStatus;
+  final String? prStatus;
   /// The number associated with the submitted pull request.
-  final int pullNumber;
+  final int? pullNumber;
   /// Repository Main Branch
   final String? repositoryMainBranch;
   /// Repository Name
@@ -41,12 +41,12 @@ class GetIacProfileResult {
   /// Terraform Container Name
   final String? storageContainerName;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   final List<IacTemplatePropertiesResponse>? templates;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetIacProfileResult].
   /// [authStatus] Determines the authorization status of requests.
@@ -71,15 +71,15 @@ class GetIacProfileResult {
   /// [templates] Optional.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetIacProfileResult({
-    required this.authStatus,
-    required this.azureApiVersion,
+    this.authStatus,
+    this.azureApiVersion,
     this.branchName,
-    required this.etag,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.prStatus,
-    required this.pullNumber,
+    this.etag,
+    this.id,
+    this.location,
+    this.name,
+    this.prStatus,
+    this.pullNumber,
     this.repositoryMainBranch,
     this.repositoryName,
     this.repositoryOwner,
@@ -88,23 +88,23 @@ class GetIacProfileResult {
     this.storageAccountResourceGroup,
     this.storageAccountSubscription,
     this.storageContainerName,
-    required this.systemData,
+    this.systemData,
     this.tags,
     this.templates,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authStatus': authStatus,
-      'azureApiVersion': azureApiVersion,
+      'authStatus': ?authStatus,
+      'azureApiVersion': ?azureApiVersion,
       'branchName': ?branchName,
-      'etag': etag,
-      'id': id,
-      'location': location,
-      'name': name,
-      'prStatus': prStatus,
-      'pullNumber': pullNumber,
+      'etag': ?etag,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'prStatus': ?prStatus,
+      'pullNumber': ?pullNumber,
       'repositoryMainBranch': ?repositoryMainBranch,
       'repositoryName': ?repositoryName,
       'repositoryOwner': ?repositoryOwner,
@@ -113,24 +113,24 @@ class GetIacProfileResult {
       'storageAccountResourceGroup': ?storageAccountResourceGroup,
       'storageAccountSubscription': ?storageAccountSubscription,
       'storageContainerName': ?storageContainerName,
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
       'templates': ?(() { final guardedValue = templates; if (guardedValue == null) return null; return pulumi.Input.encodeList<IacTemplatePropertiesResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetIacProfileResult.fromMap(Map<String, dynamic> map) {
     return GetIacProfileResult(
-      authStatus: map['authStatus'] as String,
-      azureApiVersion: map['azureApiVersion'] as String,
+      authStatus: (() { final guardedValue = map['authStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       branchName: (() { final guardedValue = map['branchName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      prStatus: map['prStatus'] as String,
-      pullNumber: map['pullNumber'] as int,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      prStatus: (() { final guardedValue = map['prStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pullNumber: (() { final guardedValue = map['pullNumber']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       repositoryMainBranch: (() { final guardedValue = map['repositoryMainBranch']; if (guardedValue == null) return null; return guardedValue as String; })(),
       repositoryName: (() { final guardedValue = map['repositoryName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       repositoryOwner: (() { final guardedValue = map['repositoryOwner']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -139,10 +139,10 @@ class GetIacProfileResult {
       storageAccountResourceGroup: (() { final guardedValue = map['storageAccountResourceGroup']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storageAccountSubscription: (() { final guardedValue = map['storageAccountSubscription']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storageContainerName: (() { final guardedValue = map['storageContainerName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       templates: (() { final guardedValue = map['templates']; if (guardedValue == null) return null; return pulumi.Input.decodeList<IacTemplatePropertiesResponse>(guardedValue, (value) => IacTemplatePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

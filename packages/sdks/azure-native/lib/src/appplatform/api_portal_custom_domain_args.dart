@@ -11,9 +11,9 @@ class ApiPortalCustomDomainArgs {
   /// The name of API portal.
   final pulumi.Input<String> apiPortalName;
   /// The name of the API portal custom domain.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// The properties of custom domain for API portal
-  final pulumi.Input<ApiPortalCustomDomainProperties>? properties;
+  final pulumi.Input<ApiPortalCustomDomainProperties?>? properties;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Service resource.

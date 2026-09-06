@@ -13,31 +13,31 @@ import 'sku.dart';
 /// {@macro pulumi_appconfiguration_configuration_store_args_doc}
 class ConfigurationStoreArgs {
   /// The name of the configuration store.
-  final pulumi.Input<String>? configStoreName;
+  final pulumi.Input<String?>? configStoreName;
   /// Indicates whether the configuration store need to be recovered.
-  final pulumi.Input<CreateMode>? createMode;
+  final pulumi.Input<CreateMode?>? createMode;
   /// Property specifying the configuration of data plane proxy for Azure Resource Manager (ARM).
-  final pulumi.Input<DataPlaneProxyProperties>? dataPlaneProxy;
+  final pulumi.Input<DataPlaneProxyProperties?>? dataPlaneProxy;
   /// Disables all authentication methods other than AAD authentication.
-  final pulumi.Input<bool>? disableLocalAuth;
+  final pulumi.Input<bool?>? disableLocalAuth;
   /// Property specifying whether protection against purge is enabled for this configuration store.
-  final pulumi.Input<bool>? enablePurgeProtection;
+  final pulumi.Input<bool?>? enablePurgeProtection;
   /// The encryption settings of the configuration store.
-  final pulumi.Input<EncryptionProperties>? encryption;
+  final pulumi.Input<EncryptionProperties?>? encryption;
   /// The managed identity information, if configured.
-  final pulumi.Input<ResourceIdentity>? identity;
+  final pulumi.Input<ResourceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// The name of the resource group to which the container registry belongs.
   final pulumi.Input<String> resourceGroupName;
   /// The sku of the configuration store.
   final pulumi.Input<Sku> sku;
   /// The amount of time in days that the configuration store will be retained when it is soft deleted.
-  final pulumi.Input<int>? softDeleteRetentionInDays;
+  final pulumi.Input<int?>? softDeleteRetentionInDays;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ConfigurationStoreArgs].
   /// [configStoreName] The name of the configuration store.
@@ -53,21 +53,21 @@ class ConfigurationStoreArgs {
   /// [sku] The sku of the configuration store.
   /// [softDeleteRetentionInDays] The amount of time in days that the configuration store will be retained when it is soft deleted.
   /// [tags] Resource tags.
-  const ConfigurationStoreArgs({
+  ConfigurationStoreArgs({
     this.configStoreName,
     this.createMode,
     this.dataPlaneProxy,
-    this.disableLocalAuth,
-    this.enablePurgeProtection,
+    pulumi.Input<bool?>? disableLocalAuth,
+    pulumi.Input<bool?>? enablePurgeProtection,
     this.encryption,
     this.identity,
     this.location,
     this.publicNetworkAccess,
     required this.resourceGroupName,
     required this.sku,
-    this.softDeleteRetentionInDays,
+    pulumi.Input<int?>? softDeleteRetentionInDays,
     this.tags,
-  });
+  }) : disableLocalAuth = disableLocalAuth ?? pulumi.Input.fromValue(false), enablePurgeProtection = enablePurgeProtection ?? pulumi.Input.fromValue(false), softDeleteRetentionInDays = softDeleteRetentionInDays ?? pulumi.Input.fromValue(7);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,10 +97,10 @@ class ConfigurationStoreArgs {
       encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EncryptionProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sku: pulumi.Input.fromValue(Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())),
-      softDeleteRetentionInDays: (() { final guardedValue = map['softDeleteRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      softDeleteRetentionInDays: (() { final guardedValue = map['softDeleteRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

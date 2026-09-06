@@ -9,19 +9,19 @@ import 'artifact_manifest_properties_format.dart';
 /// {@macro pulumi_hybridnetwork_artifact_manifest_args_doc}
 class ArtifactManifestArgs {
   /// The name of the artifact manifest.
-  final pulumi.Input<String>? artifactManifestName;
+  final pulumi.Input<String?>? artifactManifestName;
   /// The name of the artifact store.
   final pulumi.Input<String> artifactStoreName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Artifact manifest properties.
-  final pulumi.Input<ArtifactManifestPropertiesFormat>? properties;
+  final pulumi.Input<ArtifactManifestPropertiesFormat?>? properties;
   /// The name of the publisher.
   final pulumi.Input<String> publisherName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ArtifactManifestArgs].
   /// [artifactManifestName] The name of the artifact manifest.

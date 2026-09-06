@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indication for database routing information from the data connection, by default only database routing information is allowed
-enum DatabaseRouting {
+enum DatabaseRouting implements pulumi.PulumiEnum<String> {
   valueSingle("Single"),
   valueMulti("Multi");
 
   const DatabaseRouting(this.wireValue);
+  @override
   final String wireValue;
 
   static DatabaseRouting fromValue(String value) {

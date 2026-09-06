@@ -1,6 +1,8 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Retention duration type: days/weeks/months/years
 /// Used only if TieringMode is set to TierAfter
-enum RetentionDurationType {
+enum RetentionDurationType implements pulumi.PulumiEnum<String> {
   valueInvalid("Invalid"),
   valueDays("Days"),
   valueWeeks("Weeks"),
@@ -8,6 +10,7 @@ enum RetentionDurationType {
   valueYears("Years");
 
   const RetentionDurationType(this.wireValue);
+  @override
   final String wireValue;
 
   static RetentionDurationType fromValue(String value) {

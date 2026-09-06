@@ -7,13 +7,13 @@ class ManagementClusterResponse {
   /// The identity
   final pulumi.Input<int> clusterId;
   /// The cluster size
-  final pulumi.Input<int>? clusterSize;
+  final pulumi.Input<int?>? clusterSize;
   /// The hosts
-  final pulumi.Input<List<String>>? hosts;
+  final pulumi.Input<List<String>?>? hosts;
   /// The state of the cluster provisioning
   final pulumi.Input<String> provisioningState;
   /// Name of the vsan datastore associated with the cluster
-  final pulumi.Input<String>? vsanDatastoreName;
+  final pulumi.Input<String?>? vsanDatastoreName;
 
   /// Creates a new [ManagementClusterResponse].
   /// [clusterId] The identity
@@ -41,8 +41,8 @@ class ManagementClusterResponse {
 
   factory ManagementClusterResponse.fromMap(Map<String, dynamic> map) {
     return ManagementClusterResponse(
-      clusterId: pulumi.Input.fromValue(map['clusterId'] as int),
-      clusterSize: (() { final guardedValue = map['clusterSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      clusterId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['clusterId'])),
+      clusterSize: (() { final guardedValue = map['clusterSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       hosts: (() { final guardedValue = map['hosts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       vsanDatastoreName: (() { final guardedValue = map['vsanDatastoreName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

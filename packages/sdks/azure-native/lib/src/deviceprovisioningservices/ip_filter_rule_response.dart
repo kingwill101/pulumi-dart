@@ -11,7 +11,7 @@ class IpFilterRuleResponse {
   /// A string that contains the IP address range in CIDR notation for the rule.
   final pulumi.Input<String> ipMask;
   /// Target for requests captured by this rule.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
 
   /// Creates a new [IpFilterRuleResponse].
   /// [action] The desired action for requests captured by this rule.

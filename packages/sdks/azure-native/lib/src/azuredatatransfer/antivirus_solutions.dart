@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The list of Antivirus solutions currently provided.
-enum AntivirusSolutions {
+enum AntivirusSolutions implements pulumi.PulumiEnum<String> {
   defender("Defender"),
   clamAv("ClamAv");
 
   const AntivirusSolutions(this.wireValue);
+  @override
   final String wireValue;
 
   static AntivirusSolutions fromValue(String value) {

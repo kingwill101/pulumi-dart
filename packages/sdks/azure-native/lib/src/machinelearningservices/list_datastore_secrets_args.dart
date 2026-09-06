@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_machinelearningservices_list_datastore_secrets_args_doc}
 class ListDatastoreSecretsArgs {
   /// Indicates if the secret is expirable.
-  final pulumi.Input<bool>? expirableSecret;
+  final pulumi.Input<bool?>? expirableSecret;
   /// Number of hours after which the secret will expire.
-  final pulumi.Input<int>? expireAfterHours;
+  final pulumi.Input<int?>? expireAfterHours;
   /// Datastore name.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
@@ -24,13 +24,13 @@ class ListDatastoreSecretsArgs {
   /// [name] Datastore name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Azure Machine Learning Workspace Name
-  const ListDatastoreSecretsArgs({
-    this.expirableSecret,
-    this.expireAfterHours,
+  ListDatastoreSecretsArgs({
+    pulumi.Input<bool?>? expirableSecret,
+    pulumi.Input<int?>? expireAfterHours,
     required this.name,
     required this.resourceGroupName,
     required this.workspaceName,
-  });
+  }) : expirableSecret = expirableSecret ?? pulumi.Input.fromValue(false), expireAfterHours = expireAfterHours ?? pulumi.Input.fromValue(1);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,7 +45,7 @@ class ListDatastoreSecretsArgs {
   factory ListDatastoreSecretsArgs.fromMap(Map<String, dynamic> map) {
     return ListDatastoreSecretsArgs(
       expirableSecret: (() { final guardedValue = map['expirableSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      expireAfterHours: (() { final guardedValue = map['expireAfterHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      expireAfterHours: (() { final guardedValue = map['expireAfterHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),

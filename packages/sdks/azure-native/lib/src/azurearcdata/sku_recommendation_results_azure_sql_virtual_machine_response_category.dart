@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory {
   /// Available VM SKUs for the Azure SQL Virtual Machine.
-  final pulumi.Input<List<String>>? availableVmSkus;
+  final pulumi.Input<List<String>?>? availableVmSkus;
   /// The virtual machine family of the target SKU.
-  final pulumi.Input<String>? virtualMachineFamily;
+  final pulumi.Input<String?>? virtualMachineFamily;
 
   /// Creates a new [SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory].
   /// [availableVmSkus] Available VM SKUs for the Azure SQL Virtual Machine.

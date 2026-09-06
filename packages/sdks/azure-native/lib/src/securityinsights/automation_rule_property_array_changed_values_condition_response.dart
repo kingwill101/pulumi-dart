@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutomationRulePropertyArrayChangedValuesConditionResponse {
-  final pulumi.Input<String>? arrayType;
-  final pulumi.Input<String>? changeType;
+  final pulumi.Input<String?>? arrayType;
+  final pulumi.Input<String?>? changeType;
 
   /// Creates a new [AutomationRulePropertyArrayChangedValuesConditionResponse].
   /// [arrayType] Optional.

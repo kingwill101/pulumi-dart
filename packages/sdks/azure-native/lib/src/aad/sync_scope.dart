@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud
-enum SyncScope {
+enum SyncScope implements pulumi.PulumiEnum<String> {
   valueAll("All"),
   valueCloudOnly("CloudOnly");
 
   const SyncScope(this.wireValue);
+  @override
   final String wireValue;
 
   static SyncScope fromValue(String value) {

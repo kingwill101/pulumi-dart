@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_map_args.dart';
+import 'route_map_rule_response.dart';
 
 /// The RouteMap child resource of a Virtual hub.
 ///
@@ -341,7 +342,7 @@ class RouteMap extends pulumi.CustomResource {
   /// The provisioning state of the RouteMap resource.
   late final pulumi.Output<String> provisioningState;
   /// List of RouteMap rules to be applied.
-  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+  late final pulumi.Output<List<RouteMapRuleResponse>?> rules;
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -359,13 +360,32 @@ class RouteMap extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    associatedInboundConnections = registerOutput<List<String>?>('associatedInboundConnections');
-    associatedOutboundConnections = registerOutput<List<String>?>('associatedOutboundConnections');
+    associatedInboundConnections = registerOutput<List<String>?>('associatedInboundConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    associatedOutboundConnections = registerOutput<List<String>?>('associatedOutboundConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<RouteMapRuleResponse>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteMapRuleResponse>(guardedValue, (value) => RouteMapRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [RouteMap] resource.
+  RouteMap.reference(String urn)
+    : super(
+        'azure-native:network:RouteMap',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    associatedInboundConnections = registerOutput<List<String>?>('associatedInboundConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    associatedOutboundConnections = registerOutput<List<String>?>('associatedOutboundConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    rules = registerOutput<List<RouteMapRuleResponse>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteMapRuleResponse>(guardedValue, (value) => RouteMapRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
 }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Execution policy for an execute pipeline activity.
 class ExecutePipelineActivityPolicy {
   /// When set to true, Input from activity is considered as secure and will not be logged to monitoring.
-  final pulumi.Input<bool>? secureInput;
+  final pulumi.Input<bool?>? secureInput;
 
   /// Creates a new [ExecutePipelineActivityPolicy].
   /// [secureInput] When set to true, Input from activity is considered as secure and will not be logged to monitoring.

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the spark config.
-enum ConfigurationType {
+enum ConfigurationType implements pulumi.PulumiEnum<String> {
   default_("Default"),
   customized("Customized"),
   artifact("Artifact");
 
   const ConfigurationType(this.wireValue);
+  @override
   final String wireValue;
 
   static ConfigurationType fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the subnet.
 class SubnetResponse {
   /// Represents address prefix.
-  final pulumi.Input<String>? addressPrefix;
+  final pulumi.Input<String?>? addressPrefix;
 
   /// Creates a new [SubnetResponse].
   /// [addressPrefix] Represents address prefix.

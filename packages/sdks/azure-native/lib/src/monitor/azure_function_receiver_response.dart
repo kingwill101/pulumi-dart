@@ -11,11 +11,11 @@ class AzureFunctionReceiverResponse {
   /// The http trigger url where http request sent to.
   final pulumi.Input<String> httpTriggerUrl;
   /// The principal id of the managed identity. The value can be "None", "SystemAssigned"
-  final pulumi.Input<String>? managedIdentity;
+  final pulumi.Input<String?>? managedIdentity;
   /// The name of the azure function receiver. Names must be unique across all receivers within an action group.
   final pulumi.Input<String> name;
   /// Indicates whether to use common alert schema.
-  final pulumi.Input<bool>? useCommonAlertSchema;
+  final pulumi.Input<bool?>? useCommonAlertSchema;
 
   /// Creates a new [AzureFunctionReceiverResponse].
   /// [functionAppResourceId] The azure resource id of the function app.
@@ -24,14 +24,14 @@ class AzureFunctionReceiverResponse {
   /// [managedIdentity] The principal id of the managed identity. The value can be "None", "SystemAssigned"
   /// [name] The name of the azure function receiver. Names must be unique across all receivers within an action group.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
-  const AzureFunctionReceiverResponse({
+  AzureFunctionReceiverResponse({
     required this.functionAppResourceId,
     required this.functionName,
     required this.httpTriggerUrl,
     this.managedIdentity,
     required this.name,
-    this.useCommonAlertSchema,
-  });
+    pulumi.Input<bool?>? useCommonAlertSchema,
+  }) : useCommonAlertSchema = useCommonAlertSchema ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

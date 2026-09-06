@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Kind of data set mapping.
-enum DataSetMappingKind {
+enum DataSetMappingKind implements pulumi.PulumiEnum<String> {
   valueBlob("Blob"),
   valueContainer("Container"),
   valueBlobFolder("BlobFolder"),
@@ -14,6 +16,7 @@ enum DataSetMappingKind {
   valueSynapseWorkspaceSqlPoolTable("SynapseWorkspaceSqlPoolTable");
 
   const DataSetMappingKind(this.wireValue);
+  @override
   final String wireValue;
 
   static DataSetMappingKind fromValue(String value) {

@@ -6,7 +6,7 @@ import 'managed_integration_runtime_error_response.dart';
 /// Properties of integration runtime node.
 class ManagedIntegrationRuntimeNodeResponse {
   /// The errors that occurred on this integration runtime node.
-  final pulumi.Input<List<ManagedIntegrationRuntimeErrorResponse>>? errors;
+  final pulumi.Input<List<ManagedIntegrationRuntimeErrorResponse>?>? errors;
   /// The managed integration runtime node id.
   final pulumi.Input<String> nodeId;
   /// The managed integration runtime node status.

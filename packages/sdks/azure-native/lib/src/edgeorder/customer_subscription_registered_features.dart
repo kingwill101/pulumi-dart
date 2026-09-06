@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents subscription registered features.
 class CustomerSubscriptionRegisteredFeatures {
   /// Name of subscription registered feature.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// State of subscription registered feature.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [CustomerSubscriptionRegisteredFeatures].
   /// [name] Name of subscription registered feature.

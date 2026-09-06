@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describe the properties of a of a standard assignments object reference
 class AssignedStandardItemResponse {
   /// Full resourceId of the Microsoft.Security/standard object
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [AssignedStandardItemResponse].
   /// [id] Full resourceId of the Microsoft.Security/standard object

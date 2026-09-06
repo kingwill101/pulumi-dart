@@ -6,11 +6,11 @@ import 'header_value_matcher.dart';
 /// Header configuration of the Actions set in Application Gateway.
 class ApplicationGatewayHeaderConfiguration {
   /// Header name of the header configuration.
-  final pulumi.Input<String>? headerName;
+  final pulumi.Input<String?>? headerName;
   /// Header value of the header configuration.
-  final pulumi.Input<String>? headerValue;
+  final pulumi.Input<String?>? headerValue;
   /// An optional field under "Rewrite Action". It lets you capture and modify the value(s) of a specific header when multiple headers with the same name exist. Currently supported for Set-Cookie Response header only. For more details, visit https://aka.ms/appgwheadercrud
-  final pulumi.Input<HeaderValueMatcher>? headerValueMatcher;
+  final pulumi.Input<HeaderValueMatcher?>? headerValueMatcher;
 
   /// Creates a new [ApplicationGatewayHeaderConfiguration].
   /// [headerName] Header name of the header configuration.

@@ -8,21 +8,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_windowsiot_service_args_doc}
 class ServiceArgs {
   /// Windows IoT Device Service OEM AAD domain
-  final pulumi.Input<String>? adminDomainName;
+  final pulumi.Input<String?>? adminDomainName;
   /// Windows IoT Device Service ODM AAD domain
-  final pulumi.Input<String>? billingDomainName;
+  final pulumi.Input<String?>? billingDomainName;
   /// The name of the Windows IoT Device Service.
-  final pulumi.Input<String>? deviceName;
+  final pulumi.Input<String?>? deviceName;
   /// The Azure Region where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Windows IoT Device Service notes.
-  final pulumi.Input<String>? notes;
+  final pulumi.Input<String?>? notes;
   /// Windows IoT Device Service device allocation,
-  final pulumi.Input<double>? quantity;
+  final pulumi.Input<double?>? quantity;
   /// The name of the resource group that contains the Windows IoT Device Service.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ServiceArgs].
   /// [adminDomainName] Windows IoT Device Service OEM AAD domain
@@ -64,7 +64,7 @@ class ServiceArgs {
       deviceName: (() { final guardedValue = map['deviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notes: (() { final guardedValue = map['notes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      quantity: (() { final guardedValue = map['quantity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      quantity: (() { final guardedValue = map['quantity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

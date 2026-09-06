@@ -8,13 +8,13 @@ import 'broker_authenticator_method_x509.dart';
 /// Set of broker authentication policies. Only one method is supported for each entry.
 class BrokerAuthenticatorMethods {
   /// Custom authentication configuration.
-  final pulumi.Input<BrokerAuthenticatorMethodCustom>? customSettings;
+  final pulumi.Input<BrokerAuthenticatorMethodCustom?>? customSettings;
   /// Custom authentication configuration.
-  final pulumi.Input<String> method;
+  final pulumi.Input<dynamic> method;
   /// ServiceAccountToken authentication configuration.
-  final pulumi.Input<BrokerAuthenticatorMethodSat>? serviceAccountTokenSettings;
+  final pulumi.Input<BrokerAuthenticatorMethodSat?>? serviceAccountTokenSettings;
   /// X.509 authentication configuration.
-  final pulumi.Input<BrokerAuthenticatorMethodX509>? x509Settings;
+  final pulumi.Input<BrokerAuthenticatorMethodX509?>? x509Settings;
 
   /// Creates a new [BrokerAuthenticatorMethods].
   /// [customSettings] Custom authentication configuration.
@@ -40,7 +40,7 @@ class BrokerAuthenticatorMethods {
   factory BrokerAuthenticatorMethods.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethods(
       customSettings: (() { final guardedValue = map['customSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BrokerAuthenticatorMethodCustom.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      method: pulumi.Input.fromValue(map['method'] as String),
+      method: pulumi.Input.fromValue(map['method']),
       serviceAccountTokenSettings: (() { final guardedValue = map['serviceAccountTokenSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BrokerAuthenticatorMethodSat.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       x509Settings: (() { final guardedValue = map['x509Settings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BrokerAuthenticatorMethodX509.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

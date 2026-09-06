@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// publisher properties.
 class PublisherPropertiesFormat {
   /// The publisher scope.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<dynamic>? scope;
 
   /// Creates a new [PublisherPropertiesFormat].
   /// [scope] The publisher scope.
@@ -21,7 +21,7 @@ class PublisherPropertiesFormat {
 
   factory PublisherPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return PublisherPropertiesFormat(
-      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'iptraffic_response.dart';
 
 /// Intent information.
 class IntentContentResponse {
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Destination resource id of the intent.
   final pulumi.Input<String> destinationResourceId;
   /// IP traffic information.

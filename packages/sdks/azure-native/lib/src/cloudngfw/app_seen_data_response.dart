@@ -28,7 +28,7 @@ class AppSeenDataResponse {
   factory AppSeenDataResponse.fromMap(Map<String, dynamic> map) {
     return AppSeenDataResponse(
       appSeenList: pulumi.Input.fromValue(pulumi.Input.decodeList<AppSeenInfoResponse>(map['appSeenList']!, (value) => AppSeenInfoResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['count'])),
     );
   }
 }

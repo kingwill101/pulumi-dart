@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AdditionalCapabilities for VM.
 class AdditionalCapabilities {
   /// The flag that enables or disables hibernation capability on the VM.
-  final pulumi.Input<bool>? hibernationEnabled;
+  final pulumi.Input<bool?>? hibernationEnabled;
   /// The flag that enables or disables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the VM or VMSS.
   /// Managed disks with storage account type UltraSSD_LRS can be added to a virtual machine or virtual machine scale set only if this property is enabled.
-  final pulumi.Input<bool>? ultraSSDEnabled;
+  final pulumi.Input<bool?>? ultraSSDEnabled;
 
   /// Creates a new [AdditionalCapabilities].
   /// [hibernationEnabled] The flag that enables or disables hibernation capability on the VM.

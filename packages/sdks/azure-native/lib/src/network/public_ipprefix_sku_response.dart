@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SKU of a public IP prefix.
 class PublicIPPrefixSkuResponse {
   /// Name of a public IP prefix SKU.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Tier of a public IP prefix SKU.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [PublicIPPrefixSkuResponse].
   /// [name] Name of a public IP prefix SKU.

@@ -9,15 +9,15 @@ import 'scope.dart';
 /// {@macro pulumi_managednetwork_managed_network_args_doc}
 class ManagedNetworkArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Managed Network.
-  final pulumi.Input<String>? managedNetworkName;
+  final pulumi.Input<String?>? managedNetworkName;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The collection of management groups, subscriptions, virtual networks, and subnets by the Managed Network. This is a read-only property that is reflective of all ScopeAssignments for this Managed Network
-  final pulumi.Input<Scope>? scope;
+  final pulumi.Input<Scope?>? scope;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ManagedNetworkArgs].
   /// [location] The geo-location where the resource lives

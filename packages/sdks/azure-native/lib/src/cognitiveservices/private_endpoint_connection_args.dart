@@ -11,11 +11,11 @@ class PrivateEndpointConnectionArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
   /// The location of the private endpoint connection
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the private endpoint connection associated with the Cognitive Services Account
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// Resource properties.
-  final pulumi.Input<PrivateEndpointConnectionProperties>? properties;
+  final pulumi.Input<PrivateEndpointConnectionProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

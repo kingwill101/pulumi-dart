@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The identity information for retrieving the certificate for the custom domain.
 class CustomDomainIdentityResponse {
   /// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The user identity associated with the resource.
-  final pulumi.Input<String>? userAssignedIdentity;
+  final pulumi.Input<String?>? userAssignedIdentity;
 
   /// Creates a new [CustomDomainIdentityResponse].
   /// [type] The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.

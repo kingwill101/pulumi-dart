@@ -6,16 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SourceUploadedUserSourceInfo {
   /// Selector for the artifact to be used for the deployment for multi-module projects. This should be
   /// the relative path to the target module/project.
-  final pulumi.Input<String>? artifactSelector;
+  final pulumi.Input<String?>? artifactSelector;
   /// Relative path of the storage which stores the source
-  final pulumi.Input<String>? relativePath;
+  final pulumi.Input<String?>? relativePath;
   /// Runtime version of the source file
-  final pulumi.Input<String>? runtimeVersion;
+  final pulumi.Input<String?>? runtimeVersion;
   /// Type of the source uploaded
   /// Expected value is 'Source'.
   final pulumi.Input<String> type;
   /// Version of the source
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [SourceUploadedUserSourceInfo].
   /// [artifactSelector] Selector for the artifact to be used for the deployment for multi-module projects. This should be

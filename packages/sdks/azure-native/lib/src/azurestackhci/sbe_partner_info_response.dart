@@ -8,11 +8,11 @@ import 'sbe_partner_properties_response.dart';
 /// The solution builder extension (SBE) partner deployment info for cluster.
 class SbePartnerInfoResponse {
   /// SBE credentials list for AzureStackHCI cluster deployment.
-  final pulumi.Input<List<SbeCredentialsResponse>>? credentialList;
+  final pulumi.Input<List<SbeCredentialsResponse>?>? credentialList;
   /// List of SBE partner properties for AzureStackHCI cluster deployment.
-  final pulumi.Input<List<SbePartnerPropertiesResponse>>? partnerProperties;
+  final pulumi.Input<List<SbePartnerPropertiesResponse>?>? partnerProperties;
   /// SBE package and manifest information for the solution Builder Extension staged for AzureStackHCI cluster deployment.
-  final pulumi.Input<SbeDeploymentInfoResponse>? sbeDeploymentInfo;
+  final pulumi.Input<SbeDeploymentInfoResponse?>? sbeDeploymentInfo;
 
   /// Creates a new [SbePartnerInfoResponse].
   /// [credentialList] SBE credentials list for AzureStackHCI cluster deployment.

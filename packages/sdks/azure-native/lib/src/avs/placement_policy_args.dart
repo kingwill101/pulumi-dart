@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'vm_host_placement_policy_properties.dart';
 
 /// {@template pulumi_avs_placement_policy_args_doc}
 /// The set of arguments for PlacementPolicy.
@@ -11,11 +10,11 @@ class PlacementPolicyArgs {
   /// Name of the cluster
   final pulumi.Input<String> clusterName;
   /// Name of the placement policy.
-  final pulumi.Input<String>? placementPolicyName;
+  final pulumi.Input<String?>? placementPolicyName;
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<VmHostPlacementPolicyProperties>? properties;
+  final pulumi.Input<dynamic>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,7 +37,7 @@ class PlacementPolicyArgs {
       'clusterName': clusterName,
       'placementPolicyName': ?placementPolicyName,
       'privateCloudName': privateCloudName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<VmHostPlacementPolicyProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': ?properties,
       'resourceGroupName': resourceGroupName,
     };
   }
@@ -48,7 +47,7 @@ class PlacementPolicyArgs {
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
       placementPolicyName: (() { final guardedValue = map['placementPolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateCloudName: pulumi.Input.fromValue(map['privateCloudName'] as String),
-      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VmHostPlacementPolicyProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }

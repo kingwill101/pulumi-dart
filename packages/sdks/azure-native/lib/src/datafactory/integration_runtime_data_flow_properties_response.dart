@@ -6,15 +6,15 @@ import 'integration_runtime_data_flow_properties_custom_properties_item_response
 /// Data flow properties for managed integration runtime.
 class IntegrationRuntimeDataFlowPropertiesResponse {
   /// Cluster will not be recycled and it will be used in next data flow activity run until TTL (time to live) is reached if this is set as false. Default is true.
-  final pulumi.Input<bool>? cleanup;
+  final pulumi.Input<bool?>? cleanup;
   /// Compute type of the cluster which will execute data flow job.
-  final pulumi.Input<String>? computeType;
+  final pulumi.Input<String?>? computeType;
   /// Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272.
-  final pulumi.Input<int>? coreCount;
+  final pulumi.Input<int?>? coreCount;
   /// Custom properties are used to tune the data flow runtime performance.
-  final pulumi.Input<List<IntegrationRuntimeDataFlowPropertiesCustomPropertiesItemResponse>>? customProperties;
+  final pulumi.Input<List<IntegrationRuntimeDataFlowPropertiesCustomPropertiesItemResponse>?>? customProperties;
   /// Time to live (in minutes) setting of the cluster which will execute data flow job.
-  final pulumi.Input<int>? timeToLive;
+  final pulumi.Input<int?>? timeToLive;
 
   /// Creates a new [IntegrationRuntimeDataFlowPropertiesResponse].
   /// [cleanup] Cluster will not be recycled and it will be used in next data flow activity run until TTL (time to live) is reached if this is set as false. Default is true.
@@ -44,9 +44,9 @@ class IntegrationRuntimeDataFlowPropertiesResponse {
     return IntegrationRuntimeDataFlowPropertiesResponse(
       cleanup: (() { final guardedValue = map['cleanup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       computeType: (() { final guardedValue = map['computeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      coreCount: (() { final guardedValue = map['coreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      coreCount: (() { final guardedValue = map['coreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       customProperties: (() { final guardedValue = map['customProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IntegrationRuntimeDataFlowPropertiesCustomPropertiesItemResponse>(guardedValue, (value) => IntegrationRuntimeDataFlowPropertiesCustomPropertiesItemResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      timeToLive: (() { final guardedValue = map['timeToLive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeToLive: (() { final guardedValue = map['timeToLive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

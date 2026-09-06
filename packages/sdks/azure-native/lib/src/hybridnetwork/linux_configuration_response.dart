@@ -6,7 +6,7 @@ import 'ssh_configuration_response.dart';
 /// Specifies the Linux operating system settings on the virtual machine.
 class LinuxConfigurationResponse {
   /// Specifies the ssh key configuration for a Linux OS.
-  final pulumi.Input<SshConfigurationResponse>? ssh;
+  final pulumi.Input<SshConfigurationResponse?>? ssh;
 
   /// Creates a new [LinuxConfigurationResponse].
   /// [ssh] Specifies the ssh key configuration for a Linux OS.

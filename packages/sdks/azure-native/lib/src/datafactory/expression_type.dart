@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Expression type.
-enum ExpressionType {
+enum ExpressionType implements pulumi.PulumiEnum<String> {
   expression("Expression");
 
   const ExpressionType(this.wireValue);
+  @override
   final String wireValue;
 
   static ExpressionType fromValue(String value) {

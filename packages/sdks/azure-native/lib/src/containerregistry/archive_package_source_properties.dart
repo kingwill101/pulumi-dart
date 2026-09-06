@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of the archive package source.
 class ArchivePackageSourceProperties {
   /// The type of package source for a archive.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
   /// The external repository url.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [ArchivePackageSourceProperties].
   /// [type] The type of package source for a archive.
@@ -26,7 +26,7 @@ class ArchivePackageSourceProperties {
 
   factory ArchivePackageSourceProperties.fromMap(Map<String, dynamic> map) {
     return ArchivePackageSourceProperties(
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

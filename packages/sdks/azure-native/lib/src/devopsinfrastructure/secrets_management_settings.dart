@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The secret management settings of the machines in the pool.
 class SecretsManagementSettings {
   /// Where to store certificates on the machine.
-  final pulumi.Input<String>? certificateStoreLocation;
+  final pulumi.Input<String?>? certificateStoreLocation;
   /// Name of the certificate store to use on the machine, currently 'My' and 'Root' are supported.
-  final pulumi.Input<String>? certificateStoreName;
+  final pulumi.Input<dynamic>? certificateStoreName;
   /// Defines if the key of the certificates should be exportable.
   final pulumi.Input<bool> keyExportable;
   /// The list of certificates to install on all machines in the pool.
@@ -37,7 +37,7 @@ class SecretsManagementSettings {
   factory SecretsManagementSettings.fromMap(Map<String, dynamic> map) {
     return SecretsManagementSettings(
       certificateStoreLocation: (() { final guardedValue = map['certificateStoreLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      certificateStoreName: (() { final guardedValue = map['certificateStoreName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certificateStoreName: (() { final guardedValue = map['certificateStoreName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       keyExportable: pulumi.Input.fromValue(map['keyExportable'] as bool),
       observedCertificates: pulumi.Input.fromValue((map['observedCertificates'] as List).cast<String>()),
     );

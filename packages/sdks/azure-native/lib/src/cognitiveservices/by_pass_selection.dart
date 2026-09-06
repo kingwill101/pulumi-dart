@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Setting for trusted services.
-enum ByPassSelection {
+enum ByPassSelection implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueAzureServices("AzureServices");
 
   const ByPassSelection(this.wireValue);
+  @override
   final String wireValue;
 
   static ByPassSelection fromValue(String value) {

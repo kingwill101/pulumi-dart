@@ -184,4 +184,19 @@ class NotificationRecipientUser extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     userId = registerOutput<String?>('userId');
   }
+
+  /// Creates a typed reference to an existing [NotificationRecipientUser] resource.
+  NotificationRecipientUser.reference(String urn)
+    : super(
+        'azure-native:apimanagement:NotificationRecipientUser',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+    userId = registerOutput<String?>('userId');
+  }
 }

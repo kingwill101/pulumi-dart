@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Environment kind.
-enum EnvironmentKind {
+enum EnvironmentKind implements pulumi.PulumiEnum<String> {
   development("development"),
   testing("testing"),
   staging("staging"),
   production("production");
 
   const EnvironmentKind(this.wireValue);
+  @override
   final String wireValue;
 
   static EnvironmentKind fromValue(String value) {

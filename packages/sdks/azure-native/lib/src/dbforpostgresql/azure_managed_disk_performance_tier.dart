@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Storage tier of a server.
-enum AzureManagedDiskPerformanceTier {
+enum AzureManagedDiskPerformanceTier implements pulumi.PulumiEnum<String> {
   p1("P1"),
   p2("P2"),
   p3("P3"),
@@ -16,6 +18,7 @@ enum AzureManagedDiskPerformanceTier {
   p80("P80");
 
   const AzureManagedDiskPerformanceTier(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureManagedDiskPerformanceTier fromValue(String value) {

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the mechanism associated with this scaling policy.
-enum ServiceScalingMechanismKind {
+enum ServiceScalingMechanismKind implements pulumi.PulumiEnum<String> {
   valueScalePartitionInstanceCount("ScalePartitionInstanceCount"),
   valueAddRemoveIncrementalNamedPartition("AddRemoveIncrementalNamedPartition");
 
   const ServiceScalingMechanismKind(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceScalingMechanismKind fromValue(String value) {

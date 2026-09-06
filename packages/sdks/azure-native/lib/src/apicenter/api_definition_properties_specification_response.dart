@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// API specification details.
 class ApiDefinitionPropertiesSpecificationResponse {
   /// Specification name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specification version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ApiDefinitionPropertiesSpecificationResponse].
   /// [name] Specification name.

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The network associated with this object
 class SCClusterByokEntityResponse {
   /// ID of the referred resource
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// API URL for accessing or modifying the referred object
-  final pulumi.Input<String>? related;
+  final pulumi.Input<String?>? related;
   /// CRN reference to the referred resource
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
 
   /// Creates a new [SCClusterByokEntityResponse].
   /// [id] ID of the referred resource

@@ -6,13 +6,13 @@ import 'enable_state.dart';
 /// The additional capabilities for a lab VM.
 class VirtualMachineAdditionalCapabilities {
   /// Flag to pre-install dedicated GPU drivers.
-  final pulumi.Input<EnableState>? installGpuDrivers;
+  final pulumi.Input<EnableState?>? installGpuDrivers;
 
   /// Creates a new [VirtualMachineAdditionalCapabilities].
   /// [installGpuDrivers] Flag to pre-install dedicated GPU drivers.
-  const VirtualMachineAdditionalCapabilities({
-    this.installGpuDrivers,
-  });
+  VirtualMachineAdditionalCapabilities({
+    pulumi.Input<EnableState?>? installGpuDrivers,
+  }) : installGpuDrivers = installGpuDrivers ?? pulumi.Input.fromValue(EnableState.fromValue('Disabled'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

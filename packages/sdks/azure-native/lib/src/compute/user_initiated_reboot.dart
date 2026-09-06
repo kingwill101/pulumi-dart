@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies Reboot related Scheduled Event related configurations.
 class UserInitiatedReboot {
   /// Specifies Reboot Scheduled Event related configurations.
-  final pulumi.Input<bool>? automaticallyApprove;
+  final pulumi.Input<bool?>? automaticallyApprove;
 
   /// Creates a new [UserInitiatedReboot].
   /// [automaticallyApprove] Specifies Reboot Scheduled Event related configurations.

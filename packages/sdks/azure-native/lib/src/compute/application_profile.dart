@@ -6,7 +6,7 @@ import 'vmgallery_application.dart';
 /// Contains the list of gallery applications that should be made available to the VM/VMSS
 class ApplicationProfile {
   /// Specifies the gallery applications that should be made available to the VM/VMSS
-  final pulumi.Input<List<VMGalleryApplication>>? galleryApplications;
+  final pulumi.Input<List<VMGalleryApplication>?>? galleryApplications;
 
   /// Creates a new [ApplicationProfile].
   /// [galleryApplications] Specifies the gallery applications that should be made available to the VM/VMSS

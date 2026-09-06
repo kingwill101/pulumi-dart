@@ -6,11 +6,11 @@ import 'application_resource_lifecycle_config.dart';
 /// Definition of awsElasticBeanstalkApplication
 class AwsElasticBeanstalkApplicationProperties {
   /// A name for the Elastic Beanstalk application. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the application name.
-  final pulumi.Input<String>? applicationName;
+  final pulumi.Input<String?>? applicationName;
   /// Your description of the application.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies an application resource lifecycle configuration to prevent your application from accumulating too many versions.
-  final pulumi.Input<ApplicationResourceLifecycleConfig>? resourceLifecycleConfig;
+  final pulumi.Input<ApplicationResourceLifecycleConfig?>? resourceLifecycleConfig;
 
   /// Creates a new [AwsElasticBeanstalkApplicationProperties].
   /// [applicationName] A name for the Elastic Beanstalk application. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the application name.

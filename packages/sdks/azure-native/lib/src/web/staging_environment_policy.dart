@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// State indicating whether staging environments are allowed or not allowed for a static web app.
-enum StagingEnvironmentPolicy {
+enum StagingEnvironmentPolicy implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const StagingEnvironmentPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static StagingEnvironmentPolicy fromValue(String value) {

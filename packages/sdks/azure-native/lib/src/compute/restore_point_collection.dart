@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'restore_point_collection_args.dart';
 import 'restore_point_collection_source_properties_response.dart';
+import 'restore_point_response.dart';
 import 'system_data_response.dart';
 
 /// Create or update Restore Point collection parameters.
@@ -374,7 +375,7 @@ class RestorePointCollection extends pulumi.CustomResource {
   /// The unique id of the restore point collection.
   late final pulumi.Output<String> restorePointCollectionId;
   /// A list containing all restore points created under this restore point collection.
-  late final pulumi.Output<List<Map<String, dynamic>>> restorePoints;
+  late final pulumi.Output<List<RestorePointResponse>> restorePoints;
   /// The properties of the source resource that this restore point collection is created from.
   late final pulumi.Output<RestorePointCollectionSourcePropertiesResponse?> source;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -403,10 +404,31 @@ class RestorePointCollection extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     restorePointCollectionId = registerOutput<String>('restorePointCollectionId');
-    restorePoints = registerOutput<List<Map<String, dynamic>>>('restorePoints');
+    restorePoints = registerOutput<List<RestorePointResponse>>('restorePoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RestorePointResponse>(guardedValue, (value) => RestorePointResponse.fromMap((value as Map).cast<String, dynamic>())); });
     source = registerOutput<RestorePointCollectionSourcePropertiesResponse?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestorePointCollectionSourcePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [RestorePointCollection] resource.
+  RestorePointCollection.reference(String urn)
+    : super(
+        'azure-native:compute:RestorePointCollection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    restorePointCollectionId = registerOutput<String>('restorePointCollectionId');
+    restorePoints = registerOutput<List<RestorePointResponse>>('restorePoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RestorePointResponse>(guardedValue, (value) => RestorePointResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    source = registerOutput<RestorePointCollectionSourcePropertiesResponse?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestorePointCollectionSourcePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

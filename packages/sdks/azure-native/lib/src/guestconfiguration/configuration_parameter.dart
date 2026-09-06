@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a configuration parameter.
 class ConfigurationParameter {
   /// Name of the configuration parameter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Value of the configuration parameter.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ConfigurationParameter].
   /// [name] Name of the configuration parameter.

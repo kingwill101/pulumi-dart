@@ -8,16 +8,16 @@ import 'depends_on_profile_response.dart';
 /// Azure Operator Distributed Services network function image application definition.
 class AzureOperatorNexusNetworkFunctionImageApplicationResponse {
   /// Azure Operator Distributed Services image artifact profile.
-  final pulumi.Input<AzureOperatorNexusImageArtifactProfileResponse>? artifactProfile;
+  final pulumi.Input<AzureOperatorNexusImageArtifactProfileResponse?>? artifactProfile;
   /// The artifact type.
   /// Expected value is 'ImageFile'.
   final pulumi.Input<String> artifactType;
   /// Depends on profile definition.
-  final pulumi.Input<DependsOnProfileResponse>? dependsOnProfile;
+  final pulumi.Input<DependsOnProfileResponse?>? dependsOnProfile;
   /// Deploy mapping rule profile.
-  final pulumi.Input<AzureOperatorNexusImageDeployMappingRuleProfileResponse>? deployParametersMappingRuleProfile;
+  final pulumi.Input<AzureOperatorNexusImageDeployMappingRuleProfileResponse?>? deployParametersMappingRuleProfile;
   /// The name of the network function application.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AzureOperatorNexusNetworkFunctionImageApplicationResponse].
   /// [artifactProfile] Azure Operator Distributed Services image artifact profile.

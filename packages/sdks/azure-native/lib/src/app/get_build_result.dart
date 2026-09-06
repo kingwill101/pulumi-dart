@@ -7,29 +7,29 @@ import 'system_data_response.dart';
 /// Result data returned by getBuild.
 class GetBuildResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Status of the build once it has been provisioned.
-  final String buildStatus;
+  final String? buildStatus;
   /// Configuration of the build.
   final BuildConfigurationResponse? configuration;
   /// Container registry that the final image will be uploaded to.
   final ContainerRegistryWithCustomImageResponse? destinationContainerRegistry;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Endpoint from which the build logs can be streamed.
-  final String logStreamEndpoint;
+  final String? logStreamEndpoint;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Build provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Endpoint to use to retrieve an authentication token for log streaming and uploading source code.
-  final String tokenEndpoint;
+  final String? tokenEndpoint;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Endpoint to which the source code should be uploaded.
-  final String uploadEndpoint;
+  final String? uploadEndpoint;
 
   /// Creates a new [GetBuildResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -45,51 +45,51 @@ class GetBuildResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uploadEndpoint] Endpoint to which the source code should be uploaded.
   const GetBuildResult({
-    required this.azureApiVersion,
-    required this.buildStatus,
+    this.azureApiVersion,
+    this.buildStatus,
     this.configuration,
     this.destinationContainerRegistry,
-    required this.id,
-    required this.logStreamEndpoint,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
-    required this.tokenEndpoint,
-    required this.type,
-    required this.uploadEndpoint,
+    this.id,
+    this.logStreamEndpoint,
+    this.name,
+    this.provisioningState,
+    this.systemData,
+    this.tokenEndpoint,
+    this.type,
+    this.uploadEndpoint,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'buildStatus': buildStatus,
+      'azureApiVersion': ?azureApiVersion,
+      'buildStatus': ?buildStatus,
       'configuration': ?configuration?.toMap(),
       'destinationContainerRegistry': ?destinationContainerRegistry?.toMap(),
-      'id': id,
-      'logStreamEndpoint': logStreamEndpoint,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
-      'tokenEndpoint': tokenEndpoint,
-      'type': type,
-      'uploadEndpoint': uploadEndpoint,
+      'id': ?id,
+      'logStreamEndpoint': ?logStreamEndpoint,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
+      'tokenEndpoint': ?tokenEndpoint,
+      'type': ?type,
+      'uploadEndpoint': ?uploadEndpoint,
     };
   }
 
   factory GetBuildResult.fromMap(Map<String, dynamic> map) {
     return GetBuildResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      buildStatus: map['buildStatus'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      buildStatus: (() { final guardedValue = map['buildStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       configuration: (() { final guardedValue = map['configuration']; if (guardedValue == null) return null; return BuildConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       destinationContainerRegistry: (() { final guardedValue = map['destinationContainerRegistry']; if (guardedValue == null) return null; return ContainerRegistryWithCustomImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
-      logStreamEndpoint: map['logStreamEndpoint'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      tokenEndpoint: map['tokenEndpoint'] as String,
-      type: map['type'] as String,
-      uploadEndpoint: map['uploadEndpoint'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      logStreamEndpoint: (() { final guardedValue = map['logStreamEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      tokenEndpoint: (() { final guardedValue = map['tokenEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uploadEndpoint: (() { final guardedValue = map['uploadEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

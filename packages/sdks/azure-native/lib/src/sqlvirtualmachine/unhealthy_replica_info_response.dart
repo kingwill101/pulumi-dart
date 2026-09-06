@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SQL VM Troubleshoot UnhealthyReplica scenario information.
 class UnhealthyReplicaInfoResponse {
   /// The name of the availability group
-  final pulumi.Input<String>? availabilityGroupName;
+  final pulumi.Input<String?>? availabilityGroupName;
 
   /// Creates a new [UnhealthyReplicaInfoResponse].
   /// [availabilityGroupName] The name of the availability group

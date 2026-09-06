@@ -19,83 +19,83 @@ class GetApiManagementServiceResult {
   /// Control Plane Apis version constraint for the API Management service.
   final ApiVersionConstraintResponse? apiVersionConstraint;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10.
   final List<CertificateConfigurationResponse>? certificates;
   /// Configuration API configuration of the API Management service.
   final ConfigurationApiResponse? configurationApi;
   /// Creation UTC date of the API Management service.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
-  final String createdAtUtc;
+  final String? createdAtUtc;
   /// Custom properties of the API Management service.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2).&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can be used to disable just TLS 1.1.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can be used to disable TLS 1.0 on an API Management service.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` can be used to disable just TLS 1.1 for communications with backends.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` can be used to disable TLS 1.0 for communications with backends.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be used to enable HTTP2 protocol on an API Management service.&lt;/br&gt;Not specifying any of these properties on PATCH operation will reset omitted properties' values to their defaults. For all the settings except Http2 the default value is `True` if the service was created on or before April 1, 2018 and `False` otherwise. Http2 setting's default value is `False`.&lt;/br&gt;&lt;/br&gt;You can disable any of the following ciphers by using settings `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA. For example, `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`. The default value is `true` for them.&lt;/br&gt; Note: The following ciphers can't be disabled since they are required by internal platform components: TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
   final Map<String, String>? customProperties;
   /// Status of developer portal in this API Management service.
   final String? developerPortalStatus;
   /// DEveloper Portal endpoint URL of the API Management service.
-  final String developerPortalUrl;
+  final String? developerPortalUrl;
   /// Property only valid for an Api Management service deployed in multiple locations. This can be used to disable the gateway in master region.
   final bool? disableGateway;
   /// Property only meant to be used for Consumption SKU Service. This enforces a client certificate to be presented on each request to the gateway. This also enables the ability to authenticate the certificate in the policy on the gateway.
   final bool? enableClientCertificate;
   /// ETag of the resource.
-  final String etag;
+  final String? etag;
   /// Gateway URL of the API Management service in the Default Region.
-  final String gatewayRegionalUrl;
+  final String? gatewayRegionalUrl;
   /// Gateway URL of the API Management service.
-  final String gatewayUrl;
+  final String? gatewayUrl;
   /// Custom hostname configuration of the API Management service.
   final List<HostnameConfigurationResponse>? hostnameConfigurations;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Managed service identity of the Api Management service.
   final ApiManagementServiceIdentityResponse? identity;
   /// Status of legacy portal in the API Management service.
   final String? legacyPortalStatus;
   /// Resource location.
-  final String location;
+  final String? location;
   /// Management API endpoint URL of the API Management service.
-  final String managementApiUrl;
+  final String? managementApiUrl;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Property can be used to enable NAT Gateway for this API Management service.
   final String? natGatewayState;
   /// Email address from which the notification will be sent.
   final String? notificationSenderEmail;
   /// Outbound public IPV4 address prefixes associated with NAT Gateway deployed service. Available only for Premium SKU on stv2 platform.
-  final List<String> outboundPublicIPAddresses;
+  final List<String>? outboundPublicIPAddresses;
   /// Compute Platform Version running the service in this location.
-  final String platformVersion;
+  final String? platformVersion;
   /// Publisher portal endpoint Url of the API Management service.
-  final String portalUrl;
+  final String? portalUrl;
   /// List of Private Endpoint Connections of this service.
   final List<RemotePrivateEndpointConnectionWrapperResponse>? privateEndpointConnections;
   /// Private Static Load Balanced IP addresses of the API Management service in Primary region which is deployed in an Internal Virtual Network. Available only for Basic, Standard, Premium and Isolated SKU.
-  final List<String> privateIPAddresses;
+  final List<String>? privateIPAddresses;
   /// The current provisioning state of the API Management service which can be one of the following: Created/Activating/Succeeded/Updating/Failed/Stopped/Terminating/TerminationFailed/Deleted.
-  final String provisioningState;
+  final String? provisioningState;
   /// Public Static Load Balanced IP addresses of the API Management service in Primary region. Available only for Basic, Standard, Premium and Isolated SKU.
-  final List<String> publicIPAddresses;
+  final List<String>? publicIPAddresses;
   /// Public Standard SKU IP V4 based IP address to be associated with Virtual Network deployed service in the region. Supported only for Developer and Premium SKU being deployed in Virtual Network.
   final String? publicIpAddressId;
   /// Whether or not public endpoint access is allowed for this API Management service.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled'
   final String? publicNetworkAccess;
   /// Publisher email.
-  final String publisherEmail;
+  final String? publisherEmail;
   /// Publisher name.
-  final String publisherName;
+  final String? publisherName;
   /// Undelete Api Management Service if it was previously soft-deleted. If this flag is specified and set to True all other properties will be ignored.
   final bool? restore;
   /// SCM endpoint URL of the API Management service.
-  final String scmUrl;
+  final String? scmUrl;
   /// SKU properties of the API Management service.
-  final ApiManagementServiceSkuPropertiesResponse sku;
+  final ApiManagementServiceSkuPropertiesResponse? sku;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The provisioning state of the API Management service, which is targeted by the long running operation started on the service.
-  final String targetProvisioningState;
+  final String? targetProvisioningState;
   /// Resource type for API Management resource is set to Microsoft.ApiManagement.
-  final String type;
+  final String? type;
   /// Virtual network configuration of the API Management service.
   final VirtualNetworkConfigurationResponse? virtualNetworkConfiguration;
   /// The type of VPN in which API Management service needs to be configured in. None (Default Value) means the API Management service is not part of any Virtual Network, External means the API Management deployment is set up inside a Virtual Network having an Internet Facing Endpoint, and Internal means that API Management deployment is setup inside a Virtual Network having an Intranet Facing Endpoint only.
@@ -148,96 +148,96 @@ class GetApiManagementServiceResult {
   /// [virtualNetworkConfiguration] Virtual network configuration of the API Management service.
   /// [virtualNetworkType] The type of VPN in which API Management service needs to be configured in. None (Default Value) means the API Management service is not part of any Virtual Network, External means the API Management deployment is set up inside a Virtual Network having an Internet Facing Endpoint, and Internal means that API Management deployment is setup inside a Virtual Network having an Intranet Facing Endpoint only.
   /// [zones] A list of availability zones denoting where the resource needs to come from.
-  const GetApiManagementServiceResult({
+  GetApiManagementServiceResult({
     this.additionalLocations,
     this.apiVersionConstraint,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.certificates,
     this.configurationApi,
-    required this.createdAtUtc,
+    this.createdAtUtc,
     this.customProperties,
-    this.developerPortalStatus,
-    required this.developerPortalUrl,
-    this.disableGateway,
-    this.enableClientCertificate,
-    required this.etag,
-    required this.gatewayRegionalUrl,
-    required this.gatewayUrl,
+    String? developerPortalStatus,
+    this.developerPortalUrl,
+    bool? disableGateway,
+    bool? enableClientCertificate,
+    this.etag,
+    this.gatewayRegionalUrl,
+    this.gatewayUrl,
     this.hostnameConfigurations,
-    required this.id,
+    this.id,
     this.identity,
-    this.legacyPortalStatus,
-    required this.location,
-    required this.managementApiUrl,
-    required this.name,
-    this.natGatewayState,
+    String? legacyPortalStatus,
+    this.location,
+    this.managementApiUrl,
+    this.name,
+    String? natGatewayState,
     this.notificationSenderEmail,
-    required this.outboundPublicIPAddresses,
-    required this.platformVersion,
-    required this.portalUrl,
+    this.outboundPublicIPAddresses,
+    this.platformVersion,
+    this.portalUrl,
     this.privateEndpointConnections,
-    required this.privateIPAddresses,
-    required this.provisioningState,
-    required this.publicIPAddresses,
+    this.privateIPAddresses,
+    this.provisioningState,
+    this.publicIPAddresses,
     this.publicIpAddressId,
     this.publicNetworkAccess,
-    required this.publisherEmail,
-    required this.publisherName,
-    this.restore,
-    required this.scmUrl,
-    required this.sku,
-    required this.systemData,
+    this.publisherEmail,
+    this.publisherName,
+    bool? restore,
+    this.scmUrl,
+    this.sku,
+    this.systemData,
     this.tags,
-    required this.targetProvisioningState,
-    required this.type,
+    this.targetProvisioningState,
+    this.type,
     this.virtualNetworkConfiguration,
-    this.virtualNetworkType,
+    String? virtualNetworkType,
     this.zones,
-  });
+  }) : developerPortalStatus = developerPortalStatus ?? 'Enabled', disableGateway = disableGateway ?? false, enableClientCertificate = enableClientCertificate ?? false, legacyPortalStatus = legacyPortalStatus ?? 'Enabled', natGatewayState = natGatewayState ?? 'Disabled', restore = restore ?? false, virtualNetworkType = virtualNetworkType ?? 'None';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'additionalLocations': ?(() { final guardedValue = additionalLocations; if (guardedValue == null) return null; return pulumi.Input.encodeList<AdditionalLocationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'apiVersionConstraint': ?apiVersionConstraint?.toMap(),
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'certificates': ?(() { final guardedValue = certificates; if (guardedValue == null) return null; return pulumi.Input.encodeList<CertificateConfigurationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'configurationApi': ?configurationApi?.toMap(),
-      'createdAtUtc': createdAtUtc,
+      'createdAtUtc': ?createdAtUtc,
       'customProperties': ?customProperties,
       'developerPortalStatus': ?developerPortalStatus,
-      'developerPortalUrl': developerPortalUrl,
+      'developerPortalUrl': ?developerPortalUrl,
       'disableGateway': ?disableGateway,
       'enableClientCertificate': ?enableClientCertificate,
-      'etag': etag,
-      'gatewayRegionalUrl': gatewayRegionalUrl,
-      'gatewayUrl': gatewayUrl,
+      'etag': ?etag,
+      'gatewayRegionalUrl': ?gatewayRegionalUrl,
+      'gatewayUrl': ?gatewayUrl,
       'hostnameConfigurations': ?(() { final guardedValue = hostnameConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<HostnameConfigurationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'legacyPortalStatus': ?legacyPortalStatus,
-      'location': location,
-      'managementApiUrl': managementApiUrl,
-      'name': name,
+      'location': ?location,
+      'managementApiUrl': ?managementApiUrl,
+      'name': ?name,
       'natGatewayState': ?natGatewayState,
       'notificationSenderEmail': ?notificationSenderEmail,
-      'outboundPublicIPAddresses': outboundPublicIPAddresses,
-      'platformVersion': platformVersion,
-      'portalUrl': portalUrl,
+      'outboundPublicIPAddresses': ?outboundPublicIPAddresses,
+      'platformVersion': ?platformVersion,
+      'portalUrl': ?portalUrl,
       'privateEndpointConnections': ?(() { final guardedValue = privateEndpointConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<RemotePrivateEndpointConnectionWrapperResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'privateIPAddresses': privateIPAddresses,
-      'provisioningState': provisioningState,
-      'publicIPAddresses': publicIPAddresses,
+      'privateIPAddresses': ?privateIPAddresses,
+      'provisioningState': ?provisioningState,
+      'publicIPAddresses': ?publicIPAddresses,
       'publicIpAddressId': ?publicIpAddressId,
       'publicNetworkAccess': ?publicNetworkAccess,
-      'publisherEmail': publisherEmail,
-      'publisherName': publisherName,
+      'publisherEmail': ?publisherEmail,
+      'publisherName': ?publisherName,
       'restore': ?restore,
-      'scmUrl': scmUrl,
-      'sku': sku.toMap(),
-      'systemData': systemData.toMap(),
+      'scmUrl': ?scmUrl,
+      'sku': ?sku?.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'targetProvisioningState': targetProvisioningState,
-      'type': type,
+      'targetProvisioningState': ?targetProvisioningState,
+      'type': ?type,
       'virtualNetworkConfiguration': ?virtualNetworkConfiguration?.toMap(),
       'virtualNetworkType': ?virtualNetworkType,
       'zones': ?zones,
@@ -248,45 +248,45 @@ class GetApiManagementServiceResult {
     return GetApiManagementServiceResult(
       additionalLocations: (() { final guardedValue = map['additionalLocations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<AdditionalLocationResponse>(guardedValue, (value) => AdditionalLocationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       apiVersionConstraint: (() { final guardedValue = map['apiVersionConstraint']; if (guardedValue == null) return null; return ApiVersionConstraintResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       certificates: (() { final guardedValue = map['certificates']; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateConfigurationResponse>(guardedValue, (value) => CertificateConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       configurationApi: (() { final guardedValue = map['configurationApi']; if (guardedValue == null) return null; return ConfigurationApiResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      createdAtUtc: map['createdAtUtc'] as String,
+      createdAtUtc: (() { final guardedValue = map['createdAtUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
       customProperties: (() { final guardedValue = map['customProperties']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       developerPortalStatus: (() { final guardedValue = map['developerPortalStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      developerPortalUrl: map['developerPortalUrl'] as String,
+      developerPortalUrl: (() { final guardedValue = map['developerPortalUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
       disableGateway: (() { final guardedValue = map['disableGateway']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       enableClientCertificate: (() { final guardedValue = map['enableClientCertificate']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      etag: map['etag'] as String,
-      gatewayRegionalUrl: map['gatewayRegionalUrl'] as String,
-      gatewayUrl: map['gatewayUrl'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      gatewayRegionalUrl: (() { final guardedValue = map['gatewayRegionalUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      gatewayUrl: (() { final guardedValue = map['gatewayUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
       hostnameConfigurations: (() { final guardedValue = map['hostnameConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostnameConfigurationResponse>(guardedValue, (value) => HostnameConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ApiManagementServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       legacyPortalStatus: (() { final guardedValue = map['legacyPortalStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      location: map['location'] as String,
-      managementApiUrl: map['managementApiUrl'] as String,
-      name: map['name'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      managementApiUrl: (() { final guardedValue = map['managementApiUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       natGatewayState: (() { final guardedValue = map['natGatewayState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       notificationSenderEmail: (() { final guardedValue = map['notificationSenderEmail']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      outboundPublicIPAddresses: (map['outboundPublicIPAddresses'] as List).cast<String>(),
-      platformVersion: map['platformVersion'] as String,
-      portalUrl: map['portalUrl'] as String,
+      outboundPublicIPAddresses: (() { final guardedValue = map['outboundPublicIPAddresses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      platformVersion: (() { final guardedValue = map['platformVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      portalUrl: (() { final guardedValue = map['portalUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
       privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RemotePrivateEndpointConnectionWrapperResponse>(guardedValue, (value) => RemotePrivateEndpointConnectionWrapperResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      privateIPAddresses: (map['privateIPAddresses'] as List).cast<String>(),
-      provisioningState: map['provisioningState'] as String,
-      publicIPAddresses: (map['publicIPAddresses'] as List).cast<String>(),
+      privateIPAddresses: (() { final guardedValue = map['privateIPAddresses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      publicIPAddresses: (() { final guardedValue = map['publicIPAddresses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       publicIpAddressId: (() { final guardedValue = map['publicIpAddressId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      publisherEmail: map['publisherEmail'] as String,
-      publisherName: map['publisherName'] as String,
+      publisherEmail: (() { final guardedValue = map['publisherEmail']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      publisherName: (() { final guardedValue = map['publisherName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       restore: (() { final guardedValue = map['restore']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      scmUrl: map['scmUrl'] as String,
-      sku: ApiManagementServiceSkuPropertiesResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      scmUrl: (() { final guardedValue = map['scmUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return ApiManagementServiceSkuPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      targetProvisioningState: map['targetProvisioningState'] as String,
-      type: map['type'] as String,
+      targetProvisioningState: (() { final guardedValue = map['targetProvisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       virtualNetworkConfiguration: (() { final guardedValue = map['virtualNetworkConfiguration']; if (guardedValue == null) return null; return VirtualNetworkConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       virtualNetworkType: (() { final guardedValue = map['virtualNetworkType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),

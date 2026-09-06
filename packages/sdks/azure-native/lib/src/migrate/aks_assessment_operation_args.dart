@@ -10,13 +10,13 @@ import 'assessment_scope_parameters.dart';
 /// {@macro pulumi_migrate_aks_assessment_operation_args_doc}
 class AksAssessmentOperationArgs {
   /// AKS Assessment Name.
-  final pulumi.Input<String>? assessmentName;
+  final pulumi.Input<String?>? assessmentName;
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets scope parameters to identify inventory items for assessment.
-  final pulumi.Input<AssessmentScopeParameters>? scope;
+  final pulumi.Input<AssessmentScopeParameters?>? scope;
   /// Gets or sets AKS Assessment Settings.
   final pulumi.Input<AKSAssessmentSettings> settings;
 

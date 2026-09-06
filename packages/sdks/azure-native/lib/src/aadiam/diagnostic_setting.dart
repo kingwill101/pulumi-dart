@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'diagnostic_setting_args.dart';
+import 'log_settings_response.dart';
 
 /// The diagnostic setting resource.
 ///
@@ -231,7 +232,7 @@ class DiagnosticSetting extends pulumi.CustomResource {
   /// The name of the event hub. If none is specified, the default event hub will be selected.
   late final pulumi.Output<String?> eventHubName;
   /// The list of logs settings.
-  late final pulumi.Output<List<Map<String, dynamic>>?> logs;
+  late final pulumi.Output<List<LogSettingsResponse>?> logs;
   /// Azure resource name
   late final pulumi.Output<String> name;
   /// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
@@ -260,7 +261,27 @@ class DiagnosticSetting extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     eventHubAuthorizationRuleId = registerOutput<String?>('eventHubAuthorizationRuleId');
     eventHubName = registerOutput<String?>('eventHubName');
-    logs = registerOutput<List<Map<String, dynamic>>?>('logs');
+    logs = registerOutput<List<LogSettingsResponse>?>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogSettingsResponse>(guardedValue, (value) => LogSettingsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    serviceBusRuleId = registerOutput<String?>('serviceBusRuleId');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    type = registerOutput<String>('type');
+    workspaceId = registerOutput<String?>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [DiagnosticSetting] resource.
+  DiagnosticSetting.reference(String urn)
+    : super(
+        'azure-native:aadiam:DiagnosticSetting',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eventHubAuthorizationRuleId = registerOutput<String?>('eventHubAuthorizationRuleId');
+    eventHubName = registerOutput<String?>('eventHubName');
+    logs = registerOutput<List<LogSettingsResponse>?>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogSettingsResponse>(guardedValue, (value) => LogSettingsResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     serviceBusRuleId = registerOutput<String?>('serviceBusRuleId');
     storageAccountId = registerOutput<String?>('storageAccountId');

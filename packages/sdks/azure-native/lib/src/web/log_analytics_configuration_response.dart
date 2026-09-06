@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogAnalyticsConfigurationResponse {
-  final pulumi.Input<String>? customerId;
+  final pulumi.Input<String?>? customerId;
 
   /// Creates a new [LogAnalyticsConfigurationResponse].
   /// [customerId] Optional.

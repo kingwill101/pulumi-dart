@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of Payload body for Base image update triggers.
-enum UpdateTriggerPayloadType {
+enum UpdateTriggerPayloadType implements pulumi.PulumiEnum<String> {
   valueDefault("Default"),
   valueToken("Token");
 
   const UpdateTriggerPayloadType(this.wireValue);
+  @override
   final String wireValue;
 
   static UpdateTriggerPayloadType fromValue(String value) {

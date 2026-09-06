@@ -15,7 +15,7 @@ class BackupScheduleResponse {
   /// After how many days backups should be deleted.
   final pulumi.Input<int> retentionPeriodInDays;
   /// When the schedule should start working.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [BackupScheduleResponse].
   /// [frequencyInterval] How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
@@ -24,14 +24,14 @@ class BackupScheduleResponse {
   /// [lastExecutionTime] Last time when this schedule was triggered.
   /// [retentionPeriodInDays] After how many days backups should be deleted.
   /// [startTime] When the schedule should start working.
-  const BackupScheduleResponse({
-    required this.frequencyInterval,
-    required this.frequencyUnit,
-    required this.keepAtLeastOneBackup,
+  BackupScheduleResponse({
+    pulumi.Input<int>? frequencyInterval,
+    pulumi.Input<String>? frequencyUnit,
+    pulumi.Input<bool>? keepAtLeastOneBackup,
     required this.lastExecutionTime,
-    required this.retentionPeriodInDays,
+    pulumi.Input<int>? retentionPeriodInDays,
     this.startTime,
-  });
+  }) : frequencyInterval = frequencyInterval ?? pulumi.Input.fromValue(7), frequencyUnit = frequencyUnit ?? pulumi.Input.fromValue('Day'), keepAtLeastOneBackup = keepAtLeastOneBackup ?? pulumi.Input.fromValue(true), retentionPeriodInDays = retentionPeriodInDays ?? pulumi.Input.fromValue(30);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +46,11 @@ class BackupScheduleResponse {
 
   factory BackupScheduleResponse.fromMap(Map<String, dynamic> map) {
     return BackupScheduleResponse(
-      frequencyInterval: pulumi.Input.fromValue(map['frequencyInterval'] as int),
+      frequencyInterval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['frequencyInterval'])),
       frequencyUnit: pulumi.Input.fromValue(map['frequencyUnit'] as String),
       keepAtLeastOneBackup: pulumi.Input.fromValue(map['keepAtLeastOneBackup'] as bool),
       lastExecutionTime: pulumi.Input.fromValue(map['lastExecutionTime'] as String),
-      retentionPeriodInDays: pulumi.Input.fromValue(map['retentionPeriodInDays'] as int),
+      retentionPeriodInDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retentionPeriodInDays'])),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

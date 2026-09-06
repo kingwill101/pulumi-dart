@@ -285,7 +285,38 @@ class ApplicationGroup extends pulumi.CustomResource {
     showInFeed = registerOutput<bool?>('showInFeed');
     sku = registerOutput<ResourceModelWithAllowedPropertySetResponseSku?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponseSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    workspaceArmPath = registerOutput<String>('workspaceArmPath');
+  }
+
+  /// Creates a typed reference to an existing [ApplicationGroup] resource.
+  ApplicationGroup.reference(String urn)
+    : super(
+        'azure-native:desktopvirtualization:ApplicationGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationGroupType = registerOutput<String>('applicationGroupType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cloudPcResource = registerOutput<bool>('cloudPcResource');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    friendlyName = registerOutput<String?>('friendlyName');
+    hostPoolArmPath = registerOutput<String>('hostPoolArmPath');
+    identity = registerOutput<ResourceModelWithAllowedPropertySetResponseIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    managedBy = registerOutput<String?>('managedBy');
+    this.name = registerOutput<String>('name');
+    objectId = registerOutput<String>('objectId');
+    plan = registerOutput<ResourceModelWithAllowedPropertySetResponsePlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponsePlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    showInFeed = registerOutput<bool?>('showInFeed');
+    sku = registerOutput<ResourceModelWithAllowedPropertySetResponseSku?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponseSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     workspaceArmPath = registerOutput<String>('workspaceArmPath');
   }

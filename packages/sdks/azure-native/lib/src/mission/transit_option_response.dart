@@ -6,9 +6,9 @@ import 'transit_option_params_response.dart';
 /// TransitOption Properties
 class TransitOptionResponse {
   /// Transit Option Params
-  final pulumi.Input<TransitOptionParamsResponse>? params;
+  final pulumi.Input<TransitOptionParamsResponse?>? params;
   /// Transit Option Type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [TransitOptionResponse].
   /// [params] Transit Option Params

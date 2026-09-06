@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specify action.
-enum Action {
+enum Action implements pulumi.PulumiEnum<String> {
   valueAllow("Allow"),
   valueDeny("Deny");
 
   const Action(this.wireValue);
+  @override
   final String wireValue;
 
   static Action fromValue(String value) {

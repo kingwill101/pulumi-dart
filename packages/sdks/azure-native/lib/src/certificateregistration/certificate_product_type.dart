@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Certificate product type.
-enum CertificateProductType {
+enum CertificateProductType implements pulumi.PulumiEnum<String> {
   valueStandardDomainValidatedSsl("StandardDomainValidatedSsl"),
   valueStandardDomainValidatedWildCardSsl("StandardDomainValidatedWildCardSsl");
 
   const CertificateProductType(this.wireValue);
+  @override
   final String wireValue;
 
   static CertificateProductType fromValue(String value) {

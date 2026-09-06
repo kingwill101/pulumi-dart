@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The authentication method.
-enum RegistryEndpointAuthenticationMethod {
+enum RegistryEndpointAuthenticationMethod implements pulumi.PulumiEnum<String> {
   systemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
   userAssignedManagedIdentity("UserAssignedManagedIdentity"),
   anonymous("Anonymous"),
   artifactPullSecret("ArtifactPullSecret");
 
   const RegistryEndpointAuthenticationMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static RegistryEndpointAuthenticationMethod fromValue(String value) {

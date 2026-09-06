@@ -10,37 +10,37 @@ import 'workspace_no_public_ipboolean_parameter_response.dart';
 /// Custom Parameters used for Workspace Creation. Not allowed in Serverless ComputeMode workspace.
 class WorkspaceCustomParametersResponse {
   /// The ID of a Azure Machine Learning workspace to link with Databricks workspace. Not allowed in Serverless ComputeMode workspace.
-  final pulumi.Input<WorkspaceCustomStringParameterResponse>? amlWorkspaceId;
+  final pulumi.Input<WorkspaceCustomStringParameterResponse?>? amlWorkspaceId;
   /// The name of the Private Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
-  final pulumi.Input<WorkspaceCustomStringParameterResponse>? customPrivateSubnetName;
+  final pulumi.Input<WorkspaceCustomStringParameterResponse?>? customPrivateSubnetName;
   /// The name of a Public Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
-  final pulumi.Input<WorkspaceCustomStringParameterResponse>? customPublicSubnetName;
+  final pulumi.Input<WorkspaceCustomStringParameterResponse?>? customPublicSubnetName;
   /// The ID of a Virtual Network where this Databricks Cluster should be created. Not allowed in Serverless ComputeMode workspace.
-  final pulumi.Input<WorkspaceCustomStringParameterResponse>? customVirtualNetworkId;
+  final pulumi.Input<WorkspaceCustomStringParameterResponse?>? customVirtualNetworkId;
   /// Boolean indicating whether the public IP should be disabled. Default value is true. Not allowed in Serverless ComputeMode workspace.
-  final pulumi.Input<WorkspaceNoPublicIPBooleanParameterResponse>? enableNoPublicIp;
+  final pulumi.Input<WorkspaceNoPublicIPBooleanParameterResponse?>? enableNoPublicIp;
   /// Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.Not allowed in Serverless ComputeMode workspace.
-  final pulumi.Input<WorkspaceEncryptionParameterResponse>? encryption;
+  final pulumi.Input<WorkspaceEncryptionParameterResponse?>? encryption;
   /// Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP). Not allowed in Serverless ComputeMode workspace.
-  final pulumi.Input<WorkspaceCustomStringParameterResponse>? loadBalancerBackendPoolName;
+  final pulumi.Input<WorkspaceCustomStringParameterResponse?>? loadBalancerBackendPoolName;
   /// Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace. Not allowed in Serverless ComputeMode workspace.
-  final pulumi.Input<WorkspaceCustomStringParameterResponse>? loadBalancerId;
+  final pulumi.Input<WorkspaceCustomStringParameterResponse?>? loadBalancerId;
   /// Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets. Not allowed in Serverless ComputeMode workspace.
-  final pulumi.Input<WorkspaceCustomStringParameterResponse>? natGatewayName;
+  final pulumi.Input<WorkspaceCustomStringParameterResponse?>? natGatewayName;
   /// Prepare the workspace for encryption. Enables the Managed Identity for managed storage account. Not allowed in Serverless ComputeMode workspace.
-  final pulumi.Input<WorkspaceCustomBooleanParameterResponse>? prepareEncryption;
+  final pulumi.Input<WorkspaceCustomBooleanParameterResponse?>? prepareEncryption;
   /// Name of the Public IP for No Public IP workspace with managed vNet. Not allowed in Serverless ComputeMode workspace.
-  final pulumi.Input<WorkspaceCustomStringParameterResponse>? publicIpName;
+  final pulumi.Input<WorkspaceCustomStringParameterResponse?>? publicIpName;
   /// A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest. Not allowed in Serverless ComputeMode workspace.
-  final pulumi.Input<WorkspaceCustomBooleanParameterResponse>? requireInfrastructureEncryption;
+  final pulumi.Input<WorkspaceCustomBooleanParameterResponse?>? requireInfrastructureEncryption;
   /// Tags applied to resources under Managed resource group. These can be updated by updating tags at workspace level. Not allowed in Serverless ComputeMode workspace.
   final pulumi.Input<WorkspaceCustomObjectParameterResponse> resourceTags;
   /// Default DBFS storage account name. Not allowed in Serverless ComputeMode workspace.
-  final pulumi.Input<WorkspaceCustomStringParameterResponse>? storageAccountName;
+  final pulumi.Input<WorkspaceCustomStringParameterResponse?>? storageAccountName;
   /// Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs. Not allowed in Serverless ComputeMode workspace.
-  final pulumi.Input<WorkspaceCustomStringParameterResponse>? storageAccountSkuName;
+  final pulumi.Input<WorkspaceCustomStringParameterResponse?>? storageAccountSkuName;
   /// Address prefix for Managed virtual network. Default value for this input is 10.139. Not allowed in Serverless ComputeMode workspace.
-  final pulumi.Input<WorkspaceCustomStringParameterResponse>? vnetAddressPrefix;
+  final pulumi.Input<WorkspaceCustomStringParameterResponse?>? vnetAddressPrefix;
 
   /// Creates a new [WorkspaceCustomParametersResponse].
   /// [amlWorkspaceId] The ID of a Azure Machine Learning workspace to link with Databricks workspace. Not allowed in Serverless ComputeMode workspace.

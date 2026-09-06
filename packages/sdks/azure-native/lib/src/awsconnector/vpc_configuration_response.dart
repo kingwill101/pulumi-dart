@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of VpcConfiguration
 class VpcConfigurationResponse {
   /// If this field is specified, this access point will only allow connections from the specified VPC ID.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [VpcConfigurationResponse].
   /// [vpcId] If this field is specified, this access point will only allow connections from the specified VPC ID.

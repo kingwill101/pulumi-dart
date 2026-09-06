@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Primary metrics for classification multilabel tasks.
-enum ClassificationMultilabelPrimaryMetrics {
+enum ClassificationMultilabelPrimaryMetrics implements pulumi.PulumiEnum<String> {
   aUCWeighted("AUCWeighted"),
   accuracy("Accuracy"),
   normMacroRecall("NormMacroRecall"),
@@ -8,6 +10,7 @@ enum ClassificationMultilabelPrimaryMetrics {
   iOU("IOU");
 
   const ClassificationMultilabelPrimaryMetrics(this.wireValue);
+  @override
   final String wireValue;
 
   static ClassificationMultilabelPrimaryMetrics fromValue(String value) {

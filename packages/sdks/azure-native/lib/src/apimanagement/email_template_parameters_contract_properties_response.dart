@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Email Template Parameter contract.
 class EmailTemplateParametersContractPropertiesResponse {
   /// Template parameter description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Template parameter name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Template parameter title.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [EmailTemplateParametersContractPropertiesResponse].
   /// [description] Template parameter description.

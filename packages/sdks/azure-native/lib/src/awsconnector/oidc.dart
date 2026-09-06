@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of OIDC
 class OIDC {
   /// &lt;p&gt;The issuer URL for the OIDC identity provider.&lt;/p&gt;
-  final pulumi.Input<String>? issuer;
+  final pulumi.Input<String?>? issuer;
 
   /// Creates a new [OIDC].
   /// [issuer] &lt;p&gt;The issuer URL for the OIDC identity provider.&lt;/p&gt;

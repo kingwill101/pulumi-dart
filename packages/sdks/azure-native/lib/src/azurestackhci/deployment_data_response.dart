@@ -15,33 +15,33 @@ import 'storage_response.dart';
 /// The Deployment data of AzureStackHCI Cluster.
 class DeploymentDataResponse {
   /// The path to the Active Directory Organizational Unit container object prepared for the deployment.
-  final pulumi.Input<String>? adouPath;
+  final pulumi.Input<String?>? adouPath;
   /// Observability config to deploy AzureStackHCI Cluster.
-  final pulumi.Input<DeploymentClusterResponse>? cluster;
+  final pulumi.Input<DeploymentClusterResponse?>? cluster;
   /// FQDN to deploy cluster
-  final pulumi.Input<String>? domainFqdn;
+  final pulumi.Input<String?>? domainFqdn;
   /// HostNetwork config to deploy AzureStackHCI Cluster.
-  final pulumi.Input<HostNetworkResponse>? hostNetwork;
+  final pulumi.Input<HostNetworkResponse?>? hostNetwork;
   /// InfrastructureNetwork config to deploy AzureStackHCI Cluster.
-  final pulumi.Input<List<InfrastructureNetworkResponse>>? infrastructureNetwork;
+  final pulumi.Input<List<InfrastructureNetworkResponse>?>? infrastructureNetwork;
   /// naming prefix to deploy cluster.
-  final pulumi.Input<String>? namingPrefix;
+  final pulumi.Input<String?>? namingPrefix;
   /// Observability config to deploy AzureStackHCI Cluster.
-  final pulumi.Input<ObservabilityResponse>? observability;
+  final pulumi.Input<ObservabilityResponse?>? observability;
   /// OptionalServices config to deploy AzureStackHCI Cluster.
-  final pulumi.Input<OptionalServicesResponse>? optionalServices;
+  final pulumi.Input<OptionalServicesResponse?>? optionalServices;
   /// list of physical nodes config to deploy AzureStackHCI Cluster.
-  final pulumi.Input<List<PhysicalNodesResponse>>? physicalNodes;
+  final pulumi.Input<List<PhysicalNodesResponse>?>? physicalNodes;
   /// SDN Integration config to deploy AzureStackHCI Cluster.
-  final pulumi.Input<SdnIntegrationResponse>? sdnIntegration;
+  final pulumi.Input<SdnIntegrationResponse?>? sdnIntegration;
   /// secrets used for cloud deployment.
-  final pulumi.Input<List<EceDeploymentSecretsResponse>>? secrets;
+  final pulumi.Input<List<EceDeploymentSecretsResponse>?>? secrets;
   /// Azure keyvault endpoint. This property is deprecated from 2023-12-01-preview. Please use secrets property instead.
-  final pulumi.Input<String>? secretsLocation;
+  final pulumi.Input<String?>? secretsLocation;
   /// SecuritySettings to deploy AzureStackHCI Cluster.
-  final pulumi.Input<DeploymentSecuritySettingsResponse>? securitySettings;
+  final pulumi.Input<DeploymentSecuritySettingsResponse?>? securitySettings;
   /// Storage config to deploy AzureStackHCI Cluster.
-  final pulumi.Input<StorageResponse>? storage;
+  final pulumi.Input<StorageResponse?>? storage;
 
   /// Creates a new [DeploymentDataResponse].
   /// [adouPath] The path to the Active Directory Organizational Unit container object prepared for the deployment.

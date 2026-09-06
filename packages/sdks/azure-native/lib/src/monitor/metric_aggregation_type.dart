@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of aggregation to apply to the metric
-enum MetricAggregationType {
+enum MetricAggregationType implements pulumi.PulumiEnum<String> {
   none("None"),
   average("Average"),
   count("Count"),
@@ -8,6 +10,7 @@ enum MetricAggregationType {
   total("Total");
 
   const MetricAggregationType(this.wireValue);
+  @override
   final String wireValue;
 
   static MetricAggregationType fromValue(String value) {

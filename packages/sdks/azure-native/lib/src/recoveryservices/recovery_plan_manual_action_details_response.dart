@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Recovery plan manual action details.
 class RecoveryPlanManualActionDetailsResponse {
   /// The manual action description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Gets the type of action details (see RecoveryPlanActionDetailsTypes enum for possible values).
   /// Expected value is 'ManualActionDetails'.
   final pulumi.Input<String> instanceType;

@@ -11,17 +11,17 @@ import 'xml_filter_ruleset.dart';
 /// The allowed set of configurable rulesets for a FlowProfile resource, used during data replication. All rulesets are optional, and any ruleset configured will be applied to every applicable replicating data. Any data that fails a ruleset will be denied replication. If a ruleset is not configured then the ruleset is considered disabled and will not apply towards replicating data.
 class FlowProfileRulesets {
   /// Antivirus scanning rules for replicated data.
-  final pulumi.Input<AntivirusRuleset>? antivirus;
+  final pulumi.Input<AntivirusRuleset?>? antivirus;
   /// Rules for handling archive files during replication.
-  final pulumi.Input<ArchiveRuleset>? archives;
+  final pulumi.Input<ArchiveRuleset?>? archives;
   /// Rules that enforce minimum and maximum data size limits.
-  final pulumi.Input<DataSizeRuleset>? dataSize;
+  final pulumi.Input<DataSizeRuleset?>? dataSize;
   /// Rules for filtering files based on MIME types.
-  final pulumi.Input<MimeFilterRuleset>? mimeFilters;
+  final pulumi.Input<MimeFilterRuleset?>? mimeFilters;
   /// Rules for detecting and blocking specific text patterns.
-  final pulumi.Input<TextMatchingRuleset>? textMatching;
+  final pulumi.Input<TextMatchingRuleset?>? textMatching;
   /// Rules for filtering XML content using XSD schemas.
-  final pulumi.Input<XmlFilterRuleset>? xmlFilters;
+  final pulumi.Input<XmlFilterRuleset?>? xmlFilters;
 
   /// Creates a new [FlowProfileRulesets].
   /// [antivirus] Antivirus scanning rules for replicated data.

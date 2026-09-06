@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Parameter type.
-enum ParameterType {
+enum ParameterType implements pulumi.PulumiEnum<String> {
   object_("Object"),
   string_("String"),
   int_("Int"),
@@ -9,6 +11,7 @@ enum ParameterType {
   secureString("SecureString");
 
   const ParameterType(this.wireValue);
+  @override
   final String wireValue;
 
   static ParameterType fromValue(String value) {

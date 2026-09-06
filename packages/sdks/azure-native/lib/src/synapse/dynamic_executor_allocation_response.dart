@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Dynamic Executor Allocation Properties
 class DynamicExecutorAllocationResponse {
   /// Indicates whether Dynamic Executor Allocation is enabled or not.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The maximum number of executors alloted
-  final pulumi.Input<int>? maxExecutors;
+  final pulumi.Input<int?>? maxExecutors;
   /// The minimum number of executors alloted
-  final pulumi.Input<int>? minExecutors;
+  final pulumi.Input<int?>? minExecutors;
 
   /// Creates a new [DynamicExecutorAllocationResponse].
   /// [enabled] Indicates whether Dynamic Executor Allocation is enabled or not.
@@ -32,8 +32,8 @@ class DynamicExecutorAllocationResponse {
   factory DynamicExecutorAllocationResponse.fromMap(Map<String, dynamic> map) {
     return DynamicExecutorAllocationResponse(
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxExecutors: (() { final guardedValue = map['maxExecutors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minExecutors: (() { final guardedValue = map['minExecutors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxExecutors: (() { final guardedValue = map['maxExecutors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minExecutors: (() { final guardedValue = map['minExecutors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

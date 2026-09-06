@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the parameters for the request header action.
 class HeaderActionParameters {
   /// Action to perform
-  final pulumi.Input<String> headerAction;
+  final pulumi.Input<dynamic> headerAction;
   /// Name of the header to modify
   final pulumi.Input<String> headerName;
   /// Expected value is 'DeliveryRuleHeaderActionParameters'.
   final pulumi.Input<String> typeName;
   /// Value for the specified action
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [HeaderActionParameters].
   /// [headerAction] Action to perform
@@ -36,7 +36,7 @@ class HeaderActionParameters {
 
   factory HeaderActionParameters.fromMap(Map<String, dynamic> map) {
     return HeaderActionParameters(
-      headerAction: pulumi.Input.fromValue(map['headerAction'] as String),
+      headerAction: pulumi.Input.fromValue(map['headerAction']),
       headerName: pulumi.Input.fromValue(map['headerName'] as String),
       typeName: pulumi.Input.fromValue(map['typeName'] as String),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

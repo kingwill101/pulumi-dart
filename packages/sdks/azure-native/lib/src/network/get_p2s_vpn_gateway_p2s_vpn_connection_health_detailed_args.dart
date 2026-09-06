@@ -10,11 +10,11 @@ class GetP2sVpnGatewayP2sVpnConnectionHealthDetailedArgs {
   /// The name of the P2SVpnGateway.
   final pulumi.Input<String> gatewayName;
   /// The sas-url to download the P2S Vpn connection health detail.
-  final pulumi.Input<String>? outputBlobSasUrl;
+  final pulumi.Input<String?>? outputBlobSasUrl;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The list of p2s vpn user names whose p2s vpn connection detailed health to retrieve for.
-  final pulumi.Input<List<String>>? vpnUserNamesFilter;
+  final pulumi.Input<List<String>?>? vpnUserNamesFilter;
 
   /// Creates a new [GetP2sVpnGatewayP2sVpnConnectionHealthDetailedArgs].
   /// [gatewayName] The name of the P2SVpnGateway.

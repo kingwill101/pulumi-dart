@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the provisioning state.
-enum ProvisioningState {
+enum ProvisioningState implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueSucceeded("Succeeded"),
   valueFailed("Failed"),
@@ -9,6 +11,7 @@ enum ProvisioningState {
   valueUpdating("Updating");
 
   const ProvisioningState(this.wireValue);
+  @override
   final String wireValue;
 
   static ProvisioningState fromValue(String value) {

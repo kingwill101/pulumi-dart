@@ -9,15 +9,15 @@ import 'deployment_properties.dart';
 /// {@macro pulumi_resources_deployment_args_doc}
 class DeploymentArgs {
   /// The name of the deployment.
-  final pulumi.Input<String>? deploymentName;
+  final pulumi.Input<String?>? deploymentName;
   /// The location to store the deployment data.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The deployment properties.
   final pulumi.Input<DeploymentProperties> properties;
   /// The name of the resource group to deploy the resources to. The name is case insensitive. The resource group must already exist.
   final pulumi.Input<String> resourceGroupName;
   /// Deployment tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DeploymentArgs].
   /// [deploymentName] The name of the deployment.

@@ -6,7 +6,7 @@ import 'certificate_configuration.dart';
 /// Details of the Credential Policy.
 class PolicyProperties {
   /// The certificate configuration.
-  final pulumi.Input<CertificateConfiguration>? certificate;
+  final pulumi.Input<CertificateConfiguration?>? certificate;
 
   /// Creates a new [PolicyProperties].
   /// [certificate] The certificate configuration.

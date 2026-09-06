@@ -6,9 +6,9 @@ import 'encryption_response.dart';
 /// The object that contains details of encryption used on the workspace.
 class WorkspaceEncryptionParameterResponse {
   /// The type of variable that this is
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The value which should be used for this field.
-  final pulumi.Input<EncryptionResponse>? value;
+  final pulumi.Input<EncryptionResponse?>? value;
 
   /// Creates a new [WorkspaceEncryptionParameterResponse].
   /// [type] The type of variable that this is

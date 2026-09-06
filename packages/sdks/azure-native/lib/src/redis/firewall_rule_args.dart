@@ -14,7 +14,7 @@ class FirewallRuleArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the firewall rule.
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
   /// lowest IP address included in the range
   final pulumi.Input<String> startIP;
 

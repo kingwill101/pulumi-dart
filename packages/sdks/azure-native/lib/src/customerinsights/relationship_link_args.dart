@@ -10,21 +10,21 @@ import 'relationship_link_field_mapping.dart';
 /// {@macro pulumi_customerinsights_relationship_link_args_doc}
 class RelationshipLinkArgs {
   /// Localized descriptions for the Relationship Link.
-  final pulumi.Input<Map<String, String>>? description;
+  final pulumi.Input<Map<String, String>?>? description;
   /// Localized display name for the Relationship Link.
-  final pulumi.Input<Map<String, String>>? displayName;
+  final pulumi.Input<Map<String, String>?>? displayName;
   /// The name of the hub.
   final pulumi.Input<String> hubName;
   /// The InteractionType associated with the Relationship Link.
   final pulumi.Input<String> interactionType;
   /// The mappings between Interaction and Relationship fields.
-  final pulumi.Input<List<RelationshipLinkFieldMapping>>? mappings;
+  final pulumi.Input<List<RelationshipLinkFieldMapping>?>? mappings;
   /// The property references for the Profile of the Relationship.
   final pulumi.Input<List<ParticipantProfilePropertyReference>> profilePropertyReferences;
   /// The property references for the Related Profile of the Relationship.
   final pulumi.Input<List<ParticipantProfilePropertyReference>> relatedProfilePropertyReferences;
   /// The name of the relationship link.
-  final pulumi.Input<String>? relationshipLinkName;
+  final pulumi.Input<String?>? relationshipLinkName;
   /// The Relationship associated with the Link.
   final pulumi.Input<String> relationshipName;
   /// The name of the resource group.

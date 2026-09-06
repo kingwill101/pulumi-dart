@@ -6,23 +6,23 @@ import 'dapr_secret_response.dart';
 /// Result data returned by listDaprComponentSecrets.
 class ListDaprComponentSecretsResult {
   /// Collection of secrets used by a Dapr component
-  final List<DaprSecretResponse> value;
+  final List<DaprSecretResponse>? value;
 
   /// Creates a new [ListDaprComponentSecretsResult].
   /// [value] Collection of secrets used by a Dapr component
   const ListDaprComponentSecretsResult({
-    required this.value,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': pulumi.Input.encodeList<DaprSecretResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<DaprSecretResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory ListDaprComponentSecretsResult.fromMap(Map<String, dynamic> map) {
     return ListDaprComponentSecretsResult(
-      value: pulumi.Input.decodeList<DaprSecretResponse>(map['value']!, (value) => DaprSecretResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DaprSecretResponse>(guardedValue, (value) => DaprSecretResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

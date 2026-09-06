@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc.
-enum PolicyFactName {
+enum PolicyFactName implements pulumi.PulumiEnum<String> {
   userOwnedLabVmCount("UserOwnedLabVmCount"),
   userOwnedLabPremiumVmCount("UserOwnedLabPremiumVmCount"),
   labVmCount("LabVmCount"),
@@ -12,6 +14,7 @@ enum PolicyFactName {
   scheduleEditPermission("ScheduleEditPermission");
 
   const PolicyFactName(this.wireValue);
+  @override
   final String wireValue;
 
   static PolicyFactName fromValue(String value) {

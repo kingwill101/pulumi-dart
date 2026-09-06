@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Tier of the catalog. This cannot be changed after the catalog is created. If not provided, defaults to Basic.
-enum CatalogTier {
+enum CatalogTier implements pulumi.PulumiEnum<String> {
   basic("Basic");
 
   const CatalogTier(this.wireValue);
+  @override
   final String wireValue;
 
   static CatalogTier fromValue(String value) {

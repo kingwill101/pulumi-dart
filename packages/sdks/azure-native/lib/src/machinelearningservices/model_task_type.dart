@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] The machine learning task type of the monitored model.
-enum ModelTaskType {
+enum ModelTaskType implements pulumi.PulumiEnum<String> {
   classification("Classification"),
   regression("Regression");
 
   const ModelTaskType(this.wireValue);
+  @override
   final String wireValue;
 
   static ModelTaskType fromValue(String value) {

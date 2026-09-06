@@ -224,4 +224,30 @@ class ReplicationLink extends pulumi.CustomResource {
     startTime = registerOutput<String>('startTime');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ReplicationLink] resource.
+  ReplicationLink.reference(String urn)
+    : super(
+        'azure-native:sql:ReplicationLink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    isTerminationAllowed = registerOutput<bool>('isTerminationAllowed');
+    linkType = registerOutput<String?>('linkType');
+    this.name = registerOutput<String>('name');
+    partnerDatabase = registerOutput<String>('partnerDatabase');
+    partnerDatabaseId = registerOutput<String>('partnerDatabaseId');
+    partnerLocation = registerOutput<String>('partnerLocation');
+    partnerRole = registerOutput<String>('partnerRole');
+    partnerServer = registerOutput<String>('partnerServer');
+    percentComplete = registerOutput<int>('percentComplete');
+    replicationMode = registerOutput<String>('replicationMode');
+    replicationState = registerOutput<String>('replicationState');
+    role = registerOutput<String>('role');
+    startTime = registerOutput<String>('startTime');
+    type = registerOutput<String>('type');
+  }
 }

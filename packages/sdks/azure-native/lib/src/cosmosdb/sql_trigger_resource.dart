@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Cosmos DB SQL trigger resource object
 class SqlTriggerResource {
   /// Body of the Trigger
-  final pulumi.Input<String>? body;
+  final pulumi.Input<String?>? body;
   /// Name of the Cosmos DB SQL trigger
   final pulumi.Input<String> id;
   /// The operation the trigger is associated with
-  final pulumi.Input<String>? triggerOperation;
+  final pulumi.Input<dynamic>? triggerOperation;
   /// Type of the Trigger
-  final pulumi.Input<String>? triggerType;
+  final pulumi.Input<dynamic>? triggerType;
 
   /// Creates a new [SqlTriggerResource].
   /// [body] Body of the Trigger
@@ -38,8 +38,8 @@ class SqlTriggerResource {
     return SqlTriggerResource(
       body: (() { final guardedValue = map['body']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
-      triggerOperation: (() { final guardedValue = map['triggerOperation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      triggerType: (() { final guardedValue = map['triggerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      triggerOperation: (() { final guardedValue = map['triggerOperation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      triggerType: (() { final guardedValue = map['triggerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

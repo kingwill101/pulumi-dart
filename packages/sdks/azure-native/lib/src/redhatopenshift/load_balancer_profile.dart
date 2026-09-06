@@ -6,7 +6,7 @@ import 'managed_outbound_ips.dart';
 /// LoadBalancerProfile represents the profile of the cluster public load balancer.
 class LoadBalancerProfile {
   /// The desired managed outbound IPs for the cluster public load balancer.
-  final pulumi.Input<ManagedOutboundIPs>? managedOutboundIps;
+  final pulumi.Input<ManagedOutboundIPs?>? managedOutboundIps;
 
   /// Creates a new [LoadBalancerProfile].
   /// [managedOutboundIps] The desired managed outbound IPs for the cluster public load balancer.

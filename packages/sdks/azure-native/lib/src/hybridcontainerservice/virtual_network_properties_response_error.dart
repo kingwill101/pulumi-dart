@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The error if any from the operation.
 class VirtualNetworkPropertiesResponseError {
   /// The error code from the operation.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// The error message from the operation.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [VirtualNetworkPropertiesResponseError].
   /// [code] The error code from the operation.

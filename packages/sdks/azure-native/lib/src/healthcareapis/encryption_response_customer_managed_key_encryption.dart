@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The encryption settings for the customer-managed key
 class EncryptionResponseCustomerManagedKeyEncryption {
   /// The URL of the key to use for encryption
-  final pulumi.Input<String>? keyEncryptionKeyUrl;
+  final pulumi.Input<String?>? keyEncryptionKeyUrl;
 
   /// Creates a new [EncryptionResponseCustomerManagedKeyEncryption].
   /// [keyEncryptionKeyUrl] The URL of the key to use for encryption

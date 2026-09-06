@@ -6,13 +6,13 @@ import 'app_attach_package_info_properties.dart';
 /// Schema for App Attach Package properties.
 class AppAttachPackageProperties {
   /// Parameter indicating how the health check should behave if this package fails staging
-  final pulumi.Input<String>? failHealthCheckOnStagingFailure;
+  final pulumi.Input<dynamic>? failHealthCheckOnStagingFailure;
   /// List of Hostpool resource Ids.
-  final pulumi.Input<List<String>>? hostPoolReferences;
+  final pulumi.Input<List<String>?>? hostPoolReferences;
   /// Detailed properties for App Attach Package
-  final pulumi.Input<AppAttachPackageInfoProperties>? image;
+  final pulumi.Input<AppAttachPackageInfoProperties?>? image;
   /// URL path to certificate name located in keyVault
-  final pulumi.Input<String>? keyVaultURL;
+  final pulumi.Input<String?>? keyVaultURL;
 
   /// Creates a new [AppAttachPackageProperties].
   /// [failHealthCheckOnStagingFailure] Parameter indicating how the health check should behave if this package fails staging
@@ -37,7 +37,7 @@ class AppAttachPackageProperties {
 
   factory AppAttachPackageProperties.fromMap(Map<String, dynamic> map) {
     return AppAttachPackageProperties(
-      failHealthCheckOnStagingFailure: (() { final guardedValue = map['failHealthCheckOnStagingFailure']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      failHealthCheckOnStagingFailure: (() { final guardedValue = map['failHealthCheckOnStagingFailure']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       hostPoolReferences: (() { final guardedValue = map['hostPoolReferences']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppAttachPackageInfoProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       keyVaultURL: (() { final guardedValue = map['keyVaultURL']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

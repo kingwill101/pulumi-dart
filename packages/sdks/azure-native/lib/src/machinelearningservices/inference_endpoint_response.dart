@@ -9,17 +9,17 @@ class InferenceEndpointResponse {
   /// [Required] Authentication mode for the endpoint.
   final pulumi.Input<String> authMode;
   /// Description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Endpoint URI for the inference endpoint.
   final pulumi.Input<String> endpointUri;
   /// [Required] Group within the same pool with which this endpoint needs to be associated with.
   final pulumi.Input<String> groupName;
   /// Property dictionary. Properties can be added, but not removed or altered.
-  final pulumi.Input<List<StringStringKeyValuePairResponse>>? properties;
+  final pulumi.Input<List<StringStringKeyValuePairResponse>?>? properties;
   /// Provisioning state for the endpoint.
   final pulumi.Input<String> provisioningState;
   /// RequestConfiguration for endpoint.
-  final pulumi.Input<RequestConfigurationResponse>? requestConfiguration;
+  final pulumi.Input<RequestConfigurationResponse?>? requestConfiguration;
 
   /// Creates a new [InferenceEndpointResponse].
   /// [authMode] [Required] Authentication mode for the endpoint.

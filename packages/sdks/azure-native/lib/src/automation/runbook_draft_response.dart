@@ -6,17 +6,17 @@ import 'runbook_parameter_response.dart';
 
 class RunbookDraftResponse {
   /// Gets or sets the creation time of the runbook draft.
-  final pulumi.Input<String>? creationTime;
+  final pulumi.Input<String?>? creationTime;
   /// Gets or sets the draft runbook content link.
-  final pulumi.Input<ContentLinkResponse>? draftContentLink;
+  final pulumi.Input<ContentLinkResponse?>? draftContentLink;
   /// Gets or sets whether runbook is in edit mode.
-  final pulumi.Input<bool>? inEdit;
+  final pulumi.Input<bool?>? inEdit;
   /// Gets or sets the last modified time of the runbook draft.
-  final pulumi.Input<String>? lastModifiedTime;
+  final pulumi.Input<String?>? lastModifiedTime;
   /// Gets or sets the runbook output types.
-  final pulumi.Input<List<String>>? outputTypes;
+  final pulumi.Input<List<String>?>? outputTypes;
   /// Gets or sets the runbook draft parameters.
-  final pulumi.Input<Map<String, RunbookParameterResponse>>? parameters;
+  final pulumi.Input<Map<String, RunbookParameterResponse>?>? parameters;
 
   /// Creates a new [RunbookDraftResponse].
   /// [creationTime] Gets or sets the creation time of the runbook draft.

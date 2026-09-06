@@ -11,7 +11,7 @@ class VariableArgs {
   /// Variable column definitions.
   final pulumi.Input<List<PolicyVariableColumn>> columns;
   /// The name of the variable to operate on.
-  final pulumi.Input<String>? variableName;
+  final pulumi.Input<String?>? variableName;
 
   /// Creates a new [VariableArgs].
   /// [columns] Variable column definitions.

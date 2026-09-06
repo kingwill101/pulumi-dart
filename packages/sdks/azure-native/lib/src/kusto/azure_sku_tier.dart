@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SKU tier.
-enum AzureSkuTier {
+enum AzureSkuTier implements pulumi.PulumiEnum<String> {
   valueBasic("Basic"),
   valueStandard("Standard");
 
   const AzureSkuTier(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureSkuTier fromValue(String value) {

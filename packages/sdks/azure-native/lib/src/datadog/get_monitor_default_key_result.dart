@@ -8,7 +8,7 @@ class GetMonitorDefaultKeyResult {
   /// The user that created the API key.
   final String? createdBy;
   /// The value of the API key.
-  final String key;
+  final String? key;
   /// The name of the API key.
   final String? name;
 
@@ -20,7 +20,7 @@ class GetMonitorDefaultKeyResult {
   const GetMonitorDefaultKeyResult({
     this.created,
     this.createdBy,
-    required this.key,
+    this.key,
     this.name,
   });
 
@@ -28,7 +28,7 @@ class GetMonitorDefaultKeyResult {
     return <String, dynamic>{
       'created': ?created,
       'createdBy': ?createdBy,
-      'key': key,
+      'key': ?key,
       'name': ?name,
     };
   }
@@ -37,7 +37,7 @@ class GetMonitorDefaultKeyResult {
     return GetMonitorDefaultKeyResult(
       created: (() { final guardedValue = map['created']; if (guardedValue == null) return null; return guardedValue as String; })(),
       createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      key: map['key'] as String,
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

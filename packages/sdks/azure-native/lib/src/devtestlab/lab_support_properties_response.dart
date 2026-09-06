@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of a lab's support banner
 class LabSupportPropertiesResponse {
   /// Is the lab support banner active/enabled at this time?
-  final pulumi.Input<String>? enabled;
+  final pulumi.Input<String?>? enabled;
   /// The markdown text (if any) that this lab displays in the UI. If left empty/null, nothing will be shown.
-  final pulumi.Input<String>? markdown;
+  final pulumi.Input<String?>? markdown;
 
   /// Creates a new [LabSupportPropertiesResponse].
   /// [enabled] Is the lab support banner active/enabled at this time?

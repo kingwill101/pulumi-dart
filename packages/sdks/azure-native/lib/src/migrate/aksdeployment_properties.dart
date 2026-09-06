@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Class for AKSDeployment Properties.
 class AKSDeploymentProperties {
   /// Gets or sets the AKS cluster name.
-  final pulumi.Input<String>? aksClusterName;
+  final pulumi.Input<String?>? aksClusterName;
   /// Gets or sets the resource group of the resource.
-  final pulumi.Input<String>? resourceGroup;
+  final pulumi.Input<String?>? resourceGroup;
   /// Gets or sets the subscription id of the resource.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// Gets or sets the tenant id.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [AKSDeploymentProperties].
   /// [aksClusterName] Gets or sets the AKS cluster name.

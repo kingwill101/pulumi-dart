@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the align mode between Virtual Machine Scale Set compute and storage Fault Domain count.
-enum ZonalPlatformFaultDomainAlignMode {
+enum ZonalPlatformFaultDomainAlignMode implements pulumi.PulumiEnum<String> {
   aligned("Aligned"),
   unaligned("Unaligned");
 
   const ZonalPlatformFaultDomainAlignMode(this.wireValue);
+  @override
   final String wireValue;
 
   static ZonalPlatformFaultDomainAlignMode fromValue(String value) {

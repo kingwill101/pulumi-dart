@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// along with a default value to be used, and at least one of these two properties should be provided.
 class JsonFieldWithDefault {
   /// The default value to be used for mapping when a SourceField is not provided or if there's no property with the specified name in the published JSON event payload.
-  final pulumi.Input<String>? defaultValue;
+  final pulumi.Input<String?>? defaultValue;
   /// Name of a field in the input event schema that's to be used as the source of a mapping.
-  final pulumi.Input<String>? sourceField;
+  final pulumi.Input<String?>? sourceField;
 
   /// Creates a new [JsonFieldWithDefault].
   /// [defaultValue] The default value to be used for mapping when a SourceField is not provided or if there's no property with the specified name in the published JSON event payload.

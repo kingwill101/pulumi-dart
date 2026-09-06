@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information of community gallery if current gallery is shared to community
 class CommunityGalleryInfo {
   /// End-user license agreement for community gallery image.
-  final pulumi.Input<String>? eula;
+  final pulumi.Input<String?>? eula;
   /// The prefix of the gallery name that will be displayed publicly. Visible to all users.
-  final pulumi.Input<String>? publicNamePrefix;
+  final pulumi.Input<String?>? publicNamePrefix;
   /// Community gallery publisher support email. The email address of the publisher. Visible to all users.
-  final pulumi.Input<String>? publisherContact;
+  final pulumi.Input<String?>? publisherContact;
   /// The link to the publisher website. Visible to all users.
-  final pulumi.Input<String>? publisherUri;
+  final pulumi.Input<String?>? publisherUri;
 
   /// Creates a new [CommunityGalleryInfo].
   /// [eula] End-user license agreement for community gallery image.

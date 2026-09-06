@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The method used for Entra authentication
-enum IdentityType {
+enum IdentityType implements pulumi.PulumiEnum<String> {
   valueSystemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
   valueUserAssignedManagedIdentity("UserAssignedManagedIdentity");
 
   const IdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static IdentityType fromValue(String value) {

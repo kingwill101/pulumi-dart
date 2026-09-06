@@ -220,4 +220,28 @@ class User extends pulumi.CustomResource {
     totalUsage = registerOutput<String>('totalUsage');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [User] resource.
+  User.reference(String urn)
+    : super(
+        'azure-native:labservices:User',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalUsageQuota = registerOutput<String?>('additionalUsageQuota');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    displayName = registerOutput<String>('displayName');
+    email = registerOutput<String>('email');
+    invitationSent = registerOutput<String>('invitationSent');
+    invitationState = registerOutput<String>('invitationState');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    registrationState = registerOutput<String>('registrationState');
+    resourceOperationError = registerOutput<ResourceOperationErrorResponse>('resourceOperationError', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceOperationErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    totalUsage = registerOutput<String>('totalUsage');
+    type = registerOutput<String>('type');
+  }
 }

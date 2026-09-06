@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enum for all classification models supported by AutoML.
-enum BlockedTransformers {
+enum BlockedTransformers implements pulumi.PulumiEnum<String> {
   textTargetEncoder("TextTargetEncoder"),
   oneHotEncoder("OneHotEncoder"),
   catTargetEncoder("CatTargetEncoder"),
@@ -12,6 +14,7 @@ enum BlockedTransformers {
   hashOneHotEncoder("HashOneHotEncoder");
 
   const BlockedTransformers(this.wireValue);
+  @override
   final String wireValue;
 
   static BlockedTransformers fromValue(String value) {

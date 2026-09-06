@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Source type of Discovery Source resource.
-enum SourceType {
+enum SourceType implements pulumi.PulumiEnum<String> {
   offAzure("OffAzure");
 
   const SourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static SourceType fromValue(String value) {

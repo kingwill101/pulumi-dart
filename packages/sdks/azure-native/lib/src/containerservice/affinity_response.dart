@@ -6,7 +6,7 @@ import 'cluster_affinity_response.dart';
 /// Affinity is a group of cluster affinity scheduling rules. More to be added.
 class AffinityResponse {
   /// ClusterAffinity contains cluster affinity scheduling rules for the selected resources.
-  final pulumi.Input<ClusterAffinityResponse>? clusterAffinity;
+  final pulumi.Input<ClusterAffinityResponse?>? clusterAffinity;
 
   /// Creates a new [AffinityResponse].
   /// [clusterAffinity] ClusterAffinity contains cluster affinity scheduling rules for the selected resources.

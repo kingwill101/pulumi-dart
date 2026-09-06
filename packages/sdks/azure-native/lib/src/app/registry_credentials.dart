@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Container App Private Registry
 class RegistryCredentials {
   /// A Managed Identity to use to authenticate with Azure Container Registry. For user-assigned identities, use the full user-assigned identity Resource ID. For system-assigned identities, use 'system'
-  final pulumi.Input<String>? identity;
+  final pulumi.Input<String?>? identity;
   /// The name of the Secret that contains the registry login password
-  final pulumi.Input<String>? passwordSecretRef;
+  final pulumi.Input<String?>? passwordSecretRef;
   /// Container Registry Server
-  final pulumi.Input<String>? server;
+  final pulumi.Input<String?>? server;
   /// Container Registry Username
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [RegistryCredentials].
   /// [identity] A Managed Identity to use to authenticate with Azure Container Registry. For user-assigned identities, use the full user-assigned identity Resource ID. For system-assigned identities, use 'system'

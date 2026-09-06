@@ -7,23 +7,23 @@ import 'service_principal_definition_response.dart';
 /// Parameters to reconcile to the AzureBlob source kind type.
 class AzureBlobDefinitionResponse {
   /// The account key (shared key) to access the storage account
-  final pulumi.Input<String>? accountKey;
+  final pulumi.Input<String?>? accountKey;
   /// The Azure Blob container name to sync from the url endpoint for the flux configuration.
-  final pulumi.Input<String>? containerName;
+  final pulumi.Input<String?>? containerName;
   /// Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets.
-  final pulumi.Input<String>? localAuthRef;
+  final pulumi.Input<String?>? localAuthRef;
   /// Parameters to authenticate using a Managed Identity.
-  final pulumi.Input<ManagedIdentityDefinitionResponse>? managedIdentity;
+  final pulumi.Input<ManagedIdentityDefinitionResponse?>? managedIdentity;
   /// The Shared Access token to access the storage container
-  final pulumi.Input<String>? sasToken;
+  final pulumi.Input<String?>? sasToken;
   /// Parameters to authenticate using Service Principal.
-  final pulumi.Input<ServicePrincipalDefinitionResponse>? servicePrincipal;
+  final pulumi.Input<ServicePrincipalDefinitionResponse?>? servicePrincipal;
   /// The interval at which to re-reconcile the cluster Azure Blob source with the remote.
-  final pulumi.Input<double>? syncIntervalInSeconds;
+  final pulumi.Input<double?>? syncIntervalInSeconds;
   /// The maximum time to attempt to reconcile the cluster Azure Blob source with the remote.
-  final pulumi.Input<double>? timeoutInSeconds;
+  final pulumi.Input<double?>? timeoutInSeconds;
   /// The URL to sync for the flux configuration Azure Blob storage account.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [AzureBlobDefinitionResponse].
   /// [accountKey] The account key (shared key) to access the storage account
@@ -35,17 +35,17 @@ class AzureBlobDefinitionResponse {
   /// [syncIntervalInSeconds] The interval at which to re-reconcile the cluster Azure Blob source with the remote.
   /// [timeoutInSeconds] The maximum time to attempt to reconcile the cluster Azure Blob source with the remote.
   /// [url] The URL to sync for the flux configuration Azure Blob storage account.
-  const AzureBlobDefinitionResponse({
+  AzureBlobDefinitionResponse({
     this.accountKey,
     this.containerName,
     this.localAuthRef,
     this.managedIdentity,
     this.sasToken,
     this.servicePrincipal,
-    this.syncIntervalInSeconds,
-    this.timeoutInSeconds,
+    pulumi.Input<double?>? syncIntervalInSeconds,
+    pulumi.Input<double?>? timeoutInSeconds,
     this.url,
-  });
+  }) : syncIntervalInSeconds = syncIntervalInSeconds ?? pulumi.Input.fromValue(600), timeoutInSeconds = timeoutInSeconds ?? pulumi.Input.fromValue(600);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,8 +69,8 @@ class AzureBlobDefinitionResponse {
       managedIdentity: (() { final guardedValue = map['managedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedIdentityDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sasToken: (() { final guardedValue = map['sasToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       servicePrincipal: (() { final guardedValue = map['servicePrincipal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServicePrincipalDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      syncIntervalInSeconds: (() { final guardedValue = map['syncIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      syncIntervalInSeconds: (() { final guardedValue = map['syncIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

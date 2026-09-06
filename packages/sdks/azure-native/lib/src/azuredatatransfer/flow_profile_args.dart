@@ -10,19 +10,19 @@ import 'managed_service_identity.dart';
 /// {@macro pulumi_azuredatatransfer_flow_profile_args_doc}
 class FlowProfileArgs {
   /// The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
-  final pulumi.Input<String>? flowProfileName;
+  final pulumi.Input<String?>? flowProfileName;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the pipeline on which to operate.
   final pulumi.Input<String> pipelineName;
   /// The set of configuration properties that define the behavior and rules of the FlowProfile.
-  final pulumi.Input<FlowProfileProperties>? properties;
+  final pulumi.Input<FlowProfileProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FlowProfileArgs].
   /// [flowProfileName] The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.

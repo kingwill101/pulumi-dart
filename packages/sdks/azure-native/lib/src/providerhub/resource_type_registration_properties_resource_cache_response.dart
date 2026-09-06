@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resource cache options.
 class ResourceTypeRegistrationPropertiesResourceCacheResponse {
   /// Enable resource cache.
-  final pulumi.Input<bool>? enableResourceCache;
+  final pulumi.Input<bool?>? enableResourceCache;
   /// Resource cache expiration timespan. This is a TimeSpan property.
-  final pulumi.Input<String>? resourceCacheExpirationTimespan;
+  final pulumi.Input<String?>? resourceCacheExpirationTimespan;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceCacheResponse].
   /// [enableResourceCache] Enable resource cache.

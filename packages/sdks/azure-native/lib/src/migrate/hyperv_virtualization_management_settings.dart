@@ -33,8 +33,8 @@ class HypervVirtualizationManagementSettings {
   factory HypervVirtualizationManagementSettings.fromMap(Map<String, dynamic> map) {
     return HypervVirtualizationManagementSettings(
       licenseAndSupportList: pulumi.Input.fromValue(pulumi.Input.decodeList<HypervLicense>(map['licenseAndSupportList']!, (value) => HypervLicense.fromMap((value as Map).cast<String, dynamic>()))),
-      numberOfPhysicalCoresPerLicense: pulumi.Input.fromValue(map['numberOfPhysicalCoresPerLicense'] as int),
-      softwareAssuranceCost: pulumi.Input.fromValue(map['softwareAssuranceCost'] as double),
+      numberOfPhysicalCoresPerLicense: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberOfPhysicalCoresPerLicense'])),
+      softwareAssuranceCost: pulumi.Input.fromValue((map['softwareAssuranceCost'] as num).toDouble()),
     );
   }
 }

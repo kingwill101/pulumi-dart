@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Group connectivity details.
 class GroupConnectivityInformation {
   /// List of customer visible FQDNs.
-  final pulumi.Input<List<String>>? customerVisibleFqdns;
+  final pulumi.Input<List<String>?>? customerVisibleFqdns;
   /// PrivateLinkService ARM region.
-  final pulumi.Input<String>? privateLinkServiceArmRegion;
+  final pulumi.Input<String?>? privateLinkServiceArmRegion;
   /// Redirect map ID.
-  final pulumi.Input<String>? redirectMapId;
+  final pulumi.Input<String?>? redirectMapId;
 
   /// Creates a new [GroupConnectivityInformation].
   /// [customerVisibleFqdns] List of customer visible FQDNs.

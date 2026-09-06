@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the connection monitor endpoint filter item.
 class ConnectionMonitorEndpointFilterItemResponse {
   /// The address of the filter item.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// The type of item included in the filter. Currently only 'AgentAddress' is supported.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ConnectionMonitorEndpointFilterItemResponse].
   /// [address] The address of the filter item.

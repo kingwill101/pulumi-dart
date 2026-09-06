@@ -4,23 +4,23 @@
 /// Result data returned by getSAPSizingRecommendations.
 class GetSAPSizingRecommendationsResult {
   /// The type of SAP deployment, single server or Three tier.
-  final String deploymentType;
+  final String? deploymentType;
 
   /// Creates a new [GetSAPSizingRecommendationsResult].
   /// [deploymentType] The type of SAP deployment, single server or Three tier.
   const GetSAPSizingRecommendationsResult({
-    required this.deploymentType,
+    this.deploymentType,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deploymentType': deploymentType,
+      'deploymentType': ?deploymentType,
     };
   }
 
   factory GetSAPSizingRecommendationsResult.fromMap(Map<String, dynamic> map) {
     return GetSAPSizingRecommendationsResult(
-      deploymentType: map['deploymentType'] as String,
+      deploymentType: (() { final guardedValue = map['deploymentType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

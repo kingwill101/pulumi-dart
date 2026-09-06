@@ -12,11 +12,11 @@ class FleetManagedNamespacePropertiesResponse {
   /// Delete options of a fleet managed namespace. Default is Keep.
   final pulumi.Input<String> deletePolicy;
   /// The namespace properties for the fleet managed namespace.
-  final pulumi.Input<ManagedNamespacePropertiesResponse>? managedNamespaceProperties;
+  final pulumi.Input<ManagedNamespacePropertiesResponse?>? managedNamespaceProperties;
   /// The Azure Portal FQDN of the Fleet hub.
   final pulumi.Input<String> portalFqdn;
   /// The profile of the propagation to create the namespace.
-  final pulumi.Input<PropagationPolicyResponse>? propagationPolicy;
+  final pulumi.Input<PropagationPolicyResponse?>? propagationPolicy;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// Status information of the last operation for fleet managed namespace.

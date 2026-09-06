@@ -30,6 +30,17 @@ Future<GetBackupInstanceResult> getBackupInstance(
   return GetBackupInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupInstanceResult> getBackupInstanceOutput(
+  GetBackupInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dataprotection:getBackupInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupInstanceResult.fromMap);
+}
+
 /// Gets a backup policy belonging to a backup vault
 ///
 /// Uses Azure REST API version 2025-01-01.
@@ -48,6 +59,17 @@ Future<GetBackupPolicyResult> getBackupPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackupPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetBackupPolicyResult> getBackupPolicyOutput(
+  GetBackupPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dataprotection:getBackupPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupPolicyResult.fromMap);
 }
 
 /// Returns a resource belonging to a resource group.
@@ -70,6 +92,17 @@ Future<GetBackupVaultResult> getBackupVault(
   return GetBackupVaultResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupVaultResult> getBackupVaultOutput(
+  GetBackupVaultArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dataprotection:getBackupVault',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupVaultResult.fromMap);
+}
+
 /// ResourceGuardProxyBaseResource object, used for response and request bodies for ResourceGuardProxy APIs
 ///
 /// Uses Azure REST API version 2025-01-01.
@@ -90,6 +123,17 @@ Future<GetDppResourceGuardProxyResult> getDppResourceGuardProxy(
   return GetDppResourceGuardProxyResult.fromMap(result);
 }
 
+pulumi.Output<GetDppResourceGuardProxyResult> getDppResourceGuardProxyOutput(
+  GetDppResourceGuardProxyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dataprotection:getDppResourceGuardProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDppResourceGuardProxyResult.fromMap);
+}
+
 /// Uses Azure REST API version 2025-01-01.
 ///
 /// Other available API versions: 2023-01-01, 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-02-01, 2025-07-01, 2025-09-01, 2026-03-01, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dataprotection [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
@@ -106,4 +150,15 @@ Future<GetResourceGuardResult> getResourceGuard(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourceGuardResult.fromMap(result);
+}
+
+pulumi.Output<GetResourceGuardResult> getResourceGuardOutput(
+  GetResourceGuardArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dataprotection:getResourceGuard',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourceGuardResult.fromMap);
 }

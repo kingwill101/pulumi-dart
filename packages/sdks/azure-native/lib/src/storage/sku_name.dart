@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
-enum SkuName {
+enum SkuName implements pulumi.PulumiEnum<String> {
   valueStandardLRS("Standard_LRS"),
   valueStandardGRS("Standard_GRS"),
   valueStandardRAGRS("Standard_RAGRS"),
@@ -16,6 +18,7 @@ enum SkuName {
   valuePremiumV2ZRS("PremiumV2_ZRS");
 
   const SkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static SkuName fromValue(String value) {

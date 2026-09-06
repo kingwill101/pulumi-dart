@@ -6,7 +6,7 @@ import 'application_insights_configuration_response.dart';
 /// Log Configurations
 class LogConfigurationResponse {
   /// Application Insights Configuration
-  final pulumi.Input<ApplicationInsightsConfigurationResponse>? applicationInsightsConfiguration;
+  final pulumi.Input<ApplicationInsightsConfigurationResponse?>? applicationInsightsConfiguration;
 
   /// Creates a new [LogConfigurationResponse].
   /// [applicationInsightsConfiguration] Application Insights Configuration

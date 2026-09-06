@@ -4,27 +4,27 @@
 /// Result data returned by getPredictionModelStatus.
 class GetPredictionModelStatusResult {
   /// The model status message.
-  final String message;
+  final String? message;
   /// Version of the model.
-  final String modelVersion;
+  final String? modelVersion;
   /// The prediction GUID ID.
-  final String predictionGuidId;
+  final String? predictionGuidId;
   /// The prediction name.
-  final String predictionName;
+  final String? predictionName;
   /// The signals used.
-  final int signalsUsed;
+  final int? signalsUsed;
   /// Prediction model life cycle.  When prediction is in PendingModelConfirmation status, it is allowed to update the status to PendingFeaturing or Active through API.
-  final String status;
+  final String? status;
   /// The hub name.
-  final String tenantId;
+  final String? tenantId;
   /// Count of the test set.
-  final int testSetCount;
+  final int? testSetCount;
   /// The training accuracy.
-  final int trainingAccuracy;
+  final int? trainingAccuracy;
   /// Count of the training set.
-  final int trainingSetCount;
+  final int? trainingSetCount;
   /// Count of the validation set.
-  final int validationSetCount;
+  final int? validationSetCount;
 
   /// Creates a new [GetPredictionModelStatusResult].
   /// [message] The model status message.
@@ -39,48 +39,48 @@ class GetPredictionModelStatusResult {
   /// [trainingSetCount] Count of the training set.
   /// [validationSetCount] Count of the validation set.
   const GetPredictionModelStatusResult({
-    required this.message,
-    required this.modelVersion,
-    required this.predictionGuidId,
-    required this.predictionName,
-    required this.signalsUsed,
-    required this.status,
-    required this.tenantId,
-    required this.testSetCount,
-    required this.trainingAccuracy,
-    required this.trainingSetCount,
-    required this.validationSetCount,
+    this.message,
+    this.modelVersion,
+    this.predictionGuidId,
+    this.predictionName,
+    this.signalsUsed,
+    this.status,
+    this.tenantId,
+    this.testSetCount,
+    this.trainingAccuracy,
+    this.trainingSetCount,
+    this.validationSetCount,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'message': message,
-      'modelVersion': modelVersion,
-      'predictionGuidId': predictionGuidId,
-      'predictionName': predictionName,
-      'signalsUsed': signalsUsed,
-      'status': status,
-      'tenantId': tenantId,
-      'testSetCount': testSetCount,
-      'trainingAccuracy': trainingAccuracy,
-      'trainingSetCount': trainingSetCount,
-      'validationSetCount': validationSetCount,
+      'message': ?message,
+      'modelVersion': ?modelVersion,
+      'predictionGuidId': ?predictionGuidId,
+      'predictionName': ?predictionName,
+      'signalsUsed': ?signalsUsed,
+      'status': ?status,
+      'tenantId': ?tenantId,
+      'testSetCount': ?testSetCount,
+      'trainingAccuracy': ?trainingAccuracy,
+      'trainingSetCount': ?trainingSetCount,
+      'validationSetCount': ?validationSetCount,
     };
   }
 
   factory GetPredictionModelStatusResult.fromMap(Map<String, dynamic> map) {
     return GetPredictionModelStatusResult(
-      message: map['message'] as String,
-      modelVersion: map['modelVersion'] as String,
-      predictionGuidId: map['predictionGuidId'] as String,
-      predictionName: map['predictionName'] as String,
-      signalsUsed: map['signalsUsed'] as int,
-      status: map['status'] as String,
-      tenantId: map['tenantId'] as String,
-      testSetCount: map['testSetCount'] as int,
-      trainingAccuracy: map['trainingAccuracy'] as int,
-      trainingSetCount: map['trainingSetCount'] as int,
-      validationSetCount: map['validationSetCount'] as int,
+      message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      modelVersion: (() { final guardedValue = map['modelVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      predictionGuidId: (() { final guardedValue = map['predictionGuidId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      predictionName: (() { final guardedValue = map['predictionName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      signalsUsed: (() { final guardedValue = map['signalsUsed']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      testSetCount: (() { final guardedValue = map['testSetCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      trainingAccuracy: (() { final guardedValue = map['trainingAccuracy']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      trainingSetCount: (() { final guardedValue = map['trainingSetCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      validationSetCount: (() { final guardedValue = map['validationSetCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

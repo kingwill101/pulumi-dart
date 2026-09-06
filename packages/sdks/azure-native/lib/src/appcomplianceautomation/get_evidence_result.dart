@@ -5,7 +5,7 @@ import 'system_data_response.dart';
 /// Result data returned by getEvidence.
 class GetEvidenceResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Control id.
   final String? controlId;
   /// Evidence type.
@@ -13,19 +13,19 @@ class GetEvidenceResult {
   /// Extra data considered as evidence.
   final String? extraData;
   /// The path of the file in storage.
-  final String filePath;
+  final String? filePath;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Azure lifecycle management
-  final String provisioningState;
+  final String? provisioningState;
   /// Responsibility id.
   final String? responsibilityId;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetEvidenceResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -40,48 +40,48 @@ class GetEvidenceResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetEvidenceResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.controlId,
     this.evidenceType,
     this.extraData,
-    required this.filePath,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
+    this.filePath,
+    this.id,
+    this.name,
+    this.provisioningState,
     this.responsibilityId,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'controlId': ?controlId,
       'evidenceType': ?evidenceType,
       'extraData': ?extraData,
-      'filePath': filePath,
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
+      'filePath': ?filePath,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'responsibilityId': ?responsibilityId,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetEvidenceResult.fromMap(Map<String, dynamic> map) {
     return GetEvidenceResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       controlId: (() { final guardedValue = map['controlId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       evidenceType: (() { final guardedValue = map['evidenceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       extraData: (() { final guardedValue = map['extraData']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      filePath: map['filePath'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      filePath: (() { final guardedValue = map['filePath']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       responsibilityId: (() { final guardedValue = map['responsibilityId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

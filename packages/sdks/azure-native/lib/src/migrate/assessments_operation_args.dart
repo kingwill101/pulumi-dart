@@ -9,59 +9,59 @@ import 'vm_uptime.dart';
 /// {@macro pulumi_migrate_assessments_operation_args_doc}
 class AssessmentsOperationArgs {
   /// Machine Assessment ARM name
-  final pulumi.Input<String>? assessmentName;
+  final pulumi.Input<String?>? assessmentName;
   /// Gets or sets the azure storage type. Premium, Standard etc.
-  final pulumi.Input<List<String>>? azureDiskTypes;
+  final pulumi.Input<List<dynamic>?>? azureDiskTypes;
   /// Gets or sets the user configurable setting to display the azure hybrid use
   /// benefit.
-  final pulumi.Input<String>? azureHybridUseBenefit;
+  final pulumi.Input<dynamic>? azureHybridUseBenefit;
   /// Azure Location or Azure region where to which the machines will be migrated.
-  final pulumi.Input<String>? azureLocation;
+  final pulumi.Input<String?>? azureLocation;
   /// Azure Offer Code.
-  final pulumi.Input<String>? azureOfferCode;
+  final pulumi.Input<dynamic>? azureOfferCode;
   /// Gets or sets Azure Pricing Tier - Free, Basic, etc.
-  final pulumi.Input<String>? azurePricingTier;
+  final pulumi.Input<dynamic>? azurePricingTier;
   /// Gets or sets the Azure Storage Redundancy. Example: Locally Redundant Storage.
-  final pulumi.Input<String>? azureStorageRedundancy;
+  final pulumi.Input<dynamic>? azureStorageRedundancy;
   /// Gets or sets the Azure VM families.
-  final pulumi.Input<List<String>>? azureVmFamilies;
+  final pulumi.Input<List<dynamic>?>? azureVmFamilies;
   /// Currency in which prices should be reported.
-  final pulumi.Input<String>? currency;
+  final pulumi.Input<dynamic>? currency;
   /// Custom discount percentage.
-  final pulumi.Input<double>? discountPercentage;
+  final pulumi.Input<double?>? discountPercentage;
   /// Gets or sets enterprise agreement subscription id.
-  final pulumi.Input<String>? eaSubscriptionId;
+  final pulumi.Input<String?>? eaSubscriptionId;
   /// Group ARM name
   final pulumi.Input<String> groupName;
   /// Gets or sets the user configurable setting to display the linux azure hybrid use
   /// benefit.
-  final pulumi.Input<String>? linuxAzureHybridUseBenefit;
+  final pulumi.Input<dynamic>? linuxAzureHybridUseBenefit;
   /// Percentile of the utilization data values to be considered while assessing
   /// machines.
-  final pulumi.Input<String>? percentile;
+  final pulumi.Input<dynamic>? percentile;
   /// Gets or sets the end time to consider performance data for assessment.
-  final pulumi.Input<String>? perfDataEndTime;
+  final pulumi.Input<String?>? perfDataEndTime;
   /// Gets or sets the start time to consider performance data for assessment.
-  final pulumi.Input<String>? perfDataStartTime;
+  final pulumi.Input<String?>? perfDataStartTime;
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
   /// The status of the last operation.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<dynamic>? provisioningState;
   /// Gets or sets the Azure Reserved Instance - 1-Year, 3-Year.
-  final pulumi.Input<String>? reservedInstance;
+  final pulumi.Input<dynamic>? reservedInstance;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Percentage of buffer that user wants on performance metrics when recommending
   /// Azure sizes.
-  final pulumi.Input<double>? scalingFactor;
+  final pulumi.Input<double?>? scalingFactor;
   /// Assessment sizing criterion.
-  final pulumi.Input<String>? sizingCriterion;
+  final pulumi.Input<dynamic>? sizingCriterion;
   /// Time Range for which the historic utilization data should be considered for
   /// assessment.
-  final pulumi.Input<String>? timeRange;
+  final pulumi.Input<dynamic>? timeRange;
   /// Gets or sets the duration for which the VMs are up in the on-premises
   /// environment.
-  final pulumi.Input<VmUptime>? vmUptime;
+  final pulumi.Input<VmUptime?>? vmUptime;
 
   /// Creates a new [AssessmentsOperationArgs].
   /// [assessmentName] Machine Assessment ARM name
@@ -147,28 +147,28 @@ class AssessmentsOperationArgs {
   factory AssessmentsOperationArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentsOperationArgs(
       assessmentName: (() { final guardedValue = map['assessmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      azureDiskTypes: (() { final guardedValue = map['azureDiskTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      azureHybridUseBenefit: (() { final guardedValue = map['azureHybridUseBenefit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      azureDiskTypes: (() { final guardedValue = map['azureDiskTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      azureHybridUseBenefit: (() { final guardedValue = map['azureHybridUseBenefit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       azureLocation: (() { final guardedValue = map['azureLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      azureOfferCode: (() { final guardedValue = map['azureOfferCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      azurePricingTier: (() { final guardedValue = map['azurePricingTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      azureStorageRedundancy: (() { final guardedValue = map['azureStorageRedundancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      azureVmFamilies: (() { final guardedValue = map['azureVmFamilies']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      currency: (() { final guardedValue = map['currency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      azureOfferCode: (() { final guardedValue = map['azureOfferCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      azurePricingTier: (() { final guardedValue = map['azurePricingTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      azureStorageRedundancy: (() { final guardedValue = map['azureStorageRedundancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      azureVmFamilies: (() { final guardedValue = map['azureVmFamilies']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      currency: (() { final guardedValue = map['currency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       eaSubscriptionId: (() { final guardedValue = map['eaSubscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       groupName: pulumi.Input.fromValue(map['groupName'] as String),
-      linuxAzureHybridUseBenefit: (() { final guardedValue = map['linuxAzureHybridUseBenefit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      percentile: (() { final guardedValue = map['percentile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      linuxAzureHybridUseBenefit: (() { final guardedValue = map['linuxAzureHybridUseBenefit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      percentile: (() { final guardedValue = map['percentile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       perfDataEndTime: (() { final guardedValue = map['perfDataEndTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       perfDataStartTime: (() { final guardedValue = map['perfDataStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      reservedInstance: (() { final guardedValue = map['reservedInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      reservedInstance: (() { final guardedValue = map['reservedInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      scalingFactor: (() { final guardedValue = map['scalingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      sizingCriterion: (() { final guardedValue = map['sizingCriterion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      timeRange: (() { final guardedValue = map['timeRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scalingFactor: (() { final guardedValue = map['scalingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      sizingCriterion: (() { final guardedValue = map['sizingCriterion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      timeRange: (() { final guardedValue = map['timeRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       vmUptime: (() { final guardedValue = map['vmUptime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VmUptime.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

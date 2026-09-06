@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Disk input details.
 class HyperVReplicaAzureDiskInputDetails {
   /// The DiskEncryptionSet ARM ID.
-  final pulumi.Input<String>? diskEncryptionSetId;
+  final pulumi.Input<String?>? diskEncryptionSetId;
   /// The DiskId.
-  final pulumi.Input<String>? diskId;
+  final pulumi.Input<String?>? diskId;
   /// The disk type.
-  final pulumi.Input<String>? diskType;
+  final pulumi.Input<dynamic>? diskType;
   /// The LogStorageAccountId.
-  final pulumi.Input<String>? logStorageAccountId;
+  final pulumi.Input<String?>? logStorageAccountId;
   /// The logical sector size (in bytes), 512 by default.
-  final pulumi.Input<int>? sectorSizeInBytes;
+  final pulumi.Input<int?>? sectorSizeInBytes;
 
   /// Creates a new [HyperVReplicaAzureDiskInputDetails].
   /// [diskEncryptionSetId] The DiskEncryptionSet ARM ID.
@@ -43,9 +43,9 @@ class HyperVReplicaAzureDiskInputDetails {
     return HyperVReplicaAzureDiskInputDetails(
       diskEncryptionSetId: (() { final guardedValue = map['diskEncryptionSetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskId: (() { final guardedValue = map['diskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      diskType: (() { final guardedValue = map['diskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      diskType: (() { final guardedValue = map['diskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       logStorageAccountId: (() { final guardedValue = map['logStorageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sectorSizeInBytes: (() { final guardedValue = map['sectorSizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sectorSizeInBytes: (() { final guardedValue = map['sectorSizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

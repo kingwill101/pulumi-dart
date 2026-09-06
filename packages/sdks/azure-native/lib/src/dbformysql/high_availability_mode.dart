@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// High availability mode for a server.
-enum HighAvailabilityMode {
+enum HighAvailabilityMode implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueZoneRedundant("ZoneRedundant"),
   valueSameZone("SameZone");
 
   const HighAvailabilityMode(this.wireValue);
+  @override
   final String wireValue;
 
   static HighAvailabilityMode fromValue(String value) {

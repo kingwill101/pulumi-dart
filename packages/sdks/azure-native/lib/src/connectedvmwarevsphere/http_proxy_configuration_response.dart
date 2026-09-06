@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// HTTP Proxy configuration for the VM.
 class HttpProxyConfigurationResponse {
   /// Gets or sets httpsProxy url.
-  final pulumi.Input<String>? httpsProxy;
+  final pulumi.Input<String?>? httpsProxy;
 
   /// Creates a new [HttpProxyConfigurationResponse].
   /// [httpsProxy] Gets or sets httpsProxy url.

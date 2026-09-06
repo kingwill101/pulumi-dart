@@ -9,7 +9,7 @@ class EventImpactedResourceResponse {
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final pulumi.Input<String> id;
   /// Additional information.
-  final pulumi.Input<List<KeyValueItemResponse>>? info;
+  final pulumi.Input<List<KeyValueItemResponse>?>? info;
   /// The name of the resource
   final pulumi.Input<String> name;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.

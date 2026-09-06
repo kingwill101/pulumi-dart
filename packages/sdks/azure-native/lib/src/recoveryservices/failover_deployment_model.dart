@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The failover deployment model.
-enum FailoverDeploymentModel {
+enum FailoverDeploymentModel implements pulumi.PulumiEnum<String> {
   valueNotApplicable("NotApplicable"),
   valueClassic("Classic"),
   valueResourceManager("ResourceManager");
 
   const FailoverDeploymentModel(this.wireValue);
+  @override
   final String wireValue;
 
   static FailoverDeploymentModel fromValue(String value) {

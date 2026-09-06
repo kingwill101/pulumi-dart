@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Synapse spark job reference type.
-enum SparkJobReferenceType {
+enum SparkJobReferenceType implements pulumi.PulumiEnum<String> {
   sparkJobDefinitionReference("SparkJobDefinitionReference");
 
   const SparkJobReferenceType(this.wireValue);
+  @override
   final String wireValue;
 
   static SparkJobReferenceType fromValue(String value) {

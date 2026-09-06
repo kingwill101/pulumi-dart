@@ -7,9 +7,9 @@ class HttpRouteMatchHeaderResponse {
   /// Name of header to match in request.
   final pulumi.Input<String> name;
   /// how to match header value
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Value of header to match in request.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [HttpRouteMatchHeaderResponse].
   /// [name] Name of header to match in request.

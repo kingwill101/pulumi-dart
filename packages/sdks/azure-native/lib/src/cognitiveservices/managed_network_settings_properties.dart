@@ -6,7 +6,7 @@ import 'managed_network_settings_ex.dart';
 /// The properties of the managed network settings of a cognitive services account.
 class ManagedNetworkSettingsProperties {
   /// Managed Network settings for a cognitive services account.
-  final pulumi.Input<ManagedNetworkSettingsEx>? managedNetwork;
+  final pulumi.Input<ManagedNetworkSettingsEx?>? managedNetwork;
 
   /// Creates a new [ManagedNetworkSettingsProperties].
   /// [managedNetwork] Managed Network settings for a cognitive services account.

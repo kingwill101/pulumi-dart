@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes operator to apply to the match condition.
-enum RulesEngineOperator {
+enum RulesEngineOperator implements pulumi.PulumiEnum<String> {
   any("Any"),
   iPMatch("IPMatch"),
   geoMatch("GeoMatch"),
@@ -13,6 +15,7 @@ enum RulesEngineOperator {
   endsWith("EndsWith");
 
   const RulesEngineOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static RulesEngineOperator fromValue(String value) {

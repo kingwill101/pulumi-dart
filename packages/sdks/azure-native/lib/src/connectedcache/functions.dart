@@ -46,6 +46,17 @@ Future<GetCacheNodesOperationResult> getCacheNodesOperation(
   return GetCacheNodesOperationResult.fromMap(result);
 }
 
+pulumi.Output<GetCacheNodesOperationResult> getCacheNodesOperationOutput(
+  GetCacheNodesOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedcache:getCacheNodesOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCacheNodesOperationResult.fromMap);
+}
+
 /// Retrieves the properties of a Enterprise customer
 ///
 /// Uses Azure REST API version 2023-05-01-preview.
@@ -62,6 +73,17 @@ Future<GetEnterpriseCustomerOperationResult> getEnterpriseCustomerOperation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEnterpriseCustomerOperationResult.fromMap(result);
+}
+
+pulumi.Output<GetEnterpriseCustomerOperationResult> getEnterpriseCustomerOperationOutput(
+  GetEnterpriseCustomerOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedcache:getEnterpriseCustomerOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnterpriseCustomerOperationResult.fromMap);
 }
 
 /// This api gets ispCacheNode resource information
@@ -84,6 +106,17 @@ Future<GetEnterpriseMccCacheNodesOperationResult> getEnterpriseMccCacheNodesOper
   return GetEnterpriseMccCacheNodesOperationResult.fromMap(result);
 }
 
+pulumi.Output<GetEnterpriseMccCacheNodesOperationResult> getEnterpriseMccCacheNodesOperationOutput(
+  GetEnterpriseMccCacheNodesOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedcache:getEnterpriseMccCacheNodesOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnterpriseMccCacheNodesOperationResult.fromMap);
+}
+
 /// This api gets ispCacheNode resource auto update histrory information
 ///
 /// Uses Azure REST API version 2024-11-30-preview.
@@ -102,6 +135,17 @@ Future<GetEnterpriseMccCacheNodesOperationCacheNodeAutoUpdateHistoryResult> getE
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEnterpriseMccCacheNodesOperationCacheNodeAutoUpdateHistoryResult.fromMap(result);
+}
+
+pulumi.Output<GetEnterpriseMccCacheNodesOperationCacheNodeAutoUpdateHistoryResult> getEnterpriseMccCacheNodesOperationCacheNodeAutoUpdateHistoryOutput(
+  GetEnterpriseMccCacheNodesOperationCacheNodeAutoUpdateHistoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedcache:getEnterpriseMccCacheNodesOperationCacheNodeAutoUpdateHistory',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnterpriseMccCacheNodesOperationCacheNodeAutoUpdateHistoryResult.fromMap);
 }
 
 /// This api gets secrets of the ispCacheNode resource install details
@@ -124,6 +168,17 @@ Future<GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResult> getEnte
   return GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResult.fromMap(result);
 }
 
+pulumi.Output<GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResult> getEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsOutput(
+  GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedcache:getEnterpriseMccCacheNodesOperationCacheNodeInstallDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnterpriseMccCacheNodesOperationCacheNodeInstallDetailsResult.fromMap);
+}
+
 /// This api gets ispCacheNode resource issues details histrory information
 ///
 /// Uses Azure REST API version 2024-11-30-preview.
@@ -142,6 +197,17 @@ Future<GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult>
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult.fromMap(result);
+}
+
+pulumi.Output<GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult> getEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryOutput(
+  GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedcache:getEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistory',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult.fromMap);
 }
 
 /// This api gets ispCacheNode resource tls certificate histrory information
@@ -164,6 +230,17 @@ Future<GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryResult> 
   return GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryResult.fromMap(result);
 }
 
+pulumi.Output<GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryResult> getEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryOutput(
+  GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedcache:getEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistory',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryResult.fromMap);
+}
+
 /// Gets the enterprise mcc customer resource information using this get call
 ///
 /// Uses Azure REST API version 2023-05-01-preview.
@@ -182,6 +259,17 @@ Future<GetEnterpriseMccCustomerResult> getEnterpriseMccCustomer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEnterpriseMccCustomerResult.fromMap(result);
+}
+
+pulumi.Output<GetEnterpriseMccCustomerResult> getEnterpriseMccCustomerOutput(
+  GetEnterpriseMccCustomerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedcache:getEnterpriseMccCustomer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnterpriseMccCustomerResult.fromMap);
 }
 
 /// This api gets ispCacheNode resource information
@@ -204,6 +292,17 @@ Future<GetIspCacheNodesOperationResult> getIspCacheNodesOperation(
   return GetIspCacheNodesOperationResult.fromMap(result);
 }
 
+pulumi.Output<GetIspCacheNodesOperationResult> getIspCacheNodesOperationOutput(
+  GetIspCacheNodesOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedcache:getIspCacheNodesOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIspCacheNodesOperationResult.fromMap);
+}
+
 /// This api gets ispCacheNode resource information
 ///
 /// Uses Azure REST API version 2023-05-01-preview.
@@ -222,6 +321,17 @@ Future<GetIspCacheNodesOperationBgpCidrsResult> getIspCacheNodesOperationBgpCidr
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIspCacheNodesOperationBgpCidrsResult.fromMap(result);
+}
+
+pulumi.Output<GetIspCacheNodesOperationBgpCidrsResult> getIspCacheNodesOperationBgpCidrsOutput(
+  GetIspCacheNodesOperationBgpCidrsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedcache:getIspCacheNodesOperationBgpCidrs',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIspCacheNodesOperationBgpCidrsResult.fromMap);
 }
 
 /// This api gets ispCacheNode resource auto update histrory information
@@ -244,6 +354,17 @@ Future<GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryResult> getIspCacheNod
   return GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryResult.fromMap(result);
 }
 
+pulumi.Output<GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryResult> getIspCacheNodesOperationCacheNodeAutoUpdateHistoryOutput(
+  GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedcache:getIspCacheNodesOperationCacheNodeAutoUpdateHistory',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIspCacheNodesOperationCacheNodeAutoUpdateHistoryResult.fromMap);
+}
+
 /// This api gets secrets of the ispCacheNode resource install details
 ///
 /// Uses Azure REST API version 2023-05-01-preview.
@@ -262,6 +383,17 @@ Future<GetIspCacheNodesOperationCacheNodeInstallDetailsResult> getIspCacheNodesO
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIspCacheNodesOperationCacheNodeInstallDetailsResult.fromMap(result);
+}
+
+pulumi.Output<GetIspCacheNodesOperationCacheNodeInstallDetailsResult> getIspCacheNodesOperationCacheNodeInstallDetailsOutput(
+  GetIspCacheNodesOperationCacheNodeInstallDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedcache:getIspCacheNodesOperationCacheNodeInstallDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIspCacheNodesOperationCacheNodeInstallDetailsResult.fromMap);
 }
 
 /// This api gets ispCacheNode resource issues details histrory information
@@ -284,6 +416,17 @@ Future<GetIspCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult> getIspCac
   return GetIspCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult.fromMap(result);
 }
 
+pulumi.Output<GetIspCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult> getIspCacheNodesOperationCacheNodeMccIssueDetailsHistoryOutput(
+  GetIspCacheNodesOperationCacheNodeMccIssueDetailsHistoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedcache:getIspCacheNodesOperationCacheNodeMccIssueDetailsHistory',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIspCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult.fromMap);
+}
+
 /// Gets the ispCustomer resource information using this get call
 ///
 /// Uses Azure REST API version 2023-05-01-preview.
@@ -302,4 +445,15 @@ Future<GetIspCustomerResult> getIspCustomer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIspCustomerResult.fromMap(result);
+}
+
+pulumi.Output<GetIspCustomerResult> getIspCustomerOutput(
+  GetIspCustomerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedcache:getIspCustomer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIspCustomerResult.fromMap);
 }

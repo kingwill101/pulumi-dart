@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of action.
-enum AzureFirewallRCActionType {
+enum AzureFirewallRCActionType implements pulumi.PulumiEnum<String> {
   valueAllow("Allow"),
   valueDeny("Deny");
 
   const AzureFirewallRCActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureFirewallRCActionType fromValue(String value) {

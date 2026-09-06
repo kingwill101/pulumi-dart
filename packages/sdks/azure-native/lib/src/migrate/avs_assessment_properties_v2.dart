@@ -7,11 +7,11 @@ import 'scope.dart';
 /// Assessment properties class.
 class AvsAssessmentPropertiesV2 {
   /// Gets or sets the machine assessment ARM ID for VM fallback.
-  final pulumi.Input<String>? fallbackMachineAssessmentArmId;
+  final pulumi.Input<String?>? fallbackMachineAssessmentArmId;
   /// Gets or sets the scope of assessment.
-  final pulumi.Input<Scope>? scope;
+  final pulumi.Input<Scope?>? scope;
   /// Gets or sets the settings for the assessment.
-  final pulumi.Input<AvsAssessmentSettings>? settings;
+  final pulumi.Input<AvsAssessmentSettings?>? settings;
 
   /// Creates a new [AvsAssessmentPropertiesV2].
   /// [fallbackMachineAssessmentArmId] Gets or sets the machine assessment ARM ID for VM fallback.

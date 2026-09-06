@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of HostedZoneConfig
 class HostedZoneConfigResponse {
   /// Any comments that you want to include about the hosted zone.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
 
   /// Creates a new [HostedZoneConfigResponse].
   /// [comment] Any comments that you want to include about the hosted zone.

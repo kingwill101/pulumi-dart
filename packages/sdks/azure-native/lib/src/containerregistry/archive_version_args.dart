@@ -10,7 +10,7 @@ class ArchiveVersionArgs {
   /// The name of the archive resource.
   final pulumi.Input<String> archiveName;
   /// The name of the archive version resource.
-  final pulumi.Input<String>? archiveVersionName;
+  final pulumi.Input<String?>? archiveVersionName;
   /// The type of the package resource.
   final pulumi.Input<String> packageType;
   /// The name of the container registry.

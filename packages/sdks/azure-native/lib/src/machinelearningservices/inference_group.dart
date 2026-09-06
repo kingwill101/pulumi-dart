@@ -8,17 +8,17 @@ import 'string_string_key_value_pair.dart';
 /// Inference group configuration
 class InferenceGroup {
   /// Description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Gets or sets environment configuration for the inference group. Used if PoolType=ScaleUnit.
-  final pulumi.Input<GroupEnvironmentConfiguration>? environmentConfiguration;
+  final pulumi.Input<GroupEnvironmentConfiguration?>? environmentConfiguration;
   /// Gets or sets model configuration for the inference group. Used if PoolType=ScaleUnit.
-  final pulumi.Input<GroupModelConfiguration>? modelConfiguration;
+  final pulumi.Input<GroupModelConfiguration?>? modelConfiguration;
   /// Gets or sets compute instance type.
-  final pulumi.Input<String>? nodeSkuType;
+  final pulumi.Input<String?>? nodeSkuType;
   /// Property dictionary. Properties can be added, but not removed or altered.
-  final pulumi.Input<List<StringStringKeyValuePair>>? properties;
+  final pulumi.Input<List<StringStringKeyValuePair>?>? properties;
   /// Gets or sets Scale Unit size.
-  final pulumi.Input<int>? scaleUnitSize;
+  final pulumi.Input<int?>? scaleUnitSize;
 
   /// Creates a new [InferenceGroup].
   /// [description] Description of the resource.
@@ -54,7 +54,7 @@ class InferenceGroup {
       modelConfiguration: (() { final guardedValue = map['modelConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GroupModelConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       nodeSkuType: (() { final guardedValue = map['nodeSkuType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<StringStringKeyValuePair>(guardedValue, (value) => StringStringKeyValuePair.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      scaleUnitSize: (() { final guardedValue = map['scaleUnitSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scaleUnitSize: (() { final guardedValue = map['scaleUnitSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

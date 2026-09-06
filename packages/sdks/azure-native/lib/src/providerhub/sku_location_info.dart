@@ -5,15 +5,15 @@ import 'sku_zone_detail.dart';
 
 class SkuLocationInfo {
   /// The extended locations.
-  final pulumi.Input<List<String>>? extendedLocations;
+  final pulumi.Input<List<String>?>? extendedLocations;
   /// The location.
   final pulumi.Input<String> location;
   /// The type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
   /// The zone details.
-  final pulumi.Input<List<SkuZoneDetail>>? zoneDetails;
+  final pulumi.Input<List<SkuZoneDetail>?>? zoneDetails;
   /// The zones.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [SkuLocationInfo].
   /// [extendedLocations] The extended locations.
@@ -43,7 +43,7 @@ class SkuLocationInfo {
     return SkuLocationInfo(
       extendedLocations: (() { final guardedValue = map['extendedLocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       zoneDetails: (() { final guardedValue = map['zoneDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SkuZoneDetail>(guardedValue, (value) => SkuZoneDetail.fromMap((value as Map).cast<String, dynamic>()))); })(),
       zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

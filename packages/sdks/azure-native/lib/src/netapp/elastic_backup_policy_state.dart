@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The property to identify whether Backup Policy is enabled or not
-enum ElasticBackupPolicyState {
+enum ElasticBackupPolicyState implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const ElasticBackupPolicyState(this.wireValue);
+  @override
   final String wireValue;
 
   static ElasticBackupPolicyState fromValue(String value) {

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates if base policy should be enforced for the policy document.
-enum PolicyRestrictionRequireBase {
+enum PolicyRestrictionRequireBase implements pulumi.PulumiEnum<String> {
   valueTrue("true"),
   valueFalse("false");
 
   const PolicyRestrictionRequireBase(this.wireValue);
+  @override
   final String wireValue;
 
   static PolicyRestrictionRequireBase fromValue(String value) {

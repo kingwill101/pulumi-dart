@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Product compatibility
 class CompatibilityResponse {
   /// Full error message if any compatibility issues are found
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Tells if product is compatible with current device
-  final pulumi.Input<bool>? isCompatible;
+  final pulumi.Input<bool?>? isCompatible;
   /// List of all issues found
-  final pulumi.Input<List<String>>? issues;
+  final pulumi.Input<List<String>?>? issues;
   /// Short error message if any compatibility issues are found
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [CompatibilityResponse].
   /// [description] Full error message if any compatibility issues are found

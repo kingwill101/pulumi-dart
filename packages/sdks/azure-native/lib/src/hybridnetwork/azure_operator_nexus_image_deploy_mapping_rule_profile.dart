@@ -6,9 +6,9 @@ import 'image_mapping_rule_profile.dart';
 /// Azure Operator Distributed Services image deploy mapping rule profile.
 class AzureOperatorNexusImageDeployMappingRuleProfile {
   /// The application enablement.
-  final pulumi.Input<String>? applicationEnablement;
+  final pulumi.Input<dynamic>? applicationEnablement;
   /// The vhd mapping rule profile.
-  final pulumi.Input<ImageMappingRuleProfile>? imageMappingRuleProfile;
+  final pulumi.Input<ImageMappingRuleProfile?>? imageMappingRuleProfile;
 
   /// Creates a new [AzureOperatorNexusImageDeployMappingRuleProfile].
   /// [applicationEnablement] The application enablement.
@@ -27,7 +27,7 @@ class AzureOperatorNexusImageDeployMappingRuleProfile {
 
   factory AzureOperatorNexusImageDeployMappingRuleProfile.fromMap(Map<String, dynamic> map) {
     return AzureOperatorNexusImageDeployMappingRuleProfile(
-      applicationEnablement: (() { final guardedValue = map['applicationEnablement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      applicationEnablement: (() { final guardedValue = map['applicationEnablement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       imageMappingRuleProfile: (() { final guardedValue = map['imageMappingRuleProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ImageMappingRuleProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

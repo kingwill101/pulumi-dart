@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enum to determine the job tier.
-enum JobTier {
+enum JobTier implements pulumi.PulumiEnum<String> {
   null_("Null"),
   spot("Spot"),
   basic("Basic"),
@@ -7,6 +9,7 @@ enum JobTier {
   premium("Premium");
 
   const JobTier(this.wireValue);
+  @override
   final String wireValue;
 
   static JobTier fromValue(String value) {

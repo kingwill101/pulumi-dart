@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The AS2 agreement mdn settings.
 class AS2MdnSettings {
   /// The disposition notification to header value.
-  final pulumi.Input<String>? dispositionNotificationTo;
+  final pulumi.Input<String?>? dispositionNotificationTo;
   /// The MDN text.
-  final pulumi.Input<String>? mdnText;
+  final pulumi.Input<String?>? mdnText;
   /// The signing or hashing algorithm.
-  final pulumi.Input<String> micHashingAlgorithm;
+  final pulumi.Input<dynamic> micHashingAlgorithm;
   /// The value indicating whether to send or request a MDN.
   final pulumi.Input<bool> needMDN;
   /// The receipt delivery URL.
-  final pulumi.Input<String>? receiptDeliveryUrl;
+  final pulumi.Input<String?>? receiptDeliveryUrl;
   /// The value indicating whether to send inbound MDN to message box.
   final pulumi.Input<bool> sendInboundMDNToMessageBox;
   /// The value indicating whether to send the asynchronous MDN.
@@ -63,7 +63,7 @@ class AS2MdnSettings {
     return AS2MdnSettings(
       dispositionNotificationTo: (() { final guardedValue = map['dispositionNotificationTo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mdnText: (() { final guardedValue = map['mdnText']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      micHashingAlgorithm: pulumi.Input.fromValue(map['micHashingAlgorithm'] as String),
+      micHashingAlgorithm: pulumi.Input.fromValue(map['micHashingAlgorithm']),
       needMDN: pulumi.Input.fromValue(map['needMDN'] as bool),
       receiptDeliveryUrl: (() { final guardedValue = map['receiptDeliveryUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sendInboundMDNToMessageBox: pulumi.Input.fromValue(map['sendInboundMDNToMessageBox'] as bool),

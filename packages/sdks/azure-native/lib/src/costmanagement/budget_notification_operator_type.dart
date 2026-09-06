@@ -1,3 +1,5 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The comparison operator.
 ///
 /// Supported for CategoryType(s): Cost, ReservationUtilization.
@@ -8,13 +10,14 @@
 ///
 /// Supported operators for **CategoryType: ReservationUtilization**
 /// - LessThan
-enum BudgetNotificationOperatorType {
+enum BudgetNotificationOperatorType implements pulumi.PulumiEnum<String> {
   equalTo("EqualTo"),
   greaterThan("GreaterThan"),
   greaterThanOrEqualTo("GreaterThanOrEqualTo"),
   lessThan("LessThan");
 
   const BudgetNotificationOperatorType(this.wireValue);
+  @override
   final String wireValue;
 
   static BudgetNotificationOperatorType fromValue(String value) {

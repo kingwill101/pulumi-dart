@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The role that is assigned to the user on the database scope.
-enum UserRole {
+enum UserRole implements pulumi.PulumiEnum<String> {
   databaseOwner("dbOwner");
 
   const UserRole(this.wireValue);
+  @override
   final String wireValue;
 
   static UserRole fromValue(String value) {

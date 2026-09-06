@@ -52,7 +52,26 @@ class ReportByDepartment extends pulumi.CustomResource {
     format = registerOutput<String?>('format');
     this.name = registerOutput<String>('name');
     schedule = registerOutput<ReportScheduleResponse?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>>('tags');
+    tags = registerOutput<Map<String, String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ReportByDepartment] resource.
+  ReportByDepartment.reference(String urn)
+    : super(
+        'azure-native:costmanagement:ReportByDepartment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    definition = registerOutput<ReportDefinitionResponse>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deliveryInfo = registerOutput<ReportDeliveryInfoResponse>('deliveryInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportDeliveryInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    format = registerOutput<String?>('format');
+    this.name = registerOutput<String>('name');
+    schedule = registerOutput<ReportScheduleResponse?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

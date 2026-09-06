@@ -9,7 +9,7 @@ import 'marketplace_subscription_properties.dart';
 /// {@macro pulumi_machinelearningservices_marketplace_subscription_args_doc}
 class MarketplaceSubscriptionArgs {
   /// Container name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// [Required] Additional attributes of the entity.
   final pulumi.Input<MarketplaceSubscriptionProperties> properties;
   /// The name of the resource group. The name is case insensitive.

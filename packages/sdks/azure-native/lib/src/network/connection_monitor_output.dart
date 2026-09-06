@@ -6,9 +6,9 @@ import 'connection_monitor_workspace_settings.dart';
 /// Describes a connection monitor output destination.
 class ConnectionMonitorOutput {
   /// Connection monitor output destination type. Currently, only "Workspace" is supported.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
   /// Describes the settings for producing output into a log analytics workspace.
-  final pulumi.Input<ConnectionMonitorWorkspaceSettings>? workspaceSettings;
+  final pulumi.Input<ConnectionMonitorWorkspaceSettings?>? workspaceSettings;
 
   /// Creates a new [ConnectionMonitorOutput].
   /// [type] Connection monitor output destination type. Currently, only "Workspace" is supported.
@@ -27,7 +27,7 @@ class ConnectionMonitorOutput {
 
   factory ConnectionMonitorOutput.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorOutput(
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       workspaceSettings: (() { final guardedValue = map['workspaceSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionMonitorWorkspaceSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

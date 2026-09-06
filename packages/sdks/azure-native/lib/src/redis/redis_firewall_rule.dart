@@ -192,4 +192,20 @@ class RedisFirewallRule extends pulumi.CustomResource {
     startIP = registerOutput<String>('startIP');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [RedisFirewallRule] resource.
+  RedisFirewallRule.reference(String urn)
+    : super(
+        'azure-native:redis:RedisFirewallRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    endIP = registerOutput<String>('endIP');
+    this.name = registerOutput<String>('name');
+    startIP = registerOutput<String>('startIP');
+    type = registerOutput<String>('type');
+  }
 }

@@ -7,9 +7,9 @@ import 'defender_for_databases_gcp_offering_defender_for_databases_arc_auto_prov
 /// The Defender for Databases GCP offering configurations
 class DefenderForDatabasesGcpOfferingResponse {
   /// The ARC autoprovisioning configuration
-  final pulumi.Input<DefenderForDatabasesGcpOfferingArcAutoProvisioningResponse>? arcAutoProvisioning;
+  final pulumi.Input<DefenderForDatabasesGcpOfferingArcAutoProvisioningResponse?>? arcAutoProvisioning;
   /// The native cloud connection configuration
-  final pulumi.Input<DefenderForDatabasesGcpOfferingDefenderForDatabasesArcAutoProvisioningResponse>? defenderForDatabasesArcAutoProvisioning;
+  final pulumi.Input<DefenderForDatabasesGcpOfferingDefenderForDatabasesArcAutoProvisioningResponse?>? defenderForDatabasesArcAutoProvisioning;
   /// The offering description.
   final pulumi.Input<String> description;
   /// The type of the security offering.

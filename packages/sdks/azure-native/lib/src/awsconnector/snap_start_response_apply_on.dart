@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// When set to ``PublishedVersions``, Lambda creates a snapshot of the execution environment when you publish a function version.
-enum SnapStartResponseApplyOn {
+enum SnapStartResponseApplyOn implements pulumi.PulumiEnum<String> {
   none("None"),
   publishedVersions("PublishedVersions");
 
   const SnapStartResponseApplyOn(this.wireValue);
+  @override
   final String wireValue;
 
   static SnapStartResponseApplyOn fromValue(String value) {

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of paging
-enum RestApiPollerRequestPagingKind {
+enum RestApiPollerRequestPagingKind implements pulumi.PulumiEnum<String> {
   valueLinkHeader("LinkHeader"),
   valueNextPageToken("NextPageToken"),
   valueNextPageUrl("NextPageUrl"),
@@ -9,6 +11,7 @@ enum RestApiPollerRequestPagingKind {
   valueCountBasedPaging("CountBasedPaging");
 
   const RestApiPollerRequestPagingKind(this.wireValue);
+  @override
   final String wireValue;
 
   static RestApiPollerRequestPagingKind fromValue(String value) {

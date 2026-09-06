@@ -9,13 +9,13 @@ import 'schema_version_properties.dart';
 /// {@macro pulumi_edge_schema_version_args_doc}
 class SchemaVersionArgs {
   /// The resource-specific properties for this resource.
-  final pulumi.Input<SchemaVersionProperties>? properties;
+  final pulumi.Input<SchemaVersionProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Schema
   final pulumi.Input<String> schemaName;
   /// The name of the SchemaVersion
-  final pulumi.Input<String>? schemaVersionName;
+  final pulumi.Input<String?>? schemaVersionName;
 
   /// Creates a new [SchemaVersionArgs].
   /// [properties] The resource-specific properties for this resource.

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Reboots a VM and waits for it to come back online (Windows). Corresponds to Packer windows-restart provisioner
 class ImageTemplateRestartCustomizerResponse {
   /// Friendly Name to provide context on what this customization step does
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Command to check if restart succeeded [Default: '']
-  final pulumi.Input<String>? restartCheckCommand;
+  final pulumi.Input<String?>? restartCheckCommand;
   /// Command to execute the restart [Default: 'shutdown /r /f /t 0 /c "packer restart"']
-  final pulumi.Input<String>? restartCommand;
+  final pulumi.Input<String?>? restartCommand;
   /// Restart timeout specified as a string of magnitude and unit, e.g. '5m' (5 minutes) or '2h' (2 hours) [Default: '5m']
-  final pulumi.Input<String>? restartTimeout;
+  final pulumi.Input<String?>? restartTimeout;
   /// The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
   /// Expected value is 'WindowsRestart'.
   final pulumi.Input<String> type;

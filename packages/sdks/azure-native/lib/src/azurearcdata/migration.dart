@@ -6,7 +6,7 @@ import 'migration_assessment.dart';
 /// Migration related configuration.
 class Migration {
   /// Migration assessments related configuration.
-  final pulumi.Input<MigrationAssessment>? assessment;
+  final pulumi.Input<MigrationAssessment?>? assessment;
 
   /// Creates a new [Migration].
   /// [assessment] Migration assessments related configuration.

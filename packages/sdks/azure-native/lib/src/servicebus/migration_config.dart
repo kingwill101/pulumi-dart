@@ -4,9 +4,9 @@ import 'system_data_response.dart';
 
 /// Single item in List or Get Migration Config operation
 ///
-/// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
+/// Uses Azure REST API version 2026-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
 ///
-/// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01, 2025-05-01-preview, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -26,7 +26,7 @@ import 'system_data_response.dart';
 ///         NamespaceName = "sdk-Namespace-41",
 ///         PostMigrationName = "sdk-PostMigration-5919",
 ///         ResourceGroupName = "ResourceGroup",
-///         TargetNamespace = "/subscriptions/SubscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-4028",
+///         TargetNamespace = "/subscriptions/5f750a97-50d9-4e36-8081-c9ee4c0210d4/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-4028",
 ///     });
 ///
 /// });
@@ -49,7 +49,7 @@ import 'system_data_response.dart';
 /// 			NamespaceName:     pulumi.String("sdk-Namespace-41"),
 /// 			PostMigrationName: pulumi.String("sdk-PostMigration-5919"),
 /// 			ResourceGroupName: pulumi.String("ResourceGroup"),
-/// 			TargetNamespace:   pulumi.String("/subscriptions/SubscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-4028"),
+/// 			TargetNamespace:   pulumi.String("/subscriptions/5f750a97-50d9-4e36-8081-c9ee4c0210d4/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-4028"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -74,7 +74,7 @@ import 'system_data_response.dart';
 ///   namespace_name      = "sdk-Namespace-41"
 ///   post_migration_name = "sdk-PostMigration-5919"
 ///   resource_group_name = "ResourceGroup"
-///   target_namespace    = "/subscriptions/SubscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-4028"
+///   target_namespace    = "/subscriptions/5f750a97-50d9-4e36-8081-c9ee4c0210d4/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-4028"
 /// }
 ///
 /// ```
@@ -105,7 +105,7 @@ import 'system_data_response.dart';
 ///             .namespaceName("sdk-Namespace-41")
 ///             .postMigrationName("sdk-PostMigration-5919")
 ///             .resourceGroupName("ResourceGroup")
-///             .targetNamespace("/subscriptions/SubscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-4028")
+///             .targetNamespace("/subscriptions/5f750a97-50d9-4e36-8081-c9ee4c0210d4/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-4028")
 ///             .build());
 ///
 ///     }
@@ -122,7 +122,7 @@ import 'system_data_response.dart';
 ///     namespaceName: "sdk-Namespace-41",
 ///     postMigrationName: "sdk-PostMigration-5919",
 ///     resourceGroupName: "ResourceGroup",
-///     targetNamespace: "/subscriptions/SubscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-4028",
+///     targetNamespace: "/subscriptions/5f750a97-50d9-4e36-8081-c9ee4c0210d4/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-4028",
 /// });
 ///
 /// ```
@@ -136,7 +136,7 @@ import 'system_data_response.dart';
 ///     namespace_name="sdk-Namespace-41",
 ///     post_migration_name="sdk-PostMigration-5919",
 ///     resource_group_name="ResourceGroup",
-///     target_namespace="/subscriptions/SubscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-4028")
+///     target_namespace="/subscriptions/5f750a97-50d9-4e36-8081-c9ee4c0210d4/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-4028")
 ///
 /// ```
 ///
@@ -149,7 +149,7 @@ import 'system_data_response.dart';
 ///       namespaceName: sdk-Namespace-41
 ///       postMigrationName: sdk-PostMigration-5919
 ///       resourceGroupName: ResourceGroup
-///       targetNamespace: /subscriptions/SubscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-4028
+///       targetNamespace: /subscriptions/5f750a97-50d9-4e36-8081-c9ee4c0210d4/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-4028
 ///
 /// ```
 ///
@@ -176,13 +176,13 @@ class MigrationConfig extends pulumi.CustomResource {
   late final pulumi.Output<double> pendingReplicationOperationsCount;
   /// Name to access Standard Namespace after migration
   late final pulumi.Output<String> postMigrationName;
-  /// Provisioning state of Migration Configuration
+  /// Provisioning state of Migration ConfigurationProvisioning state of Migration Configuration
   late final pulumi.Output<String> provisioningState;
-  /// The system meta data relating to this resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Existing premium Namespace ARM Id name which has no entities, will be used for migration
   late final pulumi.Output<String> targetNamespace;
-  /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
   /// Creates a new [MigrationConfig].
@@ -199,6 +199,27 @@ class MigrationConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
+    migrationState = registerOutput<String>('migrationState');
+    this.name = registerOutput<String>('name');
+    pendingReplicationOperationsCount = registerOutput<double>('pendingReplicationOperationsCount');
+    postMigrationName = registerOutput<String>('postMigrationName');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetNamespace = registerOutput<String>('targetNamespace');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [MigrationConfig] resource.
+  MigrationConfig.reference(String urn)
+    : super(
+        'azure-native:servicebus:MigrationConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     migrationState = registerOutput<String>('migrationState');

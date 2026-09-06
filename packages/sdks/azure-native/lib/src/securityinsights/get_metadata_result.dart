@@ -12,7 +12,7 @@ class GetMetadataResult {
   /// The creator of the content item.
   final MetadataAuthorResponse? author;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Categories for the solution content item
   final MetadataCategoriesResponse? categories;
   /// Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name
@@ -30,15 +30,15 @@ class GetMetadataResult {
   /// the icon identifier. this id can later be fetched from the solution template
   final String? icon;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The kind of content the metadata is for.
-  final String kind;
+  final String? kind;
   /// last publish date for the solution content item
   final String? lastPublishDate;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Full parent resource ID of the content item the metadata is for.  This is the full resource ID including the scope (subscription and resource group)
-  final String parentId;
+  final String? parentId;
   /// preview image file names. These will be taken from the solution artifacts
   final List<String>? previewImages;
   /// preview image file names. These will be taken from the solution artifacts. used for dark theme support
@@ -50,13 +50,13 @@ class GetMetadataResult {
   /// Support information for the metadata - type, name, contact information
   final MetadataSupportResponse? support;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// the tactics the resource covers
   final List<String>? threatAnalysisTactics;
   /// the techniques the resource covers, these have to be aligned with the tactics being used
   final List<String>? threatAnalysisTechniques;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM template best practices.  Can also be any string, but then we cannot guarantee any version checks
   final String? version;
 
@@ -88,7 +88,7 @@ class GetMetadataResult {
   /// [version] Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM template best practices.  Can also be any string, but then we cannot guarantee any version checks
   const GetMetadataResult({
     this.author,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.categories,
     this.contentId,
     this.contentSchemaVersion,
@@ -97,27 +97,27 @@ class GetMetadataResult {
     this.etag,
     this.firstPublishDate,
     this.icon,
-    required this.id,
-    required this.kind,
+    this.id,
+    this.kind,
     this.lastPublishDate,
-    required this.name,
-    required this.parentId,
+    this.name,
+    this.parentId,
     this.previewImages,
     this.previewImagesDark,
     this.providers,
     this.source,
     this.support,
-    required this.systemData,
+    this.systemData,
     this.threatAnalysisTactics,
     this.threatAnalysisTechniques,
-    required this.type,
+    this.type,
     this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'author': ?author?.toMap(),
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'categories': ?categories?.toMap(),
       'contentId': ?contentId,
       'contentSchemaVersion': ?contentSchemaVersion,
@@ -126,20 +126,20 @@ class GetMetadataResult {
       'etag': ?etag,
       'firstPublishDate': ?firstPublishDate,
       'icon': ?icon,
-      'id': id,
-      'kind': kind,
+      'id': ?id,
+      'kind': ?kind,
       'lastPublishDate': ?lastPublishDate,
-      'name': name,
-      'parentId': parentId,
+      'name': ?name,
+      'parentId': ?parentId,
       'previewImages': ?previewImages,
       'previewImagesDark': ?previewImagesDark,
       'providers': ?providers,
       'source': ?source?.toMap(),
       'support': ?support?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'threatAnalysisTactics': ?threatAnalysisTactics,
       'threatAnalysisTechniques': ?threatAnalysisTechniques,
-      'type': type,
+      'type': ?type,
       'version': ?version,
     };
   }
@@ -147,7 +147,7 @@ class GetMetadataResult {
   factory GetMetadataResult.fromMap(Map<String, dynamic> map) {
     return GetMetadataResult(
       author: (() { final guardedValue = map['author']; if (guardedValue == null) return null; return MetadataAuthorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       categories: (() { final guardedValue = map['categories']; if (guardedValue == null) return null; return MetadataCategoriesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       contentId: (() { final guardedValue = map['contentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       contentSchemaVersion: (() { final guardedValue = map['contentSchemaVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -156,20 +156,20 @@ class GetMetadataResult {
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       firstPublishDate: (() { final guardedValue = map['firstPublishDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
       icon: (() { final guardedValue = map['icon']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      kind: map['kind'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lastPublishDate: (() { final guardedValue = map['lastPublishDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      parentId: map['parentId'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parentId: (() { final guardedValue = map['parentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       previewImages: (() { final guardedValue = map['previewImages']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       previewImagesDark: (() { final guardedValue = map['previewImagesDark']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       providers: (() { final guardedValue = map['providers']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return MetadataSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       support: (() { final guardedValue = map['support']; if (guardedValue == null) return null; return MetadataSupportResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       threatAnalysisTactics: (() { final guardedValue = map['threatAnalysisTactics']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       threatAnalysisTechniques: (() { final guardedValue = map['threatAnalysisTechniques']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

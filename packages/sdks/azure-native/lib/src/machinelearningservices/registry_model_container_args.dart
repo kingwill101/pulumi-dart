@@ -9,7 +9,7 @@ import 'model_container_properties.dart';
 /// {@macro pulumi_machinelearningservices_registry_model_container_args_doc}
 class RegistryModelContainerArgs {
   /// Container name. This is case-sensitive.
-  final pulumi.Input<String>? modelName;
+  final pulumi.Input<String?>? modelName;
   /// [Required] Additional attributes of the entity.
   final pulumi.Input<ModelContainerProperties> properties;
   /// Name of Azure Machine Learning registry. This is case-insensitive

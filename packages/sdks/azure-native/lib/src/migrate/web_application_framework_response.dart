@@ -7,9 +7,9 @@ class WebApplicationFrameworkResponse {
   /// Gets the ID.
   final pulumi.Input<String> id;
   /// Gets or sets Name of the framework.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Gets or sets Version of the framework.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [WebApplicationFrameworkResponse].
   /// [id] Gets the ID.

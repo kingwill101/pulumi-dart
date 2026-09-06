@@ -7,17 +7,17 @@ class GetRecoveryPointAccessTokenResult {
   /// Optional ETag.
   final String? eTag;
   /// Resource Id represents the complete path to the resource.
-  final String id;
+  final String? id;
   /// Resource location.
   final String? location;
   /// Resource name associated with the resource.
-  final String name;
+  final String? name;
   /// CrrAccessTokenResource properties
-  final WorkloadCrrAccessTokenResponse properties;
+  final WorkloadCrrAccessTokenResponse? properties;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
-  final String type;
+  final String? type;
 
   /// Creates a new [GetRecoveryPointAccessTokenResult].
   /// [eTag] Optional ETag.
@@ -29,35 +29,35 @@ class GetRecoveryPointAccessTokenResult {
   /// [type] Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
   const GetRecoveryPointAccessTokenResult({
     this.eTag,
-    required this.id,
+    this.id,
     this.location,
-    required this.name,
-    required this.properties,
+    this.name,
+    this.properties,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'eTag': ?eTag,
-      'id': id,
+      'id': ?id,
       'location': ?location,
-      'name': name,
-      'properties': properties.toMap(),
+      'name': ?name,
+      'properties': ?properties?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetRecoveryPointAccessTokenResult.fromMap(Map<String, dynamic> map) {
     return GetRecoveryPointAccessTokenResult(
       eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      properties: WorkloadCrrAccessTokenResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return WorkloadCrrAccessTokenResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

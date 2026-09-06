@@ -6,9 +6,9 @@ import 'disk_exclusion_properties_response.dart';
 /// Extended Properties for Azure IaasVM Backup.
 class ExtendedPropertiesResponse {
   /// Extended Properties for Disk Exclusion.
-  final pulumi.Input<DiskExclusionPropertiesResponse>? diskExclusionProperties;
+  final pulumi.Input<DiskExclusionPropertiesResponse?>? diskExclusionProperties;
   /// Linux VM name
-  final pulumi.Input<String>? linuxVmApplicationName;
+  final pulumi.Input<String?>? linuxVmApplicationName;
 
   /// Creates a new [ExtendedPropertiesResponse].
   /// [diskExclusionProperties] Extended Properties for Disk Exclusion.

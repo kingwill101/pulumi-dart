@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Data used when creating a target resource from a source resource.
 class CreationData {
   /// This is the ARM ID of the source object to be used to create the target object.
-  final pulumi.Input<String>? sourceResourceId;
+  final pulumi.Input<String?>? sourceResourceId;
 
   /// Creates a new [CreationData].
   /// [sourceResourceId] This is the ARM ID of the source object to be used to create the target object.

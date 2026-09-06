@@ -18,39 +18,39 @@ import 'xiaomi_credential.dart';
 /// {@macro pulumi_notificationhubs_notification_hub_args_doc}
 class NotificationHubArgs {
   /// Description of a NotificationHub AdmCredential.
-  final pulumi.Input<AdmCredential>? admCredential;
+  final pulumi.Input<AdmCredential?>? admCredential;
   /// Description of a NotificationHub ApnsCredential.
-  final pulumi.Input<ApnsCredential>? apnsCredential;
+  final pulumi.Input<ApnsCredential?>? apnsCredential;
   /// Description of a NotificationHub BaiduCredential.
-  final pulumi.Input<BaiduCredential>? baiduCredential;
+  final pulumi.Input<BaiduCredential?>? baiduCredential;
   /// Description of a NotificationHub BrowserCredential.
-  final pulumi.Input<BrowserCredential>? browserCredential;
+  final pulumi.Input<BrowserCredential?>? browserCredential;
   /// Description of a NotificationHub FcmV1Credential.
-  final pulumi.Input<FcmV1Credential>? fcmV1Credential;
+  final pulumi.Input<FcmV1Credential?>? fcmV1Credential;
   /// Description of a NotificationHub GcmCredential.
-  final pulumi.Input<GcmCredential>? gcmCredential;
+  final pulumi.Input<GcmCredential?>? gcmCredential;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Description of a NotificationHub MpnsCredential.
-  final pulumi.Input<MpnsCredential>? mpnsCredential;
+  final pulumi.Input<MpnsCredential?>? mpnsCredential;
   /// Gets or sets the NotificationHub name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Namespace name
   final pulumi.Input<String> namespaceName;
   /// Notification Hub name
-  final pulumi.Input<String>? notificationHubName;
+  final pulumi.Input<String?>? notificationHubName;
   /// Gets or sets the RegistrationTtl of the created NotificationHub
-  final pulumi.Input<String>? registrationTtl;
+  final pulumi.Input<String?>? registrationTtl;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The Sku description for a namespace
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Description of a NotificationHub WnsCredential.
-  final pulumi.Input<WnsCredential>? wnsCredential;
+  final pulumi.Input<WnsCredential?>? wnsCredential;
   /// Description of a NotificationHub XiaomiCredential.
-  final pulumi.Input<XiaomiCredential>? xiaomiCredential;
+  final pulumi.Input<XiaomiCredential?>? xiaomiCredential;
 
   /// Creates a new [NotificationHubArgs].
   /// [admCredential] Description of a NotificationHub AdmCredential.

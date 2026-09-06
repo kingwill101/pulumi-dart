@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Binding resource properties payload
 class BindingResourceProperties {
   /// Binding parameters of the Binding resource
-  final pulumi.Input<Map<String, String>>? bindingParameters;
+  final pulumi.Input<Map<String, String>?>? bindingParameters;
   /// The key of the bound resource
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The Azure resource id of the bound resource
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [BindingResourceProperties].
   /// [bindingParameters] Binding parameters of the Binding resource

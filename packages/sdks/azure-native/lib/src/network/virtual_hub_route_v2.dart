@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// VirtualHubRouteTableV2 route.
 class VirtualHubRouteV2 {
   /// The type of destinations.
-  final pulumi.Input<String>? destinationType;
+  final pulumi.Input<String?>? destinationType;
   /// List of all destinations.
-  final pulumi.Input<List<String>>? destinations;
+  final pulumi.Input<List<String>?>? destinations;
   /// The type of next hops.
-  final pulumi.Input<String>? nextHopType;
+  final pulumi.Input<String?>? nextHopType;
   /// NextHops ip address.
-  final pulumi.Input<List<String>>? nextHops;
+  final pulumi.Input<List<String>?>? nextHops;
 
   /// Creates a new [VirtualHubRouteV2].
   /// [destinationType] The type of destinations.

@@ -26,8 +26,8 @@ class EndpointRangeDescription {
 
   factory EndpointRangeDescription.fromMap(Map<String, dynamic> map) {
     return EndpointRangeDescription(
-      endPort: pulumi.Input.fromValue(map['endPort'] as int),
-      startPort: pulumi.Input.fromValue(map['startPort'] as int),
+      endPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['endPort'])),
+      startPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['startPort'])),
     );
   }
 }

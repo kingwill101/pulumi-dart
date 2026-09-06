@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlVmSettings {
   /// Gets or sets the Azure VM families (calling instance series to keep it
   /// consistent with other targets).
-  final pulumi.Input<List<String>>? instanceSeries;
+  final pulumi.Input<List<dynamic>?>? instanceSeries;
 
   /// Creates a new [SqlVmSettings].
   /// [instanceSeries] Gets or sets the Azure VM families (calling instance series to keep it
@@ -22,7 +22,7 @@ class SqlVmSettings {
 
   factory SqlVmSettings.fromMap(Map<String, dynamic> map) {
     return SqlVmSettings(
-      instanceSeries: (() { final guardedValue = map['instanceSeries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      instanceSeries: (() { final guardedValue = map['instanceSeries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
     );
   }
 }

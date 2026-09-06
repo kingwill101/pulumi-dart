@@ -38,8 +38,8 @@ class ThresholdCustomAlertRule {
   factory ThresholdCustomAlertRule.fromMap(Map<String, dynamic> map) {
     return ThresholdCustomAlertRule(
       isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
-      maxThreshold: pulumi.Input.fromValue(map['maxThreshold'] as int),
-      minThreshold: pulumi.Input.fromValue(map['minThreshold'] as int),
+      maxThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxThreshold'])),
+      minThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minThreshold'])),
       ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
     );
   }

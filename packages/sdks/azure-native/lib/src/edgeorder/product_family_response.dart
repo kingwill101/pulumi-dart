@@ -31,7 +31,7 @@ class ProductFamilyResponse {
   /// List of product lines supported in the product family.
   final pulumi.Input<List<ProductLineResponse>> productLines;
   /// Contains details related to resource provider.
-  final pulumi.Input<List<ResourceProviderDetailsResponse>>? resourceProviderDetails;
+  final pulumi.Input<List<ResourceProviderDetailsResponse>?>? resourceProviderDetails;
 
   /// Creates a new [ProductFamilyResponse].
   /// [availabilityInformation] Availability information of the product system.

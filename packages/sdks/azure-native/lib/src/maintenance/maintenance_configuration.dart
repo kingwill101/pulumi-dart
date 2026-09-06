@@ -257,7 +257,7 @@ class MaintenanceConfiguration extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     duration = registerOutput<String?>('duration');
     expirationDateTime = registerOutput<String?>('expirationDateTime');
-    extensionProperties = registerOutput<Map<String, String>?>('extensionProperties');
+    extensionProperties = registerOutput<Map<String, String>?>('extensionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     installPatches = registerOutput<InputPatchConfigurationResponse?>('installPatches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InputPatchConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     maintenanceScope = registerOutput<String?>('maintenanceScope');
@@ -266,7 +266,34 @@ class MaintenanceConfiguration extends pulumi.CustomResource {
     recurEvery = registerOutput<String?>('recurEvery');
     startDateTime = registerOutput<String?>('startDateTime');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeZone = registerOutput<String?>('timeZone');
+    type = registerOutput<String>('type');
+    visibility = registerOutput<String?>('visibility');
+  }
+
+  /// Creates a typed reference to an existing [MaintenanceConfiguration] resource.
+  MaintenanceConfiguration.reference(String urn)
+    : super(
+        'azure-native:maintenance:MaintenanceConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    duration = registerOutput<String?>('duration');
+    expirationDateTime = registerOutput<String?>('expirationDateTime');
+    extensionProperties = registerOutput<Map<String, String>?>('extensionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    installPatches = registerOutput<InputPatchConfigurationResponse?>('installPatches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InputPatchConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    maintenanceScope = registerOutput<String?>('maintenanceScope');
+    this.name = registerOutput<String>('name');
+    namespace = registerOutput<String?>('namespace');
+    recurEvery = registerOutput<String?>('recurEvery');
+    startDateTime = registerOutput<String?>('startDateTime');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeZone = registerOutput<String?>('timeZone');
     type = registerOutput<String>('type');
     visibility = registerOutput<String?>('visibility');

@@ -12,7 +12,7 @@ class MigrationValidationResultResponse {
   /// Current status of validation at the migration level. Status from the database validation result status will be aggregated here.
   final pulumi.Input<String> status;
   /// Validation summary results for each database
-  final pulumi.Input<Map<String, MigrationValidationDatabaseSummaryResultResponse>>? summaryResults;
+  final pulumi.Input<Map<String, MigrationValidationDatabaseSummaryResultResponse>?>? summaryResults;
 
   /// Creates a new [MigrationValidationResultResponse].
   /// [id] Migration validation result identifier

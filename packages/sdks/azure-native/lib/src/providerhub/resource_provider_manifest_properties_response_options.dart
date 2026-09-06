@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Response options.
 class ResourceProviderManifestPropertiesResponseOptions {
-  final pulumi.Input<String>? serviceClientOptionsType;
+  final pulumi.Input<dynamic>? serviceClientOptionsType;
 
   /// Creates a new [ResourceProviderManifestPropertiesResponseOptions].
   /// [serviceClientOptionsType] Optional.
@@ -20,7 +20,7 @@ class ResourceProviderManifestPropertiesResponseOptions {
 
   factory ResourceProviderManifestPropertiesResponseOptions.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManifestPropertiesResponseOptions(
-      serviceClientOptionsType: (() { final guardedValue = map['serviceClientOptionsType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceClientOptionsType: (() { final guardedValue = map['serviceClientOptionsType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

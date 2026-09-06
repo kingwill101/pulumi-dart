@@ -7,7 +7,7 @@ class GetPowerShell72ModuleResult {
   /// Gets the activity count of the module.
   final int? activityCount;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Gets the creation time.
   final String? creationTime;
   /// Gets or sets the description.
@@ -17,7 +17,7 @@ class GetPowerShell72ModuleResult {
   /// Gets the etag of the resource.
   final String? etag;
   /// Fully qualified resource Id for the resource
-  final String id;
+  final String? id;
   /// Gets type of module, if its composite or not.
   final bool? isComposite;
   /// Gets the isGlobal flag of the module.
@@ -27,7 +27,7 @@ class GetPowerShell72ModuleResult {
   /// The Azure Region where the resource lives
   final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Gets the provisioning state of the module.
   final String? provisioningState;
   /// Gets the size in bytes of the module.
@@ -35,7 +35,7 @@ class GetPowerShell72ModuleResult {
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource.
-  final String type;
+  final String? type;
   /// Gets the version of the module.
   final String? version;
 
@@ -59,64 +59,64 @@ class GetPowerShell72ModuleResult {
   /// [version] Gets the version of the module.
   const GetPowerShell72ModuleResult({
     this.activityCount,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.creationTime,
     this.description,
     this.error,
     this.etag,
-    required this.id,
+    this.id,
     this.isComposite,
     this.isGlobal,
     this.lastModifiedTime,
     this.location,
-    required this.name,
+    this.name,
     this.provisioningState,
     this.sizeInBytes,
     this.tags,
-    required this.type,
+    this.type,
     this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'activityCount': ?activityCount,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'creationTime': ?creationTime,
       'description': ?description,
       'error': ?error?.toMap(),
       'etag': ?etag,
-      'id': id,
+      'id': ?id,
       'isComposite': ?isComposite,
       'isGlobal': ?isGlobal,
       'lastModifiedTime': ?lastModifiedTime,
       'location': ?location,
-      'name': name,
+      'name': ?name,
       'provisioningState': ?provisioningState,
       'sizeInBytes': ?sizeInBytes,
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'version': ?version,
     };
   }
 
   factory GetPowerShell72ModuleResult.fromMap(Map<String, dynamic> map) {
     return GetPowerShell72ModuleResult(
-      activityCount: (() { final guardedValue = map['activityCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      activityCount: (() { final guardedValue = map['activityCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return ModuleErrorInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isComposite: (() { final guardedValue = map['isComposite']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       isGlobal: (() { final guardedValue = map['isGlobal']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      sizeInBytes: (() { final guardedValue = map['sizeInBytes']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      sizeInBytes: (() { final guardedValue = map['sizeInBytes']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

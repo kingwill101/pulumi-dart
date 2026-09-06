@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The backup profile for the SQL server.
 class BackupPolicy {
   /// The differential backup interval in hours.
-  final pulumi.Input<int>? differentialBackupHours;
+  final pulumi.Input<int?>? differentialBackupHours;
   /// The value indicating days between full backups.
-  final pulumi.Input<int>? fullBackupDays;
+  final pulumi.Input<int?>? fullBackupDays;
   /// The retention period for all the databases in this managed instance.
-  final pulumi.Input<int>? retentionPeriodDays;
+  final pulumi.Input<int?>? retentionPeriodDays;
   /// The value indicating minutes between transaction log backups.
-  final pulumi.Input<int>? transactionLogBackupMinutes;
+  final pulumi.Input<int?>? transactionLogBackupMinutes;
 
   /// Creates a new [BackupPolicy].
   /// [differentialBackupHours] The differential backup interval in hours.
@@ -36,10 +36,10 @@ class BackupPolicy {
 
   factory BackupPolicy.fromMap(Map<String, dynamic> map) {
     return BackupPolicy(
-      differentialBackupHours: (() { final guardedValue = map['differentialBackupHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      fullBackupDays: (() { final guardedValue = map['fullBackupDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      retentionPeriodDays: (() { final guardedValue = map['retentionPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      transactionLogBackupMinutes: (() { final guardedValue = map['transactionLogBackupMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      differentialBackupHours: (() { final guardedValue = map['differentialBackupHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      fullBackupDays: (() { final guardedValue = map['fullBackupDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      retentionPeriodDays: (() { final guardedValue = map['retentionPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      transactionLogBackupMinutes: (() { final guardedValue = map['transactionLogBackupMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -7,13 +7,13 @@ import 'action_ip_extended_community_properties.dart';
 /// Route policy action properties.
 class StatementActionProperties {
   /// Action type. Example: Permit | Deny | Continue.
-  final pulumi.Input<String> actionType;
+  final pulumi.Input<dynamic> actionType;
   /// IP Community Properties.
-  final pulumi.Input<ActionIpCommunityProperties>? ipCommunityProperties;
+  final pulumi.Input<ActionIpCommunityProperties?>? ipCommunityProperties;
   /// IP Extended Community Properties.
-  final pulumi.Input<ActionIpExtendedCommunityProperties>? ipExtendedCommunityProperties;
+  final pulumi.Input<ActionIpExtendedCommunityProperties?>? ipExtendedCommunityProperties;
   /// Local Preference of the route policy.
-  final pulumi.Input<double>? localPreference;
+  final pulumi.Input<double?>? localPreference;
 
   /// Creates a new [StatementActionProperties].
   /// [actionType] Action type. Example: Permit | Deny | Continue.
@@ -38,10 +38,10 @@ class StatementActionProperties {
 
   factory StatementActionProperties.fromMap(Map<String, dynamic> map) {
     return StatementActionProperties(
-      actionType: pulumi.Input.fromValue(map['actionType'] as String),
+      actionType: pulumi.Input.fromValue(map['actionType']),
       ipCommunityProperties: (() { final guardedValue = map['ipCommunityProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActionIpCommunityProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ipExtendedCommunityProperties: (() { final guardedValue = map['ipExtendedCommunityProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActionIpExtendedCommunityProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      localPreference: (() { final guardedValue = map['localPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      localPreference: (() { final guardedValue = map['localPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

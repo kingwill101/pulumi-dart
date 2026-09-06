@@ -6,11 +6,11 @@ import 'tag_response.dart';
 /// Definition of awsEc2NetworkAcl
 class AwsEc2NetworkAclPropertiesResponse {
   /// Property id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The tags for the network ACL.
-  final pulumi.Input<List<TagResponse>>? tags;
+  final pulumi.Input<List<TagResponse>?>? tags;
   /// The ID of the VPC for the network ACL.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [AwsEc2NetworkAclPropertiesResponse].
   /// [id] Property id

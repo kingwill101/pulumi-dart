@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Additional information of the container.
 class MabContainerExtendedInfo {
   /// Type of backup items associated with this container.
-  final pulumi.Input<String>? backupItemType;
+  final pulumi.Input<dynamic>? backupItemType;
   /// List of backup items associated with this container.
-  final pulumi.Input<List<String>>? backupItems;
+  final pulumi.Input<List<String>?>? backupItems;
   /// Latest backup status of this container.
-  final pulumi.Input<String>? lastBackupStatus;
+  final pulumi.Input<String?>? lastBackupStatus;
   /// Time stamp when this container was refreshed.
-  final pulumi.Input<String>? lastRefreshedAt;
+  final pulumi.Input<String?>? lastRefreshedAt;
   /// Backup policy associated with this container.
-  final pulumi.Input<String>? policyName;
+  final pulumi.Input<String?>? policyName;
 
   /// Creates a new [MabContainerExtendedInfo].
   /// [backupItemType] Type of backup items associated with this container.
@@ -41,7 +41,7 @@ class MabContainerExtendedInfo {
 
   factory MabContainerExtendedInfo.fromMap(Map<String, dynamic> map) {
     return MabContainerExtendedInfo(
-      backupItemType: (() { final guardedValue = map['backupItemType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      backupItemType: (() { final guardedValue = map['backupItemType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       backupItems: (() { final guardedValue = map['backupItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       lastBackupStatus: (() { final guardedValue = map['lastBackupStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lastRefreshedAt: (() { final guardedValue = map['lastRefreshedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

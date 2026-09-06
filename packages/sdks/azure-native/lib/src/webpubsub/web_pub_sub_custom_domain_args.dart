@@ -13,7 +13,7 @@ class WebPubSubCustomDomainArgs {
   /// The custom domain name.
   final pulumi.Input<String> domainName;
   /// Custom domain name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the resource.

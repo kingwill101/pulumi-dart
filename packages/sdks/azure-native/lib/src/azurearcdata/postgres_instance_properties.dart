@@ -6,15 +6,15 @@ import 'basic_login_information.dart';
 /// Postgres Instance properties.
 class PostgresInstanceProperties {
   /// The instance admin
-  final pulumi.Input<String>? admin;
+  final pulumi.Input<String?>? admin;
   /// Username and password for basic authentication.
-  final pulumi.Input<BasicLoginInformation>? basicLoginInformation;
+  final pulumi.Input<BasicLoginInformation?>? basicLoginInformation;
   /// The data controller id
-  final pulumi.Input<String>? dataControllerId;
+  final pulumi.Input<String?>? dataControllerId;
   /// The raw kubernetes information
   final pulumi.Input<dynamic>? k8sRaw;
   /// Last uploaded date from Kubernetes cluster. Defaults to current date time
-  final pulumi.Input<String>? lastUploadedDate;
+  final pulumi.Input<String?>? lastUploadedDate;
 
   /// Creates a new [PostgresInstanceProperties].
   /// [admin] The instance admin

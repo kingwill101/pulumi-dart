@@ -17,18 +17,18 @@ import 'virtual_machine_scale_set_storage_profile.dart';
 /// Describes the base virtual machine profile for fleet
 class BaseVirtualMachineProfile {
   /// Specifies the gallery applications that should be made available to the VM/VMSS
-  final pulumi.Input<ApplicationProfile>? applicationProfile;
+  final pulumi.Input<ApplicationProfile?>? applicationProfile;
   /// Specifies the capacity reservation related details of a scale set. Minimum
   /// api-version: 2021-04-01.
-  final pulumi.Input<CapacityReservationProfile>? capacityReservation;
+  final pulumi.Input<CapacityReservationProfile?>? capacityReservation;
   /// Specifies the boot diagnostic settings state.
-  final pulumi.Input<DiagnosticsProfile>? diagnosticsProfile;
+  final pulumi.Input<DiagnosticsProfile?>? diagnosticsProfile;
   /// Specifies a collection of settings for extensions installed on virtual machines
   /// in the scale set.
-  final pulumi.Input<VirtualMachineScaleSetExtensionProfile>? extensionProfile;
+  final pulumi.Input<VirtualMachineScaleSetExtensionProfile?>? extensionProfile;
   /// Specifies the hardware profile related details of a scale set. Minimum
   /// api-version: 2021-11-01.
-  final pulumi.Input<VirtualMachineScaleSetHardwareProfile>? hardwareProfile;
+  final pulumi.Input<VirtualMachineScaleSetHardwareProfile?>? hardwareProfile;
   /// Specifies that the image or disk that is being used was licensed on-premises.
   /// &lt;br&gt;&lt;br&gt; Possible values for Windows Server operating system are: &lt;br&gt;&lt;br&gt;
   /// Windows_Client &lt;br&gt;&lt;br&gt; Windows_Server &lt;br&gt;&lt;br&gt; Possible values for Linux
@@ -39,31 +39,31 @@ class BaseVirtualMachineProfile {
   /// &lt;br&gt;&lt;br&gt; [Azure Hybrid Use Benefit for Linux
   /// Server](https://learn.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
   /// &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<String?>? licenseType;
   /// Specifies properties of the network interfaces of the virtual machines in the
   /// scale set.
-  final pulumi.Input<VirtualMachineScaleSetNetworkProfile>? networkProfile;
+  final pulumi.Input<VirtualMachineScaleSetNetworkProfile?>? networkProfile;
   /// Specifies the operating system settings for the virtual machines in the scale
   /// set.
-  final pulumi.Input<VirtualMachineScaleSetOSProfile>? osProfile;
+  final pulumi.Input<VirtualMachineScaleSetOSProfile?>? osProfile;
   /// Specifies Scheduled Event related configurations.
-  final pulumi.Input<ScheduledEventsProfile>? scheduledEventsProfile;
+  final pulumi.Input<ScheduledEventsProfile?>? scheduledEventsProfile;
   /// Specifies the security posture to be used for all virtual machines in the scale
   /// set. Minimum api-version: 2023-03-01
-  final pulumi.Input<SecurityPostureReference>? securityPostureReference;
+  final pulumi.Input<SecurityPostureReference?>? securityPostureReference;
   /// Specifies the Security related profile settings for the virtual machines in the
   /// scale set.
-  final pulumi.Input<SecurityProfile>? securityProfile;
+  final pulumi.Input<SecurityProfile?>? securityProfile;
   /// Specifies the service artifact reference id used to set same image version for
   /// all virtual machines in the scale set when using 'latest' image version.
   /// Minimum api-version: 2022-11-01
-  final pulumi.Input<ServiceArtifactReference>? serviceArtifactReference;
+  final pulumi.Input<ServiceArtifactReference?>? serviceArtifactReference;
   /// Specifies the storage settings for the virtual machine disks.
-  final pulumi.Input<VirtualMachineScaleSetStorageProfile>? storageProfile;
+  final pulumi.Input<VirtualMachineScaleSetStorageProfile?>? storageProfile;
   /// UserData for the virtual machines in the scale set, which must be base-64
   /// encoded. Customer should not pass any secrets in here. Minimum api-version:
   /// 2021-03-01.
-  final pulumi.Input<String>? userData;
+  final pulumi.Input<String?>? userData;
 
   /// Creates a new [BaseVirtualMachineProfile].
   /// [applicationProfile] Specifies the gallery applications that should be made available to the VM/VMSS

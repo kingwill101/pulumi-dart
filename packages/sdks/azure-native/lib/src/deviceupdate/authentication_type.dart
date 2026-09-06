@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Authentication Type
-enum AuthenticationType {
+enum AuthenticationType implements pulumi.PulumiEnum<String> {
   valueKeyBased("KeyBased");
 
   const AuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthenticationType fromValue(String value) {

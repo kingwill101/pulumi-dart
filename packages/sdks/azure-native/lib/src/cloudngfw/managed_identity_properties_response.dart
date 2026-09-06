@@ -12,7 +12,7 @@ class ManagedIdentityPropertiesResponse {
   /// The type of managed identity assigned to this resource.
   final pulumi.Input<String> type;
   /// The identities assigned to this resource by the user.
-  final pulumi.Input<Map<String, UserAssignedIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [ManagedIdentityPropertiesResponse].
   /// [principalId] The active directory identifier of this principal.

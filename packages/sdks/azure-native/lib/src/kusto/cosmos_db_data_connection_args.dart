@@ -16,22 +16,22 @@ class CosmosDbDataConnectionArgs {
   /// The name of an existing database in the Cosmos DB account.
   final pulumi.Input<String> cosmosDbDatabase;
   /// The name of the data connection.
-  final pulumi.Input<String>? dataConnectionName;
+  final pulumi.Input<String?>? dataConnectionName;
   /// The name of the database in the Kusto cluster.
   final pulumi.Input<String> databaseName;
   /// Kind of the endpoint for the data connection
   /// Expected value is 'CosmosDb'.
   final pulumi.Input<String> kind;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource ID of a managed system or user-assigned identity. The identity is used to authenticate with Cosmos DB.
   final pulumi.Input<String> managedIdentityResourceId;
   /// The name of an existing mapping rule to use when ingesting the retrieved data.
-  final pulumi.Input<String>? mappingRuleName;
+  final pulumi.Input<String?>? mappingRuleName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Optional. If defined, the data connection retrieves Cosmos DB documents created or updated after the specified retrieval start date.
-  final pulumi.Input<String>? retrievalStartDate;
+  final pulumi.Input<String?>? retrievalStartDate;
   /// The case-sensitive name of the existing target table in your cluster. Retrieved data is ingested into this table.
   final pulumi.Input<String> tableName;
 

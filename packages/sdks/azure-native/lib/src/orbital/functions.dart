@@ -38,6 +38,17 @@ Future<GetContactResult> getContact(
   return GetContactResult.fromMap(result);
 }
 
+pulumi.Output<GetContactResult> getContactOutput(
+  GetContactArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:orbital:getContact',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContactResult.fromMap);
+}
+
 /// Gets the specified contact Profile in a specified resource group.
 ///
 /// Uses Azure REST API version 2022-11-01.
@@ -54,6 +65,17 @@ Future<GetContactProfileResult> getContactProfile(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetContactProfileResult.fromMap(result);
+}
+
+pulumi.Output<GetContactProfileResult> getContactProfileOutput(
+  GetContactProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:orbital:getContactProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContactProfileResult.fromMap);
 }
 
 /// Gets the specified edge site in a specified resource group.
@@ -76,6 +98,17 @@ Future<GetEdgeSiteResult> getEdgeSite(
   return GetEdgeSiteResult.fromMap(result);
 }
 
+pulumi.Output<GetEdgeSiteResult> getEdgeSiteOutput(
+  GetEdgeSiteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:orbital:getEdgeSite',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEdgeSiteResult.fromMap);
+}
+
 /// Get a GeoCatalog
 ///
 /// Uses Azure REST API version 2025-02-11-preview.
@@ -94,6 +127,17 @@ Future<GetGeoCatalogResult> getGeoCatalog(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGeoCatalogResult.fromMap(result);
+}
+
+pulumi.Output<GetGeoCatalogResult> getGeoCatalogOutput(
+  GetGeoCatalogArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:orbital:getGeoCatalog',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGeoCatalogResult.fromMap);
 }
 
 /// Gets the specified ground station in a specified resource group.
@@ -116,6 +160,17 @@ Future<GetGroundStationResult> getGroundStation(
   return GetGroundStationResult.fromMap(result);
 }
 
+pulumi.Output<GetGroundStationResult> getGroundStationOutput(
+  GetGroundStationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:orbital:getGroundStation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroundStationResult.fromMap);
+}
+
 /// Gets the specified L2 connection in a specified resource group.
 ///
 /// Uses Azure REST API version 2024-03-01-preview.
@@ -136,6 +191,17 @@ Future<GetL2ConnectionResult> getL2Connection(
   return GetL2ConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetL2ConnectionResult> getL2ConnectionOutput(
+  GetL2ConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:orbital:getL2Connection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetL2ConnectionResult.fromMap);
+}
+
 /// Gets the specified spacecraft in a specified resource group.
 ///
 /// Uses Azure REST API version 2022-11-01.
@@ -152,6 +218,17 @@ Future<GetSpacecraftResult> getSpacecraft(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSpacecraftResult.fromMap(result);
+}
+
+pulumi.Output<GetSpacecraftResult> getSpacecraftOutput(
+  GetSpacecraftArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:orbital:getSpacecraft',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSpacecraftResult.fromMap);
 }
 
 /// Returns a list of L2 Connections attached to an edge site.
@@ -174,6 +251,17 @@ Future<ListEdgeSiteL2ConnectionsResult> listEdgeSiteL2Connections(
   return ListEdgeSiteL2ConnectionsResult.fromMap(result);
 }
 
+pulumi.Output<ListEdgeSiteL2ConnectionsResult> listEdgeSiteL2ConnectionsOutput(
+  ListEdgeSiteL2ConnectionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:orbital:listEdgeSiteL2Connections',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListEdgeSiteL2ConnectionsResult.fromMap);
+}
+
 /// Returns a list of L2 Connections attached to an ground station.
 ///
 /// Uses Azure REST API version 2024-03-01-preview.
@@ -194,6 +282,17 @@ Future<ListGroundStationL2ConnectionsResult> listGroundStationL2Connections(
   return ListGroundStationL2ConnectionsResult.fromMap(result);
 }
 
+pulumi.Output<ListGroundStationL2ConnectionsResult> listGroundStationL2ConnectionsOutput(
+  ListGroundStationL2ConnectionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:orbital:listGroundStationL2Connections',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListGroundStationL2ConnectionsResult.fromMap);
+}
+
 /// Returns list of available contacts. A contact is available if the spacecraft is visible from the ground station for more than the minimum viable contact duration provided in the contact profile.
 ///
 /// Uses Azure REST API version 2022-11-01.
@@ -210,4 +309,15 @@ Future<ListSpacecraftAvailableContactsResult> listSpacecraftAvailableContacts(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListSpacecraftAvailableContactsResult.fromMap(result);
+}
+
+pulumi.Output<ListSpacecraftAvailableContactsResult> listSpacecraftAvailableContactsOutput(
+  ListSpacecraftAvailableContactsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:orbital:listSpacecraftAvailableContacts',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListSpacecraftAvailableContactsResult.fromMap);
 }

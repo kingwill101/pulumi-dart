@@ -9,15 +9,15 @@ import 'sql_server_instance_properties.dart';
 /// {@macro pulumi_azurearcdata_sql_server_instance_args_doc}
 class SqlServerInstanceArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// null
-  final pulumi.Input<SqlServerInstanceProperties>? properties;
+  final pulumi.Input<SqlServerInstanceProperties?>? properties;
   /// The name of the Azure resource group
   final pulumi.Input<String> resourceGroupName;
   /// Name of SQL Server Instance
-  final pulumi.Input<String>? sqlServerInstanceName;
+  final pulumi.Input<String?>? sqlServerInstanceName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SqlServerInstanceArgs].
   /// [location] The geo-location where the resource lives

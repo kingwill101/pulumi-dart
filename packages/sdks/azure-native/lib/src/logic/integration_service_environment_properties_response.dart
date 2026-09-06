@@ -8,17 +8,17 @@ import 'network_configuration_response.dart';
 /// The integration service environment properties.
 class IntegrationServiceEnvironmentPropertiesResponse {
   /// The encryption configuration.
-  final pulumi.Input<IntegrationServiceEnvironmenEncryptionConfigurationResponse>? encryptionConfiguration;
+  final pulumi.Input<IntegrationServiceEnvironmenEncryptionConfigurationResponse?>? encryptionConfiguration;
   /// The endpoints configuration.
-  final pulumi.Input<FlowEndpointsConfigurationResponse>? endpointsConfiguration;
+  final pulumi.Input<FlowEndpointsConfigurationResponse?>? endpointsConfiguration;
   /// Gets the tracking id.
-  final pulumi.Input<String>? integrationServiceEnvironmentId;
+  final pulumi.Input<String?>? integrationServiceEnvironmentId;
   /// The network configuration.
-  final pulumi.Input<NetworkConfigurationResponse>? networkConfiguration;
+  final pulumi.Input<NetworkConfigurationResponse?>? networkConfiguration;
   /// The provisioning state.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// The integration service environment state.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [IntegrationServiceEnvironmentPropertiesResponse].
   /// [encryptionConfiguration] The encryption configuration.

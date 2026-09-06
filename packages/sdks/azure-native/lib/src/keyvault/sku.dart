@@ -6,7 +6,7 @@ import 'sku_name.dart';
 /// SKU details
 class Sku {
   /// SKU family name
-  final pulumi.Input<String> family;
+  final pulumi.Input<dynamic> family;
   /// SKU name to specify whether the key vault is a standard vault or a premium vault.
   final pulumi.Input<SkuName> name;
 
@@ -27,7 +27,7 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      family: pulumi.Input.fromValue(map['family'] as String),
+      family: pulumi.Input.fromValue(map['family']),
       name: pulumi.Input.fromValue(SkuName.fromValue(map['name']! as String)),
     );
   }

@@ -221,7 +221,29 @@ class Service extends pulumi.CustomResource {
     notes = registerOutput<String?>('notes');
     quantity = registerOutput<double?>('quantity');
     startDate = registerOutput<String>('startDate');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'azure-native:windowsiot:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    adminDomainName = registerOutput<String?>('adminDomainName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    billingDomainName = registerOutput<String?>('billingDomainName');
+    etag = registerOutput<String?>('etag');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    notes = registerOutput<String?>('notes');
+    quantity = registerOutput<double?>('quantity');
+    startDate = registerOutput<String>('startDate');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

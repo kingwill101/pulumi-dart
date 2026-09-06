@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 /// Result data returned by getWebAppSourceControlSlot.
 class GetWebAppSourceControlSlotResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Name of branch to use for deployment.
   final String? branch;
   /// &lt;code&gt;true&lt;/code&gt; to enable deployment rollback; otherwise, &lt;code&gt;false&lt;/code&gt;.
@@ -14,7 +14,7 @@ class GetWebAppSourceControlSlotResult {
   /// If GitHub Action is selected, than the associated configuration.
   final GitHubActionConfigurationResponse? gitHubActionConfiguration;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// &lt;code&gt;true&lt;/code&gt; if this is deployed via GitHub action.
   final bool? isGitHubAction;
   /// &lt;code&gt;true&lt;/code&gt; to limit to manual integration; &lt;code&gt;false&lt;/code&gt; to enable continuous integration (which configures webhooks into online repos like GitHub).
@@ -24,13 +24,13 @@ class GetWebAppSourceControlSlotResult {
   /// Kind of resource.
   final String? kind;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Repository or source control URL.
   final String? repoUrl;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetWebAppSourceControlSlotResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -47,54 +47,54 @@ class GetWebAppSourceControlSlotResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetWebAppSourceControlSlotResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.branch,
     this.deploymentRollbackEnabled,
     this.gitHubActionConfiguration,
-    required this.id,
+    this.id,
     this.isGitHubAction,
     this.isManualIntegration,
     this.isMercurial,
     this.kind,
-    required this.name,
+    this.name,
     this.repoUrl,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'branch': ?branch,
       'deploymentRollbackEnabled': ?deploymentRollbackEnabled,
       'gitHubActionConfiguration': ?gitHubActionConfiguration?.toMap(),
-      'id': id,
+      'id': ?id,
       'isGitHubAction': ?isGitHubAction,
       'isManualIntegration': ?isManualIntegration,
       'isMercurial': ?isMercurial,
       'kind': ?kind,
-      'name': name,
+      'name': ?name,
       'repoUrl': ?repoUrl,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetWebAppSourceControlSlotResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppSourceControlSlotResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       branch: (() { final guardedValue = map['branch']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deploymentRollbackEnabled: (() { final guardedValue = map['deploymentRollbackEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       gitHubActionConfiguration: (() { final guardedValue = map['gitHubActionConfiguration']; if (guardedValue == null) return null; return GitHubActionConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isGitHubAction: (() { final guardedValue = map['isGitHubAction']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       isManualIntegration: (() { final guardedValue = map['isManualIntegration']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       isMercurial: (() { final guardedValue = map['isMercurial']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       repoUrl: (() { final guardedValue = map['repoUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

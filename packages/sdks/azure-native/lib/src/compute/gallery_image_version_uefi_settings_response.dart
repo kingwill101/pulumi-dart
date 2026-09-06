@@ -6,9 +6,9 @@ import 'uefi_key_signatures_response.dart';
 /// Contains UEFI settings for the image version.
 class GalleryImageVersionUefiSettingsResponse {
   /// Additional UEFI key signatures that will be added to the image in addition to the signature templates
-  final pulumi.Input<UefiKeySignaturesResponse>? additionalSignatures;
+  final pulumi.Input<UefiKeySignaturesResponse?>? additionalSignatures;
   /// The name of the template(s) that contains default UEFI key signatures that will be added to the image.
-  final pulumi.Input<List<String>>? signatureTemplateNames;
+  final pulumi.Input<List<String>?>? signatureTemplateNames;
 
   /// Creates a new [GalleryImageVersionUefiSettingsResponse].
   /// [additionalSignatures] Additional UEFI key signatures that will be added to the image in addition to the signature templates

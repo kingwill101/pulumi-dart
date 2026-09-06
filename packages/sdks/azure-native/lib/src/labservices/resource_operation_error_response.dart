@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Error details of the latest operation failure on this resource
 class ResourceOperationErrorResponse {
   /// The operation action that failed
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// The code that corresponds to the type of operation failure
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// The operation failure message
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The datetime of when the error occured
-  final pulumi.Input<String>? timestamp;
+  final pulumi.Input<String?>? timestamp;
 
   /// Creates a new [ResourceOperationErrorResponse].
   /// [action] The operation action that failed

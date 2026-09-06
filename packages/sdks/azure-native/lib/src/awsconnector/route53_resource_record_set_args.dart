@@ -9,15 +9,15 @@ import 'route53_resource_record_set_properties.dart';
 /// {@macro pulumi_awsconnector_route53_resource_record_set_args_doc}
 class Route53ResourceRecordSetArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of Route53ResourceRecordSet
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<Route53ResourceRecordSetProperties>? properties;
+  final pulumi.Input<Route53ResourceRecordSetProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [Route53ResourceRecordSetArgs].
   /// [location] The geo-location where the resource lives

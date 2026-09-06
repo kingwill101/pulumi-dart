@@ -190,4 +190,21 @@ class RegisteredAsn extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [RegisteredAsn] resource.
+  RegisteredAsn.reference(String urn)
+    : super(
+        'azure-native:peering:RegisteredAsn',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    asn = registerOutput<int?>('asn');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    peeringServicePrefixKey = registerOutput<String>('peeringServicePrefixKey');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
+  }
 }

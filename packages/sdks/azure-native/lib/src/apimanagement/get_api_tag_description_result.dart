@@ -4,7 +4,7 @@
 /// Result data returned by getApiTagDescription.
 class GetApiTagDescriptionResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Description of the Tag.
   final String? description;
   /// Tag name.
@@ -14,13 +14,13 @@ class GetApiTagDescriptionResult {
   /// Absolute URL of external resources describing the tag.
   final String? externalDocsUrl;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Identifier of the tag in the form of /tags/{tagId}
   final String? tagId;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetApiTagDescriptionResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -33,42 +33,42 @@ class GetApiTagDescriptionResult {
   /// [tagId] Identifier of the tag in the form of /tags/{tagId}
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetApiTagDescriptionResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.description,
     this.displayName,
     this.externalDocsDescription,
     this.externalDocsUrl,
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
     this.tagId,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
       'displayName': ?displayName,
       'externalDocsDescription': ?externalDocsDescription,
       'externalDocsUrl': ?externalDocsUrl,
-      'id': id,
-      'name': name,
+      'id': ?id,
+      'name': ?name,
       'tagId': ?tagId,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetApiTagDescriptionResult.fromMap(Map<String, dynamic> map) {
     return GetApiTagDescriptionResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       externalDocsDescription: (() { final guardedValue = map['externalDocsDescription']; if (guardedValue == null) return null; return guardedValue as String; })(),
       externalDocsUrl: (() { final guardedValue = map['externalDocsUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tagId: (() { final guardedValue = map['tagId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

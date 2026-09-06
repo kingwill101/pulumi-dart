@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] The categorical data quality metric to calculate.
-enum CategoricalDataQualityMetric {
+enum CategoricalDataQualityMetric implements pulumi.PulumiEnum<String> {
   nullValueRate("NullValueRate"),
   dataTypeErrorRate("DataTypeErrorRate"),
   outOfBoundsRate("OutOfBoundsRate");
 
   const CategoricalDataQualityMetric(this.wireValue);
+  @override
   final String wireValue;
 
   static CategoricalDataQualityMetric fromValue(String value) {

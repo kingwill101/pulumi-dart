@@ -15,33 +15,33 @@ import 'session_pool_secret.dart';
 /// {@macro pulumi_app_container_apps_session_pool_args_doc}
 class ContainerAppsSessionPoolArgs {
   /// The container type of the sessions.
-  final pulumi.Input<String>? containerType;
+  final pulumi.Input<dynamic>? containerType;
   /// The custom container configuration if the containerType is CustomContainer.
-  final pulumi.Input<CustomContainerTemplate>? customContainerTemplate;
+  final pulumi.Input<CustomContainerTemplate?>? customContainerTemplate;
   /// The pool configuration if the poolManagementType is dynamic.
-  final pulumi.Input<DynamicPoolConfiguration>? dynamicPoolConfiguration;
+  final pulumi.Input<DynamicPoolConfiguration?>? dynamicPoolConfiguration;
   /// Resource ID of the session pool's environment.
-  final pulumi.Input<String>? environmentId;
+  final pulumi.Input<String?>? environmentId;
   /// Managed identities needed by a session pool to interact with other Azure services to not maintain any secrets or credentials in code.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Optional settings for a Managed Identity that is assigned to the Session pool.
-  final pulumi.Input<List<ManagedIdentitySetting>>? managedIdentitySettings;
+  final pulumi.Input<List<ManagedIdentitySetting>?>? managedIdentitySettings;
   /// The pool management type of the session pool.
-  final pulumi.Input<String>? poolManagementType;
+  final pulumi.Input<dynamic>? poolManagementType;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The scale configuration of the session pool.
-  final pulumi.Input<ScaleConfiguration>? scaleConfiguration;
+  final pulumi.Input<ScaleConfiguration?>? scaleConfiguration;
   /// The secrets of the session pool.
-  final pulumi.Input<List<SessionPoolSecret>>? secrets;
+  final pulumi.Input<List<SessionPoolSecret>?>? secrets;
   /// The network configuration of the sessions in the session pool.
-  final pulumi.Input<SessionNetworkConfiguration>? sessionNetworkConfiguration;
+  final pulumi.Input<SessionNetworkConfiguration?>? sessionNetworkConfiguration;
   /// Name of the session pool.
-  final pulumi.Input<String>? sessionPoolName;
+  final pulumi.Input<String?>? sessionPoolName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ContainerAppsSessionPoolArgs].
   /// [containerType] The container type of the sessions.
@@ -96,14 +96,14 @@ class ContainerAppsSessionPoolArgs {
 
   factory ContainerAppsSessionPoolArgs.fromMap(Map<String, dynamic> map) {
     return ContainerAppsSessionPoolArgs(
-      containerType: (() { final guardedValue = map['containerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      containerType: (() { final guardedValue = map['containerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       customContainerTemplate: (() { final guardedValue = map['customContainerTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomContainerTemplate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dynamicPoolConfiguration: (() { final guardedValue = map['dynamicPoolConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DynamicPoolConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       environmentId: (() { final guardedValue = map['environmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedIdentitySettings: (() { final guardedValue = map['managedIdentitySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedIdentitySetting>(guardedValue, (value) => ManagedIdentitySetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      poolManagementType: (() { final guardedValue = map['poolManagementType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      poolManagementType: (() { final guardedValue = map['poolManagementType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       scaleConfiguration: (() { final guardedValue = map['scaleConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScaleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SessionPoolSecret>(guardedValue, (value) => SessionPoolSecret.fromMap((value as Map).cast<String, dynamic>()))); })(),

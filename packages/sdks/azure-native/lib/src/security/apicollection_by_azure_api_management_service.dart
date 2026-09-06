@@ -206,4 +206,29 @@ class APICollectionByAzureApiManagementService extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [APICollectionByAzureApiManagementService] resource.
+  APICollectionByAzureApiManagementService.reference(String urn)
+    : super(
+        'azure-native:security:APICollectionByAzureApiManagementService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    baseUrl = registerOutput<String>('baseUrl');
+    discoveredVia = registerOutput<String>('discoveredVia');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    numberOfApiEndpoints = registerOutput<double>('numberOfApiEndpoints');
+    numberOfApiEndpointsWithSensitiveDataExposed = registerOutput<double>('numberOfApiEndpointsWithSensitiveDataExposed');
+    numberOfExternalApiEndpoints = registerOutput<double>('numberOfExternalApiEndpoints');
+    numberOfInactiveApiEndpoints = registerOutput<double>('numberOfInactiveApiEndpoints');
+    numberOfUnauthenticatedApiEndpoints = registerOutput<double>('numberOfUnauthenticatedApiEndpoints');
+    provisioningState = registerOutput<String>('provisioningState');
+    sensitivityLabel = registerOutput<String>('sensitivityLabel');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

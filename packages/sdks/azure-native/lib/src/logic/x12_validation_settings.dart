@@ -15,7 +15,7 @@ class X12ValidationSettings {
   /// The validity period of interchange control number.
   final pulumi.Input<int> interchangeControlNumberValidityDays;
   /// The trailing separator policy.
-  final pulumi.Input<String> trailingSeparatorPolicy;
+  final pulumi.Input<dynamic> trailingSeparatorPolicy;
   /// The value indicating whether to trim leading and trailing spaces and zeroes.
   final pulumi.Input<bool> trimLeadingAndTrailingSpacesAndZeroes;
   /// The value indicating whether to validate character set in the message.
@@ -70,8 +70,8 @@ class X12ValidationSettings {
       checkDuplicateGroupControlNumber: pulumi.Input.fromValue(map['checkDuplicateGroupControlNumber'] as bool),
       checkDuplicateInterchangeControlNumber: pulumi.Input.fromValue(map['checkDuplicateInterchangeControlNumber'] as bool),
       checkDuplicateTransactionSetControlNumber: pulumi.Input.fromValue(map['checkDuplicateTransactionSetControlNumber'] as bool),
-      interchangeControlNumberValidityDays: pulumi.Input.fromValue(map['interchangeControlNumberValidityDays'] as int),
-      trailingSeparatorPolicy: pulumi.Input.fromValue(map['trailingSeparatorPolicy'] as String),
+      interchangeControlNumberValidityDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['interchangeControlNumberValidityDays'])),
+      trailingSeparatorPolicy: pulumi.Input.fromValue(map['trailingSeparatorPolicy']),
       trimLeadingAndTrailingSpacesAndZeroes: pulumi.Input.fromValue(map['trimLeadingAndTrailingSpacesAndZeroes'] as bool),
       validateCharacterSet: pulumi.Input.fromValue(map['validateCharacterSet'] as bool),
       validateEDITypes: pulumi.Input.fromValue(map['validateEDITypes'] as bool),

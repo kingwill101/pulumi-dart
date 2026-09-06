@@ -9,17 +9,17 @@ import 'neighbor_group_destination.dart';
 /// {@macro pulumi_managednetworkfabric_neighbor_group_args_doc}
 class NeighborGroupArgs {
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// An array of destination IPv4 Addresses or IPv6 Addresses.
   final pulumi.Input<NeighborGroupDestination> destination;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the Neighbor Group.
-  final pulumi.Input<String>? neighborGroupName;
+  final pulumi.Input<String?>? neighborGroupName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NeighborGroupArgs].
   /// [annotation] Switch configuration description.

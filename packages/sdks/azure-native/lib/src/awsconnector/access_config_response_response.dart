@@ -6,9 +6,9 @@ import 'authentication_mode_enum_value_response.dart';
 /// Definition of AccessConfigResponse
 class AccessConfigResponseResponse {
   /// &lt;p&gt;The current authentication mode of the cluster.&lt;/p&gt;
-  final pulumi.Input<AuthenticationModeEnumValueResponse>? authenticationMode;
+  final pulumi.Input<AuthenticationModeEnumValueResponse?>? authenticationMode;
   /// &lt;p&gt;Specifies whether or not the cluster creator IAM principal was set as a cluster admin access entry during cluster creation time.&lt;/p&gt;
-  final pulumi.Input<bool>? bootstrapClusterCreatorAdminPermissions;
+  final pulumi.Input<bool?>? bootstrapClusterCreatorAdminPermissions;
 
   /// Creates a new [AccessConfigResponseResponse].
   /// [authenticationMode] &lt;p&gt;The current authentication mode of the cluster.&lt;/p&gt;

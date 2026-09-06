@@ -8,12 +8,12 @@ import 'collector_properties.dart';
 /// {@endtemplate}
 /// {@macro pulumi_migrate_hyper_vcollector_args_doc}
 class HyperVCollectorArgs {
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// Unique name of a Hyper-V collector within a project.
-  final pulumi.Input<String>? hyperVCollectorName;
+  final pulumi.Input<String?>? hyperVCollectorName;
   /// Name of the Azure Migrate project.
   final pulumi.Input<String> projectName;
-  final pulumi.Input<CollectorProperties>? properties;
+  final pulumi.Input<CollectorProperties?>? properties;
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
 

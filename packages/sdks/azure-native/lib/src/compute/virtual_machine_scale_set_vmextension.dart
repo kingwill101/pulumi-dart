@@ -261,7 +261,34 @@ class VirtualMachineScaleSetVMExtension extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     protectedSettings = registerOutput<dynamic>('protectedSettings');
     protectedSettingsFromKeyVault = registerOutput<KeyVaultSecretReferenceResponse?>('protectedSettingsFromKeyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyVaultSecretReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    provisionAfterExtensions = registerOutput<List<String>?>('provisionAfterExtensions');
+    provisionAfterExtensions = registerOutput<List<String>?>('provisionAfterExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publisher = registerOutput<String?>('publisher');
+    settings = registerOutput<dynamic>('settings');
+    suppressFailures = registerOutput<bool?>('suppressFailures');
+    type = registerOutput<String>('type');
+    typeHandlerVersion = registerOutput<String?>('typeHandlerVersion');
+  }
+
+  /// Creates a typed reference to an existing [VirtualMachineScaleSetVMExtension] resource.
+  VirtualMachineScaleSetVMExtension.reference(String urn)
+    : super(
+        'azure-native:compute:VirtualMachineScaleSetVMExtension',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    enableAutomaticUpgrade = registerOutput<bool?>('enableAutomaticUpgrade');
+    forceUpdateTag = registerOutput<String?>('forceUpdateTag');
+    instanceView = registerOutput<VirtualMachineExtensionInstanceViewResponse?>('instanceView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineExtensionInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    protectedSettings = registerOutput<dynamic>('protectedSettings');
+    protectedSettingsFromKeyVault = registerOutput<KeyVaultSecretReferenceResponse?>('protectedSettingsFromKeyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyVaultSecretReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisionAfterExtensions = registerOutput<List<String>?>('provisionAfterExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     provisioningState = registerOutput<String>('provisioningState');
     publisher = registerOutput<String?>('publisher');
     settings = registerOutput<dynamic>('settings');

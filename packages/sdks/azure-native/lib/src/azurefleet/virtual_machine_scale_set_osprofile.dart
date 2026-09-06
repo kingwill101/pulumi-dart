@@ -21,7 +21,7 @@ class VirtualMachineScaleSetOSProfile {
   /// &lt;br&gt;&lt;br&gt; For resetting root password, see [Manage users, SSH, and check or
   /// repair disks on Azure Linux VMs using the VMAccess
   /// Extension](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
-  final pulumi.Input<String>? adminPassword;
+  final pulumi.Input<String?>? adminPassword;
   /// Specifies the name of the administrator account. &lt;br&gt;&lt;br&gt; **Windows-only
   /// restriction:** Cannot end in "." &lt;br&gt;&lt;br&gt; **Disallowed values:**
   /// "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3",
@@ -30,35 +30,35 @@ class VirtualMachineScaleSetOSProfile {
   /// "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5".
   /// &lt;br&gt;&lt;br&gt; **Minimum-length (Linux):** 1  character &lt;br&gt;&lt;br&gt; **Max-length
   /// (Linux):** 64 characters &lt;br&gt;&lt;br&gt; **Max-length (Windows):** 20 characters
-  final pulumi.Input<String>? adminUsername;
+  final pulumi.Input<String?>? adminUsername;
   /// Specifies whether extension operations should be allowed on the virtual machine
   /// scale set. This may only be set to False when no extensions are present on the
   /// virtual machine scale set.
-  final pulumi.Input<bool>? allowExtensionOperations;
+  final pulumi.Input<bool?>? allowExtensionOperations;
   /// Specifies the computer name prefix for all of the virtual machines in the scale
   /// set. Computer name prefixes must be 1 to 15 characters long.
-  final pulumi.Input<String>? computerNamePrefix;
+  final pulumi.Input<String?>? computerNamePrefix;
   /// Specifies a base-64 encoded string of custom data. The base-64 encoded string
   /// is decoded to a binary array that is saved as a file on the Virtual Machine.
   /// The maximum length of the binary array is 65535 bytes. For using cloud-init for
   /// your VM, see [Using cloud-init to customize a Linux VM during
   /// creation](https://learn.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
-  final pulumi.Input<String>? customData;
+  final pulumi.Input<String?>? customData;
   /// Specifies the Linux operating system settings on the virtual machine. For a
   /// list of supported Linux distributions, see [Linux on Azure-Endorsed
   /// Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
-  final pulumi.Input<LinuxConfiguration>? linuxConfiguration;
+  final pulumi.Input<LinuxConfiguration?>? linuxConfiguration;
   /// Optional property which must either be set to True or omitted.
-  final pulumi.Input<bool>? requireGuestProvisionSignal;
+  final pulumi.Input<bool?>? requireGuestProvisionSignal;
   /// Specifies set of certificates that should be installed onto the virtual
   /// machines in the scale set. To install certificates on a virtual machine it is
   /// recommended to use the [Azure Key Vault virtual machine extension for
   /// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
   /// or the [Azure Key Vault virtual machine extension for
   /// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
-  final pulumi.Input<List<VaultSecretGroup>>? secrets;
+  final pulumi.Input<List<VaultSecretGroup>?>? secrets;
   /// Specifies Windows operating system settings on the virtual machine.
-  final pulumi.Input<WindowsConfiguration>? windowsConfiguration;
+  final pulumi.Input<WindowsConfiguration?>? windowsConfiguration;
 
   /// Creates a new [VirtualMachineScaleSetOSProfile].
   /// [adminPassword] Specifies the password of the administrator account. &lt;br&gt;&lt;br&gt; **Minimum-length

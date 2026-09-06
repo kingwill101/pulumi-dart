@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The managed instance's service principal configuration for a resource.
 class ServicePrincipal {
   /// Service principal type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [ServicePrincipal].
   /// [type] Service principal type.
@@ -21,7 +21,7 @@ class ServicePrincipal {
 
   factory ServicePrincipal.fromMap(Map<String, dynamic> map) {
     return ServicePrincipal(
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

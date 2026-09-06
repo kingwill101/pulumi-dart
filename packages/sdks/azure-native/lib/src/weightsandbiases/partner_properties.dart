@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Partner's specific Properties
 class PartnerProperties {
   /// The region of the instance
-  final pulumi.Input<String> region;
+  final pulumi.Input<dynamic> region;
   /// The subdomain of the instance
   final pulumi.Input<String> subdomain;
 
@@ -26,7 +26,7 @@ class PartnerProperties {
 
   factory PartnerProperties.fromMap(Map<String, dynamic> map) {
     return PartnerProperties(
-      region: pulumi.Input.fromValue(map['region'] as String),
+      region: pulumi.Input.fromValue(map['region']),
       subdomain: pulumi.Input.fromValue(map['subdomain'] as String),
     );
   }

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A2A container mapping input.
 class A2AContainerMappingInput {
   /// A value indicating whether the auto update is enabled.
-  final pulumi.Input<String>? agentAutoUpdateStatus;
+  final pulumi.Input<dynamic>? agentAutoUpdateStatus;
   /// The automation account arm id.
-  final pulumi.Input<String>? automationAccountArmId;
+  final pulumi.Input<String?>? automationAccountArmId;
   /// A value indicating the type authentication to use for automation Account.
-  final pulumi.Input<String>? automationAccountAuthenticationType;
+  final pulumi.Input<dynamic>? automationAccountAuthenticationType;
   /// The class type.
   /// Expected value is 'A2A'.
   final pulumi.Input<String> instanceType;
@@ -19,12 +19,12 @@ class A2AContainerMappingInput {
   /// [automationAccountArmId] The automation account arm id.
   /// [automationAccountAuthenticationType] A value indicating the type authentication to use for automation Account.
   /// [instanceType] The class type.
-  const A2AContainerMappingInput({
+  A2AContainerMappingInput({
     this.agentAutoUpdateStatus,
     this.automationAccountArmId,
-    this.automationAccountAuthenticationType,
+    pulumi.Input<dynamic>? automationAccountAuthenticationType,
     required this.instanceType,
-  });
+  }) : automationAccountAuthenticationType = automationAccountAuthenticationType ?? pulumi.Input.fromValue('RunAsAccount');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +37,9 @@ class A2AContainerMappingInput {
 
   factory A2AContainerMappingInput.fromMap(Map<String, dynamic> map) {
     return A2AContainerMappingInput(
-      agentAutoUpdateStatus: (() { final guardedValue = map['agentAutoUpdateStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      agentAutoUpdateStatus: (() { final guardedValue = map['agentAutoUpdateStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       automationAccountArmId: (() { final guardedValue = map['automationAccountArmId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      automationAccountAuthenticationType: (() { final guardedValue = map['automationAccountAuthenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      automationAccountAuthenticationType: (() { final guardedValue = map['automationAccountAuthenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
     );
   }

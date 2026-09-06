@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Function app site update strategy configuration for deployments and site config updates.
 class FunctionsSiteUpdateStrategyResponse {
   /// Function app site update strategy type. Available options: Recreate, RollingUpdate
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [FunctionsSiteUpdateStrategyResponse].
   /// [type] Function app site update strategy type. Available options: Recreate, RollingUpdate

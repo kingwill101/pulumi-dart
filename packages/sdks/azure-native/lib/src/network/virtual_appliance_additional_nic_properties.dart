@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Network Virtual Appliance Additional NIC properties.
 class VirtualApplianceAdditionalNicProperties {
   /// Flag (true or false) for Intent for Public Ip on additional nic
-  final pulumi.Input<bool>? hasPublicIp;
+  final pulumi.Input<bool?>? hasPublicIp;
   /// Name of additional nic
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [VirtualApplianceAdditionalNicProperties].
   /// [hasPublicIp] Flag (true or false) for Intent for Public Ip on additional nic

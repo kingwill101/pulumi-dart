@@ -8,7 +8,7 @@ class ImageRepositoryCredential {
   /// Image repository url (e.g.: mcr.microsoft.com).
   final pulumi.Input<String> imageRepositoryUrl;
   /// Repository user password.
-  final pulumi.Input<AsymmetricEncryptedSecret>? password;
+  final pulumi.Input<AsymmetricEncryptedSecret?>? password;
   /// Repository user name.
   final pulumi.Input<String> userName;
 

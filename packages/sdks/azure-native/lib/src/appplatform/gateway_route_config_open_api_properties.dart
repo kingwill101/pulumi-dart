@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// OpenAPI properties of Spring Cloud Gateway route config.
 class GatewayRouteConfigOpenApiProperties {
   /// The URI of OpenAPI specification.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [GatewayRouteConfigOpenApiProperties].
   /// [uri] The URI of OpenAPI specification.

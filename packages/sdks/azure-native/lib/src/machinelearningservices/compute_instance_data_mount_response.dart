@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines an Aml Instance DataMount.
 class ComputeInstanceDataMountResponse {
   /// who this data mount created by.
-  final pulumi.Input<String>? createdBy;
+  final pulumi.Input<String?>? createdBy;
   /// Error of this data mount.
-  final pulumi.Input<String>? error;
+  final pulumi.Input<String?>? error;
   /// Mount Action.
-  final pulumi.Input<String>? mountAction;
+  final pulumi.Input<String?>? mountAction;
   /// Mount Mode.
-  final pulumi.Input<String>? mountMode;
+  final pulumi.Input<String?>? mountMode;
   /// name of the ComputeInstance data mount.
-  final pulumi.Input<String>? mountName;
+  final pulumi.Input<String?>? mountName;
   /// Path of this data mount.
-  final pulumi.Input<String>? mountPath;
+  final pulumi.Input<String?>? mountPath;
   /// Mount state.
-  final pulumi.Input<String>? mountState;
+  final pulumi.Input<String?>? mountState;
   /// The time when the disk mounted.
-  final pulumi.Input<String>? mountedOn;
+  final pulumi.Input<String?>? mountedOn;
   /// Source of the ComputeInstance data mount.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// Data source type.
-  final pulumi.Input<String>? sourceType;
+  final pulumi.Input<String?>? sourceType;
 
   /// Creates a new [ComputeInstanceDataMountResponse].
   /// [createdBy] who this data mount created by.

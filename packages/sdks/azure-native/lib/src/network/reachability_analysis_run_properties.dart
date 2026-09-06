@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Represents the Reachability Analysis Run properties.
 class ReachabilityAnalysisRunProperties {
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Id of the intent resource to run analysis on.
   final pulumi.Input<String> intentId;
 

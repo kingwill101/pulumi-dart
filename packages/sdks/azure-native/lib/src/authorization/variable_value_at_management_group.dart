@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'policy_variable_value_column_value_response.dart';
 import 'system_data_response.dart';
 import 'variable_value_at_management_group_args.dart';
 
@@ -225,7 +226,7 @@ class VariableValueAtManagementGroup extends pulumi.CustomResource {
   /// The type of the resource (Microsoft.Authorization/variables/values).
   late final pulumi.Output<String> type;
   /// Variable value column value array.
-  late final pulumi.Output<List<Map<String, dynamic>>> values;
+  late final pulumi.Output<List<PolicyVariableValueColumnValueResponse>> values;
 
   /// Creates a new [VariableValueAtManagementGroup].
   /// [name] The Pulumi resource name.
@@ -245,6 +246,22 @@ class VariableValueAtManagementGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
-    values = registerOutput<List<Map<String, dynamic>>>('values');
+    values = registerOutput<List<PolicyVariableValueColumnValueResponse>>('values', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyVariableValueColumnValueResponse>(guardedValue, (value) => PolicyVariableValueColumnValueResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [VariableValueAtManagementGroup] resource.
+  VariableValueAtManagementGroup.reference(String urn)
+    : super(
+        'azure-native:authorization:VariableValueAtManagementGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    values = registerOutput<List<PolicyVariableValueColumnValueResponse>>('values', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyVariableValueColumnValueResponse>(guardedValue, (value) => PolicyVariableValueColumnValueResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

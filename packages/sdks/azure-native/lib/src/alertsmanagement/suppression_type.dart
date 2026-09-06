@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies when the suppression should be applied
-enum SuppressionType {
+enum SuppressionType implements pulumi.PulumiEnum<String> {
   valueAlways("Always"),
   valueOnce("Once"),
   valueDaily("Daily"),
@@ -7,6 +9,7 @@ enum SuppressionType {
   valueMonthly("Monthly");
 
   const SuppressionType(this.wireValue);
+  @override
   final String wireValue;
 
   static SuppressionType fromValue(String value) {

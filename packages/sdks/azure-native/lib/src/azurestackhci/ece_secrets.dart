@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Secret name expected for Enterprise Cloud Engine (ECE) deployment.
-enum EceSecrets {
+enum EceSecrets implements pulumi.PulumiEnum<String> {
   azureStackLCMUserCredential("AzureStackLCMUserCredential"),
   defaultARBApplication("DefaultARBApplication"),
   localAdminCredential("LocalAdminCredential"),
   witnessStorageKey("WitnessStorageKey");
 
   const EceSecrets(this.wireValue);
+  @override
   final String wireValue;
 
   static EceSecrets fromValue(String value) {

@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_fileshare_protected_item_response.dart';
 import 'protected_item_args.dart';
 
 /// Base class for backup items.
@@ -387,7 +386,7 @@ class ProtectedItem extends pulumi.CustomResource {
   /// Resource name associated with the resource.
   late final pulumi.Output<String> name;
   /// ProtectedItemResource properties
-  late final pulumi.Output<AzureFileshareProtectedItemResponse> properties;
+  late final pulumi.Output<dynamic> properties;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
@@ -411,8 +410,26 @@ class ProtectedItem extends pulumi.CustomResource {
     eTag = registerOutput<String?>('eTag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<AzureFileshareProtectedItemResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureFileshareProtectedItemResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    properties = registerOutput<dynamic>('properties');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ProtectedItem] resource.
+  ProtectedItem.reference(String urn)
+    : super(
+        'azure-native:recoveryservices:ProtectedItem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eTag = registerOutput<String?>('eTag');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<dynamic>('properties');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

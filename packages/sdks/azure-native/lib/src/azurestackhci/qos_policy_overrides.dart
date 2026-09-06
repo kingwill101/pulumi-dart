@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The QoSPolicyOverrides of a cluster.
 class QosPolicyOverrides {
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-  final pulumi.Input<String>? bandwidthPercentageSMB;
+  final pulumi.Input<String?>? bandwidthPercentageSMB;
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-  final pulumi.Input<String>? priorityValue8021ActionCluster;
+  final pulumi.Input<String?>? priorityValue8021ActionCluster;
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-  final pulumi.Input<String>? priorityValue8021ActionSMB;
+  final pulumi.Input<String?>? priorityValue8021ActionSMB;
 
   /// Creates a new [QosPolicyOverrides].
   /// [bandwidthPercentageSMB] This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.

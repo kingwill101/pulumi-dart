@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Name of the resource.
-enum AutoScalingResourceMetricName {
+enum AutoScalingResourceMetricName implements pulumi.PulumiEnum<String> {
   valueCpu("cpu"),
   valueMemoryInGB("memoryInGB");
 
   const AutoScalingResourceMetricName(this.wireValue);
+  @override
   final String wireValue;
 
   static AutoScalingResourceMetricName fromValue(String value) {

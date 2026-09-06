@@ -6,28 +6,28 @@ import 'conditional_credit_milestone.dart';
 /// Properties for primary conditional credit.
 class PrimaryConditionalCreditProperties {
   /// Whether this conditional credit allows contributor billing accounts
-  final pulumi.Input<String>? allowContributors;
+  final pulumi.Input<dynamic>? allowContributors;
   /// The billing account resource ID
-  final pulumi.Input<String>? billingAccountResourceId;
+  final pulumi.Input<String?>? billingAccountResourceId;
   /// Display name for the conditional credit
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// End date of the conditional credit (derived from last milestone)
-  final pulumi.Input<String>? endAt;
+  final pulumi.Input<String?>? endAt;
   /// Type of conditional credit entity
   /// Expected value is 'Primary'.
   final pulumi.Input<String> entityType;
   /// List of milestones for this conditional credit (must include awards)
-  final pulumi.Input<List<ConditionalCreditMilestone>>? milestones;
+  final pulumi.Input<List<ConditionalCreditMilestone>?>? milestones;
   /// Product code for the conditional credit
-  final pulumi.Input<String>? productCode;
+  final pulumi.Input<String?>? productCode;
   /// Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Start date of the conditional credit
-  final pulumi.Input<String>? startAt;
+  final pulumi.Input<String?>? startAt;
   /// The status of the conditional credit
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// System identifier shared between primary and contributor conditional credits representing the same conditional credit program
-  final pulumi.Input<String>? systemId;
+  final pulumi.Input<String?>? systemId;
 
   /// Creates a new [PrimaryConditionalCreditProperties].
   /// [allowContributors] Whether this conditional credit allows contributor billing accounts
@@ -73,7 +73,7 @@ class PrimaryConditionalCreditProperties {
 
   factory PrimaryConditionalCreditProperties.fromMap(Map<String, dynamic> map) {
     return PrimaryConditionalCreditProperties(
-      allowContributors: (() { final guardedValue = map['allowContributors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      allowContributors: (() { final guardedValue = map['allowContributors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       billingAccountResourceId: (() { final guardedValue = map['billingAccountResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endAt: (() { final guardedValue = map['endAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -82,7 +82,7 @@ class PrimaryConditionalCreditProperties {
       productCode: (() { final guardedValue = map['productCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startAt: (() { final guardedValue = map['startAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       systemId: (() { final guardedValue = map['systemId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

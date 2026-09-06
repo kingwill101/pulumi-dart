@@ -7,11 +7,11 @@ import 'resource_identity_type.dart';
 /// Identity for the managed cluster.
 class ManagedClusterIdentity {
   /// The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only.
-  final pulumi.Input<Map<String, DelegatedResource>>? delegatedResources;
+  final pulumi.Input<Map<String, DelegatedResource>?>? delegatedResources;
   /// The type of identity used for the managed cluster. For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
-  final pulumi.Input<ResourceIdentityType>? type;
+  final pulumi.Input<ResourceIdentityType?>? type;
   /// The user identity associated with the managed cluster. This identity will be used in control plane. Only one user assigned identity is allowed. The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  final pulumi.Input<List<String>>? userAssignedIdentities;
+  final pulumi.Input<List<String>?>? userAssignedIdentities;
 
   /// Creates a new [ManagedClusterIdentity].
   /// [delegatedResources] The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only.

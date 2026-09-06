@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enum to indicate type of Continuous backup mode
-enum ContinuousTier {
+enum ContinuousTier implements pulumi.PulumiEnum<String> {
   valueContinuous7Days("Continuous7Days"),
   valueContinuous30Days("Continuous30Days");
 
   const ContinuousTier(this.wireValue);
+  @override
   final String wireValue;
 
   static ContinuousTier fromValue(String value) {

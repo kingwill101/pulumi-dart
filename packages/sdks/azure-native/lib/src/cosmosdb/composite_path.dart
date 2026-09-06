@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CompositePath {
   /// Sort order for composite paths.
-  final pulumi.Input<String>? order;
+  final pulumi.Input<dynamic>? order;
   /// The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [CompositePath].
   /// [order] Sort order for composite paths.
@@ -25,7 +25,7 @@ class CompositePath {
 
   factory CompositePath.fromMap(Map<String, dynamic> map) {
     return CompositePath(
-      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines values for OperationProvisioningState.
-enum OperationProvisioningState {
+enum OperationProvisioningState implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   inProgress("InProgress"),
   succeeded("Succeeded"),
@@ -9,6 +11,7 @@ enum OperationProvisioningState {
   disabled("Disabled");
 
   const OperationProvisioningState(this.wireValue);
+  @override
   final String wireValue;
 
   static OperationProvisioningState fromValue(String value) {

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImportCollectorPropertiesResponse {
   final pulumi.Input<String> createdTimestamp;
-  final pulumi.Input<String>? discoverySiteId;
+  final pulumi.Input<String?>? discoverySiteId;
   final pulumi.Input<String> updatedTimestamp;
 
   /// Creates a new [ImportCollectorPropertiesResponse].

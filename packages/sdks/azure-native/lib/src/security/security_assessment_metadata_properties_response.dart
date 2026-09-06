@@ -7,26 +7,26 @@ import 'security_assessment_metadata_partner_data_response.dart';
 class SecurityAssessmentMetadataPropertiesResponse {
   /// BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
   final pulumi.Input<String> assessmentType;
-  final pulumi.Input<List<String>>? categories;
+  final pulumi.Input<List<String>?>? categories;
   /// Human readable description of the assessment
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User friendly display name of the assessment
   final pulumi.Input<String> displayName;
   /// The implementation effort required to remediate this assessment
-  final pulumi.Input<String>? implementationEffort;
+  final pulumi.Input<String?>? implementationEffort;
   /// Describes the partner that created the assessment
-  final pulumi.Input<SecurityAssessmentMetadataPartnerDataResponse>? partnerData;
+  final pulumi.Input<SecurityAssessmentMetadataPartnerDataResponse?>? partnerData;
   /// Azure resource ID of the policy definition that turns this assessment calculation on
   final pulumi.Input<String> policyDefinitionId;
   /// True if this assessment is in preview release status
-  final pulumi.Input<bool>? preview;
+  final pulumi.Input<bool?>? preview;
   /// Human readable description of what you should do to mitigate this security issue
-  final pulumi.Input<String>? remediationDescription;
+  final pulumi.Input<String?>? remediationDescription;
   /// The severity level of the assessment
   final pulumi.Input<String> severity;
-  final pulumi.Input<List<String>>? threats;
+  final pulumi.Input<List<String>?>? threats;
   /// The user impact of the assessment
-  final pulumi.Input<String>? userImpact;
+  final pulumi.Input<String?>? userImpact;
 
   /// Creates a new [SecurityAssessmentMetadataPropertiesResponse].
   /// [assessmentType] BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition

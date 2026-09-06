@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A resource policy.
 class ResourcePolicyResponse {
   /// Optional. When specified, this expression is used to filter the resources.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// Resources that are included and shared as a part of a project policy.
-  final pulumi.Input<String>? resources;
+  final pulumi.Input<String?>? resources;
 
   /// Creates a new [ResourcePolicyResponse].
   /// [filter] Optional. When specified, this expression is used to filter the resources.

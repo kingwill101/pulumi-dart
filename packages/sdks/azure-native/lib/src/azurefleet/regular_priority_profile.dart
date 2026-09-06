@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration Options for Regular instances in Compute Fleet.
 class RegularPriorityProfile {
   /// Allocation strategy to follow when determining the VM sizes distribution for Regular VMs.
-  final pulumi.Input<String>? allocationStrategy;
+  final pulumi.Input<dynamic>? allocationStrategy;
   /// Total capacity to achieve. It is currently in terms of number of VMs.
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
   /// Minimum capacity to achieve which cannot be updated. If we will not be able to "guarantee" minimum capacity, we will reject the request in the sync path itself.
-  final pulumi.Input<int>? minCapacity;
+  final pulumi.Input<int?>? minCapacity;
 
   /// Creates a new [RegularPriorityProfile].
   /// [allocationStrategy] Allocation strategy to follow when determining the VM sizes distribution for Regular VMs.
@@ -31,9 +31,9 @@ class RegularPriorityProfile {
 
   factory RegularPriorityProfile.fromMap(Map<String, dynamic> map) {
     return RegularPriorityProfile(
-      allocationStrategy: (() { final guardedValue = map['allocationStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minCapacity: (() { final guardedValue = map['minCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      allocationStrategy: (() { final guardedValue = map['allocationStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minCapacity: (() { final guardedValue = map['minCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The readiness.
-enum Readiness {
+enum Readiness implements pulumi.PulumiEnum<String> {
   closingDown("ClosingDown"),
   deprecated("Deprecated"),
   gA("GA"),
@@ -11,6 +13,7 @@ enum Readiness {
   retired("Retired");
 
   const Readiness(this.wireValue);
+  @override
   final String wireValue;
 
   static Readiness fromValue(String value) {

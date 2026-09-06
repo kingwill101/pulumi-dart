@@ -9,26 +9,26 @@ import 'shared_access_signature_authorization_rule_access_rights_description.dar
 /// the service specific properties of a provisioning service, including keys, linked iot hubs, current state, and system generated properties such as hostname and idScope
 class IotDpsPropertiesDescription {
   /// Allocation policy to be used by this provisioning service.
-  final pulumi.Input<String>? allocationPolicy;
+  final pulumi.Input<dynamic>? allocationPolicy;
   /// List of authorization keys for a provisioning service.
-  final pulumi.Input<List<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>>? authorizationPolicies;
+  final pulumi.Input<List<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>?>? authorizationPolicies;
   /// Optional.
   /// Indicates if the DPS instance has Data Residency enabled, removing the cross geo-pair disaster recovery.
-  final pulumi.Input<bool>? enableDataResidency;
+  final pulumi.Input<bool?>? enableDataResidency;
   /// List of IoT hubs associated with this provisioning service.
-  final pulumi.Input<List<IotHubDefinitionDescription>>? iotHubs;
+  final pulumi.Input<List<IotHubDefinitionDescription>?>? iotHubs;
   /// The IP filter rules.
-  final pulumi.Input<List<IpFilterRule>>? ipFilterRules;
+  final pulumi.Input<List<IpFilterRule>?>? ipFilterRules;
   /// Portal endpoint to enable CORS for this provisioning service.
-  final pulumi.Input<String>? portalOperationsHostName;
+  final pulumi.Input<String?>? portalOperationsHostName;
   /// Private endpoint connections created on this IotHub
-  final pulumi.Input<List<PrivateEndpointConnection>>? privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnection>?>? privateEndpointConnections;
   /// The ARM provisioning state of the provisioning service.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// Whether requests from Public Network are allowed
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// Current state of the provisioning service.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
 
   /// Creates a new [IotDpsPropertiesDescription].
   /// [allocationPolicy] Allocation policy to be used by this provisioning service.
@@ -71,7 +71,7 @@ class IotDpsPropertiesDescription {
 
   factory IotDpsPropertiesDescription.fromMap(Map<String, dynamic> map) {
     return IotDpsPropertiesDescription(
-      allocationPolicy: (() { final guardedValue = map['allocationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      allocationPolicy: (() { final guardedValue = map['allocationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       authorizationPolicies: (() { final guardedValue = map['authorizationPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>(guardedValue, (value) => SharedAccessSignatureAuthorizationRuleAccessRightsDescription.fromMap((value as Map).cast<String, dynamic>()))); })(),
       enableDataResidency: (() { final guardedValue = map['enableDataResidency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       iotHubs: (() { final guardedValue = map['iotHubs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IotHubDefinitionDescription>(guardedValue, (value) => IotHubDefinitionDescription.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -79,8 +79,8 @@ class IotDpsPropertiesDescription {
       portalOperationsHostName: (() { final guardedValue = map['portalOperationsHostName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PrivateEndpointConnection>(guardedValue, (value) => PrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))); })(),
       provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

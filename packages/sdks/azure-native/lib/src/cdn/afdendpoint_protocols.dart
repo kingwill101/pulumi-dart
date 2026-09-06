@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Supported protocols for the customer's endpoint.
-enum AFDEndpointProtocols {
+enum AFDEndpointProtocols implements pulumi.PulumiEnum<String> {
   http("Http"),
   https("Https");
 
   const AFDEndpointProtocols(this.wireValue);
+  @override
   final String wireValue;
 
   static AFDEndpointProtocols fromValue(String value) {

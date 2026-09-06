@@ -9,16 +9,16 @@ import 'alerts_data_type_of_data_connector.dart';
 /// {@macro pulumi_securityinsights_ascdata_connector_args_doc}
 class ASCDataConnectorArgs {
   /// Connector ID
-  final pulumi.Input<String>? dataConnectorId;
+  final pulumi.Input<String?>? dataConnectorId;
   /// The available data types for the connector.
-  final pulumi.Input<AlertsDataTypeOfDataConnector>? dataTypes;
+  final pulumi.Input<AlertsDataTypeOfDataConnector?>? dataTypes;
   /// The kind of the data connector
   /// Expected value is 'AzureSecurityCenter'.
   final pulumi.Input<String> kind;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The subscription id to connect to, and get the data from.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 

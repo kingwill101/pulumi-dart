@@ -7,7 +7,7 @@ class SynapseNotebookReference {
   /// Reference notebook name. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> referenceName;
   /// Synapse notebook reference type.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [SynapseNotebookReference].
   /// [referenceName] Reference notebook name. Type: string (or Expression with resultType string).
@@ -27,7 +27,7 @@ class SynapseNotebookReference {
   factory SynapseNotebookReference.fromMap(Map<String, dynamic> map) {
     return SynapseNotebookReference(
       referenceName: pulumi.Input.fromValue(map['referenceName']),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details about the execution of the investigation
 class InvestigationExecutionResponse {
   /// The time at which the investigation execution completed (in UTC)
-  final pulumi.Input<String>? completedAt;
+  final pulumi.Input<String?>? completedAt;
   /// The state of the investigation execution
   final pulumi.Input<String> runState;
 

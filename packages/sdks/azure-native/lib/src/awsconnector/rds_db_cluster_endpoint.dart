@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Endpoint
 class RdsDbClusterEndpoint {
   /// The connection endpoint for the DB cluster.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// The port number that will accept connections on this DB cluster.
-  final pulumi.Input<String>? port;
+  final pulumi.Input<String?>? port;
 
   /// Creates a new [RdsDbClusterEndpoint].
   /// [address] The connection endpoint for the DB cluster.

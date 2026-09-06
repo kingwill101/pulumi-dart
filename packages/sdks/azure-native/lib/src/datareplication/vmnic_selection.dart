@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the selection type of the NIC.
-enum VMNicSelection {
+enum VMNicSelection implements pulumi.PulumiEnum<String> {
   valueNotSelected("NotSelected"),
   valueSelectedByUser("SelectedByUser"),
   valueSelectedByDefault("SelectedByDefault"),
   valueSelectedByUserOverride("SelectedByUserOverride");
 
   const VMNicSelection(this.wireValue);
+  @override
   final String wireValue;
 
   static VMNicSelection fromValue(String value) {

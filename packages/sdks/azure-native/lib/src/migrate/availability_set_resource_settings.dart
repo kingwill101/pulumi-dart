@@ -5,18 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Gets or sets the availability set resource settings.
 class AvailabilitySetResourceSettings {
   /// Gets or sets the target fault domain.
-  final pulumi.Input<int>? faultDomain;
+  final pulumi.Input<int?>? faultDomain;
   /// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
   /// Expected value is 'Microsoft.Compute/availabilitySets'.
   final pulumi.Input<String> resourceType;
   /// Gets or sets the Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Gets or sets the target resource group name.
-  final pulumi.Input<String>? targetResourceGroupName;
+  final pulumi.Input<String?>? targetResourceGroupName;
   /// Gets or sets the target Resource name.
-  final pulumi.Input<String>? targetResourceName;
+  final pulumi.Input<String?>? targetResourceName;
   /// Gets or sets the target update domain.
-  final pulumi.Input<int>? updateDomain;
+  final pulumi.Input<int?>? updateDomain;
 
   /// Creates a new [AvailabilitySetResourceSettings].
   /// [faultDomain] Gets or sets the target fault domain.
@@ -47,12 +47,12 @@ class AvailabilitySetResourceSettings {
 
   factory AvailabilitySetResourceSettings.fromMap(Map<String, dynamic> map) {
     return AvailabilitySetResourceSettings(
-      faultDomain: (() { final guardedValue = map['faultDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      faultDomain: (() { final guardedValue = map['faultDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       targetResourceGroupName: (() { final guardedValue = map['targetResourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetResourceName: (() { final guardedValue = map['targetResourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      updateDomain: (() { final guardedValue = map['updateDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      updateDomain: (() { final guardedValue = map['updateDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

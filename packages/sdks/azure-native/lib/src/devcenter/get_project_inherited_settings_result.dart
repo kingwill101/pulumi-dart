@@ -6,29 +6,29 @@ import 'project_network_settings_response.dart';
 /// Result data returned by getProjectInheritedSettings.
 class GetProjectInheritedSettingsResult {
   /// Network settings that will be enforced on this project.
-  final ProjectNetworkSettingsResponse networkSettings;
+  final ProjectNetworkSettingsResponse? networkSettings;
   /// Dev Center settings to be used when associating a project with a catalog.
-  final DevCenterProjectCatalogSettingsResponse projectCatalogSettings;
+  final DevCenterProjectCatalogSettingsResponse? projectCatalogSettings;
 
   /// Creates a new [GetProjectInheritedSettingsResult].
   /// [networkSettings] Network settings that will be enforced on this project.
   /// [projectCatalogSettings] Dev Center settings to be used when associating a project with a catalog.
   const GetProjectInheritedSettingsResult({
-    required this.networkSettings,
-    required this.projectCatalogSettings,
+    this.networkSettings,
+    this.projectCatalogSettings,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkSettings': networkSettings.toMap(),
-      'projectCatalogSettings': projectCatalogSettings.toMap(),
+      'networkSettings': ?networkSettings?.toMap(),
+      'projectCatalogSettings': ?projectCatalogSettings?.toMap(),
     };
   }
 
   factory GetProjectInheritedSettingsResult.fromMap(Map<String, dynamic> map) {
     return GetProjectInheritedSettingsResult(
-      networkSettings: ProjectNetworkSettingsResponse.fromMap((map['networkSettings']! as Map).cast<String, dynamic>()),
-      projectCatalogSettings: DevCenterProjectCatalogSettingsResponse.fromMap((map['projectCatalogSettings']! as Map).cast<String, dynamic>()),
+      networkSettings: (() { final guardedValue = map['networkSettings']; if (guardedValue == null) return null; return ProjectNetworkSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      projectCatalogSettings: (() { final guardedValue = map['projectCatalogSettings']; if (guardedValue == null) return null; return DevCenterProjectCatalogSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

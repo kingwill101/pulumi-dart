@@ -6,9 +6,9 @@ import 'runtime_response_java_agent.dart';
 /// Java app configuration
 class RuntimeResponseJava {
   /// Enable jmx core metrics for the java app
-  final pulumi.Input<bool>? enableMetrics;
+  final pulumi.Input<bool?>? enableMetrics;
   /// Diagnostic capabilities achieved by java agent
-  final pulumi.Input<RuntimeResponseJavaAgent>? javaAgent;
+  final pulumi.Input<RuntimeResponseJavaAgent?>? javaAgent;
 
   /// Creates a new [RuntimeResponseJava].
   /// [enableMetrics] Enable jmx core metrics for the java app

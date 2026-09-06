@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CircuitMetadataMapResponse {
   /// Link to the Express Route circuit
-  final pulumi.Input<String>? link;
+  final pulumi.Input<String?>? link;
   /// Peering location of the Express Route Circuit
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Express Route Circuit Name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [CircuitMetadataMapResponse].
   /// [link] Link to the Express Route circuit

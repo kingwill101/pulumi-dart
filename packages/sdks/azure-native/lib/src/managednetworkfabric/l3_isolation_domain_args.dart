@@ -10,25 +10,25 @@ import 'connected_subnet_route_policy.dart';
 /// {@macro pulumi_managednetworkfabric_l3_isolation_domain_args_doc}
 class L3IsolationDomainArgs {
   /// Aggregate route configurations.
-  final pulumi.Input<AggregateRouteConfiguration>? aggregateRouteConfiguration;
+  final pulumi.Input<AggregateRouteConfiguration?>? aggregateRouteConfiguration;
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// Connected Subnet RoutePolicy
-  final pulumi.Input<ConnectedSubnetRoutePolicy>? connectedSubnetRoutePolicy;
+  final pulumi.Input<ConnectedSubnetRoutePolicy?>? connectedSubnetRoutePolicy;
   /// Name of the L3 Isolation Domain.
-  final pulumi.Input<String>? l3IsolationDomainName;
+  final pulumi.Input<String?>? l3IsolationDomainName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// ARM Resource ID of the Network Fabric.
   final pulumi.Input<String> networkFabricId;
   /// Advertise Connected Subnets. Ex: "True" | "False".
-  final pulumi.Input<String>? redistributeConnectedSubnets;
+  final pulumi.Input<dynamic>? redistributeConnectedSubnets;
   /// Advertise Static Routes. Ex: "True" | "False".
-  final pulumi.Input<String>? redistributeStaticRoutes;
+  final pulumi.Input<dynamic>? redistributeStaticRoutes;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [L3IsolationDomainArgs].
   /// [aggregateRouteConfiguration] Aggregate route configurations.
@@ -41,18 +41,18 @@ class L3IsolationDomainArgs {
   /// [redistributeStaticRoutes] Advertise Static Routes. Ex: "True" | "False".
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  const L3IsolationDomainArgs({
+  L3IsolationDomainArgs({
     this.aggregateRouteConfiguration,
     this.annotation,
     this.connectedSubnetRoutePolicy,
     this.l3IsolationDomainName,
     this.location,
     required this.networkFabricId,
-    this.redistributeConnectedSubnets,
-    this.redistributeStaticRoutes,
+    pulumi.Input<dynamic>? redistributeConnectedSubnets,
+    pulumi.Input<dynamic>? redistributeStaticRoutes,
     required this.resourceGroupName,
     this.tags,
-  });
+  }) : redistributeConnectedSubnets = redistributeConnectedSubnets ?? pulumi.Input.fromValue('True'), redistributeStaticRoutes = redistributeStaticRoutes ?? pulumi.Input.fromValue('False');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,8 +77,8 @@ class L3IsolationDomainArgs {
       l3IsolationDomainName: (() { final guardedValue = map['l3IsolationDomainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkFabricId: pulumi.Input.fromValue(map['networkFabricId'] as String),
-      redistributeConnectedSubnets: (() { final guardedValue = map['redistributeConnectedSubnets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      redistributeStaticRoutes: (() { final guardedValue = map['redistributeStaticRoutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      redistributeConnectedSubnets: (() { final guardedValue = map['redistributeConnectedSubnets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      redistributeStaticRoutes: (() { final guardedValue = map['redistributeStaticRoutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

@@ -27,6 +27,17 @@ Future<GetConnectorResult> getConnector(
   return GetConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectorResult> getConnectorOutput(
+  GetConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:impact:getConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectorResult.fromMap);
+}
+
 /// Get Insight resources by workloadImpactName and insightName
 ///
 /// Uses Azure REST API version 2024-05-01-preview.
@@ -45,6 +56,17 @@ Future<GetInsightResult> getInsight(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInsightResult.fromMap(result);
+}
+
+pulumi.Output<GetInsightResult> getInsightOutput(
+  GetInsightArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:impact:getInsight',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInsightResult.fromMap);
 }
 
 /// Only for select HPC customers at this time, who can use this POST endpoint to trigger an action, where the UserRP/AzImpactRP service creates and returns a user-delegate SAS token for the storage account/container unique to the customer (identified by subscription ID).
@@ -66,6 +88,17 @@ Future<GetUploadServiceUploadTokenResult> getUploadServiceUploadToken(
   return GetUploadServiceUploadTokenResult.fromMap(result);
 }
 
+pulumi.Output<GetUploadServiceUploadTokenResult> getUploadServiceUploadTokenOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:impact:getUploadServiceUploadToken',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetUploadServiceUploadTokenResult.fromMap);
+}
+
 /// Get a WorkloadImpact
 ///
 /// Uses Azure REST API version 2024-05-01-preview.
@@ -84,4 +117,15 @@ Future<GetWorkloadImpactResult> getWorkloadImpact(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkloadImpactResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkloadImpactResult> getWorkloadImpactOutput(
+  GetWorkloadImpactArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:impact:getWorkloadImpact',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadImpactResult.fromMap);
 }

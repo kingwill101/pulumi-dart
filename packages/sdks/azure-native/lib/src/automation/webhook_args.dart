@@ -11,23 +11,23 @@ class WebhookArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
   /// Gets or sets the expiry time.
-  final pulumi.Input<String>? expiryTime;
+  final pulumi.Input<String?>? expiryTime;
   /// Gets or sets the value of the enabled flag of webhook.
-  final pulumi.Input<bool>? isEnabled;
+  final pulumi.Input<bool?>? isEnabled;
   /// Gets or sets the name of the webhook.
   final pulumi.Input<String> name;
   /// Gets or sets the parameters of the job.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the name of the hybrid worker group the webhook job will run on.
-  final pulumi.Input<String>? runOn;
+  final pulumi.Input<String?>? runOn;
   /// Gets or sets the runbook.
-  final pulumi.Input<RunbookAssociationProperty>? runbook;
+  final pulumi.Input<RunbookAssociationProperty?>? runbook;
   /// Gets or sets the uri.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
   /// The webhook name.
-  final pulumi.Input<String>? webhookName;
+  final pulumi.Input<String?>? webhookName;
 
   /// Creates a new [WebhookArgs].
   /// [automationAccountName] The name of the automation account.

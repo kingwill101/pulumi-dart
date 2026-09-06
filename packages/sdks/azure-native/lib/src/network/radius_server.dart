@@ -7,9 +7,9 @@ class RadiusServer {
   /// The address of this radius server.
   final pulumi.Input<String> radiusServerAddress;
   /// The initial score assigned to this radius server.
-  final pulumi.Input<double>? radiusServerScore;
+  final pulumi.Input<double?>? radiusServerScore;
   /// The secret used for this radius server.
-  final pulumi.Input<String>? radiusServerSecret;
+  final pulumi.Input<String?>? radiusServerSecret;
 
   /// Creates a new [RadiusServer].
   /// [radiusServerAddress] The address of this radius server.
@@ -32,7 +32,7 @@ class RadiusServer {
   factory RadiusServer.fromMap(Map<String, dynamic> map) {
     return RadiusServer(
       radiusServerAddress: pulumi.Input.fromValue(map['radiusServerAddress'] as String),
-      radiusServerScore: (() { final guardedValue = map['radiusServerScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      radiusServerScore: (() { final guardedValue = map['radiusServerScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       radiusServerSecret: (() { final guardedValue = map['radiusServerSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

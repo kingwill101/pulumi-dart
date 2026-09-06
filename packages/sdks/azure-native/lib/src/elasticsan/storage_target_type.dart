@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of storage target
-enum StorageTargetType {
+enum StorageTargetType implements pulumi.PulumiEnum<String> {
   valueIscsi("Iscsi"),
   valueNone("None");
 
   const StorageTargetType(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageTargetType fromValue(String value) {

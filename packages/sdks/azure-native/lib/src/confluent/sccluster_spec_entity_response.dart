@@ -8,31 +8,31 @@ import 'sccluster_network_environment_entity_response.dart';
 /// Spec of the cluster record
 class SCClusterSpecEntityResponse {
   /// The Kafka API cluster endpoint
-  final pulumi.Input<String>? apiEndpoint;
+  final pulumi.Input<String?>? apiEndpoint;
   /// The availability zone configuration of the cluster
-  final pulumi.Input<String>? availability;
+  final pulumi.Input<String?>? availability;
   /// Specification of the cluster byok
-  final pulumi.Input<SCClusterByokEntityResponse>? byok;
+  final pulumi.Input<SCClusterByokEntityResponse?>? byok;
   /// The cloud service provider
-  final pulumi.Input<String>? cloud;
+  final pulumi.Input<String?>? cloud;
   /// Specification of the cluster configuration
-  final pulumi.Input<ClusterConfigEntityResponse>? config;
+  final pulumi.Input<ClusterConfigEntityResponse?>? config;
   /// Specification of the cluster environment
-  final pulumi.Input<SCClusterNetworkEnvironmentEntityResponse>? environment;
+  final pulumi.Input<SCClusterNetworkEnvironmentEntityResponse?>? environment;
   /// The cluster HTTP request URL.
-  final pulumi.Input<String>? httpEndpoint;
+  final pulumi.Input<String?>? httpEndpoint;
   /// The bootstrap endpoint used by Kafka clients to connect to the cluster
-  final pulumi.Input<String>? kafkaBootstrapEndpoint;
+  final pulumi.Input<String?>? kafkaBootstrapEndpoint;
   /// The name of the cluster
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specification of the cluster network
-  final pulumi.Input<SCClusterNetworkEnvironmentEntityResponse>? network;
+  final pulumi.Input<SCClusterNetworkEnvironmentEntityResponse?>? network;
   /// Stream governance configuration
-  final pulumi.Input<String>? package;
+  final pulumi.Input<String?>? package;
   /// The cloud service provider region
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// type of zone availability
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [SCClusterSpecEntityResponse].
   /// [apiEndpoint] The Kafka API cluster endpoint

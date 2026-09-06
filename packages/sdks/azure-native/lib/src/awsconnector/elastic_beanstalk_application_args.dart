@@ -9,15 +9,15 @@ import 'elastic_beanstalk_application_properties.dart';
 /// {@macro pulumi_awsconnector_elastic_beanstalk_application_args_doc}
 class ElasticBeanstalkApplicationArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of ElasticBeanstalkApplication
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ElasticBeanstalkApplicationProperties>? properties;
+  final pulumi.Input<ElasticBeanstalkApplicationProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ElasticBeanstalkApplicationArgs].
   /// [location] The geo-location where the resource lives

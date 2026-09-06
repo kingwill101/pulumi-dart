@@ -6,63 +6,63 @@ import 'system_data_response.dart';
 /// Result data returned by getSiteCertificateSlot.
 class GetSiteCertificateSlotResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// CNAME of the certificate to be issued via free certificate
   final String? canonicalName;
   /// Raw bytes of .cer file
-  final String cerBlob;
+  final String? cerBlob;
   /// Method of domain validation for free cert
   final String? domainValidationMethod;
   /// Certificate expiration date.
-  final String expirationDate;
+  final String? expirationDate;
   /// Friendly name of the certificate.
-  final String friendlyName;
+  final String? friendlyName;
   /// Host names the certificate applies to.
   final List<String>? hostNames;
   /// Specification for the App Service Environment to use for the certificate.
-  final HostingEnvironmentProfileResponse hostingEnvironmentProfile;
+  final HostingEnvironmentProfileResponse? hostingEnvironmentProfile;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Certificate issue Date.
-  final String issueDate;
+  final String? issueDate;
   /// Certificate issuer.
-  final String issuer;
+  final String? issuer;
   /// Azure Key Vault Csm resource Id.
   final String? keyVaultId;
   /// Azure Key Vault secret name.
   final String? keyVaultSecretName;
   /// Status of the Key Vault secret.
-  final String keyVaultSecretStatus;
+  final String? keyVaultSecretStatus;
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   final String? kind;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Certificate password.
   final String? password;
   /// Pfx blob.
   final String? pfxBlob;
   /// Public key hash.
-  final String publicKeyHash;
+  final String? publicKeyHash;
   /// Self link.
-  final String selfLink;
+  final String? selfLink;
   /// Resource ID of the associated App Service plan.
   final String? serverFarmId;
   /// App name.
-  final String siteName;
+  final String? siteName;
   /// Subject name of the certificate.
-  final String subjectName;
+  final String? subjectName;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Certificate thumbprint.
-  final String thumbprint;
+  final String? thumbprint;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Is the certificate valid?.
-  final bool valid;
+  final bool? valid;
 
   /// Creates a new [GetSiteCertificateSlotResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -95,102 +95,102 @@ class GetSiteCertificateSlotResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [valid] Is the certificate valid?.
   const GetSiteCertificateSlotResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.canonicalName,
-    required this.cerBlob,
+    this.cerBlob,
     this.domainValidationMethod,
-    required this.expirationDate,
-    required this.friendlyName,
+    this.expirationDate,
+    this.friendlyName,
     this.hostNames,
-    required this.hostingEnvironmentProfile,
-    required this.id,
-    required this.issueDate,
-    required this.issuer,
+    this.hostingEnvironmentProfile,
+    this.id,
+    this.issueDate,
+    this.issuer,
     this.keyVaultId,
     this.keyVaultSecretName,
-    required this.keyVaultSecretStatus,
+    this.keyVaultSecretStatus,
     this.kind,
-    required this.location,
-    required this.name,
+    this.location,
+    this.name,
     this.password,
     this.pfxBlob,
-    required this.publicKeyHash,
-    required this.selfLink,
+    this.publicKeyHash,
+    this.selfLink,
     this.serverFarmId,
-    required this.siteName,
-    required this.subjectName,
-    required this.systemData,
+    this.siteName,
+    this.subjectName,
+    this.systemData,
     this.tags,
-    required this.thumbprint,
-    required this.type,
-    required this.valid,
+    this.thumbprint,
+    this.type,
+    this.valid,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'canonicalName': ?canonicalName,
-      'cerBlob': cerBlob,
+      'cerBlob': ?cerBlob,
       'domainValidationMethod': ?domainValidationMethod,
-      'expirationDate': expirationDate,
-      'friendlyName': friendlyName,
+      'expirationDate': ?expirationDate,
+      'friendlyName': ?friendlyName,
       'hostNames': ?hostNames,
-      'hostingEnvironmentProfile': hostingEnvironmentProfile.toMap(),
-      'id': id,
-      'issueDate': issueDate,
-      'issuer': issuer,
+      'hostingEnvironmentProfile': ?hostingEnvironmentProfile?.toMap(),
+      'id': ?id,
+      'issueDate': ?issueDate,
+      'issuer': ?issuer,
       'keyVaultId': ?keyVaultId,
       'keyVaultSecretName': ?keyVaultSecretName,
-      'keyVaultSecretStatus': keyVaultSecretStatus,
+      'keyVaultSecretStatus': ?keyVaultSecretStatus,
       'kind': ?kind,
-      'location': location,
-      'name': name,
+      'location': ?location,
+      'name': ?name,
       'password': ?password,
       'pfxBlob': ?pfxBlob,
-      'publicKeyHash': publicKeyHash,
-      'selfLink': selfLink,
+      'publicKeyHash': ?publicKeyHash,
+      'selfLink': ?selfLink,
       'serverFarmId': ?serverFarmId,
-      'siteName': siteName,
-      'subjectName': subjectName,
-      'systemData': systemData.toMap(),
+      'siteName': ?siteName,
+      'subjectName': ?subjectName,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'thumbprint': thumbprint,
-      'type': type,
-      'valid': valid,
+      'thumbprint': ?thumbprint,
+      'type': ?type,
+      'valid': ?valid,
     };
   }
 
   factory GetSiteCertificateSlotResult.fromMap(Map<String, dynamic> map) {
     return GetSiteCertificateSlotResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       canonicalName: (() { final guardedValue = map['canonicalName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      cerBlob: map['cerBlob'] as String,
+      cerBlob: (() { final guardedValue = map['cerBlob']; if (guardedValue == null) return null; return guardedValue as String; })(),
       domainValidationMethod: (() { final guardedValue = map['domainValidationMethod']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      expirationDate: map['expirationDate'] as String,
-      friendlyName: map['friendlyName'] as String,
+      expirationDate: (() { final guardedValue = map['expirationDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       hostNames: (() { final guardedValue = map['hostNames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      hostingEnvironmentProfile: HostingEnvironmentProfileResponse.fromMap((map['hostingEnvironmentProfile']! as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      issueDate: map['issueDate'] as String,
-      issuer: map['issuer'] as String,
+      hostingEnvironmentProfile: (() { final guardedValue = map['hostingEnvironmentProfile']; if (guardedValue == null) return null; return HostingEnvironmentProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      issueDate: (() { final guardedValue = map['issueDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      issuer: (() { final guardedValue = map['issuer']; if (guardedValue == null) return null; return guardedValue as String; })(),
       keyVaultId: (() { final guardedValue = map['keyVaultId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       keyVaultSecretName: (() { final guardedValue = map['keyVaultSecretName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      keyVaultSecretStatus: map['keyVaultSecretStatus'] as String,
+      keyVaultSecretStatus: (() { final guardedValue = map['keyVaultSecretStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      location: map['location'] as String,
-      name: map['name'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pfxBlob: (() { final guardedValue = map['pfxBlob']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      publicKeyHash: map['publicKeyHash'] as String,
-      selfLink: map['selfLink'] as String,
+      publicKeyHash: (() { final guardedValue = map['publicKeyHash']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serverFarmId: (() { final guardedValue = map['serverFarmId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      siteName: map['siteName'] as String,
-      subjectName: map['subjectName'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      siteName: (() { final guardedValue = map['siteName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      subjectName: (() { final guardedValue = map['subjectName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      thumbprint: map['thumbprint'] as String,
-      type: map['type'] as String,
-      valid: map['valid'] as bool,
+      thumbprint: (() { final guardedValue = map['thumbprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      valid: (() { final guardedValue = map['valid']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }

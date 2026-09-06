@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_args.dart';
 import 'cloud_capacity_response.dart';
 import 'extended_location_response.dart';
+import 'storage_qo_spolicy_response.dart';
 import 'system_data_response.dart';
 
 /// The Clouds resource definition.
@@ -212,7 +213,7 @@ class Cloud extends pulumi.CustomResource {
   /// Gets or sets the provisioning state.
   late final pulumi.Output<String> provisioningState;
   /// List of QoS policies available for the cloud.
-  late final pulumi.Output<List<Map<String, dynamic>>> storageQoSPolicies;
+  late final pulumi.Output<List<StorageQoSPolicyResponse>> storageQoSPolicies;
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags
@@ -246,9 +247,34 @@ class Cloud extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    storageQoSPolicies = registerOutput<List<Map<String, dynamic>>>('storageQoSPolicies');
+    storageQoSPolicies = registerOutput<List<StorageQoSPolicyResponse>>('storageQoSPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StorageQoSPolicyResponse>(guardedValue, (value) => StorageQoSPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String?>('uuid');
+    vmmServerId = registerOutput<String?>('vmmServerId');
+  }
+
+  /// Creates a typed reference to an existing [Cloud] resource.
+  Cloud.reference(String urn)
+    : super(
+        'azure-native:scvmm:Cloud',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cloudCapacity = registerOutput<CloudCapacityResponse>('cloudCapacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudCapacityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudName = registerOutput<String>('cloudName');
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inventoryItemId = registerOutput<String?>('inventoryItemId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    storageQoSPolicies = registerOutput<List<StorageQoSPolicyResponse>>('storageQoSPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StorageQoSPolicyResponse>(guardedValue, (value) => StorageQoSPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uuid = registerOutput<String?>('uuid');
     vmmServerId = registerOutput<String?>('vmmServerId');

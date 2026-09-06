@@ -10,7 +10,7 @@ class FirewallRuleArgs {
   /// IP address defining the end of the range of addresses of a firewall rule. Must be expressed in IPv4 format.
   final pulumi.Input<String> endIpAddress;
   /// Name of the firewall rule.
-  final pulumi.Input<String>? firewallRuleName;
+  final pulumi.Input<String?>? firewallRuleName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the server.

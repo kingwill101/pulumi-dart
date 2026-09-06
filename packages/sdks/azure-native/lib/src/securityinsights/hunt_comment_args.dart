@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_securityinsights_hunt_comment_args_doc}
 class HuntCommentArgs {
   /// The hunt comment id (GUID)
-  final pulumi.Input<String>? huntCommentId;
+  final pulumi.Input<String?>? huntCommentId;
   /// The hunt id (GUID)
   final pulumi.Input<String> huntId;
   /// The message for the comment

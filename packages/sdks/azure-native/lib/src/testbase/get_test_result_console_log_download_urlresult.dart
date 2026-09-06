@@ -4,29 +4,29 @@
 /// Result data returned by getTestResultConsoleLogDownloadURL.
 class GetTestResultConsoleLogDownloadURLResult {
   /// The download URL.
-  final String downloadUrl;
+  final String? downloadUrl;
   /// Expiry date of the download URL.
-  final String expirationTime;
+  final String? expirationTime;
 
   /// Creates a new [GetTestResultConsoleLogDownloadURLResult].
   /// [downloadUrl] The download URL.
   /// [expirationTime] Expiry date of the download URL.
   const GetTestResultConsoleLogDownloadURLResult({
-    required this.downloadUrl,
-    required this.expirationTime,
+    this.downloadUrl,
+    this.expirationTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'downloadUrl': downloadUrl,
-      'expirationTime': expirationTime,
+      'downloadUrl': ?downloadUrl,
+      'expirationTime': ?expirationTime,
     };
   }
 
   factory GetTestResultConsoleLogDownloadURLResult.fromMap(Map<String, dynamic> map) {
     return GetTestResultConsoleLogDownloadURLResult(
-      downloadUrl: map['downloadUrl'] as String,
-      expirationTime: map['expirationTime'] as String,
+      downloadUrl: (() { final guardedValue = map['downloadUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      expirationTime: (() { final guardedValue = map['expirationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

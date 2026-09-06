@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Duration based custom options to copy
 class CustomCopyOptionResponse {
   /// Data copied after given timespan
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
   /// Type of the specific object - used for deserializing
   /// Expected value is 'CustomCopyOption'.
   final pulumi.Input<String> objectType;

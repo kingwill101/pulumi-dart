@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The map type.
-enum MapType {
+enum MapType implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueXslt("Xslt"),
   valueXslt20("Xslt20"),
@@ -7,6 +9,7 @@ enum MapType {
   valueLiquid("Liquid");
 
   const MapType(this.wireValue);
+  @override
   final String wireValue;
 
   static MapType fromValue(String value) {

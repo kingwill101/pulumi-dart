@@ -9,15 +9,15 @@ class BuildContext {
   final pulumi.Input<String> contextUri;
   /// Path to the Dockerfile in the build context.
   /// &lt;seealso href="https://docs.docker.com/engine/reference/builder/" /&gt;
-  final pulumi.Input<String>? dockerfilePath;
+  final pulumi.Input<String?>? dockerfilePath;
 
   /// Creates a new [BuildContext].
   /// [contextUri] [Required] URI of the Docker build context used to build the image. Supports blob URIs on environment creation and may return blob or Git URIs.
   /// [dockerfilePath] Path to the Dockerfile in the build context.
-  const BuildContext({
+  BuildContext({
     required this.contextUri,
-    this.dockerfilePath,
-  });
+    pulumi.Input<String?>? dockerfilePath,
+  }) : dockerfilePath = dockerfilePath ?? pulumi.Input.fromValue('Dockerfile');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

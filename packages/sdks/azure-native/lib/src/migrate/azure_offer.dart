@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the Azure offer code.
-enum AzureOffer {
+enum AzureOffer implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   msazr0003P("MSAZR0003P"),
   msazr0023P("MSAZR0023P"),
@@ -13,6 +15,7 @@ enum AzureOffer {
   savingsPlan3Year("SavingsPlan3Year");
 
   const AzureOffer(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureOffer fromValue(String value) {

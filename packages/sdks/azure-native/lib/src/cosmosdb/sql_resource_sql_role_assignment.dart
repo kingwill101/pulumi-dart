@@ -204,4 +204,21 @@ class SqlResourceSqlRoleAssignment extends pulumi.CustomResource {
     scope = registerOutput<String?>('scope');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [SqlResourceSqlRoleAssignment] resource.
+  SqlResourceSqlRoleAssignment.reference(String urn)
+    : super(
+        'azure-native:cosmosdb:SqlResourceSqlRoleAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    principalId = registerOutput<String?>('principalId');
+    roleDefinitionId = registerOutput<String?>('roleDefinitionId');
+    scope = registerOutput<String?>('scope');
+    type = registerOutput<String>('type');
+  }
 }

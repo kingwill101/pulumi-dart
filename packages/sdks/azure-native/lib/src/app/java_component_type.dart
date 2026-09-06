@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the Java Component.
-enum JavaComponentType {
+enum JavaComponentType implements pulumi.PulumiEnum<String> {
   valueSpringBootAdmin("SpringBootAdmin"),
   valueSpringCloudEureka("SpringCloudEureka"),
   valueSpringCloudConfig("SpringCloudConfig"),
@@ -7,6 +9,7 @@ enum JavaComponentType {
   valueNacos("Nacos");
 
   const JavaComponentType(this.wireValue);
+  @override
   final String wireValue;
 
   static JavaComponentType fromValue(String value) {

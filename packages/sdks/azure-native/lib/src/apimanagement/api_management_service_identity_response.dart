@@ -15,7 +15,7 @@ class ApiManagementServiceIdentityResponse {
   /// dictionary key references will be ARM resource ids in the form:
   /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
   /// providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  final pulumi.Input<Map<String, UserIdentityPropertiesResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserIdentityPropertiesResponse>?>? userAssignedIdentities;
 
   /// Creates a new [ApiManagementServiceIdentityResponse].
   /// [principalId] The principal id of the identity.

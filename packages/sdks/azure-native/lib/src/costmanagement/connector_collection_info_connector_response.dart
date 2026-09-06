@@ -6,7 +6,7 @@ import 'connector_collection_error_info_connector_response.dart';
 /// Collection and ingestion information
 class ConnectorCollectionInfoConnectorResponse {
   /// Error information of last collection
-  final pulumi.Input<ConnectorCollectionErrorInfoConnectorResponse>? error;
+  final pulumi.Input<ConnectorCollectionErrorInfoConnectorResponse?>? error;
   /// Last time the data acquisition process completed (even if no new data was found)
   final pulumi.Input<String> lastRun;
   /// Last time the external data was updated into Azure

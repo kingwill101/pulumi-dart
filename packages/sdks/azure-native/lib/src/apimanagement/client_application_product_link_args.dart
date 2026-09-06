@@ -10,7 +10,7 @@ class ClientApplicationProductLinkArgs {
   /// Client Application identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> clientApplicationId;
   /// Client Application Product Link identifier. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? clientApplicationProductLinkId;
+  final pulumi.Input<String?>? clientApplicationProductLinkId;
   /// The unique resource identifier of the Product.
   final pulumi.Input<String> productId;
   /// The name of the resource group. The name is case insensitive.

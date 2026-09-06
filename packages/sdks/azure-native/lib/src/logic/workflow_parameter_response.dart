@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The workflow parameters.
 class WorkflowParameterResponse {
   /// The description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The metadata.
   final pulumi.Input<dynamic>? metadata;
   /// The type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The value.
   final pulumi.Input<dynamic>? value;
 

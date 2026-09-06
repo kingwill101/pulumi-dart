@@ -10,25 +10,25 @@ import 'node_group_spec.dart';
 /// {@macro pulumi_cosmosdb_mongo_cluster_args_doc}
 class MongoClusterArgs {
   /// The administrator's login for the mongo cluster.
-  final pulumi.Input<String>? administratorLogin;
+  final pulumi.Input<String?>? administratorLogin;
   /// The password of the administrator login.
-  final pulumi.Input<String>? administratorLoginPassword;
+  final pulumi.Input<String?>? administratorLoginPassword;
   /// The mode to create a mongo cluster.
-  final pulumi.Input<String>? createMode;
+  final pulumi.Input<dynamic>? createMode;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the mongo cluster.
-  final pulumi.Input<String>? mongoClusterName;
+  final pulumi.Input<String?>? mongoClusterName;
   /// The list of node group specs in the cluster.
-  final pulumi.Input<List<NodeGroupSpec>>? nodeGroupSpecs;
+  final pulumi.Input<List<NodeGroupSpec>?>? nodeGroupSpecs;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Parameters used for restore operations
-  final pulumi.Input<MongoClusterRestoreParameters>? restoreParameters;
+  final pulumi.Input<MongoClusterRestoreParameters?>? restoreParameters;
   /// The Mongo DB server version. Defaults to the latest available version if not specified.
-  final pulumi.Input<String>? serverVersion;
+  final pulumi.Input<String?>? serverVersion;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [MongoClusterArgs].
   /// [administratorLogin] The administrator's login for the mongo cluster.
@@ -41,10 +41,10 @@ class MongoClusterArgs {
   /// [restoreParameters] Parameters used for restore operations
   /// [serverVersion] The Mongo DB server version. Defaults to the latest available version if not specified.
   /// [tags] Resource tags.
-  const MongoClusterArgs({
+  MongoClusterArgs({
     this.administratorLogin,
     this.administratorLoginPassword,
-    this.createMode,
+    pulumi.Input<dynamic>? createMode,
     this.location,
     this.mongoClusterName,
     this.nodeGroupSpecs,
@@ -52,7 +52,7 @@ class MongoClusterArgs {
     this.restoreParameters,
     this.serverVersion,
     this.tags,
-  });
+  }) : createMode = createMode ?? pulumi.Input.fromValue('Default');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -73,7 +73,7 @@ class MongoClusterArgs {
     return MongoClusterArgs(
       administratorLogin: (() { final guardedValue = map['administratorLogin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       administratorLoginPassword: (() { final guardedValue = map['administratorLoginPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mongoClusterName: (() { final guardedValue = map['mongoClusterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeGroupSpecs: (() { final guardedValue = map['nodeGroupSpecs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NodeGroupSpec>(guardedValue, (value) => NodeGroupSpec.fromMap((value as Map).cast<String, dynamic>()))); })(),

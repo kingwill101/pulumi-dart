@@ -8,11 +8,11 @@ class ManagedNetworkPeeringPolicyResponse {
   /// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final pulumi.Input<String> id;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource
   final pulumi.Input<String> name;
   /// Gets or sets the properties of a Managed Network Policy
-  final pulumi.Input<ManagedNetworkPeeringPolicyPropertiesResponse>? properties;
+  final pulumi.Input<ManagedNetworkPeeringPolicyPropertiesResponse?>? properties;
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   final pulumi.Input<String> type;
 

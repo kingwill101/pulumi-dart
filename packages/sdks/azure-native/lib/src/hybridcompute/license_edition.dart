@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes the edition of the license. The values are either Standard or Datacenter.
-enum LicenseEdition {
+enum LicenseEdition implements pulumi.PulumiEnum<String> {
   valueStandard("Standard"),
   valueDatacenter("Datacenter");
 
   const LicenseEdition(this.wireValue);
+  @override
   final String wireValue;
 
   static LicenseEdition fromValue(String value) {

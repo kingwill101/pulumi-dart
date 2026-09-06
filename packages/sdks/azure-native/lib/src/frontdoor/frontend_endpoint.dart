@@ -6,17 +6,17 @@ import 'frontend_endpoint_update_parameters_web_application_firewall_policy_link
 /// A frontend endpoint used for routing.
 class FrontendEndpoint {
   /// The host name of the frontendEndpoint. Must be a domain name.
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
-  final pulumi.Input<String>? sessionAffinityEnabledState;
+  final pulumi.Input<dynamic>? sessionAffinityEnabledState;
   /// UNUSED. This field will be ignored. The TTL to use in seconds for session affinity, if applicable.
-  final pulumi.Input<int>? sessionAffinityTtlSeconds;
+  final pulumi.Input<int?>? sessionAffinityTtlSeconds;
   /// Defines the Web Application Firewall policy for each host (if applicable)
-  final pulumi.Input<FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink>? webApplicationFirewallPolicyLink;
+  final pulumi.Input<FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink?>? webApplicationFirewallPolicyLink;
 
   /// Creates a new [FrontendEndpoint].
   /// [hostName] The host name of the frontendEndpoint. Must be a domain name.
@@ -50,8 +50,8 @@ class FrontendEndpoint {
       hostName: (() { final guardedValue = map['hostName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sessionAffinityEnabledState: (() { final guardedValue = map['sessionAffinityEnabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sessionAffinityTtlSeconds: (() { final guardedValue = map['sessionAffinityTtlSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sessionAffinityEnabledState: (() { final guardedValue = map['sessionAffinityEnabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sessionAffinityTtlSeconds: (() { final guardedValue = map['sessionAffinityTtlSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       webApplicationFirewallPolicyLink: (() { final guardedValue = map['webApplicationFirewallPolicyLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

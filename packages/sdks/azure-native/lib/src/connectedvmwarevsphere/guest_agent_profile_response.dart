@@ -8,7 +8,7 @@ class GuestAgentProfileResponse {
   /// The hybrid machine agent full version.
   final pulumi.Input<String> agentVersion;
   /// Gets or sets the Public Key provided by the client for enabling guest management.
-  final pulumi.Input<String>? clientPublicKey;
+  final pulumi.Input<String?>? clientPublicKey;
   /// Details about the error state.
   final pulumi.Input<List<ErrorDetailResponse>> errorDetails;
   /// The time of the last status change.

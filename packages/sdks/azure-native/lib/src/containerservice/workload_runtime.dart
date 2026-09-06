@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Determines the type of workload a node can run.
-enum WorkloadRuntime {
+enum WorkloadRuntime implements pulumi.PulumiEnum<String> {
   valueOCIContainer("OCIContainer"),
   valueWasmWasi("WasmWasi"),
   valueKataVmIsolation("KataVmIsolation");
 
   const WorkloadRuntime(this.wireValue);
+  @override
   final String wireValue;
 
   static WorkloadRuntime fromValue(String value) {

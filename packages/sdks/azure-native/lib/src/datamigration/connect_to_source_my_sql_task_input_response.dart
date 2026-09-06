@@ -6,25 +6,25 @@ import 'my_sql_connection_info_response.dart';
 /// Input for the task that validates MySQL database connection
 class ConnectToSourceMySqlTaskInputResponse {
   /// Permission group for validations
-  final pulumi.Input<String>? checkPermissionsGroup;
+  final pulumi.Input<String?>? checkPermissionsGroup;
   /// Flag for whether or not the migration is offline
-  final pulumi.Input<bool>? isOfflineMigration;
+  final pulumi.Input<bool?>? isOfflineMigration;
   /// Information for connecting to MySQL source
   final pulumi.Input<MySqlConnectionInfoResponse> sourceConnectionInfo;
   /// Target Platform for the migration
-  final pulumi.Input<String>? targetPlatform;
+  final pulumi.Input<String?>? targetPlatform;
 
   /// Creates a new [ConnectToSourceMySqlTaskInputResponse].
   /// [checkPermissionsGroup] Permission group for validations
   /// [isOfflineMigration] Flag for whether or not the migration is offline
   /// [sourceConnectionInfo] Information for connecting to MySQL source
   /// [targetPlatform] Target Platform for the migration
-  const ConnectToSourceMySqlTaskInputResponse({
+  ConnectToSourceMySqlTaskInputResponse({
     this.checkPermissionsGroup,
-    this.isOfflineMigration,
+    pulumi.Input<bool?>? isOfflineMigration,
     required this.sourceConnectionInfo,
     this.targetPlatform,
-  });
+  }) : isOfflineMigration = isOfflineMigration ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

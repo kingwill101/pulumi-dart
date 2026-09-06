@@ -7,6 +7,7 @@ import 'plan_response.dart';
 import 'regular_priority_profile_response.dart';
 import 'spot_priority_profile_response.dart';
 import 'system_data_response.dart';
+import 'vm_size_profile_response.dart';
 import 'vmattributes_response.dart';
 
 /// An Compute Fleet resource
@@ -762,7 +763,7 @@ class Fleet extends pulumi.CustomResource {
   /// Attribute based Fleet.
   late final pulumi.Output<VMAttributesResponse?> vmAttributes;
   /// List of VM sizes supported for Compute Fleet
-  late final pulumi.Output<List<Map<String, dynamic>>> vmSizesProfile;
+  late final pulumi.Output<List<VmSizeProfileResponse>> vmSizesProfile;
   /// Zones in which the Compute Fleet is available
   late final pulumi.Output<List<String>?> zones;
 
@@ -791,12 +792,41 @@ class Fleet extends pulumi.CustomResource {
     regularPriorityProfile = registerOutput<RegularPriorityProfileResponse?>('regularPriorityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegularPriorityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spotPriorityProfile = registerOutput<SpotPriorityProfileResponse?>('spotPriorityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotPriorityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeCreated = registerOutput<String>('timeCreated');
     type = registerOutput<String>('type');
     uniqueId = registerOutput<String>('uniqueId');
     vmAttributes = registerOutput<VMAttributesResponse?>('vmAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VMAttributesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    vmSizesProfile = registerOutput<List<Map<String, dynamic>>>('vmSizesProfile');
-    zones = registerOutput<List<String>?>('zones');
+    vmSizesProfile = registerOutput<List<VmSizeProfileResponse>>('vmSizesProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VmSizeProfileResponse>(guardedValue, (value) => VmSizeProfileResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Fleet] resource.
+  Fleet.reference(String urn)
+    : super(
+        'azure-native:azurefleet:Fleet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalLocationsProfile = registerOutput<AdditionalLocationsProfileResponse?>('additionalLocationsProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AdditionalLocationsProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    computeProfile = registerOutput<ComputeProfileResponse>('computeProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    plan = registerOutput<PlanResponse?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    regularPriorityProfile = registerOutput<RegularPriorityProfileResponse?>('regularPriorityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegularPriorityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spotPriorityProfile = registerOutput<SpotPriorityProfileResponse?>('spotPriorityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotPriorityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeCreated = registerOutput<String>('timeCreated');
+    type = registerOutput<String>('type');
+    uniqueId = registerOutput<String>('uniqueId');
+    vmAttributes = registerOutput<VMAttributesResponse?>('vmAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VMAttributesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vmSizesProfile = registerOutput<List<VmSizeProfileResponse>>('vmSizesProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VmSizeProfileResponse>(guardedValue, (value) => VmSizeProfileResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

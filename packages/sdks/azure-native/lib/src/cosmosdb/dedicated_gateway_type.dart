@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// DedicatedGatewayType for the service.
-enum DedicatedGatewayType {
+enum DedicatedGatewayType implements pulumi.PulumiEnum<String> {
   valueIntegratedCache("IntegratedCache"),
   valueDistributedQuery("DistributedQuery");
 
   const DedicatedGatewayType(this.wireValue);
+  @override
   final String wireValue;
 
   static DedicatedGatewayType fromValue(String value) {

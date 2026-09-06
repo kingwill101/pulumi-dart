@@ -11,21 +11,21 @@ import 'scmetadata_entity.dart';
 /// {@macro pulumi_confluent_organization_cluster_by_id_args_doc}
 class OrganizationClusterByIdArgs {
   /// Confluent kafka or schema registry cluster id
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// Confluent environment id
   final pulumi.Input<String> environmentId;
   /// Type of cluster
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Metadata of the record
-  final pulumi.Input<SCMetadataEntity>? metadata;
+  final pulumi.Input<SCMetadataEntity?>? metadata;
   /// Organization resource name
   final pulumi.Input<String> organizationName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Specification of the cluster
-  final pulumi.Input<SCClusterSpecEntity>? spec;
+  final pulumi.Input<SCClusterSpecEntity?>? spec;
   /// Specification of the cluster status
-  final pulumi.Input<ClusterStatusEntity>? status;
+  final pulumi.Input<ClusterStatusEntity?>? status;
 
   /// Creates a new [OrganizationClusterByIdArgs].
   /// [clusterId] Confluent kafka or schema registry cluster id

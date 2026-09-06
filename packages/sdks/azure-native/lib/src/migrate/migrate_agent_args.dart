@@ -9,17 +9,17 @@ import 'migrate_agent_model_properties.dart';
 /// {@macro pulumi_migrate_migrate_agent_args_doc}
 class MigrateAgentArgs {
   /// MigrateAgent name.
-  final pulumi.Input<String>? agentName;
+  final pulumi.Input<String?>? agentName;
   /// ModernizeProject name.
   final pulumi.Input<String> modernizeProjectName;
   /// MigrateAgent model properties.
-  final pulumi.Input<MigrateAgentModelProperties>? properties;
+  final pulumi.Input<MigrateAgentModelProperties?>? properties;
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
   /// Azure Subscription Id in which project was created.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// Gets or sets the resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [MigrateAgentArgs].
   /// [agentName] MigrateAgent name.

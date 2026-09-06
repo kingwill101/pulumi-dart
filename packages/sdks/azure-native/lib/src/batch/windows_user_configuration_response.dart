@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties used to create a user account on a Windows node.
 class WindowsUserConfigurationResponse {
   /// Specifies login mode for the user. The default value is Interactive.
-  final pulumi.Input<String>? loginMode;
+  final pulumi.Input<String?>? loginMode;
 
   /// Creates a new [WindowsUserConfigurationResponse].
   /// [loginMode] Specifies login mode for the user. The default value is Interactive.

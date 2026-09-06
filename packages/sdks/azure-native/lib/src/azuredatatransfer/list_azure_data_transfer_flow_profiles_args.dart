@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_azuredatatransfer_list_azure_data_transfer_flow_profiles_args_doc}
 class ListAzureDataTransferFlowProfilesArgs {
   /// The name of the pipeline for which to retrieve associated FlowProfiles.
-  final pulumi.Input<String>? pipeline;
+  final pulumi.Input<String?>? pipeline;
 
   /// Creates a new [ListAzureDataTransferFlowProfilesArgs].
   /// [pipeline] The name of the pipeline for which to retrieve associated FlowProfiles.

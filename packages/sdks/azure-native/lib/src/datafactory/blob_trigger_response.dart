@@ -7,9 +7,9 @@ import 'trigger_pipeline_reference_response.dart';
 /// Trigger that runs every time the selected Blob container changes.
 class BlobTriggerResponse {
   /// List of tags that can be used for describing the trigger.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// Trigger description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The path of the container/folder that will trigger the pipeline.
   final pulumi.Input<String> folderPath;
   /// The Azure Storage linked service reference.
@@ -17,7 +17,7 @@ class BlobTriggerResponse {
   /// The max number of parallel files to handle when it is triggered.
   final pulumi.Input<int> maxConcurrency;
   /// Pipelines that need to be started.
-  final pulumi.Input<List<TriggerPipelineReferenceResponse>>? pipelines;
+  final pulumi.Input<List<TriggerPipelineReferenceResponse>?>? pipelines;
   /// Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
   final pulumi.Input<String> runtimeState;
   /// Trigger type.
@@ -63,7 +63,7 @@ class BlobTriggerResponse {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       folderPath: pulumi.Input.fromValue(map['folderPath'] as String),
       linkedService: pulumi.Input.fromValue(LinkedServiceReferenceResponse.fromMap((map['linkedService']! as Map).cast<String, dynamic>())),
-      maxConcurrency: pulumi.Input.fromValue(map['maxConcurrency'] as int),
+      maxConcurrency: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConcurrency'])),
       pipelines: (() { final guardedValue = map['pipelines']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TriggerPipelineReferenceResponse>(guardedValue, (value) => TriggerPipelineReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       runtimeState: pulumi.Input.fromValue(map['runtimeState'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SqlTriggerGetPropertiesResponseResource {
   /// Body of the Trigger
-  final pulumi.Input<String>? body;
+  final pulumi.Input<String?>? body;
   /// A system generated property representing the resource etag required for optimistic concurrency control.
   final pulumi.Input<String> etag;
   /// Name of the Cosmos DB SQL trigger
@@ -12,9 +12,9 @@ class SqlTriggerGetPropertiesResponseResource {
   /// A system generated property. A unique identifier.
   final pulumi.Input<String> rid;
   /// The operation the trigger is associated with
-  final pulumi.Input<String>? triggerOperation;
+  final pulumi.Input<String?>? triggerOperation;
   /// Type of the Trigger
-  final pulumi.Input<String>? triggerType;
+  final pulumi.Input<String?>? triggerType;
   /// A system generated property that denotes the last updated timestamp of the resource.
   final pulumi.Input<double> ts;
 
@@ -56,7 +56,7 @@ class SqlTriggerGetPropertiesResponseResource {
       rid: pulumi.Input.fromValue(map['rid'] as String),
       triggerOperation: (() { final guardedValue = map['triggerOperation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       triggerType: (() { final guardedValue = map['triggerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ts: pulumi.Input.fromValue(map['ts'] as double),
+      ts: pulumi.Input.fromValue((map['ts'] as num).toDouble()),
     );
   }
 }

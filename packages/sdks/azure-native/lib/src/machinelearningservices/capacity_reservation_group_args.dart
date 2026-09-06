@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'capacity_reservation_group_machinelearningservices.dart';
+import 'capacity_reservation_group.dart';
 import 'managed_service_identity.dart';
 import 'sku.dart';
 
@@ -11,21 +11,21 @@ import 'sku.dart';
 /// {@macro pulumi_machinelearningservices_capacity_reservation_group_args_doc}
 class CapacityReservationGroupArgs {
   /// [Required] Additional attributes of the entity.
-  final pulumi.Input<CapacityReservationGroupMachinelearningservices> capacityReservationGroupProperties;
+  final pulumi.Input<CapacityReservationGroup> capacityReservationGroupProperties;
   /// Group ID
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// Managed service identity (system assigned and/or user assigned identities)
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Sku details required for ARM contract for Autoscaling.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CapacityReservationGroupArgs].
   /// [capacityReservationGroupProperties] [Required] Additional attributes of the entity.
@@ -49,7 +49,7 @@ class CapacityReservationGroupArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'capacityReservationGroupProperties': capacityReservationGroupProperties,
+      'capacityReservationGroupProperties': pulumi.Input.mapInputValue<CapacityReservationGroup, Map<String, dynamic>>(capacityReservationGroupProperties, (value) => value.toMap()),
       'groupId': ?groupId,
       'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'kind': ?kind,
@@ -62,7 +62,7 @@ class CapacityReservationGroupArgs {
 
   factory CapacityReservationGroupArgs.fromMap(Map<String, dynamic> map) {
     return CapacityReservationGroupArgs(
-      capacityReservationGroupProperties: pulumi.Input.fromValue(map['capacityReservationGroupProperties'] as CapacityReservationGroupMachinelearningservices),
+      capacityReservationGroupProperties: pulumi.Input.fromValue(CapacityReservationGroup.fromMap((map['capacityReservationGroupProperties']! as Map).cast<String, dynamic>())),
       groupId: (() { final guardedValue = map['groupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

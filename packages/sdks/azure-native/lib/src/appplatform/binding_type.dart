@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Buildpack Binding Type
-enum BindingType {
+enum BindingType implements pulumi.PulumiEnum<String> {
   valueApplicationInsights("ApplicationInsights"),
   valueApacheSkyWalking("ApacheSkyWalking"),
   valueAppDynamics("AppDynamics"),
@@ -9,6 +11,7 @@ enum BindingType {
   valueCACertificates("CACertificates");
 
   const BindingType(this.wireValue);
+  @override
   final String wireValue;
 
   static BindingType fromValue(String value) {

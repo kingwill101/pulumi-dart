@@ -9,27 +9,27 @@ class GetAddressResult {
   /// Type of address based on its usage context.
   final String? addressClassification;
   /// Status of address validation.
-  final String addressValidationStatus;
+  final String? addressValidationStatus;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Contact details for the address.
   final ContactDetailsResponse? contactDetails;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Provisioning state
-  final String provisioningState;
+  final String? provisioningState;
   /// Shipping details for the address.
   final ShippingAddressResponse? shippingAddress;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetAddressResult].
   /// [addressClassification] Type of address based on its usage context.
@@ -46,50 +46,50 @@ class GetAddressResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetAddressResult({
     this.addressClassification,
-    required this.addressValidationStatus,
-    required this.azureApiVersion,
+    this.addressValidationStatus,
+    this.azureApiVersion,
     this.contactDetails,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.provisioningState,
+    this.id,
+    this.location,
+    this.name,
+    this.provisioningState,
     this.shippingAddress,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'addressClassification': ?addressClassification,
-      'addressValidationStatus': addressValidationStatus,
-      'azureApiVersion': azureApiVersion,
+      'addressValidationStatus': ?addressValidationStatus,
+      'azureApiVersion': ?azureApiVersion,
       'contactDetails': ?contactDetails?.toMap(),
-      'id': id,
-      'location': location,
-      'name': name,
-      'provisioningState': provisioningState,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'shippingAddress': ?shippingAddress?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetAddressResult.fromMap(Map<String, dynamic> map) {
     return GetAddressResult(
       addressClassification: (() { final guardedValue = map['addressClassification']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      addressValidationStatus: map['addressValidationStatus'] as String,
-      azureApiVersion: map['azureApiVersion'] as String,
+      addressValidationStatus: (() { final guardedValue = map['addressValidationStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       contactDetails: (() { final guardedValue = map['contactDetails']; if (guardedValue == null) return null; return ContactDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       shippingAddress: (() { final guardedValue = map['shippingAddress']; if (guardedValue == null) return null; return ShippingAddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

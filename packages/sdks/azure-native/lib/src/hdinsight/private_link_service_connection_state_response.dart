@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The private link service connection state.
 class PrivateLinkServiceConnectionStateResponse {
   /// Whether there is further actions.
-  final pulumi.Input<String>? actionsRequired;
+  final pulumi.Input<String?>? actionsRequired;
   /// The optional description of the status.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The concrete private link service connection.
   final pulumi.Input<String> status;
 

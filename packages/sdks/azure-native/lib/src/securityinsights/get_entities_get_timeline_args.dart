@@ -12,9 +12,9 @@ class GetEntitiesGetTimelineArgs {
   /// entity ID
   final pulumi.Input<String> entityId;
   /// Array of timeline Item kinds.
-  final pulumi.Input<List<String>>? kinds;
+  final pulumi.Input<List<dynamic>?>? kinds;
   /// The number of bucket for timeline queries aggregation.
-  final pulumi.Input<int>? numberOfBucket;
+  final pulumi.Input<int?>? numberOfBucket;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The start timeline date, so the results returned are after this date.
@@ -56,8 +56,8 @@ class GetEntitiesGetTimelineArgs {
     return GetEntitiesGetTimelineArgs(
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
       entityId: pulumi.Input.fromValue(map['entityId'] as String),
-      kinds: (() { final guardedValue = map['kinds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      numberOfBucket: (() { final guardedValue = map['numberOfBucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      kinds: (() { final guardedValue = map['kinds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      numberOfBucket: (() { final guardedValue = map['numberOfBucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),

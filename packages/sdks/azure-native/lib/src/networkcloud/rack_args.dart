@@ -13,11 +13,11 @@ class RackArgs {
   /// The extended location of the cluster associated with the resource.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The free-form description of the rack location. (e.g. “DTN Datacenter, Floor 3, Isle 9, Rack 2B”)
   final pulumi.Input<String> rackLocation;
   /// The name of the rack.
-  final pulumi.Input<String>? rackName;
+  final pulumi.Input<String?>? rackName;
   /// The unique identifier for the rack within Network Cloud cluster. An alternate unique alphanumeric value other than a serial number may be provided if desired.
   final pulumi.Input<String> rackSerialNumber;
   /// The SKU for the rack.
@@ -25,7 +25,7 @@ class RackArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RackArgs].
   /// [availabilityZone] The value that will be used for machines in this rack to represent the availability zones that can be referenced by Hybrid AKS Clusters for node arrangement.

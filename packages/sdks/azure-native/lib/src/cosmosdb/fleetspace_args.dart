@@ -9,19 +9,19 @@ import 'fleetspace_properties_throughput_pool_configuration.dart';
 /// {@macro pulumi_cosmosdb_fleetspace_args_doc}
 class FleetspaceArgs {
   /// List of data regions assigned to the fleetspace. Eg [westus2]
-  final pulumi.Input<List<String>>? dataRegions;
+  final pulumi.Input<List<String>?>? dataRegions;
   /// Cosmos DB fleet name. Needs to be unique under a subscription.
   final pulumi.Input<String> fleetName;
   /// The kind of API this fleetspace belongs to. Acceptable values: 'NoSQL'
-  final pulumi.Input<String>? fleetspaceApiKind;
+  final pulumi.Input<dynamic>? fleetspaceApiKind;
   /// Cosmos DB fleetspace name. Needs to be unique under a fleet.
-  final pulumi.Input<String>? fleetspaceName;
+  final pulumi.Input<String?>? fleetspaceName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
-  final pulumi.Input<String>? serviceTier;
+  final pulumi.Input<dynamic>? serviceTier;
   /// Configuration for throughput pool in the fleetspace.
-  final pulumi.Input<FleetspacePropertiesThroughputPoolConfiguration>? throughputPoolConfiguration;
+  final pulumi.Input<FleetspacePropertiesThroughputPoolConfiguration?>? throughputPoolConfiguration;
 
   /// Creates a new [FleetspaceArgs].
   /// [dataRegions] List of data regions assigned to the fleetspace. Eg [westus2]
@@ -57,10 +57,10 @@ class FleetspaceArgs {
     return FleetspaceArgs(
       dataRegions: (() { final guardedValue = map['dataRegions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       fleetName: pulumi.Input.fromValue(map['fleetName'] as String),
-      fleetspaceApiKind: (() { final guardedValue = map['fleetspaceApiKind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fleetspaceApiKind: (() { final guardedValue = map['fleetspaceApiKind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       fleetspaceName: (() { final guardedValue = map['fleetspaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      serviceTier: (() { final guardedValue = map['serviceTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceTier: (() { final guardedValue = map['serviceTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       throughputPoolConfiguration: (() { final guardedValue = map['throughputPoolConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FleetspacePropertiesThroughputPoolConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -14,7 +14,7 @@ class PrivateLinkResourceResponse {
   /// The private link resource required member names.
   final pulumi.Input<List<String>> requiredMembers;
   /// The private link resource private link DNS zone name.
-  final pulumi.Input<List<String>>? requiredZoneNames;
+  final pulumi.Input<List<String>?>? requiredZoneNames;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

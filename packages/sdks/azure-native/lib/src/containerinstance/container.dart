@@ -12,27 +12,27 @@ import 'volume_mount.dart';
 /// A container instance.
 class Container {
   /// The commands to execute within the container instance in exec form.
-  final pulumi.Input<List<String>>? command;
+  final pulumi.Input<List<String>?>? command;
   /// The config map.
-  final pulumi.Input<ConfigMap>? configMap;
+  final pulumi.Input<ConfigMap?>? configMap;
   /// The environment variables to set in the container instance.
-  final pulumi.Input<List<EnvironmentVariable>>? environmentVariables;
+  final pulumi.Input<List<EnvironmentVariable>?>? environmentVariables;
   /// The name of the image used to create the container instance.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// The liveness probe.
-  final pulumi.Input<ContainerProbe>? livenessProbe;
+  final pulumi.Input<ContainerProbe?>? livenessProbe;
   /// The user-provided name of the container instance.
   final pulumi.Input<String> name;
   /// The exposed ports on the container instance.
-  final pulumi.Input<List<ContainerPort>>? ports;
+  final pulumi.Input<List<ContainerPort>?>? ports;
   /// The readiness probe.
-  final pulumi.Input<ContainerProbe>? readinessProbe;
+  final pulumi.Input<ContainerProbe?>? readinessProbe;
   /// The resource requirements of the container instance.
-  final pulumi.Input<ResourceRequirements>? resources;
+  final pulumi.Input<ResourceRequirements?>? resources;
   /// The container security properties.
-  final pulumi.Input<SecurityContextDefinition>? securityContext;
+  final pulumi.Input<SecurityContextDefinition?>? securityContext;
   /// The volume mounts available to the container instance.
-  final pulumi.Input<List<VolumeMount>>? volumeMounts;
+  final pulumi.Input<List<VolumeMount>?>? volumeMounts;
 
   /// Creates a new [Container].
   /// [command] The commands to execute within the container instance in exec form.

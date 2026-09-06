@@ -238,7 +238,32 @@ class Connector extends pulumi.CustomResource {
     providerAccountId = registerOutput<String>('providerAccountId');
     reportId = registerOutput<String?>('reportId');
     status = registerOutput<String?>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Connector] resource.
+  Connector.reference(String urn)
+    : super(
+        'azure-native:costmanagement:Connector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    collection = registerOutput<ConnectorCollectionInfoConnectorResponse>('collection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorCollectionInfoConnectorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdOn = registerOutput<String>('createdOn');
+    credentialsKey = registerOutput<String?>('credentialsKey');
+    displayName = registerOutput<String?>('displayName');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String?>('location');
+    modifiedOn = registerOutput<String>('modifiedOn');
+    this.name = registerOutput<String>('name');
+    providerAccountId = registerOutput<String>('providerAccountId');
+    reportId = registerOutput<String?>('reportId');
+    status = registerOutput<String?>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

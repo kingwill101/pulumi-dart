@@ -7,21 +7,21 @@ import 'input_windows_parameters_response.dart';
 /// Input configuration for a patch run
 class InputPatchConfigurationResponse {
   /// Input parameters specific to patching Linux machine. For Windows machines, do not pass this property.
-  final pulumi.Input<InputLinuxParametersResponse>? linuxParameters;
+  final pulumi.Input<InputLinuxParametersResponse?>? linuxParameters;
   /// Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
-  final pulumi.Input<String>? rebootSetting;
+  final pulumi.Input<String?>? rebootSetting;
   /// Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property.
-  final pulumi.Input<InputWindowsParametersResponse>? windowsParameters;
+  final pulumi.Input<InputWindowsParametersResponse?>? windowsParameters;
 
   /// Creates a new [InputPatchConfigurationResponse].
   /// [linuxParameters] Input parameters specific to patching Linux machine. For Windows machines, do not pass this property.
   /// [rebootSetting] Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
   /// [windowsParameters] Input parameters specific to patching a Windows machine. For Linux machines, do not pass this property.
-  const InputPatchConfigurationResponse({
+  InputPatchConfigurationResponse({
     this.linuxParameters,
-    this.rebootSetting,
+    pulumi.Input<String?>? rebootSetting,
     this.windowsParameters,
-  });
+  }) : rebootSetting = rebootSetting ?? pulumi.Input.fromValue('IfRequired');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

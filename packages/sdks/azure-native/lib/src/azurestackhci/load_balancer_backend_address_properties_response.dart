@@ -9,13 +9,13 @@ import 'virtual_network_subnet_arm_reference_response.dart';
 /// LoadBalancer Backend Address properties
 class LoadBalancerBackendAddressPropertiesResponse {
   /// admin state - if set to false, the address is removed from the pool
-  final pulumi.Input<String>? adminState;
+  final pulumi.Input<String?>? adminState;
   /// IP address of the backend target. Populated automatically from the referenced IP configuration.
   final pulumi.Input<String> ipAddress;
   /// Reference to the logical network containing this backend address. Populated automatically from the referenced IP configuration. Mutually exclusive with subnet and virtualNetwork.
   final pulumi.Input<LogicalNetworkArmReferenceResponse> logicalNetwork;
   /// Nic Based backend-ip association
-  final pulumi.Input<IPConfigurationArmReferenceResponse>? networkInterfaceIPConfiguration;
+  final pulumi.Input<IPConfigurationArmReferenceResponse?>? networkInterfaceIPConfiguration;
   /// Reference to the subnet containing the backend address. Populated automatically from the referenced IP configuration. Mutually exclusive with logicalNetwork.
   final pulumi.Input<VirtualNetworkSubnetArmReferenceResponse> subnet;
   /// Reference to the virtual network containing the backend address. Populated automatically from the referenced IP configuration. Mutually exclusive with logicalNetwork.

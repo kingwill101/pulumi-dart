@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// KPack ClusterStack properties payload
 class StackPropertiesResponse {
   /// Id of the ClusterStack.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Version of the ClusterStack
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [StackPropertiesResponse].
   /// [id] Id of the ClusterStack.

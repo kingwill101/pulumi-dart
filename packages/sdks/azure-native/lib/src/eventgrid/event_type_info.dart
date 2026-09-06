@@ -8,9 +8,9 @@ class EventTypeInfo {
   /// A collection of inline event types for the resource. The inline event type keys are of type string which represents the name of the event.
   /// An example of a valid inline event name is "Contoso.OrderCreated".
   /// The inline event type values are of type InlineEventProperties and will contain additional information for every inline event type.
-  final pulumi.Input<Map<String, InlineEventProperties>>? inlineEventTypes;
+  final pulumi.Input<Map<String, InlineEventProperties>?>? inlineEventTypes;
   /// The kind of event type used.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<dynamic>? kind;
 
   /// Creates a new [EventTypeInfo].
   /// [inlineEventTypes] A collection of inline event types for the resource. The inline event type keys are of type string which represents the name of the event.
@@ -30,7 +30,7 @@ class EventTypeInfo {
   factory EventTypeInfo.fromMap(Map<String, dynamic> map) {
     return EventTypeInfo(
       inlineEventTypes: (() { final guardedValue = map['inlineEventTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<InlineEventProperties>(guardedValue, (value) => InlineEventProperties.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

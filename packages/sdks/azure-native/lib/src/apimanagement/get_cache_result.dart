@@ -4,21 +4,21 @@
 /// Result data returned by getCache.
 class GetCacheResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Runtime connection string to cache
-  final String connectionString;
+  final String? connectionString;
   /// Cache description
   final String? description;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Original uri of entity in external system cache points to
   final String? resourceId;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Location identifier to use cache from (should be either 'default' or valid Azure region identifier)
-  final String useFromLocation;
+  final String? useFromLocation;
 
   /// Creates a new [GetCacheResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -30,39 +30,39 @@ class GetCacheResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [useFromLocation] Location identifier to use cache from (should be either 'default' or valid Azure region identifier)
   const GetCacheResult({
-    required this.azureApiVersion,
-    required this.connectionString,
+    this.azureApiVersion,
+    this.connectionString,
     this.description,
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
     this.resourceId,
-    required this.type,
-    required this.useFromLocation,
+    this.type,
+    this.useFromLocation,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'connectionString': connectionString,
+      'azureApiVersion': ?azureApiVersion,
+      'connectionString': ?connectionString,
       'description': ?description,
-      'id': id,
-      'name': name,
+      'id': ?id,
+      'name': ?name,
       'resourceId': ?resourceId,
-      'type': type,
-      'useFromLocation': useFromLocation,
+      'type': ?type,
+      'useFromLocation': ?useFromLocation,
     };
   }
 
   factory GetCacheResult.fromMap(Map<String, dynamic> map) {
     return GetCacheResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      connectionString: map['connectionString'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      connectionString: (() { final guardedValue = map['connectionString']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
-      useFromLocation: map['useFromLocation'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      useFromLocation: (() { final guardedValue = map['useFromLocation']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

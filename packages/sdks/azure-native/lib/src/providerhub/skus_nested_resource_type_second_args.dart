@@ -12,13 +12,13 @@ class SkusNestedResourceTypeSecondArgs {
   final pulumi.Input<String> nestedResourceTypeFirst;
   /// The second child resource type.
   final pulumi.Input<String> nestedResourceTypeSecond;
-  final pulumi.Input<SkuResourceProperties>? properties;
+  final pulumi.Input<SkuResourceProperties?>? properties;
   /// The name of the resource provider hosted within ProviderHub.
   final pulumi.Input<String> providerNamespace;
   /// The resource type.
   final pulumi.Input<String> resourceType;
   /// The SKU.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
 
   /// Creates a new [SkusNestedResourceTypeSecondArgs].
   /// [nestedResourceTypeFirst] The first child resource type.

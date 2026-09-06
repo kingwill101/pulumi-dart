@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The level of Redis Enterprise cluster to deploy. Possible values: ('Balanced_B5', 'MemoryOptimized_M10', 'ComputeOptimized_X5', etc.). For more information on SKUs see the latest pricing documentation. Note that additional SKUs may become supported in the future.
-enum SkuName {
+enum SkuName implements pulumi.PulumiEnum<String> {
   valueEnterpriseE1("Enterprise_E1"),
   valueEnterpriseE5("Enterprise_E5"),
   valueEnterpriseE10("Enterprise_E10"),
@@ -57,6 +59,7 @@ enum SkuName {
   valueFlashOptimizedA4500("FlashOptimized_A4500");
 
   const SkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static SkuName fromValue(String value) {

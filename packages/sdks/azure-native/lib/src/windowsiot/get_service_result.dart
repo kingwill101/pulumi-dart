@@ -6,27 +6,27 @@ class GetServiceResult {
   /// Windows IoT Device Service OEM AAD domain
   final String? adminDomainName;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Windows IoT Device Service ODM AAD domain
   final String? billingDomainName;
   /// The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.
   final String? etag;
   /// Fully qualified resource Id for the resource
-  final String id;
+  final String? id;
   /// The Azure Region where the resource lives
   final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Windows IoT Device Service notes.
   final String? notes;
   /// Windows IoT Device Service device allocation,
   final double? quantity;
   /// Windows IoT Device Service start date,
-  final String startDate;
+  final String? startDate;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetServiceResult].
   /// [adminDomainName] Windows IoT Device Service OEM AAD domain
@@ -43,50 +43,50 @@ class GetServiceResult {
   /// [type] The type of the resource.
   const GetServiceResult({
     this.adminDomainName,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.billingDomainName,
     this.etag,
-    required this.id,
+    this.id,
     this.location,
-    required this.name,
+    this.name,
     this.notes,
     this.quantity,
-    required this.startDate,
+    this.startDate,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'adminDomainName': ?adminDomainName,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'billingDomainName': ?billingDomainName,
       'etag': ?etag,
-      'id': id,
+      'id': ?id,
       'location': ?location,
-      'name': name,
+      'name': ?name,
       'notes': ?notes,
       'quantity': ?quantity,
-      'startDate': startDate,
+      'startDate': ?startDate,
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetServiceResult.fromMap(Map<String, dynamic> map) {
     return GetServiceResult(
       adminDomainName: (() { final guardedValue = map['adminDomainName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       billingDomainName: (() { final guardedValue = map['billingDomainName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       notes: (() { final guardedValue = map['notes']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      quantity: (() { final guardedValue = map['quantity']; if (guardedValue == null) return null; return guardedValue as double; })(),
-      startDate: map['startDate'] as String,
+      quantity: (() { final guardedValue = map['quantity']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      startDate: (() { final guardedValue = map['startDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

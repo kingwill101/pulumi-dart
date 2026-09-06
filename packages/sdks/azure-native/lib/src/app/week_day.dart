@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Day of the week when a managed environment can be patched.
-enum WeekDay {
+enum WeekDay implements pulumi.PulumiEnum<String> {
   valueMonday("Monday"),
   valueTuesday("Tuesday"),
   valueWednesday("Wednesday"),
@@ -9,6 +11,7 @@ enum WeekDay {
   valueSunday("Sunday");
 
   const WeekDay(this.wireValue);
+  @override
   final String wireValue;
 
   static WeekDay fromValue(String value) {

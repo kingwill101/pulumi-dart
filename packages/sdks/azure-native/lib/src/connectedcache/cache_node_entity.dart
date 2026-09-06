@@ -5,41 +5,41 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Model representing Cache Node for ConnectedCache resource
 class CacheNodeEntity {
   /// Customer requested day of week for mcc install of auto update cycle. 0 is default no selection. 1-7 are days of week, 1 is Sunday, 2 is Monday, etc.
-  final pulumi.Input<int>? autoUpdateRequestedDay;
+  final pulumi.Input<int?>? autoUpdateRequestedDay;
   /// Customer requested time of the day for mcc install of auto update cycle, should be hh:mm
-  final pulumi.Input<String>? autoUpdateRequestedTime;
+  final pulumi.Input<String?>? autoUpdateRequestedTime;
   /// Customer requested week of month for mcc install of auto update cycle. 0 is default no selection. 1-5 are valid weeks of month, 1 is first week, 2 is second week, etc.
-  final pulumi.Input<int>? autoUpdateRequestedWeek;
+  final pulumi.Input<int?>? autoUpdateRequestedWeek;
   /// Auto Update Ring Type which is stable or beta as new values. slow or fast are legacy from version 2026-06-01.
-  final pulumi.Input<String>? autoUpdateRingType;
+  final pulumi.Input<dynamic>? autoUpdateRingType;
   /// Cache node resource identifier of the cache node
-  final pulumi.Input<String>? cacheNodeId;
+  final pulumi.Input<String?>? cacheNodeId;
   /// Cache node resource name.
-  final pulumi.Input<String>? cacheNodeName;
+  final pulumi.Input<String?>? cacheNodeName;
   /// Cache node resource comma separated values of Cidrs.
-  final pulumi.Input<List<String>>? cidrCsv;
+  final pulumi.Input<List<String>?>? cidrCsv;
   /// Cache node resource current Cidr range precedence selection type.
-  final pulumi.Input<int>? cidrSelectionType;
+  final pulumi.Input<int?>? cidrSelectionType;
   /// Cache node resource customer resource Asn (autonomous system number)
-  final pulumi.Input<int>? customerAsn;
+  final pulumi.Input<int?>? customerAsn;
   /// Cache node resource customer index as string.
-  final pulumi.Input<String>? customerIndex;
+  final pulumi.Input<String?>? customerIndex;
   /// Cache node resource customer resource name.
-  final pulumi.Input<String>? customerName;
+  final pulumi.Input<String?>? customerName;
   /// FQDN(fully qualified domain name) value of the mcc cache node
-  final pulumi.Input<String>? fullyQualifiedDomainName;
+  final pulumi.Input<String?>? fullyQualifiedDomainName;
   /// Cache node resource Azure fully qualified resource Id.
-  final pulumi.Input<String>? fullyQualifiedResourceId;
+  final pulumi.Input<String?>? fullyQualifiedResourceId;
   /// Cache node resource Ip address.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// Cache node resource flag for indicating if cache node is enabled.
-  final pulumi.Input<bool>? isEnabled;
+  final pulumi.Input<bool?>? isEnabled;
   /// Cache node resource flag for determining if managed by enterprise as boolean.
-  final pulumi.Input<bool>? isEnterpriseManaged;
+  final pulumi.Input<bool?>? isEnterpriseManaged;
   /// Cache node resource maximum allowed egress in Mbps.
-  final pulumi.Input<int>? maxAllowableEgressInMbps;
+  final pulumi.Input<int?>? maxAllowableEgressInMbps;
   /// Cache node resource flag for determining if customer will be migrated.
-  final pulumi.Input<bool>? shouldMigrate;
+  final pulumi.Input<bool?>? shouldMigrate;
 
   /// Creates a new [CacheNodeEntity].
   /// [autoUpdateRequestedDay] Customer requested day of week for mcc install of auto update cycle. 0 is default no selection. 1-7 are days of week, 1 is Sunday, 2 is Monday, etc.
@@ -106,15 +106,15 @@ class CacheNodeEntity {
 
   factory CacheNodeEntity.fromMap(Map<String, dynamic> map) {
     return CacheNodeEntity(
-      autoUpdateRequestedDay: (() { final guardedValue = map['autoUpdateRequestedDay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      autoUpdateRequestedDay: (() { final guardedValue = map['autoUpdateRequestedDay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       autoUpdateRequestedTime: (() { final guardedValue = map['autoUpdateRequestedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      autoUpdateRequestedWeek: (() { final guardedValue = map['autoUpdateRequestedWeek']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      autoUpdateRingType: (() { final guardedValue = map['autoUpdateRingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      autoUpdateRequestedWeek: (() { final guardedValue = map['autoUpdateRequestedWeek']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      autoUpdateRingType: (() { final guardedValue = map['autoUpdateRingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       cacheNodeId: (() { final guardedValue = map['cacheNodeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cacheNodeName: (() { final guardedValue = map['cacheNodeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cidrCsv: (() { final guardedValue = map['cidrCsv']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      cidrSelectionType: (() { final guardedValue = map['cidrSelectionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      customerAsn: (() { final guardedValue = map['customerAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cidrSelectionType: (() { final guardedValue = map['cidrSelectionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      customerAsn: (() { final guardedValue = map['customerAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       customerIndex: (() { final guardedValue = map['customerIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customerName: (() { final guardedValue = map['customerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fullyQualifiedDomainName: (() { final guardedValue = map['fullyQualifiedDomainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -122,7 +122,7 @@ class CacheNodeEntity {
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isEnabled: (() { final guardedValue = map['isEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isEnterpriseManaged: (() { final guardedValue = map['isEnterpriseManaged']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxAllowableEgressInMbps: (() { final guardedValue = map['maxAllowableEgressInMbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxAllowableEgressInMbps: (() { final guardedValue = map['maxAllowableEgressInMbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       shouldMigrate: (() { final guardedValue = map['shouldMigrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

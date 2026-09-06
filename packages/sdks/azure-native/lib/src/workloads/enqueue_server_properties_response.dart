@@ -39,7 +39,7 @@ class EnqueueServerPropertiesResponse {
       health: pulumi.Input.fromValue(map['health'] as String),
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
-      port: pulumi.Input.fromValue(map['port'] as double),
+      port: pulumi.Input.fromValue((map['port'] as num).toDouble()),
     );
   }
 }

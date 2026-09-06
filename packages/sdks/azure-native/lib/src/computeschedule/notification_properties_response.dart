@@ -7,7 +7,7 @@ class NotificationPropertiesResponse {
   /// Where the notification should be sent. For email, it should follow email format.
   final pulumi.Input<String> destination;
   /// Tells if the notification is enabled or not.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The language the notification should be sent on.
   final pulumi.Input<String> language;
   /// Type of notification to be sent.
@@ -18,12 +18,12 @@ class NotificationPropertiesResponse {
   /// [disabled] Tells if the notification is enabled or not.
   /// [language] The language the notification should be sent on.
   /// [type] Type of notification to be sent.
-  const NotificationPropertiesResponse({
+  NotificationPropertiesResponse({
     required this.destination,
-    this.disabled,
+    pulumi.Input<bool?>? disabled,
     required this.language,
     required this.type,
-  });
+  }) : disabled = disabled ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

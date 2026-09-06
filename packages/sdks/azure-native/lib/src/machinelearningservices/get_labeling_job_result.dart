@@ -6,17 +6,17 @@ import 'system_data_response.dart';
 /// Result data returned by getLabelingJob.
 class GetLabelingJobResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// [Required] Additional attributes of the entity.
-  final LabelingJobResponse labelingJobProperties;
+  final LabelingJobResponse? labelingJobProperties;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetLabelingJobResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -26,33 +26,33 @@ class GetLabelingJobResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetLabelingJobResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.labelingJobProperties,
-    required this.name,
-    required this.systemData,
-    required this.type,
+    this.azureApiVersion,
+    this.id,
+    this.labelingJobProperties,
+    this.name,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'labelingJobProperties': labelingJobProperties.toMap(),
-      'name': name,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'labelingJobProperties': ?labelingJobProperties?.toMap(),
+      'name': ?name,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetLabelingJobResult.fromMap(Map<String, dynamic> map) {
     return GetLabelingJobResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      labelingJobProperties: LabelingJobResponse.fromMap((map['labelingJobProperties']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labelingJobProperties: (() { final guardedValue = map['labelingJobProperties']; if (guardedValue == null) return null; return LabelingJobResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

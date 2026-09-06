@@ -44,7 +44,25 @@ class Blob extends pulumi.CustomResource {
     accessTier = registerOutput<BlobAccessTier?>('accessTier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BlobAccessTier.fromValue(guardedValue as String); });
     contentMd5 = registerOutput<String?>('contentMd5');
     contentType = registerOutput<String?>('contentType');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    type = registerOutput<BlobType>('type', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BlobType.fromValue(guardedValue as String); });
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [Blob] resource.
+  Blob.reference(String urn)
+    : super(
+        'azure-native:storage:Blob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessTier = registerOutput<BlobAccessTier?>('accessTier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BlobAccessTier.fromValue(guardedValue as String); });
+    contentMd5 = registerOutput<String?>('contentMd5');
+    contentType = registerOutput<String?>('contentType');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     type = registerOutput<BlobType>('type', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BlobType.fromValue(guardedValue as String); });
     url = registerOutput<String>('url');

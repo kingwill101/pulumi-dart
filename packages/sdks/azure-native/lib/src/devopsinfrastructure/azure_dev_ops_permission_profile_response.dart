@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the type of Azure DevOps pool permission.
 class AzureDevOpsPermissionProfileResponse {
   /// Group email addresses
-  final pulumi.Input<List<String>>? groups;
+  final pulumi.Input<List<String>?>? groups;
   /// Determines who has admin permissions to the Azure DevOps pool.
   final pulumi.Input<String> kind;
   /// User email addresses
-  final pulumi.Input<List<String>>? users;
+  final pulumi.Input<List<String>?>? users;
 
   /// Creates a new [AzureDevOpsPermissionProfileResponse].
   /// [groups] Group email addresses

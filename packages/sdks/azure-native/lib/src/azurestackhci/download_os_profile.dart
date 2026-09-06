@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Operating system profile.
 class DownloadOsProfile {
   /// GPG Public Key used for package verification
-  final pulumi.Input<String>? gpgPubKey;
+  final pulumi.Input<String?>? gpgPubKey;
   /// Hash of the OS package downloaded
-  final pulumi.Input<String>? imageHash;
+  final pulumi.Input<String?>? imageHash;
   /// Location of the operating system image.
-  final pulumi.Input<String>? osImageLocation;
+  final pulumi.Input<String?>? osImageLocation;
   /// Name of the operating system.
-  final pulumi.Input<String>? osName;
+  final pulumi.Input<String?>? osName;
   /// Type of the operating system.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// Version of the operating system.
-  final pulumi.Input<String>? osVersion;
+  final pulumi.Input<String?>? osVersion;
   /// Validated Solution Recipe version to be used for the job
-  final pulumi.Input<String>? vsrVersion;
+  final pulumi.Input<String?>? vsrVersion;
 
   /// Creates a new [DownloadOsProfile].
   /// [gpgPubKey] GPG Public Key used for package verification

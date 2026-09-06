@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_web_app_service_environment_ase_custom_dns_suffix_configuration_args_doc}
 class AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs {
   /// The URL referencing the Azure Key Vault certificate secret that should be used as the default SSL/TLS certificate for sites with the custom domain suffix.
-  final pulumi.Input<String>? certificateUrl;
+  final pulumi.Input<String?>? certificateUrl;
   /// The default custom domain suffix to use for all sites deployed on the ASE.
-  final pulumi.Input<String>? dnsSuffix;
+  final pulumi.Input<String?>? dnsSuffix;
   /// The user-assigned identity to use for resolving the key vault certificate reference. If not specified, the system-assigned ASE identity will be used if available.
-  final pulumi.Input<String>? keyVaultReferenceIdentity;
+  final pulumi.Input<String?>? keyVaultReferenceIdentity;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the App Service Environment.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.

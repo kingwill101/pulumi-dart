@@ -6,9 +6,9 @@ import 'scale_rule_auth.dart';
 /// Azure Spring Apps App Instance Tcp scaling rule.
 class TcpScaleRule {
   /// Authentication secrets for the tcp scale rule.
-  final pulumi.Input<List<ScaleRuleAuth>>? auth;
+  final pulumi.Input<List<ScaleRuleAuth>?>? auth;
   /// Metadata properties to describe tcp scale rule.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
 
   /// Creates a new [TcpScaleRule].
   /// [auth] Authentication secrets for the tcp scale rule.

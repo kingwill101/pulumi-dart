@@ -5,9 +5,9 @@ import 'sync_migration_database_error_event_response.dart';
 
 class MigrateSqlServerSqlDbSyncTaskOutputDatabaseErrorResponse {
   /// Error message
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// List of error events.
-  final pulumi.Input<List<SyncMigrationDatabaseErrorEventResponse>>? events;
+  final pulumi.Input<List<SyncMigrationDatabaseErrorEventResponse>?>? events;
   /// Result identifier
   final pulumi.Input<String> id;
   /// Result type

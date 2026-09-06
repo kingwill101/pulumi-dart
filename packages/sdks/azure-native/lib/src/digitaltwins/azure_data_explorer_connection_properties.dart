@@ -10,18 +10,18 @@ class AzureDataExplorerConnectionProperties {
   /// The URI of the Azure Data Explorer endpoint.
   final pulumi.Input<String> adxEndpointUri;
   /// The name of the Azure Data Explorer table used for recording relationship lifecycle events. The table will not be created if this property is left unspecified.
-  final pulumi.Input<String>? adxRelationshipLifecycleEventsTableName;
+  final pulumi.Input<String?>? adxRelationshipLifecycleEventsTableName;
   /// The resource ID of the Azure Data Explorer cluster.
   final pulumi.Input<String> adxResourceId;
   /// The name of the Azure Data Explorer table used for storing updates to properties of twins and relationships. Defaults to AdtPropertyEvents.
-  final pulumi.Input<String>? adxTableName;
+  final pulumi.Input<String?>? adxTableName;
   /// The name of the Azure Data Explorer table used for recording twin lifecycle events. The table will not be created if this property is left unspecified.
-  final pulumi.Input<String>? adxTwinLifecycleEventsTableName;
+  final pulumi.Input<String?>? adxTwinLifecycleEventsTableName;
   /// The type of time series connection resource.
   /// Expected value is 'AzureDataExplorer'.
   final pulumi.Input<String> connectionType;
   /// The EventHub consumer group to use when ADX reads from EventHub. Defaults to $Default.
-  final pulumi.Input<String>? eventHubConsumerGroup;
+  final pulumi.Input<String?>? eventHubConsumerGroup;
   /// The URL of the EventHub namespace for identity-based authentication. It must include the protocol sb://
   final pulumi.Input<String> eventHubEndpointUri;
   /// The EventHub name in the EventHub namespace for identity-based authentication.
@@ -29,9 +29,9 @@ class AzureDataExplorerConnectionProperties {
   /// The resource ID of the EventHub namespace.
   final pulumi.Input<String> eventHubNamespaceResourceId;
   /// Managed identity properties for the time series database connection resource.
-  final pulumi.Input<ManagedIdentityReference>? identity;
+  final pulumi.Input<ManagedIdentityReference?>? identity;
   /// Specifies whether or not to record twin / relationship property and item removals, including removals of indexed or keyed values (such as map entries, array elements, etc.). This feature is de-activated unless explicitly set to 'true'. Setting this property to 'true' will generate an additional column in the property events table in ADX.
-  final pulumi.Input<String>? recordPropertyAndItemRemovals;
+  final pulumi.Input<dynamic>? recordPropertyAndItemRemovals;
 
   /// Creates a new [AzureDataExplorerConnectionProperties].
   /// [adxDatabaseName] The name of the Azure Data Explorer database.
@@ -47,21 +47,21 @@ class AzureDataExplorerConnectionProperties {
   /// [eventHubNamespaceResourceId] The resource ID of the EventHub namespace.
   /// [identity] Managed identity properties for the time series database connection resource.
   /// [recordPropertyAndItemRemovals] Specifies whether or not to record twin / relationship property and item removals, including removals of indexed or keyed values (such as map entries, array elements, etc.). This feature is de-activated unless explicitly set to 'true'. Setting this property to 'true' will generate an additional column in the property events table in ADX.
-  const AzureDataExplorerConnectionProperties({
+  AzureDataExplorerConnectionProperties({
     required this.adxDatabaseName,
     required this.adxEndpointUri,
     this.adxRelationshipLifecycleEventsTableName,
     required this.adxResourceId,
-    this.adxTableName,
+    pulumi.Input<String?>? adxTableName,
     this.adxTwinLifecycleEventsTableName,
     required this.connectionType,
-    this.eventHubConsumerGroup,
+    pulumi.Input<String?>? eventHubConsumerGroup,
     required this.eventHubEndpointUri,
     required this.eventHubEntityPath,
     required this.eventHubNamespaceResourceId,
     this.identity,
-    this.recordPropertyAndItemRemovals,
-  });
+    pulumi.Input<dynamic>? recordPropertyAndItemRemovals,
+  }) : adxTableName = adxTableName ?? pulumi.Input.fromValue('AdtPropertyEvents'), eventHubConsumerGroup = eventHubConsumerGroup ?? pulumi.Input.fromValue('\$Default'), recordPropertyAndItemRemovals = recordPropertyAndItemRemovals ?? pulumi.Input.fromValue('false');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,7 +95,7 @@ class AzureDataExplorerConnectionProperties {
       eventHubEntityPath: pulumi.Input.fromValue(map['eventHubEntityPath'] as String),
       eventHubNamespaceResourceId: pulumi.Input.fromValue(map['eventHubNamespaceResourceId'] as String),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedIdentityReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      recordPropertyAndItemRemovals: (() { final guardedValue = map['recordPropertyAndItemRemovals']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recordPropertyAndItemRemovals: (() { final guardedValue = map['recordPropertyAndItemRemovals']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

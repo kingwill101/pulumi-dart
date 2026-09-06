@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dns_config_response.dart';
+import 'endpoint_response.dart';
 import 'monitor_config_response.dart';
 import 'profile_args.dart';
 
@@ -1890,7 +1891,7 @@ class Profile extends pulumi.CustomResource {
   /// The DNS settings of the Traffic Manager profile.
   late final pulumi.Output<DnsConfigResponse?> dnsConfig;
   /// The list of endpoints in the Traffic Manager profile.
-  late final pulumi.Output<List<Map<String, dynamic>>?> endpoints;
+  late final pulumi.Output<List<EndpointResponse>?> endpoints;
   /// The Azure Region where the resource lives
   late final pulumi.Output<String?> location;
   /// Maximum number of endpoints to be returned for MultiValue routing type.
@@ -1924,16 +1925,40 @@ class Profile extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowedEndpointRecordTypes = registerOutput<List<String>?>('allowedEndpointRecordTypes');
+    allowedEndpointRecordTypes = registerOutput<List<String>?>('allowedEndpointRecordTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dnsConfig = registerOutput<DnsConfigResponse?>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    endpoints = registerOutput<List<Map<String, dynamic>>?>('endpoints');
+    endpoints = registerOutput<List<EndpointResponse>?>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointResponse>(guardedValue, (value) => EndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String?>('location');
     maxReturn = registerOutput<double?>('maxReturn');
     monitorConfig = registerOutput<MonitorConfigResponse?>('monitorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String?>('name');
     profileStatus = registerOutput<String?>('profileStatus');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trafficRoutingMethod = registerOutput<String?>('trafficRoutingMethod');
+    trafficViewEnrollmentStatus = registerOutput<String?>('trafficViewEnrollmentStatus');
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [Profile] resource.
+  Profile.reference(String urn)
+    : super(
+        'azure-native:trafficmanager:Profile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowedEndpointRecordTypes = registerOutput<List<String>?>('allowedEndpointRecordTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dnsConfig = registerOutput<DnsConfigResponse?>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpoints = registerOutput<List<EndpointResponse>?>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointResponse>(guardedValue, (value) => EndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String?>('location');
+    maxReturn = registerOutput<double?>('maxReturn');
+    monitorConfig = registerOutput<MonitorConfigResponse?>('monitorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String?>('name');
+    profileStatus = registerOutput<String?>('profileStatus');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trafficRoutingMethod = registerOutput<String?>('trafficRoutingMethod');
     trafficViewEnrollmentStatus = registerOutput<String?>('trafficViewEnrollmentStatus');
     type = registerOutput<String?>('type');

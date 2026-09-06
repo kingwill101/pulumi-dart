@@ -6,7 +6,7 @@ import 'route.dart';
 /// Route table resource.
 class RouteTable {
   /// Collection of routes contained within a route table.
-  final pulumi.Input<List<Route>>? routes;
+  final pulumi.Input<List<Route>?>? routes;
 
   /// Creates a new [RouteTable].
   /// [routes] Collection of routes contained within a route table.

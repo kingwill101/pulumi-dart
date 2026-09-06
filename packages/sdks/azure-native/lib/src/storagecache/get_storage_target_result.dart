@@ -11,33 +11,33 @@ import 'unknown_target_response.dart';
 /// Result data returned by getStorageTarget.
 class GetStorageTargetResult {
   /// The percentage of cache space allocated for this storage target
-  final int allocationPercentage;
+  final int? allocationPercentage;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Properties when targetType is blobNfs.
   final BlobNfsTargetResponse? blobNfs;
   /// Properties when targetType is clfs.
   final ClfsTargetResponse? clfs;
   /// Resource ID of the Storage Target.
-  final String id;
+  final String? id;
   /// List of cache namespace junctions to target for namespace associations.
   final List<NamespaceJunctionResponse>? junctions;
   /// Region name string.
-  final String location;
+  final String? location;
   /// Name of the Storage Target.
-  final String name;
+  final String? name;
   /// Properties when targetType is nfs3.
   final Nfs3TargetResponse? nfs3;
   /// ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-  final String provisioningState;
+  final String? provisioningState;
   /// Storage target operational state.
   final String? state;
   /// The system meta data relating to this resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Type of the Storage Target.
-  final String targetType;
+  final String? targetType;
   /// Type of the Storage Target; Microsoft.StorageCache/Cache/StorageTarget
-  final String type;
+  final String? type;
   /// Properties when targetType is unknown.
   final UnknownTargetResponse? unknown;
 
@@ -58,59 +58,59 @@ class GetStorageTargetResult {
   /// [type] Type of the Storage Target; Microsoft.StorageCache/Cache/StorageTarget
   /// [unknown] Properties when targetType is unknown.
   const GetStorageTargetResult({
-    required this.allocationPercentage,
-    required this.azureApiVersion,
+    this.allocationPercentage,
+    this.azureApiVersion,
     this.blobNfs,
     this.clfs,
-    required this.id,
+    this.id,
     this.junctions,
-    required this.location,
-    required this.name,
+    this.location,
+    this.name,
     this.nfs3,
-    required this.provisioningState,
+    this.provisioningState,
     this.state,
-    required this.systemData,
-    required this.targetType,
-    required this.type,
+    this.systemData,
+    this.targetType,
+    this.type,
     this.unknown,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allocationPercentage': allocationPercentage,
-      'azureApiVersion': azureApiVersion,
+      'allocationPercentage': ?allocationPercentage,
+      'azureApiVersion': ?azureApiVersion,
       'blobNfs': ?blobNfs?.toMap(),
       'clfs': ?clfs?.toMap(),
-      'id': id,
+      'id': ?id,
       'junctions': ?(() { final guardedValue = junctions; if (guardedValue == null) return null; return pulumi.Input.encodeList<NamespaceJunctionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'location': location,
-      'name': name,
+      'location': ?location,
+      'name': ?name,
       'nfs3': ?nfs3?.toMap(),
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'state': ?state,
-      'systemData': systemData.toMap(),
-      'targetType': targetType,
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'targetType': ?targetType,
+      'type': ?type,
       'unknown': ?unknown?.toMap(),
     };
   }
 
   factory GetStorageTargetResult.fromMap(Map<String, dynamic> map) {
     return GetStorageTargetResult(
-      allocationPercentage: map['allocationPercentage'] as int,
-      azureApiVersion: map['azureApiVersion'] as String,
+      allocationPercentage: (() { final guardedValue = map['allocationPercentage']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       blobNfs: (() { final guardedValue = map['blobNfs']; if (guardedValue == null) return null; return BlobNfsTargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       clfs: (() { final guardedValue = map['clfs']; if (guardedValue == null) return null; return ClfsTargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       junctions: (() { final guardedValue = map['junctions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<NamespaceJunctionResponse>(guardedValue, (value) => NamespaceJunctionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      location: map['location'] as String,
-      name: map['name'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       nfs3: (() { final guardedValue = map['nfs3']; if (guardedValue == null) return null; return Nfs3TargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      targetType: map['targetType'] as String,
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      targetType: (() { final guardedValue = map['targetType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       unknown: (() { final guardedValue = map['unknown']; if (guardedValue == null) return null; return UnknownTargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }

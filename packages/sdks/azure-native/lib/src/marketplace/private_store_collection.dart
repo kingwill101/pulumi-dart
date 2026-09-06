@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_store_collection_args.dart';
+import 'rule_response.dart';
 import 'system_data_response.dart';
 
 /// The Collection data structure.
@@ -191,7 +192,7 @@ class PrivateStoreCollection extends pulumi.CustomResource {
   /// Indicating whether all subscriptions are selected (=true) or not (=false).
   late final pulumi.Output<bool?> allSubscriptions;
   /// Gets list of collection rules
-  late final pulumi.Output<List<Map<String, dynamic>>> appliedRules;
+  late final pulumi.Output<List<RuleResponse>> appliedRules;
   /// Indicating whether all items are approved for this collection (=true) or not (=false).
   late final pulumi.Output<bool> approveAllItems;
   /// Gets the modified date of all items approved.
@@ -232,7 +233,7 @@ class PrivateStoreCollection extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     allSubscriptions = registerOutput<bool?>('allSubscriptions');
-    appliedRules = registerOutput<List<Map<String, dynamic>>>('appliedRules');
+    appliedRules = registerOutput<List<RuleResponse>>('appliedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleResponse>(guardedValue, (value) => RuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     approveAllItems = registerOutput<bool>('approveAllItems');
     approveAllItemsModifiedAt = registerOutput<String>('approveAllItemsModifiedAt');
     azureApiVersion = registerOutput<String>('azureApiVersion');
@@ -242,7 +243,32 @@ class PrivateStoreCollection extends pulumi.CustomResource {
     enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
     numberOfOffers = registerOutput<double>('numberOfOffers');
-    subscriptionsList = registerOutput<List<String>?>('subscriptionsList');
+    subscriptionsList = registerOutput<List<String>?>('subscriptionsList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [PrivateStoreCollection] resource.
+  PrivateStoreCollection.reference(String urn)
+    : super(
+        'azure-native:marketplace:PrivateStoreCollection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allSubscriptions = registerOutput<bool?>('allSubscriptions');
+    appliedRules = registerOutput<List<RuleResponse>>('appliedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleResponse>(guardedValue, (value) => RuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    approveAllItems = registerOutput<bool>('approveAllItems');
+    approveAllItemsModifiedAt = registerOutput<String>('approveAllItemsModifiedAt');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    claim = registerOutput<String?>('claim');
+    collectionId = registerOutput<String>('collectionId');
+    collectionName = registerOutput<String?>('collectionName');
+    enabled = registerOutput<bool?>('enabled');
+    this.name = registerOutput<String>('name');
+    numberOfOffers = registerOutput<double>('numberOfOffers');
+    subscriptionsList = registerOutput<List<String>?>('subscriptionsList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

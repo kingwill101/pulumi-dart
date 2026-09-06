@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specific issue for a particular config diagnostics validator
 class ConfigDiagnosticsValidatorResultIssueResponse {
   /// List of domain resource property name or values used to compose a rich description.
-  final pulumi.Input<List<String>>? descriptionParams;
+  final pulumi.Input<List<String>?>? descriptionParams;
   /// Validation issue identifier.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [ConfigDiagnosticsValidatorResultIssueResponse].
   /// [descriptionParams] List of domain resource property name or values used to compose a rich description.

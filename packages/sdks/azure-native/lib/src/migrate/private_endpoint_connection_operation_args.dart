@@ -9,7 +9,7 @@ import 'private_link_service_connection_state.dart';
 /// {@macro pulumi_migrate_private_endpoint_connection_operation_args_doc}
 class PrivateEndpointConnectionOperationArgs {
   /// Private endpoint connection ARM name
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// A collection of information about the state of the connection between service consumer and provider.
   final pulumi.Input<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState;
   /// Assessment Project Name

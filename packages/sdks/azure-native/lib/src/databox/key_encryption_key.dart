@@ -6,25 +6,25 @@ import 'identity_properties.dart';
 /// Encryption key containing details about key to encrypt different keys.
 class KeyEncryptionKey {
   /// Managed identity properties used for key encryption.
-  final pulumi.Input<IdentityProperties>? identityProperties;
+  final pulumi.Input<IdentityProperties?>? identityProperties;
   /// Type of encryption key used for key encryption.
-  final pulumi.Input<String> kekType;
+  final pulumi.Input<dynamic> kekType;
   /// Key encryption key. It is required in case of Customer managed KekType.
-  final pulumi.Input<String>? kekUrl;
+  final pulumi.Input<String?>? kekUrl;
   /// Kek vault resource id. It is required in case of Customer managed KekType.
-  final pulumi.Input<String>? kekVaultResourceID;
+  final pulumi.Input<String?>? kekVaultResourceID;
 
   /// Creates a new [KeyEncryptionKey].
   /// [identityProperties] Managed identity properties used for key encryption.
   /// [kekType] Type of encryption key used for key encryption.
   /// [kekUrl] Key encryption key. It is required in case of Customer managed KekType.
   /// [kekVaultResourceID] Kek vault resource id. It is required in case of Customer managed KekType.
-  const KeyEncryptionKey({
+  KeyEncryptionKey({
     this.identityProperties,
-    required this.kekType,
+    pulumi.Input<dynamic>? kekType,
     this.kekUrl,
     this.kekVaultResourceID,
-  });
+  }) : kekType = kekType ?? pulumi.Input.fromValue('MicrosoftManaged');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,7 +38,7 @@ class KeyEncryptionKey {
   factory KeyEncryptionKey.fromMap(Map<String, dynamic> map) {
     return KeyEncryptionKey(
       identityProperties: (() { final guardedValue = map['identityProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IdentityProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      kekType: pulumi.Input.fromValue(map['kekType'] as String),
+      kekType: pulumi.Input.fromValue(map['kekType']),
       kekUrl: (() { final guardedValue = map['kekUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kekVaultResourceID: (() { final guardedValue = map['kekVaultResourceID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -10,41 +10,41 @@ import 'sub_resource.dart';
 /// Peering in an ExpressRouteCircuit resource.
 class ExpressRouteCircuitPeering {
   /// The Azure ASN.
-  final pulumi.Input<int>? azureASN;
+  final pulumi.Input<int?>? azureASN;
   /// The list of circuit connections associated with Azure Private Peering for this circuit.
-  final pulumi.Input<List<ExpressRouteCircuitConnection>>? connections;
+  final pulumi.Input<List<ExpressRouteCircuitConnection>?>? connections;
   /// The GatewayManager Etag.
-  final pulumi.Input<String>? gatewayManagerEtag;
+  final pulumi.Input<String?>? gatewayManagerEtag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The IPv6 peering configuration.
-  final pulumi.Input<Ipv6ExpressRouteCircuitPeeringConfig>? ipv6PeeringConfig;
+  final pulumi.Input<Ipv6ExpressRouteCircuitPeeringConfig?>? ipv6PeeringConfig;
   /// The Microsoft peering configuration.
-  final pulumi.Input<ExpressRouteCircuitPeeringConfig>? microsoftPeeringConfig;
+  final pulumi.Input<ExpressRouteCircuitPeeringConfig?>? microsoftPeeringConfig;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The peer ASN.
-  final pulumi.Input<double>? peerASN;
+  final pulumi.Input<double?>? peerASN;
   /// The peering type.
-  final pulumi.Input<String>? peeringType;
+  final pulumi.Input<dynamic>? peeringType;
   /// The primary port.
-  final pulumi.Input<String>? primaryAzurePort;
+  final pulumi.Input<String?>? primaryAzurePort;
   /// The primary address prefix.
-  final pulumi.Input<String>? primaryPeerAddressPrefix;
+  final pulumi.Input<String?>? primaryPeerAddressPrefix;
   /// The reference to the RouteFilter resource.
-  final pulumi.Input<SubResource>? routeFilter;
+  final pulumi.Input<SubResource?>? routeFilter;
   /// The secondary port.
-  final pulumi.Input<String>? secondaryAzurePort;
+  final pulumi.Input<String?>? secondaryAzurePort;
   /// The secondary address prefix.
-  final pulumi.Input<String>? secondaryPeerAddressPrefix;
+  final pulumi.Input<String?>? secondaryPeerAddressPrefix;
   /// The shared key.
-  final pulumi.Input<String>? sharedKey;
+  final pulumi.Input<String?>? sharedKey;
   /// The peering state.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// The peering stats of express route circuit.
-  final pulumi.Input<ExpressRouteCircuitStats>? stats;
+  final pulumi.Input<ExpressRouteCircuitStats?>? stats;
   /// The VLAN ID.
-  final pulumi.Input<int>? vlanId;
+  final pulumi.Input<int?>? vlanId;
 
   /// Creates a new [ExpressRouteCircuitPeering].
   /// [azureASN] The Azure ASN.
@@ -111,24 +111,24 @@ class ExpressRouteCircuitPeering {
 
   factory ExpressRouteCircuitPeering.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitPeering(
-      azureASN: (() { final guardedValue = map['azureASN']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      azureASN: (() { final guardedValue = map['azureASN']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       connections: (() { final guardedValue = map['connections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ExpressRouteCircuitConnection>(guardedValue, (value) => ExpressRouteCircuitConnection.fromMap((value as Map).cast<String, dynamic>()))); })(),
       gatewayManagerEtag: (() { final guardedValue = map['gatewayManagerEtag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipv6PeeringConfig: (() { final guardedValue = map['ipv6PeeringConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Ipv6ExpressRouteCircuitPeeringConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       microsoftPeeringConfig: (() { final guardedValue = map['microsoftPeeringConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExpressRouteCircuitPeeringConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      peerASN: (() { final guardedValue = map['peerASN']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      peeringType: (() { final guardedValue = map['peeringType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peerASN: (() { final guardedValue = map['peerASN']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      peeringType: (() { final guardedValue = map['peeringType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       primaryAzurePort: (() { final guardedValue = map['primaryAzurePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       primaryPeerAddressPrefix: (() { final guardedValue = map['primaryPeerAddressPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       routeFilter: (() { final guardedValue = map['routeFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       secondaryAzurePort: (() { final guardedValue = map['secondaryAzurePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secondaryPeerAddressPrefix: (() { final guardedValue = map['secondaryPeerAddressPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sharedKey: (() { final guardedValue = map['sharedKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       stats: (() { final guardedValue = map['stats']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExpressRouteCircuitStats.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

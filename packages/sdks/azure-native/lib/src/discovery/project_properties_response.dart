@@ -10,9 +10,9 @@ class ProjectPropertiesResponse {
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// Settings for the project.
-  final pulumi.Input<ProjectSettingsResponse>? settings;
+  final pulumi.Input<ProjectSettingsResponse?>? settings;
   /// Allowed StorageContainers (Control plane resource references).
-  final pulumi.Input<List<String>>? storageContainerIds;
+  final pulumi.Input<List<String>?>? storageContainerIds;
 
   /// Creates a new [ProjectPropertiesResponse].
   /// [foundryProjectEndpoint] Foundry project endpoint URI.

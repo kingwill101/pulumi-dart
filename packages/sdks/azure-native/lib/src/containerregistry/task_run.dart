@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'docker_build_request_response.dart';
 import 'identity_properties_response.dart';
 import 'run_response.dart';
 import 'system_data_response.dart';
@@ -252,7 +251,7 @@ class TaskRun extends pulumi.CustomResource {
   /// The provisioning state of this task run
   late final pulumi.Output<String> provisioningState;
   /// The request (parameters) for the run
-  late final pulumi.Output<DockerBuildRequestResponse?> runRequest;
+  late final pulumi.Output<dynamic> runRequest;
   /// The result of this task run
   late final pulumi.Output<RunResponse> runResult;
   /// Metadata pertaining to creation and last modification of the resource.
@@ -280,7 +279,28 @@ class TaskRun extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    runRequest = registerOutput<DockerBuildRequestResponse?>('runRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DockerBuildRequestResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    runRequest = registerOutput<dynamic>('runRequest');
+    runResult = registerOutput<RunResponse>('runResult', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [TaskRun] resource.
+  TaskRun.reference(String urn)
+    : super(
+        'azure-native:containerregistry:TaskRun',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    forceUpdateTag = registerOutput<String?>('forceUpdateTag');
+    identity = registerOutput<IdentityPropertiesResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    runRequest = registerOutput<dynamic>('runRequest');
     runResult = registerOutput<RunResponse>('runResult', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');

@@ -5,9 +5,9 @@ import 'customer_metadata_response.dart';
 /// Result data returned by getMarkupRule.
 class GetMarkupRuleResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Customer information for the markup rule.
-  final CustomerMetadataResponse customerDetails;
+  final CustomerMetadataResponse? customerDetails;
   /// The description of the markup rule.
   final String? description;
   /// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
@@ -15,15 +15,15 @@ class GetMarkupRuleResult {
   /// Ending date of the markup rule.
   final String? endDate;
   /// Resource Id.
-  final String id;
+  final String? id;
   /// Resource name.
-  final String name;
+  final String? name;
   /// The markup percentage of the rule.
-  final double percentage;
+  final double? percentage;
   /// Starting date of the markup rule.
-  final String startDate;
+  final String? startDate;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetMarkupRuleResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -37,45 +37,45 @@ class GetMarkupRuleResult {
   /// [startDate] Starting date of the markup rule.
   /// [type] Resource type.
   const GetMarkupRuleResult({
-    required this.azureApiVersion,
-    required this.customerDetails,
+    this.azureApiVersion,
+    this.customerDetails,
     this.description,
     this.eTag,
     this.endDate,
-    required this.id,
-    required this.name,
-    required this.percentage,
-    required this.startDate,
-    required this.type,
+    this.id,
+    this.name,
+    this.percentage,
+    this.startDate,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'customerDetails': customerDetails.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'customerDetails': ?customerDetails?.toMap(),
       'description': ?description,
       'eTag': ?eTag,
       'endDate': ?endDate,
-      'id': id,
-      'name': name,
-      'percentage': percentage,
-      'startDate': startDate,
-      'type': type,
+      'id': ?id,
+      'name': ?name,
+      'percentage': ?percentage,
+      'startDate': ?startDate,
+      'type': ?type,
     };
   }
 
   factory GetMarkupRuleResult.fromMap(Map<String, dynamic> map) {
     return GetMarkupRuleResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      customerDetails: CustomerMetadataResponse.fromMap((map['customerDetails']! as Map).cast<String, dynamic>()),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      customerDetails: (() { final guardedValue = map['customerDetails']; if (guardedValue == null) return null; return CustomerMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       endDate: (() { final guardedValue = map['endDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      percentage: map['percentage'] as double,
-      startDate: map['startDate'] as String,
-      type: map['type'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      percentage: (() { final guardedValue = map['percentage']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      startDate: (() { final guardedValue = map['startDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

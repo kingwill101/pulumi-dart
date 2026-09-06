@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The size of the underlying Azure VM.
-enum VmSize {
+enum VmSize implements pulumi.PulumiEnum<String> {
   standardNC24adsA100V4("Standard_NC24ads_A100_v4"),
   standardNC48adsA100V4("Standard_NC48ads_A100_v4"),
   standardNC96adsA100V4("Standard_NC96ads_A100_v4"),
@@ -16,6 +18,7 @@ enum VmSize {
   standardND40rsV2("Standard_ND40rs_v2");
 
   const VmSize(this.wireValue);
+  @override
   final String wireValue;
 
   static VmSize fromValue(String value) {

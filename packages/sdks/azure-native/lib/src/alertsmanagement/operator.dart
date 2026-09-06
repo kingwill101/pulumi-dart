@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Operator for a given condition.
-enum Operator {
+enum Operator implements pulumi.PulumiEnum<String> {
   equals("Equals"),
   notEquals("NotEquals"),
   contains("Contains"),
   doesNotContain("DoesNotContain");
 
   const Operator(this.wireValue);
+  @override
   final String wireValue;
 
   static Operator fromValue(String value) {

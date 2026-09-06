@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Configuration
 class ConfigurationResponse {
   /// &lt;p&gt;The classification within a configuration.&lt;/p&gt;
-  final pulumi.Input<String>? classification;
+  final pulumi.Input<String?>? classification;
   /// &lt;p&gt;A list of additional configurations to apply within a configuration object.&lt;/p&gt;
-  final pulumi.Input<List<ConfigurationResponse>>? configurations;
+  final pulumi.Input<List<ConfigurationResponse>?>? configurations;
   /// &lt;p&gt;A set of properties specified within a configuration classification.&lt;/p&gt;
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
 
   /// Creates a new [ConfigurationResponse].
   /// [classification] &lt;p&gt;The classification within a configuration.&lt;/p&gt;

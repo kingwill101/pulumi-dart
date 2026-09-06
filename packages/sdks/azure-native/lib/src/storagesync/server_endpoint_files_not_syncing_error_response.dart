@@ -31,9 +31,9 @@ class ServerEndpointFilesNotSyncingErrorResponse {
 
   factory ServerEndpointFilesNotSyncingErrorResponse.fromMap(Map<String, dynamic> map) {
     return ServerEndpointFilesNotSyncingErrorResponse(
-      errorCode: pulumi.Input.fromValue(map['errorCode'] as int),
-      persistentCount: pulumi.Input.fromValue(map['persistentCount'] as double),
-      transientCount: pulumi.Input.fromValue(map['transientCount'] as double),
+      errorCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['errorCode'])),
+      persistentCount: pulumi.Input.fromValue((map['persistentCount'] as num).toDouble()),
+      transientCount: pulumi.Input.fromValue((map['transientCount'] as num).toDouble()),
     );
   }
 }

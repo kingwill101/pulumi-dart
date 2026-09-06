@@ -6,9 +6,9 @@ import 'main_principal_response.dart';
 /// A Fleetspace properties.
 class FleetspacePropertiesResponse {
   /// Maximum number of vCores database fleet manager is allowed to provision in the fleetspace.
-  final pulumi.Input<int>? capacityMax;
+  final pulumi.Input<int?>? capacityMax;
   /// Main Microsoft Entra ID principal that has admin access to all databases in the fleetspace.
-  final pulumi.Input<MainPrincipalResponse>? mainPrincipal;
+  final pulumi.Input<MainPrincipalResponse?>? mainPrincipal;
   /// Fleetspace state.
   final pulumi.Input<String> provisioningState;
 
@@ -32,7 +32,7 @@ class FleetspacePropertiesResponse {
 
   factory FleetspacePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FleetspacePropertiesResponse(
-      capacityMax: (() { final guardedValue = map['capacityMax']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacityMax: (() { final guardedValue = map['capacityMax']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       mainPrincipal: (() { final guardedValue = map['mainPrincipal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MainPrincipalResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
     );

@@ -7,7 +7,7 @@ class VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings {
   /// The Domain name label.The concatenation of the domain name label and vm index will be the domain name labels of the PublicIPAddress resources that will be created
   final pulumi.Input<String> domainNameLabel;
   /// The Domain name label scope.The concatenation of the hashed domain name label that generated according to the policy from domain name label scope and vm index will be the domain name labels of the PublicIPAddress resources that will be created
-  final pulumi.Input<String>? domainNameLabelScope;
+  final pulumi.Input<dynamic>? domainNameLabelScope;
 
   /// Creates a new [VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings].
   /// [domainNameLabel] The Domain name label.The concatenation of the domain name label and vm index will be the domain name labels of the PublicIPAddress resources that will be created
@@ -27,7 +27,7 @@ class VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings {
   factory VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings(
       domainNameLabel: pulumi.Input.fromValue(map['domainNameLabel'] as String),
-      domainNameLabelScope: (() { final guardedValue = map['domainNameLabelScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      domainNameLabelScope: (() { final guardedValue = map['domainNameLabelScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

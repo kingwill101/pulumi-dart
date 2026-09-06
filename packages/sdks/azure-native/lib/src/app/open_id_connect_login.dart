@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration settings of the login flow of the custom Open ID Connect provider.
 class OpenIdConnectLogin {
   /// The name of the claim that contains the users name.
-  final pulumi.Input<String>? nameClaimType;
+  final pulumi.Input<String?>? nameClaimType;
   /// A list of the scopes that should be requested while authenticating.
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
 
   /// Creates a new [OpenIdConnectLogin].
   /// [nameClaimType] The name of the claim that contains the users name.

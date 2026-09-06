@@ -6,7 +6,7 @@ import 'error_definition_response.dart';
 /// An error response from the Virtual Instance for SAP Workload service.
 class SAPVirtualInstanceErrorResponse {
   /// The Virtual Instance for SAP error body.
-  final pulumi.Input<ErrorDefinitionResponse>? properties;
+  final pulumi.Input<ErrorDefinitionResponse?>? properties;
 
   /// Creates a new [SAPVirtualInstanceErrorResponse].
   /// [properties] The Virtual Instance for SAP error body.

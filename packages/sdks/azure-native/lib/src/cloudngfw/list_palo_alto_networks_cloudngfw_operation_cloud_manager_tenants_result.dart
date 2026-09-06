@@ -4,23 +4,23 @@
 /// Result data returned by listPaloAltoNetworksCloudngfwOperationCloudManagerTenants.
 class ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult {
   /// List of Cloud Manager Tenants
-  final List<String> value;
+  final List<String>? value;
 
   /// Creates a new [ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult].
   /// [value] List of Cloud Manager Tenants
   const ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult({
-    required this.value,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'value': value,
+      'value': ?value,
     };
   }
 
   factory ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult.fromMap(Map<String, dynamic> map) {
     return ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult(
-      value: (map['value'] as List).cast<String>(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }

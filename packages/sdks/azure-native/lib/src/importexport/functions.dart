@@ -22,6 +22,17 @@ Future<GetJobResult> getJob(
   return GetJobResult.fromMap(result);
 }
 
+pulumi.Output<GetJobResult> getJobOutput(
+  GetJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:importexport:getJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobResult.fromMap);
+}
+
 /// Returns the BitLocker Keys for all drives in the specified job.
 ///
 /// Uses Azure REST API version 2021-01-01.
@@ -38,4 +49,15 @@ Future<ListBitLockerKeyResult> listBitLockerKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListBitLockerKeyResult.fromMap(result);
+}
+
+pulumi.Output<ListBitLockerKeyResult> listBitLockerKeyOutput(
+  ListBitLockerKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:importexport:listBitLockerKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListBitLockerKeyResult.fromMap);
 }

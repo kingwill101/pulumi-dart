@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_operationalinsights_linked_storage_account_args_doc}
 class LinkedStorageAccountArgs {
   /// Linked storage accounts type.
-  final pulumi.Input<String>? dataSourceType;
+  final pulumi.Input<String?>? dataSourceType;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Linked storage accounts resources ids.
-  final pulumi.Input<List<String>>? storageAccountIds;
+  final pulumi.Input<List<String>?>? storageAccountIds;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 

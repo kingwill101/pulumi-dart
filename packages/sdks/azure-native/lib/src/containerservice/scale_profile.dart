@@ -6,7 +6,7 @@ import 'manual_scale_profile.dart';
 /// Specifications on how to scale a VirtualMachines agent pool.
 class ScaleProfile {
   /// Specifications on how to scale the VirtualMachines agent pool to a fixed size.
-  final pulumi.Input<List<ManualScaleProfile>>? manual;
+  final pulumi.Input<List<ManualScaleProfile>?>? manual;
 
   /// Creates a new [ScaleProfile].
   /// [manual] Specifications on how to scale the VirtualMachines agent pool to a fixed size.

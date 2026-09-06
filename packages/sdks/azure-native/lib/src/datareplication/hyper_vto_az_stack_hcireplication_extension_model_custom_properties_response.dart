@@ -30,9 +30,9 @@ class HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse {
   /// Gets or sets the source storage container name.
   final pulumi.Input<String> sourceStorageContainerName;
   /// Gets or sets the storage account Id.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// Gets or sets the Sas Secret of storage account.
-  final pulumi.Input<String>? storageAccountSasSecretName;
+  final pulumi.Input<String?>? storageAccountSasSecretName;
   /// Gets or sets the subscription.
   final pulumi.Input<String> subscriptionId;
   /// Gets or sets the gateway service Id of target.

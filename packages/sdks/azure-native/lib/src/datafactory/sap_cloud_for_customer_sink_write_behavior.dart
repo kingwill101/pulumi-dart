@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The write behavior for the operation. Default is 'Insert'.
-enum SapCloudForCustomerSinkWriteBehavior {
+enum SapCloudForCustomerSinkWriteBehavior implements pulumi.PulumiEnum<String> {
   insert("Insert"),
   update("Update");
 
   const SapCloudForCustomerSinkWriteBehavior(this.wireValue);
+  @override
   final String wireValue;
 
   static SapCloudForCustomerSinkWriteBehavior fromValue(String value) {

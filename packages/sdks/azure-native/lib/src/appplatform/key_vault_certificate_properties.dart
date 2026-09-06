@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of certificate imported from key vault.
 class KeyVaultCertificateProperties {
   /// Indicates whether to automatically synchronize certificate from key vault or not.
-  final pulumi.Input<String>? autoSync;
+  final pulumi.Input<dynamic>? autoSync;
   /// The certificate version of key vault.
-  final pulumi.Input<String>? certVersion;
+  final pulumi.Input<String?>? certVersion;
   /// Optional. If set to true, it will not import private key from key vault.
-  final pulumi.Input<bool>? excludePrivateKey;
+  final pulumi.Input<bool?>? excludePrivateKey;
   /// The certificate name of key vault.
   final pulumi.Input<String> keyVaultCertName;
   /// The type of the certificate source.
@@ -25,14 +25,14 @@ class KeyVaultCertificateProperties {
   /// [keyVaultCertName] The certificate name of key vault.
   /// [type] The type of the certificate source.
   /// [vaultUri] The vault uri of user key vault.
-  const KeyVaultCertificateProperties({
-    this.autoSync,
+  KeyVaultCertificateProperties({
+    pulumi.Input<dynamic>? autoSync,
     this.certVersion,
-    this.excludePrivateKey,
+    pulumi.Input<bool?>? excludePrivateKey,
     required this.keyVaultCertName,
     required this.type,
     required this.vaultUri,
-  });
+  }) : autoSync = autoSync ?? pulumi.Input.fromValue('Disabled'), excludePrivateKey = excludePrivateKey ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,7 +47,7 @@ class KeyVaultCertificateProperties {
 
   factory KeyVaultCertificateProperties.fromMap(Map<String, dynamic> map) {
     return KeyVaultCertificateProperties(
-      autoSync: (() { final guardedValue = map['autoSync']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      autoSync: (() { final guardedValue = map['autoSync']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       certVersion: (() { final guardedValue = map['certVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       excludePrivateKey: (() { final guardedValue = map['excludePrivateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       keyVaultCertName: pulumi.Input.fromValue(map['keyVaultCertName'] as String),

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Export operation configuration information
 class FhirServiceExportConfiguration {
   /// The name of the default export storage account.
-  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String?>? storageAccountName;
 
   /// Creates a new [FhirServiceExportConfiguration].
   /// [storageAccountName] The name of the default export storage account.

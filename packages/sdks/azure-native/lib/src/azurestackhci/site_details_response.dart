@@ -6,7 +6,7 @@ import 'target_device_configuration_response.dart';
 /// Site Details consists of common configurations.
 class SiteDetailsResponse {
   /// Edge Device configuration received from site common configuration.
-  final pulumi.Input<TargetDeviceConfigurationResponse>? deviceConfiguration;
+  final pulumi.Input<TargetDeviceConfigurationResponse?>? deviceConfiguration;
   /// Site resource Id to be set during Edge Machine resource creation.
   final pulumi.Input<String> siteResourceId;
 

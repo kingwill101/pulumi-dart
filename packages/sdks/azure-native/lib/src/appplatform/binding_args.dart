@@ -11,9 +11,9 @@ class BindingArgs {
   /// The name of the App resource.
   final pulumi.Input<String> appName;
   /// The name of the Binding resource.
-  final pulumi.Input<String>? bindingName;
+  final pulumi.Input<String?>? bindingName;
   /// Properties of the Binding resource
-  final pulumi.Input<BindingResourceProperties>? properties;
+  final pulumi.Input<BindingResourceProperties?>? properties;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Service resource.

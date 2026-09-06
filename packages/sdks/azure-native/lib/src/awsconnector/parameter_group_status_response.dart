@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ParameterGroupStatus
 class ParameterGroupStatusResponse {
   /// &lt;p&gt;The node IDs of one or more nodes to be rebooted.&lt;/p&gt;
-  final pulumi.Input<List<String>>? nodeIdsToReboot;
+  final pulumi.Input<List<String>?>? nodeIdsToReboot;
   /// &lt;p&gt;The status of parameter updates. &lt;/p&gt;
-  final pulumi.Input<String>? parameterApplyStatus;
+  final pulumi.Input<String?>? parameterApplyStatus;
   /// &lt;p&gt;The name of the parameter group.&lt;/p&gt;
-  final pulumi.Input<String>? parameterGroupName;
+  final pulumi.Input<String?>? parameterGroupName;
 
   /// Creates a new [ParameterGroupStatusResponse].
   /// [nodeIdsToReboot] &lt;p&gt;The node IDs of one or more nodes to be rebooted.&lt;/p&gt;

@@ -191,4 +191,19 @@ class TagOperationLink extends pulumi.CustomResource {
     operationId = registerOutput<String>('operationId');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [TagOperationLink] resource.
+  TagOperationLink.reference(String urn)
+    : super(
+        'azure-native:apimanagement:TagOperationLink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    operationId = registerOutput<String>('operationId');
+    type = registerOutput<String>('type');
+  }
 }

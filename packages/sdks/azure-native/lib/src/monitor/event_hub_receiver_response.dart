@@ -9,15 +9,15 @@ class EventHubReceiverResponse {
   /// The Event Hub namespace
   final pulumi.Input<String> eventHubNameSpace;
   /// The principal id of the managed identity. The value can be "None", "SystemAssigned"
-  final pulumi.Input<String>? managedIdentity;
+  final pulumi.Input<String?>? managedIdentity;
   /// The name of the Event hub receiver. Names must be unique across all receivers within an action group.
   final pulumi.Input<String> name;
   /// The Id for the subscription containing this event hub
   final pulumi.Input<String> subscriptionId;
   /// The tenant Id for the subscription containing this event hub
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Indicates whether to use common alert schema.
-  final pulumi.Input<bool>? useCommonAlertSchema;
+  final pulumi.Input<bool?>? useCommonAlertSchema;
 
   /// Creates a new [EventHubReceiverResponse].
   /// [eventHubName] The name of the specific Event Hub queue
@@ -27,15 +27,15 @@ class EventHubReceiverResponse {
   /// [subscriptionId] The Id for the subscription containing this event hub
   /// [tenantId] The tenant Id for the subscription containing this event hub
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
-  const EventHubReceiverResponse({
+  EventHubReceiverResponse({
     required this.eventHubName,
     required this.eventHubNameSpace,
     this.managedIdentity,
     required this.name,
     required this.subscriptionId,
     this.tenantId,
-    this.useCommonAlertSchema,
-  });
+    pulumi.Input<bool?>? useCommonAlertSchema,
+  }) : useCommonAlertSchema = useCommonAlertSchema ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

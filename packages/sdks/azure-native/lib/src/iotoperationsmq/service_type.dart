@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The Kubernetes Service type to deploy for Listener.
-enum ServiceType {
+enum ServiceType implements pulumi.PulumiEnum<String> {
   clusterIp("clusterIp"),
   loadBalancer("loadBalancer"),
   nodePort("nodePort");
 
   const ServiceType(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceType fromValue(String value) {

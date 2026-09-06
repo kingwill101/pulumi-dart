@@ -7,7 +7,7 @@ class AdditionalErrorInfoResponse {
   /// Additional information of the type of error.
   final pulumi.Input<dynamic>? info;
   /// Type of error (e.g. CustomerIntervention, PolicyViolation, SecurityViolation).
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [AdditionalErrorInfoResponse].
   /// [info] Additional information of the type of error.

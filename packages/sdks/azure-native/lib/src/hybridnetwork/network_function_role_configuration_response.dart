@@ -9,23 +9,23 @@ import 'storage_profile_response.dart';
 /// Network function role configuration.
 class NetworkFunctionRoleConfigurationResponse {
   /// Specifies the custom settings for the virtual machine.
-  final pulumi.Input<CustomProfileResponse>? customProfile;
+  final pulumi.Input<CustomProfileResponse?>? customProfile;
   /// The network interface configurations.
-  final pulumi.Input<List<NetworkInterfaceResponse>>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterfaceResponse>?>? networkInterfaces;
   /// Specifies the operating system settings for the role instance. This value can be updated during the deployment of network function.
-  final pulumi.Input<OsProfileResponse>? osProfile;
+  final pulumi.Input<OsProfileResponse?>? osProfile;
   /// The name of the network function role.
-  final pulumi.Input<String>? roleName;
+  final pulumi.Input<String?>? roleName;
   /// Role type.
-  final pulumi.Input<String>? roleType;
+  final pulumi.Input<String?>? roleType;
   /// Specifies the storage settings for the virtual machine disks.
-  final pulumi.Input<StorageProfileResponse>? storageProfile;
+  final pulumi.Input<StorageProfileResponse?>? storageProfile;
   /// The user parameters for customers. The format of user data parameters has to be matched with the provided user data template.
   final pulumi.Input<dynamic>? userDataParameters;
   /// The user data template for customers. This is a json schema template describing the format and data type of user data parameters.
   final pulumi.Input<dynamic>? userDataTemplate;
   /// The size of the virtual machine.
-  final pulumi.Input<String>? virtualMachineSize;
+  final pulumi.Input<String?>? virtualMachineSize;
 
   /// Creates a new [NetworkFunctionRoleConfigurationResponse].
   /// [customProfile] Specifies the custom settings for the virtual machine.

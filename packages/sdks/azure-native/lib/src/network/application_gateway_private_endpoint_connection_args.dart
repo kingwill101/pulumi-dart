@@ -11,13 +11,13 @@ class ApplicationGatewayPrivateEndpointConnectionArgs {
   /// The name of the application gateway.
   final pulumi.Input<String> applicationGatewayName;
   /// The name of the application gateway private endpoint connection.
-  final pulumi.Input<String>? connectionName;
+  final pulumi.Input<String?>? connectionName;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the private endpoint connection on an application gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A collection of information about the state of the connection between service consumer and provider.
-  final pulumi.Input<PrivateLinkServiceConnectionState>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionState?>? privateLinkServiceConnectionState;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 

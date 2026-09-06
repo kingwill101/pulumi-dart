@@ -6,9 +6,9 @@ import 'forest_trust.dart';
 /// Settings for Resource Forest
 class ResourceForestSettings {
   /// Resource Forest
-  final pulumi.Input<String>? resourceForest;
+  final pulumi.Input<String?>? resourceForest;
   /// List of settings for Resource Forest
-  final pulumi.Input<List<ForestTrust>>? settings;
+  final pulumi.Input<List<ForestTrust>?>? settings;
 
   /// Creates a new [ResourceForestSettings].
   /// [resourceForest] Resource Forest

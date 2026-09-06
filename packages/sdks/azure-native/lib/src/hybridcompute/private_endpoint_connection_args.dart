@@ -9,9 +9,9 @@ import 'private_endpoint_connection_properties.dart';
 /// {@macro pulumi_hybridcompute_private_endpoint_connection_args_doc}
 class PrivateEndpointConnectionArgs {
   /// The name of the private endpoint connection.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// Resource properties.
-  final pulumi.Input<PrivateEndpointConnectionProperties>? properties;
+  final pulumi.Input<PrivateEndpointConnectionProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Azure Arc PrivateLinkScope resource.

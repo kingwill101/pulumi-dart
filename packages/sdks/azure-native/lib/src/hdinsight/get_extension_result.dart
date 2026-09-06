@@ -4,7 +4,7 @@
 /// Result data returned by getExtension.
 class GetExtensionResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The status of the monitor on the HDInsight cluster.
   final bool? clusterMonitoringEnabled;
   /// The workspace ID of the monitor on the HDInsight cluster.
@@ -15,14 +15,14 @@ class GetExtensionResult {
   /// [clusterMonitoringEnabled] The status of the monitor on the HDInsight cluster.
   /// [workspaceId] The workspace ID of the monitor on the HDInsight cluster.
   const GetExtensionResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.clusterMonitoringEnabled,
     this.workspaceId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'clusterMonitoringEnabled': ?clusterMonitoringEnabled,
       'workspaceId': ?workspaceId,
     };
@@ -30,7 +30,7 @@ class GetExtensionResult {
 
   factory GetExtensionResult.fromMap(Map<String, dynamic> map) {
     return GetExtensionResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       clusterMonitoringEnabled: (() { final guardedValue = map['clusterMonitoringEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       workspaceId: (() { final guardedValue = map['workspaceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

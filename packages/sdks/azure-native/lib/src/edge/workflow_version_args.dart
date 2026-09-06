@@ -12,13 +12,13 @@ class WorkflowVersionArgs {
   /// The name of the Context.
   final pulumi.Input<String> contextName;
   /// The complex type of the extended location.
-  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation>? extendedLocation;
+  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation?>? extendedLocation;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<WorkflowVersionProperties>? properties;
+  final pulumi.Input<WorkflowVersionProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the workflowVersion.
-  final pulumi.Input<String>? versionName;
+  final pulumi.Input<String?>? versionName;
   /// Name of the workflow
   final pulumi.Input<String> workflowName;
 

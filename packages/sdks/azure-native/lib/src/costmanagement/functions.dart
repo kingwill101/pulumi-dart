@@ -52,6 +52,17 @@ Future<GetBudgetResult> getBudget(
   return GetBudgetResult.fromMap(result);
 }
 
+pulumi.Output<GetBudgetResult> getBudgetOutput(
+  GetBudgetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:costmanagement:getBudget',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBudgetResult.fromMap);
+}
+
 /// Get a cloud connector definition
 ///
 /// Uses Azure REST API version 2019-03-01-preview.
@@ -70,6 +81,17 @@ Future<GetCloudConnectorResult> getCloudConnector(
   return GetCloudConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetCloudConnectorResult> getCloudConnectorOutput(
+  GetCloudConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:costmanagement:getCloudConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudConnectorResult.fromMap);
+}
+
 /// Get a connector definition
 ///
 /// Uses Azure REST API version 2018-08-01-preview.
@@ -86,6 +108,17 @@ Future<GetConnectorResult> getConnector(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectorResult.fromMap(result);
+}
+
+pulumi.Output<GetConnectorResult> getConnectorOutput(
+  GetConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:costmanagement:getConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectorResult.fromMap);
 }
 
 /// Get a cost allocation rule by rule name and billing account or enterprise enrollment.
@@ -108,6 +141,17 @@ Future<GetCostAllocationRuleResult> getCostAllocationRule(
   return GetCostAllocationRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetCostAllocationRuleResult> getCostAllocationRuleOutput(
+  GetCostAllocationRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:costmanagement:getCostAllocationRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCostAllocationRuleResult.fromMap);
+}
+
 /// The operation to get the export for the defined scope by export name.
 ///
 /// Uses Azure REST API version 2024-08-01.
@@ -128,6 +172,17 @@ Future<GetExportResult> getExport(
   return GetExportResult.fromMap(result);
 }
 
+pulumi.Output<GetExportResult> getExportOutput(
+  GetExportArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:costmanagement:getExport',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExportResult.fromMap);
+}
+
 /// Get a markup rule by its rule name.
 ///
 /// Uses Azure REST API version 2022-10-05-preview.
@@ -144,6 +199,17 @@ Future<GetMarkupRuleResult> getMarkupRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMarkupRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetMarkupRuleResult> getMarkupRuleOutput(
+  GetMarkupRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:costmanagement:getMarkupRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMarkupRuleResult.fromMap);
 }
 
 /// Gets the report for a subscription by report name.
@@ -164,6 +230,17 @@ Future<GetReportResult> getReport(
   return GetReportResult.fromMap(result);
 }
 
+pulumi.Output<GetReportResult> getReportOutput(
+  GetReportArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:costmanagement:getReport',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReportResult.fromMap);
+}
+
 /// Gets the report for a billing account by report name.
 ///
 /// Uses Azure REST API version 2018-08-01-preview.
@@ -180,6 +257,17 @@ Future<GetReportByBillingAccountResult> getReportByBillingAccount(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReportByBillingAccountResult.fromMap(result);
+}
+
+pulumi.Output<GetReportByBillingAccountResult> getReportByBillingAccountOutput(
+  GetReportByBillingAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:costmanagement:getReportByBillingAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReportByBillingAccountResult.fromMap);
 }
 
 /// Gets the report for a department by report name.
@@ -200,6 +288,17 @@ Future<GetReportByDepartmentResult> getReportByDepartment(
   return GetReportByDepartmentResult.fromMap(result);
 }
 
+pulumi.Output<GetReportByDepartmentResult> getReportByDepartmentOutput(
+  GetReportByDepartmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:costmanagement:getReportByDepartment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReportByDepartmentResult.fromMap);
+}
+
 /// Gets the report for a resource group under a subscription by report name.
 ///
 /// Uses Azure REST API version 2018-08-01-preview.
@@ -216,6 +315,17 @@ Future<GetReportByResourceGroupNameResult> getReportByResourceGroupName(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReportByResourceGroupNameResult.fromMap(result);
+}
+
+pulumi.Output<GetReportByResourceGroupNameResult> getReportByResourceGroupNameOutput(
+  GetReportByResourceGroupNameArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:costmanagement:getReportByResourceGroupName',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReportByResourceGroupNameResult.fromMap);
 }
 
 /// Get the private scheduled action by name.
@@ -238,6 +348,17 @@ Future<GetScheduledActionResult> getScheduledAction(
   return GetScheduledActionResult.fromMap(result);
 }
 
+pulumi.Output<GetScheduledActionResult> getScheduledActionOutput(
+  GetScheduledActionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:costmanagement:getScheduledAction',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScheduledActionResult.fromMap);
+}
+
 /// Get the shared scheduled action from the given scope by name.
 ///
 /// Uses Azure REST API version 2024-08-01.
@@ -258,6 +379,17 @@ Future<GetScheduledActionByScopeResult> getScheduledActionByScope(
   return GetScheduledActionByScopeResult.fromMap(result);
 }
 
+pulumi.Output<GetScheduledActionByScopeResult> getScheduledActionByScopeOutput(
+  GetScheduledActionByScopeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:costmanagement:getScheduledActionByScope',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScheduledActionByScopeResult.fromMap);
+}
+
 /// Retrieves the current value for a specific setting.
 ///
 /// Uses Azure REST API version 2019-11-01.
@@ -276,6 +408,17 @@ Future<GetSettingResult> getSetting(
   return GetSettingResult.fromMap(result);
 }
 
+pulumi.Output<GetSettingResult> getSettingOutput(
+  GetSettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:costmanagement:getSetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSettingResult.fromMap);
+}
+
 /// Get the setting from the given scope by name.
 ///
 /// Uses Azure REST API version 2024-08-01.
@@ -292,6 +435,17 @@ Future<GetTagInheritanceSettingResult> getTagInheritanceSetting(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTagInheritanceSettingResult.fromMap(result);
+}
+
+pulumi.Output<GetTagInheritanceSettingResult> getTagInheritanceSettingOutput(
+  GetTagInheritanceSettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:costmanagement:getTagInheritanceSetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTagInheritanceSettingResult.fromMap);
 }
 
 /// Gets the view by view name.
@@ -314,6 +468,17 @@ Future<GetViewResult> getView(
   return GetViewResult.fromMap(result);
 }
 
+pulumi.Output<GetViewResult> getViewOutput(
+  GetViewArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:costmanagement:getView',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetViewResult.fromMap);
+}
+
 /// Gets the view for the defined scope by view name.
 ///
 /// Uses Azure REST API version 2024-08-01.
@@ -332,4 +497,15 @@ Future<GetViewByScopeResult> getViewByScope(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetViewByScopeResult.fromMap(result);
+}
+
+pulumi.Output<GetViewByScopeResult> getViewByScopeOutput(
+  GetViewByScopeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:costmanagement:getViewByScope',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetViewByScopeResult.fromMap);
 }

@@ -9,29 +9,29 @@ import 'watchlist_user_info.dart';
 /// {@macro pulumi_securityinsights_watchlist_item_args_doc}
 class WatchlistItemArgs {
   /// The time the watchlist item was created
-  final pulumi.Input<String>? created;
+  final pulumi.Input<String?>? created;
   /// Describes a user that created the watchlist item
-  final pulumi.Input<WatchlistUserInfo>? createdBy;
+  final pulumi.Input<WatchlistUserInfo?>? createdBy;
   /// key-value pairs for a watchlist item entity mapping
   final pulumi.Input<dynamic>? entityMapping;
   /// A flag that indicates if the watchlist item is deleted or not
-  final pulumi.Input<bool>? isDeleted;
+  final pulumi.Input<bool?>? isDeleted;
   /// key-value pairs for a watchlist item
   final pulumi.Input<dynamic> itemsKeyValue;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The tenantId to which the watchlist item belongs to
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// The last time the watchlist item was updated
-  final pulumi.Input<String>? updated;
+  final pulumi.Input<String?>? updated;
   /// Describes a user that updated the watchlist item
-  final pulumi.Input<WatchlistUserInfo>? updatedBy;
+  final pulumi.Input<WatchlistUserInfo?>? updatedBy;
   /// The watchlist alias
   final pulumi.Input<String> watchlistAlias;
   /// The id (a Guid) of the watchlist item
-  final pulumi.Input<String>? watchlistItemId;
+  final pulumi.Input<String?>? watchlistItemId;
   /// The type of the watchlist item
-  final pulumi.Input<String>? watchlistItemType;
+  final pulumi.Input<String?>? watchlistItemType;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 

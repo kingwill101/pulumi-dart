@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties for patching a Linux machine.
 class InputLinuxParametersResponse {
   /// Classification category of patches to be patched. Allowed values are 'Critical', 'Security', and 'Other'.
-  final pulumi.Input<List<String>>? classificationsToInclude;
+  final pulumi.Input<List<String>?>? classificationsToInclude;
   /// Package names to be excluded for patching.
-  final pulumi.Input<List<String>>? packageNameMasksToExclude;
+  final pulumi.Input<List<String>?>? packageNameMasksToExclude;
   /// Package names to be included for patching.
-  final pulumi.Input<List<String>>? packageNameMasksToInclude;
+  final pulumi.Input<List<String>?>? packageNameMasksToInclude;
 
   /// Creates a new [InputLinuxParametersResponse].
   /// [classificationsToInclude] Classification category of patches to be patched. Allowed values are 'Critical', 'Security', and 'Other'.

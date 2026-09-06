@@ -214,4 +214,25 @@ class GlobalReachConnection extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [GlobalReachConnection] resource.
+  GlobalReachConnection.reference(String urn)
+    : super(
+        'azure-native:avs:GlobalReachConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressPrefix = registerOutput<String>('addressPrefix');
+    authorizationKey = registerOutput<String?>('authorizationKey');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    circuitConnectionStatus = registerOutput<String>('circuitConnectionStatus');
+    expressRouteId = registerOutput<String?>('expressRouteId');
+    this.name = registerOutput<String>('name');
+    peerExpressRouteCircuit = registerOutput<String?>('peerExpressRouteCircuit');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

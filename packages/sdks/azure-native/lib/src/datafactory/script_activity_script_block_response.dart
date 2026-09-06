@@ -6,7 +6,7 @@ import 'script_activity_parameter_response.dart';
 /// Script block of scripts.
 class ScriptActivityScriptBlockResponse {
   /// Array of script parameters. Type: array.
-  final pulumi.Input<List<ScriptActivityParameterResponse>>? parameters;
+  final pulumi.Input<List<ScriptActivityParameterResponse>?>? parameters;
   /// The query text. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> text;
   /// The type of the query. Please refer to the ScriptType for valid options. Type: string (or Expression with resultType string).

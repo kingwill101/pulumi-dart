@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Task Scope
-enum TaskScope {
+enum TaskScope implements pulumi.PulumiEnum<String> {
   wave("Wave"),
   migrationEntity("MigrationEntity"),
   migrationEntityGroup("MigrationEntityGroup");
 
   const TaskScope(this.wireValue);
+  @override
   final String wireValue;
 
   static TaskScope fromValue(String value) {

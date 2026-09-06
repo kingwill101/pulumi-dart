@@ -12,7 +12,7 @@ class ListRemediationDeploymentsAtResourceArgs {
   /// Resource ID.
   final pulumi.Input<String> resourceId;
   /// Maximum number of records to return.
-  final pulumi.Input<int>? top;
+  final pulumi.Input<int?>? top;
 
   /// Creates a new [ListRemediationDeploymentsAtResourceArgs].
   /// [remediationName] The name of the remediation.
@@ -36,7 +36,7 @@ class ListRemediationDeploymentsAtResourceArgs {
     return ListRemediationDeploymentsAtResourceArgs(
       remediationName: pulumi.Input.fromValue(map['remediationName'] as String),
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
-      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

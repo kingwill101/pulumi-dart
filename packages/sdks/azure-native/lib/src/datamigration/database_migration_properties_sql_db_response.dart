@@ -15,9 +15,9 @@ class DatabaseMigrationPropertiesSqlDbResponse {
   /// Error details in case of migration failure.
   final pulumi.Input<ErrorInfoResponse> migrationFailureError;
   /// ID for current migration operation.
-  final pulumi.Input<String>? migrationOperationId;
+  final pulumi.Input<String?>? migrationOperationId;
   /// Resource Id of the Migration Service.
-  final pulumi.Input<String>? migrationService;
+  final pulumi.Input<String?>? migrationService;
   /// Migration status.
   final pulumi.Input<String> migrationStatus;
   /// Detailed migration status. Not included by default.
@@ -25,25 +25,25 @@ class DatabaseMigrationPropertiesSqlDbResponse {
   /// Offline configuration.
   final pulumi.Input<SqlDbOfflineConfigurationResponse> offlineConfiguration;
   /// Error message for migration provisioning failure, if any.
-  final pulumi.Input<String>? provisioningError;
+  final pulumi.Input<String?>? provisioningError;
   /// Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started.
   final pulumi.Input<String> provisioningState;
   /// Resource Id of the target resource.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// Name of the source database.
-  final pulumi.Input<String>? sourceDatabaseName;
+  final pulumi.Input<String?>? sourceDatabaseName;
   /// Name of the source sql server.
   final pulumi.Input<String> sourceServerName;
   /// Source SQL Server connection details.
-  final pulumi.Input<SqlConnectionInformationResponse>? sourceSqlConnection;
+  final pulumi.Input<SqlConnectionInformationResponse?>? sourceSqlConnection;
   /// Database migration start time.
   final pulumi.Input<String> startedOn;
   /// List of tables to copy.
-  final pulumi.Input<List<String>>? tableList;
+  final pulumi.Input<List<String>?>? tableList;
   /// Database collation to be used for the target database.
-  final pulumi.Input<String>? targetDatabaseCollation;
+  final pulumi.Input<String?>? targetDatabaseCollation;
   /// Target SQL DB connection details.
-  final pulumi.Input<SqlConnectionInformationResponse>? targetSqlConnection;
+  final pulumi.Input<SqlConnectionInformationResponse?>? targetSqlConnection;
 
   /// Creates a new [DatabaseMigrationPropertiesSqlDbResponse].
   /// [endedOn] Database migration end time.

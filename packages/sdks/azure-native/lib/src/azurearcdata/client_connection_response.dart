@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Client connection related configuration.
 class ClientConnectionResponse {
   /// Indicates if client connection is enabled for this SQL Server instance.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ClientConnectionResponse].
   /// [enabled] Indicates if client connection is enabled for this SQL Server instance.

@@ -8,23 +8,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_costmanagement_cloud_connector_args_doc}
 class CloudConnectorArgs {
   /// Connector billing model
-  final pulumi.Input<String>? billingModel;
+  final pulumi.Input<dynamic>? billingModel;
   /// Connector Name.
-  final pulumi.Input<String>? connectorName;
+  final pulumi.Input<String?>? connectorName;
   /// Credentials authentication key (eg AWS ARN)
-  final pulumi.Input<String>? credentialsKey;
+  final pulumi.Input<String?>? credentialsKey;
   /// Credentials secret (eg AWS ExternalId)
-  final pulumi.Input<String>? credentialsSecret;
+  final pulumi.Input<String?>? credentialsSecret;
   /// Default ManagementGroupId
-  final pulumi.Input<String>? defaultManagementGroupId;
+  final pulumi.Input<String?>? defaultManagementGroupId;
   /// Connector DisplayName
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Connector kind (eg aws)
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Identifying source report. (For AWS this is a CUR report name, defined with Daily and with Resources)
-  final pulumi.Input<String>? reportId;
+  final pulumi.Input<String?>? reportId;
   /// Billing SubscriptionId
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [CloudConnectorArgs].
   /// [billingModel] Connector billing model
@@ -64,7 +64,7 @@ class CloudConnectorArgs {
 
   factory CloudConnectorArgs.fromMap(Map<String, dynamic> map) {
     return CloudConnectorArgs(
-      billingModel: (() { final guardedValue = map['billingModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      billingModel: (() { final guardedValue = map['billingModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       connectorName: (() { final guardedValue = map['connectorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       credentialsKey: (() { final guardedValue = map['credentialsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       credentialsSecret: (() { final guardedValue = map['credentialsSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

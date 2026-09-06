@@ -7,7 +7,7 @@ class AuthorizationResponse {
   /// Gets or sets one-time OAuth code to exchange for refresh and access tokens.
   ///
   /// Only used during PUT/PATCH operations. The secret is cleared during GET.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
 
   /// Creates a new [AuthorizationResponse].
   /// [code] Gets or sets one-time OAuth code to exchange for refresh and access tokens.

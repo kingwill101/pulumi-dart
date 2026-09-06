@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Authentication configuration properties of a server.
 class AuthConfig {
   /// Indicates if the server supports Microsoft Entra authentication.
-  final pulumi.Input<String>? activeDirectoryAuth;
+  final pulumi.Input<dynamic>? activeDirectoryAuth;
   /// Indicates if the server supports password based authentication.
-  final pulumi.Input<String>? passwordAuth;
+  final pulumi.Input<dynamic>? passwordAuth;
   /// Identifier of the tenant of the delegated resource.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [AuthConfig].
   /// [activeDirectoryAuth] Indicates if the server supports Microsoft Entra authentication.
   /// [passwordAuth] Indicates if the server supports password based authentication.
   /// [tenantId] Identifier of the tenant of the delegated resource.
-  const AuthConfig({
+  AuthConfig({
     this.activeDirectoryAuth,
-    this.passwordAuth,
-    this.tenantId,
-  });
+    pulumi.Input<dynamic>? passwordAuth,
+    pulumi.Input<String?>? tenantId,
+  }) : passwordAuth = passwordAuth ?? pulumi.Input.fromValue('Enabled'), tenantId = tenantId ?? pulumi.Input.fromValue('');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +31,8 @@ class AuthConfig {
 
   factory AuthConfig.fromMap(Map<String, dynamic> map) {
     return AuthConfig(
-      activeDirectoryAuth: (() { final guardedValue = map['activeDirectoryAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      passwordAuth: (() { final guardedValue = map['passwordAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      activeDirectoryAuth: (() { final guardedValue = map['activeDirectoryAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      passwordAuth: (() { final guardedValue = map['passwordAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

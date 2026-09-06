@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ResourceRecordSetFailoverEnumValue
 class ResourceRecordSetFailoverEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [ResourceRecordSetFailoverEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class ResourceRecordSetFailoverEnumValue {
 
   factory ResourceRecordSetFailoverEnumValue.fromMap(Map<String, dynamic> map) {
     return ResourceRecordSetFailoverEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

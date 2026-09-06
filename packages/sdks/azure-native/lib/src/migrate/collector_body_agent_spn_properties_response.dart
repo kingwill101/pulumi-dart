@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CollectorBodyAgentSpnPropertiesResponse {
   /// Application/client Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// Intended audience for the service principal.
-  final pulumi.Input<String>? audience;
+  final pulumi.Input<String?>? audience;
   /// AAD Authority URL which was used to request the token for the service principal.
-  final pulumi.Input<String>? authority;
+  final pulumi.Input<String?>? authority;
   /// Object Id of the service principal with which the on-premise management/data plane components would communicate with our Azure services.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// Tenant Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [CollectorBodyAgentSpnPropertiesResponse].
   /// [applicationId] Application/client Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.

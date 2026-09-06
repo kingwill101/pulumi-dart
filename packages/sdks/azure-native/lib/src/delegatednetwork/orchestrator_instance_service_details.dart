@@ -295,7 +295,33 @@ class OrchestratorInstanceServiceDetails extends pulumi.CustomResource {
     privateLinkResourceId = registerOutput<String?>('privateLinkResourceId');
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [OrchestratorInstanceServiceDetails] resource.
+  OrchestratorInstanceServiceDetails.reference(String urn)
+    : super(
+        'azure-native:delegatednetwork:OrchestratorInstanceServiceDetails',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiServerEndpoint = registerOutput<String?>('apiServerEndpoint');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterRootCA = registerOutput<String?>('clusterRootCA');
+    controllerDetails = registerOutput<ControllerDetailsResponse>('controllerDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControllerDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<OrchestratorIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrchestratorIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    orchestratorAppId = registerOutput<String?>('orchestratorAppId');
+    orchestratorTenantId = registerOutput<String?>('orchestratorTenantId');
+    privateLinkResourceId = registerOutput<String?>('privateLinkResourceId');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

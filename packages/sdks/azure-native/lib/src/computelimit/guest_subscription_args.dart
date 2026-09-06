@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_computelimit_guest_subscription_args_doc}
 class GuestSubscriptionArgs {
   /// The name of the GuestSubscription
-  final pulumi.Input<String>? guestSubscriptionId;
+  final pulumi.Input<String?>? guestSubscriptionId;
   /// The name of the Azure region.
   final pulumi.Input<String> location;
 

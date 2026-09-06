@@ -7,11 +7,11 @@ import 'status_type_enum_value_response.dart';
 /// Definition of InstanceStatusDetails
 class InstanceStatusDetailsResponse {
   /// &lt;p&gt;The time when a status check failed. For an instance that was launched and impaired, this is the time when the instance was launched.&lt;/p&gt;
-  final pulumi.Input<String>? impairedSince;
+  final pulumi.Input<String?>? impairedSince;
   /// &lt;p&gt;The type of instance status.&lt;/p&gt;
-  final pulumi.Input<StatusNameEnumValueResponse>? name;
+  final pulumi.Input<StatusNameEnumValueResponse?>? name;
   /// &lt;p&gt;The status.&lt;/p&gt;
-  final pulumi.Input<StatusTypeEnumValueResponse>? status;
+  final pulumi.Input<StatusTypeEnumValueResponse?>? status;
 
   /// Creates a new [InstanceStatusDetailsResponse].
   /// [impairedSince] &lt;p&gt;The time when a status check failed. For an instance that was launched and impaired, this is the time when the instance was launched.&lt;/p&gt;

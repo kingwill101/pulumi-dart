@@ -13,25 +13,25 @@ import 'service_import_configuration_info_response.dart';
 /// The properties of a service instance.
 class ServicesPropertiesResponse {
   /// The access policies of the service instance.
-  final pulumi.Input<List<ServiceAccessPolicyEntryResponse>>? accessPolicies;
+  final pulumi.Input<List<ServiceAccessPolicyEntryResponse>?>? accessPolicies;
   /// The azure container registry settings used for convert data operation of the service instance.
-  final pulumi.Input<ServiceAcrConfigurationInfoResponse>? acrConfiguration;
+  final pulumi.Input<ServiceAcrConfigurationInfoResponse?>? acrConfiguration;
   /// The authentication configuration for the service instance.
-  final pulumi.Input<ServiceAuthenticationConfigurationInfoResponse>? authenticationConfiguration;
+  final pulumi.Input<ServiceAuthenticationConfigurationInfoResponse?>? authenticationConfiguration;
   /// The settings for the CORS configuration of the service instance.
-  final pulumi.Input<ServiceCorsConfigurationInfoResponse>? corsConfiguration;
+  final pulumi.Input<ServiceCorsConfigurationInfoResponse?>? corsConfiguration;
   /// The settings for the Cosmos DB database backing the service.
-  final pulumi.Input<ServiceCosmosDbConfigurationInfoResponse>? cosmosDbConfiguration;
+  final pulumi.Input<ServiceCosmosDbConfigurationInfoResponse?>? cosmosDbConfiguration;
   /// The settings for the export operation of the service instance.
-  final pulumi.Input<ServiceExportConfigurationInfoResponse>? exportConfiguration;
+  final pulumi.Input<ServiceExportConfigurationInfoResponse?>? exportConfiguration;
   /// The settings for the import operation of the service instance.
-  final pulumi.Input<ServiceImportConfigurationInfoResponse>? importConfiguration;
+  final pulumi.Input<ServiceImportConfigurationInfoResponse?>? importConfiguration;
   /// The list of private endpoint connections that are set up for this resource.
-  final pulumi.Input<List<PrivateEndpointConnectionResponse>>? privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnectionResponse>?>? privateEndpointConnections;
   /// The provisioning state.
   final pulumi.Input<String> provisioningState;
   /// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
 
   /// Creates a new [ServicesPropertiesResponse].
   /// [accessPolicies] The access policies of the service instance.

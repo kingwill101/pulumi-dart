@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The alerts' productName on which the cases will be generated
-enum MicrosoftSecurityProductName {
+enum MicrosoftSecurityProductName implements pulumi.PulumiEnum<String> {
   valueMicrosoftCloudAppSecurity("Microsoft Cloud App Security"),
   valueAzureSecurityCenter("Azure Security Center"),
   valueAzureAdvancedThreatProtection("Azure Advanced Threat Protection"),
@@ -7,6 +9,7 @@ enum MicrosoftSecurityProductName {
   valueAzureSecurityCenterForIoT("Azure Security Center for IoT");
 
   const MicrosoftSecurityProductName(this.wireValue);
+  @override
   final String wireValue;
 
   static MicrosoftSecurityProductName fromValue(String value) {

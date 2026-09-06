@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Match variable to compare against.
-enum WafMatchVariable {
+enum WafMatchVariable implements pulumi.PulumiEnum<String> {
   remoteAddr("RemoteAddr"),
   socketAddr("SocketAddr"),
   requestMethod("RequestMethod"),
@@ -11,6 +13,7 @@ enum WafMatchVariable {
   postArgs("PostArgs");
 
   const WafMatchVariable(this.wireValue);
+  @override
   final String wireValue;
 
   static WafMatchVariable fromValue(String value) {

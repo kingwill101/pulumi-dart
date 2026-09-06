@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information about the impacted workload
 class WorkloadResponse {
   /// the scenario for the workload
-  final pulumi.Input<String>? context;
+  final pulumi.Input<String?>? context;
   /// Tool used to interact with Azure. SDK, AzPortal, etc.., Other
-  final pulumi.Input<String>? toolset;
+  final pulumi.Input<String?>? toolset;
 
   /// Creates a new [WorkloadResponse].
   /// [context] the scenario for the workload

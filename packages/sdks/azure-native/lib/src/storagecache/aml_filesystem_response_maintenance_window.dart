@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Start time of a 30-minute weekly maintenance window.
 class AmlFilesystemResponseMaintenanceWindow {
   /// Day of the week on which the maintenance window will occur.
-  final pulumi.Input<String>? dayOfWeek;
+  final pulumi.Input<String?>? dayOfWeek;
   /// The time of day (in UTC) to start the maintenance window.
-  final pulumi.Input<String>? timeOfDayUTC;
+  final pulumi.Input<String?>? timeOfDayUTC;
 
   /// Creates a new [AmlFilesystemResponseMaintenanceWindow].
   /// [dayOfWeek] Day of the week on which the maintenance window will occur.

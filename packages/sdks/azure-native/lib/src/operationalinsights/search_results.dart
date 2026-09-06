@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Parameters of the search job that initiated this table.
 class SearchResults {
   /// Search job Description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The timestamp to end the search by (UTC)
-  final pulumi.Input<String>? endSearchTime;
+  final pulumi.Input<String?>? endSearchTime;
   /// Limit the search job to return up to specified number of rows.
-  final pulumi.Input<int>? limit;
+  final pulumi.Input<int?>? limit;
   /// Search job query.
-  final pulumi.Input<String>? query;
+  final pulumi.Input<String?>? query;
   /// The timestamp to start the search from (UTC)
-  final pulumi.Input<String>? startSearchTime;
+  final pulumi.Input<String?>? startSearchTime;
 
   /// Creates a new [SearchResults].
   /// [description] Search job Description.
@@ -43,7 +43,7 @@ class SearchResults {
     return SearchResults(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endSearchTime: (() { final guardedValue = map['endSearchTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       query: (() { final guardedValue = map['query']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startSearchTime: (() { final guardedValue = map['startSearchTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

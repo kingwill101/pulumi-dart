@@ -9,7 +9,7 @@ import 'resource_reference.dart';
 /// {@macro pulumi_cdn_profile_agent_args_doc}
 class ProfileAgentArgs {
   /// Name of the web agent association.
-  final pulumi.Input<String>? agentName;
+  final pulumi.Input<String?>? agentName;
   /// List of custom domains associated with this agent link.
   final pulumi.Input<List<ResourceReference>> customDomains;
   /// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.

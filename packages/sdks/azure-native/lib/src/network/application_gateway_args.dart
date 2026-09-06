@@ -37,81 +37,81 @@ import 'sub_resource.dart';
 /// {@macro pulumi_network_application_gateway_args_doc}
 class ApplicationGatewayArgs {
   /// The name of the application gateway.
-  final pulumi.Input<String>? applicationGatewayName;
+  final pulumi.Input<String?>? applicationGatewayName;
   /// Authentication certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
-  final pulumi.Input<List<ApplicationGatewayAuthenticationCertificate>>? authenticationCertificates;
+  final pulumi.Input<List<ApplicationGatewayAuthenticationCertificate>?>? authenticationCertificates;
   /// Autoscale Configuration.
-  final pulumi.Input<ApplicationGatewayAutoscaleConfiguration>? autoscaleConfiguration;
+  final pulumi.Input<ApplicationGatewayAutoscaleConfiguration?>? autoscaleConfiguration;
   /// Backend address pool of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
-  final pulumi.Input<List<ApplicationGatewayBackendAddressPool>>? backendAddressPools;
+  final pulumi.Input<List<ApplicationGatewayBackendAddressPool>?>? backendAddressPools;
   /// Backend http settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
-  final pulumi.Input<List<ApplicationGatewayBackendHttpSettings>>? backendHttpSettingsCollection;
+  final pulumi.Input<List<ApplicationGatewayBackendHttpSettings>?>? backendHttpSettingsCollection;
   /// Backend settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
-  final pulumi.Input<List<ApplicationGatewayBackendSettings>>? backendSettingsCollection;
+  final pulumi.Input<List<ApplicationGatewayBackendSettings>?>? backendSettingsCollection;
   /// Custom error configurations of the application gateway resource.
-  final pulumi.Input<List<ApplicationGatewayCustomError>>? customErrorConfigurations;
+  final pulumi.Input<List<ApplicationGatewayCustomError>?>? customErrorConfigurations;
   /// Whether FIPS is enabled on the application gateway resource.
-  final pulumi.Input<bool>? enableFips;
+  final pulumi.Input<bool?>? enableFips;
   /// Whether HTTP2 is enabled on the application gateway resource.
-  final pulumi.Input<bool>? enableHttp2;
+  final pulumi.Input<bool?>? enableHttp2;
   /// Reference to the FirewallPolicy resource.
-  final pulumi.Input<SubResource>? firewallPolicy;
+  final pulumi.Input<SubResource?>? firewallPolicy;
   /// If true, associates a firewall policy with an application gateway regardless whether the policy differs from the WAF Config.
-  final pulumi.Input<bool>? forceFirewallPolicyAssociation;
+  final pulumi.Input<bool?>? forceFirewallPolicyAssociation;
   /// Frontend IP addresses of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
-  final pulumi.Input<List<ApplicationGatewayFrontendIPConfiguration>>? frontendIPConfigurations;
+  final pulumi.Input<List<ApplicationGatewayFrontendIPConfiguration>?>? frontendIPConfigurations;
   /// Frontend ports of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
-  final pulumi.Input<List<ApplicationGatewayFrontendPort>>? frontendPorts;
+  final pulumi.Input<List<ApplicationGatewayFrontendPort>?>? frontendPorts;
   /// Subnets of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
-  final pulumi.Input<List<ApplicationGatewayIPConfiguration>>? gatewayIPConfigurations;
+  final pulumi.Input<List<ApplicationGatewayIPConfiguration>?>? gatewayIPConfigurations;
   /// Global Configuration.
-  final pulumi.Input<ApplicationGatewayGlobalConfiguration>? globalConfiguration;
+  final pulumi.Input<ApplicationGatewayGlobalConfiguration?>? globalConfiguration;
   /// Http listeners of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
-  final pulumi.Input<List<ApplicationGatewayHttpListener>>? httpListeners;
+  final pulumi.Input<List<ApplicationGatewayHttpListener>?>? httpListeners;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The identity of the application gateway, if configured.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// Listeners of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
-  final pulumi.Input<List<ApplicationGatewayListener>>? listeners;
+  final pulumi.Input<List<ApplicationGatewayListener>?>? listeners;
   /// Load distribution policies of the application gateway resource.
-  final pulumi.Input<List<ApplicationGatewayLoadDistributionPolicy>>? loadDistributionPolicies;
+  final pulumi.Input<List<ApplicationGatewayLoadDistributionPolicy>?>? loadDistributionPolicies;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// PrivateLink configurations on application gateway.
-  final pulumi.Input<List<ApplicationGatewayPrivateLinkConfiguration>>? privateLinkConfigurations;
+  final pulumi.Input<List<ApplicationGatewayPrivateLinkConfiguration>?>? privateLinkConfigurations;
   /// Probes of the application gateway resource.
-  final pulumi.Input<List<ApplicationGatewayProbe>>? probes;
+  final pulumi.Input<List<ApplicationGatewayProbe>?>? probes;
   /// Redirect configurations of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
-  final pulumi.Input<List<ApplicationGatewayRedirectConfiguration>>? redirectConfigurations;
+  final pulumi.Input<List<ApplicationGatewayRedirectConfiguration>?>? redirectConfigurations;
   /// Request routing rules of the application gateway resource.
-  final pulumi.Input<List<ApplicationGatewayRequestRoutingRule>>? requestRoutingRules;
+  final pulumi.Input<List<ApplicationGatewayRequestRoutingRule>?>? requestRoutingRules;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Rewrite rules for the application gateway resource.
-  final pulumi.Input<List<ApplicationGatewayRewriteRuleSet>>? rewriteRuleSets;
+  final pulumi.Input<List<ApplicationGatewayRewriteRuleSet>?>? rewriteRuleSets;
   /// Routing rules of the application gateway resource.
-  final pulumi.Input<List<ApplicationGatewayRoutingRule>>? routingRules;
+  final pulumi.Input<List<ApplicationGatewayRoutingRule>?>? routingRules;
   /// SKU of the application gateway resource.
-  final pulumi.Input<ApplicationGatewaySku>? sku;
+  final pulumi.Input<ApplicationGatewaySku?>? sku;
   /// SSL certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
-  final pulumi.Input<List<ApplicationGatewaySslCertificate>>? sslCertificates;
+  final pulumi.Input<List<ApplicationGatewaySslCertificate>?>? sslCertificates;
   /// SSL policy of the application gateway resource.
-  final pulumi.Input<ApplicationGatewaySslPolicy>? sslPolicy;
+  final pulumi.Input<ApplicationGatewaySslPolicy?>? sslPolicy;
   /// SSL profiles of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
-  final pulumi.Input<List<ApplicationGatewaySslProfile>>? sslProfiles;
+  final pulumi.Input<List<ApplicationGatewaySslProfile>?>? sslProfiles;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Trusted client certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
-  final pulumi.Input<List<ApplicationGatewayTrustedClientCertificate>>? trustedClientCertificates;
+  final pulumi.Input<List<ApplicationGatewayTrustedClientCertificate>?>? trustedClientCertificates;
   /// Trusted Root certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
-  final pulumi.Input<List<ApplicationGatewayTrustedRootCertificate>>? trustedRootCertificates;
+  final pulumi.Input<List<ApplicationGatewayTrustedRootCertificate>?>? trustedRootCertificates;
   /// URL path map of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
-  final pulumi.Input<List<ApplicationGatewayUrlPathMap>>? urlPathMaps;
+  final pulumi.Input<List<ApplicationGatewayUrlPathMap>?>? urlPathMaps;
   /// Web application firewall configuration.
-  final pulumi.Input<ApplicationGatewayWebApplicationFirewallConfiguration>? webApplicationFirewallConfiguration;
+  final pulumi.Input<ApplicationGatewayWebApplicationFirewallConfiguration?>? webApplicationFirewallConfiguration;
   /// A list of availability zones denoting where the resource needs to come from.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [ApplicationGatewayArgs].
   /// [applicationGatewayName] The name of the application gateway.

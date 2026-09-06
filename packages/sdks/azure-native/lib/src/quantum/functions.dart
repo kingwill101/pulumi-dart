@@ -24,6 +24,17 @@ Future<GetWorkspaceResult> getWorkspace(
   return GetWorkspaceResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:quantum:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
+}
+
 /// Get the keys to use with the Quantum APIs. A key is used to authenticate and authorize access to the Quantum REST APIs. Only one key is needed at a time; two are given to provide seamless key regeneration.
 ///
 /// Uses Azure REST API version 2023-11-13-preview.
@@ -42,4 +53,15 @@ Future<ListWorkspaceKeysResult> listWorkspaceKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWorkspaceKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListWorkspaceKeysResult> listWorkspaceKeysOutput(
+  ListWorkspaceKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:quantum:listWorkspaceKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWorkspaceKeysResult.fromMap);
 }

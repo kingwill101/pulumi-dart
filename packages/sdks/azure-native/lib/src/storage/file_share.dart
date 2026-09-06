@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'file_share_args.dart';
 import 'file_share_properties_response_file_share_paid_bursting.dart';
+import 'signed_identifier_response.dart';
 
 /// Properties of the file share, including Id, resource name, resource type, Etag.
 ///
@@ -794,7 +795,7 @@ class FileShare extends pulumi.CustomResource {
   /// The approximate size of the data stored on the share. Note that this value may not include all recently created or recently resized files.
   late final pulumi.Output<double> shareUsageBytes;
   /// List of stored access policies specified on the share.
-  late final pulumi.Output<List<Map<String, dynamic>>?> signedIdentifiers;
+  late final pulumi.Output<List<SignedIdentifierResponse>?> signedIdentifiers;
   /// Creation time of share snapshot returned in the response of list shares with expand param "snapshots".
   late final pulumi.Output<String> snapshotTime;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -831,7 +832,7 @@ class FileShare extends pulumi.CustomResource {
     leaseState = registerOutput<String>('leaseState');
     leaseStatus = registerOutput<String>('leaseStatus');
     maxBurstCreditsForIops = registerOutput<double>('maxBurstCreditsForIops');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     nextAllowedProvisionedBandwidthDowngradeTime = registerOutput<String>('nextAllowedProvisionedBandwidthDowngradeTime');
     nextAllowedProvisionedIopsDowngradeTime = registerOutput<String>('nextAllowedProvisionedIopsDowngradeTime');
@@ -842,7 +843,48 @@ class FileShare extends pulumi.CustomResource {
     rootSquash = registerOutput<String?>('rootSquash');
     shareQuota = registerOutput<int?>('shareQuota');
     shareUsageBytes = registerOutput<double>('shareUsageBytes');
-    signedIdentifiers = registerOutput<List<Map<String, dynamic>>?>('signedIdentifiers');
+    signedIdentifiers = registerOutput<List<SignedIdentifierResponse>?>('signedIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SignedIdentifierResponse>(guardedValue, (value) => SignedIdentifierResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    snapshotTime = registerOutput<String>('snapshotTime');
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [FileShare] resource.
+  FileShare.reference(String urn)
+    : super(
+        'azure-native:storage:FileShare',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessTier = registerOutput<String?>('accessTier');
+    accessTierChangeTime = registerOutput<String>('accessTierChangeTime');
+    accessTierStatus = registerOutput<String>('accessTierStatus');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deleted = registerOutput<bool>('deleted');
+    deletedTime = registerOutput<String>('deletedTime');
+    enabledProtocols = registerOutput<String?>('enabledProtocols');
+    etag = registerOutput<String>('etag');
+    fileSharePaidBursting = registerOutput<FileSharePropertiesResponseFileSharePaidBursting?>('fileSharePaidBursting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSharePropertiesResponseFileSharePaidBursting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    includedBurstIops = registerOutput<int>('includedBurstIops');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    leaseDuration = registerOutput<String>('leaseDuration');
+    leaseState = registerOutput<String>('leaseState');
+    leaseStatus = registerOutput<String>('leaseStatus');
+    maxBurstCreditsForIops = registerOutput<double>('maxBurstCreditsForIops');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    nextAllowedProvisionedBandwidthDowngradeTime = registerOutput<String>('nextAllowedProvisionedBandwidthDowngradeTime');
+    nextAllowedProvisionedIopsDowngradeTime = registerOutput<String>('nextAllowedProvisionedIopsDowngradeTime');
+    nextAllowedQuotaDowngradeTime = registerOutput<String>('nextAllowedQuotaDowngradeTime');
+    provisionedBandwidthMibps = registerOutput<int?>('provisionedBandwidthMibps');
+    provisionedIops = registerOutput<int?>('provisionedIops');
+    remainingRetentionDays = registerOutput<int>('remainingRetentionDays');
+    rootSquash = registerOutput<String?>('rootSquash');
+    shareQuota = registerOutput<int?>('shareQuota');
+    shareUsageBytes = registerOutput<double>('shareUsageBytes');
+    signedIdentifiers = registerOutput<List<SignedIdentifierResponse>?>('signedIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SignedIdentifierResponse>(guardedValue, (value) => SignedIdentifierResponse.fromMap((value as Map).cast<String, dynamic>())); });
     snapshotTime = registerOutput<String>('snapshotTime');
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');

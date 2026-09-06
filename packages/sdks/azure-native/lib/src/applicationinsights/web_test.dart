@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_test_args.dart';
+import 'web_test_geolocation_response.dart';
 import 'web_test_properties_configuration_response.dart';
 import 'web_test_properties_request_response.dart';
 import 'web_test_properties_validation_rules_response.dart';
@@ -846,7 +847,7 @@ class WebTest extends pulumi.CustomResource {
   /// Resource location
   late final pulumi.Output<String> location;
   /// A list of where to physically run the tests from to give global coverage for accessibility of your application.
-  late final pulumi.Output<List<Map<String, dynamic>>> locations;
+  late final pulumi.Output<List<WebTestGeolocationResponse>> locations;
   /// Azure resource name
   late final pulumi.Output<String> name;
   /// Current state of this component, whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Succeeded, Deploying, Canceled, and Failed.
@@ -891,13 +892,43 @@ class WebTest extends pulumi.CustomResource {
     frequency = registerOutput<int?>('frequency');
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
-    locations = registerOutput<List<Map<String, dynamic>>>('locations');
+    locations = registerOutput<List<WebTestGeolocationResponse>>('locations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebTestGeolocationResponse>(guardedValue, (value) => WebTestGeolocationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     request = registerOutput<WebTestPropertiesRequestResponse?>('request', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebTestPropertiesRequestResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     retryEnabled = registerOutput<bool?>('retryEnabled');
     syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeout = registerOutput<int?>('timeout');
+    type = registerOutput<String>('type');
+    validationRules = registerOutput<WebTestPropertiesValidationRulesResponse?>('validationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebTestPropertiesValidationRulesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    webTestKind = registerOutput<String>('webTestKind');
+    webTestName = registerOutput<String>('webTestName');
+  }
+
+  /// Creates a typed reference to an existing [WebTest] resource.
+  WebTest.reference(String urn)
+    : super(
+        'azure-native:applicationinsights:WebTest',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configuration = registerOutput<WebTestPropertiesConfigurationResponse?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebTestPropertiesConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    frequency = registerOutput<int?>('frequency');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    locations = registerOutput<List<WebTestGeolocationResponse>>('locations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebTestGeolocationResponse>(guardedValue, (value) => WebTestGeolocationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    request = registerOutput<WebTestPropertiesRequestResponse?>('request', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebTestPropertiesRequestResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retryEnabled = registerOutput<bool?>('retryEnabled');
+    syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeout = registerOutput<int?>('timeout');
     type = registerOutput<String>('type');
     validationRules = registerOutput<WebTestPropertiesValidationRulesResponse?>('validationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebTestPropertiesValidationRulesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

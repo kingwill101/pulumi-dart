@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Term Commitment preference received from customer.
 class TermCommitmentPreferencesResponse {
   /// Customer preferred Term Duration.
-  final pulumi.Input<String>? preferredTermCommitmentDuration;
+  final pulumi.Input<String?>? preferredTermCommitmentDuration;
   /// Term Commitment Type
   final pulumi.Input<String> preferredTermCommitmentType;
 

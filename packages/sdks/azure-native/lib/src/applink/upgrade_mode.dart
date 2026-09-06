@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Upgrade mode.
-enum UpgradeMode {
+enum UpgradeMode implements pulumi.PulumiEnum<String> {
   fullyManaged("FullyManaged"),
   selfManaged("SelfManaged");
 
   const UpgradeMode(this.wireValue);
+  @override
   final String wireValue;
 
   static UpgradeMode fromValue(String value) {

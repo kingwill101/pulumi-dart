@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SSH access method of an agent pool.
-enum AgentPoolSSHAccess {
+enum AgentPoolSSHAccess implements pulumi.PulumiEnum<String> {
   valueLocalUser("LocalUser"),
   valueDisabled("Disabled");
 
   const AgentPoolSSHAccess(this.wireValue);
+  @override
   final String wireValue;
 
   static AgentPoolSSHAccess fromValue(String value) {

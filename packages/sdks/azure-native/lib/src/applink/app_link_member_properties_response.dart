@@ -9,17 +9,17 @@ import 'upgrade_profile_response.dart';
 /// AppLink Member properties
 class AppLinkMemberPropertiesResponse {
   /// Cluster type
-  final pulumi.Input<String>? clusterType;
+  final pulumi.Input<String?>? clusterType;
   /// Connectivity profile.
-  final pulumi.Input<ConnectivityProfileResponse>? connectivityProfile;
+  final pulumi.Input<ConnectivityProfileResponse?>? connectivityProfile;
   /// AppLink Member Metadata
   final pulumi.Input<MetadataResponse> metadata;
   /// Observability profile
-  final pulumi.Input<ObservabilityProfileResponse>? observabilityProfile;
+  final pulumi.Input<ObservabilityProfileResponse?>? observabilityProfile;
   /// Provisioning state
   final pulumi.Input<String> provisioningState;
   /// Upgrade profile.
-  final pulumi.Input<UpgradeProfileResponse>? upgradeProfile;
+  final pulumi.Input<UpgradeProfileResponse?>? upgradeProfile;
 
   /// Creates a new [AppLinkMemberPropertiesResponse].
   /// [clusterType] Cluster type

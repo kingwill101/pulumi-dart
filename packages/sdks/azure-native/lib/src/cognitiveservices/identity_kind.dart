@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the kind of Entra identity described by this object.
-enum IdentityKind {
+enum IdentityKind implements pulumi.PulumiEnum<String> {
   agentBlueprint("AgentBlueprint"),
   agentInstance("AgentInstance"),
   agenticUser("AgenticUser"),
@@ -7,6 +9,7 @@ enum IdentityKind {
   none("None");
 
   const IdentityKind(this.wireValue);
+  @override
   final String wireValue;
 
   static IdentityKind fromValue(String value) {

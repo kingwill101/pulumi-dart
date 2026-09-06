@@ -1445,7 +1445,28 @@ class TemplateArtifact extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    dependsOn = registerOutput<List<String>?>('dependsOn');
+    dependsOn = registerOutput<List<String>?>('dependsOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, ParameterValueResponse>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<ParameterValueResponse>(guardedValue, (value) => ParameterValueResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceGroup = registerOutput<String?>('resourceGroup');
+    template = registerOutput<dynamic>('template');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [TemplateArtifact] resource.
+  TemplateArtifact.reference(String urn)
+    : super(
+        'azure-native:blueprint:TemplateArtifact',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dependsOn = registerOutput<List<String>?>('dependsOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     kind = registerOutput<String>('kind');

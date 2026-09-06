@@ -7,11 +7,11 @@ import 'virtual_machine_network_interface_configuration_response.dart';
 /// Specifies the network interfaces or the networking configuration of the virtual machine.
 class NetworkProfileResponse {
   /// specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations
-  final pulumi.Input<String>? networkApiVersion;
+  final pulumi.Input<String?>? networkApiVersion;
   /// Specifies the networking configurations that will be used to create the virtual machine networking resources.
-  final pulumi.Input<List<VirtualMachineNetworkInterfaceConfigurationResponse>>? networkInterfaceConfigurations;
+  final pulumi.Input<List<VirtualMachineNetworkInterfaceConfigurationResponse>?>? networkInterfaceConfigurations;
   /// Specifies the list of resource Ids for the network interfaces associated with the virtual machine.
-  final pulumi.Input<List<NetworkInterfaceReferenceResponse>>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterfaceReferenceResponse>?>? networkInterfaces;
 
   /// Creates a new [NetworkProfileResponse].
   /// [networkApiVersion] specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations

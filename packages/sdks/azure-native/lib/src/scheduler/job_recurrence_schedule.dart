@@ -6,15 +6,15 @@ import 'job_recurrence_schedule_monthly_occurrence.dart';
 
 class JobRecurrenceSchedule {
   /// Gets or sets the hours of the day that the job should execute at.
-  final pulumi.Input<List<int>>? hours;
+  final pulumi.Input<List<int>?>? hours;
   /// Gets or sets the minutes of the hour that the job should execute at.
-  final pulumi.Input<List<int>>? minutes;
+  final pulumi.Input<List<int>?>? minutes;
   /// Gets or sets the days of the month that the job should execute on. Must be between 1 and 31.
-  final pulumi.Input<List<int>>? monthDays;
+  final pulumi.Input<List<int>?>? monthDays;
   /// Gets or sets the occurrences of days within a month.
-  final pulumi.Input<List<JobRecurrenceScheduleMonthlyOccurrence>>? monthlyOccurrences;
+  final pulumi.Input<List<JobRecurrenceScheduleMonthlyOccurrence>?>? monthlyOccurrences;
   /// Gets or sets the days of the week that the job should execute on.
-  final pulumi.Input<List<DayOfWeek>>? weekDays;
+  final pulumi.Input<List<DayOfWeek>?>? weekDays;
 
   /// Creates a new [JobRecurrenceSchedule].
   /// [hours] Gets or sets the hours of the day that the job should execute at.

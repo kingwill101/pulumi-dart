@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of BaselineEbsBandwidthMbpsRequest
 class BaselineEbsBandwidthMbpsRequest {
   /// The maximum value in Mbps.
-  final pulumi.Input<int>? max;
+  final pulumi.Input<int?>? max;
   /// The minimum value in Mbps.
-  final pulumi.Input<int>? min;
+  final pulumi.Input<int?>? min;
 
   /// Creates a new [BaselineEbsBandwidthMbpsRequest].
   /// [max] The maximum value in Mbps.
@@ -26,8 +26,8 @@ class BaselineEbsBandwidthMbpsRequest {
 
   factory BaselineEbsBandwidthMbpsRequest.fromMap(Map<String, dynamic> map) {
     return BaselineEbsBandwidthMbpsRequest(
-      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      max: (() { final guardedValue = map['max']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      min: (() { final guardedValue = map['min']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

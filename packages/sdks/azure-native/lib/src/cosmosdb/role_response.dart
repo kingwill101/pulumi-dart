@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The set of roles permitted through this Role Definition.
 class RoleResponse {
   /// The database name the role is applied.
-  final pulumi.Input<String>? db;
+  final pulumi.Input<String?>? db;
   /// The role name.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [RoleResponse].
   /// [db] The database name the role is applied.

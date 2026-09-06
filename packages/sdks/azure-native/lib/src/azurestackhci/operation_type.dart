@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The intended operation for a cluster.
-enum OperationType {
+enum OperationType implements pulumi.PulumiEnum<String> {
   clusterProvisioning("ClusterProvisioning"),
   clusterUpgrade("ClusterUpgrade");
 
   const OperationType(this.wireValue);
+  @override
   final String wireValue;
 
   static OperationType fromValue(String value) {

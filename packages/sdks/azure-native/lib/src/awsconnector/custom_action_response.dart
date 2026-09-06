@@ -6,9 +6,9 @@ import 'action_definition_response.dart';
 /// Definition of CustomAction
 class CustomActionResponse {
   /// Property actionDefinition
-  final pulumi.Input<ActionDefinitionResponse>? actionDefinition;
+  final pulumi.Input<ActionDefinitionResponse?>? actionDefinition;
   /// Property actionName
-  final pulumi.Input<String>? actionName;
+  final pulumi.Input<String?>? actionName;
 
   /// Creates a new [CustomActionResponse].
   /// [actionDefinition] Property actionDefinition

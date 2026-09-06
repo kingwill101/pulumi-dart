@@ -6,7 +6,7 @@ import 'gallery_image_version_storage_profile_response.dart';
 /// Specifies information about the gallery image version that you want to create or update.
 class GalleryImageVersionResponse {
   /// This is the version of the gallery image.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// This is the storage profile of a Gallery Image Version.
   final pulumi.Input<GalleryImageVersionStorageProfileResponse> storageProfile;
 

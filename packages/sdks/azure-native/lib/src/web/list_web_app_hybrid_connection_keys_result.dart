@@ -4,17 +4,17 @@
 /// Result data returned by listWebAppHybridConnectionKeys.
 class ListWebAppHybridConnectionKeysResult {
   /// Resource Id.
-  final String id;
+  final String? id;
   /// Kind of resource.
   final String? kind;
   /// Resource Name.
-  final String name;
+  final String? name;
   /// The name of the send key.
-  final String sendKeyName;
+  final String? sendKeyName;
   /// The value of the send key.
-  final String sendKeyValue;
+  final String? sendKeyValue;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [ListWebAppHybridConnectionKeysResult].
   /// [id] Resource Id.
@@ -24,33 +24,33 @@ class ListWebAppHybridConnectionKeysResult {
   /// [sendKeyValue] The value of the send key.
   /// [type] Resource type.
   const ListWebAppHybridConnectionKeysResult({
-    required this.id,
+    this.id,
     this.kind,
-    required this.name,
-    required this.sendKeyName,
-    required this.sendKeyValue,
-    required this.type,
+    this.name,
+    this.sendKeyName,
+    this.sendKeyValue,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'id': ?id,
       'kind': ?kind,
-      'name': name,
-      'sendKeyName': sendKeyName,
-      'sendKeyValue': sendKeyValue,
-      'type': type,
+      'name': ?name,
+      'sendKeyName': ?sendKeyName,
+      'sendKeyValue': ?sendKeyValue,
+      'type': ?type,
     };
   }
 
   factory ListWebAppHybridConnectionKeysResult.fromMap(Map<String, dynamic> map) {
     return ListWebAppHybridConnectionKeysResult(
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      sendKeyName: map['sendKeyName'] as String,
-      sendKeyValue: map['sendKeyValue'] as String,
-      type: map['type'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sendKeyName: (() { final guardedValue = map['sendKeyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sendKeyValue: (() { final guardedValue = map['sendKeyValue']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

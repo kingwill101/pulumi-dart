@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'namespace_network_rule_set_args.dart';
+import 'nwrule_set_ip_rules_response.dart';
+import 'nwrule_set_virtual_network_rules_response.dart';
 import 'system_data_response.dart';
 
 /// Description of topic resource.
@@ -438,7 +440,7 @@ class NamespaceNetworkRuleSet extends pulumi.CustomResource {
   /// Default Action for Network Rule Set
   late final pulumi.Output<String?> defaultAction;
   /// List of IpRules
-  late final pulumi.Output<List<Map<String, dynamic>>?> ipRules;
+  late final pulumi.Output<List<NWRuleSetIpRulesResponse>?> ipRules;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// The name of the resource
@@ -452,7 +454,7 @@ class NamespaceNetworkRuleSet extends pulumi.CustomResource {
   /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   late final pulumi.Output<String> type;
   /// List VirtualNetwork Rules
-  late final pulumi.Output<List<Map<String, dynamic>>?> virtualNetworkRules;
+  late final pulumi.Output<List<NWRuleSetVirtualNetworkRulesResponse>?> virtualNetworkRules;
 
   /// Creates a new [NamespaceNetworkRuleSet].
   /// [name] The Pulumi resource name.
@@ -470,13 +472,34 @@ class NamespaceNetworkRuleSet extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     defaultAction = registerOutput<String?>('defaultAction');
-    ipRules = registerOutput<List<Map<String, dynamic>>?>('ipRules');
+    ipRules = registerOutput<List<NWRuleSetIpRulesResponse>?>('ipRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NWRuleSetIpRulesResponse>(guardedValue, (value) => NWRuleSetIpRulesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     trustedServiceAccessEnabled = registerOutput<bool?>('trustedServiceAccessEnabled');
     type = registerOutput<String>('type');
-    virtualNetworkRules = registerOutput<List<Map<String, dynamic>>?>('virtualNetworkRules');
+    virtualNetworkRules = registerOutput<List<NWRuleSetVirtualNetworkRulesResponse>?>('virtualNetworkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NWRuleSetVirtualNetworkRulesResponse>(guardedValue, (value) => NWRuleSetVirtualNetworkRulesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [NamespaceNetworkRuleSet] resource.
+  NamespaceNetworkRuleSet.reference(String urn)
+    : super(
+        'azure-native:eventhub:NamespaceNetworkRuleSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultAction = registerOutput<String?>('defaultAction');
+    ipRules = registerOutput<List<NWRuleSetIpRulesResponse>?>('ipRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NWRuleSetIpRulesResponse>(guardedValue, (value) => NWRuleSetIpRulesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trustedServiceAccessEnabled = registerOutput<bool?>('trustedServiceAccessEnabled');
+    type = registerOutput<String>('type');
+    virtualNetworkRules = registerOutput<List<NWRuleSetVirtualNetworkRulesResponse>?>('virtualNetworkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NWRuleSetVirtualNetworkRulesResponse>(guardedValue, (value) => NWRuleSetVirtualNetworkRulesResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

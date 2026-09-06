@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ControlPlanePlacementResponse
 class ControlPlanePlacementResponseResponse {
   /// &lt;p&gt;The name of the placement group for the Kubernetes control plane instances.&lt;/p&gt;
-  final pulumi.Input<String>? groupName;
+  final pulumi.Input<String?>? groupName;
 
   /// Creates a new [ControlPlanePlacementResponseResponse].
   /// [groupName] &lt;p&gt;The name of the placement group for the Kubernetes control plane instances.&lt;/p&gt;

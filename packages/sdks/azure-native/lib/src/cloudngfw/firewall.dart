@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dnssettings_response.dart';
 import 'firewall_args.dart';
+import 'frontend_setting_response.dart';
 import 'managed_identity_properties_response.dart';
 import 'marketplace_details_response.dart';
 import 'network_profile_response.dart';
@@ -1228,7 +1229,7 @@ class Firewall extends pulumi.CustomResource {
   /// DNS settings for Firewall
   late final pulumi.Output<DNSSettingsResponse> dnsSettings;
   /// Frontend settings for Firewall
-  late final pulumi.Output<List<Map<String, dynamic>>?> frontEndSettings;
+  late final pulumi.Output<List<FrontendSettingResponse>?> frontEndSettings;
   /// The managed service identities assigned to this resource.
   late final pulumi.Output<ManagedIdentityPropertiesResponse?> identity;
   /// Panorama Managed: Default is False. Default will be CloudSec managed
@@ -1277,7 +1278,7 @@ class Firewall extends pulumi.CustomResource {
     associatedRulestack = registerOutput<RulestackDetailsResponse?>('associatedRulestack', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RulestackDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dnsSettings = registerOutput<DNSSettingsResponse>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DNSSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    frontEndSettings = registerOutput<List<Map<String, dynamic>>?>('frontEndSettings');
+    frontEndSettings = registerOutput<List<FrontendSettingResponse>?>('frontEndSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontendSettingResponse>(guardedValue, (value) => FrontendSettingResponse.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<ManagedIdentityPropertiesResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedIdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isPanoramaManaged = registerOutput<String?>('isPanoramaManaged');
     isStrataCloudManaged = registerOutput<String?>('isStrataCloudManaged');
@@ -1291,7 +1292,37 @@ class Firewall extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     strataCloudManagerConfig = registerOutput<StrataCloudManagerConfigResponse?>('strataCloudManagerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StrataCloudManagerConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Firewall] resource.
+  Firewall.reference(String urn)
+    : super(
+        'azure-native:cloudngfw:Firewall',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    associatedRulestack = registerOutput<RulestackDetailsResponse?>('associatedRulestack', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RulestackDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dnsSettings = registerOutput<DNSSettingsResponse>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DNSSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    frontEndSettings = registerOutput<List<FrontendSettingResponse>?>('frontEndSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontendSettingResponse>(guardedValue, (value) => FrontendSettingResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    identity = registerOutput<ManagedIdentityPropertiesResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedIdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isPanoramaManaged = registerOutput<String?>('isPanoramaManaged');
+    isStrataCloudManaged = registerOutput<String?>('isStrataCloudManaged');
+    location = registerOutput<String>('location');
+    marketplaceDetails = registerOutput<MarketplaceDetailsResponse>('marketplaceDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MarketplaceDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networkProfile = registerOutput<NetworkProfileResponse>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    panEtag = registerOutput<String?>('panEtag');
+    panoramaConfig = registerOutput<PanoramaConfigResponse?>('panoramaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PanoramaConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    planData = registerOutput<PlanDataResponse>('planData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    strataCloudManagerConfig = registerOutput<StrataCloudManagerConfigResponse?>('strataCloudManagerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StrataCloudManagerConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

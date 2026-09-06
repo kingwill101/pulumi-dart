@@ -10,31 +10,31 @@ import 'stage_properties.dart';
 /// {@macro pulumi_devhub_iac_profile_args_doc}
 class IacProfileArgs {
   /// Repository Branch Name
-  final pulumi.Input<String>? branchName;
+  final pulumi.Input<String?>? branchName;
   /// The name of the IacProfile.
-  final pulumi.Input<String>? iacProfileName;
+  final pulumi.Input<String?>? iacProfileName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Repository Main Branch
-  final pulumi.Input<String>? repositoryMainBranch;
+  final pulumi.Input<String?>? repositoryMainBranch;
   /// Repository Name
-  final pulumi.Input<String>? repositoryName;
+  final pulumi.Input<String?>? repositoryName;
   /// Repository Owner
-  final pulumi.Input<String>? repositoryOwner;
+  final pulumi.Input<String?>? repositoryOwner;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  final pulumi.Input<List<StageProperties>>? stages;
+  final pulumi.Input<List<StageProperties>?>? stages;
   /// Terraform Storage Account Name
-  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String?>? storageAccountName;
   /// Terraform Storage Account Resource Group
-  final pulumi.Input<String>? storageAccountResourceGroup;
+  final pulumi.Input<String?>? storageAccountResourceGroup;
   /// Terraform Storage Account Subscription
-  final pulumi.Input<String>? storageAccountSubscription;
+  final pulumi.Input<String?>? storageAccountSubscription;
   /// Terraform Container Name
-  final pulumi.Input<String>? storageContainerName;
+  final pulumi.Input<String?>? storageContainerName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<List<IacTemplateProperties>>? templates;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<List<IacTemplateProperties>?>? templates;
 
   /// Creates a new [IacProfileArgs].
   /// [branchName] Repository Branch Name

@@ -6,11 +6,11 @@ import 'principal_response.dart';
 /// Details of the policy
 class PolicyAssignmentPropertiesPolicyResponse {
   /// Id of the policy
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the entity last modified it
   final pulumi.Input<PrincipalResponse> lastModifiedBy;
   /// The last modified date time.
-  final pulumi.Input<String>? lastModifiedDateTime;
+  final pulumi.Input<String?>? lastModifiedDateTime;
 
   /// Creates a new [PolicyAssignmentPropertiesPolicyResponse].
   /// [id] Id of the policy

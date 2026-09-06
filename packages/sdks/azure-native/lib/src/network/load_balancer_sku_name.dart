@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Name of a load balancer SKU.
-enum LoadBalancerSkuName {
+enum LoadBalancerSkuName implements pulumi.PulumiEnum<String> {
   valueBasic("Basic"),
   valueStandard("Standard"),
   valueGateway("Gateway");
 
   const LoadBalancerSkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static LoadBalancerSkuName fromValue(String value) {

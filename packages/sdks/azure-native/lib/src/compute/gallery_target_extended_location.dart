@@ -6,15 +6,15 @@ import 'gallery_extended_location.dart';
 
 class GalleryTargetExtendedLocation {
   /// Optional. Allows users to provide customer managed keys for encrypting the OS and data disks in the gallery artifact.
-  final pulumi.Input<EncryptionImages>? encryption;
+  final pulumi.Input<EncryptionImages?>? encryption;
   /// The name of the extended location.
-  final pulumi.Input<GalleryExtendedLocation>? extendedLocation;
+  final pulumi.Input<GalleryExtendedLocation?>? extendedLocation;
   /// The number of replicas of the Image Version to be created per extended location. This property is updatable.
-  final pulumi.Input<int>? extendedLocationReplicaCount;
+  final pulumi.Input<int?>? extendedLocationReplicaCount;
   /// The name of the region.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the storage account type to be used to store the image. This property is not updatable.
-  final pulumi.Input<String>? storageAccountType;
+  final pulumi.Input<dynamic>? storageAccountType;
 
   /// Creates a new [GalleryTargetExtendedLocation].
   /// [encryption] Optional. Allows users to provide customer managed keys for encrypting the OS and data disks in the gallery artifact.
@@ -44,9 +44,9 @@ class GalleryTargetExtendedLocation {
     return GalleryTargetExtendedLocation(
       encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EncryptionImages.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GalleryExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      extendedLocationReplicaCount: (() { final guardedValue = map['extendedLocationReplicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      extendedLocationReplicaCount: (() { final guardedValue = map['extendedLocationReplicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

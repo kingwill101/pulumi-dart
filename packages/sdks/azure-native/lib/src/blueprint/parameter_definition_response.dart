@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represent a parameter with constrains and metadata.
 class ParameterDefinitionResponse {
   /// Array of allowed values for this parameter.
-  final pulumi.Input<List<dynamic>>? allowedValues;
+  final pulumi.Input<List<dynamic>?>? allowedValues;
   /// Default Value for this parameter.
   final pulumi.Input<dynamic>? defaultValue;
   /// Description of this parameter/resourceGroup.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// DisplayName of this parameter/resourceGroup.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// StrongType for UI to render rich experience during blueprint assignment. Supported strong types are resourceType, principalId and location.
-  final pulumi.Input<String>? strongType;
+  final pulumi.Input<String?>? strongType;
   /// Allowed data types for Resource Manager template parameters.
   final pulumi.Input<String> type;
 

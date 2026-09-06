@@ -7,7 +7,7 @@ class Sku {
   /// Name by which is known a given compute size assigned to a server.
   final pulumi.Input<String> name;
   /// Tier of the compute assigned to a server.
-  final pulumi.Input<String> tier;
+  final pulumi.Input<dynamic> tier;
 
   /// Creates a new [Sku].
   /// [name] Name by which is known a given compute size assigned to a server.
@@ -27,7 +27,7 @@ class Sku {
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
       name: pulumi.Input.fromValue(map['name'] as String),
-      tier: pulumi.Input.fromValue(map['tier'] as String),
+      tier: pulumi.Input.fromValue(map['tier']),
     );
   }
 }

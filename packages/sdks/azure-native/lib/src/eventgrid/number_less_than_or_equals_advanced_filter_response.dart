@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// NumberLessThanOrEquals Advanced Filter.
 class NumberLessThanOrEqualsAdvancedFilterResponse {
   /// The field/property in the event based on which you want to filter.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
   /// Expected value is 'NumberLessThanOrEquals'.
   final pulumi.Input<String> operatorType;
   /// The filter value.
-  final pulumi.Input<double>? value;
+  final pulumi.Input<double?>? value;
 
   /// Creates a new [NumberLessThanOrEqualsAdvancedFilterResponse].
   /// [key] The field/property in the event based on which you want to filter.
@@ -34,7 +34,7 @@ class NumberLessThanOrEqualsAdvancedFilterResponse {
     return NumberLessThanOrEqualsAdvancedFilterResponse(
       key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       operatorType: pulumi.Input.fromValue(map['operatorType'] as String),
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

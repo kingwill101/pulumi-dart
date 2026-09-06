@@ -6,9 +6,9 @@ import 'sub_resource_response.dart';
 /// IP configuration.
 class IpConfigurationResponse {
   /// Private IP address of the IP configuration.
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
   /// Private IP address allocation method.
-  final pulumi.Input<String>? privateIpAllocationMethod;
+  final pulumi.Input<String?>? privateIpAllocationMethod;
   /// The reference to the subnet bound to the IP configuration.
   final pulumi.Input<SubResourceResponse> subnet;
 
@@ -16,11 +16,11 @@ class IpConfigurationResponse {
   /// [privateIpAddress] Private IP address of the IP configuration.
   /// [privateIpAllocationMethod] Private IP address allocation method.
   /// [subnet] The reference to the subnet bound to the IP configuration.
-  const IpConfigurationResponse({
+  IpConfigurationResponse({
     this.privateIpAddress,
-    this.privateIpAllocationMethod,
+    pulumi.Input<String?>? privateIpAllocationMethod,
     required this.subnet,
-  });
+  }) : privateIpAllocationMethod = privateIpAllocationMethod ?? pulumi.Input.fromValue('Dynamic');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

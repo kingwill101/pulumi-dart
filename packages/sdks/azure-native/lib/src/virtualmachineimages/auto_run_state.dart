@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enabling this field will trigger an automatic build on image template creation or update.
-enum AutoRunState {
+enum AutoRunState implements pulumi.PulumiEnum<String> {
   autoRunEnabled("Enabled"),
   autoRunDisabled("Disabled");
 
   const AutoRunState(this.wireValue);
+  @override
   final String wireValue;
 
   static AutoRunState fromValue(String value) {

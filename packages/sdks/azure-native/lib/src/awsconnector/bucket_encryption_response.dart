@@ -6,7 +6,7 @@ import 'server_side_encryption_rule_response.dart';
 /// Definition of BucketEncryption
 class BucketEncryptionResponse {
   /// Specifies the default server-side-encryption configuration.
-  final pulumi.Input<List<ServerSideEncryptionRuleResponse>>? serverSideEncryptionConfiguration;
+  final pulumi.Input<List<ServerSideEncryptionRuleResponse>?>? serverSideEncryptionConfiguration;
 
   /// Creates a new [BucketEncryptionResponse].
   /// [serverSideEncryptionConfiguration] Specifies the default server-side-encryption configuration.

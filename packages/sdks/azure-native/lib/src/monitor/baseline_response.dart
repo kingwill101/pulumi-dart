@@ -32,8 +32,8 @@ class BaselineResponse {
   factory BaselineResponse.fromMap(Map<String, dynamic> map) {
     return BaselineResponse(
       evaluationCalculationType: pulumi.Input.fromValue(map['evaluationCalculationType'] as String),
-      evaluationPeriodDays: pulumi.Input.fromValue(map['evaluationPeriodDays'] as int),
-      value: pulumi.Input.fromValue(map['value'] as double),
+      evaluationPeriodDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['evaluationPeriodDays'])),
+      value: pulumi.Input.fromValue((map['value'] as num).toDouble()),
     );
   }
 }

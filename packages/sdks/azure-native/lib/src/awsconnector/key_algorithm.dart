@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum KeyAlgorithm {
+enum KeyAlgorithm implements pulumi.PulumiEnum<String> {
   eCPrime256v1("EC_prime256v1"),
   eCSecp384r1("EC_secp384r1"),
   eCSecp521r1("EC_secp521r1"),
@@ -9,6 +11,7 @@ enum KeyAlgorithm {
   rSA4096("RSA_4096");
 
   const KeyAlgorithm(this.wireValue);
+  @override
   final String wireValue;
 
   static KeyAlgorithm fromValue(String value) {

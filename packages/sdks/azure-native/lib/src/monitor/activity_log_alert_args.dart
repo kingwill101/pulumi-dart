@@ -12,21 +12,21 @@ class ActivityLogAlertArgs {
   /// The actions that will activate when the condition is met.
   final pulumi.Input<ActionList> actions;
   /// The name of the Activity Log Alert rule.
-  final pulumi.Input<String>? activityLogAlertName;
+  final pulumi.Input<String?>? activityLogAlertName;
   /// The condition that will cause this alert to activate.
   final pulumi.Input<AlertRuleAllOfCondition> condition;
   /// A description of this Activity Log Alert rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Indicates whether this Activity Log Alert rule is enabled. If an Activity Log Alert rule is not enabled, then none of its actions will be activated.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The location of the resource. Azure Activity Log Alert rules are supported on Global, West Europe and North Europe regions.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// A list of resource IDs that will be used as prefixes. The alert will only apply to Activity Log events with resource IDs that fall under one of these prefixes. This list must include at least one item.
   final pulumi.Input<List<String>> scopes;
   /// The tags of the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ActivityLogAlertArgs].
   /// [actions] The actions that will activate when the condition is met.
@@ -38,17 +38,17 @@ class ActivityLogAlertArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scopes] A list of resource IDs that will be used as prefixes. The alert will only apply to Activity Log events with resource IDs that fall under one of these prefixes. This list must include at least one item.
   /// [tags] The tags of the resource.
-  const ActivityLogAlertArgs({
+  ActivityLogAlertArgs({
     required this.actions,
     this.activityLogAlertName,
     required this.condition,
     this.description,
-    this.enabled,
-    this.location,
+    pulumi.Input<bool?>? enabled,
+    pulumi.Input<String?>? location,
     required this.resourceGroupName,
     required this.scopes,
     this.tags,
-  });
+  }) : enabled = enabled ?? pulumi.Input.fromValue(true), location = location ?? pulumi.Input.fromValue('global');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

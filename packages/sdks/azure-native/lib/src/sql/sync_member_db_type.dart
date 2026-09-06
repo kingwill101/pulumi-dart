@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Database type of the sync member.
-enum SyncMemberDbType {
+enum SyncMemberDbType implements pulumi.PulumiEnum<String> {
   valueAzureSqlDatabase("AzureSqlDatabase"),
   valueSqlServerDatabase("SqlServerDatabase");
 
   const SyncMemberDbType(this.wireValue);
+  @override
   final String wireValue;
 
   static SyncMemberDbType fromValue(String value) {

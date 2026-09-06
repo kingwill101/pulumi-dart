@@ -17,10 +17,10 @@ class WinRMListenerResponse {
   /// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
   /// or the [Azure Key Vault virtual machine extension for
   /// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
-  final pulumi.Input<String>? certificateUrl;
+  final pulumi.Input<String?>? certificateUrl;
   /// Specifies the protocol of WinRM listener. Possible values are: **http,**
   /// **https.**
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
 
   /// Creates a new [WinRMListenerResponse].
   /// [certificateUrl] This is the URL of a certificate that has been uploaded to Key Vault as a

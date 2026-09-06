@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Ingestion source type.
-enum SourceType {
+enum SourceType implements pulumi.PulumiEnum<String> {
   resource("Resource");
 
   const SourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static SourceType fromValue(String value) {

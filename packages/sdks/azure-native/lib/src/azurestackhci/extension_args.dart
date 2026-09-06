@@ -10,27 +10,27 @@ class ExtensionArgs {
   /// The name of the proxy resource holding details of HCI ArcSetting information.
   final pulumi.Input<String> arcSettingName;
   /// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-  final pulumi.Input<bool>? autoUpgradeMinorVersion;
+  final pulumi.Input<bool?>? autoUpgradeMinorVersion;
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
   /// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
-  final pulumi.Input<bool>? enableAutomaticUpgrade;
+  final pulumi.Input<bool?>? enableAutomaticUpgrade;
   /// The name of the machine extension.
-  final pulumi.Input<String>? extensionName;
+  final pulumi.Input<String?>? extensionName;
   /// How the extension handler should be forced to update even if the extension configuration has not changed.
-  final pulumi.Input<String>? forceUpdateTag;
+  final pulumi.Input<String?>? forceUpdateTag;
   /// Protected settings (may contain secrets).
   final pulumi.Input<dynamic>? protectedSettings;
   /// The name of the extension handler publisher.
-  final pulumi.Input<String>? publisher;
+  final pulumi.Input<String?>? publisher;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Json formatted public settings for the extension.
   final pulumi.Input<dynamic>? settings;
   /// Specifies the type of the extension; an example is "CustomScriptExtension".
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Specifies the version of the script handler. Latest version would be used if not specified.
-  final pulumi.Input<String>? typeHandlerVersion;
+  final pulumi.Input<String?>? typeHandlerVersion;
 
   /// Creates a new [ExtensionArgs].
   /// [arcSettingName] The name of the proxy resource holding details of HCI ArcSetting information.

@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineRunSourcePropertiesResponse {
   /// The name of the source.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The type of the source.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [PipelineRunSourcePropertiesResponse].
   /// [name] The name of the source.
   /// [type] The type of the source.
-  const PipelineRunSourcePropertiesResponse({
+  PipelineRunSourcePropertiesResponse({
     this.name,
-    this.type,
-  });
+    pulumi.Input<String?>? type,
+  }) : type = type ?? pulumi.Input.fromValue('AzureStorageBlob');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

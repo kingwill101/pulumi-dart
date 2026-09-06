@@ -8,37 +8,37 @@ import 'token_auth_configuration_response.dart';
 
 class ResourceTypeEndpointResponse {
   /// Api version.
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// The api versions.
-  final pulumi.Input<List<String>>? apiVersions;
+  final pulumi.Input<List<String>?>? apiVersions;
   /// The data boundary.
-  final pulumi.Input<String>? dataBoundary;
+  final pulumi.Input<String?>? dataBoundary;
   /// The dsts configuration.
-  final pulumi.Input<ResourceTypeEndpointDstsConfigurationResponse>? dstsConfiguration;
+  final pulumi.Input<ResourceTypeEndpointDstsConfigurationResponse?>? dstsConfiguration;
   /// Whether the endpoint is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The endpoint type.
-  final pulumi.Input<String>? endpointType;
+  final pulumi.Input<String?>? endpointType;
   /// The endpoint uri.
-  final pulumi.Input<String>? endpointUri;
+  final pulumi.Input<String?>? endpointUri;
   /// The extensions.
-  final pulumi.Input<List<ResourceTypeExtensionResponse>>? extensions;
+  final pulumi.Input<List<ResourceTypeExtensionResponse>?>? extensions;
   /// The features rule.
-  final pulumi.Input<ResourceTypeEndpointFeaturesRuleResponse>? featuresRule;
+  final pulumi.Input<ResourceTypeEndpointFeaturesRuleResponse?>? featuresRule;
   /// Resource type endpoint kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The locations.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// The required features.
-  final pulumi.Input<List<String>>? requiredFeatures;
+  final pulumi.Input<List<String>?>? requiredFeatures;
   /// The sku link.
-  final pulumi.Input<String>? skuLink;
+  final pulumi.Input<String?>? skuLink;
   /// The timeout.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
   /// The token auth configuration.
-  final pulumi.Input<TokenAuthConfigurationResponse>? tokenAuthConfiguration;
+  final pulumi.Input<TokenAuthConfigurationResponse?>? tokenAuthConfiguration;
   /// List of zones.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [ResourceTypeEndpointResponse].
   /// [apiVersion] Api version.
@@ -57,7 +57,7 @@ class ResourceTypeEndpointResponse {
   /// [timeout] The timeout.
   /// [tokenAuthConfiguration] The token auth configuration.
   /// [zones] List of zones.
-  const ResourceTypeEndpointResponse({
+  ResourceTypeEndpointResponse({
     this.apiVersion,
     this.apiVersions,
     this.dataBoundary,
@@ -67,14 +67,14 @@ class ResourceTypeEndpointResponse {
     this.endpointUri,
     this.extensions,
     this.featuresRule,
-    this.kind,
+    pulumi.Input<String?>? kind,
     this.locations,
     this.requiredFeatures,
     this.skuLink,
     this.timeout,
     this.tokenAuthConfiguration,
     this.zones,
-  });
+  }) : kind = kind ?? pulumi.Input.fromValue('Managed');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

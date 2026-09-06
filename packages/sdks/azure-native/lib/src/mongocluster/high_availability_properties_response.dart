@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The high availability properties of the cluster.
 class HighAvailabilityPropertiesResponse {
   /// The target high availability mode requested for the cluster.
-  final pulumi.Input<String>? targetMode;
+  final pulumi.Input<String?>? targetMode;
 
   /// Creates a new [HighAvailabilityPropertiesResponse].
   /// [targetMode] The target high availability mode requested for the cluster.

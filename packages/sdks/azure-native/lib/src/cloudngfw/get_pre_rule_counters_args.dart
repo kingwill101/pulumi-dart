@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_cloudngfw_get_pre_rule_counters_args_doc}
 class GetPreRuleCountersArgs {
-  final pulumi.Input<String>? firewallName;
+  final pulumi.Input<String?>? firewallName;
   /// GlobalRulestack resource name
   final pulumi.Input<String> globalRulestackName;
   /// Pre Rule priority

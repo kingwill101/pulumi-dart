@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ResourceInfoDefinition properties of Basic Rule. This defines the objects that represent the actions or topics, such as - method.Connect, method.Publish, etc.
 class ResourceInfoDefinition {
   /// The type of action that the clients can perform on the broker: Connect, Publish or Subscribe.
-  final pulumi.Input<String> method;
+  final pulumi.Input<dynamic> method;
   /// A list of topics or topic patterns that match the topics that the clients can publish or subscribe to. This subfield is required if the method is Publish or Subscribe.
-  final pulumi.Input<List<String>>? topics;
+  final pulumi.Input<List<String>?>? topics;
 
   /// Creates a new [ResourceInfoDefinition].
   /// [method] The type of action that the clients can perform on the broker: Connect, Publish or Subscribe.
@@ -26,7 +26,7 @@ class ResourceInfoDefinition {
 
   factory ResourceInfoDefinition.fromMap(Map<String, dynamic> map) {
     return ResourceInfoDefinition(
-      method: pulumi.Input.fromValue(map['method'] as String),
+      method: pulumi.Input.fromValue(map['method']),
       topics: (() { final guardedValue = map['topics']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

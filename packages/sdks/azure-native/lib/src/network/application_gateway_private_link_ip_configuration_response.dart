@@ -8,19 +8,19 @@ class ApplicationGatewayPrivateLinkIpConfigurationResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of application gateway private link ip configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether the ip configuration is primary or not.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
   /// The private IP address of the IP configuration.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// The private IP address allocation method.
-  final pulumi.Input<String>? privateIPAllocationMethod;
+  final pulumi.Input<String?>? privateIPAllocationMethod;
   /// The provisioning state of the application gateway private link IP configuration.
   final pulumi.Input<String> provisioningState;
   /// Reference to the subnet resource.
-  final pulumi.Input<SubResourceResponse>? subnet;
+  final pulumi.Input<SubResourceResponse?>? subnet;
   /// The resource type.
   final pulumi.Input<String> type;
 

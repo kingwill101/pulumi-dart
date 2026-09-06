@@ -24,6 +24,17 @@ Future<GetDedicatedCloudNodeResult> getDedicatedCloudNode(
   return GetDedicatedCloudNodeResult.fromMap(result);
 }
 
+pulumi.Output<GetDedicatedCloudNodeResult> getDedicatedCloudNodeOutput(
+  GetDedicatedCloudNodeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:vmwarecloudsimple:getDedicatedCloudNode',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDedicatedCloudNodeResult.fromMap);
+}
+
 /// Returns Dedicate Cloud Service
 ///
 /// Uses Azure REST API version 2019-04-01.
@@ -42,6 +53,17 @@ Future<GetDedicatedCloudServiceResult> getDedicatedCloudService(
   return GetDedicatedCloudServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetDedicatedCloudServiceResult> getDedicatedCloudServiceOutput(
+  GetDedicatedCloudServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:vmwarecloudsimple:getDedicatedCloudService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDedicatedCloudServiceResult.fromMap);
+}
+
 /// Get virtual machine
 ///
 /// Uses Azure REST API version 2019-04-01.
@@ -58,4 +80,15 @@ Future<GetVirtualMachineResult> getVirtualMachine(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualMachineResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualMachineResult> getVirtualMachineOutput(
+  GetVirtualMachineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:vmwarecloudsimple:getVirtualMachine',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineResult.fromMap);
 }

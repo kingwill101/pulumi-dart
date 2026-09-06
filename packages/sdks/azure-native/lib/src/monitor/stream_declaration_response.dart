@@ -6,7 +6,7 @@ import 'column_definition_response.dart';
 /// Declaration of a custom stream.
 class StreamDeclarationResponse {
   /// List of columns used by data in this stream.
-  final pulumi.Input<List<ColumnDefinitionResponse>>? columns;
+  final pulumi.Input<List<ColumnDefinitionResponse>?>? columns;
 
   /// Creates a new [StreamDeclarationResponse].
   /// [columns] List of columns used by data in this stream.

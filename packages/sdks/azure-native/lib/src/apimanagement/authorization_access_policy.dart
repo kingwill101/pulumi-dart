@@ -217,7 +217,24 @@ class AuthorizationAccessPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    appIds = registerOutput<List<String>?>('appIds');
+    appIds = registerOutput<List<String>?>('appIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    objectId = registerOutput<String?>('objectId');
+    tenantId = registerOutput<String?>('tenantId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [AuthorizationAccessPolicy] resource.
+  AuthorizationAccessPolicy.reference(String urn)
+    : super(
+        'azure-native:apimanagement:AuthorizationAccessPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appIds = registerOutput<List<String>?>('appIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
     objectId = registerOutput<String?>('objectId');

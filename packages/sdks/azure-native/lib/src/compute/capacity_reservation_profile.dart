@@ -6,7 +6,7 @@ import 'sub_resource.dart';
 /// The parameters of a capacity reservation Profile.
 class CapacityReservationProfile {
   /// Specifies the capacity reservation group resource id that should be used for allocating the virtual machine or scaleset vm instances provided enough capacity has been reserved. Please refer to https://aka.ms/CapacityReservation for more details.
-  final pulumi.Input<SubResource>? capacityReservationGroup;
+  final pulumi.Input<SubResource?>? capacityReservationGroup;
 
   /// Creates a new [CapacityReservationProfile].
   /// [capacityReservationGroup] Specifies the capacity reservation group resource id that should be used for allocating the virtual machine or scaleset vm instances provided enough capacity has been reserved. Please refer to https://aka.ms/CapacityReservation for more details.

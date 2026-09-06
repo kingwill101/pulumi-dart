@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'activated_resource_reference_response.dart';
 import 'afd_route_cache_configuration_response.dart';
 import 'resource_reference_response.dart';
 import 'route_args.dart';
@@ -379,7 +380,7 @@ class Route extends pulumi.CustomResource {
   /// The caching configuration for this route. To disable caching, do not provide a cacheConfiguration object.
   late final pulumi.Output<AfdRouteCacheConfigurationResponse?> cacheConfiguration;
   /// Domains referenced by this endpoint.
-  late final pulumi.Output<List<Map<String, dynamic>>?> customDomains;
+  late final pulumi.Output<List<ActivatedResourceReferenceResponse>?> customDomains;
   late final pulumi.Output<String> deploymentStatus;
   /// Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
   late final pulumi.Output<String?> enabledState;
@@ -402,7 +403,7 @@ class Route extends pulumi.CustomResource {
   /// Provisioning status
   late final pulumi.Output<String> provisioningState;
   /// rule sets referenced by this endpoint.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ruleSets;
+  late final pulumi.Output<List<ResourceReferenceResponse>?> ruleSets;
   /// List of supported protocols for this route.
   late final pulumi.Output<List<String>?> supportedProtocols;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -426,7 +427,7 @@ class Route extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     cacheConfiguration = registerOutput<AfdRouteCacheConfigurationResponse?>('cacheConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AfdRouteCacheConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    customDomains = registerOutput<List<Map<String, dynamic>>?>('customDomains');
+    customDomains = registerOutput<List<ActivatedResourceReferenceResponse>?>('customDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActivatedResourceReferenceResponse>(guardedValue, (value) => ActivatedResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     deploymentStatus = registerOutput<String>('deploymentStatus');
     enabledState = registerOutput<String?>('enabledState');
     endpointName = registerOutput<String>('endpointName');
@@ -436,10 +437,39 @@ class Route extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     originGroup = registerOutput<ResourceReferenceResponse?>('originGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     originPath = registerOutput<String?>('originPath');
-    patternsToMatch = registerOutput<List<String>?>('patternsToMatch');
+    patternsToMatch = registerOutput<List<String>?>('patternsToMatch', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     provisioningState = registerOutput<String>('provisioningState');
-    ruleSets = registerOutput<List<Map<String, dynamic>>?>('ruleSets');
-    supportedProtocols = registerOutput<List<String>?>('supportedProtocols');
+    ruleSets = registerOutput<List<ResourceReferenceResponse>?>('ruleSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceReferenceResponse>(guardedValue, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    supportedProtocols = registerOutput<List<String>?>('supportedProtocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Route] resource.
+  Route.reference(String urn)
+    : super(
+        'azure-native:cdn:Route',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cacheConfiguration = registerOutput<AfdRouteCacheConfigurationResponse?>('cacheConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AfdRouteCacheConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customDomains = registerOutput<List<ActivatedResourceReferenceResponse>?>('customDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActivatedResourceReferenceResponse>(guardedValue, (value) => ActivatedResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    deploymentStatus = registerOutput<String>('deploymentStatus');
+    enabledState = registerOutput<String?>('enabledState');
+    endpointName = registerOutput<String>('endpointName');
+    forwardingProtocol = registerOutput<String?>('forwardingProtocol');
+    httpsRedirect = registerOutput<String?>('httpsRedirect');
+    linkToDefaultDomain = registerOutput<String?>('linkToDefaultDomain');
+    this.name = registerOutput<String>('name');
+    originGroup = registerOutput<ResourceReferenceResponse?>('originGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    originPath = registerOutput<String?>('originPath');
+    patternsToMatch = registerOutput<List<String>?>('patternsToMatch', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    provisioningState = registerOutput<String>('provisioningState');
+    ruleSets = registerOutput<List<ResourceReferenceResponse>?>('ruleSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceReferenceResponse>(guardedValue, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    supportedProtocols = registerOutput<List<String>?>('supportedProtocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

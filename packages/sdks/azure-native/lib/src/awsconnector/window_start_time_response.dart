@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of WindowStartTime
 class WindowStartTimeResponse {
   /// &lt;p&gt;The start hour of the window in Coordinated Universal Time (UTC), using 24-hour time. For example, &lt;code&gt;17&lt;/code&gt; refers to 5:00 P.M. UTC.&lt;/p&gt;
-  final pulumi.Input<double>? hours;
+  final pulumi.Input<double?>? hours;
   /// &lt;p&gt;The start minute of the window, in UTC.&lt;/p&gt;
-  final pulumi.Input<double>? minutes;
+  final pulumi.Input<double?>? minutes;
 
   /// Creates a new [WindowStartTimeResponse].
   /// [hours] &lt;p&gt;The start hour of the window in Coordinated Universal Time (UTC), using 24-hour time. For example, &lt;code&gt;17&lt;/code&gt; refers to 5:00 P.M. UTC.&lt;/p&gt;
@@ -26,8 +26,8 @@ class WindowStartTimeResponse {
 
   factory WindowStartTimeResponse.fromMap(Map<String, dynamic> map) {
     return WindowStartTimeResponse(
-      hours: (() { final guardedValue = map['hours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      minutes: (() { final guardedValue = map['minutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      hours: (() { final guardedValue = map['hours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      minutes: (() { final guardedValue = map['minutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

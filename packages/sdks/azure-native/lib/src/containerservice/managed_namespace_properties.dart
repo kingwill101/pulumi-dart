@@ -7,13 +7,13 @@ import 'resource_quota.dart';
 /// The namespace properties for the fleet managed namespace.
 class ManagedNamespaceProperties {
   /// The annotations for the fleet managed namespace.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// The default network policy for the fleet managed namespace.
-  final pulumi.Input<NetworkPolicy>? defaultNetworkPolicy;
+  final pulumi.Input<NetworkPolicy?>? defaultNetworkPolicy;
   /// The default resource quota for the fleet managed namespace.
-  final pulumi.Input<ResourceQuota>? defaultResourceQuota;
+  final pulumi.Input<ResourceQuota?>? defaultResourceQuota;
   /// The labels for the fleet managed namespace.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
 
   /// Creates a new [ManagedNamespaceProperties].
   /// [annotations] The annotations for the fleet managed namespace.

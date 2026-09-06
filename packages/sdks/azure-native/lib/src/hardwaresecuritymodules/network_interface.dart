@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The network interface definition.
 class NetworkInterface {
   /// Private Ip address of the interface
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
 
   /// Creates a new [NetworkInterface].
   /// [privateIpAddress] Private Ip address of the interface

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kind of DiagnosticsSink.
-enum DiagnosticsSinkKind {
+enum DiagnosticsSinkKind implements pulumi.PulumiEnum<String> {
   valueInvalid("Invalid"),
   valueAzureInternalMonitoringPipeline("AzureInternalMonitoringPipeline");
 
   const DiagnosticsSinkKind(this.wireValue);
+  @override
   final String wireValue;
 
   static DiagnosticsSinkKind fromValue(String value) {

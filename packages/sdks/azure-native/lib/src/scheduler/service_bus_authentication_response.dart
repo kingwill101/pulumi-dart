@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceBusAuthenticationResponse {
   /// Gets or sets the SAS key.
-  final pulumi.Input<String>? sasKey;
+  final pulumi.Input<String?>? sasKey;
   /// Gets or sets the SAS key name.
-  final pulumi.Input<String>? sasKeyName;
+  final pulumi.Input<String?>? sasKeyName;
   /// Gets or sets the authentication type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ServiceBusAuthenticationResponse].
   /// [sasKey] Gets or sets the SAS key.

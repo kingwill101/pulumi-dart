@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes operator to be matched
-enum RequestSchemeMatchConditionParametersOperator {
+enum RequestSchemeMatchConditionParametersOperator implements pulumi.PulumiEnum<String> {
   equal("Equal");
 
   const RequestSchemeMatchConditionParametersOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static RequestSchemeMatchConditionParametersOperator fromValue(String value) {

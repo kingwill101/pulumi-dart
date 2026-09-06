@@ -7,31 +7,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_intune_io_mampolicy_by_name_args_doc}
 class IoMAMPolicyByNameArgs {
-  final pulumi.Input<String>? accessRecheckOfflineTimeout;
-  final pulumi.Input<String>? accessRecheckOnlineTimeout;
-  final pulumi.Input<String>? appSharingFromLevel;
-  final pulumi.Input<String>? appSharingToLevel;
-  final pulumi.Input<String>? authentication;
-  final pulumi.Input<String>? clipboardSharingLevel;
-  final pulumi.Input<String>? dataBackup;
-  final pulumi.Input<String>? description;
-  final pulumi.Input<String>? deviceCompliance;
-  final pulumi.Input<String>? fileEncryptionLevel;
-  final pulumi.Input<String>? fileSharingSaveAs;
+  final pulumi.Input<String?>? accessRecheckOfflineTimeout;
+  final pulumi.Input<String?>? accessRecheckOnlineTimeout;
+  final pulumi.Input<String?>? appSharingFromLevel;
+  final pulumi.Input<String?>? appSharingToLevel;
+  final pulumi.Input<String?>? authentication;
+  final pulumi.Input<String?>? clipboardSharingLevel;
+  final pulumi.Input<String?>? dataBackup;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<String?>? deviceCompliance;
+  final pulumi.Input<String?>? fileEncryptionLevel;
+  final pulumi.Input<String?>? fileSharingSaveAs;
   final pulumi.Input<String> friendlyName;
   /// Location hostName for the tenant
   final pulumi.Input<String> hostName;
   /// Resource Location
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? managedBrowser;
-  final pulumi.Input<String>? offlineWipeTimeout;
-  final pulumi.Input<String>? pin;
-  final pulumi.Input<int>? pinNumRetry;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? managedBrowser;
+  final pulumi.Input<String?>? offlineWipeTimeout;
+  final pulumi.Input<String?>? pin;
+  final pulumi.Input<int?>? pinNumRetry;
   /// Unique name for the policy
-  final pulumi.Input<String>? policyName;
+  final pulumi.Input<String?>? policyName;
   /// Resource Tags
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<String>? touchId;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<String?>? touchId;
 
   /// Creates a new [IoMAMPolicyByNameArgs].
   /// [accessRecheckOfflineTimeout] Optional.
@@ -55,29 +55,29 @@ class IoMAMPolicyByNameArgs {
   /// [policyName] Unique name for the policy
   /// [tags] Resource Tags
   /// [touchId] Optional.
-  const IoMAMPolicyByNameArgs({
+  IoMAMPolicyByNameArgs({
     this.accessRecheckOfflineTimeout,
     this.accessRecheckOnlineTimeout,
-    this.appSharingFromLevel,
-    this.appSharingToLevel,
-    this.authentication,
-    this.clipboardSharingLevel,
-    this.dataBackup,
+    pulumi.Input<String?>? appSharingFromLevel,
+    pulumi.Input<String?>? appSharingToLevel,
+    pulumi.Input<String?>? authentication,
+    pulumi.Input<String?>? clipboardSharingLevel,
+    pulumi.Input<String?>? dataBackup,
     this.description,
-    this.deviceCompliance,
-    this.fileEncryptionLevel,
-    this.fileSharingSaveAs,
+    pulumi.Input<String?>? deviceCompliance,
+    pulumi.Input<String?>? fileEncryptionLevel,
+    pulumi.Input<String?>? fileSharingSaveAs,
     required this.friendlyName,
     required this.hostName,
     this.location,
-    this.managedBrowser,
+    pulumi.Input<String?>? managedBrowser,
     this.offlineWipeTimeout,
-    this.pin,
+    pulumi.Input<String?>? pin,
     this.pinNumRetry,
     this.policyName,
     this.tags,
-    this.touchId,
-  });
+    pulumi.Input<String?>? touchId,
+  }) : appSharingFromLevel = appSharingFromLevel ?? pulumi.Input.fromValue('none'), appSharingToLevel = appSharingToLevel ?? pulumi.Input.fromValue('none'), authentication = authentication ?? pulumi.Input.fromValue('required'), clipboardSharingLevel = clipboardSharingLevel ?? pulumi.Input.fromValue('blocked'), dataBackup = dataBackup ?? pulumi.Input.fromValue('allow'), deviceCompliance = deviceCompliance ?? pulumi.Input.fromValue('enable'), fileEncryptionLevel = fileEncryptionLevel ?? pulumi.Input.fromValue('deviceLocked'), fileSharingSaveAs = fileSharingSaveAs ?? pulumi.Input.fromValue('allow'), managedBrowser = managedBrowser ?? pulumi.Input.fromValue('required'), pin = pin ?? pulumi.Input.fromValue('required'), touchId = touchId ?? pulumi.Input.fromValue('enable');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -124,7 +124,7 @@ class IoMAMPolicyByNameArgs {
       managedBrowser: (() { final guardedValue = map['managedBrowser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       offlineWipeTimeout: (() { final guardedValue = map['offlineWipeTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pin: (() { final guardedValue = map['pin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      pinNumRetry: (() { final guardedValue = map['pinNumRetry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      pinNumRetry: (() { final guardedValue = map['pinNumRetry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       policyName: (() { final guardedValue = map['policyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       touchId: (() { final guardedValue = map['touchId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

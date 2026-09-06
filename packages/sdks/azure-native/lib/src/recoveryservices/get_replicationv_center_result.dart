@@ -5,17 +5,17 @@ import 'vcenter_properties_response.dart';
 /// Result data returned by getReplicationvCenter.
 class GetReplicationvCenterResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Resource Id
-  final String id;
+  final String? id;
   /// Resource Location
   final String? location;
   /// Resource Name
-  final String name;
+  final String? name;
   /// VCenter related data.
-  final VCenterPropertiesResponse properties;
+  final VCenterPropertiesResponse? properties;
   /// Resource Type
-  final String type;
+  final String? type;
 
   /// Creates a new [GetReplicationvCenterResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -25,33 +25,33 @@ class GetReplicationvCenterResult {
   /// [properties] VCenter related data.
   /// [type] Resource Type
   const GetReplicationvCenterResult({
-    required this.azureApiVersion,
-    required this.id,
+    this.azureApiVersion,
+    this.id,
     this.location,
-    required this.name,
-    required this.properties,
-    required this.type,
+    this.name,
+    this.properties,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
       'location': ?location,
-      'name': name,
-      'properties': properties.toMap(),
-      'type': type,
+      'name': ?name,
+      'properties': ?properties?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetReplicationvCenterResult.fromMap(Map<String, dynamic> map) {
     return GetReplicationvCenterResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      properties: VCenterPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return VCenterPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

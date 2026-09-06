@@ -437,7 +437,32 @@ class Catalog extends pulumi.CustomResource {
     syncState = registerOutput<String>('syncState');
     syncType = registerOutput<String?>('syncType');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Catalog] resource.
+  Catalog.reference(String urn)
+    : super(
+        'azure-native:devcenter:Catalog',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    adoGit = registerOutput<GitCatalogResponse?>('adoGit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitCatalogResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectionState = registerOutput<String>('connectionState');
+    gitHub = registerOutput<GitCatalogResponse?>('gitHub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitCatalogResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastConnectionTime = registerOutput<String>('lastConnectionTime');
+    lastSyncStats = registerOutput<SyncStatsResponse>('lastSyncStats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SyncStatsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastSyncTime = registerOutput<String>('lastSyncTime');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    syncState = registerOutput<String>('syncState');
+    syncType = registerOutput<String?>('syncType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

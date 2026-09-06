@@ -5,23 +5,23 @@ import 'system_data_response.dart';
 /// Result data returned by getInvitation.
 class GetInvitationResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The expiration date for the invitation and share subscription.
   final String? expirationDate;
   /// The resource id of the azure resource
-  final String id;
+  final String? id;
   /// unique invitation id
-  final String invitationId;
+  final String? invitationId;
   /// The status of the invitation.
-  final String invitationStatus;
+  final String? invitationStatus;
   /// Name of the azure resource
-  final String name;
+  final String? name;
   /// The time the recipient responded to the invitation.
-  final String respondedAt;
+  final String? respondedAt;
   /// Gets the time at which the invitation was sent.
-  final String sentAt;
+  final String? sentAt;
   /// System Data of the Azure resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The target Azure AD Id. Can't be combined with email.
   final String? targetActiveDirectoryId;
   /// The email the invitation is directed to.
@@ -31,11 +31,11 @@ class GetInvitationResult {
   /// invitations to specific users or applications in an AD tenant.
   final String? targetObjectId;
   /// Type of the azure resource
-  final String type;
+  final String? type;
   /// Email of the user who created the resource
-  final String userEmail;
+  final String? userEmail;
   /// Name of the user who created the resource
-  final String userName;
+  final String? userName;
 
   /// Creates a new [GetInvitationResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -54,60 +54,60 @@ class GetInvitationResult {
   /// [userEmail] Email of the user who created the resource
   /// [userName] Name of the user who created the resource
   const GetInvitationResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.expirationDate,
-    required this.id,
-    required this.invitationId,
-    required this.invitationStatus,
-    required this.name,
-    required this.respondedAt,
-    required this.sentAt,
-    required this.systemData,
+    this.id,
+    this.invitationId,
+    this.invitationStatus,
+    this.name,
+    this.respondedAt,
+    this.sentAt,
+    this.systemData,
     this.targetActiveDirectoryId,
     this.targetEmail,
     this.targetObjectId,
-    required this.type,
-    required this.userEmail,
-    required this.userName,
+    this.type,
+    this.userEmail,
+    this.userName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'expirationDate': ?expirationDate,
-      'id': id,
-      'invitationId': invitationId,
-      'invitationStatus': invitationStatus,
-      'name': name,
-      'respondedAt': respondedAt,
-      'sentAt': sentAt,
-      'systemData': systemData.toMap(),
+      'id': ?id,
+      'invitationId': ?invitationId,
+      'invitationStatus': ?invitationStatus,
+      'name': ?name,
+      'respondedAt': ?respondedAt,
+      'sentAt': ?sentAt,
+      'systemData': ?systemData?.toMap(),
       'targetActiveDirectoryId': ?targetActiveDirectoryId,
       'targetEmail': ?targetEmail,
       'targetObjectId': ?targetObjectId,
-      'type': type,
-      'userEmail': userEmail,
-      'userName': userName,
+      'type': ?type,
+      'userEmail': ?userEmail,
+      'userName': ?userName,
     };
   }
 
   factory GetInvitationResult.fromMap(Map<String, dynamic> map) {
     return GetInvitationResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       expirationDate: (() { final guardedValue = map['expirationDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      invitationId: map['invitationId'] as String,
-      invitationStatus: map['invitationStatus'] as String,
-      name: map['name'] as String,
-      respondedAt: map['respondedAt'] as String,
-      sentAt: map['sentAt'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      invitationId: (() { final guardedValue = map['invitationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      invitationStatus: (() { final guardedValue = map['invitationStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      respondedAt: (() { final guardedValue = map['respondedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sentAt: (() { final guardedValue = map['sentAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       targetActiveDirectoryId: (() { final guardedValue = map['targetActiveDirectoryId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       targetEmail: (() { final guardedValue = map['targetEmail']; if (guardedValue == null) return null; return guardedValue as String; })(),
       targetObjectId: (() { final guardedValue = map['targetObjectId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
-      userEmail: map['userEmail'] as String,
-      userName: map['userName'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userEmail: (() { final guardedValue = map['userEmail']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

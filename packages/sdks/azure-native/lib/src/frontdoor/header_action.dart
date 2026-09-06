@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An action that can manipulate an http header.
 class HeaderAction {
   /// Which type of manipulation to apply to the header.
-  final pulumi.Input<String> headerActionType;
+  final pulumi.Input<dynamic> headerActionType;
   /// The name of the header this action will apply to.
   final pulumi.Input<String> headerName;
   /// The value to update the given header name with. This value is not used if the actionType is Delete.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [HeaderAction].
   /// [headerActionType] Which type of manipulation to apply to the header.
@@ -31,7 +31,7 @@ class HeaderAction {
 
   factory HeaderAction.fromMap(Map<String, dynamic> map) {
     return HeaderAction(
-      headerActionType: pulumi.Input.fromValue(map['headerActionType'] as String),
+      headerActionType: pulumi.Input.fromValue(map['headerActionType']),
       headerName: pulumi.Input.fromValue(map['headerName'] as String),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

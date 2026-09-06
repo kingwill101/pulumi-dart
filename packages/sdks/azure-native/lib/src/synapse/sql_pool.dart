@@ -294,7 +294,33 @@ class SqlPool extends pulumi.CustomResource {
     sourceDatabaseDeletionDate = registerOutput<String?>('sourceDatabaseDeletionDate');
     status = registerOutput<String>('status');
     storageAccountType = registerOutput<String?>('storageAccountType');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SqlPool] resource.
+  SqlPool.reference(String urn)
+    : super(
+        'azure-native:synapse:SqlPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    collation = registerOutput<String?>('collation');
+    creationDate = registerOutput<String>('creationDate');
+    location = registerOutput<String>('location');
+    maxSizeBytes = registerOutput<double?>('maxSizeBytes');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String?>('provisioningState');
+    recoverableDatabaseId = registerOutput<String?>('recoverableDatabaseId');
+    restorePointInTime = registerOutput<String?>('restorePointInTime');
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceDatabaseDeletionDate = registerOutput<String?>('sourceDatabaseDeletionDate');
+    status = registerOutput<String>('status');
+    storageAccountType = registerOutput<String?>('storageAccountType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

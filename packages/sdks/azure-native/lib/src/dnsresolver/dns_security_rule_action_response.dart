@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The action to take on DNS requests that match the DNS security rule.
 class DnsSecurityRuleActionResponse {
   /// The type of action to take.
-  final pulumi.Input<String>? actionType;
+  final pulumi.Input<String?>? actionType;
   /// The response code for block actions.
-  final pulumi.Input<String>? blockResponseCode;
+  final pulumi.Input<String?>? blockResponseCode;
 
   /// Creates a new [DnsSecurityRuleActionResponse].
   /// [actionType] The type of action to take.

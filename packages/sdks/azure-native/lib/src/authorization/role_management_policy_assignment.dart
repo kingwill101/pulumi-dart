@@ -161,7 +161,7 @@ class RoleManagementPolicyAssignment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The readonly computed rule applied to the policy.
-  late final pulumi.Output<List<Map<String, dynamic>>> effectiveRules;
+  late final pulumi.Output<List<dynamic>> effectiveRules;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Additional properties of scope, role definition and policy
@@ -192,7 +192,27 @@ class RoleManagementPolicyAssignment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    effectiveRules = registerOutput<List<Map<String, dynamic>>>('effectiveRules');
+    effectiveRules = registerOutput<List<dynamic>>('effectiveRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    this.name = registerOutput<String>('name');
+    policyAssignmentProperties = registerOutput<PolicyAssignmentPropertiesResponse>('policyAssignmentProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyAssignmentPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    policyId = registerOutput<String?>('policyId');
+    roleDefinitionId = registerOutput<String?>('roleDefinitionId');
+    scope = registerOutput<String?>('scope');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [RoleManagementPolicyAssignment] resource.
+  RoleManagementPolicyAssignment.reference(String urn)
+    : super(
+        'azure-native:authorization:RoleManagementPolicyAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    effectiveRules = registerOutput<List<dynamic>>('effectiveRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     this.name = registerOutput<String>('name');
     policyAssignmentProperties = registerOutput<PolicyAssignmentPropertiesResponse>('policyAssignmentProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyAssignmentPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     policyId = registerOutput<String?>('policyId');

@@ -1,4 +1,6 @@
-enum SensitivityLabelRank {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum SensitivityLabelRank implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueLow("Low"),
   valueMedium("Medium"),
@@ -6,6 +8,7 @@ enum SensitivityLabelRank {
   valueCritical("Critical");
 
   const SensitivityLabelRank(this.wireValue);
+  @override
   final String wireValue;
 
   static SensitivityLabelRank fromValue(String value) {

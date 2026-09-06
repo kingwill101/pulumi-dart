@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of KeyAlgorithmEnumValue
 class KeyAlgorithmEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [KeyAlgorithmEnumValueResponse].
   /// [value] Property value

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Conditions required to match a header
 class HeaderMatch {
   /// Exact value of the header
-  final pulumi.Input<String>? exactMatch;
+  final pulumi.Input<String?>? exactMatch;
   /// Name of the header
-  final pulumi.Input<String>? header;
+  final pulumi.Input<String?>? header;
   /// Prefix value of the header
-  final pulumi.Input<String>? prefixMatch;
+  final pulumi.Input<String?>? prefixMatch;
   /// Regex value of the header
-  final pulumi.Input<String>? regexMatch;
+  final pulumi.Input<String?>? regexMatch;
   /// Suffix value of the header
-  final pulumi.Input<String>? suffixMatch;
+  final pulumi.Input<String?>? suffixMatch;
 
   /// Creates a new [HeaderMatch].
   /// [exactMatch] Exact value of the header

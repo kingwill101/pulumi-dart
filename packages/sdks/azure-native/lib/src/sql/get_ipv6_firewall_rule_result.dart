@@ -4,17 +4,17 @@
 /// Result data returned by getIPv6FirewallRule.
 class GetIPv6FirewallRuleResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpv6Address.
   final String? endIPv6Address;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Resource name.
   final String? name;
   /// The start IP address of the firewall rule. Must be IPv6 format.
   final String? startIPv6Address;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetIPv6FirewallRuleResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -24,33 +24,33 @@ class GetIPv6FirewallRuleResult {
   /// [startIPv6Address] The start IP address of the firewall rule. Must be IPv6 format.
   /// [type] Resource type.
   const GetIPv6FirewallRuleResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.endIPv6Address,
-    required this.id,
+    this.id,
     this.name,
     this.startIPv6Address,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'endIPv6Address': ?endIPv6Address,
-      'id': id,
+      'id': ?id,
       'name': ?name,
       'startIPv6Address': ?startIPv6Address,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetIPv6FirewallRuleResult.fromMap(Map<String, dynamic> map) {
     return GetIPv6FirewallRuleResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       endIPv6Address: (() { final guardedValue = map['endIPv6Address']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       startIPv6Address: (() { final guardedValue = map['startIPv6Address']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

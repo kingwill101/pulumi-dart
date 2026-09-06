@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// WCF relay type.
-enum Relaytype {
+enum Relaytype implements pulumi.PulumiEnum<String> {
   valueNetTcp("NetTcp"),
   valueHttp("Http");
 
   const Relaytype(this.wireValue);
+  @override
   final String wireValue;
 
   static Relaytype fromValue(String value) {

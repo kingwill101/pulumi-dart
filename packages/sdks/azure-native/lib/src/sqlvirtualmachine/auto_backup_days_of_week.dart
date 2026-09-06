@@ -1,4 +1,6 @@
-enum AutoBackupDaysOfWeek {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum AutoBackupDaysOfWeek implements pulumi.PulumiEnum<String> {
   monday("Monday"),
   tuesday("Tuesday"),
   wednesday("Wednesday"),
@@ -8,6 +10,7 @@ enum AutoBackupDaysOfWeek {
   sunday("Sunday");
 
   const AutoBackupDaysOfWeek(this.wireValue);
+  @override
   final String wireValue;
 
   static AutoBackupDaysOfWeek fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of BucketOwnerAccessEnumValue
 class BucketOwnerAccessEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [BucketOwnerAccessEnumValueResponse].
   /// [value] Property value

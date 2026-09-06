@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuntimeProtectionConfigurationResponse {
   /// The mode of operation for runtime protection.
-  final pulumi.Input<String>? enforcementLevel;
+  final pulumi.Input<String?>? enforcementLevel;
 
   /// Creates a new [RuntimeProtectionConfigurationResponse].
   /// [enforcementLevel] The mode of operation for runtime protection.
-  const RuntimeProtectionConfigurationResponse({
-    this.enforcementLevel,
-  });
+  RuntimeProtectionConfigurationResponse({
+    pulumi.Input<String?>? enforcementLevel,
+  }) : enforcementLevel = enforcementLevel ?? pulumi.Input.fromValue('Disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

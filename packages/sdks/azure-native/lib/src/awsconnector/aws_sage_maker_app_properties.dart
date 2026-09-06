@@ -7,19 +7,19 @@ import 'tag.dart';
 /// Definition of awsSageMakerApp
 class AwsSageMakerAppProperties {
   /// The Amazon Resource Name (ARN) of the app.
-  final pulumi.Input<String>? appArn;
+  final pulumi.Input<String?>? appArn;
   /// The name of the app.
-  final pulumi.Input<String>? appName;
+  final pulumi.Input<String?>? appName;
   /// The type of app.
-  final pulumi.Input<String>? appType;
+  final pulumi.Input<dynamic>? appType;
   /// The domain ID.
-  final pulumi.Input<String>? domainId;
+  final pulumi.Input<String?>? domainId;
   /// The instance type and the Amazon Resource Name (ARN) of the SageMaker image created on the instance.
-  final pulumi.Input<ResourceSpec>? resourceSpec;
+  final pulumi.Input<ResourceSpec?>? resourceSpec;
   /// A list of tags to apply to the app.
-  final pulumi.Input<List<Tag>>? tags;
+  final pulumi.Input<List<Tag>?>? tags;
   /// The user profile name.
-  final pulumi.Input<String>? userProfileName;
+  final pulumi.Input<String?>? userProfileName;
 
   /// Creates a new [AwsSageMakerAppProperties].
   /// [appArn] The Amazon Resource Name (ARN) of the app.
@@ -55,7 +55,7 @@ class AwsSageMakerAppProperties {
     return AwsSageMakerAppProperties(
       appArn: (() { final guardedValue = map['appArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       appName: (() { final guardedValue = map['appName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      appType: (() { final guardedValue = map['appType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      appType: (() { final guardedValue = map['appType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       domainId: (() { final guardedValue = map['domainId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceSpec: (() { final guardedValue = map['resourceSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Tag>(guardedValue, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))); })(),

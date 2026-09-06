@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of AutoSnapshotAddOn
 class AutoSnapshotAddOnResponse {
   /// The daily time when an automatic snapshot will be created.
-  final pulumi.Input<String>? snapshotTimeOfDay;
+  final pulumi.Input<String?>? snapshotTimeOfDay;
 
   /// Creates a new [AutoSnapshotAddOnResponse].
   /// [snapshotTimeOfDay] The daily time when an automatic snapshot will be created.

@@ -6,7 +6,7 @@ class EndpointDependencyResponse {
   /// The domain name of the dependency.
   final pulumi.Input<String> domainName;
   /// The port of this endpoint.
-  final pulumi.Input<double>? port;
+  final pulumi.Input<double?>? port;
 
   /// Creates a new [EndpointDependencyResponse].
   /// [domainName] The domain name of the dependency.
@@ -26,7 +26,7 @@ class EndpointDependencyResponse {
   factory EndpointDependencyResponse.fromMap(Map<String, dynamic> map) {
     return EndpointDependencyResponse(
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

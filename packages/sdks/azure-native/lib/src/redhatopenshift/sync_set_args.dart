@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_redhatopenshift_sync_set_args_doc}
 class SyncSetArgs {
   /// The name of the SyncSet resource.
-  final pulumi.Input<String>? childResourceName;
+  final pulumi.Input<String?>? childResourceName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the OpenShift cluster resource.
   final pulumi.Input<String> resourceName;
   /// Resources represents the SyncSets configuration.
-  final pulumi.Input<String>? resources;
+  final pulumi.Input<String?>? resources;
 
   /// Creates a new [SyncSetArgs].
   /// [childResourceName] The name of the SyncSet resource.

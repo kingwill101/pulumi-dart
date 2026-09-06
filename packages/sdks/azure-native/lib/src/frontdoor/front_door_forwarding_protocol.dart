@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Protocol this rule will use when forwarding traffic to backends.
-enum FrontDoorForwardingProtocol {
+enum FrontDoorForwardingProtocol implements pulumi.PulumiEnum<String> {
   httpOnly("HttpOnly"),
   httpsOnly("HttpsOnly"),
   matchRequest("MatchRequest");
 
   const FrontDoorForwardingProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static FrontDoorForwardingProtocol fromValue(String value) {

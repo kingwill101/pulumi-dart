@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Gets or sets the mapping for SID to Environment/Applications.
 class SapLandscapeMonitorSidMappingResponse {
   /// Gets or sets the name of the grouping.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Gets or sets the list of SID's.
-  final pulumi.Input<List<String>>? topSid;
+  final pulumi.Input<List<String>?>? topSid;
 
   /// Creates a new [SapLandscapeMonitorSidMappingResponse].
   /// [name] Gets or sets the name of the grouping.

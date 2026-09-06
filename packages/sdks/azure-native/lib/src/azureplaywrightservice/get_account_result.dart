@@ -5,19 +5,19 @@ import 'system_data_response.dart';
 /// Result data returned by getAccount.
 class GetAccountResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The Playwright testing dashboard URI for the account resource.
-  final String dashboardUri;
+  final String? dashboardUri;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations.
   final String? localAuth;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The status of the last operation.
-  final String provisioningState;
+  final String? provisioningState;
   /// This property sets the connection region for Playwright client workers to cloud-hosted browsers. If enabled, workers connect to browsers in the closest Azure region, ensuring lower latency. If disabled, workers connect to browsers in the Azure region in which the workspace was initially created.
   final String? regionalAffinity;
   /// When enabled, this feature allows the workspace to upload and display test results, including artifacts like traces and screenshots, in the Playwright portal. This enables faster and more efficient troubleshooting.
@@ -25,11 +25,11 @@ class GetAccountResult {
   /// When enabled, Playwright client workers can connect to cloud-hosted browsers. This can increase the number of parallel workers for a test run, significantly minimizing test completion durations.
   final String? scalableExecution;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetAccountResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -45,55 +45,55 @@ class GetAccountResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  const GetAccountResult({
-    required this.azureApiVersion,
-    required this.dashboardUri,
-    required this.id,
-    this.localAuth,
-    required this.location,
-    required this.name,
-    required this.provisioningState,
-    this.regionalAffinity,
-    this.reporting,
-    this.scalableExecution,
-    required this.systemData,
+  GetAccountResult({
+    this.azureApiVersion,
+    this.dashboardUri,
+    this.id,
+    String? localAuth,
+    this.location,
+    this.name,
+    this.provisioningState,
+    String? regionalAffinity,
+    String? reporting,
+    String? scalableExecution,
+    this.systemData,
     this.tags,
-    required this.type,
-  });
+    this.type,
+  }) : localAuth = localAuth ?? 'Disabled', regionalAffinity = regionalAffinity ?? 'Enabled', reporting = reporting ?? 'Enabled', scalableExecution = scalableExecution ?? 'Enabled';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'dashboardUri': dashboardUri,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'dashboardUri': ?dashboardUri,
+      'id': ?id,
       'localAuth': ?localAuth,
-      'location': location,
-      'name': name,
-      'provisioningState': provisioningState,
+      'location': ?location,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'regionalAffinity': ?regionalAffinity,
       'reporting': ?reporting,
       'scalableExecution': ?scalableExecution,
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetAccountResult.fromMap(Map<String, dynamic> map) {
     return GetAccountResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      dashboardUri: map['dashboardUri'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dashboardUri: (() { final guardedValue = map['dashboardUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       localAuth: (() { final guardedValue = map['localAuth']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       regionalAffinity: (() { final guardedValue = map['regionalAffinity']; if (guardedValue == null) return null; return guardedValue as String; })(),
       reporting: (() { final guardedValue = map['reporting']; if (guardedValue == null) return null; return guardedValue as String; })(),
       scalableExecution: (() { final guardedValue = map['scalableExecution']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Service principal for uploading billing, metrics and logs.
 class UploadServicePrincipalResponse {
   /// Authority for the service principal. Example: https://login.microsoftonline.com/
-  final pulumi.Input<String>? authority;
+  final pulumi.Input<String?>? authority;
   /// Client ID of the service principal for uploading data.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Tenant ID of the service principal.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [UploadServicePrincipalResponse].
   /// [authority] Authority for the service principal. Example: https://login.microsoftonline.com/

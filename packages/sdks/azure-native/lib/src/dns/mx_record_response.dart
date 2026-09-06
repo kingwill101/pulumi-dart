@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An MX record.
 class MxRecordResponse {
   /// The domain name of the mail host for this MX record.
-  final pulumi.Input<String>? exchange;
+  final pulumi.Input<String?>? exchange;
   /// The preference value for this MX record.
-  final pulumi.Input<int>? preference;
+  final pulumi.Input<int?>? preference;
 
   /// Creates a new [MxRecordResponse].
   /// [exchange] The domain name of the mail host for this MX record.
@@ -27,7 +27,7 @@ class MxRecordResponse {
   factory MxRecordResponse.fromMap(Map<String, dynamic> map) {
     return MxRecordResponse(
       exchange: (() { final guardedValue = map['exchange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      preference: (() { final guardedValue = map['preference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      preference: (() { final guardedValue = map['preference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

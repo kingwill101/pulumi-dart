@@ -6,7 +6,7 @@ import 'transfer_filter_details.dart';
 /// Map of filter type and the details to filter. This field is required only if the TransferConfigurationType is given as TransferUsingFilter.
 class TransferConfigurationTransferFilterDetails {
   /// Details of the filtering the transfer of data.
-  final pulumi.Input<TransferFilterDetails>? include;
+  final pulumi.Input<TransferFilterDetails?>? include;
 
   /// Creates a new [TransferConfigurationTransferFilterDetails].
   /// [include] Details of the filtering the transfer of data.

@@ -38,6 +38,17 @@ Future<GetGatewayResult> getGateway(
   return GetGatewayResult.fromMap(result);
 }
 
+pulumi.Output<GetGatewayResult> getGatewayOutput(
+  GetGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridcompute:getGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGatewayResult.fromMap);
+}
+
 /// Retrieves information about the view of a license.
 ///
 /// Uses Azure REST API version 2024-07-10.
@@ -56,6 +67,17 @@ Future<GetLicenseResult> getLicense(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLicenseResult.fromMap(result);
+}
+
+pulumi.Output<GetLicenseResult> getLicenseOutput(
+  GetLicenseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridcompute:getLicense',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLicenseResult.fromMap);
 }
 
 /// Retrieves information about the view of a license profile.
@@ -78,6 +100,17 @@ Future<GetLicenseProfileResult> getLicenseProfile(
   return GetLicenseProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetLicenseProfileResult> getLicenseProfileOutput(
+  GetLicenseProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridcompute:getLicenseProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLicenseProfileResult.fromMap);
+}
+
 /// Retrieves information about the model view or the instance view of a hybrid machine.
 ///
 /// Uses Azure REST API version 2024-07-10.
@@ -96,6 +129,17 @@ Future<GetMachineResult> getMachine(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMachineResult.fromMap(result);
+}
+
+pulumi.Output<GetMachineResult> getMachineOutput(
+  GetMachineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridcompute:getMachine',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMachineResult.fromMap);
 }
 
 /// The operation to get the extension.
@@ -118,6 +162,17 @@ Future<GetMachineExtensionResult> getMachineExtension(
   return GetMachineExtensionResult.fromMap(result);
 }
 
+pulumi.Output<GetMachineExtensionResult> getMachineExtensionOutput(
+  GetMachineExtensionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridcompute:getMachineExtension',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMachineExtensionResult.fromMap);
+}
+
 /// The operation to get a run command.
 ///
 /// Uses Azure REST API version 2024-07-31-preview.
@@ -136,6 +191,17 @@ Future<GetMachineRunCommandResult> getMachineRunCommand(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMachineRunCommandResult.fromMap(result);
+}
+
+pulumi.Output<GetMachineRunCommandResult> getMachineRunCommandOutput(
+  GetMachineRunCommandArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridcompute:getMachineRunCommand',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMachineRunCommandResult.fromMap);
 }
 
 /// Gets a private endpoint connection.
@@ -158,6 +224,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridcompute:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Returns a Azure Arc PrivateLinkScope.
 ///
 /// Uses Azure REST API version 2024-07-10.
@@ -178,6 +255,17 @@ Future<GetPrivateLinkScopeResult> getPrivateLinkScope(
   return GetPrivateLinkScopeResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateLinkScopeResult> getPrivateLinkScopeOutput(
+  GetPrivateLinkScopeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridcompute:getPrivateLinkScope',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateLinkScopeResult.fromMap);
+}
+
 /// Gets a scoped resource in a private link scope.
 ///
 /// Uses Azure REST API version 2020-08-15-preview.
@@ -194,4 +282,15 @@ Future<GetPrivateLinkScopedResourceResult> getPrivateLinkScopedResource(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateLinkScopedResourceResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateLinkScopedResourceResult> getPrivateLinkScopedResourceOutput(
+  GetPrivateLinkScopedResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridcompute:getPrivateLinkScopedResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateLinkScopedResourceResult.fromMap);
 }

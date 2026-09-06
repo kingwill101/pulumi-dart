@@ -251,13 +251,33 @@ class StorageInsightConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    containers = registerOutput<List<String>?>('containers');
+    containers = registerOutput<List<String>?>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     eTag = registerOutput<String?>('eTag');
     this.name = registerOutput<String>('name');
     status = registerOutput<StorageInsightStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageInsightStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageAccount = registerOutput<StorageAccountResponse>('storageAccount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageAccountResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tables = registerOutput<List<String>?>('tables');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tables = registerOutput<List<String>?>('tables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [StorageInsightConfig] resource.
+  StorageInsightConfig.reference(String urn)
+    : super(
+        'azure-native:operationalinsights:StorageInsightConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    containers = registerOutput<List<String>?>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    eTag = registerOutput<String?>('eTag');
+    this.name = registerOutput<String>('name');
+    status = registerOutput<StorageInsightStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageInsightStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageAccount = registerOutput<StorageAccountResponse>('storageAccount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageAccountResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tables = registerOutput<List<String>?>('tables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

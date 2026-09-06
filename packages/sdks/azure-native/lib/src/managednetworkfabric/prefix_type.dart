@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// IP Prefix Type that needs to be matched.
-enum PrefixType {
+enum PrefixType implements pulumi.PulumiEnum<String> {
   valuePrefix("Prefix"),
   valueLongestPrefix("LongestPrefix");
 
   const PrefixType(this.wireValue);
+  @override
   final String wireValue;
 
   static PrefixType fromValue(String value) {

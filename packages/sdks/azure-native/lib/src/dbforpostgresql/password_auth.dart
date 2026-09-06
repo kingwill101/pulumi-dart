@@ -1,8 +1,11 @@
-enum PasswordAuth {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum PasswordAuth implements pulumi.PulumiEnum<String> {
   enabled("enabled"),
   disabled("disabled");
 
   const PasswordAuth(this.wireValue);
+  @override
   final String wireValue;
 
   static PasswordAuth fromValue(String value) {

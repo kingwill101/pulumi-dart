@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'collector_body_agent_spn_properties.dart';
 
 class CollectorAgentProperties {
-  final pulumi.Input<CollectorBodyAgentSpnProperties>? spnDetails;
+  final pulumi.Input<CollectorBodyAgentSpnProperties?>? spnDetails;
 
   /// Creates a new [CollectorAgentProperties].
   /// [spnDetails] Optional.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_databox_get_job_args_doc}
 class GetJobArgs {
   /// $expand is supported on details parameter for job, which provides details on the job stages.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the job Resource within the specified resource group. job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
   final pulumi.Input<String> jobName;
   /// The Resource Group Name

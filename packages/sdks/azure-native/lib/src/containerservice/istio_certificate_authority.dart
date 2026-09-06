@@ -6,7 +6,7 @@ import 'istio_plugin_certificate_authority.dart';
 /// Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
 class IstioCertificateAuthority {
   /// Plugin certificates information for Service Mesh.
-  final pulumi.Input<IstioPluginCertificateAuthority>? plugin;
+  final pulumi.Input<IstioPluginCertificateAuthority?>? plugin;
 
   /// Creates a new [IstioCertificateAuthority].
   /// [plugin] Plugin certificates information for Service Mesh.

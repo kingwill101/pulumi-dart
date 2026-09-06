@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of tracking data store.
 class TrackingDataStore {
   /// The data store ingestion URI.
-  final pulumi.Input<String>? dataStoreIngestionUri;
+  final pulumi.Input<String?>? dataStoreIngestionUri;
   /// The data store resource id.
-  final pulumi.Input<String>? dataStoreResourceId;
+  final pulumi.Input<String?>? dataStoreResourceId;
   /// The data store URI.
-  final pulumi.Input<String>? dataStoreUri;
+  final pulumi.Input<String?>? dataStoreUri;
   /// The database name.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
 
   /// Creates a new [TrackingDataStore].
   /// [dataStoreIngestionUri] The data store ingestion URI.

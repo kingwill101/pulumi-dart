@@ -6,13 +6,13 @@ import 'control_sync_record_response.dart';
 /// A class represent the certification record synchronized from app compliance.
 class CertSyncRecordResponse {
   /// Indicates the status of certification process.
-  final pulumi.Input<String>? certificationStatus;
+  final pulumi.Input<String?>? certificationStatus;
   /// The control records list to be synchronized.
-  final pulumi.Input<List<ControlSyncRecordResponse>>? controls;
+  final pulumi.Input<List<ControlSyncRecordResponse>?>? controls;
   /// Indicates the status of compliance process.
-  final pulumi.Input<String>? ingestionStatus;
+  final pulumi.Input<String?>? ingestionStatus;
   /// The offerGuid which mapping to the reports.
-  final pulumi.Input<String>? offerGuid;
+  final pulumi.Input<String?>? offerGuid;
 
   /// Creates a new [CertSyncRecordResponse].
   /// [certificationStatus] Indicates the status of certification process.

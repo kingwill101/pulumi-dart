@@ -48,7 +48,7 @@ class AmlComputeNodeInformationResponse {
     return AmlComputeNodeInformationResponse(
       nodeId: pulumi.Input.fromValue(map['nodeId'] as String),
       nodeState: pulumi.Input.fromValue(map['nodeState'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       privateIpAddress: pulumi.Input.fromValue(map['privateIpAddress'] as String),
       publicIpAddress: pulumi.Input.fromValue(map['publicIpAddress'] as String),
       runId: pulumi.Input.fromValue(map['runId'] as String),

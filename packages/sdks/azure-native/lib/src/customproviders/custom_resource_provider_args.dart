@@ -11,19 +11,19 @@ import 'custom_rpvalidations.dart';
 /// {@macro pulumi_customproviders_custom_resource_provider_args_doc}
 class CustomResourceProviderArgs {
   /// A list of actions that the custom resource provider implements.
-  final pulumi.Input<List<CustomRPActionRouteDefinition>>? actions;
+  final pulumi.Input<List<CustomRPActionRouteDefinition>?>? actions;
   /// Resource location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the resource provider.
-  final pulumi.Input<String>? resourceProviderName;
+  final pulumi.Input<String?>? resourceProviderName;
   /// A list of resource types that the custom resource provider implements.
-  final pulumi.Input<List<CustomRPResourceTypeRouteDefinition>>? resourceTypes;
+  final pulumi.Input<List<CustomRPResourceTypeRouteDefinition>?>? resourceTypes;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A list of validations to run on the custom resource provider's requests.
-  final pulumi.Input<List<CustomRPValidations>>? validations;
+  final pulumi.Input<List<CustomRPValidations>?>? validations;
 
   /// Creates a new [CustomResourceProviderArgs].
   /// [actions] A list of actions that the custom resource provider implements.

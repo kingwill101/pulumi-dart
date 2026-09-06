@@ -9,13 +9,13 @@ import 'nfsmount_configuration_response.dart';
 /// The file system to mount on each node.
 class MountConfigurationResponse {
   /// This property is mutually exclusive with all other properties.
-  final pulumi.Input<AzureBlobFileSystemConfigurationResponse>? azureBlobFileSystemConfiguration;
+  final pulumi.Input<AzureBlobFileSystemConfigurationResponse?>? azureBlobFileSystemConfiguration;
   /// This property is mutually exclusive with all other properties.
-  final pulumi.Input<AzureFileShareConfigurationResponse>? azureFileShareConfiguration;
+  final pulumi.Input<AzureFileShareConfigurationResponse?>? azureFileShareConfiguration;
   /// This property is mutually exclusive with all other properties.
-  final pulumi.Input<CIFSMountConfigurationResponse>? cifsMountConfiguration;
+  final pulumi.Input<CIFSMountConfigurationResponse?>? cifsMountConfiguration;
   /// This property is mutually exclusive with all other properties.
-  final pulumi.Input<NFSMountConfigurationResponse>? nfsMountConfiguration;
+  final pulumi.Input<NFSMountConfigurationResponse?>? nfsMountConfiguration;
 
   /// Creates a new [MountConfigurationResponse].
   /// [azureBlobFileSystemConfiguration] This property is mutually exclusive with all other properties.

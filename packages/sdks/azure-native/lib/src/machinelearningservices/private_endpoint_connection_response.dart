@@ -12,22 +12,22 @@ class PrivateEndpointConnectionResponse {
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final pulumi.Input<String> id;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentityResponse>? identity;
+  final pulumi.Input<ManagedServiceIdentityResponse?>? identity;
   /// *Same as workspace location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource
   final pulumi.Input<String> name;
   /// The Private Endpoint resource.
-  final pulumi.Input<WorkspacePrivateEndpointResourceResponse>? privateEndpoint;
+  final pulumi.Input<WorkspacePrivateEndpointResourceResponse?>? privateEndpoint;
   /// The connection state.
-  final pulumi.Input<PrivateLinkServiceConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStateResponse?>? privateLinkServiceConnectionState;
   /// The current provisioning state.
   final pulumi.Input<String> provisioningState;
   /// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
-  final pulumi.Input<SkuResponse>? sku;
+  final pulumi.Input<SkuResponse?>? sku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
 

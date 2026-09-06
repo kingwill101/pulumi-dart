@@ -9,16 +9,16 @@ import 'connection_gateway_definition_properties.dart';
 /// {@macro pulumi_web_connection_gateway_args_doc}
 class ConnectionGatewayArgs {
   /// The connection gateway name
-  final pulumi.Input<String>? connectionGatewayName;
+  final pulumi.Input<String?>? connectionGatewayName;
   /// Resource location
-  final pulumi.Input<String>? location;
-  final pulumi.Input<ConnectionGatewayDefinitionProperties>? properties;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<ConnectionGatewayDefinitionProperties?>? properties;
   /// The resource group
   final pulumi.Input<String> resourceGroupName;
   /// Subscription Id
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ConnectionGatewayArgs].
   /// [connectionGatewayName] The connection gateway name

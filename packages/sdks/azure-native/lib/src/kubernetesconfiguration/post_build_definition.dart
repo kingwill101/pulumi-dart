@@ -6,9 +6,9 @@ import 'substitute_from_definition.dart';
 /// The postBuild definitions defining variable substitutions for this Kustomization after kustomize build.
 class PostBuildDefinition {
   /// Key/value pairs holding the variables to be substituted in this Kustomization.
-  final pulumi.Input<Map<String, String>>? substitute;
+  final pulumi.Input<Map<String, String>?>? substitute;
   /// Array of ConfigMaps/Secrets from which the variables are substituted for this Kustomization.
-  final pulumi.Input<List<SubstituteFromDefinition>>? substituteFrom;
+  final pulumi.Input<List<SubstituteFromDefinition>?>? substituteFrom;
 
   /// Creates a new [PostBuildDefinition].
   /// [substitute] Key/value pairs holding the variables to be substituted in this Kustomization.

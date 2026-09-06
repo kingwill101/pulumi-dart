@@ -10,7 +10,7 @@ class GetApiPolicyArgs {
   /// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
   final pulumi.Input<String> apiId;
   /// Policy Export Format.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// The identifier of the Policy.
   final pulumi.Input<String> policyId;
   /// The name of the resource group. The name is case insensitive.

@@ -10,11 +10,11 @@ import 'http_proxy_configuration.dart';
 /// {@macro pulumi_scvmm_vminstance_guest_agent_args_doc}
 class VMInstanceGuestAgentArgs {
   /// Username / Password Credentials to provision guest agent.
-  final pulumi.Input<GuestCredential>? credentials;
+  final pulumi.Input<GuestCredential?>? credentials;
   /// HTTP Proxy configuration for the VM.
-  final pulumi.Input<HttpProxyConfiguration>? httpProxyConfig;
+  final pulumi.Input<HttpProxyConfiguration?>? httpProxyConfig;
   /// Gets or sets the guest agent provisioning action.
-  final pulumi.Input<String>? provisioningAction;
+  final pulumi.Input<dynamic>? provisioningAction;
   /// The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
   final pulumi.Input<String> resourceUri;
 
@@ -43,7 +43,7 @@ class VMInstanceGuestAgentArgs {
     return VMInstanceGuestAgentArgs(
       credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GuestCredential.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       httpProxyConfig: (() { final guardedValue = map['httpProxyConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HttpProxyConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      provisioningAction: (() { final guardedValue = map['provisioningAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningAction: (() { final guardedValue = map['provisioningAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }

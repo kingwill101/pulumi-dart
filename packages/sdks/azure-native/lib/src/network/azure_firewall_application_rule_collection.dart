@@ -7,15 +7,15 @@ import 'azure_firewall_rcaction.dart';
 /// Application rule collection resource.
 class AzureFirewallApplicationRuleCollection {
   /// The action type of a rule collection.
-  final pulumi.Input<AzureFirewallRCAction>? action;
+  final pulumi.Input<AzureFirewallRCAction?>? action;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within the Azure firewall. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Priority of the application rule collection resource.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// Collection of rules used by a application rule collection.
-  final pulumi.Input<List<AzureFirewallApplicationRule>>? rules;
+  final pulumi.Input<List<AzureFirewallApplicationRule>?>? rules;
 
   /// Creates a new [AzureFirewallApplicationRuleCollection].
   /// [action] The action type of a rule collection.
@@ -46,7 +46,7 @@ class AzureFirewallApplicationRuleCollection {
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureFirewallRCAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AzureFirewallApplicationRule>(guardedValue, (value) => AzureFirewallApplicationRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

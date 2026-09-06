@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Managed Virtual Network Settings
 class ManagedVirtualNetworkSettingsResponse {
   /// Allowed Aad Tenant Ids For Linking
-  final pulumi.Input<List<String>>? allowedAadTenantIdsForLinking;
+  final pulumi.Input<List<String>?>? allowedAadTenantIdsForLinking;
   /// Linked Access Check On Target Resource
-  final pulumi.Input<bool>? linkedAccessCheckOnTargetResource;
+  final pulumi.Input<bool?>? linkedAccessCheckOnTargetResource;
   /// Prevent Data Exfiltration
-  final pulumi.Input<bool>? preventDataExfiltration;
+  final pulumi.Input<bool?>? preventDataExfiltration;
 
   /// Creates a new [ManagedVirtualNetworkSettingsResponse].
   /// [allowedAadTenantIdsForLinking] Allowed Aad Tenant Ids For Linking

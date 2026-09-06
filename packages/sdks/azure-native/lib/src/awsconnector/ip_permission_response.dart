@@ -9,19 +9,19 @@ import 'user_id_group_pair_response.dart';
 /// Definition of IpPermission
 class IpPermissionResponse {
   /// &lt;p&gt;If the protocol is TCP or UDP, this is the start of the port range. If the protocol is ICMP or ICMPv6, this is the ICMP type or -1 (all ICMP types).&lt;/p&gt;
-  final pulumi.Input<int>? fromPort;
+  final pulumi.Input<int?>? fromPort;
   /// &lt;p&gt;The IP protocol name (&lt;code&gt;tcp&lt;/code&gt;, &lt;code&gt;udp&lt;/code&gt;, &lt;code&gt;icmp&lt;/code&gt;, &lt;code&gt;icmpv6&lt;/code&gt;) or number (see &lt;a href='http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'&gt;Protocol Numbers&lt;/a&gt;).&lt;/p&gt; &lt;p&gt;Use &lt;code&gt;-1&lt;/code&gt; to specify all protocols. When authorizing security group rules, specifying &lt;code&gt;-1&lt;/code&gt; or a protocol number other than &lt;code&gt;tcp&lt;/code&gt;, &lt;code&gt;udp&lt;/code&gt;, &lt;code&gt;icmp&lt;/code&gt;, or &lt;code&gt;icmpv6&lt;/code&gt; allows traffic on all ports, regardless of any port range you specify. For &lt;code&gt;tcp&lt;/code&gt;, &lt;code&gt;udp&lt;/code&gt;, and &lt;code&gt;icmp&lt;/code&gt;, you must specify a port range. For &lt;code&gt;icmpv6&lt;/code&gt;, the port range is optional; if you omit the port range, traffic for all types and codes is allowed.&lt;/p&gt;
-  final pulumi.Input<String>? ipProtocol;
+  final pulumi.Input<String?>? ipProtocol;
   /// &lt;p&gt;The IPv4 address ranges.&lt;/p&gt;
-  final pulumi.Input<List<IpRangeResponse>>? ipRanges;
+  final pulumi.Input<List<IpRangeResponse>?>? ipRanges;
   /// &lt;p&gt;The IPv6 address ranges.&lt;/p&gt;
-  final pulumi.Input<List<Ipv6RangeResponse>>? ipv6Ranges;
+  final pulumi.Input<List<Ipv6RangeResponse>?>? ipv6Ranges;
   /// &lt;p&gt;The prefix list IDs.&lt;/p&gt;
-  final pulumi.Input<List<PrefixListIdResponse>>? prefixListIds;
+  final pulumi.Input<List<PrefixListIdResponse>?>? prefixListIds;
   /// &lt;p&gt;If the protocol is TCP or UDP, this is the end of the port range. If the protocol is ICMP or ICMPv6, this is the ICMP code or -1 (all ICMP codes). If the start port is -1 (all ICMP types), then the end port must be -1 (all ICMP codes).&lt;/p&gt;
-  final pulumi.Input<int>? toPort;
+  final pulumi.Input<int?>? toPort;
   /// &lt;p&gt;The security group and Amazon Web Services account ID pairs.&lt;/p&gt;
-  final pulumi.Input<List<UserIdGroupPairResponse>>? userIdGroupPairs;
+  final pulumi.Input<List<UserIdGroupPairResponse>?>? userIdGroupPairs;
 
   /// Creates a new [IpPermissionResponse].
   /// [fromPort] &lt;p&gt;If the protocol is TCP or UDP, this is the start of the port range. If the protocol is ICMP or ICMPv6, this is the ICMP type or -1 (all ICMP types).&lt;/p&gt;
@@ -55,12 +55,12 @@ class IpPermissionResponse {
 
   factory IpPermissionResponse.fromMap(Map<String, dynamic> map) {
     return IpPermissionResponse(
-      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipProtocol: (() { final guardedValue = map['ipProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipRanges: (() { final guardedValue = map['ipRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IpRangeResponse>(guardedValue, (value) => IpRangeResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipv6Ranges: (() { final guardedValue = map['ipv6Ranges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Ipv6RangeResponse>(guardedValue, (value) => Ipv6RangeResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       prefixListIds: (() { final guardedValue = map['prefixListIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PrefixListIdResponse>(guardedValue, (value) => PrefixListIdResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       userIdGroupPairs: (() { final guardedValue = map['userIdGroupPairs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserIdGroupPairResponse>(guardedValue, (value) => UserIdGroupPairResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

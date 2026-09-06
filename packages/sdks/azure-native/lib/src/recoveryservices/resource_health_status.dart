@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Resource Health Status
-enum ResourceHealthStatus {
+enum ResourceHealthStatus implements pulumi.PulumiEnum<String> {
   valueHealthy("Healthy"),
   valueTransientDegraded("TransientDegraded"),
   valuePersistentDegraded("PersistentDegraded"),
@@ -8,6 +10,7 @@ enum ResourceHealthStatus {
   valueInvalid("Invalid");
 
   const ResourceHealthStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static ResourceHealthStatus fromValue(String value) {

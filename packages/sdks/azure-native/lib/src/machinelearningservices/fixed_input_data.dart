@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Fixed input data definition.
 class FixedInputData {
   /// Mapping of column names to special uses.
-  final pulumi.Input<Map<String, String>>? columns;
+  final pulumi.Input<Map<String, String>?>? columns;
   /// The context metadata of the data source.
-  final pulumi.Input<String>? dataContext;
+  final pulumi.Input<String?>? dataContext;
   /// Monitoring input data type enum.
   /// Expected value is 'Fixed'.
   final pulumi.Input<String> inputDataType;
   /// [Required] Specifies the type of job.
-  final pulumi.Input<String> jobInputType;
+  final pulumi.Input<dynamic> jobInputType;
   /// [Required] Input Asset URI.
   final pulumi.Input<String> uri;
 
@@ -45,7 +45,7 @@ class FixedInputData {
       columns: (() { final guardedValue = map['columns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       dataContext: (() { final guardedValue = map['dataContext']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       inputDataType: pulumi.Input.fromValue(map['inputDataType'] as String),
-      jobInputType: pulumi.Input.fromValue(map['jobInputType'] as String),
+      jobInputType: pulumi.Input.fromValue(map['jobInputType']),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }

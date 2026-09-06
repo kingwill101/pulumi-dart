@@ -6,13 +6,13 @@ import 'http_header.dart';
 /// The container Http Get settings, for liveness or readiness probe
 class ContainerHttpGet {
   /// The HTTP headers.
-  final pulumi.Input<List<HttpHeader>>? httpHeaders;
+  final pulumi.Input<List<HttpHeader>?>? httpHeaders;
   /// The path to probe.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// The port number to probe.
   final pulumi.Input<int> port;
   /// The scheme.
-  final pulumi.Input<String>? scheme;
+  final pulumi.Input<dynamic>? scheme;
 
   /// Creates a new [ContainerHttpGet].
   /// [httpHeaders] The HTTP headers.
@@ -39,8 +39,8 @@ class ContainerHttpGet {
     return ContainerHttpGet(
       httpHeaders: (() { final guardedValue = map['httpHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HttpHeader>(guardedValue, (value) => HttpHeader.fromMap((value as Map).cast<String, dynamic>()))); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: pulumi.Input.fromValue(map['port'] as int),
-      scheme: (() { final guardedValue = map['scheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
+      scheme: (() { final guardedValue = map['scheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

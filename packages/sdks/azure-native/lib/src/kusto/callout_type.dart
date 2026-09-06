@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the callout service, specifying the kind of external resource or service being accessed.
-enum CalloutType {
+enum CalloutType implements pulumi.PulumiEnum<String> {
   valueKusto("kusto"),
   valueSql("sql"),
   valueCosmosdb("cosmosdb"),
@@ -13,6 +15,7 @@ enum CalloutType {
   valueAzureOpenai("azure_openai");
 
   const CalloutType(this.wireValue);
+  @override
   final String wireValue;
 
   static CalloutType fromValue(String value) {

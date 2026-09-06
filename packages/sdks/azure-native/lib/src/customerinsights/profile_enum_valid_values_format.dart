@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Valid enum values in case of an enum property.
 class ProfileEnumValidValuesFormat {
   /// Localized names of the enum member.
-  final pulumi.Input<Map<String, String>>? localizedValueNames;
+  final pulumi.Input<Map<String, String>?>? localizedValueNames;
   /// The integer value of the enum member.
-  final pulumi.Input<int>? value;
+  final pulumi.Input<int?>? value;
 
   /// Creates a new [ProfileEnumValidValuesFormat].
   /// [localizedValueNames] Localized names of the enum member.
@@ -27,7 +27,7 @@ class ProfileEnumValidValuesFormat {
   factory ProfileEnumValidValuesFormat.fromMap(Map<String, dynamic> map) {
     return ProfileEnumValidValuesFormat(
       localizedValueNames: (() { final guardedValue = map['localizedValueNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

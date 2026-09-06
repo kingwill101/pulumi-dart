@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of a labeling job for text data
 class LabelingJobTextPropertiesResponse {
   /// Annotation type of text labeling job.
-  final pulumi.Input<String>? annotationType;
+  final pulumi.Input<String?>? annotationType;
   /// Media type of data asset.
   /// Expected value is 'Text'.
   final pulumi.Input<String> mediaType;
@@ -13,10 +13,10 @@ class LabelingJobTextPropertiesResponse {
   /// Creates a new [LabelingJobTextPropertiesResponse].
   /// [annotationType] Annotation type of text labeling job.
   /// [mediaType] Media type of data asset.
-  const LabelingJobTextPropertiesResponse({
-    this.annotationType,
+  LabelingJobTextPropertiesResponse({
+    pulumi.Input<String?>? annotationType,
     required this.mediaType,
-  });
+  }) : annotationType = annotationType ?? pulumi.Input.fromValue('Classification');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

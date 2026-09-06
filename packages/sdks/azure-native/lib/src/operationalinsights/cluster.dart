@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'associated_workspace_response.dart';
 import 'capacity_reservation_properties_response.dart';
 import 'cluster_args.dart';
 import 'cluster_sku_response.dart';
@@ -202,7 +203,7 @@ import 'managed_service_identity_response.dart';
 /// ```
 class Cluster extends pulumi.CustomResource {
   /// The list of Log Analytics workspaces associated with the cluster
-  late final pulumi.Output<List<Map<String, dynamic>>?> associatedWorkspaces;
+  late final pulumi.Output<List<AssociatedWorkspaceResponse>?> associatedWorkspaces;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The cluster's billing type.
@@ -250,7 +251,7 @@ class Cluster extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    associatedWorkspaces = registerOutput<List<Map<String, dynamic>>?>('associatedWorkspaces');
+    associatedWorkspaces = registerOutput<List<AssociatedWorkspaceResponse>?>('associatedWorkspaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssociatedWorkspaceResponse>(guardedValue, (value) => AssociatedWorkspaceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     billingType = registerOutput<String?>('billingType');
     capacityReservationProperties = registerOutput<CapacityReservationPropertiesResponse?>('capacityReservationProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityReservationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -265,7 +266,35 @@ class Cluster extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     sku = registerOutput<ClusterSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'azure-native:operationalinsights:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    associatedWorkspaces = registerOutput<List<AssociatedWorkspaceResponse>?>('associatedWorkspaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssociatedWorkspaceResponse>(guardedValue, (value) => AssociatedWorkspaceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    billingType = registerOutput<String?>('billingType');
+    capacityReservationProperties = registerOutput<CapacityReservationPropertiesResponse?>('capacityReservationProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityReservationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterId = registerOutput<String>('clusterId');
+    createdDate = registerOutput<String>('createdDate');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isAvailabilityZonesEnabled = registerOutput<bool?>('isAvailabilityZonesEnabled');
+    isDoubleEncryptionEnabled = registerOutput<bool?>('isDoubleEncryptionEnabled');
+    keyVaultProperties = registerOutput<KeyVaultPropertiesResponse?>('keyVaultProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyVaultPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastModifiedDate = registerOutput<String>('lastModifiedDate');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<ClusterSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

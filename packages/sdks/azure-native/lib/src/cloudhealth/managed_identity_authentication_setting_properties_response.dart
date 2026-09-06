@@ -8,7 +8,7 @@ class ManagedIdentityAuthenticationSettingPropertiesResponse {
   /// Expected value is 'ManagedIdentity'.
   final pulumi.Input<String> authenticationKind;
   /// Display name
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Name of the managed identity to use. Either 'SystemAssigned' or the resourceId of a user-assigned identity.
   final pulumi.Input<String> managedIdentityName;
   /// The status of the last operation.

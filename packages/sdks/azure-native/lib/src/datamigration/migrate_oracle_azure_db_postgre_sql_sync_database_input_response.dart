@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Database specific information for Oracle to Azure Database for PostgreSQL migration task inputs
 class MigrateOracleAzureDbPostgreSqlSyncDatabaseInputResponse {
   /// How to handle object name casing: either Preserve or ToLower
-  final pulumi.Input<String>? caseManipulation;
+  final pulumi.Input<String?>? caseManipulation;
   /// Migration settings which tune the migration behavior
-  final pulumi.Input<Map<String, String>>? migrationSetting;
+  final pulumi.Input<Map<String, String>?>? migrationSetting;
   /// Name of the migration pipeline
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Name of the source schema
-  final pulumi.Input<String>? schemaName;
+  final pulumi.Input<String?>? schemaName;
   /// Source settings to tune source endpoint migration behavior
-  final pulumi.Input<Map<String, String>>? sourceSetting;
+  final pulumi.Input<Map<String, String>?>? sourceSetting;
   /// Mapping of source to target tables
-  final pulumi.Input<Map<String, String>>? tableMap;
+  final pulumi.Input<Map<String, String>?>? tableMap;
   /// Name of target database. Note: Target database will be truncated before starting migration.
-  final pulumi.Input<String>? targetDatabaseName;
+  final pulumi.Input<String?>? targetDatabaseName;
   /// Target settings to tune target endpoint migration behavior
-  final pulumi.Input<Map<String, String>>? targetSetting;
+  final pulumi.Input<Map<String, String>?>? targetSetting;
 
   /// Creates a new [MigrateOracleAzureDbPostgreSqlSyncDatabaseInputResponse].
   /// [caseManipulation] How to handle object name casing: either Preserve or ToLower

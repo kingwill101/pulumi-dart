@@ -88,6 +88,17 @@ Future<GetArcSettingResult> getArcSetting(
   return GetArcSettingResult.fromMap(result);
 }
 
+pulumi.Output<GetArcSettingResult> getArcSettingOutput(
+  GetArcSettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getArcSetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetArcSettingResult.fromMap);
+}
+
 /// Get HCI cluster.
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -106,6 +117,17 @@ Future<GetClusterResult> getCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
 }
 
 /// Get a ClusterJob
@@ -128,6 +150,17 @@ Future<GetClusterJobResult> getClusterJob(
   return GetClusterJobResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterJobResult> getClusterJobOutput(
+  GetClusterJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getClusterJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterJobResult.fromMap);
+}
+
 /// Get a DeploymentSetting
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -146,6 +179,17 @@ Future<GetDeploymentSettingResult> getDeploymentSetting(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeploymentSettingResult.fromMap(result);
+}
+
+pulumi.Output<GetDeploymentSettingResult> getDeploymentSettingOutput(
+  GetDeploymentSettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getDeploymentSetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentSettingResult.fromMap);
 }
 
 /// Get a DevicePool
@@ -168,6 +212,17 @@ Future<GetDevicePoolResult> getDevicePool(
   return GetDevicePoolResult.fromMap(result);
 }
 
+pulumi.Output<GetDevicePoolResult> getDevicePoolOutput(
+  GetDevicePoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getDevicePool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDevicePoolResult.fromMap);
+}
+
 /// Get an edge machine.
 ///
 /// Uses Azure REST API version 2025-12-01-preview.
@@ -186,6 +241,17 @@ Future<GetEdgeMachineResult> getEdgeMachine(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEdgeMachineResult.fromMap(result);
+}
+
+pulumi.Output<GetEdgeMachineResult> getEdgeMachineOutput(
+  GetEdgeMachineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getEdgeMachine',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEdgeMachineResult.fromMap);
 }
 
 /// Get a EdgeMachineJob
@@ -208,6 +274,17 @@ Future<GetEdgeMachineJobResult> getEdgeMachineJob(
   return GetEdgeMachineJobResult.fromMap(result);
 }
 
+pulumi.Output<GetEdgeMachineJobResult> getEdgeMachineJobOutput(
+  GetEdgeMachineJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getEdgeMachineJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEdgeMachineJobResult.fromMap);
+}
+
 /// Get particular Arc Extension of HCI Cluster.
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -226,6 +303,17 @@ Future<GetExtensionResult> getExtension(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExtensionResult.fromMap(result);
+}
+
+pulumi.Output<GetExtensionResult> getExtensionOutput(
+  GetExtensionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getExtension',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExtensionResult.fromMap);
 }
 
 /// Gets a gallery image
@@ -248,6 +336,17 @@ Future<GetGalleryImageResult> getGalleryImage(
   return GetGalleryImageResult.fromMap(result);
 }
 
+pulumi.Output<GetGalleryImageResult> getGalleryImageOutput(
+  GetGalleryImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getGalleryImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGalleryImageResult.fromMap);
+}
+
 /// Implements GuestAgent GET method.
 ///
 /// Uses Azure REST API version 2025-02-01-preview.
@@ -268,6 +367,17 @@ Future<GetGuestAgentResult> getGuestAgent(
   return GetGuestAgentResult.fromMap(result);
 }
 
+pulumi.Output<GetGuestAgentResult> getGuestAgentOutput(
+  GetGuestAgentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getGuestAgent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGuestAgentResult.fromMap);
+}
+
 /// Get a EdgeDevice
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -284,6 +394,17 @@ Future<GetHciEdgeDeviceResult> getHciEdgeDevice(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHciEdgeDeviceResult.fromMap(result);
+}
+
+pulumi.Output<GetHciEdgeDeviceResult> getHciEdgeDeviceOutput(
+  GetHciEdgeDeviceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getHciEdgeDevice',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHciEdgeDeviceResult.fromMap);
 }
 
 /// Get a EdgeDeviceJob
@@ -304,6 +425,17 @@ Future<GetHciEdgeDeviceJobResult> getHciEdgeDeviceJob(
   return GetHciEdgeDeviceJobResult.fromMap(result);
 }
 
+pulumi.Output<GetHciEdgeDeviceJobResult> getHciEdgeDeviceJobOutput(
+  GetHciEdgeDeviceJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getHciEdgeDeviceJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHciEdgeDeviceJobResult.fromMap);
+}
+
 /// Implements HybridIdentityMetadata GET method.
 ///
 /// Uses Azure REST API version 2022-12-15-preview.
@@ -322,6 +454,17 @@ Future<GetHybridIdentityMetadatumResult> getHybridIdentityMetadatum(
   return GetHybridIdentityMetadatumResult.fromMap(result);
 }
 
+pulumi.Output<GetHybridIdentityMetadatumResult> getHybridIdentityMetadatumOutput(
+  GetHybridIdentityMetadatumArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getHybridIdentityMetadatum',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHybridIdentityMetadatumResult.fromMap);
+}
+
 /// The operation to get an inbound rule.
 ///
 /// Uses Azure REST API version 2026-04-01-preview.
@@ -338,6 +481,17 @@ Future<GetInboundRuleResult> getInboundRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInboundRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetInboundRuleResult> getInboundRuleOutput(
+  GetInboundRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getInboundRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInboundRuleResult.fromMap);
 }
 
 /// The operation to get a loadBalancer.
@@ -360,6 +514,17 @@ Future<GetLoadBalancerResult> getLoadBalancer(
   return GetLoadBalancerResult.fromMap(result);
 }
 
+pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
+  GetLoadBalancerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getLoadBalancer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLoadBalancerResult.fromMap);
+}
+
 /// The operation to get a logical network.
 ///
 /// Uses Azure REST API version 2025-02-01-preview.
@@ -380,6 +545,17 @@ Future<GetLogicalNetworkResult> getLogicalNetwork(
   return GetLogicalNetworkResult.fromMap(result);
 }
 
+pulumi.Output<GetLogicalNetworkResult> getLogicalNetworkOutput(
+  GetLogicalNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getLogicalNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLogicalNetworkResult.fromMap);
+}
+
 /// The operation to get the extension.
 ///
 /// Uses Azure REST API version 2022-12-15-preview.
@@ -396,6 +572,17 @@ Future<GetMachineExtensionResult> getMachineExtension(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMachineExtensionResult.fromMap(result);
+}
+
+pulumi.Output<GetMachineExtensionResult> getMachineExtensionOutput(
+  GetMachineExtensionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getMachineExtension',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMachineExtensionResult.fromMap);
 }
 
 /// Gets a marketplace gallery image
@@ -418,6 +605,17 @@ Future<GetMarketplaceGalleryImageResult> getMarketplaceGalleryImage(
   return GetMarketplaceGalleryImageResult.fromMap(result);
 }
 
+pulumi.Output<GetMarketplaceGalleryImageResult> getMarketplaceGalleryImageOutput(
+  GetMarketplaceGalleryImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getMarketplaceGalleryImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMarketplaceGalleryImageResult.fromMap);
+}
+
 /// The operation to get a natGateway.
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
@@ -436,6 +634,17 @@ Future<GetNatGatewayResult> getNatGateway(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNatGatewayResult.fromMap(result);
+}
+
+pulumi.Output<GetNatGatewayResult> getNatGatewayOutput(
+  GetNatGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getNatGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNatGatewayResult.fromMap);
 }
 
 /// Gets a network interface
@@ -458,6 +667,17 @@ Future<GetNetworkInterfaceResult> getNetworkInterface(
   return GetNetworkInterfaceResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkInterfaceResult> getNetworkInterfaceOutput(
+  GetNetworkInterfaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getNetworkInterface',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkInterfaceResult.fromMap);
+}
+
 /// Gets the specified network security group.
 ///
 /// Uses Azure REST API version 2025-02-01-preview.
@@ -476,6 +696,17 @@ Future<GetNetworkSecurityGroupResult> getNetworkSecurityGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkSecurityGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkSecurityGroupResult> getNetworkSecurityGroupOutput(
+  GetNetworkSecurityGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getNetworkSecurityGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkSecurityGroupResult.fromMap);
 }
 
 /// The operation to get a virtual network.
@@ -498,6 +729,17 @@ Future<GetPublicIPAddressResult> getPublicIPAddress(
   return GetPublicIPAddressResult.fromMap(result);
 }
 
+pulumi.Output<GetPublicIPAddressResult> getPublicIPAddressOutput(
+  GetPublicIPAddressArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getPublicIPAddress',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPublicIPAddressResult.fromMap);
+}
+
 /// Gets the specified security rule.
 ///
 /// Uses Azure REST API version 2025-02-01-preview.
@@ -516,6 +758,17 @@ Future<GetSecurityRuleResult> getSecurityRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecurityRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetSecurityRuleResult> getSecurityRuleOutput(
+  GetSecurityRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getSecurityRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityRuleResult.fromMap);
 }
 
 /// Get a SecuritySetting
@@ -538,6 +791,17 @@ Future<GetSecuritySettingResult> getSecuritySetting(
   return GetSecuritySettingResult.fromMap(result);
 }
 
+pulumi.Output<GetSecuritySettingResult> getSecuritySettingOutput(
+  GetSecuritySettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getSecuritySetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecuritySettingResult.fromMap);
+}
+
 /// Gets a snapshot
 ///
 /// Uses Azure REST API version 2026-02-01-preview.
@@ -556,6 +820,17 @@ Future<GetSnapshotResult> getSnapshot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSnapshotResult.fromMap(result);
+}
+
+pulumi.Output<GetSnapshotResult> getSnapshotOutput(
+  GetSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotResult.fromMap);
 }
 
 /// Gets a storage container
@@ -578,6 +853,17 @@ Future<GetStorageContainerResult> getStorageContainer(
   return GetStorageContainerResult.fromMap(result);
 }
 
+pulumi.Output<GetStorageContainerResult> getStorageContainerOutput(
+  GetStorageContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getStorageContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageContainerResult.fromMap);
+}
+
 /// Get specified Update
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -596,6 +882,17 @@ Future<GetUpdateResult> getUpdate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUpdateResult.fromMap(result);
+}
+
+pulumi.Output<GetUpdateResult> getUpdateOutput(
+  GetUpdateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getUpdate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUpdateResult.fromMap);
 }
 
 /// Get the Update run for a specified update
@@ -618,6 +915,17 @@ Future<GetUpdateRunResult> getUpdateRun(
   return GetUpdateRunResult.fromMap(result);
 }
 
+pulumi.Output<GetUpdateRunResult> getUpdateRunOutput(
+  GetUpdateRunArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getUpdateRun',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUpdateRunResult.fromMap);
+}
+
 /// Get all Update summaries under the HCI cluster
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -636,6 +944,17 @@ Future<GetUpdateSummaryResult> getUpdateSummary(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUpdateSummaryResult.fromMap(result);
+}
+
+pulumi.Output<GetUpdateSummaryResult> getUpdateSummaryOutput(
+  GetUpdateSummaryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getUpdateSummary',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUpdateSummaryResult.fromMap);
 }
 
 /// Gets a virtual hard disk
@@ -658,6 +977,17 @@ Future<GetVirtualHardDiskResult> getVirtualHardDisk(
   return GetVirtualHardDiskResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualHardDiskResult> getVirtualHardDiskOutput(
+  GetVirtualHardDiskArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getVirtualHardDisk',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualHardDiskResult.fromMap);
+}
+
 /// Gets a virtual machine
 ///
 /// Uses Azure REST API version 2022-12-15-preview.
@@ -674,6 +1004,17 @@ Future<GetVirtualMachineResult> getVirtualMachine(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualMachineResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualMachineResult> getVirtualMachineOutput(
+  GetVirtualMachineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getVirtualMachine',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineResult.fromMap);
 }
 
 /// Gets a virtual machine instance
@@ -696,6 +1037,17 @@ Future<GetVirtualMachineInstanceResult> getVirtualMachineInstance(
   return GetVirtualMachineInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualMachineInstanceResult> getVirtualMachineInstanceOutput(
+  GetVirtualMachineInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getVirtualMachineInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineInstanceResult.fromMap);
+}
+
 /// The virtual network resource definition.
 ///
 /// Uses Azure REST API version 2023-07-01-preview.
@@ -716,6 +1068,17 @@ Future<GetVirtualNetworkResult> getVirtualNetwork(
   return GetVirtualNetworkResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualNetworkResult> getVirtualNetworkOutput(
+  GetVirtualNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getVirtualNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkResult.fromMap);
+}
+
 /// The operation to get a virtual network subnet.
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
@@ -734,4 +1097,15 @@ Future<GetVirtualNetworkSubnetResult> getVirtualNetworkSubnet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualNetworkSubnetResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualNetworkSubnetResult> getVirtualNetworkSubnetOutput(
+  GetVirtualNetworkSubnetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestackhci:getVirtualNetworkSubnet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkSubnetResult.fromMap);
 }

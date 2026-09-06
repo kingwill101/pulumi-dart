@@ -8,31 +8,31 @@ import 'virtual_hard_disk.dart';
 /// Describes a data disk.
 class DataDisk {
   /// Specifies the caching requirements. Possible values are: None, ReadOnly, ReadWrite. The defaulting behavior is: None for Standard storage. ReadOnly for Premium storage.
-  final pulumi.Input<String>? caching;
+  final pulumi.Input<dynamic>? caching;
   /// Specifies how the virtual machine disk should be created. Possible values are Attach, FromImage, Empty, Copy, Restore.
-  final pulumi.Input<String> createOption;
+  final pulumi.Input<dynamic> createOption;
   /// Specifies whether data disk should be deleted or detached upon VM deletion. Possible values are: Delete, Detach. The default value is set to Detach.
-  final pulumi.Input<String>? deleteOption;
+  final pulumi.Input<dynamic>? deleteOption;
   /// Specifies the detach behavior to be used while detaching a disk or which is already in the process of detachment from the virtual machine. Supported values: ForceDetach. This feature is still in preview. To force-detach a data disk update toBeDetached to 'true' along with setting detachOption: 'ForceDetach'.
-  final pulumi.Input<String>? detachOption;
+  final pulumi.Input<dynamic>? detachOption;
   /// Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB' is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
-  final pulumi.Input<int>? diskSizeGB;
+  final pulumi.Input<int?>? diskSizeGB;
   /// The source user image virtual hard disk. The virtual hard disk will be copied before being attached to the virtual machine. If SourceImage is provided, the destination virtual hard drive must not exist.
-  final pulumi.Input<VirtualHardDisk>? image;
+  final pulumi.Input<VirtualHardDisk?>? image;
   /// Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
   final pulumi.Input<int> lun;
   /// The managed disk parameters.
-  final pulumi.Input<ManagedDiskParameters>? managedDisk;
+  final pulumi.Input<ManagedDiskParameters?>? managedDisk;
   /// The disk name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The source resource identifier. It can be a snapshot, or disk restore point from which to create a disk.
-  final pulumi.Input<ApiEntityReference>? sourceResource;
+  final pulumi.Input<ApiEntityReference?>? sourceResource;
   /// Specifies whether the data disk is in process of detachment from the VirtualMachine/VirtualMachineScaleset.
-  final pulumi.Input<bool>? toBeDetached;
+  final pulumi.Input<bool?>? toBeDetached;
   /// The virtual hard disk.
-  final pulumi.Input<VirtualHardDisk>? vhd;
+  final pulumi.Input<VirtualHardDisk?>? vhd;
   /// Specifies whether writeAccelerator should be enabled or disabled on the disk.
-  final pulumi.Input<bool>? writeAcceleratorEnabled;
+  final pulumi.Input<bool?>? writeAcceleratorEnabled;
 
   /// Creates a new [DataDisk].
   /// [caching] Specifies the caching requirements. Possible values are: None, ReadOnly, ReadWrite. The defaulting behavior is: None for Standard storage. ReadOnly for Premium storage.
@@ -84,13 +84,13 @@ class DataDisk {
 
   factory DataDisk.fromMap(Map<String, dynamic> map) {
     return DataDisk(
-      caching: (() { final guardedValue = map['caching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      createOption: pulumi.Input.fromValue(map['createOption'] as String),
-      deleteOption: (() { final guardedValue = map['deleteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      detachOption: (() { final guardedValue = map['detachOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      diskSizeGB: (() { final guardedValue = map['diskSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      caching: (() { final guardedValue = map['caching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      createOption: pulumi.Input.fromValue(map['createOption']),
+      deleteOption: (() { final guardedValue = map['deleteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      detachOption: (() { final guardedValue = map['detachOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      diskSizeGB: (() { final guardedValue = map['diskSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualHardDisk.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      lun: pulumi.Input.fromValue(map['lun'] as int),
+      lun: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['lun'])),
       managedDisk: (() { final guardedValue = map['managedDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedDiskParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceResource: (() { final guardedValue = map['sourceResource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApiEntityReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

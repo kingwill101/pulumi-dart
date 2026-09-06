@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The RDS configuration
 class DefenderFoDatabasesAwsOfferingRds {
   /// The cloud role ARN in AWS for this feature
-  final pulumi.Input<String>? cloudRoleArn;
+  final pulumi.Input<String?>? cloudRoleArn;
   /// Is RDS protection enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [DefenderFoDatabasesAwsOfferingRds].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature

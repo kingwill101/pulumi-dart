@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionServicePrincipal {
-  final pulumi.Input<String>? clientId;
-  final pulumi.Input<String>? clientSecret;
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? clientId;
+  final pulumi.Input<String?>? clientSecret;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ConnectionServicePrincipal].
   /// [clientId] Optional.

@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The action of IP ACL rule.
-enum Action {
+enum Action implements pulumi.PulumiEnum<String> {
   valueAllow("Allow");
 
   const Action(this.wireValue);
+  @override
   final String wireValue;
 
   static Action fromValue(String value) {

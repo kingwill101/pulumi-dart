@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of RulesSourceList
 class RulesSourceListResponse {
   /// Property generatedRulesType
-  final pulumi.Input<String>? generatedRulesType;
+  final pulumi.Input<String?>? generatedRulesType;
   /// Property targetTypes
-  final pulumi.Input<List<String>>? targetTypes;
+  final pulumi.Input<List<String>?>? targetTypes;
   /// Property targets
-  final pulumi.Input<List<String>>? targets;
+  final pulumi.Input<List<String>?>? targets;
 
   /// Creates a new [RulesSourceListResponse].
   /// [generatedRulesType] Property generatedRulesType

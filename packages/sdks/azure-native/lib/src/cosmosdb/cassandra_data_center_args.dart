@@ -11,9 +11,9 @@ class CassandraDataCenterArgs {
   /// Managed Cassandra cluster name.
   final pulumi.Input<String> clusterName;
   /// Data center name in a managed Cassandra cluster.
-  final pulumi.Input<String>? dataCenterName;
+  final pulumi.Input<String?>? dataCenterName;
   /// Properties of a managed Cassandra data center.
-  final pulumi.Input<DataCenterResourceProperties>? properties;
+  final pulumi.Input<DataCenterResourceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

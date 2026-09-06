@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The principal type of the assigned principal ID.
-enum PrincipalType {
+enum PrincipalType implements pulumi.PulumiEnum<String> {
   user("User"),
   group("Group"),
   servicePrincipal("ServicePrincipal"),
@@ -9,6 +11,7 @@ enum PrincipalType {
   agentServicePrincipal("AgentServicePrincipal");
 
   const PrincipalType(this.wireValue);
+  @override
   final String wireValue;
 
   static PrincipalType fromValue(String value) {

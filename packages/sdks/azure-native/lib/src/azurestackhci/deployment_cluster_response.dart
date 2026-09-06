@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AzureStackHCI Cluster deployment properties.
 class DeploymentClusterResponse {
   /// For Azure blob service endpoint type, select either Default or Custom domain. If you selected **Custom domain, enter the domain for the blob service in this format core.windows.net.
-  final pulumi.Input<String>? azureServiceEndpoint;
+  final pulumi.Input<String?>? azureServiceEndpoint;
   /// Specify the Azure Storage account name for cloud witness for your Azure Stack HCI cluster.
-  final pulumi.Input<String>? cloudAccountName;
+  final pulumi.Input<String?>? cloudAccountName;
   /// The cluster name provided when preparing Active Directory.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specify the fileshare path for the local witness for your Azure Stack HCI cluster.
-  final pulumi.Input<String>? witnessPath;
+  final pulumi.Input<String?>? witnessPath;
   /// Use a cloud witness if you have internet access and if you use an Azure Storage account to provide a vote on cluster quorum. A cloud witness uses Azure Blob Storage to read or write a blob file and then uses it to arbitrate in split-brain resolution. Only allowed values are 'Cloud', 'FileShare'.
-  final pulumi.Input<String>? witnessType;
+  final pulumi.Input<String?>? witnessType;
 
   /// Creates a new [DeploymentClusterResponse].
   /// [azureServiceEndpoint] For Azure blob service endpoint type, select either Default or Custom domain. If you selected **Custom domain, enter the domain for the blob service in this format core.windows.net.

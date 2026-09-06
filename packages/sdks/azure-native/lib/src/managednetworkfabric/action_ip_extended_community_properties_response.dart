@@ -6,11 +6,11 @@ import 'ip_extended_community_id_list_response.dart';
 /// IP Extended Community Properties.
 class ActionIpExtendedCommunityPropertiesResponse {
   /// List of IP Extended Community IDs.
-  final pulumi.Input<IpExtendedCommunityIdListResponse>? add;
+  final pulumi.Input<IpExtendedCommunityIdListResponse?>? add;
   /// List of IP Extended Community IDs.
-  final pulumi.Input<IpExtendedCommunityIdListResponse>? delete;
+  final pulumi.Input<IpExtendedCommunityIdListResponse?>? delete;
   /// List of IP Extended Community IDs.
-  final pulumi.Input<IpExtendedCommunityIdListResponse>? set;
+  final pulumi.Input<IpExtendedCommunityIdListResponse?>? set;
 
   /// Creates a new [ActionIpExtendedCommunityPropertiesResponse].
   /// [add] List of IP Extended Community IDs.

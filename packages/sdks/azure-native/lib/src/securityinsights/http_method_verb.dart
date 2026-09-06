@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The HTTP method, default value GET.
-enum HttpMethodVerb {
+enum HttpMethodVerb implements pulumi.PulumiEnum<String> {
   valueGET("GET"),
   valuePOST("POST"),
   valuePUT("PUT"),
   valueDELETE("DELETE");
 
   const HttpMethodVerb(this.wireValue);
+  @override
   final String wireValue;
 
   static HttpMethodVerb fromValue(String value) {

@@ -6,13 +6,13 @@ import 'content_hash_response.dart';
 /// Definition of the content source.
 class ContentSourceResponse {
   /// Gets or sets the hash.
-  final pulumi.Input<ContentHashResponse>? hash;
+  final pulumi.Input<ContentHashResponse?>? hash;
   /// Gets or sets the content source type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Gets or sets the value of the content. This is based on the content source type.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
   /// Gets or sets the version of the content.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ContentSourceResponse].
   /// [hash] Gets or sets the hash.

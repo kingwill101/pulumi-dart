@@ -287,4 +287,31 @@ class Table extends pulumi.CustomResource {
     totalRetentionInDaysAsDefault = registerOutput<bool>('totalRetentionInDaysAsDefault');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [Table] resource.
+  Table.reference(String urn)
+    : super(
+        'azure-native:operationalinsights:Table',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    archiveRetentionInDays = registerOutput<int>('archiveRetentionInDays');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    lastPlanModifiedDate = registerOutput<String>('lastPlanModifiedDate');
+    this.name = registerOutput<String>('name');
+    plan = registerOutput<String?>('plan');
+    provisioningState = registerOutput<String>('provisioningState');
+    restoredLogs = registerOutput<RestoredLogsResponse?>('restoredLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestoredLogsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resultStatistics = registerOutput<ResultStatisticsResponse>('resultStatistics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResultStatisticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retentionInDays = registerOutput<int?>('retentionInDays');
+    retentionInDaysAsDefault = registerOutput<bool>('retentionInDaysAsDefault');
+    schema = registerOutput<SchemaResponse?>('schema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchemaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    searchResults = registerOutput<SearchResultsResponse?>('searchResults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchResultsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    totalRetentionInDays = registerOutput<int?>('totalRetentionInDays');
+    totalRetentionInDaysAsDefault = registerOutput<bool>('totalRetentionInDaysAsDefault');
+    type = registerOutput<String>('type');
+  }
 }

@@ -7,7 +7,7 @@ import 'application_accelerator_resource_requests_response.dart';
 class ApplicationAcceleratorComponentResponse {
   final pulumi.Input<List<ApplicationAcceleratorInstanceResponse>> instances;
   final pulumi.Input<String> name;
-  final pulumi.Input<ApplicationAcceleratorResourceRequestsResponse>? resourceRequests;
+  final pulumi.Input<ApplicationAcceleratorResourceRequestsResponse?>? resourceRequests;
 
   /// Creates a new [ApplicationAcceleratorComponentResponse].
   /// [instances] Required.

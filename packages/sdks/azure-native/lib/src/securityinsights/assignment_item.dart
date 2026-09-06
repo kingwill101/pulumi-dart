@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An entity describing a content item.
 class AssignmentItem {
   /// The resource id of the content item
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [AssignmentItem].
   /// [resourceId] The resource id of the content item

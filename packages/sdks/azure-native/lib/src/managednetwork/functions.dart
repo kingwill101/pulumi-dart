@@ -26,6 +26,17 @@ Future<GetManagedNetworkResult> getManagedNetwork(
   return GetManagedNetworkResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedNetworkResult> getManagedNetworkOutput(
+  GetManagedNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetwork:getManagedNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedNetworkResult.fromMap);
+}
+
 /// The Get ManagedNetworkGroups operation gets a Managed Network Group specified by the resource group, Managed Network name, and group name
 ///
 /// Uses Azure REST API version 2019-06-01-preview.
@@ -42,6 +53,17 @@ Future<GetManagedNetworkGroupResult> getManagedNetworkGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedNetworkGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedNetworkGroupResult> getManagedNetworkGroupOutput(
+  GetManagedNetworkGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetwork:getManagedNetworkGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedNetworkGroupResult.fromMap);
 }
 
 /// The Get ManagedNetworkPeeringPolicies operation gets a Managed Network Peering Policy resource, specified by the  resource group, Managed Network name, and peering policy name
@@ -62,6 +84,17 @@ Future<GetManagedNetworkPeeringPolicyResult> getManagedNetworkPeeringPolicy(
   return GetManagedNetworkPeeringPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedNetworkPeeringPolicyResult> getManagedNetworkPeeringPolicyOutput(
+  GetManagedNetworkPeeringPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetwork:getManagedNetworkPeeringPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedNetworkPeeringPolicyResult.fromMap);
+}
+
 /// Get the specified scope assignment.
 ///
 /// Uses Azure REST API version 2019-06-01-preview.
@@ -78,4 +111,15 @@ Future<GetScopeAssignmentResult> getScopeAssignment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetScopeAssignmentResult.fromMap(result);
+}
+
+pulumi.Output<GetScopeAssignmentResult> getScopeAssignmentOutput(
+  GetScopeAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managednetwork:getScopeAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScopeAssignmentResult.fromMap);
 }

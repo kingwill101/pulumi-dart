@@ -8,7 +8,7 @@ class HciRemoteSupportJobPropertiesResponse {
   /// Remote support access level.
   final pulumi.Input<String> accessLevel;
   /// Deployment mode to trigger job.
-  final pulumi.Input<String>? deploymentMode;
+  final pulumi.Input<String?>? deploymentMode;
   /// The UTC date and time at which the job completed.
   final pulumi.Input<String> endTimeUtc;
   /// Remote support expiration timestamp.

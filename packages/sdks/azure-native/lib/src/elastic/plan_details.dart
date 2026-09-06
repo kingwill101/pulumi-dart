@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Plan details of the monitor resource.
 class PlanDetails {
   /// Offer ID of the plan
-  final pulumi.Input<String>? offerID;
+  final pulumi.Input<String?>? offerID;
   /// Plan ID
-  final pulumi.Input<String>? planID;
+  final pulumi.Input<String?>? planID;
   /// Plan Name
-  final pulumi.Input<String>? planName;
+  final pulumi.Input<String?>? planName;
   /// Publisher ID of the plan
-  final pulumi.Input<String>? publisherID;
+  final pulumi.Input<String?>? publisherID;
   /// Term ID of the plan
-  final pulumi.Input<String>? termID;
+  final pulumi.Input<String?>? termID;
 
   /// Creates a new [PlanDetails].
   /// [offerID] Offer ID of the plan

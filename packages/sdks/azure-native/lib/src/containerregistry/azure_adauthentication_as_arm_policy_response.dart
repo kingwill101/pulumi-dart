@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The policy for using ARM audience token for a container registry.
 class AzureADAuthenticationAsArmPolicyResponse {
   /// The value that indicates whether the policy is enabled or not.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [AzureADAuthenticationAsArmPolicyResponse].
   /// [status] The value that indicates whether the policy is enabled or not.
-  const AzureADAuthenticationAsArmPolicyResponse({
-    this.status,
-  });
+  AzureADAuthenticationAsArmPolicyResponse({
+    pulumi.Input<String?>? status,
+  }) : status = status ?? pulumi.Input.fromValue('enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

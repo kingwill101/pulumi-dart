@@ -519,7 +519,35 @@ class EventHubDataConnection extends pulumi.CustomResource {
     dataFormat = registerOutput<String?>('dataFormat');
     databaseRouting = registerOutput<String?>('databaseRouting');
     eventHubResourceId = registerOutput<String>('eventHubResourceId');
-    eventSystemProperties = registerOutput<List<String>?>('eventSystemProperties');
+    eventSystemProperties = registerOutput<List<String>?>('eventSystemProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String?>('location');
+    managedIdentityObjectId = registerOutput<String>('managedIdentityObjectId');
+    managedIdentityResourceId = registerOutput<String?>('managedIdentityResourceId');
+    mappingRuleName = registerOutput<String?>('mappingRuleName');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    retrievalStartDate = registerOutput<String?>('retrievalStartDate');
+    tableName = registerOutput<String?>('tableName');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [EventHubDataConnection] resource.
+  EventHubDataConnection.reference(String urn)
+    : super(
+        'azure-native:kusto:EventHubDataConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    compression = registerOutput<String?>('compression');
+    consumerGroup = registerOutput<String>('consumerGroup');
+    dataFormat = registerOutput<String?>('dataFormat');
+    databaseRouting = registerOutput<String?>('databaseRouting');
+    eventHubResourceId = registerOutput<String>('eventHubResourceId');
+    eventSystemProperties = registerOutput<List<String>?>('eventSystemProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kind = registerOutput<String>('kind');
     location = registerOutput<String?>('location');
     managedIdentityObjectId = registerOutput<String>('managedIdentityObjectId');

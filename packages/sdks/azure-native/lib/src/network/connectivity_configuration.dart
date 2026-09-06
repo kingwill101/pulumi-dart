@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connectivity_configuration_args.dart';
+import 'connectivity_group_item_response.dart';
+import 'hub_response.dart';
 import 'system_data_response.dart';
 
 /// The network manager connectivity configuration resource
@@ -261,7 +263,7 @@ import 'system_data_response.dart';
 /// ```
 class ConnectivityConfiguration extends pulumi.CustomResource {
   /// Groups for configuration
-  late final pulumi.Output<List<Map<String, dynamic>>> appliesToGroups;
+  late final pulumi.Output<List<ConnectivityGroupItemResponse>> appliesToGroups;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Connectivity topology type.
@@ -273,7 +275,7 @@ class ConnectivityConfiguration extends pulumi.CustomResource {
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
   /// List of hubItems
-  late final pulumi.Output<List<Map<String, dynamic>>?> hubs;
+  late final pulumi.Output<List<HubResponse>?> hubs;
   /// Flag if global mesh is supported.
   late final pulumi.Output<String?> isGlobal;
   /// Resource name.
@@ -301,13 +303,37 @@ class ConnectivityConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    appliesToGroups = registerOutput<List<Map<String, dynamic>>>('appliesToGroups');
+    appliesToGroups = registerOutput<List<ConnectivityGroupItemResponse>>('appliesToGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectivityGroupItemResponse>(guardedValue, (value) => ConnectivityGroupItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     connectivityTopology = registerOutput<String>('connectivityTopology');
     deleteExistingPeering = registerOutput<String?>('deleteExistingPeering');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
-    hubs = registerOutput<List<Map<String, dynamic>>?>('hubs');
+    hubs = registerOutput<List<HubResponse>?>('hubs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HubResponse>(guardedValue, (value) => HubResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    isGlobal = registerOutput<String?>('isGlobal');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ConnectivityConfiguration] resource.
+  ConnectivityConfiguration.reference(String urn)
+    : super(
+        'azure-native:network:ConnectivityConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appliesToGroups = registerOutput<List<ConnectivityGroupItemResponse>>('appliesToGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectivityGroupItemResponse>(guardedValue, (value) => ConnectivityGroupItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectivityTopology = registerOutput<String>('connectivityTopology');
+    deleteExistingPeering = registerOutput<String?>('deleteExistingPeering');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    hubs = registerOutput<List<HubResponse>?>('hubs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HubResponse>(guardedValue, (value) => HubResponse.fromMap((value as Map).cast<String, dynamic>())); });
     isGlobal = registerOutput<String?>('isGlobal');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');

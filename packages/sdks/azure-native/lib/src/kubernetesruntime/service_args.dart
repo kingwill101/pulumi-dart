@@ -10,7 +10,7 @@ class ServiceArgs {
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
   /// The name of the the service
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
 
   /// Creates a new [ServiceArgs].
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.

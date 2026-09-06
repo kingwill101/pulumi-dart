@@ -6,13 +6,13 @@ import 'stage_status_response.dart';
 /// Execution Status
 class ExecutionStatusResponse {
   /// target resource statuses
-  final pulumi.Input<List<StageStatusResponse>>? stageHistory;
+  final pulumi.Input<List<StageStatusResponse>?>? stageHistory;
   /// Deployment status
-  final pulumi.Input<int>? status;
+  final pulumi.Input<int?>? status;
   /// status details
-  final pulumi.Input<String>? statusMessage;
+  final pulumi.Input<String?>? statusMessage;
   /// The lastModified timestamp of the Status
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ExecutionStatusResponse].
   /// [stageHistory] target resource statuses
@@ -38,7 +38,7 @@ class ExecutionStatusResponse {
   factory ExecutionStatusResponse.fromMap(Map<String, dynamic> map) {
     return ExecutionStatusResponse(
       stageHistory: (() { final guardedValue = map['stageHistory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<StageStatusResponse>(guardedValue, (value) => StageStatusResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       statusMessage: (() { final guardedValue = map['statusMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

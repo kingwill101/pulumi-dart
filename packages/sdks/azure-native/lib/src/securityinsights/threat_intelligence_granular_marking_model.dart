@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes threat granular marking model entity
 class ThreatIntelligenceGranularMarkingModel {
   /// Language granular marking model
-  final pulumi.Input<String>? language;
+  final pulumi.Input<String?>? language;
   /// marking reference granular marking model
-  final pulumi.Input<int>? markingRef;
+  final pulumi.Input<int?>? markingRef;
   /// granular marking model selectors
-  final pulumi.Input<List<String>>? selectors;
+  final pulumi.Input<List<String>?>? selectors;
 
   /// Creates a new [ThreatIntelligenceGranularMarkingModel].
   /// [language] Language granular marking model
@@ -32,7 +32,7 @@ class ThreatIntelligenceGranularMarkingModel {
   factory ThreatIntelligenceGranularMarkingModel.fromMap(Map<String, dynamic> map) {
     return ThreatIntelligenceGranularMarkingModel(
       language: (() { final guardedValue = map['language']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      markingRef: (() { final guardedValue = map['markingRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      markingRef: (() { final guardedValue = map['markingRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       selectors: (() { final guardedValue = map['selectors']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

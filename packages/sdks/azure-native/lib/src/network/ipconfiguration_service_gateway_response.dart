@@ -9,19 +9,19 @@ class IPConfigurationServiceGatewayResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The private IP address of the IP configuration.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// The private IP address allocation method.
-  final pulumi.Input<String>? privateIPAllocationMethod;
+  final pulumi.Input<String?>? privateIPAllocationMethod;
   /// The provisioning state of the IP configuration resource.
   final pulumi.Input<String> provisioningState;
   /// The reference to the public IP resource.
-  final pulumi.Input<PublicIPAddressServiceGatewayResponse>? publicIPAddress;
+  final pulumi.Input<PublicIPAddressServiceGatewayResponse?>? publicIPAddress;
   /// The reference to the subnet resource.
-  final pulumi.Input<SubnetResponse>? subnet;
+  final pulumi.Input<SubnetResponse?>? subnet;
 
   /// Creates a new [IPConfigurationServiceGatewayResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.

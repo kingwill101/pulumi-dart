@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specific Databases to restore.
 class DatabaseRestoreResourceResponse {
   /// The names of the collections available for restore.
-  final pulumi.Input<List<String>>? collectionNames;
+  final pulumi.Input<List<String>?>? collectionNames;
   /// The name of the database available for restore.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
 
   /// Creates a new [DatabaseRestoreResourceResponse].
   /// [collectionNames] The names of the collections available for restore.

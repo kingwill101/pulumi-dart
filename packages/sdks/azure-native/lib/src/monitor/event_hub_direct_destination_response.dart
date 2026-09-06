@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventHubDirectDestinationResponse {
   /// The resource ID of the event hub.
-  final pulumi.Input<String>? eventHubResourceId;
+  final pulumi.Input<String?>? eventHubResourceId;
   /// A friendly name for the destination.
   /// This name should be unique across all destinations (regardless of type) within the data collection rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [EventHubDirectDestinationResponse].
   /// [eventHubResourceId] The resource ID of the event hub.

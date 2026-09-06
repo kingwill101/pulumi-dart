@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'database_vm_details_response.dart';
 import 'load_balancer_details_response.dart';
 import 'sap_database_instance_args.dart';
 import 'sapvirtual_instance_error_response.dart';
@@ -339,7 +340,7 @@ class SapDatabaseInstance extends pulumi.CustomResource {
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The list of virtual machines corresponding to the Database resource.
-  late final pulumi.Output<List<Map<String, dynamic>>> vmDetails;
+  late final pulumi.Output<List<DatabaseVmDetailsResponse>> vmDetails;
 
   /// Creates a new [SapDatabaseInstance].
   /// [name] The Pulumi resource name.
@@ -367,8 +368,34 @@ class SapDatabaseInstance extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     subnet = registerOutput<String>('subnet');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    vmDetails = registerOutput<List<Map<String, dynamic>>>('vmDetails');
+    vmDetails = registerOutput<List<DatabaseVmDetailsResponse>>('vmDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseVmDetailsResponse>(guardedValue, (value) => DatabaseVmDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [SapDatabaseInstance] resource.
+  SapDatabaseInstance.reference(String urn)
+    : super(
+        'azure-native:workloads:SapDatabaseInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    databaseSid = registerOutput<String>('databaseSid');
+    databaseType = registerOutput<String>('databaseType');
+    errors = registerOutput<SAPVirtualInstanceErrorResponse>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SAPVirtualInstanceErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipAddress = registerOutput<String>('ipAddress');
+    loadBalancerDetails = registerOutput<LoadBalancerDetailsResponse>('loadBalancerDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<String>('status');
+    subnet = registerOutput<String>('subnet');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    vmDetails = registerOutput<List<DatabaseVmDetailsResponse>>('vmDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseVmDetailsResponse>(guardedValue, (value) => DatabaseVmDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

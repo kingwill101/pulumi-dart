@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the storage class.
-enum SCType {
+enum SCType implements pulumi.PulumiEnum<String> {
   native("Native"),
   rWX("RWX"),
   blob("Blob"),
@@ -7,6 +9,7 @@ enum SCType {
   sMB("SMB");
 
   const SCType(this.wireValue);
+  @override
   final String wireValue;
 
   static SCType fromValue(String value) {

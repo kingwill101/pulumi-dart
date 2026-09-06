@@ -11,21 +11,21 @@ import 'vector_index_response.dart';
 /// Cosmos DB indexing policy
 class IndexingPolicyGremlinResourceGremlinGraphResponse {
   /// Indicates if the indexing policy is automatic
-  final pulumi.Input<bool>? automatic;
+  final pulumi.Input<bool?>? automatic;
   /// List of composite path list
-  final pulumi.Input<List<List<CompositePathResponse>>>? compositeIndexes;
+  final pulumi.Input<List<List<CompositePathResponse>>?>? compositeIndexes;
   /// List of paths to exclude from indexing
-  final pulumi.Input<List<ExcludedPathResponse>>? excludedPaths;
+  final pulumi.Input<List<ExcludedPathResponse>?>? excludedPaths;
   /// List of paths to include in the full text indexing
-  final pulumi.Input<List<FullTextIndexPathResponse>>? fullTextIndexes;
+  final pulumi.Input<List<FullTextIndexPathResponse>?>? fullTextIndexes;
   /// List of paths to include in the indexing
-  final pulumi.Input<List<IncludedPathResponse>>? includedPaths;
+  final pulumi.Input<List<IncludedPathResponse>?>? includedPaths;
   /// Indicates the indexing mode.
-  final pulumi.Input<String>? indexingMode;
+  final pulumi.Input<String?>? indexingMode;
   /// List of spatial specifics
-  final pulumi.Input<List<SpatialSpecResponse>>? spatialIndexes;
+  final pulumi.Input<List<SpatialSpecResponse>?>? spatialIndexes;
   /// List of paths to include in the vector indexing
-  final pulumi.Input<List<VectorIndexResponse>>? vectorIndexes;
+  final pulumi.Input<List<VectorIndexResponse>?>? vectorIndexes;
 
   /// Creates a new [IndexingPolicyGremlinResourceGremlinGraphResponse].
   /// [automatic] Indicates if the indexing policy is automatic
@@ -36,16 +36,16 @@ class IndexingPolicyGremlinResourceGremlinGraphResponse {
   /// [indexingMode] Indicates the indexing mode.
   /// [spatialIndexes] List of spatial specifics
   /// [vectorIndexes] List of paths to include in the vector indexing
-  const IndexingPolicyGremlinResourceGremlinGraphResponse({
+  IndexingPolicyGremlinResourceGremlinGraphResponse({
     this.automatic,
     this.compositeIndexes,
     this.excludedPaths,
     this.fullTextIndexes,
     this.includedPaths,
-    this.indexingMode,
+    pulumi.Input<String?>? indexingMode,
     this.spatialIndexes,
     this.vectorIndexes,
-  });
+  }) : indexingMode = indexingMode ?? pulumi.Input.fromValue('consistent');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

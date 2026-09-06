@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes operator to be matched
-enum RemoteAddressOperator {
+enum RemoteAddressOperator implements pulumi.PulumiEnum<String> {
   any("Any"),
   iPMatch("IPMatch"),
   geoMatch("GeoMatch");
 
   const RemoteAddressOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static RemoteAddressOperator fromValue(String value) {

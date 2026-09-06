@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The option associated with messaging flows.
 class MessagingOptions {
   /// Billing tier for this messaging flow
-  final pulumi.Input<String>? billingTier;
+  final pulumi.Input<dynamic>? billingTier;
 
   /// Creates a new [MessagingOptions].
   /// [billingTier] Billing tier for this messaging flow
@@ -21,7 +21,7 @@ class MessagingOptions {
 
   factory MessagingOptions.fromMap(Map<String, dynamic> map) {
     return MessagingOptions(
-      billingTier: (() { final guardedValue = map['billingTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      billingTier: (() { final guardedValue = map['billingTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the type of the Gallery Script parameter. Possible values are: String, Int, Double, Boolean, Enum
-enum GalleryScriptParameterType {
+enum GalleryScriptParameterType implements pulumi.PulumiEnum<String> {
   string_("String"),
   int_("Int"),
   double_("Double"),
@@ -7,6 +9,7 @@ enum GalleryScriptParameterType {
   enum_("Enum");
 
   const GalleryScriptParameterType(this.wireValue);
+  @override
   final String wireValue;
 
   static GalleryScriptParameterType fromValue(String value) {

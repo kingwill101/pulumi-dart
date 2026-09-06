@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// List of supported capabilities persisted on the disk resource for VM use.
 class SupportedCapabilitiesResponse {
   /// True if the image from which the OS disk is created supports accelerated networking.
-  final pulumi.Input<bool>? acceleratedNetwork;
+  final pulumi.Input<bool?>? acceleratedNetwork;
   /// CPU architecture supported by an OS disk.
-  final pulumi.Input<String>? architecture;
+  final pulumi.Input<String?>? architecture;
   /// The disk controllers that an OS disk supports. If set it can be SCSI or SCSI, NVME or NVME, SCSI.
-  final pulumi.Input<String>? diskControllerTypes;
+  final pulumi.Input<String?>? diskControllerTypes;
 
   /// Creates a new [SupportedCapabilitiesResponse].
   /// [acceleratedNetwork] True if the image from which the OS disk is created supports accelerated networking.

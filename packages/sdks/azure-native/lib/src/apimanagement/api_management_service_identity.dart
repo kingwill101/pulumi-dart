@@ -6,12 +6,12 @@ import 'user_identity_properties.dart';
 /// Identity properties of the Api Management service resource.
 class ApiManagementServiceIdentity {
   /// The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
   /// The list of user identities associated with the resource. The user identity
   /// dictionary key references will be ARM resource ids in the form:
   /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
   /// providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  final pulumi.Input<Map<String, UserIdentityProperties>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserIdentityProperties>?>? userAssignedIdentities;
 
   /// Creates a new [ApiManagementServiceIdentity].
   /// [type] The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
@@ -30,7 +30,7 @@ class ApiManagementServiceIdentity {
 
   factory ApiManagementServiceIdentity.fromMap(Map<String, dynamic> map) {
     return ApiManagementServiceIdentity(
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
       userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<UserIdentityProperties>(guardedValue, (value) => UserIdentityProperties.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

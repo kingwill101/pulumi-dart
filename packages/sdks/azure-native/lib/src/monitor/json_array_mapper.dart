@@ -7,11 +7,11 @@ import 'json_mapper_source_field.dart';
 /// A component that allows parsing a value from sourceField as a json array, match a key to each parsed value from keys, and output the key-value map to destinationField field.
 class JsonArrayMapper {
   /// Define a destination field to which the parsed output will be written. The output is a map, it's keys is the given keys array and the matching values are the parsed json array elements.
-  final pulumi.Input<JsonMapperDestinationField>? destinationField;
+  final pulumi.Input<JsonMapperDestinationField?>? destinationField;
   /// Define the names of the keys in the resulting map. The input json array elements are mapped in order, one for every key.
   final pulumi.Input<List<String>> keys;
   /// Define a source field from which a json array will be read and parsed to it's elements. The number of elements in the json array is expected to be the same as the length of keys.
-  final pulumi.Input<JsonMapperSourceField>? sourceField;
+  final pulumi.Input<JsonMapperSourceField?>? sourceField;
 
   /// Creates a new [JsonArrayMapper].
   /// [destinationField] Define a destination field to which the parsed output will be written. The output is a map, it's keys is the given keys array and the matching values are the parsed json array elements.

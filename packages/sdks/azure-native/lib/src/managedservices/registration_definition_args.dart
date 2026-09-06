@@ -10,11 +10,11 @@ import 'registration_definition_properties.dart';
 /// {@macro pulumi_managedservices_registration_definition_args_doc}
 class RegistrationDefinitionArgs {
   /// The details for the Managed Services offer’s plan in Azure Marketplace.
-  final pulumi.Input<Plan>? plan;
+  final pulumi.Input<Plan?>? plan;
   /// The properties of a registration definition.
-  final pulumi.Input<RegistrationDefinitionProperties>? properties;
+  final pulumi.Input<RegistrationDefinitionProperties?>? properties;
   /// The GUID of the registration definition.
-  final pulumi.Input<String>? registrationDefinitionId;
+  final pulumi.Input<String?>? registrationDefinitionId;
   /// The scope of the resource.
   final pulumi.Input<String> scope;
 

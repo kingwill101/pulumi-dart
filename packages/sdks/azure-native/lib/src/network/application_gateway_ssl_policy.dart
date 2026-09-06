@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Application Gateway Ssl policy.
 class ApplicationGatewaySslPolicy {
   /// Ssl cipher suites to be enabled in the specified order to application gateway.
-  final pulumi.Input<List<String>>? cipherSuites;
+  final pulumi.Input<List<dynamic>?>? cipherSuites;
   /// Ssl protocols to be disabled on application gateway.
-  final pulumi.Input<List<String>>? disabledSslProtocols;
+  final pulumi.Input<List<dynamic>?>? disabledSslProtocols;
   /// Minimum version of Ssl protocol to be supported on application gateway.
-  final pulumi.Input<String>? minProtocolVersion;
+  final pulumi.Input<dynamic>? minProtocolVersion;
   /// Name of Ssl predefined policy.
-  final pulumi.Input<String>? policyName;
+  final pulumi.Input<dynamic>? policyName;
   /// Type of Ssl Policy.
-  final pulumi.Input<String>? policyType;
+  final pulumi.Input<dynamic>? policyType;
 
   /// Creates a new [ApplicationGatewaySslPolicy].
   /// [cipherSuites] Ssl cipher suites to be enabled in the specified order to application gateway.
@@ -41,11 +41,11 @@ class ApplicationGatewaySslPolicy {
 
   factory ApplicationGatewaySslPolicy.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewaySslPolicy(
-      cipherSuites: (() { final guardedValue = map['cipherSuites']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      disabledSslProtocols: (() { final guardedValue = map['disabledSslProtocols']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      minProtocolVersion: (() { final guardedValue = map['minProtocolVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      policyName: (() { final guardedValue = map['policyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      policyType: (() { final guardedValue = map['policyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cipherSuites: (() { final guardedValue = map['cipherSuites']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      disabledSslProtocols: (() { final guardedValue = map['disabledSslProtocols']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      minProtocolVersion: (() { final guardedValue = map['minProtocolVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      policyName: (() { final guardedValue = map['policyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      policyType: (() { final guardedValue = map['policyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

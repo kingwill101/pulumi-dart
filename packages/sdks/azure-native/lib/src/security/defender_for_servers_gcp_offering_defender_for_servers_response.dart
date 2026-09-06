@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Defender for servers connection configuration
 class DefenderForServersGcpOfferingDefenderForServersResponse {
   /// The service account email address in GCP for this feature
-  final pulumi.Input<String>? serviceAccountEmailAddress;
+  final pulumi.Input<String?>? serviceAccountEmailAddress;
   /// The workload identity provider id in GCP for this feature
-  final pulumi.Input<String>? workloadIdentityProviderId;
+  final pulumi.Input<String?>? workloadIdentityProviderId;
 
   /// Creates a new [DefenderForServersGcpOfferingDefenderForServersResponse].
   /// [serviceAccountEmailAddress] The service account email address in GCP for this feature

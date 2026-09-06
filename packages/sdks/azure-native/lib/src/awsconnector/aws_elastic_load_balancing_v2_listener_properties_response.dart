@@ -8,23 +8,23 @@ import 'mutual_authentication_response.dart';
 /// Definition of awsElasticLoadBalancingV2Listener
 class AwsElasticLoadBalancingV2ListenerPropertiesResponse {
   /// [TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN) policy.
-  final pulumi.Input<List<String>>? alpnPolicy;
+  final pulumi.Input<List<String>?>? alpnPolicy;
   /// The default SSL server certificate for a secure listener. You must provide exactly one certificate if the listener protocol is HTTPS or TLS. To create a certificate list for a secure listener, use [AWS::ElasticLoadBalancingV2::ListenerCertificate](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenercertificate.html).
-  final pulumi.Input<List<CertificateElasticLoadBalancingV2ListenerResponse>>? certificates;
+  final pulumi.Input<List<CertificateElasticLoadBalancingV2ListenerResponse>?>? certificates;
   /// The actions for the default rule. You cannot define a condition for a default rule. To create additional rules for an Application Load Balancer, use [AWS::ElasticLoadBalancingV2::ListenerRule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenerrule.html).
-  final pulumi.Input<List<ActionResponse>>? defaultActions;
+  final pulumi.Input<List<ActionResponse>?>? defaultActions;
   /// Property listenerArn
-  final pulumi.Input<String>? listenerArn;
+  final pulumi.Input<String?>? listenerArn;
   /// The Amazon Resource Name (ARN) of the load balancer.
-  final pulumi.Input<String>? loadBalancerArn;
+  final pulumi.Input<String?>? loadBalancerArn;
   /// The mutual authentication configuration information. Specifies the configuration information for mutual authentication.
-  final pulumi.Input<MutualAuthenticationResponse>? mutualAuthentication;
+  final pulumi.Input<MutualAuthenticationResponse?>? mutualAuthentication;
   /// The port on which the load balancer is listening. You cannot specify a port for a Gateway Load Balancer.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// The protocol for connections from clients to the load balancer. For Application Load Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers, the supported protocols are TCP, TLS, UDP, and TCP_UDP. You can’t specify the UDP or TCP_UDP protocol if dual-stack mode is enabled. You cannot specify a protocol for a Gateway Load Balancer.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// [HTTPS and TLS listeners] The security policy that defines which protocols and ciphers are supported. Updating the security policy can result in interruptions if the load balancer is handling a high volume of traffic. For more information, see [Security policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies) in the *Application Load Balancers Guide* and [Security policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies) in the *Network Load Balancers Guide*.
-  final pulumi.Input<String>? sslPolicy;
+  final pulumi.Input<String?>? sslPolicy;
 
   /// Creates a new [AwsElasticLoadBalancingV2ListenerPropertiesResponse].
   /// [alpnPolicy] [TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN) policy.
@@ -70,7 +70,7 @@ class AwsElasticLoadBalancingV2ListenerPropertiesResponse {
       listenerArn: (() { final guardedValue = map['listenerArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loadBalancerArn: (() { final guardedValue = map['loadBalancerArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mutualAuthentication: (() { final guardedValue = map['mutualAuthentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MutualAuthenticationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sslPolicy: (() { final guardedValue = map['sslPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

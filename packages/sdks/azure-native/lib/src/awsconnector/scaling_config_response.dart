@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ScalingConfig
 class ScalingConfigResponse {
   /// Property desiredSize
-  final pulumi.Input<int>? desiredSize;
+  final pulumi.Input<int?>? desiredSize;
   /// Property maxSize
-  final pulumi.Input<int>? maxSize;
+  final pulumi.Input<int?>? maxSize;
   /// Property minSize
-  final pulumi.Input<int>? minSize;
+  final pulumi.Input<int?>? minSize;
 
   /// Creates a new [ScalingConfigResponse].
   /// [desiredSize] Property desiredSize
@@ -31,9 +31,9 @@ class ScalingConfigResponse {
 
   factory ScalingConfigResponse.fromMap(Map<String, dynamic> map) {
     return ScalingConfigResponse(
-      desiredSize: (() { final guardedValue = map['desiredSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxSize: (() { final guardedValue = map['maxSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minSize: (() { final guardedValue = map['minSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      desiredSize: (() { final guardedValue = map['desiredSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxSize: (() { final guardedValue = map['maxSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minSize: (() { final guardedValue = map['minSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

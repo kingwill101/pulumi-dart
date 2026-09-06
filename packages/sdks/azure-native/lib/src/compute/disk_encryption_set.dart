@@ -426,7 +426,7 @@ class DiskEncryptionSet extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// A readonly collection of key vault keys previously used by this disk encryption set while a key rotation is in progress. It will be empty if there is no ongoing key rotation.
-  late final pulumi.Output<List<Map<String, dynamic>>> previousKeys;
+  late final pulumi.Output<List<KeyForDiskEncryptionSetResponse>> previousKeys;
   /// The disk encryption set provisioning state.
   late final pulumi.Output<String> provisioningState;
   /// Set this flag to true to enable auto-updating of this disk encryption set to the latest key version.
@@ -461,11 +461,37 @@ class DiskEncryptionSet extends pulumi.CustomResource {
     lastKeyRotationTimestamp = registerOutput<String>('lastKeyRotationTimestamp');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    previousKeys = registerOutput<List<Map<String, dynamic>>>('previousKeys');
+    previousKeys = registerOutput<List<KeyForDiskEncryptionSetResponse>>('previousKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyForDiskEncryptionSetResponse>(guardedValue, (value) => KeyForDiskEncryptionSetResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     rotationToLatestKeyVersionEnabled = registerOutput<bool?>('rotationToLatestKeyVersionEnabled');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DiskEncryptionSet] resource.
+  DiskEncryptionSet.reference(String urn)
+    : super(
+        'azure-native:compute:DiskEncryptionSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activeKey = registerOutput<KeyForDiskEncryptionSetResponse?>('activeKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyForDiskEncryptionSetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoKeyRotationError = registerOutput<ApiErrorResponse>('autoKeyRotationError', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    encryptionType = registerOutput<String?>('encryptionType');
+    federatedClientId = registerOutput<String?>('federatedClientId');
+    identity = registerOutput<EncryptionSetIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionSetIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastKeyRotationTimestamp = registerOutput<String>('lastKeyRotationTimestamp');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    previousKeys = registerOutput<List<KeyForDiskEncryptionSetResponse>>('previousKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyForDiskEncryptionSetResponse>(guardedValue, (value) => KeyForDiskEncryptionSetResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    rotationToLatestKeyVersionEnabled = registerOutput<bool?>('rotationToLatestKeyVersionEnabled');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

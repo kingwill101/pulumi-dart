@@ -244,7 +244,7 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     connectionState = registerOutput<ManagedPrivateEndpointConnectionStateResponse>('connectionState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedPrivateEndpointConnectionStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    groupIds = registerOutput<List<String>?>('groupIds');
+    groupIds = registerOutput<List<String>?>('groupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateLinkResourceId = registerOutput<String?>('privateLinkResourceId');
@@ -254,7 +254,32 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     requestMessage = registerOutput<String?>('requestMessage');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ManagedPrivateEndpoint] resource.
+  ManagedPrivateEndpoint.reference(String urn)
+    : super(
+        'azure-native:dashboard:ManagedPrivateEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectionState = registerOutput<ManagedPrivateEndpointConnectionStateResponse>('connectionState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedPrivateEndpointConnectionStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    groupIds = registerOutput<List<String>?>('groupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateLinkResourceId = registerOutput<String?>('privateLinkResourceId');
+    privateLinkResourceRegion = registerOutput<String?>('privateLinkResourceRegion');
+    privateLinkServicePrivateIP = registerOutput<String>('privateLinkServicePrivateIP');
+    privateLinkServiceUrl = registerOutput<String?>('privateLinkServiceUrl');
+    provisioningState = registerOutput<String>('provisioningState');
+    requestMessage = registerOutput<String?>('requestMessage');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

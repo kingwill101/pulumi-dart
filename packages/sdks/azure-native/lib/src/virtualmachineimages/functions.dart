@@ -24,6 +24,17 @@ Future<GetTriggerResult> getTrigger(
   return GetTriggerResult.fromMap(result);
 }
 
+pulumi.Output<GetTriggerResult> getTriggerOutput(
+  GetTriggerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:virtualmachineimages:getTrigger',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTriggerResult.fromMap);
+}
+
 /// Get information about a virtual machine image template
 ///
 /// Uses Azure REST API version 2024-02-01.
@@ -42,4 +53,15 @@ Future<GetVirtualMachineImageTemplateResult> getVirtualMachineImageTemplate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualMachineImageTemplateResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualMachineImageTemplateResult> getVirtualMachineImageTemplateOutput(
+  GetVirtualMachineImageTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:virtualmachineimages:getVirtualMachineImageTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineImageTemplateResult.fromMap);
 }

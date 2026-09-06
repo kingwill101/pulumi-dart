@@ -1,8 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_blob_storage_sink_connector_service_info_response.dart';
 import 'connector_args.dart';
 import 'connector_info_base_response.dart';
-import 'kafka_azure_blob_storage_sink_connector_info_response.dart';
 import 'system_data_response.dart';
 
 /// Details of connector record
@@ -347,11 +345,11 @@ class Connector extends pulumi.CustomResource {
   /// Connector Info Base
   late final pulumi.Output<ConnectorInfoBaseResponse?> connectorBasicInfo;
   /// Connector Service type info base properties.
-  late final pulumi.Output<AzureBlobStorageSinkConnectorServiceInfoResponse?> connectorServiceTypeInfo;
+  late final pulumi.Output<dynamic> connectorServiceTypeInfo;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The connection information consumed by applications.
-  late final pulumi.Output<KafkaAzureBlobStorageSinkConnectorInfoResponse?> partnerConnectorInfo;
+  late final pulumi.Output<dynamic> partnerConnectorInfo;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -373,9 +371,27 @@ class Connector extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     connectorBasicInfo = registerOutput<ConnectorInfoBaseResponse?>('connectorBasicInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorInfoBaseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    connectorServiceTypeInfo = registerOutput<AzureBlobStorageSinkConnectorServiceInfoResponse?>('connectorServiceTypeInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureBlobStorageSinkConnectorServiceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectorServiceTypeInfo = registerOutput<dynamic>('connectorServiceTypeInfo');
     this.name = registerOutput<String>('name');
-    partnerConnectorInfo = registerOutput<KafkaAzureBlobStorageSinkConnectorInfoResponse?>('partnerConnectorInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaAzureBlobStorageSinkConnectorInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    partnerConnectorInfo = registerOutput<dynamic>('partnerConnectorInfo');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Connector] resource.
+  Connector.reference(String urn)
+    : super(
+        'azure-native:confluent:Connector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectorBasicInfo = registerOutput<ConnectorInfoBaseResponse?>('connectorBasicInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorInfoBaseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectorServiceTypeInfo = registerOutput<dynamic>('connectorServiceTypeInfo');
+    this.name = registerOutput<String>('name');
+    partnerConnectorInfo = registerOutput<dynamic>('partnerConnectorInfo');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

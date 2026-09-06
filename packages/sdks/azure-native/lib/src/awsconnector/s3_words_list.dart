@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of S3WordsList
 class S3WordsList {
   /// Property bucketName
-  final pulumi.Input<String>? bucketName;
+  final pulumi.Input<String?>? bucketName;
   /// Property objectKey
-  final pulumi.Input<String>? objectKey;
+  final pulumi.Input<String?>? objectKey;
 
   /// Creates a new [S3WordsList].
   /// [bucketName] Property bucketName

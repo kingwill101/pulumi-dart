@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IPRuleResponse {
   /// Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
-  final pulumi.Input<String>? addressPrefix;
+  final pulumi.Input<String?>? addressPrefix;
 
   /// Creates a new [IPRuleResponse].
   /// [addressPrefix] Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.

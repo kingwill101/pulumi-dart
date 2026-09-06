@@ -5,34 +5,34 @@ import 'client_credentials_response.dart';
 
 class AzureStorageSectionResponse {
   /// Storage Account Key (Deprecated).
-  final pulumi.Input<String>? accountKey;
+  final pulumi.Input<String?>? accountKey;
   /// Storage Account Name.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// Indicate if we are using Workspace ManagedIdentities/MSI token (Deprecated).
-  final pulumi.Input<bool>? areWorkspaceManagedIdentitiesAllowed;
+  final pulumi.Input<bool?>? areWorkspaceManagedIdentitiesAllowed;
   /// If this is an "DataStoreType.AzureBlob", the length of time (in seconds) to cache files locally after they are accessed (downloaded).
-  final pulumi.Input<int>? blobCacheTimeout;
-  final pulumi.Input<ClientCredentialsResponse>? clientCredentials;
+  final pulumi.Input<int?>? blobCacheTimeout;
+  final pulumi.Input<ClientCredentialsResponse?>? clientCredentials;
   /// The storage container name.
-  final pulumi.Input<String>? containerName;
+  final pulumi.Input<String?>? containerName;
   /// The credential.
-  final pulumi.Input<String>? credential;
+  final pulumi.Input<String?>? credential;
   /// The credential type.
-  final pulumi.Input<String>? credentialType;
+  final pulumi.Input<String?>? credentialType;
   /// The host of the container.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// Indicate if we are using SAS token or Account Key (Deprecated).
-  final pulumi.Input<bool>? isSas;
+  final pulumi.Input<bool?>? isSas;
   /// The protocol to use. Defaults to https.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Resource Group.
-  final pulumi.Input<String>? resourceGroup;
+  final pulumi.Input<String?>? resourceGroup;
   /// SAS Token for the container (Deprecated).
-  final pulumi.Input<String>? sasToken;
+  final pulumi.Input<String?>? sasToken;
   /// Indicates which identity to use to authenticate service data access to customer's storage.
-  final pulumi.Input<String>? serviceDataAccessAuthIdentity;
+  final pulumi.Input<String?>? serviceDataAccessAuthIdentity;
   /// Subscription ID.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [AzureStorageSectionResponse].
   /// [accountKey] Storage Account Key (Deprecated).
@@ -93,7 +93,7 @@ class AzureStorageSectionResponse {
       accountKey: (() { final guardedValue = map['accountKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       areWorkspaceManagedIdentitiesAllowed: (() { final guardedValue = map['areWorkspaceManagedIdentitiesAllowed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      blobCacheTimeout: (() { final guardedValue = map['blobCacheTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      blobCacheTimeout: (() { final guardedValue = map['blobCacheTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       clientCredentials: (() { final guardedValue = map['clientCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClientCredentialsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       containerName: (() { final guardedValue = map['containerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       credential: (() { final guardedValue = map['credential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

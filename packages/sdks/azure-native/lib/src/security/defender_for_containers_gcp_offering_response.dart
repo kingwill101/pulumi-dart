@@ -10,26 +10,26 @@ import 'defender_for_containers_gcp_offering_vm_scanners_response.dart';
 /// The containers GCP offering
 class DefenderForContainersGcpOfferingResponse {
   /// The native cloud connection configuration
-  final pulumi.Input<DefenderForContainersGcpOfferingDataPipelineNativeCloudConnectionResponse>? dataPipelineNativeCloudConnection;
+  final pulumi.Input<DefenderForContainersGcpOfferingDataPipelineNativeCloudConnectionResponse?>? dataPipelineNativeCloudConnection;
   /// The offering description.
   final pulumi.Input<String> description;
   /// Is audit logs data collection enabled
-  final pulumi.Input<bool>? enableAuditLogsAutoProvisioning;
+  final pulumi.Input<bool?>? enableAuditLogsAutoProvisioning;
   /// Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
-  final pulumi.Input<bool>? enableDefenderAgentAutoProvisioning;
+  final pulumi.Input<bool?>? enableDefenderAgentAutoProvisioning;
   /// Is Policy Kubernetes agent auto provisioning enabled
-  final pulumi.Input<bool>? enablePolicyAgentAutoProvisioning;
+  final pulumi.Input<bool?>? enablePolicyAgentAutoProvisioning;
   /// The Microsoft Defender Container agentless discovery configuration
-  final pulumi.Input<DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8SResponse>? mdcContainersAgentlessDiscoveryK8S;
+  final pulumi.Input<DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8SResponse?>? mdcContainersAgentlessDiscoveryK8S;
   /// The Microsoft Defender Container image assessment configuration
-  final pulumi.Input<DefenderForContainersGcpOfferingMdcContainersImageAssessmentResponse>? mdcContainersImageAssessment;
+  final pulumi.Input<DefenderForContainersGcpOfferingMdcContainersImageAssessmentResponse?>? mdcContainersImageAssessment;
   /// The native cloud connection configuration
-  final pulumi.Input<DefenderForContainersGcpOfferingNativeCloudConnectionResponse>? nativeCloudConnection;
+  final pulumi.Input<DefenderForContainersGcpOfferingNativeCloudConnectionResponse?>? nativeCloudConnection;
   /// The type of the security offering.
   /// Expected value is 'DefenderForContainersGcp'.
   final pulumi.Input<String> offeringType;
   /// The Microsoft Defender for Container K8s VM host scanning configuration
-  final pulumi.Input<DefenderForContainersGcpOfferingVmScannersResponse>? vmScanners;
+  final pulumi.Input<DefenderForContainersGcpOfferingVmScannersResponse?>? vmScanners;
 
   /// Creates a new [DefenderForContainersGcpOfferingResponse].
   /// [dataPipelineNativeCloudConnection] The native cloud connection configuration

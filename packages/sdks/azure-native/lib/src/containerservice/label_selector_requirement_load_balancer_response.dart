@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 class LabelSelectorRequirementLoadBalancerResponse {
   /// key is the label key that the selector applies to.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// operator represents a key's relationship to a set of values. Valid operators are In and NotIn
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
   /// values is an array of string values, the values array must be non-empty.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [LabelSelectorRequirementLoadBalancerResponse].
   /// [key] key is the label key that the selector applies to.

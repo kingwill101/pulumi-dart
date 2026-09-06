@@ -13,9 +13,9 @@ class TableArgs {
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// List of stored access policies specified on the table.
-  final pulumi.Input<List<TableSignedIdentifier>>? signedIdentifiers;
+  final pulumi.Input<List<TableSignedIdentifier>?>? signedIdentifiers;
   /// A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
-  final pulumi.Input<String>? tableName;
+  final pulumi.Input<String?>? tableName;
 
   /// Creates a new [TableArgs].
   /// [accountName] The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.

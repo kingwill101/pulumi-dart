@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Tls properties
 class TlsPropertiesResponse {
   /// Mode for TLS.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Trusted CA certificate config map.
-  final pulumi.Input<String>? trustedCaCertificateConfigMapRef;
+  final pulumi.Input<String?>? trustedCaCertificateConfigMapRef;
 
   /// Creates a new [TlsPropertiesResponse].
   /// [mode] Mode for TLS.
   /// [trustedCaCertificateConfigMapRef] Trusted CA certificate config map.
-  const TlsPropertiesResponse({
-    this.mode,
+  TlsPropertiesResponse({
+    pulumi.Input<String?>? mode,
     this.trustedCaCertificateConfigMapRef,
-  });
+  }) : mode = mode ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

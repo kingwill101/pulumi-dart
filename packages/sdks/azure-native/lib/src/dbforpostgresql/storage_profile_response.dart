@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Storage Profile properties of a server
 class StorageProfileResponse {
   /// Backup retention days for the server.
-  final pulumi.Input<int>? backupRetentionDays;
+  final pulumi.Input<int?>? backupRetentionDays;
   /// Enable Geo-redundant or not for server backup.
-  final pulumi.Input<String>? geoRedundantBackup;
+  final pulumi.Input<String?>? geoRedundantBackup;
   /// Enable Storage Auto Grow.
-  final pulumi.Input<String>? storageAutogrow;
+  final pulumi.Input<String?>? storageAutogrow;
   /// Max storage allowed for a server.
-  final pulumi.Input<int>? storageMB;
+  final pulumi.Input<int?>? storageMB;
 
   /// Creates a new [StorageProfileResponse].
   /// [backupRetentionDays] Backup retention days for the server.
@@ -36,10 +36,10 @@ class StorageProfileResponse {
 
   factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return StorageProfileResponse(
-      backupRetentionDays: (() { final guardedValue = map['backupRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      backupRetentionDays: (() { final guardedValue = map['backupRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       geoRedundantBackup: (() { final guardedValue = map['geoRedundantBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageAutogrow: (() { final guardedValue = map['storageAutogrow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageMB: (() { final guardedValue = map['storageMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      storageMB: (() { final guardedValue = map['storageMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

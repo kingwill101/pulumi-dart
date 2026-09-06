@@ -7,15 +7,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProxyAgentSettingsResponse {
   /// Specifies whether ProxyAgent feature should be enabled on the virtual machine
   /// or virtual machine scale set.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Increase the value of this property allows user to reset the key used for
   /// securing communication channel between guest and host.
-  final pulumi.Input<int>? keyIncarnationId;
+  final pulumi.Input<int?>? keyIncarnationId;
   /// Specifies the mode that ProxyAgent will execute on if the feature is enabled.
   /// ProxyAgent will start to audit or monitor but not enforce access control over
   /// requests to host endpoints in Audit mode, while in Enforce mode it will enforce
   /// access control. The default value is Enforce mode.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
 
   /// Creates a new [ProxyAgentSettingsResponse].
   /// [enabled] Specifies whether ProxyAgent feature should be enabled on the virtual machine
@@ -38,7 +38,7 @@ class ProxyAgentSettingsResponse {
   factory ProxyAgentSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ProxyAgentSettingsResponse(
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      keyIncarnationId: (() { final guardedValue = map['keyIncarnationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      keyIncarnationId: (() { final guardedValue = map['keyIncarnationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

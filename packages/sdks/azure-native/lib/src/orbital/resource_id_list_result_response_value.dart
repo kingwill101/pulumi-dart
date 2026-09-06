@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceIdListResultResponseValue {
   /// The Azure Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [ResourceIdListResultResponseValue].
   /// [id] The Azure Resource ID.

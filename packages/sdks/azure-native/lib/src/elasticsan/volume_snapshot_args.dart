@@ -15,7 +15,7 @@ class VolumeSnapshotArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the volume snapshot within the given volume group.
-  final pulumi.Input<String>? snapshotName;
+  final pulumi.Input<String?>? snapshotName;
   /// The name of the VolumeGroup.
   final pulumi.Input<String> volumeGroupName;
 

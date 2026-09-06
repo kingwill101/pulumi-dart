@@ -182,4 +182,19 @@ class TrustedIdProvider extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [TrustedIdProvider] resource.
+  TrustedIdProvider.reference(String urn)
+    : super(
+        'azure-native:datalakestore:TrustedIdProvider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    idProvider = registerOutput<String>('idProvider');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+  }
 }

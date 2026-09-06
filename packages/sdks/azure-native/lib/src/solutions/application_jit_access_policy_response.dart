@@ -8,11 +8,11 @@ class ApplicationJitAccessPolicyResponse {
   /// Whether the JIT access is enabled.
   final pulumi.Input<bool> jitAccessEnabled;
   /// JIT approval mode.
-  final pulumi.Input<String>? jitApprovalMode;
+  final pulumi.Input<String?>? jitApprovalMode;
   /// The JIT approvers
-  final pulumi.Input<List<JitApproverDefinitionResponse>>? jitApprovers;
+  final pulumi.Input<List<JitApproverDefinitionResponse>?>? jitApprovers;
   /// The maximum duration JIT access is granted. This is an ISO8601 time period value.
-  final pulumi.Input<String>? maximumJitAccessDuration;
+  final pulumi.Input<String?>? maximumJitAccessDuration;
 
   /// Creates a new [ApplicationJitAccessPolicyResponse].
   /// [jitAccessEnabled] Whether the JIT access is enabled.

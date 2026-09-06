@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
-enum PublicNetworkAccessType {
+enum PublicNetworkAccessType implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled"),
   valueSecuredByPerimeter("SecuredByPerimeter");
 
   const PublicNetworkAccessType(this.wireValue);
+  @override
   final String wireValue;
 
   static PublicNetworkAccessType fromValue(String value) {

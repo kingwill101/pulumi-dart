@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_backup_rule_response.dart';
 
 /// Rule based backup policy
 class BackupPolicyResponse {
@@ -10,7 +9,7 @@ class BackupPolicyResponse {
   /// Expected value is 'BackupPolicy'.
   final pulumi.Input<String> objectType;
   /// Policy rule dictionary that contains rules for each backuptype i.e Full/Incremental/Logs etc
-  final pulumi.Input<List<AzureBackupRuleResponse>> policyRules;
+  final pulumi.Input<List<dynamic>> policyRules;
 
   /// Creates a new [BackupPolicyResponse].
   /// [datasourceTypes] Type of datasource for the backup management
@@ -26,7 +25,7 @@ class BackupPolicyResponse {
     return <String, dynamic>{
       'datasourceTypes': datasourceTypes,
       'objectType': objectType,
-      'policyRules': pulumi.Input.mapInputValue<List<AzureBackupRuleResponse>, List<Map<String, dynamic>>>(policyRules, (value) => pulumi.Input.encodeList<AzureBackupRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'policyRules': policyRules,
     };
   }
 
@@ -34,7 +33,7 @@ class BackupPolicyResponse {
     return BackupPolicyResponse(
       datasourceTypes: pulumi.Input.fromValue((map['datasourceTypes'] as List).cast<String>()),
       objectType: pulumi.Input.fromValue(map['objectType'] as String),
-      policyRules: pulumi.Input.fromValue(pulumi.Input.decodeList<AzureBackupRuleResponse>(map['policyRules']!, (value) => AzureBackupRuleResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      policyRules: pulumi.Input.fromValue((map['policyRules'] as List).cast<dynamic>()),
     );
   }
 }

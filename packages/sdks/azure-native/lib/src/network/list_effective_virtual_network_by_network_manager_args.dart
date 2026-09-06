@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_list_effective_virtual_network_by_network_manager_args_doc}
 class ListEffectiveVirtualNetworkByNetworkManagerArgs {
   /// Conditional Members.
-  final pulumi.Input<String>? conditionalMembers;
+  final pulumi.Input<String?>? conditionalMembers;
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Continuation token for pagination, capturing the next page size and offset, as well as the context of the query.
-  final pulumi.Input<String>? skipToken;
+  final pulumi.Input<String?>? skipToken;
   /// An optional query parameter which specifies the maximum number of records to be returned by the server.
-  final pulumi.Input<int>? top;
+  final pulumi.Input<int?>? top;
 
   /// Creates a new [ListEffectiveVirtualNetworkByNetworkManagerArgs].
   /// [conditionalMembers] Conditional Members.
@@ -48,7 +48,7 @@ class ListEffectiveVirtualNetworkByNetworkManagerArgs {
       networkManagerName: pulumi.Input.fromValue(map['networkManagerName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       skipToken: (() { final guardedValue = map['skipToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Preview features that can be enabled on a mongo cluster.
-enum PreviewFeature {
+enum PreviewFeature implements pulumi.PulumiEnum<String> {
   geoReplicas("GeoReplicas");
 
   const PreviewFeature(this.wireValue);
+  @override
   final String wireValue;
 
   static PreviewFeature fromValue(String value) {

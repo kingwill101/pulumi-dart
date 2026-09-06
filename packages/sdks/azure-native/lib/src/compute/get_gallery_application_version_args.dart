@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_get_gallery_application_version_args_doc}
 class GetGalleryApplicationVersionArgs {
   /// The expand expression to apply on the operation.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the gallery Application Definition to be retrieved.
   final pulumi.Input<String> galleryApplicationName;
   /// The name of the gallery Application Version to be retrieved.

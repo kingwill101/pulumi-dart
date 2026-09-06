@@ -32,6 +32,17 @@ Future<GetConditionalCreditResult> getConditionalCredit(
   return GetConditionalCreditResult.fromMap(result);
 }
 
+pulumi.Output<GetConditionalCreditResult> getConditionalCreditOutput(
+  GetConditionalCreditArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:billingbenefits:getConditionalCredit',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConditionalCreditResult.fromMap);
+}
+
 /// Get a credit.
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
@@ -50,6 +61,17 @@ Future<GetCreditResult> getCredit(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCreditResult.fromMap(result);
+}
+
+pulumi.Output<GetCreditResult> getCreditOutput(
+  GetCreditArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:billingbenefits:getCredit',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCreditResult.fromMap);
 }
 
 /// Get discount at resource group level
@@ -72,6 +94,17 @@ Future<GetDiscountResult> getDiscount(
   return GetDiscountResult.fromMap(result);
 }
 
+pulumi.Output<GetDiscountResult> getDiscountOutput(
+  GetDiscountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:billingbenefits:getDiscount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiscountResult.fromMap);
+}
+
 /// This operation retrieves properties for free services.
 ///
 /// Uses Azure REST API version 2025-12-01-preview.
@@ -90,6 +123,17 @@ Future<GetFreeServiceResult> getFreeService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFreeServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetFreeServiceResult> getFreeServiceOutput(
+  GetFreeServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:billingbenefits:getFreeService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFreeServiceResult.fromMap);
 }
 
 /// Get a MACC.
@@ -112,6 +156,17 @@ Future<GetMaccResult> getMacc(
   return GetMaccResult.fromMap(result);
 }
 
+pulumi.Output<GetMaccResult> getMaccOutput(
+  GetMaccArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:billingbenefits:getMacc',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMaccResult.fromMap);
+}
+
 /// Get a credit source.
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
@@ -130,4 +185,15 @@ Future<GetSourceResult> getSource(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSourceResult.fromMap(result);
+}
+
+pulumi.Output<GetSourceResult> getSourceOutput(
+  GetSourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:billingbenefits:getSource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSourceResult.fromMap);
 }

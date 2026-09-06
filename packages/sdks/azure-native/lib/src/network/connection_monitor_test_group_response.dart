@@ -7,7 +7,7 @@ class ConnectionMonitorTestGroupResponse {
   /// List of destination endpoint names.
   final pulumi.Input<List<String>> destinations;
   /// Value indicating whether test group is disabled.
-  final pulumi.Input<bool>? disable;
+  final pulumi.Input<bool?>? disable;
   /// The name of the connection monitor test group.
   final pulumi.Input<String> name;
   /// List of source endpoint names.

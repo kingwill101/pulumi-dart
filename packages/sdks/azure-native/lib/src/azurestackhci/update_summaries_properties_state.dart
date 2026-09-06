@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Overall update state of the stamp.
-enum UpdateSummariesPropertiesState {
+enum UpdateSummariesPropertiesState implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueAppliedSuccessfully("AppliedSuccessfully"),
   valueUpdateAvailable("UpdateAvailable"),
@@ -10,6 +12,7 @@ enum UpdateSummariesPropertiesState {
   valuePreparationFailed("PreparationFailed");
 
   const UpdateSummariesPropertiesState(this.wireValue);
+  @override
   final String wireValue;
 
   static UpdateSummariesPropertiesState fromValue(String value) {

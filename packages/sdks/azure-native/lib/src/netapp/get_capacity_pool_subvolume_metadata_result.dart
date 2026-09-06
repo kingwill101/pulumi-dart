@@ -12,11 +12,11 @@ class GetCapacityPoolSubvolumeMetadataResult {
   /// Creation time and date
   final String? creationTimeStamp;
   /// Resource Id
-  final String id;
+  final String? id;
   /// Most recent modification time and date
   final String? modifiedTimeStamp;
   /// Resource name
-  final String name;
+  final String? name;
   /// Path to the parent subvolume
   final String? parentPath;
   /// Path to the subvolume
@@ -28,7 +28,7 @@ class GetCapacityPoolSubvolumeMetadataResult {
   /// Size of subvolume
   final double? size;
   /// Resource type
-  final String type;
+  final String? type;
 
   /// Creates a new [GetCapacityPoolSubvolumeMetadataResult].
   /// [accessedTimeStamp] Most recent access time and date
@@ -49,15 +49,15 @@ class GetCapacityPoolSubvolumeMetadataResult {
     this.bytesUsed,
     this.changedTimeStamp,
     this.creationTimeStamp,
-    required this.id,
+    this.id,
     this.modifiedTimeStamp,
-    required this.name,
+    this.name,
     this.parentPath,
     this.path,
     this.permissions,
     this.provisioningState,
     this.size,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
@@ -66,33 +66,33 @@ class GetCapacityPoolSubvolumeMetadataResult {
       'bytesUsed': ?bytesUsed,
       'changedTimeStamp': ?changedTimeStamp,
       'creationTimeStamp': ?creationTimeStamp,
-      'id': id,
+      'id': ?id,
       'modifiedTimeStamp': ?modifiedTimeStamp,
-      'name': name,
+      'name': ?name,
       'parentPath': ?parentPath,
       'path': ?path,
       'permissions': ?permissions,
       'provisioningState': ?provisioningState,
       'size': ?size,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetCapacityPoolSubvolumeMetadataResult.fromMap(Map<String, dynamic> map) {
     return GetCapacityPoolSubvolumeMetadataResult(
       accessedTimeStamp: (() { final guardedValue = map['accessedTimeStamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      bytesUsed: (() { final guardedValue = map['bytesUsed']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      bytesUsed: (() { final guardedValue = map['bytesUsed']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       changedTimeStamp: (() { final guardedValue = map['changedTimeStamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
       creationTimeStamp: (() { final guardedValue = map['creationTimeStamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       modifiedTimeStamp: (() { final guardedValue = map['modifiedTimeStamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       parentPath: (() { final guardedValue = map['parentPath']; if (guardedValue == null) return null; return guardedValue as String; })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return guardedValue as String; })(),
       permissions: (() { final guardedValue = map['permissions']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return guardedValue as double; })(),
-      type: map['type'] as String,
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

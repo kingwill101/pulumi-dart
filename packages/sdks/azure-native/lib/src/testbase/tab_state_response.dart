@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies current state of tabs.
 class TabStateResponse {
   /// Current tab.
-  final pulumi.Input<String>? currentTab;
+  final pulumi.Input<String?>? currentTab;
   /// visited tabs.
-  final pulumi.Input<List<String>>? visitedTabs;
+  final pulumi.Input<List<String>?>? visitedTabs;
 
   /// Creates a new [TabStateResponse].
   /// [currentTab] Current tab.

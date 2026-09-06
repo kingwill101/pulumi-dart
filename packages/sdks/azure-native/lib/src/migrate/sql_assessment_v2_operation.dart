@@ -570,4 +570,57 @@ class SqlAssessmentV2Operation extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     updatedTimestamp = registerOutput<String>('updatedTimestamp');
   }
+
+  /// Creates a typed reference to an existing [SqlAssessmentV2Operation] resource.
+  SqlAssessmentV2Operation.reference(String urn)
+    : super(
+        'azure-native:migrate:SqlAssessmentV2Operation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assessmentType = registerOutput<String?>('assessmentType');
+    asyncCommitModeIntent = registerOutput<String?>('asyncCommitModeIntent');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureLocation = registerOutput<String?>('azureLocation');
+    azureOfferCode = registerOutput<String?>('azureOfferCode');
+    azureOfferCodeForVm = registerOutput<String?>('azureOfferCodeForVm');
+    azureSecurityOfferingType = registerOutput<String?>('azureSecurityOfferingType');
+    azureSqlDatabaseSettings = registerOutput<SqlDbSettingsResponse?>('azureSqlDatabaseSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlDbSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureSqlManagedInstanceSettings = registerOutput<SqlMiSettingsResponse?>('azureSqlManagedInstanceSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlMiSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureSqlVmSettings = registerOutput<SqlVmSettingsResponse?>('azureSqlVmSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlVmSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    confidenceRatingInPercentage = registerOutput<double?>('confidenceRatingInPercentage');
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    currency = registerOutput<String?>('currency');
+    disasterRecoveryLocation = registerOutput<String?>('disasterRecoveryLocation');
+    discountPercentage = registerOutput<double?>('discountPercentage');
+    eaSubscriptionId = registerOutput<String?>('eaSubscriptionId');
+    enableHadrAssessment = registerOutput<bool?>('enableHadrAssessment');
+    entityUptime = registerOutput<EntityUptimeResponse?>('entityUptime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntityUptimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    environmentType = registerOutput<String?>('environmentType');
+    groupType = registerOutput<String?>('groupType');
+    isInternetAccessAvailable = registerOutput<bool?>('isInternetAccessAvailable');
+    multiSubnetIntent = registerOutput<String?>('multiSubnetIntent');
+    this.name = registerOutput<String>('name');
+    optimizationLogic = registerOutput<String?>('optimizationLogic');
+    osLicense = registerOutput<String?>('osLicense');
+    percentile = registerOutput<String?>('percentile');
+    perfDataEndTime = registerOutput<String?>('perfDataEndTime');
+    perfDataStartTime = registerOutput<String?>('perfDataStartTime');
+    pricesTimestamp = registerOutput<String>('pricesTimestamp');
+    provisioningState = registerOutput<String?>('provisioningState');
+    reservedInstance = registerOutput<String?>('reservedInstance');
+    reservedInstanceForVm = registerOutput<String?>('reservedInstanceForVm');
+    scalingFactor = registerOutput<double?>('scalingFactor');
+    schemaVersion = registerOutput<String>('schemaVersion');
+    sizingCriterion = registerOutput<String?>('sizingCriterion');
+    sqlServerLicense = registerOutput<String?>('sqlServerLicense');
+    stage = registerOutput<String>('stage');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeRange = registerOutput<String?>('timeRange');
+    type = registerOutput<String>('type');
+    updatedTimestamp = registerOutput<String>('updatedTimestamp');
+  }
 }

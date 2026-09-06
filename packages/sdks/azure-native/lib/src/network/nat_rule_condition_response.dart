@@ -5,22 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Rule condition of type nat.
 class NatRuleConditionResponse {
   /// Description of the rule condition.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of destination IP addresses or Service Tags.
-  final pulumi.Input<List<String>>? destinationAddresses;
+  final pulumi.Input<List<String>?>? destinationAddresses;
   /// List of destination ports.
-  final pulumi.Input<List<String>>? destinationPorts;
+  final pulumi.Input<List<String>?>? destinationPorts;
   /// Array of FirewallPolicyRuleConditionNetworkProtocols.
-  final pulumi.Input<List<String>>? ipProtocols;
+  final pulumi.Input<List<String>?>? ipProtocols;
   /// Name of the rule condition.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Rule Condition Type.
   /// Expected value is 'NatRuleCondition'.
   final pulumi.Input<String> ruleConditionType;
   /// List of source IP addresses for this rule.
-  final pulumi.Input<List<String>>? sourceAddresses;
+  final pulumi.Input<List<String>?>? sourceAddresses;
   /// List of source IpGroups for this rule.
-  final pulumi.Input<List<String>>? sourceIpGroups;
+  final pulumi.Input<List<String>?>? sourceIpGroups;
 
   /// Creates a new [NatRuleConditionResponse].
   /// [description] Description of the rule condition.

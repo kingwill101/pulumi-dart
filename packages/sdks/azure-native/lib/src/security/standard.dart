@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'standard_args.dart';
+import 'standard_component_properties_response.dart';
 import 'system_data_response.dart';
 
 /// Security Standard on a resource
@@ -232,7 +233,7 @@ class Standard extends pulumi.CustomResource {
   /// category of the standard provided
   late final pulumi.Output<String?> category;
   /// List of component objects containing component unique keys (such as assessment keys) to apply to standard scope.  Currently only supports assessment keys.
-  late final pulumi.Output<List<Map<String, dynamic>>?> components;
+  late final pulumi.Output<List<StandardComponentPropertiesResponse>?> components;
   /// description of the standard
   late final pulumi.Output<String?> description;
   /// display name of the standard, equivalent to the standardId
@@ -272,7 +273,7 @@ class Standard extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     category = registerOutput<String?>('category');
-    components = registerOutput<List<Map<String, dynamic>>?>('components');
+    components = registerOutput<List<StandardComponentPropertiesResponse>?>('components', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StandardComponentPropertiesResponse>(guardedValue, (value) => StandardComponentPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     etag = registerOutput<String?>('etag');
@@ -280,9 +281,34 @@ class Standard extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     standardType = registerOutput<String>('standardType');
-    supportedClouds = registerOutput<List<String>?>('supportedClouds');
+    supportedClouds = registerOutput<List<String>?>('supportedClouds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Standard] resource.
+  Standard.reference(String urn)
+    : super(
+        'azure-native:security:Standard',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    category = registerOutput<String?>('category');
+    components = registerOutput<List<StandardComponentPropertiesResponse>?>('components', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StandardComponentPropertiesResponse>(guardedValue, (value) => StandardComponentPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    etag = registerOutput<String?>('etag');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    standardType = registerOutput<String>('standardType');
+    supportedClouds = registerOutput<List<String>?>('supportedClouds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

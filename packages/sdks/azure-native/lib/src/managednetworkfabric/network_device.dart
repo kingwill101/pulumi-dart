@@ -263,7 +263,36 @@ class NetworkDevice extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     serialNumber = registerOutput<String>('serialNumber');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [NetworkDevice] resource.
+  NetworkDevice.reference(String urn)
+    : super(
+        'azure-native:managednetworkfabric:NetworkDevice',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    administrativeState = registerOutput<String>('administrativeState');
+    annotation = registerOutput<String?>('annotation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationState = registerOutput<String>('configurationState');
+    hostName = registerOutput<String?>('hostName');
+    location = registerOutput<String>('location');
+    managementIpv4Address = registerOutput<String>('managementIpv4Address');
+    managementIpv6Address = registerOutput<String>('managementIpv6Address');
+    this.name = registerOutput<String>('name');
+    networkDeviceRole = registerOutput<String>('networkDeviceRole');
+    networkDeviceSku = registerOutput<String?>('networkDeviceSku');
+    networkRackId = registerOutput<String>('networkRackId');
+    provisioningState = registerOutput<String>('provisioningState');
+    serialNumber = registerOutput<String>('serialNumber');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');
   }

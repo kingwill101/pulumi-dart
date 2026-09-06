@@ -7,13 +7,13 @@ import 'network_profile_for_snapshot_response.dart';
 /// managed cluster properties for snapshot, these properties are read only.
 class ManagedClusterPropertiesForSnapshotResponse {
   /// Whether the cluster has enabled Kubernetes Role-Based Access Control or not.
-  final pulumi.Input<bool>? enableRbac;
+  final pulumi.Input<bool?>? enableRbac;
   /// The current kubernetes version.
-  final pulumi.Input<String>? kubernetesVersion;
+  final pulumi.Input<String?>? kubernetesVersion;
   /// The current network profile.
   final pulumi.Input<NetworkProfileForSnapshotResponse> networkProfile;
   /// The current managed cluster sku.
-  final pulumi.Input<ManagedClusterSKUResponse>? sku;
+  final pulumi.Input<ManagedClusterSKUResponse?>? sku;
 
   /// Creates a new [ManagedClusterPropertiesForSnapshotResponse].
   /// [enableRbac] Whether the cluster has enabled Kubernetes Role-Based Access Control or not.

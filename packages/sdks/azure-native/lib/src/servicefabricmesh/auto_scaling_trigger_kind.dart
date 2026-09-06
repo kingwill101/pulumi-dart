@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of auto scaling trigger
-enum AutoScalingTriggerKind {
+enum AutoScalingTriggerKind implements pulumi.PulumiEnum<String> {
   valueAverageLoad("AverageLoad");
 
   const AutoScalingTriggerKind(this.wireValue);
+  @override
   final String wireValue;
 
   static AutoScalingTriggerKind fromValue(String value) {

@@ -148,4 +148,19 @@ class TrafficManagerUserMetricsKey extends pulumi.CustomResource {
     this.name = registerOutput<String?>('name');
     type = registerOutput<String?>('type');
   }
+
+  /// Creates a typed reference to an existing [TrafficManagerUserMetricsKey] resource.
+  TrafficManagerUserMetricsKey.reference(String urn)
+    : super(
+        'azure-native:trafficmanager:TrafficManagerUserMetricsKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    key = registerOutput<String?>('key');
+    this.name = registerOutput<String?>('name');
+    type = registerOutput<String?>('type');
+  }
 }

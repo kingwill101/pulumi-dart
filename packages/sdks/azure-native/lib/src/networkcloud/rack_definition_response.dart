@@ -6,19 +6,19 @@ import 'storage_appliance_configuration_data_response.dart';
 
 class RackDefinitionResponse {
   /// The zone name used for this rack when created. Availability zones are used for workload placement.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// The unordered list of bare metal machine configuration.
-  final pulumi.Input<List<BareMetalMachineConfigurationDataResponse>>? bareMetalMachineConfigurationData;
+  final pulumi.Input<List<BareMetalMachineConfigurationDataResponse>?>? bareMetalMachineConfigurationData;
   /// The resource ID of the network rack that matches this rack definition.
   final pulumi.Input<String> networkRackId;
   /// The free-form description of the rack's location.
-  final pulumi.Input<String>? rackLocation;
+  final pulumi.Input<String?>? rackLocation;
   /// The unique identifier for the rack within Network Cloud cluster. An alternate unique alphanumeric value other than a serial number may be provided if desired.
   final pulumi.Input<String> rackSerialNumber;
   /// The resource ID of the sku for the rack being added.
   final pulumi.Input<String> rackSkuId;
   /// The list of storage appliance configuration data for this rack.
-  final pulumi.Input<List<StorageApplianceConfigurationDataResponse>>? storageApplianceConfigurationData;
+  final pulumi.Input<List<StorageApplianceConfigurationDataResponse>?>? storageApplianceConfigurationData;
 
   /// Creates a new [RackDefinitionResponse].
   /// [availabilityZone] The zone name used for this rack when created. Availability zones are used for workload placement.

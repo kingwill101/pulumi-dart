@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The network configuration group resource
 class ConfigurationGrouplistActiveSecurityUserRulesResponse {
   /// A description of the network group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Group member type.
   final pulumi.Input<String> memberType;
   /// The provisioning state of the scope assignment resource.

@@ -10,9 +10,9 @@ class IdentityResponse {
   /// Tenant Id
   final pulumi.Input<String> tenantId;
   /// Identity Type
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// User Assigned Identities
-  final pulumi.Input<Map<String, UserAssignedIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [IdentityResponse].
   /// [principalId] Service principal object Id

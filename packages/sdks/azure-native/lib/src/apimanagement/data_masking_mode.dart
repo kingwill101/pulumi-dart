@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Data masking mode.
-enum DataMaskingMode {
+enum DataMaskingMode implements pulumi.PulumiEnum<String> {
   valueMask("Mask"),
   valueHide("Hide");
 
   const DataMaskingMode(this.wireValue);
+  @override
   final String wireValue;
 
   static DataMaskingMode fromValue(String value) {

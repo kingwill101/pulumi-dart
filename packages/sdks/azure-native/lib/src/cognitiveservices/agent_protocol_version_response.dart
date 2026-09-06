@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Type modeling the protocol and version used by an agent/exposed by a deployment.
 class AgentProtocolVersionResponse {
   /// The protocol used by the agent/exposed by a deployment.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// The version of the protocol.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [AgentProtocolVersionResponse].
   /// [protocol] The protocol used by the agent/exposed by a deployment.

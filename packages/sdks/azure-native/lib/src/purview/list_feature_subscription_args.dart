@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_purview_list_feature_subscription_args_doc}
 class ListFeatureSubscriptionArgs {
   /// Set of features
-  final pulumi.Input<List<String>>? features;
+  final pulumi.Input<List<String>?>? features;
   /// Location of feature.
   final pulumi.Input<String> locations;
 

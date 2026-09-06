@@ -7,9 +7,9 @@ import 'in_mage_volume_exclusion_options.dart';
 /// DiskExclusionInput when doing enable protection of virtual machine in InMage provider.
 class InMageDiskExclusionInput {
   /// The guest disk signature based option for disk exclusion.
-  final pulumi.Input<List<InMageDiskSignatureExclusionOptions>>? diskSignatureOptions;
+  final pulumi.Input<List<InMageDiskSignatureExclusionOptions>?>? diskSignatureOptions;
   /// The volume label based option for disk exclusion.
-  final pulumi.Input<List<InMageVolumeExclusionOptions>>? volumeOptions;
+  final pulumi.Input<List<InMageVolumeExclusionOptions>?>? volumeOptions;
 
   /// Creates a new [InMageDiskExclusionInput].
   /// [diskSignatureOptions] The guest disk signature based option for disk exclusion.

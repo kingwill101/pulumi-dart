@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Network access control rules for the endpoints.
 class DataCollectionEndpointNetworkAcls {
   /// The configuration to set whether network access from public internet to the endpoints are allowed.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
 
   /// Creates a new [DataCollectionEndpointNetworkAcls].
   /// [publicNetworkAccess] The configuration to set whether network access from public internet to the endpoints are allowed.
@@ -21,7 +21,7 @@ class DataCollectionEndpointNetworkAcls {
 
   factory DataCollectionEndpointNetworkAcls.fromMap(Map<String, dynamic> map) {
     return DataCollectionEndpointNetworkAcls(
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

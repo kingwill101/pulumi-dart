@@ -9,7 +9,7 @@ class NumericalDataDriftMetricThresholdResponse {
   /// [Required] The numerical data drift metric to calculate.
   final pulumi.Input<String> metric;
   /// The threshold value. If null, a default value will be set depending on the selected metric.
-  final pulumi.Input<MonitoringThresholdResponse>? threshold;
+  final pulumi.Input<MonitoringThresholdResponse?>? threshold;
 
   /// Creates a new [NumericalDataDriftMetricThresholdResponse].
   /// [dataType] Expected value is 'Numerical'.

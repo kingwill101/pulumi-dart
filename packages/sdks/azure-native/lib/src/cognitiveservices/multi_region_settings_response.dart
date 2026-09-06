@@ -5,9 +5,9 @@ import 'region_setting_response.dart';
 
 /// The multiregion settings Cognitive Services account.
 class MultiRegionSettingsResponse {
-  final pulumi.Input<List<RegionSettingResponse>>? regions;
+  final pulumi.Input<List<RegionSettingResponse>?>? regions;
   /// Multiregion routing methods.
-  final pulumi.Input<String>? routingMethod;
+  final pulumi.Input<String?>? routingMethod;
 
   /// Creates a new [MultiRegionSettingsResponse].
   /// [regions] Optional.

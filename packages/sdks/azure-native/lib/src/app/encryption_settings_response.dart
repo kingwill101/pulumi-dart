@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration settings of the secrets references of encryption key and signing key for ContainerApp Service Authentication/Authorization.
 class EncryptionSettingsResponse {
   /// The secret name which is referenced for EncryptionKey.
-  final pulumi.Input<String>? containerAppAuthEncryptionSecretName;
+  final pulumi.Input<String?>? containerAppAuthEncryptionSecretName;
   /// The secret name which is referenced for SigningKey.
-  final pulumi.Input<String>? containerAppAuthSigningSecretName;
+  final pulumi.Input<String?>? containerAppAuthSigningSecretName;
 
   /// Creates a new [EncryptionSettingsResponse].
   /// [containerAppAuthEncryptionSecretName] The secret name which is referenced for EncryptionKey.

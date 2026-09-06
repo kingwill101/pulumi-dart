@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties for ConfigurationReference Resource
 class ConfigurationReferenceProperties {
   /// ArmId of Configuration resource
-  final pulumi.Input<String>? configurationResourceId;
+  final pulumi.Input<String?>? configurationResourceId;
 
   /// Creates a new [ConfigurationReferenceProperties].
   /// [configurationResourceId] ArmId of Configuration resource

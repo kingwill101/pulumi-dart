@@ -4,15 +4,15 @@
 /// Result data returned by getLongTermRetentionPolicy.
 class GetLongTermRetentionPolicyResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// The monthly retention policy for an LTR backup in an ISO 8601 format.
   final String? monthlyRetention;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Resource type.
-  final String type;
+  final String? type;
   /// The week of year to take the yearly backup in an ISO 8601 format.
   final int? weekOfYear;
   /// The weekly retention policy for an LTR backup in an ISO 8601 format.
@@ -30,11 +30,11 @@ class GetLongTermRetentionPolicyResult {
   /// [weeklyRetention] The weekly retention policy for an LTR backup in an ISO 8601 format.
   /// [yearlyRetention] The yearly retention policy for an LTR backup in an ISO 8601 format.
   const GetLongTermRetentionPolicyResult({
-    required this.azureApiVersion,
-    required this.id,
+    this.azureApiVersion,
+    this.id,
     this.monthlyRetention,
-    required this.name,
-    required this.type,
+    this.name,
+    this.type,
     this.weekOfYear,
     this.weeklyRetention,
     this.yearlyRetention,
@@ -42,11 +42,11 @@ class GetLongTermRetentionPolicyResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
       'monthlyRetention': ?monthlyRetention,
-      'name': name,
-      'type': type,
+      'name': ?name,
+      'type': ?type,
       'weekOfYear': ?weekOfYear,
       'weeklyRetention': ?weeklyRetention,
       'yearlyRetention': ?yearlyRetention,
@@ -55,12 +55,12 @@ class GetLongTermRetentionPolicyResult {
 
   factory GetLongTermRetentionPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetLongTermRetentionPolicyResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       monthlyRetention: (() { final guardedValue = map['monthlyRetention']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      type: map['type'] as String,
-      weekOfYear: (() { final guardedValue = map['weekOfYear']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      weekOfYear: (() { final guardedValue = map['weekOfYear']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       weeklyRetention: (() { final guardedValue = map['weeklyRetention']; if (guardedValue == null) return null; return guardedValue as String; })(),
       yearlyRetention: (() { final guardedValue = map['yearlyRetention']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

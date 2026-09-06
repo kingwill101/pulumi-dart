@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// RNM supported protocol types.
-enum ProtocolType {
+enum ProtocolType implements pulumi.PulumiEnum<String> {
   valueDoNotUse("DoNotUse"),
   valueIcmp("Icmp"),
   valueTcp("Tcp"),
@@ -11,6 +13,7 @@ enum ProtocolType {
   valueAll("All");
 
   const ProtocolType(this.wireValue);
+  @override
   final String wireValue;
 
   static ProtocolType fromValue(String value) {

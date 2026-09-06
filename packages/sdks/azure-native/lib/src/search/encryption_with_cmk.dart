@@ -6,7 +6,7 @@ import 'search_encryption_with_cmk.dart';
 /// Describes a policy that determines how resources within the search service are to be encrypted with customer managed keys.
 class EncryptionWithCmk {
   /// Describes how a search service should enforce compliance if it finds objects that aren't encrypted with the customer-managed key.
-  final pulumi.Input<SearchEncryptionWithCmk>? enforcement;
+  final pulumi.Input<SearchEncryptionWithCmk?>? enforcement;
 
   /// Creates a new [EncryptionWithCmk].
   /// [enforcement] Describes how a search service should enforce compliance if it finds objects that aren't encrypted with the customer-managed key.

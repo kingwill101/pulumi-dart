@@ -7,25 +7,25 @@ import 'static_route_properties_response.dart';
 /// Static Route Configuration properties.
 class InternalNetworkPropertiesResponseStaticRouteConfiguration {
   /// BFD configuration properties
-  final pulumi.Input<BfdConfigurationResponse>? bfdConfiguration;
+  final pulumi.Input<BfdConfigurationResponse?>? bfdConfiguration;
   /// Extension. Example: NoExtension | NPB.
-  final pulumi.Input<String>? extension;
+  final pulumi.Input<String?>? extension;
   /// List of IPv4 Routes.
-  final pulumi.Input<List<StaticRoutePropertiesResponse>>? ipv4Routes;
+  final pulumi.Input<List<StaticRoutePropertiesResponse>?>? ipv4Routes;
   /// List of IPv6 Routes.
-  final pulumi.Input<List<StaticRoutePropertiesResponse>>? ipv6Routes;
+  final pulumi.Input<List<StaticRoutePropertiesResponse>?>? ipv6Routes;
 
   /// Creates a new [InternalNetworkPropertiesResponseStaticRouteConfiguration].
   /// [bfdConfiguration] BFD configuration properties
   /// [extension] Extension. Example: NoExtension | NPB.
   /// [ipv4Routes] List of IPv4 Routes.
   /// [ipv6Routes] List of IPv6 Routes.
-  const InternalNetworkPropertiesResponseStaticRouteConfiguration({
+  InternalNetworkPropertiesResponseStaticRouteConfiguration({
     this.bfdConfiguration,
-    this.extension,
+    pulumi.Input<String?>? extension,
     this.ipv4Routes,
     this.ipv6Routes,
-  });
+  }) : extension = extension ?? pulumi.Input.fromValue('NoExtension');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Vhd artifact profile.
 class VhdImageArtifactProfileResponse {
   /// Vhd name.
-  final pulumi.Input<String>? vhdName;
+  final pulumi.Input<String?>? vhdName;
   /// Vhd version.
-  final pulumi.Input<String>? vhdVersion;
+  final pulumi.Input<String?>? vhdVersion;
 
   /// Creates a new [VhdImageArtifactProfileResponse].
   /// [vhdName] Vhd name.

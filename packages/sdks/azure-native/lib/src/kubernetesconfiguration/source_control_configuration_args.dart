@@ -15,29 +15,29 @@ class SourceControlConfigurationArgs {
   /// The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
   final pulumi.Input<String> clusterRp;
   /// Name-value pairs of protected configuration settings for the configuration
-  final pulumi.Input<Map<String, String>>? configurationProtectedSettings;
+  final pulumi.Input<Map<String, String>?>? configurationProtectedSettings;
   /// Option to enable Helm Operator for this git configuration.
-  final pulumi.Input<bool>? enableHelmOperator;
+  final pulumi.Input<bool?>? enableHelmOperator;
   /// Properties for Helm operator.
-  final pulumi.Input<HelmOperatorProperties>? helmOperatorProperties;
+  final pulumi.Input<HelmOperatorProperties?>? helmOperatorProperties;
   /// Instance name of the operator - identifying the specific configuration.
-  final pulumi.Input<String>? operatorInstanceName;
+  final pulumi.Input<String?>? operatorInstanceName;
   /// The namespace to which this operator is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only.
-  final pulumi.Input<String>? operatorNamespace;
+  final pulumi.Input<String?>? operatorNamespace;
   /// Any Parameters for the Operator instance in string format.
-  final pulumi.Input<String>? operatorParams;
+  final pulumi.Input<String?>? operatorParams;
   /// Scope at which the operator will be installed.
-  final pulumi.Input<String>? operatorScope;
+  final pulumi.Input<dynamic>? operatorScope;
   /// Type of the operator
-  final pulumi.Input<String>? operatorType;
+  final pulumi.Input<dynamic>? operatorType;
   /// Url of the SourceControl Repository.
-  final pulumi.Input<String>? repositoryUrl;
+  final pulumi.Input<String?>? repositoryUrl;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the Source Control Configuration.
-  final pulumi.Input<String>? sourceControlConfigurationName;
+  final pulumi.Input<String?>? sourceControlConfigurationName;
   /// Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
-  final pulumi.Input<String>? sshKnownHostsContents;
+  final pulumi.Input<String?>? sshKnownHostsContents;
 
   /// Creates a new [SourceControlConfigurationArgs].
   /// [clusterName] The name of the kubernetes cluster.
@@ -55,7 +55,7 @@ class SourceControlConfigurationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sourceControlConfigurationName] Name of the Source Control Configuration.
   /// [sshKnownHostsContents] Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
-  const SourceControlConfigurationArgs({
+  SourceControlConfigurationArgs({
     required this.clusterName,
     required this.clusterResourceName,
     required this.clusterRp,
@@ -63,7 +63,7 @@ class SourceControlConfigurationArgs {
     this.enableHelmOperator,
     this.helmOperatorProperties,
     this.operatorInstanceName,
-    this.operatorNamespace,
+    pulumi.Input<String?>? operatorNamespace,
     this.operatorParams,
     this.operatorScope,
     this.operatorType,
@@ -71,7 +71,7 @@ class SourceControlConfigurationArgs {
     required this.resourceGroupName,
     this.sourceControlConfigurationName,
     this.sshKnownHostsContents,
-  });
+  }) : operatorNamespace = operatorNamespace ?? pulumi.Input.fromValue('default');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,8 +104,8 @@ class SourceControlConfigurationArgs {
       operatorInstanceName: (() { final guardedValue = map['operatorInstanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       operatorNamespace: (() { final guardedValue = map['operatorNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       operatorParams: (() { final guardedValue = map['operatorParams']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      operatorScope: (() { final guardedValue = map['operatorScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      operatorType: (() { final guardedValue = map['operatorType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operatorScope: (() { final guardedValue = map['operatorScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      operatorType: (() { final guardedValue = map['operatorType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       repositoryUrl: (() { final guardedValue = map['repositoryUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sourceControlConfigurationName: (() { final guardedValue = map['sourceControlConfigurationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

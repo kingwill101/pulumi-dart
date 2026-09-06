@@ -6,12 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthPlatform {
   /// The path of the config file containing auth settings if they come from a file.
   /// If the path is relative, base will the site's root directory.
-  final pulumi.Input<String>? configFilePath;
+  final pulumi.Input<String?>? configFilePath;
   /// &lt;code&gt;true&lt;/code&gt; if the Authentication / Authorization feature is enabled for the current app; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The RuntimeVersion of the Authentication / Authorization feature in use for the current app.
   /// The setting in this value can control the behavior of certain features in the Authentication / Authorization module.
-  final pulumi.Input<String>? runtimeVersion;
+  final pulumi.Input<String?>? runtimeVersion;
 
   /// Creates a new [AuthPlatform].
   /// [configFilePath] The path of the config file containing auth settings if they come from a file.

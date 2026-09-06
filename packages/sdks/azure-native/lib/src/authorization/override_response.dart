@@ -6,11 +6,11 @@ import 'selector_response.dart';
 /// The policy property value override.
 class OverrideResponse {
   /// The override kind.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The list of the selector expressions.
-  final pulumi.Input<List<SelectorResponse>>? selectors;
+  final pulumi.Input<List<SelectorResponse>?>? selectors;
   /// The value to override the policy property.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [OverrideResponse].
   /// [kind] The override kind.

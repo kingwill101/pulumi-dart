@@ -18,7 +18,7 @@ class OnPremiseSettingsResponse {
   /// Labour settings.
   final pulumi.Input<LaborSettingsResponse> laborSettings;
   /// Management settings.
-  final pulumi.Input<ManagementSettingsResponse>? managementSettings;
+  final pulumi.Input<ManagementSettingsResponse?>? managementSettings;
   /// Network settings.
   final pulumi.Input<NetworkSettingsResponse> networkSettings;
   /// Security settings.

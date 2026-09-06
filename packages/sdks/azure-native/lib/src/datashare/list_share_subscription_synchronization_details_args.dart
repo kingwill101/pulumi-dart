@@ -10,15 +10,15 @@ class ListShareSubscriptionSynchronizationDetailsArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
   /// Filters the results using OData syntax.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// Sorts the results using OData syntax.
-  final pulumi.Input<String>? orderby;
+  final pulumi.Input<String?>? orderby;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the share subscription.
   final pulumi.Input<String> shareSubscriptionName;
   /// Continuation token
-  final pulumi.Input<String>? skipToken;
+  final pulumi.Input<String?>? skipToken;
   /// Synchronization id
   final pulumi.Input<String> synchronizationId;
 

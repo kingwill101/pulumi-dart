@@ -17,11 +17,11 @@ class ReportByDepartmentArgs {
   /// Department ID
   final pulumi.Input<String> departmentId;
   /// The format of the report being delivered.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<dynamic>? format;
   /// Report Name.
-  final pulumi.Input<String>? reportName;
+  final pulumi.Input<String?>? reportName;
   /// Has schedule information for the report.
-  final pulumi.Input<ReportSchedule>? schedule;
+  final pulumi.Input<ReportSchedule?>? schedule;
 
   /// Creates a new [ReportByDepartmentArgs].
   /// [definition] Has definition for the report.
@@ -55,7 +55,7 @@ class ReportByDepartmentArgs {
       definition: pulumi.Input.fromValue(ReportDefinition.fromMap((map['definition']! as Map).cast<String, dynamic>())),
       deliveryInfo: pulumi.Input.fromValue(ReportDeliveryInfo.fromMap((map['deliveryInfo']! as Map).cast<String, dynamic>())),
       departmentId: pulumi.Input.fromValue(map['departmentId'] as String),
-      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       reportName: (() { final guardedValue = map['reportName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReportSchedule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

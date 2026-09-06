@@ -8,11 +8,11 @@ import 'cfns3_logs_configuration.dart';
 /// Definition of CFNDataSourceConfigurations
 class CFNDataSourceConfigurations {
   /// Property kubernetes
-  final pulumi.Input<CFNKubernetesConfiguration>? kubernetes;
+  final pulumi.Input<CFNKubernetesConfiguration?>? kubernetes;
   /// Property malwareProtection
-  final pulumi.Input<CFNMalwareProtectionConfiguration>? malwareProtection;
+  final pulumi.Input<CFNMalwareProtectionConfiguration?>? malwareProtection;
   /// Property s3Logs
-  final pulumi.Input<CFNS3LogsConfiguration>? s3Logs;
+  final pulumi.Input<CFNS3LogsConfiguration?>? s3Logs;
 
   /// Creates a new [CFNDataSourceConfigurations].
   /// [kubernetes] Property kubernetes

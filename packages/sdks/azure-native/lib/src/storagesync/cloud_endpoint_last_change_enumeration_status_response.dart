@@ -47,9 +47,9 @@ class CloudEndpointLastChangeEnumerationStatusResponse {
   factory CloudEndpointLastChangeEnumerationStatusResponse.fromMap(Map<String, dynamic> map) {
     return CloudEndpointLastChangeEnumerationStatusResponse(
       completedTimestamp: pulumi.Input.fromValue(map['completedTimestamp'] as String),
-      namespaceDirectoriesCount: pulumi.Input.fromValue(map['namespaceDirectoriesCount'] as double),
-      namespaceFilesCount: pulumi.Input.fromValue(map['namespaceFilesCount'] as double),
-      namespaceSizeBytes: pulumi.Input.fromValue(map['namespaceSizeBytes'] as double),
+      namespaceDirectoriesCount: pulumi.Input.fromValue((map['namespaceDirectoriesCount'] as num).toDouble()),
+      namespaceFilesCount: pulumi.Input.fromValue((map['namespaceFilesCount'] as num).toDouble()),
+      namespaceSizeBytes: pulumi.Input.fromValue((map['namespaceSizeBytes'] as num).toDouble()),
       nextRunTimestamp: pulumi.Input.fromValue(map['nextRunTimestamp'] as String),
       startedTimestamp: pulumi.Input.fromValue(map['startedTimestamp'] as String),
     );

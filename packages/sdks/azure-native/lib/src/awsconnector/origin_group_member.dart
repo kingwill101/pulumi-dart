@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of OriginGroupMember
 class OriginGroupMember {
   /// The ID for an origin in an origin group.
-  final pulumi.Input<String>? originId;
+  final pulumi.Input<String?>? originId;
 
   /// Creates a new [OriginGroupMember].
   /// [originId] The ID for an origin in an origin group.

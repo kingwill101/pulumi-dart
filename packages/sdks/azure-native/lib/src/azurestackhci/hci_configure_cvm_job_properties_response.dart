@@ -8,7 +8,7 @@ class HciConfigureCvmJobPropertiesResponse {
   /// Defines the customer's intent for updating confidential VM properties
   final pulumi.Input<String> confidentialVmIntent;
   /// Deployment mode to trigger job.
-  final pulumi.Input<String>? deploymentMode;
+  final pulumi.Input<String?>? deploymentMode;
   /// The UTC date and time at which the job completed.
   final pulumi.Input<String> endTimeUtc;
   /// Unique, immutable job id.
@@ -35,9 +35,9 @@ class HciConfigureCvmJobPropertiesResponse {
   /// [reportedProperties] Reported properties for job
   /// [startTimeUtc] The UTC date and time at which the job started.
   /// [status] Status of Cluster job.
-  const HciConfigureCvmJobPropertiesResponse({
+  HciConfigureCvmJobPropertiesResponse({
     required this.confidentialVmIntent,
-    this.deploymentMode,
+    pulumi.Input<String?>? deploymentMode,
     required this.endTimeUtc,
     required this.jobId,
     required this.jobType,
@@ -45,7 +45,7 @@ class HciConfigureCvmJobPropertiesResponse {
     required this.reportedProperties,
     required this.startTimeUtc,
     required this.status,
-  });
+  }) : deploymentMode = deploymentMode ?? pulumi.Input.fromValue('Deploy');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -8,13 +8,13 @@ class MongoMigrationCollectionResponse {
   /// Detailed migration status. Not included by default.
   final pulumi.Input<MongoMigrationProgressDetailsResponse> migrationProgressDetails;
   /// Source collection name.
-  final pulumi.Input<String>? sourceCollection;
+  final pulumi.Input<String?>? sourceCollection;
   /// Source database name.
-  final pulumi.Input<String>? sourceDatabase;
+  final pulumi.Input<String?>? sourceDatabase;
   /// Target collection name.
-  final pulumi.Input<String>? targetCollection;
+  final pulumi.Input<String?>? targetCollection;
   /// Target database name.
-  final pulumi.Input<String>? targetDatabase;
+  final pulumi.Input<String?>? targetDatabase;
 
   /// Creates a new [MongoMigrationCollectionResponse].
   /// [migrationProgressDetails] Detailed migration status. Not included by default.

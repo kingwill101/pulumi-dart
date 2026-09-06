@@ -7,13 +7,13 @@ import 'custom_permission_details_response.dart';
 /// The required Permissions for the connector.
 class ConnectorDefinitionsPermissionsResponse {
   /// Gets or sets the customs permissions required for the user to create connections.
-  final pulumi.Input<List<CustomPermissionDetailsResponse>>? customs;
+  final pulumi.Input<List<CustomPermissionDetailsResponse>?>? customs;
   /// Gets or sets the required licenses for the user to create connections.
-  final pulumi.Input<List<String>>? licenses;
+  final pulumi.Input<List<String>?>? licenses;
   /// Gets or sets the resource provider permissions required for the user to create connections.
-  final pulumi.Input<List<ConnectorDefinitionsResourceProviderResponse>>? resourceProvider;
+  final pulumi.Input<List<ConnectorDefinitionsResourceProviderResponse>?>? resourceProvider;
   /// Gets or sets the required tenant permissions for the connector.
-  final pulumi.Input<List<String>>? tenant;
+  final pulumi.Input<List<String>?>? tenant;
 
   /// Creates a new [ConnectorDefinitionsPermissionsResponse].
   /// [customs] Gets or sets the customs permissions required for the user to create connections.

@@ -37,7 +37,7 @@ class PackageInformation {
   factory PackageInformation.fromMap(Map<String, dynamic> map) {
     return PackageInformation(
       carrierName: pulumi.Input.fromValue(map['carrierName'] as String),
-      driveCount: pulumi.Input.fromValue(map['driveCount'] as double),
+      driveCount: pulumi.Input.fromValue((map['driveCount'] as num).toDouble()),
       shipDate: pulumi.Input.fromValue(map['shipDate'] as String),
       trackingNumber: pulumi.Input.fromValue(map['trackingNumber'] as String),
     );

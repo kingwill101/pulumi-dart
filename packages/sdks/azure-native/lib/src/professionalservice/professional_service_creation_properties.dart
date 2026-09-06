@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// properties for creation professionalService
 class ProfessionalServiceCreationProperties {
   /// Whether the ProfessionalService subscription will auto renew upon term end.
-  final pulumi.Input<bool>? autoRenew;
+  final pulumi.Input<bool?>? autoRenew;
   /// The billing period eg P1M,P1Y for monthly,yearly respectively
-  final pulumi.Input<String>? billingPeriod;
+  final pulumi.Input<String?>? billingPeriod;
   /// The offer id.
-  final pulumi.Input<String>? offerId;
+  final pulumi.Input<String?>? offerId;
   /// The publisher id.
-  final pulumi.Input<String>? publisherId;
+  final pulumi.Input<String?>? publisherId;
   /// The quote id which the ProfessionalService will be purchase with.
-  final pulumi.Input<String>? quoteId;
+  final pulumi.Input<String?>? quoteId;
   /// The plan id.
-  final pulumi.Input<String>? skuId;
+  final pulumi.Input<String?>? skuId;
   /// The store front which initiates the purchase.
-  final pulumi.Input<String>? storeFront;
+  final pulumi.Input<String?>? storeFront;
   /// The unit term eg P1M,P1Y,P2Y,P3Y meaning month,1year,2year,3year respectively
-  final pulumi.Input<String>? termUnit;
+  final pulumi.Input<String?>? termUnit;
 
   /// Creates a new [ProfessionalServiceCreationProperties].
   /// [autoRenew] Whether the ProfessionalService subscription will auto renew upon term end.

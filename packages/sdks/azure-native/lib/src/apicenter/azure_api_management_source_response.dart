@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// API source configuration for Azure API Management.
 class AzureApiManagementSourceResponse {
   /// The resource ID of the managed identity that has access to the API Management instance.
-  final pulumi.Input<String>? msiResourceId;
+  final pulumi.Input<String?>? msiResourceId;
   /// API Management service resource ID.
   final pulumi.Input<String> resourceId;
 

@@ -10,17 +10,17 @@ class CapacityPoolBackupArgs {
   /// The name of the NetApp account
   final pulumi.Input<String> accountName;
   /// The name of the backup
-  final pulumi.Input<String>? backupName;
+  final pulumi.Input<String?>? backupName;
   /// Label for backup
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Resource location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the capacity pool
   final pulumi.Input<String> poolName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
-  final pulumi.Input<bool>? useExistingSnapshot;
+  final pulumi.Input<bool?>? useExistingSnapshot;
   /// The name of the volume
   final pulumi.Input<String> volumeName;
 
@@ -33,16 +33,16 @@ class CapacityPoolBackupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [useExistingSnapshot] Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
   /// [volumeName] The name of the volume
-  const CapacityPoolBackupArgs({
+  CapacityPoolBackupArgs({
     required this.accountName,
     this.backupName,
     this.label,
     this.location,
     required this.poolName,
     required this.resourceGroupName,
-    this.useExistingSnapshot,
+    pulumi.Input<bool?>? useExistingSnapshot,
     required this.volumeName,
-  });
+  }) : useExistingSnapshot = useExistingSnapshot ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

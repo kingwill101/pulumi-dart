@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Generic pointer to a resource
 class ResourceId {
   /// Resource Id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [ResourceId].
   /// [id] Resource Id

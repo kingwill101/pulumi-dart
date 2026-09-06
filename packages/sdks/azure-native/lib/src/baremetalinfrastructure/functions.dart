@@ -22,6 +22,17 @@ Future<GetAzureBareMetalInstanceResult> getAzureBareMetalInstance(
   return GetAzureBareMetalInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetAzureBareMetalInstanceResult> getAzureBareMetalInstanceOutput(
+  GetAzureBareMetalInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:baremetalinfrastructure:getAzureBareMetalInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAzureBareMetalInstanceResult.fromMap);
+}
+
 /// Gets an Azure Bare Metal Storage instance for the specified subscription, resource group, and instance name.
 ///
 /// Uses Azure REST API version 2024-08-01-preview.
@@ -40,4 +51,15 @@ Future<GetAzureBareMetalStorageInstanceResult> getAzureBareMetalStorageInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAzureBareMetalStorageInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetAzureBareMetalStorageInstanceResult> getAzureBareMetalStorageInstanceOutput(
+  GetAzureBareMetalStorageInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:baremetalinfrastructure:getAzureBareMetalStorageInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAzureBareMetalStorageInstanceResult.fromMap);
 }

@@ -21,7 +21,7 @@ class LeafCertificateConfiguration {
 
   factory LeafCertificateConfiguration.fromMap(Map<String, dynamic> map) {
     return LeafCertificateConfiguration(
-      validityPeriodInDays: pulumi.Input.fromValue(map['validityPeriodInDays'] as int),
+      validityPeriodInDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['validityPeriodInDays'])),
     );
   }
 }

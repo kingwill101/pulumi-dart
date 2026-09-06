@@ -6,11 +6,11 @@ import 'compression_settings_response.dart';
 /// Caching settings for a caching-type route. To disable caching, do not provide a cacheConfiguration object.
 class AfdRouteCacheConfigurationResponse {
   /// compression settings.
-  final pulumi.Input<CompressionSettingsResponse>? compressionSettings;
+  final pulumi.Input<CompressionSettingsResponse?>? compressionSettings;
   /// query parameters to include or exclude (comma separated).
-  final pulumi.Input<String>? queryParameters;
+  final pulumi.Input<String?>? queryParameters;
   /// Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings.
-  final pulumi.Input<String>? queryStringCachingBehavior;
+  final pulumi.Input<String?>? queryStringCachingBehavior;
 
   /// Creates a new [AfdRouteCacheConfigurationResponse].
   /// [compressionSettings] compression settings.

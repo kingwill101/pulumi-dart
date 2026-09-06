@@ -22,6 +22,17 @@ Future<GetAssessmentResult> getAssessment(
   return GetAssessmentResult.fromMap(result);
 }
 
+pulumi.Output<GetAssessmentResult> getAssessmentOutput(
+  GetAssessmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:billingtrust:getAssessment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAssessmentResult.fromMap);
+}
+
 /// Request a time-bound, principal-bound upload token for supplemental document uploads.
 ///
 /// Uses Azure REST API version 2026-03-17-preview.
@@ -38,4 +49,15 @@ Future<ListAssessmentUploadTokenResult> listAssessmentUploadToken(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListAssessmentUploadTokenResult.fromMap(result);
+}
+
+pulumi.Output<ListAssessmentUploadTokenResult> listAssessmentUploadTokenOutput(
+  ListAssessmentUploadTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:billingtrust:listAssessmentUploadToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAssessmentUploadTokenResult.fromMap);
 }

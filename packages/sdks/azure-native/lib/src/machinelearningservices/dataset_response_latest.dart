@@ -8,15 +8,15 @@ import 'user_info_response.dart';
 /// Last created Dataset definition.
 class DatasetResponseLatest {
   /// User who created.
-  final pulumi.Input<UserInfoResponse>? createdBy;
+  final pulumi.Input<UserInfoResponse?>? createdBy;
   /// The dataset creation time (UTC).
   final pulumi.Input<String> createdTime;
   /// Datastore and reference to location of data such as relativePath, Sql Query and etc.
-  final pulumi.Input<DatasetResponseDataPath>? dataPath;
+  final pulumi.Input<DatasetResponseDataPath?>? dataPath;
   /// Dataflow Json
   final pulumi.Input<String> dataflow;
   /// Dataset state
-  final pulumi.Input<DatasetStateResponse>? datasetDefinitionState;
+  final pulumi.Input<DatasetStateResponse?>? datasetDefinitionState;
   /// Unique Dataset identifier.
   final pulumi.Input<String> datasetId;
   /// Description about the dataset.
@@ -32,7 +32,7 @@ class DatasetResponseLatest {
   /// Indicates how the source data is partitioned. This is defined to filter on a range of partitioned data before performing actions or materialization.
   final pulumi.Input<bool> partitionFormatInPath;
   /// Properties stores information like name of time series column for time series dataset.
-  final pulumi.Input<Map<String, dynamic>>? properties;
+  final pulumi.Input<Map<String, dynamic>?>? properties;
   /// Indicates the saved dataset this definition is mapping to, populated on Get.
   final pulumi.Input<String> savedDatasetId;
   /// Tags associated with the dataset.

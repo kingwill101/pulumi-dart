@@ -9,9 +9,9 @@ class Credentials {
   /// Describes the credential parameters for accessing other custom registries. The key
   /// for the dictionary item will be the registry login server (myregistry.azurecr.io) and
   /// the value of the item will be the registry credentials for accessing the registry.
-  final pulumi.Input<Map<String, CustomRegistryCredentials>>? customRegistries;
+  final pulumi.Input<Map<String, CustomRegistryCredentials>?>? customRegistries;
   /// Describes the credential parameters for accessing the source registry.
-  final pulumi.Input<SourceRegistryCredentials>? sourceRegistry;
+  final pulumi.Input<SourceRegistryCredentials?>? sourceRegistry;
 
   /// Creates a new [Credentials].
   /// [customRegistries] Describes the credential parameters for accessing other custom registries. The key

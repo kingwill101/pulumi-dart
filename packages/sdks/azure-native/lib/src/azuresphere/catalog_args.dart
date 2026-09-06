@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_azuresphere_catalog_args_doc}
 class CatalogArgs {
   /// Name of catalog
-  final pulumi.Input<String>? catalogName;
+  final pulumi.Input<String?>? catalogName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CatalogArgs].
   /// [catalogName] Name of catalog

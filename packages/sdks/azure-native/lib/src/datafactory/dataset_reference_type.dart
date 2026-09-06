@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Dataset reference type.
-enum DatasetReferenceType {
+enum DatasetReferenceType implements pulumi.PulumiEnum<String> {
   datasetReference("DatasetReference");
 
   const DatasetReferenceType(this.wireValue);
+  @override
   final String wireValue;
 
   static DatasetReferenceType fromValue(String value) {

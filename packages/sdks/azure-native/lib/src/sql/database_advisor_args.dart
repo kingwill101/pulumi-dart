@@ -9,7 +9,7 @@ import 'auto_execute_status.dart';
 /// {@macro pulumi_sql_database_advisor_args_doc}
 class DatabaseAdvisorArgs {
   /// The name of the Database Advisor.
-  final pulumi.Input<String>? advisorName;
+  final pulumi.Input<String?>? advisorName;
   /// Gets the auto-execute status (whether to let the system execute the recommendations) of this advisor. Possible values are 'Enabled' and 'Disabled'
   final pulumi.Input<AutoExecuteStatus> autoExecuteStatus;
   /// The name of the database.

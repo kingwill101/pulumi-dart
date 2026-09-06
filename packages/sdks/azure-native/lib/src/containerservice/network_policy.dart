@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Network policy used for building the Kubernetes network.
-enum NetworkPolicy {
+enum NetworkPolicy implements pulumi.PulumiEnum<String> {
   valueNone("none"),
   valueCalico("calico"),
   valueAzure("azure"),
   valueCilium("cilium");
 
   const NetworkPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkPolicy fromValue(String value) {

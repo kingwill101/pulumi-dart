@@ -5,25 +5,25 @@ import 'system_data_response.dart';
 /// Result data returned by getSchemaVersion.
 class GetSchemaVersionResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Human-readable description of the schema.
   final String? description;
   /// Hash of the schema content.
-  final String hash;
+  final String? hash;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Schema content.
-  final String schemaContent;
+  final String? schemaContent;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Globally unique, immutable, non-reusable id.
-  final String uuid;
+  final String? uuid;
 
   /// Creates a new [GetSchemaVersionResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -37,45 +37,45 @@ class GetSchemaVersionResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uuid] Globally unique, immutable, non-reusable id.
   const GetSchemaVersionResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.description,
-    required this.hash,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
-    required this.schemaContent,
-    required this.systemData,
-    required this.type,
-    required this.uuid,
+    this.hash,
+    this.id,
+    this.name,
+    this.provisioningState,
+    this.schemaContent,
+    this.systemData,
+    this.type,
+    this.uuid,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
-      'hash': hash,
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
-      'schemaContent': schemaContent,
-      'systemData': systemData.toMap(),
-      'type': type,
-      'uuid': uuid,
+      'hash': ?hash,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'schemaContent': ?schemaContent,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
+      'uuid': ?uuid,
     };
   }
 
   factory GetSchemaVersionResult.fromMap(Map<String, dynamic> map) {
     return GetSchemaVersionResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      hash: map['hash'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      schemaContent: map['schemaContent'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      uuid: map['uuid'] as String,
+      hash: (() { final guardedValue = map['hash']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      schemaContent: (() { final guardedValue = map['schemaContent']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

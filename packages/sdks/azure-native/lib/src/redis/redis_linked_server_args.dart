@@ -13,7 +13,7 @@ class RedisLinkedServerArgs {
   /// Location of the linked redis cache.
   final pulumi.Input<String> linkedRedisCacheLocation;
   /// The name of the linked server that is being added to the Redis cache.
-  final pulumi.Input<String>? linkedServerName;
+  final pulumi.Input<String?>? linkedServerName;
   /// The name of the Redis cache.
   final pulumi.Input<String> name;
   /// The name of the resource group.

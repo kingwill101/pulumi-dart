@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum SummaryStatus {
+enum SummaryStatus implements pulumi.PulumiEnum<String> {
   impaired("impaired"),
   initializing("initializing"),
   insufficientData("insufficient-data"),
@@ -7,6 +9,7 @@ enum SummaryStatus {
   ok("ok");
 
   const SummaryStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static SummaryStatus fromValue(String value) {

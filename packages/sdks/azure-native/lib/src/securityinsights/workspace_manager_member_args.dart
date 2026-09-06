@@ -14,7 +14,7 @@ class WorkspaceManagerMemberArgs {
   /// Tenant id of the target Sentinel workspace joining the given Sentinel workspace manager
   final pulumi.Input<String> targetWorkspaceTenantId;
   /// The name of the workspace manager member
-  final pulumi.Input<String>? workspaceManagerMemberName;
+  final pulumi.Input<String?>? workspaceManagerMemberName;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 

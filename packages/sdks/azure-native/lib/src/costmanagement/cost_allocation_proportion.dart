@@ -27,7 +27,7 @@ class CostAllocationProportion {
   factory CostAllocationProportion.fromMap(Map<String, dynamic> map) {
     return CostAllocationProportion(
       name: pulumi.Input.fromValue(map['name'] as String),
-      percentage: pulumi.Input.fromValue(map['percentage'] as double),
+      percentage: pulumi.Input.fromValue((map['percentage'] as num).toDouble()),
     );
   }
 }

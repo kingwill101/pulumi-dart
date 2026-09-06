@@ -9,9 +9,9 @@ class UserProperties {
   /// The preferred location of the cloud shell.
   final pulumi.Input<String> preferredLocation;
   /// The operating system type of the cloud shell. Deprecated, use preferredShellType.
-  final pulumi.Input<String> preferredOsType;
+  final pulumi.Input<dynamic> preferredOsType;
   /// The shell type of the cloud shell.
-  final pulumi.Input<String> preferredShellType;
+  final pulumi.Input<dynamic> preferredShellType;
   /// The storage profile of the user settings.
   final pulumi.Input<StorageProfile> storageProfile;
   /// Settings for terminal appearance.
@@ -44,8 +44,8 @@ class UserProperties {
   factory UserProperties.fromMap(Map<String, dynamic> map) {
     return UserProperties(
       preferredLocation: pulumi.Input.fromValue(map['preferredLocation'] as String),
-      preferredOsType: pulumi.Input.fromValue(map['preferredOsType'] as String),
-      preferredShellType: pulumi.Input.fromValue(map['preferredShellType'] as String),
+      preferredOsType: pulumi.Input.fromValue(map['preferredOsType']),
+      preferredShellType: pulumi.Input.fromValue(map['preferredShellType']),
       storageProfile: pulumi.Input.fromValue(StorageProfile.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())),
       terminalSettings: pulumi.Input.fromValue(TerminalSettings.fromMap((map['terminalSettings']! as Map).cast<String, dynamic>())),
     );

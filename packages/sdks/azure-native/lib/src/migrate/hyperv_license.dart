@@ -7,7 +7,7 @@ class HypervLicense {
   /// Cost of a licence.
   final pulumi.Input<double> licenseCost;
   /// HyperV licence type.
-  final pulumi.Input<String> licenseType;
+  final pulumi.Input<dynamic> licenseType;
 
   /// Creates a new [HypervLicense].
   /// [licenseCost] Cost of a licence.
@@ -26,8 +26,8 @@ class HypervLicense {
 
   factory HypervLicense.fromMap(Map<String, dynamic> map) {
     return HypervLicense(
-      licenseCost: pulumi.Input.fromValue(map['licenseCost'] as double),
-      licenseType: pulumi.Input.fromValue(map['licenseType'] as String),
+      licenseCost: pulumi.Input.fromValue((map['licenseCost'] as num).toDouble()),
+      licenseType: pulumi.Input.fromValue(map['licenseType']),
     );
   }
 }

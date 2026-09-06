@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The Azure SKU name of the machines in the pool.
-enum OsDiskStorageAccountType {
+enum OsDiskStorageAccountType implements pulumi.PulumiEnum<String> {
   standard("Standard"),
   premium("Premium"),
   standardSSD("StandardSSD");
 
   const OsDiskStorageAccountType(this.wireValue);
+  @override
   final String wireValue;
 
   static OsDiskStorageAccountType fromValue(String value) {

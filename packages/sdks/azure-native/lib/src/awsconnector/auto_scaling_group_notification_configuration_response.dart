@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of NotificationConfiguration
 class AutoScalingGroupNotificationConfigurationResponse {
   /// A list of event types that send a notification. Event types can include any of the following types.  *Allowed values*:  +   ``autoscaling:EC2_INSTANCE_LAUNCH``   +   ``autoscaling:EC2_INSTANCE_LAUNCH_ERROR``   +   ``autoscaling:EC2_INSTANCE_TERMINATE``   +   ``autoscaling:EC2_INSTANCE_TERMINATE_ERROR``   +   ``autoscaling:TEST_NOTIFICATION``
-  final pulumi.Input<List<String>>? notificationTypes;
+  final pulumi.Input<List<String>?>? notificationTypes;
   /// The Amazon Resource Name (ARN) of the Amazon SNS topic.
-  final pulumi.Input<String>? topicARN;
+  final pulumi.Input<String?>? topicARN;
 
   /// Creates a new [AutoScalingGroupNotificationConfigurationResponse].
   /// [notificationTypes] A list of event types that send a notification. Event types can include any of the following types.  *Allowed values*:  +   ``autoscaling:EC2_INSTANCE_LAUNCH``   +   ``autoscaling:EC2_INSTANCE_LAUNCH_ERROR``   +   ``autoscaling:EC2_INSTANCE_TERMINATE``   +   ``autoscaling:EC2_INSTANCE_TERMINATE_ERROR``   +   ``autoscaling:TEST_NOTIFICATION``

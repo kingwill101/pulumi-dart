@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Tier of a load balancer SKU.
-enum LoadBalancerSkuTier {
+enum LoadBalancerSkuTier implements pulumi.PulumiEnum<String> {
   valueRegional("Regional"),
   valueGlobal("Global");
 
   const LoadBalancerSkuTier(this.wireValue);
+  @override
   final String wireValue;
 
   static LoadBalancerSkuTier fromValue(String value) {

@@ -8,17 +8,17 @@ import 'parameter_specification.dart';
 /// The Salesforce Service Cloud V2 object dataset.
 class SalesforceServiceCloudV2ObjectDataset {
   /// List of tags that can be used for describing the Dataset.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// Dataset description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-  final pulumi.Input<DatasetFolder>? folder;
+  final pulumi.Input<DatasetFolder?>? folder;
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReference> linkedServiceName;
   /// The Salesforce Service Cloud V2 object API name. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? objectApiName;
   /// Parameters for dataset.
-  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>?>? parameters;
   /// The Salesforce Service Cloud V2 reportId. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? reportId;
   /// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.

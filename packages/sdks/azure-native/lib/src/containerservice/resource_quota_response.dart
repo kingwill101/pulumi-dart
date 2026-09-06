@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resource quota for the namespace.
 class ResourceQuotaResponse {
   /// CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
-  final pulumi.Input<String>? cpuLimit;
+  final pulumi.Input<String?>? cpuLimit;
   /// CPU request of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.
-  final pulumi.Input<String>? cpuRequest;
+  final pulumi.Input<String?>? cpuRequest;
   /// Memory limit of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
-  final pulumi.Input<String>? memoryLimit;
+  final pulumi.Input<String?>? memoryLimit;
   /// Memory request of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details.
-  final pulumi.Input<String>? memoryRequest;
+  final pulumi.Input<String?>? memoryRequest;
 
   /// Creates a new [ResourceQuotaResponse].
   /// [cpuLimit] CPU limit of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details.

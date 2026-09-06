@@ -2,9 +2,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_apps_session_pool_args.dart';
 import 'custom_container_template_response.dart';
 import 'dynamic_pool_configuration_response.dart';
+import 'managed_identity_setting_response.dart';
 import 'managed_service_identity_response.dart';
 import 'scale_configuration_response.dart';
 import 'session_network_configuration_response.dart';
+import 'session_pool_secret_response.dart';
 import 'system_data_response.dart';
 
 /// Container App session pool.
@@ -972,7 +974,7 @@ class ContainerAppsSessionPool extends pulumi.CustomResource {
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// Optional settings for a Managed Identity that is assigned to the Session pool.
-  late final pulumi.Output<List<Map<String, dynamic>>?> managedIdentitySettings;
+  late final pulumi.Output<List<ManagedIdentitySettingResponse>?> managedIdentitySettings;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The number of nodes the session pool is using.
@@ -986,7 +988,7 @@ class ContainerAppsSessionPool extends pulumi.CustomResource {
   /// The scale configuration of the session pool.
   late final pulumi.Output<ScaleConfigurationResponse?> scaleConfiguration;
   /// The secrets of the session pool.
-  late final pulumi.Output<List<Map<String, dynamic>>?> secrets;
+  late final pulumi.Output<List<SessionPoolSecretResponse>?> secrets;
   /// The network configuration of the sessions in the session pool.
   late final pulumi.Output<SessionNetworkConfigurationResponse?> sessionNetworkConfiguration;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -1017,17 +1019,47 @@ class ContainerAppsSessionPool extends pulumi.CustomResource {
     environmentId = registerOutput<String?>('environmentId');
     identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    managedIdentitySettings = registerOutput<List<Map<String, dynamic>>?>('managedIdentitySettings');
+    managedIdentitySettings = registerOutput<List<ManagedIdentitySettingResponse>?>('managedIdentitySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedIdentitySettingResponse>(guardedValue, (value) => ManagedIdentitySettingResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int>('nodeCount');
     poolManagementEndpoint = registerOutput<String>('poolManagementEndpoint');
     poolManagementType = registerOutput<String?>('poolManagementType');
     provisioningState = registerOutput<String>('provisioningState');
     scaleConfiguration = registerOutput<ScaleConfigurationResponse?>('scaleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
+    secrets = registerOutput<List<SessionPoolSecretResponse>?>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SessionPoolSecretResponse>(guardedValue, (value) => SessionPoolSecretResponse.fromMap((value as Map).cast<String, dynamic>())); });
     sessionNetworkConfiguration = registerOutput<SessionNetworkConfigurationResponse?>('sessionNetworkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionNetworkConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ContainerAppsSessionPool] resource.
+  ContainerAppsSessionPool.reference(String urn)
+    : super(
+        'azure-native:app:ContainerAppsSessionPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    containerType = registerOutput<String?>('containerType');
+    customContainerTemplate = registerOutput<CustomContainerTemplateResponse?>('customContainerTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomContainerTemplateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dynamicPoolConfiguration = registerOutput<DynamicPoolConfigurationResponse?>('dynamicPoolConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DynamicPoolConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    environmentId = registerOutput<String?>('environmentId');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    managedIdentitySettings = registerOutput<List<ManagedIdentitySettingResponse>?>('managedIdentitySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedIdentitySettingResponse>(guardedValue, (value) => ManagedIdentitySettingResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    nodeCount = registerOutput<int>('nodeCount');
+    poolManagementEndpoint = registerOutput<String>('poolManagementEndpoint');
+    poolManagementType = registerOutput<String?>('poolManagementType');
+    provisioningState = registerOutput<String>('provisioningState');
+    scaleConfiguration = registerOutput<ScaleConfigurationResponse?>('scaleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secrets = registerOutput<List<SessionPoolSecretResponse>?>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SessionPoolSecretResponse>(guardedValue, (value) => SessionPoolSecretResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    sessionNetworkConfiguration = registerOutput<SessionNetworkConfigurationResponse?>('sessionNetworkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionNetworkConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

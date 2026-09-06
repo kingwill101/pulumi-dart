@@ -7,15 +7,15 @@ class NetworkSecurityRuleResponse {
   /// The network traffic is allowed or denied.
   final pulumi.Input<String> access;
   /// Network security rule description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
-  final pulumi.Input<String>? destinationAddressPrefix;
+  final pulumi.Input<String?>? destinationAddressPrefix;
   /// The destination address prefixes. CIDR or destination IP ranges.
-  final pulumi.Input<List<String>>? destinationAddressPrefixes;
+  final pulumi.Input<List<String>?>? destinationAddressPrefixes;
   /// he destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-  final pulumi.Input<String>? destinationPortRange;
+  final pulumi.Input<String?>? destinationPortRange;
   /// The destination port ranges.
-  final pulumi.Input<List<String>>? destinationPortRanges;
+  final pulumi.Input<List<String>?>? destinationPortRanges;
   /// Network security rule direction.
   final pulumi.Input<String> direction;
   /// Network security rule name.
@@ -25,13 +25,13 @@ class NetworkSecurityRuleResponse {
   /// Network protocol this rule applies to.
   final pulumi.Input<String> protocol;
   /// The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from.
-  final pulumi.Input<String>? sourceAddressPrefix;
+  final pulumi.Input<String?>? sourceAddressPrefix;
   /// The CIDR or source IP ranges.
-  final pulumi.Input<List<String>>? sourceAddressPrefixes;
+  final pulumi.Input<List<String>?>? sourceAddressPrefixes;
   /// The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-  final pulumi.Input<String>? sourcePortRange;
+  final pulumi.Input<String?>? sourcePortRange;
   /// The source port ranges.
-  final pulumi.Input<List<String>>? sourcePortRanges;
+  final pulumi.Input<List<String>?>? sourcePortRanges;
 
   /// Creates a new [NetworkSecurityRuleResponse].
   /// [access] The network traffic is allowed or denied.
@@ -94,7 +94,7 @@ class NetworkSecurityRuleResponse {
       destinationPortRanges: (() { final guardedValue = map['destinationPortRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       direction: pulumi.Input.fromValue(map['direction'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       sourceAddressPrefix: (() { final guardedValue = map['sourceAddressPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceAddressPrefixes: (() { final guardedValue = map['sourceAddressPrefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'system_data_response.dart';
 import 'workbook_template_args.dart';
+import 'workbook_template_gallery_response.dart';
 import 'workbook_template_localized_gallery_response.dart';
 
 /// An Application Insights workbook template definition.
@@ -446,7 +447,7 @@ class WorkbookTemplate extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Workbook galleries supported by the template.
-  late final pulumi.Output<List<Map<String, dynamic>>> galleries;
+  late final pulumi.Output<List<WorkbookTemplateGalleryResponse>> galleries;
   /// Key value pair of localized gallery. Each key is the locale code of languages supported by the Azure portal.
   late final pulumi.Output<Map<String, List<WorkbookTemplateLocalizedGalleryResponse>>?> localized;
   /// The geo-location where the resource lives
@@ -480,13 +481,35 @@ class WorkbookTemplate extends pulumi.CustomResource {
         ) {
     author = registerOutput<String?>('author');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    galleries = registerOutput<List<Map<String, dynamic>>>('galleries');
+    galleries = registerOutput<List<WorkbookTemplateGalleryResponse>>('galleries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkbookTemplateGalleryResponse>(guardedValue, (value) => WorkbookTemplateGalleryResponse.fromMap((value as Map).cast<String, dynamic>())); });
     localized = registerOutput<Map<String, List<WorkbookTemplateLocalizedGalleryResponse>>?>('localized', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<WorkbookTemplateLocalizedGalleryResponse>>(guardedValue, (value) => pulumi.Input.decodeList<WorkbookTemplateLocalizedGalleryResponse>(value, (value) => WorkbookTemplateLocalizedGalleryResponse.fromMap((value as Map).cast<String, dynamic>()))); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     priority = registerOutput<int?>('priority');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    templateData = registerOutput<dynamic>('templateData');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [WorkbookTemplate] resource.
+  WorkbookTemplate.reference(String urn)
+    : super(
+        'azure-native:applicationinsights:WorkbookTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    author = registerOutput<String?>('author');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    galleries = registerOutput<List<WorkbookTemplateGalleryResponse>>('galleries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkbookTemplateGalleryResponse>(guardedValue, (value) => WorkbookTemplateGalleryResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    localized = registerOutput<Map<String, List<WorkbookTemplateLocalizedGalleryResponse>>?>('localized', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<WorkbookTemplateLocalizedGalleryResponse>>(guardedValue, (value) => pulumi.Input.decodeList<WorkbookTemplateLocalizedGalleryResponse>(value, (value) => WorkbookTemplateLocalizedGalleryResponse.fromMap((value as Map).cast<String, dynamic>()))); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    priority = registerOutput<int?>('priority');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateData = registerOutput<dynamic>('templateData');
     type = registerOutput<String>('type');
   }

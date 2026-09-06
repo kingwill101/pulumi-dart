@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The mode of operation for runtime protection.
-enum RuntimeProtectionEnforcementLevel {
+enum RuntimeProtectionEnforcementLevel implements pulumi.PulumiEnum<String> {
   valueAudit("Audit"),
   valueDisabled("Disabled"),
   valueOnDemand("OnDemand"),
@@ -7,6 +9,7 @@ enum RuntimeProtectionEnforcementLevel {
   valueRealTime("RealTime");
 
   const RuntimeProtectionEnforcementLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static RuntimeProtectionEnforcementLevel fromValue(String value) {

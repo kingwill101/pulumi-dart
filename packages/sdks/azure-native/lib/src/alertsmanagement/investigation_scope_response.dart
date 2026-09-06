@@ -10,7 +10,7 @@ class InvestigationScopeResponse {
   /// The origin of the scope
   final pulumi.Input<OriginResponse> origin;
   /// The relevance of the scope
-  final pulumi.Input<String>? relevance;
+  final pulumi.Input<String?>? relevance;
 
   /// Creates a new [InvestigationScopeResponse].
   /// [id] The ID of the scope of the investigation - either an Azure alert ID or an Azure resource ID

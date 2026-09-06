@@ -229,12 +229,37 @@ class NspLink extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
-    localInboundProfiles = registerOutput<List<String>?>('localInboundProfiles');
-    localOutboundProfiles = registerOutput<List<String>>('localOutboundProfiles');
+    localInboundProfiles = registerOutput<List<String>?>('localInboundProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    localOutboundProfiles = registerOutput<List<String>>('localOutboundProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    remoteInboundProfiles = registerOutput<List<String>?>('remoteInboundProfiles');
-    remoteOutboundProfiles = registerOutput<List<String>>('remoteOutboundProfiles');
+    remoteInboundProfiles = registerOutput<List<String>?>('remoteInboundProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    remoteOutboundProfiles = registerOutput<List<String>>('remoteOutboundProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    remotePerimeterGuid = registerOutput<String>('remotePerimeterGuid');
+    remotePerimeterLocation = registerOutput<String>('remotePerimeterLocation');
+    status = registerOutput<String>('status');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [NspLink] resource.
+  NspLink.reference(String urn)
+    : super(
+        'azure-native:network:NspLink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoApprovedRemotePerimeterResourceId = registerOutput<String?>('autoApprovedRemotePerimeterResourceId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    localInboundProfiles = registerOutput<List<String>?>('localInboundProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    localOutboundProfiles = registerOutput<List<String>>('localOutboundProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    remoteInboundProfiles = registerOutput<List<String>?>('remoteInboundProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    remoteOutboundProfiles = registerOutput<List<String>>('remoteOutboundProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     remotePerimeterGuid = registerOutput<String>('remotePerimeterGuid');
     remotePerimeterLocation = registerOutput<String>('remotePerimeterLocation');
     status = registerOutput<String>('status');

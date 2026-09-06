@@ -276,4 +276,33 @@ class JobDefinition extends pulumi.CustomResource {
     targetSubpath = registerOutput<String?>('targetSubpath');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [JobDefinition] resource.
+  JobDefinition.reference(String urn)
+    : super(
+        'azure-native:storagemover:JobDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentName = registerOutput<String?>('agentName');
+    agentResourceId = registerOutput<String>('agentResourceId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    copyMode = registerOutput<String>('copyMode');
+    description = registerOutput<String?>('description');
+    latestJobRunName = registerOutput<String>('latestJobRunName');
+    latestJobRunResourceId = registerOutput<String>('latestJobRunResourceId');
+    latestJobRunStatus = registerOutput<String>('latestJobRunStatus');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourceName = registerOutput<String>('sourceName');
+    sourceResourceId = registerOutput<String>('sourceResourceId');
+    sourceSubpath = registerOutput<String?>('sourceSubpath');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetName = registerOutput<String>('targetName');
+    targetResourceId = registerOutput<String>('targetResourceId');
+    targetSubpath = registerOutput<String?>('targetSubpath');
+    type = registerOutput<String>('type');
+  }
 }

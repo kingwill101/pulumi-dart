@@ -1,7 +1,10 @@
-enum ExportData {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ExportData implements pulumi.PulumiEnum<String> {
   rawEvents("RawEvents");
 
   const ExportData(this.wireValue);
+  @override
   final String wireValue;
 
   static ExportData fromValue(String value) {

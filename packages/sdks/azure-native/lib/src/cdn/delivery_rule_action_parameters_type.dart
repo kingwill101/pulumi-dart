@@ -1,4 +1,6 @@
-enum DeliveryRuleActionParametersType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum DeliveryRuleActionParametersType implements pulumi.PulumiEnum<String> {
   deliveryRuleUrlRedirectActionParameters("DeliveryRuleUrlRedirectActionParameters"),
   deliveryRuleUrlSigningActionParameters("DeliveryRuleUrlSigningActionParameters"),
   deliveryRuleOriginGroupOverrideActionParameters("DeliveryRuleOriginGroupOverrideActionParameters"),
@@ -9,6 +11,7 @@ enum DeliveryRuleActionParametersType {
   deliveryRuleRouteConfigurationOverrideActionParameters("DeliveryRuleRouteConfigurationOverrideActionParameters");
 
   const DeliveryRuleActionParametersType(this.wireValue);
+  @override
   final String wireValue;
 
   static DeliveryRuleActionParametersType fromValue(String value) {

@@ -9,9 +9,9 @@ import 'dependency_of_relationship_properties.dart';
 /// {@macro pulumi_relationships_dependency_of_relationship_args_doc}
 class DependencyOfRelationshipArgs {
   /// Name of dependencyOf relationship.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<DependencyOfRelationshipProperties>? properties;
+  final pulumi.Input<DependencyOfRelationshipProperties?>? properties;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 

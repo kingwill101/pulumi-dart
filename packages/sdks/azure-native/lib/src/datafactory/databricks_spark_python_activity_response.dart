@@ -9,30 +9,30 @@ import 'user_property_response.dart';
 /// DatabricksSparkPython activity.
 class DatabricksSparkPythonActivityResponse {
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A list of libraries to be installed on the cluster that will execute the job.
-  final pulumi.Input<List<dynamic>>? libraries;
+  final pulumi.Input<List<dynamic>?>? libraries;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReferenceResponse?>? linkedServiceName;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<String?>? onInactiveMarkAs;
   /// Command line parameters that will be passed to the Python file.
-  final pulumi.Input<List<dynamic>>? parameters;
+  final pulumi.Input<List<dynamic>?>? parameters;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicyResponse>? policy;
+  final pulumi.Input<ActivityPolicyResponse?>? policy;
   /// The URI of the Python file to be executed. DBFS paths are supported. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> pythonFile;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Type of activity.
   /// Expected value is 'DatabricksSparkPython'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>?>? userProperties;
 
   /// Creates a new [DatabricksSparkPythonActivityResponse].
   /// [dependsOn] Activity depends on condition.

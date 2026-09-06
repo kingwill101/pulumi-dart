@@ -9,19 +9,19 @@ import 'standby_virtual_machine_pool_elasticity_profile.dart';
 /// {@macro pulumi_standbypool_standby_virtual_machine_pool_args_doc}
 class StandbyVirtualMachinePoolArgs {
   /// Specifies the fully qualified resource ID of a virtual machine scale set the pool is attached to.
-  final pulumi.Input<String>? attachedVirtualMachineScaleSetId;
+  final pulumi.Input<String?>? attachedVirtualMachineScaleSetId;
   /// Specifies the elasticity profile of the standby virtual machine pools.
-  final pulumi.Input<StandbyVirtualMachinePoolElasticityProfile>? elasticityProfile;
+  final pulumi.Input<StandbyVirtualMachinePoolElasticityProfile?>? elasticityProfile;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the standby virtual machine pool
-  final pulumi.Input<String>? standbyVirtualMachinePoolName;
+  final pulumi.Input<String?>? standbyVirtualMachinePoolName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the desired state of virtual machines in the pool.
-  final pulumi.Input<String> virtualMachineState;
+  final pulumi.Input<dynamic> virtualMachineState;
 
   /// Creates a new [StandbyVirtualMachinePoolArgs].
   /// [attachedVirtualMachineScaleSetId] Specifies the fully qualified resource ID of a virtual machine scale set the pool is attached to.
@@ -61,7 +61,7 @@ class StandbyVirtualMachinePoolArgs {
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       standbyVirtualMachinePoolName: (() { final guardedValue = map['standbyVirtualMachinePoolName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      virtualMachineState: pulumi.Input.fromValue(map['virtualMachineState'] as String),
+      virtualMachineState: pulumi.Input.fromValue(map['virtualMachineState']),
     );
   }
 }

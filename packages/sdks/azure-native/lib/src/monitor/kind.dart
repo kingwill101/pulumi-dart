@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates the type of scheduled query rule. The default is LogAlert.
-enum Kind {
+enum Kind implements pulumi.PulumiEnum<String> {
   logAlert("LogAlert"),
   simpleLogAlert("SimpleLogAlert"),
   logToMetric("LogToMetric");
 
   const Kind(this.wireValue);
+  @override
   final String wireValue;
 
   static Kind fromValue(String value) {

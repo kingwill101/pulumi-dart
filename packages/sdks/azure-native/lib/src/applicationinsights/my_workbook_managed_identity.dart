@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Customer Managed Identity
 class MyWorkbookManagedIdentity {
   /// The identity type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [MyWorkbookManagedIdentity].
   /// [type] The identity type.

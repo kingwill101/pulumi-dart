@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A single alert property mapping to override
 class AlertPropertyMapping {
   /// The V3 alert property
-  final pulumi.Input<String>? alertProperty;
+  final pulumi.Input<dynamic>? alertProperty;
   /// the column name to use to override this property
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [AlertPropertyMapping].
   /// [alertProperty] The V3 alert property
@@ -26,7 +26,7 @@ class AlertPropertyMapping {
 
   factory AlertPropertyMapping.fromMap(Map<String, dynamic> map) {
     return AlertPropertyMapping(
-      alertProperty: (() { final guardedValue = map['alertProperty']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      alertProperty: (() { final guardedValue = map['alertProperty']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -71,17 +71,17 @@ class CopyProgressDetailsResponse {
 
   factory CopyProgressDetailsResponse.fromMap(Map<String, dynamic> map) {
     return CopyProgressDetailsResponse(
-      copyDuration: pulumi.Input.fromValue(map['copyDuration'] as int),
+      copyDuration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['copyDuration'])),
       copyStart: pulumi.Input.fromValue(map['copyStart'] as String),
-      copyThroughput: pulumi.Input.fromValue(map['copyThroughput'] as double),
-      dataRead: pulumi.Input.fromValue(map['dataRead'] as double),
-      dataWritten: pulumi.Input.fromValue(map['dataWritten'] as double),
+      copyThroughput: pulumi.Input.fromValue((map['copyThroughput'] as num).toDouble()),
+      dataRead: pulumi.Input.fromValue((map['dataRead'] as num).toDouble()),
+      dataWritten: pulumi.Input.fromValue((map['dataWritten'] as num).toDouble()),
       parallelCopyType: pulumi.Input.fromValue(map['parallelCopyType'] as String),
-      rowsCopied: pulumi.Input.fromValue(map['rowsCopied'] as double),
-      rowsRead: pulumi.Input.fromValue(map['rowsRead'] as double),
+      rowsCopied: pulumi.Input.fromValue((map['rowsCopied'] as num).toDouble()),
+      rowsRead: pulumi.Input.fromValue((map['rowsRead'] as num).toDouble()),
       status: pulumi.Input.fromValue(map['status'] as String),
       tableName: pulumi.Input.fromValue(map['tableName'] as String),
-      usedParallelCopies: pulumi.Input.fromValue(map['usedParallelCopies'] as int),
+      usedParallelCopies: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['usedParallelCopies'])),
     );
   }
 }

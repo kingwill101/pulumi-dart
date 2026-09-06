@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// API OAuth2 Authentication settings details.
 class OAuth2AuthenticationSettingsContract {
   /// OAuth authorization server identifier.
-  final pulumi.Input<String>? authorizationServerId;
+  final pulumi.Input<String?>? authorizationServerId;
   /// operations scope.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
 
   /// Creates a new [OAuth2AuthenticationSettingsContract].
   /// [authorizationServerId] OAuth authorization server identifier.

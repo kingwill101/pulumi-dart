@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of spatial aggregation.
-enum SpatialAggregationType {
+enum SpatialAggregationType implements pulumi.PulumiEnum<String> {
   average("Average"),
   min("Min"),
   max("Max"),
@@ -7,6 +9,7 @@ enum SpatialAggregationType {
   count("Count");
 
   const SpatialAggregationType(this.wireValue);
+  @override
   final String wireValue;
 
   static SpatialAggregationType fromValue(String value) {

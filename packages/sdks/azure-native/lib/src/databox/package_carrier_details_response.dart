@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Package carrier details.
 class PackageCarrierDetailsResponse {
   /// Carrier Account Number of customer for customer disk.
-  final pulumi.Input<String>? carrierAccountNumber;
+  final pulumi.Input<String?>? carrierAccountNumber;
   /// Name of the carrier.
-  final pulumi.Input<String>? carrierName;
+  final pulumi.Input<String?>? carrierName;
   /// Tracking Id of shipment.
-  final pulumi.Input<String>? trackingId;
+  final pulumi.Input<String?>? trackingId;
 
   /// Creates a new [PackageCarrierDetailsResponse].
   /// [carrierAccountNumber] Carrier Account Number of customer for customer disk.

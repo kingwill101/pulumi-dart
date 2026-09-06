@@ -1,4 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'activated_resource_reference_response.dart';
+import 'resource_reference_response.dart';
 import 'system_data_response.dart';
 import 'tunnel_policy_args.dart';
 
@@ -263,7 +265,7 @@ class TunnelPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<String> deploymentStatus;
   /// Domains referenced by this tunnel policy.
-  late final pulumi.Output<List<Map<String, dynamic>>> domains;
+  late final pulumi.Output<List<ActivatedResourceReferenceResponse>> domains;
   /// Resource name.
   late final pulumi.Output<String> name;
   /// Provisioning status
@@ -271,7 +273,7 @@ class TunnelPolicy extends pulumi.CustomResource {
   /// Read only system data
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Target Groups referenced by this tunnel policy.
-  late final pulumi.Output<List<Map<String, dynamic>>?> targetGroups;
+  late final pulumi.Output<List<ResourceReferenceResponse>?> targetGroups;
   /// Protocol this tunnel will use for allowing traffic to backends.
   late final pulumi.Output<String?> tunnelType;
   /// Resource type.
@@ -293,11 +295,31 @@ class TunnelPolicy extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     deploymentStatus = registerOutput<String>('deploymentStatus');
-    domains = registerOutput<List<Map<String, dynamic>>>('domains');
+    domains = registerOutput<List<ActivatedResourceReferenceResponse>>('domains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActivatedResourceReferenceResponse>(guardedValue, (value) => ActivatedResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    targetGroups = registerOutput<List<Map<String, dynamic>>?>('targetGroups');
+    targetGroups = registerOutput<List<ResourceReferenceResponse>?>('targetGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceReferenceResponse>(guardedValue, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tunnelType = registerOutput<String?>('tunnelType');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [TunnelPolicy] resource.
+  TunnelPolicy.reference(String urn)
+    : super(
+        'azure-native:cdn:TunnelPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deploymentStatus = registerOutput<String>('deploymentStatus');
+    domains = registerOutput<List<ActivatedResourceReferenceResponse>>('domains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActivatedResourceReferenceResponse>(guardedValue, (value) => ActivatedResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetGroups = registerOutput<List<ResourceReferenceResponse>?>('targetGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceReferenceResponse>(guardedValue, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     tunnelType = registerOutput<String?>('tunnelType');
     type = registerOutput<String>('type');
   }

@@ -18,9 +18,9 @@ class EdifactProtocolSettingsResponse {
   /// The EDIFACT acknowledgement settings.
   final pulumi.Input<EdifactAcknowledgementSettingsResponse> acknowledgementSettings;
   /// The EDIFACT delimiter override settings.
-  final pulumi.Input<List<EdifactDelimiterOverrideResponse>>? edifactDelimiterOverrides;
+  final pulumi.Input<List<EdifactDelimiterOverrideResponse>?>? edifactDelimiterOverrides;
   /// The EDIFACT envelope override settings.
-  final pulumi.Input<List<EdifactEnvelopeOverrideResponse>>? envelopeOverrides;
+  final pulumi.Input<List<EdifactEnvelopeOverrideResponse>?>? envelopeOverrides;
   /// The EDIFACT envelope settings.
   final pulumi.Input<EdifactEnvelopeSettingsResponse> envelopeSettings;
   /// The EDIFACT framing settings.
@@ -28,13 +28,13 @@ class EdifactProtocolSettingsResponse {
   /// The EDIFACT message filter.
   final pulumi.Input<EdifactMessageFilterResponse> messageFilter;
   /// The EDIFACT message filter list.
-  final pulumi.Input<List<EdifactMessageIdentifierResponse>>? messageFilterList;
+  final pulumi.Input<List<EdifactMessageIdentifierResponse>?>? messageFilterList;
   /// The EDIFACT processing Settings.
   final pulumi.Input<EdifactProcessingSettingsResponse> processingSettings;
   /// The EDIFACT schema references.
   final pulumi.Input<List<EdifactSchemaReferenceResponse>> schemaReferences;
   /// The EDIFACT validation override settings.
-  final pulumi.Input<List<EdifactValidationOverrideResponse>>? validationOverrides;
+  final pulumi.Input<List<EdifactValidationOverrideResponse>?>? validationOverrides;
   /// The EDIFACT validation settings.
   final pulumi.Input<EdifactValidationSettingsResponse> validationSettings;
 

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Mongo Connection
 class MongoConnectionInformationResponse {
   /// Host of mongo connection.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// Port of mongo connection.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
 
   /// Creates a new [MongoConnectionInformationResponse].
   /// [host] Host of mongo connection.
@@ -27,7 +27,7 @@ class MongoConnectionInformationResponse {
   factory MongoConnectionInformationResponse.fromMap(Map<String, dynamic> map) {
     return MongoConnectionInformationResponse(
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

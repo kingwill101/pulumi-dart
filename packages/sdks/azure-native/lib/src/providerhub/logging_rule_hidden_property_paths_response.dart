@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The hidden property paths.
 class LoggingRuleHiddenPropertyPathsResponse {
   /// The hidden paths on request.
-  final pulumi.Input<List<String>>? hiddenPathsOnRequest;
+  final pulumi.Input<List<String>?>? hiddenPathsOnRequest;
   /// The hidden paths on response.
-  final pulumi.Input<List<String>>? hiddenPathsOnResponse;
+  final pulumi.Input<List<String>?>? hiddenPathsOnResponse;
 
   /// Creates a new [LoggingRuleHiddenPropertyPathsResponse].
   /// [hiddenPathsOnRequest] The hidden paths on request.

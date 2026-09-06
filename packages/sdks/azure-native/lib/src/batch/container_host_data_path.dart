@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The paths which will be mounted to container task's container.
-enum ContainerHostDataPath {
+enum ContainerHostDataPath implements pulumi.PulumiEnum<String> {
   shared("Shared"),
   startup("Startup"),
   vfsMounts("VfsMounts"),
@@ -8,6 +10,7 @@ enum ContainerHostDataPath {
   applications("Applications");
 
   const ContainerHostDataPath(this.wireValue);
+  @override
   final String wireValue;
 
   static ContainerHostDataPath fromValue(String value) {

@@ -7,19 +7,19 @@ class SoftDeletePolicyResponse {
   /// The timestamp when the policy was last updated.
   final pulumi.Input<String> lastUpdatedTime;
   /// The number of days after which a soft-deleted item is permanently deleted.
-  final pulumi.Input<int>? retentionDays;
+  final pulumi.Input<int?>? retentionDays;
   /// The value that indicates whether the policy is enabled or not.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [SoftDeletePolicyResponse].
   /// [lastUpdatedTime] The timestamp when the policy was last updated.
   /// [retentionDays] The number of days after which a soft-deleted item is permanently deleted.
   /// [status] The value that indicates whether the policy is enabled or not.
-  const SoftDeletePolicyResponse({
+  SoftDeletePolicyResponse({
     required this.lastUpdatedTime,
-    this.retentionDays,
-    this.status,
-  });
+    pulumi.Input<int?>? retentionDays,
+    pulumi.Input<String?>? status,
+  }) : retentionDays = retentionDays ?? pulumi.Input.fromValue(7), status = status ?? pulumi.Input.fromValue('disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +32,7 @@ class SoftDeletePolicyResponse {
   factory SoftDeletePolicyResponse.fromMap(Map<String, dynamic> map) {
     return SoftDeletePolicyResponse(
       lastUpdatedTime: pulumi.Input.fromValue(map['lastUpdatedTime'] as String),
-      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of CidrRoutingConfig
 class CidrRoutingConfigResponse {
   /// &lt;p&gt;The CIDR collection ID.&lt;/p&gt;
-  final pulumi.Input<String>? collectionId;
+  final pulumi.Input<String?>? collectionId;
   /// &lt;p&gt;The CIDR collection location name.&lt;/p&gt;
-  final pulumi.Input<String>? locationName;
+  final pulumi.Input<String?>? locationName;
 
   /// Creates a new [CidrRoutingConfigResponse].
   /// [collectionId] &lt;p&gt;The CIDR collection ID.&lt;/p&gt;

@@ -4,15 +4,15 @@
 /// Result data returned by listStaticSiteConfiguredRoles.
 class ListStaticSiteConfiguredRolesResult {
   /// Resource Id.
-  final String id;
+  final String? id;
   /// Kind of resource.
   final String? kind;
   /// Resource Name.
-  final String name;
+  final String? name;
   /// List of string resources.
-  final List<String> properties;
+  final List<String>? properties;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [ListStaticSiteConfiguredRolesResult].
   /// [id] Resource Id.
@@ -21,30 +21,30 @@ class ListStaticSiteConfiguredRolesResult {
   /// [properties] List of string resources.
   /// [type] Resource type.
   const ListStaticSiteConfiguredRolesResult({
-    required this.id,
+    this.id,
     this.kind,
-    required this.name,
-    required this.properties,
-    required this.type,
+    this.name,
+    this.properties,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'id': ?id,
       'kind': ?kind,
-      'name': name,
-      'properties': properties,
-      'type': type,
+      'name': ?name,
+      'properties': ?properties,
+      'type': ?type,
     };
   }
 
   factory ListStaticSiteConfiguredRolesResult.fromMap(Map<String, dynamic> map) {
     return ListStaticSiteConfiguredRolesResult(
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      properties: (map['properties'] as List).cast<String>(),
-      type: map['type'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

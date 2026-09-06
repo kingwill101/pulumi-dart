@@ -15,27 +15,27 @@ import 'virtual_machine_properties_storage_profile.dart';
 /// {@macro pulumi_azurestackhci_virtual_machine_args_doc}
 class VirtualMachineArgs {
   /// The extendedLocation of the resource.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// HardwareProfile - Specifies the hardware settings for the virtual machine.
-  final pulumi.Input<VirtualMachinePropertiesHardwareProfile>? hardwareProfile;
+  final pulumi.Input<VirtualMachinePropertiesHardwareProfile?>? hardwareProfile;
   /// Identity for the resource.
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// NetworkProfile - describes the network configuration the virtual machine
-  final pulumi.Input<VirtualMachinePropertiesNetworkProfile>? networkProfile;
+  final pulumi.Input<VirtualMachinePropertiesNetworkProfile?>? networkProfile;
   /// OsProfile - describes the configuration of the operating system and sets login data
-  final pulumi.Input<VirtualMachinePropertiesOsProfile>? osProfile;
+  final pulumi.Input<VirtualMachinePropertiesOsProfile?>? osProfile;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// SecurityProfile - Specifies the security settings for the virtual machine.
-  final pulumi.Input<VirtualMachinePropertiesSecurityProfile>? securityProfile;
+  final pulumi.Input<VirtualMachinePropertiesSecurityProfile?>? securityProfile;
   /// StorageProfile - contains information about the disks and storage information for the virtual machine
-  final pulumi.Input<VirtualMachinePropertiesStorageProfile>? storageProfile;
+  final pulumi.Input<VirtualMachinePropertiesStorageProfile?>? storageProfile;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Name of the virtual machine
-  final pulumi.Input<String>? virtualMachineName;
+  final pulumi.Input<String?>? virtualMachineName;
 
   /// Creates a new [VirtualMachineArgs].
   /// [extendedLocation] The extendedLocation of the resource.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum PropertyValueType {
+enum PropertyValueType implements pulumi.PulumiEnum<String> {
   pLAINTEXT("PLAIN_TEXT"),
   sTRINGIFIEDJSON("STRINGIFIED_JSON");
 
   const PropertyValueType(this.wireValue);
+  @override
   final String wireValue;
 
   static PropertyValueType fromValue(String value) {

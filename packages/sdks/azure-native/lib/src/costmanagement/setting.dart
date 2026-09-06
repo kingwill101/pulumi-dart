@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'setting_args.dart';
+import 'settings_properties_response_cache.dart';
 
 /// State of the myscope setting.
 ///
@@ -212,7 +213,7 @@ class Setting extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Array of scopes with additional details used by Cost Management in the Azure portal.
-  late final pulumi.Output<List<Map<String, dynamic>>?> cache;
+  late final pulumi.Output<List<SettingsPropertiesResponseCache>?> cache;
   /// Resource kind.
   late final pulumi.Output<String> kind;
   /// Resource name.
@@ -239,7 +240,25 @@ class Setting extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    cache = registerOutput<List<Map<String, dynamic>>?>('cache');
+    cache = registerOutput<List<SettingsPropertiesResponseCache>?>('cache', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SettingsPropertiesResponseCache>(guardedValue, (value) => SettingsPropertiesResponseCache.fromMap((value as Map).cast<String, dynamic>())); });
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    scope = registerOutput<String>('scope');
+    startOn = registerOutput<String?>('startOn');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Setting] resource.
+  Setting.reference(String urn)
+    : super(
+        'azure-native:costmanagement:Setting',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cache = registerOutput<List<SettingsPropertiesResponseCache>?>('cache', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SettingsPropertiesResponseCache>(guardedValue, (value) => SettingsPropertiesResponseCache.fromMap((value as Map).cast<String, dynamic>())); });
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     scope = registerOutput<String>('scope');

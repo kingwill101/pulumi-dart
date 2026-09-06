@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The state of a private link connection
 class PrivateLinkConnectionState {
   /// ActionsRequired for a private link connection
-  final pulumi.Input<String>? actionsRequired;
+  final pulumi.Input<String?>? actionsRequired;
   /// Description of a private link connection
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Status of a private link connection
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [PrivateLinkConnectionState].
   /// [actionsRequired] ActionsRequired for a private link connection

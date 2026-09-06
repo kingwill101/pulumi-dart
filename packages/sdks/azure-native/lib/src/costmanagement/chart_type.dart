@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Chart type of the main view in Cost Analysis. Required.
-enum ChartType {
+enum ChartType implements pulumi.PulumiEnum<String> {
   valueArea("Area"),
   valueLine("Line"),
   valueStackedColumn("StackedColumn"),
@@ -7,6 +9,7 @@ enum ChartType {
   valueTable("Table");
 
   const ChartType(this.wireValue);
+  @override
   final String wireValue;
 
   static ChartType fromValue(String value) {

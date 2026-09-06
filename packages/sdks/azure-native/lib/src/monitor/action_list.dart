@@ -6,7 +6,7 @@ import 'action_group.dart';
 /// A list of Activity Log Alert rule actions.
 class ActionList {
   /// The list of the Action Groups.
-  final pulumi.Input<List<ActionGroup>>? actionGroups;
+  final pulumi.Input<List<ActionGroup>?>? actionGroups;
 
   /// Creates a new [ActionList].
   /// [actionGroups] The list of the Action Groups.

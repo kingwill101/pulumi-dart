@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Identity Provider Type identifier.
-enum IdentityProviderType {
+enum IdentityProviderType implements pulumi.PulumiEnum<String> {
   valueFacebook("facebook"),
   valueGoogle("google"),
   valueMicrosoft("microsoft"),
@@ -8,6 +10,7 @@ enum IdentityProviderType {
   valueAadB2C("aadB2C");
 
   const IdentityProviderType(this.wireValue);
+  @override
   final String wireValue;
 
   static IdentityProviderType fromValue(String value) {

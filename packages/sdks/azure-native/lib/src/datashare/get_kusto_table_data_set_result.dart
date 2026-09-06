@@ -6,28 +6,28 @@ import 'table_level_sharing_properties_response.dart';
 /// Result data returned by getKustoTableDataSet.
 class GetKustoTableDataSetResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Unique id for identifying a data set resource
-  final String dataSetId;
+  final String? dataSetId;
   /// The resource id of the azure resource
-  final String id;
+  final String? id;
   /// Kind of data set.
   /// Expected value is 'KustoTable'.
-  final String kind;
+  final String? kind;
   /// Resource id of the kusto database.
-  final String kustoDatabaseResourceId;
+  final String? kustoDatabaseResourceId;
   /// Location of the kusto cluster.
-  final String location;
+  final String? location;
   /// Name of the azure resource
-  final String name;
+  final String? name;
   /// Provisioning state of the kusto table data set.
-  final String provisioningState;
+  final String? provisioningState;
   /// System Data of the Azure resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Table level sharing properties for kusto database
-  final TableLevelSharingPropertiesResponse tableLevelSharingProperties;
+  final TableLevelSharingPropertiesResponse? tableLevelSharingProperties;
   /// Type of the azure resource
-  final String type;
+  final String? type;
 
   /// Creates a new [GetKustoTableDataSetResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -42,48 +42,48 @@ class GetKustoTableDataSetResult {
   /// [tableLevelSharingProperties] Table level sharing properties for kusto database
   /// [type] Type of the azure resource
   const GetKustoTableDataSetResult({
-    required this.azureApiVersion,
-    required this.dataSetId,
-    required this.id,
-    required this.kind,
-    required this.kustoDatabaseResourceId,
-    required this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
-    required this.tableLevelSharingProperties,
-    required this.type,
+    this.azureApiVersion,
+    this.dataSetId,
+    this.id,
+    this.kind,
+    this.kustoDatabaseResourceId,
+    this.location,
+    this.name,
+    this.provisioningState,
+    this.systemData,
+    this.tableLevelSharingProperties,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'dataSetId': dataSetId,
-      'id': id,
-      'kind': kind,
-      'kustoDatabaseResourceId': kustoDatabaseResourceId,
-      'location': location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
-      'tableLevelSharingProperties': tableLevelSharingProperties.toMap(),
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'dataSetId': ?dataSetId,
+      'id': ?id,
+      'kind': ?kind,
+      'kustoDatabaseResourceId': ?kustoDatabaseResourceId,
+      'location': ?location,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
+      'tableLevelSharingProperties': ?tableLevelSharingProperties?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetKustoTableDataSetResult.fromMap(Map<String, dynamic> map) {
     return GetKustoTableDataSetResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      dataSetId: map['dataSetId'] as String,
-      id: map['id'] as String,
-      kind: map['kind'] as String,
-      kustoDatabaseResourceId: map['kustoDatabaseResourceId'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      tableLevelSharingProperties: TableLevelSharingPropertiesResponse.fromMap((map['tableLevelSharingProperties']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dataSetId: (() { final guardedValue = map['dataSetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kustoDatabaseResourceId: (() { final guardedValue = map['kustoDatabaseResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      tableLevelSharingProperties: (() { final guardedValue = map['tableLevelSharingProperties']; if (guardedValue == null) return null; return TableLevelSharingPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

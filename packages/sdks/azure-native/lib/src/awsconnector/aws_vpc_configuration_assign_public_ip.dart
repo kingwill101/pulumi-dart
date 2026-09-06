@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether the task's elastic network interface receives a public IP address. The default value is ``DISABLED``.
-enum AwsVpcConfigurationAssignPublicIp {
+enum AwsVpcConfigurationAssignPublicIp implements pulumi.PulumiEnum<String> {
   dISABLED("DISABLED"),
   eNABLED("ENABLED");
 
   const AwsVpcConfigurationAssignPublicIp(this.wireValue);
+  @override
   final String wireValue;
 
   static AwsVpcConfigurationAssignPublicIp fromValue(String value) {

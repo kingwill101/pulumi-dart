@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Keytab used for authenticate with Active Directory.
 class KeytabInformation {
   /// A base64-encoded keytab.
-  final pulumi.Input<String>? keytab;
+  final pulumi.Input<String?>? keytab;
 
   /// Creates a new [KeytabInformation].
   /// [keytab] A base64-encoded keytab.

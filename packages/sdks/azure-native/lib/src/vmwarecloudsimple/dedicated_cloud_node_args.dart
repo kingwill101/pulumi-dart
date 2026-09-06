@@ -11,11 +11,11 @@ class DedicatedCloudNodeArgs {
   /// Availability Zone id, e.g. "az1"
   final pulumi.Input<String> availabilityZoneId;
   /// dedicated cloud node name
-  final pulumi.Input<String>? dedicatedCloudNodeName;
+  final pulumi.Input<String?>? dedicatedCloudNodeName;
   /// SKU's id
   final pulumi.Input<String> id;
   /// Azure region
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// SKU's name
   final pulumi.Input<String> name;
   /// count of nodes to create
@@ -27,9 +27,9 @@ class DedicatedCloudNodeArgs {
   /// The name of the resource group
   final pulumi.Input<String> resourceGroupName;
   /// Dedicated Cloud Nodes SKU
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Dedicated Cloud Nodes tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DedicatedCloudNodeArgs].
   /// [availabilityZoneId] Availability Zone id, e.g. "az1"
@@ -80,7 +80,7 @@ class DedicatedCloudNodeArgs {
       id: pulumi.Input.fromValue(map['id'] as String),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      nodesCount: pulumi.Input.fromValue(map['nodesCount'] as int),
+      nodesCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nodesCount'])),
       placementGroupId: pulumi.Input.fromValue(map['placementGroupId'] as String),
       purchaseId: pulumi.Input.fromValue(map['purchaseId'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

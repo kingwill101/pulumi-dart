@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// State of the database.
-enum DatabaseState {
+enum DatabaseState implements pulumi.PulumiEnum<String> {
   valueOnline("Online"),
   valueRestoring("Restoring"),
   valueRecovering("Recovering"),
@@ -11,6 +13,7 @@ enum DatabaseState {
   valueOfflineSecondary("OfflineSecondary");
 
   const DatabaseState(this.wireValue);
+  @override
   final String wireValue;
 
   static DatabaseState fromValue(String value) {

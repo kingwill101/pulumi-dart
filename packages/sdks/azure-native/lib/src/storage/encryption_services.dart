@@ -6,13 +6,13 @@ import 'encryption_service.dart';
 /// A list of services that support encryption.
 class EncryptionServices {
   /// The encryption function of the blob storage service.
-  final pulumi.Input<EncryptionService>? blob;
+  final pulumi.Input<EncryptionService?>? blob;
   /// The encryption function of the file storage service.
-  final pulumi.Input<EncryptionService>? file;
+  final pulumi.Input<EncryptionService?>? file;
   /// The encryption function of the queue storage service.
-  final pulumi.Input<EncryptionService>? queue;
+  final pulumi.Input<EncryptionService?>? queue;
   /// The encryption function of the table storage service.
-  final pulumi.Input<EncryptionService>? table;
+  final pulumi.Input<EncryptionService?>? table;
 
   /// Creates a new [EncryptionServices].
   /// [blob] The encryption function of the blob storage service.

@@ -11,11 +11,11 @@ class ReplicationProtectionClusterArgs {
   /// Fabric name.
   final pulumi.Input<String> fabricName;
   /// The custom data.
-  final pulumi.Input<ReplicationProtectionClusterProperties>? properties;
+  final pulumi.Input<ReplicationProtectionClusterProperties?>? properties;
   /// Protection container name.
   final pulumi.Input<String> protectionContainerName;
   /// Replication protection cluster name.
-  final pulumi.Input<String>? replicationProtectionClusterName;
+  final pulumi.Input<String?>? replicationProtectionClusterName;
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the recovery services vault.

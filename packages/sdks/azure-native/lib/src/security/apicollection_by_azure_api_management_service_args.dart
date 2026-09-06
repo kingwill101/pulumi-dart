@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_security_apicollection_by_azure_api_management_service_args_doc}
 class APICollectionByAzureApiManagementServiceArgs {
   /// API revision identifier. Must be unique in the API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
-  final pulumi.Input<String>? apiId;
+  final pulumi.Input<String?>? apiId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.

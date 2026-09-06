@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Publisher or creator of the content item.
 class MetadataAuthor {
   /// Email of author contact
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// Link for author/vendor page
-  final pulumi.Input<String>? link;
+  final pulumi.Input<String?>? link;
   /// Name of the author. Company or person.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [MetadataAuthor].
   /// [email] Email of author contact

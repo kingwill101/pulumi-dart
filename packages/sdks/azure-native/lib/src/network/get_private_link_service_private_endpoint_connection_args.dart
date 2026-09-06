@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_get_private_link_service_private_endpoint_connection_args_doc}
 class GetPrivateLinkServicePrivateEndpointConnectionArgs {
   /// Expands referenced resources.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the private end point connection.
   final pulumi.Input<String> peConnectionName;
   /// The name of the resource group.

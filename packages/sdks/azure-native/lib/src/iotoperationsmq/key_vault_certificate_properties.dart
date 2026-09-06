@@ -9,7 +9,7 @@ class KeyVaultCertificateProperties {
   /// KeyVault properties.
   final pulumi.Input<KeyVaultConnectionProperties> vault;
   /// KeyVault CA chain secret details.
-  final pulumi.Input<KeyVaultSecretObject>? vaultCaChainSecret;
+  final pulumi.Input<KeyVaultSecretObject?>? vaultCaChainSecret;
   /// KeyVault Cert secret details.
   final pulumi.Input<KeyVaultSecretObject> vaultCert;
 

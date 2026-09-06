@@ -6,15 +6,15 @@ import 'bgp_session_response.dart';
 /// The properties that define an exchange connection.
 class ExchangeConnectionResponse {
   /// The BGP session associated with the connection.
-  final pulumi.Input<BgpSessionResponse>? bgpSession;
+  final pulumi.Input<BgpSessionResponse?>? bgpSession;
   /// The unique identifier (GUID) for the connection.
-  final pulumi.Input<String>? connectionIdentifier;
+  final pulumi.Input<String?>? connectionIdentifier;
   /// The state of the connection.
   final pulumi.Input<String> connectionState;
   /// The error message related to the connection state, if any.
   final pulumi.Input<String> errorMessage;
   /// The PeeringDB.com ID of the facility at which the connection has to be set up.
-  final pulumi.Input<int>? peeringDBFacilityId;
+  final pulumi.Input<int?>? peeringDBFacilityId;
 
   /// Creates a new [ExchangeConnectionResponse].
   /// [bgpSession] The BGP session associated with the connection.
@@ -46,7 +46,7 @@ class ExchangeConnectionResponse {
       connectionIdentifier: (() { final guardedValue = map['connectionIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       connectionState: pulumi.Input.fromValue(map['connectionState'] as String),
       errorMessage: pulumi.Input.fromValue(map['errorMessage'] as String),
-      peeringDBFacilityId: (() { final guardedValue = map['peeringDBFacilityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      peeringDBFacilityId: (() { final guardedValue = map['peeringDBFacilityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

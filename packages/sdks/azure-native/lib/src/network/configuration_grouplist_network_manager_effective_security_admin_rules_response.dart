@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The network configuration group resource
 class ConfigurationGrouplistNetworkManagerEffectiveSecurityAdminRulesResponse {
   /// A description of the network group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Network group ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The type of the group member.
-  final pulumi.Input<String>? memberType;
+  final pulumi.Input<String?>? memberType;
   /// The provisioning state of the scope assignment resource.
   final pulumi.Input<String> provisioningState;
   /// Unique identifier for this resource.

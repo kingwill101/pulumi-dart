@@ -5,15 +5,15 @@ import 'sku_zone_detail_response.dart';
 
 class SkuLocationInfoResponse {
   /// The extended locations.
-  final pulumi.Input<List<String>>? extendedLocations;
+  final pulumi.Input<List<String>?>? extendedLocations;
   /// The location.
   final pulumi.Input<String> location;
   /// The type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The zone details.
-  final pulumi.Input<List<SkuZoneDetailResponse>>? zoneDetails;
+  final pulumi.Input<List<SkuZoneDetailResponse>?>? zoneDetails;
   /// The zones.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [SkuLocationInfoResponse].
   /// [extendedLocations] The extended locations.

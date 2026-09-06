@@ -55,7 +55,7 @@ class WorkflowVersionV2PropertiesResponse {
       configuration: pulumi.Input.fromValue(map['configuration'] as String),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       reviewId: pulumi.Input.fromValue(map['reviewId'] as String),
-      revision: pulumi.Input.fromValue(map['revision'] as int),
+      revision: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['revision'])),
       specification: (() { final guardedValue = map['specification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       stageSpec: pulumi.Input.fromValue(pulumi.Input.decodeList<StageSpecResponse>(map['stageSpec']!, (value) => StageSpecResponse.fromMap((value as Map).cast<String, dynamic>()))),
       state: pulumi.Input.fromValue(map['state'] as String),

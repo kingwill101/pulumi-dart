@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Firewall Sku used for FQDN Rules
-enum FirewallSku {
+enum FirewallSku implements pulumi.PulumiEnum<String> {
   standard("Standard"),
   basic("Basic");
 
   const FirewallSku(this.wireValue);
+  @override
   final String wireValue;
 
   static FirewallSku fromValue(String value) {

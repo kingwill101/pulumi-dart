@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Import SQL Collector properties class.
 class ImportSqlCollectorProperties {
   /// The sql db extended details.
-  final pulumi.Input<String>? discoverySiteId;
+  final pulumi.Input<String?>? discoverySiteId;
 
   /// Creates a new [ImportSqlCollectorProperties].
   /// [discoverySiteId] The sql db extended details.

@@ -6,7 +6,7 @@ import 'traffic_analytics_configuration_properties_response.dart';
 /// Parameters that define the configuration of traffic analytics.
 class TrafficAnalyticsPropertiesResponse {
   /// Parameters that define the configuration of traffic analytics.
-  final pulumi.Input<TrafficAnalyticsConfigurationPropertiesResponse>? networkWatcherFlowAnalyticsConfiguration;
+  final pulumi.Input<TrafficAnalyticsConfigurationPropertiesResponse?>? networkWatcherFlowAnalyticsConfiguration;
 
   /// Creates a new [TrafficAnalyticsPropertiesResponse].
   /// [networkWatcherFlowAnalyticsConfiguration] Parameters that define the configuration of traffic analytics.

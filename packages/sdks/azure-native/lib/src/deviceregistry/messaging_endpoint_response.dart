@@ -7,9 +7,9 @@ class MessagingEndpointResponse {
   /// The endpoint address to connect to.
   final pulumi.Input<String> address;
   /// Type of connection used for messaging endpoint.
-  final pulumi.Input<String>? endpointType;
+  final pulumi.Input<String?>? endpointType;
   /// The messaging endpoint Azure resource Id.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [MessagingEndpointResponse].
   /// [address] The endpoint address to connect to.

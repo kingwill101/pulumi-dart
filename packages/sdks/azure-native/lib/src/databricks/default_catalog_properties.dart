@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// These properties lets user specify default catalog properties during workspace creation. Not allowed in Serverless ComputeMode workspace.
 class DefaultCatalogProperties {
   /// Specifies the initial Name of default catalog. If not specified, the name of the workspace will be used.
-  final pulumi.Input<String>? initialName;
+  final pulumi.Input<String?>? initialName;
   /// Defines the initial type of the default catalog. Possible values (case-insensitive):  HiveMetastore, UnityCatalog
-  final pulumi.Input<String>? initialType;
+  final pulumi.Input<dynamic>? initialType;
 
   /// Creates a new [DefaultCatalogProperties].
   /// [initialName] Specifies the initial Name of default catalog. If not specified, the name of the workspace will be used.
   /// [initialType] Defines the initial type of the default catalog. Possible values (case-insensitive):  HiveMetastore, UnityCatalog
-  const DefaultCatalogProperties({
+  DefaultCatalogProperties({
     this.initialName,
-    this.initialType,
-  });
+    pulumi.Input<dynamic>? initialType,
+  }) : initialType = initialType ?? pulumi.Input.fromValue('HiveMetastore');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,7 +27,7 @@ class DefaultCatalogProperties {
   factory DefaultCatalogProperties.fromMap(Map<String, dynamic> map) {
     return DefaultCatalogProperties(
       initialName: (() { final guardedValue = map['initialName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      initialType: (() { final guardedValue = map['initialType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      initialType: (() { final guardedValue = map['initialType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

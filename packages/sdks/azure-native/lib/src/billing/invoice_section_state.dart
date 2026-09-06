@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Identifies the status of an invoice section.
-enum InvoiceSectionState {
+enum InvoiceSectionState implements pulumi.PulumiEnum<String> {
   other("Other"),
   active("Active"),
   deleted("Deleted"),
@@ -9,6 +11,7 @@ enum InvoiceSectionState {
   restricted("Restricted");
 
   const InvoiceSectionState(this.wireValue);
+  @override
   final String wireValue;
 
   static InvoiceSectionState fromValue(String value) {

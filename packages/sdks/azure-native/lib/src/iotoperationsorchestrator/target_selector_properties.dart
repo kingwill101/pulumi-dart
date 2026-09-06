@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of the reference target.
 class TargetSelectorProperties {
   /// Name of the target.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [TargetSelectorProperties].
   /// [name] Name of the target.

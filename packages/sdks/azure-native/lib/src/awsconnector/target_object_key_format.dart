@@ -6,7 +6,7 @@ import 'partitioned_prefix.dart';
 /// Definition of TargetObjectKeyFormat
 class TargetObjectKeyFormat {
   /// Amazon S3 keys for log objects are partitioned in the following format:  ``[DestinationPrefix][SourceAccountId]/[SourceRegion]/[SourceBucket]/[YYYY]/[MM]/[DD]/[YYYY]-[MM]-[DD]-[hh]-[mm]-[ss]-[UniqueString]``  PartitionedPrefix defaults to EventTime delivery when server access logs are delivered.
-  final pulumi.Input<PartitionedPrefix>? partitionedPrefix;
+  final pulumi.Input<PartitionedPrefix?>? partitionedPrefix;
   /// This format defaults the prefix to the given log file prefix for delivering server access log file.
   final pulumi.Input<dynamic>? simplePrefix;
 

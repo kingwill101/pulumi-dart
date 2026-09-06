@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ServicePrincipalProfile represents a service principal profile.
 class ServicePrincipalProfile {
   /// The client ID used for the cluster.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The client secret used for the cluster.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
 
   /// Creates a new [ServicePrincipalProfile].
   /// [clientId] The client ID used for the cluster.

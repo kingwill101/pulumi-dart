@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_eventgrid_topic_space_args_doc}
 class TopicSpaceArgs {
   /// Description for the Topic Space resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the namespace.
   final pulumi.Input<String> namespaceName;
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
   /// The topic space name.
-  final pulumi.Input<String>? topicSpaceName;
+  final pulumi.Input<String?>? topicSpaceName;
   /// The topic filters in the topic space.
   /// Example: "topicTemplates": [
   /// "devices/foo/bar",
   /// "devices/topic1/+",
   /// "devices/${principal.name}/${principal.attributes.keyName}" ].
-  final pulumi.Input<List<String>>? topicTemplates;
+  final pulumi.Input<List<String>?>? topicTemplates;
 
   /// Creates a new [TopicSpaceArgs].
   /// [description] Description for the Topic Space resource.

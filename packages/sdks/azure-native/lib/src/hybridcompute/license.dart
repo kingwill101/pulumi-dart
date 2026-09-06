@@ -6,15 +6,15 @@ import 'license_details.dart';
 /// Describes a license in a hybrid machine.
 class License {
   /// Describes the properties of a License.
-  final pulumi.Input<LicenseDetails>? licenseDetails;
+  final pulumi.Input<LicenseDetails?>? licenseDetails;
   /// The type of the license resource.
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<dynamic>? licenseType;
   /// The geo-location where the resource lives
   final pulumi.Input<String> location;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Describes the tenant id.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [License].
   /// [licenseDetails] Describes the properties of a License.
@@ -43,7 +43,7 @@ class License {
   factory License.fromMap(Map<String, dynamic> map) {
     return License(
       licenseDetails: (() { final guardedValue = map['licenseDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LicenseDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The authentication scheme.
-enum AuthenticationScheme {
+enum AuthenticationScheme implements pulumi.PulumiEnum<String> {
   poP("PoP"),
   bearer("Bearer");
 
   const AuthenticationScheme(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthenticationScheme fromValue(String value) {

@@ -14,13 +14,13 @@ class ManagedClusterApplicationTypeVersionArgs {
   /// The name of the cluster resource.
   final pulumi.Input<String> clusterName;
   /// Resource location depends on the parent resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Azure resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The application type version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ManagedClusterApplicationTypeVersionArgs].
   /// [appPackageUrl] The URL to the application package

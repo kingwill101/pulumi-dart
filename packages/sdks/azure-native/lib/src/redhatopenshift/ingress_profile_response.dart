@@ -7,9 +7,9 @@ class IngressProfileResponse {
   /// The IP of the ingress.
   final pulumi.Input<String> ip;
   /// The ingress profile name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Ingress visibility.
-  final pulumi.Input<String>? visibility;
+  final pulumi.Input<String?>? visibility;
 
   /// Creates a new [IngressProfileResponse].
   /// [ip] The IP of the ingress.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes a virtual machines network configuration's DNS settings.
 class VirtualMachineNetworkInterfaceDnsSettingsConfiguration {
   /// List of DNS servers IP addresses
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
 
   /// Creates a new [VirtualMachineNetworkInterfaceDnsSettingsConfiguration].
   /// [dnsServers] List of DNS servers IP addresses

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Reject type.
-enum PolybaseSettingsRejectType {
+enum PolybaseSettingsRejectType implements pulumi.PulumiEnum<String> {
   value("value"),
   percentage("percentage");
 
   const PolybaseSettingsRejectType(this.wireValue);
+  @override
   final String wireValue;
 
   static PolybaseSettingsRejectType fromValue(String value) {

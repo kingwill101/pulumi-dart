@@ -46,4 +46,20 @@ class WebAppAzureStorageAccountsSlot extends pulumi.CustomResource {
     properties = registerOutput<Map<String, AzureStorageInfoValueResponse>>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<AzureStorageInfoValueResponse>(guardedValue, (value) => AzureStorageInfoValueResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [WebAppAzureStorageAccountsSlot] resource.
+  WebAppAzureStorageAccountsSlot.reference(String urn)
+    : super(
+        'azure-native:web:WebAppAzureStorageAccountsSlot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    kind = registerOutput<String?>('kind');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<Map<String, AzureStorageInfoValueResponse>>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<AzureStorageInfoValueResponse>(guardedValue, (value) => AzureStorageInfoValueResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+  }
 }

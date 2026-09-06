@@ -8,23 +8,23 @@ import 'required_traffic_response.dart';
 /// Service network profile payload
 class NetworkProfileResponse {
   /// Name of the resource group containing network resources for customer apps in Azure Spring Apps
-  final pulumi.Input<String>? appNetworkResourceGroup;
+  final pulumi.Input<String?>? appNetworkResourceGroup;
   /// Fully qualified resource Id of the subnet to host customer apps in Azure Spring Apps
-  final pulumi.Input<String>? appSubnetId;
+  final pulumi.Input<String?>? appSubnetId;
   /// Ingress configuration payload for Azure Spring Apps resource.
-  final pulumi.Input<IngressConfigResponse>? ingressConfig;
+  final pulumi.Input<IngressConfigResponse?>? ingressConfig;
   /// Desired outbound IP resources for Azure Spring Apps resource.
   final pulumi.Input<NetworkProfileResponseOutboundIPs> outboundIPs;
   /// The egress traffic type of Azure Spring Apps VNet instances.
-  final pulumi.Input<String>? outboundType;
+  final pulumi.Input<String?>? outboundType;
   /// Required inbound or outbound traffics for Azure Spring Apps resource.
   final pulumi.Input<List<RequiredTrafficResponse>> requiredTraffics;
   /// Azure Spring Apps service reserved CIDR
-  final pulumi.Input<String>? serviceCidr;
+  final pulumi.Input<String?>? serviceCidr;
   /// Name of the resource group containing network resources of Azure Spring Apps Service Runtime
-  final pulumi.Input<String>? serviceRuntimeNetworkResourceGroup;
+  final pulumi.Input<String?>? serviceRuntimeNetworkResourceGroup;
   /// Fully qualified resource Id of the subnet to host Azure Spring Apps Service Runtime
-  final pulumi.Input<String>? serviceRuntimeSubnetId;
+  final pulumi.Input<String?>? serviceRuntimeSubnetId;
 
   /// Creates a new [NetworkProfileResponse].
   /// [appNetworkResourceGroup] Name of the resource group containing network resources for customer apps in Azure Spring Apps

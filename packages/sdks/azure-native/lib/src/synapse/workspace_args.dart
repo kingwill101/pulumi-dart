@@ -6,7 +6,7 @@ import 'data_lake_storage_account_details.dart';
 import 'encryption_details.dart';
 import 'managed_identity.dart';
 import 'managed_virtual_network_settings.dart';
-import 'private_endpoint_connection_synapse.dart';
+import 'private_endpoint_connection.dart';
 import 'purview_configuration.dart';
 import 'virtual_network_profile.dart';
 import 'workspace_repository_configuration.dart';
@@ -17,46 +17,46 @@ import 'workspace_repository_configuration.dart';
 /// {@macro pulumi_synapse_workspace_args_doc}
 class WorkspaceArgs {
   /// Enable or Disable AzureADOnlyAuthentication on All Workspace subresource
-  final pulumi.Input<bool>? azureADOnlyAuthentication;
+  final pulumi.Input<bool?>? azureADOnlyAuthentication;
   /// Initial workspace AAD admin properties for a CSP subscription
-  final pulumi.Input<CspWorkspaceAdminProperties>? cspWorkspaceAdminProperties;
+  final pulumi.Input<CspWorkspaceAdminProperties?>? cspWorkspaceAdminProperties;
   /// Workspace default data lake storage account details
-  final pulumi.Input<DataLakeStorageAccountDetails>? defaultDataLakeStorage;
+  final pulumi.Input<DataLakeStorageAccountDetails?>? defaultDataLakeStorage;
   /// The encryption details of the workspace
-  final pulumi.Input<EncryptionDetails>? encryption;
+  final pulumi.Input<EncryptionDetails?>? encryption;
   /// Identity of the workspace
-  final pulumi.Input<ManagedIdentity>? identity;
+  final pulumi.Input<ManagedIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Workspace managed resource group. The resource group name uniquely identifies the resource group within the user subscriptionId. The resource group name must be no longer than 90 characters long, and must be alphanumeric characters (Char.IsLetterOrDigit()) and '-', '_', '(', ')' and'.'. Note that the name cannot end with '.'
-  final pulumi.Input<String>? managedResourceGroupName;
+  final pulumi.Input<String?>? managedResourceGroupName;
   /// Setting this to 'default' will ensure that all compute for this workspace is in a virtual network managed on behalf of the user.
-  final pulumi.Input<String>? managedVirtualNetwork;
+  final pulumi.Input<String?>? managedVirtualNetwork;
   /// Managed Virtual Network Settings
-  final pulumi.Input<ManagedVirtualNetworkSettings>? managedVirtualNetworkSettings;
+  final pulumi.Input<ManagedVirtualNetworkSettings?>? managedVirtualNetworkSettings;
   /// Private endpoint connections to the workspace
   /// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
-  final pulumi.Input<List<PrivateEndpointConnectionSynapse>>? privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnection>?>? privateEndpointConnections;
   /// Enable or Disable public network access to workspace
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// Purview Configuration
-  final pulumi.Input<PurviewConfiguration>? purviewConfiguration;
+  final pulumi.Input<PurviewConfiguration?>? purviewConfiguration;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Login for workspace SQL active directory administrator
-  final pulumi.Input<String>? sqlAdministratorLogin;
+  final pulumi.Input<String?>? sqlAdministratorLogin;
   /// SQL administrator login password
-  final pulumi.Input<String>? sqlAdministratorLoginPassword;
+  final pulumi.Input<String?>? sqlAdministratorLoginPassword;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Is trustedServiceBypassEnabled for the workspace
-  final pulumi.Input<bool>? trustedServiceBypassEnabled;
+  final pulumi.Input<bool?>? trustedServiceBypassEnabled;
   /// Virtual Network profile
-  final pulumi.Input<VirtualNetworkProfile>? virtualNetworkProfile;
+  final pulumi.Input<VirtualNetworkProfile?>? virtualNetworkProfile;
   /// The name of the workspace.
-  final pulumi.Input<String>? workspaceName;
+  final pulumi.Input<String?>? workspaceName;
   /// Git integration settings
-  final pulumi.Input<WorkspaceRepositoryConfiguration>? workspaceRepositoryConfiguration;
+  final pulumi.Input<WorkspaceRepositoryConfiguration?>? workspaceRepositoryConfiguration;
 
   /// Creates a new [WorkspaceArgs].
   /// [azureADOnlyAuthentication] Enable or Disable AzureADOnlyAuthentication on All Workspace subresource
@@ -79,7 +79,7 @@ class WorkspaceArgs {
   /// [virtualNetworkProfile] Virtual Network profile
   /// [workspaceName] The name of the workspace.
   /// [workspaceRepositoryConfiguration] Git integration settings
-  const WorkspaceArgs({
+  WorkspaceArgs({
     this.azureADOnlyAuthentication,
     this.cspWorkspaceAdminProperties,
     this.defaultDataLakeStorage,
@@ -90,17 +90,17 @@ class WorkspaceArgs {
     this.managedVirtualNetwork,
     this.managedVirtualNetworkSettings,
     this.privateEndpointConnections,
-    this.publicNetworkAccess,
+    pulumi.Input<dynamic>? publicNetworkAccess,
     this.purviewConfiguration,
     required this.resourceGroupName,
     this.sqlAdministratorLogin,
     this.sqlAdministratorLoginPassword,
     this.tags,
-    this.trustedServiceBypassEnabled,
+    pulumi.Input<bool?>? trustedServiceBypassEnabled,
     this.virtualNetworkProfile,
     this.workspaceName,
     this.workspaceRepositoryConfiguration,
-  });
+  }) : publicNetworkAccess = publicNetworkAccess ?? pulumi.Input.fromValue('Enabled'), trustedServiceBypassEnabled = trustedServiceBypassEnabled ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -113,7 +113,7 @@ class WorkspaceArgs {
       'managedResourceGroupName': ?managedResourceGroupName,
       'managedVirtualNetwork': ?managedVirtualNetwork,
       'managedVirtualNetworkSettings': ?pulumi.Input.mapOptionalInputValue<ManagedVirtualNetworkSettings, Map<String, dynamic>>(managedVirtualNetworkSettings, (value) => value.toMap()),
-      'privateEndpointConnections': ?privateEndpointConnections,
+      'privateEndpointConnections': ?pulumi.Input.mapOptionalInputValue<List<PrivateEndpointConnection>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<PrivateEndpointConnection, Map<String, dynamic>>(value, (value) => value.toMap())),
       'publicNetworkAccess': ?publicNetworkAccess,
       'purviewConfiguration': ?pulumi.Input.mapOptionalInputValue<PurviewConfiguration, Map<String, dynamic>>(purviewConfiguration, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
@@ -138,8 +138,8 @@ class WorkspaceArgs {
       managedResourceGroupName: (() { final guardedValue = map['managedResourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedVirtualNetwork: (() { final guardedValue = map['managedVirtualNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedVirtualNetworkSettings: (() { final guardedValue = map['managedVirtualNetworkSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedVirtualNetworkSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<PrivateEndpointConnectionSynapse>()); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PrivateEndpointConnection>(guardedValue, (value) => PrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       purviewConfiguration: (() { final guardedValue = map['purviewConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PurviewConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sqlAdministratorLogin: (() { final guardedValue = map['sqlAdministratorLogin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

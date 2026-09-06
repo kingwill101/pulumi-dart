@@ -54,7 +54,7 @@ class EdgeMachineNicDetailResponse {
   /// [subnetMask] Subnet Mask of NIC
   /// [switchName] The switch attached to the NIC, if any.
   /// [vlanId] The VLAN ID of the physical NIC.
-  const EdgeMachineNicDetailResponse({
+  EdgeMachineNicDetailResponse({
     required this.adapterName,
     required this.componentId,
     required this.defaultGateway,
@@ -66,12 +66,12 @@ class EdgeMachineNicDetailResponse {
     required this.macAddress,
     required this.nicStatus,
     required this.nicType,
-    required this.rdmaCapability,
+    pulumi.Input<String>? rdmaCapability,
     required this.slot,
     required this.subnetMask,
     required this.switchName,
     required this.vlanId,
-  });
+  }) : rdmaCapability = rdmaCapability ?? pulumi.Input.fromValue('Disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

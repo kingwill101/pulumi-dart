@@ -6,11 +6,11 @@ import 'container_identity_info_response.dart';
 /// Container extended information
 class GenericContainerExtendedInfoResponse {
   /// Container identity information
-  final pulumi.Input<ContainerIdentityInfoResponse>? containerIdentityInfo;
+  final pulumi.Input<ContainerIdentityInfoResponse?>? containerIdentityInfo;
   /// Public key of container cert
-  final pulumi.Input<String>? rawCertData;
+  final pulumi.Input<String?>? rawCertData;
   /// Azure Backup Service Endpoints for the container
-  final pulumi.Input<Map<String, String>>? serviceEndpoints;
+  final pulumi.Input<Map<String, String>?>? serviceEndpoints;
 
   /// Creates a new [GenericContainerExtendedInfoResponse].
   /// [containerIdentityInfo] Container identity information

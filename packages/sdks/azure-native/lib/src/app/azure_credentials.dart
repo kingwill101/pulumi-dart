@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Container App credentials.
 class AzureCredentials {
   /// Client Id.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Client Secret.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Kind of auth github does for deploying the template
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Subscription Id.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// Tenant Id.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [AzureCredentials].
   /// [clientId] Client Id.

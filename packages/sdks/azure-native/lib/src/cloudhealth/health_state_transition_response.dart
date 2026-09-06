@@ -11,7 +11,7 @@ class HealthStateTransitionResponse {
   /// Previous health state before the transition
   final pulumi.Input<String> previousState;
   /// Reason of the transition
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
 
   /// Creates a new [HealthStateTransitionResponse].
   /// [newState] New health state after the transition

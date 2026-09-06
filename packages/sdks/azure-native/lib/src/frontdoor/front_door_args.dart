@@ -14,29 +14,29 @@ import 'routing_rule.dart';
 /// {@macro pulumi_frontdoor_front_door_args_doc}
 class FrontDoorArgs {
   /// Backend pools available to routing rules.
-  final pulumi.Input<List<BackendPool>>? backendPools;
+  final pulumi.Input<List<BackendPool>?>? backendPools;
   /// Settings for all backendPools
-  final pulumi.Input<BackendPoolsSettings>? backendPoolsSettings;
+  final pulumi.Input<BackendPoolsSettings?>? backendPoolsSettings;
   /// Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled'
-  final pulumi.Input<String>? enabledState;
+  final pulumi.Input<dynamic>? enabledState;
   /// A friendly name for the frontDoor
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// Name of the Front Door which is globally unique.
-  final pulumi.Input<String>? frontDoorName;
+  final pulumi.Input<String?>? frontDoorName;
   /// Frontend endpoints available to routing rules.
-  final pulumi.Input<List<FrontendEndpoint>>? frontendEndpoints;
+  final pulumi.Input<List<FrontendEndpoint>?>? frontendEndpoints;
   /// Health probe settings associated with this Front Door instance.
-  final pulumi.Input<List<HealthProbeSettingsModel>>? healthProbeSettings;
+  final pulumi.Input<List<HealthProbeSettingsModel>?>? healthProbeSettings;
   /// Load balancing settings associated with this Front Door instance.
-  final pulumi.Input<List<LoadBalancingSettingsModel>>? loadBalancingSettings;
+  final pulumi.Input<List<LoadBalancingSettingsModel>?>? loadBalancingSettings;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Routing rules associated with this Front Door.
-  final pulumi.Input<List<RoutingRule>>? routingRules;
+  final pulumi.Input<List<RoutingRule>?>? routingRules;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FrontDoorArgs].
   /// [backendPools] Backend pools available to routing rules.
@@ -87,7 +87,7 @@ class FrontDoorArgs {
     return FrontDoorArgs(
       backendPools: (() { final guardedValue = map['backendPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BackendPool>(guardedValue, (value) => BackendPool.fromMap((value as Map).cast<String, dynamic>()))); })(),
       backendPoolsSettings: (() { final guardedValue = map['backendPoolsSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackendPoolsSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       frontDoorName: (() { final guardedValue = map['frontDoorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       frontendEndpoints: (() { final guardedValue = map['frontendEndpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FrontendEndpoint>(guardedValue, (value) => FrontendEndpoint.fromMap((value as Map).cast<String, dynamic>()))); })(),

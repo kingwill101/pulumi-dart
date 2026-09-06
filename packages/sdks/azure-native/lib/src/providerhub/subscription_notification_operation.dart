@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The action.
-enum SubscriptionNotificationOperation {
+enum SubscriptionNotificationOperation implements pulumi.PulumiEnum<String> {
   notDefined("NotDefined"),
   deleteAllResources("DeleteAllResources"),
   softDeleteAllResources("SoftDeleteAllResources"),
@@ -8,6 +10,7 @@ enum SubscriptionNotificationOperation {
   undoSoftDelete("UndoSoftDelete");
 
   const SubscriptionNotificationOperation(this.wireValue);
+  @override
   final String wireValue;
 
   static SubscriptionNotificationOperation fromValue(String value) {

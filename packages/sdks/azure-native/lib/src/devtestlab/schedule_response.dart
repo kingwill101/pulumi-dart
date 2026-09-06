@@ -12,37 +12,37 @@ class ScheduleResponse {
   /// The creation date of the schedule.
   final pulumi.Input<String> createdDate;
   /// If the schedule will occur once each day of the week, specify the daily recurrence.
-  final pulumi.Input<DayDetailsResponse>? dailyRecurrence;
+  final pulumi.Input<DayDetailsResponse?>? dailyRecurrence;
   /// If the schedule will occur multiple times a day, specify the hourly recurrence.
-  final pulumi.Input<HourDetailsResponse>? hourlyRecurrence;
+  final pulumi.Input<HourDetailsResponse?>? hourlyRecurrence;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final pulumi.Input<String> id;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource
   final pulumi.Input<String> name;
   /// Notification settings.
-  final pulumi.Input<NotificationSettingsResponse>? notificationSettings;
+  final pulumi.Input<NotificationSettingsResponse?>? notificationSettings;
   /// The provisioning status of the resource.
   final pulumi.Input<String> provisioningState;
   /// The status of the schedule (i.e. Enabled, Disabled)
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The resource ID to which the schedule belongs
-  final pulumi.Input<String>? targetResourceId;
+  final pulumi.Input<String?>? targetResourceId;
   /// The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart).
-  final pulumi.Input<String>? taskType;
+  final pulumi.Input<String?>? taskType;
   /// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection&lt;string&gt; TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
-  final pulumi.Input<String>? timeZoneId;
+  final pulumi.Input<String?>? timeZoneId;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
   /// The unique immutable identifier of a resource (Guid).
   final pulumi.Input<String> uniqueIdentifier;
   /// If the schedule will occur only some days of the week, specify the weekly recurrence.
-  final pulumi.Input<WeekDetailsResponse>? weeklyRecurrence;
+  final pulumi.Input<WeekDetailsResponse?>? weeklyRecurrence;
 
   /// Creates a new [ScheduleResponse].
   /// [createdDate] The creation date of the schedule.
@@ -62,7 +62,7 @@ class ScheduleResponse {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
   /// [weeklyRecurrence] If the schedule will occur only some days of the week, specify the weekly recurrence.
-  const ScheduleResponse({
+  ScheduleResponse({
     required this.createdDate,
     this.dailyRecurrence,
     this.hourlyRecurrence,
@@ -71,7 +71,7 @@ class ScheduleResponse {
     required this.name,
     this.notificationSettings,
     required this.provisioningState,
-    this.status,
+    pulumi.Input<String?>? status,
     required this.systemData,
     this.tags,
     this.targetResourceId,
@@ -80,7 +80,7 @@ class ScheduleResponse {
     required this.type,
     required this.uniqueIdentifier,
     this.weeklyRecurrence,
-  });
+  }) : status = status ?? pulumi.Input.fromValue('Disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

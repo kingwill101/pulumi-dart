@@ -191,4 +191,22 @@ class ServerCommunicationLink extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ServerCommunicationLink] resource.
+  ServerCommunicationLink.reference(String urn)
+    : super(
+        'azure-native:sql:ServerCommunicationLink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    partnerServer = registerOutput<String>('partnerServer');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+  }
 }

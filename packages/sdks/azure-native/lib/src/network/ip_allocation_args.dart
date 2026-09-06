@@ -8,27 +8,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_ip_allocation_args_doc}
 class IpAllocationArgs {
   /// IpAllocation tags.
-  final pulumi.Input<Map<String, String>>? allocationTags;
+  final pulumi.Input<Map<String, String>?>? allocationTags;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the IpAllocation.
-  final pulumi.Input<String>? ipAllocationName;
+  final pulumi.Input<String?>? ipAllocationName;
   /// The IPAM allocation ID.
-  final pulumi.Input<String>? ipamAllocationId;
+  final pulumi.Input<String?>? ipamAllocationId;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The address prefix for the IpAllocation.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// The address prefix length for the IpAllocation.
-  final pulumi.Input<int>? prefixLength;
+  final pulumi.Input<int?>? prefixLength;
   /// The address prefix Type for the IpAllocation.
-  final pulumi.Input<String>? prefixType;
+  final pulumi.Input<dynamic>? prefixType;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The type for the IpAllocation.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [IpAllocationArgs].
   /// [allocationTags] IpAllocation tags.
@@ -42,19 +42,19 @@ class IpAllocationArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
   /// [type] The type for the IpAllocation.
-  const IpAllocationArgs({
+  IpAllocationArgs({
     this.allocationTags,
     this.id,
     this.ipAllocationName,
     this.ipamAllocationId,
     this.location,
     this.prefix,
-    this.prefixLength,
+    pulumi.Input<int?>? prefixLength,
     this.prefixType,
     required this.resourceGroupName,
     this.tags,
     this.type,
-  });
+  }) : prefixLength = prefixLength ?? pulumi.Input.fromValue(0);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,11 +80,11 @@ class IpAllocationArgs {
       ipamAllocationId: (() { final guardedValue = map['ipamAllocationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      prefixLength: (() { final guardedValue = map['prefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      prefixType: (() { final guardedValue = map['prefixType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prefixLength: (() { final guardedValue = map['prefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      prefixType: (() { final guardedValue = map['prefixType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

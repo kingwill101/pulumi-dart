@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Address
 class AddressResponse {
   /// Property addressDefinition
-  final pulumi.Input<String>? addressDefinition;
+  final pulumi.Input<String?>? addressDefinition;
 
   /// Creates a new [AddressResponse].
   /// [addressDefinition] Property addressDefinition

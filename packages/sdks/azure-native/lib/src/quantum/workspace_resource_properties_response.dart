@@ -6,15 +6,15 @@ import 'provider_response.dart';
 /// Properties of a Workspace
 class WorkspaceResourcePropertiesResponse {
   /// Indicator of enablement of the Quantum workspace Api keys.
-  final pulumi.Input<bool>? apiKeyEnabled;
+  final pulumi.Input<bool?>? apiKeyEnabled;
   /// The URI of the workspace endpoint.
   final pulumi.Input<String> endpointUri;
   /// List of Providers selected for this Workspace
-  final pulumi.Input<List<ProviderResponse>>? providers;
+  final pulumi.Input<List<ProviderResponse>?>? providers;
   /// Provisioning status field
   final pulumi.Input<String> provisioningState;
   /// ARM Resource Id of the storage account associated with this workspace.
-  final pulumi.Input<String>? storageAccount;
+  final pulumi.Input<String?>? storageAccount;
   /// Whether the current workspace is ready to accept Jobs.
   final pulumi.Input<String> usable;
 

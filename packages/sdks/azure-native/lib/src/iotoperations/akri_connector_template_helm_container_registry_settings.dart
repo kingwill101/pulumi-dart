@@ -6,7 +6,7 @@ import 'akri_connector_template_helm_auth_secret_ref.dart';
 /// AkriConnectorTemplateHelmContainerRegistrySettings properties.
 class AkriConnectorTemplateHelmContainerRegistrySettings {
   /// Optional reference to a secret in the same namespace to use for pulling the Helm chart.
-  final pulumi.Input<AkriConnectorTemplateHelmAuthSecretRef>? authSecretRef;
+  final pulumi.Input<AkriConnectorTemplateHelmAuthSecretRef?>? authSecretRef;
   /// The registry to use for the Helm chart.
   final pulumi.Input<String> registry;
 

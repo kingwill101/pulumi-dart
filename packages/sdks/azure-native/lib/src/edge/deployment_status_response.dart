@@ -6,21 +6,21 @@ import 'target_status_response.dart';
 /// Deployment Status
 class DeploymentStatusResponse {
   /// Indicates if Instance is deployed
-  final pulumi.Input<int>? deployed;
+  final pulumi.Input<int?>? deployed;
   /// The expected running job id
-  final pulumi.Input<int>? expectedRunningJobId;
+  final pulumi.Input<int?>? expectedRunningJobId;
   /// Deployment Generation
-  final pulumi.Input<int>? generation;
+  final pulumi.Input<int?>? generation;
   /// The lastModified of the Status
-  final pulumi.Input<String>? lastModified;
+  final pulumi.Input<String?>? lastModified;
   /// The running job id
-  final pulumi.Input<int>? runningJobId;
+  final pulumi.Input<int?>? runningJobId;
   /// Deployment status
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Status details
-  final pulumi.Input<String>? statusDetails;
+  final pulumi.Input<String?>? statusDetails;
   /// Target resource statuses
-  final pulumi.Input<List<TargetStatusResponse>>? targetStatuses;
+  final pulumi.Input<List<TargetStatusResponse>?>? targetStatuses;
 
   /// Creates a new [DeploymentStatusResponse].
   /// [deployed] Indicates if Instance is deployed
@@ -57,11 +57,11 @@ class DeploymentStatusResponse {
 
   factory DeploymentStatusResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentStatusResponse(
-      deployed: (() { final guardedValue = map['deployed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      expectedRunningJobId: (() { final guardedValue = map['expectedRunningJobId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deployed: (() { final guardedValue = map['deployed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      expectedRunningJobId: (() { final guardedValue = map['expectedRunningJobId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       lastModified: (() { final guardedValue = map['lastModified']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      runningJobId: (() { final guardedValue = map['runningJobId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      runningJobId: (() { final guardedValue = map['runningJobId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       statusDetails: (() { final guardedValue = map['statusDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetStatuses: (() { final guardedValue = map['targetStatuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TargetStatusResponse>(guardedValue, (value) => TargetStatusResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),

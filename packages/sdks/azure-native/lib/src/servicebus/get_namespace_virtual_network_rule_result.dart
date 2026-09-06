@@ -4,13 +4,13 @@
 /// Result data returned by getNamespaceVirtualNetworkRule.
 class GetNamespaceVirtualNetworkRuleResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Resource Id
-  final String id;
+  final String? id;
   /// Resource name
-  final String name;
+  final String? name;
   /// Resource type
-  final String type;
+  final String? type;
   /// Resource ID of Virtual Network Subnet
   final String? virtualNetworkSubnetId;
 
@@ -21,29 +21,29 @@ class GetNamespaceVirtualNetworkRuleResult {
   /// [type] Resource type
   /// [virtualNetworkSubnetId] Resource ID of Virtual Network Subnet
   const GetNamespaceVirtualNetworkRuleResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
-    required this.type,
+    this.azureApiVersion,
+    this.id,
+    this.name,
+    this.type,
     this.virtualNetworkSubnetId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
+      'type': ?type,
       'virtualNetworkSubnetId': ?virtualNetworkSubnetId,
     };
   }
 
   factory GetNamespaceVirtualNetworkRuleResult.fromMap(Map<String, dynamic> map) {
     return GetNamespaceVirtualNetworkRuleResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       virtualNetworkSubnetId: (() { final guardedValue = map['virtualNetworkSubnetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityAssessmentMetadataPropertiesResponseResponsePublishDates {
-  final pulumi.Input<String>? gA;
+  final pulumi.Input<String?>? gA;
   final pulumi.Input<String> public;
 
   /// Creates a new [SecurityAssessmentMetadataPropertiesResponseResponsePublishDates].

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SKU of the dedicated HSM
 class SkuResponse {
   /// SKU of the dedicated HSM
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [SkuResponse].
   /// [name] SKU of the dedicated HSM

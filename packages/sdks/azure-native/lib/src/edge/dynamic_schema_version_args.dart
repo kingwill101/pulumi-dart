@@ -11,9 +11,9 @@ class DynamicSchemaVersionArgs {
   /// The name of the DynamicSchema
   final pulumi.Input<String> dynamicSchemaName;
   /// The name of the DynamicSchemaVersion
-  final pulumi.Input<String>? dynamicSchemaVersionName;
+  final pulumi.Input<String?>? dynamicSchemaVersionName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<SchemaVersionProperties>? properties;
+  final pulumi.Input<SchemaVersionProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Schema

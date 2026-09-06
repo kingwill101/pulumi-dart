@@ -7,11 +7,11 @@ import 'budget_filter_properties_response.dart';
 /// May be used to filter budgets by resource group, resource, or meter.
 class BudgetFilterResponse {
   /// The logical "AND" expression. Must have at least 2 items.
-  final pulumi.Input<List<BudgetFilterPropertiesResponse>>? and;
+  final pulumi.Input<List<BudgetFilterPropertiesResponse>?>? and;
   /// Has comparison expression for a dimension
-  final pulumi.Input<BudgetComparisonExpressionResponse>? dimensions;
+  final pulumi.Input<BudgetComparisonExpressionResponse?>? dimensions;
   /// Has comparison expression for a tag
-  final pulumi.Input<BudgetComparisonExpressionResponse>? tags;
+  final pulumi.Input<BudgetComparisonExpressionResponse?>? tags;
 
   /// Creates a new [BudgetFilterResponse].
   /// [and] The logical "AND" expression. Must have at least 2 items.

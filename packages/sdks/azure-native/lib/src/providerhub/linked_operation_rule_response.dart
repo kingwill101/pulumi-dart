@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinkedOperationRuleResponse {
   /// Depends on types.
-  final pulumi.Input<List<String>>? dependsOnTypes;
+  final pulumi.Input<List<String>?>? dependsOnTypes;
   /// The linked action.
   final pulumi.Input<String> linkedAction;
   /// The linked operation.

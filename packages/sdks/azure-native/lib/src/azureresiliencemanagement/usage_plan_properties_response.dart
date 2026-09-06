@@ -8,7 +8,7 @@ class UsagePlanPropertiesResponse {
   /// Details of any errors encountered during Usage Plan create or update.
   final pulumi.Input<ErrorDetailResponse> errorDetails;
   /// The type of the usage plan.
-  final pulumi.Input<String>? planType;
+  final pulumi.Input<String?>? planType;
   /// Provisioning state of the usage plan.
   final pulumi.Input<String> provisioningState;
 

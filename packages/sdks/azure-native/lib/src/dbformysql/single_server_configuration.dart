@@ -204,4 +204,24 @@ class SingleServerConfiguration extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     value = registerOutput<String?>('value');
   }
+
+  /// Creates a typed reference to an existing [SingleServerConfiguration] resource.
+  SingleServerConfiguration.reference(String urn)
+    : super(
+        'azure-native:dbformysql:SingleServerConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowedValues = registerOutput<String>('allowedValues');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataType = registerOutput<String>('dataType');
+    defaultValue = registerOutput<String>('defaultValue');
+    description = registerOutput<String>('description');
+    this.name = registerOutput<String>('name');
+    source = registerOutput<String?>('source');
+    type = registerOutput<String>('type');
+    value = registerOutput<String?>('value');
+  }
 }

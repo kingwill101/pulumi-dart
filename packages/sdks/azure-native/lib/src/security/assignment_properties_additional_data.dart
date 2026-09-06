@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Additional data about the assignment
 class AssignmentPropertiesAdditionalData {
   /// Exemption category of this assignment
-  final pulumi.Input<String>? exemptionCategory;
+  final pulumi.Input<String?>? exemptionCategory;
 
   /// Creates a new [AssignmentPropertiesAdditionalData].
   /// [exemptionCategory] Exemption category of this assignment

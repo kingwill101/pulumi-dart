@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// CacheMode enum
-enum CacheMode {
+enum CacheMode implements pulumi.PulumiEnum<String> {
   lOCALCUSTOMCACHE("LOCAL_CUSTOM_CACHE"),
   lOCALDOCKERLAYERCACHE("LOCAL_DOCKER_LAYER_CACHE"),
   lOCALSOURCECACHE("LOCAL_SOURCE_CACHE");
 
   const CacheMode(this.wireValue);
+  @override
   final String wireValue;
 
   static CacheMode fromValue(String value) {

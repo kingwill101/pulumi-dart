@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Storage config of AzureStackHCI Cluster.
 class Storage {
   /// By default, this mode is set to Express and your storage is configured as per best practices based on the number of nodes in the cluster. Allowed values are 'Express','InfraOnly', 'KeepStorage'
-  final pulumi.Input<String>? configurationMode;
+  final pulumi.Input<String?>? configurationMode;
 
   /// Creates a new [Storage].
   /// [configurationMode] By default, this mode is set to Express and your storage is configured as per best practices based on the number of nodes in the cluster. Allowed values are 'Express','InfraOnly', 'KeepStorage'
-  const Storage({
-    this.configurationMode,
-  });
+  Storage({
+    pulumi.Input<String?>? configurationMode,
+  }) : configurationMode = configurationMode ?? pulumi.Input.fromValue('Express');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

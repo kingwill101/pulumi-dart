@@ -13,47 +13,47 @@ import 'metadata_support.dart';
 /// {@macro pulumi_securityinsights_metadata_args_doc}
 class MetadataArgs {
   /// The creator of the content item.
-  final pulumi.Input<MetadataAuthor>? author;
+  final pulumi.Input<MetadataAuthor?>? author;
   /// Categories for the solution content item
-  final pulumi.Input<MetadataCategories>? categories;
+  final pulumi.Input<MetadataCategories?>? categories;
   /// Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name
-  final pulumi.Input<String>? contentId;
+  final pulumi.Input<String?>? contentId;
   /// Schema version of the content. Can be used to distinguish between different flow based on the schema version
-  final pulumi.Input<String>? contentSchemaVersion;
+  final pulumi.Input<String?>? contentSchemaVersion;
   /// The custom version of the content. A optional free text
-  final pulumi.Input<String>? customVersion;
+  final pulumi.Input<String?>? customVersion;
   /// Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats.
-  final pulumi.Input<MetadataDependencies>? dependencies;
+  final pulumi.Input<MetadataDependencies?>? dependencies;
   /// first publish date solution content item
-  final pulumi.Input<String>? firstPublishDate;
+  final pulumi.Input<String?>? firstPublishDate;
   /// the icon identifier. this id can later be fetched from the solution template
-  final pulumi.Input<String>? icon;
+  final pulumi.Input<String?>? icon;
   /// The kind of content the metadata is for.
   final pulumi.Input<String> kind;
   /// last publish date for the solution content item
-  final pulumi.Input<String>? lastPublishDate;
+  final pulumi.Input<String?>? lastPublishDate;
   /// The Metadata name.
-  final pulumi.Input<String>? metadataName;
+  final pulumi.Input<String?>? metadataName;
   /// Full parent resource ID of the content item the metadata is for.  This is the full resource ID including the scope (subscription and resource group)
   final pulumi.Input<String> parentId;
   /// preview image file names. These will be taken from the solution artifacts
-  final pulumi.Input<List<String>>? previewImages;
+  final pulumi.Input<List<String>?>? previewImages;
   /// preview image file names. These will be taken from the solution artifacts. used for dark theme support
-  final pulumi.Input<List<String>>? previewImagesDark;
+  final pulumi.Input<List<String>?>? previewImagesDark;
   /// Providers for the solution content item
-  final pulumi.Input<List<String>>? providers;
+  final pulumi.Input<List<String>?>? providers;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Source of the content.  This is where/how it was created.
-  final pulumi.Input<MetadataSource>? source;
+  final pulumi.Input<MetadataSource?>? source;
   /// Support information for the metadata - type, name, contact information
-  final pulumi.Input<MetadataSupport>? support;
+  final pulumi.Input<MetadataSupport?>? support;
   /// the tactics the resource covers
-  final pulumi.Input<List<String>>? threatAnalysisTactics;
+  final pulumi.Input<List<String>?>? threatAnalysisTactics;
   /// the techniques the resource covers, these have to be aligned with the tactics being used
-  final pulumi.Input<List<String>>? threatAnalysisTechniques;
+  final pulumi.Input<List<String>?>? threatAnalysisTechniques;
   /// Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM template best practices.  Can also be any string, but then we cannot guarantee any version checks
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 

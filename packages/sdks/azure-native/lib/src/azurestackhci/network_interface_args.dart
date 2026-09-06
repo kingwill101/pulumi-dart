@@ -12,25 +12,25 @@ import 'network_security_group_arm_reference.dart';
 /// {@macro pulumi_azurestackhci_network_interface_args_doc}
 class NetworkInterfaceArgs {
   /// Boolean indicating whether this is a existing local network interface or if one should be created.
-  final pulumi.Input<bool>? createFromLocal;
+  final pulumi.Input<bool?>? createFromLocal;
   /// DNS Settings for the interface
-  final pulumi.Input<InterfaceDNSSettings>? dnsSettings;
+  final pulumi.Input<InterfaceDNSSettings?>? dnsSettings;
   /// The extendedLocation of the resource.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// IPConfigurations - A list of IPConfigurations of the network interface.
-  final pulumi.Input<List<IPConfiguration>>? ipConfigurations;
+  final pulumi.Input<List<IPConfiguration>?>? ipConfigurations;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// MacAddress - The MAC address of the network interface.
-  final pulumi.Input<String>? macAddress;
+  final pulumi.Input<String?>? macAddress;
   /// Name of the network interface
-  final pulumi.Input<String>? networkInterfaceName;
+  final pulumi.Input<String?>? networkInterfaceName;
   /// NetworkSecurityGroup - Network Security Group attached to the network interface.
-  final pulumi.Input<NetworkSecurityGroupArmReference>? networkSecurityGroup;
+  final pulumi.Input<NetworkSecurityGroupArmReference?>? networkSecurityGroup;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkInterfaceArgs].
   /// [createFromLocal] Boolean indicating whether this is a existing local network interface or if one should be created.
@@ -43,8 +43,8 @@ class NetworkInterfaceArgs {
   /// [networkSecurityGroup] NetworkSecurityGroup - Network Security Group attached to the network interface.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  const NetworkInterfaceArgs({
-    this.createFromLocal,
+  NetworkInterfaceArgs({
+    pulumi.Input<bool?>? createFromLocal,
     this.dnsSettings,
     this.extendedLocation,
     this.ipConfigurations,
@@ -54,7 +54,7 @@ class NetworkInterfaceArgs {
     this.networkSecurityGroup,
     required this.resourceGroupName,
     this.tags,
-  });
+  }) : createFromLocal = createFromLocal ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

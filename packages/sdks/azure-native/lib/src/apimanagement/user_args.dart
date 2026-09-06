@@ -9,31 +9,31 @@ import 'user_identity_contract.dart';
 /// {@macro pulumi_apimanagement_user_args_doc}
 class UserArgs {
   /// Determines the type of application which send the create user request. Default is legacy portal.
-  final pulumi.Input<String>? appType;
+  final pulumi.Input<dynamic>? appType;
   /// Determines the type of confirmation e-mail that will be sent to the newly created user.
-  final pulumi.Input<String>? confirmation;
+  final pulumi.Input<dynamic>? confirmation;
   /// Email address. Must not be empty and must be unique within the service instance.
   final pulumi.Input<String> email;
   /// First name.
   final pulumi.Input<String> firstName;
   /// Collection of user identities.
-  final pulumi.Input<List<UserIdentityContract>>? identities;
+  final pulumi.Input<List<UserIdentityContract>?>? identities;
   /// Last name.
   final pulumi.Input<String> lastName;
   /// Optional note about a user set by the administrator.
-  final pulumi.Input<String>? note;
+  final pulumi.Input<String?>? note;
   /// Send an Email notification to the User.
-  final pulumi.Input<bool>? notify;
+  final pulumi.Input<bool?>? notify;
   /// User Password. If no value is provided, a default password is generated.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
   /// Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// User identifier. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? userId;
+  final pulumi.Input<String?>? userId;
 
   /// Creates a new [UserArgs].
   /// [appType] Determines the type of application which send the create user request. Default is legacy portal.
@@ -49,7 +49,7 @@ class UserArgs {
   /// [serviceName] The name of the API Management service.
   /// [state] Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active.
   /// [userId] User identifier. Must be unique in the current API Management service instance.
-  const UserArgs({
+  UserArgs({
     this.appType,
     this.confirmation,
     required this.email,
@@ -61,9 +61,9 @@ class UserArgs {
     this.password,
     required this.resourceGroupName,
     required this.serviceName,
-    this.state,
+    pulumi.Input<dynamic>? state,
     this.userId,
-  });
+  }) : state = state ?? pulumi.Input.fromValue('active');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,8 +85,8 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      appType: (() { final guardedValue = map['appType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      confirmation: (() { final guardedValue = map['confirmation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      appType: (() { final guardedValue = map['appType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      confirmation: (() { final guardedValue = map['confirmation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       email: pulumi.Input.fromValue(map['email'] as String),
       firstName: pulumi.Input.fromValue(map['firstName'] as String),
       identities: (() { final guardedValue = map['identities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserIdentityContract>(guardedValue, (value) => UserIdentityContract.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -96,7 +96,7 @@ class UserArgs {
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       userId: (() { final guardedValue = map['userId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

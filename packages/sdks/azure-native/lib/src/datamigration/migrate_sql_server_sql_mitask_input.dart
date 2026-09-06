@@ -9,25 +9,25 @@ import 'sql_connection_info.dart';
 /// Input for task that migrates SQL Server databases to Azure SQL Database Managed Instance.
 class MigrateSqlServerSqlMITaskInput {
   /// Azure Active Directory domain name in the format of 'contoso.com' for federated Azure AD or 'contoso.onmicrosoft.com' for managed domain, required if and only if Windows logins are selected
-  final pulumi.Input<String>? aadDomainName;
+  final pulumi.Input<String?>? aadDomainName;
   /// SAS URI of Azure Storage Account Container to be used for storing backup files.
   final pulumi.Input<BlobShare> backupBlobShare;
   /// Backup file share information for all selected databases.
-  final pulumi.Input<FileShare>? backupFileShare;
+  final pulumi.Input<FileShare?>? backupFileShare;
   /// Backup Mode to specify whether to use existing backup or create new backup. If using existing backups, backup file paths are required to be provided in selectedDatabases.
-  final pulumi.Input<String>? backupMode;
+  final pulumi.Input<dynamic>? backupMode;
   /// encrypted key for secure fields
-  final pulumi.Input<String>? encryptedKeyForSecureFields;
+  final pulumi.Input<String?>? encryptedKeyForSecureFields;
   /// Agent Jobs to migrate.
-  final pulumi.Input<List<String>>? selectedAgentJobs;
+  final pulumi.Input<List<String>?>? selectedAgentJobs;
   /// Databases to migrate
   final pulumi.Input<List<MigrateSqlServerSqlMIDatabaseInput>> selectedDatabases;
   /// Logins to migrate.
-  final pulumi.Input<List<String>>? selectedLogins;
+  final pulumi.Input<List<String>?>? selectedLogins;
   /// Information for connecting to source
   final pulumi.Input<SqlConnectionInfo> sourceConnectionInfo;
   /// Date and time relative to UTC when the migration was started on
-  final pulumi.Input<String>? startedOn;
+  final pulumi.Input<String?>? startedOn;
   /// Information for connecting to target
   final pulumi.Input<SqlConnectionInfo> targetConnectionInfo;
 
@@ -78,7 +78,7 @@ class MigrateSqlServerSqlMITaskInput {
       aadDomainName: (() { final guardedValue = map['aadDomainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       backupBlobShare: pulumi.Input.fromValue(BlobShare.fromMap((map['backupBlobShare']! as Map).cast<String, dynamic>())),
       backupFileShare: (() { final guardedValue = map['backupFileShare']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FileShare.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      backupMode: (() { final guardedValue = map['backupMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      backupMode: (() { final guardedValue = map['backupMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       encryptedKeyForSecureFields: (() { final guardedValue = map['encryptedKeyForSecureFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       selectedAgentJobs: (() { final guardedValue = map['selectedAgentJobs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       selectedDatabases: pulumi.Input.fromValue(pulumi.Input.decodeList<MigrateSqlServerSqlMIDatabaseInput>(map['selectedDatabases']!, (value) => MigrateSqlServerSqlMIDatabaseInput.fromMap((value as Map).cast<String, dynamic>()))),

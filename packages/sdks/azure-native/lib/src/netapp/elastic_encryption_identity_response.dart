@@ -7,7 +7,7 @@ class ElasticEncryptionIdentityResponse {
   /// The principal ID (object ID) of the identity used to authenticate with key vault. Read-only.
   final pulumi.Input<String> principalId;
   /// The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
-  final pulumi.Input<String>? userAssignedIdentity;
+  final pulumi.Input<String?>? userAssignedIdentity;
 
   /// Creates a new [ElasticEncryptionIdentityResponse].
   /// [principalId] The principal ID (object ID) of the identity used to authenticate with key vault. Read-only.

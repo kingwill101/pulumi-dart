@@ -9,17 +9,17 @@ import 'route_map_rule.dart';
 /// {@macro pulumi_network_route_map_args_doc}
 class RouteMapArgs {
   /// List of connections which have this RoutMap associated for inbound traffic.
-  final pulumi.Input<List<String>>? associatedInboundConnections;
+  final pulumi.Input<List<String>?>? associatedInboundConnections;
   /// List of connections which have this RoutMap associated for outbound traffic.
-  final pulumi.Input<List<String>>? associatedOutboundConnections;
+  final pulumi.Input<List<String>?>? associatedOutboundConnections;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The resource group name of the RouteMap's resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the RouteMap.
-  final pulumi.Input<String>? routeMapName;
+  final pulumi.Input<String?>? routeMapName;
   /// List of RouteMap rules to be applied.
-  final pulumi.Input<List<RouteMapRule>>? rules;
+  final pulumi.Input<List<RouteMapRule>?>? rules;
   /// The name of the VirtualHub containing the RouteMap.
   final pulumi.Input<String> virtualHubName;
 

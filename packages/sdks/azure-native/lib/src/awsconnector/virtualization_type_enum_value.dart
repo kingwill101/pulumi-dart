@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of VirtualizationTypeEnumValue
 class VirtualizationTypeEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [VirtualizationTypeEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class VirtualizationTypeEnumValue {
 
   factory VirtualizationTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return VirtualizationTypeEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

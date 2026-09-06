@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information about a tenant managing the subscription.
 class ManagedByTenantResponse {
   /// The tenant ID of the managing tenant.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ManagedByTenantResponse].
   /// [tenantId] The tenant ID of the managing tenant.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The details about the project represented by the security connector
 class GcpProjectDetails {
   /// The GCP Project id
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
   /// The unique GCP Project number
-  final pulumi.Input<String>? projectNumber;
+  final pulumi.Input<String?>? projectNumber;
 
   /// Creates a new [GcpProjectDetails].
   /// [projectId] The GCP Project id

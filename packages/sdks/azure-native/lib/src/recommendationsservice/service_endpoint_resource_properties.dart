@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ServiceEndpoint resource properties.
 class ServiceEndpointResourceProperties {
   /// ServiceEndpoint pre-allocated capacity controls the maximum requests-per-second allowed for that endpoint. Only applicable when Account configuration is Capacity.
-  final pulumi.Input<int>? preAllocatedCapacity;
+  final pulumi.Input<int?>? preAllocatedCapacity;
 
   /// Creates a new [ServiceEndpointResourceProperties].
   /// [preAllocatedCapacity] ServiceEndpoint pre-allocated capacity controls the maximum requests-per-second allowed for that endpoint. Only applicable when Account configuration is Capacity.
@@ -21,7 +21,7 @@ class ServiceEndpointResourceProperties {
 
   factory ServiceEndpointResourceProperties.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointResourceProperties(
-      preAllocatedCapacity: (() { final guardedValue = map['preAllocatedCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      preAllocatedCapacity: (() { final guardedValue = map['preAllocatedCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

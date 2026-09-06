@@ -5,22 +5,22 @@ import 'system_data_response.dart';
 /// Result data returned by getClientGroup.
 class GetClientGroupResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Description for the Client Group resource.
   final String? description;
   /// Fully qualified identifier of the resource.
-  final String id;
+  final String? id;
   /// Name of the resource.
-  final String name;
+  final String? name;
   /// Provisioning state of the ClientGroup resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The grouping query for the clients.
   /// Example : attributes.keyName IN ['a', 'b', 'c'].
   final String? query;
   /// The system metadata relating to the Event Grid resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Type of the resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetClientGroupResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -32,39 +32,39 @@ class GetClientGroupResult {
   /// [systemData] The system metadata relating to the Event Grid resource.
   /// [type] Type of the resource.
   const GetClientGroupResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.description,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
+    this.id,
+    this.name,
+    this.provisioningState,
     this.query,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'query': ?query,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetClientGroupResult.fromMap(Map<String, dynamic> map) {
     return GetClientGroupResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       query: (() { final guardedValue = map['query']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -9,39 +9,39 @@ import 'managed_cluster_static_egress_gateway_profile_response.dart';
 /// Profile of network configuration.
 class ContainerServiceNetworkProfileResponse {
   /// Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
-  final pulumi.Input<AdvancedNetworkingResponse>? advancedNetworking;
+  final pulumi.Input<AdvancedNetworkingResponse?>? advancedNetworking;
   /// An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
-  final pulumi.Input<String>? dnsServiceIP;
+  final pulumi.Input<String?>? dnsServiceIP;
   /// The IP families used to specify IP versions available to the cluster. IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6.
-  final pulumi.Input<List<String>>? ipFamilies;
+  final pulumi.Input<List<String>?>? ipFamilies;
   /// Profile of the cluster load balancer.
-  final pulumi.Input<ManagedClusterLoadBalancerProfileResponse>? loadBalancerProfile;
+  final pulumi.Input<ManagedClusterLoadBalancerProfileResponse?>? loadBalancerProfile;
   /// The load balancer sku for the managed cluster. The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more information about the differences between load balancer SKUs.
-  final pulumi.Input<String>? loadBalancerSku;
+  final pulumi.Input<String?>? loadBalancerSku;
   /// Profile of the cluster NAT gateway.
-  final pulumi.Input<ManagedClusterNATGatewayProfileResponse>? natGatewayProfile;
+  final pulumi.Input<ManagedClusterNATGatewayProfileResponse?>? natGatewayProfile;
   /// Network dataplane used in the Kubernetes cluster.
-  final pulumi.Input<String>? networkDataplane;
+  final pulumi.Input<String?>? networkDataplane;
   /// The network mode Azure CNI is configured with. This cannot be specified if networkPlugin is anything other than 'azure'.
-  final pulumi.Input<String>? networkMode;
+  final pulumi.Input<String?>? networkMode;
   /// Network plugin used for building the Kubernetes network.
-  final pulumi.Input<String>? networkPlugin;
+  final pulumi.Input<String?>? networkPlugin;
   /// The mode the network plugin should use.
-  final pulumi.Input<String>? networkPluginMode;
+  final pulumi.Input<String?>? networkPluginMode;
   /// Network policy used for building the Kubernetes network.
-  final pulumi.Input<String>? networkPolicy;
+  final pulumi.Input<String?>? networkPolicy;
   /// The outbound (egress) routing method. This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
-  final pulumi.Input<String>? outboundType;
+  final pulumi.Input<String?>? outboundType;
   /// A CIDR notation IP range from which to assign pod IPs when kubenet is used.
-  final pulumi.Input<String>? podCidr;
+  final pulumi.Input<String?>? podCidr;
   /// The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
-  final pulumi.Input<List<String>>? podCidrs;
+  final pulumi.Input<List<String>?>? podCidrs;
   /// A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
-  final pulumi.Input<String>? serviceCidr;
+  final pulumi.Input<String?>? serviceCidr;
   /// The CIDR notation IP ranges from which to assign service cluster IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet IP ranges.
-  final pulumi.Input<List<String>>? serviceCidrs;
+  final pulumi.Input<List<String>?>? serviceCidrs;
   /// The profile for Static Egress Gateway addon. For more details about Static Egress Gateway, see https://aka.ms/aks/static-egress-gateway.
-  final pulumi.Input<ManagedClusterStaticEgressGatewayProfileResponse>? staticEgressGatewayProfile;
+  final pulumi.Input<ManagedClusterStaticEgressGatewayProfileResponse?>? staticEgressGatewayProfile;
 
   /// Creates a new [ContainerServiceNetworkProfileResponse].
   /// [advancedNetworking] Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
@@ -61,9 +61,9 @@ class ContainerServiceNetworkProfileResponse {
   /// [serviceCidr] A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
   /// [serviceCidrs] The CIDR notation IP ranges from which to assign service cluster IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet IP ranges.
   /// [staticEgressGatewayProfile] The profile for Static Egress Gateway addon. For more details about Static Egress Gateway, see https://aka.ms/aks/static-egress-gateway.
-  const ContainerServiceNetworkProfileResponse({
+  ContainerServiceNetworkProfileResponse({
     this.advancedNetworking,
-    this.dnsServiceIP,
+    pulumi.Input<String?>? dnsServiceIP,
     this.ipFamilies,
     this.loadBalancerProfile,
     this.loadBalancerSku,
@@ -73,13 +73,13 @@ class ContainerServiceNetworkProfileResponse {
     this.networkPlugin,
     this.networkPluginMode,
     this.networkPolicy,
-    this.outboundType,
-    this.podCidr,
+    pulumi.Input<String?>? outboundType,
+    pulumi.Input<String?>? podCidr,
     this.podCidrs,
-    this.serviceCidr,
+    pulumi.Input<String?>? serviceCidr,
     this.serviceCidrs,
     this.staticEgressGatewayProfile,
-  });
+  }) : dnsServiceIP = dnsServiceIP ?? pulumi.Input.fromValue('10.0.0.10'), outboundType = outboundType ?? pulumi.Input.fromValue('loadBalancer'), podCidr = podCidr ?? pulumi.Input.fromValue('10.244.0.0/16'), serviceCidr = serviceCidr ?? pulumi.Input.fromValue('10.0.0.0/16');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

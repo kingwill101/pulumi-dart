@@ -233,7 +233,28 @@ class PlanMember extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     syncStatus = registerOutput<PlanMemberSyncStatusResponse>('syncStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanMemberSyncStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tier = registerOutput<String?>('tier');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [PlanMember] resource.
+  PlanMember.reference(String urn)
+    : super(
+        'azure-native:devcenter:PlanMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    memberId = registerOutput<String?>('memberId');
+    memberType = registerOutput<String?>('memberType');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    syncStatus = registerOutput<PlanMemberSyncStatusResponse>('syncStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanMemberSyncStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tier = registerOutput<String?>('tier');
     type = registerOutput<String>('type');
   }

@@ -5,7 +5,7 @@ import 'async_operation_polling_rules.dart';
 
 class ResourceProviderAuthorizationRules {
   /// The async operation polling rules.
-  final pulumi.Input<AsyncOperationPollingRules>? asyncOperationPollingRules;
+  final pulumi.Input<AsyncOperationPollingRules?>? asyncOperationPollingRules;
 
   /// Creates a new [ResourceProviderAuthorizationRules].
   /// [asyncOperationPollingRules] The async operation polling rules.

@@ -26,6 +26,17 @@ Future<GetAccountResult> getAccount(
   return GetAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountResult> getAccountOutput(
+  GetAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:engagementfabric:getAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountResult.fromMap);
+}
+
 /// The EngagementFabric channel
 ///
 /// Uses Azure REST API version 2018-09-01-preview.
@@ -42,6 +53,17 @@ Future<GetChannelResult> getChannel(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetChannelResult.fromMap(result);
+}
+
+pulumi.Output<GetChannelResult> getChannelOutput(
+  GetChannelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:engagementfabric:getChannel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetChannelResult.fromMap);
 }
 
 /// List of the EngagementFabric channel descriptions
@@ -62,6 +84,17 @@ Future<ListAccountChannelTypesResult> listAccountChannelTypes(
   return ListAccountChannelTypesResult.fromMap(result);
 }
 
+pulumi.Output<ListAccountChannelTypesResult> listAccountChannelTypesOutput(
+  ListAccountChannelTypesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:engagementfabric:listAccountChannelTypes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAccountChannelTypesResult.fromMap);
+}
+
 /// The list of the EngagementFabric account keys
 ///
 /// Uses Azure REST API version 2018-09-01-preview.
@@ -78,4 +111,15 @@ Future<ListAccountKeysResult> listAccountKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListAccountKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListAccountKeysResult> listAccountKeysOutput(
+  ListAccountKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:engagementfabric:listAccountKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAccountKeysResult.fromMap);
 }

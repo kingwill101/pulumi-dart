@@ -5,24 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the public IP address resource settings.
 class PublicIPAddressResourceSettingsResponse {
   /// Gets or sets the domain name label.
-  final pulumi.Input<String>? domainNameLabel;
+  final pulumi.Input<String?>? domainNameLabel;
   /// Gets or sets the fully qualified domain name.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// Gets or sets public IP allocation method.
-  final pulumi.Input<String>? publicIpAllocationMethod;
+  final pulumi.Input<String?>? publicIpAllocationMethod;
   /// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
   /// Expected value is 'Microsoft.Network/publicIPAddresses'.
   final pulumi.Input<String> resourceType;
   /// Gets or sets public IP sku.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// Gets or sets the Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Gets or sets the target resource group name.
-  final pulumi.Input<String>? targetResourceGroupName;
+  final pulumi.Input<String?>? targetResourceGroupName;
   /// Gets or sets the target Resource name.
-  final pulumi.Input<String>? targetResourceName;
+  final pulumi.Input<String?>? targetResourceName;
   /// Gets or sets public IP zones.
-  final pulumi.Input<String>? zones;
+  final pulumi.Input<String?>? zones;
 
   /// Creates a new [PublicIPAddressResourceSettingsResponse].
   /// [domainNameLabel] Gets or sets the domain name label.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Source server type used for the migration: ApsaraDB_RDS, AWS, AWS_AURORA, AWS_EC2, AWS_RDS, AzureVM, Crunchy_PostgreSQL, Digital_Ocean_Droplets, Digital_Ocean_PostgreSQL, EDB, EDB_Oracle_Server, EDB_PostgreSQL, GCP, GCP_AlloyDB, GCP_CloudSQL, GCP_Compute, Heroku_PostgreSQL, Huawei_Compute, Huawei_RDS, OnPremises, PostgreSQLCosmosDB, PostgreSQLFlexibleServer, PostgreSQLSingleServer, or Supabase_PostgreSQL
-enum SourceType {
+enum SourceType implements pulumi.PulumiEnum<String> {
   onPremises("OnPremises"),
   aWS("AWS"),
   gCP("GCP"),
@@ -26,6 +28,7 @@ enum SourceType {
   supabasePostgreSQL("Supabase_PostgreSQL");
 
   const SourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static SourceType fromValue(String value) {

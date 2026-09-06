@@ -15,33 +15,33 @@ import 'cache_upgrade_settings.dart';
 /// {@macro pulumi_storagecache_cache_args_doc}
 class CacheArgs {
   /// Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-  final pulumi.Input<String>? cacheName;
+  final pulumi.Input<String?>? cacheName;
   /// The size of this Cache, in GB.
-  final pulumi.Input<int>? cacheSizeGB;
+  final pulumi.Input<int?>? cacheSizeGB;
   /// Specifies Directory Services settings of the cache.
-  final pulumi.Input<CacheDirectorySettings>? directoryServicesSettings;
+  final pulumi.Input<CacheDirectorySettings?>? directoryServicesSettings;
   /// Specifies encryption settings of the cache.
-  final pulumi.Input<CacheEncryptionSettings>? encryptionSettings;
+  final pulumi.Input<CacheEncryptionSettings?>? encryptionSettings;
   /// The identity of the cache, if configured.
-  final pulumi.Input<CacheIdentity>? identity;
+  final pulumi.Input<CacheIdentity?>? identity;
   /// Region name string.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies network settings of the cache.
-  final pulumi.Input<CacheNetworkSettings>? networkSettings;
+  final pulumi.Input<CacheNetworkSettings?>? networkSettings;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies security settings of the cache.
-  final pulumi.Input<CacheSecuritySettings>? securitySettings;
+  final pulumi.Input<CacheSecuritySettings?>? securitySettings;
   /// SKU for the cache.
-  final pulumi.Input<CacheSku>? sku;
+  final pulumi.Input<CacheSku?>? sku;
   /// Subnet used for the cache.
-  final pulumi.Input<String>? subnet;
+  final pulumi.Input<String?>? subnet;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Upgrade settings of the cache.
-  final pulumi.Input<CacheUpgradeSettings>? upgradeSettings;
+  final pulumi.Input<CacheUpgradeSettings?>? upgradeSettings;
   /// Availability zones for resources. This field should only contain a single element in the array.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [CacheArgs].
   /// [cacheName] Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
@@ -97,7 +97,7 @@ class CacheArgs {
   factory CacheArgs.fromMap(Map<String, dynamic> map) {
     return CacheArgs(
       cacheName: (() { final guardedValue = map['cacheName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cacheSizeGB: (() { final guardedValue = map['cacheSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cacheSizeGB: (() { final guardedValue = map['cacheSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       directoryServicesSettings: (() { final guardedValue = map['directoryServicesSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CacheDirectorySettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       encryptionSettings: (() { final guardedValue = map['encryptionSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CacheEncryptionSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CacheIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

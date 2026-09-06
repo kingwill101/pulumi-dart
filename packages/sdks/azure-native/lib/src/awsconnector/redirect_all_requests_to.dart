@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of RedirectAllRequestsTo
 class RedirectAllRequestsTo {
   /// Name of the host where requests are redirected.
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// Protocol to use when redirecting requests. The default is the protocol that is used in the original request.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<dynamic>? protocol;
 
   /// Creates a new [RedirectAllRequestsTo].
   /// [hostName] Name of the host where requests are redirected.
@@ -27,7 +27,7 @@ class RedirectAllRequestsTo {
   factory RedirectAllRequestsTo.fromMap(Map<String, dynamic> map) {
     return RedirectAllRequestsTo(
       hostName: (() { final guardedValue = map['hostName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

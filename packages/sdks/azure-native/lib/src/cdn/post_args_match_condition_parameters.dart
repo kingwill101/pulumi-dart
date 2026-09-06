@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the parameters for PostArgs match conditions
 class PostArgsMatchConditionParameters {
   /// The match value for the condition of the delivery rule
-  final pulumi.Input<List<String>>? matchValues;
+  final pulumi.Input<List<String>?>? matchValues;
   /// Describes if this is negate condition or not
-  final pulumi.Input<bool>? negateCondition;
+  final pulumi.Input<bool?>? negateCondition;
   /// Describes operator to be matched
-  final pulumi.Input<String> operator;
+  final pulumi.Input<dynamic> operator;
   /// Name of PostArg to be matched
-  final pulumi.Input<String>? selector;
+  final pulumi.Input<String?>? selector;
   /// List of transforms
-  final pulumi.Input<List<String>>? transforms;
+  final pulumi.Input<List<dynamic>?>? transforms;
   /// Expected value is 'DeliveryRulePostArgsConditionParameters'.
   final pulumi.Input<String> typeName;
 
@@ -24,14 +24,14 @@ class PostArgsMatchConditionParameters {
   /// [selector] Name of PostArg to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRulePostArgsConditionParameters'.
-  const PostArgsMatchConditionParameters({
+  PostArgsMatchConditionParameters({
     this.matchValues,
-    this.negateCondition,
+    pulumi.Input<bool?>? negateCondition,
     required this.operator,
     this.selector,
     this.transforms,
     required this.typeName,
-  });
+  }) : negateCondition = negateCondition ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,9 +48,9 @@ class PostArgsMatchConditionParameters {
     return PostArgsMatchConditionParameters(
       matchValues: (() { final guardedValue = map['matchValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       negateCondition: (() { final guardedValue = map['negateCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      operator: pulumi.Input.fromValue(map['operator'] as String),
+      operator: pulumi.Input.fromValue(map['operator']),
       selector: (() { final guardedValue = map['selector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      transforms: (() { final guardedValue = map['transforms']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      transforms: (() { final guardedValue = map['transforms']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       typeName: pulumi.Input.fromValue(map['typeName'] as String),
     );
   }

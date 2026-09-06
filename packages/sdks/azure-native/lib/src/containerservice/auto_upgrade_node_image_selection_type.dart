@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The node image upgrade type.
-enum AutoUpgradeNodeImageSelectionType {
+enum AutoUpgradeNodeImageSelectionType implements pulumi.PulumiEnum<String> {
   latest("Latest"),
   consistent("Consistent");
 
   const AutoUpgradeNodeImageSelectionType(this.wireValue);
+  @override
   final String wireValue;
 
   static AutoUpgradeNodeImageSelectionType fromValue(String value) {

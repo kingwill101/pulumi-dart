@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduleBaseResponse {
   /// A system assigned id for the schedule.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The current deployment state of schedule.
-  final pulumi.Input<String>? provisioningStatus;
+  final pulumi.Input<String?>? provisioningStatus;
   /// Is the schedule enabled or disabled?
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [ScheduleBaseResponse].
   /// [id] A system assigned id for the schedule.

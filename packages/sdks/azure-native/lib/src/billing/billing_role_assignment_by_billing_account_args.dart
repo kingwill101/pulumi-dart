@@ -11,11 +11,11 @@ class BillingRoleAssignmentByBillingAccountArgs {
   /// The ID that uniquely identifies a billing account.
   final pulumi.Input<String> billingAccountName;
   /// The ID that uniquely identifies a role assignment.
-  final pulumi.Input<String>? billingRoleAssignmentName;
+  final pulumi.Input<String?>? billingRoleAssignmentName;
   /// The properties of the billing role assignment.
-  final pulumi.Input<BillingRoleAssignmentProperties>? properties;
+  final pulumi.Input<BillingRoleAssignmentProperties?>? properties;
   /// Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain &lt; &gt; % & \ ? /
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [BillingRoleAssignmentByBillingAccountArgs].
   /// [billingAccountName] The ID that uniquely identifies a billing account.

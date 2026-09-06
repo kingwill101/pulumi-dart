@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
-enum EnforcementMode {
+enum EnforcementMode implements pulumi.PulumiEnum<String> {
   valueDefault("Default"),
   valueDoNotEnforce("DoNotEnforce"),
   valueEnroll("Enroll");
 
   const EnforcementMode(this.wireValue);
+  @override
   final String wireValue;
 
   static EnforcementMode fromValue(String value) {

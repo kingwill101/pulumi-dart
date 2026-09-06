@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AppLinkMember east-west gateway profile.
 class EastWestGatewayProfile {
   /// East-West gateway visibility.
-  final pulumi.Input<String> visibility;
+  final pulumi.Input<dynamic> visibility;
 
   /// Creates a new [EastWestGatewayProfile].
   /// [visibility] East-West gateway visibility.
@@ -21,7 +21,7 @@ class EastWestGatewayProfile {
 
   factory EastWestGatewayProfile.fromMap(Map<String, dynamic> map) {
     return EastWestGatewayProfile(
-      visibility: pulumi.Input.fromValue(map['visibility'] as String),
+      visibility: pulumi.Input.fromValue(map['visibility']),
     );
   }
 }

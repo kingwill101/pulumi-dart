@@ -6,9 +6,9 @@ import 'cloud_hsm_cluster_sku_name.dart';
 /// Cloud Hsm Cluster SKU information
 class CloudHsmClusterSku {
   /// Sku capacity
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
   /// Sku family of the Cloud HSM Cluster
-  final pulumi.Input<String> family;
+  final pulumi.Input<dynamic> family;
   /// Sku name of the Cloud HSM Cluster
   final pulumi.Input<CloudHsmClusterSkuName> name;
 
@@ -32,8 +32,8 @@ class CloudHsmClusterSku {
 
   factory CloudHsmClusterSku.fromMap(Map<String, dynamic> map) {
     return CloudHsmClusterSku(
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      family: pulumi.Input.fromValue(map['family'] as String),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      family: pulumi.Input.fromValue(map['family']),
       name: pulumi.Input.fromValue(CloudHsmClusterSkuName.fromValue(map['name']! as String)),
     );
   }

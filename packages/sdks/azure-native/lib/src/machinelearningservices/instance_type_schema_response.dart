@@ -6,9 +6,9 @@ import 'instance_type_schema_resources_response.dart';
 /// Instance type schema.
 class InstanceTypeSchemaResponse {
   /// Node Selector
-  final pulumi.Input<Map<String, String>>? nodeSelector;
+  final pulumi.Input<Map<String, String>?>? nodeSelector;
   /// Resource requests/limits for this instance type
-  final pulumi.Input<InstanceTypeSchemaResourcesResponse>? resources;
+  final pulumi.Input<InstanceTypeSchemaResourcesResponse?>? resources;
 
   /// Creates a new [InstanceTypeSchemaResponse].
   /// [nodeSelector] Node Selector

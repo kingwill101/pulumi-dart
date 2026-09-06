@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Output serialization format.
-enum DataflowGraphConnectionSchemaSerializationFormat {
+enum DataflowGraphConnectionSchemaSerializationFormat implements pulumi.PulumiEnum<String> {
   delta("Delta"),
   json("Json"),
   parquet("Parquet"),
   avro("Avro");
 
   const DataflowGraphConnectionSchemaSerializationFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static DataflowGraphConnectionSchemaSerializationFormat fromValue(String value) {

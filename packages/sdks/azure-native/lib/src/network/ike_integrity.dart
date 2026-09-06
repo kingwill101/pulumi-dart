@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The IKE integrity algorithm (IKE phase 2).
-enum IkeIntegrity {
+enum IkeIntegrity implements pulumi.PulumiEnum<String> {
   valueMD5("MD5"),
   valueSHA1("SHA1"),
   valueSHA256("SHA256"),
@@ -8,6 +10,7 @@ enum IkeIntegrity {
   valueGCMAES128("GCMAES128");
 
   const IkeIntegrity(this.wireValue);
+  @override
   final String wireValue;
 
   static IkeIntegrity fromValue(String value) {

@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_resource_provider_args.dart';
+import 'custom_rpaction_route_definition_response.dart';
+import 'custom_rpresource_type_route_definition_response.dart';
+import 'custom_rpvalidations_response.dart';
 
 /// A manifest file that defines the custom resource provider resources.
 ///
@@ -230,7 +233,7 @@ import 'custom_resource_provider_args.dart';
 /// ```
 class CustomResourceProvider extends pulumi.CustomResource {
   /// A list of actions that the custom resource provider implements.
-  late final pulumi.Output<List<Map<String, dynamic>>?> actions;
+  late final pulumi.Output<List<CustomRPActionRouteDefinitionResponse>?> actions;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Resource location
@@ -240,13 +243,13 @@ class CustomResourceProvider extends pulumi.CustomResource {
   /// The provisioning state of the resource provider.
   late final pulumi.Output<String> provisioningState;
   /// A list of resource types that the custom resource provider implements.
-  late final pulumi.Output<List<Map<String, dynamic>>?> resourceTypes;
+  late final pulumi.Output<List<CustomRPResourceTypeRouteDefinitionResponse>?> resourceTypes;
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
   /// Resource type
   late final pulumi.Output<String> type;
   /// A list of validations to run on the custom resource provider's requests.
-  late final pulumi.Output<List<Map<String, dynamic>>?> validations;
+  late final pulumi.Output<List<CustomRPValidationsResponse>?> validations;
 
   /// Creates a new [CustomResourceProvider].
   /// [name] The Pulumi resource name.
@@ -262,14 +265,34 @@ class CustomResourceProvider extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>?>('actions');
+    actions = registerOutput<List<CustomRPActionRouteDefinitionResponse>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomRPActionRouteDefinitionResponse>(guardedValue, (value) => CustomRPActionRouteDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    resourceTypes = registerOutput<List<Map<String, dynamic>>?>('resourceTypes');
-    tags = registerOutput<Map<String, String>?>('tags');
+    resourceTypes = registerOutput<List<CustomRPResourceTypeRouteDefinitionResponse>?>('resourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomRPResourceTypeRouteDefinitionResponse>(guardedValue, (value) => CustomRPResourceTypeRouteDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    validations = registerOutput<List<Map<String, dynamic>>?>('validations');
+    validations = registerOutput<List<CustomRPValidationsResponse>?>('validations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomRPValidationsResponse>(guardedValue, (value) => CustomRPValidationsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [CustomResourceProvider] resource.
+  CustomResourceProvider.reference(String urn)
+    : super(
+        'azure-native:customproviders:CustomResourceProvider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actions = registerOutput<List<CustomRPActionRouteDefinitionResponse>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomRPActionRouteDefinitionResponse>(guardedValue, (value) => CustomRPActionRouteDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceTypes = registerOutput<List<CustomRPResourceTypeRouteDefinitionResponse>?>('resourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomRPResourceTypeRouteDefinitionResponse>(guardedValue, (value) => CustomRPResourceTypeRouteDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    validations = registerOutput<List<CustomRPValidationsResponse>?>('validations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomRPValidationsResponse>(guardedValue, (value) => CustomRPValidationsResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

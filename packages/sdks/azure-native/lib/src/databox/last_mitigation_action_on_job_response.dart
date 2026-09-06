@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Last Mitigation Action Performed On Job
 class LastMitigationActionOnJobResponse {
   /// Action performed date time
-  final pulumi.Input<String>? actionDateTimeInUtc;
+  final pulumi.Input<String?>? actionDateTimeInUtc;
   /// Resolution code provided by customer
-  final pulumi.Input<String>? customerResolution;
+  final pulumi.Input<String?>? customerResolution;
   /// Action performed by customer,
   /// possibility is that mitigation might happen by customer or service or by ops
-  final pulumi.Input<bool>? isPerformedByCustomer;
+  final pulumi.Input<bool?>? isPerformedByCustomer;
 
   /// Creates a new [LastMitigationActionOnJobResponse].
   /// [actionDateTimeInUtc] Action performed date time

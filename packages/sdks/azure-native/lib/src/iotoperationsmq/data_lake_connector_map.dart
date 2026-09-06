@@ -16,7 +16,7 @@ class DataLakeConnectorMap {
   /// Mqtt source topic.
   final pulumi.Input<String> mqttSourceTopic;
   /// Quality of Service.
-  final pulumi.Input<int>? qos;
+  final pulumi.Input<int?>? qos;
   /// Delta table properties to use.
   final pulumi.Input<DeltaTable> table;
 
@@ -28,15 +28,15 @@ class DataLakeConnectorMap {
   /// [mqttSourceTopic] Mqtt source topic.
   /// [qos] Quality of Service.
   /// [table] Delta table properties to use.
-  const DataLakeConnectorMap({
+  DataLakeConnectorMap({
     required this.allowedLatencySecs,
     required this.clientId,
     required this.maxMessagesPerBatch,
     required this.messagePayloadType,
     required this.mqttSourceTopic,
-    this.qos,
+    pulumi.Input<int?>? qos,
     required this.table,
-  });
+  }) : qos = qos ?? pulumi.Input.fromValue(1);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,12 +52,12 @@ class DataLakeConnectorMap {
 
   factory DataLakeConnectorMap.fromMap(Map<String, dynamic> map) {
     return DataLakeConnectorMap(
-      allowedLatencySecs: pulumi.Input.fromValue(map['allowedLatencySecs'] as int),
+      allowedLatencySecs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['allowedLatencySecs'])),
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
-      maxMessagesPerBatch: pulumi.Input.fromValue(map['maxMessagesPerBatch'] as double),
+      maxMessagesPerBatch: pulumi.Input.fromValue((map['maxMessagesPerBatch'] as num).toDouble()),
       messagePayloadType: pulumi.Input.fromValue(map['messagePayloadType'] as String),
       mqttSourceTopic: pulumi.Input.fromValue(map['mqttSourceTopic'] as String),
-      qos: (() { final guardedValue = map['qos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      qos: (() { final guardedValue = map['qos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       table: pulumi.Input.fromValue(DeltaTable.fromMap((map['table']! as Map).cast<String, dynamic>())),
     );
   }

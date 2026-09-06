@@ -9,17 +9,17 @@ import 'network_function_definition_group_properties_format.dart';
 /// {@macro pulumi_hybridnetwork_network_function_definition_group_args_doc}
 class NetworkFunctionDefinitionGroupArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the network function definition group.
-  final pulumi.Input<String>? networkFunctionDefinitionGroupName;
+  final pulumi.Input<String?>? networkFunctionDefinitionGroupName;
   /// Network function definition group properties.
-  final pulumi.Input<NetworkFunctionDefinitionGroupPropertiesFormat>? properties;
+  final pulumi.Input<NetworkFunctionDefinitionGroupPropertiesFormat?>? properties;
   /// The name of the publisher.
   final pulumi.Input<String> publisherName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkFunctionDefinitionGroupArgs].
   /// [location] The geo-location where the resource lives

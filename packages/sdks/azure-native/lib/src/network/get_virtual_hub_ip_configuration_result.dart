@@ -6,9 +6,9 @@ import 'subnet_response.dart';
 /// Result data returned by getVirtualHubIpConfiguration.
 class GetVirtualHubIpConfigurationResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Resource ID.
   final String? id;
   /// Name of the Ip Configuration.
@@ -18,13 +18,13 @@ class GetVirtualHubIpConfigurationResult {
   /// The private IP address allocation method.
   final String? privateIPAllocationMethod;
   /// The provisioning state of the IP configuration resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The reference to the public IP resource.
   final PublicIPAddressResponse? publicIPAddress;
   /// The reference to the subnet resource.
   final SubnetResponse? subnet;
   /// Ipconfiguration type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetVirtualHubIpConfigurationResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -38,45 +38,45 @@ class GetVirtualHubIpConfigurationResult {
   /// [subnet] The reference to the subnet resource.
   /// [type] Ipconfiguration type.
   const GetVirtualHubIpConfigurationResult({
-    required this.azureApiVersion,
-    required this.etag,
+    this.azureApiVersion,
+    this.etag,
     this.id,
     this.name,
     this.privateIPAddress,
     this.privateIPAllocationMethod,
-    required this.provisioningState,
+    this.provisioningState,
     this.publicIPAddress,
     this.subnet,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'etag': etag,
+      'azureApiVersion': ?azureApiVersion,
+      'etag': ?etag,
       'id': ?id,
       'name': ?name,
       'privateIPAddress': ?privateIPAddress,
       'privateIPAllocationMethod': ?privateIPAllocationMethod,
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'publicIPAddress': ?publicIPAddress?.toMap(),
       'subnet': ?subnet?.toMap(),
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetVirtualHubIpConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualHubIpConfigurationResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       privateIPAddress: (() { final guardedValue = map['privateIPAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
       privateIPAllocationMethod: (() { final guardedValue = map['privateIPAllocationMethod']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publicIPAddress: (() { final guardedValue = map['publicIPAddress']; if (guardedValue == null) return null; return PublicIPAddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return SubnetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

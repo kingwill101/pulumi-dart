@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The database type.
-enum SAPDatabaseType {
+enum SAPDatabaseType implements pulumi.PulumiEnum<String> {
   hANA("HANA"),
   dB2("DB2");
 
   const SAPDatabaseType(this.wireValue);
+  @override
   final String wireValue;
 
   static SAPDatabaseType fromValue(String value) {

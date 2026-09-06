@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ServiceConnectTlsCertificateAuthority
 class ServiceConnectTlsCertificateAuthority {
   /// The ARN of the AWS Private Certificate Authority certificate.
-  final pulumi.Input<String>? awsPcaAuthorityArn;
+  final pulumi.Input<String?>? awsPcaAuthorityArn;
 
   /// Creates a new [ServiceConnectTlsCertificateAuthority].
   /// [awsPcaAuthorityArn] The ARN of the AWS Private Certificate Authority certificate.

@@ -10,15 +10,15 @@ class IPConfigurationResponse {
   /// The name of private link IP configuration.
   final pulumi.Input<String> name;
   /// Indicates whether this IP configuration is primary for the corresponding NIC.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
   /// The IP address.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// The method that private IP address is allocated.
-  final pulumi.Input<String>? privateIPAllocationMethod;
+  final pulumi.Input<String?>? privateIPAllocationMethod;
   /// The private link configuration provisioning state, which only appears in the response.
   final pulumi.Input<String> provisioningState;
   /// The subnet resource id.
-  final pulumi.Input<ResourceIdResponse>? subnet;
+  final pulumi.Input<ResourceIdResponse?>? subnet;
   /// The type of the private link IP configuration.
   final pulumi.Input<String> type;
 

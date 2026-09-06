@@ -18,9 +18,9 @@ class TargetPropertiesResponse {
   /// Provisioning state of resource
   final pulumi.Input<String> provisioningState;
   /// Scope of the target resource
-  final pulumi.Input<String>? solutionScope;
+  final pulumi.Input<String?>? solutionScope;
   /// State of resource
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Status of target
   final pulumi.Input<DeploymentStatusResponse> status;
   /// target spec

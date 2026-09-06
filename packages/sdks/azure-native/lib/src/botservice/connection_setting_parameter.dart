@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Extra Parameter in a Connection Setting Properties to indicate service provider specific properties
 class ConnectionSettingParameter {
   /// Key for the Connection Setting Parameter.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Value associated with the Connection Setting Parameter.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ConnectionSettingParameter].
   /// [key] Key for the Connection Setting Parameter.

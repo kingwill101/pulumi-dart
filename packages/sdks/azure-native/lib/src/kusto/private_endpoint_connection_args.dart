@@ -11,7 +11,7 @@ class PrivateEndpointConnectionArgs {
   /// The name of the Kusto cluster.
   final pulumi.Input<String> clusterName;
   /// The name of the private endpoint connection.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// Connection State of the Private Endpoint Connection.
   final pulumi.Input<PrivateLinkServiceConnectionStateProperty> privateLinkServiceConnectionState;
   /// The name of the resource group. The name is case insensitive.

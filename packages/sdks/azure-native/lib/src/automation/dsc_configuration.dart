@@ -331,7 +331,35 @@ class DscConfiguration extends pulumi.CustomResource {
     source = registerOutput<ContentSourceResponse?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContentSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String?>('state');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DscConfiguration] resource.
+  DscConfiguration.reference(String urn)
+    : super(
+        'azure-native:automation:DscConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationTime = registerOutput<String?>('creationTime');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String?>('etag');
+    jobCount = registerOutput<int?>('jobCount');
+    lastModifiedTime = registerOutput<String?>('lastModifiedTime');
+    location = registerOutput<String>('location');
+    logVerbose = registerOutput<bool?>('logVerbose');
+    this.name = registerOutput<String>('name');
+    nodeConfigurationCount = registerOutput<int?>('nodeConfigurationCount');
+    parameters = registerOutput<Map<String, DscConfigurationParameterResponse>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<DscConfigurationParameterResponse>(guardedValue, (value) => DscConfigurationParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String?>('provisioningState');
+    source = registerOutput<ContentSourceResponse?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContentSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String?>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

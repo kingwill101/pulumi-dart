@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The tier of the tenant.
-enum CIAMResourceSKUTier {
+enum CIAMResourceSKUTier implements pulumi.PulumiEnum<String> {
   valueA0("A0");
 
   const CIAMResourceSKUTier(this.wireValue);
+  @override
   final String wireValue;
 
   static CIAMResourceSKUTier fromValue(String value) {

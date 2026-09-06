@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The operation to be performed on the object.
-enum StorageTaskOperationName {
+enum StorageTaskOperationName implements pulumi.PulumiEnum<String> {
   setBlobTier("SetBlobTier"),
   setBlobTags("SetBlobTags"),
   setBlobImmutabilityPolicy("SetBlobImmutabilityPolicy"),
@@ -9,6 +11,7 @@ enum StorageTaskOperationName {
   undeleteBlob("UndeleteBlob");
 
   const StorageTaskOperationName(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageTaskOperationName fromValue(String value) {

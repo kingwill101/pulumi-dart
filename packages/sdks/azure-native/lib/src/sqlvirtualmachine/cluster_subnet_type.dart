@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Cluster subnet type.
-enum ClusterSubnetType {
+enum ClusterSubnetType implements pulumi.PulumiEnum<String> {
   singleSubnet("SingleSubnet"),
   multiSubnet("MultiSubnet");
 
   const ClusterSubnetType(this.wireValue);
+  @override
   final String wireValue;
 
   static ClusterSubnetType fromValue(String value) {

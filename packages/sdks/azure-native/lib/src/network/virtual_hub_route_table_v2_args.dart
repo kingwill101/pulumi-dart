@@ -9,17 +9,17 @@ import 'virtual_hub_route_v2.dart';
 /// {@macro pulumi_network_virtual_hub_route_table_v2_args_doc}
 class VirtualHubRouteTableV2Args {
   /// List of all connections attached to this route table v2.
-  final pulumi.Input<List<String>>? attachedConnections;
+  final pulumi.Input<List<String>?>? attachedConnections;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource group name of the VirtualHub.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the VirtualHubRouteTableV2.
-  final pulumi.Input<String>? routeTableName;
+  final pulumi.Input<String?>? routeTableName;
   /// List of all routes.
-  final pulumi.Input<List<VirtualHubRouteV2>>? routes;
+  final pulumi.Input<List<VirtualHubRouteV2>?>? routes;
   /// The name of the VirtualHub.
   final pulumi.Input<String> virtualHubName;
 

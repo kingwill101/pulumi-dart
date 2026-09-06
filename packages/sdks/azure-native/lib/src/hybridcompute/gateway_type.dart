@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the Gateway resource.
-enum GatewayType {
+enum GatewayType implements pulumi.PulumiEnum<String> {
   valuePublic("Public");
 
   const GatewayType(this.wireValue);
+  @override
   final String wireValue;
 
   static GatewayType fromValue(String value) {

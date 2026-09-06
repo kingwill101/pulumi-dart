@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// connector type
-enum Platform {
+enum Platform implements pulumi.PulumiEnum<String> {
   azureMonitor("AzureMonitor");
 
   const Platform(this.wireValue);
+  @override
   final String wireValue;
 
   static Platform fromValue(String value) {

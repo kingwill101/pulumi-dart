@@ -8,19 +8,19 @@ import 'system_data_response.dart';
 /// Result data returned by getGovernanceRule.
 class GetGovernanceRuleResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The governance rule conditionSets - see examples
-  final List<dynamic> conditionSets;
+  final List<dynamic>? conditionSets;
   /// Description of the governance rule
   final String? description;
   /// Display name of the governance rule
-  final String displayName;
+  final String? displayName;
   /// Excluded scopes, filter out the descendants of the scope (on management scopes)
   final List<String>? excludedScopes;
   /// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
   final GovernanceRuleEmailNotificationResponse? governanceEmailNotification;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Defines whether the rule is management scope rule (master connector as a single scope or management scope)
   final bool? includeMemberScopes;
   /// Defines whether the rule is active/inactive
@@ -30,23 +30,23 @@ class GetGovernanceRuleResult {
   /// The governance rule metadata
   final GovernanceRuleMetadataResponse? metadata;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The owner source for the governance rule - e.g. Manually by user@contoso.com - see example
-  final GovernanceRuleOwnerSourceResponse ownerSource;
+  final GovernanceRuleOwnerSourceResponse? ownerSource;
   /// Governance rule remediation timeframe - this is the time that will affect on the grace-period duration e.g. 7.00:00:00 - means 7 days
   final String? remediationTimeframe;
   /// The governance rule priority, priority to the lower number. Rules with the same priority on the same scope will not be allowed
-  final int rulePriority;
+  final int? rulePriority;
   /// The rule type of the governance rule, defines the source of the rule e.g. Integrated
-  final String ruleType;
+  final String? ruleType;
   /// The governance rule source, what the rule affects, e.g. Assessments
-  final String sourceResourceType;
+  final String? sourceResourceType;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The tenantId (GUID)
-  final String tenantId;
+  final String? tenantId;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetGovernanceRuleResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -70,75 +70,75 @@ class GetGovernanceRuleResult {
   /// [tenantId] The tenantId (GUID)
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetGovernanceRuleResult({
-    required this.azureApiVersion,
-    required this.conditionSets,
+    this.azureApiVersion,
+    this.conditionSets,
     this.description,
-    required this.displayName,
+    this.displayName,
     this.excludedScopes,
     this.governanceEmailNotification,
-    required this.id,
+    this.id,
     this.includeMemberScopes,
     this.isDisabled,
     this.isGracePeriod,
     this.metadata,
-    required this.name,
-    required this.ownerSource,
+    this.name,
+    this.ownerSource,
     this.remediationTimeframe,
-    required this.rulePriority,
-    required this.ruleType,
-    required this.sourceResourceType,
-    required this.systemData,
-    required this.tenantId,
-    required this.type,
+    this.rulePriority,
+    this.ruleType,
+    this.sourceResourceType,
+    this.systemData,
+    this.tenantId,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'conditionSets': conditionSets,
+      'azureApiVersion': ?azureApiVersion,
+      'conditionSets': ?conditionSets,
       'description': ?description,
-      'displayName': displayName,
+      'displayName': ?displayName,
       'excludedScopes': ?excludedScopes,
       'governanceEmailNotification': ?governanceEmailNotification?.toMap(),
-      'id': id,
+      'id': ?id,
       'includeMemberScopes': ?includeMemberScopes,
       'isDisabled': ?isDisabled,
       'isGracePeriod': ?isGracePeriod,
       'metadata': ?metadata?.toMap(),
-      'name': name,
-      'ownerSource': ownerSource.toMap(),
+      'name': ?name,
+      'ownerSource': ?ownerSource?.toMap(),
       'remediationTimeframe': ?remediationTimeframe,
-      'rulePriority': rulePriority,
-      'ruleType': ruleType,
-      'sourceResourceType': sourceResourceType,
-      'systemData': systemData.toMap(),
-      'tenantId': tenantId,
-      'type': type,
+      'rulePriority': ?rulePriority,
+      'ruleType': ?ruleType,
+      'sourceResourceType': ?sourceResourceType,
+      'systemData': ?systemData?.toMap(),
+      'tenantId': ?tenantId,
+      'type': ?type,
     };
   }
 
   factory GetGovernanceRuleResult.fromMap(Map<String, dynamic> map) {
     return GetGovernanceRuleResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      conditionSets: (map['conditionSets'] as List).cast<dynamic>(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      conditionSets: (() { final guardedValue = map['conditionSets']; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      displayName: map['displayName'] as String,
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       excludedScopes: (() { final guardedValue = map['excludedScopes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       governanceEmailNotification: (() { final guardedValue = map['governanceEmailNotification']; if (guardedValue == null) return null; return GovernanceRuleEmailNotificationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       includeMemberScopes: (() { final guardedValue = map['includeMemberScopes']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       isDisabled: (() { final guardedValue = map['isDisabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       isGracePeriod: (() { final guardedValue = map['isGracePeriod']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return GovernanceRuleMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      name: map['name'] as String,
-      ownerSource: GovernanceRuleOwnerSourceResponse.fromMap((map['ownerSource']! as Map).cast<String, dynamic>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ownerSource: (() { final guardedValue = map['ownerSource']; if (guardedValue == null) return null; return GovernanceRuleOwnerSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       remediationTimeframe: (() { final guardedValue = map['remediationTimeframe']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      rulePriority: map['rulePriority'] as int,
-      ruleType: map['ruleType'] as String,
-      sourceResourceType: map['sourceResourceType'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      rulePriority: (() { final guardedValue = map['rulePriority']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      ruleType: (() { final guardedValue = map['ruleType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceResourceType: (() { final guardedValue = map['sourceResourceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

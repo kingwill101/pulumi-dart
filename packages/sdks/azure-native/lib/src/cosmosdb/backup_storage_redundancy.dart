@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enum to indicate type of backup residency
-enum BackupStorageRedundancy {
+enum BackupStorageRedundancy implements pulumi.PulumiEnum<String> {
   valueGeo("Geo"),
   valueLocal("Local"),
   valueZone("Zone");
 
   const BackupStorageRedundancy(this.wireValue);
+  @override
   final String wireValue;
 
   static BackupStorageRedundancy fromValue(String value) {

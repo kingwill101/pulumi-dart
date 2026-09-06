@@ -7,9 +7,9 @@ import 'sub_resource.dart';
 /// Specifies the settings for a network interface to attach to the node type.
 class AdditionalNetworkInterfaceConfiguration {
   /// Specifies the DSCP configuration to apply to the network interface.
-  final pulumi.Input<SubResource>? dscpConfiguration;
+  final pulumi.Input<SubResource?>? dscpConfiguration;
   /// Specifies whether the network interface is accelerated networking-enabled.
-  final pulumi.Input<bool>? enableAcceleratedNetworking;
+  final pulumi.Input<bool?>? enableAcceleratedNetworking;
   /// Specifies the IP configurations of the network interface.
   final pulumi.Input<List<IpConfiguration>> ipConfigurations;
   /// Name of the network interface.

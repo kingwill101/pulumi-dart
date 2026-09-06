@@ -14,39 +14,39 @@ import 'web_application_framework_response.dart';
 /// IISWeb application.
 class IISWebApplicationResponse {
   /// Gets or sets the web application id.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// Gets or sets the web application name.
-  final pulumi.Input<String>? applicationName;
+  final pulumi.Input<String?>? applicationName;
   /// Gets or sets application scratch path.
-  final pulumi.Input<String>? applicationScratchPath;
+  final pulumi.Input<String?>? applicationScratchPath;
   /// Gets or sets the list of applications for the IIS web site.
-  final pulumi.Input<List<IISApplicationDetailsResponse>>? applications;
+  final pulumi.Input<List<IISApplicationDetailsResponse>?>? applications;
   /// Gets or sets the bindings for the application.
-  final pulumi.Input<List<BindingResponse>>? bindings;
+  final pulumi.Input<List<BindingResponse>?>? bindings;
   /// Gets or sets application configuration.
-  final pulumi.Input<List<WebApplicationConfigurationResponse>>? configurations;
+  final pulumi.Input<List<WebApplicationConfigurationResponse>?>? configurations;
   /// Gets or sets application directories.
-  final pulumi.Input<List<WebApplicationDirectoryResponse>>? directories;
+  final pulumi.Input<List<WebApplicationDirectoryResponse>?>? directories;
   /// Gets or sets the discovered frameworks of application.
-  final pulumi.Input<List<WebApplicationFrameworkResponse>>? discoveredFrameworks;
+  final pulumi.Input<List<WebApplicationFrameworkResponse>?>? discoveredFrameworks;
   /// Gets or sets the display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// IISWeb server.
-  final pulumi.Input<IISWebServerResponse>? iisWebServer;
+  final pulumi.Input<IISWebServerResponse?>? iisWebServer;
   /// Resource Requirements.
-  final pulumi.Input<ResourceRequirementsResponse>? limits;
+  final pulumi.Input<ResourceRequirementsResponse?>? limits;
   /// Second level entity for virtual directories.
-  final pulumi.Input<DirectoryPathResponse>? path;
+  final pulumi.Input<DirectoryPathResponse?>? path;
   /// Framework specific data for a web application.
-  final pulumi.Input<WebApplicationFrameworkResponse>? primaryFramework;
+  final pulumi.Input<WebApplicationFrameworkResponse?>? primaryFramework;
   /// Resource Requirements.
-  final pulumi.Input<ResourceRequirementsResponse>? requests;
+  final pulumi.Input<ResourceRequirementsResponse?>? requests;
   /// Gets or sets the list of application units for the web site.
-  final pulumi.Input<List<IISVirtualApplicationDetailsResponse>>? virtualApplications;
+  final pulumi.Input<List<IISVirtualApplicationDetailsResponse>?>? virtualApplications;
   /// Gets or sets the web server id.
-  final pulumi.Input<String>? webServerId;
+  final pulumi.Input<String?>? webServerId;
   /// Gets or sets the web server name.
-  final pulumi.Input<String>? webServerName;
+  final pulumi.Input<String?>? webServerName;
 
   /// Creates a new [IISWebApplicationResponse].
   /// [applicationId] Gets or sets the web application id.

@@ -8,7 +8,7 @@ class DockerBuild {
   /// Path to a snapshot of the Docker Context. This property is only valid if Dockerfile is specified.
   /// The path is relative to the asset path which must contain a single Blob URI value.
   /// &lt;seealso href="https://docs.docker.com/engine/context/working-with-contexts/" /&gt;
-  final pulumi.Input<String>? context;
+  final pulumi.Input<String?>? context;
   /// Enum to determine docker specification type. Must be either Build or Image.
   /// Expected value is 'Build'.
   final pulumi.Input<String> dockerSpecificationType;
@@ -16,7 +16,7 @@ class DockerBuild {
   /// &lt;seealso href="https://repo2docker.readthedocs.io/en/latest/config_files.html#dockerfile-advanced-environments" /&gt;
   final pulumi.Input<String> dockerfile;
   /// The platform information of the docker image.
-  final pulumi.Input<DockerImagePlatform>? platform;
+  final pulumi.Input<DockerImagePlatform?>? platform;
 
   /// Creates a new [DockerBuild].
   /// [context] Path to a snapshot of the Docker Context. This property is only valid if Dockerfile is specified.

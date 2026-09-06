@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_policy_args_doc}
 class PolicyArgs {
   /// Format of the policyContent.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<dynamic>? format;
   /// The identifier of the Policy.
-  final pulumi.Input<String>? policyId;
+  final pulumi.Input<String?>? policyId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.
@@ -24,13 +24,13 @@ class PolicyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   /// [value] Contents of the Policy as defined by the format.
-  const PolicyArgs({
-    this.format,
+  PolicyArgs({
+    pulumi.Input<dynamic>? format,
     this.policyId,
     required this.resourceGroupName,
     required this.serviceName,
     required this.value,
-  });
+  }) : format = format ?? pulumi.Input.fromValue('xml');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,7 +44,7 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       policyId: (() { final guardedValue = map['policyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),

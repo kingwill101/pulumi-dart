@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes operator to be matched
-enum CookiesOperator {
+enum CookiesOperator implements pulumi.PulumiEnum<String> {
   any("Any"),
   equal("Equal"),
   contains("Contains"),
@@ -12,6 +14,7 @@ enum CookiesOperator {
   regEx("RegEx");
 
   const CookiesOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static CookiesOperator fromValue(String value) {

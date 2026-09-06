@@ -93,7 +93,7 @@ class MigrationStatusDetailsResponse {
       lastRestoredBackupSetInfo: pulumi.Input.fromValue(SqlBackupSetInfoResponse.fromMap((map['lastRestoredBackupSetInfo']! as Map).cast<String, dynamic>())),
       lastRestoredFilename: pulumi.Input.fromValue(map['lastRestoredFilename'] as String),
       migrationState: pulumi.Input.fromValue(map['migrationState'] as String),
-      pendingLogBackupsCount: pulumi.Input.fromValue(map['pendingLogBackupsCount'] as int),
+      pendingLogBackupsCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['pendingLogBackupsCount'])),
       restoreBlockingReason: pulumi.Input.fromValue(map['restoreBlockingReason'] as String),
     );
   }

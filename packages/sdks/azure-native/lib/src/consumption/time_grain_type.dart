@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers
-enum TimeGrainType {
+enum TimeGrainType implements pulumi.PulumiEnum<String> {
   monthly("Monthly"),
   quarterly("Quarterly"),
   annually("Annually"),
@@ -8,6 +10,7 @@ enum TimeGrainType {
   billingAnnual("BillingAnnual");
 
   const TimeGrainType(this.wireValue);
+  @override
   final String wireValue;
 
   static TimeGrainType fromValue(String value) {

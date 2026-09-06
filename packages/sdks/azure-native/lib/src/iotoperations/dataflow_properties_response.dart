@@ -6,7 +6,7 @@ import 'dataflow_operation_response.dart';
 /// Dataflow Resource properties
 class DataflowPropertiesResponse {
   /// Mode for Dataflow. Optional; defaults to Enabled.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// List of operations including source and destination references as well as transformation.
   final pulumi.Input<List<DataflowOperationResponse>> operations;
   /// The status of the last operation.
@@ -16,11 +16,11 @@ class DataflowPropertiesResponse {
   /// [mode] Mode for Dataflow. Optional; defaults to Enabled.
   /// [operations] List of operations including source and destination references as well as transformation.
   /// [provisioningState] The status of the last operation.
-  const DataflowPropertiesResponse({
-    this.mode,
+  DataflowPropertiesResponse({
+    pulumi.Input<String?>? mode,
     required this.operations,
     required this.provisioningState,
-  });
+  }) : mode = mode ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

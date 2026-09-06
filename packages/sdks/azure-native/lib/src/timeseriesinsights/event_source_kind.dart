@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kind of the event source.
-enum EventSourceKind {
+enum EventSourceKind implements pulumi.PulumiEnum<String> {
   valueMicrosoftEventHub("Microsoft.EventHub"),
   valueMicrosoftIoTHub("Microsoft.IoTHub");
 
   const EventSourceKind(this.wireValue);
+  @override
   final String wireValue;
 
   static EventSourceKind fromValue(String value) {

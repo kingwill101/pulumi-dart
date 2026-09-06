@@ -13,41 +13,41 @@ import 'shipping_information_response.dart';
 /// Specifies the job properties
 class JobDetailsResponse {
   /// Default value is false. Indicates whether the manifest files on the drives should be copied to block blobs.
-  final pulumi.Input<bool>? backupDriveManifest;
+  final pulumi.Input<bool?>? backupDriveManifest;
   /// Indicates whether a request has been submitted to cancel the job.
-  final pulumi.Input<bool>? cancelRequested;
+  final pulumi.Input<bool?>? cancelRequested;
   /// Contains information about the package being shipped by the customer to the Microsoft data center.
-  final pulumi.Input<DeliveryPackageInformationResponse>? deliveryPackage;
+  final pulumi.Input<DeliveryPackageInformationResponse?>? deliveryPackage;
   /// The virtual blob directory to which the copy logs and backups of drive manifest files (if enabled) will be stored.
-  final pulumi.Input<String>? diagnosticsPath;
+  final pulumi.Input<String?>? diagnosticsPath;
   /// List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs.
-  final pulumi.Input<List<DriveStatusResponse>>? driveList;
+  final pulumi.Input<List<DriveStatusResponse>?>? driveList;
   /// Contains information about the encryption key.
-  final pulumi.Input<EncryptionKeyDetailsResponse>? encryptionKey;
+  final pulumi.Input<EncryptionKeyDetailsResponse?>? encryptionKey;
   /// A property containing information about the blobs to be exported for an export job. This property is included for export jobs only.
-  final pulumi.Input<ExportResponse>? export;
+  final pulumi.Input<ExportResponse?>? export;
   /// A blob path that points to a block blob containing a list of blob names that were not exported due to insufficient drive space. If all blobs were exported successfully, then this element is not included in the response.
-  final pulumi.Input<String>? incompleteBlobListUri;
+  final pulumi.Input<String?>? incompleteBlobListUri;
   /// The type of job
-  final pulumi.Input<String>? jobType;
+  final pulumi.Input<String?>? jobType;
   /// Default value is Error. Indicates whether error logging or verbose logging will be enabled.
-  final pulumi.Input<String>? logLevel;
+  final pulumi.Input<String?>? logLevel;
   /// Overall percentage completed for the job.
-  final pulumi.Input<double>? percentComplete;
+  final pulumi.Input<double?>? percentComplete;
   /// Specifies the provisioning state of the job.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// Specifies the return address information for the job.
-  final pulumi.Input<ReturnAddressResponse>? returnAddress;
+  final pulumi.Input<ReturnAddressResponse?>? returnAddress;
   /// Contains information about the package being shipped from the Microsoft data center to the customer to return the drives. The format is the same as the deliveryPackage property above. This property is not included if the drives have not yet been returned.
-  final pulumi.Input<PackageInformationResponse>? returnPackage;
+  final pulumi.Input<PackageInformationResponse?>? returnPackage;
   /// Specifies the return carrier and customer's account with the carrier.
-  final pulumi.Input<ReturnShippingResponse>? returnShipping;
+  final pulumi.Input<ReturnShippingResponse?>? returnShipping;
   /// Contains information about the Microsoft datacenter to which the drives should be shipped.
-  final pulumi.Input<ShippingInformationResponse>? shippingInformation;
+  final pulumi.Input<ShippingInformationResponse?>? shippingInformation;
   /// Current state of the job.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The resource identifier of the storage account where data will be imported to or exported from.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
 
   /// Creates a new [JobDetailsResponse].
   /// [backupDriveManifest] Default value is false. Indicates whether the manifest files on the drives should be copied to block blobs.
@@ -68,9 +68,9 @@ class JobDetailsResponse {
   /// [shippingInformation] Contains information about the Microsoft datacenter to which the drives should be shipped.
   /// [state] Current state of the job.
   /// [storageAccountId] The resource identifier of the storage account where data will be imported to or exported from.
-  const JobDetailsResponse({
-    this.backupDriveManifest,
-    this.cancelRequested,
+  JobDetailsResponse({
+    pulumi.Input<bool?>? backupDriveManifest,
+    pulumi.Input<bool?>? cancelRequested,
     this.deliveryPackage,
     this.diagnosticsPath,
     this.driveList,
@@ -85,9 +85,9 @@ class JobDetailsResponse {
     this.returnPackage,
     this.returnShipping,
     this.shippingInformation,
-    this.state,
+    pulumi.Input<String?>? state,
     this.storageAccountId,
-  });
+  }) : backupDriveManifest = backupDriveManifest ?? pulumi.Input.fromValue(false), cancelRequested = cancelRequested ?? pulumi.Input.fromValue(false), state = state ?? pulumi.Input.fromValue('Creating');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -124,7 +124,7 @@ class JobDetailsResponse {
       incompleteBlobListUri: (() { final guardedValue = map['incompleteBlobListUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       jobType: (() { final guardedValue = map['jobType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       logLevel: (() { final guardedValue = map['logLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      percentComplete: (() { final guardedValue = map['percentComplete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      percentComplete: (() { final guardedValue = map['percentComplete']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       returnAddress: (() { final guardedValue = map['returnAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReturnAddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       returnPackage: (() { final guardedValue = map['returnPackage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PackageInformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

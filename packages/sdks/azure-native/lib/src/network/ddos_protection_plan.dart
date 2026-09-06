@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ddos_protection_plan_args.dart';
+import 'sub_resource_response.dart';
 
 /// A DDoS protection plan in a resource group.
 ///
@@ -160,7 +161,7 @@ class DdosProtectionPlan extends pulumi.CustomResource {
   /// The provisioning state of the DDoS protection plan resource.
   late final pulumi.Output<String> provisioningState;
   /// The list of public IPs associated with the DDoS protection plan resource. This list is read-only.
-  late final pulumi.Output<List<Map<String, dynamic>>> publicIPAddresses;
+  late final pulumi.Output<List<SubResourceResponse>> publicIPAddresses;
   /// The resource GUID property of the DDoS protection plan resource. It uniquely identifies the resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.
   late final pulumi.Output<String> resourceGuid;
   /// Resource tags.
@@ -168,7 +169,7 @@ class DdosProtectionPlan extends pulumi.CustomResource {
   /// Resource type.
   late final pulumi.Output<String> type;
   /// The list of virtual networks associated with the DDoS protection plan resource. This list is read-only.
-  late final pulumi.Output<List<Map<String, dynamic>>> virtualNetworks;
+  late final pulumi.Output<List<SubResourceResponse>> virtualNetworks;
 
   /// Creates a new [DdosProtectionPlan].
   /// [name] The Pulumi resource name.
@@ -189,10 +190,31 @@ class DdosProtectionPlan extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    publicIPAddresses = registerOutput<List<Map<String, dynamic>>>('publicIPAddresses');
+    publicIPAddresses = registerOutput<List<SubResourceResponse>>('publicIPAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGuid = registerOutput<String>('resourceGuid');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    virtualNetworks = registerOutput<List<Map<String, dynamic>>>('virtualNetworks');
+    virtualNetworks = registerOutput<List<SubResourceResponse>>('virtualNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [DdosProtectionPlan] resource.
+  DdosProtectionPlan.reference(String urn)
+    : super(
+        'azure-native:network:DdosProtectionPlan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicIPAddresses = registerOutput<List<SubResourceResponse>>('publicIPAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceGuid = registerOutput<String>('resourceGuid');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    virtualNetworks = registerOutput<List<SubResourceResponse>>('virtualNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The workspace compute mode. Required on create, cannot be changed. Possible values include: 'Serverless', 'Hybrid'
-enum ComputeMode {
+enum ComputeMode implements pulumi.PulumiEnum<String> {
   serverless("Serverless"),
   hybrid("Hybrid");
 
   const ComputeMode(this.wireValue);
+  @override
   final String wireValue;
 
   static ComputeMode fromValue(String value) {

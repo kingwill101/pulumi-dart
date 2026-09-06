@@ -10,9 +10,9 @@ class ConnectedClusterIdentity {
 
   /// Creates a new [ConnectedClusterIdentity].
   /// [type] The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster.
-  const ConnectedClusterIdentity({
-    required this.type,
-  });
+  ConnectedClusterIdentity({
+    pulumi.Input<ResourceIdentityType>? type,
+  }) : type = type ?? pulumi.Input.fromValue(ResourceIdentityType.fromValue('SystemAssigned'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

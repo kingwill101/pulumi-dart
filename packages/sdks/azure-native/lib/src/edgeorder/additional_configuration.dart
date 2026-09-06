@@ -9,7 +9,7 @@ class AdditionalConfiguration {
   /// Hierarchy of the product which uniquely identifies the configuration.
   final pulumi.Input<HierarchyInformation> hierarchyInformation;
   /// List Provisioning Details for Devices in Additional Config.
-  final pulumi.Input<List<ProvisioningDetails>>? provisioningDetails;
+  final pulumi.Input<List<ProvisioningDetails>?>? provisioningDetails;
   /// Quantity of the product.
   final pulumi.Input<int> quantity;
 
@@ -35,7 +35,7 @@ class AdditionalConfiguration {
     return AdditionalConfiguration(
       hierarchyInformation: pulumi.Input.fromValue(HierarchyInformation.fromMap((map['hierarchyInformation']! as Map).cast<String, dynamic>())),
       provisioningDetails: (() { final guardedValue = map['provisioningDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ProvisioningDetails>(guardedValue, (value) => ProvisioningDetails.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      quantity: pulumi.Input.fromValue(map['quantity'] as int),
+      quantity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['quantity'])),
     );
   }
 }

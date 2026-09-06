@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Contains the IPTag associated with the object.
 class IPTag {
   /// The IP tag type. Example: RoutingPreference.
-  final pulumi.Input<String>? ipTagType;
+  final pulumi.Input<String?>? ipTagType;
   /// The value of the IP tag associated with the public IP. Example: Internet.
-  final pulumi.Input<String>? tag;
+  final pulumi.Input<String?>? tag;
 
   /// Creates a new [IPTag].
   /// [ipTagType] The IP tag type. Example: RoutingPreference.

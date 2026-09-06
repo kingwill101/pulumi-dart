@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_portal_console_with_location_args_doc}
 class ConsoleWithLocationArgs {
   /// The name of the console
-  final pulumi.Input<String>? consoleName;
+  final pulumi.Input<String?>? consoleName;
   /// The provider location
   final pulumi.Input<String> location;
 

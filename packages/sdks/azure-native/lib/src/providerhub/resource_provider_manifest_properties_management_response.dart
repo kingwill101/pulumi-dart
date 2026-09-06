@@ -9,35 +9,35 @@ import 'service_tree_info_response.dart';
 /// The resource provider management.
 class ResourceProviderManifestPropertiesManagementResponse {
   /// The authorization owners.
-  final pulumi.Input<List<String>>? authorizationOwners;
+  final pulumi.Input<List<String>?>? authorizationOwners;
   /// List of manifest owners for canary.
-  final pulumi.Input<List<String>>? canaryManifestOwners;
+  final pulumi.Input<List<String>?>? canaryManifestOwners;
   /// Options for error response messages.
-  final pulumi.Input<ResourceProviderManagementErrorResponseMessageOptionsResponse>? errorResponseMessageOptions;
+  final pulumi.Input<ResourceProviderManagementErrorResponseMessageOptionsResponse?>? errorResponseMessageOptions;
   /// Metadata for expedited rollout.
-  final pulumi.Input<ResourceProviderManagementExpeditedRolloutMetadataResponse>? expeditedRolloutMetadata;
+  final pulumi.Input<ResourceProviderManagementExpeditedRolloutMetadataResponse?>? expeditedRolloutMetadata;
   /// List of expedited rollout submitters.
-  final pulumi.Input<List<String>>? expeditedRolloutSubmitters;
+  final pulumi.Input<List<String>?>? expeditedRolloutSubmitters;
   /// The incident contact email.
-  final pulumi.Input<String>? incidentContactEmail;
+  final pulumi.Input<String?>? incidentContactEmail;
   /// The incident routing service.
-  final pulumi.Input<String>? incidentRoutingService;
+  final pulumi.Input<String?>? incidentRoutingService;
   /// The incident routing team.
-  final pulumi.Input<String>? incidentRoutingTeam;
+  final pulumi.Input<String?>? incidentRoutingTeam;
   /// The manifest owners.
-  final pulumi.Input<List<String>>? manifestOwners;
+  final pulumi.Input<List<String>?>? manifestOwners;
   /// The profit center code for the subscription.
-  final pulumi.Input<String>? pcCode;
+  final pulumi.Input<String?>? pcCode;
   /// The profit center program id for the subscription.
-  final pulumi.Input<String>? profitCenterProgramId;
+  final pulumi.Input<String?>? profitCenterProgramId;
   /// The resource access policy.
-  final pulumi.Input<String>? resourceAccessPolicy;
+  final pulumi.Input<String?>? resourceAccessPolicy;
   /// The resource access roles.
-  final pulumi.Input<List<ResourceAccessRoleResponse>>? resourceAccessRoles;
+  final pulumi.Input<List<ResourceAccessRoleResponse>?>? resourceAccessRoles;
   /// The schema owners.
-  final pulumi.Input<List<String>>? schemaOwners;
+  final pulumi.Input<List<String>?>? schemaOwners;
   /// The service tree infos.
-  final pulumi.Input<List<ServiceTreeInfoResponse>>? serviceTreeInfos;
+  final pulumi.Input<List<ServiceTreeInfoResponse>?>? serviceTreeInfos;
 
   /// Creates a new [ResourceProviderManifestPropertiesManagementResponse].
   /// [authorizationOwners] The authorization owners.

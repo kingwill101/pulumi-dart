@@ -11,7 +11,7 @@ class EdifactValidationOverride {
   /// The message id on which the validation settings has to be applied.
   final pulumi.Input<String> messageId;
   /// The trailing separator policy.
-  final pulumi.Input<String> trailingSeparatorPolicy;
+  final pulumi.Input<dynamic> trailingSeparatorPolicy;
   /// The value indicating whether to trim leading and trailing spaces and zeroes.
   final pulumi.Input<bool> trimLeadingAndTrailingSpacesAndZeroes;
   /// The value indicating whether to validate EDI types.
@@ -54,7 +54,7 @@ class EdifactValidationOverride {
       allowLeadingAndTrailingSpacesAndZeroes: pulumi.Input.fromValue(map['allowLeadingAndTrailingSpacesAndZeroes'] as bool),
       enforceCharacterSet: pulumi.Input.fromValue(map['enforceCharacterSet'] as bool),
       messageId: pulumi.Input.fromValue(map['messageId'] as String),
-      trailingSeparatorPolicy: pulumi.Input.fromValue(map['trailingSeparatorPolicy'] as String),
+      trailingSeparatorPolicy: pulumi.Input.fromValue(map['trailingSeparatorPolicy']),
       trimLeadingAndTrailingSpacesAndZeroes: pulumi.Input.fromValue(map['trimLeadingAndTrailingSpacesAndZeroes'] as bool),
       validateEDITypes: pulumi.Input.fromValue(map['validateEDITypes'] as bool),
       validateXSDTypes: pulumi.Input.fromValue(map['validateXSDTypes'] as bool),

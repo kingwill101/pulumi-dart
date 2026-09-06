@@ -107,7 +107,7 @@ class SelfHostedIntegrationRuntimeNodeResponse {
   factory SelfHostedIntegrationRuntimeNodeResponse.fromMap(Map<String, dynamic> map) {
     return SelfHostedIntegrationRuntimeNodeResponse(
       capabilities: pulumi.Input.fromValue((map['capabilities'] as Map).cast<String, String>()),
-      concurrentJobsLimit: pulumi.Input.fromValue(map['concurrentJobsLimit'] as int),
+      concurrentJobsLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['concurrentJobsLimit'])),
       expiryTime: pulumi.Input.fromValue(map['expiryTime'] as String),
       hostServiceUri: pulumi.Input.fromValue(map['hostServiceUri'] as String),
       isActiveDispatcher: pulumi.Input.fromValue(map['isActiveDispatcher'] as bool),
@@ -118,7 +118,7 @@ class SelfHostedIntegrationRuntimeNodeResponse {
       lastStopTime: pulumi.Input.fromValue(map['lastStopTime'] as String),
       lastUpdateResult: pulumi.Input.fromValue(map['lastUpdateResult'] as String),
       machineName: pulumi.Input.fromValue(map['machineName'] as String),
-      maxConcurrentJobs: pulumi.Input.fromValue(map['maxConcurrentJobs'] as int),
+      maxConcurrentJobs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConcurrentJobs'])),
       nodeName: pulumi.Input.fromValue(map['nodeName'] as String),
       registerTime: pulumi.Input.fromValue(map['registerTime'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),

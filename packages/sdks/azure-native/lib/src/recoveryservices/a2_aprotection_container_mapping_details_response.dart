@@ -5,18 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A2A provider specific settings.
 class A2AProtectionContainerMappingDetailsResponse {
   /// A value indicating whether the auto update is enabled.
-  final pulumi.Input<String>? agentAutoUpdateStatus;
+  final pulumi.Input<String?>? agentAutoUpdateStatus;
   /// The automation account arm id.
-  final pulumi.Input<String>? automationAccountArmId;
+  final pulumi.Input<String?>? automationAccountArmId;
   /// A value indicating the type authentication to use for automation Account.
-  final pulumi.Input<String>? automationAccountAuthenticationType;
+  final pulumi.Input<String?>? automationAccountAuthenticationType;
   /// Gets the class type. Overridden in derived classes.
   /// Expected value is 'A2A'.
   final pulumi.Input<String> instanceType;
   /// The job schedule arm name.
-  final pulumi.Input<String>? jobScheduleName;
+  final pulumi.Input<String?>? jobScheduleName;
   /// The schedule arm name.
-  final pulumi.Input<String>? scheduleName;
+  final pulumi.Input<String?>? scheduleName;
 
   /// Creates a new [A2AProtectionContainerMappingDetailsResponse].
   /// [agentAutoUpdateStatus] A value indicating whether the auto update is enabled.
@@ -25,14 +25,14 @@ class A2AProtectionContainerMappingDetailsResponse {
   /// [instanceType] Gets the class type. Overridden in derived classes.
   /// [jobScheduleName] The job schedule arm name.
   /// [scheduleName] The schedule arm name.
-  const A2AProtectionContainerMappingDetailsResponse({
+  A2AProtectionContainerMappingDetailsResponse({
     this.agentAutoUpdateStatus,
     this.automationAccountArmId,
-    this.automationAccountAuthenticationType,
+    pulumi.Input<String?>? automationAccountAuthenticationType,
     required this.instanceType,
     this.jobScheduleName,
     this.scheduleName,
-  });
+  }) : automationAccountAuthenticationType = automationAccountAuthenticationType ?? pulumi.Input.fromValue('RunAsAccount');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration for virtual machine extensions.
 class VMExtensionResponse {
   /// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-  final pulumi.Input<bool>? autoUpgradeMinorVersion;
+  final pulumi.Input<bool?>? autoUpgradeMinorVersion;
   /// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-  final pulumi.Input<bool>? enableAutomaticUpgrade;
+  final pulumi.Input<bool?>? enableAutomaticUpgrade;
   /// The name of the virtual machine extension.
   final pulumi.Input<String> name;
   /// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
   final pulumi.Input<dynamic>? protectedSettings;
   /// Collection of extension names after which this extension needs to be provisioned.
-  final pulumi.Input<List<String>>? provisionAfterExtensions;
+  final pulumi.Input<List<String>?>? provisionAfterExtensions;
   /// The name of the extension handler publisher.
   final pulumi.Input<String> publisher;
   /// JSON formatted public settings for the extension.
@@ -21,7 +21,7 @@ class VMExtensionResponse {
   /// The type of the extensions.
   final pulumi.Input<String> type;
   /// The version of script handler.
-  final pulumi.Input<String>? typeHandlerVersion;
+  final pulumi.Input<String?>? typeHandlerVersion;
 
   /// Creates a new [VMExtensionResponse].
   /// [autoUpgradeMinorVersion] Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.

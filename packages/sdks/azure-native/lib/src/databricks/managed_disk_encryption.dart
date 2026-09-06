@@ -6,11 +6,11 @@ import 'managed_disk_encryption_key_vault_properties.dart';
 /// The object that contains details of encryption used on the workspace.
 class ManagedDiskEncryption {
   /// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault. Not allowed in Serverless ComputeMode workspace.
-  final pulumi.Input<String> keySource;
+  final pulumi.Input<dynamic> keySource;
   /// Key Vault input properties for encryption.
   final pulumi.Input<ManagedDiskEncryptionKeyVaultProperties> keyVaultProperties;
   /// Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
-  final pulumi.Input<bool>? rotationToLatestKeyVersionEnabled;
+  final pulumi.Input<bool?>? rotationToLatestKeyVersionEnabled;
 
   /// Creates a new [ManagedDiskEncryption].
   /// [keySource] The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault. Not allowed in Serverless ComputeMode workspace.
@@ -32,7 +32,7 @@ class ManagedDiskEncryption {
 
   factory ManagedDiskEncryption.fromMap(Map<String, dynamic> map) {
     return ManagedDiskEncryption(
-      keySource: pulumi.Input.fromValue(map['keySource'] as String),
+      keySource: pulumi.Input.fromValue(map['keySource']),
       keyVaultProperties: pulumi.Input.fromValue(ManagedDiskEncryptionKeyVaultProperties.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())),
       rotationToLatestKeyVersionEnabled: (() { final guardedValue = map['rotationToLatestKeyVersionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

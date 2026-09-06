@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The standby pool profile reference.
 class StandbyPoolProfileDefinitionResponse {
   /// The flag to determine whether ACI should fail the create request if the container group can not be obtained from standby pool.
-  final pulumi.Input<bool>? failContainerGroupCreateOnReuseFailure;
+  final pulumi.Input<bool?>? failContainerGroupCreateOnReuseFailure;
   /// The standby pool profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyPoolName}'.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [StandbyPoolProfileDefinitionResponse].
   /// [failContainerGroupCreateOnReuseFailure] The flag to determine whether ACI should fail the create request if the container group can not be obtained from standby pool.

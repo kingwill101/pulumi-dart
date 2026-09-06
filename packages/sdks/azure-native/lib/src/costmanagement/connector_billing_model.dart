@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Connector billing model
-enum ConnectorBillingModel {
+enum ConnectorBillingModel implements pulumi.PulumiEnum<String> {
   valueTrial("trial"),
   valueAutoUpgrade("autoUpgrade"),
   valuePremium("premium"),
   valueExpired("expired");
 
   const ConnectorBillingModel(this.wireValue);
+  @override
   final String wireValue;
 
   static ConnectorBillingModel fromValue(String value) {

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Cloud event mapping config.
-enum CloudEventAttributeType {
+enum CloudEventAttributeType implements pulumi.PulumiEnum<String> {
   propagate("Propagate"),
   createOrRemap("CreateOrRemap");
 
   const CloudEventAttributeType(this.wireValue);
+  @override
   final String wireValue;
 
   static CloudEventAttributeType fromValue(String value) {

@@ -10,9 +10,9 @@ class ListNetworkManagerEffectiveSecurityAdminRulesArgs {
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
-  final pulumi.Input<String>? skipToken;
+  final pulumi.Input<String?>? skipToken;
   /// An optional query parameter which specifies the maximum number of records to be returned by the server.
-  final pulumi.Input<int>? top;
+  final pulumi.Input<int?>? top;
   /// The name of the virtual network.
   final pulumi.Input<String> virtualNetworkName;
 
@@ -41,7 +41,7 @@ class ListNetworkManagerEffectiveSecurityAdminRulesArgs {
     return ListNetworkManagerEffectiveSecurityAdminRulesArgs(
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       skipToken: (() { final guardedValue = map['skipToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       virtualNetworkName: pulumi.Input.fromValue(map['virtualNetworkName'] as String),
     );
   }

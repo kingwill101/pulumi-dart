@@ -1,9 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'express_route_circuit_connection_response.dart';
 import 'express_route_circuit_peering_args.dart';
 import 'express_route_circuit_peering_config_response.dart';
 import 'express_route_circuit_stats_response.dart';
 import 'express_route_connection_id_response.dart';
 import 'ipv6_express_route_circuit_peering_config_response.dart';
+import 'peer_express_route_circuit_connection_response.dart';
 import 'sub_resource_response.dart';
 
 /// Peering in an ExpressRouteCircuit resource.
@@ -187,7 +189,7 @@ class ExpressRouteCircuitPeeringNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The list of circuit connections associated with Azure Private Peering for this circuit.
-  late final pulumi.Output<List<Map<String, dynamic>>?> connections;
+  late final pulumi.Output<List<ExpressRouteCircuitConnectionResponse>?> connections;
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
   /// The ExpressRoute connection.
@@ -205,7 +207,7 @@ class ExpressRouteCircuitPeeringNetwork extends pulumi.CustomResource {
   /// The peer ASN.
   late final pulumi.Output<double?> peerASN;
   /// The list of peered circuit connections associated with Azure Private Peering for this circuit.
-  late final pulumi.Output<List<Map<String, dynamic>>> peeredConnections;
+  late final pulumi.Output<List<PeerExpressRouteCircuitConnectionResponse>> peeredConnections;
   /// The peering type.
   late final pulumi.Output<String?> peeringType;
   /// The primary port.
@@ -247,7 +249,7 @@ class ExpressRouteCircuitPeeringNetwork extends pulumi.CustomResource {
         ) {
     azureASN = registerOutput<int?>('azureASN');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    connections = registerOutput<List<Map<String, dynamic>>?>('connections');
+    connections = registerOutput<List<ExpressRouteCircuitConnectionResponse>?>('connections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressRouteCircuitConnectionResponse>(guardedValue, (value) => ExpressRouteCircuitConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
     expressRouteConnection = registerOutput<ExpressRouteConnectionIdResponse?>('expressRouteConnection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteConnectionIdResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gatewayManagerEtag = registerOutput<String?>('gatewayManagerEtag');
@@ -256,7 +258,42 @@ class ExpressRouteCircuitPeeringNetwork extends pulumi.CustomResource {
     microsoftPeeringConfig = registerOutput<ExpressRouteCircuitPeeringConfigResponse?>('microsoftPeeringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteCircuitPeeringConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String?>('name');
     peerASN = registerOutput<double?>('peerASN');
-    peeredConnections = registerOutput<List<Map<String, dynamic>>>('peeredConnections');
+    peeredConnections = registerOutput<List<PeerExpressRouteCircuitConnectionResponse>>('peeredConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PeerExpressRouteCircuitConnectionResponse>(guardedValue, (value) => PeerExpressRouteCircuitConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    peeringType = registerOutput<String?>('peeringType');
+    primaryAzurePort = registerOutput<String?>('primaryAzurePort');
+    primaryPeerAddressPrefix = registerOutput<String?>('primaryPeerAddressPrefix');
+    provisioningState = registerOutput<String>('provisioningState');
+    routeFilter = registerOutput<SubResourceResponse?>('routeFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secondaryAzurePort = registerOutput<String?>('secondaryAzurePort');
+    secondaryPeerAddressPrefix = registerOutput<String?>('secondaryPeerAddressPrefix');
+    sharedKey = registerOutput<String?>('sharedKey');
+    state = registerOutput<String?>('state');
+    stats = registerOutput<ExpressRouteCircuitStatsResponse?>('stats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteCircuitStatsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    vlanId = registerOutput<int?>('vlanId');
+  }
+
+  /// Creates a typed reference to an existing [ExpressRouteCircuitPeeringNetwork] resource.
+  ExpressRouteCircuitPeeringNetwork.reference(String urn)
+    : super(
+        'azure-native:network:ExpressRouteCircuitPeering',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureASN = registerOutput<int?>('azureASN');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connections = registerOutput<List<ExpressRouteCircuitConnectionResponse>?>('connections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressRouteCircuitConnectionResponse>(guardedValue, (value) => ExpressRouteCircuitConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String>('etag');
+    expressRouteConnection = registerOutput<ExpressRouteConnectionIdResponse?>('expressRouteConnection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteConnectionIdResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gatewayManagerEtag = registerOutput<String?>('gatewayManagerEtag');
+    ipv6PeeringConfig = registerOutput<Ipv6ExpressRouteCircuitPeeringConfigResponse?>('ipv6PeeringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Ipv6ExpressRouteCircuitPeeringConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastModifiedBy = registerOutput<String>('lastModifiedBy');
+    microsoftPeeringConfig = registerOutput<ExpressRouteCircuitPeeringConfigResponse?>('microsoftPeeringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteCircuitPeeringConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String?>('name');
+    peerASN = registerOutput<double?>('peerASN');
+    peeredConnections = registerOutput<List<PeerExpressRouteCircuitConnectionResponse>>('peeredConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PeerExpressRouteCircuitConnectionResponse>(guardedValue, (value) => PeerExpressRouteCircuitConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     peeringType = registerOutput<String?>('peeringType');
     primaryAzurePort = registerOutput<String?>('primaryAzurePort');
     primaryPeerAddressPrefix = registerOutput<String?>('primaryPeerAddressPrefix');

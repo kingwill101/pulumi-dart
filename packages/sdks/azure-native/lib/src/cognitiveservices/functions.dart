@@ -70,6 +70,17 @@ Future<GetAccountResult> getAccount(
   return GetAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountResult> getAccountOutput(
+  GetAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountResult.fromMap);
+}
+
 /// Azure Resource Manager resource envelope.
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -88,6 +99,17 @@ Future<GetAccountCapabilityHostResult> getAccountCapabilityHost(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAccountCapabilityHostResult.fromMap(result);
+}
+
+pulumi.Output<GetAccountCapabilityHostResult> getAccountCapabilityHostOutput(
+  GetAccountCapabilityHostArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getAccountCapabilityHost',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountCapabilityHostResult.fromMap);
 }
 
 /// Connection base resource schema.
@@ -110,6 +132,17 @@ Future<GetAccountConnectionResult> getAccountConnection(
   return GetAccountConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountConnectionResult> getAccountConnectionOutput(
+  GetAccountConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getAccountConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountConnectionResult.fromMap);
+}
+
 /// Gets an Agent Application by name.
 ///
 /// Uses Azure REST API version 2025-10-01-preview.
@@ -128,6 +161,17 @@ Future<GetAgentApplicationResult> getAgentApplication(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAgentApplicationResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentApplicationResult> getAgentApplicationOutput(
+  GetAgentApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getAgentApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentApplicationResult.fromMap);
 }
 
 /// Gets an Agent Deployment by name.
@@ -150,6 +194,17 @@ Future<GetAgentDeploymentResult> getAgentDeployment(
   return GetAgentDeploymentResult.fromMap(result);
 }
 
+pulumi.Output<GetAgentDeploymentResult> getAgentDeploymentOutput(
+  GetAgentDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getAgentDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentDeploymentResult.fromMap);
+}
+
 /// Gets the specified commitmentPlans associated with the Cognitive Services account.
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -168,6 +223,17 @@ Future<GetCommitmentPlanResult> getCommitmentPlan(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCommitmentPlanResult.fromMap(result);
+}
+
+pulumi.Output<GetCommitmentPlanResult> getCommitmentPlanOutput(
+  GetCommitmentPlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getCommitmentPlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCommitmentPlanResult.fromMap);
 }
 
 /// Gets the association of the Cognitive Services commitment plan.
@@ -190,6 +256,17 @@ Future<GetCommitmentPlanAssociationResult> getCommitmentPlanAssociation(
   return GetCommitmentPlanAssociationResult.fromMap(result);
 }
 
+pulumi.Output<GetCommitmentPlanAssociationResult> getCommitmentPlanAssociationOutput(
+  GetCommitmentPlanAssociationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getCommitmentPlanAssociation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCommitmentPlanAssociationResult.fromMap);
+}
+
 /// Gets the specified deployments associated with the Cognitive Services account.
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -208,6 +285,17 @@ Future<GetDeploymentResult> getDeployment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeploymentResult.fromMap(result);
+}
+
+pulumi.Output<GetDeploymentResult> getDeploymentOutput(
+  GetDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentResult.fromMap);
 }
 
 /// Gets the specified EncryptionScope associated with the Cognitive Services account.
@@ -230,6 +318,17 @@ Future<GetEncryptionScopeResult> getEncryptionScope(
   return GetEncryptionScopeResult.fromMap(result);
 }
 
+pulumi.Output<GetEncryptionScopeResult> getEncryptionScopeOutput(
+  GetEncryptionScopeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getEncryptionScope',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEncryptionScopeResult.fromMap);
+}
+
 /// Get API for managed network settings of a cognitive services account.
 ///
 /// Uses Azure REST API version 2026-01-15-preview.
@@ -248,6 +347,17 @@ Future<GetManagedNetworkSettingResult> getManagedNetworkSetting(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedNetworkSettingResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedNetworkSettingResult> getManagedNetworkSettingOutput(
+  GetManagedNetworkSettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getManagedNetworkSetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedNetworkSettingResult.fromMap);
 }
 
 /// The GET API for retrieving a single outbound rule of the managed network associated with the cognitive services account.
@@ -270,6 +380,17 @@ Future<GetOutboundRuleResult> getOutboundRule(
   return GetOutboundRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetOutboundRuleResult> getOutboundRuleOutput(
+  GetOutboundRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getOutboundRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOutboundRuleResult.fromMap);
+}
+
 /// Gets the specified private endpoint connection associated with the Cognitive Services account.
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -288,6 +409,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Returns a Cognitive Services project specified by the parameters.
@@ -310,6 +442,17 @@ Future<GetProjectResult> getProject(
   return GetProjectResult.fromMap(result);
 }
 
+pulumi.Output<GetProjectResult> getProjectOutput(
+  GetProjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getProject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectResult.fromMap);
+}
+
 /// Azure Resource Manager resource envelope for Project CapabilityHost.
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -328,6 +471,17 @@ Future<GetProjectCapabilityHostResult> getProjectCapabilityHost(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProjectCapabilityHostResult.fromMap(result);
+}
+
+pulumi.Output<GetProjectCapabilityHostResult> getProjectCapabilityHostOutput(
+  GetProjectCapabilityHostArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getProjectCapabilityHost',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectCapabilityHostResult.fromMap);
 }
 
 /// Connection base resource schema.
@@ -350,6 +504,17 @@ Future<GetProjectConnectionResult> getProjectConnection(
   return GetProjectConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetProjectConnectionResult> getProjectConnectionOutput(
+  GetProjectConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getProjectConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectConnectionResult.fromMap);
+}
+
 /// Gets the specified custom blocklist associated with the Azure OpenAI account.
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -368,6 +533,17 @@ Future<GetRaiBlocklistResult> getRaiBlocklist(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRaiBlocklistResult.fromMap(result);
+}
+
+pulumi.Output<GetRaiBlocklistResult> getRaiBlocklistOutput(
+  GetRaiBlocklistArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getRaiBlocklist',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRaiBlocklistResult.fromMap);
 }
 
 /// Gets the specified custom blocklist Item associated with the custom blocklist.
@@ -390,6 +566,17 @@ Future<GetRaiBlocklistItemResult> getRaiBlocklistItem(
   return GetRaiBlocklistItemResult.fromMap(result);
 }
 
+pulumi.Output<GetRaiBlocklistItemResult> getRaiBlocklistItemOutput(
+  GetRaiBlocklistItemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getRaiBlocklistItem',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRaiBlocklistItemResult.fromMap);
+}
+
 /// Gets the specified external safety provider associated with the Subscription
 ///
 /// Uses Azure REST API version 2025-10-01-preview.
@@ -408,6 +595,17 @@ Future<GetRaiExternalSafetyProviderResult> getRaiExternalSafetyProvider(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRaiExternalSafetyProviderResult.fromMap(result);
+}
+
+pulumi.Output<GetRaiExternalSafetyProviderResult> getRaiExternalSafetyProviderOutput(
+  GetRaiExternalSafetyProviderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getRaiExternalSafetyProvider',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRaiExternalSafetyProviderResult.fromMap);
 }
 
 /// Gets the specified Content Filters associated with the Azure OpenAI account.
@@ -430,6 +628,17 @@ Future<GetRaiPolicyResult> getRaiPolicy(
   return GetRaiPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetRaiPolicyResult> getRaiPolicyOutput(
+  GetRaiPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getRaiPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRaiPolicyResult.fromMap);
+}
+
 /// Gets the specified RAI Tool Label associated with the Azure OpenAI account.
 ///
 /// Uses Azure REST API version 2025-10-01-preview.
@@ -448,6 +657,17 @@ Future<GetRaiToolLabelResult> getRaiToolLabel(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRaiToolLabelResult.fromMap(result);
+}
+
+pulumi.Output<GetRaiToolLabelResult> getRaiToolLabelOutput(
+  GetRaiToolLabelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getRaiToolLabel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRaiToolLabelResult.fromMap);
 }
 
 /// Gets the specified custom topic associated with the Azure OpenAI account.
@@ -470,6 +690,17 @@ Future<GetRaiTopicResult> getRaiTopic(
   return GetRaiTopicResult.fromMap(result);
 }
 
+pulumi.Output<GetRaiTopicResult> getRaiTopicOutput(
+  GetRaiTopicArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getRaiTopic',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRaiTopicResult.fromMap);
+}
+
 /// Returns a Cognitive Services commitment plan specified by the parameters.
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -488,6 +719,17 @@ Future<GetSharedCommitmentPlanResult> getSharedCommitmentPlan(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSharedCommitmentPlanResult.fromMap(result);
+}
+
+pulumi.Output<GetSharedCommitmentPlanResult> getSharedCommitmentPlanOutput(
+  GetSharedCommitmentPlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getSharedCommitmentPlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSharedCommitmentPlanResult.fromMap);
 }
 
 /// Gets the specified Content Filters associated with the Subscription.
@@ -510,6 +752,17 @@ Future<GetSubscriptionRaiPolicyResult> getSubscriptionRaiPolicy(
   return GetSubscriptionRaiPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetSubscriptionRaiPolicyResult> getSubscriptionRaiPolicyOutput(
+  GetSubscriptionRaiPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:getSubscriptionRaiPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscriptionRaiPolicyResult.fromMap);
+}
+
 /// Lists the account keys for the specified Cognitive Services account.
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -530,6 +783,17 @@ Future<ListAccountKeysResult> listAccountKeys(
   return ListAccountKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListAccountKeysResult> listAccountKeysOutput(
+  ListAccountKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:listAccountKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAccountKeysResult.fromMap);
+}
+
 /// Lists agents for an Agent Application.
 ///
 /// Uses Azure REST API version 2025-10-01-preview.
@@ -548,4 +812,15 @@ Future<ListAgentApplicationAgentsResult> listAgentApplicationAgents(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListAgentApplicationAgentsResult.fromMap(result);
+}
+
+pulumi.Output<ListAgentApplicationAgentsResult> listAgentApplicationAgentsOutput(
+  ListAgentApplicationAgentsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cognitiveservices:listAgentApplicationAgents',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAgentApplicationAgentsResult.fromMap);
 }

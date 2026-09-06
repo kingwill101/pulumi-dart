@@ -13,7 +13,7 @@ class ApiGatewayHostnameBindingArgs {
   /// The default hostname of the data-plane gateway.
   final pulumi.Input<String> hostname;
   /// Gateway hostname binding identifier. Must be unique in the scope of parent Gateway entity.
-  final pulumi.Input<String>? hostnameBindingName;
+  final pulumi.Input<String?>? hostnameBindingName;
   /// The link to the API Management service workspace.
   final pulumi.Input<GatewayHostnameBindingKeyVault> keyVault;
   /// The name of the resource group. The name is case insensitive.

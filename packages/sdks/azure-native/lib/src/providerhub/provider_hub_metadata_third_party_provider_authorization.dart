@@ -6,9 +6,9 @@ import 'light_house_authorization.dart';
 /// The third party provider authorization.
 class ProviderHubMetadataThirdPartyProviderAuthorization {
   /// The authorizations.
-  final pulumi.Input<List<LightHouseAuthorization>>? authorizations;
+  final pulumi.Input<List<LightHouseAuthorization>?>? authorizations;
   /// The managed by tenant id.
-  final pulumi.Input<String>? managedByTenantId;
+  final pulumi.Input<String?>? managedByTenantId;
 
   /// Creates a new [ProviderHubMetadataThirdPartyProviderAuthorization].
   /// [authorizations] The authorizations.

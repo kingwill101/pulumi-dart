@@ -13,61 +13,61 @@ import 'schedule_creation_parameter.dart';
 /// {@macro pulumi_devtestlab_virtual_machine_args_doc}
 class VirtualMachineArgs {
   /// Indicates whether another user can take ownership of the virtual machine
-  final pulumi.Input<bool>? allowClaim;
+  final pulumi.Input<bool?>? allowClaim;
   /// The artifacts to be installed on the virtual machine.
-  final pulumi.Input<List<ArtifactInstallProperties>>? artifacts;
+  final pulumi.Input<List<ArtifactInstallProperties>?>? artifacts;
   /// The creation date of the virtual machine.
-  final pulumi.Input<String>? createdDate;
+  final pulumi.Input<String?>? createdDate;
   /// The custom image identifier of the virtual machine.
-  final pulumi.Input<String>? customImageId;
+  final pulumi.Input<String?>? customImageId;
   /// New or existing data disks to attach to the virtual machine after creation
-  final pulumi.Input<List<DataDiskProperties>>? dataDiskParameters;
+  final pulumi.Input<List<DataDiskProperties>?>? dataDiskParameters;
   /// Indicates whether the virtual machine is to be created without a public IP address.
-  final pulumi.Input<bool>? disallowPublicIpAddress;
+  final pulumi.Input<bool?>? disallowPublicIpAddress;
   /// The resource ID of the environment that contains this virtual machine, if any.
-  final pulumi.Input<String>? environmentId;
+  final pulumi.Input<String?>? environmentId;
   /// The expiration date for VM.
-  final pulumi.Input<String>? expirationDate;
+  final pulumi.Input<String?>? expirationDate;
   /// The Microsoft Azure Marketplace image reference of the virtual machine.
-  final pulumi.Input<GalleryImageReference>? galleryImageReference;
+  final pulumi.Input<GalleryImageReference?>? galleryImageReference;
   /// Indicates whether this virtual machine uses an SSH key for authentication.
-  final pulumi.Input<bool>? isAuthenticationWithSshKey;
+  final pulumi.Input<bool?>? isAuthenticationWithSshKey;
   /// The name of the lab.
   final pulumi.Input<String> labName;
   /// The lab subnet name of the virtual machine.
-  final pulumi.Input<String>? labSubnetName;
+  final pulumi.Input<String?>? labSubnetName;
   /// The lab virtual network identifier of the virtual machine.
-  final pulumi.Input<String>? labVirtualNetworkId;
+  final pulumi.Input<String?>? labVirtualNetworkId;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the virtual machine.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The network interface properties.
-  final pulumi.Input<NetworkInterfaceProperties>? networkInterface;
+  final pulumi.Input<NetworkInterfaceProperties?>? networkInterface;
   /// The notes of the virtual machine.
-  final pulumi.Input<String>? notes;
+  final pulumi.Input<String?>? notes;
   /// The object identifier of the owner of the virtual machine.
-  final pulumi.Input<String>? ownerObjectId;
+  final pulumi.Input<String?>? ownerObjectId;
   /// The user principal name of the virtual machine owner.
-  final pulumi.Input<String>? ownerUserPrincipalName;
+  final pulumi.Input<String?>? ownerUserPrincipalName;
   /// The password of the virtual machine administrator.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The id of the plan associated with the virtual machine image
-  final pulumi.Input<String>? planId;
+  final pulumi.Input<String?>? planId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Virtual Machine schedules to be created
-  final pulumi.Input<List<ScheduleCreationParameter>>? scheduleParameters;
+  final pulumi.Input<List<ScheduleCreationParameter>?>? scheduleParameters;
   /// The size of the virtual machine.
-  final pulumi.Input<String>? size;
+  final pulumi.Input<String?>? size;
   /// The SSH key of the virtual machine administrator.
-  final pulumi.Input<String>? sshKey;
+  final pulumi.Input<String?>? sshKey;
   /// Storage type to use for virtual machine (i.e. Standard, Premium).
-  final pulumi.Input<String>? storageType;
+  final pulumi.Input<String?>? storageType;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The user name of the virtual machine.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [VirtualMachineArgs].
   /// [allowClaim] Indicates whether another user can take ownership of the virtual machine
@@ -98,13 +98,13 @@ class VirtualMachineArgs {
   /// [storageType] Storage type to use for virtual machine (i.e. Standard, Premium).
   /// [tags] Resource tags.
   /// [userName] The user name of the virtual machine.
-  const VirtualMachineArgs({
-    this.allowClaim,
+  VirtualMachineArgs({
+    pulumi.Input<bool?>? allowClaim,
     this.artifacts,
     this.createdDate,
     this.customImageId,
     this.dataDiskParameters,
-    this.disallowPublicIpAddress,
+    pulumi.Input<bool?>? disallowPublicIpAddress,
     this.environmentId,
     this.expirationDate,
     this.galleryImageReference,
@@ -116,7 +116,7 @@ class VirtualMachineArgs {
     this.name,
     this.networkInterface,
     this.notes,
-    this.ownerObjectId,
+    pulumi.Input<String?>? ownerObjectId,
     this.ownerUserPrincipalName,
     this.password,
     this.planId,
@@ -124,10 +124,10 @@ class VirtualMachineArgs {
     this.scheduleParameters,
     this.size,
     this.sshKey,
-    this.storageType,
+    pulumi.Input<String?>? storageType,
     this.tags,
     this.userName,
-  });
+  }) : allowClaim = allowClaim ?? pulumi.Input.fromValue(false), disallowPublicIpAddress = disallowPublicIpAddress ?? pulumi.Input.fromValue(false), ownerObjectId = ownerObjectId ?? pulumi.Input.fromValue('dynamicValue'), storageType = storageType ?? pulumi.Input.fromValue('labStorageType');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

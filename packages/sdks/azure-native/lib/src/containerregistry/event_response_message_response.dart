@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The event response message received from the service URI.
 class EventResponseMessageResponse {
   /// The content of the event response message.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The headers of the event response message.
-  final pulumi.Input<Map<String, String>>? headers;
+  final pulumi.Input<Map<String, String>?>? headers;
   /// The reason phrase of the event response message.
-  final pulumi.Input<String>? reasonPhrase;
+  final pulumi.Input<String?>? reasonPhrase;
   /// The status code of the event response message.
-  final pulumi.Input<String>? statusCode;
+  final pulumi.Input<String?>? statusCode;
   /// The HTTP message version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [EventResponseMessageResponse].
   /// [content] The content of the event response message.

@@ -6,13 +6,13 @@ import 'uefi_key.dart';
 /// Additional UEFI key signatures that will be added to the image in addition to the signature templates
 class UefiKeySignatures {
   /// The database of UEFI keys for this image version.
-  final pulumi.Input<List<UefiKey>>? db;
+  final pulumi.Input<List<UefiKey>?>? db;
   /// The database of revoked UEFI keys for this image version.
-  final pulumi.Input<List<UefiKey>>? dbx;
+  final pulumi.Input<List<UefiKey>?>? dbx;
   /// The Key Encryption Keys of this image version.
-  final pulumi.Input<List<UefiKey>>? kek;
+  final pulumi.Input<List<UefiKey>?>? kek;
   /// The Platform Key of this image version.
-  final pulumi.Input<UefiKey>? pk;
+  final pulumi.Input<UefiKey?>? pk;
 
   /// Creates a new [UefiKeySignatures].
   /// [db] The database of UEFI keys for this image version.

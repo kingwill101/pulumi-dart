@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// RAI Custom Topic properties.
 class RaiTopicProperties {
   /// Creation time of the custom topic.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Description of the custom topic.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Failed reason if the status is Failed.
-  final pulumi.Input<String>? failedReason;
+  final pulumi.Input<String?>? failedReason;
   /// Last modified time of the custom topic.
-  final pulumi.Input<String>? lastModifiedAt;
+  final pulumi.Input<String?>? lastModifiedAt;
   /// Sample blob url for the custom topic.
-  final pulumi.Input<String>? sampleBlobUrl;
+  final pulumi.Input<String?>? sampleBlobUrl;
   /// Status of the custom topic.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The unique identifier of the custom topic.
-  final pulumi.Input<String>? topicId;
+  final pulumi.Input<String?>? topicId;
   /// The name of the custom topic.
-  final pulumi.Input<String>? topicName;
+  final pulumi.Input<String?>? topicName;
 
   /// Creates a new [RaiTopicProperties].
   /// [createdAt] Creation time of the custom topic.

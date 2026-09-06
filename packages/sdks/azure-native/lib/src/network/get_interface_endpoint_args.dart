@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_get_interface_endpoint_args_doc}
 class GetInterfaceEndpointArgs {
   /// Expands referenced resources.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the interface endpoint.
   final pulumi.Input<String> interfaceEndpointName;
   /// The name of the resource group.

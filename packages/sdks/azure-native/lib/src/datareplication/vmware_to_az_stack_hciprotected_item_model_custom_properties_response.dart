@@ -16,7 +16,7 @@ class VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse {
   /// Gets or sets the list of disks to replicate.
   final pulumi.Input<List<VMwareToAzStackHCIDiskInputResponse>> disksToInclude;
   /// Protected item dynamic memory config.
-  final pulumi.Input<ProtectedItemDynamicMemoryConfigResponse>? dynamicMemoryConfig;
+  final pulumi.Input<ProtectedItemDynamicMemoryConfigResponse?>? dynamicMemoryConfig;
   /// Gets or sets the ARM Id of the discovered machine.
   final pulumi.Input<String> fabricDiscoveryMachineId;
   /// Gets or sets the recovery point Id to which the VM was failed over.
@@ -32,7 +32,7 @@ class VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse {
   /// Expected value is 'VMwareToAzStackHCI'.
   final pulumi.Input<String> instanceType;
   /// Gets or sets a value indicating whether memory is dynamical.
-  final pulumi.Input<bool>? isDynamicRam;
+  final pulumi.Input<bool?>? isDynamicRam;
   /// Gets or sets the last recovery point Id.
   final pulumi.Input<String> lastRecoveryPointId;
   /// Gets or sets the last recovery point received time.
@@ -48,7 +48,7 @@ class VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse {
   /// Gets or sets the type of the OS.
   final pulumi.Input<String> osType;
   /// Gets or sets a value indicating whether auto resync is to be done.
-  final pulumi.Input<bool>? performAutoResync;
+  final pulumi.Input<bool?>? performAutoResync;
   /// Gets or sets the list of protected disks.
   final pulumi.Input<List<VMwareToAzStackHCIProtectedDiskPropertiesResponse>> protectedDisks;
   /// Gets or sets the VM NIC details.
@@ -87,7 +87,7 @@ class VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse {
   /// Gets or sets the Target AzStackHCI cluster name.
   final pulumi.Input<String> targetAzStackHciClusterName;
   /// Gets or sets the target CPU cores.
-  final pulumi.Input<int>? targetCpuCores;
+  final pulumi.Input<int?>? targetCpuCores;
   /// Gets or sets the target DRA name.
   final pulumi.Input<String> targetDraName;
   /// Gets or sets the Target HCI Cluster ARM Id.
@@ -95,17 +95,17 @@ class VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse {
   /// Gets or sets the target location.
   final pulumi.Input<String> targetLocation;
   /// Gets or sets the target memory in mega-bytes.
-  final pulumi.Input<int>? targetMemoryInMegaBytes;
+  final pulumi.Input<int?>? targetMemoryInMegaBytes;
   /// Gets or sets the target network Id within AzStackHCI Cluster.
-  final pulumi.Input<String>? targetNetworkId;
+  final pulumi.Input<String?>? targetNetworkId;
   /// Gets or sets the target resource group ARM Id.
   final pulumi.Input<String> targetResourceGroupId;
   /// Gets or sets the BIOS Id of the target AzStackHCI VM.
   final pulumi.Input<String> targetVmBiosId;
   /// Gets or sets the target VM display name.
-  final pulumi.Input<String>? targetVmName;
+  final pulumi.Input<String?>? targetVmName;
   /// Gets or sets the target test network Id within AzStackHCI Cluster.
-  final pulumi.Input<String>? testNetworkId;
+  final pulumi.Input<String?>? testNetworkId;
 
   /// Creates a new [VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse].
   /// [activeLocation] Gets or sets the location of the protected item.
@@ -267,40 +267,40 @@ class VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse {
       failoverRecoveryPointId: pulumi.Input.fromValue(map['failoverRecoveryPointId'] as String),
       firmwareType: pulumi.Input.fromValue(map['firmwareType'] as String),
       hyperVGeneration: pulumi.Input.fromValue(map['hyperVGeneration'] as String),
-      initialReplicationProgressPercentage: pulumi.Input.fromValue(map['initialReplicationProgressPercentage'] as int),
+      initialReplicationProgressPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['initialReplicationProgressPercentage'])),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       isDynamicRam: (() { final guardedValue = map['isDynamicRam']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       lastRecoveryPointId: pulumi.Input.fromValue(map['lastRecoveryPointId'] as String),
       lastRecoveryPointReceived: pulumi.Input.fromValue(map['lastRecoveryPointReceived'] as String),
       lastReplicationUpdateTime: pulumi.Input.fromValue(map['lastReplicationUpdateTime'] as String),
-      migrationProgressPercentage: pulumi.Input.fromValue(map['migrationProgressPercentage'] as int),
+      migrationProgressPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['migrationProgressPercentage'])),
       nicsToInclude: pulumi.Input.fromValue(pulumi.Input.decodeList<VMwareToAzStackHCINicInputResponse>(map['nicsToInclude']!, (value) => VMwareToAzStackHCINicInputResponse.fromMap((value as Map).cast<String, dynamic>()))),
       osName: pulumi.Input.fromValue(map['osName'] as String),
       osType: pulumi.Input.fromValue(map['osType'] as String),
       performAutoResync: (() { final guardedValue = map['performAutoResync']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       protectedDisks: pulumi.Input.fromValue(pulumi.Input.decodeList<VMwareToAzStackHCIProtectedDiskPropertiesResponse>(map['protectedDisks']!, (value) => VMwareToAzStackHCIProtectedDiskPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))),
       protectedNics: pulumi.Input.fromValue(pulumi.Input.decodeList<VMwareToAzStackHCIProtectedNicPropertiesResponse>(map['protectedNics']!, (value) => VMwareToAzStackHCIProtectedNicPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      resumeProgressPercentage: pulumi.Input.fromValue(map['resumeProgressPercentage'] as int),
-      resumeRetryCount: pulumi.Input.fromValue(map['resumeRetryCount'] as double),
-      resyncProgressPercentage: pulumi.Input.fromValue(map['resyncProgressPercentage'] as int),
+      resumeProgressPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['resumeProgressPercentage'])),
+      resumeRetryCount: pulumi.Input.fromValue((map['resumeRetryCount'] as num).toDouble()),
+      resyncProgressPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['resyncProgressPercentage'])),
       resyncRequired: pulumi.Input.fromValue(map['resyncRequired'] as bool),
-      resyncRetryCount: pulumi.Input.fromValue(map['resyncRetryCount'] as double),
+      resyncRetryCount: pulumi.Input.fromValue((map['resyncRetryCount'] as num).toDouble()),
       resyncState: pulumi.Input.fromValue(map['resyncState'] as String),
       runAsAccountId: pulumi.Input.fromValue(map['runAsAccountId'] as String),
       sourceApplianceName: pulumi.Input.fromValue(map['sourceApplianceName'] as String),
-      sourceCpuCores: pulumi.Input.fromValue(map['sourceCpuCores'] as int),
+      sourceCpuCores: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sourceCpuCores'])),
       sourceDraName: pulumi.Input.fromValue(map['sourceDraName'] as String),
-      sourceMemoryInMegaBytes: pulumi.Input.fromValue(map['sourceMemoryInMegaBytes'] as double),
+      sourceMemoryInMegaBytes: pulumi.Input.fromValue((map['sourceMemoryInMegaBytes'] as num).toDouble()),
       sourceVmName: pulumi.Input.fromValue(map['sourceVmName'] as String),
       storageContainerId: pulumi.Input.fromValue(map['storageContainerId'] as String),
       targetApplianceName: pulumi.Input.fromValue(map['targetApplianceName'] as String),
       targetArcClusterCustomLocationId: pulumi.Input.fromValue(map['targetArcClusterCustomLocationId'] as String),
       targetAzStackHciClusterName: pulumi.Input.fromValue(map['targetAzStackHciClusterName'] as String),
-      targetCpuCores: (() { final guardedValue = map['targetCpuCores']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetCpuCores: (() { final guardedValue = map['targetCpuCores']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       targetDraName: pulumi.Input.fromValue(map['targetDraName'] as String),
       targetHciClusterId: pulumi.Input.fromValue(map['targetHciClusterId'] as String),
       targetLocation: pulumi.Input.fromValue(map['targetLocation'] as String),
-      targetMemoryInMegaBytes: (() { final guardedValue = map['targetMemoryInMegaBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetMemoryInMegaBytes: (() { final guardedValue = map['targetMemoryInMegaBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       targetNetworkId: (() { final guardedValue = map['targetNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetResourceGroupId: pulumi.Input.fromValue(map['targetResourceGroupId'] as String),
       targetVmBiosId: pulumi.Input.fromValue(map['targetVmBiosId'] as String),

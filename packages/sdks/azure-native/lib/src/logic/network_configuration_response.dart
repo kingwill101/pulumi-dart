@@ -7,11 +7,11 @@ import 'resource_reference_response.dart';
 /// The network configuration.
 class NetworkConfigurationResponse {
   /// The access endpoint.
-  final pulumi.Input<IntegrationServiceEnvironmentAccessEndpointResponse>? accessEndpoint;
+  final pulumi.Input<IntegrationServiceEnvironmentAccessEndpointResponse?>? accessEndpoint;
   /// The subnets.
-  final pulumi.Input<List<ResourceReferenceResponse>>? subnets;
+  final pulumi.Input<List<ResourceReferenceResponse>?>? subnets;
   /// Gets the virtual network address space.
-  final pulumi.Input<String>? virtualNetworkAddressSpace;
+  final pulumi.Input<String?>? virtualNetworkAddressSpace;
 
   /// Creates a new [NetworkConfigurationResponse].
   /// [accessEndpoint] The access endpoint.

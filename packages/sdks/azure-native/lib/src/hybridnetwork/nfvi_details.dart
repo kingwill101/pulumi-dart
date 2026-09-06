@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The nfvi details.
 class NfviDetails {
   /// The nfvi name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The nfvi type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [NfviDetails].
   /// [name] The nfvi name.

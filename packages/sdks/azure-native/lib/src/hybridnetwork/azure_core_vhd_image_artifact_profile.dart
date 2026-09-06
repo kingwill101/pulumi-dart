@@ -7,9 +7,9 @@ import 'vhd_image_artifact_profile.dart';
 /// Azure vhd artifact profile properties.
 class AzureCoreVhdImageArtifactProfile {
   /// The reference to artifact store.
-  final pulumi.Input<ReferencedResource>? artifactStore;
+  final pulumi.Input<ReferencedResource?>? artifactStore;
   /// Vhd artifact profile.
-  final pulumi.Input<VhdImageArtifactProfile>? vhdArtifactProfile;
+  final pulumi.Input<VhdImageArtifactProfile?>? vhdArtifactProfile;
 
   /// Creates a new [AzureCoreVhdImageArtifactProfile].
   /// [artifactStore] The reference to artifact store.

@@ -9,11 +9,11 @@ import 'connection_policy_properties.dart';
 /// {@macro pulumi_network_connection_policy_args_doc}
 class ConnectionPolicyArgs {
   /// The name of the ConnectionPolicy that is unique within a VirtualHub. This name can be used to access the resource.
-  final pulumi.Input<String>? connectionPolicyName;
+  final pulumi.Input<String?>? connectionPolicyName;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Properties of the ConnectionPolicy resource.
-  final pulumi.Input<ConnectionPolicyProperties>? properties;
+  final pulumi.Input<ConnectionPolicyProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the VirtualHub.

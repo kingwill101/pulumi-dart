@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Description about the errors happen while performing migration validation
 class ValidationErrorResponse {
   /// Severity of the error
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<String?>? severity;
   /// Error Text
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
 
   /// Creates a new [ValidationErrorResponse].
   /// [severity] Severity of the error

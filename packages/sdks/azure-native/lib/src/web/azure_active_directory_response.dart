@@ -8,17 +8,17 @@ import 'azure_active_directory_validation_response.dart';
 /// The configuration settings of the Azure Active directory provider.
 class AzureActiveDirectoryResponse {
   /// &lt;code&gt;false&lt;/code&gt; if the Azure Active Directory provider should not be enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Gets a value indicating whether the Azure AD configuration was auto-provisioned using 1st party tooling.
   /// This is an internal flag primarily intended to support the Azure Management Portal. Users should not
   /// read or write to this property.
-  final pulumi.Input<bool>? isAutoProvisioned;
+  final pulumi.Input<bool?>? isAutoProvisioned;
   /// The configuration settings of the Azure Active Directory login flow.
-  final pulumi.Input<AzureActiveDirectoryLoginResponse>? login;
+  final pulumi.Input<AzureActiveDirectoryLoginResponse?>? login;
   /// The configuration settings of the Azure Active Directory app registration.
-  final pulumi.Input<AzureActiveDirectoryRegistrationResponse>? registration;
+  final pulumi.Input<AzureActiveDirectoryRegistrationResponse?>? registration;
   /// The configuration settings of the Azure Active Directory token validation flow.
-  final pulumi.Input<AzureActiveDirectoryValidationResponse>? validation;
+  final pulumi.Input<AzureActiveDirectoryValidationResponse?>? validation;
 
   /// Creates a new [AzureActiveDirectoryResponse].
   /// [enabled] &lt;code&gt;false&lt;/code&gt; if the Azure Active Directory provider should not be enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.

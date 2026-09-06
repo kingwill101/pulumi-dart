@@ -9,9 +9,9 @@ class SolutionTemplateProperties {
   /// Description of Solution template
   final pulumi.Input<String> description;
   /// Flag to enable external validation
-  final pulumi.Input<bool>? enableExternalValidation;
+  final pulumi.Input<bool?>? enableExternalValidation;
   /// State of resource
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
 
   /// Creates a new [SolutionTemplateProperties].
   /// [capabilities] List of capabilities
@@ -39,7 +39,7 @@ class SolutionTemplateProperties {
       capabilities: pulumi.Input.fromValue((map['capabilities'] as List).cast<String>()),
       description: pulumi.Input.fromValue(map['description'] as String),
       enableExternalValidation: (() { final guardedValue = map['enableExternalValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

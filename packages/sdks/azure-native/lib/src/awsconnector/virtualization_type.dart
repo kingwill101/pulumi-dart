@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum VirtualizationType {
+enum VirtualizationType implements pulumi.PulumiEnum<String> {
   hvm("hvm"),
   paravirtual("paravirtual");
 
   const VirtualizationType(this.wireValue);
+  @override
   final String wireValue;
 
   static VirtualizationType fromValue(String value) {

@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspaceConnectionManagedIdentityResponse {
-  final pulumi.Input<String>? clientId;
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? clientId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [WorkspaceConnectionManagedIdentityResponse].
   /// [clientId] Optional.

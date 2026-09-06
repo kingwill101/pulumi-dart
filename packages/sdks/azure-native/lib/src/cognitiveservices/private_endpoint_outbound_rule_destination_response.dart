@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Private Endpoint destination for an outbound rule.
 class PrivateEndpointOutboundRuleDestinationResponse {
   /// The Azure resource ID of the target private endpoint service.
-  final pulumi.Input<String>? serviceResourceId;
+  final pulumi.Input<String?>? serviceResourceId;
   /// The subresource of the target service to connect to.
-  final pulumi.Input<String>? subresourceTarget;
+  final pulumi.Input<String?>? subresourceTarget;
 
   /// Creates a new [PrivateEndpointOutboundRuleDestinationResponse].
   /// [serviceResourceId] The Azure resource ID of the target private endpoint service.

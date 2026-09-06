@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Url configuration of the Actions set in Application Gateway.
 class ApplicationGatewayUrlConfigurationResponse {
   /// Url path which user has provided for url rewrite. Null means no path will be updated. Default value is null.
-  final pulumi.Input<String>? modifiedPath;
+  final pulumi.Input<String?>? modifiedPath;
   /// Query string which user has provided for url rewrite. Null means no query string will be updated. Default value is null.
-  final pulumi.Input<String>? modifiedQueryString;
+  final pulumi.Input<String?>? modifiedQueryString;
   /// If set as true, it will re-evaluate the url path map provided in path based request routing rules using modified path. Default value is false.
-  final pulumi.Input<bool>? reroute;
+  final pulumi.Input<bool?>? reroute;
 
   /// Creates a new [ApplicationGatewayUrlConfigurationResponse].
   /// [modifiedPath] Url path which user has provided for url rewrite. Null means no path will be updated. Default value is null.

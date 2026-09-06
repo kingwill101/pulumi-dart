@@ -9,15 +9,15 @@ import 'advanced_schedule.dart';
 /// {@macro pulumi_automation_schedule_args_doc}
 class ScheduleArgs {
   /// Gets or sets the AdvancedSchedule.
-  final pulumi.Input<AdvancedSchedule>? advancedSchedule;
+  final pulumi.Input<AdvancedSchedule?>? advancedSchedule;
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
   /// Gets or sets the description of the schedule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Gets or sets the end time of the schedule.
-  final pulumi.Input<String>? expiryTime;
+  final pulumi.Input<String?>? expiryTime;
   /// Gets or sets the frequency of the schedule.
-  final pulumi.Input<String> frequency;
+  final pulumi.Input<dynamic> frequency;
   /// Gets or sets the interval of the schedule.
   final pulumi.Input<dynamic>? interval;
   /// Gets or sets the name of the Schedule.
@@ -25,11 +25,11 @@ class ScheduleArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The schedule name.
-  final pulumi.Input<String>? scheduleName;
+  final pulumi.Input<String?>? scheduleName;
   /// Gets or sets the start time of the schedule.
   final pulumi.Input<String> startTime;
   /// Gets or sets the time zone of the schedule.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [ScheduleArgs].
   /// [advancedSchedule] Gets or sets the AdvancedSchedule.
@@ -79,7 +79,7 @@ class ScheduleArgs {
       automationAccountName: pulumi.Input.fromValue(map['automationAccountName'] as String),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expiryTime: (() { final guardedValue = map['expiryTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      frequency: pulumi.Input.fromValue(map['frequency'] as String),
+      frequency: pulumi.Input.fromValue(map['frequency']),
       interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

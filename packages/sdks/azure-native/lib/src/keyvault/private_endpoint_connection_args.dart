@@ -9,9 +9,9 @@ import 'private_link_service_connection_state.dart';
 /// {@macro pulumi_keyvault_private_endpoint_connection_args_doc}
 class PrivateEndpointConnectionArgs {
   /// Name of the private endpoint connection associated with the key vault.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// Approval state of the private link connection.
-  final pulumi.Input<PrivateLinkServiceConnectionState>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionState?>? privateLinkServiceConnectionState;
   /// Name of the resource group that contains the key vault.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the key vault.

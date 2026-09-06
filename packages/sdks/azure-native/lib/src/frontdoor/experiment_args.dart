@@ -9,23 +9,23 @@ import 'endpoint.dart';
 /// {@macro pulumi_frontdoor_experiment_args_doc}
 class ExperimentArgs {
   /// The description of the details or intents of the Experiment
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The state of the Experiment
-  final pulumi.Input<String>? enabledState;
+  final pulumi.Input<dynamic>? enabledState;
   /// The endpoint A of an experiment
-  final pulumi.Input<Endpoint>? endpointA;
+  final pulumi.Input<Endpoint?>? endpointA;
   /// The endpoint B of an experiment
-  final pulumi.Input<Endpoint>? endpointB;
+  final pulumi.Input<Endpoint?>? endpointB;
   /// The Experiment identifier associated with the Experiment
-  final pulumi.Input<String>? experimentName;
+  final pulumi.Input<String?>? experimentName;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The Profile identifier associated with the Tenant and Partner
   final pulumi.Input<String> profileName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ExperimentArgs].
   /// [description] The description of the details or intents of the Experiment
@@ -66,7 +66,7 @@ class ExperimentArgs {
   factory ExperimentArgs.fromMap(Map<String, dynamic> map) {
     return ExperimentArgs(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       endpointA: (() { final guardedValue = map['endpointA']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Endpoint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       endpointB: (() { final guardedValue = map['endpointB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Endpoint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       experimentName: (() { final guardedValue = map['experimentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

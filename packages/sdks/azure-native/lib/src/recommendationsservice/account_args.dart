@@ -10,17 +10,17 @@ import 'managed_service_identity.dart';
 /// {@macro pulumi_recommendationsservice_account_args_doc}
 class AccountArgs {
   /// The name of the RecommendationsService Account resource.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// The identity used for the resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Account resource properties.
-  final pulumi.Input<AccountResourceProperties>? properties;
+  final pulumi.Input<AccountResourceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccountArgs].
   /// [accountName] The name of the RecommendationsService Account resource.

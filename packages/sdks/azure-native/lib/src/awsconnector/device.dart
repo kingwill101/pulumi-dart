@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Device
 class Device {
   /// The path inside the container at which to expose the host device.
-  final pulumi.Input<String>? containerPath;
+  final pulumi.Input<String?>? containerPath;
   /// The path for the device on the host container instance.
-  final pulumi.Input<String>? hostPath;
+  final pulumi.Input<String?>? hostPath;
   /// The explicit permissions to provide to the container for the device. By default, the container has permissions for ``read``, ``write``, and ``mknod`` for the device.
-  final pulumi.Input<List<String>>? permissions;
+  final pulumi.Input<List<String>?>? permissions;
 
   /// Creates a new [Device].
   /// [containerPath] The path inside the container at which to expose the host device.

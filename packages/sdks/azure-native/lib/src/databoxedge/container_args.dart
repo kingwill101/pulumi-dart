@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_databoxedge_container_args_doc}
 class ContainerArgs {
   /// The container name.
-  final pulumi.Input<String>? containerName;
+  final pulumi.Input<String?>? containerName;
   /// DataFormat for Container
-  final pulumi.Input<String> dataFormat;
+  final pulumi.Input<dynamic> dataFormat;
   /// The device name.
   final pulumi.Input<String> deviceName;
   /// The resource group name.
@@ -45,7 +45,7 @@ class ContainerArgs {
   factory ContainerArgs.fromMap(Map<String, dynamic> map) {
     return ContainerArgs(
       containerName: (() { final guardedValue = map['containerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dataFormat: pulumi.Input.fromValue(map['dataFormat'] as String),
+      dataFormat: pulumi.Input.fromValue(map['dataFormat']),
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       storageAccountName: pulumi.Input.fromValue(map['storageAccountName'] as String),

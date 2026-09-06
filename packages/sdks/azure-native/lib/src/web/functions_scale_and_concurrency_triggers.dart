@@ -6,7 +6,7 @@ import 'functions_scale_and_concurrency_triggers_http.dart';
 /// Scale and concurrency settings for the function app triggers.
 class FunctionsScaleAndConcurrencyTriggers {
   /// Scale and concurrency settings for the HTTP trigger.
-  final pulumi.Input<FunctionsScaleAndConcurrencyTriggersHttp>? http;
+  final pulumi.Input<FunctionsScaleAndConcurrencyTriggersHttp?>? http;
 
   /// Creates a new [FunctionsScaleAndConcurrencyTriggers].
   /// [http] Scale and concurrency settings for the HTTP trigger.

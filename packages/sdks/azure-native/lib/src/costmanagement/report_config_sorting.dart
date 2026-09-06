@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The order by expression to be used in the report.
 class ReportConfigSorting {
   /// Direction of sort.
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<dynamic>? direction;
   /// The name of the column to sort.
   final pulumi.Input<String> name;
 
@@ -26,7 +26,7 @@ class ReportConfigSorting {
 
   factory ReportConfigSorting.fromMap(Map<String, dynamic> map) {
     return ReportConfigSorting(
-      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

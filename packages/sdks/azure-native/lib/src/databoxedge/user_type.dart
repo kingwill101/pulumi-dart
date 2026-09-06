@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the user.
-enum UserType {
+enum UserType implements pulumi.PulumiEnum<String> {
   valueShare("Share"),
   valueLocalManagement("LocalManagement"),
   valueARM("ARM");
 
   const UserType(this.wireValue);
+  @override
   final String wireValue;
 
   static UserType fromValue(String value) {

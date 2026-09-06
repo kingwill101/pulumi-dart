@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The Network protocol of a Rule.
-enum FirewallPolicyRuleNetworkProtocol {
+enum FirewallPolicyRuleNetworkProtocol implements pulumi.PulumiEnum<String> {
   valueTCP("TCP"),
   valueUDP("UDP"),
   valueAny("Any"),
   valueICMP("ICMP");
 
   const FirewallPolicyRuleNetworkProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static FirewallPolicyRuleNetworkProtocol fromValue(String value) {

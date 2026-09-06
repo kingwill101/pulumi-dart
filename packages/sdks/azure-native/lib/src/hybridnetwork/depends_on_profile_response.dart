@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Depends on profile definition.
 class DependsOnProfileResponse {
   /// Application installation operation dependency.
-  final pulumi.Input<List<String>>? installDependsOn;
+  final pulumi.Input<List<String>?>? installDependsOn;
   /// Application deletion operation dependency.
-  final pulumi.Input<List<String>>? uninstallDependsOn;
+  final pulumi.Input<List<String>?>? uninstallDependsOn;
   /// Application update operation dependency.
-  final pulumi.Input<List<String>>? updateDependsOn;
+  final pulumi.Input<List<String>?>? updateDependsOn;
 
   /// Creates a new [DependsOnProfileResponse].
   /// [installDependsOn] Application installation operation dependency.

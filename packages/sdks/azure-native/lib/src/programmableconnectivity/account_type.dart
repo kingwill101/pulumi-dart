@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the account the user has with the Operator's Network API infrastructure. AzureManaged | UserManaged.
-enum AccountType {
+enum AccountType implements pulumi.PulumiEnum<String> {
   azureManaged("AzureManaged"),
   userManaged("UserManaged");
 
   const AccountType(this.wireValue);
+  @override
   final String wireValue;
 
   static AccountType fromValue(String value) {

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An error response from the pod identity provisioning.
 class ManagedClusterPodIdentityProvisioningErrorBodyResponse {
   /// An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// A list of additional details about the error.
-  final pulumi.Input<List<ManagedClusterPodIdentityProvisioningErrorBodyResponse>>? details;
+  final pulumi.Input<List<ManagedClusterPodIdentityProvisioningErrorBodyResponse>?>? details;
   /// A message describing the error, intended to be suitable for display in a user interface.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The target of the particular error. For example, the name of the property in error.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
 
   /// Creates a new [ManagedClusterPodIdentityProvisioningErrorBodyResponse].
   /// [code] An identifier for the error. Codes are invariant and are intended to be consumed programmatically.

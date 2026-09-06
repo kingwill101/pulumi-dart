@@ -13,19 +13,19 @@ import 'login.dart';
 /// {@macro pulumi_web_web_app_auth_settings_v2_without_secrets_slot_args_doc}
 class WebAppAuthSettingsV2WithoutSecretsSlotArgs {
   /// The configuration settings that determines the validation flow of users using App Service Authentication/Authorization.
-  final pulumi.Input<GlobalValidation>? globalValidation;
+  final pulumi.Input<GlobalValidation?>? globalValidation;
   /// The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
-  final pulumi.Input<HttpSettings>? httpSettings;
+  final pulumi.Input<HttpSettings?>? httpSettings;
   /// The configuration settings of each of the identity providers used to configure App Service Authentication/Authorization.
-  final pulumi.Input<IdentityProvidersV1>? identityProviders;
+  final pulumi.Input<IdentityProvidersV1?>? identityProviders;
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The configuration settings of the login flow of users using App Service Authentication/Authorization.
-  final pulumi.Input<Login>? login;
+  final pulumi.Input<Login?>? login;
   /// Name of the app.
   final pulumi.Input<String> name;
   /// The configuration settings of the platform of App Service Authentication/Authorization.
-  final pulumi.Input<AuthPlatform>? platform;
+  final pulumi.Input<AuthPlatform?>? platform;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the deployment slot. If a slot is not specified, the API will get the settings for the production slot.

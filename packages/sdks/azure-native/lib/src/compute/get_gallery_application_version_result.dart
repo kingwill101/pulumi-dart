@@ -8,27 +8,27 @@ import 'system_data_response.dart';
 /// Result data returned by getGalleryApplicationVersion.
 class GetGalleryApplicationVersionResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The provisioning state, which only appears in the response.
-  final String provisioningState;
+  final String? provisioningState;
   /// The publishing profile of a gallery image version.
-  final GalleryApplicationVersionPublishingProfileResponse publishingProfile;
+  final GalleryApplicationVersionPublishingProfileResponse? publishingProfile;
   /// This is the replication status of the gallery image version.
-  final ReplicationStatusResponse replicationStatus;
+  final ReplicationStatusResponse? replicationStatus;
   /// The safety profile of the Gallery Application Version.
   final GalleryApplicationVersionSafetyProfileResponse? safetyProfile;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetGalleryApplicationVersionResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -43,48 +43,48 @@ class GetGalleryApplicationVersionResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetGalleryApplicationVersionResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.publishingProfile,
-    required this.replicationStatus,
+    this.azureApiVersion,
+    this.id,
+    this.location,
+    this.name,
+    this.provisioningState,
+    this.publishingProfile,
+    this.replicationStatus,
     this.safetyProfile,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'location': location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'publishingProfile': publishingProfile.toMap(),
-      'replicationStatus': replicationStatus.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'publishingProfile': ?publishingProfile?.toMap(),
+      'replicationStatus': ?replicationStatus?.toMap(),
       'safetyProfile': ?safetyProfile?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetGalleryApplicationVersionResult.fromMap(Map<String, dynamic> map) {
     return GetGalleryApplicationVersionResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      publishingProfile: GalleryApplicationVersionPublishingProfileResponse.fromMap((map['publishingProfile']! as Map).cast<String, dynamic>()),
-      replicationStatus: ReplicationStatusResponse.fromMap((map['replicationStatus']! as Map).cast<String, dynamic>()),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      publishingProfile: (() { final guardedValue = map['publishingProfile']; if (guardedValue == null) return null; return GalleryApplicationVersionPublishingProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      replicationStatus: (() { final guardedValue = map['replicationStatus']; if (guardedValue == null) return null; return ReplicationStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       safetyProfile: (() { final guardedValue = map['safetyProfile']; if (guardedValue == null) return null; return GalleryApplicationVersionSafetyProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

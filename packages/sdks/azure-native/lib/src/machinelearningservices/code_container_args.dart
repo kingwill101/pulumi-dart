@@ -9,7 +9,7 @@ import 'code_container_properties.dart';
 /// {@macro pulumi_machinelearningservices_code_container_args_doc}
 class CodeContainerArgs {
   /// Container name. This is case-sensitive.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// [Required] Additional attributes of the entity.
   final pulumi.Input<CodeContainerProperties> properties;
   /// The name of the resource group. The name is case insensitive.

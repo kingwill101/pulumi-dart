@@ -8,26 +8,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_eventgrid_partner_destination_args_doc}
 class PartnerDestinationArgs {
   /// Activation state of the partner destination.
-  final pulumi.Input<String>? activationState;
+  final pulumi.Input<dynamic>? activationState;
   /// Endpoint Base URL of the partner destination
-  final pulumi.Input<String>? endpointBaseUrl;
+  final pulumi.Input<String?>? endpointBaseUrl;
   /// Endpoint context associated with this partner destination.
-  final pulumi.Input<String>? endpointServiceContext;
+  final pulumi.Input<String?>? endpointServiceContext;
   /// Expiration time of the partner destination. If this timer expires and the partner destination was never activated,
   /// the partner destination and corresponding channel are deleted.
-  final pulumi.Input<String>? expirationTimeIfNotActivatedUtc;
+  final pulumi.Input<String?>? expirationTimeIfNotActivatedUtc;
   /// Location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Context or helpful message that can be used during the approval process.
-  final pulumi.Input<String>? messageForActivation;
+  final pulumi.Input<String?>? messageForActivation;
   /// Name of the partner destination.
-  final pulumi.Input<String>? partnerDestinationName;
+  final pulumi.Input<String?>? partnerDestinationName;
   /// The immutable Id of the corresponding partner registration.
-  final pulumi.Input<String>? partnerRegistrationImmutableId;
+  final pulumi.Input<String?>? partnerRegistrationImmutableId;
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
   /// Tags of the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PartnerDestinationArgs].
   /// [activationState] Activation state of the partner destination.
@@ -70,7 +70,7 @@ class PartnerDestinationArgs {
 
   factory PartnerDestinationArgs.fromMap(Map<String, dynamic> map) {
     return PartnerDestinationArgs(
-      activationState: (() { final guardedValue = map['activationState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      activationState: (() { final guardedValue = map['activationState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       endpointBaseUrl: (() { final guardedValue = map['endpointBaseUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpointServiceContext: (() { final guardedValue = map['endpointServiceContext']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expirationTimeIfNotActivatedUtc: (() { final guardedValue = map['expirationTimeIfNotActivatedUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

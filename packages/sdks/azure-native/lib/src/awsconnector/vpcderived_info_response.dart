@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of VPCDerivedInfo
 class VPCDerivedInfoResponse {
   /// &lt;p&gt;The list of Availability Zones associated with the VPC subnets.&lt;/p&gt;
-  final pulumi.Input<List<String>>? availabilityZones;
+  final pulumi.Input<List<String>?>? availabilityZones;
   /// &lt;p&gt;The list of security group IDs associated with the VPC endpoints for the domain.&lt;/p&gt;
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// &lt;p&gt;A list of subnet IDs associated with the VPC endpoints for the domain.&lt;/p&gt;
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<List<String>?>? subnetIds;
   /// &lt;p&gt;The ID for your VPC. Amazon VPC generates this value when you create a VPC.&lt;/p&gt;
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [VPCDerivedInfoResponse].
   /// [availabilityZones] &lt;p&gt;The list of Availability Zones associated with the VPC subnets.&lt;/p&gt;

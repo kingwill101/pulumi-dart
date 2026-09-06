@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Limit settings for the AutoML job.
 class ImageLimitSettings {
   /// Maximum number of concurrent AutoML iterations.
-  final pulumi.Input<int>? maxConcurrentTrials;
+  final pulumi.Input<int?>? maxConcurrentTrials;
   /// Maximum number of AutoML iterations.
-  final pulumi.Input<int>? maxTrials;
+  final pulumi.Input<int?>? maxTrials;
   /// AutoML job timeout.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [ImageLimitSettings].
   /// [maxConcurrentTrials] Maximum number of concurrent AutoML iterations.
   /// [maxTrials] Maximum number of AutoML iterations.
   /// [timeout] AutoML job timeout.
-  const ImageLimitSettings({
-    this.maxConcurrentTrials,
-    this.maxTrials,
-    this.timeout,
-  });
+  ImageLimitSettings({
+    pulumi.Input<int?>? maxConcurrentTrials,
+    pulumi.Input<int?>? maxTrials,
+    pulumi.Input<String?>? timeout,
+  }) : maxConcurrentTrials = maxConcurrentTrials ?? pulumi.Input.fromValue(1), maxTrials = maxTrials ?? pulumi.Input.fromValue(1), timeout = timeout ?? pulumi.Input.fromValue('P7D');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,8 +31,8 @@ class ImageLimitSettings {
 
   factory ImageLimitSettings.fromMap(Map<String, dynamic> map) {
     return ImageLimitSettings(
-      maxConcurrentTrials: (() { final guardedValue = map['maxConcurrentTrials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxTrials: (() { final guardedValue = map['maxTrials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxConcurrentTrials: (() { final guardedValue = map['maxConcurrentTrials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxTrials: (() { final guardedValue = map['maxTrials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

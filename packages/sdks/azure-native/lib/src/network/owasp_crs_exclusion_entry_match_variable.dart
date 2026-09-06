@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The variable to be excluded.
-enum OwaspCrsExclusionEntryMatchVariable {
+enum OwaspCrsExclusionEntryMatchVariable implements pulumi.PulumiEnum<String> {
   valueRequestHeaderNames("RequestHeaderNames"),
   valueRequestCookieNames("RequestCookieNames"),
   valueRequestArgNames("RequestArgNames"),
@@ -11,6 +13,7 @@ enum OwaspCrsExclusionEntryMatchVariable {
   valueRequestArgValues("RequestArgValues");
 
   const OwaspCrsExclusionEntryMatchVariable(this.wireValue);
+  @override
   final String wireValue;
 
   static OwaspCrsExclusionEntryMatchVariable fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines how to identify a parameter for a specific purpose e.g. expires
 class UrlSigningParamIdentifier {
   /// Indicates the purpose of the parameter
-  final pulumi.Input<String> paramIndicator;
+  final pulumi.Input<dynamic> paramIndicator;
   /// Parameter name
   final pulumi.Input<String> paramName;
 
@@ -26,7 +26,7 @@ class UrlSigningParamIdentifier {
 
   factory UrlSigningParamIdentifier.fromMap(Map<String, dynamic> map) {
     return UrlSigningParamIdentifier(
-      paramIndicator: pulumi.Input.fromValue(map['paramIndicator'] as String),
+      paramIndicator: pulumi.Input.fromValue(map['paramIndicator']),
       paramName: pulumi.Input.fromValue(map['paramName'] as String),
     );
   }

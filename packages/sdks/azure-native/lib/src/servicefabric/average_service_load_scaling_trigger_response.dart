@@ -48,10 +48,10 @@ class AverageServiceLoadScalingTriggerResponse {
   factory AverageServiceLoadScalingTriggerResponse.fromMap(Map<String, dynamic> map) {
     return AverageServiceLoadScalingTriggerResponse(
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      lowerLoadThreshold: pulumi.Input.fromValue(map['lowerLoadThreshold'] as double),
+      lowerLoadThreshold: pulumi.Input.fromValue((map['lowerLoadThreshold'] as num).toDouble()),
       metricName: pulumi.Input.fromValue(map['metricName'] as String),
       scaleInterval: pulumi.Input.fromValue(map['scaleInterval'] as String),
-      upperLoadThreshold: pulumi.Input.fromValue(map['upperLoadThreshold'] as double),
+      upperLoadThreshold: pulumi.Input.fromValue((map['upperLoadThreshold'] as num).toDouble()),
       useOnlyPrimaryLoad: pulumi.Input.fromValue(map['useOnlyPrimaryLoad'] as bool),
     );
   }

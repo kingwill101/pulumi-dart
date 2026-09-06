@@ -9,11 +9,11 @@ import 'schema_reference_properties.dart';
 /// {@macro pulumi_edge_schema_reference_args_doc}
 class SchemaReferenceArgs {
   /// The resource-specific properties for this resource.
-  final pulumi.Input<SchemaReferenceProperties>? properties;
+  final pulumi.Input<SchemaReferenceProperties?>? properties;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
   /// The name of the SchemaReference
-  final pulumi.Input<String>? schemaReferenceName;
+  final pulumi.Input<String?>? schemaReferenceName;
 
   /// Creates a new [SchemaReferenceArgs].
   /// [properties] The resource-specific properties for this resource.

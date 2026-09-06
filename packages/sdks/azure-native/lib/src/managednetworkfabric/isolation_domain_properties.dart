@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Isolation Domain Properties.
 class IsolationDomainProperties {
   /// Type of encapsulation.
-  final pulumi.Input<String>? encapsulation;
+  final pulumi.Input<dynamic>? encapsulation;
   /// List of Neighbor Group IDs.
-  final pulumi.Input<List<String>>? neighborGroupIds;
+  final pulumi.Input<List<String>?>? neighborGroupIds;
 
   /// Creates a new [IsolationDomainProperties].
   /// [encapsulation] Type of encapsulation.
@@ -26,7 +26,7 @@ class IsolationDomainProperties {
 
   factory IsolationDomainProperties.fromMap(Map<String, dynamic> map) {
     return IsolationDomainProperties(
-      encapsulation: (() { final guardedValue = map['encapsulation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encapsulation: (() { final guardedValue = map['encapsulation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       neighborGroupIds: (() { final guardedValue = map['neighborGroupIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

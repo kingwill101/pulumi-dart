@@ -6,9 +6,9 @@ import 'terminate_notification_profile_response.dart';
 
 class ScheduledEventsProfileResponse {
   /// Specifies OS Image Scheduled Event related configurations.
-  final pulumi.Input<OSImageNotificationProfileResponse>? osImageNotificationProfile;
+  final pulumi.Input<OSImageNotificationProfileResponse?>? osImageNotificationProfile;
   /// Specifies Terminate Scheduled Event related configurations.
-  final pulumi.Input<TerminateNotificationProfileResponse>? terminateNotificationProfile;
+  final pulumi.Input<TerminateNotificationProfileResponse?>? terminateNotificationProfile;
 
   /// Creates a new [ScheduledEventsProfileResponse].
   /// [osImageNotificationProfile] Specifies OS Image Scheduled Event related configurations.

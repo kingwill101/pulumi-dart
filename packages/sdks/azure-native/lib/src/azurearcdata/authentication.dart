@@ -6,9 +6,9 @@ import 'entra_authentication.dart';
 /// Authentication related configuration for the SQL Server Instance.
 class Authentication {
   /// Mode of authentication in SqlServer.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<dynamic>? mode;
   /// Entra Authentication configuration for the SQL Server Instance.
-  final pulumi.Input<List<EntraAuthentication>>? sqlServerEntraIdentity;
+  final pulumi.Input<List<EntraAuthentication>?>? sqlServerEntraIdentity;
 
   /// Creates a new [Authentication].
   /// [mode] Mode of authentication in SqlServer.
@@ -27,7 +27,7 @@ class Authentication {
 
   factory Authentication.fromMap(Map<String, dynamic> map) {
     return Authentication(
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sqlServerEntraIdentity: (() { final guardedValue = map['sqlServerEntraIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EntraAuthentication>(guardedValue, (value) => EntraAuthentication.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

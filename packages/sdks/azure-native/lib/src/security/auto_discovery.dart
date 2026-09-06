@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// AutoDiscovery states.
-enum AutoDiscovery {
+enum AutoDiscovery implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueEnabled("Enabled"),
   valueNotApplicable("NotApplicable");
 
   const AutoDiscovery(this.wireValue);
+  @override
   final String wireValue;
 
   static AutoDiscovery fromValue(String value) {

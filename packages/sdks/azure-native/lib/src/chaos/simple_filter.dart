@@ -6,7 +6,7 @@ import 'simple_filter_parameters.dart';
 /// Model that represents a simple target filter.
 class SimpleFilter {
   /// Model that represents the Simple filter parameters.
-  final pulumi.Input<SimpleFilterParameters>? parameters;
+  final pulumi.Input<SimpleFilterParameters?>? parameters;
   /// Enum that discriminates between filter types. Currently only `Simple` type is supported.
   /// Expected value is 'Simple'.
   final pulumi.Input<String> type;

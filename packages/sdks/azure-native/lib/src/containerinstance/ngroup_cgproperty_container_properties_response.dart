@@ -5,7 +5,7 @@ import 'volume_mount_response.dart';
 
 /// container properties
 class NGroupCGPropertyContainerPropertiesResponse {
-  final pulumi.Input<List<VolumeMountResponse>>? volumeMounts;
+  final pulumi.Input<List<VolumeMountResponse>?>? volumeMounts;
 
   /// Creates a new [NGroupCGPropertyContainerPropertiesResponse].
   /// [volumeMounts] Optional.

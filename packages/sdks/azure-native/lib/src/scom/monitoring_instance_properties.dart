@@ -10,17 +10,17 @@ import 'gmsa_details.dart';
 /// The properties of a SCOM instance resource
 class MonitoringInstanceProperties {
   /// The properties to enable Azure Hybrid benefit for various SCOM infrastructure license.
-  final pulumi.Input<AzureHybridBenefitProperties>? azureHybridBenefit;
+  final pulumi.Input<AzureHybridBenefitProperties?>? azureHybridBenefit;
   /// The database instance where the SCOM Operational and Warehouse databases will be stored.
-  final pulumi.Input<DatabaseInstanceProperties>? databaseInstance;
+  final pulumi.Input<DatabaseInstanceProperties?>? databaseInstance;
   /// Domain controller details
-  final pulumi.Input<DomainControllerProperties>? domainController;
+  final pulumi.Input<DomainControllerProperties?>? domainController;
   /// Domain user which will be used to join VMs to domain and login to VMs.
-  final pulumi.Input<DomainUserCredentials>? domainUserCredentials;
+  final pulumi.Input<DomainUserCredentials?>? domainUserCredentials;
   /// Gmsa Details for load balancer and vmss
-  final pulumi.Input<GmsaDetails>? gmsaDetails;
+  final pulumi.Input<GmsaDetails?>? gmsaDetails;
   /// Virtual Network subnet id on which Aquila instance will be provisioned
-  final pulumi.Input<String>? vNetSubnetId;
+  final pulumi.Input<String?>? vNetSubnetId;
 
   /// Creates a new [MonitoringInstanceProperties].
   /// [azureHybridBenefit] The properties to enable Azure Hybrid benefit for various SCOM infrastructure license.

@@ -12,59 +12,59 @@ import 'entity_uptime.dart';
 /// {@macro pulumi_migrate_web_app_assessment_v2_operation_args_doc}
 class WebAppAssessmentV2OperationArgs {
   /// Gets or sets user configurable app service container database settings.
-  final pulumi.Input<AppSvcContainerSettings>? appSvcContainerSettings;
+  final pulumi.Input<AppSvcContainerSettings?>? appSvcContainerSettings;
   /// Gets or sets user configurable app service native settings.
-  final pulumi.Input<AppSvcNativeSettings>? appSvcNativeSettings;
+  final pulumi.Input<AppSvcNativeSettings?>? appSvcNativeSettings;
   /// Web app Assessment arm name.
-  final pulumi.Input<String>? assessmentName;
+  final pulumi.Input<String?>? assessmentName;
   /// Assessment type of the assessment.
-  final pulumi.Input<String>? assessmentType;
+  final pulumi.Input<dynamic>? assessmentType;
   /// Azure Location or Azure region where to which the machines will be migrated.
-  final pulumi.Input<String>? azureLocation;
+  final pulumi.Input<String?>? azureLocation;
   /// Azure Offer Code.
-  final pulumi.Input<String>? azureOfferCode;
+  final pulumi.Input<dynamic>? azureOfferCode;
   /// Gets or sets a value indicating azure security offering type.
-  final pulumi.Input<String>? azureSecurityOfferingType;
+  final pulumi.Input<dynamic>? azureSecurityOfferingType;
   /// Confidence Rating in Percentage.
-  final pulumi.Input<double>? confidenceRatingInPercentage;
+  final pulumi.Input<double?>? confidenceRatingInPercentage;
   /// Currency in which prices should be reported.
-  final pulumi.Input<String>? currency;
+  final pulumi.Input<dynamic>? currency;
   /// Custom discount percentage.
-  final pulumi.Input<double>? discountPercentage;
+  final pulumi.Input<double?>? discountPercentage;
   /// Gets or sets user configurable discovered entity settings.
-  final pulumi.Input<DiscoveredEntityLightSummary>? discoveredEntityLightSummary;
+  final pulumi.Input<DiscoveredEntityLightSummary?>? discoveredEntityLightSummary;
   /// Gets or sets the Enterprise agreement subscription id.
-  final pulumi.Input<String>? eaSubscriptionId;
+  final pulumi.Input<String?>? eaSubscriptionId;
   /// Gets or sets the duration for which the entity (Web app, VMs) are up in the
   /// on-premises environment.
-  final pulumi.Input<EntityUptime>? entityUptime;
+  final pulumi.Input<EntityUptime?>? entityUptime;
   /// Gets or sets user configurable setting to display the environment type.
-  final pulumi.Input<String>? environmentType;
+  final pulumi.Input<dynamic>? environmentType;
   /// Group ARM name
   final pulumi.Input<String> groupName;
   /// Gets the group type for the assessment.
-  final pulumi.Input<String>? groupType;
+  final pulumi.Input<dynamic>? groupType;
   /// Percentile of the utilization data values to be considered while assessing
   /// machines.
-  final pulumi.Input<String>? percentile;
+  final pulumi.Input<dynamic>? percentile;
   /// Gets or sets the end time to consider performance data for assessment.
-  final pulumi.Input<String>? perfDataEndTime;
+  final pulumi.Input<String?>? perfDataEndTime;
   /// Gets or sets the start time to consider performance data for assessment.
-  final pulumi.Input<String>? perfDataStartTime;
+  final pulumi.Input<String?>? perfDataStartTime;
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
   /// Reserved instance.
-  final pulumi.Input<String>? reservedInstance;
+  final pulumi.Input<dynamic>? reservedInstance;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Percentage of buffer that user wants on performance metrics when recommending
   /// Azure sizes.
-  final pulumi.Input<double>? scalingFactor;
+  final pulumi.Input<double?>? scalingFactor;
   /// Assessment sizing criterion.
-  final pulumi.Input<String>? sizingCriterion;
+  final pulumi.Input<dynamic>? sizingCriterion;
   /// Time Range for which the historic utilization data should be considered for
   /// assessment.
-  final pulumi.Input<String>? timeRange;
+  final pulumi.Input<dynamic>? timeRange;
 
   /// Creates a new [WebAppAssessmentV2OperationArgs].
   /// [appSvcContainerSettings] Gets or sets user configurable app service container database settings.
@@ -155,28 +155,28 @@ class WebAppAssessmentV2OperationArgs {
       appSvcContainerSettings: (() { final guardedValue = map['appSvcContainerSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppSvcContainerSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       appSvcNativeSettings: (() { final guardedValue = map['appSvcNativeSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppSvcNativeSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       assessmentName: (() { final guardedValue = map['assessmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      assessmentType: (() { final guardedValue = map['assessmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      assessmentType: (() { final guardedValue = map['assessmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       azureLocation: (() { final guardedValue = map['azureLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      azureOfferCode: (() { final guardedValue = map['azureOfferCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      azureSecurityOfferingType: (() { final guardedValue = map['azureSecurityOfferingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      confidenceRatingInPercentage: (() { final guardedValue = map['confidenceRatingInPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      currency: (() { final guardedValue = map['currency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      azureOfferCode: (() { final guardedValue = map['azureOfferCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      azureSecurityOfferingType: (() { final guardedValue = map['azureSecurityOfferingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      confidenceRatingInPercentage: (() { final guardedValue = map['confidenceRatingInPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      currency: (() { final guardedValue = map['currency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       discoveredEntityLightSummary: (() { final guardedValue = map['discoveredEntityLightSummary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiscoveredEntityLightSummary.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       eaSubscriptionId: (() { final guardedValue = map['eaSubscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       entityUptime: (() { final guardedValue = map['entityUptime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EntityUptime.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      environmentType: (() { final guardedValue = map['environmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      environmentType: (() { final guardedValue = map['environmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       groupName: pulumi.Input.fromValue(map['groupName'] as String),
-      groupType: (() { final guardedValue = map['groupType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      percentile: (() { final guardedValue = map['percentile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      groupType: (() { final guardedValue = map['groupType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      percentile: (() { final guardedValue = map['percentile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       perfDataEndTime: (() { final guardedValue = map['perfDataEndTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       perfDataStartTime: (() { final guardedValue = map['perfDataStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      reservedInstance: (() { final guardedValue = map['reservedInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reservedInstance: (() { final guardedValue = map['reservedInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      scalingFactor: (() { final guardedValue = map['scalingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      sizingCriterion: (() { final guardedValue = map['sizingCriterion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      timeRange: (() { final guardedValue = map['timeRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scalingFactor: (() { final guardedValue = map['scalingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      sizingCriterion: (() { final guardedValue = map['sizingCriterion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      timeRange: (() { final guardedValue = map['timeRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

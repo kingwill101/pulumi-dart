@@ -7,6 +7,7 @@ import 'maintenance_window_response.dart';
 import 'my_sqlserver_identity_response.dart';
 import 'my_sqlserver_sku_response.dart';
 import 'network_response.dart';
+import 'private_endpoint_connection_response.dart';
 import 'server_args.dart';
 import 'storage_response.dart';
 import 'system_data_response.dart';
@@ -720,7 +721,7 @@ class Server extends pulumi.CustomResource {
   /// Network related properties of a server.
   late final pulumi.Output<NetworkResponse?> network;
   /// PrivateEndpointConnections related properties of a server.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// The maximum number of replicas that a primary server can have.
   late final pulumi.Output<int> replicaCapacity;
   /// The replication role.
@@ -769,7 +770,7 @@ class Server extends pulumi.CustomResource {
     maintenanceWindow = registerOutput<MaintenanceWindowResponse?>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenanceWindowResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     network = registerOutput<NetworkResponse?>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     replicaCapacity = registerOutput<int>('replicaCapacity');
     replicationRole = registerOutput<String?>('replicationRole');
     sku = registerOutput<MySQLServerSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MySQLServerSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -777,7 +778,42 @@ class Server extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     storage = registerOutput<StorageResponse?>('storage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [Server] resource.
+  Server.reference(String urn)
+    : super(
+        'azure-native:dbformysql:Server',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    administratorLogin = registerOutput<String?>('administratorLogin');
+    availabilityZone = registerOutput<String?>('availabilityZone');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backup = registerOutput<BackupResponse?>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataEncryption = registerOutput<DataEncryptionResponse?>('dataEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataEncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fullyQualifiedDomainName = registerOutput<String>('fullyQualifiedDomainName');
+    highAvailability = registerOutput<HighAvailabilityResponse?>('highAvailability', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HighAvailabilityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<MySQLServerIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MySQLServerIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    importSourceProperties = registerOutput<ImportSourcePropertiesResponse?>('importSourceProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImportSourcePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    maintenanceWindow = registerOutput<MaintenanceWindowResponse?>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenanceWindowResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<NetworkResponse?>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    replicaCapacity = registerOutput<int>('replicaCapacity');
+    replicationRole = registerOutput<String?>('replicationRole');
+    sku = registerOutput<MySQLServerSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MySQLServerSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceServerResourceId = registerOutput<String?>('sourceServerResourceId');
+    state = registerOutput<String>('state');
+    storage = registerOutput<StorageResponse?>('storage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');
   }

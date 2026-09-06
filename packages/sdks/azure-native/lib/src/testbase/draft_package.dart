@@ -1,10 +1,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'draft_package_args.dart';
 import 'draft_package_intune_app_metadata_response.dart';
+import 'first_party_app_definition_response.dart';
+import 'gallery_app_definition_response.dart';
+import 'highlighted_file_response.dart';
 import 'inplace_upgrade_osinfo_response.dart';
 import 'intune_enrollment_metadata_response.dart';
 import 'system_data_response.dart';
 import 'tab_state_response.dart';
+import 'target_osinfo_response.dart';
+import 'test_response.dart';
 
 /// The Test Base Draft Package resource.
 ///
@@ -202,13 +207,13 @@ class DraftPackage extends pulumi.CustomResource {
   /// The executable launch command for script auto-fill. Will be used to run the application.
   late final pulumi.Output<String?> executableLaunchCommand;
   /// The list of first party applications to test along with user application.
-  late final pulumi.Output<List<Map<String, dynamic>>?> firstPartyApps;
+  late final pulumi.Output<List<FirstPartyAppDefinitionResponse>?> firstPartyApps;
   /// The flighting ring for feature update.
   late final pulumi.Output<String?> flightingRing;
   /// The list of gallery apps to test along with user application.
-  late final pulumi.Output<List<Map<String, dynamic>>?> galleryApps;
+  late final pulumi.Output<List<GalleryAppDefinitionResponse>?> galleryApps;
   /// The highlight files in the package.
-  late final pulumi.Output<List<Map<String, dynamic>>?> highlightedFiles;
+  late final pulumi.Output<List<HighlightedFileResponse>?> highlightedFiles;
   /// Specifies the baseline os and target os for inplace upgrade.
   late final pulumi.Output<InplaceUpgradeOSInfoResponse?> inplaceUpgradeOSPair;
   /// The metadata of Intune enrollment.
@@ -234,11 +239,11 @@ class DraftPackage extends pulumi.CustomResource {
   /// Tab state.
   late final pulumi.Output<TabStateResponse?> tabState;
   /// Specifies the target OSs of specific OS Update types.
-  late final pulumi.Output<List<Map<String, dynamic>>?> targetOSList;
+  late final pulumi.Output<List<TargetOSInfoResponse>?> targetOSList;
   /// OOB, functional or flow driven. Mapped to the data in 'tests' property.
   late final pulumi.Output<List<String>?> testTypes;
   /// The detailed test information.
-  late final pulumi.Output<List<Map<String, dynamic>>?> tests;
+  late final pulumi.Output<List<TestResponse>?> tests;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// Indicates whether user choose to enable script auto-fill.
@@ -271,25 +276,67 @@ class DraftPackage extends pulumi.CustomResource {
     draftPackagePath = registerOutput<String>('draftPackagePath');
     editPackage = registerOutput<bool?>('editPackage');
     executableLaunchCommand = registerOutput<String?>('executableLaunchCommand');
-    firstPartyApps = registerOutput<List<Map<String, dynamic>>?>('firstPartyApps');
+    firstPartyApps = registerOutput<List<FirstPartyAppDefinitionResponse>?>('firstPartyApps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirstPartyAppDefinitionResponse>(guardedValue, (value) => FirstPartyAppDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     flightingRing = registerOutput<String?>('flightingRing');
-    galleryApps = registerOutput<List<Map<String, dynamic>>?>('galleryApps');
-    highlightedFiles = registerOutput<List<Map<String, dynamic>>?>('highlightedFiles');
+    galleryApps = registerOutput<List<GalleryAppDefinitionResponse>?>('galleryApps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GalleryAppDefinitionResponse>(guardedValue, (value) => GalleryAppDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    highlightedFiles = registerOutput<List<HighlightedFileResponse>?>('highlightedFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HighlightedFileResponse>(guardedValue, (value) => HighlightedFileResponse.fromMap((value as Map).cast<String, dynamic>())); });
     inplaceUpgradeOSPair = registerOutput<InplaceUpgradeOSInfoResponse?>('inplaceUpgradeOSPair', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InplaceUpgradeOSInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     intuneEnrollmentMetadata = registerOutput<IntuneEnrollmentMetadataResponse?>('intuneEnrollmentMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntuneEnrollmentMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     intuneMetadata = registerOutput<DraftPackageIntuneAppMetadataResponse?>('intuneMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DraftPackageIntuneAppMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     this.name = registerOutput<String>('name');
     packageId = registerOutput<String?>('packageId');
-    packageTags = registerOutput<Map<String, String>?>('packageTags');
+    packageTags = registerOutput<Map<String, String>?>('packageTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     processName = registerOutput<String?>('processName');
     provisioningState = registerOutput<String>('provisioningState');
     sourceType = registerOutput<String?>('sourceType');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tabState = registerOutput<TabStateResponse?>('tabState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TabStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    targetOSList = registerOutput<List<Map<String, dynamic>>?>('targetOSList');
-    testTypes = registerOutput<List<String>?>('testTypes');
-    tests = registerOutput<List<Map<String, dynamic>>?>('tests');
+    targetOSList = registerOutput<List<TargetOSInfoResponse>?>('targetOSList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetOSInfoResponse>(guardedValue, (value) => TargetOSInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    testTypes = registerOutput<List<String>?>('testTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tests = registerOutput<List<TestResponse>?>('tests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TestResponse>(guardedValue, (value) => TestResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+    useAutofill = registerOutput<bool?>('useAutofill');
+    useSample = registerOutput<bool?>('useSample');
+    version = registerOutput<String?>('version');
+    workingPath = registerOutput<String>('workingPath');
+  }
+
+  /// Creates a typed reference to an existing [DraftPackage] resource.
+  DraftPackage.reference(String urn)
+    : super(
+        'azure-native:testbase:DraftPackage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appFileName = registerOutput<String?>('appFileName');
+    applicationName = registerOutput<String?>('applicationName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    comments = registerOutput<String?>('comments');
+    draftPackagePath = registerOutput<String>('draftPackagePath');
+    editPackage = registerOutput<bool?>('editPackage');
+    executableLaunchCommand = registerOutput<String?>('executableLaunchCommand');
+    firstPartyApps = registerOutput<List<FirstPartyAppDefinitionResponse>?>('firstPartyApps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirstPartyAppDefinitionResponse>(guardedValue, (value) => FirstPartyAppDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    flightingRing = registerOutput<String?>('flightingRing');
+    galleryApps = registerOutput<List<GalleryAppDefinitionResponse>?>('galleryApps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GalleryAppDefinitionResponse>(guardedValue, (value) => GalleryAppDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    highlightedFiles = registerOutput<List<HighlightedFileResponse>?>('highlightedFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HighlightedFileResponse>(guardedValue, (value) => HighlightedFileResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    inplaceUpgradeOSPair = registerOutput<InplaceUpgradeOSInfoResponse?>('inplaceUpgradeOSPair', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InplaceUpgradeOSInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    intuneEnrollmentMetadata = registerOutput<IntuneEnrollmentMetadataResponse?>('intuneEnrollmentMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntuneEnrollmentMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    intuneMetadata = registerOutput<DraftPackageIntuneAppMetadataResponse?>('intuneMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DraftPackageIntuneAppMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    this.name = registerOutput<String>('name');
+    packageId = registerOutput<String?>('packageId');
+    packageTags = registerOutput<Map<String, String>?>('packageTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    processName = registerOutput<String?>('processName');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourceType = registerOutput<String?>('sourceType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tabState = registerOutput<TabStateResponse?>('tabState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TabStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetOSList = registerOutput<List<TargetOSInfoResponse>?>('targetOSList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetOSInfoResponse>(guardedValue, (value) => TargetOSInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    testTypes = registerOutput<List<String>?>('testTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tests = registerOutput<List<TestResponse>?>('tests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TestResponse>(guardedValue, (value) => TestResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
     useAutofill = registerOutput<bool?>('useAutofill');
     useSample = registerOutput<bool?>('useSample');

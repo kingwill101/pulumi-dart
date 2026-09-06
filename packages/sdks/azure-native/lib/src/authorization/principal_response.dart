@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The name of the entity last modified it
 class PrincipalResponse {
   /// The name of the principal made changes
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Email of principal
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The id of the principal made changes
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Type of principal such as user , group etc
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [PrincipalResponse].
   /// [displayName] The name of the principal made changes

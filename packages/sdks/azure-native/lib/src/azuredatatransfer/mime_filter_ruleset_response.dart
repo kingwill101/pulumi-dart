@@ -6,9 +6,9 @@ import 'mime_type_filter_response.dart';
 /// Rules for filtering files based on Media types (f.k.a MIME types).
 class MimeFilterRulesetResponse {
   /// Defines the Media types (f.k.a MIME types) and associated file extensions to be filtered. For more detail, please refer to the MimeTypeFiler model.
-  final pulumi.Input<List<MimeTypeFilterResponse>>? filters;
+  final pulumi.Input<List<MimeTypeFilterResponse>?>? filters;
   /// Specifies whether the filter is an allow list or deny list. For more detail, please refer to the FilterType model.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [MimeFilterRulesetResponse].
   /// [filters] Defines the Media types (f.k.a MIME types) and associated file extensions to be filtered. For more detail, please refer to the MimeTypeFiler model.

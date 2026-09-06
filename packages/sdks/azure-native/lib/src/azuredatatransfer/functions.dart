@@ -48,6 +48,17 @@ Future<GetConnectionResult> getConnection(
   return GetConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectionResult> getConnectionOutput(
+  GetConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuredatatransfer:getConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionResult.fromMap);
+}
+
 /// Gets flow resource.
 ///
 /// Uses Azure REST API version 2024-09-27.
@@ -66,6 +77,17 @@ Future<GetFlowResult> getFlow(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFlowResult.fromMap(result);
+}
+
+pulumi.Output<GetFlowResult> getFlowOutput(
+  GetFlowArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuredatatransfer:getFlow',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFlowResult.fromMap);
 }
 
 /// Get the destination endpoint ports for the specified flow and stream ID.
@@ -88,6 +110,17 @@ Future<GetFlowDestinationEndpointPortsResult> getFlowDestinationEndpointPorts(
   return GetFlowDestinationEndpointPortsResult.fromMap(result);
 }
 
+pulumi.Output<GetFlowDestinationEndpointPortsResult> getFlowDestinationEndpointPortsOutput(
+  GetFlowDestinationEndpointPortsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuredatatransfer:getFlowDestinationEndpointPorts',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFlowDestinationEndpointPortsResult.fromMap);
+}
+
 /// Get the destination endpoints for the specified flow and stream ID.
 ///
 /// Uses Azure REST API version 2024-09-27.
@@ -106,6 +139,17 @@ Future<GetFlowDestinationEndpointsResult> getFlowDestinationEndpoints(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFlowDestinationEndpointsResult.fromMap(result);
+}
+
+pulumi.Output<GetFlowDestinationEndpointsResult> getFlowDestinationEndpointsOutput(
+  GetFlowDestinationEndpointsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuredatatransfer:getFlowDestinationEndpoints',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFlowDestinationEndpointsResult.fromMap);
 }
 
 /// Retrieves the specified FlowProfile resource.
@@ -128,6 +172,17 @@ Future<GetFlowProfileResult> getFlowProfile(
   return GetFlowProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetFlowProfileResult> getFlowProfileOutput(
+  GetFlowProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuredatatransfer:getFlowProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFlowProfileResult.fromMap);
+}
+
 /// Get the source addresses for the specified flow.
 ///
 /// Uses Azure REST API version 2024-09-27.
@@ -146,6 +201,17 @@ Future<GetFlowSourceAddressesResult> getFlowSourceAddresses(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFlowSourceAddressesResult.fromMap(result);
+}
+
+pulumi.Output<GetFlowSourceAddressesResult> getFlowSourceAddressesOutput(
+  GetFlowSourceAddressesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuredatatransfer:getFlowSourceAddresses',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFlowSourceAddressesResult.fromMap);
 }
 
 /// Get the connection string for the specified flow.
@@ -168,6 +234,17 @@ Future<GetFlowStreamConnectionStringResult> getFlowStreamConnectionString(
   return GetFlowStreamConnectionStringResult.fromMap(result);
 }
 
+pulumi.Output<GetFlowStreamConnectionStringResult> getFlowStreamConnectionStringOutput(
+  GetFlowStreamConnectionStringArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuredatatransfer:getFlowStreamConnectionString',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFlowStreamConnectionStringResult.fromMap);
+}
+
 /// Gets pipeline resource.
 ///
 /// Uses Azure REST API version 2024-09-27.
@@ -186,6 +263,17 @@ Future<GetPipelineResult> getPipeline(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPipelineResult.fromMap(result);
+}
+
+pulumi.Output<GetPipelineResult> getPipelineOutput(
+  GetPipelineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuredatatransfer:getPipeline',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPipelineResult.fromMap);
 }
 
 /// Lists approved schemas for Azure Data Transfer.
@@ -208,6 +296,17 @@ Future<ListAzureDataTransferApprovedSchemasResult> listAzureDataTransferApproved
   return ListAzureDataTransferApprovedSchemasResult.fromMap(result);
 }
 
+pulumi.Output<ListAzureDataTransferApprovedSchemasResult> listAzureDataTransferApprovedSchemasOutput(
+  ListAzureDataTransferApprovedSchemasArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuredatatransfer:listAzureDataTransferApprovedSchemas',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAzureDataTransferApprovedSchemasResult.fromMap);
+}
+
 /// Retrieves a list of FlowProfile resources associated with a specified pipeline.
 ///
 /// Uses Azure REST API version 2025-05-30-preview.
@@ -226,6 +325,17 @@ Future<ListAzureDataTransferFlowProfilesResult> listAzureDataTransferFlowProfile
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListAzureDataTransferFlowProfilesResult.fromMap(result);
+}
+
+pulumi.Output<ListAzureDataTransferFlowProfilesResult> listAzureDataTransferFlowProfilesOutput(
+  ListAzureDataTransferFlowProfilesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuredatatransfer:listAzureDataTransferFlowProfiles',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAzureDataTransferFlowProfilesResult.fromMap);
 }
 
 /// Lists all Flows associated with the specified Pipeline.
@@ -248,6 +358,17 @@ Future<ListListFlowsByPipelineResult> listListFlowsByPipeline(
   return ListListFlowsByPipelineResult.fromMap(result);
 }
 
+pulumi.Output<ListListFlowsByPipelineResult> listListFlowsByPipelineOutput(
+  ListListFlowsByPipelineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuredatatransfer:listListFlowsByPipeline',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListListFlowsByPipelineResult.fromMap);
+}
+
 /// Lists all pending connections for a connection.
 ///
 /// Uses Azure REST API version 2024-09-27.
@@ -266,6 +387,17 @@ Future<ListListPendingConnectionResult> listListPendingConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListListPendingConnectionResult.fromMap(result);
+}
+
+pulumi.Output<ListListPendingConnectionResult> listListPendingConnectionOutput(
+  ListListPendingConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuredatatransfer:listListPendingConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListListPendingConnectionResult.fromMap);
 }
 
 /// Lists all pending flows for a connection.
@@ -288,6 +420,17 @@ Future<ListListPendingFlowResult> listListPendingFlow(
   return ListListPendingFlowResult.fromMap(result);
 }
 
+pulumi.Output<ListListPendingFlowResult> listListPendingFlowOutput(
+  ListListPendingFlowArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuredatatransfer:listListPendingFlow',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListListPendingFlowResult.fromMap);
+}
+
 /// Lists the schemas for the specified connection in a pipeline.
 ///
 /// Uses Azure REST API version 2024-09-27.
@@ -306,4 +449,15 @@ Future<ListListSchemaResult> listListSchema(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListListSchemaResult.fromMap(result);
+}
+
+pulumi.Output<ListListSchemaResult> listListSchemaOutput(
+  ListListSchemaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuredatatransfer:listListSchema',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListListSchemaResult.fromMap);
 }

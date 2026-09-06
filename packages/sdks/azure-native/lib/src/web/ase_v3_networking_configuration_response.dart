@@ -6,22 +6,22 @@ import 'system_data_response.dart';
 /// Full view of networking configuration for an ASE.
 class AseV3NetworkingConfigurationResponse {
   /// Property to enable and disable new private endpoint connection creation on ASE
-  final pulumi.Input<bool>? allowNewPrivateEndpointConnections;
+  final pulumi.Input<bool?>? allowNewPrivateEndpointConnections;
   final pulumi.Input<List<String>> externalInboundIpAddresses;
   /// Property to enable and disable FTP on ASEV3
-  final pulumi.Input<bool>? ftpEnabled;
+  final pulumi.Input<bool?>? ftpEnabled;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
   /// Customer provided Inbound IP Address. Only able to be set on Ase create.
-  final pulumi.Input<String>? inboundIpAddressOverride;
+  final pulumi.Input<String?>? inboundIpAddressOverride;
   final pulumi.Input<List<String>> internalInboundIpAddresses;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   final pulumi.Input<List<String>> linuxOutboundIpAddresses;
   /// The name of the resource
   final pulumi.Input<String> name;
   /// Property to enable and disable Remote Debug on ASEV3
-  final pulumi.Input<bool>? remoteDebugEnabled;
+  final pulumi.Input<bool?>? remoteDebugEnabled;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

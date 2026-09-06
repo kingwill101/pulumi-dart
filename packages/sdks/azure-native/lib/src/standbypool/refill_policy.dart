@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies refill policy of the pool.
-enum RefillPolicy {
+enum RefillPolicy implements pulumi.PulumiEnum<String> {
   always("always");
 
   const RefillPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static RefillPolicy fromValue(String value) {

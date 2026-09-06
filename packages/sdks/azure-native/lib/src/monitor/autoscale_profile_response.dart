@@ -11,11 +11,11 @@ class AutoscaleProfileResponse {
   /// the number of instances that can be used during this profile.
   final pulumi.Input<ScaleCapacityResponse> capacity;
   /// the specific date-time for the profile. This element is not used if the Recurrence element is used.
-  final pulumi.Input<TimeWindowResponse>? fixedDate;
+  final pulumi.Input<TimeWindowResponse?>? fixedDate;
   /// the name of the profile.
   final pulumi.Input<String> name;
   /// the repeating times at which this profile begins. This element is not used if the FixedDate element is used.
-  final pulumi.Input<RecurrenceResponse>? recurrence;
+  final pulumi.Input<RecurrenceResponse?>? recurrence;
   /// the collection of rules that provide the triggers and parameters for the scaling action. A maximum of 10 rules can be specified.
   final pulumi.Input<List<ScaleRuleResponse>> rules;
 

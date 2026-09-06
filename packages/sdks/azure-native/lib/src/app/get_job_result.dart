@@ -9,37 +9,37 @@ import 'system_data_response.dart';
 /// Result data returned by getJob.
 class GetJobResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Container Apps Job configuration properties.
   final JobConfigurationResponse? configuration;
   /// Resource ID of environment.
   final String? environmentId;
   /// The endpoint of the eventstream of the container apps job.
-  final String eventStreamEndpoint;
+  final String? eventStreamEndpoint;
   /// The complex type of the extended location.
   final ExtendedLocationResponse? extendedLocation;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Managed identities needed by a container app job to interact with other Azure services to not maintain any secrets or credentials in code.
   final ManagedServiceIdentityResponse? identity;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Outbound IP Addresses of a container apps job.
-  final List<String> outboundIpAddresses;
+  final List<String>? outboundIpAddresses;
   /// Provisioning state of the Container Apps Job.
-  final String provisioningState;
+  final String? provisioningState;
   /// Current running state of the job
-  final String runningState;
+  final String? runningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Container Apps job definition.
   final JobTemplateResponse? template;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Workload profile name to pin for container apps job execution.
   final String? workloadProfileName;
 
@@ -62,65 +62,65 @@ class GetJobResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [workloadProfileName] Workload profile name to pin for container apps job execution.
   const GetJobResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.configuration,
     this.environmentId,
-    required this.eventStreamEndpoint,
+    this.eventStreamEndpoint,
     this.extendedLocation,
-    required this.id,
+    this.id,
     this.identity,
-    required this.location,
-    required this.name,
-    required this.outboundIpAddresses,
-    required this.provisioningState,
-    required this.runningState,
-    required this.systemData,
+    this.location,
+    this.name,
+    this.outboundIpAddresses,
+    this.provisioningState,
+    this.runningState,
+    this.systemData,
     this.tags,
     this.template,
-    required this.type,
+    this.type,
     this.workloadProfileName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'configuration': ?configuration?.toMap(),
       'environmentId': ?environmentId,
-      'eventStreamEndpoint': eventStreamEndpoint,
+      'eventStreamEndpoint': ?eventStreamEndpoint,
       'extendedLocation': ?extendedLocation?.toMap(),
-      'id': id,
+      'id': ?id,
       'identity': ?identity?.toMap(),
-      'location': location,
-      'name': name,
-      'outboundIpAddresses': outboundIpAddresses,
-      'provisioningState': provisioningState,
-      'runningState': runningState,
-      'systemData': systemData.toMap(),
+      'location': ?location,
+      'name': ?name,
+      'outboundIpAddresses': ?outboundIpAddresses,
+      'provisioningState': ?provisioningState,
+      'runningState': ?runningState,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
       'template': ?template?.toMap(),
-      'type': type,
+      'type': ?type,
       'workloadProfileName': ?workloadProfileName,
     };
   }
 
   factory GetJobResult.fromMap(Map<String, dynamic> map) {
     return GetJobResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       configuration: (() { final guardedValue = map['configuration']; if (guardedValue == null) return null; return JobConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       environmentId: (() { final guardedValue = map['environmentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      eventStreamEndpoint: map['eventStreamEndpoint'] as String,
+      eventStreamEndpoint: (() { final guardedValue = map['eventStreamEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
       extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      outboundIpAddresses: (map['outboundIpAddresses'] as List).cast<String>(),
-      provisioningState: map['provisioningState'] as String,
-      runningState: map['runningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outboundIpAddresses: (() { final guardedValue = map['outboundIpAddresses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      runningState: (() { final guardedValue = map['runningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       template: (() { final guardedValue = map['template']; if (guardedValue == null) return null; return JobTemplateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       workloadProfileName: (() { final guardedValue = map['workloadProfileName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

@@ -8,7 +8,7 @@ class CostAllocationRulePropertiesResponse {
   /// Time at which the rule was created. Rules that change cost for the same resource are applied in order of creation.
   final pulumi.Input<String> createdDate;
   /// Description of a cost allocation rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Resource information for the cost allocation rule
   final pulumi.Input<CostAllocationRuleDetailsResponse> details;
   /// Status of the rule

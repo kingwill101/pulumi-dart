@@ -11,11 +11,11 @@ class ConnectionTypeArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
   /// The name of connection type.
-  final pulumi.Input<String>? connectionTypeName;
+  final pulumi.Input<String?>? connectionTypeName;
   /// Gets or sets the field definitions of the connection type.
   final pulumi.Input<Map<String, FieldDefinition>> fieldDefinitions;
   /// Gets or sets a Boolean value to indicate if the connection type is global.
-  final pulumi.Input<bool>? isGlobal;
+  final pulumi.Input<bool?>? isGlobal;
   /// Gets or sets the name of the connection type.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.

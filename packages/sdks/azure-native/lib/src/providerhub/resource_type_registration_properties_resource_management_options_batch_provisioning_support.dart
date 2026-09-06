@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Batch provisioning support.
 class ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport {
   /// Supported operations.
-  final pulumi.Input<String>? supportedOperations;
+  final pulumi.Input<dynamic>? supportedOperations;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport].
   /// [supportedOperations] Supported operations.
@@ -21,7 +21,7 @@ class ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioni
 
   factory ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport(
-      supportedOperations: (() { final guardedValue = map['supportedOperations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      supportedOperations: (() { final guardedValue = map['supportedOperations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

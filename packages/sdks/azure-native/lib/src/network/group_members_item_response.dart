@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// GroupMembers Item.
 class GroupMembersItemResponse {
   /// Resource Id.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [GroupMembersItemResponse].
   /// [resourceId] Resource Id.

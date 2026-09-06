@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SMB Properties
 class ElasticSmbPropertiesResponse {
   /// Used to enable or disable encryption for in-flight SMB data volume. This flag can be modified during Elastic volume update operation as well. Only applicable for SMB protocol Elastic volumes.
-  final pulumi.Input<String>? smbEncryption;
+  final pulumi.Input<String?>? smbEncryption;
 
   /// Creates a new [ElasticSmbPropertiesResponse].
   /// [smbEncryption] Used to enable or disable encryption for in-flight SMB data volume. This flag can be modified during Elastic volume update operation as well. Only applicable for SMB protocol Elastic volumes.
-  const ElasticSmbPropertiesResponse({
-    this.smbEncryption,
-  });
+  ElasticSmbPropertiesResponse({
+    pulumi.Input<String?>? smbEncryption,
+  }) : smbEncryption = smbEncryption ?? pulumi.Input.fromValue('Disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

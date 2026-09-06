@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Service Connection State
 class PrivateLinkServiceConnectionStateResponse {
   /// actions required
-  final pulumi.Input<String>? actionsRequired;
+  final pulumi.Input<String?>? actionsRequired;
   /// description string
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// state status
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [PrivateLinkServiceConnectionStateResponse].
   /// [actionsRequired] actions required

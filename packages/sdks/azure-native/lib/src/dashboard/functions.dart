@@ -32,6 +32,17 @@ Future<GetDashboardResult> getDashboard(
   return GetDashboardResult.fromMap(result);
 }
 
+pulumi.Output<GetDashboardResult> getDashboardOutput(
+  GetDashboardArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dashboard:getDashboard',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDashboardResult.fromMap);
+}
+
 /// Get the properties of a specific dashboard definition.
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
@@ -48,6 +59,17 @@ Future<GetDashboardDefinitionResult> getDashboardDefinition(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDashboardDefinitionResult.fromMap(result);
+}
+
+pulumi.Output<GetDashboardDefinitionResult> getDashboardDefinitionOutput(
+  GetDashboardDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dashboard:getDashboardDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDashboardDefinitionResult.fromMap);
 }
 
 /// The grafana resource type.
@@ -70,6 +92,17 @@ Future<GetGrafanaResult> getGrafana(
   return GetGrafanaResult.fromMap(result);
 }
 
+pulumi.Output<GetGrafanaResult> getGrafanaOutput(
+  GetGrafanaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dashboard:getGrafana',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGrafanaResult.fromMap);
+}
+
 /// The integration fabric resource type.
 ///
 /// Uses Azure REST API version 2024-10-01.
@@ -88,6 +121,17 @@ Future<GetIntegrationFabricResult> getIntegrationFabric(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIntegrationFabricResult.fromMap(result);
+}
+
+pulumi.Output<GetIntegrationFabricResult> getIntegrationFabricOutput(
+  GetIntegrationFabricArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dashboard:getIntegrationFabric',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationFabricResult.fromMap);
 }
 
 /// The managed private endpoint resource type.
@@ -110,6 +154,17 @@ Future<GetManagedPrivateEndpointResult> getManagedPrivateEndpoint(
   return GetManagedPrivateEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedPrivateEndpointResult> getManagedPrivateEndpointOutput(
+  GetManagedPrivateEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dashboard:getManagedPrivateEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedPrivateEndpointResult.fromMap);
+}
+
 /// The Private Endpoint Connection resource.
 ///
 /// Uses Azure REST API version 2024-10-01.
@@ -128,4 +183,15 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dashboard:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }

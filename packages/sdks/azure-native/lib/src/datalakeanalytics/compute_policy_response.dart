@@ -52,8 +52,8 @@ class ComputePolicyResponse {
   factory ComputePolicyResponse.fromMap(Map<String, dynamic> map) {
     return ComputePolicyResponse(
       id: pulumi.Input.fromValue(map['id'] as String),
-      maxDegreeOfParallelismPerJob: pulumi.Input.fromValue(map['maxDegreeOfParallelismPerJob'] as int),
-      minPriorityPerJob: pulumi.Input.fromValue(map['minPriorityPerJob'] as int),
+      maxDegreeOfParallelismPerJob: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxDegreeOfParallelismPerJob'])),
+      minPriorityPerJob: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minPriorityPerJob'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       objectId: pulumi.Input.fromValue(map['objectId'] as String),
       objectType: pulumi.Input.fromValue(map['objectType'] as String),

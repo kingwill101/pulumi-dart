@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The meta-learner is a model trained on the output of the individual heterogeneous models.\r\nDefault meta-learners are LogisticRegression for classification tasks (or LogisticRegressionCV if cross-validation is enabled) and ElasticNet for regression/forecasting tasks (or ElasticNetCV if cross-validation is enabled).\r\nThis parameter can be one of the following strings: LogisticRegression, LogisticRegressionCV, LightGBMClassifier, ElasticNet, ElasticNetCV, LightGBMRegressor, or LinearRegression
-enum StackMetaLearnerType {
+enum StackMetaLearnerType implements pulumi.PulumiEnum<String> {
   none("None"),
   logisticRegression("LogisticRegression"),
   logisticRegressionCV("LogisticRegressionCV"),
@@ -10,6 +12,7 @@ enum StackMetaLearnerType {
   linearRegression("LinearRegression");
 
   const StackMetaLearnerType(this.wireValue);
+  @override
   final String wireValue;
 
   static StackMetaLearnerType fromValue(String value) {

@@ -11,33 +11,33 @@ import 'common_assigned_standard_item.dart';
 /// {@macro pulumi_security_assignment_args_doc}
 class AssignmentArgs {
   /// Additional data about the assignment
-  final pulumi.Input<AssignmentPropertiesAdditionalData>? additionalData;
+  final pulumi.Input<AssignmentPropertiesAdditionalData?>? additionalData;
   /// Component item with key as applied to this standard assignment over the given scope
-  final pulumi.Input<AssignedComponentItem>? assignedComponent;
+  final pulumi.Input<AssignedComponentItem?>? assignedComponent;
   /// Standard item with key as applied to this standard assignment over the given scope
-  final pulumi.Input<CommonAssignedStandardItem>? assignedStandard;
+  final pulumi.Input<CommonAssignedStandardItem?>? assignedStandard;
   /// The security assignment key - unique key for the standard assignment
-  final pulumi.Input<String>? assignmentId;
+  final pulumi.Input<String?>? assignmentId;
   /// description of the standardAssignment
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// display name of the standardAssignment
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// expected effect of this assignment (Disable/Exempt/etc)
-  final pulumi.Input<String>? effect;
+  final pulumi.Input<String?>? effect;
   /// Expiration date of this assignment as a full ISO date
-  final pulumi.Input<String>? expiresOn;
+  final pulumi.Input<String?>? expiresOn;
   /// Kind of the resource
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
   final pulumi.Input<dynamic>? metadata;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AssignmentArgs].
   /// [additionalData] Additional data about the assignment

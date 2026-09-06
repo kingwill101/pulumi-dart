@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_servicefabric_managed_cluster_application_type_args_doc}
 class ManagedClusterApplicationTypeArgs {
   /// The name of the application type name resource.
-  final pulumi.Input<String>? applicationTypeName;
+  final pulumi.Input<String?>? applicationTypeName;
   /// The name of the cluster resource.
   final pulumi.Input<String> clusterName;
   /// Resource location depends on the parent resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Azure resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ManagedClusterApplicationTypeArgs].
   /// [applicationTypeName] The name of the application type name resource.

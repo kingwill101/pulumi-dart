@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes how data from an input is serialized or how data is serialized when written to an output in CSV format.
 class CsvSerialization {
   /// Specifies the encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? encoding;
+  final pulumi.Input<dynamic>? encoding;
   /// Specifies the delimiter that will be used to separate comma-separated value (CSV) records. See https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input or https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for a list of supported values. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? fieldDelimiter;
+  final pulumi.Input<String?>? fieldDelimiter;
   /// Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'Csv'.
   final pulumi.Input<String> type;
@@ -32,7 +32,7 @@ class CsvSerialization {
 
   factory CsvSerialization.fromMap(Map<String, dynamic> map) {
     return CsvSerialization(
-      encoding: (() { final guardedValue = map['encoding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encoding: (() { final guardedValue = map['encoding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       fieldDelimiter: (() { final guardedValue = map['fieldDelimiter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );

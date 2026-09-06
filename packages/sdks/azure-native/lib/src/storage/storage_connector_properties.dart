@@ -6,16 +6,16 @@ import 'data_share_source.dart';
 /// The storage connector properties
 class StorageConnectorProperties {
   /// The type of backing data source for this Storage Connector.
-  final pulumi.Input<String> dataSourceType;
+  final pulumi.Input<dynamic> dataSourceType;
   /// Arbitrary description of this Storage Connector. Max 250 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Information about how to communicate with and authenticate to the backing data store.
   final pulumi.Input<DataShareSource> source;
   /// State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active)
   /// (While set to false on the Storage Connector, all data plane requests using this Storage Connector fail, and this Storage Connector is not billed if it would be otherwise.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// Test connection to backing data source before creating the storage connector.
-  final pulumi.Input<bool>? testConnection;
+  final pulumi.Input<bool?>? testConnection;
 
   /// Creates a new [StorageConnectorProperties].
   /// [dataSourceType] The type of backing data source for this Storage Connector.
@@ -23,13 +23,13 @@ class StorageConnectorProperties {
   /// [source] Information about how to communicate with and authenticate to the backing data store.
   /// [state] State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active)
   /// [testConnection] Test connection to backing data source before creating the storage connector.
-  const StorageConnectorProperties({
+  StorageConnectorProperties({
     required this.dataSourceType,
     this.description,
     required this.source,
-    this.state,
-    this.testConnection,
-  });
+    pulumi.Input<dynamic>? state,
+    pulumi.Input<bool?>? testConnection,
+  }) : state = state ?? pulumi.Input.fromValue('Active'), testConnection = testConnection ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,10 +43,10 @@ class StorageConnectorProperties {
 
   factory StorageConnectorProperties.fromMap(Map<String, dynamic> map) {
     return StorageConnectorProperties(
-      dataSourceType: pulumi.Input.fromValue(map['dataSourceType'] as String),
+      dataSourceType: pulumi.Input.fromValue(map['dataSourceType']),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       source: pulumi.Input.fromValue(DataShareSource.fromMap((map['source']! as Map).cast<String, dynamic>())),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       testConnection: (() { final guardedValue = map['testConnection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

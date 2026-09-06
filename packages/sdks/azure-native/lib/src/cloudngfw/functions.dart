@@ -89,6 +89,17 @@ Future<GetCertificateObjectGlobalRulestackResult> getCertificateObjectGlobalRule
   return GetCertificateObjectGlobalRulestackResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateObjectGlobalRulestackResult> getCertificateObjectGlobalRulestackOutput(
+  GetCertificateObjectGlobalRulestackArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getCertificateObjectGlobalRulestack',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateObjectGlobalRulestackResult.fromMap);
+}
+
 /// Get a CertificateObjectLocalRulestackResource
 ///
 /// Uses Azure REST API version 2025-05-23.
@@ -107,6 +118,17 @@ Future<GetCertificateObjectLocalRulestackResult> getCertificateObjectLocalRulest
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCertificateObjectLocalRulestackResult.fromMap(result);
+}
+
+pulumi.Output<GetCertificateObjectLocalRulestackResult> getCertificateObjectLocalRulestackOutput(
+  GetCertificateObjectLocalRulestackArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getCertificateObjectLocalRulestack',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateObjectLocalRulestackResult.fromMap);
 }
 
 /// Get a FirewallResource
@@ -129,6 +151,17 @@ Future<GetFirewallResult> getFirewall(
   return GetFirewallResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallResult> getFirewallOutput(
+  GetFirewallArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getFirewall',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallResult.fromMap);
+}
+
 /// Get Global Rulestack associated with the Firewall
 ///
 /// Uses Azure REST API version 2025-05-23.
@@ -147,6 +180,17 @@ Future<GetFirewallGlobalRulestackResult> getFirewallGlobalRulestack(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFirewallGlobalRulestackResult.fromMap(result);
+}
+
+pulumi.Output<GetFirewallGlobalRulestackResult> getFirewallGlobalRulestackOutput(
+  GetFirewallGlobalRulestackArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getFirewallGlobalRulestack',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallGlobalRulestackResult.fromMap);
 }
 
 /// Log Profile for Firewall
@@ -169,6 +213,17 @@ Future<GetFirewallLogProfileResult> getFirewallLogProfile(
   return GetFirewallLogProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallLogProfileResult> getFirewallLogProfileOutput(
+  GetFirewallLogProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getFirewallLogProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallLogProfileResult.fromMap);
+}
+
 /// support info for firewall.
 ///
 /// Uses Azure REST API version 2025-05-23.
@@ -187,6 +242,17 @@ Future<GetFirewallSupportInfoResult> getFirewallSupportInfo(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFirewallSupportInfoResult.fromMap(result);
+}
+
+pulumi.Output<GetFirewallSupportInfoResult> getFirewallSupportInfoOutput(
+  GetFirewallSupportInfoArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getFirewallSupportInfo',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallSupportInfoResult.fromMap);
 }
 
 /// Get a FqdnListGlobalRulestackResource
@@ -209,6 +275,17 @@ Future<GetFqdnListGlobalRulestackResult> getFqdnListGlobalRulestack(
   return GetFqdnListGlobalRulestackResult.fromMap(result);
 }
 
+pulumi.Output<GetFqdnListGlobalRulestackResult> getFqdnListGlobalRulestackOutput(
+  GetFqdnListGlobalRulestackArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getFqdnListGlobalRulestack',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFqdnListGlobalRulestackResult.fromMap);
+}
+
 /// Get a FqdnListLocalRulestackResource
 ///
 /// Uses Azure REST API version 2025-05-23.
@@ -227,6 +304,17 @@ Future<GetFqdnListLocalRulestackResult> getFqdnListLocalRulestack(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFqdnListLocalRulestackResult.fromMap(result);
+}
+
+pulumi.Output<GetFqdnListLocalRulestackResult> getFqdnListLocalRulestackOutput(
+  GetFqdnListLocalRulestackArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getFqdnListLocalRulestack',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFqdnListLocalRulestackResult.fromMap);
 }
 
 /// Get a GlobalRulestackResource
@@ -249,6 +337,17 @@ Future<GetGlobalRulestackResult> getGlobalRulestack(
   return GetGlobalRulestackResult.fromMap(result);
 }
 
+pulumi.Output<GetGlobalRulestackResult> getGlobalRulestackOutput(
+  GetGlobalRulestackArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getGlobalRulestack',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalRulestackResult.fromMap);
+}
+
 /// Get changelog
 ///
 /// Uses Azure REST API version 2025-05-23.
@@ -267,6 +366,17 @@ Future<GetGlobalRulestackChangeLogResult> getGlobalRulestackChangeLog(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGlobalRulestackChangeLogResult.fromMap(result);
+}
+
+pulumi.Output<GetGlobalRulestackChangeLogResult> getGlobalRulestackChangeLogOutput(
+  GetGlobalRulestackChangeLogArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getGlobalRulestackChangeLog',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalRulestackChangeLogResult.fromMap);
 }
 
 /// Get a LocalRulesResource
@@ -289,6 +399,17 @@ Future<GetLocalRuleResult> getLocalRule(
   return GetLocalRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetLocalRuleResult> getLocalRuleOutput(
+  GetLocalRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getLocalRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLocalRuleResult.fromMap);
+}
+
 /// Get counters
 ///
 /// Uses Azure REST API version 2025-05-23.
@@ -307,6 +428,17 @@ Future<GetLocalRuleCountersResult> getLocalRuleCounters(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLocalRuleCountersResult.fromMap(result);
+}
+
+pulumi.Output<GetLocalRuleCountersResult> getLocalRuleCountersOutput(
+  GetLocalRuleCountersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getLocalRuleCounters',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLocalRuleCountersResult.fromMap);
 }
 
 /// Get a LocalRulestackResource
@@ -329,6 +461,17 @@ Future<GetLocalRulestackResult> getLocalRulestack(
   return GetLocalRulestackResult.fromMap(result);
 }
 
+pulumi.Output<GetLocalRulestackResult> getLocalRulestackOutput(
+  GetLocalRulestackArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getLocalRulestack',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLocalRulestackResult.fromMap);
+}
+
 /// Get changelog
 ///
 /// Uses Azure REST API version 2025-05-23.
@@ -347,6 +490,17 @@ Future<GetLocalRulestackChangeLogResult> getLocalRulestackChangeLog(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLocalRulestackChangeLogResult.fromMap(result);
+}
+
+pulumi.Output<GetLocalRulestackChangeLogResult> getLocalRulestackChangeLogOutput(
+  GetLocalRulestackChangeLogArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getLocalRulestackChangeLog',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLocalRulestackChangeLogResult.fromMap);
 }
 
 /// support info for rulestack.
@@ -369,6 +523,17 @@ Future<GetLocalRulestackSupportInfoResult> getLocalRulestackSupportInfo(
   return GetLocalRulestackSupportInfoResult.fromMap(result);
 }
 
+pulumi.Output<GetLocalRulestackSupportInfoResult> getLocalRulestackSupportInfoOutput(
+  GetLocalRulestackSupportInfoArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getLocalRulestackSupportInfo',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLocalRulestackSupportInfoResult.fromMap);
+}
+
 /// Get a PostRulesResource
 ///
 /// Uses Azure REST API version 2025-05-23.
@@ -387,6 +552,17 @@ Future<GetPostRuleResult> getPostRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPostRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetPostRuleResult> getPostRuleOutput(
+  GetPostRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getPostRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPostRuleResult.fromMap);
 }
 
 /// Get counters
@@ -409,6 +585,17 @@ Future<GetPostRuleCountersResult> getPostRuleCounters(
   return GetPostRuleCountersResult.fromMap(result);
 }
 
+pulumi.Output<GetPostRuleCountersResult> getPostRuleCountersOutput(
+  GetPostRuleCountersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getPostRuleCounters',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPostRuleCountersResult.fromMap);
+}
+
 /// Get a PreRulesResource
 ///
 /// Uses Azure REST API version 2025-05-23.
@@ -427,6 +614,17 @@ Future<GetPreRuleResult> getPreRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPreRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetPreRuleResult> getPreRuleOutput(
+  GetPreRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getPreRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPreRuleResult.fromMap);
 }
 
 /// Get counters
@@ -449,6 +647,17 @@ Future<GetPreRuleCountersResult> getPreRuleCounters(
   return GetPreRuleCountersResult.fromMap(result);
 }
 
+pulumi.Output<GetPreRuleCountersResult> getPreRuleCountersOutput(
+  GetPreRuleCountersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getPreRuleCounters',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPreRuleCountersResult.fromMap);
+}
+
 /// Get a PrefixListGlobalRulestackResource
 ///
 /// Uses Azure REST API version 2025-05-23.
@@ -467,6 +676,17 @@ Future<GetPrefixListGlobalRulestackResult> getPrefixListGlobalRulestack(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrefixListGlobalRulestackResult.fromMap(result);
+}
+
+pulumi.Output<GetPrefixListGlobalRulestackResult> getPrefixListGlobalRulestackOutput(
+  GetPrefixListGlobalRulestackArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getPrefixListGlobalRulestack',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrefixListGlobalRulestackResult.fromMap);
 }
 
 /// Get a PrefixListResource
@@ -489,6 +709,17 @@ Future<GetPrefixListLocalRulestackResult> getPrefixListLocalRulestack(
   return GetPrefixListLocalRulestackResult.fromMap(result);
 }
 
+pulumi.Output<GetPrefixListLocalRulestackResult> getPrefixListLocalRulestackOutput(
+  GetPrefixListLocalRulestackArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:getPrefixListLocalRulestack',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrefixListLocalRulestackResult.fromMap);
+}
+
 /// Get the list of advanced security objects
 ///
 /// Uses Azure REST API version 2025-05-23.
@@ -507,6 +738,17 @@ Future<ListGlobalRulestackAdvancedSecurityObjectsResult> listGlobalRulestackAdva
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListGlobalRulestackAdvancedSecurityObjectsResult.fromMap(result);
+}
+
+pulumi.Output<ListGlobalRulestackAdvancedSecurityObjectsResult> listGlobalRulestackAdvancedSecurityObjectsOutput(
+  ListGlobalRulestackAdvancedSecurityObjectsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:listGlobalRulestackAdvancedSecurityObjects',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListGlobalRulestackAdvancedSecurityObjectsResult.fromMap);
 }
 
 /// List of AppIds for GlobalRulestack ApiVersion
@@ -529,6 +771,17 @@ Future<ListGlobalRulestackAppIdsResult> listGlobalRulestackAppIds(
   return ListGlobalRulestackAppIdsResult.fromMap(result);
 }
 
+pulumi.Output<ListGlobalRulestackAppIdsResult> listGlobalRulestackAppIdsOutput(
+  ListGlobalRulestackAppIdsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:listGlobalRulestackAppIds',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListGlobalRulestackAppIdsResult.fromMap);
+}
+
 /// List of countries for Rulestack
 ///
 /// Uses Azure REST API version 2025-05-23.
@@ -547,6 +800,17 @@ Future<ListGlobalRulestackCountriesResult> listGlobalRulestackCountries(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListGlobalRulestackCountriesResult.fromMap(result);
+}
+
+pulumi.Output<ListGlobalRulestackCountriesResult> listGlobalRulestackCountriesOutput(
+  ListGlobalRulestackCountriesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:listGlobalRulestackCountries',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListGlobalRulestackCountriesResult.fromMap);
 }
 
 /// List of Firewalls associated with Rulestack
@@ -569,6 +833,17 @@ Future<ListGlobalRulestackFirewallsResult> listGlobalRulestackFirewalls(
   return ListGlobalRulestackFirewallsResult.fromMap(result);
 }
 
+pulumi.Output<ListGlobalRulestackFirewallsResult> listGlobalRulestackFirewallsOutput(
+  ListGlobalRulestackFirewallsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:listGlobalRulestackFirewalls',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListGlobalRulestackFirewallsResult.fromMap);
+}
+
 /// List predefined URL categories for rulestack
 ///
 /// Uses Azure REST API version 2025-05-23.
@@ -587,6 +862,17 @@ Future<ListGlobalRulestackPredefinedUrlCategoriesResult> listGlobalRulestackPred
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListGlobalRulestackPredefinedUrlCategoriesResult.fromMap(result);
+}
+
+pulumi.Output<ListGlobalRulestackPredefinedUrlCategoriesResult> listGlobalRulestackPredefinedUrlCategoriesOutput(
+  ListGlobalRulestackPredefinedUrlCategoriesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:listGlobalRulestackPredefinedUrlCategories',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListGlobalRulestackPredefinedUrlCategoriesResult.fromMap);
 }
 
 /// List the security services for rulestack
@@ -609,6 +895,17 @@ Future<ListGlobalRulestackSecurityServicesResult> listGlobalRulestackSecuritySer
   return ListGlobalRulestackSecurityServicesResult.fromMap(result);
 }
 
+pulumi.Output<ListGlobalRulestackSecurityServicesResult> listGlobalRulestackSecurityServicesOutput(
+  ListGlobalRulestackSecurityServicesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:listGlobalRulestackSecurityServices',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListGlobalRulestackSecurityServicesResult.fromMap);
+}
+
 /// Get the list of advanced security objects
 ///
 /// Uses Azure REST API version 2025-05-23.
@@ -627,6 +924,17 @@ Future<ListLocalRulestackAdvancedSecurityObjectsResult> listLocalRulestackAdvanc
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListLocalRulestackAdvancedSecurityObjectsResult.fromMap(result);
+}
+
+pulumi.Output<ListLocalRulestackAdvancedSecurityObjectsResult> listLocalRulestackAdvancedSecurityObjectsOutput(
+  ListLocalRulestackAdvancedSecurityObjectsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:listLocalRulestackAdvancedSecurityObjects',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListLocalRulestackAdvancedSecurityObjectsResult.fromMap);
 }
 
 /// List of AppIds for LocalRulestack ApiVersion
@@ -649,6 +957,17 @@ Future<ListLocalRulestackAppIdsResult> listLocalRulestackAppIds(
   return ListLocalRulestackAppIdsResult.fromMap(result);
 }
 
+pulumi.Output<ListLocalRulestackAppIdsResult> listLocalRulestackAppIdsOutput(
+  ListLocalRulestackAppIdsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:listLocalRulestackAppIds',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListLocalRulestackAppIdsResult.fromMap);
+}
+
 /// List of countries for Rulestack
 ///
 /// Uses Azure REST API version 2025-05-23.
@@ -667,6 +986,17 @@ Future<ListLocalRulestackCountriesResult> listLocalRulestackCountries(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListLocalRulestackCountriesResult.fromMap(result);
+}
+
+pulumi.Output<ListLocalRulestackCountriesResult> listLocalRulestackCountriesOutput(
+  ListLocalRulestackCountriesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:listLocalRulestackCountries',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListLocalRulestackCountriesResult.fromMap);
 }
 
 /// List of Firewalls associated with Rulestack
@@ -689,6 +1019,17 @@ Future<ListLocalRulestackFirewallsResult> listLocalRulestackFirewalls(
   return ListLocalRulestackFirewallsResult.fromMap(result);
 }
 
+pulumi.Output<ListLocalRulestackFirewallsResult> listLocalRulestackFirewallsOutput(
+  ListLocalRulestackFirewallsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:listLocalRulestackFirewalls',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListLocalRulestackFirewallsResult.fromMap);
+}
+
 /// List predefined URL categories for rulestack
 ///
 /// Uses Azure REST API version 2025-05-23.
@@ -707,6 +1048,17 @@ Future<ListLocalRulestackPredefinedUrlCategoriesResult> listLocalRulestackPredef
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListLocalRulestackPredefinedUrlCategoriesResult.fromMap(result);
+}
+
+pulumi.Output<ListLocalRulestackPredefinedUrlCategoriesResult> listLocalRulestackPredefinedUrlCategoriesOutput(
+  ListLocalRulestackPredefinedUrlCategoriesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:listLocalRulestackPredefinedUrlCategories',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListLocalRulestackPredefinedUrlCategoriesResult.fromMap);
 }
 
 /// List the security services for rulestack
@@ -729,6 +1081,17 @@ Future<ListLocalRulestackSecurityServicesResult> listLocalRulestackSecurityServi
   return ListLocalRulestackSecurityServicesResult.fromMap(result);
 }
 
+pulumi.Output<ListLocalRulestackSecurityServicesResult> listLocalRulestackSecurityServicesOutput(
+  ListLocalRulestackSecurityServicesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:listLocalRulestackSecurityServices',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListLocalRulestackSecurityServicesResult.fromMap);
+}
+
 /// Cloud Manager Tenant
 ///
 /// Uses Azure REST API version 2025-05-23.
@@ -746,6 +1109,17 @@ Future<ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult> listPalo
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult.fromMap(result);
+}
+
+pulumi.Output<ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult> listPaloAltoNetworksCloudngfwOperationCloudManagerTenantsOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:listPaloAltoNetworksCloudngfwOperationCloudManagerTenants',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(ListPaloAltoNetworksCloudngfwOperationCloudManagerTenantsResult.fromMap);
 }
 
 /// Product serial and status for the service
@@ -767,6 +1141,17 @@ Future<ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult> li
   return ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult.fromMap(result);
 }
 
+pulumi.Output<ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult> listPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:listPaloAltoNetworksCloudngfwOperationProductSerialNumberStatus',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult.fromMap);
+}
+
 /// Support information for the service
 ///
 /// Uses Azure REST API version 2025-05-23.
@@ -784,4 +1169,15 @@ Future<ListPaloAltoNetworksCloudngfwOperationSupportInfoResult> listPaloAltoNetw
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListPaloAltoNetworksCloudngfwOperationSupportInfoResult.fromMap(result);
+}
+
+pulumi.Output<ListPaloAltoNetworksCloudngfwOperationSupportInfoResult> listPaloAltoNetworksCloudngfwOperationSupportInfoOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudngfw:listPaloAltoNetworksCloudngfwOperationSupportInfo',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(ListPaloAltoNetworksCloudngfwOperationSupportInfoResult.fromMap);
 }

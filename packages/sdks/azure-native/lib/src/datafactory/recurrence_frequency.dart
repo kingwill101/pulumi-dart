@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The frequency.
-enum RecurrenceFrequency {
+enum RecurrenceFrequency implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   minute("Minute"),
   hour("Hour"),
@@ -9,6 +11,7 @@ enum RecurrenceFrequency {
   year("Year");
 
   const RecurrenceFrequency(this.wireValue);
+  @override
   final String wireValue;
 
   static RecurrenceFrequency fromValue(String value) {

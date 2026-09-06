@@ -9,13 +9,13 @@ import 'azure_sku.dart';
 /// {@macro pulumi_powerbi_workspace_collection_args_doc}
 class WorkspaceCollectionArgs {
   /// Azure location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Azure resource group
   final pulumi.Input<String> resourceGroupName;
-  final pulumi.Input<AzureSku>? sku;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<AzureSku?>? sku;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Power BI Embedded Workspace Collection name
-  final pulumi.Input<String>? workspaceCollectionName;
+  final pulumi.Input<String?>? workspaceCollectionName;
 
   /// Creates a new [WorkspaceCollectionArgs].
   /// [location] Azure location

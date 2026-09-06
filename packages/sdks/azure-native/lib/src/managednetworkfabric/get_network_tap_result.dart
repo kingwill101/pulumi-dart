@@ -7,35 +7,35 @@ import 'system_data_response.dart';
 /// Result data returned by getNetworkTap.
 class GetNetworkTapResult {
   /// Administrative state of the resource. Example -Enabled/Disabled
-  final String administrativeState;
+  final String? administrativeState;
   /// Switch configuration description.
   final String? annotation;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Gets the configurations state of the resource.
-  final String configurationState;
+  final String? configurationState;
   /// List of destinations to send the filter traffic.
-  final List<NetworkTapPropertiesResponseDestinations> destinations;
+  final List<NetworkTapPropertiesResponseDestinations>? destinations;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// ARM resource ID of the Network Packet Broker.
-  final String networkPacketBrokerId;
+  final String? networkPacketBrokerId;
   /// Polling type.
   final String? pollingType;
   /// Provides you the latest status of the NFC service, whether it is Accepted, updating, Succeeded or Failed. During this process, the states keep changing based on the status of Network Tap provisioning.
-  final String provisioningState;
+  final String? provisioningState;
   /// Source Tap Rule Id. ARM Resource ID of the Network Tap Rule.
-  final String sourceTapRuleId;
+  final String? sourceTapRuleId;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetNetworkTapResult].
   /// [administrativeState] Administrative state of the resource. Example -Enabled/Disabled
@@ -53,61 +53,61 @@ class GetNetworkTapResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  const GetNetworkTapResult({
-    required this.administrativeState,
+  GetNetworkTapResult({
+    this.administrativeState,
     this.annotation,
-    required this.azureApiVersion,
-    required this.configurationState,
-    required this.destinations,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.networkPacketBrokerId,
-    this.pollingType,
-    required this.provisioningState,
-    required this.sourceTapRuleId,
-    required this.systemData,
+    this.azureApiVersion,
+    this.configurationState,
+    this.destinations,
+    this.id,
+    this.location,
+    this.name,
+    this.networkPacketBrokerId,
+    String? pollingType,
+    this.provisioningState,
+    this.sourceTapRuleId,
+    this.systemData,
     this.tags,
-    required this.type,
-  });
+    this.type,
+  }) : pollingType = pollingType ?? 'Pull';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'administrativeState': administrativeState,
+      'administrativeState': ?administrativeState,
       'annotation': ?annotation,
-      'azureApiVersion': azureApiVersion,
-      'configurationState': configurationState,
-      'destinations': pulumi.Input.encodeList<NetworkTapPropertiesResponseDestinations, Map<String, dynamic>>(destinations, (value) => value.toMap()),
-      'id': id,
-      'location': location,
-      'name': name,
-      'networkPacketBrokerId': networkPacketBrokerId,
+      'azureApiVersion': ?azureApiVersion,
+      'configurationState': ?configurationState,
+      'destinations': ?(() { final guardedValue = destinations; if (guardedValue == null) return null; return pulumi.Input.encodeList<NetworkTapPropertiesResponseDestinations, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'networkPacketBrokerId': ?networkPacketBrokerId,
       'pollingType': ?pollingType,
-      'provisioningState': provisioningState,
-      'sourceTapRuleId': sourceTapRuleId,
-      'systemData': systemData.toMap(),
+      'provisioningState': ?provisioningState,
+      'sourceTapRuleId': ?sourceTapRuleId,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetNetworkTapResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkTapResult(
-      administrativeState: map['administrativeState'] as String,
+      administrativeState: (() { final guardedValue = map['administrativeState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       annotation: (() { final guardedValue = map['annotation']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      configurationState: map['configurationState'] as String,
-      destinations: pulumi.Input.decodeList<NetworkTapPropertiesResponseDestinations>(map['destinations']!, (value) => NetworkTapPropertiesResponseDestinations.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      networkPacketBrokerId: map['networkPacketBrokerId'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      configurationState: (() { final guardedValue = map['configurationState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      destinations: (() { final guardedValue = map['destinations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkTapPropertiesResponseDestinations>(guardedValue, (value) => NetworkTapPropertiesResponseDestinations.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkPacketBrokerId: (() { final guardedValue = map['networkPacketBrokerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pollingType: (() { final guardedValue = map['pollingType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
-      sourceTapRuleId: map['sourceTapRuleId'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceTapRuleId: (() { final guardedValue = map['sourceTapRuleId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

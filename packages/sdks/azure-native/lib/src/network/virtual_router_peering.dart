@@ -200,4 +200,22 @@ class VirtualRouterPeering extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [VirtualRouterPeering] resource.
+  VirtualRouterPeering.reference(String urn)
+    : super(
+        'azure-native:network:VirtualRouterPeering',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String?>('name');
+    peerAsn = registerOutput<double?>('peerAsn');
+    peerIp = registerOutput<String?>('peerIp');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
+  }
 }

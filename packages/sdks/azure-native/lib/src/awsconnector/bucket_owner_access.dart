@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum BucketOwnerAccess {
+enum BucketOwnerAccess implements pulumi.PulumiEnum<String> {
   fULL("FULL"),
   nONE("NONE"),
   rEADONLY("READ_ONLY");
 
   const BucketOwnerAccess(this.wireValue);
+  @override
   final String wireValue;
 
   static BucketOwnerAccess fromValue(String value) {

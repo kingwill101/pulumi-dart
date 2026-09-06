@@ -6,19 +6,19 @@ import 'trigger_pipeline_reference_response.dart';
 /// Trigger that runs every time a Blob event occurs.
 class BlobEventsTriggerResponse {
   /// List of tags that can be used for describing the trigger.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The blob path must begin with the pattern provided for trigger to fire. For example, '/records/blobs/december/' will only fire the trigger for blobs in the december folder under the records container. At least one of these must be provided: blobPathBeginsWith, blobPathEndsWith.
-  final pulumi.Input<String>? blobPathBeginsWith;
+  final pulumi.Input<String?>? blobPathBeginsWith;
   /// The blob path must end with the pattern provided for trigger to fire. For example, 'december/boxes.csv' will only fire the trigger for blobs named boxes in a december folder. At least one of these must be provided: blobPathBeginsWith, blobPathEndsWith.
-  final pulumi.Input<String>? blobPathEndsWith;
+  final pulumi.Input<String?>? blobPathEndsWith;
   /// Trigger description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The type of events that cause this trigger to fire.
   final pulumi.Input<List<String>> events;
   /// If set to true, blobs with zero bytes will be ignored.
-  final pulumi.Input<bool>? ignoreEmptyBlobs;
+  final pulumi.Input<bool?>? ignoreEmptyBlobs;
   /// Pipelines that need to be started.
-  final pulumi.Input<List<TriggerPipelineReferenceResponse>>? pipelines;
+  final pulumi.Input<List<TriggerPipelineReferenceResponse>?>? pipelines;
   /// Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
   final pulumi.Input<String> runtimeState;
   /// The ARM resource ID of the Storage Account.

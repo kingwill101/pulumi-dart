@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The result of the assessment
 class AssessmentStatus {
   /// Programmatic code for the cause of the assessment status
-  final pulumi.Input<String>? cause;
+  final pulumi.Input<String?>? cause;
   /// Programmatic code for the status of the assessment
-  final pulumi.Input<String> code;
+  final pulumi.Input<dynamic> code;
   /// Human readable description of the assessment status
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
 
   /// Creates a new [AssessmentStatus].
   /// [cause] Programmatic code for the cause of the assessment status
@@ -32,7 +32,7 @@ class AssessmentStatus {
   factory AssessmentStatus.fromMap(Map<String, dynamic> map) {
     return AssessmentStatus(
       cause: (() { final guardedValue = map['cause']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      code: pulumi.Input.fromValue(map['code'] as String),
+      code: pulumi.Input.fromValue(map['code']),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

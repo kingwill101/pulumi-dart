@@ -10,23 +10,23 @@ import 'azure_resource_manager_common_types_extended_location.dart';
 /// {@macro pulumi_networkcloud_access_bridge_args_doc}
 class AccessBridgeArgs {
   /// The name of the access bridge.
-  final pulumi.Input<String>? accessBridgeName;
+  final pulumi.Input<String?>? accessBridgeName;
   /// The extended location of the resource. This property is required when creating the resource.
   final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation> extendedLocation;
   /// The IPv4 subnet from which the access bridge allocates an address. This subnet must be part of the internal network specified by networkId.
-  final pulumi.Input<String>? ipv4ConnectedPrefix;
+  final pulumi.Input<String?>? ipv4ConnectedPrefix;
   /// The IPv6 subnet from which the access bridge allocates an address. This subnet must be part of the internal network specified by networkId.
-  final pulumi.Input<String>? ipv6ConnectedPrefix;
+  final pulumi.Input<String?>? ipv6ConnectedPrefix;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource ID of the internal network in a layer 3 isolation domain containing the IP subnets to use.
   final pulumi.Input<String> networkId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The list of security rules enforced by the access bridge.
-  final pulumi.Input<List<AccessBridgeSecurityRule>>? securityRules;
+  final pulumi.Input<List<AccessBridgeSecurityRule>?>? securityRules;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccessBridgeArgs].
   /// [accessBridgeName] The name of the access bridge.

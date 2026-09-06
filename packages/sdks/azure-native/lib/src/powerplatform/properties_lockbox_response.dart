@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Settings concerning lockbox.
 class PropertiesLockboxResponse {
   /// lockbox configuration
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [PropertiesLockboxResponse].
   /// [state] lockbox configuration

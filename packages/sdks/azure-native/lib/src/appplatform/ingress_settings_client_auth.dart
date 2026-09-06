@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Client-Certification Authentication.
 class IngressSettingsClientAuth {
   /// Collection of certificate resource id.
-  final pulumi.Input<List<String>>? certificates;
+  final pulumi.Input<List<String>?>? certificates;
 
   /// Creates a new [IngressSettingsClientAuth].
   /// [certificates] Collection of certificate resource id.

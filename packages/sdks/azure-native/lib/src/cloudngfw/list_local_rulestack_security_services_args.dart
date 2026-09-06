@@ -11,8 +11,8 @@ class ListLocalRulestackSecurityServicesArgs {
   final pulumi.Input<String> localRulestackName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  final pulumi.Input<String>? skip;
-  final pulumi.Input<int>? top;
+  final pulumi.Input<String?>? skip;
+  final pulumi.Input<int?>? top;
   final pulumi.Input<String> type;
 
   /// Creates a new [ListLocalRulestackSecurityServicesArgs].
@@ -44,7 +44,7 @@ class ListLocalRulestackSecurityServicesArgs {
       localRulestackName: pulumi.Input.fromValue(map['localRulestackName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       skip: (() { final guardedValue = map['skip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

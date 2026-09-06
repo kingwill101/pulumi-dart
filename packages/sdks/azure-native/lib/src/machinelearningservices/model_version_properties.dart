@@ -7,27 +7,27 @@ import 'flavor_data.dart';
 /// Model asset version details.
 class ModelVersionProperties {
   /// Array of dataset references
-  final pulumi.Input<List<DatasetReference>>? datasets;
+  final pulumi.Input<List<DatasetReference>?>? datasets;
   /// The asset description text.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Mapping of model flavors to their properties.
-  final pulumi.Input<Map<String, FlavorData>>? flavors;
+  final pulumi.Input<Map<String, FlavorData>?>? flavors;
   /// If the name version are system generated (anonymous registration).
-  final pulumi.Input<bool>? isAnonymous;
+  final pulumi.Input<bool?>? isAnonymous;
   /// Is the asset archived?
-  final pulumi.Input<bool>? isArchived;
+  final pulumi.Input<bool?>? isArchived;
   /// Name of the training job which produced this model
-  final pulumi.Input<String>? jobName;
+  final pulumi.Input<String?>? jobName;
   /// The storage format for this entity. Used for NCD.
-  final pulumi.Input<String>? modelType;
+  final pulumi.Input<String?>? modelType;
   /// The URI path to the model contents.
-  final pulumi.Input<String>? modelUri;
+  final pulumi.Input<String?>? modelUri;
   /// The asset property dictionary.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Stage in the model lifecycle assigned to this model
-  final pulumi.Input<String>? stage;
+  final pulumi.Input<String?>? stage;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ModelVersionProperties].
   /// [datasets] Array of dataset references
@@ -41,19 +41,19 @@ class ModelVersionProperties {
   /// [properties] The asset property dictionary.
   /// [stage] Stage in the model lifecycle assigned to this model
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  const ModelVersionProperties({
+  ModelVersionProperties({
     this.datasets,
     this.description,
     this.flavors,
-    this.isAnonymous,
-    this.isArchived,
+    pulumi.Input<bool?>? isAnonymous,
+    pulumi.Input<bool?>? isArchived,
     this.jobName,
     this.modelType,
     this.modelUri,
     this.properties,
     this.stage,
     this.tags,
-  });
+  }) : isAnonymous = isAnonymous ?? pulumi.Input.fromValue(false), isArchived = isArchived ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

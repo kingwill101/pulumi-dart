@@ -7,7 +7,7 @@ class GetWebAppSiteExtensionResult {
   /// List of authors.
   final List<String>? authors;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Site Extension comment.
   final String? comment;
   /// Detailed description.
@@ -25,7 +25,7 @@ class GetWebAppSiteExtensionResult {
   /// Icon URL.
   final String? iconUrl;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Installed timestamp.
   final String? installedDateTime;
   /// Installer command line parameters.
@@ -39,7 +39,7 @@ class GetWebAppSiteExtensionResult {
   /// Local path.
   final String? localPath;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Project URL.
   final String? projectUrl;
   /// Provisioning state.
@@ -49,10 +49,10 @@ class GetWebAppSiteExtensionResult {
   /// Summary description.
   final String? summary;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   final String? title;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Version information.
   final String? version;
 
@@ -85,7 +85,7 @@ class GetWebAppSiteExtensionResult {
   /// [version] Version information.
   const GetWebAppSiteExtensionResult({
     this.authors,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.comment,
     this.description,
     this.downloadCount,
@@ -94,28 +94,28 @@ class GetWebAppSiteExtensionResult {
     this.extensionUrl,
     this.feedUrl,
     this.iconUrl,
-    required this.id,
+    this.id,
     this.installedDateTime,
     this.installerCommandLineParams,
     this.kind,
     this.licenseUrl,
     this.localIsLatestVersion,
     this.localPath,
-    required this.name,
+    this.name,
     this.projectUrl,
     this.provisioningState,
     this.publishedDateTime,
     this.summary,
-    required this.systemData,
+    this.systemData,
     this.title,
-    required this.type,
+    this.type,
     this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authors': ?authors,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'comment': ?comment,
       'description': ?description,
       'downloadCount': ?downloadCount,
@@ -124,21 +124,21 @@ class GetWebAppSiteExtensionResult {
       'extensionUrl': ?extensionUrl,
       'feedUrl': ?feedUrl,
       'iconUrl': ?iconUrl,
-      'id': id,
+      'id': ?id,
       'installedDateTime': ?installedDateTime,
       'installerCommandLineParams': ?installerCommandLineParams,
       'kind': ?kind,
       'licenseUrl': ?licenseUrl,
       'localIsLatestVersion': ?localIsLatestVersion,
       'localPath': ?localPath,
-      'name': name,
+      'name': ?name,
       'projectUrl': ?projectUrl,
       'provisioningState': ?provisioningState,
       'publishedDateTime': ?publishedDateTime,
       'summary': ?summary,
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'title': ?title,
-      'type': type,
+      'type': ?type,
       'version': ?version,
     };
   }
@@ -146,30 +146,30 @@ class GetWebAppSiteExtensionResult {
   factory GetWebAppSiteExtensionResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppSiteExtensionResult(
       authors: (() { final guardedValue = map['authors']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      downloadCount: (() { final guardedValue = map['downloadCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      downloadCount: (() { final guardedValue = map['downloadCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       extensionId: (() { final guardedValue = map['extensionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       extensionType: (() { final guardedValue = map['extensionType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       extensionUrl: (() { final guardedValue = map['extensionUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
       feedUrl: (() { final guardedValue = map['feedUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
       iconUrl: (() { final guardedValue = map['iconUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       installedDateTime: (() { final guardedValue = map['installedDateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       installerCommandLineParams: (() { final guardedValue = map['installerCommandLineParams']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       licenseUrl: (() { final guardedValue = map['licenseUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
       localIsLatestVersion: (() { final guardedValue = map['localIsLatestVersion']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       localPath: (() { final guardedValue = map['localPath']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       projectUrl: (() { final guardedValue = map['projectUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publishedDateTime: (() { final guardedValue = map['publishedDateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       summary: (() { final guardedValue = map['summary']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

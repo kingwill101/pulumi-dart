@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The EDIFACT frame setting characterSet.
-enum EdifactCharacterSet {
+enum EdifactCharacterSet implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueUNOB("UNOB"),
   valueUNOA("UNOA"),
@@ -17,6 +19,7 @@ enum EdifactCharacterSet {
   valueKECA("KECA");
 
   const EdifactCharacterSet(this.wireValue);
+  @override
   final String wireValue;
 
   static EdifactCharacterSet fromValue(String value) {

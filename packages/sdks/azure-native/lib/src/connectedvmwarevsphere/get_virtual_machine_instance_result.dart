@@ -15,17 +15,17 @@ import 'system_data_response.dart';
 /// Result data returned by getVirtualMachineInstance.
 class GetVirtualMachineInstanceResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Gets or sets the extended location.
   final ExtendedLocationResponse? extendedLocation;
   /// Hardware properties.
   final HardwareProfileResponse? hardwareProfile;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Gets the infrastructure profile.
   final InfrastructureProfileResponse? infrastructureProfile;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Network properties.
   final NetworkProfileResponse? networkProfile;
   /// OS properties.
@@ -33,21 +33,21 @@ class GetVirtualMachineInstanceResult {
   /// Placement properties.
   final PlacementProfileResponse? placementProfile;
   /// Gets the power state of the virtual machine.
-  final String powerState;
+  final String? powerState;
   /// Gets the provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// Gets or sets a unique identifier for the vm resource.
-  final String resourceUid;
+  final String? resourceUid;
   /// Gets the security profile.
   final SecurityProfileResponse? securityProfile;
   /// The resource status information.
-  final List<ResourceStatusResponse> statuses;
+  final List<ResourceStatusResponse>? statuses;
   /// Storage properties.
   final StorageProfileResponse? storageProfile;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetVirtualMachineInstanceResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -68,66 +68,66 @@ class GetVirtualMachineInstanceResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetVirtualMachineInstanceResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.extendedLocation,
     this.hardwareProfile,
-    required this.id,
+    this.id,
     this.infrastructureProfile,
-    required this.name,
+    this.name,
     this.networkProfile,
     this.osProfile,
     this.placementProfile,
-    required this.powerState,
-    required this.provisioningState,
-    required this.resourceUid,
+    this.powerState,
+    this.provisioningState,
+    this.resourceUid,
     this.securityProfile,
-    required this.statuses,
+    this.statuses,
     this.storageProfile,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'extendedLocation': ?extendedLocation?.toMap(),
       'hardwareProfile': ?hardwareProfile?.toMap(),
-      'id': id,
+      'id': ?id,
       'infrastructureProfile': ?infrastructureProfile?.toMap(),
-      'name': name,
+      'name': ?name,
       'networkProfile': ?networkProfile?.toMap(),
       'osProfile': ?osProfile?.toMap(),
       'placementProfile': ?placementProfile?.toMap(),
-      'powerState': powerState,
-      'provisioningState': provisioningState,
-      'resourceUid': resourceUid,
+      'powerState': ?powerState,
+      'provisioningState': ?provisioningState,
+      'resourceUid': ?resourceUid,
       'securityProfile': ?securityProfile?.toMap(),
-      'statuses': pulumi.Input.encodeList<ResourceStatusResponse, Map<String, dynamic>>(statuses, (value) => value.toMap()),
+      'statuses': ?(() { final guardedValue = statuses; if (guardedValue == null) return null; return pulumi.Input.encodeList<ResourceStatusResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'storageProfile': ?storageProfile?.toMap(),
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetVirtualMachineInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineInstanceResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       hardwareProfile: (() { final guardedValue = map['hardwareProfile']; if (guardedValue == null) return null; return HardwareProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       infrastructureProfile: (() { final guardedValue = map['infrastructureProfile']; if (guardedValue == null) return null; return InfrastructureProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkProfile: (() { final guardedValue = map['networkProfile']; if (guardedValue == null) return null; return NetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       osProfile: (() { final guardedValue = map['osProfile']; if (guardedValue == null) return null; return OsProfileForVMInstanceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       placementProfile: (() { final guardedValue = map['placementProfile']; if (guardedValue == null) return null; return PlacementProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      powerState: map['powerState'] as String,
-      provisioningState: map['provisioningState'] as String,
-      resourceUid: map['resourceUid'] as String,
+      powerState: (() { final guardedValue = map['powerState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceUid: (() { final guardedValue = map['resourceUid']; if (guardedValue == null) return null; return guardedValue as String; })(),
       securityProfile: (() { final guardedValue = map['securityProfile']; if (guardedValue == null) return null; return SecurityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      statuses: pulumi.Input.decodeList<ResourceStatusResponse>(map['statuses']!, (value) => ResourceStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
+      statuses: (() { final guardedValue = map['statuses']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceStatusResponse>(guardedValue, (value) => ResourceStatusResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       storageProfile: (() { final guardedValue = map['storageProfile']; if (guardedValue == null) return null; return StorageProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

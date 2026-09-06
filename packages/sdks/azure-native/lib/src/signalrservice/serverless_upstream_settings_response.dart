@@ -6,7 +6,7 @@ import 'upstream_template_response.dart';
 /// The settings for the Upstream when the service is in server-less mode.
 class ServerlessUpstreamSettingsResponse {
   /// Gets or sets the list of Upstream URL templates. Order matters, and the first matching template takes effects.
-  final pulumi.Input<List<UpstreamTemplateResponse>>? templates;
+  final pulumi.Input<List<UpstreamTemplateResponse>?>? templates;
 
   /// Creates a new [ServerlessUpstreamSettingsResponse].
   /// [templates] Gets or sets the list of Upstream URL templates. Order matters, and the first matching template takes effects.

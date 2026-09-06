@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// External networking mode.
-enum ExternalNetworkingMode {
+enum ExternalNetworkingMode implements pulumi.PulumiEnum<String> {
   loadBalancerOnly("LoadBalancerOnly");
 
   const ExternalNetworkingMode(this.wireValue);
+  @override
   final String wireValue;
 
   static ExternalNetworkingMode fromValue(String value) {

@@ -7,11 +7,11 @@ import 'windows_os_info.dart';
 /// Properties for creating a custom image from a virtual machine.
 class CustomImagePropertiesFromVm {
   /// The Linux OS information of the VM.
-  final pulumi.Input<LinuxOsInfo>? linuxOsInfo;
+  final pulumi.Input<LinuxOsInfo?>? linuxOsInfo;
   /// The source vm identifier.
-  final pulumi.Input<String>? sourceVmId;
+  final pulumi.Input<String?>? sourceVmId;
   /// The Windows OS information of the VM.
-  final pulumi.Input<WindowsOsInfo>? windowsOsInfo;
+  final pulumi.Input<WindowsOsInfo?>? windowsOsInfo;
 
   /// Creates a new [CustomImagePropertiesFromVm].
   /// [linuxOsInfo] The Linux OS information of the VM.

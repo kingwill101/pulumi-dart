@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the default access mode of queries through associated private endpoints in scope. If not specified default value is 'Open'. You can override this default setting for a specific private endpoint connection by adding an exclusion in the 'exclusions' array.
-enum AccessMode {
+enum AccessMode implements pulumi.PulumiEnum<String> {
   open("Open"),
   privateOnly("PrivateOnly");
 
   const AccessMode(this.wireValue);
+  @override
   final String wireValue;
 
   static AccessMode fromValue(String value) {

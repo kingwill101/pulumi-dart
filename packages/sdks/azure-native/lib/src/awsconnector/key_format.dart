@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The format of the key pair. Default: ``pem``
-enum KeyFormat {
+enum KeyFormat implements pulumi.PulumiEnum<String> {
   pem("pem"),
   ppk("ppk");
 
   const KeyFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static KeyFormat fromValue(String value) {

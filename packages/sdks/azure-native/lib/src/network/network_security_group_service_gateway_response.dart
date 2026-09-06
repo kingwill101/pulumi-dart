@@ -15,11 +15,11 @@ class NetworkSecurityGroupServiceGatewayResponse {
   /// A collection of references to flow log resources.
   final pulumi.Input<List<FlowLogServiceGatewayResponse>> flowLogs;
   /// When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
-  final pulumi.Input<bool>? flushConnection;
+  final pulumi.Input<bool?>? flushConnection;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource name.
   final pulumi.Input<String> name;
   /// A collection of references to network interfaces.
@@ -29,11 +29,11 @@ class NetworkSecurityGroupServiceGatewayResponse {
   /// The resource GUID property of the network security group resource.
   final pulumi.Input<String> resourceGuid;
   /// A collection of security rules of the network security group.
-  final pulumi.Input<List<SecurityRuleServiceGatewayResponse>>? securityRules;
+  final pulumi.Input<List<SecurityRuleServiceGatewayResponse>?>? securityRules;
   /// A collection of references to subnets.
   final pulumi.Input<List<SubnetResponse>> subnets;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Resource type.
   final pulumi.Input<String> type;
 

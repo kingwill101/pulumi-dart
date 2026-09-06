@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the resource properties.
 class Checkpoint {
   /// Gets ID of the checkpoint.
-  final pulumi.Input<String>? checkpointID;
+  final pulumi.Input<String?>? checkpointID;
   /// Gets description of the checkpoint.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Gets name of the checkpoint.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Gets ID of parent of the checkpoint.
-  final pulumi.Input<String>? parentCheckpointID;
+  final pulumi.Input<String?>? parentCheckpointID;
 
   /// Creates a new [Checkpoint].
   /// [checkpointID] Gets ID of the checkpoint.

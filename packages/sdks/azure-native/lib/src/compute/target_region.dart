@@ -7,17 +7,17 @@ import 'encryption_images.dart';
 /// Describes the target region information.
 class TargetRegion {
   /// List of storage sku with replica count to create direct drive replicas.
-  final pulumi.Input<List<AdditionalReplicaSet>>? additionalReplicaSets;
+  final pulumi.Input<List<AdditionalReplicaSet>?>? additionalReplicaSets;
   /// Optional. Allows users to provide customer managed keys for encrypting the OS and data disks in the gallery artifact.
-  final pulumi.Input<EncryptionImages>? encryption;
+  final pulumi.Input<EncryptionImages?>? encryption;
   /// Contains the flag setting to hide an image when users specify version='latest'
-  final pulumi.Input<bool>? excludeFromLatest;
+  final pulumi.Input<bool?>? excludeFromLatest;
   /// The name of the region.
   final pulumi.Input<String> name;
   /// The number of replicas of the Image Version to be created per region. This property is updatable.
-  final pulumi.Input<int>? regionalReplicaCount;
+  final pulumi.Input<int?>? regionalReplicaCount;
   /// Specifies the storage account type to be used to store the image. This property is not updatable.
-  final pulumi.Input<String>? storageAccountType;
+  final pulumi.Input<dynamic>? storageAccountType;
 
   /// Creates a new [TargetRegion].
   /// [additionalReplicaSets] List of storage sku with replica count to create direct drive replicas.
@@ -52,8 +52,8 @@ class TargetRegion {
       encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EncryptionImages.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       excludeFromLatest: (() { final guardedValue = map['excludeFromLatest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      regionalReplicaCount: (() { final guardedValue = map['regionalReplicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regionalReplicaCount: (() { final guardedValue = map['regionalReplicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

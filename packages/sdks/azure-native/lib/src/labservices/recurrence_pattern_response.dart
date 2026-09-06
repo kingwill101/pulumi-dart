@@ -9,9 +9,9 @@ class RecurrencePatternResponse {
   /// The frequency of the recurrence.
   final pulumi.Input<String> frequency;
   /// The interval to invoke the schedule on. For example, interval = 2 and RecurrenceFrequency.Daily will run every 2 days. When no interval is supplied, an interval of 1 is used.
-  final pulumi.Input<int>? interval;
+  final pulumi.Input<int?>? interval;
   /// The week days the schedule runs. Used for when the Frequency is set to Weekly.
-  final pulumi.Input<List<String>>? weekDays;
+  final pulumi.Input<List<String>?>? weekDays;
 
   /// Creates a new [RecurrencePatternResponse].
   /// [expirationDate] When the recurrence will expire. This date is inclusive.
@@ -38,7 +38,7 @@ class RecurrencePatternResponse {
     return RecurrencePatternResponse(
       expirationDate: pulumi.Input.fromValue(map['expirationDate'] as String),
       frequency: pulumi.Input.fromValue(map['frequency'] as String),
-      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       weekDays: (() { final guardedValue = map['weekDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

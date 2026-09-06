@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The detail of a subject.
 class UsersOrServicePrincipalSetResponse {
   /// The display Name of the entity.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The object id of the entity.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The type of user.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [UsersOrServicePrincipalSetResponse].
   /// [displayName] The display Name of the entity.

@@ -9,11 +9,11 @@ class VirtualNetworkGatewayPolicyGroupResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Shows if this is a Default VirtualNetworkGatewayPolicyGroup or not.
   final pulumi.Input<bool> isDefault;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Multiple PolicyMembers for VirtualNetworkGatewayPolicyGroup.
   final pulumi.Input<List<VirtualNetworkGatewayPolicyGroupMemberResponse>> policyMembers;
   /// Priority for VirtualNetworkGatewayPolicyGroup.
@@ -63,7 +63,7 @@ class VirtualNetworkGatewayPolicyGroupResponse {
       isDefault: pulumi.Input.fromValue(map['isDefault'] as bool),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyMembers: pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualNetworkGatewayPolicyGroupMemberResponse>(map['policyMembers']!, (value) => VirtualNetworkGatewayPolicyGroupMemberResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       vngClientConnectionConfigurations: pulumi.Input.fromValue(pulumi.Input.decodeList<SubResourceResponse>(map['vngClientConnectionConfigurations']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );

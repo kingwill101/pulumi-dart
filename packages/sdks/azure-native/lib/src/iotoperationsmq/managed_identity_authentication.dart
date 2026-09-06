@@ -7,7 +7,7 @@ class ManagedIdentityAuthentication {
   /// Token audience.
   final pulumi.Input<String> audience;
   /// Arc Extension name.
-  final pulumi.Input<String>? extensionName;
+  final pulumi.Input<String?>? extensionName;
 
   /// Creates a new [ManagedIdentityAuthentication].
   /// [audience] Token audience.

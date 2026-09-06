@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The state of the Experiment
-enum State {
+enum State implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const State(this.wireValue);
+  @override
   final String wireValue;
 
   static State fromValue(String value) {

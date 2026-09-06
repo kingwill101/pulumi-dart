@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'contact_profile_args.dart';
+import 'contact_profile_link_response.dart';
+import 'contact_profile_third_party_configuration_response.dart';
 import 'contact_profiles_properties_response_network_configuration.dart';
 import 'system_data_response.dart';
 
@@ -544,7 +546,7 @@ class ContactProfile extends pulumi.CustomResource {
   /// ARM resource identifier of the Event Hub used for telemetry. Requires granting Orbital Resource Provider the rights to send telemetry into the hub.
   late final pulumi.Output<String?> eventHubUri;
   /// Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
-  late final pulumi.Output<List<Map<String, dynamic>>> links;
+  late final pulumi.Output<List<ContactProfileLinkResponse>> links;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// Minimum viable elevation for the contact in decimal degrees. Used for listing the available contacts with a spacecraft at a given ground station.
@@ -560,7 +562,7 @@ class ContactProfile extends pulumi.CustomResource {
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
-  late final pulumi.Output<List<Map<String, dynamic>>?> thirdPartyConfigurations;
+  late final pulumi.Output<List<ContactProfileThirdPartyConfigurationResponse>?> thirdPartyConfigurations;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -581,15 +583,39 @@ class ContactProfile extends pulumi.CustomResource {
     autoTrackingConfiguration = registerOutput<String?>('autoTrackingConfiguration');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     eventHubUri = registerOutput<String?>('eventHubUri');
-    links = registerOutput<List<Map<String, dynamic>>>('links');
+    links = registerOutput<List<ContactProfileLinkResponse>>('links', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContactProfileLinkResponse>(guardedValue, (value) => ContactProfileLinkResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     minimumElevationDegrees = registerOutput<double?>('minimumElevationDegrees');
     minimumViableContactDuration = registerOutput<String?>('minimumViableContactDuration');
     this.name = registerOutput<String>('name');
     networkConfiguration = registerOutput<ContactProfilesPropertiesResponseNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContactProfilesPropertiesResponseNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    thirdPartyConfigurations = registerOutput<List<Map<String, dynamic>>?>('thirdPartyConfigurations');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    thirdPartyConfigurations = registerOutput<List<ContactProfileThirdPartyConfigurationResponse>?>('thirdPartyConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContactProfileThirdPartyConfigurationResponse>(guardedValue, (value) => ContactProfileThirdPartyConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ContactProfile] resource.
+  ContactProfile.reference(String urn)
+    : super(
+        'azure-native:orbital:ContactProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoTrackingConfiguration = registerOutput<String?>('autoTrackingConfiguration');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eventHubUri = registerOutput<String?>('eventHubUri');
+    links = registerOutput<List<ContactProfileLinkResponse>>('links', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContactProfileLinkResponse>(guardedValue, (value) => ContactProfileLinkResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    minimumElevationDegrees = registerOutput<double?>('minimumElevationDegrees');
+    minimumViableContactDuration = registerOutput<String?>('minimumViableContactDuration');
+    this.name = registerOutput<String>('name');
+    networkConfiguration = registerOutput<ContactProfilesPropertiesResponseNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContactProfilesPropertiesResponseNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    thirdPartyConfigurations = registerOutput<List<ContactProfileThirdPartyConfigurationResponse>?>('thirdPartyConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContactProfileThirdPartyConfigurationResponse>(guardedValue, (value) => ContactProfileThirdPartyConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
 }

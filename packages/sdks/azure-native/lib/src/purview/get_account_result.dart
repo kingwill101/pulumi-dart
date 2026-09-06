@@ -15,25 +15,25 @@ import 'system_data_response.dart';
 /// Result data returned by getAccount.
 class GetAccountResult {
   /// Gets or sets the status of the account.
-  final AccountPropertiesAccountStatusResponse accountStatus;
+  final AccountPropertiesAccountStatusResponse? accountStatus;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// External Cloud Service connectors
   final CloudConnectorsResponse? cloudConnectors;
   /// Gets the time at which the entity was created.
-  final String createdAt;
+  final String? createdAt;
   /// Gets the creator of the entity.
-  final String createdBy;
+  final String? createdBy;
   /// Gets the creators of the entity's object id.
-  final String createdByObjectId;
+  final String? createdByObjectId;
   /// Gets the default domain in the account.
-  final String defaultDomain;
+  final String? defaultDomain;
   /// The URIs that are the public endpoints of the account.
-  final AccountPropertiesEndpointsResponse endpoints;
+  final AccountPropertiesEndpointsResponse? endpoints;
   /// Gets or sets the friendly name.
-  final String friendlyName;
+  final String? friendlyName;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The Managed Identity of the resource
   final IdentityResponse? identity;
   /// Ingestion Storage Account Info
@@ -45,29 +45,29 @@ class GetAccountResult {
   /// Gets or sets the managed resource group name
   final String? managedResourceGroupName;
   /// Gets the resource identifiers of the managed resources.
-  final AccountPropertiesManagedResourcesResponse managedResources;
+  final AccountPropertiesManagedResourcesResponse? managedResources;
   /// Gets or sets the public network access for managed resources.
   final String? managedResourcesPublicNetworkAccess;
   /// Gets or sets the Merge Info.
   final AccountMergeInfoResponse? mergeInfo;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Gets the private endpoint connections information.
-  final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
+  final List<PrivateEndpointConnectionResponse>? privateEndpointConnections;
   /// Gets or sets the state of the provisioning.
-  final String provisioningState;
+  final String? provisioningState;
   /// Gets or sets the public network access.
   final String? publicNetworkAccess;
   /// Gets or sets the Sku.
   final AccountSkuResponse? sku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Gets or sets the state of tenant endpoint.
   final String? tenantEndpointState;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetAccountResult].
   /// [accountStatus] Gets or sets the status of the account.
@@ -97,97 +97,97 @@ class GetAccountResult {
   /// [tags] Resource tags.
   /// [tenantEndpointState] Gets or sets the state of tenant endpoint.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  const GetAccountResult({
-    required this.accountStatus,
-    required this.azureApiVersion,
+  GetAccountResult({
+    this.accountStatus,
+    this.azureApiVersion,
     this.cloudConnectors,
-    required this.createdAt,
-    required this.createdBy,
-    required this.createdByObjectId,
-    required this.defaultDomain,
-    required this.endpoints,
-    required this.friendlyName,
-    required this.id,
+    this.createdAt,
+    this.createdBy,
+    this.createdByObjectId,
+    this.defaultDomain,
+    this.endpoints,
+    this.friendlyName,
+    this.id,
     this.identity,
     this.ingestionStorage,
     this.location,
-    this.managedEventHubState,
+    String? managedEventHubState,
     this.managedResourceGroupName,
-    required this.managedResources,
-    this.managedResourcesPublicNetworkAccess,
+    this.managedResources,
+    String? managedResourcesPublicNetworkAccess,
     this.mergeInfo,
-    required this.name,
-    required this.privateEndpointConnections,
-    required this.provisioningState,
-    this.publicNetworkAccess,
+    this.name,
+    this.privateEndpointConnections,
+    this.provisioningState,
+    String? publicNetworkAccess,
     this.sku,
-    required this.systemData,
+    this.systemData,
     this.tags,
     this.tenantEndpointState,
-    required this.type,
-  });
+    this.type,
+  }) : managedEventHubState = managedEventHubState ?? 'NotSpecified', managedResourcesPublicNetworkAccess = managedResourcesPublicNetworkAccess ?? 'NotSpecified', publicNetworkAccess = publicNetworkAccess ?? 'Enabled';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountStatus': accountStatus.toMap(),
-      'azureApiVersion': azureApiVersion,
+      'accountStatus': ?accountStatus?.toMap(),
+      'azureApiVersion': ?azureApiVersion,
       'cloudConnectors': ?cloudConnectors?.toMap(),
-      'createdAt': createdAt,
-      'createdBy': createdBy,
-      'createdByObjectId': createdByObjectId,
-      'defaultDomain': defaultDomain,
-      'endpoints': endpoints.toMap(),
-      'friendlyName': friendlyName,
-      'id': id,
+      'createdAt': ?createdAt,
+      'createdBy': ?createdBy,
+      'createdByObjectId': ?createdByObjectId,
+      'defaultDomain': ?defaultDomain,
+      'endpoints': ?endpoints?.toMap(),
+      'friendlyName': ?friendlyName,
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'ingestionStorage': ?ingestionStorage?.toMap(),
       'location': ?location,
       'managedEventHubState': ?managedEventHubState,
       'managedResourceGroupName': ?managedResourceGroupName,
-      'managedResources': managedResources.toMap(),
+      'managedResources': ?managedResources?.toMap(),
       'managedResourcesPublicNetworkAccess': ?managedResourcesPublicNetworkAccess,
       'mergeInfo': ?mergeInfo?.toMap(),
-      'name': name,
-      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
-      'provisioningState': provisioningState,
+      'name': ?name,
+      'privateEndpointConnections': ?(() { final guardedValue = privateEndpointConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'provisioningState': ?provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
       'sku': ?sku?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
       'tenantEndpointState': ?tenantEndpointState,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetAccountResult.fromMap(Map<String, dynamic> map) {
     return GetAccountResult(
-      accountStatus: AccountPropertiesAccountStatusResponse.fromMap((map['accountStatus']! as Map).cast<String, dynamic>()),
-      azureApiVersion: map['azureApiVersion'] as String,
+      accountStatus: (() { final guardedValue = map['accountStatus']; if (guardedValue == null) return null; return AccountPropertiesAccountStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       cloudConnectors: (() { final guardedValue = map['cloudConnectors']; if (guardedValue == null) return null; return CloudConnectorsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      createdAt: map['createdAt'] as String,
-      createdBy: map['createdBy'] as String,
-      createdByObjectId: map['createdByObjectId'] as String,
-      defaultDomain: map['defaultDomain'] as String,
-      endpoints: AccountPropertiesEndpointsResponse.fromMap((map['endpoints']! as Map).cast<String, dynamic>()),
-      friendlyName: map['friendlyName'] as String,
-      id: map['id'] as String,
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdByObjectId: (() { final guardedValue = map['createdByObjectId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultDomain: (() { final guardedValue = map['defaultDomain']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endpoints: (() { final guardedValue = map['endpoints']; if (guardedValue == null) return null; return AccountPropertiesEndpointsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       ingestionStorage: (() { final guardedValue = map['ingestionStorage']; if (guardedValue == null) return null; return IngestionStorageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       managedEventHubState: (() { final guardedValue = map['managedEventHubState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       managedResourceGroupName: (() { final guardedValue = map['managedResourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      managedResources: AccountPropertiesManagedResourcesResponse.fromMap((map['managedResources']! as Map).cast<String, dynamic>()),
+      managedResources: (() { final guardedValue = map['managedResources']; if (guardedValue == null) return null; return AccountPropertiesManagedResourcesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       managedResourcesPublicNetworkAccess: (() { final guardedValue = map['managedResourcesPublicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
       mergeInfo: (() { final guardedValue = map['mergeInfo']; if (guardedValue == null) return null; return AccountMergeInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      name: map['name'] as String,
-      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return AccountSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       tenantEndpointState: (() { final guardedValue = map['tenantEndpointState']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

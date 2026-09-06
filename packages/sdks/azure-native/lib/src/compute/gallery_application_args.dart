@@ -10,29 +10,29 @@ import 'operating_system_types.dart';
 /// {@macro pulumi_compute_gallery_application_args_doc}
 class GalleryApplicationArgs {
   /// A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
-  final pulumi.Input<List<GalleryApplicationCustomAction>>? customActions;
+  final pulumi.Input<List<GalleryApplicationCustomAction>?>? customActions;
   /// The description of this gallery Application Definition resource. This property is updatable.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The end of life date of the gallery Application Definition. This property can be used for decommissioning purposes. This property is updatable.
-  final pulumi.Input<String>? endOfLifeDate;
+  final pulumi.Input<String?>? endOfLifeDate;
   /// The Eula agreement for the gallery Application Definition.
-  final pulumi.Input<String>? eula;
+  final pulumi.Input<String?>? eula;
   /// The name of the gallery Application Definition to be retrieved.
-  final pulumi.Input<String>? galleryApplicationName;
+  final pulumi.Input<String?>? galleryApplicationName;
   /// The name of the Shared Image Gallery.
   final pulumi.Input<String> galleryName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The privacy statement uri.
-  final pulumi.Input<String>? privacyStatementUri;
+  final pulumi.Input<String?>? privacyStatementUri;
   /// The release note uri.
-  final pulumi.Input<String>? releaseNoteUri;
+  final pulumi.Input<String?>? releaseNoteUri;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// This property allows you to specify the supported type of the OS that application is built for. Possible values are: **Windows,** **Linux.**
   final pulumi.Input<OperatingSystemTypes> supportedOSType;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GalleryApplicationArgs].
   /// [customActions] A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.

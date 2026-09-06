@@ -6,7 +6,7 @@ import 'oidcresponse.dart';
 /// Definition of Identity
 class IdentityResponse {
   /// &lt;p&gt;An object representing the &lt;a href='https://openid.net/connect/'&gt;OpenID Connect&lt;/a&gt; identity provider information.&lt;/p&gt;
-  final pulumi.Input<OIDCResponse>? oidc;
+  final pulumi.Input<OIDCResponse?>? oidc;
 
   /// Creates a new [IdentityResponse].
   /// [oidc] &lt;p&gt;An object representing the &lt;a href='https://openid.net/connect/'&gt;OpenID Connect&lt;/a&gt; identity provider information.&lt;/p&gt;

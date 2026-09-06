@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SQL database assessment settings.
 class SqlDbSettingsResponse {
   /// Gets or sets the azure SQL compute tier.
-  final pulumi.Input<String>? azureSqlComputeTier;
+  final pulumi.Input<String?>? azureSqlComputeTier;
   /// Gets or sets the azure PAAS SQL instance type.
-  final pulumi.Input<String>? azureSqlDataBaseType;
+  final pulumi.Input<String?>? azureSqlDataBaseType;
   /// Gets or sets the azure SQL purchase model.
-  final pulumi.Input<String>? azureSqlPurchaseModel;
+  final pulumi.Input<String?>? azureSqlPurchaseModel;
   /// Gets or sets the azure SQL service tier.
-  final pulumi.Input<String>? azureSqlServiceTier;
+  final pulumi.Input<String?>? azureSqlServiceTier;
 
   /// Creates a new [SqlDbSettingsResponse].
   /// [azureSqlComputeTier] Gets or sets the azure SQL compute tier.

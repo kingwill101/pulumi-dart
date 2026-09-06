@@ -9,9 +9,9 @@ import 'private_link_service_connection_state.dart';
 /// {@macro pulumi_offazure_private_endpoint_connection_controller_args_doc}
 class PrivateEndpointConnectionControllerArgs {
   /// Private link resource name.
-  final pulumi.Input<String>? peConnectionName;
+  final pulumi.Input<String?>? peConnectionName;
   /// private endpoints connection state
-  final pulumi.Input<PrivateLinkServiceConnectionState>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionState?>? privateLinkServiceConnectionState;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Site name

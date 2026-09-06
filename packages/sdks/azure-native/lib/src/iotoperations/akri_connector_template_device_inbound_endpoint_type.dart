@@ -6,13 +6,13 @@ import 'akri_connector_template_device_inbound_endpoint_configuration_schema_ref
 /// AkriConnectorTemplateDeviceInboundEndpointType properties.
 class AkriConnectorTemplateDeviceInboundEndpointType {
   /// The configuration schema references for the device inbound endpoint.
-  final pulumi.Input<AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs>? configurationSchemaRefs;
+  final pulumi.Input<AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs?>? configurationSchemaRefs;
   /// A description of the device inbound endpoint.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The type of the device inbound endpoint.
   final pulumi.Input<String> endpointType;
   /// The version of the device inbound endpoint.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [AkriConnectorTemplateDeviceInboundEndpointType].
   /// [configurationSchemaRefs] The configuration schema references for the device inbound endpoint.

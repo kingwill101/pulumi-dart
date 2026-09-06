@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Signifies whether SSL needs to be enabled or not.
-enum SSLStatus {
+enum SSLStatus implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const SSLStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static SSLStatus fromValue(String value) {

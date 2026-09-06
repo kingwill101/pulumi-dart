@@ -11,7 +11,7 @@ class AzureDevOpsOrgResponse {
   /// The name of the resource
   final pulumi.Input<String> name;
   /// Azure DevOps Organization properties.
-  final pulumi.Input<AzureDevOpsOrgPropertiesResponse>? properties;
+  final pulumi.Input<AzureDevOpsOrgPropertiesResponse?>? properties;
   /// Metadata pertaining to creation and last modification of the resource.
   final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

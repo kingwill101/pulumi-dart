@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
-enum SmbAccessBasedEnumeration {
+enum SmbAccessBasedEnumeration implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
   const SmbAccessBasedEnumeration(this.wireValue);
+  @override
   final String wireValue;
 
   static SmbAccessBasedEnumeration fromValue(String value) {

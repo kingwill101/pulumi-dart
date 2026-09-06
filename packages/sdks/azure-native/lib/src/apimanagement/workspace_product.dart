@@ -209,4 +209,25 @@ class WorkspaceProduct extends pulumi.CustomResource {
     terms = registerOutput<String?>('terms');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [WorkspaceProduct] resource.
+  WorkspaceProduct.reference(String urn)
+    : super(
+        'azure-native:apimanagement:WorkspaceProduct',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    approvalRequired = registerOutput<bool?>('approvalRequired');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    state = registerOutput<String?>('state');
+    subscriptionRequired = registerOutput<bool?>('subscriptionRequired');
+    subscriptionsLimit = registerOutput<int?>('subscriptionsLimit');
+    terms = registerOutput<String?>('terms');
+    type = registerOutput<String>('type');
+  }
 }

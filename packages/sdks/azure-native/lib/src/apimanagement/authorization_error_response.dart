@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Authorization error details.
 class AuthorizationErrorResponse {
   /// Error code
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// Error message
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [AuthorizationErrorResponse].
   /// [code] Error code

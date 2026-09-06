@@ -6,11 +6,11 @@ import 'uefi_settings_response.dart';
 /// Specifies the security profile settings for the virtual machine or virtual machine scale set.
 class SecurityProfileResponse {
   /// This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself.
-  final pulumi.Input<bool>? encryptionAtHost;
+  final pulumi.Input<bool?>? encryptionAtHost;
   /// Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings.
-  final pulumi.Input<String>? securityType;
+  final pulumi.Input<String?>? securityType;
   /// Specifies the security settings like secure boot and vTPM used while creating the virtual machine.
-  final pulumi.Input<UefiSettingsResponse>? uefiSettings;
+  final pulumi.Input<UefiSettingsResponse?>? uefiSettings;
 
   /// Creates a new [SecurityProfileResponse].
   /// [encryptionAtHost] This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself.

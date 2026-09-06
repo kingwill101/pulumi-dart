@@ -6,13 +6,13 @@ import 'nsp_access_rule_response.dart';
 /// Properties of Provisioning Issue
 class ProvisioningIssuePropertiesResponse {
   /// Description of the issue
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Type of Issue
-  final pulumi.Input<String>? issueType;
+  final pulumi.Input<String?>? issueType;
   /// Provisioning state of Network Security Perimeter configuration propagation
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<String?>? severity;
   /// Access rules that can be added to the same profile to remediate the issue.
-  final pulumi.Input<List<NspAccessRuleResponse>>? suggestedAccessRules;
+  final pulumi.Input<List<NspAccessRuleResponse>?>? suggestedAccessRules;
   /// ARM IDs of resources that can be associated to the same perimeter to remediate the issue.
   final pulumi.Input<List<String>> suggestedResourceIds;
 

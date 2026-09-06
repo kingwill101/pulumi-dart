@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information about a VM from which a formula is to be created.
 class FormulaPropertiesFromVmResponse {
   /// The identifier of the VM from which a formula is to be created.
-  final pulumi.Input<String>? labVmId;
+  final pulumi.Input<String?>? labVmId;
 
   /// Creates a new [FormulaPropertiesFromVmResponse].
   /// [labVmId] The identifier of the VM from which a formula is to be created.

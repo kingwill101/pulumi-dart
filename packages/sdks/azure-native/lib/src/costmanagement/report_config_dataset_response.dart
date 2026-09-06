@@ -10,17 +10,17 @@ import 'report_config_sorting_response.dart';
 /// The definition of data present in the report.
 class ReportConfigDatasetResponse {
   /// Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
-  final pulumi.Input<Map<String, ReportConfigAggregationResponse>>? aggregation;
+  final pulumi.Input<Map<String, ReportConfigAggregationResponse>?>? aggregation;
   /// Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided.
-  final pulumi.Input<ReportConfigDatasetConfigurationResponse>? configuration;
+  final pulumi.Input<ReportConfigDatasetConfigurationResponse?>? configuration;
   /// Has filter expression to use in the report.
-  final pulumi.Input<ReportConfigFilterResponse>? filter;
+  final pulumi.Input<ReportConfigFilterResponse?>? filter;
   /// The granularity of rows in the report.
-  final pulumi.Input<String>? granularity;
+  final pulumi.Input<String?>? granularity;
   /// Array of group by expression to use in the report. Report can have up to 2 group by clauses.
-  final pulumi.Input<List<ReportConfigGroupingResponse>>? grouping;
+  final pulumi.Input<List<ReportConfigGroupingResponse>?>? grouping;
   /// Array of order by expression to use in the report.
-  final pulumi.Input<List<ReportConfigSortingResponse>>? sorting;
+  final pulumi.Input<List<ReportConfigSortingResponse>?>? sorting;
 
   /// Creates a new [ReportConfigDatasetResponse].
   /// [aggregation] Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.

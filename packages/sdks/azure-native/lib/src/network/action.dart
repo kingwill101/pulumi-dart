@@ -6,9 +6,9 @@ import 'parameter.dart';
 /// Action to be taken on a route matching a RouteMap criterion.
 class Action {
   /// List of parameters relevant to the action.For instance if type is drop then parameters has list of prefixes to be dropped.If type is add, parameters would have list of ASN numbers to be added
-  final pulumi.Input<List<Parameter>>? parameters;
+  final pulumi.Input<List<Parameter>?>? parameters;
   /// Type of action to be taken. Supported types are 'Remove', 'Add', 'Replace', and 'Drop.'
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [Action].
   /// [parameters] List of parameters relevant to the action.For instance if type is drop then parameters has list of prefixes to be dropped.If type is add, parameters would have list of ASN numbers to be added
@@ -28,7 +28,7 @@ class Action {
   factory Action.fromMap(Map<String, dynamic> map) {
     return Action(
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Parameter>(guardedValue, (value) => Parameter.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

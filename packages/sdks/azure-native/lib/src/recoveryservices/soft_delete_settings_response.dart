@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Soft delete Settings of vault
 class SoftDeleteSettingsResponse {
-  final pulumi.Input<String>? enhancedSecurityState;
+  final pulumi.Input<String?>? enhancedSecurityState;
   /// Soft delete retention period in days
-  final pulumi.Input<int>? softDeleteRetentionPeriodInDays;
-  final pulumi.Input<String>? softDeleteState;
+  final pulumi.Input<int?>? softDeleteRetentionPeriodInDays;
+  final pulumi.Input<String?>? softDeleteState;
 
   /// Creates a new [SoftDeleteSettingsResponse].
   /// [enhancedSecurityState] Optional.
@@ -30,7 +30,7 @@ class SoftDeleteSettingsResponse {
   factory SoftDeleteSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SoftDeleteSettingsResponse(
       enhancedSecurityState: (() { final guardedValue = map['enhancedSecurityState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      softDeleteRetentionPeriodInDays: (() { final guardedValue = map['softDeleteRetentionPeriodInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      softDeleteRetentionPeriodInDays: (() { final guardedValue = map['softDeleteRetentionPeriodInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       softDeleteState: (() { final guardedValue = map['softDeleteState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

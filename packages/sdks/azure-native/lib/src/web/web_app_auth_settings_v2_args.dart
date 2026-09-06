@@ -13,19 +13,19 @@ import 'login.dart';
 /// {@macro pulumi_web_web_app_auth_settings_v2_args_doc}
 class WebAppAuthSettingsV2Args {
   /// The configuration settings that determines the validation flow of users using App Service Authentication/Authorization.
-  final pulumi.Input<GlobalValidation>? globalValidation;
+  final pulumi.Input<GlobalValidation?>? globalValidation;
   /// The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
-  final pulumi.Input<HttpSettings>? httpSettings;
+  final pulumi.Input<HttpSettings?>? httpSettings;
   /// The configuration settings of each of the identity providers used to configure App Service Authentication/Authorization.
-  final pulumi.Input<IdentityProviders>? identityProviders;
+  final pulumi.Input<IdentityProviders?>? identityProviders;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The configuration settings of the login flow of users using App Service Authentication/Authorization.
-  final pulumi.Input<Login>? login;
+  final pulumi.Input<Login?>? login;
   /// Name of web app.
   final pulumi.Input<String> name;
   /// The configuration settings of the platform of App Service Authentication/Authorization.
-  final pulumi.Input<AuthPlatform>? platform;
+  final pulumi.Input<AuthPlatform?>? platform;
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 

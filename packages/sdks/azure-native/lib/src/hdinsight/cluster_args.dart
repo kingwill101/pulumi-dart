@@ -10,19 +10,19 @@ import 'cluster_identity.dart';
 /// {@macro pulumi_hdinsight_cluster_args_doc}
 class ClusterArgs {
   /// The name of the cluster.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// The identity of the cluster, if configured.
-  final pulumi.Input<ClusterIdentity>? identity;
+  final pulumi.Input<ClusterIdentity?>? identity;
   /// The location of the cluster.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The cluster create parameters.
-  final pulumi.Input<ClusterCreateProperties>? properties;
+  final pulumi.Input<ClusterCreateProperties?>? properties;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The availability zones.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [ClusterArgs].
   /// [clusterName] The name of the cluster.

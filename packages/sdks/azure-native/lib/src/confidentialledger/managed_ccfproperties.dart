@@ -7,13 +7,13 @@ import 'member_identity_certificate.dart';
 /// Additional Managed CCF properties.
 class ManagedCCFProperties {
   /// Deployment Type of Managed CCF
-  final pulumi.Input<DeploymentType>? deploymentType;
+  final pulumi.Input<DeploymentType?>? deploymentType;
   /// List of member identity certificates for  Managed CCF
-  final pulumi.Input<List<MemberIdentityCertificate>>? memberIdentityCertificates;
+  final pulumi.Input<List<MemberIdentityCertificate>?>? memberIdentityCertificates;
   /// Number of CCF nodes in the Managed CCF.
-  final pulumi.Input<int>? nodeCount;
+  final pulumi.Input<int?>? nodeCount;
   /// Object representing RunningState for Managed CCF.
-  final pulumi.Input<String>? runningState;
+  final pulumi.Input<dynamic>? runningState;
 
   /// Creates a new [ManagedCCFProperties].
   /// [deploymentType] Deployment Type of Managed CCF
@@ -40,8 +40,8 @@ class ManagedCCFProperties {
     return ManagedCCFProperties(
       deploymentType: (() { final guardedValue = map['deploymentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentType.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       memberIdentityCertificates: (() { final guardedValue = map['memberIdentityCertificates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MemberIdentityCertificate>(guardedValue, (value) => MemberIdentityCertificate.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      runningState: (() { final guardedValue = map['runningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      runningState: (() { final guardedValue = map['runningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

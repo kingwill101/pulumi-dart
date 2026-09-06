@@ -6,9 +6,9 @@ import 'subnet_response.dart';
 /// Describes properties of the IP address.
 class IpAddressResponse {
   /// Represents the IP Address.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Represents the Ip Address Version.
-  final pulumi.Input<String>? ipAddressVersion;
+  final pulumi.Input<String?>? ipAddressVersion;
   /// The subnet to which this IP address belongs.
   final pulumi.Input<SubnetResponse> subnet;
 

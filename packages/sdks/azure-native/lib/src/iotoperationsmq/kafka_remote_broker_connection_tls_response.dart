@@ -7,7 +7,7 @@ class KafkaRemoteBrokerConnectionTlsResponse {
   /// Tls Enabled on Remote Broker Connection.
   final pulumi.Input<bool> tlsEnabled;
   /// Trusted CA certificate name for Remote Broker.
-  final pulumi.Input<String>? trustedCaCertificateConfigMap;
+  final pulumi.Input<String?>? trustedCaCertificateConfigMap;
 
   /// Creates a new [KafkaRemoteBrokerConnectionTlsResponse].
   /// [tlsEnabled] Tls Enabled on Remote Broker Connection.

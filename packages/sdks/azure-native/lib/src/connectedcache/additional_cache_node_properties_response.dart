@@ -28,11 +28,11 @@ class AdditionalCacheNodePropertiesResponse {
   /// Auto update version that is the Next available version to update on mcc cache node
   final pulumi.Input<String> autoUpdateNextAvailableVersion;
   /// Auto update or fast update version
-  final pulumi.Input<String>? autoUpdateVersion;
+  final pulumi.Input<String?>? autoUpdateVersion;
   /// Cache node resource Bgp configuration.
-  final pulumi.Input<BgpConfigurationResponse>? bgpConfiguration;
+  final pulumi.Input<BgpConfigurationResponse?>? bgpConfiguration;
   /// issues list to return the issues as part of the additional cache node properties
-  final pulumi.Input<List<String>>? cacheNodePropertiesDetailsIssuesList;
+  final pulumi.Input<List<String>?>? cacheNodePropertiesDetailsIssuesList;
   /// Cache node resource state as integer.
   final pulumi.Input<int> cacheNodeState;
   /// Cache node resource detailed state text.
@@ -40,35 +40,35 @@ class AdditionalCacheNodePropertiesResponse {
   /// Cache node resource short state text.
   final pulumi.Input<String> cacheNodeStateShortText;
   /// Cache node resource drive configurations.
-  final pulumi.Input<List<CacheNodeDriveConfigurationResponse>>? driveConfiguration;
+  final pulumi.Input<List<CacheNodeDriveConfigurationResponse>?>? driveConfiguration;
   /// Cache node resource flag indicating if cache node has been physically installed or provisioned on their physical lab.
   final pulumi.Input<bool> isProvisioned;
   /// Cache node resource requires a proxy
-  final pulumi.Input<String>? isProxyRequired;
+  final pulumi.Input<String?>? isProxyRequired;
   /// Optional property #1 of Mcc response object
-  final pulumi.Input<String>? optionalProperty1;
+  final pulumi.Input<String?>? optionalProperty1;
   /// Optional property #2 of Mcc response object
-  final pulumi.Input<String>? optionalProperty2;
+  final pulumi.Input<String?>? optionalProperty2;
   /// Optional property #3 of Mcc response object
-  final pulumi.Input<String>? optionalProperty3;
+  final pulumi.Input<String?>? optionalProperty3;
   /// Optional property #4 of Mcc response object
-  final pulumi.Input<String>? optionalProperty4;
+  final pulumi.Input<String?>? optionalProperty4;
   /// Optional property #5 of Mcc response object
-  final pulumi.Input<String>? optionalProperty5;
+  final pulumi.Input<String?>? optionalProperty5;
   /// Operating system of the cache node
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// Cache node resource Mcc product version.
   final pulumi.Input<String> productVersion;
   /// Cache node resource Mcc proxy Url
-  final pulumi.Input<String>? proxyUrl;
+  final pulumi.Input<String?>? proxyUrl;
   /// proxyUrl configuration of the cache node
-  final pulumi.Input<ProxyUrlConfigurationResponse>? proxyUrlConfiguration;
+  final pulumi.Input<ProxyUrlConfigurationResponse?>? proxyUrlConfiguration;
   /// Update Cycle Type
-  final pulumi.Input<String>? updateCycleType;
+  final pulumi.Input<String?>? updateCycleType;
   /// Update related information details
-  final pulumi.Input<String>? updateInfoDetails;
+  final pulumi.Input<String?>? updateInfoDetails;
   /// customer requested date time for mcc install of update cycle
-  final pulumi.Input<String>? updateRequestedDateTime;
+  final pulumi.Input<String?>? updateRequestedDateTime;
 
   /// Creates a new [AdditionalCacheNodePropertiesResponse].
   /// [aggregatedStatusCode] Cache node resource aggregated status code.
@@ -174,7 +174,7 @@ class AdditionalCacheNodePropertiesResponse {
 
   factory AdditionalCacheNodePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalCacheNodePropertiesResponse(
-      aggregatedStatusCode: pulumi.Input.fromValue(map['aggregatedStatusCode'] as int),
+      aggregatedStatusCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['aggregatedStatusCode'])),
       aggregatedStatusDetails: pulumi.Input.fromValue(map['aggregatedStatusDetails'] as String),
       aggregatedStatusText: pulumi.Input.fromValue(map['aggregatedStatusText'] as String),
       autoUpdateAppliedVersion: pulumi.Input.fromValue(map['autoUpdateAppliedVersion'] as String),
@@ -187,7 +187,7 @@ class AdditionalCacheNodePropertiesResponse {
       autoUpdateVersion: (() { final guardedValue = map['autoUpdateVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bgpConfiguration: (() { final guardedValue = map['bgpConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BgpConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cacheNodePropertiesDetailsIssuesList: (() { final guardedValue = map['cacheNodePropertiesDetailsIssuesList']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      cacheNodeState: pulumi.Input.fromValue(map['cacheNodeState'] as int),
+      cacheNodeState: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cacheNodeState'])),
       cacheNodeStateDetailedText: pulumi.Input.fromValue(map['cacheNodeStateDetailedText'] as String),
       cacheNodeStateShortText: pulumi.Input.fromValue(map['cacheNodeStateShortText'] as String),
       driveConfiguration: (() { final guardedValue = map['driveConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CacheNodeDriveConfigurationResponse>(guardedValue, (value) => CacheNodeDriveConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),

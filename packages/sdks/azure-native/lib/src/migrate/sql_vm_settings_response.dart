@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlVmSettingsResponse {
   /// Gets or sets the Azure VM families (calling instance series to keep it
   /// consistent with other targets).
-  final pulumi.Input<List<String>>? instanceSeries;
+  final pulumi.Input<List<String>?>? instanceSeries;
 
   /// Creates a new [SqlVmSettingsResponse].
   /// [instanceSeries] Gets or sets the Azure VM families (calling instance series to keep it

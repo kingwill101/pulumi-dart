@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ddos_settings_response.dart';
 import 'extended_location_response.dart';
+import 'ip_tag_response.dart';
 import 'ipconfiguration_response.dart';
 import 'nat_gateway_response.dart';
 import 'public_ipaddress_args.dart';
@@ -667,7 +668,7 @@ class PublicIPAddressNetwork extends pulumi.CustomResource {
   /// The IP configuration associated with the public IP address.
   late final pulumi.Output<IPConfigurationResponse> ipConfiguration;
   /// The list of tags associated with the public IP address.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ipTags;
+  late final pulumi.Output<List<IpTagResponse>?> ipTags;
   /// The linked public IP address of the public IP address resource.
   late final pulumi.Output<PublicIPAddressResponse?> linkedPublicIPAddress;
   /// Resource location.
@@ -722,7 +723,7 @@ class PublicIPAddressNetwork extends pulumi.CustomResource {
     idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
     ipAddress = registerOutput<String?>('ipAddress');
     ipConfiguration = registerOutput<IPConfigurationResponse>('ipConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IPConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ipTags = registerOutput<List<Map<String, dynamic>>?>('ipTags');
+    ipTags = registerOutput<List<IpTagResponse>?>('ipTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpTagResponse>(guardedValue, (value) => IpTagResponse.fromMap((value as Map).cast<String, dynamic>())); });
     linkedPublicIPAddress = registerOutput<PublicIPAddressResponse?>('linkedPublicIPAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PublicIPAddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     migrationPhase = registerOutput<String?>('migrationPhase');
@@ -735,8 +736,44 @@ class PublicIPAddressNetwork extends pulumi.CustomResource {
     resourceGuid = registerOutput<String>('resourceGuid');
     servicePublicIPAddress = registerOutput<PublicIPAddressResponse?>('servicePublicIPAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PublicIPAddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sku = registerOutput<PublicIPAddressSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PublicIPAddressSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [PublicIPAddressNetwork] resource.
+  PublicIPAddressNetwork.reference(String urn)
+    : super(
+        'azure-native:network:PublicIPAddress',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    ddosSettings = registerOutput<DdosSettingsResponse?>('ddosSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DdosSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deleteOption = registerOutput<String?>('deleteOption');
+    dnsSettings = registerOutput<PublicIPAddressDnsSettingsResponse?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PublicIPAddressDnsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
+    ipAddress = registerOutput<String?>('ipAddress');
+    ipConfiguration = registerOutput<IPConfigurationResponse>('ipConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IPConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipTags = registerOutput<List<IpTagResponse>?>('ipTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpTagResponse>(guardedValue, (value) => IpTagResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    linkedPublicIPAddress = registerOutput<PublicIPAddressResponse?>('linkedPublicIPAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PublicIPAddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    migrationPhase = registerOutput<String?>('migrationPhase');
+    this.name = registerOutput<String>('name');
+    natGateway = registerOutput<NatGatewayResponse?>('natGateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NatGatewayResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publicIPAddressVersion = registerOutput<String?>('publicIPAddressVersion');
+    publicIPAllocationMethod = registerOutput<String?>('publicIPAllocationMethod');
+    publicIPPrefix = registerOutput<SubResourceResponse?>('publicIPPrefix', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGuid = registerOutput<String>('resourceGuid');
+    servicePublicIPAddress = registerOutput<PublicIPAddressResponse?>('servicePublicIPAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PublicIPAddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<PublicIPAddressSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PublicIPAddressSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

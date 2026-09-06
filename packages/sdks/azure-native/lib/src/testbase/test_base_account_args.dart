@@ -10,19 +10,19 @@ import 'test_base_account_sku.dart';
 /// {@macro pulumi_testbase_test_base_account_args_doc}
 class TestBaseAccountArgs {
   /// The identity of the testBaseAccount.
-  final pulumi.Input<SystemAssignedServiceIdentity>? identity;
+  final pulumi.Input<SystemAssignedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The flag indicating if we would like to restore the Test Base Accounts which were soft deleted before.
-  final pulumi.Input<bool>? restore;
+  final pulumi.Input<bool?>? restore;
   /// The SKU of the Test Base Account.
   final pulumi.Input<TestBaseAccountSKU> sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The resource name of the Test Base Account.
-  final pulumi.Input<String>? testBaseAccountName;
+  final pulumi.Input<String?>? testBaseAccountName;
 
   /// Creates a new [TestBaseAccountArgs].
   /// [identity] The identity of the testBaseAccount.

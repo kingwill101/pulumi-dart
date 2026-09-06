@@ -8,29 +8,29 @@ class CreationDataResponse {
   /// This enumerates the possible sources of a disk's creation.
   final pulumi.Input<String> createOption;
   /// Required if createOption is CopyFromSanSnapshot. This is the ARM id of the source elastic san volume snapshot.
-  final pulumi.Input<String>? elasticSanResourceId;
+  final pulumi.Input<String?>? elasticSanResourceId;
   /// Required if creating from a Gallery Image. The id/sharedGalleryImageId/communityGalleryImageId of the ImageDiskReference will be the ARM id of the shared galley image version from which to create a disk.
-  final pulumi.Input<ImageDiskReferenceResponse>? galleryImageReference;
+  final pulumi.Input<ImageDiskReferenceResponse?>? galleryImageReference;
   /// Disk source information for PIR or user images.
-  final pulumi.Input<ImageDiskReferenceResponse>? imageReference;
+  final pulumi.Input<ImageDiskReferenceResponse?>? imageReference;
   /// Logical sector size in bytes for Ultra disks. Supported values are 512 ad 4096. 4096 is the default.
-  final pulumi.Input<int>? logicalSectorSize;
+  final pulumi.Input<int?>? logicalSectorSize;
   /// Set this flag to true to get a boost on the performance target of the disk deployed, see here on the respective performance target. This flag can only be set on disk creation time and cannot be disabled after enabled.
-  final pulumi.Input<bool>? performancePlus;
+  final pulumi.Input<bool?>? performancePlus;
   /// If this field is set on a snapshot and createOption is CopyStart, the snapshot will be copied at a quicker speed.
-  final pulumi.Input<String>? provisionedBandwidthCopySpeed;
+  final pulumi.Input<String?>? provisionedBandwidthCopySpeed;
   /// If createOption is ImportSecure, this is the URI of a blob to be imported into VM guest state.
-  final pulumi.Input<String>? securityDataUri;
+  final pulumi.Input<String?>? securityDataUri;
   /// If createOption is Copy, this is the ARM id of the source snapshot or disk.
-  final pulumi.Input<String>? sourceResourceId;
+  final pulumi.Input<String?>? sourceResourceId;
   /// If this field is set, this is the unique id identifying the source of this resource.
   final pulumi.Input<String> sourceUniqueId;
   /// If createOption is Import, this is the URI of a blob to be imported into a managed disk.
-  final pulumi.Input<String>? sourceUri;
+  final pulumi.Input<String?>? sourceUri;
   /// Required if createOption is Import. The Azure Resource Manager identifier of the storage account containing the blob to import as a disk.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// If createOption is Upload, this is the size of the contents of the upload including the VHD footer. This value should be between 20972032 (20 MiB + 512 bytes for the VHD footer) and 35183298347520 bytes (32 TiB + 512 bytes for the VHD footer).
-  final pulumi.Input<double>? uploadSizeBytes;
+  final pulumi.Input<double?>? uploadSizeBytes;
 
   /// Creates a new [CreationDataResponse].
   /// [createOption] This enumerates the possible sources of a disk's creation.
@@ -86,7 +86,7 @@ class CreationDataResponse {
       elasticSanResourceId: (() { final guardedValue = map['elasticSanResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       galleryImageReference: (() { final guardedValue = map['galleryImageReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ImageDiskReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       imageReference: (() { final guardedValue = map['imageReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ImageDiskReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      logicalSectorSize: (() { final guardedValue = map['logicalSectorSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      logicalSectorSize: (() { final guardedValue = map['logicalSectorSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       performancePlus: (() { final guardedValue = map['performancePlus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       provisionedBandwidthCopySpeed: (() { final guardedValue = map['provisionedBandwidthCopySpeed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       securityDataUri: (() { final guardedValue = map['securityDataUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -94,7 +94,7 @@ class CreationDataResponse {
       sourceUniqueId: pulumi.Input.fromValue(map['sourceUniqueId'] as String),
       sourceUri: (() { final guardedValue = map['sourceUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      uploadSizeBytes: (() { final guardedValue = map['uploadSizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      uploadSizeBytes: (() { final guardedValue = map['uploadSizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

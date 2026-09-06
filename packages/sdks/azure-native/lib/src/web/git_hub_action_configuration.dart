@@ -7,13 +7,13 @@ import 'git_hub_action_container_configuration.dart';
 /// The GitHub action configuration.
 class GitHubActionConfiguration {
   /// GitHub Action code configuration.
-  final pulumi.Input<GitHubActionCodeConfiguration>? codeConfiguration;
+  final pulumi.Input<GitHubActionCodeConfiguration?>? codeConfiguration;
   /// GitHub Action container configuration.
-  final pulumi.Input<GitHubActionContainerConfiguration>? containerConfiguration;
+  final pulumi.Input<GitHubActionContainerConfiguration?>? containerConfiguration;
   /// Workflow option to determine whether the workflow file should be generated and written to the repository.
-  final pulumi.Input<bool>? generateWorkflowFile;
+  final pulumi.Input<bool?>? generateWorkflowFile;
   /// This will help determine the workflow configuration to select.
-  final pulumi.Input<bool>? isLinux;
+  final pulumi.Input<bool?>? isLinux;
 
   /// Creates a new [GitHubActionConfiguration].
   /// [codeConfiguration] GitHub Action code configuration.

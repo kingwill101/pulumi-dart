@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Version of computeInstance.
 class ComputeInstanceVersionResponse {
   /// Runtime of compute instance.
-  final pulumi.Input<String>? runtime;
+  final pulumi.Input<String?>? runtime;
 
   /// Creates a new [ComputeInstanceVersionResponse].
   /// [runtime] Runtime of compute instance.

@@ -6,7 +6,7 @@ import 'elastic_encryption_response.dart';
 /// NetApp elastic account properties
 class ElasticAccountPropertiesResponse {
   /// Encryption settings
-  final pulumi.Input<ElasticEncryptionResponse>? encryption;
+  final pulumi.Input<ElasticEncryptionResponse?>? encryption;
   /// Azure lifecycle management.
   final pulumi.Input<String> provisioningState;
 

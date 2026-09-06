@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The name of the aggregation function to use.
-enum FunctionType {
+enum FunctionType implements pulumi.PulumiEnum<String> {
   valueSum("Sum");
 
   const FunctionType(this.wireValue);
+  @override
   final String wireValue;
 
   static FunctionType fromValue(String value) {

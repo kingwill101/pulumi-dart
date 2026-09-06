@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
-enum AdvancedFilterOperatorType {
+enum AdvancedFilterOperatorType implements pulumi.PulumiEnum<String> {
   valueNumberIn("NumberIn"),
   valueNumberNotIn("NumberNotIn"),
   valueNumberLessThan("NumberLessThan"),
@@ -21,6 +23,7 @@ enum AdvancedFilterOperatorType {
   valueIsNotNull("IsNotNull");
 
   const AdvancedFilterOperatorType(this.wireValue);
+  @override
   final String wireValue;
 
   static AdvancedFilterOperatorType fromValue(String value) {

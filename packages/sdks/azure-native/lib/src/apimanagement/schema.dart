@@ -462,4 +462,21 @@ class Schema extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     value = registerOutput<String?>('value');
   }
+
+  /// Creates a typed reference to an existing [Schema] resource.
+  Schema.reference(String urn)
+    : super(
+        'azure-native:apimanagement:Schema',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    schemaType = registerOutput<String>('schemaType');
+    type = registerOutput<String>('type');
+    value = registerOutput<String?>('value');
+  }
 }

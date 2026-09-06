@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines the source of the SSL certificate.
-enum AfdCertificateType {
+enum AfdCertificateType implements pulumi.PulumiEnum<String> {
   customerCertificate("CustomerCertificate"),
   managedCertificate("ManagedCertificate"),
   azureFirstPartyManagedCertificate("AzureFirstPartyManagedCertificate");
 
   const AfdCertificateType(this.wireValue);
+  @override
   final String wireValue;
 
   static AfdCertificateType fromValue(String value) {

@@ -9,15 +9,15 @@ class ApplicationGatewayPrivateEndpointConnectionResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The consumer link id.
   final pulumi.Input<String> linkIdentifier;
   /// Name of the private endpoint connection on an application gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource of private end point.
   final pulumi.Input<PrivateEndpointResponse> privateEndpoint;
   /// A collection of information about the state of the connection between service consumer and provider.
-  final pulumi.Input<PrivateLinkServiceConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStateResponse?>? privateLinkServiceConnectionState;
   /// The provisioning state of the application gateway private endpoint connection resource.
   final pulumi.Input<String> provisioningState;
   /// Type of the resource.

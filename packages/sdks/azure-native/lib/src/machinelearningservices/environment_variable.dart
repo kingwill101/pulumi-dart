@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentVariable {
   /// Type of the Environment Variable. Possible values are: local - For local variable
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
   /// Value of the Environment variable
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [EnvironmentVariable].
   /// [type] Type of the Environment Variable. Possible values are: local - For local variable
   /// [value] Value of the Environment variable
-  const EnvironmentVariable({
-    this.type,
+  EnvironmentVariable({
+    pulumi.Input<dynamic>? type,
     this.value,
-  });
+  }) : type = type ?? pulumi.Input.fromValue('local');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +25,7 @@ class EnvironmentVariable {
 
   factory EnvironmentVariable.fromMap(Map<String, dynamic> map) {
     return EnvironmentVariable(
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

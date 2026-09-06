@@ -6,7 +6,7 @@ import 'network_adapter.dart';
 /// Network configuration.
 class NetworkConfiguration {
   /// List of network adapters.
-  final pulumi.Input<List<NetworkAdapter>>? networkAdapters;
+  final pulumi.Input<List<NetworkAdapter>?>? networkAdapters;
 
   /// Creates a new [NetworkConfiguration].
   /// [networkAdapters] List of network adapters.

@@ -19,3 +19,14 @@ Future<GetDiagnosticSettingResult> getDiagnosticSetting(
   );
   return GetDiagnosticSettingResult.fromMap(result);
 }
+
+pulumi.Output<GetDiagnosticSettingResult> getDiagnosticSettingOutput(
+  GetDiagnosticSettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:aadiam:getDiagnosticSetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiagnosticSettingResult.fromMap);
+}

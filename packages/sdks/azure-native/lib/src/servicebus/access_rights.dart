@@ -1,9 +1,12 @@
-enum AccessRights {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum AccessRights implements pulumi.PulumiEnum<String> {
   valueManage("Manage"),
   valueSend("Send"),
   valueListen("Listen");
 
   const AccessRights(this.wireValue);
+  @override
   final String wireValue;
 
   static AccessRights fromValue(String value) {

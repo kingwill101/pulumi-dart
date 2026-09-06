@@ -6,21 +6,21 @@ class GetServerAzureADAdministratorResult {
   /// Type of the sever administrator.
   final String? administratorType;
   /// Azure Active Directory only Authentication enabled.
-  final bool azureADOnlyAuthentication;
+  final bool? azureADOnlyAuthentication;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Login name of the server administrator.
-  final String login;
+  final String? login;
   /// Resource name.
-  final String name;
+  final String? name;
   /// SID (object ID) of the server administrator.
-  final String sid;
+  final String? sid;
   /// Tenant ID of the administrator.
   final String? tenantId;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetServerAzureADAdministratorResult].
   /// [administratorType] Type of the sever administrator.
@@ -34,41 +34,41 @@ class GetServerAzureADAdministratorResult {
   /// [type] Resource type.
   const GetServerAzureADAdministratorResult({
     this.administratorType,
-    required this.azureADOnlyAuthentication,
-    required this.azureApiVersion,
-    required this.id,
-    required this.login,
-    required this.name,
-    required this.sid,
+    this.azureADOnlyAuthentication,
+    this.azureApiVersion,
+    this.id,
+    this.login,
+    this.name,
+    this.sid,
     this.tenantId,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'administratorType': ?administratorType,
-      'azureADOnlyAuthentication': azureADOnlyAuthentication,
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'login': login,
-      'name': name,
-      'sid': sid,
+      'azureADOnlyAuthentication': ?azureADOnlyAuthentication,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'login': ?login,
+      'name': ?name,
+      'sid': ?sid,
       'tenantId': ?tenantId,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetServerAzureADAdministratorResult.fromMap(Map<String, dynamic> map) {
     return GetServerAzureADAdministratorResult(
       administratorType: (() { final guardedValue = map['administratorType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureADOnlyAuthentication: map['azureADOnlyAuthentication'] as bool,
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      login: map['login'] as String,
-      name: map['name'] as String,
-      sid: map['sid'] as String,
+      azureADOnlyAuthentication: (() { final guardedValue = map['azureADOnlyAuthentication']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      login: (() { final guardedValue = map['login']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sid: (() { final guardedValue = map['sid']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

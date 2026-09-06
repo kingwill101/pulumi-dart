@@ -14,33 +14,33 @@ import 'vpn_site_link.dart';
 /// {@macro pulumi_network_vpn_site_args_doc}
 class VpnSiteArgs {
   /// The AddressSpace that contains an array of IP address ranges.
-  final pulumi.Input<AddressSpace>? addressSpace;
+  final pulumi.Input<AddressSpace?>? addressSpace;
   /// The set of bgp properties.
-  final pulumi.Input<BgpSettings>? bgpProperties;
+  final pulumi.Input<BgpSettings?>? bgpProperties;
   /// The device properties.
-  final pulumi.Input<DeviceProperties>? deviceProperties;
+  final pulumi.Input<DeviceProperties?>? deviceProperties;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The ip-address for the vpn-site.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// IsSecuritySite flag.
-  final pulumi.Input<bool>? isSecuritySite;
+  final pulumi.Input<bool?>? isSecuritySite;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Office365 Policy.
-  final pulumi.Input<O365PolicyProperties>? o365Policy;
+  final pulumi.Input<O365PolicyProperties?>? o365Policy;
   /// The resource group name of the VpnSite.
   final pulumi.Input<String> resourceGroupName;
   /// The key for vpn-site that can be used for connections.
-  final pulumi.Input<String>? siteKey;
+  final pulumi.Input<String?>? siteKey;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The VirtualWAN to which the vpnSite belongs.
-  final pulumi.Input<SubResource>? virtualWan;
+  final pulumi.Input<SubResource?>? virtualWan;
   /// List of all vpn site links.
-  final pulumi.Input<List<VpnSiteLink>>? vpnSiteLinks;
+  final pulumi.Input<List<VpnSiteLink>?>? vpnSiteLinks;
   /// The name of the VpnSite being created or updated.
-  final pulumi.Input<String>? vpnSiteName;
+  final pulumi.Input<String?>? vpnSiteName;
 
   /// Creates a new [VpnSiteArgs].
   /// [addressSpace] The AddressSpace that contains an array of IP address ranges.

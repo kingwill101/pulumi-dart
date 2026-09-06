@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The private endpoint resource from Microsoft.Network provider.
 class PrivateEndpointConnectionPropertiesPrivateEndpoint {
   /// The resource ID of the private endpoint resource from Microsoft.Network provider.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [PrivateEndpointConnectionPropertiesPrivateEndpoint].
   /// [id] The resource ID of the private endpoint resource from Microsoft.Network provider.

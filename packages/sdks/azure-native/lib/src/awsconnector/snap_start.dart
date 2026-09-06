@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of SnapStart
 class SnapStart {
   /// Set ``ApplyOn`` to ``PublishedVersions`` to create a snapshot of the initialized execution environment when you publish a function version.
-  final pulumi.Input<String>? applyOn;
+  final pulumi.Input<dynamic>? applyOn;
 
   /// Creates a new [SnapStart].
   /// [applyOn] Set ``ApplyOn`` to ``PublishedVersions`` to create a snapshot of the initialized execution environment when you publish a function version.
@@ -21,7 +21,7 @@ class SnapStart {
 
   factory SnapStart.fromMap(Map<String, dynamic> map) {
     return SnapStart(
-      applyOn: (() { final guardedValue = map['applyOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      applyOn: (() { final guardedValue = map['applyOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

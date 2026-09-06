@@ -6,7 +6,7 @@ import 'resource_reference.dart';
 /// Desired outbound IP resources for the cluster load balancer.
 class ManagedClusterLoadBalancerProfileOutboundIPs {
   /// A list of public IP resources.
-  final pulumi.Input<List<ResourceReference>>? publicIPs;
+  final pulumi.Input<List<ResourceReference>?>? publicIPs;
 
   /// Creates a new [ManagedClusterLoadBalancerProfileOutboundIPs].
   /// [publicIPs] A list of public IP resources.

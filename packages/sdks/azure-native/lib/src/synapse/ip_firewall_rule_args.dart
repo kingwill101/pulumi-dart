@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_synapse_ip_firewall_rule_args_doc}
 class IpFirewallRuleArgs {
   /// The end IP address of the firewall rule. Must be IPv4 format. Must be greater than or equal to startIpAddress
-  final pulumi.Input<String>? endIpAddress;
+  final pulumi.Input<String?>? endIpAddress;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The IP firewall rule name
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
   /// The start IP address of the firewall rule. Must be IPv4 format
-  final pulumi.Input<String>? startIpAddress;
+  final pulumi.Input<String?>? startIpAddress;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 

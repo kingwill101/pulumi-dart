@@ -10,29 +10,29 @@ class GetVirtualWanResult {
   /// True if Vnet to Vnet traffic is allowed.
   final bool? allowVnetToVnetTraffic;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Vpn encryption to be disabled or not.
   final bool? disableVpnEncryption;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Resource ID.
   final String? id;
   /// Resource location.
-  final String location;
+  final String? location;
   /// Resource name.
-  final String name;
+  final String? name;
   /// The office local breakout category.
-  final String office365LocalBreakoutCategory;
+  final String? office365LocalBreakoutCategory;
   /// The provisioning state of the virtual WAN resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Resource type.
-  final String type;
+  final String? type;
   /// List of VirtualHubs in the VirtualWAN.
-  final List<SubResourceResponse> virtualHubs;
+  final List<SubResourceResponse>? virtualHubs;
   /// List of VpnSites in the VirtualWAN.
-  final List<SubResourceResponse> vpnSites;
+  final List<SubResourceResponse>? vpnSites;
 
   /// Creates a new [GetVirtualWanResult].
   /// [allowBranchToBranchTraffic] True if branch to branch traffic is allowed.
@@ -52,36 +52,36 @@ class GetVirtualWanResult {
   const GetVirtualWanResult({
     this.allowBranchToBranchTraffic,
     this.allowVnetToVnetTraffic,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.disableVpnEncryption,
-    required this.etag,
+    this.etag,
     this.id,
-    required this.location,
-    required this.name,
-    required this.office365LocalBreakoutCategory,
-    required this.provisioningState,
+    this.location,
+    this.name,
+    this.office365LocalBreakoutCategory,
+    this.provisioningState,
     this.tags,
-    required this.type,
-    required this.virtualHubs,
-    required this.vpnSites,
+    this.type,
+    this.virtualHubs,
+    this.vpnSites,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowBranchToBranchTraffic': ?allowBranchToBranchTraffic,
       'allowVnetToVnetTraffic': ?allowVnetToVnetTraffic,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'disableVpnEncryption': ?disableVpnEncryption,
-      'etag': etag,
+      'etag': ?etag,
       'id': ?id,
-      'location': location,
-      'name': name,
-      'office365LocalBreakoutCategory': office365LocalBreakoutCategory,
-      'provisioningState': provisioningState,
+      'location': ?location,
+      'name': ?name,
+      'office365LocalBreakoutCategory': ?office365LocalBreakoutCategory,
+      'provisioningState': ?provisioningState,
       'tags': ?tags,
-      'type': type,
-      'virtualHubs': pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(virtualHubs, (value) => value.toMap()),
-      'vpnSites': pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(vpnSites, (value) => value.toMap()),
+      'type': ?type,
+      'virtualHubs': ?(() { final guardedValue = virtualHubs; if (guardedValue == null) return null; return pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'vpnSites': ?(() { final guardedValue = vpnSites; if (guardedValue == null) return null; return pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
@@ -89,18 +89,18 @@ class GetVirtualWanResult {
     return GetVirtualWanResult(
       allowBranchToBranchTraffic: (() { final guardedValue = map['allowBranchToBranchTraffic']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       allowVnetToVnetTraffic: (() { final guardedValue = map['allowVnetToVnetTraffic']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       disableVpnEncryption: (() { final guardedValue = map['disableVpnEncryption']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      etag: map['etag'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      office365LocalBreakoutCategory: map['office365LocalBreakoutCategory'] as String,
-      provisioningState: map['provisioningState'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      office365LocalBreakoutCategory: (() { final guardedValue = map['office365LocalBreakoutCategory']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      virtualHubs: pulumi.Input.decodeList<SubResourceResponse>(map['virtualHubs']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      vpnSites: pulumi.Input.decodeList<SubResourceResponse>(map['vpnSites']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      virtualHubs: (() { final guardedValue = map['virtualHubs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      vpnSites: (() { final guardedValue = map['vpnSites']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

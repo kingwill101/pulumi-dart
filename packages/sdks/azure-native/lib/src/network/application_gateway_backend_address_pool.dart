@@ -6,11 +6,11 @@ import 'application_gateway_backend_address.dart';
 /// Backend Address Pool of an application gateway.
 class ApplicationGatewayBackendAddressPool {
   /// Backend addresses.
-  final pulumi.Input<List<ApplicationGatewayBackendAddress>>? backendAddresses;
+  final pulumi.Input<List<ApplicationGatewayBackendAddress>?>? backendAddresses;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the backend address pool that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ApplicationGatewayBackendAddressPool].
   /// [backendAddresses] Backend addresses.

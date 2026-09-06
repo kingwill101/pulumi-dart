@@ -19,3 +19,14 @@ Future<GetMultipleActivationKeyResult> getMultipleActivationKey(
   );
   return GetMultipleActivationKeyResult.fromMap(result);
 }
+
+pulumi.Output<GetMultipleActivationKeyResult> getMultipleActivationKeyOutput(
+  GetMultipleActivationKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:windowsesu:getMultipleActivationKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMultipleActivationKeyResult.fromMap);
+}

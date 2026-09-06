@@ -4,23 +4,23 @@
 /// Result data returned by getClientToken.
 class GetClientTokenResult {
   /// OAuth token for Azure Management API and SDK authentication.
-  final String token;
+  final String? token;
 
   /// Creates a new [GetClientTokenResult].
   /// [token] OAuth token for Azure Management API and SDK authentication.
   const GetClientTokenResult({
-    required this.token,
+    this.token,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'token': token,
+      'token': ?token,
     };
   }
 
   factory GetClientTokenResult.fromMap(Map<String, dynamic> map) {
     return GetClientTokenResult(
-      token: map['token'] as String,
+      token: (() { final guardedValue = map['token']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

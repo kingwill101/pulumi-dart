@@ -7,15 +7,15 @@ import 'virtual_machine_instance_properties_os_profile_windows_configuration.dar
 /// OsProfile - describes the configuration of the operating system and sets login data
 class VirtualMachineInstancePropertiesOsProfile {
   /// AdminPassword - admin password
-  final pulumi.Input<String>? adminPassword;
+  final pulumi.Input<String?>? adminPassword;
   /// AdminUsername - admin username
-  final pulumi.Input<String>? adminUsername;
+  final pulumi.Input<String?>? adminUsername;
   /// ComputerName - name of the compute
-  final pulumi.Input<String>? computerName;
+  final pulumi.Input<String?>? computerName;
   /// LinuxConfiguration - linux specific configuration values for the virtual machine instance
-  final pulumi.Input<VirtualMachineInstancePropertiesOsProfileLinuxConfiguration>? linuxConfiguration;
+  final pulumi.Input<VirtualMachineInstancePropertiesOsProfileLinuxConfiguration?>? linuxConfiguration;
   /// Windows Configuration for the virtual machine instance
-  final pulumi.Input<VirtualMachineInstancePropertiesOsProfileWindowsConfiguration>? windowsConfiguration;
+  final pulumi.Input<VirtualMachineInstancePropertiesOsProfileWindowsConfiguration?>? windowsConfiguration;
 
   /// Creates a new [VirtualMachineInstancePropertiesOsProfile].
   /// [adminPassword] AdminPassword - admin password

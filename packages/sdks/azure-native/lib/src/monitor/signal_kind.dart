@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Kind of the signal definition
-enum SignalKind {
+enum SignalKind implements pulumi.PulumiEnum<String> {
   azureResourceMetric("AzureResourceMetric"),
   logAnalyticsQuery("LogAnalyticsQuery"),
   prometheusMetricsQuery("PrometheusMetricsQuery");
 
   const SignalKind(this.wireValue);
+  @override
   final String wireValue;
 
   static SignalKind fromValue(String value) {

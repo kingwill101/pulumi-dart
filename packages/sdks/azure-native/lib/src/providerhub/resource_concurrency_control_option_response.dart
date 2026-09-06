@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceConcurrencyControlOptionResponse {
   /// The policy.
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
 
   /// Creates a new [ResourceConcurrencyControlOptionResponse].
   /// [policy] The policy.

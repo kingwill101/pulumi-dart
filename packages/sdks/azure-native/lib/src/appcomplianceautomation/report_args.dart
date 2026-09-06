@@ -10,13 +10,13 @@ import 'storage_info.dart';
 /// {@macro pulumi_appcomplianceautomation_report_args_doc}
 class ReportArgs {
   /// A list of comma-separated offerGuids indicates a series of offerGuids that map to the report. For example, "00000000-0000-0000-0000-000000000001,00000000-0000-0000-0000-000000000002" and "00000000-0000-0000-0000-000000000003".
-  final pulumi.Input<String>? offerGuid;
+  final pulumi.Input<String?>? offerGuid;
   /// Report Name.
-  final pulumi.Input<String>? reportName;
+  final pulumi.Input<String?>? reportName;
   /// List of resource data.
   final pulumi.Input<List<ResourceMetadata>> resources;
   /// The information of 'bring your own storage' binding to the report
-  final pulumi.Input<StorageInfo>? storageInfo;
+  final pulumi.Input<StorageInfo?>? storageInfo;
   /// Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
   /// An example of valid timezone id is "Pacific Standard Time".
   final pulumi.Input<String> timeZone;

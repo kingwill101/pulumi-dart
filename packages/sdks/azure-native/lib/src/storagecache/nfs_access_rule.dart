@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Rule to place restrictions on portions of the cache namespace being presented to clients.
 class NfsAccessRule {
   /// Access allowed by this rule.
-  final pulumi.Input<String> access;
+  final pulumi.Input<dynamic> access;
   /// GID value that replaces 0 when rootSquash is true. This will use the value of anonymousUID if not provided.
-  final pulumi.Input<String>? anonymousGID;
+  final pulumi.Input<String?>? anonymousGID;
   /// UID value that replaces 0 when rootSquash is true. 65534 will be used if not provided.
-  final pulumi.Input<String>? anonymousUID;
+  final pulumi.Input<String?>? anonymousUID;
   /// Filter applied to the scope for this rule. The filter's format depends on its scope. 'default' scope matches all clients and has no filter value. 'network' scope takes a filter in CIDR format (for example, 10.99.1.0/24). 'host' takes an IP address or fully qualified domain name as filter. If a client does not match any filter rule and there is no default rule, access is denied.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// Map root accesses to anonymousUID and anonymousGID.
-  final pulumi.Input<bool>? rootSquash;
+  final pulumi.Input<bool?>? rootSquash;
   /// Scope for this rule. The scope and filter determine which clients match the rule.
-  final pulumi.Input<String> scope;
+  final pulumi.Input<dynamic> scope;
   /// For the default policy, allow access to subdirectories under the root export. If this is set to no, clients can only mount the path '/'. If set to yes, clients can mount a deeper path, like '/a/b'.
-  final pulumi.Input<bool>? submountAccess;
+  final pulumi.Input<bool?>? submountAccess;
   /// Allow SUID semantics.
-  final pulumi.Input<bool>? suid;
+  final pulumi.Input<bool?>? suid;
 
   /// Creates a new [NfsAccessRule].
   /// [access] Access allowed by this rule.
@@ -56,12 +56,12 @@ class NfsAccessRule {
 
   factory NfsAccessRule.fromMap(Map<String, dynamic> map) {
     return NfsAccessRule(
-      access: pulumi.Input.fromValue(map['access'] as String),
+      access: pulumi.Input.fromValue(map['access']),
       anonymousGID: (() { final guardedValue = map['anonymousGID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       anonymousUID: (() { final guardedValue = map['anonymousUID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rootSquash: (() { final guardedValue = map['rootSquash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      scope: pulumi.Input.fromValue(map['scope'] as String),
+      scope: pulumi.Input.fromValue(map['scope']),
       submountAccess: (() { final guardedValue = map['submountAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       suid: (() { final guardedValue = map['suid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

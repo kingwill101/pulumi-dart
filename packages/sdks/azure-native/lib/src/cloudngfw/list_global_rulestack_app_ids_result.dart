@@ -6,27 +6,27 @@ class ListGlobalRulestackAppIdsResult {
   /// next Link
   final String? nextLink;
   /// List of AppIds
-  final List<String> value;
+  final List<String>? value;
 
   /// Creates a new [ListGlobalRulestackAppIdsResult].
   /// [nextLink] next Link
   /// [value] List of AppIds
   const ListGlobalRulestackAppIdsResult({
     this.nextLink,
-    required this.value,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': value,
+      'value': ?value,
     };
   }
 
   factory ListGlobalRulestackAppIdsResult.fromMap(Map<String, dynamic> map) {
     return ListGlobalRulestackAppIdsResult(
       nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      value: (map['value'] as List).cast<String>(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }

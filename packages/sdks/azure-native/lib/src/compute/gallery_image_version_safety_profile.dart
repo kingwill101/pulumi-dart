@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// This is the safety profile of the Gallery Image Version.
 class GalleryImageVersionSafetyProfile {
   /// Indicates whether or not removing this Gallery Image Version from replicated regions is allowed.
-  final pulumi.Input<bool>? allowDeletionOfReplicatedLocations;
+  final pulumi.Input<bool?>? allowDeletionOfReplicatedLocations;
   /// Indicates whether or not the deletion is blocked for this Gallery Image Version if its End Of Life has not expired.
-  final pulumi.Input<bool>? blockDeletionBeforeEndOfLife;
+  final pulumi.Input<bool?>? blockDeletionBeforeEndOfLife;
 
   /// Creates a new [GalleryImageVersionSafetyProfile].
   /// [allowDeletionOfReplicatedLocations] Indicates whether or not removing this Gallery Image Version from replicated regions is allowed.

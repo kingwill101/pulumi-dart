@@ -39,7 +39,7 @@ class UploadLimitWeeklyRecurrenceResponse {
     return UploadLimitWeeklyRecurrenceResponse(
       days: pulumi.Input.fromValue((map['days'] as List).cast<String>()),
       endTime: pulumi.Input.fromValue(TimeResponse.fromMap((map['endTime']! as Map).cast<String, dynamic>())),
-      limitInMbps: pulumi.Input.fromValue(map['limitInMbps'] as int),
+      limitInMbps: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['limitInMbps'])),
       startTime: pulumi.Input.fromValue(TimeResponse.fromMap((map['startTime']! as Map).cast<String, dynamic>())),
     );
   }

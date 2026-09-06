@@ -31,9 +31,9 @@ class WindowsServerLicensingSettingsResponse {
 
   factory WindowsServerLicensingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return WindowsServerLicensingSettingsResponse(
-      licenseCost: pulumi.Input.fromValue(map['licenseCost'] as double),
-      licensesPerCore: pulumi.Input.fromValue(map['licensesPerCore'] as int),
-      softwareAssuranceCost: pulumi.Input.fromValue(map['softwareAssuranceCost'] as double),
+      licenseCost: pulumi.Input.fromValue((map['licenseCost'] as num).toDouble()),
+      licensesPerCore: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['licensesPerCore'])),
+      softwareAssuranceCost: pulumi.Input.fromValue((map['softwareAssuranceCost'] as num).toDouble()),
     );
   }
 }

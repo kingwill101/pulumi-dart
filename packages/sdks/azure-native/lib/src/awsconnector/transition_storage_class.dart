@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The storage class to which you want the object to transition.
-enum TransitionStorageClass {
+enum TransitionStorageClass implements pulumi.PulumiEnum<String> {
   dEEPARCHIVE("DEEP_ARCHIVE"),
   gLACIER("GLACIER"),
   gLACIERIR("GLACIER_IR"),
@@ -8,6 +10,7 @@ enum TransitionStorageClass {
   sTANDARDIA("STANDARD_IA");
 
   const TransitionStorageClass(this.wireValue);
+  @override
   final String wireValue;
 
   static TransitionStorageClass fromValue(String value) {

@@ -7,15 +7,15 @@ import 'inner_error_response.dart';
 /// Api error.
 class ApiErrorResponse {
   /// The error code.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// The Api error details
-  final pulumi.Input<List<ApiErrorBaseResponse>>? details;
+  final pulumi.Input<List<ApiErrorBaseResponse>?>? details;
   /// The Api inner error
-  final pulumi.Input<InnerErrorResponse>? innererror;
+  final pulumi.Input<InnerErrorResponse?>? innererror;
   /// The error message.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The target of the particular error.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
 
   /// Creates a new [ApiErrorResponse].
   /// [code] The error code.

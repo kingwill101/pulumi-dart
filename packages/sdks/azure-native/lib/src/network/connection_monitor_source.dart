@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the source of connection monitor.
 class ConnectionMonitorSource {
   /// The source port used by connection monitor.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// The ID of the resource used as the source by connection monitor.
   final pulumi.Input<String> resourceId;
 
@@ -26,7 +26,7 @@ class ConnectionMonitorSource {
 
   factory ConnectionMonitorSource.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorSource(
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }

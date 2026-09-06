@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information on the user an incident is assigned to
 class IncidentOwnerInfo {
   /// The name of the user the incident is assigned to.
-  final pulumi.Input<String>? assignedTo;
+  final pulumi.Input<String?>? assignedTo;
   /// The email of the user the incident is assigned to.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The object id of the user the incident is assigned to.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// The type of the owner the incident is assigned to.
-  final pulumi.Input<String>? ownerType;
+  final pulumi.Input<dynamic>? ownerType;
   /// The user principal name of the user the incident is assigned to.
-  final pulumi.Input<String>? userPrincipalName;
+  final pulumi.Input<String?>? userPrincipalName;
 
   /// Creates a new [IncidentOwnerInfo].
   /// [assignedTo] The name of the user the incident is assigned to.
@@ -44,7 +44,7 @@ class IncidentOwnerInfo {
       assignedTo: (() { final guardedValue = map['assignedTo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       objectId: (() { final guardedValue = map['objectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ownerType: (() { final guardedValue = map['ownerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ownerType: (() { final guardedValue = map['ownerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       userPrincipalName: (() { final guardedValue = map['userPrincipalName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

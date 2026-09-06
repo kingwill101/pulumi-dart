@@ -441,7 +441,39 @@ class ScalingPlanPooledSchedule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    daysOfWeek = registerOutput<List<String>?>('daysOfWeek');
+    daysOfWeek = registerOutput<List<String>?>('daysOfWeek', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    offPeakLoadBalancingAlgorithm = registerOutput<String?>('offPeakLoadBalancingAlgorithm');
+    offPeakStartTime = registerOutput<TimeResponse?>('offPeakStartTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    peakLoadBalancingAlgorithm = registerOutput<String?>('peakLoadBalancingAlgorithm');
+    peakStartTime = registerOutput<TimeResponse?>('peakStartTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rampDownCapacityThresholdPct = registerOutput<int?>('rampDownCapacityThresholdPct');
+    rampDownForceLogoffUsers = registerOutput<bool?>('rampDownForceLogoffUsers');
+    rampDownLoadBalancingAlgorithm = registerOutput<String?>('rampDownLoadBalancingAlgorithm');
+    rampDownMinimumHostsPct = registerOutput<int?>('rampDownMinimumHostsPct');
+    rampDownNotificationMessage = registerOutput<String?>('rampDownNotificationMessage');
+    rampDownStartTime = registerOutput<TimeResponse?>('rampDownStartTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rampDownStopHostsWhen = registerOutput<String?>('rampDownStopHostsWhen');
+    rampDownWaitTimeMinutes = registerOutput<int?>('rampDownWaitTimeMinutes');
+    rampUpCapacityThresholdPct = registerOutput<int?>('rampUpCapacityThresholdPct');
+    rampUpLoadBalancingAlgorithm = registerOutput<String?>('rampUpLoadBalancingAlgorithm');
+    rampUpMinimumHostsPct = registerOutput<int?>('rampUpMinimumHostsPct');
+    rampUpStartTime = registerOutput<TimeResponse?>('rampUpStartTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ScalingPlanPooledSchedule] resource.
+  ScalingPlanPooledSchedule.reference(String urn)
+    : super(
+        'azure-native:desktopvirtualization:ScalingPlanPooledSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    daysOfWeek = registerOutput<List<String>?>('daysOfWeek', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     offPeakLoadBalancingAlgorithm = registerOutput<String?>('offPeakLoadBalancingAlgorithm');
     offPeakStartTime = registerOutput<TimeResponse?>('offPeakStartTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

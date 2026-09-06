@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Update classification included in the software update configuration. A comma separated string with required values
-enum WindowsUpdateClasses {
+enum WindowsUpdateClasses implements pulumi.PulumiEnum<String> {
   unclassified("Unclassified"),
   critical("Critical"),
   security("Security"),
@@ -11,6 +13,7 @@ enum WindowsUpdateClasses {
   updates("Updates");
 
   const WindowsUpdateClasses(this.wireValue);
+  @override
   final String wireValue;
 
   static WindowsUpdateClasses fromValue(String value) {

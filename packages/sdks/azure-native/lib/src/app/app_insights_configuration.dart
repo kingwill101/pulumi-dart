@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration of Application Insights
 class AppInsightsConfiguration {
   /// Application Insights connection string
-  final pulumi.Input<String>? connectionString;
+  final pulumi.Input<String?>? connectionString;
 
   /// Creates a new [AppInsightsConfiguration].
   /// [connectionString] Application Insights connection string

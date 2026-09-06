@@ -11,20 +11,20 @@ class SqlPoolSensitivityLabelArgs {
   /// The name of the column.
   final pulumi.Input<String> columnName;
   /// The information type.
-  final pulumi.Input<String>? informationType;
+  final pulumi.Input<String?>? informationType;
   /// The information type ID.
-  final pulumi.Input<String>? informationTypeId;
+  final pulumi.Input<String?>? informationTypeId;
   /// The label ID.
-  final pulumi.Input<String>? labelId;
+  final pulumi.Input<String?>? labelId;
   /// The label name.
-  final pulumi.Input<String>? labelName;
-  final pulumi.Input<SensitivityLabelRank>? rank;
+  final pulumi.Input<String?>? labelName;
+  final pulumi.Input<SensitivityLabelRank?>? rank;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the schema.
   final pulumi.Input<String> schemaName;
   /// The source of the sensitivity label.
-  final pulumi.Input<String>? sensitivityLabelSource;
+  final pulumi.Input<String?>? sensitivityLabelSource;
   /// SQL pool name
   final pulumi.Input<String> sqlPoolName;
   /// The name of the table.

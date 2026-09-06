@@ -6,7 +6,7 @@ import 'permissions.dart';
 /// An identity that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID.
 class AccessPolicyEntry {
   /// Application ID of the client making request on behalf of a principal
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// The object ID of a user, service principal or security group in the Azure Active Directory tenant for the vault. The object ID must be unique for the list of access policies.
   final pulumi.Input<String> objectId;
   /// Permissions the identity has for keys, secrets and certificates.

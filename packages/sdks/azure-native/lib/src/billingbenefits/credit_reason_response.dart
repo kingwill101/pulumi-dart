@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The reason for the credit. Not required if not applicable.
 class CreditReasonResponse {
   /// The reason code for credit.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// The free string description of the credit.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
 
   /// Creates a new [CreditReasonResponse].
   /// [code] The reason code for credit.

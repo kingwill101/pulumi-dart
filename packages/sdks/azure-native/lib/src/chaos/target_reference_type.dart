@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enum of the Target reference type.
-enum TargetReferenceType {
+enum TargetReferenceType implements pulumi.PulumiEnum<String> {
   valueChaosTarget("ChaosTarget");
 
   const TargetReferenceType(this.wireValue);
+  @override
   final String wireValue;
 
   static TargetReferenceType fromValue(String value) {

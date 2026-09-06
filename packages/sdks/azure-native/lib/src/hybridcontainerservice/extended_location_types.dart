@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The extended location type. Allowed value: 'CustomLocation'
-enum ExtendedLocationTypes {
+enum ExtendedLocationTypes implements pulumi.PulumiEnum<String> {
   valueCustomLocation("CustomLocation");
 
   const ExtendedLocationTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static ExtendedLocationTypes fromValue(String value) {

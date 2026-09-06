@@ -1,4 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'external_subnet_response.dart';
+import 'subnet_override_response.dart';
+import 'subnet_response.dart';
 import 'system_data_response.dart';
 import 'virtual_network_args.dart';
 
@@ -216,7 +219,7 @@ import 'virtual_network_args.dart';
 /// ```
 class VirtualNetwork extends pulumi.CustomResource {
   /// The allowed subnets of the virtual network.
-  late final pulumi.Output<List<Map<String, dynamic>>?> allowedSubnets;
+  late final pulumi.Output<List<SubnetResponse>?> allowedSubnets;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The creation date of the virtual network.
@@ -226,7 +229,7 @@ class VirtualNetwork extends pulumi.CustomResource {
   /// The Microsoft.Network resource identifier of the virtual network.
   late final pulumi.Output<String?> externalProviderResourceId;
   /// The external subnet properties.
-  late final pulumi.Output<List<Map<String, dynamic>>> externalSubnets;
+  late final pulumi.Output<List<ExternalSubnetResponse>> externalSubnets;
   /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
   /// The name of the resource
@@ -234,7 +237,7 @@ class VirtualNetwork extends pulumi.CustomResource {
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
   /// The subnet overrides of the virtual network.
-  late final pulumi.Output<List<Map<String, dynamic>>?> subnetOverrides;
+  late final pulumi.Output<List<SubnetOverrideResponse>?> subnetOverrides;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
@@ -258,18 +261,43 @@ class VirtualNetwork extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowedSubnets = registerOutput<List<Map<String, dynamic>>?>('allowedSubnets');
+    allowedSubnets = registerOutput<List<SubnetResponse>?>('allowedSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetResponse>(guardedValue, (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');
     externalProviderResourceId = registerOutput<String?>('externalProviderResourceId');
-    externalSubnets = registerOutput<List<Map<String, dynamic>>>('externalSubnets');
+    externalSubnets = registerOutput<List<ExternalSubnetResponse>>('externalSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExternalSubnetResponse>(guardedValue, (value) => ExternalSubnetResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    subnetOverrides = registerOutput<List<Map<String, dynamic>>?>('subnetOverrides');
+    subnetOverrides = registerOutput<List<SubnetOverrideResponse>?>('subnetOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetOverrideResponse>(guardedValue, (value) => SubnetOverrideResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+  }
+
+  /// Creates a typed reference to an existing [VirtualNetwork] resource.
+  VirtualNetwork.reference(String urn)
+    : super(
+        'azure-native:devtestlab:VirtualNetwork',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowedSubnets = registerOutput<List<SubnetResponse>?>('allowedSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetResponse>(guardedValue, (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String?>('description');
+    externalProviderResourceId = registerOutput<String?>('externalProviderResourceId');
+    externalSubnets = registerOutput<List<ExternalSubnetResponse>>('externalSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExternalSubnetResponse>(guardedValue, (value) => ExternalSubnetResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    subnetOverrides = registerOutput<List<SubnetOverrideResponse>?>('subnetOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetOverrideResponse>(guardedValue, (value) => SubnetOverrideResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
   }

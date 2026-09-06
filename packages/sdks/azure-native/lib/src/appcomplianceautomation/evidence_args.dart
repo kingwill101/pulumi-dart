@@ -8,23 +8,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_appcomplianceautomation_evidence_args_doc}
 class EvidenceArgs {
   /// Control id.
-  final pulumi.Input<String>? controlId;
+  final pulumi.Input<String?>? controlId;
   /// The evidence name.
-  final pulumi.Input<String>? evidenceName;
+  final pulumi.Input<String?>? evidenceName;
   /// Evidence type.
-  final pulumi.Input<String>? evidenceType;
+  final pulumi.Input<dynamic>? evidenceType;
   /// Extra data considered as evidence.
-  final pulumi.Input<String>? extraData;
+  final pulumi.Input<String?>? extraData;
   /// The path of the file in storage.
   final pulumi.Input<String> filePath;
   /// The offerGuid which mapping to the reports.
-  final pulumi.Input<String>? offerGuid;
+  final pulumi.Input<String?>? offerGuid;
   /// The tenant id of the report creator.
-  final pulumi.Input<String>? reportCreatorTenantId;
+  final pulumi.Input<String?>? reportCreatorTenantId;
   /// Report Name.
   final pulumi.Input<String> reportName;
   /// Responsibility id.
-  final pulumi.Input<String>? responsibilityId;
+  final pulumi.Input<String?>? responsibilityId;
 
   /// Creates a new [EvidenceArgs].
   /// [controlId] Control id.
@@ -66,7 +66,7 @@ class EvidenceArgs {
     return EvidenceArgs(
       controlId: (() { final guardedValue = map['controlId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       evidenceName: (() { final guardedValue = map['evidenceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      evidenceType: (() { final guardedValue = map['evidenceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      evidenceType: (() { final guardedValue = map['evidenceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       extraData: (() { final guardedValue = map['extraData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filePath: pulumi.Input.fromValue(map['filePath'] as String),
       offerGuid: (() { final guardedValue = map['offerGuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

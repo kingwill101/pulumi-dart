@@ -16,7 +16,7 @@ class AmazonRdsForSqlServerSourceResponse {
   /// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
   final pulumi.Input<dynamic>? partitionOption;
   /// The settings that will be leveraged for Sql source partitioning.
-  final pulumi.Input<SqlPartitionSettingsResponse>? partitionSettings;
+  final pulumi.Input<SqlPartitionSettingsResponse?>? partitionSettings;
   /// Which additional types to produce.
   final pulumi.Input<dynamic>? produceAdditionalTypes;
   /// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).

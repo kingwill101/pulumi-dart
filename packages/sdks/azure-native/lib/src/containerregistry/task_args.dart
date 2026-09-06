@@ -3,7 +3,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_properties.dart';
 import 'credentials.dart';
-import 'docker_build_step.dart';
 import 'identity_properties.dart';
 import 'platform_properties.dart';
 import 'trigger_properties.dart';
@@ -14,37 +13,37 @@ import 'trigger_properties.dart';
 /// {@macro pulumi_containerregistry_task_args_doc}
 class TaskArgs {
   /// The machine configuration of the run agent.
-  final pulumi.Input<AgentProperties>? agentConfiguration;
+  final pulumi.Input<AgentProperties?>? agentConfiguration;
   /// The dedicated agent pool for the task.
-  final pulumi.Input<String>? agentPoolName;
+  final pulumi.Input<String?>? agentPoolName;
   /// The properties that describes a set of credentials that will be used when this run is invoked.
-  final pulumi.Input<Credentials>? credentials;
+  final pulumi.Input<Credentials?>? credentials;
   /// Identity for the resource.
-  final pulumi.Input<IdentityProperties>? identity;
+  final pulumi.Input<IdentityProperties?>? identity;
   /// The value of this property indicates whether the task resource is system task or not.
-  final pulumi.Input<bool>? isSystemTask;
+  final pulumi.Input<bool?>? isSystemTask;
   /// The location of the resource. This cannot be changed after the resource is created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The template that describes the repository and tag information for run log artifact.
-  final pulumi.Input<String>? logTemplate;
+  final pulumi.Input<String?>? logTemplate;
   /// The platform properties against which the run has to happen.
-  final pulumi.Input<PlatformProperties>? platform;
+  final pulumi.Input<PlatformProperties?>? platform;
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
   /// The name of the resource group to which the container registry belongs.
   final pulumi.Input<String> resourceGroupName;
   /// The current status of task.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// The properties of a task step.
-  final pulumi.Input<DockerBuildStep>? step;
+  final pulumi.Input<dynamic>? step;
   /// The tags of the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the container registry task.
-  final pulumi.Input<String>? taskName;
+  final pulumi.Input<String?>? taskName;
   /// Run timeout in seconds.
-  final pulumi.Input<int>? timeout;
+  final pulumi.Input<int?>? timeout;
   /// The properties that describe all triggers for the task.
-  final pulumi.Input<TriggerProperties>? trigger;
+  final pulumi.Input<TriggerProperties?>? trigger;
 
   /// Creates a new [TaskArgs].
   /// [agentConfiguration] The machine configuration of the run agent.
@@ -63,12 +62,12 @@ class TaskArgs {
   /// [taskName] The name of the container registry task.
   /// [timeout] Run timeout in seconds.
   /// [trigger] The properties that describe all triggers for the task.
-  const TaskArgs({
+  TaskArgs({
     this.agentConfiguration,
     this.agentPoolName,
     this.credentials,
     this.identity,
-    this.isSystemTask,
+    pulumi.Input<bool?>? isSystemTask,
     this.location,
     this.logTemplate,
     this.platform,
@@ -78,9 +77,9 @@ class TaskArgs {
     this.step,
     this.tags,
     this.taskName,
-    this.timeout,
+    pulumi.Input<int?>? timeout,
     this.trigger,
-  });
+  }) : isSystemTask = isSystemTask ?? pulumi.Input.fromValue(false), timeout = timeout ?? pulumi.Input.fromValue(3600);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -95,7 +94,7 @@ class TaskArgs {
       'registryName': registryName,
       'resourceGroupName': resourceGroupName,
       'status': ?status,
-      'step': ?pulumi.Input.mapOptionalInputValue<DockerBuildStep, Map<String, dynamic>>(step, (value) => value.toMap()),
+      'step': ?step,
       'tags': ?tags,
       'taskName': ?taskName,
       'timeout': ?timeout,
@@ -115,11 +114,11 @@ class TaskArgs {
       platform: (() { final guardedValue = map['platform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PlatformProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       registryName: pulumi.Input.fromValue(map['registryName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      step: (() { final guardedValue = map['step']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DockerBuildStep.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      step: (() { final guardedValue = map['step']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       taskName: (() { final guardedValue = map['taskName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       trigger: (() { final guardedValue = map['trigger']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TriggerProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

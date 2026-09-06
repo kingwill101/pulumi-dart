@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'packet_capture_args.dart';
+import 'packet_capture_filter_response.dart';
 import 'packet_capture_machine_scope_response.dart';
 import 'packet_capture_settings_response.dart';
 import 'packet_capture_storage_location_response.dart';
@@ -268,7 +269,7 @@ class PacketCapture extends pulumi.CustomResource {
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
   /// A list of packet capture filters.
-  late final pulumi.Output<List<Map<String, dynamic>>?> filters;
+  late final pulumi.Output<List<PacketCaptureFilterResponse>?> filters;
   /// Name of the packet capture session.
   late final pulumi.Output<String> name;
   /// The provisioning state of the packet capture session.
@@ -305,7 +306,32 @@ class PacketCapture extends pulumi.CustomResource {
     captureSettings = registerOutput<PacketCaptureSettingsResponse?>('captureSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketCaptureSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     continuousCapture = registerOutput<bool?>('continuousCapture');
     etag = registerOutput<String>('etag');
-    filters = registerOutput<List<Map<String, dynamic>>?>('filters');
+    filters = registerOutput<List<PacketCaptureFilterResponse>?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PacketCaptureFilterResponse>(guardedValue, (value) => PacketCaptureFilterResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    scope = registerOutput<PacketCaptureMachineScopeResponse?>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketCaptureMachineScopeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageLocation = registerOutput<PacketCaptureStorageLocationResponse>('storageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketCaptureStorageLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    target = registerOutput<String>('target');
+    targetType = registerOutput<String?>('targetType');
+    timeLimitInSeconds = registerOutput<int?>('timeLimitInSeconds');
+    totalBytesPerSession = registerOutput<double?>('totalBytesPerSession');
+  }
+
+  /// Creates a typed reference to an existing [PacketCapture] resource.
+  PacketCapture.reference(String urn)
+    : super(
+        'azure-native:network:PacketCapture',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bytesToCapturePerPacket = registerOutput<double?>('bytesToCapturePerPacket');
+    captureSettings = registerOutput<PacketCaptureSettingsResponse?>('captureSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketCaptureSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    continuousCapture = registerOutput<bool?>('continuousCapture');
+    etag = registerOutput<String>('etag');
+    filters = registerOutput<List<PacketCaptureFilterResponse>?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PacketCaptureFilterResponse>(guardedValue, (value) => PacketCaptureFilterResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     scope = registerOutput<PacketCaptureMachineScopeResponse?>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketCaptureMachineScopeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

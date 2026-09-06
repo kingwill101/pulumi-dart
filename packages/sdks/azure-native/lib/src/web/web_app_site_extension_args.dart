@@ -12,7 +12,7 @@ class WebAppSiteExtensionArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Site extension name.
-  final pulumi.Input<String>? siteExtensionId;
+  final pulumi.Input<String?>? siteExtensionId;
 
   /// Creates a new [WebAppSiteExtensionArgs].
   /// [name] Site name.

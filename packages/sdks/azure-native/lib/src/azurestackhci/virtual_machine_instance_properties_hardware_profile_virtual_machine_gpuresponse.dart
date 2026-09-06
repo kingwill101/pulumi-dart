@@ -7,9 +7,9 @@ class VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse {
   /// GPU assignment type
   final pulumi.Input<String> assignmentType;
   /// Name of the GPU
-  final pulumi.Input<String>? gpuName;
+  final pulumi.Input<String?>? gpuName;
   /// Size of gpu partition in MB for GPU-P
-  final pulumi.Input<double>? partitionSizeMB;
+  final pulumi.Input<double?>? partitionSizeMB;
 
   /// Creates a new [VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse].
   /// [assignmentType] GPU assignment type
@@ -33,7 +33,7 @@ class VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse {
     return VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse(
       assignmentType: pulumi.Input.fromValue(map['assignmentType'] as String),
       gpuName: (() { final guardedValue = map['gpuName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      partitionSizeMB: (() { final guardedValue = map['partitionSizeMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      partitionSizeMB: (() { final guardedValue = map['partitionSizeMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

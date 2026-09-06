@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Weekly recurrence object.
 class WeeklyRecurrence {
   /// Specifies the values for weekly recurrence pattern.
-  final pulumi.Input<List<String>> daysOfWeek;
+  final pulumi.Input<List<dynamic>> daysOfWeek;
   /// End time for recurrence.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Specifies when the recurrence should be applied.
   /// Expected value is 'Weekly'.
   final pulumi.Input<String> recurrenceType;
   /// Start time for recurrence.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [WeeklyRecurrence].
   /// [daysOfWeek] Specifies the values for weekly recurrence pattern.
@@ -37,7 +37,7 @@ class WeeklyRecurrence {
 
   factory WeeklyRecurrence.fromMap(Map<String, dynamic> map) {
     return WeeklyRecurrence(
-      daysOfWeek: pulumi.Input.fromValue((map['daysOfWeek'] as List).cast<String>()),
+      daysOfWeek: pulumi.Input.fromValue((map['daysOfWeek'] as List).cast<dynamic>()),
       endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recurrenceType: pulumi.Input.fromValue(map['recurrenceType'] as String),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

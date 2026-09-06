@@ -1092,7 +1092,35 @@ class VirtualMachine extends pulumi.CustomResource {
     status = registerOutput<VirtualMachineStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageProfile = registerOutput<VirtualMachinePropertiesResponseStorageProfile?>('storageProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachinePropertiesResponseStorageProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    vmId = registerOutput<String>('vmId');
+  }
+
+  /// Creates a typed reference to an existing [VirtualMachine] resource.
+  VirtualMachine.reference(String urn)
+    : super(
+        'azure-native:azurestackhci:VirtualMachine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    guestAgentProfile = registerOutput<GuestAgentProfileResponse?>('guestAgentProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuestAgentProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hardwareProfile = registerOutput<VirtualMachinePropertiesResponseHardwareProfile?>('hardwareProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachinePropertiesResponseHardwareProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkProfile = registerOutput<VirtualMachinePropertiesResponseNetworkProfile?>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachinePropertiesResponseNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    osProfile = registerOutput<VirtualMachinePropertiesResponseOsProfile?>('osProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachinePropertiesResponseOsProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    securityProfile = registerOutput<VirtualMachinePropertiesResponseSecurityProfile?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachinePropertiesResponseSecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<VirtualMachineStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageProfile = registerOutput<VirtualMachinePropertiesResponseStorageProfile?>('storageProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachinePropertiesResponseStorageProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     vmId = registerOutput<String>('vmId');
   }

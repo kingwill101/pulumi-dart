@@ -7,33 +7,33 @@ import 'tag.dart';
 /// Definition of awsEc2Address
 class AwsEc2AddressProperties {
   /// &lt;p&gt;The ID representing the allocation of the address.&lt;/p&gt;
-  final pulumi.Input<String>? allocationId;
+  final pulumi.Input<String?>? allocationId;
   /// &lt;p&gt;The ID representing the association of the address with an instance.&lt;/p&gt;
-  final pulumi.Input<String>? associationId;
+  final pulumi.Input<String?>? associationId;
   /// &lt;p&gt;The carrier IP address associated. This option is only available for network interfaces which reside in a subnet in a Wavelength Zone (for example an EC2 instance). &lt;/p&gt;
-  final pulumi.Input<String>? carrierIp;
+  final pulumi.Input<String?>? carrierIp;
   /// &lt;p&gt;The customer-owned IP address.&lt;/p&gt;
-  final pulumi.Input<String>? customerOwnedIp;
+  final pulumi.Input<String?>? customerOwnedIp;
   /// &lt;p&gt;The ID of the customer-owned address pool.&lt;/p&gt;
-  final pulumi.Input<String>? customerOwnedIpv4Pool;
+  final pulumi.Input<String?>? customerOwnedIpv4Pool;
   /// &lt;p&gt;The network (&lt;code&gt;vpc&lt;/code&gt;).&lt;/p&gt;
-  final pulumi.Input<DomainTypeEnumValue>? domain;
+  final pulumi.Input<DomainTypeEnumValue?>? domain;
   /// &lt;p&gt;The ID of the instance that the address is associated with (if any).&lt;/p&gt;
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// &lt;p&gt;The name of the unique set of Availability Zones, Local Zones, or Wavelength Zones from which Amazon Web Services advertises IP addresses.&lt;/p&gt;
-  final pulumi.Input<String>? networkBorderGroup;
+  final pulumi.Input<String?>? networkBorderGroup;
   /// &lt;p&gt;The ID of the network interface.&lt;/p&gt;
-  final pulumi.Input<String>? networkInterfaceId;
+  final pulumi.Input<String?>? networkInterfaceId;
   /// &lt;p&gt;The ID of the Amazon Web Services account that owns the network interface.&lt;/p&gt;
-  final pulumi.Input<String>? networkInterfaceOwnerId;
+  final pulumi.Input<String?>? networkInterfaceOwnerId;
   /// &lt;p&gt;The private IP address associated with the Elastic IP address.&lt;/p&gt;
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
   /// &lt;p&gt;The Elastic IP address.&lt;/p&gt;
-  final pulumi.Input<String>? publicIp;
+  final pulumi.Input<String?>? publicIp;
   /// &lt;p&gt;The ID of an address pool.&lt;/p&gt;
-  final pulumi.Input<String>? publicIpv4Pool;
+  final pulumi.Input<String?>? publicIpv4Pool;
   /// &lt;p&gt;Any tags assigned to the Elastic IP address.&lt;/p&gt;
-  final pulumi.Input<List<Tag>>? tags;
+  final pulumi.Input<List<Tag>?>? tags;
 
   /// Creates a new [AwsEc2AddressProperties].
   /// [allocationId] &lt;p&gt;The ID representing the allocation of the address.&lt;/p&gt;

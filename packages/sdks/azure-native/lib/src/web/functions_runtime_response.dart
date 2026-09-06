@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Function app runtime name and version.
 class FunctionsRuntimeResponse {
   /// Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Function app runtime version. Example: 8 (for dotnet-isolated)
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [FunctionsRuntimeResponse].
   /// [name] Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom

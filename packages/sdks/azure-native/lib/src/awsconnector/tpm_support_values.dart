@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum TpmSupportValues {
+enum TpmSupportValues implements pulumi.PulumiEnum<String> {
   v20("v2.0");
 
   const TpmSupportValues(this.wireValue);
+  @override
   final String wireValue;
 
   static TpmSupportValues fromValue(String value) {

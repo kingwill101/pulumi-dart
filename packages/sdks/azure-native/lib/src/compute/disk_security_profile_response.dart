@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Contains the security related information for the resource.
 class DiskSecurityProfileResponse {
   /// ResourceId of the disk encryption set associated to Confidential VM supported disk encrypted with customer managed key
-  final pulumi.Input<String>? secureVMDiskEncryptionSetId;
+  final pulumi.Input<String?>? secureVMDiskEncryptionSetId;
   /// Specifies the SecurityType of the VM. Applicable for OS disks only.
-  final pulumi.Input<String>? securityType;
+  final pulumi.Input<String?>? securityType;
 
   /// Creates a new [DiskSecurityProfileResponse].
   /// [secureVMDiskEncryptionSetId] ResourceId of the disk encryption set associated to Confidential VM supported disk encrypted with customer managed key

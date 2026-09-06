@@ -9,49 +9,49 @@ import 'product_properties_response.dart';
 /// Product information.
 class ProductResponse {
   /// The part number used for billing purposes.
-  final pulumi.Input<String>? billingPartNumber;
+  final pulumi.Input<String?>? billingPartNumber;
   /// Product compatibility with current device.
-  final pulumi.Input<CompatibilityResponse>? compatibility;
+  final pulumi.Input<CompatibilityResponse?>? compatibility;
   /// The description of the product.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the product.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The entity tag used for optimistic concurrency when modifying the resource.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The identifier of the gallery item corresponding to the product.
-  final pulumi.Input<String>? galleryItemIdentity;
+  final pulumi.Input<String?>? galleryItemIdentity;
   /// Additional links available for this product.
-  final pulumi.Input<IconUrisResponse>? iconUris;
+  final pulumi.Input<IconUrisResponse?>? iconUris;
   /// ID of the resource.
   final pulumi.Input<String> id;
   /// The legal terms.
-  final pulumi.Input<String>? legalTerms;
+  final pulumi.Input<String?>? legalTerms;
   /// Additional links available for this product.
-  final pulumi.Input<List<ProductLinkResponse>>? links;
+  final pulumi.Input<List<ProductLinkResponse>?>? links;
   /// Name of the resource.
   final pulumi.Input<String> name;
   /// The offer representing the product.
-  final pulumi.Input<String>? offer;
+  final pulumi.Input<String?>? offer;
   /// The version of the product offer.
-  final pulumi.Input<String>? offerVersion;
+  final pulumi.Input<String?>? offerVersion;
   /// The length of product content.
-  final pulumi.Input<double>? payloadLength;
+  final pulumi.Input<double?>? payloadLength;
   /// The privacy policy.
-  final pulumi.Input<String>? privacyPolicy;
+  final pulumi.Input<String?>? privacyPolicy;
   /// The kind of the product (virtualMachine or virtualMachineExtension)
-  final pulumi.Input<String>? productKind;
+  final pulumi.Input<String?>? productKind;
   /// Additional properties for the product.
-  final pulumi.Input<ProductPropertiesResponse>? productProperties;
+  final pulumi.Input<ProductPropertiesResponse?>? productProperties;
   /// The user-friendly name of the product publisher.
-  final pulumi.Input<String>? publisherDisplayName;
+  final pulumi.Input<String?>? publisherDisplayName;
   /// Publisher identifier.
-  final pulumi.Input<String>? publisherIdentifier;
+  final pulumi.Input<String?>? publisherIdentifier;
   /// The product SKU.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// Type of Resource.
   final pulumi.Input<String> type;
   /// The type of the Virtual Machine Extension.
-  final pulumi.Input<String>? vmExtensionType;
+  final pulumi.Input<String?>? vmExtensionType;
 
   /// Creates a new [ProductResponse].
   /// [billingPartNumber] The part number used for billing purposes.
@@ -143,7 +143,7 @@ class ProductResponse {
       name: pulumi.Input.fromValue(map['name'] as String),
       offer: (() { final guardedValue = map['offer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       offerVersion: (() { final guardedValue = map['offerVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      payloadLength: (() { final guardedValue = map['payloadLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      payloadLength: (() { final guardedValue = map['payloadLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       privacyPolicy: (() { final guardedValue = map['privacyPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       productKind: (() { final guardedValue = map['productKind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       productProperties: (() { final guardedValue = map['productProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProductPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -9,7 +9,7 @@ class X12ValidationOverride {
   /// The message id on which the validation settings has to be applied.
   final pulumi.Input<String> messageId;
   /// The trailing separator policy.
-  final pulumi.Input<String> trailingSeparatorPolicy;
+  final pulumi.Input<dynamic> trailingSeparatorPolicy;
   /// The value indicating whether to trim leading and trailing spaces and zeroes.
   final pulumi.Input<bool> trimLeadingAndTrailingSpacesAndZeroes;
   /// The value indicating whether to validate character Set.
@@ -53,7 +53,7 @@ class X12ValidationOverride {
     return X12ValidationOverride(
       allowLeadingAndTrailingSpacesAndZeroes: pulumi.Input.fromValue(map['allowLeadingAndTrailingSpacesAndZeroes'] as bool),
       messageId: pulumi.Input.fromValue(map['messageId'] as String),
-      trailingSeparatorPolicy: pulumi.Input.fromValue(map['trailingSeparatorPolicy'] as String),
+      trailingSeparatorPolicy: pulumi.Input.fromValue(map['trailingSeparatorPolicy']),
       trimLeadingAndTrailingSpacesAndZeroes: pulumi.Input.fromValue(map['trimLeadingAndTrailingSpacesAndZeroes'] as bool),
       validateCharacterSet: pulumi.Input.fromValue(map['validateCharacterSet'] as bool),
       validateEDITypes: pulumi.Input.fromValue(map['validateEDITypes'] as bool),

@@ -9,18 +9,18 @@ import 'machine_reference_with_hints.dart';
 /// {@macro pulumi_operationalinsights_machine_group_args_doc}
 class MachineGroupArgs {
   /// Count of machines in this group. The value of count may be bigger than the number of machines in case of the group has been truncated due to exceeding the max number of machines a group can handle.
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
   /// User defined name for the group
   final pulumi.Input<String> displayName;
   /// Type of the machine group
-  final pulumi.Input<String>? groupType;
+  final pulumi.Input<dynamic>? groupType;
   /// Additional resource type qualifier.
   /// Expected value is 'machineGroup'.
   final pulumi.Input<String> kind;
   /// Machine Group resource name.
-  final pulumi.Input<String>? machineGroupName;
+  final pulumi.Input<String?>? machineGroupName;
   /// References of the machines in this group. The hints within each reference do not represent the current value of the corresponding fields. They are a snapshot created during the last time the machine group was updated.
-  final pulumi.Input<List<MachineReferenceWithHints>>? machines;
+  final pulumi.Input<List<MachineReferenceWithHints>?>? machines;
   /// Resource group name within the specified subscriptionId.
   final pulumi.Input<String> resourceGroupName;
   /// OMS workspace containing the resources of interest.
@@ -61,9 +61,9 @@ class MachineGroupArgs {
 
   factory MachineGroupArgs.fromMap(Map<String, dynamic> map) {
     return MachineGroupArgs(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      groupType: (() { final guardedValue = map['groupType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      groupType: (() { final guardedValue = map['groupType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
       machineGroupName: (() { final guardedValue = map['machineGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       machines: (() { final guardedValue = map['machines']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MachineReferenceWithHints>(guardedValue, (value) => MachineReferenceWithHints.fromMap((value as Map).cast<String, dynamic>()))); })(),

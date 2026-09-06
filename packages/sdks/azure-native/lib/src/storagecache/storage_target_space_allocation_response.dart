@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Storage Target space allocation properties.
 class StorageTargetSpaceAllocationResponse {
   /// The percentage of cache space allocated for this storage target
-  final pulumi.Input<int>? allocationPercentage;
+  final pulumi.Input<int?>? allocationPercentage;
   /// Name of the storage target.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [StorageTargetSpaceAllocationResponse].
   /// [allocationPercentage] The percentage of cache space allocated for this storage target
@@ -26,7 +26,7 @@ class StorageTargetSpaceAllocationResponse {
 
   factory StorageTargetSpaceAllocationResponse.fromMap(Map<String, dynamic> map) {
     return StorageTargetSpaceAllocationResponse(
-      allocationPercentage: (() { final guardedValue = map['allocationPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      allocationPercentage: (() { final guardedValue = map['allocationPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

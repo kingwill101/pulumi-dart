@@ -7,11 +7,11 @@ class SharedAccessSignatureAuthorizationRuleAccessRightsDescription {
   /// Name of the key.
   final pulumi.Input<String> keyName;
   /// Primary SAS key value.
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// Rights that this key has.
-  final pulumi.Input<String> rights;
+  final pulumi.Input<dynamic> rights;
   /// Secondary SAS key value.
-  final pulumi.Input<String>? secondaryKey;
+  final pulumi.Input<String?>? secondaryKey;
 
   /// Creates a new [SharedAccessSignatureAuthorizationRuleAccessRightsDescription].
   /// [keyName] Name of the key.
@@ -38,7 +38,7 @@ class SharedAccessSignatureAuthorizationRuleAccessRightsDescription {
     return SharedAccessSignatureAuthorizationRuleAccessRightsDescription(
       keyName: pulumi.Input.fromValue(map['keyName'] as String),
       primaryKey: (() { final guardedValue = map['primaryKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rights: pulumi.Input.fromValue(map['rights'] as String),
+      rights: pulumi.Input.fromValue(map['rights']),
       secondaryKey: (() { final guardedValue = map['secondaryKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

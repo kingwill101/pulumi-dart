@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'iac_profile_args.dart';
+import 'iac_template_properties_response.dart';
+import 'stage_properties_response.dart';
 import 'system_data_response.dart';
 
 /// Resource representation of a IacProfile.
@@ -348,7 +350,7 @@ class IacProfile extends pulumi.CustomResource {
   late final pulumi.Output<String?> repositoryName;
   /// Repository Owner
   late final pulumi.Output<String?> repositoryOwner;
-  late final pulumi.Output<List<Map<String, dynamic>>?> stages;
+  late final pulumi.Output<List<StagePropertiesResponse>?> stages;
   /// Terraform Storage Account Name
   late final pulumi.Output<String?> storageAccountName;
   /// Terraform Storage Account Resource Group
@@ -361,7 +363,7 @@ class IacProfile extends pulumi.CustomResource {
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
-  late final pulumi.Output<List<Map<String, dynamic>>?> templates;
+  late final pulumi.Output<List<IacTemplatePropertiesResponse>?> templates;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -390,14 +392,45 @@ class IacProfile extends pulumi.CustomResource {
     repositoryMainBranch = registerOutput<String?>('repositoryMainBranch');
     repositoryName = registerOutput<String?>('repositoryName');
     repositoryOwner = registerOutput<String?>('repositoryOwner');
-    stages = registerOutput<List<Map<String, dynamic>>?>('stages');
+    stages = registerOutput<List<StagePropertiesResponse>?>('stages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StagePropertiesResponse>(guardedValue, (value) => StagePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     storageAccountName = registerOutput<String?>('storageAccountName');
     storageAccountResourceGroup = registerOutput<String?>('storageAccountResourceGroup');
     storageAccountSubscription = registerOutput<String?>('storageAccountSubscription');
     storageContainerName = registerOutput<String?>('storageContainerName');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    templates = registerOutput<List<Map<String, dynamic>>?>('templates');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    templates = registerOutput<List<IacTemplatePropertiesResponse>?>('templates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IacTemplatePropertiesResponse>(guardedValue, (value) => IacTemplatePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [IacProfile] resource.
+  IacProfile.reference(String urn)
+    : super(
+        'azure-native:devhub:IacProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authStatus = registerOutput<String>('authStatus');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    branchName = registerOutput<String?>('branchName');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    prStatus = registerOutput<String>('prStatus');
+    pullNumber = registerOutput<int>('pullNumber');
+    repositoryMainBranch = registerOutput<String?>('repositoryMainBranch');
+    repositoryName = registerOutput<String?>('repositoryName');
+    repositoryOwner = registerOutput<String?>('repositoryOwner');
+    stages = registerOutput<List<StagePropertiesResponse>?>('stages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StagePropertiesResponse>(guardedValue, (value) => StagePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    storageAccountName = registerOutput<String?>('storageAccountName');
+    storageAccountResourceGroup = registerOutput<String?>('storageAccountResourceGroup');
+    storageAccountSubscription = registerOutput<String?>('storageAccountSubscription');
+    storageContainerName = registerOutput<String?>('storageContainerName');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    templates = registerOutput<List<IacTemplatePropertiesResponse>?>('templates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IacTemplatePropertiesResponse>(guardedValue, (value) => IacTemplatePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
 }

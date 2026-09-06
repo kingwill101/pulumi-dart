@@ -9,15 +9,15 @@ import 'sql_server_esu_license_properties.dart';
 /// {@macro pulumi_azurearcdata_sql_server_esu_license_args_doc}
 class SqlServerEsuLicenseArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// SQL Server ESU license properties
   final pulumi.Input<SqlServerEsuLicenseProperties> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of SQL Server ESU License
-  final pulumi.Input<String>? sqlServerEsuLicenseName;
+  final pulumi.Input<String?>? sqlServerEsuLicenseName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SqlServerEsuLicenseArgs].
   /// [location] The geo-location where the resource lives

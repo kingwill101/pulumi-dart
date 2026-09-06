@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of PortSet
 class PortSet {
   /// Property definition
-  final pulumi.Input<List<String>>? definition;
+  final pulumi.Input<List<String>?>? definition;
 
   /// Creates a new [PortSet].
   /// [definition] Property definition

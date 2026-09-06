@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Container identity information
 class ContainerIdentityInfo {
   /// Protection container identity - AAD Tenant
-  final pulumi.Input<String>? aadTenantId;
+  final pulumi.Input<String?>? aadTenantId;
   /// Protection container identity - Audience
-  final pulumi.Input<String>? audience;
+  final pulumi.Input<String?>? audience;
   /// Protection container identity - AAD Service Principal
-  final pulumi.Input<String>? servicePrincipalClientId;
+  final pulumi.Input<String?>? servicePrincipalClientId;
   /// Unique name of the container
-  final pulumi.Input<String>? uniqueName;
+  final pulumi.Input<String?>? uniqueName;
 
   /// Creates a new [ContainerIdentityInfo].
   /// [aadTenantId] Protection container identity - AAD Tenant

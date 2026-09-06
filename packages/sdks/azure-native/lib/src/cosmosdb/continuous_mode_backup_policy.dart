@@ -7,9 +7,9 @@ import 'continuous_mode_properties.dart';
 /// The object representing continuous mode backup policy.
 class ContinuousModeBackupPolicy {
   /// Configuration values for continuous mode backup
-  final pulumi.Input<ContinuousModeProperties>? continuousModeProperties;
+  final pulumi.Input<ContinuousModeProperties?>? continuousModeProperties;
   /// The object representing the state of the migration between the backup policies.
-  final pulumi.Input<BackupPolicyMigrationState>? migrationState;
+  final pulumi.Input<BackupPolicyMigrationState?>? migrationState;
   /// Describes the mode of backups.
   /// Expected value is 'Continuous'.
   final pulumi.Input<String> type;

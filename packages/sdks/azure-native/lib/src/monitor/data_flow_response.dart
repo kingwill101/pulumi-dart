@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of which streams are sent to which destinations.
 class DataFlowResponse {
   /// The builtIn transform to transform stream data
-  final pulumi.Input<String>? builtInTransform;
+  final pulumi.Input<String?>? builtInTransform;
   /// List of destinations for this data flow.
-  final pulumi.Input<List<String>>? destinations;
+  final pulumi.Input<List<String>?>? destinations;
   /// The output stream of the transform. Only required if the transform changes data to a different stream.
-  final pulumi.Input<String>? outputStream;
+  final pulumi.Input<String?>? outputStream;
   /// List of streams for this data flow.
-  final pulumi.Input<List<String>>? streams;
+  final pulumi.Input<List<String>?>? streams;
   /// The KQL query to transform stream data.
-  final pulumi.Input<String>? transformKql;
+  final pulumi.Input<String?>? transformKql;
 
   /// Creates a new [DataFlowResponse].
   /// [builtInTransform] The builtIn transform to transform stream data

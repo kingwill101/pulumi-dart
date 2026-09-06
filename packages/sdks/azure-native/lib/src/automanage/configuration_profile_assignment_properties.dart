@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Automanage configuration profile assignment properties.
 class ConfigurationProfileAssignmentProperties {
   /// The Automanage configurationProfile ARM Resource URI.
-  final pulumi.Input<String>? configurationProfile;
+  final pulumi.Input<String?>? configurationProfile;
 
   /// Creates a new [ConfigurationProfileAssignmentProperties].
   /// [configurationProfile] The Automanage configurationProfile ARM Resource URI.

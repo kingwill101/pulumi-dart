@@ -3,12 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedIdentityPropertiesResponse {
-  final pulumi.Input<String>? clientId;
-  final pulumi.Input<String>? managedIdentityName;
-  final pulumi.Input<String>? principalId;
-  final pulumi.Input<String>? resourceGroup;
-  final pulumi.Input<String>? subscriptionId;
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? clientId;
+  final pulumi.Input<String?>? managedIdentityName;
+  final pulumi.Input<String?>? principalId;
+  final pulumi.Input<String?>? resourceGroup;
+  final pulumi.Input<String?>? subscriptionId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ManagedIdentityPropertiesResponse].
   /// [clientId] Optional.

@@ -6,22 +6,22 @@ import 'system_data_response.dart';
 /// Result data returned by getSite.
 class GetSiteResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// eTag for concurrency control.
   final String? eTag;
   /// Resource Id.
-  final String id;
+  final String? id;
   /// Azure location in which Sites is created.
   final String? location;
   /// Name of the VMware site.
   final String? name;
   /// Nested properties of VMWare site.
-  final SitePropertiesResponse properties;
+  final SitePropertiesResponse? properties;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   final Map<String, String>? tags;
   /// Type of resource. Type = Microsoft.OffAzure/VMWareSites.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetSiteResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -34,42 +34,42 @@ class GetSiteResult {
   /// [tags] Optional.
   /// [type] Type of resource. Type = Microsoft.OffAzure/VMWareSites.
   const GetSiteResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.eTag,
-    required this.id,
+    this.id,
     this.location,
     this.name,
-    required this.properties,
-    required this.systemData,
+    this.properties,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'eTag': ?eTag,
-      'id': id,
+      'id': ?id,
       'location': ?location,
       'name': ?name,
-      'properties': properties.toMap(),
-      'systemData': systemData.toMap(),
+      'properties': ?properties?.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetSiteResult.fromMap(Map<String, dynamic> map) {
     return GetSiteResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      properties: SitePropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return SitePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

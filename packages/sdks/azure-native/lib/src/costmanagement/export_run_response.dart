@@ -7,29 +7,29 @@ import 'error_details_response.dart';
 /// An export run.
 class ExportRunResponse {
   /// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// The details of any error.
-  final pulumi.Input<ErrorDetailsResponse>? error;
+  final pulumi.Input<ErrorDetailsResponse?>? error;
   /// The type of the export run.
-  final pulumi.Input<String>? executionType;
+  final pulumi.Input<String?>? executionType;
   /// The name of the exported file.
-  final pulumi.Input<String>? fileName;
+  final pulumi.Input<String?>? fileName;
   /// Resource Id.
   final pulumi.Input<String> id;
   /// Resource name.
   final pulumi.Input<String> name;
   /// The time when the export run finished.
-  final pulumi.Input<String>? processingEndTime;
+  final pulumi.Input<String?>? processingEndTime;
   /// The time when export was picked up to be run.
-  final pulumi.Input<String>? processingStartTime;
+  final pulumi.Input<String?>? processingStartTime;
   /// The export settings that were in effect for this run.
-  final pulumi.Input<CommonExportPropertiesResponse>? runSettings;
+  final pulumi.Input<CommonExportPropertiesResponse?>? runSettings;
   /// The last known status of the export run.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The identifier for the entity that triggered the export. For on-demand runs it is the user email. For scheduled runs it is 'System'.
-  final pulumi.Input<String>? submittedBy;
+  final pulumi.Input<String?>? submittedBy;
   /// The time when export was queued to be run.
-  final pulumi.Input<String>? submittedTime;
+  final pulumi.Input<String?>? submittedTime;
   /// Resource type.
   final pulumi.Input<String> type;
 

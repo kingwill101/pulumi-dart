@@ -6,11 +6,11 @@ import 'ssh_profile.dart';
 /// The ssh username, password, and ssh public key.
 class LinuxOperatingSystemProfile {
   /// The password.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The SSH profile.
-  final pulumi.Input<SshProfile>? sshProfile;
+  final pulumi.Input<SshProfile?>? sshProfile;
   /// The username.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [LinuxOperatingSystemProfile].
   /// [password] The password.

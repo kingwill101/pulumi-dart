@@ -6,7 +6,7 @@ class SpringbootappsPropertiesResponseMiscs {
   /// The miscs. key.
   final pulumi.Input<String> key;
   /// The miscs. value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [SpringbootappsPropertiesResponseMiscs].
   /// [key] The miscs. key.

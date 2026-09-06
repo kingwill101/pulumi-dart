@@ -8,27 +8,27 @@ class ListBotConnectionServiceProvidersResult {
   /// The link used to get the next page of bot service providers.
   final String? nextLink;
   /// Gets the list of bot service providers and their properties.
-  final List<ServiceProviderResponse> value;
+  final List<ServiceProviderResponse>? value;
 
   /// Creates a new [ListBotConnectionServiceProvidersResult].
   /// [nextLink] The link used to get the next page of bot service providers.
   /// [value] Gets the list of bot service providers and their properties.
   const ListBotConnectionServiceProvidersResult({
     this.nextLink,
-    required this.value,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': pulumi.Input.encodeList<ServiceProviderResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<ServiceProviderResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory ListBotConnectionServiceProvidersResult.fromMap(Map<String, dynamic> map) {
     return ListBotConnectionServiceProvidersResult(
       nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      value: pulumi.Input.decodeList<ServiceProviderResponse>(map['value']!, (value) => ServiceProviderResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceProviderResponse>(guardedValue, (value) => ServiceProviderResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

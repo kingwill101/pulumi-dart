@@ -9,17 +9,17 @@ import 'rule_properties.dart';
 /// {@macro pulumi_managednetworkfabric_internet_gateway_rule_args_doc}
 class InternetGatewayRuleArgs {
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// Name of the Internet Gateway rule.
-  final pulumi.Input<String>? internetGatewayRuleName;
+  final pulumi.Input<String?>? internetGatewayRuleName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Rules for the InternetGateways
   final pulumi.Input<RuleProperties> ruleProperties;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [InternetGatewayRuleArgs].
   /// [annotation] Switch configuration description.

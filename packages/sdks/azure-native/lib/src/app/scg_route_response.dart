@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Spring Cloud Gateway route definition
 class ScgRouteResponse {
   /// Filters of the route
-  final pulumi.Input<List<String>>? filters;
+  final pulumi.Input<List<String>?>? filters;
   /// Id of the route
   final pulumi.Input<String> id;
   /// Order of the route
-  final pulumi.Input<double>? order;
+  final pulumi.Input<double?>? order;
   /// Predicates of the route
-  final pulumi.Input<List<String>>? predicates;
+  final pulumi.Input<List<String>?>? predicates;
   /// Uri of the route
   final pulumi.Input<String> uri;
 
@@ -43,7 +43,7 @@ class ScgRouteResponse {
     return ScgRouteResponse(
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
-      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       predicates: (() { final guardedValue = map['predicates']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );

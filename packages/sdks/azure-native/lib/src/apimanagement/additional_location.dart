@@ -7,19 +7,19 @@ import 'virtual_network_configuration.dart';
 /// Description of an additional API Management resource location.
 class AdditionalLocation {
   /// Property only valid for an Api Management service deployed in multiple locations. This can be used to disable the gateway in this additional location.
-  final pulumi.Input<bool>? disableGateway;
+  final pulumi.Input<bool?>? disableGateway;
   /// The location name of the additional region among Azure Data center regions.
   final pulumi.Input<String> location;
   /// Property can be used to enable NAT Gateway for this API Management service.
-  final pulumi.Input<String>? natGatewayState;
+  final pulumi.Input<dynamic>? natGatewayState;
   /// Public Standard SKU IP V4 based IP address to be associated with Virtual Network deployed service in the location. Supported only for Premium SKU being deployed in Virtual Network.
-  final pulumi.Input<String>? publicIpAddressId;
+  final pulumi.Input<String?>? publicIpAddressId;
   /// SKU properties of the API Management service.
   final pulumi.Input<ApiManagementServiceSkuProperties> sku;
   /// Virtual network configuration for the location.
-  final pulumi.Input<VirtualNetworkConfiguration>? virtualNetworkConfiguration;
+  final pulumi.Input<VirtualNetworkConfiguration?>? virtualNetworkConfiguration;
   /// A list of availability zones denoting where the resource needs to come from.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [AdditionalLocation].
   /// [disableGateway] Property only valid for an Api Management service deployed in multiple locations. This can be used to disable the gateway in this additional location.
@@ -29,15 +29,15 @@ class AdditionalLocation {
   /// [sku] SKU properties of the API Management service.
   /// [virtualNetworkConfiguration] Virtual network configuration for the location.
   /// [zones] A list of availability zones denoting where the resource needs to come from.
-  const AdditionalLocation({
-    this.disableGateway,
+  AdditionalLocation({
+    pulumi.Input<bool?>? disableGateway,
     required this.location,
-    this.natGatewayState,
+    pulumi.Input<dynamic>? natGatewayState,
     this.publicIpAddressId,
     required this.sku,
     this.virtualNetworkConfiguration,
     this.zones,
-  });
+  }) : disableGateway = disableGateway ?? pulumi.Input.fromValue(false), natGatewayState = natGatewayState ?? pulumi.Input.fromValue('Disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,7 +55,7 @@ class AdditionalLocation {
     return AdditionalLocation(
       disableGateway: (() { final guardedValue = map['disableGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      natGatewayState: (() { final guardedValue = map['natGatewayState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      natGatewayState: (() { final guardedValue = map['natGatewayState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       publicIpAddressId: (() { final guardedValue = map['publicIpAddressId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sku: pulumi.Input.fromValue(ApiManagementServiceSkuProperties.fromMap((map['sku']! as Map).cast<String, dynamic>())),
       virtualNetworkConfiguration: (() { final guardedValue = map['virtualNetworkConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

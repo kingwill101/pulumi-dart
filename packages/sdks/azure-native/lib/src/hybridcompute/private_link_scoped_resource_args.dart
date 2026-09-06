@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_hybridcompute_private_link_scoped_resource_args_doc}
 class PrivateLinkScopedResourceArgs {
   /// The resource id of the scoped Azure monitor resource.
-  final pulumi.Input<String>? linkedResourceId;
+  final pulumi.Input<String?>? linkedResourceId;
   /// The name of the scoped resource object.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Azure Arc PrivateLinkScope resource.

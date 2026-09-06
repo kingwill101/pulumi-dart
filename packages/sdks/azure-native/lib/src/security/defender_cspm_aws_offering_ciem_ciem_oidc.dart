@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
 class DefenderCspmAwsOfferingCiemCiemOidc {
   /// the azure active directory app name used of authenticating against AWS
-  final pulumi.Input<String>? azureActiveDirectoryAppName;
+  final pulumi.Input<String?>? azureActiveDirectoryAppName;
   /// The cloud role ARN in AWS for Permissions Management used for oidc connection
-  final pulumi.Input<String>? cloudRoleArn;
+  final pulumi.Input<String?>? cloudRoleArn;
 
   /// Creates a new [DefenderCspmAwsOfferingCiemCiemOidc].
   /// [azureActiveDirectoryAppName] the azure active directory app name used of authenticating against AWS

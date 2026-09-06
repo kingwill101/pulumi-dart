@@ -10,15 +10,15 @@ class AliasResponse {
   /// The default alias path metadata. Applies to the default path and to any alias path that doesn't have metadata
   final pulumi.Input<AliasPathMetadataResponse> defaultMetadata;
   /// The default path for an alias.
-  final pulumi.Input<String>? defaultPath;
+  final pulumi.Input<String?>? defaultPath;
   /// The default pattern for an alias.
-  final pulumi.Input<AliasPatternResponse>? defaultPattern;
+  final pulumi.Input<AliasPatternResponse?>? defaultPattern;
   /// The alias name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The paths for an alias.
-  final pulumi.Input<List<AliasPathResponse>>? paths;
+  final pulumi.Input<List<AliasPathResponse>?>? paths;
   /// The type of the alias.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [AliasResponse].
   /// [defaultMetadata] The default alias path metadata. Applies to the default path and to any alias path that doesn't have metadata

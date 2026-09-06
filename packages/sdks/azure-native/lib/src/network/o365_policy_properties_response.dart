@@ -6,7 +6,7 @@ import 'o365_break_out_category_policies_response.dart';
 /// The Office365 breakout policy.
 class O365PolicyPropertiesResponse {
   /// Office365 breakout categories.
-  final pulumi.Input<O365BreakOutCategoryPoliciesResponse>? breakOutCategories;
+  final pulumi.Input<O365BreakOutCategoryPoliciesResponse?>? breakOutCategories;
 
   /// Creates a new [O365PolicyPropertiesResponse].
   /// [breakOutCategories] Office365 breakout categories.

@@ -281,4 +281,30 @@ class Student extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [Student] resource.
+  Student.reference(String urn)
+    : super(
+        'azure-native:education:Student',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    budget = registerOutput<AmountResponse>('budget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AmountResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    effectiveDate = registerOutput<String>('effectiveDate');
+    email = registerOutput<String>('email');
+    expirationDate = registerOutput<String>('expirationDate');
+    firstName = registerOutput<String>('firstName');
+    lastName = registerOutput<String>('lastName');
+    this.name = registerOutput<String>('name');
+    role = registerOutput<String>('role');
+    status = registerOutput<String>('status');
+    subscriptionAlias = registerOutput<String?>('subscriptionAlias');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    subscriptionInviteLastSentDate = registerOutput<String?>('subscriptionInviteLastSentDate');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

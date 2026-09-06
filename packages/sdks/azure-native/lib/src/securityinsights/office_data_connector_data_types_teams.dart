@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Teams data type connection.
 class OfficeDataConnectorDataTypesTeams {
   /// Describe whether this data type connection is enabled or not.
-  final pulumi.Input<String> state;
+  final pulumi.Input<dynamic> state;
 
   /// Creates a new [OfficeDataConnectorDataTypesTeams].
   /// [state] Describe whether this data type connection is enabled or not.
@@ -21,7 +21,7 @@ class OfficeDataConnectorDataTypesTeams {
 
   factory OfficeDataConnectorDataTypesTeams.fromMap(Map<String, dynamic> map) {
     return OfficeDataConnectorDataTypesTeams(
-      state: pulumi.Input.fromValue(map['state'] as String),
+      state: pulumi.Input.fromValue(map['state']),
     );
   }
 }

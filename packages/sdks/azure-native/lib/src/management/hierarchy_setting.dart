@@ -187,4 +187,22 @@ class HierarchySetting extends pulumi.CustomResource {
     tenantId = registerOutput<String?>('tenantId');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [HierarchySetting] resource.
+  HierarchySetting.reference(String urn)
+    : super(
+        'azure-native:management:HierarchySetting',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultManagementGroup = registerOutput<String?>('defaultManagementGroup');
+    this.name = registerOutput<String>('name');
+    requireAuthorizationForGroupCreation = registerOutput<bool?>('requireAuthorizationForGroupCreation');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tenantId = registerOutput<String?>('tenantId');
+    type = registerOutput<String>('type');
+  }
 }

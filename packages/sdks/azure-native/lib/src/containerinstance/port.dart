@@ -7,7 +7,7 @@ class Port {
   /// The port number.
   final pulumi.Input<int> port;
   /// The protocol associated with the port.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<dynamic>? protocol;
 
   /// Creates a new [Port].
   /// [port] The port number.
@@ -26,8 +26,8 @@ class Port {
 
   factory Port.fromMap(Map<String, dynamic> map) {
     return Port(
-      port: pulumi.Input.fromValue(map['port'] as int),
-      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

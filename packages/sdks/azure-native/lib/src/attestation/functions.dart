@@ -22,6 +22,17 @@ Future<GetAttestationProviderResult> getAttestationProvider(
   return GetAttestationProviderResult.fromMap(result);
 }
 
+pulumi.Output<GetAttestationProviderResult> getAttestationProviderOutput(
+  GetAttestationProviderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:attestation:getAttestationProvider',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAttestationProviderResult.fromMap);
+}
+
 /// Gets the specified private endpoint connection associated with the attestation provider.
 ///
 /// Uses Azure REST API version 2021-06-01.
@@ -38,4 +49,15 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:attestation:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }

@@ -420,4 +420,27 @@ class DatabaseThreatDetectionPolicy extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     useServerDefault = registerOutput<String?>('useServerDefault');
   }
+
+  /// Creates a typed reference to an existing [DatabaseThreatDetectionPolicy] resource.
+  DatabaseThreatDetectionPolicy.reference(String urn)
+    : super(
+        'azure-native:sql:DatabaseThreatDetectionPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    disabledAlerts = registerOutput<String?>('disabledAlerts');
+    emailAccountAdmins = registerOutput<String?>('emailAccountAdmins');
+    emailAddresses = registerOutput<String?>('emailAddresses');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    retentionDays = registerOutput<int?>('retentionDays');
+    state = registerOutput<String>('state');
+    storageEndpoint = registerOutput<String?>('storageEndpoint');
+    type = registerOutput<String>('type');
+    useServerDefault = registerOutput<String?>('useServerDefault');
+  }
 }

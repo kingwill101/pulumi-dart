@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The directory type.
-enum DirectoryType {
+enum DirectoryType implements pulumi.PulumiEnum<String> {
   valueActiveDirectory("ActiveDirectory");
 
   const DirectoryType(this.wireValue);
+  @override
   final String wireValue;
 
   static DirectoryType fromValue(String value) {

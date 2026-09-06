@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Match condition to apply RouteMap rules.
-enum RouteMapMatchCondition {
+enum RouteMapMatchCondition implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueContains("Contains"),
   valueEquals("Equals"),
@@ -7,6 +9,7 @@ enum RouteMapMatchCondition {
   valueNotEquals("NotEquals");
 
   const RouteMapMatchCondition(this.wireValue);
+  @override
   final String wireValue;
 
   static RouteMapMatchCondition fromValue(String value) {

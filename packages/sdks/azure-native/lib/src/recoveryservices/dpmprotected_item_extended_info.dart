@@ -5,33 +5,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Additional information of DPM Protected item.
 class DPMProtectedItemExtendedInfo {
   /// Used Disk storage in bytes.
-  final pulumi.Input<String>? diskStorageUsedInBytes;
+  final pulumi.Input<String?>? diskStorageUsedInBytes;
   /// To check if backup item is collocated.
-  final pulumi.Input<bool>? isCollocated;
+  final pulumi.Input<bool?>? isCollocated;
   /// To check if backup item is cloud protected.
-  final pulumi.Input<bool>? isPresentOnCloud;
+  final pulumi.Input<bool?>? isPresentOnCloud;
   /// Last backup status information on backup item.
-  final pulumi.Input<String>? lastBackupStatus;
+  final pulumi.Input<String?>? lastBackupStatus;
   /// Last refresh time on backup item.
-  final pulumi.Input<String>? lastRefreshedAt;
+  final pulumi.Input<String?>? lastRefreshedAt;
   /// Oldest cloud recovery point time.
-  final pulumi.Input<String>? oldestRecoveryPoint;
+  final pulumi.Input<String?>? oldestRecoveryPoint;
   /// latest disk recovery point time.
-  final pulumi.Input<String>? onPremiseLatestRecoveryPoint;
+  final pulumi.Input<String?>? onPremiseLatestRecoveryPoint;
   /// Oldest disk recovery point time.
-  final pulumi.Input<String>? onPremiseOldestRecoveryPoint;
+  final pulumi.Input<String?>? onPremiseOldestRecoveryPoint;
   /// disk recovery point count.
-  final pulumi.Input<int>? onPremiseRecoveryPointCount;
+  final pulumi.Input<int?>? onPremiseRecoveryPointCount;
   /// Attribute to provide information on various DBs.
-  final pulumi.Input<Map<String, String>>? protectableObjectLoadPath;
+  final pulumi.Input<Map<String, String>?>? protectableObjectLoadPath;
   /// To check if backup item is disk protected.
-  final pulumi.Input<bool>? protected;
+  final pulumi.Input<bool?>? protected;
   /// Protection group name of the backup item.
-  final pulumi.Input<String>? protectionGroupName;
+  final pulumi.Input<String?>? protectionGroupName;
   /// cloud recovery point count.
-  final pulumi.Input<int>? recoveryPointCount;
+  final pulumi.Input<int?>? recoveryPointCount;
   /// total Disk storage in bytes.
-  final pulumi.Input<String>? totalDiskStorageSizeInBytes;
+  final pulumi.Input<String?>? totalDiskStorageSizeInBytes;
 
   /// Creates a new [DPMProtectedItemExtendedInfo].
   /// [diskStorageUsedInBytes] Used Disk storage in bytes.
@@ -94,11 +94,11 @@ class DPMProtectedItemExtendedInfo {
       oldestRecoveryPoint: (() { final guardedValue = map['oldestRecoveryPoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       onPremiseLatestRecoveryPoint: (() { final guardedValue = map['onPremiseLatestRecoveryPoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       onPremiseOldestRecoveryPoint: (() { final guardedValue = map['onPremiseOldestRecoveryPoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      onPremiseRecoveryPointCount: (() { final guardedValue = map['onPremiseRecoveryPointCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      onPremiseRecoveryPointCount: (() { final guardedValue = map['onPremiseRecoveryPointCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       protectableObjectLoadPath: (() { final guardedValue = map['protectableObjectLoadPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       protected: (() { final guardedValue = map['protected']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       protectionGroupName: (() { final guardedValue = map['protectionGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      recoveryPointCount: (() { final guardedValue = map['recoveryPointCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      recoveryPointCount: (() { final guardedValue = map['recoveryPointCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       totalDiskStorageSizeInBytes: (() { final guardedValue = map['totalDiskStorageSizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

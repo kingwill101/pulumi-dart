@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of QueryLoggingConfig
 class QueryLoggingConfigResponse {
   /// The Amazon Resource Name (ARN) of the CloudWatch Logs log group that Amazon Route 53 is publishing logs to.
-  final pulumi.Input<String>? cloudWatchLogsLogGroupArn;
+  final pulumi.Input<String?>? cloudWatchLogsLogGroupArn;
 
   /// Creates a new [QueryLoggingConfigResponse].
   /// [cloudWatchLogsLogGroupArn] The Amazon Resource Name (ARN) of the CloudWatch Logs log group that Amazon Route 53 is publishing logs to.

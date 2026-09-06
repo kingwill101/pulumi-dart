@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Diagnostic Metrics properties
 class Metrics {
   /// The prometheus port to expose the metrics.
-  final pulumi.Input<int>? prometheusPort;
+  final pulumi.Input<int?>? prometheusPort;
 
   /// Creates a new [Metrics].
   /// [prometheusPort] The prometheus port to expose the metrics.
-  const Metrics({
-    this.prometheusPort,
-  });
+  Metrics({
+    pulumi.Input<int?>? prometheusPort,
+  }) : prometheusPort = prometheusPort ?? pulumi.Input.fromValue(9600);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,7 +21,7 @@ class Metrics {
 
   factory Metrics.fromMap(Map<String, dynamic> map) {
     return Metrics(
-      prometheusPort: (() { final guardedValue = map['prometheusPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      prometheusPort: (() { final guardedValue = map['prometheusPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

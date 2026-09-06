@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Model configuration options.
 class GroupModelConfigurationResponse {
   /// The URI path to the model.
-  final pulumi.Input<String>? modelId;
+  final pulumi.Input<String?>? modelId;
 
   /// Creates a new [GroupModelConfigurationResponse].
   /// [modelId] The URI path to the model.

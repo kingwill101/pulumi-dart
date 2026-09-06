@@ -8,13 +8,13 @@ class IPConfigurationProfileResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The provisioning state of the IP configuration profile resource.
   final pulumi.Input<String> provisioningState;
   /// The reference to the subnet resource to create a container network interface ip configuration.
-  final pulumi.Input<SubnetResponse>? subnet;
+  final pulumi.Input<SubnetResponse?>? subnet;
   /// Sub Resource type.
   final pulumi.Input<String> type;
 

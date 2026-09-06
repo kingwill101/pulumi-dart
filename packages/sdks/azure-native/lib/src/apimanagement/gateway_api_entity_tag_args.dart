@@ -9,11 +9,11 @@ import 'provisioning_state.dart';
 /// {@macro pulumi_apimanagement_gateway_api_entity_tag_args_doc}
 class GatewayApiEntityTagArgs {
   /// API identifier. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? apiId;
+  final pulumi.Input<String?>? apiId;
   /// Gateway entity identifier. Must be unique in the current API Management service instance. Must not have value 'managed'
   final pulumi.Input<String> gatewayId;
   /// Provisioning state.
-  final pulumi.Input<ProvisioningState>? provisioningState;
+  final pulumi.Input<ProvisioningState?>? provisioningState;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.

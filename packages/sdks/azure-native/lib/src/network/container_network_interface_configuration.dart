@@ -7,13 +7,13 @@ import 'sub_resource.dart';
 /// Container network interface configuration child resource.
 class ContainerNetworkInterfaceConfiguration {
   /// A list of container network interfaces created from this container network interface configuration.
-  final pulumi.Input<List<SubResource>>? containerNetworkInterfaces;
+  final pulumi.Input<List<SubResource>?>? containerNetworkInterfaces;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// A list of ip configurations of the container network interface configuration.
-  final pulumi.Input<List<IPConfigurationProfile>>? ipConfigurations;
+  final pulumi.Input<List<IPConfigurationProfile>?>? ipConfigurations;
   /// The name of the resource. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ContainerNetworkInterfaceConfiguration].
   /// [containerNetworkInterfaces] A list of container network interfaces created from this container network interface configuration.

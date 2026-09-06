@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_datamigration_get_database_migrations_sql_vm_args_doc}
 class GetDatabaseMigrationsSqlVmArgs {
   /// Complete migration details be included in the response.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// Optional migration operation ID. If this is provided, then details of migration operation for that ID are retrieved. If not provided (default), then details related to most recent or current operation are retrieved.
-  final pulumi.Input<String>? migrationOperationId;
+  final pulumi.Input<String?>? migrationOperationId;
   /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   final pulumi.Input<String> sqlVirtualMachineName;

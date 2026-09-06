@@ -1,21 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'adhoc_based_trigger_context_response.dart';
 import 'azure_backup_params_response.dart';
 import 'data_store_info_base_response.dart';
 
 /// Azure backup rule
 class AzureBackupRuleResponse {
   /// BackupParameters base
-  final pulumi.Input<AzureBackupParamsResponse>? backupParameters;
+  final pulumi.Input<AzureBackupParamsResponse?>? backupParameters;
   /// DataStoreInfo base
   final pulumi.Input<DataStoreInfoBaseResponse> dataStore;
   final pulumi.Input<String> name;
   /// Expected value is 'AzureBackupRule'.
   final pulumi.Input<String> objectType;
   /// Trigger context
-  final pulumi.Input<AdhocBasedTriggerContextResponse> trigger;
+  final pulumi.Input<dynamic> trigger;
 
   /// Creates a new [AzureBackupRuleResponse].
   /// [backupParameters] BackupParameters base
@@ -37,7 +36,7 @@ class AzureBackupRuleResponse {
       'dataStore': pulumi.Input.mapInputValue<DataStoreInfoBaseResponse, Map<String, dynamic>>(dataStore, (value) => value.toMap()),
       'name': name,
       'objectType': objectType,
-      'trigger': pulumi.Input.mapInputValue<AdhocBasedTriggerContextResponse, Map<String, dynamic>>(trigger, (value) => value.toMap()),
+      'trigger': trigger,
     };
   }
 
@@ -47,7 +46,7 @@ class AzureBackupRuleResponse {
       dataStore: pulumi.Input.fromValue(DataStoreInfoBaseResponse.fromMap((map['dataStore']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
       objectType: pulumi.Input.fromValue(map['objectType'] as String),
-      trigger: pulumi.Input.fromValue(AdhocBasedTriggerContextResponse.fromMap((map['trigger']! as Map).cast<String, dynamic>())),
+      trigger: pulumi.Input.fromValue(map['trigger']),
     );
   }
 }

@@ -10,25 +10,25 @@ class GetGovernanceAssignmentResult {
   /// The additional data for the governance assignment - e.g. links to ticket (optional), see example
   final GovernanceAssignmentAdditionalDataResponse? additionalData;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
   final GovernanceEmailNotificationResponse? governanceEmailNotification;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Defines whether there is a grace period on the governance assignment
   final bool? isGracePeriod;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The Owner for the governance assignment - e.g. user@contoso.com - see example
   final String? owner;
   /// The remediation due-date - after this date Secure Score will be affected (in case of  active grace-period)
-  final String remediationDueDate;
+  final String? remediationDueDate;
   /// The ETA (estimated time of arrival) for remediation (optional), see example
   final RemediationEtaResponse? remediationEta;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetGovernanceAssignmentResult].
   /// [additionalData] The additional data for the governance assignment - e.g. links to ticket (optional), see example
@@ -44,47 +44,47 @@ class GetGovernanceAssignmentResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetGovernanceAssignmentResult({
     this.additionalData,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.governanceEmailNotification,
-    required this.id,
+    this.id,
     this.isGracePeriod,
-    required this.name,
+    this.name,
     this.owner,
-    required this.remediationDueDate,
+    this.remediationDueDate,
     this.remediationEta,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'additionalData': ?additionalData?.toMap(),
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'governanceEmailNotification': ?governanceEmailNotification?.toMap(),
-      'id': id,
+      'id': ?id,
       'isGracePeriod': ?isGracePeriod,
-      'name': name,
+      'name': ?name,
       'owner': ?owner,
-      'remediationDueDate': remediationDueDate,
+      'remediationDueDate': ?remediationDueDate,
       'remediationEta': ?remediationEta?.toMap(),
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetGovernanceAssignmentResult.fromMap(Map<String, dynamic> map) {
     return GetGovernanceAssignmentResult(
       additionalData: (() { final guardedValue = map['additionalData']; if (guardedValue == null) return null; return GovernanceAssignmentAdditionalDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       governanceEmailNotification: (() { final guardedValue = map['governanceEmailNotification']; if (guardedValue == null) return null; return GovernanceEmailNotificationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isGracePeriod: (() { final guardedValue = map['isGracePeriod']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      remediationDueDate: map['remediationDueDate'] as String,
+      remediationDueDate: (() { final guardedValue = map['remediationDueDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
       remediationEta: (() { final guardedValue = map['remediationEta']; if (guardedValue == null) return null; return RemediationEtaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

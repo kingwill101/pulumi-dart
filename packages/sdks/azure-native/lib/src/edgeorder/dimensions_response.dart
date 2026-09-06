@@ -51,13 +51,13 @@ class DimensionsResponse {
 
   factory DimensionsResponse.fromMap(Map<String, dynamic> map) {
     return DimensionsResponse(
-      depth: pulumi.Input.fromValue(map['depth'] as double),
-      height: pulumi.Input.fromValue(map['height'] as double),
-      length: pulumi.Input.fromValue(map['length'] as double),
+      depth: pulumi.Input.fromValue((map['depth'] as num).toDouble()),
+      height: pulumi.Input.fromValue((map['height'] as num).toDouble()),
+      length: pulumi.Input.fromValue((map['length'] as num).toDouble()),
       lengthHeightUnit: pulumi.Input.fromValue(map['lengthHeightUnit'] as String),
-      weight: pulumi.Input.fromValue(map['weight'] as double),
+      weight: pulumi.Input.fromValue((map['weight'] as num).toDouble()),
       weightUnit: pulumi.Input.fromValue(map['weightUnit'] as String),
-      width: pulumi.Input.fromValue(map['width'] as double),
+      width: pulumi.Input.fromValue((map['width'] as num).toDouble()),
     );
   }
 }

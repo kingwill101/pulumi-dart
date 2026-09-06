@@ -8,7 +8,7 @@ class SharingStatusResponse {
   /// Aggregated sharing state of current gallery.
   final pulumi.Input<String> aggregatedState;
   /// Summary of all regional sharing status.
-  final pulumi.Input<List<RegionalSharingStatusResponse>>? summary;
+  final pulumi.Input<List<RegionalSharingStatusResponse>?>? summary;
 
   /// Creates a new [SharingStatusResponse].
   /// [aggregatedState] Aggregated sharing state of current gallery.

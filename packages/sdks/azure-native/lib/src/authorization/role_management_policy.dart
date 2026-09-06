@@ -2859,7 +2859,7 @@ class RoleManagementPolicy extends pulumi.CustomResource {
   /// The role management policy display name.
   late final pulumi.Output<String?> displayName;
   /// The readonly computed rule applied to the policy.
-  late final pulumi.Output<List<Map<String, dynamic>>> effectiveRules;
+  late final pulumi.Output<List<dynamic>> effectiveRules;
   /// The role management policy is default policy.
   late final pulumi.Output<bool?> isOrganizationDefault;
   /// The name of the entity last modified it
@@ -2871,7 +2871,7 @@ class RoleManagementPolicy extends pulumi.CustomResource {
   /// Additional properties of scope
   late final pulumi.Output<PolicyPropertiesResponse> policyProperties;
   /// The rule applied to the policy.
-  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+  late final pulumi.Output<List<dynamic>?> rules;
   /// The role management policy scope.
   late final pulumi.Output<String?> scope;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -2896,13 +2896,37 @@ class RoleManagementPolicy extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    effectiveRules = registerOutput<List<Map<String, dynamic>>>('effectiveRules');
+    effectiveRules = registerOutput<List<dynamic>>('effectiveRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     isOrganizationDefault = registerOutput<bool?>('isOrganizationDefault');
     lastModifiedBy = registerOutput<PrincipalResponse>('lastModifiedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrincipalResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifiedDateTime = registerOutput<String>('lastModifiedDateTime');
     this.name = registerOutput<String>('name');
     policyProperties = registerOutput<PolicyPropertiesResponse>('policyProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<dynamic>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    scope = registerOutput<String?>('scope');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [RoleManagementPolicy] resource.
+  RoleManagementPolicy.reference(String urn)
+    : super(
+        'azure-native:authorization:RoleManagementPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    effectiveRules = registerOutput<List<dynamic>>('effectiveRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    isOrganizationDefault = registerOutput<bool?>('isOrganizationDefault');
+    lastModifiedBy = registerOutput<PrincipalResponse>('lastModifiedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrincipalResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastModifiedDateTime = registerOutput<String>('lastModifiedDateTime');
+    this.name = registerOutput<String>('name');
+    policyProperties = registerOutput<PolicyPropertiesResponse>('policyProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rules = registerOutput<List<dynamic>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     scope = registerOutput<String?>('scope');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');

@@ -36,6 +36,17 @@ Future<GetApplicationResult> getApplication(
   return GetApplicationResult.fromMap(result);
 }
 
+pulumi.Output<GetApplicationResult> getApplicationOutput(
+  GetApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hdinsight:getApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationResult.fromMap);
+}
+
 /// Gets the specified cluster.
 ///
 /// Uses Azure REST API version 2024-08-01-preview.
@@ -54,6 +65,17 @@ Future<GetClusterResult> getCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hdinsight:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
 }
 
 /// Gets the gateway settings for the specified cluster.
@@ -76,6 +98,17 @@ Future<GetClusterGatewaySettingsResult> getClusterGatewaySettings(
   return GetClusterGatewaySettingsResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterGatewaySettingsResult> getClusterGatewaySettingsOutput(
+  GetClusterGatewaySettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hdinsight:getClusterGatewaySettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterGatewaySettingsResult.fromMap);
+}
+
 /// Gets the extension properties for the specified HDInsight cluster extension.
 ///
 /// Uses Azure REST API version 2024-08-01-preview.
@@ -94,6 +127,17 @@ Future<GetExtensionResult> getExtension(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExtensionResult.fromMap(result);
+}
+
+pulumi.Output<GetExtensionResult> getExtensionOutput(
+  GetExtensionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hdinsight:getExtension',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExtensionResult.fromMap);
 }
 
 /// Gets the status of Azure Monitor Agent on the HDInsight cluster.
@@ -116,6 +160,17 @@ Future<GetExtensionAzureMonitorAgentStatusResult> getExtensionAzureMonitorAgentS
   return GetExtensionAzureMonitorAgentStatusResult.fromMap(result);
 }
 
+pulumi.Output<GetExtensionAzureMonitorAgentStatusResult> getExtensionAzureMonitorAgentStatusOutput(
+  GetExtensionAzureMonitorAgentStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hdinsight:getExtensionAzureMonitorAgentStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExtensionAzureMonitorAgentStatusResult.fromMap);
+}
+
 /// Gets the status of Azure Monitor on the HDInsight cluster.
 ///
 /// Uses Azure REST API version 2024-08-01-preview.
@@ -134,6 +189,17 @@ Future<GetExtensionAzureMonitorStatusResult> getExtensionAzureMonitorStatus(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExtensionAzureMonitorStatusResult.fromMap(result);
+}
+
+pulumi.Output<GetExtensionAzureMonitorStatusResult> getExtensionAzureMonitorStatusOutput(
+  GetExtensionAzureMonitorStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hdinsight:getExtensionAzureMonitorStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExtensionAzureMonitorStatusResult.fromMap);
 }
 
 /// Gets the status of Operations Management Suite (OMS) on the HDInsight cluster.
@@ -156,6 +222,17 @@ Future<GetExtensionMonitoringStatusResult> getExtensionMonitoringStatus(
   return GetExtensionMonitoringStatusResult.fromMap(result);
 }
 
+pulumi.Output<GetExtensionMonitoringStatusResult> getExtensionMonitoringStatusOutput(
+  GetExtensionMonitoringStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hdinsight:getExtensionMonitoringStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExtensionMonitoringStatusResult.fromMap);
+}
+
 /// Gets the specific private endpoint connection.
 ///
 /// Uses Azure REST API version 2024-08-01-preview.
@@ -174,4 +251,15 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hdinsight:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }

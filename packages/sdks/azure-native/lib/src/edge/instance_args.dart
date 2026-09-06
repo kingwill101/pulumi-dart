@@ -10,11 +10,11 @@ import 'instance_properties.dart';
 /// {@macro pulumi_edge_instance_args_doc}
 class InstanceArgs {
   /// The complex type of the extended location.
-  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation>? extendedLocation;
+  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation?>? extendedLocation;
   /// Name of the instance
-  final pulumi.Input<String>? instanceName;
+  final pulumi.Input<String?>? instanceName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<InstanceProperties>? properties;
+  final pulumi.Input<InstanceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the solution

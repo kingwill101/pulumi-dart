@@ -8,17 +8,17 @@ import 'volume_mount.dart';
 /// The init container definition.
 class InitContainerDefinition {
   /// The command to execute within the init container in exec form.
-  final pulumi.Input<List<String>>? command;
+  final pulumi.Input<List<String>?>? command;
   /// The environment variables to set in the init container.
-  final pulumi.Input<List<EnvironmentVariable>>? environmentVariables;
+  final pulumi.Input<List<EnvironmentVariable>?>? environmentVariables;
   /// The image of the init container.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// The name for the init container.
   final pulumi.Input<String> name;
   /// The container security properties.
-  final pulumi.Input<SecurityContextDefinition>? securityContext;
+  final pulumi.Input<SecurityContextDefinition?>? securityContext;
   /// The volume mounts available to the init container.
-  final pulumi.Input<List<VolumeMount>>? volumeMounts;
+  final pulumi.Input<List<VolumeMount>?>? volumeMounts;
 
   /// Creates a new [InitContainerDefinition].
   /// [command] The command to execute within the init container in exec form.

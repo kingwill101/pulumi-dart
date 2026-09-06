@@ -3,10 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gateway_custom_bgp_ip_address_ip_configuration.dart';
 import 'ipsec_policy.dart';
-import 'local_network_gateway_network.dart';
+import 'local_network_gateway.dart';
 import 'sub_resource.dart';
 import 'traffic_selector_policy.dart';
-import 'virtual_network_gateway_network.dart';
+import 'virtual_network_gateway.dart';
 
 /// {@template pulumi_network_virtual_network_gateway_connection_args_doc}
 /// The set of arguments for VirtualNetworkGatewayConnection.
@@ -14,57 +14,57 @@ import 'virtual_network_gateway_network.dart';
 /// {@macro pulumi_network_virtual_network_gateway_connection_args_doc}
 class VirtualNetworkGatewayConnectionArgs {
   /// The authorizationKey.
-  final pulumi.Input<String>? authorizationKey;
+  final pulumi.Input<String?>? authorizationKey;
   /// The connection mode for this connection.
-  final pulumi.Input<String>? connectionMode;
+  final pulumi.Input<dynamic>? connectionMode;
   /// Connection protocol used for this connection.
-  final pulumi.Input<String>? connectionProtocol;
+  final pulumi.Input<dynamic>? connectionProtocol;
   /// Gateway connection type.
-  final pulumi.Input<String> connectionType;
+  final pulumi.Input<dynamic> connectionType;
   /// The dead peer detection timeout of this connection in seconds.
-  final pulumi.Input<int>? dpdTimeoutSeconds;
+  final pulumi.Input<int?>? dpdTimeoutSeconds;
   /// List of egress NatRules.
-  final pulumi.Input<List<SubResource>>? egressNatRules;
+  final pulumi.Input<List<SubResource>?>? egressNatRules;
   /// EnableBgp flag.
-  final pulumi.Input<bool>? enableBgp;
+  final pulumi.Input<bool?>? enableBgp;
   /// Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute FastPath (expressRouteGatewayBypass) must be enabled.
-  final pulumi.Input<bool>? enablePrivateLinkFastPath;
+  final pulumi.Input<bool?>? enablePrivateLinkFastPath;
   /// Bypass ExpressRoute Gateway for data forwarding.
-  final pulumi.Input<bool>? expressRouteGatewayBypass;
+  final pulumi.Input<bool?>? expressRouteGatewayBypass;
   /// GatewayCustomBgpIpAddresses to be used for virtual network gateway Connection.
-  final pulumi.Input<List<GatewayCustomBgpIpAddressIpConfiguration>>? gatewayCustomBgpIpAddresses;
+  final pulumi.Input<List<GatewayCustomBgpIpAddressIpConfiguration>?>? gatewayCustomBgpIpAddresses;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// List of ingress NatRules.
-  final pulumi.Input<List<SubResource>>? ingressNatRules;
+  final pulumi.Input<List<SubResource>?>? ingressNatRules;
   /// The IPSec Policies to be considered by this connection.
-  final pulumi.Input<List<IpsecPolicy>>? ipsecPolicies;
+  final pulumi.Input<List<IpsecPolicy>?>? ipsecPolicies;
   /// The reference to local network gateway resource.
-  final pulumi.Input<LocalNetworkGatewayNetwork>? localNetworkGateway2;
+  final pulumi.Input<LocalNetworkGateway?>? localNetworkGateway2;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The reference to peerings resource.
-  final pulumi.Input<SubResource>? peer;
+  final pulumi.Input<SubResource?>? peer;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The routing weight.
-  final pulumi.Input<int>? routingWeight;
+  final pulumi.Input<int?>? routingWeight;
   /// The IPSec shared key.
-  final pulumi.Input<String>? sharedKey;
+  final pulumi.Input<String?>? sharedKey;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The Traffic Selector Policies to be considered by this connection.
-  final pulumi.Input<List<TrafficSelectorPolicy>>? trafficSelectorPolicies;
+  final pulumi.Input<List<TrafficSelectorPolicy>?>? trafficSelectorPolicies;
   /// Use private local Azure IP for the connection.
-  final pulumi.Input<bool>? useLocalAzureIpAddress;
+  final pulumi.Input<bool?>? useLocalAzureIpAddress;
   /// Enable policy-based traffic selectors.
-  final pulumi.Input<bool>? usePolicyBasedTrafficSelectors;
+  final pulumi.Input<bool?>? usePolicyBasedTrafficSelectors;
   /// The reference to virtual network gateway resource.
-  final pulumi.Input<VirtualNetworkGatewayNetwork> virtualNetworkGateway1;
+  final pulumi.Input<VirtualNetworkGateway> virtualNetworkGateway1;
   /// The reference to virtual network gateway resource.
-  final pulumi.Input<VirtualNetworkGatewayNetwork>? virtualNetworkGateway2;
+  final pulumi.Input<VirtualNetworkGateway?>? virtualNetworkGateway2;
   /// The name of the virtual network gateway connection.
-  final pulumi.Input<String>? virtualNetworkGatewayConnectionName;
+  final pulumi.Input<String?>? virtualNetworkGatewayConnectionName;
 
   /// Creates a new [VirtualNetworkGatewayConnectionArgs].
   /// [authorizationKey] The authorizationKey.
@@ -137,7 +137,7 @@ class VirtualNetworkGatewayConnectionArgs {
       'id': ?id,
       'ingressNatRules': ?pulumi.Input.mapOptionalInputValue<List<SubResource>, List<Map<String, dynamic>>>(ingressNatRules, (value) => pulumi.Input.encodeList<SubResource, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ipsecPolicies': ?pulumi.Input.mapOptionalInputValue<List<IpsecPolicy>, List<Map<String, dynamic>>>(ipsecPolicies, (value) => pulumi.Input.encodeList<IpsecPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'localNetworkGateway2': ?localNetworkGateway2,
+      'localNetworkGateway2': ?pulumi.Input.mapOptionalInputValue<LocalNetworkGateway, Map<String, dynamic>>(localNetworkGateway2, (value) => value.toMap()),
       'location': ?location,
       'peer': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(peer, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
@@ -147,8 +147,8 @@ class VirtualNetworkGatewayConnectionArgs {
       'trafficSelectorPolicies': ?pulumi.Input.mapOptionalInputValue<List<TrafficSelectorPolicy>, List<Map<String, dynamic>>>(trafficSelectorPolicies, (value) => pulumi.Input.encodeList<TrafficSelectorPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'useLocalAzureIpAddress': ?useLocalAzureIpAddress,
       'usePolicyBasedTrafficSelectors': ?usePolicyBasedTrafficSelectors,
-      'virtualNetworkGateway1': virtualNetworkGateway1,
-      'virtualNetworkGateway2': ?virtualNetworkGateway2,
+      'virtualNetworkGateway1': pulumi.Input.mapInputValue<VirtualNetworkGateway, Map<String, dynamic>>(virtualNetworkGateway1, (value) => value.toMap()),
+      'virtualNetworkGateway2': ?pulumi.Input.mapOptionalInputValue<VirtualNetworkGateway, Map<String, dynamic>>(virtualNetworkGateway2, (value) => value.toMap()),
       'virtualNetworkGatewayConnectionName': ?virtualNetworkGatewayConnectionName,
     };
   }
@@ -156,10 +156,10 @@ class VirtualNetworkGatewayConnectionArgs {
   factory VirtualNetworkGatewayConnectionArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayConnectionArgs(
       authorizationKey: (() { final guardedValue = map['authorizationKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      connectionMode: (() { final guardedValue = map['connectionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      connectionProtocol: (() { final guardedValue = map['connectionProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      connectionType: pulumi.Input.fromValue(map['connectionType'] as String),
-      dpdTimeoutSeconds: (() { final guardedValue = map['dpdTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      connectionMode: (() { final guardedValue = map['connectionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      connectionProtocol: (() { final guardedValue = map['connectionProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      connectionType: pulumi.Input.fromValue(map['connectionType']),
+      dpdTimeoutSeconds: (() { final guardedValue = map['dpdTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       egressNatRules: (() { final guardedValue = map['egressNatRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubResource>(guardedValue, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))); })(),
       enableBgp: (() { final guardedValue = map['enableBgp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enablePrivateLinkFastPath: (() { final guardedValue = map['enablePrivateLinkFastPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -168,18 +168,18 @@ class VirtualNetworkGatewayConnectionArgs {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ingressNatRules: (() { final guardedValue = map['ingressNatRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubResource>(guardedValue, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipsecPolicies: (() { final guardedValue = map['ipsecPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IpsecPolicy>(guardedValue, (value) => IpsecPolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      localNetworkGateway2: (() { final guardedValue = map['localNetworkGateway2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as LocalNetworkGatewayNetwork); })(),
+      localNetworkGateway2: (() { final guardedValue = map['localNetworkGateway2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LocalNetworkGateway.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       peer: (() { final guardedValue = map['peer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      routingWeight: (() { final guardedValue = map['routingWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      routingWeight: (() { final guardedValue = map['routingWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sharedKey: (() { final guardedValue = map['sharedKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       trafficSelectorPolicies: (() { final guardedValue = map['trafficSelectorPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TrafficSelectorPolicy>(guardedValue, (value) => TrafficSelectorPolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
       useLocalAzureIpAddress: (() { final guardedValue = map['useLocalAzureIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       usePolicyBasedTrafficSelectors: (() { final guardedValue = map['usePolicyBasedTrafficSelectors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      virtualNetworkGateway1: pulumi.Input.fromValue(map['virtualNetworkGateway1'] as VirtualNetworkGatewayNetwork),
-      virtualNetworkGateway2: (() { final guardedValue = map['virtualNetworkGateway2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as VirtualNetworkGatewayNetwork); })(),
+      virtualNetworkGateway1: pulumi.Input.fromValue(VirtualNetworkGateway.fromMap((map['virtualNetworkGateway1']! as Map).cast<String, dynamic>())),
+      virtualNetworkGateway2: (() { final guardedValue = map['virtualNetworkGateway2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualNetworkGateway.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       virtualNetworkGatewayConnectionName: (() { final guardedValue = map['virtualNetworkGatewayConnectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

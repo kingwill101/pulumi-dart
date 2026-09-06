@@ -6,7 +6,7 @@ import 'creation_data.dart';
 /// Properties under the snapshot resource
 class SnapshotProperties {
   /// Data used when creating a snapshot
-  final pulumi.Input<CreationData>? creationData;
+  final pulumi.Input<CreationData?>? creationData;
 
   /// Creates a new [SnapshotProperties].
   /// [creationData] Data used when creating a snapshot

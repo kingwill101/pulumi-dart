@@ -11,7 +11,7 @@ class MountTargetPropertiesResponse {
   /// UUID v4 used to identify the MountTarget
   final pulumi.Input<String> mountTargetId;
   /// The SMB server's Fully Qualified Domain Name, FQDN
-  final pulumi.Input<String>? smbServerFqdn;
+  final pulumi.Input<String?>? smbServerFqdn;
 
   /// Creates a new [MountTargetPropertiesResponse].
   /// [fileSystemId] UUID v4 used to identify the MountTarget

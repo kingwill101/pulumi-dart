@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Extract status.
-enum IntuneExtractStatus {
+enum IntuneExtractStatus implements pulumi.PulumiEnum<String> {
   valueReady("Ready"),
   valueUploading("Uploading"),
   valueUploadFailed("UploadFailed"),
@@ -7,6 +9,7 @@ enum IntuneExtractStatus {
   valueNoDependencyApp("NoDependencyApp");
 
   const IntuneExtractStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static IntuneExtractStatus fromValue(String value) {

@@ -10,7 +10,7 @@ class GetNamespaceDeviceResult {
   /// A set of key-value pairs that contain custom attributes set by the customer.
   final dynamic attributes;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Reference to a device. Populated only if the device had been created from discovery flow. Discovered device name must be provided.
   final String? discoveredDeviceRef;
   /// Indicates if the resource is enabled or not.
@@ -18,41 +18,41 @@ class GetNamespaceDeviceResult {
   /// Property bag containing the device's unassigned and assigned endpoints.
   final MessagingEndpointsResponse? endpoints;
   /// Resource Tag.
-  final String etag;
+  final String? etag;
   /// The extended location.
   final ExtendedLocationResponse? extendedLocation;
   /// The Device ID provided by the customer.
   final String? externalDeviceId;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// A timestamp (in UTC) that is updated each time the resource is modified.
-  final String lastTransitionTime;
+  final String? lastTransitionTime;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// Device manufacturer.
   final String? manufacturer;
   /// Device model.
   final String? model;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Device operating system.
   final String? operatingSystem;
   /// Device operating system version.
   final String? operatingSystemVersion;
   /// Provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Device status updates.
-  final DeviceStatusResponse status;
+  final DeviceStatusResponse? status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// A unique identifier for the device.
-  final String uuid;
+  final String? uuid;
   /// An integer that is incremented each time the resource is modified.
-  final double version;
+  final double? version;
 
   /// Creates a new [GetNamespaceDeviceResult].
   /// [attributes] A set of key-value pairs that contain custom attributes set by the customer.
@@ -78,85 +78,85 @@ class GetNamespaceDeviceResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uuid] A unique identifier for the device.
   /// [version] An integer that is incremented each time the resource is modified.
-  const GetNamespaceDeviceResult({
+  GetNamespaceDeviceResult({
     this.attributes,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.discoveredDeviceRef,
-    this.enabled,
+    bool? enabled,
     this.endpoints,
-    required this.etag,
+    this.etag,
     this.extendedLocation,
     this.externalDeviceId,
-    required this.id,
-    required this.lastTransitionTime,
-    required this.location,
+    this.id,
+    this.lastTransitionTime,
+    this.location,
     this.manufacturer,
     this.model,
-    required this.name,
+    this.name,
     this.operatingSystem,
     this.operatingSystemVersion,
-    required this.provisioningState,
-    required this.status,
-    required this.systemData,
+    this.provisioningState,
+    this.status,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.uuid,
-    required this.version,
-  });
+    this.type,
+    this.uuid,
+    this.version,
+  }) : enabled = enabled ?? true;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attributes': ?attributes,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'discoveredDeviceRef': ?discoveredDeviceRef,
       'enabled': ?enabled,
       'endpoints': ?endpoints?.toMap(),
-      'etag': etag,
+      'etag': ?etag,
       'extendedLocation': ?extendedLocation?.toMap(),
       'externalDeviceId': ?externalDeviceId,
-      'id': id,
-      'lastTransitionTime': lastTransitionTime,
-      'location': location,
+      'id': ?id,
+      'lastTransitionTime': ?lastTransitionTime,
+      'location': ?location,
       'manufacturer': ?manufacturer,
       'model': ?model,
-      'name': name,
+      'name': ?name,
       'operatingSystem': ?operatingSystem,
       'operatingSystemVersion': ?operatingSystemVersion,
-      'provisioningState': provisioningState,
-      'status': status.toMap(),
-      'systemData': systemData.toMap(),
+      'provisioningState': ?provisioningState,
+      'status': ?status?.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'uuid': uuid,
-      'version': version,
+      'type': ?type,
+      'uuid': ?uuid,
+      'version': ?version,
     };
   }
 
   factory GetNamespaceDeviceResult.fromMap(Map<String, dynamic> map) {
     return GetNamespaceDeviceResult(
       attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return guardedValue; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       discoveredDeviceRef: (() { final guardedValue = map['discoveredDeviceRef']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       endpoints: (() { final guardedValue = map['endpoints']; if (guardedValue == null) return null; return MessagingEndpointsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      etag: map['etag'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       externalDeviceId: (() { final guardedValue = map['externalDeviceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      lastTransitionTime: map['lastTransitionTime'] as String,
-      location: map['location'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastTransitionTime: (() { final guardedValue = map['lastTransitionTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       manufacturer: (() { final guardedValue = map['manufacturer']; if (guardedValue == null) return null; return guardedValue as String; })(),
       model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       operatingSystem: (() { final guardedValue = map['operatingSystem']; if (guardedValue == null) return null; return guardedValue as String; })(),
       operatingSystemVersion: (() { final guardedValue = map['operatingSystemVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
-      status: DeviceStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return DeviceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      uuid: map['uuid'] as String,
-      version: map['version'] as double,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
     );
   }
 }

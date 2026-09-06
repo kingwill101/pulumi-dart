@@ -22,6 +22,17 @@ Future<GetCloudConnectionResult> getCloudConnection(
   return GetCloudConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetCloudConnectionResult> getCloudConnectionOutput(
+  GetCloudConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridcloud:getCloudConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudConnectionResult.fromMap);
+}
+
 /// Gets the specified cloud connector in a specified resource group.
 ///
 /// Uses Azure REST API version 2023-01-01-preview.
@@ -38,4 +49,15 @@ Future<GetCloudConnectorResult> getCloudConnector(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCloudConnectorResult.fromMap(result);
+}
+
+pulumi.Output<GetCloudConnectorResult> getCloudConnectorOutput(
+  GetCloudConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridcloud:getCloudConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudConnectorResult.fromMap);
 }

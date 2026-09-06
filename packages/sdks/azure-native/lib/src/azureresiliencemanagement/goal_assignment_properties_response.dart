@@ -15,7 +15,7 @@ class GoalAssignmentPropertiesResponse {
   /// Provisioning state
   final pulumi.Input<String> provisioningState;
   /// List of service level resources.
-  final pulumi.Input<List<ServiceLevelResourceResponse>>? serviceLevelResources;
+  final pulumi.Input<List<ServiceLevelResourceResponse>?>? serviceLevelResources;
 
   /// Creates a new [GoalAssignmentPropertiesResponse].
   /// [errorDetails] Details of any errors encountered during the operation.

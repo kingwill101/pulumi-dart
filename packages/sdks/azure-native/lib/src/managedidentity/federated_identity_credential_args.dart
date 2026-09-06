@@ -10,7 +10,7 @@ class FederatedIdentityCredentialArgs {
   /// The list of audiences that can appear in the issued token.
   final pulumi.Input<List<String>> audiences;
   /// The name of the federated identity credential resource.
-  final pulumi.Input<String>? federatedIdentityCredentialResourceName;
+  final pulumi.Input<String?>? federatedIdentityCredentialResourceName;
   /// The URL of the issuer to be trusted.
   final pulumi.Input<String> issuer;
   /// The name of the resource group. The name is case insensitive.

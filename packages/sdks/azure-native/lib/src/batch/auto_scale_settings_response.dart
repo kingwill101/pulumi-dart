@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AutoScale settings for the pool.
 class AutoScaleSettingsResponse {
   /// If omitted, the default value is 15 minutes (PT15M).
-  final pulumi.Input<String>? evaluationInterval;
+  final pulumi.Input<String?>? evaluationInterval;
   /// A formula for the desired number of compute nodes in the pool.
   final pulumi.Input<String> formula;
 

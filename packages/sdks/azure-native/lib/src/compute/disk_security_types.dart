@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the SecurityType of the VM. Applicable for OS disks only.
-enum DiskSecurityTypes {
+enum DiskSecurityTypes implements pulumi.PulumiEnum<String> {
   trustedLaunch("TrustedLaunch"),
   confidentialVMVMGuestStateOnlyEncryptedWithPlatformKey("ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey"),
   confidentialVMDiskEncryptedWithPlatformKey("ConfidentialVM_DiskEncryptedWithPlatformKey"),
@@ -7,6 +9,7 @@ enum DiskSecurityTypes {
   confidentialVMNonPersistedTPM("ConfidentialVM_NonPersistedTPM");
 
   const DiskSecurityTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static DiskSecurityTypes fromValue(String value) {

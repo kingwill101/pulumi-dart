@@ -7,9 +7,9 @@ import 'sse_kms_encrypted_objects.dart';
 /// Definition of SourceSelectionCriteria
 class SourceSelectionCriteria {
   /// A filter that you can specify for selection for modifications on replicas. A filter that you can specify for selection for modifications on replicas.
-  final pulumi.Input<ReplicaModifications>? replicaModifications;
+  final pulumi.Input<ReplicaModifications?>? replicaModifications;
   /// A container for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. A container for filter information for the selection of S3 objects encrypted with AWS KMS.
-  final pulumi.Input<SseKmsEncryptedObjects>? sseKmsEncryptedObjects;
+  final pulumi.Input<SseKmsEncryptedObjects?>? sseKmsEncryptedObjects;
 
   /// Creates a new [SourceSelectionCriteria].
   /// [replicaModifications] A filter that you can specify for selection for modifications on replicas. A filter that you can specify for selection for modifications on replicas.

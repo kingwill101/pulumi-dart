@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_workspace_notification_recipient_email_args_doc}
 class WorkspaceNotificationRecipientEmailArgs {
   /// Email identifier.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// Notification Name Identifier.
   final pulumi.Input<String> notificationName;
   /// The name of the resource group. The name is case insensitive.

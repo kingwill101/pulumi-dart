@@ -16,13 +16,13 @@ class ConnectorMappingPropertiesResponse {
   /// The error management setting for the mapping.
   final pulumi.Input<ConnectorMappingErrorManagementResponse> errorManagement;
   /// The file filter for the mapping.
-  final pulumi.Input<String>? fileFilter;
+  final pulumi.Input<String?>? fileFilter;
   /// The folder path for the mapping.
-  final pulumi.Input<String>? folderPath;
+  final pulumi.Input<String?>? folderPath;
   /// The format of mapping property.
   final pulumi.Input<ConnectorMappingFormatResponse> format;
   /// If the file contains a header or not.
-  final pulumi.Input<bool>? hasHeader;
+  final pulumi.Input<bool?>? hasHeader;
   /// Ingestion mapping information at property level.
   final pulumi.Input<List<ConnectorMappingStructureResponse>> structure;
 

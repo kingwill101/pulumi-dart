@@ -6,21 +6,21 @@ import 'aws_efs_mount_target_properties.dart';
 /// Definition of EfsMountTarget
 class EfsMountTargetProperties {
   /// Amazon Resource Name (ARN)
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// AWS Account ID
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// AWS Properties
-  final pulumi.Input<AwsEfsMountTargetProperties>? awsProperties;
+  final pulumi.Input<AwsEfsMountTargetProperties?>? awsProperties;
   /// AWS Region
-  final pulumi.Input<String>? awsRegion;
+  final pulumi.Input<String?>? awsRegion;
   /// AWS Source Schema
-  final pulumi.Input<String>? awsSourceSchema;
+  final pulumi.Input<String?>? awsSourceSchema;
   /// AWS Tags
-  final pulumi.Input<Map<String, String>>? awsTags;
+  final pulumi.Input<Map<String, String>?>? awsTags;
   /// Public Cloud Connectors Resource ID
-  final pulumi.Input<String>? publicCloudConnectorsResourceId;
+  final pulumi.Input<String?>? publicCloudConnectorsResourceId;
   /// Public Cloud Resource Name
-  final pulumi.Input<String>? publicCloudResourceName;
+  final pulumi.Input<String?>? publicCloudResourceName;
 
   /// Creates a new [EfsMountTargetProperties].
   /// [arn] Amazon Resource Name (ARN)

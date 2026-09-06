@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_args.dart';
+import 'host_name_response.dart';
 
 /// Information about a domain.
 ///
@@ -727,7 +728,7 @@ class Domain extends pulumi.CustomResource {
   /// Resource Location.
   late final pulumi.Output<String> location;
   /// All hostnames derived from the domain and assigned to Azure resources.
-  late final pulumi.Output<List<Map<String, dynamic>>> managedHostNames;
+  late final pulumi.Output<List<HostNameResponse>> managedHostNames;
   /// Resource Name.
   late final pulumi.Output<String> name;
   /// Name servers.
@@ -768,19 +769,51 @@ class Domain extends pulumi.CustomResource {
     createdTime = registerOutput<String>('createdTime');
     dnsType = registerOutput<String?>('dnsType');
     dnsZoneId = registerOutput<String?>('dnsZoneId');
-    domainNotRenewableReasons = registerOutput<List<String>>('domainNotRenewableReasons');
+    domainNotRenewableReasons = registerOutput<List<String>>('domainNotRenewableReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     expirationTime = registerOutput<String>('expirationTime');
     kind = registerOutput<String?>('kind');
     lastRenewedTime = registerOutput<String>('lastRenewedTime');
     location = registerOutput<String>('location');
-    managedHostNames = registerOutput<List<Map<String, dynamic>>>('managedHostNames');
+    managedHostNames = registerOutput<List<HostNameResponse>>('managedHostNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostNameResponse>(guardedValue, (value) => HostNameResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    nameServers = registerOutput<List<String>>('nameServers');
+    nameServers = registerOutput<List<String>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     privacy = registerOutput<bool?>('privacy');
     provisioningState = registerOutput<String>('provisioningState');
     readyForDnsRecordManagement = registerOutput<bool>('readyForDnsRecordManagement');
     registrationStatus = registerOutput<String>('registrationStatus');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetDnsType = registerOutput<String?>('targetDnsType');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Domain] resource.
+  Domain.reference(String urn)
+    : super(
+        'azure-native:domainregistration:Domain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authCode = registerOutput<String?>('authCode');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdTime = registerOutput<String>('createdTime');
+    dnsType = registerOutput<String?>('dnsType');
+    dnsZoneId = registerOutput<String?>('dnsZoneId');
+    domainNotRenewableReasons = registerOutput<List<String>>('domainNotRenewableReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    expirationTime = registerOutput<String>('expirationTime');
+    kind = registerOutput<String?>('kind');
+    lastRenewedTime = registerOutput<String>('lastRenewedTime');
+    location = registerOutput<String>('location');
+    managedHostNames = registerOutput<List<HostNameResponse>>('managedHostNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostNameResponse>(guardedValue, (value) => HostNameResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    nameServers = registerOutput<List<String>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    privacy = registerOutput<bool?>('privacy');
+    provisioningState = registerOutput<String>('provisioningState');
+    readyForDnsRecordManagement = registerOutput<bool>('readyForDnsRecordManagement');
+    registrationStatus = registerOutput<String>('registrationStatus');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetDnsType = registerOutput<String?>('targetDnsType');
     type = registerOutput<String>('type');
   }

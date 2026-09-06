@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the managed configuration.
-enum AkriConnectorTemplateManagedConfigurationType {
+enum AkriConnectorTemplateManagedConfigurationType implements pulumi.PulumiEnum<String> {
   imageConfiguration("ImageConfiguration"),
   statefulSetConfiguration("StatefulSetConfiguration");
 
   const AkriConnectorTemplateManagedConfigurationType(this.wireValue);
+  @override
   final String wireValue;
 
   static AkriConnectorTemplateManagedConfigurationType fromValue(String value) {

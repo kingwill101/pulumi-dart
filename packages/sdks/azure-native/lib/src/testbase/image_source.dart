@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Custom image source type.
-enum ImageSource {
+enum ImageSource implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueVHD("VHD");
 
   const ImageSource(this.wireValue);
+  @override
   final String wireValue;
 
   static ImageSource fromValue(String value) {

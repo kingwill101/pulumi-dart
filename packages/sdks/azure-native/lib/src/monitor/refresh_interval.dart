@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
-enum RefreshInterval {
+enum RefreshInterval implements pulumi.PulumiEnum<String> {
   pT1M("PT1M"),
   pT5M("PT5M"),
   pT10M("PT10M"),
@@ -8,6 +10,7 @@ enum RefreshInterval {
   pT2H("PT2H");
 
   const RefreshInterval(this.wireValue);
+  @override
   final String wireValue;
 
   static RefreshInterval fromValue(String value) {

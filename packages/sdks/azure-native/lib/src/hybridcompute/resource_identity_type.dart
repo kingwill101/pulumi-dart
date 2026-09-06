@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The identity type.
-enum ResourceIdentityType {
+enum ResourceIdentityType implements pulumi.PulumiEnum<String> {
   valueSystemAssigned("SystemAssigned");
 
   const ResourceIdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static ResourceIdentityType fromValue(String value) {

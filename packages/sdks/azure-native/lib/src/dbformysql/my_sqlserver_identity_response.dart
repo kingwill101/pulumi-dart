@@ -10,9 +10,9 @@ class MySQLServerIdentityResponse {
   /// TenantId from the KeyVault
   final pulumi.Input<String> tenantId;
   /// Type of managed service identity.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Metadata of user assigned identity.
-  final pulumi.Input<Map<String, UserAssignedIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [MySQLServerIdentityResponse].
   /// [principalId] ObjectId from the KeyVault

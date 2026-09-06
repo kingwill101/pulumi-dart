@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'pav2_meter_details_response.dart';
 import 'term_type_details_response.dart';
 
 /// Holds billing meter details for each type of billing.
@@ -9,7 +8,7 @@ class BillingMeterDetailsResponse {
   /// Frequency of recurrence.
   final pulumi.Input<String> frequency;
   /// Represents MeterDetails.
-  final pulumi.Input<Pav2MeterDetailsResponse> meterDetails;
+  final pulumi.Input<dynamic> meterDetails;
   /// Represents Metering type (eg one-time or recurrent).
   final pulumi.Input<String> meteringType;
   /// Represents Billing type name.
@@ -34,7 +33,7 @@ class BillingMeterDetailsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'frequency': frequency,
-      'meterDetails': pulumi.Input.mapInputValue<Pav2MeterDetailsResponse, Map<String, dynamic>>(meterDetails, (value) => value.toMap()),
+      'meterDetails': meterDetails,
       'meteringType': meteringType,
       'name': name,
       'termTypeDetails': pulumi.Input.mapInputValue<TermTypeDetailsResponse, Map<String, dynamic>>(termTypeDetails, (value) => value.toMap()),
@@ -44,7 +43,7 @@ class BillingMeterDetailsResponse {
   factory BillingMeterDetailsResponse.fromMap(Map<String, dynamic> map) {
     return BillingMeterDetailsResponse(
       frequency: pulumi.Input.fromValue(map['frequency'] as String),
-      meterDetails: pulumi.Input.fromValue(Pav2MeterDetailsResponse.fromMap((map['meterDetails']! as Map).cast<String, dynamic>())),
+      meterDetails: pulumi.Input.fromValue(map['meterDetails']),
       meteringType: pulumi.Input.fromValue(map['meteringType'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       termTypeDetails: pulumi.Input.fromValue(TermTypeDetailsResponse.fromMap((map['termTypeDetails']! as Map).cast<String, dynamic>())),

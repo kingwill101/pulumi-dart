@@ -6,9 +6,9 @@ import 'sku_profile_vmsize.dart';
 /// Specifies the sku profile for the virtual machine scale set. With this property the customer is able to specify a list of VM sizes and an allocation strategy.
 class SkuProfile {
   /// Specifies the allocation strategy for the virtual machine scale set based on which the VMs will be allocated.
-  final pulumi.Input<String>? allocationStrategy;
+  final pulumi.Input<dynamic>? allocationStrategy;
   /// Specifies the VM sizes for the virtual machine scale set.
-  final pulumi.Input<List<SkuProfileVMSize>>? vmSizes;
+  final pulumi.Input<List<SkuProfileVMSize>?>? vmSizes;
 
   /// Creates a new [SkuProfile].
   /// [allocationStrategy] Specifies the allocation strategy for the virtual machine scale set based on which the VMs will be allocated.
@@ -27,7 +27,7 @@ class SkuProfile {
 
   factory SkuProfile.fromMap(Map<String, dynamic> map) {
     return SkuProfile(
-      allocationStrategy: (() { final guardedValue = map['allocationStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      allocationStrategy: (() { final guardedValue = map['allocationStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       vmSizes: (() { final guardedValue = map['vmSizes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SkuProfileVMSize>(guardedValue, (value) => SkuProfileVMSize.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

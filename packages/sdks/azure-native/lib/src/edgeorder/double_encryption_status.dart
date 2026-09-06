@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
-enum DoubleEncryptionStatus {
+enum DoubleEncryptionStatus implements pulumi.PulumiEnum<String> {
   disabled("Disabled"),
   enabled("Enabled");
 
   const DoubleEncryptionStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static DoubleEncryptionStatus fromValue(String value) {

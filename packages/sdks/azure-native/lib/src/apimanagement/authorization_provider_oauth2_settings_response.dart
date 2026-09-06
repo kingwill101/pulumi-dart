@@ -6,9 +6,9 @@ import 'authorization_provider_oauth2_grant_types_response.dart';
 /// OAuth2 settings details
 class AuthorizationProviderOAuth2SettingsResponse {
   /// OAuth2 settings
-  final pulumi.Input<AuthorizationProviderOAuth2GrantTypesResponse>? grantTypes;
+  final pulumi.Input<AuthorizationProviderOAuth2GrantTypesResponse?>? grantTypes;
   /// Redirect URL to be set in the OAuth application.
-  final pulumi.Input<String>? redirectUrl;
+  final pulumi.Input<String?>? redirectUrl;
 
   /// Creates a new [AuthorizationProviderOAuth2SettingsResponse].
   /// [grantTypes] OAuth2 settings

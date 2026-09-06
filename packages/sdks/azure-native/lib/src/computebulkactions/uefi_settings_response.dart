@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies the security settings like secure boot and vTPM used while creating the virtual machine. Minimum api-version: 2020-12-01.
 class UefiSettingsResponse {
   /// Specifies whether secure boot should be enabled on the virtual machine. Minimum compute api-version: 2020-12-01.
-  final pulumi.Input<bool>? secureBootEnabled;
+  final pulumi.Input<bool?>? secureBootEnabled;
   /// Specifies whether vTPM should be enabled on the virtual machine. Minimum compute api-version: 2020-12-01.
-  final pulumi.Input<bool>? vTpmEnabled;
+  final pulumi.Input<bool?>? vTpmEnabled;
 
   /// Creates a new [UefiSettingsResponse].
   /// [secureBootEnabled] Specifies whether secure boot should be enabled on the virtual machine. Minimum compute api-version: 2020-12-01.

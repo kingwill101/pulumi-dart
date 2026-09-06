@@ -6,17 +6,17 @@ import 'application_insights_component_proactive_detection_configuration_propert
 /// Properties that define a ProactiveDetection configuration.
 class ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse {
   /// Custom email addresses for this rule notifications
-  final pulumi.Input<List<String>>? customEmails;
+  final pulumi.Input<List<String>?>? customEmails;
   /// A flag that indicates whether this rule is enabled by the user
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The last time this rule was updated
   final pulumi.Input<String> lastUpdatedTime;
   /// The rule name
   final pulumi.Input<String> name;
   /// Static definitions of the ProactiveDetection configuration rule (same values for all components).
-  final pulumi.Input<ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions>? ruleDefinitions;
+  final pulumi.Input<ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions?>? ruleDefinitions;
   /// A flag that indicated whether notifications on this rule should be sent to subscription owners
-  final pulumi.Input<bool>? sendEmailsToSubscriptionOwners;
+  final pulumi.Input<bool?>? sendEmailsToSubscriptionOwners;
 
   /// Creates a new [ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse].
   /// [customEmails] Custom email addresses for this rule notifications

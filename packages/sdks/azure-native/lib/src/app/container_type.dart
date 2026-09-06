@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The container type of the sessions.
-enum ContainerType {
+enum ContainerType implements pulumi.PulumiEnum<String> {
   valueCustomContainer("CustomContainer"),
   valuePythonLTS("PythonLTS");
 
   const ContainerType(this.wireValue);
+  @override
   final String wireValue;
 
   static ContainerType fromValue(String value) {

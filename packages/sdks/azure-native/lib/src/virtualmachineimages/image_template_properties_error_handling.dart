@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Error handling options upon a build failure
 class ImageTemplatePropertiesErrorHandling {
   /// If there is a customizer error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a customizer error and this field is set to 'abort', the build VM will be preserved.
-  final pulumi.Input<String>? onCustomizerError;
+  final pulumi.Input<dynamic>? onCustomizerError;
   /// If there is a validation error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a validation error and this field is set to 'abort', the build VM will be preserved.
-  final pulumi.Input<String>? onValidationError;
+  final pulumi.Input<dynamic>? onValidationError;
 
   /// Creates a new [ImageTemplatePropertiesErrorHandling].
   /// [onCustomizerError] If there is a customizer error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a customizer error and this field is set to 'abort', the build VM will be preserved.
   /// [onValidationError] If there is a validation error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a validation error and this field is set to 'abort', the build VM will be preserved.
-  const ImageTemplatePropertiesErrorHandling({
-    this.onCustomizerError,
-    this.onValidationError,
-  });
+  ImageTemplatePropertiesErrorHandling({
+    pulumi.Input<dynamic>? onCustomizerError,
+    pulumi.Input<dynamic>? onValidationError,
+  }) : onCustomizerError = onCustomizerError ?? pulumi.Input.fromValue('cleanup'), onValidationError = onValidationError ?? pulumi.Input.fromValue('cleanup');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,8 +26,8 @@ class ImageTemplatePropertiesErrorHandling {
 
   factory ImageTemplatePropertiesErrorHandling.fromMap(Map<String, dynamic> map) {
     return ImageTemplatePropertiesErrorHandling(
-      onCustomizerError: (() { final guardedValue = map['onCustomizerError']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      onValidationError: (() { final guardedValue = map['onValidationError']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      onCustomizerError: (() { final guardedValue = map['onCustomizerError']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      onValidationError: (() { final guardedValue = map['onValidationError']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

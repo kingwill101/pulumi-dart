@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Additional delivery info.
 class JobDeliveryInfoResponse {
   /// Scheduled date time.
-  final pulumi.Input<String>? scheduledDateTime;
+  final pulumi.Input<String?>? scheduledDateTime;
 
   /// Creates a new [JobDeliveryInfoResponse].
   /// [scheduledDateTime] Scheduled date time.

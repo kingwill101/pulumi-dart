@@ -7,19 +7,19 @@ import 'tag.dart';
 /// Definition of awsMacieAllowList
 class AwsMacieAllowListProperties {
   /// AllowList ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// AllowList criteria. The regex or s3 object to use for the AllowList.
-  final pulumi.Input<Criteria>? criteria;
+  final pulumi.Input<Criteria?>? criteria;
   /// Description of AllowList.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// AllowList ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of AllowList.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// AllowList status. The status for the AllowList
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// A collection of tags associated with a resource
-  final pulumi.Input<List<Tag>>? tags;
+  final pulumi.Input<List<Tag>?>? tags;
 
   /// Creates a new [AwsMacieAllowListProperties].
   /// [arn] AllowList ARN.
@@ -58,7 +58,7 @@ class AwsMacieAllowListProperties {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Tag>(guardedValue, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

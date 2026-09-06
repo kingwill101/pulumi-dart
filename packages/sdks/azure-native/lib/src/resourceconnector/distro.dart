@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Represents a supported Fabric/Infra. (AKSEdge etc...).
-enum Distro {
+enum Distro implements pulumi.PulumiEnum<String> {
   aKSEdge("AKSEdge");
 
   const Distro(this.wireValue);
+  @override
   final String wireValue;
 
   static Distro fromValue(String value) {

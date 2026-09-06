@@ -19,3 +19,14 @@ Future<GetHybridUseBenefitResult> getHybridUseBenefit(
   );
   return GetHybridUseBenefitResult.fromMap(result);
 }
+
+pulumi.Output<GetHybridUseBenefitResult> getHybridUseBenefitOutput(
+  GetHybridUseBenefitArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:softwareplan:getHybridUseBenefit',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHybridUseBenefitResult.fromMap);
+}

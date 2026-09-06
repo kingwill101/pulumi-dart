@@ -9,13 +9,13 @@ class DevicePoolPropertiesResponse {
   /// Unique, immutable resource id.
   final pulumi.Input<String> cloudId;
   /// Custom Location Name for the pool, default: &lt;DevicePoolName&gt;-CL
-  final pulumi.Input<String>? customLocationName;
+  final pulumi.Input<String?>? customLocationName;
   /// Custom Location Resource Id for the pool
   final pulumi.Input<String> customLocationResourceId;
   /// List of machines in device pool.
-  final pulumi.Input<List<DeviceDetailResponse>>? devices;
+  final pulumi.Input<List<DeviceDetailResponse>?>? devices;
   /// Managed resource group name for the pool
-  final pulumi.Input<String>? managedResourceGroup;
+  final pulumi.Input<String?>? managedResourceGroup;
   /// operation status details for device pool.
   final pulumi.Input<List<OperationDetailResponse>> operationDetails;
   /// The provisioning state of a resource.

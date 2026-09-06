@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Transparent Data Encryption properties.
 class TransparentDataEncryption {
   /// Enable key auto rotation
-  final pulumi.Input<bool>? enableAutoRotation;
+  final pulumi.Input<bool?>? enableAutoRotation;
   /// Customer Managed Key (CMK) Uri.
-  final pulumi.Input<String>? keyUri;
+  final pulumi.Input<String?>? keyUri;
   /// Additional Keys
-  final pulumi.Input<List<String>>? keys;
+  final pulumi.Input<List<String>?>? keys;
 
   /// Creates a new [TransparentDataEncryption].
   /// [enableAutoRotation] Enable key auto rotation

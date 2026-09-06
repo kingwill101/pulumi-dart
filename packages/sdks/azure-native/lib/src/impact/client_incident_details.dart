@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Client incident details ex: incidentId , incident source
 class ClientIncidentDetails {
   /// Client incident id. ex : id of the incident created to investigate and address the impact if any.
-  final pulumi.Input<String>? clientIncidentId;
+  final pulumi.Input<String?>? clientIncidentId;
   /// Client incident source. ex : source system name where the incident is created
-  final pulumi.Input<String>? clientIncidentSource;
+  final pulumi.Input<dynamic>? clientIncidentSource;
 
   /// Creates a new [ClientIncidentDetails].
   /// [clientIncidentId] Client incident id. ex : id of the incident created to investigate and address the impact if any.
@@ -27,7 +27,7 @@ class ClientIncidentDetails {
   factory ClientIncidentDetails.fromMap(Map<String, dynamic> map) {
     return ClientIncidentDetails(
       clientIncidentId: (() { final guardedValue = map['clientIncidentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      clientIncidentSource: (() { final guardedValue = map['clientIncidentSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clientIncidentSource: (() { final guardedValue = map['clientIncidentSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

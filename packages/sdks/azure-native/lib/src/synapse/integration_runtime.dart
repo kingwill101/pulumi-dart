@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'integration_runtime_args.dart';
-import 'managed_integration_runtime_response.dart';
 
 /// Integration runtime resource type.
 ///
@@ -185,7 +184,7 @@ class IntegrationRuntime extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Integration runtime properties.
-  late final pulumi.Output<ManagedIntegrationRuntimeResponse> properties;
+  late final pulumi.Output<dynamic> properties;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -206,7 +205,23 @@ class IntegrationRuntime extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ManagedIntegrationRuntimeResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedIntegrationRuntimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<dynamic>('properties');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [IntegrationRuntime] resource.
+  IntegrationRuntime.reference(String urn)
+    : super(
+        'azure-native:synapse:IntegrationRuntime',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<dynamic>('properties');
     type = registerOutput<String>('type');
   }
 }

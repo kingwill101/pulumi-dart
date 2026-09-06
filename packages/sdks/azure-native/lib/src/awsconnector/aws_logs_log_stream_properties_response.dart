@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of awsLogsLogStream
 class AwsLogsLogStreamPropertiesResponse {
   /// The name of the log group where the log stream is created.
-  final pulumi.Input<String>? logGroupName;
+  final pulumi.Input<String?>? logGroupName;
   /// The name of the log stream. The name must be unique wihtin the log group.
-  final pulumi.Input<String>? logStreamName;
+  final pulumi.Input<String?>? logStreamName;
 
   /// Creates a new [AwsLogsLogStreamPropertiesResponse].
   /// [logGroupName] The name of the log group where the log stream is created.

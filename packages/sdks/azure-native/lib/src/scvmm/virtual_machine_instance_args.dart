@@ -15,21 +15,21 @@ import 'virtual_machine_instance_properties_availability_sets.dart';
 /// {@macro pulumi_scvmm_virtual_machine_instance_args_doc}
 class VirtualMachineInstanceArgs {
   /// Availability Sets in vm.
-  final pulumi.Input<List<VirtualMachineInstancePropertiesAvailabilitySets>>? availabilitySets;
+  final pulumi.Input<List<VirtualMachineInstancePropertiesAvailabilitySets>?>? availabilitySets;
   /// Gets or sets the extended location.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// Hardware properties.
-  final pulumi.Input<HardwareProfile>? hardwareProfile;
+  final pulumi.Input<HardwareProfile?>? hardwareProfile;
   /// Gets the infrastructure profile.
-  final pulumi.Input<InfrastructureProfile>? infrastructureProfile;
+  final pulumi.Input<InfrastructureProfile?>? infrastructureProfile;
   /// Network properties.
-  final pulumi.Input<NetworkProfile>? networkProfile;
+  final pulumi.Input<NetworkProfile?>? networkProfile;
   /// OS properties.
-  final pulumi.Input<OsProfileForVMInstance>? osProfile;
+  final pulumi.Input<OsProfileForVMInstance?>? osProfile;
   /// The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
   final pulumi.Input<String> resourceUri;
   /// Storage properties.
-  final pulumi.Input<StorageProfile>? storageProfile;
+  final pulumi.Input<StorageProfile?>? storageProfile;
 
   /// Creates a new [VirtualMachineInstanceArgs].
   /// [availabilitySets] Availability Sets in vm.

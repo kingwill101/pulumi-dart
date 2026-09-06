@@ -7,9 +7,9 @@ class X12SecuritySettings {
   /// The authorization qualifier.
   final pulumi.Input<String> authorizationQualifier;
   /// The authorization value.
-  final pulumi.Input<String>? authorizationValue;
+  final pulumi.Input<String?>? authorizationValue;
   /// The password value.
-  final pulumi.Input<String>? passwordValue;
+  final pulumi.Input<String?>? passwordValue;
   /// The security qualifier.
   final pulumi.Input<String> securityQualifier;
 

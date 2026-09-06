@@ -13,39 +13,39 @@ import 'static_site_template_options.dart';
 /// {@macro pulumi_web_static_site_args_doc}
 class StaticSiteArgs {
   /// &lt;code&gt;false&lt;/code&gt; if config file is locked for this static web app; otherwise, &lt;code&gt;true&lt;/code&gt;.
-  final pulumi.Input<bool>? allowConfigFileUpdates;
+  final pulumi.Input<bool?>? allowConfigFileUpdates;
   /// The target branch in the repository.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// Build properties to configure on the repository.
-  final pulumi.Input<StaticSiteBuildProperties>? buildProperties;
+  final pulumi.Input<StaticSiteBuildProperties?>? buildProperties;
   /// State indicating the status of the enterprise grade CDN serving traffic to the static web app.
-  final pulumi.Input<String>? enterpriseGradeCdnStatus;
+  final pulumi.Input<dynamic>? enterpriseGradeCdnStatus;
   /// Managed service identity.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the static site.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The provider that submitted the last deployment to the primary environment of the static site.
-  final pulumi.Input<String>? provider;
+  final pulumi.Input<String?>? provider;
   /// State indicating whether public traffic are allowed or not for a static web app. Allowed Values: 'Enabled', 'Disabled' or an empty string.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// A user's github repository token. This is used to setup the Github Actions workflow file and API secrets.
-  final pulumi.Input<String>? repositoryToken;
+  final pulumi.Input<String?>? repositoryToken;
   /// URL for the repository of the static site.
-  final pulumi.Input<String>? repositoryUrl;
+  final pulumi.Input<String?>? repositoryUrl;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Description of a SKU for a scalable resource.
-  final pulumi.Input<SkuDescription>? sku;
+  final pulumi.Input<SkuDescription?>? sku;
   /// State indicating whether staging environments are allowed or not allowed for a static web app.
-  final pulumi.Input<StagingEnvironmentPolicy>? stagingEnvironmentPolicy;
+  final pulumi.Input<StagingEnvironmentPolicy?>? stagingEnvironmentPolicy;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Template options for generating a new repository.
-  final pulumi.Input<StaticSiteTemplateOptions>? templateProperties;
+  final pulumi.Input<StaticSiteTemplateOptions?>? templateProperties;
 
   /// Creates a new [StaticSiteArgs].
   /// [allowConfigFileUpdates] &lt;code&gt;false&lt;/code&gt; if config file is locked for this static web app; otherwise, &lt;code&gt;true&lt;/code&gt;.
@@ -112,7 +112,7 @@ class StaticSiteArgs {
       allowConfigFileUpdates: (() { final guardedValue = map['allowConfigFileUpdates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       branch: (() { final guardedValue = map['branch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       buildProperties: (() { final guardedValue = map['buildProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StaticSiteBuildProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      enterpriseGradeCdnStatus: (() { final guardedValue = map['enterpriseGradeCdnStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enterpriseGradeCdnStatus: (() { final guardedValue = map['enterpriseGradeCdnStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

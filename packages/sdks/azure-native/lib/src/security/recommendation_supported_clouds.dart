@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The cloud that the recommendation is supported on.
-enum RecommendationSupportedClouds {
+enum RecommendationSupportedClouds implements pulumi.PulumiEnum<String> {
   azure("Azure"),
   aWS("AWS"),
   gCP("GCP");
 
   const RecommendationSupportedClouds(this.wireValue);
+  @override
   final String wireValue;
 
   static RecommendationSupportedClouds fromValue(String value) {

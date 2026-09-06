@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatasetCreateRequestTimeSeries {
   /// Column name to be used as CoarseGrainTimestamp. Can only be used if 'fineGrainTimestamp' is specified and cannot be same as 'fineGrainTimestamp'.
-  final pulumi.Input<String>? coarseGrainTimestamp;
+  final pulumi.Input<String?>? coarseGrainTimestamp;
   /// Column name to be used as FineGrainTimestamp
-  final pulumi.Input<String>? fineGrainTimestamp;
+  final pulumi.Input<String?>? fineGrainTimestamp;
 
   /// Creates a new [DatasetCreateRequestTimeSeries].
   /// [coarseGrainTimestamp] Column name to be used as CoarseGrainTimestamp. Can only be used if 'fineGrainTimestamp' is specified and cannot be same as 'fineGrainTimestamp'.

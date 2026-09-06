@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the Storage Target.
-enum StorageTargetType {
+enum StorageTargetType implements pulumi.PulumiEnum<String> {
   valueNfs3("nfs3"),
   valueClfs("clfs"),
   valueUnknown("unknown"),
   valueBlobNfs("blobNfs");
 
   const StorageTargetType(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageTargetType fromValue(String value) {

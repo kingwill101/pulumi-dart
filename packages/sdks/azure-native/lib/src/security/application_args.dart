@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_security_application_args_doc}
 class ApplicationArgs {
   /// The security Application key - unique key for the standard application
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// The application conditionSets - see examples
   final pulumi.Input<List<dynamic>> conditionSets;
   /// description of the application
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// display name of the application
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The application source, what it affects, e.g. Assessments
-  final pulumi.Input<String> sourceResourceType;
+  final pulumi.Input<dynamic> sourceResourceType;
 
   /// Creates a new [ApplicationArgs].
   /// [applicationId] The security Application key - unique key for the standard application
@@ -48,7 +48,7 @@ class ApplicationArgs {
       conditionSets: pulumi.Input.fromValue((map['conditionSets'] as List).cast<dynamic>()),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sourceResourceType: pulumi.Input.fromValue(map['sourceResourceType'] as String),
+      sourceResourceType: pulumi.Input.fromValue(map['sourceResourceType']),
     );
   }
 }

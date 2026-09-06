@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of workload for the backup management
-enum WorkloadType {
+enum WorkloadType implements pulumi.PulumiEnum<String> {
   valueInvalid("Invalid"),
   valueVM("VM"),
   valueFileFolder("FileFolder"),
@@ -18,6 +20,7 @@ enum WorkloadType {
   valueSAPHanaDBInstance("SAPHanaDBInstance");
 
   const WorkloadType(this.wireValue);
+  @override
   final String wireValue;
 
   static WorkloadType fromValue(String value) {

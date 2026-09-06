@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Outbound traffic options over virtual network.
 class OutboundVnetRoutingResponse {
   /// Enables all other routing options defined in OutboundVnetRouting if this setting is set to true.
-  final pulumi.Input<bool>? allTraffic;
+  final pulumi.Input<bool?>? allTraffic;
   /// This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied. Previously called VnetRouteAllEnabled.
-  final pulumi.Input<bool>? applicationTraffic;
+  final pulumi.Input<bool?>? applicationTraffic;
   /// Enables Backup and Restore operations over virtual network. Previously called VnetBackupRestoreEnabled
-  final pulumi.Input<bool>? backupRestoreTraffic;
+  final pulumi.Input<bool?>? backupRestoreTraffic;
   /// Enables accessing content over virtual network. Previously called VnetContentShareEnabled
-  final pulumi.Input<bool>? contentShareTraffic;
+  final pulumi.Input<bool?>? contentShareTraffic;
   /// Enables pulling image over Virtual Network. Previously called VnetImagePullEnabled.
-  final pulumi.Input<bool>? imagePullTraffic;
+  final pulumi.Input<bool?>? imagePullTraffic;
 
   /// Creates a new [OutboundVnetRoutingResponse].
   /// [allTraffic] Enables all other routing options defined in OutboundVnetRouting if this setting is set to true.

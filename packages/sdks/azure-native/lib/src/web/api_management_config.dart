@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Azure API management (APIM) configuration linked to the app.
 class ApiManagementConfig {
   /// APIM-Api Identifier.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [ApiManagementConfig].
   /// [id] APIM-Api Identifier.

@@ -10,13 +10,13 @@ class ImageArgs {
   /// Name of catalog
   final pulumi.Input<String> catalogName;
   /// Image as a UTF-8 encoded base 64 string on image create. This field contains the image URI on image reads.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// Image ID
-  final pulumi.Input<String>? imageId;
+  final pulumi.Input<String?>? imageId;
   /// Image name. Use an image GUID for GA versions of the API.
-  final pulumi.Input<String>? imageName;
+  final pulumi.Input<String?>? imageName;
   /// Regional data boundary for an image
-  final pulumi.Input<String>? regionalDataBoundary;
+  final pulumi.Input<dynamic>? regionalDataBoundary;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -53,7 +53,7 @@ class ImageArgs {
       image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       imageId: (() { final guardedValue = map['imageId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       imageName: (() { final guardedValue = map['imageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      regionalDataBoundary: (() { final guardedValue = map['regionalDataBoundary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regionalDataBoundary: (() { final guardedValue = map['regionalDataBoundary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }

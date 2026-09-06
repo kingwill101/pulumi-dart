@@ -33,7 +33,7 @@ class IpExtendedCommunityRuleResponse {
     return IpExtendedCommunityRuleResponse(
       action: pulumi.Input.fromValue(map['action'] as String),
       routeTargets: pulumi.Input.fromValue((map['routeTargets'] as List).cast<String>()),
-      sequenceNumber: pulumi.Input.fromValue(map['sequenceNumber'] as double),
+      sequenceNumber: pulumi.Input.fromValue((map['sequenceNumber'] as num).toDouble()),
     );
   }
 }

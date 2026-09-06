@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'blob_storage_class_type_properties_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getStorageClass.
@@ -10,19 +9,19 @@ class GetStorageClassResult {
   /// Volume can be expanded or not
   final String? allowVolumeExpansion;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Allow single data node failure
   final String? dataResilience;
   /// Failover speed: NA, Slow, Fast
   final String? failoverSpeed;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Limitations of the storage class
   final List<String>? limitations;
   /// Additional mount options
   final List<String>? mountOptions;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Performance tier
   final String? performance;
   /// Selection priority when multiple storage classes meet the criteria. 0: Highest, -1: Never use
@@ -30,13 +29,13 @@ class GetStorageClassResult {
   /// Provisioner name
   final String? provisioner;
   /// Resource provision state
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Properties of the StorageClass
-  final BlobStorageClassTypePropertiesResponse typeProperties;
+  final dynamic typeProperties;
   /// Binding mode of volumes: Immediate, WaitForFirstConsumer
   final String? volumeBindingMode;
 
@@ -61,20 +60,20 @@ class GetStorageClassResult {
   const GetStorageClassResult({
     this.accessModes,
     this.allowVolumeExpansion,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.dataResilience,
     this.failoverSpeed,
-    required this.id,
+    this.id,
     this.limitations,
     this.mountOptions,
-    required this.name,
+    this.name,
     this.performance,
     this.priority,
     this.provisioner,
-    required this.provisioningState,
-    required this.systemData,
-    required this.type,
-    required this.typeProperties,
+    this.provisioningState,
+    this.systemData,
+    this.type,
+    this.typeProperties,
     this.volumeBindingMode,
   });
 
@@ -82,20 +81,20 @@ class GetStorageClassResult {
     return <String, dynamic>{
       'accessModes': ?accessModes,
       'allowVolumeExpansion': ?allowVolumeExpansion,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'dataResilience': ?dataResilience,
       'failoverSpeed': ?failoverSpeed,
-      'id': id,
+      'id': ?id,
       'limitations': ?limitations,
       'mountOptions': ?mountOptions,
-      'name': name,
+      'name': ?name,
       'performance': ?performance,
       'priority': ?priority,
       'provisioner': ?provisioner,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
-      'type': type,
-      'typeProperties': typeProperties.toMap(),
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
+      'typeProperties': ?typeProperties,
       'volumeBindingMode': ?volumeBindingMode,
     };
   }
@@ -104,20 +103,20 @@ class GetStorageClassResult {
     return GetStorageClassResult(
       accessModes: (() { final guardedValue = map['accessModes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       allowVolumeExpansion: (() { final guardedValue = map['allowVolumeExpansion']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dataResilience: (() { final guardedValue = map['dataResilience']; if (guardedValue == null) return null; return guardedValue as String; })(),
       failoverSpeed: (() { final guardedValue = map['failoverSpeed']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       limitations: (() { final guardedValue = map['limitations']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       mountOptions: (() { final guardedValue = map['mountOptions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       performance: (() { final guardedValue = map['performance']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       provisioner: (() { final guardedValue = map['provisioner']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      typeProperties: BlobStorageClassTypePropertiesResponse.fromMap((map['typeProperties']! as Map).cast<String, dynamic>()),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      typeProperties: (() { final guardedValue = map['typeProperties']; if (guardedValue == null) return null; return guardedValue; })(),
       volumeBindingMode: (() { final guardedValue = map['volumeBindingMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

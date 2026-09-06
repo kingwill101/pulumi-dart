@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_get_nat_gateway_args_doc}
 class GetNatGatewayArgs {
   /// Expands referenced resources.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the nat gateway.
   final pulumi.Input<String> natGatewayName;
   /// The name of the resource group.

@@ -275,4 +275,29 @@ class ManagedDatabaseSensitivityLabel extends pulumi.CustomResource {
     tableName = registerOutput<String>('tableName');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ManagedDatabaseSensitivityLabel] resource.
+  ManagedDatabaseSensitivityLabel.reference(String urn)
+    : super(
+        'azure-native:sql:ManagedDatabaseSensitivityLabel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientClassificationSource = registerOutput<String?>('clientClassificationSource');
+    columnName = registerOutput<String>('columnName');
+    informationType = registerOutput<String?>('informationType');
+    informationTypeId = registerOutput<String?>('informationTypeId');
+    isDisabled = registerOutput<bool>('isDisabled');
+    labelId = registerOutput<String?>('labelId');
+    labelName = registerOutput<String?>('labelName');
+    managedBy = registerOutput<String>('managedBy');
+    this.name = registerOutput<String>('name');
+    rank = registerOutput<String?>('rank');
+    schemaName = registerOutput<String>('schemaName');
+    tableName = registerOutput<String>('tableName');
+    type = registerOutput<String>('type');
+  }
 }

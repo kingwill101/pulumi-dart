@@ -8,15 +8,15 @@ import 'vnet_route_p2s_vpn_gateway_response.dart';
 /// Routing Configuration indicating the associated and propagated route tables for this connection.
 class RoutingConfigurationP2sVpnGatewayResponse {
   /// The resource id RouteTable associated with this RoutingConfiguration.
-  final pulumi.Input<SubResourceResponse>? associatedRouteTable;
+  final pulumi.Input<SubResourceResponse?>? associatedRouteTable;
   /// The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
-  final pulumi.Input<SubResourceResponse>? inboundRouteMap;
+  final pulumi.Input<SubResourceResponse?>? inboundRouteMap;
   /// The resource id of theRouteMap associated with this RoutingConfiguration for outbound advertised routes.
-  final pulumi.Input<SubResourceResponse>? outboundRouteMap;
+  final pulumi.Input<SubResourceResponse?>? outboundRouteMap;
   /// The list of RouteTables to advertise the routes to.
-  final pulumi.Input<PropagatedRouteTableResponse>? propagatedRouteTables;
+  final pulumi.Input<PropagatedRouteTableResponse?>? propagatedRouteTables;
   /// List of routes that control routing from VirtualHub into a virtual network connection.
-  final pulumi.Input<VnetRouteP2sVpnGatewayResponse>? vnetRoutes;
+  final pulumi.Input<VnetRouteP2sVpnGatewayResponse?>? vnetRoutes;
 
   /// Creates a new [RoutingConfigurationP2sVpnGatewayResponse].
   /// [associatedRouteTable] The resource id RouteTable associated with this RoutingConfiguration.

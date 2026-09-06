@@ -41,7 +41,7 @@ class AssessmentDetailsResponse {
 
   factory AssessmentDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AssessmentDetailsResponse(
-      confidenceRatingInPercentage: pulumi.Input.fromValue(map['confidenceRatingInPercentage'] as double),
+      confidenceRatingInPercentage: pulumi.Input.fromValue((map['confidenceRatingInPercentage'] as num).toDouble()),
       createdTimestamp: pulumi.Input.fromValue(map['createdTimestamp'] as String),
       pricesTimestamp: pulumi.Input.fromValue(map['pricesTimestamp'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),

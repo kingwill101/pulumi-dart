@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of S3BucketSource
 class S3BucketSource {
   /// The S3 bucket that is being imported from.
-  final pulumi.Input<String>? s3Bucket;
+  final pulumi.Input<String?>? s3Bucket;
   /// The account number of the S3 bucket that is being imported from. If the bucket is owned by the requester this is optional.
-  final pulumi.Input<String>? s3BucketOwner;
+  final pulumi.Input<String?>? s3BucketOwner;
   /// The key prefix shared by all S3 Objects that are being imported.
-  final pulumi.Input<String>? s3KeyPrefix;
+  final pulumi.Input<String?>? s3KeyPrefix;
 
   /// Creates a new [S3BucketSource].
   /// [s3Bucket] The S3 bucket that is being imported from.

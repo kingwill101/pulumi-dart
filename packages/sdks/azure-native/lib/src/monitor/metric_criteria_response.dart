@@ -9,17 +9,17 @@ class MetricCriteriaResponse {
   /// Expected value is 'StaticThresholdCriterion'.
   final pulumi.Input<String> criterionType;
   /// List of dimension conditions.
-  final pulumi.Input<List<MetricDimensionResponse>>? dimensions;
+  final pulumi.Input<List<MetricDimensionResponse>?>? dimensions;
   /// Name of the metric.
   final pulumi.Input<String> metricName;
   /// Namespace of the metric.
-  final pulumi.Input<String>? metricNamespace;
+  final pulumi.Input<String?>? metricNamespace;
   /// Name of the criteria.
   final pulumi.Input<String> name;
   /// the criteria operator.
   final pulumi.Input<String> operator;
   /// Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.
-  final pulumi.Input<bool>? skipMetricValidation;
+  final pulumi.Input<bool?>? skipMetricValidation;
   /// the criteria threshold value that activates the alert.
   final pulumi.Input<double> threshold;
   /// the criteria time aggregation types.
@@ -70,7 +70,7 @@ class MetricCriteriaResponse {
       name: pulumi.Input.fromValue(map['name'] as String),
       operator: pulumi.Input.fromValue(map['operator'] as String),
       skipMetricValidation: (() { final guardedValue = map['skipMetricValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      threshold: pulumi.Input.fromValue(map['threshold'] as double),
+      threshold: pulumi.Input.fromValue((map['threshold'] as num).toDouble()),
       timeAggregation: pulumi.Input.fromValue(map['timeAggregation'] as String),
     );
   }

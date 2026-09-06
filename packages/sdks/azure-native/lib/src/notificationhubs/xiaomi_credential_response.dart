@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Description of a NotificationHub XiaomiCredential.
 class XiaomiCredentialResponse {
   /// Gets or sets app secret.
-  final pulumi.Input<String>? appSecret;
+  final pulumi.Input<String?>? appSecret;
   /// Gets or sets xiaomi service endpoint.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
 
   /// Creates a new [XiaomiCredentialResponse].
   /// [appSecret] Gets or sets app secret.

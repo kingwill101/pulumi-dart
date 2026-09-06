@@ -9,19 +9,19 @@ import 'alert_rule_properties.dart';
 /// {@macro pulumi_workloads_alert_args_doc}
 class AlertArgs {
   /// Name of the SAP monitor alert resource.
-  final pulumi.Input<String>? alertName;
+  final pulumi.Input<String?>? alertName;
   /// Describes the properties of an alert.
-  final pulumi.Input<AlertRuleProperties>? alertRuleProperties;
+  final pulumi.Input<AlertRuleProperties?>? alertRuleProperties;
   /// Name of the SAP monitor resource.
   final pulumi.Input<String> monitorName;
   /// Name of provider instances associated with the alert.
-  final pulumi.Input<List<String>>? providerNames;
+  final pulumi.Input<List<String>?>? providerNames;
   /// The provider type for alert. For example, the value can be SapHana.
-  final pulumi.Input<String>? providerType;
+  final pulumi.Input<String?>? providerType;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the alert template from which it was created.
-  final pulumi.Input<String>? templateName;
+  final pulumi.Input<String?>? templateName;
 
   /// Creates a new [AlertArgs].
   /// [alertName] Name of the SAP monitor alert resource.

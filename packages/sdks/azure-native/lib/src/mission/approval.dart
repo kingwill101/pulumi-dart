@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'approval_args.dart';
+import 'approver_response.dart';
 import 'request_metadata_response.dart';
 import 'system_data_response.dart';
 
@@ -281,7 +282,7 @@ import 'system_data_response.dart';
 /// ```
 class Approval extends pulumi.CustomResource {
   /// List of approvers for the approval request
-  late final pulumi.Output<List<Map<String, dynamic>>?> approvers;
+  late final pulumi.Output<List<ApproverResponse>?> approvers;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Approval request creation time
@@ -319,7 +320,30 @@ class Approval extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    approvers = registerOutput<List<Map<String, dynamic>>?>('approvers');
+    approvers = registerOutput<List<ApproverResponse>?>('approvers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApproverResponse>(guardedValue, (value) => ApproverResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdAt = registerOutput<String?>('createdAt');
+    grandparentResourceId = registerOutput<String?>('grandparentResourceId');
+    this.name = registerOutput<String>('name');
+    parentResourceId = registerOutput<String?>('parentResourceId');
+    provisioningState = registerOutput<String>('provisioningState');
+    requestMetadata = registerOutput<RequestMetadataResponse>('requestMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RequestMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    stateChangedAt = registerOutput<String?>('stateChangedAt');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ticketId = registerOutput<String?>('ticketId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Approval] resource.
+  Approval.reference(String urn)
+    : super(
+        'azure-native:mission:Approval',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    approvers = registerOutput<List<ApproverResponse>?>('approvers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApproverResponse>(guardedValue, (value) => ApproverResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdAt = registerOutput<String?>('createdAt');
     grandparentResourceId = registerOutput<String?>('grandparentResourceId');

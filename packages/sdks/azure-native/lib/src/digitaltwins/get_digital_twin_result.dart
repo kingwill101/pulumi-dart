@@ -8,33 +8,33 @@ import 'system_data_response.dart';
 /// Result data returned by getDigitalTwin.
 class GetDigitalTwinResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Time when DigitalTwinsInstance was created.
-  final String createdTime;
+  final String? createdTime;
   /// Api endpoint to work with DigitalTwinsInstance.
-  final String hostName;
+  final String? hostName;
   /// The resource identifier.
-  final String id;
+  final String? id;
   /// The managed identity for the DigitalTwinsInstance.
   final DigitalTwinsIdentityResponse? identity;
   /// Time when DigitalTwinsInstance was updated.
-  final String lastUpdatedTime;
+  final String? lastUpdatedTime;
   /// The resource location.
-  final String location;
+  final String? location;
   /// The resource name.
-  final String name;
+  final String? name;
   /// The private endpoint connections.
   final List<PrivateEndpointConnectionResponse>? privateEndpointConnections;
   /// The provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// Public network access for the DigitalTwinsInstance.
   final String? publicNetworkAccess;
   /// Metadata pertaining to creation and last modification of the DigitalTwinsInstance.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The resource tags.
   final Map<String, String>? tags;
   /// The resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetDigitalTwinResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -52,57 +52,57 @@ class GetDigitalTwinResult {
   /// [tags] The resource tags.
   /// [type] The resource type.
   const GetDigitalTwinResult({
-    required this.azureApiVersion,
-    required this.createdTime,
-    required this.hostName,
-    required this.id,
+    this.azureApiVersion,
+    this.createdTime,
+    this.hostName,
+    this.id,
     this.identity,
-    required this.lastUpdatedTime,
-    required this.location,
-    required this.name,
+    this.lastUpdatedTime,
+    this.location,
+    this.name,
     this.privateEndpointConnections,
-    required this.provisioningState,
+    this.provisioningState,
     this.publicNetworkAccess,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'createdTime': createdTime,
-      'hostName': hostName,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'createdTime': ?createdTime,
+      'hostName': ?hostName,
+      'id': ?id,
       'identity': ?identity?.toMap(),
-      'lastUpdatedTime': lastUpdatedTime,
-      'location': location,
-      'name': name,
+      'lastUpdatedTime': ?lastUpdatedTime,
+      'location': ?location,
+      'name': ?name,
       'privateEndpointConnections': ?(() { final guardedValue = privateEndpointConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetDigitalTwinResult.fromMap(Map<String, dynamic> map) {
     return GetDigitalTwinResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      createdTime: map['createdTime'] as String,
-      hostName: map['hostName'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdTime: (() { final guardedValue = map['createdTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hostName: (() { final guardedValue = map['hostName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return DigitalTwinsIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      lastUpdatedTime: map['lastUpdatedTime'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
+      lastUpdatedTime: (() { final guardedValue = map['lastUpdatedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

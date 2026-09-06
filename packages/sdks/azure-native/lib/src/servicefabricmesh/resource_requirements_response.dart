@@ -7,7 +7,7 @@ import 'resource_requests_response.dart';
 /// This type describes the resource requirements for a container or a service.
 class ResourceRequirementsResponse {
   /// Describes the maximum limits on the resources for a given container.
-  final pulumi.Input<ResourceLimitsResponse>? limits;
+  final pulumi.Input<ResourceLimitsResponse?>? limits;
   /// Describes the requested resources for a given container.
   final pulumi.Input<ResourceRequestsResponse> requests;
 

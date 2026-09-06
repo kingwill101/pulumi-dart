@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of RedirectAllRequestsTo
 class RedirectAllRequestsToResponse {
   /// Name of the host where requests are redirected.
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// Protocol to use when redirecting requests. The default is the protocol that is used in the original request.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
 
   /// Creates a new [RedirectAllRequestsToResponse].
   /// [hostName] Name of the host where requests are redirected.

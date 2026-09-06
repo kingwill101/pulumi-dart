@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// configuration for the servers offering subPlan
 class DefenderForServersGcpOfferingSubPlanResponse {
   /// The available sub plans
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DefenderForServersGcpOfferingSubPlanResponse].
   /// [type] The available sub plans

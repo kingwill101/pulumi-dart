@@ -9,35 +9,35 @@ import 'subscription_id.dart';
 /// {@macro pulumi_network_nsp_access_rule_args_doc}
 class NspAccessRuleArgs {
   /// The name of the NSP access rule.
-  final pulumi.Input<String>? accessRuleName;
+  final pulumi.Input<String?>? accessRuleName;
   /// Inbound address prefixes (IPv4/IPv6)
-  final pulumi.Input<List<String>>? addressPrefixes;
+  final pulumi.Input<List<String>?>? addressPrefixes;
   /// Direction that specifies whether the access rules is inbound/outbound.
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<dynamic>? direction;
   /// Outbound rules email address format.
-  final pulumi.Input<List<String>>? emailAddresses;
+  final pulumi.Input<List<String>?>? emailAddresses;
   /// Outbound rules fully qualified domain name format.
-  final pulumi.Input<List<String>>? fullyQualifiedDomainNames;
+  final pulumi.Input<List<String>?>? fullyQualifiedDomainNames;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the access rule that is unique within a profile. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the network security perimeter.
   final pulumi.Input<String> networkSecurityPerimeterName;
   /// Outbound rules phone number format.
-  final pulumi.Input<List<String>>? phoneNumbers;
+  final pulumi.Input<List<String>?>? phoneNumbers;
   /// The name of the NSP profile.
   final pulumi.Input<String> profileName;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Inbound rules service tag names.
-  final pulumi.Input<List<String>>? serviceTags;
+  final pulumi.Input<List<String>?>? serviceTags;
   /// List of subscription ids
-  final pulumi.Input<List<SubscriptionId>>? subscriptions;
+  final pulumi.Input<List<SubscriptionId>?>? subscriptions;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NspAccessRuleArgs].
   /// [accessRuleName] The name of the NSP access rule.
@@ -97,7 +97,7 @@ class NspAccessRuleArgs {
     return NspAccessRuleArgs(
       accessRuleName: (() { final guardedValue = map['accessRuleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       addressPrefixes: (() { final guardedValue = map['addressPrefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       emailAddresses: (() { final guardedValue = map['emailAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       fullyQualifiedDomainNames: (() { final guardedValue = map['fullyQualifiedDomainNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

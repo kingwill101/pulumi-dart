@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Criteria to limit import of WSDL to a subset of the document.
 class ApiCreateOrUpdatePropertiesWsdlSelector {
   /// Name of endpoint(port) to import from WSDL
-  final pulumi.Input<String>? wsdlEndpointName;
+  final pulumi.Input<String?>? wsdlEndpointName;
   /// Name of service to import from WSDL
-  final pulumi.Input<String>? wsdlServiceName;
+  final pulumi.Input<String?>? wsdlServiceName;
 
   /// Creates a new [ApiCreateOrUpdatePropertiesWsdlSelector].
   /// [wsdlEndpointName] Name of endpoint(port) to import from WSDL

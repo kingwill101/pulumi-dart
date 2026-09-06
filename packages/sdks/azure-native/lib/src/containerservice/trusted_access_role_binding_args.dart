@@ -16,7 +16,7 @@ class TrustedAccessRoleBindingArgs {
   /// The ARM resource ID of source resource that trusted access is configured for.
   final pulumi.Input<String> sourceResourceId;
   /// The name of trusted access role binding.
-  final pulumi.Input<String>? trustedAccessRoleBindingName;
+  final pulumi.Input<String?>? trustedAccessRoleBindingName;
 
   /// Creates a new [TrustedAccessRoleBindingArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.

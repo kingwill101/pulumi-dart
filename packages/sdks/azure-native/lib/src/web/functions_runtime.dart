@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Function app runtime name and version.
 class FunctionsRuntime {
   /// Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
-  final pulumi.Input<String>? name;
+  final pulumi.Input<dynamic>? name;
   /// Function app runtime version. Example: 8 (for dotnet-isolated)
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [FunctionsRuntime].
   /// [name] Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
@@ -26,7 +26,7 @@ class FunctionsRuntime {
 
   factory FunctionsRuntime.fromMap(Map<String, dynamic> map) {
     return FunctionsRuntime(
-      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

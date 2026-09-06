@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An option to store configuration into different place
 class ConfigurationStoreResponse {
   /// The app configuration id to store configuration
-  final pulumi.Input<String>? appConfigurationId;
+  final pulumi.Input<String?>? appConfigurationId;
 
   /// Creates a new [ConfigurationStoreResponse].
   /// [appConfigurationId] The app configuration id to store configuration

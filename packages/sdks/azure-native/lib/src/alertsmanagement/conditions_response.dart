@@ -6,21 +6,21 @@ import 'condition_response.dart';
 /// Conditions in alert instance to be matched for a given action rule. Default value is all. Multiple values could be provided with comma separation.
 class ConditionsResponse {
   /// filter alerts by alert context (payload)
-  final pulumi.Input<ConditionResponse>? alertContext;
+  final pulumi.Input<ConditionResponse?>? alertContext;
   /// filter alerts by alert rule id
-  final pulumi.Input<ConditionResponse>? alertRuleId;
+  final pulumi.Input<ConditionResponse?>? alertRuleId;
   /// filter alerts by alert rule name
-  final pulumi.Input<ConditionResponse>? alertRuleName;
+  final pulumi.Input<ConditionResponse?>? alertRuleName;
   /// filter alerts by alert rule description
-  final pulumi.Input<ConditionResponse>? description;
+  final pulumi.Input<ConditionResponse?>? description;
   /// filter alerts by monitor condition
-  final pulumi.Input<ConditionResponse>? monitorCondition;
+  final pulumi.Input<ConditionResponse?>? monitorCondition;
   /// filter alerts by monitor service
-  final pulumi.Input<ConditionResponse>? monitorService;
+  final pulumi.Input<ConditionResponse?>? monitorService;
   /// filter alerts by severity
-  final pulumi.Input<ConditionResponse>? severity;
+  final pulumi.Input<ConditionResponse?>? severity;
   /// filter alerts by target resource type
-  final pulumi.Input<ConditionResponse>? targetResourceType;
+  final pulumi.Input<ConditionResponse?>? targetResourceType;
 
   /// Creates a new [ConditionsResponse].
   /// [alertContext] filter alerts by alert context (payload)

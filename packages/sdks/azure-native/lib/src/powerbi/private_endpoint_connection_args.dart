@@ -12,13 +12,13 @@ class PrivateEndpointConnectionArgs {
   /// The name of the Azure resource.
   final pulumi.Input<String> azureResourceName;
   /// Specifies the private endpoint.
-  final pulumi.Input<PrivateEndpoint>? privateEndpoint;
+  final pulumi.Input<PrivateEndpoint?>? privateEndpoint;
   /// The name of the private endpoint.
-  final pulumi.Input<String>? privateEndpointName;
+  final pulumi.Input<String?>? privateEndpointName;
   /// Specifies the connection state.
-  final pulumi.Input<ConnectionState>? privateLinkServiceConnectionState;
+  final pulumi.Input<ConnectionState?>? privateLinkServiceConnectionState;
   /// Provisioning state of the Private Endpoint Connection.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<dynamic>? provisioningState;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -55,7 +55,7 @@ class PrivateEndpointConnectionArgs {
       privateEndpoint: (() { final guardedValue = map['privateEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrivateEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       privateEndpointName: (() { final guardedValue = map['privateEndpointName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateLinkServiceConnectionState: (() { final guardedValue = map['privateLinkServiceConnectionState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionState.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum EnvironmentVariableType {
+enum EnvironmentVariableType implements pulumi.PulumiEnum<String> {
   pARAMETERSTORE("PARAMETER_STORE"),
   pLAINTEXT("PLAINTEXT"),
   sECRETSMANAGER("SECRETS_MANAGER");
 
   const EnvironmentVariableType(this.wireValue);
+  @override
   final String wireValue;
 
   static EnvironmentVariableType fromValue(String value) {

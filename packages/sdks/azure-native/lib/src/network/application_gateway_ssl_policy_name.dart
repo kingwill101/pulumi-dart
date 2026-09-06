@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Name of Ssl predefined policy.
-enum ApplicationGatewaySslPolicyName {
+enum ApplicationGatewaySslPolicyName implements pulumi.PulumiEnum<String> {
   valueAppGwSslPolicy20150501("AppGwSslPolicy20150501"),
   valueAppGwSslPolicy20170401("AppGwSslPolicy20170401"),
   valueAppGwSslPolicy20170401S("AppGwSslPolicy20170401S"),
@@ -7,6 +9,7 @@ enum ApplicationGatewaySslPolicyName {
   valueAppGwSslPolicy20220101S("AppGwSslPolicy20220101S");
 
   const ApplicationGatewaySslPolicyName(this.wireValue);
+  @override
   final String wireValue;
 
   static ApplicationGatewaySslPolicyName fromValue(String value) {

@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'application_security_group_response.dart';
 import 'security_rule_args.dart';
 
 /// Network security rule.
@@ -216,7 +217,7 @@ class SecurityRuleNetwork extends pulumi.CustomResource {
   /// The destination address prefixes. CIDR or destination IP ranges.
   late final pulumi.Output<List<String>?> destinationAddressPrefixes;
   /// The application security group specified as destination.
-  late final pulumi.Output<List<Map<String, dynamic>>?> destinationApplicationSecurityGroups;
+  late final pulumi.Output<List<ApplicationSecurityGroupResponse>?> destinationApplicationSecurityGroups;
   /// The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
   late final pulumi.Output<String?> destinationPortRange;
   /// The destination port ranges.
@@ -238,7 +239,7 @@ class SecurityRuleNetwork extends pulumi.CustomResource {
   /// The CIDR or source IP ranges.
   late final pulumi.Output<List<String>?> sourceAddressPrefixes;
   /// The application security group specified as source.
-  late final pulumi.Output<List<Map<String, dynamic>>?> sourceApplicationSecurityGroups;
+  late final pulumi.Output<List<ApplicationSecurityGroupResponse>?> sourceApplicationSecurityGroups;
   /// The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
   late final pulumi.Output<String?> sourcePortRange;
   /// The source port ranges.
@@ -264,10 +265,10 @@ class SecurityRuleNetwork extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     destinationAddressPrefix = registerOutput<String?>('destinationAddressPrefix');
-    destinationAddressPrefixes = registerOutput<List<String>?>('destinationAddressPrefixes');
-    destinationApplicationSecurityGroups = registerOutput<List<Map<String, dynamic>>?>('destinationApplicationSecurityGroups');
+    destinationAddressPrefixes = registerOutput<List<String>?>('destinationAddressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    destinationApplicationSecurityGroups = registerOutput<List<ApplicationSecurityGroupResponse>?>('destinationApplicationSecurityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationSecurityGroupResponse>(guardedValue, (value) => ApplicationSecurityGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
     destinationPortRange = registerOutput<String?>('destinationPortRange');
-    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges');
+    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     direction = registerOutput<String>('direction');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String?>('name');
@@ -275,10 +276,41 @@ class SecurityRuleNetwork extends pulumi.CustomResource {
     protocol = registerOutput<String>('protocol');
     provisioningState = registerOutput<String>('provisioningState');
     sourceAddressPrefix = registerOutput<String?>('sourceAddressPrefix');
-    sourceAddressPrefixes = registerOutput<List<String>?>('sourceAddressPrefixes');
-    sourceApplicationSecurityGroups = registerOutput<List<Map<String, dynamic>>?>('sourceApplicationSecurityGroups');
+    sourceAddressPrefixes = registerOutput<List<String>?>('sourceAddressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourceApplicationSecurityGroups = registerOutput<List<ApplicationSecurityGroupResponse>?>('sourceApplicationSecurityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationSecurityGroupResponse>(guardedValue, (value) => ApplicationSecurityGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
     sourcePortRange = registerOutput<String?>('sourcePortRange');
-    sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges');
+    sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [SecurityRuleNetwork] resource.
+  SecurityRuleNetwork.reference(String urn)
+    : super(
+        'azure-native:network:SecurityRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    access = registerOutput<String>('access');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    destinationAddressPrefix = registerOutput<String?>('destinationAddressPrefix');
+    destinationAddressPrefixes = registerOutput<List<String>?>('destinationAddressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    destinationApplicationSecurityGroups = registerOutput<List<ApplicationSecurityGroupResponse>?>('destinationApplicationSecurityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationSecurityGroupResponse>(guardedValue, (value) => ApplicationSecurityGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    destinationPortRange = registerOutput<String?>('destinationPortRange');
+    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    direction = registerOutput<String>('direction');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String?>('name');
+    priority = registerOutput<int>('priority');
+    protocol = registerOutput<String>('protocol');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourceAddressPrefix = registerOutput<String?>('sourceAddressPrefix');
+    sourceAddressPrefixes = registerOutput<List<String>?>('sourceAddressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourceApplicationSecurityGroups = registerOutput<List<ApplicationSecurityGroupResponse>?>('sourceApplicationSecurityGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationSecurityGroupResponse>(guardedValue, (value) => ApplicationSecurityGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    sourcePortRange = registerOutput<String?>('sourcePortRange');
+    sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String?>('type');
   }
 }

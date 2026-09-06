@@ -14,9 +14,9 @@ class DataLakeFabricStorageResponse {
   /// Fabric path type to use.
   final pulumi.Input<String> fabricPath;
   /// Fabric one lake Guids.
-  final pulumi.Input<FabricGuidsResponse>? guids;
+  final pulumi.Input<FabricGuidsResponse?>? guids;
   /// Fabric one lake Names.
-  final pulumi.Input<FabricNamesResponse>? names;
+  final pulumi.Input<FabricNamesResponse?>? names;
 
   /// Creates a new [DataLakeFabricStorageResponse].
   /// [authentication] DataLake fabric storage authentication details.

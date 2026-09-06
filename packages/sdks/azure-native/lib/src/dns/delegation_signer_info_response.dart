@@ -31,7 +31,7 @@ class DelegationSignerInfoResponse {
 
   factory DelegationSignerInfoResponse.fromMap(Map<String, dynamic> map) {
     return DelegationSignerInfoResponse(
-      digestAlgorithmType: pulumi.Input.fromValue(map['digestAlgorithmType'] as int),
+      digestAlgorithmType: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['digestAlgorithmType'])),
       digestValue: pulumi.Input.fromValue(map['digestValue'] as String),
       record: pulumi.Input.fromValue(map['record'] as String),
     );

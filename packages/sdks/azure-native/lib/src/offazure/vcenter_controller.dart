@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'health_error_details_response.dart';
 import 'system_data_response.dart';
 import 'vcenter_controller_args.dart';
 
@@ -190,7 +191,7 @@ class VcenterController extends pulumi.CustomResource {
   /// Gets the timestamp marking vCenter creation.
   late final pulumi.Output<String> createdTimestamp;
   /// Gets the errors.
-  late final pulumi.Output<List<Map<String, dynamic>>> errors;
+  late final pulumi.Output<List<HealthErrorDetailsResponse>> errors;
   /// Gets or sets the FQDN/IPAddress of the vCenter.
   late final pulumi.Output<String?> fqdn;
   /// Gets or sets the friendly name of the vCenter.
@@ -232,7 +233,33 @@ class VcenterController extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdTimestamp = registerOutput<String>('createdTimestamp');
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
+    errors = registerOutput<List<HealthErrorDetailsResponse>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HealthErrorDetailsResponse>(guardedValue, (value) => HealthErrorDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    fqdn = registerOutput<String?>('fqdn');
+    friendlyName = registerOutput<String?>('friendlyName');
+    instanceUuid = registerOutput<String>('instanceUuid');
+    this.name = registerOutput<String>('name');
+    perfStatisticsLevel = registerOutput<String>('perfStatisticsLevel');
+    port = registerOutput<String?>('port');
+    provisioningState = registerOutput<String?>('provisioningState');
+    runAsAccountId = registerOutput<String?>('runAsAccountId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    updatedTimestamp = registerOutput<String>('updatedTimestamp');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [VcenterController] resource.
+  VcenterController.reference(String urn)
+    : super(
+        'azure-native:offazure:VcenterController',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    errors = registerOutput<List<HealthErrorDetailsResponse>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HealthErrorDetailsResponse>(guardedValue, (value) => HealthErrorDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); });
     fqdn = registerOutput<String?>('fqdn');
     friendlyName = registerOutput<String?>('friendlyName');
     instanceUuid = registerOutput<String>('instanceUuid');

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_kubernetes_list_connected_cluster_user_credential_args_doc}
 class ListConnectedClusterUserCredentialArgs {
   /// The mode of client authentication.
-  final pulumi.Input<String> authenticationMethod;
+  final pulumi.Input<dynamic> authenticationMethod;
   /// Boolean value to indicate whether the request is for client side proxy or not
   final pulumi.Input<bool> clientProxy;
   /// The name of the Kubernetes cluster on which get is called.
@@ -39,7 +39,7 @@ class ListConnectedClusterUserCredentialArgs {
 
   factory ListConnectedClusterUserCredentialArgs.fromMap(Map<String, dynamic> map) {
     return ListConnectedClusterUserCredentialArgs(
-      authenticationMethod: pulumi.Input.fromValue(map['authenticationMethod'] as String),
+      authenticationMethod: pulumi.Input.fromValue(map['authenticationMethod']),
       clientProxy: pulumi.Input.fromValue(map['clientProxy'] as bool),
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

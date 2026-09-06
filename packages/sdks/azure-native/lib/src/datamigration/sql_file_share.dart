@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// File share
 class SqlFileShare {
   /// Password for username to access file share location.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Location as SMB share or local drive where backups are placed.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Username to access the file share location for backups.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [SqlFileShare].
   /// [password] Password for username to access file share location.

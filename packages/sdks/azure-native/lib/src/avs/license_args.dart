@@ -9,11 +9,11 @@ import 'vmware_firewall_license_properties.dart';
 /// {@macro pulumi_avs_license_args_doc}
 class LicenseArgs {
   /// Name of the license.
-  final pulumi.Input<String>? licenseName;
+  final pulumi.Input<String?>? licenseName;
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<VmwareFirewallLicenseProperties>? properties;
+  final pulumi.Input<VmwareFirewallLicenseProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

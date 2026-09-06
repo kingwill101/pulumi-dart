@@ -5,16 +5,16 @@ import 'virtual_machine_properties_uefi_settings.dart';
 
 /// SecurityProfile - Specifies the security settings for the virtual machine.
 class VirtualMachinePropertiesSecurityProfile {
-  final pulumi.Input<bool>? enableTPM;
-  final pulumi.Input<VirtualMachinePropertiesUefiSettings>? uefiSettings;
+  final pulumi.Input<bool?>? enableTPM;
+  final pulumi.Input<VirtualMachinePropertiesUefiSettings?>? uefiSettings;
 
   /// Creates a new [VirtualMachinePropertiesSecurityProfile].
   /// [enableTPM] Optional.
   /// [uefiSettings] Optional.
-  const VirtualMachinePropertiesSecurityProfile({
-    this.enableTPM,
+  VirtualMachinePropertiesSecurityProfile({
+    pulumi.Input<bool?>? enableTPM,
     this.uefiSettings,
-  });
+  }) : enableTPM = enableTPM ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

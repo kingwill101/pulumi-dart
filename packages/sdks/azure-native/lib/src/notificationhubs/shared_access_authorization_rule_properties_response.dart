@@ -16,14 +16,14 @@ class SharedAccessAuthorizationRulePropertiesResponse {
   final pulumi.Input<String> modifiedTime;
   /// Gets a base64-encoded 256-bit primary key for signing and
   /// validating the SAS token.
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// Gets the revision number for the rule
   final pulumi.Input<int> revision;
   /// Gets or sets the rights associated with the rule.
   final pulumi.Input<List<String>> rights;
   /// Gets a base64-encoded 256-bit primary key for signing and
   /// validating the SAS token.
-  final pulumi.Input<String>? secondaryKey;
+  final pulumi.Input<String?>? secondaryKey;
 
   /// Creates a new [SharedAccessAuthorizationRulePropertiesResponse].
   /// [claimType] Gets a string that describes the claim type
@@ -69,7 +69,7 @@ class SharedAccessAuthorizationRulePropertiesResponse {
       keyName: pulumi.Input.fromValue(map['keyName'] as String),
       modifiedTime: pulumi.Input.fromValue(map['modifiedTime'] as String),
       primaryKey: (() { final guardedValue = map['primaryKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      revision: pulumi.Input.fromValue(map['revision'] as int),
+      revision: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['revision'])),
       rights: pulumi.Input.fromValue((map['rights'] as List).cast<String>()),
       secondaryKey: (() { final guardedValue = map['secondaryKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

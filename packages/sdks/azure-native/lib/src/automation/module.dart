@@ -276,7 +276,36 @@ class Module extends pulumi.CustomResource {
     provisioningState = registerOutput<String?>('provisioningState');
     sizeInBytes = registerOutput<double?>('sizeInBytes');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [Module] resource.
+  Module.reference(String urn)
+    : super(
+        'azure-native:automation:Module',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activityCount = registerOutput<int?>('activityCount');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contentLink = registerOutput<ContentLinkResponse?>('contentLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContentLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTime = registerOutput<String?>('creationTime');
+    description = registerOutput<String?>('description');
+    error = registerOutput<ModuleErrorInfoResponse?>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModuleErrorInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String?>('etag');
+    isComposite = registerOutput<bool?>('isComposite');
+    isGlobal = registerOutput<bool?>('isGlobal');
+    lastModifiedTime = registerOutput<String?>('lastModifiedTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String?>('provisioningState');
+    sizeInBytes = registerOutput<double?>('sizeInBytes');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');
   }

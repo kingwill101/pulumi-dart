@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// GCP Defenders CSPM Permissions Management OIDC (Open ID connect) connection configurations
 class DefenderCspmGcpOfferingCiemDiscovery {
   /// the azure active directory app name used of authenticating against GCP workload identity federation
-  final pulumi.Input<String>? azureActiveDirectoryAppName;
+  final pulumi.Input<String?>? azureActiveDirectoryAppName;
   /// The service account email address in GCP for Permissions Management offering
-  final pulumi.Input<String>? serviceAccountEmailAddress;
+  final pulumi.Input<String?>? serviceAccountEmailAddress;
   /// The GCP workload identity provider id for Permissions Management offering
-  final pulumi.Input<String>? workloadIdentityProviderId;
+  final pulumi.Input<String?>? workloadIdentityProviderId;
 
   /// Creates a new [DefenderCspmGcpOfferingCiemDiscovery].
   /// [azureActiveDirectoryAppName] the azure active directory app name used of authenticating against GCP workload identity federation

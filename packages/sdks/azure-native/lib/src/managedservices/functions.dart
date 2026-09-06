@@ -22,6 +22,17 @@ Future<GetRegistrationAssignmentResult> getRegistrationAssignment(
   return GetRegistrationAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetRegistrationAssignmentResult> getRegistrationAssignmentOutput(
+  GetRegistrationAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managedservices:getRegistrationAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistrationAssignmentResult.fromMap);
+}
+
 /// Gets the registration definition details.
 ///
 /// Uses Azure REST API version 2022-10-01.
@@ -38,4 +49,15 @@ Future<GetRegistrationDefinitionResult> getRegistrationDefinition(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegistrationDefinitionResult.fromMap(result);
+}
+
+pulumi.Output<GetRegistrationDefinitionResult> getRegistrationDefinitionOutput(
+  GetRegistrationDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managedservices:getRegistrationDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistrationDefinitionResult.fromMap);
 }

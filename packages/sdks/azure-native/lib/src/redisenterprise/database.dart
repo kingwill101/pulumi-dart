@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_args.dart';
 import 'database_properties_response_geo_replication.dart';
+import 'module_response.dart';
 import 'persistence_response.dart';
 import 'system_data_response.dart';
 
@@ -719,7 +720,7 @@ class Database extends pulumi.CustomResource {
   /// Optional set of properties to configure geo replication for this database.
   late final pulumi.Output<DatabasePropertiesResponseGeoReplication?> geoReplication;
   /// Optional set of redis modules to enable in this database - modules can only be added at creation time.
-  late final pulumi.Output<List<Map<String, dynamic>>?> modules;
+  late final pulumi.Output<List<ModuleResponse>?> modules;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Persistence settings
@@ -758,7 +759,34 @@ class Database extends pulumi.CustomResource {
     deferUpgrade = registerOutput<String?>('deferUpgrade');
     evictionPolicy = registerOutput<String?>('evictionPolicy');
     geoReplication = registerOutput<DatabasePropertiesResponseGeoReplication?>('geoReplication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabasePropertiesResponseGeoReplication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    modules = registerOutput<List<Map<String, dynamic>>?>('modules');
+    modules = registerOutput<List<ModuleResponse>?>('modules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ModuleResponse>(guardedValue, (value) => ModuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    persistence = registerOutput<PersistenceResponse?>('persistence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PersistenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    port = registerOutput<int?>('port');
+    provisioningState = registerOutput<String>('provisioningState');
+    redisVersion = registerOutput<String>('redisVersion');
+    resourceState = registerOutput<String>('resourceState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Database] resource.
+  Database.reference(String urn)
+    : super(
+        'azure-native:redisenterprise:Database',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessKeysAuthentication = registerOutput<String?>('accessKeysAuthentication');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientProtocol = registerOutput<String?>('clientProtocol');
+    clusteringPolicy = registerOutput<String?>('clusteringPolicy');
+    deferUpgrade = registerOutput<String?>('deferUpgrade');
+    evictionPolicy = registerOutput<String?>('evictionPolicy');
+    geoReplication = registerOutput<DatabasePropertiesResponseGeoReplication?>('geoReplication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabasePropertiesResponseGeoReplication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    modules = registerOutput<List<ModuleResponse>?>('modules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ModuleResponse>(guardedValue, (value) => ModuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     persistence = registerOutput<PersistenceResponse?>('persistence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PersistenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     port = registerOutput<int?>('port');

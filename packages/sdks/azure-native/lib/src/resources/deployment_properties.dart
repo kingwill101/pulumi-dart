@@ -12,21 +12,21 @@ import 'template_link.dart';
 /// Deployment properties.
 class DeploymentProperties {
   /// The debug setting of the deployment.
-  final pulumi.Input<DebugSetting>? debugSetting;
+  final pulumi.Input<DebugSetting?>? debugSetting;
   /// Specifies whether template expressions are evaluated within the scope of the parent template or nested template. Only applicable to nested templates. If not specified, default value is outer.
-  final pulumi.Input<ExpressionEvaluationOptions>? expressionEvaluationOptions;
+  final pulumi.Input<ExpressionEvaluationOptions?>? expressionEvaluationOptions;
   /// The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
   final pulumi.Input<DeploymentMode> mode;
   /// The deployment on error behavior.
-  final pulumi.Input<OnErrorDeployment>? onErrorDeployment;
+  final pulumi.Input<OnErrorDeployment?>? onErrorDeployment;
   /// Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string.
-  final pulumi.Input<Map<String, DeploymentParameter>>? parameters;
+  final pulumi.Input<Map<String, DeploymentParameter>?>? parameters;
   /// The URI of parameters file. You use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
-  final pulumi.Input<ParametersLink>? parametersLink;
+  final pulumi.Input<ParametersLink?>? parametersLink;
   /// The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
   final pulumi.Input<dynamic>? template;
   /// The URI of the template. Use either the templateLink property or the template property, but not both.
-  final pulumi.Input<TemplateLink>? templateLink;
+  final pulumi.Input<TemplateLink?>? templateLink;
 
   /// Creates a new [DeploymentProperties].
   /// [debugSetting] The debug setting of the deployment.

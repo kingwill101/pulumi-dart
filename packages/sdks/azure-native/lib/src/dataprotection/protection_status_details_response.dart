@@ -6,9 +6,9 @@ import 'user_facing_error_response.dart';
 /// Protection status details
 class ProtectionStatusDetailsResponse {
   /// Specifies the protection status error of the resource
-  final pulumi.Input<UserFacingErrorResponse>? errorDetails;
+  final pulumi.Input<UserFacingErrorResponse?>? errorDetails;
   /// Specifies the protection status of the resource
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [ProtectionStatusDetailsResponse].
   /// [errorDetails] Specifies the protection status error of the resource

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum InstanceLifecycleType {
+enum InstanceLifecycleType implements pulumi.PulumiEnum<String> {
   capacityBlock("capacity-block"),
   scheduled("scheduled"),
   spot("spot");
 
   const InstanceLifecycleType(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceLifecycleType fromValue(String value) {

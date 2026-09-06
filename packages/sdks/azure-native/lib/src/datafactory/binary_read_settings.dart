@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'tar_gzip_read_settings.dart';
 
 /// Binary read settings.
 class BinaryReadSettings {
   /// Compression settings.
-  final pulumi.Input<TarGZipReadSettings>? compressionProperties;
+  final pulumi.Input<dynamic>? compressionProperties;
   /// The read setting type.
   /// Expected value is 'BinaryReadSettings'.
   final pulumi.Input<String> type;
@@ -21,14 +20,14 @@ class BinaryReadSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compressionProperties': ?pulumi.Input.mapOptionalInputValue<TarGZipReadSettings, Map<String, dynamic>>(compressionProperties, (value) => value.toMap()),
+      'compressionProperties': ?compressionProperties,
       'type': type,
     };
   }
 
   factory BinaryReadSettings.fromMap(Map<String, dynamic> map) {
     return BinaryReadSettings(
-      compressionProperties: (() { final guardedValue = map['compressionProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TarGZipReadSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      compressionProperties: (() { final guardedValue = map['compressionProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

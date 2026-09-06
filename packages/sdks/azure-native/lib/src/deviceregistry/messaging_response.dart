@@ -6,7 +6,7 @@ import 'messaging_endpoint_response.dart';
 /// The namespace messaging endpoints model.
 class MessagingResponse {
   /// Dictionary of messaging endpoints.
-  final pulumi.Input<Map<String, MessagingEndpointResponse>>? endpoints;
+  final pulumi.Input<Map<String, MessagingEndpointResponse>?>? endpoints;
 
   /// Creates a new [MessagingResponse].
   /// [endpoints] Dictionary of messaging endpoints.

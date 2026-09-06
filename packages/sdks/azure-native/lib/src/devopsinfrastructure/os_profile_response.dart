@@ -6,9 +6,9 @@ import 'secrets_management_settings_response.dart';
 /// The OS profile of the machines in the pool.
 class OsProfileResponse {
   /// Determines how the service should be run. By default, this will be set to Service.
-  final pulumi.Input<String>? logonType;
+  final pulumi.Input<String?>? logonType;
   /// The secret management settings of the machines in the pool.
-  final pulumi.Input<SecretsManagementSettingsResponse>? secretsManagementSettings;
+  final pulumi.Input<SecretsManagementSettingsResponse?>? secretsManagementSettings;
 
   /// Creates a new [OsProfileResponse].
   /// [logonType] Determines how the service should be run. By default, this will be set to Service.

@@ -11,13 +11,13 @@ class RaiBlocklistArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
   /// Properties of Cognitive Services RaiBlocklist.
-  final pulumi.Input<RaiBlocklistProperties>? properties;
+  final pulumi.Input<RaiBlocklistProperties?>? properties;
   /// The name of the RaiBlocklist associated with the Cognitive Services Account
-  final pulumi.Input<String>? raiBlocklistName;
+  final pulumi.Input<String?>? raiBlocklistName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RaiBlocklistArgs].
   /// [accountName] The name of Cognitive Services account.

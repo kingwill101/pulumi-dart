@@ -7,13 +7,13 @@ import 'tag.dart';
 /// Definition of awsCloudFrontDistribution
 class AwsCloudFrontDistributionProperties {
   /// The distribution's configuration. A distribution configuration.
-  final pulumi.Input<DistributionConfig>? distributionConfig;
+  final pulumi.Input<DistributionConfig?>? distributionConfig;
   /// Property domainName
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Property id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// A complex type that contains zero or more ``Tag`` elements.
-  final pulumi.Input<List<Tag>>? tags;
+  final pulumi.Input<List<Tag>?>? tags;
 
   /// Creates a new [AwsCloudFrontDistributionProperties].
   /// [distributionConfig] The distribution's configuration. A distribution configuration.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The week index. Specifies on which week of the month the dayOfWeek applies.
-enum Type {
+enum Type implements pulumi.PulumiEnum<String> {
   valueFirst("First"),
   valueSecond("Second"),
   valueThird("Third"),
@@ -7,6 +9,7 @@ enum Type {
   valueLast("Last");
 
   const Type(this.wireValue);
+  @override
   final String wireValue;
 
   static Type fromValue(String value) {

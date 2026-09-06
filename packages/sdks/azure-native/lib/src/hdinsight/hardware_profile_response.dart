@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The hardware profile.
 class HardwareProfileResponse {
   /// The size of the VM
-  final pulumi.Input<String>? vmSize;
+  final pulumi.Input<String?>? vmSize;
 
   /// Creates a new [HardwareProfileResponse].
   /// [vmSize] The size of the VM

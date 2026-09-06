@@ -6,7 +6,7 @@ import 'managed_rule_set_response.dart';
 /// Defines the list of managed rule sets for the policy.
 class ManagedRuleSetListResponse {
   /// List of rule sets.
-  final pulumi.Input<List<ManagedRuleSetResponse>>? managedRuleSets;
+  final pulumi.Input<List<ManagedRuleSetResponse>?>? managedRuleSets;
 
   /// Creates a new [ManagedRuleSetListResponse].
   /// [managedRuleSets] List of rule sets.

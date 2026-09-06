@@ -7,9 +7,9 @@ import 'mqtt_bridge_remote_broker_x509_authentication.dart';
 /// MqttBridge RemoteBrokerConnection Authentication methods. NOTE - Enum only one is allowed to be passed.
 class MqttBridgeRemoteBrokerAuthenticationMethods {
   /// Managed identity remote broker authentication method.
-  final pulumi.Input<ManagedIdentityAuthentication>? systemAssignedManagedIdentity;
+  final pulumi.Input<ManagedIdentityAuthentication?>? systemAssignedManagedIdentity;
   /// X509 remote broker authentication method.
-  final pulumi.Input<MqttBridgeRemoteBrokerX509Authentication>? x509;
+  final pulumi.Input<MqttBridgeRemoteBrokerX509Authentication?>? x509;
 
   /// Creates a new [MqttBridgeRemoteBrokerAuthenticationMethods].
   /// [systemAssignedManagedIdentity] Managed identity remote broker authentication method.

@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'cert_sync_record_response.dart';
 import 'report_args.dart';
 import 'report_compliance_status_response.dart';
+import 'resource_metadata_response.dart';
 import 'storage_info_response.dart';
 import 'system_data_response.dart';
 
@@ -246,7 +248,7 @@ class Report extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// List of synchronized certification records.
-  late final pulumi.Output<List<Map<String, dynamic>>> certRecords;
+  late final pulumi.Output<List<CertSyncRecordResponse>> certRecords;
   /// Report compliance status.
   late final pulumi.Output<ReportComplianceStatusResponse> complianceStatus;
   /// List of report error codes.
@@ -262,7 +264,7 @@ class Report extends pulumi.CustomResource {
   /// Azure lifecycle management
   late final pulumi.Output<String> provisioningState;
   /// List of resource data.
-  late final pulumi.Output<List<Map<String, dynamic>>> resources;
+  late final pulumi.Output<List<ResourceMetadataResponse>> resources;
   /// Report status.
   late final pulumi.Output<String> status;
   /// The information of 'bring your own storage' binding to the report
@@ -296,18 +298,47 @@ class Report extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    certRecords = registerOutput<List<Map<String, dynamic>>>('certRecords');
+    certRecords = registerOutput<List<CertSyncRecordResponse>>('certRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertSyncRecordResponse>(guardedValue, (value) => CertSyncRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
     complianceStatus = registerOutput<ReportComplianceStatusResponse>('complianceStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportComplianceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    errors = registerOutput<List<String>>('errors');
+    errors = registerOutput<List<String>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     lastTriggerTime = registerOutput<String>('lastTriggerTime');
     this.name = registerOutput<String>('name');
     nextTriggerTime = registerOutput<String>('nextTriggerTime');
     offerGuid = registerOutput<String?>('offerGuid');
     provisioningState = registerOutput<String>('provisioningState');
-    resources = registerOutput<List<Map<String, dynamic>>>('resources');
+    resources = registerOutput<List<ResourceMetadataResponse>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceMetadataResponse>(guardedValue, (value) => ResourceMetadataResponse.fromMap((value as Map).cast<String, dynamic>())); });
     status = registerOutput<String>('status');
     storageInfo = registerOutput<StorageInfoResponse?>('storageInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    subscriptions = registerOutput<List<String>>('subscriptions');
+    subscriptions = registerOutput<List<String>>('subscriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tenantId = registerOutput<String>('tenantId');
+    timeZone = registerOutput<String>('timeZone');
+    triggerTime = registerOutput<String>('triggerTime');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Report] resource.
+  Report.reference(String urn)
+    : super(
+        'azure-native:appcomplianceautomation:Report',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    certRecords = registerOutput<List<CertSyncRecordResponse>>('certRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertSyncRecordResponse>(guardedValue, (value) => CertSyncRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    complianceStatus = registerOutput<ReportComplianceStatusResponse>('complianceStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportComplianceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    errors = registerOutput<List<String>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    lastTriggerTime = registerOutput<String>('lastTriggerTime');
+    this.name = registerOutput<String>('name');
+    nextTriggerTime = registerOutput<String>('nextTriggerTime');
+    offerGuid = registerOutput<String?>('offerGuid');
+    provisioningState = registerOutput<String>('provisioningState');
+    resources = registerOutput<List<ResourceMetadataResponse>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceMetadataResponse>(guardedValue, (value) => ResourceMetadataResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    status = registerOutput<String>('status');
+    storageInfo = registerOutput<StorageInfoResponse?>('storageInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subscriptions = registerOutput<List<String>>('subscriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tenantId = registerOutput<String>('tenantId');
     timeZone = registerOutput<String>('timeZone');

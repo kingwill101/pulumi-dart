@@ -10,7 +10,7 @@ class AzureOperationalStoreParametersResponse {
   /// Expected value is 'AzureOperationalStoreParameters'.
   final pulumi.Input<String> objectType;
   /// Gets or sets the Snapshot Resource Group Uri.
-  final pulumi.Input<String>? resourceGroupId;
+  final pulumi.Input<String?>? resourceGroupId;
 
   /// Creates a new [AzureOperationalStoreParametersResponse].
   /// [dataStoreType] type of datastore; Operational/Vault/Archive

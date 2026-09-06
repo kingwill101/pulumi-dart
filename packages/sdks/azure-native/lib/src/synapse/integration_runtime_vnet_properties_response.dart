@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// VNet properties for managed integration runtime.
 class IntegrationRuntimeVNetPropertiesResponse {
   /// Resource IDs of the public IP addresses that this integration runtime will use.
-  final pulumi.Input<List<String>>? publicIPs;
+  final pulumi.Input<List<String>?>? publicIPs;
   /// The name of the subnet this integration runtime will join.
-  final pulumi.Input<String>? subnet;
+  final pulumi.Input<String?>? subnet;
   /// The ID of subnet, to which this Azure-SSIS integration runtime will be joined.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// The ID of the VNet that this integration runtime will join.
-  final pulumi.Input<String>? vNetId;
+  final pulumi.Input<String?>? vNetId;
 
   /// Creates a new [IntegrationRuntimeVNetPropertiesResponse].
   /// [publicIPs] Resource IDs of the public IP addresses that this integration runtime will use.

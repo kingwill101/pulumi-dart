@@ -5,28 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Rule of type nat.
 class NatRuleResponse {
   /// Description of the rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of destination IP addresses or Service Tags.
-  final pulumi.Input<List<String>>? destinationAddresses;
+  final pulumi.Input<List<String>?>? destinationAddresses;
   /// List of destination ports.
-  final pulumi.Input<List<String>>? destinationPorts;
+  final pulumi.Input<List<String>?>? destinationPorts;
   /// Array of FirewallPolicyRuleNetworkProtocols.
-  final pulumi.Input<List<String>>? ipProtocols;
+  final pulumi.Input<List<String>?>? ipProtocols;
   /// Name of the rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Rule Type.
   /// Expected value is 'NatRule'.
   final pulumi.Input<String> ruleType;
   /// List of source IP addresses for this rule.
-  final pulumi.Input<List<String>>? sourceAddresses;
+  final pulumi.Input<List<String>?>? sourceAddresses;
   /// List of source IpGroups for this rule.
-  final pulumi.Input<List<String>>? sourceIpGroups;
+  final pulumi.Input<List<String>?>? sourceIpGroups;
   /// The translated address for this NAT rule.
-  final pulumi.Input<String>? translatedAddress;
+  final pulumi.Input<String?>? translatedAddress;
   /// The translated FQDN for this NAT rule.
-  final pulumi.Input<String>? translatedFqdn;
+  final pulumi.Input<String?>? translatedFqdn;
   /// The translated port for this NAT rule.
-  final pulumi.Input<String>? translatedPort;
+  final pulumi.Input<String?>? translatedPort;
 
   /// Creates a new [NatRuleResponse].
   /// [description] Description of the rule.

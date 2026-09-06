@@ -6,7 +6,7 @@ import 'restore_point_source_vmstorage_profile.dart';
 /// Describes the properties of the Virtual Machine for which the restore point was created. The properties provided are a subset and the snapshot of the overall Virtual Machine properties captured at the time of the restore point creation.
 class RestorePointSourceMetadata {
   /// Gets the storage profile.
-  final pulumi.Input<RestorePointSourceVMStorageProfile>? storageProfile;
+  final pulumi.Input<RestorePointSourceVMStorageProfile?>? storageProfile;
 
   /// Creates a new [RestorePointSourceMetadata].
   /// [storageProfile] Gets the storage profile.

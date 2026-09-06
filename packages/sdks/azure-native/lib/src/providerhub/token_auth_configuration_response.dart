@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TokenAuthConfigurationResponse {
   /// The authentication scheme.
-  final pulumi.Input<String>? authenticationScheme;
+  final pulumi.Input<String?>? authenticationScheme;
   /// Whether certification authentication fallback is disabled.
-  final pulumi.Input<bool>? disableCertificateAuthenticationFallback;
+  final pulumi.Input<bool?>? disableCertificateAuthenticationFallback;
   /// The signed request scope.
-  final pulumi.Input<String>? signedRequestScope;
+  final pulumi.Input<String?>? signedRequestScope;
 
   /// Creates a new [TokenAuthConfigurationResponse].
   /// [authenticationScheme] The authentication scheme.

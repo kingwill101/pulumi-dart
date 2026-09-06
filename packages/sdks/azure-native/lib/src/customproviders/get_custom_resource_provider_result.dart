@@ -10,21 +10,21 @@ class GetCustomResourceProviderResult {
   /// A list of actions that the custom resource provider implements.
   final List<CustomRPActionRouteDefinitionResponse>? actions;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Resource Id
-  final String id;
+  final String? id;
   /// Resource location
-  final String location;
+  final String? location;
   /// Resource name
-  final String name;
+  final String? name;
   /// The provisioning state of the resource provider.
-  final String provisioningState;
+  final String? provisioningState;
   /// A list of resource types that the custom resource provider implements.
   final List<CustomRPResourceTypeRouteDefinitionResponse>? resourceTypes;
   /// Resource tags
   final Map<String, String>? tags;
   /// Resource type
-  final String type;
+  final String? type;
   /// A list of validations to run on the custom resource provider's requests.
   final List<CustomRPValidationsResponse>? validations;
 
@@ -41,28 +41,28 @@ class GetCustomResourceProviderResult {
   /// [validations] A list of validations to run on the custom resource provider's requests.
   const GetCustomResourceProviderResult({
     this.actions,
-    required this.azureApiVersion,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.provisioningState,
+    this.azureApiVersion,
+    this.id,
+    this.location,
+    this.name,
+    this.provisioningState,
     this.resourceTypes,
     this.tags,
-    required this.type,
+    this.type,
     this.validations,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actions': ?(() { final guardedValue = actions; if (guardedValue == null) return null; return pulumi.Input.encodeList<CustomRPActionRouteDefinitionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'location': location,
-      'name': name,
-      'provisioningState': provisioningState,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'resourceTypes': ?(() { final guardedValue = resourceTypes; if (guardedValue == null) return null; return pulumi.Input.encodeList<CustomRPResourceTypeRouteDefinitionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'validations': ?(() { final guardedValue = validations; if (guardedValue == null) return null; return pulumi.Input.encodeList<CustomRPValidationsResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
@@ -70,14 +70,14 @@ class GetCustomResourceProviderResult {
   factory GetCustomResourceProviderResult.fromMap(Map<String, dynamic> map) {
     return GetCustomResourceProviderResult(
       actions: (() { final guardedValue = map['actions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomRPActionRouteDefinitionResponse>(guardedValue, (value) => CustomRPActionRouteDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resourceTypes: (() { final guardedValue = map['resourceTypes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomRPResourceTypeRouteDefinitionResponse>(guardedValue, (value) => CustomRPResourceTypeRouteDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       validations: (() { final guardedValue = map['validations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomRPValidationsResponse>(guardedValue, (value) => CustomRPValidationsResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }

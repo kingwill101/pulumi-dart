@@ -28,7 +28,7 @@ class ClientEncryptionPolicy {
   factory ClientEncryptionPolicy.fromMap(Map<String, dynamic> map) {
     return ClientEncryptionPolicy(
       includedPaths: pulumi.Input.fromValue(pulumi.Input.decodeList<ClientEncryptionIncludedPath>(map['includedPaths']!, (value) => ClientEncryptionIncludedPath.fromMap((value as Map).cast<String, dynamic>()))),
-      policyFormatVersion: pulumi.Input.fromValue(map['policyFormatVersion'] as int),
+      policyFormatVersion: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['policyFormatVersion'])),
     );
   }
 }

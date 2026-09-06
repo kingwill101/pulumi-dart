@@ -22,6 +22,17 @@ Future<GetAndroidMAMPolicyByNameResult> getAndroidMAMPolicyByName(
   return GetAndroidMAMPolicyByNameResult.fromMap(result);
 }
 
+pulumi.Output<GetAndroidMAMPolicyByNameResult> getAndroidMAMPolicyByNameOutput(
+  GetAndroidMAMPolicyByNameArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:intune:getAndroidMAMPolicyByName',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAndroidMAMPolicyByNameResult.fromMap);
+}
+
 /// Returns Intune iOS policies.
 ///
 /// Uses Azure REST API version 2015-01-14-preview.
@@ -38,4 +49,15 @@ Future<GetIoMAMPolicyByNameResult> getIoMAMPolicyByName(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIoMAMPolicyByNameResult.fromMap(result);
+}
+
+pulumi.Output<GetIoMAMPolicyByNameResult> getIoMAMPolicyByNameOutput(
+  GetIoMAMPolicyByNameArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:intune:getIoMAMPolicyByName',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIoMAMPolicyByNameResult.fromMap);
 }

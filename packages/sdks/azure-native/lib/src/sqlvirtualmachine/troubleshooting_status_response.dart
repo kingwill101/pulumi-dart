@@ -25,14 +25,14 @@ class TroubleshootingStatusResponse {
   /// [rootCause] Root cause of the issue
   /// [startTimeUtc] Start time in UTC timezone.
   /// [troubleshootingScenario] SQL VM troubleshooting scenario.
-  const TroubleshootingStatusResponse({
+  TroubleshootingStatusResponse({
     required this.endTimeUtc,
     required this.lastTriggerTimeUtc,
     required this.properties,
     required this.rootCause,
     required this.startTimeUtc,
-    required this.troubleshootingScenario,
-  });
+    pulumi.Input<String>? troubleshootingScenario,
+  }) : troubleshootingScenario = troubleshootingScenario ?? pulumi.Input.fromValue('UnhealthyReplica');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

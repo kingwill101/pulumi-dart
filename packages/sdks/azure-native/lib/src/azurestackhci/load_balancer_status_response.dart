@@ -6,11 +6,11 @@ import 'load_balancer_status_provisioning_status_response.dart';
 /// The observed status of the virtual network
 class LoadBalancerStatusResponse {
   /// LoadBalancer provisioning error code
-  final pulumi.Input<String>? errorCode;
+  final pulumi.Input<String?>? errorCode;
   /// Descriptive error message
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// virtual network provisioning status
-  final pulumi.Input<LoadBalancerStatusProvisioningStatusResponse>? provisioningStatus;
+  final pulumi.Input<LoadBalancerStatusProvisioningStatusResponse?>? provisioningStatus;
 
   /// Creates a new [LoadBalancerStatusResponse].
   /// [errorCode] LoadBalancer provisioning error code

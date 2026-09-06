@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Git libraries used to support various repository providers
-enum GitImplementation {
+enum GitImplementation implements pulumi.PulumiEnum<String> {
   valueGoGit("go-git"),
   valueLibgit2("libgit2");
 
   const GitImplementation(this.wireValue);
+  @override
   final String wireValue;
 
   static GitImplementation fromValue(String value) {

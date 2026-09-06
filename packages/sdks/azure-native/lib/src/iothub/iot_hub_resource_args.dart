@@ -11,19 +11,19 @@ import 'iot_hub_sku_info.dart';
 /// {@macro pulumi_iothub_iot_hub_resource_args_doc}
 class IotHubResourceArgs {
   /// The managed identities for the IotHub.
-  final pulumi.Input<ArmIdentity>? identity;
+  final pulumi.Input<ArmIdentity?>? identity;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// IotHub properties
-  final pulumi.Input<IotHubProperties>? properties;
+  final pulumi.Input<IotHubProperties?>? properties;
   /// The name of the resource group that contains the IoT hub.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the IoT hub.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// IotHub SKU info
   final pulumi.Input<IotHubSkuInfo> sku;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [IotHubResourceArgs].
   /// [identity] The managed identities for the IotHub.

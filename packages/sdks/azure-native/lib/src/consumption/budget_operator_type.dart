@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The operator to use for comparison.
-enum BudgetOperatorType {
+enum BudgetOperatorType implements pulumi.PulumiEnum<String> {
   in_("In");
 
   const BudgetOperatorType(this.wireValue);
+  @override
   final String wireValue;
 
   static BudgetOperatorType fromValue(String value) {

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The platform properties against which the run has to happen.
 class PlatformProperties {
   /// The OS architecture.
-  final pulumi.Input<String>? architecture;
+  final pulumi.Input<dynamic>? architecture;
   /// The operating system type required for the run.
-  final pulumi.Input<String> os;
+  final pulumi.Input<dynamic> os;
   /// Variant of the CPU.
-  final pulumi.Input<String>? variant;
+  final pulumi.Input<dynamic>? variant;
 
   /// Creates a new [PlatformProperties].
   /// [architecture] The OS architecture.
@@ -31,9 +31,9 @@ class PlatformProperties {
 
   factory PlatformProperties.fromMap(Map<String, dynamic> map) {
     return PlatformProperties(
-      architecture: (() { final guardedValue = map['architecture']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      os: pulumi.Input.fromValue(map['os'] as String),
-      variant: (() { final guardedValue = map['variant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      architecture: (() { final guardedValue = map['architecture']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      os: pulumi.Input.fromValue(map['os']),
+      variant: (() { final guardedValue = map['variant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

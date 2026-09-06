@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] Name of policy configuration
-enum EarlyTerminationPolicyType {
+enum EarlyTerminationPolicyType implements pulumi.PulumiEnum<String> {
   bandit("Bandit"),
   medianStopping("MedianStopping"),
   truncationSelection("TruncationSelection");
 
   const EarlyTerminationPolicyType(this.wireValue);
+  @override
   final String wireValue;
 
   static EarlyTerminationPolicyType fromValue(String value) {

@@ -9,7 +9,7 @@ class ErrorDetailsResponse {
   /// Error message.
   final pulumi.Input<String> message;
   /// A list of recommendations to resolve the error.
-  final pulumi.Input<List<String>>? recommendations;
+  final pulumi.Input<List<String>?>? recommendations;
 
   /// Creates a new [ErrorDetailsResponse].
   /// [code] Error code.

@@ -7,11 +7,11 @@ import 'firewall_policy_intrusion_detection_signature_specification_response.dar
 /// The operation for configuring intrusion detection.
 class FirewallPolicyIntrusionDetectionConfigurationResponse {
   /// List of rules for traffic to bypass.
-  final pulumi.Input<List<FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponse>>? bypassTrafficSettings;
+  final pulumi.Input<List<FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponse>?>? bypassTrafficSettings;
   /// IDPS Private IP address ranges are used to identify traffic direction (i.e. inbound, outbound, etc.). By default, only ranges defined by IANA RFC 1918 are considered private IP addresses. To modify default ranges, specify your Private IP address ranges with this property
-  final pulumi.Input<List<String>>? privateRanges;
+  final pulumi.Input<List<String>?>? privateRanges;
   /// List of specific signatures states.
-  final pulumi.Input<List<FirewallPolicyIntrusionDetectionSignatureSpecificationResponse>>? signatureOverrides;
+  final pulumi.Input<List<FirewallPolicyIntrusionDetectionSignatureSpecificationResponse>?>? signatureOverrides;
 
   /// Creates a new [FirewallPolicyIntrusionDetectionConfigurationResponse].
   /// [bypassTrafficSettings] List of rules for traffic to bypass.

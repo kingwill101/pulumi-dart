@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Exemption category of this assignment
-enum ExemptionCategory {
+enum ExemptionCategory implements pulumi.PulumiEnum<String> {
   waiver("waiver"),
   mitigated("mitigated");
 
   const ExemptionCategory(this.wireValue);
+  @override
   final String wireValue;
 
   static ExemptionCategory fromValue(String value) {

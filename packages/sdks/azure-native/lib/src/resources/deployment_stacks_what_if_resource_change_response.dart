@@ -15,9 +15,9 @@ class DeploymentStacksWhatIfResourceChangeResponse {
   /// Type of change that will be made to the resource when the deployment is executed.
   final pulumi.Input<String> changeType;
   /// The predicted changes to the deployment stack deny status of the resource.
-  final pulumi.Input<DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange>? denyStatusChange;
+  final pulumi.Input<DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange?>? denyStatusChange;
   /// The resource id of the Deployment responsible for this change.
-  final pulumi.Input<String>? deploymentId;
+  final pulumi.Input<String?>? deploymentId;
   /// The extension the resource was deployed with.
   final pulumi.Input<DeploymentExtensionResponse> extension;
   /// The ARM Resource ID of a resource managed by the deployment stack.
@@ -25,15 +25,15 @@ class DeploymentStacksWhatIfResourceChangeResponse {
   /// The extensible resource identifiers.
   final pulumi.Input<dynamic> identifiers;
   /// The predicted changes to the deployment stack management status of the resource.
-  final pulumi.Input<DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange>? managementStatusChange;
+  final pulumi.Input<DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange?>? managementStatusChange;
   /// The predicted changes to the resource configuration.
-  final pulumi.Input<DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges>? resourceConfigurationChanges;
+  final pulumi.Input<DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges?>? resourceConfigurationChanges;
   /// The symbolic name of the resource being changed.
-  final pulumi.Input<String>? symbolicName;
+  final pulumi.Input<String?>? symbolicName;
   /// The resource type.
   final pulumi.Input<String> type;
   /// The explanation about why the resource is unsupported by What-If.
-  final pulumi.Input<String>? unsupportedReason;
+  final pulumi.Input<String?>? unsupportedReason;
 
   /// Creates a new [DeploymentStacksWhatIfResourceChangeResponse].
   /// [apiVersion] The API version the resource was deployed with

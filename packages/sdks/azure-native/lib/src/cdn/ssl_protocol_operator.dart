@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes operator to be matched
-enum SslProtocolOperator {
+enum SslProtocolOperator implements pulumi.PulumiEnum<String> {
   equal("Equal");
 
   const SslProtocolOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static SslProtocolOperator fromValue(String value) {

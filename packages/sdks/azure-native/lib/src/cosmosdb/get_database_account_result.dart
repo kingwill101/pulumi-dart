@@ -6,7 +6,6 @@ import 'api_properties_response.dart';
 import 'capability_response.dart';
 import 'capacity_response.dart';
 import 'consistency_policy_response.dart';
-import 'continuous_mode_backup_policy_response.dart';
 import 'cors_policy_response.dart';
 import 'database_account_keys_metadata_response.dart';
 import 'failover_policy_response.dart';
@@ -25,9 +24,9 @@ class GetDatabaseAccountResult {
   /// API specific properties.
   final ApiPropertiesResponse? apiProperties;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The object representing the policy for taking backups on an account.
-  final ContinuousModeBackupPolicyResponse? backupPolicy;
+  final dynamic backupPolicy;
   /// List of Cosmos DB capabilities for the account
   final List<CapabilityResponse>? capabilities;
   /// The object that represents all properties related to capacity enforcement on an account.
@@ -43,7 +42,7 @@ class GetDatabaseAccountResult {
   /// Indicates the status of the Customer Managed Key feature on the account. In case there are errors, the property provides troubleshooting guidance.
   final String? customerManagedKeyStatus;
   /// The offer type for the Cosmos DB database account. Default value: Standard.
-  final String databaseAccountOfferType;
+  final String? databaseAccountOfferType;
   /// The default identity for accessing key vault used in features like customer managed keys. The default identity needs to be explicitly set by the users. It can be "FirstPartyIdentity", "SystemAssignedIdentity" and more.
   final String? defaultIdentity;
   /// Enum to indicate default Priority Level of request for Priority Based Execution.
@@ -53,7 +52,7 @@ class GetDatabaseAccountResult {
   /// Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
   final bool? disableLocalAuth;
   /// The connection endpoint for the Cosmos DB database account.
-  final String documentEndpoint;
+  final String? documentEndpoint;
   /// Flag to indicate whether to enable storage analytics.
   final bool? enableAnalyticalStorage;
   /// Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage. Automatic failover will result in a new write region for the account and is chosen based on the failover priorities configured for the account.
@@ -73,13 +72,13 @@ class GetDatabaseAccountResult {
   /// Flag to indicate enabling/disabling of Priority Based Execution Preview feature on the account
   final bool? enablePriorityBasedExecution;
   /// An array that contains the regions ordered by their failover priorities.
-  final List<FailoverPolicyResponse> failoverPolicies;
+  final List<FailoverPolicyResponse>? failoverPolicies;
   /// The unique resource identifier of the ARM resource.
-  final String id;
+  final String? id;
   /// Identity for the resource.
   final ManagedServiceIdentityResponse? identity;
   /// A unique identifier assigned to the database account
-  final String instanceId;
+  final String? instanceId;
   /// List of IpRules.
   final List<IpAddressOrRangeResponse>? ipRules;
   /// Flag to indicate whether to enable/disable Virtual Network ACL rules.
@@ -87,43 +86,43 @@ class GetDatabaseAccountResult {
   /// The URI of the key vault
   final String? keyVaultKeyUri;
   /// The version of the Customer Managed Key currently being used by the account
-  final String keyVaultKeyUriVersion;
+  final String? keyVaultKeyUriVersion;
   /// The object that represents the metadata for the Account Keys of the Cosmos DB account.
-  final DatabaseAccountKeysMetadataResponse keysMetadata;
+  final DatabaseAccountKeysMetadataResponse? keysMetadata;
   /// Indicates the type of database account. This can only be set at database account creation.
   final String? kind;
   /// The location of the resource group to which the resource belongs.
   final String? location;
   /// An array that contains all of the locations enabled for the Cosmos DB account.
-  final List<LocationResponse> locations;
+  final List<LocationResponse>? locations;
   /// Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2.
   final String? minimalTlsVersion;
   /// The name of the ARM resource.
-  final String name;
+  final String? name;
   /// Indicates what services are allowed to bypass firewall checks.
   final String? networkAclBypass;
   /// An array that contains the Resource Ids for Network Acl Bypass for the Cosmos DB account.
   final List<String>? networkAclBypassResourceIds;
   /// List of Private Endpoint Connections configured for the Cosmos DB account.
-  final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
+  final List<PrivateEndpointConnectionResponse>? privateEndpointConnections;
   /// The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'DeletionFailed' – the Cosmos DB account deletion failed.
-  final String provisioningState;
+  final String? provisioningState;
   /// Whether requests from Public Network are allowed
   final String? publicNetworkAccess;
   /// An array that contains of the read locations enabled for the Cosmos DB account.
-  final List<LocationResponse> readLocations;
+  final List<LocationResponse>? readLocations;
   /// Parameters to indicate the information about the restore.
   final RestoreParametersResponse? restoreParameters;
   /// The system meta data relating to this resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
   final Map<String, String>? tags;
   /// The type of Azure resource.
-  final String type;
+  final String? type;
   /// List of Virtual Network ACL rules configured for the Cosmos DB account.
   final List<VirtualNetworkRuleResponse>? virtualNetworkRules;
   /// An array that contains the write location for the Cosmos DB account.
-  final List<LocationResponse> writeLocations;
+  final List<LocationResponse>? writeLocations;
 
   /// Creates a new [GetDatabaseAccountResult].
   /// [analyticalStorageConfiguration] Analytical storage specific properties.
@@ -178,24 +177,24 @@ class GetDatabaseAccountResult {
   /// [type] The type of Azure resource.
   /// [virtualNetworkRules] List of Virtual Network ACL rules configured for the Cosmos DB account.
   /// [writeLocations] An array that contains the write location for the Cosmos DB account.
-  const GetDatabaseAccountResult({
+  GetDatabaseAccountResult({
     this.analyticalStorageConfiguration,
     this.apiProperties,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.backupPolicy,
     this.capabilities,
     this.capacity,
     this.connectorOffer,
     this.consistencyPolicy,
     this.cors,
-    this.createMode,
+    String? createMode,
     this.customerManagedKeyStatus,
-    required this.databaseAccountOfferType,
+    this.databaseAccountOfferType,
     this.defaultIdentity,
     this.defaultPriorityLevel,
     this.disableKeyBasedMetadataWriteAccess,
     this.disableLocalAuth,
-    required this.documentEndpoint,
+    this.documentEndpoint,
     this.enableAnalyticalStorage,
     this.enableAutomaticFailover,
     this.enableBurstCapacity,
@@ -205,40 +204,40 @@ class GetDatabaseAccountResult {
     this.enablePartitionMerge,
     this.enablePerRegionPerPartitionAutoscale,
     this.enablePriorityBasedExecution,
-    required this.failoverPolicies,
-    required this.id,
+    this.failoverPolicies,
+    this.id,
     this.identity,
-    required this.instanceId,
+    this.instanceId,
     this.ipRules,
     this.isVirtualNetworkFilterEnabled,
     this.keyVaultKeyUri,
-    required this.keyVaultKeyUriVersion,
-    required this.keysMetadata,
-    this.kind,
+    this.keyVaultKeyUriVersion,
+    this.keysMetadata,
+    String? kind,
     this.location,
-    required this.locations,
+    this.locations,
     this.minimalTlsVersion,
-    required this.name,
+    this.name,
     this.networkAclBypass,
     this.networkAclBypassResourceIds,
-    required this.privateEndpointConnections,
-    required this.provisioningState,
+    this.privateEndpointConnections,
+    this.provisioningState,
     this.publicNetworkAccess,
-    required this.readLocations,
+    this.readLocations,
     this.restoreParameters,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
     this.virtualNetworkRules,
-    required this.writeLocations,
-  });
+    this.writeLocations,
+  }) : createMode = createMode ?? 'Default', kind = kind ?? 'GlobalDocumentDB';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'analyticalStorageConfiguration': ?analyticalStorageConfiguration?.toMap(),
       'apiProperties': ?apiProperties?.toMap(),
-      'azureApiVersion': azureApiVersion,
-      'backupPolicy': ?backupPolicy?.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'backupPolicy': ?backupPolicy,
       'capabilities': ?(() { final guardedValue = capabilities; if (guardedValue == null) return null; return pulumi.Input.encodeList<CapabilityResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'capacity': ?capacity?.toMap(),
       'connectorOffer': ?connectorOffer,
@@ -246,12 +245,12 @@ class GetDatabaseAccountResult {
       'cors': ?(() { final guardedValue = cors; if (guardedValue == null) return null; return pulumi.Input.encodeList<CorsPolicyResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'createMode': ?createMode,
       'customerManagedKeyStatus': ?customerManagedKeyStatus,
-      'databaseAccountOfferType': databaseAccountOfferType,
+      'databaseAccountOfferType': ?databaseAccountOfferType,
       'defaultIdentity': ?defaultIdentity,
       'defaultPriorityLevel': ?defaultPriorityLevel,
       'disableKeyBasedMetadataWriteAccess': ?disableKeyBasedMetadataWriteAccess,
       'disableLocalAuth': ?disableLocalAuth,
-      'documentEndpoint': documentEndpoint,
+      'documentEndpoint': ?documentEndpoint,
       'enableAnalyticalStorage': ?enableAnalyticalStorage,
       'enableAutomaticFailover': ?enableAutomaticFailover,
       'enableBurstCapacity': ?enableBurstCapacity,
@@ -261,32 +260,32 @@ class GetDatabaseAccountResult {
       'enablePartitionMerge': ?enablePartitionMerge,
       'enablePerRegionPerPartitionAutoscale': ?enablePerRegionPerPartitionAutoscale,
       'enablePriorityBasedExecution': ?enablePriorityBasedExecution,
-      'failoverPolicies': pulumi.Input.encodeList<FailoverPolicyResponse, Map<String, dynamic>>(failoverPolicies, (value) => value.toMap()),
-      'id': id,
+      'failoverPolicies': ?(() { final guardedValue = failoverPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<FailoverPolicyResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
       'identity': ?identity?.toMap(),
-      'instanceId': instanceId,
+      'instanceId': ?instanceId,
       'ipRules': ?(() { final guardedValue = ipRules; if (guardedValue == null) return null; return pulumi.Input.encodeList<IpAddressOrRangeResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'isVirtualNetworkFilterEnabled': ?isVirtualNetworkFilterEnabled,
       'keyVaultKeyUri': ?keyVaultKeyUri,
-      'keyVaultKeyUriVersion': keyVaultKeyUriVersion,
-      'keysMetadata': keysMetadata.toMap(),
+      'keyVaultKeyUriVersion': ?keyVaultKeyUriVersion,
+      'keysMetadata': ?keysMetadata?.toMap(),
       'kind': ?kind,
       'location': ?location,
-      'locations': pulumi.Input.encodeList<LocationResponse, Map<String, dynamic>>(locations, (value) => value.toMap()),
+      'locations': ?(() { final guardedValue = locations; if (guardedValue == null) return null; return pulumi.Input.encodeList<LocationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'minimalTlsVersion': ?minimalTlsVersion,
-      'name': name,
+      'name': ?name,
       'networkAclBypass': ?networkAclBypass,
       'networkAclBypassResourceIds': ?networkAclBypassResourceIds,
-      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
-      'provisioningState': provisioningState,
+      'privateEndpointConnections': ?(() { final guardedValue = privateEndpointConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'provisioningState': ?provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
-      'readLocations': pulumi.Input.encodeList<LocationResponse, Map<String, dynamic>>(readLocations, (value) => value.toMap()),
+      'readLocations': ?(() { final guardedValue = readLocations; if (guardedValue == null) return null; return pulumi.Input.encodeList<LocationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'restoreParameters': ?restoreParameters?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'virtualNetworkRules': ?(() { final guardedValue = virtualNetworkRules; if (guardedValue == null) return null; return pulumi.Input.encodeList<VirtualNetworkRuleResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'writeLocations': pulumi.Input.encodeList<LocationResponse, Map<String, dynamic>>(writeLocations, (value) => value.toMap()),
+      'writeLocations': ?(() { final guardedValue = writeLocations; if (guardedValue == null) return null; return pulumi.Input.encodeList<LocationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
@@ -294,8 +293,8 @@ class GetDatabaseAccountResult {
     return GetDatabaseAccountResult(
       analyticalStorageConfiguration: (() { final guardedValue = map['analyticalStorageConfiguration']; if (guardedValue == null) return null; return AnalyticalStorageConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       apiProperties: (() { final guardedValue = map['apiProperties']; if (guardedValue == null) return null; return ApiPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      backupPolicy: (() { final guardedValue = map['backupPolicy']; if (guardedValue == null) return null; return ContinuousModeBackupPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      backupPolicy: (() { final guardedValue = map['backupPolicy']; if (guardedValue == null) return null; return guardedValue; })(),
       capabilities: (() { final guardedValue = map['capabilities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<CapabilityResponse>(guardedValue, (value) => CapabilityResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return CapacityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       connectorOffer: (() { final guardedValue = map['connectorOffer']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -303,12 +302,12 @@ class GetDatabaseAccountResult {
       cors: (() { final guardedValue = map['cors']; if (guardedValue == null) return null; return pulumi.Input.decodeList<CorsPolicyResponse>(guardedValue, (value) => CorsPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
       customerManagedKeyStatus: (() { final guardedValue = map['customerManagedKeyStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      databaseAccountOfferType: map['databaseAccountOfferType'] as String,
+      databaseAccountOfferType: (() { final guardedValue = map['databaseAccountOfferType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       defaultIdentity: (() { final guardedValue = map['defaultIdentity']; if (guardedValue == null) return null; return guardedValue as String; })(),
       defaultPriorityLevel: (() { final guardedValue = map['defaultPriorityLevel']; if (guardedValue == null) return null; return guardedValue as String; })(),
       disableKeyBasedMetadataWriteAccess: (() { final guardedValue = map['disableKeyBasedMetadataWriteAccess']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       disableLocalAuth: (() { final guardedValue = map['disableLocalAuth']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      documentEndpoint: map['documentEndpoint'] as String,
+      documentEndpoint: (() { final guardedValue = map['documentEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enableAnalyticalStorage: (() { final guardedValue = map['enableAnalyticalStorage']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       enableAutomaticFailover: (() { final guardedValue = map['enableAutomaticFailover']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       enableBurstCapacity: (() { final guardedValue = map['enableBurstCapacity']; if (guardedValue == null) return null; return guardedValue as bool; })(),
@@ -318,32 +317,32 @@ class GetDatabaseAccountResult {
       enablePartitionMerge: (() { final guardedValue = map['enablePartitionMerge']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       enablePerRegionPerPartitionAutoscale: (() { final guardedValue = map['enablePerRegionPerPartitionAutoscale']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       enablePriorityBasedExecution: (() { final guardedValue = map['enablePriorityBasedExecution']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      failoverPolicies: pulumi.Input.decodeList<FailoverPolicyResponse>(map['failoverPolicies']!, (value) => FailoverPolicyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
+      failoverPolicies: (() { final guardedValue = map['failoverPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<FailoverPolicyResponse>(guardedValue, (value) => FailoverPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      instanceId: map['instanceId'] as String,
+      instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipRules: (() { final guardedValue = map['ipRules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpAddressOrRangeResponse>(guardedValue, (value) => IpAddressOrRangeResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       isVirtualNetworkFilterEnabled: (() { final guardedValue = map['isVirtualNetworkFilterEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       keyVaultKeyUri: (() { final guardedValue = map['keyVaultKeyUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      keyVaultKeyUriVersion: map['keyVaultKeyUriVersion'] as String,
-      keysMetadata: DatabaseAccountKeysMetadataResponse.fromMap((map['keysMetadata']! as Map).cast<String, dynamic>()),
+      keyVaultKeyUriVersion: (() { final guardedValue = map['keyVaultKeyUriVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      keysMetadata: (() { final guardedValue = map['keysMetadata']; if (guardedValue == null) return null; return DatabaseAccountKeysMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      locations: pulumi.Input.decodeList<LocationResponse>(map['locations']!, (value) => LocationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      locations: (() { final guardedValue = map['locations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<LocationResponse>(guardedValue, (value) => LocationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       minimalTlsVersion: (() { final guardedValue = map['minimalTlsVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkAclBypass: (() { final guardedValue = map['networkAclBypass']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkAclBypassResourceIds: (() { final guardedValue = map['networkAclBypassResourceIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
+      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      readLocations: pulumi.Input.decodeList<LocationResponse>(map['readLocations']!, (value) => LocationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      readLocations: (() { final guardedValue = map['readLocations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<LocationResponse>(guardedValue, (value) => LocationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       restoreParameters: (() { final guardedValue = map['restoreParameters']; if (guardedValue == null) return null; return RestoreParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       virtualNetworkRules: (() { final guardedValue = map['virtualNetworkRules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkRuleResponse>(guardedValue, (value) => VirtualNetworkRuleResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      writeLocations: pulumi.Input.decodeList<LocationResponse>(map['writeLocations']!, (value) => LocationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      writeLocations: (() { final guardedValue = map['writeLocations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<LocationResponse>(guardedValue, (value) => LocationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

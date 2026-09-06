@@ -8,7 +8,7 @@ class AzureFabricCreationInput {
   /// Expected value is 'Azure'.
   final pulumi.Input<String> instanceType;
   /// The Location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
 
   /// Creates a new [AzureFabricCreationInput].
   /// [instanceType] Gets the class type.

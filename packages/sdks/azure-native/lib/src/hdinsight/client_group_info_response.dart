@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The information of AAD security group.
 class ClientGroupInfoResponse {
   /// The AAD security group id.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// The AAD security group name.
-  final pulumi.Input<String>? groupName;
+  final pulumi.Input<String?>? groupName;
 
   /// Creates a new [ClientGroupInfoResponse].
   /// [groupId] The AAD security group id.

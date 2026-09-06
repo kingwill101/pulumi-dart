@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sql_job_credential_args_doc}
 class JobCredentialArgs {
   /// The name of the credential.
-  final pulumi.Input<String>? credentialName;
+  final pulumi.Input<String?>? credentialName;
   /// The name of the job agent.
   final pulumi.Input<String> jobAgentName;
   /// The credential password.

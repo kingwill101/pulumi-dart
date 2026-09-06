@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Stream governance configuration
 class StreamGovernanceConfigResponse {
   /// Stream governance configuration
-  final pulumi.Input<String>? package;
+  final pulumi.Input<String?>? package;
 
   /// Creates a new [StreamGovernanceConfigResponse].
   /// [package] Stream governance configuration

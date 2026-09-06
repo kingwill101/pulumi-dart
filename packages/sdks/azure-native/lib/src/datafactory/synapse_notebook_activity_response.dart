@@ -15,17 +15,17 @@ class SynapseNotebookActivityResponse {
   /// Spark configuration properties, which will override the 'conf' of the notebook you provide.
   final pulumi.Input<dynamic>? conf;
   /// The type of the spark config.
-  final pulumi.Input<String>? configurationType;
+  final pulumi.Input<String?>? configurationType;
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Number of core and memory to be used for driver allocated in the specified Spark pool for the session, which will be used for overriding 'driverCores' and 'driverMemory' of the notebook you provide. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? driverSize;
   /// Number of core and memory to be used for executors allocated in the specified Spark pool for the session, which will be used for overriding 'executorCores' and 'executorMemory' of the notebook you provide. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? executorSize;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReferenceResponse?>? linkedServiceName;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Synapse notebook reference.
@@ -33,24 +33,24 @@ class SynapseNotebookActivityResponse {
   /// Number of executors to launch for this session, which will override the 'numExecutors' of the notebook you provide. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? numExecutors;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<String?>? onInactiveMarkAs;
   /// Notebook parameters.
-  final pulumi.Input<Map<String, NotebookParameterResponse>>? parameters;
+  final pulumi.Input<Map<String, NotebookParameterResponse>?>? parameters;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicyResponse>? policy;
+  final pulumi.Input<ActivityPolicyResponse?>? policy;
   /// Spark configuration property.
   final pulumi.Input<dynamic>? sparkConfig;
   /// The name of the big data pool which will be used to execute the notebook.
-  final pulumi.Input<BigDataPoolParametrizationReferenceResponse>? sparkPool;
+  final pulumi.Input<BigDataPoolParametrizationReferenceResponse?>? sparkPool;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The spark configuration of the spark job.
-  final pulumi.Input<SparkConfigurationParametrizationReferenceResponse>? targetSparkConfiguration;
+  final pulumi.Input<SparkConfigurationParametrizationReferenceResponse?>? targetSparkConfiguration;
   /// Type of activity.
   /// Expected value is 'SynapseNotebook'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>?>? userProperties;
 
   /// Creates a new [SynapseNotebookActivityResponse].
   /// [conf] Spark configuration properties, which will override the 'conf' of the notebook you provide.

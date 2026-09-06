@@ -6,9 +6,9 @@ import 'networking_route.dart';
 /// Networking configuration for the pipeline group instance.
 class NetworkingConfiguration {
   /// External networking mode.
-  final pulumi.Input<String> externalNetworkingMode;
+  final pulumi.Input<dynamic> externalNetworkingMode;
   /// The address exposed on the cluster. Example: azuremonitorpipeline.contoso.com.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// Networking routes configuration.
   final pulumi.Input<List<NetworkingRoute>> routes;
 
@@ -32,7 +32,7 @@ class NetworkingConfiguration {
 
   factory NetworkingConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkingConfiguration(
-      externalNetworkingMode: pulumi.Input.fromValue(map['externalNetworkingMode'] as String),
+      externalNetworkingMode: pulumi.Input.fromValue(map['externalNetworkingMode']),
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       routes: pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkingRoute>(map['routes']!, (value) => NetworkingRoute.fromMap((value as Map).cast<String, dynamic>()))),
     );

@@ -11,16 +11,16 @@ import 'dataset_create_request_time_series.dart';
 /// {@macro pulumi_machinelearningservices_machine_learning_dataset_args_doc}
 class MachineLearningDatasetArgs {
   /// The Dataset name.
-  final pulumi.Input<String>? datasetName;
+  final pulumi.Input<String?>? datasetName;
   /// Specifies dataset type.
-  final pulumi.Input<String> datasetType;
+  final pulumi.Input<dynamic> datasetType;
   final pulumi.Input<DatasetCreateRequestParameters> parameters;
   final pulumi.Input<DatasetCreateRequestRegistration> registration;
   /// Name of the resource group in which workspace is located.
   final pulumi.Input<String> resourceGroupName;
   /// Skip validation that ensures data can be loaded from the dataset before registration.
-  final pulumi.Input<bool>? skipValidation;
-  final pulumi.Input<DatasetCreateRequestTimeSeries>? timeSeries;
+  final pulumi.Input<bool?>? skipValidation;
+  final pulumi.Input<DatasetCreateRequestTimeSeries?>? timeSeries;
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -33,16 +33,16 @@ class MachineLearningDatasetArgs {
   /// [skipValidation] Skip validation that ensures data can be loaded from the dataset before registration.
   /// [timeSeries] Optional.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  const MachineLearningDatasetArgs({
+  MachineLearningDatasetArgs({
     this.datasetName,
     required this.datasetType,
     required this.parameters,
     required this.registration,
     required this.resourceGroupName,
-    this.skipValidation,
+    pulumi.Input<bool?>? skipValidation,
     this.timeSeries,
     required this.workspaceName,
-  });
+  }) : skipValidation = skipValidation ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,7 +60,7 @@ class MachineLearningDatasetArgs {
   factory MachineLearningDatasetArgs.fromMap(Map<String, dynamic> map) {
     return MachineLearningDatasetArgs(
       datasetName: (() { final guardedValue = map['datasetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      datasetType: pulumi.Input.fromValue(map['datasetType'] as String),
+      datasetType: pulumi.Input.fromValue(map['datasetType']),
       parameters: pulumi.Input.fromValue(DatasetCreateRequestParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())),
       registration: pulumi.Input.fromValue(DatasetCreateRequestRegistration.fromMap((map['registration']! as Map).cast<String, dynamic>())),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

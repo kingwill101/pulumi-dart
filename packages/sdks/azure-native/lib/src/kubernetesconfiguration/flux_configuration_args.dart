@@ -12,9 +12,9 @@ import 'kustomization_definition.dart';
 /// {@macro pulumi_kubernetesconfiguration_flux_configuration_args_doc}
 class FluxConfigurationArgs {
   /// Parameters to reconcile to the AzureBlob source kind type.
-  final pulumi.Input<AzureBlobDefinition>? azureBlob;
+  final pulumi.Input<AzureBlobDefinition?>? azureBlob;
   /// Parameters to reconcile to the Bucket source kind type.
-  final pulumi.Input<BucketDefinition>? bucket;
+  final pulumi.Input<BucketDefinition?>? bucket;
   /// The name of the kubernetes cluster.
   final pulumi.Input<String> clusterName;
   /// The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
@@ -22,27 +22,27 @@ class FluxConfigurationArgs {
   /// The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
   final pulumi.Input<String> clusterRp;
   /// Key-value pairs of protected configuration settings for the configuration
-  final pulumi.Input<Map<String, String>>? configurationProtectedSettings;
+  final pulumi.Input<Map<String, String>?>? configurationProtectedSettings;
   /// Name of the Flux Configuration.
-  final pulumi.Input<String>? fluxConfigurationName;
+  final pulumi.Input<String?>? fluxConfigurationName;
   /// Parameters to reconcile to the GitRepository source kind type.
-  final pulumi.Input<GitRepositoryDefinition>? gitRepository;
+  final pulumi.Input<GitRepositoryDefinition?>? gitRepository;
   /// Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.
-  final pulumi.Input<Map<String, KustomizationDefinition>>? kustomizations;
+  final pulumi.Input<Map<String, KustomizationDefinition>?>? kustomizations;
   /// The namespace to which this configuration is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// Maximum duration to wait for flux configuration reconciliation. E.g PT1H, PT5M, P1D
-  final pulumi.Input<String>? reconciliationWaitDuration;
+  final pulumi.Input<String?>? reconciliationWaitDuration;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Scope at which the operator will be installed.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<dynamic>? scope;
   /// Source Kind to pull the configuration data from.
-  final pulumi.Input<String>? sourceKind;
+  final pulumi.Input<dynamic>? sourceKind;
   /// Whether this configuration should suspend its reconciliation of its kustomizations and sources.
-  final pulumi.Input<bool>? suspend;
+  final pulumi.Input<bool?>? suspend;
   /// Whether flux configuration deployment should wait for cluster to reconcile the kustomizations.
-  final pulumi.Input<bool>? waitForReconciliation;
+  final pulumi.Input<bool?>? waitForReconciliation;
 
   /// Creates a new [FluxConfigurationArgs].
   /// [azureBlob] Parameters to reconcile to the AzureBlob source kind type.
@@ -61,7 +61,7 @@ class FluxConfigurationArgs {
   /// [sourceKind] Source Kind to pull the configuration data from.
   /// [suspend] Whether this configuration should suspend its reconciliation of its kustomizations and sources.
   /// [waitForReconciliation] Whether flux configuration deployment should wait for cluster to reconcile the kustomizations.
-  const FluxConfigurationArgs({
+  FluxConfigurationArgs({
     this.azureBlob,
     this.bucket,
     required this.clusterName,
@@ -71,14 +71,14 @@ class FluxConfigurationArgs {
     this.fluxConfigurationName,
     this.gitRepository,
     this.kustomizations,
-    this.namespace,
+    pulumi.Input<String?>? namespace,
     this.reconciliationWaitDuration,
     required this.resourceGroupName,
     this.scope,
-    this.sourceKind,
-    this.suspend,
+    pulumi.Input<dynamic>? sourceKind,
+    pulumi.Input<bool?>? suspend,
     this.waitForReconciliation,
-  });
+  }) : namespace = namespace ?? pulumi.Input.fromValue('default'), sourceKind = sourceKind ?? pulumi.Input.fromValue('GitRepository'), suspend = suspend ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -115,8 +115,8 @@ class FluxConfigurationArgs {
       namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       reconciliationWaitDuration: (() { final guardedValue = map['reconciliationWaitDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sourceKind: (() { final guardedValue = map['sourceKind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sourceKind: (() { final guardedValue = map['sourceKind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       suspend: (() { final guardedValue = map['suspend']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       waitForReconciliation: (() { final guardedValue = map['waitForReconciliation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

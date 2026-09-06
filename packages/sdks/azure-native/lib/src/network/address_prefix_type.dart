@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Address prefix type.
-enum AddressPrefixType {
+enum AddressPrefixType implements pulumi.PulumiEnum<String> {
   valueIPPrefix("IPPrefix"),
   valueServiceTag("ServiceTag");
 
   const AddressPrefixType(this.wireValue);
+  @override
   final String wireValue;
 
   static AddressPrefixType fromValue(String value) {

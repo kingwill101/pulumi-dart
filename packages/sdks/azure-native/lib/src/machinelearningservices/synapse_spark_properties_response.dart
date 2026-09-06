@@ -6,25 +6,25 @@ import 'auto_scale_properties_response.dart';
 
 class SynapseSparkPropertiesResponse {
   /// Auto pause properties.
-  final pulumi.Input<AutoPausePropertiesResponse>? autoPauseProperties;
+  final pulumi.Input<AutoPausePropertiesResponse?>? autoPauseProperties;
   /// Auto scale properties.
-  final pulumi.Input<AutoScalePropertiesResponse>? autoScaleProperties;
+  final pulumi.Input<AutoScalePropertiesResponse?>? autoScaleProperties;
   /// The number of compute nodes currently assigned to the compute.
-  final pulumi.Input<int>? nodeCount;
+  final pulumi.Input<int?>? nodeCount;
   /// Node size.
-  final pulumi.Input<String>? nodeSize;
+  final pulumi.Input<String?>? nodeSize;
   /// Node size family.
-  final pulumi.Input<String>? nodeSizeFamily;
+  final pulumi.Input<String?>? nodeSizeFamily;
   /// Pool name.
-  final pulumi.Input<String>? poolName;
+  final pulumi.Input<String?>? poolName;
   /// Name of the resource group in which workspace is located.
-  final pulumi.Input<String>? resourceGroup;
+  final pulumi.Input<String?>? resourceGroup;
   /// Spark version.
-  final pulumi.Input<String>? sparkVersion;
+  final pulumi.Input<String?>? sparkVersion;
   /// Azure subscription identifier.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// Name of Azure Machine Learning workspace.
-  final pulumi.Input<String>? workspaceName;
+  final pulumi.Input<String?>? workspaceName;
 
   /// Creates a new [SynapseSparkPropertiesResponse].
   /// [autoPauseProperties] Auto pause properties.
@@ -69,7 +69,7 @@ class SynapseSparkPropertiesResponse {
     return SynapseSparkPropertiesResponse(
       autoPauseProperties: (() { final guardedValue = map['autoPauseProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoPausePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       autoScaleProperties: (() { final guardedValue = map['autoScaleProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoScalePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nodeSize: (() { final guardedValue = map['nodeSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeSizeFamily: (() { final guardedValue = map['nodeSizeFamily']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       poolName: (() { final guardedValue = map['poolName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

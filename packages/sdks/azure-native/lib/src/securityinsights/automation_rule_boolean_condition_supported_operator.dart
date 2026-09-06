@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes a boolean condition operator.
-enum AutomationRuleBooleanConditionSupportedOperator {
+enum AutomationRuleBooleanConditionSupportedOperator implements pulumi.PulumiEnum<String> {
   valueAnd("And"),
   valueOr("Or");
 
   const AutomationRuleBooleanConditionSupportedOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static AutomationRuleBooleanConditionSupportedOperator fromValue(String value) {

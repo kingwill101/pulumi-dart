@@ -8,18 +8,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dbformysql_long_running_backup_args_doc}
 class LongRunningBackupArgs {
   /// The name of the backup.
-  final pulumi.Input<String>? backupName;
+  final pulumi.Input<String?>? backupName;
   /// Backup name
-  final pulumi.Input<String>? backupNameV2;
-  final pulumi.Input<String>? backupType;
+  final pulumi.Input<String?>? backupNameV2;
+  final pulumi.Input<dynamic>? backupType;
   /// Backup completed time (ISO8601 format).
-  final pulumi.Input<String>? completedTime;
+  final pulumi.Input<String?>? completedTime;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the server.
   final pulumi.Input<String> serverName;
   /// Backup source
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [LongRunningBackupArgs].
   /// [backupName] The name of the backup.
@@ -55,7 +55,7 @@ class LongRunningBackupArgs {
     return LongRunningBackupArgs(
       backupName: (() { final guardedValue = map['backupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       backupNameV2: (() { final guardedValue = map['backupNameV2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      backupType: (() { final guardedValue = map['backupType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      backupType: (() { final guardedValue = map['backupType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       completedTime: (() { final guardedValue = map['completedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),

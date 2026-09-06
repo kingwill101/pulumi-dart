@@ -7,7 +7,7 @@ class ServerNameItemResponse {
   /// The fully qualified domain name of a server.
   final pulumi.Input<String> fullyQualifiedDomainName;
   /// The name of a server.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ServerNameItemResponse].
   /// [fullyQualifiedDomainName] The fully qualified domain name of a server.

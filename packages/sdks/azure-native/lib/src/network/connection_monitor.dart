@@ -1,7 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_monitor_args.dart';
 import 'connection_monitor_destination_response.dart';
+import 'connection_monitor_endpoint_response.dart';
+import 'connection_monitor_output_response.dart';
 import 'connection_monitor_source_response.dart';
+import 'connection_monitor_test_configuration_response.dart';
+import 'connection_monitor_test_group_response.dart';
 
 /// Information about the connection monitor.
 ///
@@ -1350,7 +1354,7 @@ class ConnectionMonitor extends pulumi.CustomResource {
   /// Describes the destination of connection monitor.
   late final pulumi.Output<ConnectionMonitorDestinationResponse?> destination;
   /// List of connection monitor endpoints.
-  late final pulumi.Output<List<Map<String, dynamic>>?> endpoints;
+  late final pulumi.Output<List<ConnectionMonitorEndpointResponse>?> endpoints;
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
   /// Connection monitor location.
@@ -1364,7 +1368,7 @@ class ConnectionMonitor extends pulumi.CustomResource {
   /// Optional notes to be associated with the connection monitor.
   late final pulumi.Output<String?> notes;
   /// List of connection monitor outputs.
-  late final pulumi.Output<List<Map<String, dynamic>>?> outputs;
+  late final pulumi.Output<List<ConnectionMonitorOutputResponse>?> outputs;
   /// The provisioning state of the connection monitor.
   late final pulumi.Output<String> provisioningState;
   /// Describes the source of connection monitor.
@@ -1374,9 +1378,9 @@ class ConnectionMonitor extends pulumi.CustomResource {
   /// Connection monitor tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// List of connection monitor test configurations.
-  late final pulumi.Output<List<Map<String, dynamic>>?> testConfigurations;
+  late final pulumi.Output<List<ConnectionMonitorTestConfigurationResponse>?> testConfigurations;
   /// List of connection monitor test groups.
-  late final pulumi.Output<List<Map<String, dynamic>>?> testGroups;
+  late final pulumi.Output<List<ConnectionMonitorTestGroupResponse>?> testGroups;
   /// Connection monitor type.
   late final pulumi.Output<String> type;
 
@@ -1398,20 +1402,50 @@ class ConnectionMonitor extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     connectionMonitorType = registerOutput<String>('connectionMonitorType');
     destination = registerOutput<ConnectionMonitorDestinationResponse?>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionMonitorDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    endpoints = registerOutput<List<Map<String, dynamic>>?>('endpoints');
+    endpoints = registerOutput<List<ConnectionMonitorEndpointResponse>?>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionMonitorEndpointResponse>(guardedValue, (value) => ConnectionMonitorEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String?>('location');
     monitoringIntervalInSeconds = registerOutput<int?>('monitoringIntervalInSeconds');
     monitoringStatus = registerOutput<String>('monitoringStatus');
     this.name = registerOutput<String>('name');
     notes = registerOutput<String?>('notes');
-    outputs = registerOutput<List<Map<String, dynamic>>?>('outputs');
+    outputs = registerOutput<List<ConnectionMonitorOutputResponse>?>('outputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionMonitorOutputResponse>(guardedValue, (value) => ConnectionMonitorOutputResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     source = registerOutput<ConnectionMonitorSourceResponse?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionMonitorSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startTime = registerOutput<String>('startTime');
-    tags = registerOutput<Map<String, String>?>('tags');
-    testConfigurations = registerOutput<List<Map<String, dynamic>>?>('testConfigurations');
-    testGroups = registerOutput<List<Map<String, dynamic>>?>('testGroups');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    testConfigurations = registerOutput<List<ConnectionMonitorTestConfigurationResponse>?>('testConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionMonitorTestConfigurationResponse>(guardedValue, (value) => ConnectionMonitorTestConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    testGroups = registerOutput<List<ConnectionMonitorTestGroupResponse>?>('testGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionMonitorTestGroupResponse>(guardedValue, (value) => ConnectionMonitorTestGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ConnectionMonitor] resource.
+  ConnectionMonitor.reference(String urn)
+    : super(
+        'azure-native:network:ConnectionMonitor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoStart = registerOutput<bool?>('autoStart');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectionMonitorType = registerOutput<String>('connectionMonitorType');
+    destination = registerOutput<ConnectionMonitorDestinationResponse?>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionMonitorDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpoints = registerOutput<List<ConnectionMonitorEndpointResponse>?>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionMonitorEndpointResponse>(guardedValue, (value) => ConnectionMonitorEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String?>('location');
+    monitoringIntervalInSeconds = registerOutput<int?>('monitoringIntervalInSeconds');
+    monitoringStatus = registerOutput<String>('monitoringStatus');
+    this.name = registerOutput<String>('name');
+    notes = registerOutput<String?>('notes');
+    outputs = registerOutput<List<ConnectionMonitorOutputResponse>?>('outputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionMonitorOutputResponse>(guardedValue, (value) => ConnectionMonitorOutputResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    source = registerOutput<ConnectionMonitorSourceResponse?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionMonitorSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startTime = registerOutput<String>('startTime');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    testConfigurations = registerOutput<List<ConnectionMonitorTestConfigurationResponse>?>('testConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionMonitorTestConfigurationResponse>(guardedValue, (value) => ConnectionMonitorTestConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    testGroups = registerOutput<List<ConnectionMonitorTestGroupResponse>?>('testGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionMonitorTestGroupResponse>(guardedValue, (value) => ConnectionMonitorTestGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
 }

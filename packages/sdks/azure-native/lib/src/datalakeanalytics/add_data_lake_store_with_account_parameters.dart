@@ -7,7 +7,7 @@ class AddDataLakeStoreWithAccountParameters {
   /// The unique name of the Data Lake Store account to add.
   final pulumi.Input<String> name;
   /// The optional suffix for the Data Lake Store account.
-  final pulumi.Input<String>? suffix;
+  final pulumi.Input<String?>? suffix;
 
   /// Creates a new [AddDataLakeStoreWithAccountParameters].
   /// [name] The unique name of the Data Lake Store account to add.

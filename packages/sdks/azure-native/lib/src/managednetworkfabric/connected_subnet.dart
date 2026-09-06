@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Connected Subnet properties.
 class ConnectedSubnet {
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// Prefix of the Connected Subnet.
   final pulumi.Input<String> prefix;
 

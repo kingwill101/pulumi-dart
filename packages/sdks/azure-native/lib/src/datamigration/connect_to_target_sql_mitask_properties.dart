@@ -6,9 +6,9 @@ import 'connect_to_target_sql_mitask_input.dart';
 /// Properties for the task that validates connection to Azure SQL Database Managed Instance
 class ConnectToTargetSqlMITaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// Task input
-  final pulumi.Input<ConnectToTargetSqlMITaskInput>? input;
+  final pulumi.Input<ConnectToTargetSqlMITaskInput?>? input;
   /// Task type.
   /// Expected value is 'ConnectToTarget.AzureSqlDbMI'.
   final pulumi.Input<String> taskType;

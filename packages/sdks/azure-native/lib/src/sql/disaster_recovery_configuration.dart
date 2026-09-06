@@ -196,4 +196,26 @@ class DisasterRecoveryConfiguration extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [DisasterRecoveryConfiguration] resource.
+  DisasterRecoveryConfiguration.reference(String urn)
+    : super(
+        'azure-native:sql:DisasterRecoveryConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoFailover = registerOutput<String>('autoFailover');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    failoverPolicy = registerOutput<String>('failoverPolicy');
+    location = registerOutput<String>('location');
+    logicalServerName = registerOutput<String>('logicalServerName');
+    this.name = registerOutput<String>('name');
+    partnerLogicalServerName = registerOutput<String>('partnerLogicalServerName');
+    partnerServerId = registerOutput<String>('partnerServerId');
+    role = registerOutput<String>('role');
+    status = registerOutput<String>('status');
+    type = registerOutput<String>('type');
+  }
 }

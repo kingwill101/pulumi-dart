@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates whether the configuration store need to be recovered.
-enum CreateMode {
+enum CreateMode implements pulumi.PulumiEnum<String> {
   valueRecover("Recover"),
   valueDefault("Default");
 
   const CreateMode(this.wireValue);
+  @override
   final String wireValue;
 
   static CreateMode fromValue(String value) {

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Manifest artifact properties.
 class ManifestArtifactFormatResponse {
   /// The artifact name
-  final pulumi.Input<String>? artifactName;
+  final pulumi.Input<String?>? artifactName;
   /// The artifact type.
-  final pulumi.Input<String>? artifactType;
+  final pulumi.Input<String?>? artifactType;
   /// The artifact version.
-  final pulumi.Input<String>? artifactVersion;
+  final pulumi.Input<String?>? artifactVersion;
 
   /// Creates a new [ManifestArtifactFormatResponse].
   /// [artifactName] The artifact name

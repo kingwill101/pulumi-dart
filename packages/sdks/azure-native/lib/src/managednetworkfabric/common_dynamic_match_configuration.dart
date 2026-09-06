@@ -8,11 +8,11 @@ import 'vlan_group_properties.dart';
 /// Dynamic match configuration object.
 class CommonDynamicMatchConfiguration {
   /// List of IP Groups.
-  final pulumi.Input<List<IpGroupProperties>>? ipGroups;
+  final pulumi.Input<List<IpGroupProperties>?>? ipGroups;
   /// List of the port groups.
-  final pulumi.Input<List<PortGroupProperties>>? portGroups;
+  final pulumi.Input<List<PortGroupProperties>?>? portGroups;
   /// List of vlan groups.
-  final pulumi.Input<List<VlanGroupProperties>>? vlanGroups;
+  final pulumi.Input<List<VlanGroupProperties>?>? vlanGroups;
 
   /// Creates a new [CommonDynamicMatchConfiguration].
   /// [ipGroups] List of IP Groups.

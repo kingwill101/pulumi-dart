@@ -7,7 +7,7 @@ class ManagedIdentityPropertiesResponse {
   /// The type of managed identity.
   final pulumi.Input<String> type;
   /// The resource id of the managed identity.
-  final pulumi.Input<String>? userAssignedIdentityResourceId;
+  final pulumi.Input<String?>? userAssignedIdentityResourceId;
 
   /// Creates a new [ManagedIdentityPropertiesResponse].
   /// [type] The type of managed identity.

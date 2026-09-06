@@ -242,4 +242,34 @@ class ShareSubscription extends pulumi.CustomResource {
     userEmail = registerOutput<String>('userEmail');
     userName = registerOutput<String>('userName');
   }
+
+  /// Creates a typed reference to an existing [ShareSubscription] resource.
+  ShareSubscription.reference(String urn)
+    : super(
+        'azure-native:datashare:ShareSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdAt = registerOutput<String>('createdAt');
+    expirationDate = registerOutput<String?>('expirationDate');
+    invitationId = registerOutput<String>('invitationId');
+    this.name = registerOutput<String>('name');
+    providerEmail = registerOutput<String>('providerEmail');
+    providerName = registerOutput<String>('providerName');
+    providerTenantName = registerOutput<String>('providerTenantName');
+    provisioningState = registerOutput<String>('provisioningState');
+    shareDescription = registerOutput<String>('shareDescription');
+    shareKind = registerOutput<String>('shareKind');
+    shareName = registerOutput<String>('shareName');
+    shareSubscriptionStatus = registerOutput<String>('shareSubscriptionStatus');
+    shareTerms = registerOutput<String>('shareTerms');
+    sourceShareLocation = registerOutput<String>('sourceShareLocation');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    userEmail = registerOutput<String>('userEmail');
+    userName = registerOutput<String>('userName');
+  }
 }

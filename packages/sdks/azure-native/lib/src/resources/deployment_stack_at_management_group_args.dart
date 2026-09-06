@@ -16,31 +16,31 @@ class DeploymentStackAtManagementGroupArgs {
   /// Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
   final pulumi.Input<ActionOnUnmanage> actionOnUnmanage;
   /// Flag to bypass service errors that indicate the stack resource list is not correctly synchronized.
-  final pulumi.Input<bool>? bypassStackOutOfSyncError;
+  final pulumi.Input<bool?>? bypassStackOutOfSyncError;
   /// The debug setting of the deployment.
-  final pulumi.Input<DeploymentStacksDebugSetting>? debugSetting;
+  final pulumi.Input<DeploymentStacksDebugSetting?>? debugSetting;
   /// Defines how resources deployed by the stack are locked.
   final pulumi.Input<DenySettings> denySettings;
   /// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
-  final pulumi.Input<String>? deploymentScope;
+  final pulumi.Input<String?>? deploymentScope;
   /// Name of the deployment stack.
-  final pulumi.Input<String>? deploymentStackName;
+  final pulumi.Input<String?>? deploymentStackName;
   /// Deployment stack description. Max length of 4096 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The management group ID.
   final pulumi.Input<String> managementGroupId;
   /// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
-  final pulumi.Input<Map<String, DeploymentParameter>>? parameters;
+  final pulumi.Input<Map<String, DeploymentParameter>?>? parameters;
   /// The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
-  final pulumi.Input<DeploymentStacksParametersLink>? parametersLink;
+  final pulumi.Input<DeploymentStacksParametersLink?>? parametersLink;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
   final pulumi.Input<dynamic>? template;
   /// The URI of the template. Use either the templateLink property or the template property, but not both.
-  final pulumi.Input<DeploymentStacksTemplateLink>? templateLink;
+  final pulumi.Input<DeploymentStacksTemplateLink?>? templateLink;
 
   /// Creates a new [DeploymentStackAtManagementGroupArgs].
   /// [actionOnUnmanage] Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.

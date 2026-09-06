@@ -12,7 +12,7 @@ class CustomerCertificateParametersResponse {
   /// Resource reference to the Azure Key Vault certificate. Expected to be in format of /subscriptions/{​​​​​​​​​subscriptionId}​​​​​​​​​/resourceGroups/{​​​​​​​​​resourceGroupName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/providers/Microsoft.KeyVault/vaults/{vaultName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/secrets/{certificateName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
   final pulumi.Input<ResourceReferenceResponse> secretSource;
   /// Version of the secret to be used
-  final pulumi.Input<String>? secretVersion;
+  final pulumi.Input<String?>? secretVersion;
   /// Subject name in the certificate.
   final pulumi.Input<String> subject;
   /// The list of SANs.
@@ -23,7 +23,7 @@ class CustomerCertificateParametersResponse {
   /// Expected value is 'CustomerCertificate'.
   final pulumi.Input<String> type;
   /// Whether to use the latest version for the certificate
-  final pulumi.Input<bool>? useLatestVersion;
+  final pulumi.Input<bool?>? useLatestVersion;
 
   /// Creates a new [CustomerCertificateParametersResponse].
   /// [certificateAuthority] Certificate issuing authority.

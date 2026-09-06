@@ -5,7 +5,7 @@ import 'azure_monitor_workspace_integration.dart';
 
 /// GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards, alerting defaults) for common monitoring scenarios.
 class GrafanaIntegrations {
-  final pulumi.Input<List<AzureMonitorWorkspaceIntegration>>? azureMonitorWorkspaceIntegrations;
+  final pulumi.Input<List<AzureMonitorWorkspaceIntegration>?>? azureMonitorWorkspaceIntegrations;
 
   /// Creates a new [GrafanaIntegrations].
   /// [azureMonitorWorkspaceIntegrations] Optional.

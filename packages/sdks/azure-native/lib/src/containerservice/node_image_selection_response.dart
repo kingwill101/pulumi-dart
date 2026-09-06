@@ -6,7 +6,7 @@ import 'node_image_version_response.dart';
 /// The node image upgrade to be applied to the target nodes in update run.
 class NodeImageSelectionResponse {
   /// Custom node image versions to upgrade the nodes to. This field is required if node image selection type is Custom. Otherwise, it must be empty. For each node image family (e.g., 'AKSUbuntu-1804gen2containerd'), this field can contain at most one version (e.g., only one of 'AKSUbuntu-1804gen2containerd-2023.01.12' or 'AKSUbuntu-1804gen2containerd-2023.02.12', not both). If the nodes belong to a family without a matching image version in this field, they are not upgraded.
-  final pulumi.Input<List<NodeImageVersionResponse>>? customNodeImageVersions;
+  final pulumi.Input<List<NodeImageVersionResponse>?>? customNodeImageVersions;
   /// The node image upgrade type.
   final pulumi.Input<String> type;
 

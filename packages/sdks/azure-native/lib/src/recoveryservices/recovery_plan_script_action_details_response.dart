@@ -12,7 +12,7 @@ class RecoveryPlanScriptActionDetailsResponse {
   /// The script path.
   final pulumi.Input<String> path;
   /// The script timeout.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [RecoveryPlanScriptActionDetailsResponse].
   /// [fabricLocation] The fabric location.

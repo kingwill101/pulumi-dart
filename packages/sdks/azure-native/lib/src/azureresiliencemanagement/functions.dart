@@ -32,6 +32,17 @@ Future<GetDrillResult> getDrill(
   return GetDrillResult.fromMap(result);
 }
 
+pulumi.Output<GetDrillResult> getDrillOutput(
+  GetDrillArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azureresiliencemanagement:getDrill',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDrillResult.fromMap);
+}
+
 /// Get an Enrollment.
 ///
 /// Uses Azure REST API version 2026-03-01-preview.
@@ -50,6 +61,17 @@ Future<GetEnrollmentResult> getEnrollment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEnrollmentResult.fromMap(result);
+}
+
+pulumi.Output<GetEnrollmentResult> getEnrollmentOutput(
+  GetEnrollmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azureresiliencemanagement:getEnrollment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnrollmentResult.fromMap);
 }
 
 /// Get a GoalAssignment
@@ -72,6 +94,17 @@ Future<GetGoalAssignmentResult> getGoalAssignment(
   return GetGoalAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetGoalAssignmentResult> getGoalAssignmentOutput(
+  GetGoalAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azureresiliencemanagement:getGoalAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGoalAssignmentResult.fromMap);
+}
+
 /// Get a GoalTemplate
 ///
 /// Uses Azure REST API version 2026-03-01-preview.
@@ -90,6 +123,17 @@ Future<GetGoalTemplateResult> getGoalTemplate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGoalTemplateResult.fromMap(result);
+}
+
+pulumi.Output<GetGoalTemplateResult> getGoalTemplateOutput(
+  GetGoalTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azureresiliencemanagement:getGoalTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGoalTemplateResult.fromMap);
 }
 
 /// Get a RecoveryPlan
@@ -112,6 +156,17 @@ Future<GetRecoveryPlanResult> getRecoveryPlan(
   return GetRecoveryPlanResult.fromMap(result);
 }
 
+pulumi.Output<GetRecoveryPlanResult> getRecoveryPlanOutput(
+  GetRecoveryPlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azureresiliencemanagement:getRecoveryPlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRecoveryPlanResult.fromMap);
+}
+
 /// Get a UsagePlan
 ///
 /// Uses Azure REST API version 2026-03-01-preview.
@@ -130,4 +185,15 @@ Future<GetUsagePlanResult> getUsagePlan(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUsagePlanResult.fromMap(result);
+}
+
+pulumi.Output<GetUsagePlanResult> getUsagePlanOutput(
+  GetUsagePlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azureresiliencemanagement:getUsagePlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUsagePlanResult.fromMap);
 }

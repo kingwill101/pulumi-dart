@@ -1,25 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'databases_solution_summary_response.dart';
 import 'solution_details_response.dart';
 
 /// Class for solution properties.
 class SolutionPropertiesResponse {
   /// Gets or sets the cleanup state of the solution.
-  final pulumi.Input<String>? cleanupState;
+  final pulumi.Input<String?>? cleanupState;
   /// Gets or sets the details of the solution.
-  final pulumi.Input<SolutionDetailsResponse>? details;
+  final pulumi.Input<SolutionDetailsResponse?>? details;
   /// Gets or sets the goal of the solution.
-  final pulumi.Input<String>? goal;
+  final pulumi.Input<String?>? goal;
   /// Gets or sets the purpose of the solution.
-  final pulumi.Input<String>? purpose;
+  final pulumi.Input<String?>? purpose;
   /// Gets or sets the current status of the solution.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Gets or sets the summary of the solution.
-  final pulumi.Input<DatabasesSolutionSummaryResponse>? summary;
+  final pulumi.Input<dynamic>? summary;
   /// Gets or sets the tool being used in the solution.
-  final pulumi.Input<String>? tool;
+  final pulumi.Input<String?>? tool;
 
   /// Creates a new [SolutionPropertiesResponse].
   /// [cleanupState] Gets or sets the cleanup state of the solution.
@@ -46,7 +45,7 @@ class SolutionPropertiesResponse {
       'goal': ?goal,
       'purpose': ?purpose,
       'status': ?status,
-      'summary': ?pulumi.Input.mapOptionalInputValue<DatabasesSolutionSummaryResponse, Map<String, dynamic>>(summary, (value) => value.toMap()),
+      'summary': ?summary,
       'tool': ?tool,
     };
   }
@@ -58,7 +57,7 @@ class SolutionPropertiesResponse {
       goal: (() { final guardedValue = map['goal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       purpose: (() { final guardedValue = map['purpose']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      summary: (() { final guardedValue = map['summary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatabasesSolutionSummaryResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      summary: (() { final guardedValue = map['summary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tool: (() { final guardedValue = map['tool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

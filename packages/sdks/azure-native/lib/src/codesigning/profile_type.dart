@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Profile type of the certificate.
-enum ProfileType {
+enum ProfileType implements pulumi.PulumiEnum<String> {
   publicTrust("PublicTrust"),
   privateTrust("PrivateTrust"),
   privateTrustCIPolicy("PrivateTrustCIPolicy"),
@@ -7,6 +9,7 @@ enum ProfileType {
   publicTrustTest("PublicTrustTest");
 
   const ProfileType(this.wireValue);
+  @override
   final String wireValue;
 
   static ProfileType fromValue(String value) {

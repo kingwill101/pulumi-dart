@@ -8,13 +8,13 @@ import 'stateless_rules_and_custom_actions.dart';
 /// Definition of RulesSource
 class RulesSource {
   /// Property rulesSourceList
-  final pulumi.Input<RulesSourceList>? rulesSourceList;
+  final pulumi.Input<RulesSourceList?>? rulesSourceList;
   /// Property rulesString
-  final pulumi.Input<String>? rulesString;
+  final pulumi.Input<String?>? rulesString;
   /// Property statefulRules
-  final pulumi.Input<List<StatefulRule>>? statefulRules;
+  final pulumi.Input<List<StatefulRule>?>? statefulRules;
   /// Property statelessRulesAndCustomActions
-  final pulumi.Input<StatelessRulesAndCustomActions>? statelessRulesAndCustomActions;
+  final pulumi.Input<StatelessRulesAndCustomActions?>? statelessRulesAndCustomActions;
 
   /// Creates a new [RulesSource].
   /// [rulesSourceList] Property rulesSourceList

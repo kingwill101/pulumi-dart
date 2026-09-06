@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets azure VM category.
-enum AzureVmCategory {
+enum AzureVmCategory implements pulumi.PulumiEnum<String> {
   all("All"),
   computeOptimized("ComputeOptimized"),
   generalPurpose("GeneralPurpose"),
@@ -10,6 +12,7 @@ enum AzureVmCategory {
   isolated("Isolated");
 
   const AzureVmCategory(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureVmCategory fromValue(String value) {

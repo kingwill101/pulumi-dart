@@ -13,19 +13,19 @@ class LaunchBulkInstancesOperationProperties {
   /// Total capacity to achieve. It can be in terms of VMs or vCPUs.
   final pulumi.Input<int> capacity;
   /// Specifies capacity type for launching instances. It can be in terms of VMs or vCPUs.
-  final pulumi.Input<String>? capacityType;
+  final pulumi.Input<dynamic>? capacityType;
   /// Compute Profile to configure the Virtual Machines.
   final pulumi.Input<ComputeProfile> computeProfile;
   /// Configuration Options for Regular or Spot instances in LaunchBulkInstancesOperation.
   final pulumi.Input<PriorityProfile> priorityProfile;
   /// Retry policy the user can pass
-  final pulumi.Input<RetryPolicy>? retryPolicy;
+  final pulumi.Input<RetryPolicy?>? retryPolicy;
   /// Attributes to launch instances.
-  final pulumi.Input<VMAttributes>? vmAttributes;
+  final pulumi.Input<VMAttributes?>? vmAttributes;
   /// List of VM sizes supported for LaunchBulkInstancesOperation
-  final pulumi.Input<List<VmSizeProfile>>? vmSizesProfile;
+  final pulumi.Input<List<VmSizeProfile>?>? vmSizesProfile;
   /// Zone Allocation Policy for launching instances.
-  final pulumi.Input<ZoneAllocationPolicy>? zoneAllocationPolicy;
+  final pulumi.Input<ZoneAllocationPolicy?>? zoneAllocationPolicy;
 
   /// Creates a new [LaunchBulkInstancesOperationProperties].
   /// [capacity] Total capacity to achieve. It can be in terms of VMs or vCPUs.
@@ -62,8 +62,8 @@ class LaunchBulkInstancesOperationProperties {
 
   factory LaunchBulkInstancesOperationProperties.fromMap(Map<String, dynamic> map) {
     return LaunchBulkInstancesOperationProperties(
-      capacity: pulumi.Input.fromValue(map['capacity'] as int),
-      capacityType: (() { final guardedValue = map['capacityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      capacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['capacity'])),
+      capacityType: (() { final guardedValue = map['capacityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       computeProfile: pulumi.Input.fromValue(ComputeProfile.fromMap((map['computeProfile']! as Map).cast<String, dynamic>())),
       priorityProfile: pulumi.Input.fromValue(PriorityProfile.fromMap((map['priorityProfile']! as Map).cast<String, dynamic>())),
       retryPolicy: (() { final guardedValue = map['retryPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

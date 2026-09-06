@@ -7,9 +7,9 @@ import 'soft_delete_settings.dart';
 /// Security Settings of the vault
 class SecuritySettings {
   /// Immutability Settings of a vault
-  final pulumi.Input<ImmutabilitySettings>? immutabilitySettings;
+  final pulumi.Input<ImmutabilitySettings?>? immutabilitySettings;
   /// Soft delete Settings of a vault
-  final pulumi.Input<SoftDeleteSettings>? softDeleteSettings;
+  final pulumi.Input<SoftDeleteSettings?>? softDeleteSettings;
 
   /// Creates a new [SecuritySettings].
   /// [immutabilitySettings] Immutability Settings of a vault

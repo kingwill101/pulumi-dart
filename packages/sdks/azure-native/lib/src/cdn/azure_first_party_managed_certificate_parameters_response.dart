@@ -14,7 +14,7 @@ class AzureFirstPartyManagedCertificateParametersResponse {
   /// Subject name in the certificate.
   final pulumi.Input<String> subject;
   /// The list of SANs.
-  final pulumi.Input<List<String>>? subjectAlternativeNames;
+  final pulumi.Input<List<String>?>? subjectAlternativeNames;
   /// Certificate thumbprint.
   final pulumi.Input<String> thumbprint;
   /// The type of the secret resource.

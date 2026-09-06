@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty.
 class UpdatePrerequisiteResponse {
   /// Friendly name of the prerequisite.
-  final pulumi.Input<String>? packageName;
+  final pulumi.Input<String?>? packageName;
   /// Updatable component type.
-  final pulumi.Input<String>? updateType;
+  final pulumi.Input<String?>? updateType;
   /// Version of the prerequisite.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [UpdatePrerequisiteResponse].
   /// [packageName] Friendly name of the prerequisite.

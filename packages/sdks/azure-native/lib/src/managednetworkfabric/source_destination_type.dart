@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// IP Address type that needs to be matched.
-enum SourceDestinationType {
+enum SourceDestinationType implements pulumi.PulumiEnum<String> {
   valueSourceIP("SourceIP"),
   valueDestinationIP("DestinationIP");
 
   const SourceDestinationType(this.wireValue);
+  @override
   final String wireValue;
 
   static SourceDestinationType fromValue(String value) {

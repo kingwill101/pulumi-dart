@@ -8,11 +8,11 @@ class FacebookChannelProperties {
   /// Facebook application id
   final pulumi.Input<String> appId;
   /// Facebook application secret. Value only returned through POST to the action Channel List API, otherwise empty.
-  final pulumi.Input<String>? appSecret;
+  final pulumi.Input<String?>? appSecret;
   /// Whether this channel is enabled for the bot
   final pulumi.Input<bool> isEnabled;
   /// The list of Facebook pages
-  final pulumi.Input<List<FacebookPage>>? pages;
+  final pulumi.Input<List<FacebookPage>?>? pages;
 
   /// Creates a new [FacebookChannelProperties].
   /// [appId] Facebook application id

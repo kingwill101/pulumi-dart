@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SSIS migration info with SSIS store type, overwrite policy.
 class SsisMigrationInfo {
   /// The overwrite option for the SSIS environment migration
-  final pulumi.Input<String>? environmentOverwriteOption;
+  final pulumi.Input<dynamic>? environmentOverwriteOption;
   /// The overwrite option for the SSIS project migration
-  final pulumi.Input<String>? projectOverwriteOption;
+  final pulumi.Input<dynamic>? projectOverwriteOption;
   /// The SSIS store type of source, only SSIS catalog is supported now in DMS (classic)
-  final pulumi.Input<String>? ssisStoreType;
+  final pulumi.Input<dynamic>? ssisStoreType;
 
   /// Creates a new [SsisMigrationInfo].
   /// [environmentOverwriteOption] The overwrite option for the SSIS environment migration
@@ -31,9 +31,9 @@ class SsisMigrationInfo {
 
   factory SsisMigrationInfo.fromMap(Map<String, dynamic> map) {
     return SsisMigrationInfo(
-      environmentOverwriteOption: (() { final guardedValue = map['environmentOverwriteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      projectOverwriteOption: (() { final guardedValue = map['projectOverwriteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ssisStoreType: (() { final guardedValue = map['ssisStoreType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      environmentOverwriteOption: (() { final guardedValue = map['environmentOverwriteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      projectOverwriteOption: (() { final guardedValue = map['projectOverwriteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      ssisStoreType: (() { final guardedValue = map['ssisStoreType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

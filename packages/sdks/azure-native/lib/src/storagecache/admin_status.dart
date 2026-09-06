@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The administrative status of the auto import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto import job. By default it is set to 'Enable'.
-enum AdminStatus {
+enum AdminStatus implements pulumi.PulumiEnum<String> {
   valueEnable("Enable"),
   valueDisable("Disable");
 
   const AdminStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static AdminStatus fromValue(String value) {

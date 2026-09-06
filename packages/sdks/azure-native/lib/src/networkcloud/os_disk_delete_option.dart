@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The strategy for deleting the OS disk.
-enum OsDiskDeleteOption {
+enum OsDiskDeleteOption implements pulumi.PulumiEnum<String> {
   valueDelete("Delete");
 
   const OsDiskDeleteOption(this.wireValue);
+  @override
   final String wireValue;
 
   static OsDiskDeleteOption fromValue(String value) {

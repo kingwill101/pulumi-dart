@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ARM error code and error message associated with the impact
 class ErrorDetailProperties {
   /// ARM Error code associated with the impact.
-  final pulumi.Input<String>? errorCode;
+  final pulumi.Input<String?>? errorCode;
   /// ARM Error Message associated with the impact
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
 
   /// Creates a new [ErrorDetailProperties].
   /// [errorCode] ARM Error code associated with the impact.

@@ -6,7 +6,7 @@ import 'exclusion_managed_rule_set_response.dart';
 /// Allow to exclude some variable satisfy the condition for the WAF check.
 class OwaspCrsExclusionEntryResponse {
   /// The managed rule sets that are associated with the exclusion.
-  final pulumi.Input<List<ExclusionManagedRuleSetResponse>>? exclusionManagedRuleSets;
+  final pulumi.Input<List<ExclusionManagedRuleSetResponse>?>? exclusionManagedRuleSets;
   /// The variable to be excluded.
   final pulumi.Input<String> matchVariable;
   /// When matchVariable is a collection, operator used to specify which elements in the collection this exclusion applies to.

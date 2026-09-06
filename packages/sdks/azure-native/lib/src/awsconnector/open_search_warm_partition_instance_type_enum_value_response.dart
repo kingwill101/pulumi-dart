@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of OpenSearchWarmPartitionInstanceTypeEnumValue
 class OpenSearchWarmPartitionInstanceTypeEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [OpenSearchWarmPartitionInstanceTypeEnumValueResponse].
   /// [value] Property value

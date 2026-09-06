@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the guest agent provisioning action.
-enum ProvisioningAction {
+enum ProvisioningAction implements pulumi.PulumiEnum<String> {
   valueInstall("install"),
   valueUninstall("uninstall"),
   valueRepair("repair");
 
   const ProvisioningAction(this.wireValue);
+  @override
   final String wireValue;
 
   static ProvisioningAction fromValue(String value) {

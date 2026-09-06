@@ -12,25 +12,25 @@ class SubscriptionAliasResponsePropertiesResponse {
   /// For CustomerLed and FieldLed - /billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}
   /// For PartnerLed - /billingAccounts/{billingAccountName}/customers/{customerName}
   /// For Legacy EA - /billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}
-  final pulumi.Input<String>? billingScope;
+  final pulumi.Input<String?>? billingScope;
   /// Created Time
-  final pulumi.Input<String>? createdTime;
+  final pulumi.Input<String?>? createdTime;
   /// The display name of the subscription.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The Management Group Id.
-  final pulumi.Input<String>? managementGroupId;
+  final pulumi.Input<String?>? managementGroupId;
   /// The provisioning state of the resource.
   final pulumi.Input<String> provisioningState;
   /// Reseller Id
-  final pulumi.Input<String>? resellerId;
+  final pulumi.Input<String?>? resellerId;
   /// Newly created subscription Id.
   final pulumi.Input<String> subscriptionId;
   /// Owner Id of the subscription
-  final pulumi.Input<String>? subscriptionOwnerId;
+  final pulumi.Input<String?>? subscriptionOwnerId;
   /// Tags for the subscription
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The workload type of the subscription. It can be either Production or DevTest.
-  final pulumi.Input<String>? workload;
+  final pulumi.Input<String?>? workload;
 
   /// Creates a new [SubscriptionAliasResponsePropertiesResponse].
   /// [acceptOwnershipState] The accept ownership state of the resource.

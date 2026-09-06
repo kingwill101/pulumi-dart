@@ -8,7 +8,7 @@ class ResourceRequestsResponse {
   /// The CPU request of this container instance.
   final pulumi.Input<double> cpu;
   /// The GPU request of this container instance.
-  final pulumi.Input<GpuResourceResponse>? gpu;
+  final pulumi.Input<GpuResourceResponse?>? gpu;
   /// The memory request in GB of this container instance.
   final pulumi.Input<double> memoryInGB;
 
@@ -32,9 +32,9 @@ class ResourceRequestsResponse {
 
   factory ResourceRequestsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceRequestsResponse(
-      cpu: pulumi.Input.fromValue(map['cpu'] as double),
+      cpu: pulumi.Input.fromValue((map['cpu'] as num).toDouble()),
       gpu: (() { final guardedValue = map['gpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GpuResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      memoryInGB: pulumi.Input.fromValue(map['memoryInGB'] as double),
+      memoryInGB: pulumi.Input.fromValue((map['memoryInGB'] as num).toDouble()),
     );
   }
 }

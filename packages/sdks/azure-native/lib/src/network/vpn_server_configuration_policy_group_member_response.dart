@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// VpnServerConfiguration PolicyGroup member
 class VpnServerConfigurationPolicyGroupMemberResponse {
   /// The Vpn Policy member attribute type.
-  final pulumi.Input<String>? attributeType;
+  final pulumi.Input<String?>? attributeType;
   /// The value of Attribute used for this VpnServerConfigurationPolicyGroupMember.
-  final pulumi.Input<String>? attributeValue;
+  final pulumi.Input<String?>? attributeValue;
   /// Name of the VpnServerConfigurationPolicyGroupMember.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [VpnServerConfigurationPolicyGroupMemberResponse].
   /// [attributeType] The Vpn Policy member attribute type.

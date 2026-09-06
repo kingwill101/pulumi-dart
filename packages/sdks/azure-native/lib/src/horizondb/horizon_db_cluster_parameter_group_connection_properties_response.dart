@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Connection information for HorizonDB parameter group.
 class HorizonDbClusterParameterGroupConnectionPropertiesResponse {
   /// Indicates whether the parameters should be applied immediately.
-  final pulumi.Input<bool>? applyImmediately;
+  final pulumi.Input<bool?>? applyImmediately;
   /// The resource ID of the connected parameter group.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Indication of if parameter group is applied on HorizonDB resource.
   final pulumi.Input<String> syncStatus;
 

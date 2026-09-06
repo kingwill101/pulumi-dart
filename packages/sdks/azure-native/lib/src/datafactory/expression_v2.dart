@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Nested representation of a complex expression.
 class ExpressionV2 {
   /// List of nested expressions.
-  final pulumi.Input<List<ExpressionV2>>? operands;
+  final pulumi.Input<List<ExpressionV2>?>? operands;
   /// Expression operator value Type: list of strings.
-  final pulumi.Input<List<String>>? operators;
+  final pulumi.Input<List<String>?>? operators;
   /// Type of expressions supported by the system. Type: string.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
   /// Value for Constant/Field Type: object.
   final pulumi.Input<dynamic>? value;
 
@@ -38,7 +38,7 @@ class ExpressionV2 {
     return ExpressionV2(
       operands: (() { final guardedValue = map['operands']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ExpressionV2>(guardedValue, (value) => ExpressionV2.fromMap((value as Map).cast<String, dynamic>()))); })(),
       operators: (() { final guardedValue = map['operators']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }

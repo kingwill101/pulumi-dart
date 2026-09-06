@@ -7,6 +7,7 @@ import 'os_profile_for_vminstance_response.dart';
 import 'storage_profile_response.dart';
 import 'system_data_response.dart';
 import 'virtual_machine_instance_args.dart';
+import 'virtual_machine_instance_properties_response_availability_sets.dart';
 
 /// Define the virtualMachineInstance.
 ///
@@ -237,7 +238,7 @@ import 'virtual_machine_instance_args.dart';
 /// ```
 class VirtualMachineInstance extends pulumi.CustomResource {
   /// Availability Sets in vm.
-  late final pulumi.Output<List<Map<String, dynamic>>?> availabilitySets;
+  late final pulumi.Output<List<VirtualMachineInstancePropertiesResponseAvailabilitySets>?> availabilitySets;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Gets or sets the extended location.
@@ -277,7 +278,31 @@ class VirtualMachineInstance extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    availabilitySets = registerOutput<List<Map<String, dynamic>>?>('availabilitySets');
+    availabilitySets = registerOutput<List<VirtualMachineInstancePropertiesResponseAvailabilitySets>?>('availabilitySets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualMachineInstancePropertiesResponseAvailabilitySets>(guardedValue, (value) => VirtualMachineInstancePropertiesResponseAvailabilitySets.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hardwareProfile = registerOutput<HardwareProfileResponse?>('hardwareProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HardwareProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    infrastructureProfile = registerOutput<InfrastructureProfileResponse?>('infrastructureProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InfrastructureProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    osProfile = registerOutput<OsProfileForVMInstanceResponse?>('osProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OsProfileForVMInstanceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    powerState = registerOutput<String>('powerState');
+    provisioningState = registerOutput<String>('provisioningState');
+    storageProfile = registerOutput<StorageProfileResponse?>('storageProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [VirtualMachineInstance] resource.
+  VirtualMachineInstance.reference(String urn)
+    : super(
+        'azure-native:scvmm:VirtualMachineInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    availabilitySets = registerOutput<List<VirtualMachineInstancePropertiesResponseAvailabilitySets>?>('availabilitySets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualMachineInstancePropertiesResponseAvailabilitySets>(guardedValue, (value) => VirtualMachineInstancePropertiesResponseAvailabilitySets.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hardwareProfile = registerOutput<HardwareProfileResponse?>('hardwareProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HardwareProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -30,6 +30,17 @@ Future<GetConfigurationAssignmentResult> getConfigurationAssignment(
   return GetConfigurationAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigurationAssignmentResult> getConfigurationAssignmentOutput(
+  GetConfigurationAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:maintenance:getConfigurationAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationAssignmentResult.fromMap);
+}
+
 /// Get configuration assignment for resource..
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -48,6 +59,17 @@ Future<GetConfigurationAssignmentParentResult> getConfigurationAssignmentParent(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConfigurationAssignmentParentResult.fromMap(result);
+}
+
+pulumi.Output<GetConfigurationAssignmentParentResult> getConfigurationAssignmentParentOutput(
+  GetConfigurationAssignmentParentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:maintenance:getConfigurationAssignmentParent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationAssignmentParentResult.fromMap);
 }
 
 /// Get configuration assignment for resource..
@@ -70,6 +92,17 @@ Future<GetConfigurationAssignmentsForResourceGroupResult> getConfigurationAssign
   return GetConfigurationAssignmentsForResourceGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigurationAssignmentsForResourceGroupResult> getConfigurationAssignmentsForResourceGroupOutput(
+  GetConfigurationAssignmentsForResourceGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:maintenance:getConfigurationAssignmentsForResourceGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationAssignmentsForResourceGroupResult.fromMap);
+}
+
 /// Get configuration assignment for resource.
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -90,6 +123,17 @@ Future<GetConfigurationAssignmentsForSubscriptionResult> getConfigurationAssignm
   return GetConfigurationAssignmentsForSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigurationAssignmentsForSubscriptionResult> getConfigurationAssignmentsForSubscriptionOutput(
+  GetConfigurationAssignmentsForSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:maintenance:getConfigurationAssignmentsForSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationAssignmentsForSubscriptionResult.fromMap);
+}
+
 /// Get Configuration record
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -108,4 +152,15 @@ Future<GetMaintenanceConfigurationResult> getMaintenanceConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMaintenanceConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetMaintenanceConfigurationResult> getMaintenanceConfigurationOutput(
+  GetMaintenanceConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:maintenance:getMaintenanceConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMaintenanceConfigurationResult.fromMap);
 }

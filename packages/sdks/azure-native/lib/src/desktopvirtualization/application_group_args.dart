@@ -11,30 +11,30 @@ import 'resource_model_with_allowed_property_set_sku.dart';
 /// {@macro pulumi_desktopvirtualization_application_group_args_doc}
 class ApplicationGroupArgs {
   /// The name of the application group
-  final pulumi.Input<String>? applicationGroupName;
+  final pulumi.Input<String?>? applicationGroupName;
   /// Resource Type of ApplicationGroup.
-  final pulumi.Input<String> applicationGroupType;
+  final pulumi.Input<dynamic> applicationGroupType;
   /// Description of ApplicationGroup.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Friendly name of ApplicationGroup.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// HostPool arm path of ApplicationGroup.
   final pulumi.Input<String> hostPoolArmPath;
-  final pulumi.Input<ResourceModelWithAllowedPropertySetIdentity>? identity;
+  final pulumi.Input<ResourceModelWithAllowedPropertySetIdentity?>? identity;
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
-  final pulumi.Input<String>? managedBy;
-  final pulumi.Input<ResourceModelWithAllowedPropertySetPlan>? plan;
+  final pulumi.Input<String?>? managedBy;
+  final pulumi.Input<ResourceModelWithAllowedPropertySetPlan?>? plan;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Boolean representing whether the applicationGroup is show in the feed.
-  final pulumi.Input<bool>? showInFeed;
-  final pulumi.Input<ResourceModelWithAllowedPropertySetSku>? sku;
+  final pulumi.Input<bool?>? showInFeed;
+  final pulumi.Input<ResourceModelWithAllowedPropertySetSku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ApplicationGroupArgs].
   /// [applicationGroupName] The name of the application group
@@ -90,7 +90,7 @@ class ApplicationGroupArgs {
   factory ApplicationGroupArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationGroupArgs(
       applicationGroupName: (() { final guardedValue = map['applicationGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      applicationGroupType: pulumi.Input.fromValue(map['applicationGroupType'] as String),
+      applicationGroupType: pulumi.Input.fromValue(map['applicationGroupType']),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hostPoolArmPath: pulumi.Input.fromValue(map['hostPoolArmPath'] as String),

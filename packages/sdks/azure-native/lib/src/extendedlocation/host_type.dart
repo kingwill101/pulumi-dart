@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of host the Custom Locations is referencing (Kubernetes, etc...).
-enum HostType {
+enum HostType implements pulumi.PulumiEnum<String> {
   kubernetes("Kubernetes");
 
   const HostType(this.wireValue);
+  @override
   final String wireValue;
 
   static HostType fromValue(String value) {

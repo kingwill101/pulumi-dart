@@ -30,6 +30,17 @@ Future<GetAssignmentResult> getAssignment(
   return GetAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetAssignmentResult> getAssignmentOutput(
+  GetAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:blueprint:getAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAssignmentResult.fromMap);
+}
+
 /// Get a blueprint definition.
 ///
 /// Uses Azure REST API version 2018-11-01-preview.
@@ -46,6 +57,17 @@ Future<GetBlueprintResult> getBlueprint(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBlueprintResult.fromMap(result);
+}
+
+pulumi.Output<GetBlueprintResult> getBlueprintOutput(
+  GetBlueprintArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:blueprint:getBlueprint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBlueprintResult.fromMap);
 }
 
 /// Get a blueprint artifact.
@@ -66,6 +88,17 @@ Future<GetPolicyAssignmentArtifactResult> getPolicyAssignmentArtifact(
   return GetPolicyAssignmentArtifactResult.fromMap(result);
 }
 
+pulumi.Output<GetPolicyAssignmentArtifactResult> getPolicyAssignmentArtifactOutput(
+  GetPolicyAssignmentArtifactArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:blueprint:getPolicyAssignmentArtifact',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyAssignmentArtifactResult.fromMap);
+}
+
 /// Get a published version of a blueprint definition.
 ///
 /// Uses Azure REST API version 2018-11-01-preview.
@@ -82,6 +115,17 @@ Future<GetPublishedBlueprintResult> getPublishedBlueprint(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPublishedBlueprintResult.fromMap(result);
+}
+
+pulumi.Output<GetPublishedBlueprintResult> getPublishedBlueprintOutput(
+  GetPublishedBlueprintArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:blueprint:getPublishedBlueprint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPublishedBlueprintResult.fromMap);
 }
 
 /// Get a blueprint artifact.
@@ -102,6 +146,17 @@ Future<GetRoleAssignmentArtifactResult> getRoleAssignmentArtifact(
   return GetRoleAssignmentArtifactResult.fromMap(result);
 }
 
+pulumi.Output<GetRoleAssignmentArtifactResult> getRoleAssignmentArtifactOutput(
+  GetRoleAssignmentArtifactArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:blueprint:getRoleAssignmentArtifact',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoleAssignmentArtifactResult.fromMap);
+}
+
 /// Get a blueprint artifact.
 ///
 /// Uses Azure REST API version 2018-11-01-preview.
@@ -118,4 +173,15 @@ Future<GetTemplateArtifactResult> getTemplateArtifact(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTemplateArtifactResult.fromMap(result);
+}
+
+pulumi.Output<GetTemplateArtifactResult> getTemplateArtifactOutput(
+  GetTemplateArtifactArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:blueprint:getTemplateArtifact',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTemplateArtifactResult.fromMap);
 }

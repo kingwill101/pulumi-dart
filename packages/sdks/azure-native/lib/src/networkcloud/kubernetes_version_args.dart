@@ -11,13 +11,13 @@ class KubernetesVersionArgs {
   /// The extended location of the resource. This property is required when creating the resource.
   final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation> extendedLocation;
   /// The name of the Kubernetes version resource.
-  final pulumi.Input<String>? kubernetesVersionName;
+  final pulumi.Input<String?>? kubernetesVersionName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [KubernetesVersionArgs].
   /// [extendedLocation] The extended location of the resource. This property is required when creating the resource.

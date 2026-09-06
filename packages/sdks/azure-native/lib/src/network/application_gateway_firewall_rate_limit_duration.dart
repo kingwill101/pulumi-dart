@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Duration over which Rate Limit policy will be applied. Applies only when ruleType is RateLimitRule.
-enum ApplicationGatewayFirewallRateLimitDuration {
+enum ApplicationGatewayFirewallRateLimitDuration implements pulumi.PulumiEnum<String> {
   valueOneMin("OneMin"),
   valueFiveMins("FiveMins");
 
   const ApplicationGatewayFirewallRateLimitDuration(this.wireValue);
+  @override
   final String wireValue;
 
   static ApplicationGatewayFirewallRateLimitDuration fromValue(String value) {

@@ -9,9 +9,9 @@ class CredentialsResponse {
   /// Describes the credential parameters for accessing other custom registries. The key
   /// for the dictionary item will be the registry login server (myregistry.azurecr.io) and
   /// the value of the item will be the registry credentials for accessing the registry.
-  final pulumi.Input<Map<String, CustomRegistryCredentialsResponse>>? customRegistries;
+  final pulumi.Input<Map<String, CustomRegistryCredentialsResponse>?>? customRegistries;
   /// Describes the credential parameters for accessing the source registry.
-  final pulumi.Input<SourceRegistryCredentialsResponse>? sourceRegistry;
+  final pulumi.Input<SourceRegistryCredentialsResponse?>? sourceRegistry;
 
   /// Creates a new [CredentialsResponse].
   /// [customRegistries] Describes the credential parameters for accessing other custom registries. The key

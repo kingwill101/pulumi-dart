@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Memory profile of broker.
-enum BrokerMemoryProfile {
+enum BrokerMemoryProfile implements pulumi.PulumiEnum<String> {
   tiny("tiny"),
   low("low"),
   medium("medium"),
   high("high");
 
   const BrokerMemoryProfile(this.wireValue);
+  @override
   final String wireValue;
 
   static BrokerMemoryProfile fromValue(String value) {

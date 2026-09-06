@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Logger type.
-enum LoggerType {
+enum LoggerType implements pulumi.PulumiEnum<String> {
   valueAzureEventHub("azureEventHub"),
   valueApplicationInsights("applicationInsights"),
   valueAzureMonitor("azureMonitor");
 
   const LoggerType(this.wireValue);
+  @override
   final String wireValue;
 
   static LoggerType fromValue(String value) {

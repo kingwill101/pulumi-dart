@@ -6,11 +6,11 @@ import 'scale_rule_auth_response.dart';
 /// Container App container Http scaling rule.
 class HttpScaleRuleResponse {
   /// Authentication secrets for the custom scale rule.
-  final pulumi.Input<List<ScaleRuleAuthResponse>>? auth;
+  final pulumi.Input<List<ScaleRuleAuthResponse>?>? auth;
   /// The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
-  final pulumi.Input<String>? identity;
+  final pulumi.Input<String?>? identity;
   /// Metadata properties to describe http scale rule.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
 
   /// Creates a new [HttpScaleRuleResponse].
   /// [auth] Authentication secrets for the custom scale rule.

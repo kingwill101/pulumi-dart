@@ -16,47 +16,47 @@ import 'url_signing_key.dart';
 /// {@macro pulumi_cdn_endpoint_args_doc}
 class EndpointArgs {
   /// List of content types on which compression applies. The value should be a valid MIME type.
-  final pulumi.Input<List<String>>? contentTypesToCompress;
+  final pulumi.Input<List<String>?>? contentTypesToCompress;
   /// A reference to the origin group.
-  final pulumi.Input<ResourceReference>? defaultOriginGroup;
+  final pulumi.Input<ResourceReference?>? defaultOriginGroup;
   /// A policy that specifies the delivery rules to be used for an endpoint.
-  final pulumi.Input<EndpointPropertiesUpdateParametersDeliveryPolicy>? deliveryPolicy;
+  final pulumi.Input<EndpointPropertiesUpdateParametersDeliveryPolicy?>? deliveryPolicy;
   /// Name of the endpoint under the profile which is unique globally.
-  final pulumi.Input<String>? endpointName;
+  final pulumi.Input<String?>? endpointName;
   /// List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/
-  final pulumi.Input<List<GeoFilter>>? geoFilters;
+  final pulumi.Input<List<GeoFilter>?>? geoFilters;
   /// Indicates whether content compression is enabled on CDN. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on CDN when requested content is smaller than 1 byte or larger than 1 MB.
-  final pulumi.Input<bool>? isCompressionEnabled;
+  final pulumi.Input<bool?>? isCompressionEnabled;
   /// Indicates whether HTTP traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed.
-  final pulumi.Input<bool>? isHttpAllowed;
+  final pulumi.Input<bool?>? isHttpAllowed;
   /// Indicates whether HTTPS traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed.
-  final pulumi.Input<bool>? isHttpsAllowed;
+  final pulumi.Input<bool?>? isHttpsAllowed;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies what scenario the customer wants this CDN endpoint to optimize for, e.g. Download, Media services. With this information, CDN can apply scenario driven optimization.
-  final pulumi.Input<String>? optimizationType;
+  final pulumi.Input<dynamic>? optimizationType;
   /// The origin groups comprising of origins that are used for load balancing the traffic based on availability.
-  final pulumi.Input<List<DeepCreatedOriginGroup>>? originGroups;
+  final pulumi.Input<List<DeepCreatedOriginGroup>?>? originGroups;
   /// The host header value sent to the origin with each request. This property at Endpoint is only allowed when endpoint uses single origin and can be overridden by the same property specified at origin.If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default.
-  final pulumi.Input<String>? originHostHeader;
+  final pulumi.Input<String?>? originHostHeader;
   /// A directory path on the origin that CDN can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
-  final pulumi.Input<String>? originPath;
+  final pulumi.Input<String?>? originPath;
   /// The source of the content being delivered via CDN.
   final pulumi.Input<List<DeepCreatedOrigin>> origins;
   /// Path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN. This is relative to the origin path. This property is only relevant when using a single origin.
-  final pulumi.Input<String>? probePath;
+  final pulumi.Input<String?>? probePath;
   /// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   final pulumi.Input<String> profileName;
   /// Defines how CDN caches requests that include query strings. You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL.
-  final pulumi.Input<QueryStringCachingBehavior>? queryStringCachingBehavior;
+  final pulumi.Input<QueryStringCachingBehavior?>? queryStringCachingBehavior;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// List of keys used to validate the signed URL hashes.
-  final pulumi.Input<List<UrlSigningKey>>? urlSigningKeys;
+  final pulumi.Input<List<UrlSigningKey>?>? urlSigningKeys;
   /// Defines the Web Application Firewall policy for the endpoint (if applicable)
-  final pulumi.Input<EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink>? webApplicationFirewallPolicyLink;
+  final pulumi.Input<EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink?>? webApplicationFirewallPolicyLink;
 
   /// Creates a new [EndpointArgs].
   /// [contentTypesToCompress] List of content types on which compression applies. The value should be a valid MIME type.
@@ -80,15 +80,15 @@ class EndpointArgs {
   /// [tags] Resource tags.
   /// [urlSigningKeys] List of keys used to validate the signed URL hashes.
   /// [webApplicationFirewallPolicyLink] Defines the Web Application Firewall policy for the endpoint (if applicable)
-  const EndpointArgs({
+  EndpointArgs({
     this.contentTypesToCompress,
     this.defaultOriginGroup,
     this.deliveryPolicy,
     this.endpointName,
     this.geoFilters,
     this.isCompressionEnabled,
-    this.isHttpAllowed,
-    this.isHttpsAllowed,
+    pulumi.Input<bool?>? isHttpAllowed,
+    pulumi.Input<bool?>? isHttpsAllowed,
     this.location,
     this.optimizationType,
     this.originGroups,
@@ -97,12 +97,12 @@ class EndpointArgs {
     required this.origins,
     this.probePath,
     required this.profileName,
-    this.queryStringCachingBehavior,
+    pulumi.Input<QueryStringCachingBehavior?>? queryStringCachingBehavior,
     required this.resourceGroupName,
     this.tags,
     this.urlSigningKeys,
     this.webApplicationFirewallPolicyLink,
-  });
+  }) : isHttpAllowed = isHttpAllowed ?? pulumi.Input.fromValue(true), isHttpsAllowed = isHttpsAllowed ?? pulumi.Input.fromValue(true), queryStringCachingBehavior = queryStringCachingBehavior ?? pulumi.Input.fromValue(QueryStringCachingBehavior.fromValue('NotSet'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -141,7 +141,7 @@ class EndpointArgs {
       isHttpAllowed: (() { final guardedValue = map['isHttpAllowed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isHttpsAllowed: (() { final guardedValue = map['isHttpsAllowed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      optimizationType: (() { final guardedValue = map['optimizationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      optimizationType: (() { final guardedValue = map['optimizationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       originGroups: (() { final guardedValue = map['originGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeepCreatedOriginGroup>(guardedValue, (value) => DeepCreatedOriginGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
       originHostHeader: (() { final guardedValue = map['originHostHeader']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       originPath: (() { final guardedValue = map['originPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

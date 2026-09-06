@@ -6,9 +6,9 @@ import 'profile_scrubbing_rules_response.dart';
 /// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
 class ProfileLogScrubbingResponse {
   /// List of log scrubbing rules applied to the Azure Front Door profile logs.
-  final pulumi.Input<List<ProfileScrubbingRulesResponse>>? scrubbingRules;
+  final pulumi.Input<List<ProfileScrubbingRulesResponse>?>? scrubbingRules;
   /// State of the log scrubbing config. Default value is Enabled.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [ProfileLogScrubbingResponse].
   /// [scrubbingRules] List of log scrubbing rules applied to the Azure Front Door profile logs.

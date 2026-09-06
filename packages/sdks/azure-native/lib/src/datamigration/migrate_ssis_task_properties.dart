@@ -6,9 +6,9 @@ import 'migrate_ssis_task_input.dart';
 /// Properties for task that migrates SSIS packages from SQL Server databases to Azure SQL Database Managed Instance.
 class MigrateSsisTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// Task input
-  final pulumi.Input<MigrateSsisTaskInput>? input;
+  final pulumi.Input<MigrateSsisTaskInput?>? input;
   /// Task type.
   /// Expected value is 'Migrate.Ssis'.
   final pulumi.Input<String> taskType;

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Fixed input data definition.
 class FixedInputDataResponse {
   /// Mapping of column names to special uses.
-  final pulumi.Input<Map<String, String>>? columns;
+  final pulumi.Input<Map<String, String>?>? columns;
   /// The context metadata of the data source.
-  final pulumi.Input<String>? dataContext;
+  final pulumi.Input<String?>? dataContext;
   /// Monitoring input data type enum.
   /// Expected value is 'Fixed'.
   final pulumi.Input<String> inputDataType;

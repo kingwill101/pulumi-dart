@@ -6,25 +6,25 @@ import 'job_scale_rule.dart';
 /// Scaling configurations for event driven jobs.
 class JobScale {
   /// Maximum number of job executions that are created for a trigger, default 100.
-  final pulumi.Input<int>? maxExecutions;
+  final pulumi.Input<int?>? maxExecutions;
   /// Minimum number of job executions that are created for a trigger, default 0
-  final pulumi.Input<int>? minExecutions;
+  final pulumi.Input<int?>? minExecutions;
   /// Interval to check each event source in seconds. Defaults to 30s
-  final pulumi.Input<int>? pollingInterval;
+  final pulumi.Input<int?>? pollingInterval;
   /// Scaling rules.
-  final pulumi.Input<List<JobScaleRule>>? rules;
+  final pulumi.Input<List<JobScaleRule>?>? rules;
 
   /// Creates a new [JobScale].
   /// [maxExecutions] Maximum number of job executions that are created for a trigger, default 100.
   /// [minExecutions] Minimum number of job executions that are created for a trigger, default 0
   /// [pollingInterval] Interval to check each event source in seconds. Defaults to 30s
   /// [rules] Scaling rules.
-  const JobScale({
-    this.maxExecutions,
-    this.minExecutions,
+  JobScale({
+    pulumi.Input<int?>? maxExecutions,
+    pulumi.Input<int?>? minExecutions,
     this.pollingInterval,
     this.rules,
-  });
+  }) : maxExecutions = maxExecutions ?? pulumi.Input.fromValue(100), minExecutions = minExecutions ?? pulumi.Input.fromValue(0);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,9 +37,9 @@ class JobScale {
 
   factory JobScale.fromMap(Map<String, dynamic> map) {
     return JobScale(
-      maxExecutions: (() { final guardedValue = map['maxExecutions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minExecutions: (() { final guardedValue = map['minExecutions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      pollingInterval: (() { final guardedValue = map['pollingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxExecutions: (() { final guardedValue = map['maxExecutions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minExecutions: (() { final guardedValue = map['minExecutions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      pollingInterval: (() { final guardedValue = map['pollingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<JobScaleRule>(guardedValue, (value) => JobScaleRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

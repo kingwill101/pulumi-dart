@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SKU name.
-enum SkuName {
+enum SkuName implements pulumi.PulumiEnum<String> {
   valueGateway("Gateway"),
   valueEdge("Edge"),
   valueTEA1Node("TEA_1Node"),
@@ -31,6 +33,7 @@ enum SkuName {
   valueEdgeMRTCP("EdgeMR_TCP");
 
   const SkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static SkuName fromValue(String value) {

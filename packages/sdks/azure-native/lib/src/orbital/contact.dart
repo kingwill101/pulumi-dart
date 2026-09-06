@@ -269,4 +269,35 @@ class Contact extends pulumi.CustomResource {
     txStartTime = registerOutput<String>('txStartTime');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [Contact] resource.
+  Contact.reference(String urn)
+    : super(
+        'azure-native:orbital:Contact',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    antennaConfiguration = registerOutput<ContactsPropertiesResponseAntennaConfiguration>('antennaConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContactsPropertiesResponseAntennaConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contactProfile = registerOutput<ContactsPropertiesResponseContactProfile>('contactProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContactsPropertiesResponseContactProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endAzimuthDegrees = registerOutput<double>('endAzimuthDegrees');
+    endElevationDegrees = registerOutput<double>('endElevationDegrees');
+    errorMessage = registerOutput<String>('errorMessage');
+    groundStationName = registerOutput<String>('groundStationName');
+    maximumElevationDegrees = registerOutput<double>('maximumElevationDegrees');
+    this.name = registerOutput<String>('name');
+    reservationEndTime = registerOutput<String>('reservationEndTime');
+    reservationStartTime = registerOutput<String>('reservationStartTime');
+    rxEndTime = registerOutput<String>('rxEndTime');
+    rxStartTime = registerOutput<String>('rxStartTime');
+    startAzimuthDegrees = registerOutput<double>('startAzimuthDegrees');
+    startElevationDegrees = registerOutput<double>('startElevationDegrees');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    txEndTime = registerOutput<String>('txEndTime');
+    txStartTime = registerOutput<String>('txStartTime');
+    type = registerOutput<String>('type');
+  }
 }

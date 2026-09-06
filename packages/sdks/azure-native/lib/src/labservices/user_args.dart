@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_labservices_user_args_doc}
 class UserArgs {
   /// The amount of usage quota time the user gets in addition to the lab usage quota.
-  final pulumi.Input<String>? additionalUsageQuota;
+  final pulumi.Input<String?>? additionalUsageQuota;
   /// Email address of the user.
   final pulumi.Input<String> email;
   /// The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
@@ -16,7 +16,7 @@ class UserArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [UserArgs].
   /// [additionalUsageQuota] The amount of usage quota time the user gets in addition to the lab usage quota.

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Multiregion routing methods.
-enum RoutingMethods {
+enum RoutingMethods implements pulumi.PulumiEnum<String> {
   valuePriority("Priority"),
   valueWeighted("Weighted"),
   valuePerformance("Performance");
 
   const RoutingMethods(this.wireValue);
+  @override
   final String wireValue;
 
   static RoutingMethods fromValue(String value) {

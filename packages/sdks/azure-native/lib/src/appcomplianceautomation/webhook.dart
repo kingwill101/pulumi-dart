@@ -256,7 +256,35 @@ class Webhook extends pulumi.CustomResource {
     contentType = registerOutput<String?>('contentType');
     deliveryStatus = registerOutput<String>('deliveryStatus');
     enableSslVerification = registerOutput<String?>('enableSslVerification');
-    events = registerOutput<List<String>?>('events');
+    events = registerOutput<List<String>?>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    payloadUrl = registerOutput<String?>('payloadUrl');
+    provisioningState = registerOutput<String>('provisioningState');
+    sendAllEvents = registerOutput<String?>('sendAllEvents');
+    status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+    updateWebhookKey = registerOutput<String?>('updateWebhookKey');
+    webhookId = registerOutput<String>('webhookId');
+    webhookKey = registerOutput<String?>('webhookKey');
+    webhookKeyEnabled = registerOutput<String>('webhookKeyEnabled');
+  }
+
+  /// Creates a typed reference to an existing [Webhook] resource.
+  Webhook.reference(String urn)
+    : super(
+        'azure-native:appcomplianceautomation:Webhook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contentType = registerOutput<String?>('contentType');
+    deliveryStatus = registerOutput<String>('deliveryStatus');
+    enableSslVerification = registerOutput<String?>('enableSslVerification');
+    events = registerOutput<List<String>?>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     payloadUrl = registerOutput<String?>('payloadUrl');
     provisioningState = registerOutput<String>('provisioningState');

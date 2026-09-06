@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Vault properties.
 class VaultModelProperties {
   /// Gets or sets the type of vault.
-  final pulumi.Input<String>? vaultType;
+  final pulumi.Input<dynamic>? vaultType;
 
   /// Creates a new [VaultModelProperties].
   /// [vaultType] Gets or sets the type of vault.
@@ -21,7 +21,7 @@ class VaultModelProperties {
 
   factory VaultModelProperties.fromMap(Map<String, dynamic> map) {
     return VaultModelProperties(
-      vaultType: (() { final guardedValue = map['vaultType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vaultType: (() { final guardedValue = map['vaultType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

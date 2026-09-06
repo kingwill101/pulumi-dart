@@ -6,13 +6,13 @@ import 'virtual_machine_properties_ssh.dart';
 /// Windows Configuration for the virtual machine
 class VirtualMachinePropertiesWindowsConfiguration {
   /// Whether to EnableAutomaticUpdates on the machine
-  final pulumi.Input<bool>? enableAutomaticUpdates;
+  final pulumi.Input<bool?>? enableAutomaticUpdates;
   /// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process.
-  final pulumi.Input<bool>? provisionVMAgent;
+  final pulumi.Input<bool?>? provisionVMAgent;
   /// SSH Configuration
-  final pulumi.Input<VirtualMachinePropertiesSsh>? ssh;
+  final pulumi.Input<VirtualMachinePropertiesSsh?>? ssh;
   /// TimeZone for the virtual machine
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [VirtualMachinePropertiesWindowsConfiguration].
   /// [enableAutomaticUpdates] Whether to EnableAutomaticUpdates on the machine

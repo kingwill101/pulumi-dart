@@ -7,13 +7,13 @@ import 'sub_resource_response.dart';
 /// Describes Forwarding Route.
 class ForwardingConfigurationResponse {
   /// A reference to the BackendPool which this rule routes to.
-  final pulumi.Input<SubResourceResponse>? backendPool;
+  final pulumi.Input<SubResourceResponse?>? backendPool;
   /// The caching configuration associated with this rule.
-  final pulumi.Input<CacheConfigurationResponse>? cacheConfiguration;
+  final pulumi.Input<CacheConfigurationResponse?>? cacheConfiguration;
   /// A custom path used to rewrite resource paths matched by this rule. Leave empty to use incoming path.
-  final pulumi.Input<String>? customForwardingPath;
+  final pulumi.Input<String?>? customForwardingPath;
   /// Protocol this rule will use when forwarding traffic to backends.
-  final pulumi.Input<String>? forwardingProtocol;
+  final pulumi.Input<String?>? forwardingProtocol;
   /// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration'.
   final pulumi.Input<String> odataType;
 

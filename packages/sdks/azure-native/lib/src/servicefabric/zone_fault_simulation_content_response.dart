@@ -6,14 +6,14 @@ import 'fault_simulation_constraints_response.dart';
 /// Parameters for Zone Fault Simulation action.
 class ZoneFaultSimulationContentResponse {
   /// Constraints for Fault Simulation action.
-  final pulumi.Input<FaultSimulationConstraintsResponse>? constraints;
+  final pulumi.Input<FaultSimulationConstraintsResponse?>? constraints;
   /// The kind of fault simulation.
   /// Expected value is 'Zone'.
   final pulumi.Input<String> faultKind;
   /// Force the action to go through without any check on the cluster.
-  final pulumi.Input<bool>? force;
+  final pulumi.Input<bool?>? force;
   /// Indicates the zones of the fault simulation.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [ZoneFaultSimulationContentResponse].
   /// [constraints] Constraints for Fault Simulation action.

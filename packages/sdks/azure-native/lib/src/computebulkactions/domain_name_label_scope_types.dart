@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The Domain name label scope of the PublicIPAddress resources that will be created. The generated name label is the concatenation of the hashed domain name label with policy according to the domain name label scope and vm network profile unique ID.
-enum DomainNameLabelScopeTypes {
+enum DomainNameLabelScopeTypes implements pulumi.PulumiEnum<String> {
   tenantReuse("TenantReuse"),
   subscriptionReuse("SubscriptionReuse"),
   resourceGroupReuse("ResourceGroupReuse"),
   noReuse("NoReuse");
 
   const DomainNameLabelScopeTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static DomainNameLabelScopeTypes fromValue(String value) {

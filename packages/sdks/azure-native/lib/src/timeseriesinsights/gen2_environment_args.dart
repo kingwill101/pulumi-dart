@@ -12,12 +12,12 @@ import 'warm_store_configuration_properties.dart';
 /// {@macro pulumi_timeseriesinsights_gen2_environment_args_doc}
 class Gen2EnvironmentArgs {
   /// Name of the environment
-  final pulumi.Input<String>? environmentName;
+  final pulumi.Input<String?>? environmentName;
   /// The kind of the environment.
   /// Expected value is 'Gen2'.
   final pulumi.Input<String> kind;
   /// The location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
@@ -25,11 +25,11 @@ class Gen2EnvironmentArgs {
   /// The storage configuration provides the connection details that allows the Time Series Insights service to connect to the customer storage account that is used to store the environment's data.
   final pulumi.Input<Gen2StorageConfigurationInput> storageConfiguration;
   /// Key-value pairs of additional properties for the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The list of event properties which will be used to define the environment's time series id.
   final pulumi.Input<List<TimeSeriesIdProperty>> timeSeriesIdProperties;
   /// The warm store configuration provides the details to create a warm store cache that will retain a copy of the environment's data available for faster query.
-  final pulumi.Input<WarmStoreConfigurationProperties>? warmStoreConfiguration;
+  final pulumi.Input<WarmStoreConfigurationProperties?>? warmStoreConfiguration;
 
   /// Creates a new [Gen2EnvironmentArgs].
   /// [environmentName] Name of the environment

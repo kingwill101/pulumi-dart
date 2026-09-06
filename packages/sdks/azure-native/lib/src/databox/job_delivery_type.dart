@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Delivery type of Job.
-enum JobDeliveryType {
+enum JobDeliveryType implements pulumi.PulumiEnum<String> {
   valueNonScheduled("NonScheduled"),
   valueScheduled("Scheduled");
 
   const JobDeliveryType(this.wireValue);
+  @override
   final String wireValue;
 
   static JobDeliveryType fromValue(String value) {

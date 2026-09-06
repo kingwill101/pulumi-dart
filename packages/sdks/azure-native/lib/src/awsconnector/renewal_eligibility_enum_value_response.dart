@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of RenewalEligibilityEnumValue
 class RenewalEligibilityEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [RenewalEligibilityEnumValueResponse].
   /// [value] Property value

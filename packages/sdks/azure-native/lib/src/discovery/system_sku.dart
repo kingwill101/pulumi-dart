@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The SKU to use for the system node pool.
-enum SystemSku {
+enum SystemSku implements pulumi.PulumiEnum<String> {
   standardD4sV6("Standard_D4s_v6"),
   standardD4sV5("Standard_D4s_v5"),
   standardD4sV4("Standard_D4s_v4");
 
   const SystemSku(this.wireValue);
+  @override
   final String wireValue;
 
   static SystemSku fromValue(String value) {

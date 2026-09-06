@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// KeyUsageName enum
-enum KeyUsageName {
+enum KeyUsageName implements pulumi.PulumiEnum<String> {
   aNY("ANY"),
   cERTIFICATESIGNING("CERTIFICATE_SIGNING"),
   cRLSIGNING("CRL_SIGNING"),
@@ -13,6 +15,7 @@ enum KeyUsageName {
   nONREPUDIATION("NON_REPUDIATION");
 
   const KeyUsageName(this.wireValue);
+  @override
   final String wireValue;
 
   static KeyUsageName fromValue(String value) {

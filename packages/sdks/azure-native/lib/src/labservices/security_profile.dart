@@ -6,7 +6,7 @@ import 'enable_state.dart';
 /// The lab security profile.
 class SecurityProfile {
   /// Whether any user or only specified users can register to a lab.
-  final pulumi.Input<EnableState>? openAccess;
+  final pulumi.Input<EnableState?>? openAccess;
 
   /// Creates a new [SecurityProfile].
   /// [openAccess] Whether any user or only specified users can register to a lab.

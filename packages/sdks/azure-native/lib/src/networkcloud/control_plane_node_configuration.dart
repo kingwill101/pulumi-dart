@@ -5,9 +5,9 @@ import 'administrator_configuration.dart';
 
 class ControlPlaneNodeConfiguration {
   /// The administrator credentials to be used for the nodes in the control plane.
-  final pulumi.Input<AdministratorConfiguration>? administratorConfiguration;
+  final pulumi.Input<AdministratorConfiguration?>? administratorConfiguration;
   /// The list of availability zones of the Network Cloud cluster to be used for the provisioning of nodes in the control plane. If not specified, all availability zones will be used.
-  final pulumi.Input<List<String>>? availabilityZones;
+  final pulumi.Input<List<String>?>? availabilityZones;
   /// The number of virtual machines that use this configuration.
   final pulumi.Input<double> count;
   /// The name of the VM SKU supplied during creation.
@@ -38,7 +38,7 @@ class ControlPlaneNodeConfiguration {
     return ControlPlaneNodeConfiguration(
       administratorConfiguration: (() { final guardedValue = map['administratorConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AdministratorConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       availabilityZones: (() { final guardedValue = map['availabilityZones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      count: pulumi.Input.fromValue(map['count'] as double),
+      count: pulumi.Input.fromValue((map['count'] as num).toDouble()),
       vmSkuName: pulumi.Input.fromValue(map['vmSkuName'] as String),
     );
   }

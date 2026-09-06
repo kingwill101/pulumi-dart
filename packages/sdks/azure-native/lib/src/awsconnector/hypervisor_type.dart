@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum HypervisorType {
+enum HypervisorType implements pulumi.PulumiEnum<String> {
   ovm("ovm"),
   xen("xen");
 
   const HypervisorType(this.wireValue);
+  @override
   final String wireValue;
 
   static HypervisorType fromValue(String value) {

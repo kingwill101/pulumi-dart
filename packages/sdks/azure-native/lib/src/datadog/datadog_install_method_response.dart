@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatadogInstallMethodResponse {
   /// The installer version.
-  final pulumi.Input<String>? installerVersion;
+  final pulumi.Input<String?>? installerVersion;
   /// The tool.
-  final pulumi.Input<String>? tool;
+  final pulumi.Input<String?>? tool;
   /// The tool version.
-  final pulumi.Input<String>? toolVersion;
+  final pulumi.Input<String?>? toolVersion;
 
   /// Creates a new [DatadogInstallMethodResponse].
   /// [installerVersion] The installer version.

@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The disk encryption properties
 class DiskEncryptionPropertiesResponse {
   /// Algorithm identifier for encryption, default RSA-OAEP.
-  final pulumi.Input<String>? encryptionAlgorithm;
+  final pulumi.Input<String?>? encryptionAlgorithm;
   /// Indicates whether or not resource disk encryption is enabled.
-  final pulumi.Input<bool>? encryptionAtHost;
+  final pulumi.Input<bool?>? encryptionAtHost;
   /// Key name that is used for enabling disk encryption.
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// Specific key version that is used for enabling disk encryption.
-  final pulumi.Input<String>? keyVersion;
+  final pulumi.Input<String?>? keyVersion;
   /// Resource ID of Managed Identity that is used to access the key vault.
-  final pulumi.Input<String>? msiResourceId;
+  final pulumi.Input<String?>? msiResourceId;
   /// Base key vault URI where the customers key is located eg. https://myvault.vault.azure.net
-  final pulumi.Input<String>? vaultUri;
+  final pulumi.Input<String?>? vaultUri;
 
   /// Creates a new [DiskEncryptionPropertiesResponse].
   /// [encryptionAlgorithm] Algorithm identifier for encryption, default RSA-OAEP.
@@ -24,14 +24,14 @@ class DiskEncryptionPropertiesResponse {
   /// [keyVersion] Specific key version that is used for enabling disk encryption.
   /// [msiResourceId] Resource ID of Managed Identity that is used to access the key vault.
   /// [vaultUri] Base key vault URI where the customers key is located eg. https://myvault.vault.azure.net
-  const DiskEncryptionPropertiesResponse({
+  DiskEncryptionPropertiesResponse({
     this.encryptionAlgorithm,
-    this.encryptionAtHost,
+    pulumi.Input<bool?>? encryptionAtHost,
     this.keyName,
     this.keyVersion,
     this.msiResourceId,
     this.vaultUri,
-  });
+  }) : encryptionAtHost = encryptionAtHost ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

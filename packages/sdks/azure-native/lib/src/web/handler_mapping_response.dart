@@ -6,11 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// For example, it is used to configure php-cgi.exe process to handle all HTTP requests with *.php extension.
 class HandlerMappingResponse {
   /// Command-line arguments to be passed to the script processor.
-  final pulumi.Input<String>? arguments;
+  final pulumi.Input<String?>? arguments;
   /// Requests with this extension will be handled using the specified FastCGI application.
-  final pulumi.Input<String>? extension;
+  final pulumi.Input<String?>? extension;
   /// The absolute path to the FastCGI application.
-  final pulumi.Input<String>? scriptProcessor;
+  final pulumi.Input<String?>? scriptProcessor;
 
   /// Creates a new [HandlerMappingResponse].
   /// [arguments] Command-line arguments to be passed to the script processor.

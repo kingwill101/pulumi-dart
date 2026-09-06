@@ -10,7 +10,7 @@ class PrivateEndpointConnectionDataModelResponse {
   /// The Name of the Private Endpoint.
   final pulumi.Input<String> name;
   /// The Private Endpoint Connection properties.
-  final pulumi.Input<PrivateEndpointConnectionPropertiesResponse>? properties;
+  final pulumi.Input<PrivateEndpointConnectionPropertiesResponse?>? properties;
   /// Azure resource type
   final pulumi.Input<String> type;
 

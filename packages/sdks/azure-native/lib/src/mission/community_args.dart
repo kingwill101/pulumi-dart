@@ -13,31 +13,31 @@ import 'role_assignment_item.dart';
 /// {@macro pulumi_mission_community_args_doc}
 class CommunityArgs {
   /// Address Space.
-  final pulumi.Input<String>? addressSpace;
+  final pulumi.Input<String?>? addressSpace;
   /// Approval requirements for various actions on the community's resources.
-  final pulumi.Input<ApprovalSettings>? approvalSettings;
+  final pulumi.Input<ApprovalSettings?>? approvalSettings;
   /// The name of the communityResource Resource
-  final pulumi.Input<String>? communityName;
+  final pulumi.Input<String?>? communityName;
   /// Community role assignments
-  final pulumi.Input<List<RoleAssignmentItem>>? communityRoleAssignments;
+  final pulumi.Input<List<RoleAssignmentItem>?>? communityRoleAssignments;
   /// DNS Servers.
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// SKU of the community's Azure Firewall (Basic, Standard, Premium). Standard is the default
-  final pulumi.Input<String>? firewallSku;
+  final pulumi.Input<dynamic>? firewallSku;
   /// List of services governed by a community.
-  final pulumi.Input<List<GovernedServiceItem>>? governedServiceList;
+  final pulumi.Input<List<GovernedServiceItem>?>? governedServiceList;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Maintenance Mode configuration.
-  final pulumi.Input<MaintenanceModeConfigurationModel>? maintenanceModeConfiguration;
+  final pulumi.Input<MaintenanceModeConfigurationModel?>? maintenanceModeConfiguration;
   /// Policy override setting for the community. Specifies whether to apply enclave-specific policies or disable policy enforcement.
-  final pulumi.Input<String>? policyOverride;
+  final pulumi.Input<dynamic>? policyOverride;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CommunityArgs].
   /// [addressSpace] Address Space.
@@ -53,13 +53,13 @@ class CommunityArgs {
   /// [policyOverride] Policy override setting for the community. Specifies whether to apply enclave-specific policies or disable policy enforcement.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  const CommunityArgs({
+  CommunityArgs({
     this.addressSpace,
     this.approvalSettings,
     this.communityName,
     this.communityRoleAssignments,
     this.dnsServers,
-    this.firewallSku,
+    pulumi.Input<dynamic>? firewallSku,
     this.governedServiceList,
     this.identity,
     this.location,
@@ -67,7 +67,7 @@ class CommunityArgs {
     this.policyOverride,
     required this.resourceGroupName,
     this.tags,
-  });
+  }) : firewallSku = firewallSku ?? pulumi.Input.fromValue('Standard');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,12 +94,12 @@ class CommunityArgs {
       communityName: (() { final guardedValue = map['communityName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       communityRoleAssignments: (() { final guardedValue = map['communityRoleAssignments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RoleAssignmentItem>(guardedValue, (value) => RoleAssignmentItem.fromMap((value as Map).cast<String, dynamic>()))); })(),
       dnsServers: (() { final guardedValue = map['dnsServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      firewallSku: (() { final guardedValue = map['firewallSku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      firewallSku: (() { final guardedValue = map['firewallSku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       governedServiceList: (() { final guardedValue = map['governedServiceList']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GovernedServiceItem>(guardedValue, (value) => GovernedServiceItem.fromMap((value as Map).cast<String, dynamic>()))); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maintenanceModeConfiguration: (() { final guardedValue = map['maintenanceModeConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MaintenanceModeConfigurationModel.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      policyOverride: (() { final guardedValue = map['policyOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyOverride: (() { final guardedValue = map['policyOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The RosettaNet ProcessConfiguration activity type.
-enum RosettaNetPipActivityType {
+enum RosettaNetPipActivityType implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueInformationDistribution("InformationDistribution"),
   valueBusinessTransaction("BusinessTransaction"),
@@ -9,6 +11,7 @@ enum RosettaNetPipActivityType {
   valueRequestResponse("RequestResponse");
 
   const RosettaNetPipActivityType(this.wireValue);
+  @override
   final String wireValue;
 
   static RosettaNetPipActivityType fromValue(String value) {

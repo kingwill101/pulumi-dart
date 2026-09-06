@@ -7,25 +7,25 @@ import 'system_data_response.dart';
 /// Result data returned by getConnectionType.
 class GetConnectionTypeResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Gets the creation time.
-  final String creationTime;
+  final String? creationTime;
   /// Gets or sets the description.
   final String? description;
   /// Gets the field definitions of the connection type.
-  final Map<String, FieldDefinitionResponse> fieldDefinitions;
+  final Map<String, FieldDefinitionResponse>? fieldDefinitions;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Gets or sets a Boolean value to indicate if the connection type is global.
   final bool? isGlobal;
   /// Gets or sets the last modified time.
   final String? lastModifiedTime;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetConnectionTypeResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -39,45 +39,45 @@ class GetConnectionTypeResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetConnectionTypeResult({
-    required this.azureApiVersion,
-    required this.creationTime,
+    this.azureApiVersion,
+    this.creationTime,
     this.description,
-    required this.fieldDefinitions,
-    required this.id,
+    this.fieldDefinitions,
+    this.id,
     this.isGlobal,
     this.lastModifiedTime,
-    required this.name,
-    required this.systemData,
-    required this.type,
+    this.name,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'creationTime': creationTime,
+      'azureApiVersion': ?azureApiVersion,
+      'creationTime': ?creationTime,
       'description': ?description,
-      'fieldDefinitions': pulumi.Input.encodeMapValues<FieldDefinitionResponse, Map<String, dynamic>>(fieldDefinitions, (value) => value.toMap()),
-      'id': id,
+      'fieldDefinitions': ?(() { final guardedValue = fieldDefinitions; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<FieldDefinitionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
       'isGlobal': ?isGlobal,
       'lastModifiedTime': ?lastModifiedTime,
-      'name': name,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'name': ?name,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetConnectionTypeResult.fromMap(Map<String, dynamic> map) {
     return GetConnectionTypeResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      creationTime: map['creationTime'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      fieldDefinitions: pulumi.Input.decodeMapValues<FieldDefinitionResponse>(map['fieldDefinitions']!, (value) => FieldDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
+      fieldDefinitions: (() { final guardedValue = map['fieldDefinitions']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<FieldDefinitionResponse>(guardedValue, (value) => FieldDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isGlobal: (() { final guardedValue = map['isGlobal']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

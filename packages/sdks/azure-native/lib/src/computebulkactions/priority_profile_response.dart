@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Contains properties that are applicable to both Spot and Regular.
 class PriorityProfileResponse {
   /// Allocation strategy to follow when determining the VM sizes distribution.
-  final pulumi.Input<String>? allocationStrategy;
+  final pulumi.Input<String?>? allocationStrategy;
   /// Eviction Policy to follow when evicting Spot VMs.
-  final pulumi.Input<String>? evictionPolicy;
+  final pulumi.Input<String?>? evictionPolicy;
   /// Price per hour of each Spot VM will never exceed this.
-  final pulumi.Input<double>? maxPricePerVM;
+  final pulumi.Input<double?>? maxPricePerVM;
   /// Specifies the type of Virtual Machine.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [PriorityProfileResponse].
   /// [allocationStrategy] Allocation strategy to follow when determining the VM sizes distribution.
@@ -38,7 +38,7 @@ class PriorityProfileResponse {
     return PriorityProfileResponse(
       allocationStrategy: (() { final guardedValue = map['allocationStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       evictionPolicy: (() { final guardedValue = map['evictionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxPricePerVM: (() { final guardedValue = map['maxPricePerVM']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maxPricePerVM: (() { final guardedValue = map['maxPricePerVM']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

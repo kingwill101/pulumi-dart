@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The next traffic region.
-enum TrafficRegionCategory {
+enum TrafficRegionCategory implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   canary("Canary"),
   lowTraffic("LowTraffic"),
@@ -10,6 +12,7 @@ enum TrafficRegionCategory {
   restOfTheWorldGroupTwo("RestOfTheWorldGroupTwo");
 
   const TrafficRegionCategory(this.wireValue);
+  @override
   final String wireValue;
 
   static TrafficRegionCategory fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The mapping between a particular client IP and the type of access client has on the NFS share.
 class ClientAccessRight {
   /// Type of access to be allowed for the client.
-  final pulumi.Input<String> accessPermission;
+  final pulumi.Input<dynamic> accessPermission;
   /// IP of the client.
   final pulumi.Input<String> client;
 
@@ -26,7 +26,7 @@ class ClientAccessRight {
 
   factory ClientAccessRight.fromMap(Map<String, dynamic> map) {
     return ClientAccessRight(
-      accessPermission: pulumi.Input.fromValue(map['accessPermission'] as String),
+      accessPermission: pulumi.Input.fromValue(map['accessPermission']),
       client: pulumi.Input.fromValue(map['client'] as String),
     );
   }

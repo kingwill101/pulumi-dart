@@ -6,7 +6,7 @@ import 'process_name_filter.dart';
 /// DependencyProcessFilter model
 class DependencyProcessFilter {
   /// Process name filter
-  final pulumi.Input<ProcessNameFilter>? processNameFilter;
+  final pulumi.Input<ProcessNameFilter?>? processNameFilter;
 
   /// Creates a new [DependencyProcessFilter].
   /// [processNameFilter] Process name filter

@@ -12,31 +12,31 @@ import 'sku.dart';
 /// {@macro pulumi_solutions_application_args_doc}
 class ApplicationArgs {
   /// The fully qualified path of managed application definition Id.
-  final pulumi.Input<String>? applicationDefinitionId;
+  final pulumi.Input<String?>? applicationDefinitionId;
   /// The name of the managed application.
-  final pulumi.Input<String>? applicationName;
+  final pulumi.Input<String?>? applicationName;
   /// The identity of the resource.
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// The managed application Jit access policy.
-  final pulumi.Input<ApplicationJitAccessPolicy>? jitAccessPolicy;
+  final pulumi.Input<ApplicationJitAccessPolicy?>? jitAccessPolicy;
   /// The kind of the managed application. Allowed values are MarketPlace and ServiceCatalog.
   final pulumi.Input<String> kind;
   /// Resource location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// ID of the resource that manages this resource.
-  final pulumi.Input<String>? managedBy;
+  final pulumi.Input<String?>? managedBy;
   /// The managed resource group Id.
-  final pulumi.Input<String>? managedResourceGroupId;
+  final pulumi.Input<String?>? managedResourceGroupId;
   /// Name and value pairs that define the managed application parameters. It can be a JObject or a well formed JSON string.
   final pulumi.Input<dynamic>? parameters;
   /// The plan information.
-  final pulumi.Input<Plan>? plan;
+  final pulumi.Input<Plan?>? plan;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU of the resource.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ApplicationArgs].
   /// [applicationDefinitionId] The fully qualified path of managed application definition Id.

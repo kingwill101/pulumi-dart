@@ -16,27 +16,27 @@ class GetManagedInstanceResult {
   /// The managed instance's authentication metadata lookup mode.
   final String? authenticationMetadata;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Collation of the managed instance.
   final String? collation;
   /// Specifies the point in time (ISO8601 format) of the Managed Instance creation.
-  final String createTime;
+  final String? createTime;
   /// The storage account type used to store backups for this instance. The options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage), Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
-  final String currentBackupStorageRedundancy;
+  final String? currentBackupStorageRedundancy;
   /// Specifies the internal format of instance databases specific to the SQL engine version.
   final String? databaseFormat;
   /// The Dns Zone that the managed instance is in.
-  final String dnsZone;
+  final String? dnsZone;
   /// Status of external governance.
-  final String externalGovernanceStatus;
+  final String? externalGovernanceStatus;
   /// The fully qualified domain name of the managed instance.
-  final String fullyQualifiedDomainName;
+  final String? fullyQualifiedDomainName;
   /// Hybrid secondary usage. Possible values are 'Active' (default value) and 'Passive' (customer uses the secondary as Passive DR).
   final String? hybridSecondaryUsage;
   /// Hybrid secondary usage detected. Possible values are 'Active' (customer does not meet the requirements to use the secondary as Passive DR) and 'Passive' (customer meets the requirements to use the secondary as Passive DR).
-  final String hybridSecondaryUsageDetected;
+  final String? hybridSecondaryUsageDetected;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// The Azure Active Directory identity of the managed instance.
   final ResourceIdentityResponse? identity;
   /// The Id of the instance pool this managed server belongs to.
@@ -48,21 +48,21 @@ class GetManagedInstanceResult {
   /// The license type. Possible values are 'LicenseIncluded' (regular price inclusive of a new SQL license) and 'BasePrice' (discounted AHB price for bringing your own SQL licenses).
   final String? licenseType;
   /// Resource location.
-  final String location;
+  final String? location;
   /// Specifies maintenance configuration id to apply to this managed instance.
   final String? maintenanceConfigurationId;
   /// Minimal TLS version. Allowed values: 'None', '1.0', '1.1', '1.2'
   final String? minimalTlsVersion;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Pricing model of Managed Instance.
   final String? pricingModel;
   /// The resource id of a user assigned identity to be used by default.
   final String? primaryUserAssignedIdentityId;
   /// List of private endpoint connections on a managed instance.
-  final List<ManagedInstancePecPropertyResponse> privateEndpointConnections;
+  final List<ManagedInstancePecPropertyResponse>? privateEndpointConnections;
   /// Provisioning state of managed instance.
-  final String provisioningState;
+  final String? provisioningState;
   /// Connection type used for connecting to the instance.
   final String? proxyOverride;
   /// Whether or not the public data endpoint is enabled.
@@ -74,7 +74,7 @@ class GetManagedInstanceResult {
   /// Managed instance SKU. Allowed values for sku.name: GP_Gen5, GP_G8IM, GP_G8IH, BC_Gen5, BC_G8IM, BC_G8IH
   final SkuResponse? sku;
   /// The state of the managed instance.
-  final String state;
+  final String? state;
   /// Storage IOps. Minimum value: 300. Maximum value: 80000. Increments of 1 IOps allowed only. Maximum value depends on the selected hardware family and number of vCores.
   final int? storageIOps;
   /// Storage size in GB. Minimum value: 32. Maximum value: 16384. Increments of 32 GB allowed only. Maximum value depends on the selected hardware family and number of vCores.
@@ -93,11 +93,11 @@ class GetManagedInstanceResult {
   /// An example of valid timezone id is "Pacific Standard Time" or "W. Europe Standard Time".
   final String? timezoneId;
   /// Resource type.
-  final String type;
+  final String? type;
   /// The number of vCores. Allowed values: 8, 16, 24, 32, 40, 64, 80.
   final int? vCores;
   /// Virtual cluster resource id for the Managed Instance.
-  final String virtualClusterId;
+  final String? virtualClusterId;
   /// Whether or not the multi-az is enabled.
   final bool? zoneRedundant;
 
@@ -149,45 +149,45 @@ class GetManagedInstanceResult {
     this.administratorLogin,
     this.administrators,
     this.authenticationMetadata,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.collation,
-    required this.createTime,
-    required this.currentBackupStorageRedundancy,
+    this.createTime,
+    this.currentBackupStorageRedundancy,
     this.databaseFormat,
-    required this.dnsZone,
-    required this.externalGovernanceStatus,
-    required this.fullyQualifiedDomainName,
+    this.dnsZone,
+    this.externalGovernanceStatus,
+    this.fullyQualifiedDomainName,
     this.hybridSecondaryUsage,
-    required this.hybridSecondaryUsageDetected,
-    required this.id,
+    this.hybridSecondaryUsageDetected,
+    this.id,
     this.identity,
     this.instancePoolId,
     this.isGeneralPurposeV2,
     this.keyId,
     this.licenseType,
-    required this.location,
+    this.location,
     this.maintenanceConfigurationId,
     this.minimalTlsVersion,
-    required this.name,
+    this.name,
     this.pricingModel,
     this.primaryUserAssignedIdentityId,
-    required this.privateEndpointConnections,
-    required this.provisioningState,
+    this.privateEndpointConnections,
+    this.provisioningState,
     this.proxyOverride,
     this.publicDataEndpointEnabled,
     this.requestedBackupStorageRedundancy,
     this.servicePrincipal,
     this.sku,
-    required this.state,
+    this.state,
     this.storageIOps,
     this.storageSizeInGB,
     this.storageThroughputMBps,
     this.subnetId,
     this.tags,
     this.timezoneId,
-    required this.type,
+    this.type,
     this.vCores,
-    required this.virtualClusterId,
+    this.virtualClusterId,
     this.zoneRedundant,
   });
 
@@ -196,45 +196,45 @@ class GetManagedInstanceResult {
       'administratorLogin': ?administratorLogin,
       'administrators': ?administrators?.toMap(),
       'authenticationMetadata': ?authenticationMetadata,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'collation': ?collation,
-      'createTime': createTime,
-      'currentBackupStorageRedundancy': currentBackupStorageRedundancy,
+      'createTime': ?createTime,
+      'currentBackupStorageRedundancy': ?currentBackupStorageRedundancy,
       'databaseFormat': ?databaseFormat,
-      'dnsZone': dnsZone,
-      'externalGovernanceStatus': externalGovernanceStatus,
-      'fullyQualifiedDomainName': fullyQualifiedDomainName,
+      'dnsZone': ?dnsZone,
+      'externalGovernanceStatus': ?externalGovernanceStatus,
+      'fullyQualifiedDomainName': ?fullyQualifiedDomainName,
       'hybridSecondaryUsage': ?hybridSecondaryUsage,
-      'hybridSecondaryUsageDetected': hybridSecondaryUsageDetected,
-      'id': id,
+      'hybridSecondaryUsageDetected': ?hybridSecondaryUsageDetected,
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'instancePoolId': ?instancePoolId,
       'isGeneralPurposeV2': ?isGeneralPurposeV2,
       'keyId': ?keyId,
       'licenseType': ?licenseType,
-      'location': location,
+      'location': ?location,
       'maintenanceConfigurationId': ?maintenanceConfigurationId,
       'minimalTlsVersion': ?minimalTlsVersion,
-      'name': name,
+      'name': ?name,
       'pricingModel': ?pricingModel,
       'primaryUserAssignedIdentityId': ?primaryUserAssignedIdentityId,
-      'privateEndpointConnections': pulumi.Input.encodeList<ManagedInstancePecPropertyResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
-      'provisioningState': provisioningState,
+      'privateEndpointConnections': ?(() { final guardedValue = privateEndpointConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<ManagedInstancePecPropertyResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'provisioningState': ?provisioningState,
       'proxyOverride': ?proxyOverride,
       'publicDataEndpointEnabled': ?publicDataEndpointEnabled,
       'requestedBackupStorageRedundancy': ?requestedBackupStorageRedundancy,
       'servicePrincipal': ?servicePrincipal?.toMap(),
       'sku': ?sku?.toMap(),
-      'state': state,
+      'state': ?state,
       'storageIOps': ?storageIOps,
       'storageSizeInGB': ?storageSizeInGB,
       'storageThroughputMBps': ?storageThroughputMBps,
       'subnetId': ?subnetId,
       'tags': ?tags,
       'timezoneId': ?timezoneId,
-      'type': type,
+      'type': ?type,
       'vCores': ?vCores,
-      'virtualClusterId': virtualClusterId,
+      'virtualClusterId': ?virtualClusterId,
       'zoneRedundant': ?zoneRedundant,
     };
   }
@@ -244,45 +244,45 @@ class GetManagedInstanceResult {
       administratorLogin: (() { final guardedValue = map['administratorLogin']; if (guardedValue == null) return null; return guardedValue as String; })(),
       administrators: (() { final guardedValue = map['administrators']; if (guardedValue == null) return null; return ManagedInstanceExternalAdministratorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       authenticationMetadata: (() { final guardedValue = map['authenticationMetadata']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       collation: (() { final guardedValue = map['collation']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      createTime: map['createTime'] as String,
-      currentBackupStorageRedundancy: map['currentBackupStorageRedundancy'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      currentBackupStorageRedundancy: (() { final guardedValue = map['currentBackupStorageRedundancy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       databaseFormat: (() { final guardedValue = map['databaseFormat']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      dnsZone: map['dnsZone'] as String,
-      externalGovernanceStatus: map['externalGovernanceStatus'] as String,
-      fullyQualifiedDomainName: map['fullyQualifiedDomainName'] as String,
+      dnsZone: (() { final guardedValue = map['dnsZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      externalGovernanceStatus: (() { final guardedValue = map['externalGovernanceStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      fullyQualifiedDomainName: (() { final guardedValue = map['fullyQualifiedDomainName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       hybridSecondaryUsage: (() { final guardedValue = map['hybridSecondaryUsage']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      hybridSecondaryUsageDetected: map['hybridSecondaryUsageDetected'] as String,
-      id: map['id'] as String,
+      hybridSecondaryUsageDetected: (() { final guardedValue = map['hybridSecondaryUsageDetected']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       instancePoolId: (() { final guardedValue = map['instancePoolId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isGeneralPurposeV2: (() { final guardedValue = map['isGeneralPurposeV2']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       keyId: (() { final guardedValue = map['keyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      location: map['location'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       maintenanceConfigurationId: (() { final guardedValue = map['maintenanceConfigurationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       minimalTlsVersion: (() { final guardedValue = map['minimalTlsVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pricingModel: (() { final guardedValue = map['pricingModel']; if (guardedValue == null) return null; return guardedValue as String; })(),
       primaryUserAssignedIdentityId: (() { final guardedValue = map['primaryUserAssignedIdentityId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      privateEndpointConnections: pulumi.Input.decodeList<ManagedInstancePecPropertyResponse>(map['privateEndpointConnections']!, (value) => ManagedInstancePecPropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
+      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedInstancePecPropertyResponse>(guardedValue, (value) => ManagedInstancePecPropertyResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       proxyOverride: (() { final guardedValue = map['proxyOverride']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publicDataEndpointEnabled: (() { final guardedValue = map['publicDataEndpointEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       requestedBackupStorageRedundancy: (() { final guardedValue = map['requestedBackupStorageRedundancy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       servicePrincipal: (() { final guardedValue = map['servicePrincipal']; if (guardedValue == null) return null; return ServicePrincipalResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      state: map['state'] as String,
-      storageIOps: (() { final guardedValue = map['storageIOps']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      storageSizeInGB: (() { final guardedValue = map['storageSizeInGB']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      storageThroughputMBps: (() { final guardedValue = map['storageThroughputMBps']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageIOps: (() { final guardedValue = map['storageIOps']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      storageSizeInGB: (() { final guardedValue = map['storageSizeInGB']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      storageThroughputMBps: (() { final guardedValue = map['storageThroughputMBps']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       timezoneId: (() { final guardedValue = map['timezoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
-      vCores: (() { final guardedValue = map['vCores']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      virtualClusterId: map['virtualClusterId'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vCores: (() { final guardedValue = map['vCores']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      virtualClusterId: (() { final guardedValue = map['virtualClusterId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       zoneRedundant: (() { final guardedValue = map['zoneRedundant']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }

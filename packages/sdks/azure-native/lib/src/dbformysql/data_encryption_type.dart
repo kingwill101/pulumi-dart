@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The key type, AzureKeyVault for enable cmk, SystemManaged for disable cmk.
-enum DataEncryptionType {
+enum DataEncryptionType implements pulumi.PulumiEnum<String> {
   valueAzureKeyVault("AzureKeyVault"),
   valueSystemManaged("SystemManaged");
 
   const DataEncryptionType(this.wireValue);
+  @override
   final String wireValue;
 
   static DataEncryptionType fromValue(String value) {

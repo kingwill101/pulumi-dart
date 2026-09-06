@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Determines the authorization status of requests.
-enum QuickStartTemplateType {
+enum QuickStartTemplateType implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueHCI("HCI"),
   valueHCIAKS("HCIAKS"),
@@ -7,6 +9,7 @@ enum QuickStartTemplateType {
   valueALL("ALL");
 
   const QuickStartTemplateType(this.wireValue);
+  @override
   final String wireValue;
 
   static QuickStartTemplateType fromValue(String value) {

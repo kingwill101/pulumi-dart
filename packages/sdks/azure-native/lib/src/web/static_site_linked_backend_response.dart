@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Static Site Linked Backend ARM resource.
 class StaticSiteLinkedBackendResponse {
   /// The resource id of the backend linked to the static site
-  final pulumi.Input<String>? backendResourceId;
+  final pulumi.Input<String?>? backendResourceId;
   /// The date and time on which the backend was linked to the static site.
   final pulumi.Input<String> createdOn;
   /// The provisioning state of the linking process.
   final pulumi.Input<String> provisioningState;
   /// The region of the backend linked to the static site
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [StaticSiteLinkedBackendResponse].
   /// [backendResourceId] The resource id of the backend linked to the static site

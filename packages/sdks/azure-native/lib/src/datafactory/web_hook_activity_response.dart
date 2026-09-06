@@ -9,13 +9,13 @@ import 'web_activity_authentication_response.dart';
 /// WebHook activity.
 class WebHookActivityResponse {
   /// Authentication method used for calling the endpoint.
-  final pulumi.Input<WebActivityAuthenticationResponse>? authentication;
+  final pulumi.Input<WebActivityAuthenticationResponse?>? authentication;
   /// Represents the payload that will be sent to the endpoint. Required for POST/PUT method, not allowed for GET method Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? body;
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? headers;
   /// Rest API method for target endpoint.
@@ -23,22 +23,22 @@ class WebHookActivityResponse {
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<String?>? onInactiveMarkAs;
   /// Activity policy.
-  final pulumi.Input<SecureInputOutputPolicyResponse>? policy;
+  final pulumi.Input<SecureInputOutputPolicyResponse?>? policy;
   /// When set to true, statusCode, output and error in callback request body will be consumed by activity. The activity can be marked as failed by setting statusCode &gt;= 400 in callback request. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? reportStatusOnCallBack;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The timeout within which the webhook should be called back. If there is no value specified, it defaults to 10 minutes. Type: string. Pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
   /// Type of activity.
   /// Expected value is 'WebHook'.
   final pulumi.Input<String> type;
   /// WebHook activity target endpoint and path. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> url;
   /// Activity user properties.
-  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>?>? userProperties;
 
   /// Creates a new [WebHookActivityResponse].
   /// [authentication] Authentication method used for calling the endpoint.

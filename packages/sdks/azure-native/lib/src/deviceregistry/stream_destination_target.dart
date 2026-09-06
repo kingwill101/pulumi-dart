@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Target destination.
-enum StreamDestinationTarget {
+enum StreamDestinationTarget implements pulumi.PulumiEnum<String> {
   mqtt("Mqtt"),
   storage("Storage");
 
   const StreamDestinationTarget(this.wireValue);
+  @override
   final String wireValue;
 
   static StreamDestinationTarget fromValue(String value) {

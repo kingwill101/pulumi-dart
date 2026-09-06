@@ -11,7 +11,7 @@ class StorageApplianceConfigurationDataResponse {
   /// The serial number of the appliance.
   final pulumi.Input<String> serialNumber;
   /// The user-provided name for the storage appliance that will be created from this specification.
-  final pulumi.Input<String>? storageApplianceName;
+  final pulumi.Input<String?>? storageApplianceName;
 
   /// Creates a new [StorageApplianceConfigurationDataResponse].
   /// [adminCredentials] The credentials of the administrative interface on this storage appliance. The password field is expected to be an Azure Key Vault key URL. Until the cluster is converted to utilize managed identity by setting the secret archive settings, the actual password value should be provided instead.
@@ -37,7 +37,7 @@ class StorageApplianceConfigurationDataResponse {
   factory StorageApplianceConfigurationDataResponse.fromMap(Map<String, dynamic> map) {
     return StorageApplianceConfigurationDataResponse(
       adminCredentials: pulumi.Input.fromValue(AdministrativeCredentialsResponse.fromMap((map['adminCredentials']! as Map).cast<String, dynamic>())),
-      rackSlot: pulumi.Input.fromValue(map['rackSlot'] as double),
+      rackSlot: pulumi.Input.fromValue((map['rackSlot'] as num).toDouble()),
       serialNumber: pulumi.Input.fromValue(map['serialNumber'] as String),
       storageApplianceName: (() { final guardedValue = map['storageApplianceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

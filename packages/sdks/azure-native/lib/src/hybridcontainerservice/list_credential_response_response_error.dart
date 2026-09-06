@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ListCredentialResponseResponseError {
-  final pulumi.Input<String>? code;
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? code;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [ListCredentialResponseResponseError].
   /// [code] Optional.

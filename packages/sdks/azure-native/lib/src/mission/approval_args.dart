@@ -10,23 +10,23 @@ import 'request_metadata.dart';
 /// {@macro pulumi_mission_approval_args_doc}
 class ApprovalArgs {
   /// The name of the approvals resource.
-  final pulumi.Input<String>? approvalName;
+  final pulumi.Input<String?>? approvalName;
   /// List of approvers for the approval request
-  final pulumi.Input<List<Approver>>? approvers;
+  final pulumi.Input<List<Approver>?>? approvers;
   /// Approval request creation time
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Parameter for optimizing query results
-  final pulumi.Input<String>? grandparentResourceId;
+  final pulumi.Input<String?>? grandparentResourceId;
   /// Parameter for optimizing query results
-  final pulumi.Input<String>? parentResourceId;
+  final pulumi.Input<String?>? parentResourceId;
   /// Request metadata for the approval request.
   final pulumi.Input<RequestMetadata> requestMetadata;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
   /// Approval request state change time, time at which approval request state changed from pending to approved or rejected.
-  final pulumi.Input<String>? stateChangedAt;
+  final pulumi.Input<String?>? stateChangedAt;
   /// Ticket ID for the approval request
-  final pulumi.Input<String>? ticketId;
+  final pulumi.Input<String?>? ticketId;
 
   /// Creates a new [ApprovalArgs].
   /// [approvalName] The name of the approvals resource.

@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies whether the Auxiliary mode is enabled for the Network Interface
 /// resource.
-enum NetworkInterfaceAuxiliaryMode {
+enum NetworkInterfaceAuxiliaryMode implements pulumi.PulumiEnum<String> {
   none("None"),
   acceleratedConnections("AcceleratedConnections"),
   floating("Floating");
 
   const NetworkInterfaceAuxiliaryMode(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkInterfaceAuxiliaryMode fromValue(String value) {

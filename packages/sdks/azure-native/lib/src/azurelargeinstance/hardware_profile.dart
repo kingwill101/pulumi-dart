@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies the hardware settings for the Azure Large Instance.
 class HardwareProfile {
   /// Specifies the Azure Large Instance SKU.
-  final pulumi.Input<String>? azureLargeInstanceSize;
+  final pulumi.Input<dynamic>? azureLargeInstanceSize;
   /// Name of the hardware type (vendor and/or their product name)
-  final pulumi.Input<String>? hardwareType;
+  final pulumi.Input<dynamic>? hardwareType;
 
   /// Creates a new [HardwareProfile].
   /// [azureLargeInstanceSize] Specifies the Azure Large Instance SKU.
@@ -26,8 +26,8 @@ class HardwareProfile {
 
   factory HardwareProfile.fromMap(Map<String, dynamic> map) {
     return HardwareProfile(
-      azureLargeInstanceSize: (() { final guardedValue = map['azureLargeInstanceSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      hardwareType: (() { final guardedValue = map['hardwareType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      azureLargeInstanceSize: (() { final guardedValue = map['azureLargeInstanceSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      hardwareType: (() { final guardedValue = map['hardwareType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

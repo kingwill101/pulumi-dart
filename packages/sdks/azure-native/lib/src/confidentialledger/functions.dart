@@ -24,6 +24,17 @@ Future<GetLedgerResult> getLedger(
   return GetLedgerResult.fromMap(result);
 }
 
+pulumi.Output<GetLedgerResult> getLedgerOutput(
+  GetLedgerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:confidentialledger:getLedger',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLedgerResult.fromMap);
+}
+
 /// Retrieves the properties of a Managed CCF app.
 ///
 /// Uses Azure REST API version 2023-06-28-preview.
@@ -42,4 +53,15 @@ Future<GetManagedCCFResult> getManagedCCF(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedCCFResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedCCFResult> getManagedCCFOutput(
+  GetManagedCCFArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:confidentialledger:getManagedCCF',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedCCFResult.fromMap);
 }

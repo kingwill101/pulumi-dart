@@ -6,9 +6,9 @@ import 'sync_group_schema_table_column_response.dart';
 /// Properties of table in sync group schema.
 class SyncGroupSchemaTableResponse {
   /// List of columns in sync group schema.
-  final pulumi.Input<List<SyncGroupSchemaTableColumnResponse>>? columns;
+  final pulumi.Input<List<SyncGroupSchemaTableColumnResponse>?>? columns;
   /// Quoted name of sync group schema table.
-  final pulumi.Input<String>? quotedName;
+  final pulumi.Input<String?>? quotedName;
 
   /// Creates a new [SyncGroupSchemaTableResponse].
   /// [columns] List of columns in sync group schema.

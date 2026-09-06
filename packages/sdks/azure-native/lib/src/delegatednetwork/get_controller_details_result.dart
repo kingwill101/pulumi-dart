@@ -4,29 +4,29 @@
 /// Result data returned by getControllerDetails.
 class GetControllerDetailsResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// dnc application id should be used by customer to authenticate with dnc gateway.
-  final String dncAppId;
+  final String? dncAppId;
   /// dnc endpoint url that customers can use to connect to
-  final String dncEndpoint;
+  final String? dncEndpoint;
   /// tenant id of dnc application id
-  final String dncTenantId;
+  final String? dncTenantId;
   /// An identifier that represents the resource.
-  final String id;
+  final String? id;
   /// Location of the resource.
   final String? location;
   /// The name of the resource.
-  final String name;
+  final String? name;
   /// The current state of dnc controller resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The purpose of the dnc controller resource.
   final String? purpose;
   /// Resource guid.
-  final String resourceGuid;
+  final String? resourceGuid;
   /// The resource tags.
   final Map<String, String>? tags;
   /// The type of resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetControllerDetailsResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -41,52 +41,52 @@ class GetControllerDetailsResult {
   /// [resourceGuid] Resource guid.
   /// [tags] The resource tags.
   /// [type] The type of resource.
-  const GetControllerDetailsResult({
-    required this.azureApiVersion,
-    required this.dncAppId,
-    required this.dncEndpoint,
-    required this.dncTenantId,
-    required this.id,
+  GetControllerDetailsResult({
+    this.azureApiVersion,
+    this.dncAppId,
+    this.dncEndpoint,
+    this.dncTenantId,
+    this.id,
     this.location,
-    required this.name,
-    required this.provisioningState,
-    this.purpose,
-    required this.resourceGuid,
+    this.name,
+    this.provisioningState,
+    String? purpose,
+    this.resourceGuid,
     this.tags,
-    required this.type,
-  });
+    this.type,
+  }) : purpose = purpose ?? 'prod';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'dncAppId': dncAppId,
-      'dncEndpoint': dncEndpoint,
-      'dncTenantId': dncTenantId,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'dncAppId': ?dncAppId,
+      'dncEndpoint': ?dncEndpoint,
+      'dncTenantId': ?dncTenantId,
+      'id': ?id,
       'location': ?location,
-      'name': name,
-      'provisioningState': provisioningState,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'purpose': ?purpose,
-      'resourceGuid': resourceGuid,
+      'resourceGuid': ?resourceGuid,
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetControllerDetailsResult.fromMap(Map<String, dynamic> map) {
     return GetControllerDetailsResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      dncAppId: map['dncAppId'] as String,
-      dncEndpoint: map['dncEndpoint'] as String,
-      dncTenantId: map['dncTenantId'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dncAppId: (() { final guardedValue = map['dncAppId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dncEndpoint: (() { final guardedValue = map['dncEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dncTenantId: (() { final guardedValue = map['dncTenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       purpose: (() { final guardedValue = map['purpose']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      resourceGuid: map['resourceGuid'] as String,
+      resourceGuid: (() { final guardedValue = map['resourceGuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

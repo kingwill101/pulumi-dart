@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The scale down mode to use when scaling the Agent Pool. This also effects the cluster autoscaler behavior. If not specified, it defaults to Delete.
-enum ScaleDownMode {
+enum ScaleDownMode implements pulumi.PulumiEnum<String> {
   valueDelete("Delete"),
   valueDeallocate("Deallocate");
 
   const ScaleDownMode(this.wireValue);
+  @override
   final String wireValue;
 
   static ScaleDownMode fromValue(String value) {

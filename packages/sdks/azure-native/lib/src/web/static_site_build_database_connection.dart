@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'static_site_build_database_connection_args.dart';
+import 'static_site_database_connection_configuration_file_overview_response.dart';
 import 'system_data_response.dart';
 
 /// Static Site Database Connection resource.
@@ -188,7 +189,7 @@ class StaticSiteBuildDatabaseConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// A list of configuration files associated with this database connection.
-  late final pulumi.Output<List<Map<String, dynamic>>> configurationFiles;
+  late final pulumi.Output<List<StaticSiteDatabaseConnectionConfigurationFileOverviewResponse>> configurationFiles;
   /// If present, the identity is used in conjunction with connection string to connect to the database. Use of the system-assigned managed identity is indicated with the string 'SystemAssigned', while use of a user-assigned managed identity is indicated with the resource id of the managed identity resource.
   late final pulumi.Output<String?> connectionIdentity;
   /// The connection string to use to connect to the database.
@@ -221,7 +222,28 @@ class StaticSiteBuildDatabaseConnection extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    configurationFiles = registerOutput<List<Map<String, dynamic>>>('configurationFiles');
+    configurationFiles = registerOutput<List<StaticSiteDatabaseConnectionConfigurationFileOverviewResponse>>('configurationFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StaticSiteDatabaseConnectionConfigurationFileOverviewResponse>(guardedValue, (value) => StaticSiteDatabaseConnectionConfigurationFileOverviewResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    connectionIdentity = registerOutput<String?>('connectionIdentity');
+    connectionString = registerOutput<String?>('connectionString');
+    kind = registerOutput<String?>('kind');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    resourceId = registerOutput<String>('resourceId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [StaticSiteBuildDatabaseConnection] resource.
+  StaticSiteBuildDatabaseConnection.reference(String urn)
+    : super(
+        'azure-native:web:StaticSiteBuildDatabaseConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationFiles = registerOutput<List<StaticSiteDatabaseConnectionConfigurationFileOverviewResponse>>('configurationFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StaticSiteDatabaseConnectionConfigurationFileOverviewResponse>(guardedValue, (value) => StaticSiteDatabaseConnectionConfigurationFileOverviewResponse.fromMap((value as Map).cast<String, dynamic>())); });
     connectionIdentity = registerOutput<String?>('connectionIdentity');
     connectionString = registerOutput<String?>('connectionString');
     kind = registerOutput<String?>('kind');

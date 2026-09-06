@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Get Data Plane read only token request definition.
 class UserAccessPolicyResponse {
   /// The resource path to get access relative to factory. Currently only empty string is supported which corresponds to the factory resource.
-  final pulumi.Input<String>? accessResourcePath;
+  final pulumi.Input<String?>? accessResourcePath;
   /// Expiration time for the token. Maximum duration for the token is eight hours and by default the token will expire in eight hours.
-  final pulumi.Input<String>? expireTime;
+  final pulumi.Input<String?>? expireTime;
   /// The string with permissions for Data Plane access. Currently only 'r' is supported which grants read only access.
-  final pulumi.Input<String>? permissions;
+  final pulumi.Input<String?>? permissions;
   /// The name of the profile. Currently only the default is supported. The default value is DefaultProfile.
-  final pulumi.Input<String>? profileName;
+  final pulumi.Input<String?>? profileName;
   /// Start time for the token. If not specified the current time will be used.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [UserAccessPolicyResponse].
   /// [accessResourcePath] The resource path to get access relative to factory. Currently only empty string is supported which corresponds to the factory resource.

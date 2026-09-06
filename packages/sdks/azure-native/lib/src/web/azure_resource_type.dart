@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Azure resource type.
-enum AzureResourceType {
+enum AzureResourceType implements pulumi.PulumiEnum<String> {
   valueWebsite("Website"),
   valueTrafficManager("TrafficManager");
 
   const AzureResourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureResourceType fromValue(String value) {

@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_machinelearningservices_list_featureset_version_materialization_jobs_args_doc}
 class ListFeaturesetVersionMaterializationJobsArgs {
   /// End time of the feature window to filter materialization jobs.
-  final pulumi.Input<String>? featureWindowEnd;
+  final pulumi.Input<String?>? featureWindowEnd;
   /// Start time of the feature window to filter materialization jobs.
-  final pulumi.Input<String>? featureWindowStart;
+  final pulumi.Input<String?>? featureWindowStart;
   /// Comma-separated list of tag names (and optionally values). Example: tag1,tag2=value2
-  final pulumi.Input<String>? filters;
+  final pulumi.Input<String?>? filters;
   /// Container name. This is case-sensitive.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Continuation token for pagination.
-  final pulumi.Input<String>? skip;
+  final pulumi.Input<String?>? skip;
   /// Version identifier. This is case-sensitive.
   final pulumi.Input<String> version;
   /// Name of Azure Machine Learning workspace.

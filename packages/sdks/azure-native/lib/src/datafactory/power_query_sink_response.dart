@@ -8,21 +8,21 @@ import 'linked_service_reference_response.dart';
 /// Power query sink.
 class PowerQuerySinkResponse {
   /// Dataset reference.
-  final pulumi.Input<DatasetReferenceResponse>? dataset;
+  final pulumi.Input<DatasetReferenceResponse?>? dataset;
   /// Transformation description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Flowlet Reference
-  final pulumi.Input<DataFlowReferenceResponse>? flowlet;
+  final pulumi.Input<DataFlowReferenceResponse?>? flowlet;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReferenceResponse>? linkedService;
+  final pulumi.Input<LinkedServiceReferenceResponse?>? linkedService;
   /// Transformation name.
   final pulumi.Input<String> name;
   /// Rejected data linked service reference.
-  final pulumi.Input<LinkedServiceReferenceResponse>? rejectedDataLinkedService;
+  final pulumi.Input<LinkedServiceReferenceResponse?>? rejectedDataLinkedService;
   /// Schema linked service reference.
-  final pulumi.Input<LinkedServiceReferenceResponse>? schemaLinkedService;
+  final pulumi.Input<LinkedServiceReferenceResponse?>? schemaLinkedService;
   /// sink script.
-  final pulumi.Input<String>? script;
+  final pulumi.Input<String?>? script;
 
   /// Creates a new [PowerQuerySinkResponse].
   /// [dataset] Dataset reference.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of NotebookInstanceStatusEnumValue
 class NotebookInstanceStatusEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [NotebookInstanceStatusEnumValueResponse].
   /// [value] Property value

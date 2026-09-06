@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A resource Api configuration for the Telephony channel
 class TelephonyChannelResourceApiConfigurationResponse {
   /// The cognitive service region.
-  final pulumi.Input<String>? cognitiveServiceRegion;
+  final pulumi.Input<String?>? cognitiveServiceRegion;
   /// The cognitive service resourceId.
-  final pulumi.Input<String>? cognitiveServiceResourceId;
+  final pulumi.Input<String?>? cognitiveServiceResourceId;
   /// The cognitive service subscription key.
-  final pulumi.Input<String>? cognitiveServiceSubscriptionKey;
+  final pulumi.Input<String?>? cognitiveServiceSubscriptionKey;
   /// The default locale.
-  final pulumi.Input<String>? defaultLocale;
+  final pulumi.Input<String?>? defaultLocale;
   /// The id of config.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The provider name.
-  final pulumi.Input<String>? providerName;
+  final pulumi.Input<String?>? providerName;
 
   /// Creates a new [TelephonyChannelResourceApiConfigurationResponse].
   /// [cognitiveServiceRegion] The cognitive service region.

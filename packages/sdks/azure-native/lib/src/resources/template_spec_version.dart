@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'linked_template_artifact_response.dart';
 import 'system_data_response.dart';
 import 'template_spec_version_args.dart';
 
@@ -216,7 +217,7 @@ class TemplateSpecVersion extends pulumi.CustomResource {
   /// Template Spec version description.
   late final pulumi.Output<String?> description;
   /// An array of linked template artifacts.
-  late final pulumi.Output<List<Map<String, dynamic>>?> linkedTemplates;
+  late final pulumi.Output<List<LinkedTemplateArtifactResponse>?> linkedTemplates;
   /// The location of the Template Spec Version. It must match the location of the parent Template Spec.
   late final pulumi.Output<String> location;
   /// The main Azure Resource Manager template content.
@@ -250,13 +251,35 @@ class TemplateSpecVersion extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
-    linkedTemplates = registerOutput<List<Map<String, dynamic>>?>('linkedTemplates');
+    linkedTemplates = registerOutput<List<LinkedTemplateArtifactResponse>?>('linkedTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinkedTemplateArtifactResponse>(guardedValue, (value) => LinkedTemplateArtifactResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     mainTemplate = registerOutput<dynamic>('mainTemplate');
     metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    uiFormDefinition = registerOutput<dynamic>('uiFormDefinition');
+  }
+
+  /// Creates a typed reference to an existing [TemplateSpecVersion] resource.
+  TemplateSpecVersion.reference(String urn)
+    : super(
+        'azure-native:resources:TemplateSpecVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    linkedTemplates = registerOutput<List<LinkedTemplateArtifactResponse>?>('linkedTemplates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinkedTemplateArtifactResponse>(guardedValue, (value) => LinkedTemplateArtifactResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    mainTemplate = registerOutput<dynamic>('mainTemplate');
+    metadata = registerOutput<dynamic>('metadata');
+    this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uiFormDefinition = registerOutput<dynamic>('uiFormDefinition');
   }

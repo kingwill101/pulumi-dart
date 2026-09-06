@@ -11,17 +11,17 @@ class MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse {
   /// Gets the private endpoint connections.
   final pulumi.Input<List<PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponse>> privateEndpointConnections;
   /// Gets or sets the state of public network access.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// Refresh summary state.
   final pulumi.Input<String> refreshSummaryState;
   /// Register tools inside project.
   final pulumi.Input<List<String>> registeredTools;
   /// Service endpoint.
-  final pulumi.Input<String>? serviceEndpoint;
+  final pulumi.Input<String?>? serviceEndpoint;
   /// Project summary.
   final pulumi.Input<Map<String, ProjectSummaryResponse>> summary;
   /// Utility storage account id.
-  final pulumi.Input<String>? utilityStorageAccountId;
+  final pulumi.Input<String?>? utilityStorageAccountId;
 
   /// Creates a new [MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse].
   /// [lastSummaryRefreshedTime] Last summary refresh time.

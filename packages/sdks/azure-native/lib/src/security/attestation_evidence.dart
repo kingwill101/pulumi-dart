@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describe the properties of a assignment attestation
 class AttestationEvidence {
   /// The description of the evidence
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The source url of the evidence
-  final pulumi.Input<String>? sourceUrl;
+  final pulumi.Input<String?>? sourceUrl;
 
   /// Creates a new [AttestationEvidence].
   /// [description] The description of the evidence

@@ -26,6 +26,17 @@ Future<GetAccountResult> getAccount(
   return GetAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountResult> getAccountOutput(
+  GetAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recommendationsservice:getAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountResult.fromMap);
+}
+
 /// Returns Modeling resources for a given name.
 ///
 /// Uses Azure REST API version 2022-03-01-preview.
@@ -46,6 +57,17 @@ Future<GetModelingResult> getModeling(
   return GetModelingResult.fromMap(result);
 }
 
+pulumi.Output<GetModelingResult> getModelingOutput(
+  GetModelingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recommendationsservice:getModeling',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetModelingResult.fromMap);
+}
+
 /// Returns ServiceEndpoint resources for a given name.
 ///
 /// Uses Azure REST API version 2022-03-01-preview.
@@ -64,4 +86,15 @@ Future<GetServiceEndpointResult> getServiceEndpoint(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceEndpointResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceEndpointResult> getServiceEndpointOutput(
+  GetServiceEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recommendationsservice:getServiceEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceEndpointResult.fromMap);
 }

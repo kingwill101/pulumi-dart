@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Model representing a http get request.
 class HttpGet {
   /// Name of the file that the request should be saved to.
-  final pulumi.Input<String>? fileName;
+  final pulumi.Input<String?>? fileName;
   /// List of headers to send with the request.
-  final pulumi.Input<List<String>>? headers;
+  final pulumi.Input<List<String>?>? headers;
   /// URL to make HTTP GET request against.
   final pulumi.Input<String> url;
 

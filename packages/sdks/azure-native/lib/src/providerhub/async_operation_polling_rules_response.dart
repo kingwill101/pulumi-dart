@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AsyncOperationPollingRulesResponse {
   /// The additional options.
-  final pulumi.Input<String>? additionalOptions;
+  final pulumi.Input<String?>? additionalOptions;
   /// The authorization actions.
-  final pulumi.Input<List<String>>? authorizationActions;
+  final pulumi.Input<List<String>?>? authorizationActions;
 
   /// Creates a new [AsyncOperationPollingRulesResponse].
   /// [additionalOptions] The additional options.

@@ -6,11 +6,11 @@ import 'certificate_information_response.dart';
 /// Certificate configuration which consist of non-trusted intermediates and root certificates.
 class CertificateConfigurationResponse {
   /// Certificate information.
-  final pulumi.Input<CertificateInformationResponse>? certificate;
+  final pulumi.Input<CertificateInformationResponse?>? certificate;
   /// Certificate Password.
-  final pulumi.Input<String>? certificatePassword;
+  final pulumi.Input<String?>? certificatePassword;
   /// Base64 Encoded certificate.
-  final pulumi.Input<String>? encodedCertificate;
+  final pulumi.Input<String?>? encodedCertificate;
   /// The System.Security.Cryptography.x509certificates.StoreName certificate store location. Only Root and CertificateAuthority are valid locations.
   final pulumi.Input<String> storeName;
 

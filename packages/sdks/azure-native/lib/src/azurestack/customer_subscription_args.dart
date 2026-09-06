@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_azurestack_customer_subscription_args_doc}
 class CustomerSubscriptionArgs {
   /// Name of the product.
-  final pulumi.Input<String>? customerSubscriptionName;
+  final pulumi.Input<String?>? customerSubscriptionName;
   /// Name of the Azure Stack registration.
   final pulumi.Input<String> registrationName;
   /// Name of the resource group.
   final pulumi.Input<String> resourceGroup;
   /// Tenant Id.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [CustomerSubscriptionArgs].
   /// [customerSubscriptionName] Name of the product.

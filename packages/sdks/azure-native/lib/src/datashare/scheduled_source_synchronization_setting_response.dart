@@ -8,9 +8,9 @@ class ScheduledSourceSynchronizationSettingResponse {
   /// Expected value is 'ScheduleBased'.
   final pulumi.Input<String> kind;
   /// Recurrence Interval
-  final pulumi.Input<String>? recurrenceInterval;
+  final pulumi.Input<String?>? recurrenceInterval;
   /// Synchronization time
-  final pulumi.Input<String>? synchronizationTime;
+  final pulumi.Input<String?>? synchronizationTime;
 
   /// Creates a new [ScheduledSourceSynchronizationSettingResponse].
   /// [kind] Kind of synchronization setting on share.

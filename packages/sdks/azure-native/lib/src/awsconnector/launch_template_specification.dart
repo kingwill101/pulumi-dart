@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of LaunchTemplateSpecification
 class LaunchTemplateSpecification {
   /// Property id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The ID of the launch template. You must specify the ``LaunchTemplateID`` or the ``LaunchTemplateName``, but not both.
-  final pulumi.Input<String>? launchTemplateId;
+  final pulumi.Input<String?>? launchTemplateId;
   /// The name of the launch template. You must specify the ``LaunchTemplateName`` or the ``LaunchTemplateID``, but not both.
-  final pulumi.Input<String>? launchTemplateName;
+  final pulumi.Input<String?>? launchTemplateName;
   /// Property name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Property version
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [LaunchTemplateSpecification].
   /// [id] Property id

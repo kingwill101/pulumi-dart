@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specify public IP sku name
-enum PublicIPAddressSkuName {
+enum PublicIPAddressSkuName implements pulumi.PulumiEnum<String> {
   basic("Basic"),
   standard("Standard");
 
   const PublicIPAddressSkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static PublicIPAddressSkuName fromValue(String value) {

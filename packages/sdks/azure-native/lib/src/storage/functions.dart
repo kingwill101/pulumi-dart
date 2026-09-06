@@ -66,6 +66,17 @@ Future<GetBlobContainerResult> getBlobContainer(
   return GetBlobContainerResult.fromMap(result);
 }
 
+pulumi.Output<GetBlobContainerResult> getBlobContainerOutput(
+  GetBlobContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:getBlobContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBlobContainerResult.fromMap);
+}
+
 /// Gets the existing immutability policy along with the corresponding ETag in response headers and body.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -84,6 +95,17 @@ Future<GetBlobContainerImmutabilityPolicyResult> getBlobContainerImmutabilityPol
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBlobContainerImmutabilityPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetBlobContainerImmutabilityPolicyResult> getBlobContainerImmutabilityPolicyOutput(
+  GetBlobContainerImmutabilityPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:getBlobContainerImmutabilityPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBlobContainerImmutabilityPolicyResult.fromMap);
 }
 
 /// Gets the blob inventory policy associated with the specified storage account.
@@ -106,6 +128,17 @@ Future<GetBlobInventoryPolicyResult> getBlobInventoryPolicy(
   return GetBlobInventoryPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetBlobInventoryPolicyResult> getBlobInventoryPolicyOutput(
+  GetBlobInventoryPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:getBlobInventoryPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBlobInventoryPolicyResult.fromMap);
+}
+
 /// Gets the properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -124,6 +157,17 @@ Future<GetBlobServicePropertiesResult> getBlobServiceProperties(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBlobServicePropertiesResult.fromMap(result);
+}
+
+pulumi.Output<GetBlobServicePropertiesResult> getBlobServicePropertiesOutput(
+  GetBlobServicePropertiesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:getBlobServiceProperties',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBlobServicePropertiesResult.fromMap);
 }
 
 /// Get the specified Storage Connector.
@@ -146,6 +190,17 @@ Future<GetConnectorResult> getConnector(
   return GetConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectorResult> getConnectorOutput(
+  GetConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:getConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectorResult.fromMap);
+}
+
 /// Get the specified Storage DataShare.
 ///
 /// Uses Azure REST API version 2025-08-01.
@@ -164,6 +219,17 @@ Future<GetDataShareResult> getDataShare(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDataShareResult.fromMap(result);
+}
+
+pulumi.Output<GetDataShareResult> getDataShareOutput(
+  GetDataShareArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:getDataShare',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataShareResult.fromMap);
 }
 
 /// Returns the properties for the specified encryption scope.
@@ -186,6 +252,17 @@ Future<GetEncryptionScopeResult> getEncryptionScope(
   return GetEncryptionScopeResult.fromMap(result);
 }
 
+pulumi.Output<GetEncryptionScopeResult> getEncryptionScopeOutput(
+  GetEncryptionScopeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:getEncryptionScope',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEncryptionScopeResult.fromMap);
+}
+
 /// Gets the properties of file services in storage accounts, including CORS (Cross-Origin Resource Sharing) rules.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -204,6 +281,17 @@ Future<GetFileServicePropertiesResult> getFileServiceProperties(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFileServicePropertiesResult.fromMap(result);
+}
+
+pulumi.Output<GetFileServicePropertiesResult> getFileServicePropertiesOutput(
+  GetFileServicePropertiesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:getFileServiceProperties',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFileServicePropertiesResult.fromMap);
 }
 
 /// Gets properties of a specified share.
@@ -226,6 +314,17 @@ Future<GetFileShareResult> getFileShare(
   return GetFileShareResult.fromMap(result);
 }
 
+pulumi.Output<GetFileShareResult> getFileShareOutput(
+  GetFileShareArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:getFileShare',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFileShareResult.fromMap);
+}
+
 /// Get the local user of the storage account by username.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -244,6 +343,17 @@ Future<GetLocalUserResult> getLocalUser(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLocalUserResult.fromMap(result);
+}
+
+pulumi.Output<GetLocalUserResult> getLocalUserOutput(
+  GetLocalUserArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:getLocalUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLocalUserResult.fromMap);
 }
 
 /// Gets the managementpolicy associated with the specified storage account.
@@ -266,6 +376,17 @@ Future<GetManagementPolicyResult> getManagementPolicy(
   return GetManagementPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetManagementPolicyResult> getManagementPolicyOutput(
+  GetManagementPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:getManagementPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagementPolicyResult.fromMap);
+}
+
 /// Get the object replication policy of the storage account by policy ID.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -284,6 +405,17 @@ Future<GetObjectReplicationPolicyResult> getObjectReplicationPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetObjectReplicationPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetObjectReplicationPolicyResult> getObjectReplicationPolicyOutput(
+  GetObjectReplicationPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:getObjectReplicationPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetObjectReplicationPolicyResult.fromMap);
 }
 
 /// Gets the specified private endpoint connection associated with the storage account.
@@ -306,6 +438,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Gets the queue with the specified queue name, under the specified account if it exists.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -324,6 +467,17 @@ Future<GetQueueResult> getQueue(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetQueueResult.fromMap(result);
+}
+
+pulumi.Output<GetQueueResult> getQueueOutput(
+  GetQueueArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:getQueue',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetQueueResult.fromMap);
 }
 
 /// Gets the properties of a storage account’s Queue service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
@@ -346,6 +500,17 @@ Future<GetQueueServicePropertiesResult> getQueueServiceProperties(
   return GetQueueServicePropertiesResult.fromMap(result);
 }
 
+pulumi.Output<GetQueueServicePropertiesResult> getQueueServicePropertiesOutput(
+  GetQueueServicePropertiesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:getQueueServiceProperties',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetQueueServicePropertiesResult.fromMap);
+}
+
 /// Returns the properties for the specified storage account including but not limited to name, SKU name, location, and account status. The ListKeys operation should be used to retrieve storage keys.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -364,6 +529,17 @@ Future<GetStorageAccountResult> getStorageAccount(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStorageAccountResult.fromMap(result);
+}
+
+pulumi.Output<GetStorageAccountResult> getStorageAccountOutput(
+  GetStorageAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:getStorageAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageAccountResult.fromMap);
 }
 
 /// Get the storage task assignment properties
@@ -386,6 +562,17 @@ Future<GetStorageTaskAssignmentResult> getStorageTaskAssignment(
   return GetStorageTaskAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetStorageTaskAssignmentResult> getStorageTaskAssignmentOutput(
+  GetStorageTaskAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:getStorageTaskAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageTaskAssignmentResult.fromMap);
+}
+
 /// Gets the table with the specified table name, under the specified account if it exists.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -404,6 +591,17 @@ Future<GetTableResult> getTable(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTableResult.fromMap(result);
+}
+
+pulumi.Output<GetTableResult> getTableOutput(
+  GetTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:getTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTableResult.fromMap);
 }
 
 /// Gets the properties of a storage account’s Table service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
@@ -426,6 +624,17 @@ Future<GetTableServicePropertiesResult> getTableServiceProperties(
   return GetTableServicePropertiesResult.fromMap(result);
 }
 
+pulumi.Output<GetTableServicePropertiesResult> getTableServicePropertiesOutput(
+  GetTableServicePropertiesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:getTableServiceProperties',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTableServicePropertiesResult.fromMap);
+}
+
 /// List SSH authorized keys and shared key of the local user.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -444,6 +653,17 @@ Future<ListLocalUserKeysResult> listLocalUserKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListLocalUserKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListLocalUserKeysResult> listLocalUserKeysOutput(
+  ListLocalUserKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:listLocalUserKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListLocalUserKeysResult.fromMap);
 }
 
 /// Lists the access keys or Kerberos keys (if active directory enabled) for the specified storage account.
@@ -466,6 +686,17 @@ Future<ListStorageAccountKeysResult> listStorageAccountKeys(
   return ListStorageAccountKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListStorageAccountKeysResult> listStorageAccountKeysOutput(
+  ListStorageAccountKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:listStorageAccountKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListStorageAccountKeysResult.fromMap);
+}
+
 /// List SAS credentials of a storage account.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -486,6 +717,17 @@ Future<ListStorageAccountSASResult> listStorageAccountSAS(
   return ListStorageAccountSASResult.fromMap(result);
 }
 
+pulumi.Output<ListStorageAccountSASResult> listStorageAccountSASOutput(
+  ListStorageAccountSASArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:listStorageAccountSAS',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListStorageAccountSASResult.fromMap);
+}
+
 /// List service SAS credentials of a specific resource.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -504,4 +746,15 @@ Future<ListStorageAccountServiceSASResult> listStorageAccountServiceSAS(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListStorageAccountServiceSASResult.fromMap(result);
+}
+
+pulumi.Output<ListStorageAccountServiceSASResult> listStorageAccountServiceSASOutput(
+  ListStorageAccountServiceSASArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storage:listStorageAccountServiceSAS',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListStorageAccountServiceSASResult.fromMap);
 }

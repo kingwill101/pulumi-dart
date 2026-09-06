@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_devtestlab_get_environment_args_doc}
 class GetEnvironmentArgs {
   /// Specify the $expand query. Example: 'properties($select=deploymentProperties)'
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the lab.
   final pulumi.Input<String> labName;
   /// The name of the environment.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] Specifies the type of job.
-enum JobType {
+enum JobType implements pulumi.PulumiEnum<String> {
   autoML("AutoML"),
   command("Command"),
   sweep("Sweep"),
@@ -7,6 +9,7 @@ enum JobType {
   spark("Spark");
 
   const JobType(this.wireValue);
+  @override
   final String wireValue;
 
   static JobType fromValue(String value) {

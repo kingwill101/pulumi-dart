@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'hosted_agent_deployment.dart';
 
 /// {@template pulumi_cognitiveservices_agent_deployment_args_doc}
 /// The set of arguments for AgentDeployment.
@@ -13,11 +12,11 @@ class AgentDeploymentArgs {
   /// The name of the application associated with the Cognitive Services Account
   final pulumi.Input<String> appName;
   /// The name of the deployment associated with the Cognitive Services Account
-  final pulumi.Input<String>? deploymentName;
+  final pulumi.Input<String?>? deploymentName;
   /// The name of Cognitive Services account's project.
   final pulumi.Input<String> projectName;
   /// [Required] Additional attributes of the entity.
-  final pulumi.Input<HostedAgentDeployment> properties;
+  final pulumi.Input<dynamic> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -43,7 +42,7 @@ class AgentDeploymentArgs {
       'appName': appName,
       'deploymentName': ?deploymentName,
       'projectName': projectName,
-      'properties': pulumi.Input.mapInputValue<HostedAgentDeployment, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': properties,
       'resourceGroupName': resourceGroupName,
     };
   }
@@ -54,7 +53,7 @@ class AgentDeploymentArgs {
       appName: pulumi.Input.fromValue(map['appName'] as String),
       deploymentName: (() { final guardedValue = map['deploymentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      properties: pulumi.Input.fromValue(HostedAgentDeployment.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.fromValue(map['properties']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kind of the DataSource.
-enum DataSourceKind {
+enum DataSourceKind implements pulumi.PulumiEnum<String> {
   valueWindowsEvent("WindowsEvent"),
   valueWindowsPerformanceCounter("WindowsPerformanceCounter"),
   valueIISLogs("IISLogs"),
@@ -35,6 +37,7 @@ enum DataSourceKind {
   valueSqlDataClassification("SqlDataClassification");
 
   const DataSourceKind(this.wireValue);
+  @override
   final String wireValue;
 
   static DataSourceKind fromValue(String value) {

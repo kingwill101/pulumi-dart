@@ -9,7 +9,7 @@ import 'connection_properties.dart';
 /// {@macro pulumi_digitaltwins_private_endpoint_connection_args_doc}
 class PrivateEndpointConnectionArgs {
   /// The name of the private endpoint connection.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// The connection properties.
   final pulumi.Input<ConnectionProperties> properties;
   /// The name of the resource group that contains the DigitalTwinsInstance.

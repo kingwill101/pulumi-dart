@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_securityinsights_sentinel_onboarding_state_args_doc}
 class SentinelOnboardingStateArgs {
   /// Flag that indicates the status of the CMK setting
-  final pulumi.Input<bool>? customerManagedKey;
+  final pulumi.Input<bool?>? customerManagedKey;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The Sentinel onboarding state name. Supports - default
-  final pulumi.Input<String>? sentinelOnboardingStateName;
+  final pulumi.Input<String?>? sentinelOnboardingStateName;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 

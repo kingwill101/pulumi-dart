@@ -12,7 +12,7 @@ class GetCustomApiArgs {
   /// The resource group
   final pulumi.Input<String> resourceGroupName;
   /// Subscription Id
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [GetCustomApiArgs].
   /// [apiName] API name

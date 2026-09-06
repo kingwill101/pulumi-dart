@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The IP Filter Action
-enum NetworkRuleIPAction {
-  valueAllow("Allow");
+enum NetworkRuleIPAction implements pulumi.PulumiEnum<String> {
+  allow("Allow");
 
   const NetworkRuleIPAction(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkRuleIPAction fromValue(String value) {

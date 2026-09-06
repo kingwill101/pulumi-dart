@@ -32,6 +32,17 @@ Future<GetFileShareResult> getFileShare(
   return GetFileShareResult.fromMap(result);
 }
 
+pulumi.Output<GetFileShareResult> getFileShareOutput(
+  GetFileShareArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:fileshares:getFileShare',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFileShareResult.fromMap);
+}
+
 /// Get file shares limits.
 ///
 /// Uses Azure REST API version 2025-06-01-preview.
@@ -50,6 +61,17 @@ Future<GetFileShareLimitsResult> getFileShareLimits(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFileShareLimitsResult.fromMap(result);
+}
+
+pulumi.Output<GetFileShareLimitsResult> getFileShareLimitsOutput(
+  GetFileShareLimitsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:fileshares:getFileShareLimits',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFileShareLimitsResult.fromMap);
 }
 
 /// Get file shares provisioning parameters recommendation.
@@ -72,6 +94,17 @@ Future<GetFileShareProvisioningRecommendationResult> getFileShareProvisioningRec
   return GetFileShareProvisioningRecommendationResult.fromMap(result);
 }
 
+pulumi.Output<GetFileShareProvisioningRecommendationResult> getFileShareProvisioningRecommendationOutput(
+  GetFileShareProvisioningRecommendationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:fileshares:getFileShareProvisioningRecommendation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFileShareProvisioningRecommendationResult.fromMap);
+}
+
 /// Get a FileShareSnapshot
 ///
 /// Uses Azure REST API version 2025-06-01-preview.
@@ -90,6 +123,17 @@ Future<GetFileShareSnapshotResult> getFileShareSnapshot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFileShareSnapshotResult.fromMap(result);
+}
+
+pulumi.Output<GetFileShareSnapshotResult> getFileShareSnapshotOutput(
+  GetFileShareSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:fileshares:getFileShareSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFileShareSnapshotResult.fromMap);
 }
 
 /// Get file shares usage data.
@@ -112,6 +156,17 @@ Future<GetFileShareUsageDataResult> getFileShareUsageData(
   return GetFileShareUsageDataResult.fromMap(result);
 }
 
+pulumi.Output<GetFileShareUsageDataResult> getFileShareUsageDataOutput(
+  GetFileShareUsageDataArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:fileshares:getFileShareUsageData',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFileShareUsageDataResult.fromMap);
+}
+
 /// Gets the specified private endpoint connection associated with the file share.
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
@@ -130,4 +185,15 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:fileshares:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }

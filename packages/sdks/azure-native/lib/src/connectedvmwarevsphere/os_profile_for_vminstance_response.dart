@@ -6,15 +6,15 @@ import 'windows_configuration_response.dart';
 /// Specifies the operating system settings for the virtual machine.
 class OsProfileForVMInstanceResponse {
   /// Gets or sets administrator username.
-  final pulumi.Input<String>? adminUsername;
+  final pulumi.Input<String?>? adminUsername;
   /// Gets or sets computer name.
-  final pulumi.Input<String>? computerName;
+  final pulumi.Input<String?>? computerName;
   /// Gets or sets the guestId.
-  final pulumi.Input<String>? guestId;
+  final pulumi.Input<String?>? guestId;
   /// Gets or sets os sku.
   final pulumi.Input<String> osSku;
   /// Gets or sets the type of the os.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// Gets or sets the current running status of VMware Tools running in the guest operating system.
   final pulumi.Input<String> toolsRunningStatus;
   /// Gets or sets the current version of VMware Tools.
@@ -22,7 +22,7 @@ class OsProfileForVMInstanceResponse {
   /// Gets or sets the current version status of VMware Tools installed in the guest operating system.
   final pulumi.Input<String> toolsVersionStatus;
   /// Windows Configuration.
-  final pulumi.Input<WindowsConfigurationResponse>? windowsConfiguration;
+  final pulumi.Input<WindowsConfigurationResponse?>? windowsConfiguration;
 
   /// Creates a new [OsProfileForVMInstanceResponse].
   /// [adminUsername] Gets or sets administrator username.

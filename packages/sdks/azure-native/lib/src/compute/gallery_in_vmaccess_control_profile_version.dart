@@ -3,6 +3,7 @@ import 'access_control_rules_response.dart';
 import 'gallery_in_vmaccess_control_profile_version_args.dart';
 import 'replication_status_response.dart';
 import 'system_data_response.dart';
+import 'target_region_response.dart';
 
 /// Specifies information about the gallery inVMAccessControlProfile version that you want to create or update.
 ///
@@ -463,7 +464,7 @@ class GalleryInVMAccessControlProfileVersion extends pulumi.CustomResource {
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// The target regions where the Resource Profile version is going to be replicated to. This property is updatable.
-  late final pulumi.Output<List<Map<String, dynamic>>?> targetLocations;
+  late final pulumi.Output<List<TargetRegionResponse>?> targetLocations;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -492,8 +493,33 @@ class GalleryInVMAccessControlProfileVersion extends pulumi.CustomResource {
     replicationStatus = registerOutput<ReplicationStatusResponse>('replicationStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rules = registerOutput<AccessControlRulesResponse?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessControlRulesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    targetLocations = registerOutput<List<Map<String, dynamic>>?>('targetLocations');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetLocations = registerOutput<List<TargetRegionResponse>?>('targetLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetRegionResponse>(guardedValue, (value) => TargetRegionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [GalleryInVMAccessControlProfileVersion] resource.
+  GalleryInVMAccessControlProfileVersion.reference(String urn)
+    : super(
+        'azure-native:compute:GalleryInVMAccessControlProfileVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultAccess = registerOutput<String>('defaultAccess');
+    excludeFromLatest = registerOutput<bool?>('excludeFromLatest');
+    location = registerOutput<String>('location');
+    mode = registerOutput<String>('mode');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    publishedDate = registerOutput<String>('publishedDate');
+    replicationStatus = registerOutput<ReplicationStatusResponse>('replicationStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rules = registerOutput<AccessControlRulesResponse?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessControlRulesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetLocations = registerOutput<List<TargetRegionResponse>?>('targetLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetRegionResponse>(guardedValue, (value) => TargetRegionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
 }

@@ -7,17 +7,17 @@ import 'qos_port_range_response.dart';
 /// Quality of Service defines the traffic configuration between endpoints. Mandatory to have one marking.
 class QosDefinitionResponse {
   /// Destination IP ranges.
-  final pulumi.Input<List<QosIpRangeResponse>>? destinationIpRanges;
+  final pulumi.Input<List<QosIpRangeResponse>?>? destinationIpRanges;
   /// Destination port ranges.
-  final pulumi.Input<List<QosPortRangeResponse>>? destinationPortRanges;
+  final pulumi.Input<List<QosPortRangeResponse>?>? destinationPortRanges;
   /// List of markings to be used in the configuration.
-  final pulumi.Input<List<int>>? markings;
+  final pulumi.Input<List<int>?>? markings;
   /// RNM supported protocol types.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Source IP ranges.
-  final pulumi.Input<List<QosIpRangeResponse>>? sourceIpRanges;
+  final pulumi.Input<List<QosIpRangeResponse>?>? sourceIpRanges;
   /// Sources port ranges.
-  final pulumi.Input<List<QosPortRangeResponse>>? sourcePortRanges;
+  final pulumi.Input<List<QosPortRangeResponse>?>? sourcePortRanges;
 
   /// Creates a new [QosDefinitionResponse].
   /// [destinationIpRanges] Destination IP ranges.

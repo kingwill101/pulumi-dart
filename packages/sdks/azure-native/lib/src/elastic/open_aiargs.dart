@@ -9,11 +9,11 @@ import 'open_aiintegration_properties.dart';
 /// {@macro pulumi_elastic_open_aiargs_doc}
 class OpenAIArgs {
   /// OpenAI Integration name
-  final pulumi.Input<String>? integrationName;
+  final pulumi.Input<String?>? integrationName;
   /// Monitor resource name
   final pulumi.Input<String> monitorName;
   /// Open AI Integration details.
-  final pulumi.Input<OpenAIIntegrationProperties>? properties;
+  final pulumi.Input<OpenAIIntegrationProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

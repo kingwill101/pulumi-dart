@@ -5,7 +5,7 @@ import 'dedicated_host_instance_view_with_name_response.dart';
 
 class DedicatedHostGroupInstanceViewResponse {
   /// List of instance view of the dedicated hosts under the dedicated host group.
-  final pulumi.Input<List<DedicatedHostInstanceViewWithNameResponse>>? hosts;
+  final pulumi.Input<List<DedicatedHostInstanceViewWithNameResponse>?>? hosts;
 
   /// Creates a new [DedicatedHostGroupInstanceViewResponse].
   /// [hosts] List of instance view of the dedicated hosts under the dedicated host group.

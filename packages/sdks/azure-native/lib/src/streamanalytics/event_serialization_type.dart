@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
-enum EventSerializationType {
+enum EventSerializationType implements pulumi.PulumiEnum<String> {
   valueCsv("Csv"),
   valueAvro("Avro"),
   valueJson("Json"),
   valueParquet("Parquet");
 
   const EventSerializationType(this.wireValue);
+  @override
   final String wireValue;
 
   static EventSerializationType fromValue(String value) {

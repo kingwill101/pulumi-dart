@@ -8,16 +8,16 @@ import 'depends_on_profile_response.dart';
 /// Azure core network function vhd application definition.
 class AzureCoreNetworkFunctionVhdApplicationResponse {
   /// Azure vhd image artifact profile.
-  final pulumi.Input<AzureCoreVhdImageArtifactProfileResponse>? artifactProfile;
+  final pulumi.Input<AzureCoreVhdImageArtifactProfileResponse?>? artifactProfile;
   /// The artifact type.
   /// Expected value is 'VhdImageFile'.
   final pulumi.Input<String> artifactType;
   /// Depends on profile definition.
-  final pulumi.Input<DependsOnProfileResponse>? dependsOnProfile;
+  final pulumi.Input<DependsOnProfileResponse?>? dependsOnProfile;
   /// Deploy mapping rule profile.
-  final pulumi.Input<AzureCoreVhdImageDeployMappingRuleProfileResponse>? deployParametersMappingRuleProfile;
+  final pulumi.Input<AzureCoreVhdImageDeployMappingRuleProfileResponse?>? deployParametersMappingRuleProfile;
   /// The name of the network function application.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AzureCoreNetworkFunctionVhdApplicationResponse].
   /// [artifactProfile] Azure vhd image artifact profile.

@@ -23,6 +23,17 @@ Future<GetAzureLargeInstanceResult> getAzureLargeInstance(
   return GetAzureLargeInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetAzureLargeInstanceResult> getAzureLargeInstanceOutput(
+  GetAzureLargeInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurelargeinstance:getAzureLargeInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAzureLargeInstanceResult.fromMap);
+}
+
 /// Gets an Azure Large Storage instance for the specified subscription, resource
 /// group, and instance name.
 ///
@@ -40,4 +51,15 @@ Future<GetAzureLargeStorageInstanceResult> getAzureLargeStorageInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAzureLargeStorageInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetAzureLargeStorageInstanceResult> getAzureLargeStorageInstanceOutput(
+  GetAzureLargeStorageInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurelargeinstance:getAzureLargeStorageInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAzureLargeStorageInstanceResult.fromMap);
 }

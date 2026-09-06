@@ -12,21 +12,21 @@ class BackupInstance {
   /// Gets or sets the data source information.
   final pulumi.Input<Datasource> dataSourceInfo;
   /// Gets or sets the data source set information.
-  final pulumi.Input<DatasourceSet>? dataSourceSetInfo;
+  final pulumi.Input<DatasourceSet?>? dataSourceSetInfo;
   /// Credentials to use to authenticate with data source provider.
-  final pulumi.Input<SecretStoreBasedAuthCredentials>? datasourceAuthCredentials;
+  final pulumi.Input<SecretStoreBasedAuthCredentials?>? datasourceAuthCredentials;
   /// Gets or sets the Backup Instance friendly name.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// Contains information of the Identity Details for the BI.
   /// If it is null, default will be considered as System Assigned.
-  final pulumi.Input<IdentityDetails>? identityDetails;
+  final pulumi.Input<IdentityDetails?>? identityDetails;
   final pulumi.Input<String> objectType;
   /// Gets or sets the policy information.
   final pulumi.Input<PolicyInfo> policyInfo;
   /// ResourceGuardOperationRequests on which LAC check will be performed
-  final pulumi.Input<List<String>>? resourceGuardOperationRequests;
+  final pulumi.Input<List<String>?>? resourceGuardOperationRequests;
   /// Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
-  final pulumi.Input<String>? validationType;
+  final pulumi.Input<dynamic>? validationType;
 
   /// Creates a new [BackupInstance].
   /// [dataSourceInfo] Gets or sets the data source information.
@@ -74,7 +74,7 @@ class BackupInstance {
       objectType: pulumi.Input.fromValue(map['objectType'] as String),
       policyInfo: pulumi.Input.fromValue(PolicyInfo.fromMap((map['policyInfo']! as Map).cast<String, dynamic>())),
       resourceGuardOperationRequests: (() { final guardedValue = map['resourceGuardOperationRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      validationType: (() { final guardedValue = map['validationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      validationType: (() { final guardedValue = map['validationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

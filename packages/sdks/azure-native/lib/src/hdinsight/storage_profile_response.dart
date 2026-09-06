@@ -6,7 +6,7 @@ import 'storage_account_response.dart';
 /// The storage profile.
 class StorageProfileResponse {
   /// The list of storage accounts in the cluster.
-  final pulumi.Input<List<StorageAccountResponse>>? storageaccounts;
+  final pulumi.Input<List<StorageAccountResponse>?>? storageaccounts;
 
   /// Creates a new [StorageProfileResponse].
   /// [storageaccounts] The list of storage accounts in the cluster.

@@ -9,39 +9,39 @@ import 'managed_cluster_static_egress_gateway_profile.dart';
 /// Profile of network configuration.
 class ContainerServiceNetworkProfile {
   /// Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
-  final pulumi.Input<AdvancedNetworking>? advancedNetworking;
+  final pulumi.Input<AdvancedNetworking?>? advancedNetworking;
   /// An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
-  final pulumi.Input<String>? dnsServiceIP;
+  final pulumi.Input<String?>? dnsServiceIP;
   /// The IP families used to specify IP versions available to the cluster. IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6.
-  final pulumi.Input<List<String>>? ipFamilies;
+  final pulumi.Input<List<dynamic>?>? ipFamilies;
   /// Profile of the cluster load balancer.
-  final pulumi.Input<ManagedClusterLoadBalancerProfile>? loadBalancerProfile;
+  final pulumi.Input<ManagedClusterLoadBalancerProfile?>? loadBalancerProfile;
   /// The load balancer sku for the managed cluster. The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more information about the differences between load balancer SKUs.
-  final pulumi.Input<String>? loadBalancerSku;
+  final pulumi.Input<dynamic>? loadBalancerSku;
   /// Profile of the cluster NAT gateway.
-  final pulumi.Input<ManagedClusterNATGatewayProfile>? natGatewayProfile;
+  final pulumi.Input<ManagedClusterNATGatewayProfile?>? natGatewayProfile;
   /// Network dataplane used in the Kubernetes cluster.
-  final pulumi.Input<String>? networkDataplane;
+  final pulumi.Input<dynamic>? networkDataplane;
   /// The network mode Azure CNI is configured with. This cannot be specified if networkPlugin is anything other than 'azure'.
-  final pulumi.Input<String>? networkMode;
+  final pulumi.Input<dynamic>? networkMode;
   /// Network plugin used for building the Kubernetes network.
-  final pulumi.Input<String>? networkPlugin;
+  final pulumi.Input<dynamic>? networkPlugin;
   /// The mode the network plugin should use.
-  final pulumi.Input<String>? networkPluginMode;
+  final pulumi.Input<dynamic>? networkPluginMode;
   /// Network policy used for building the Kubernetes network.
-  final pulumi.Input<String>? networkPolicy;
+  final pulumi.Input<dynamic>? networkPolicy;
   /// The outbound (egress) routing method. This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
-  final pulumi.Input<String>? outboundType;
+  final pulumi.Input<dynamic>? outboundType;
   /// A CIDR notation IP range from which to assign pod IPs when kubenet is used.
-  final pulumi.Input<String>? podCidr;
+  final pulumi.Input<String?>? podCidr;
   /// The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
-  final pulumi.Input<List<String>>? podCidrs;
+  final pulumi.Input<List<String>?>? podCidrs;
   /// A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
-  final pulumi.Input<String>? serviceCidr;
+  final pulumi.Input<String?>? serviceCidr;
   /// The CIDR notation IP ranges from which to assign service cluster IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet IP ranges.
-  final pulumi.Input<List<String>>? serviceCidrs;
+  final pulumi.Input<List<String>?>? serviceCidrs;
   /// The profile for Static Egress Gateway addon. For more details about Static Egress Gateway, see https://aka.ms/aks/static-egress-gateway.
-  final pulumi.Input<ManagedClusterStaticEgressGatewayProfile>? staticEgressGatewayProfile;
+  final pulumi.Input<ManagedClusterStaticEgressGatewayProfile?>? staticEgressGatewayProfile;
 
   /// Creates a new [ContainerServiceNetworkProfile].
   /// [advancedNetworking] Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
@@ -61,9 +61,9 @@ class ContainerServiceNetworkProfile {
   /// [serviceCidr] A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
   /// [serviceCidrs] The CIDR notation IP ranges from which to assign service cluster IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet IP ranges.
   /// [staticEgressGatewayProfile] The profile for Static Egress Gateway addon. For more details about Static Egress Gateway, see https://aka.ms/aks/static-egress-gateway.
-  const ContainerServiceNetworkProfile({
+  ContainerServiceNetworkProfile({
     this.advancedNetworking,
-    this.dnsServiceIP,
+    pulumi.Input<String?>? dnsServiceIP,
     this.ipFamilies,
     this.loadBalancerProfile,
     this.loadBalancerSku,
@@ -73,13 +73,13 @@ class ContainerServiceNetworkProfile {
     this.networkPlugin,
     this.networkPluginMode,
     this.networkPolicy,
-    this.outboundType,
-    this.podCidr,
+    pulumi.Input<dynamic>? outboundType,
+    pulumi.Input<String?>? podCidr,
     this.podCidrs,
-    this.serviceCidr,
+    pulumi.Input<String?>? serviceCidr,
     this.serviceCidrs,
     this.staticEgressGatewayProfile,
-  });
+  }) : dnsServiceIP = dnsServiceIP ?? pulumi.Input.fromValue('10.0.0.10'), outboundType = outboundType ?? pulumi.Input.fromValue('loadBalancer'), podCidr = podCidr ?? pulumi.Input.fromValue('10.244.0.0/16'), serviceCidr = serviceCidr ?? pulumi.Input.fromValue('10.0.0.0/16');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,16 +107,16 @@ class ContainerServiceNetworkProfile {
     return ContainerServiceNetworkProfile(
       advancedNetworking: (() { final guardedValue = map['advancedNetworking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AdvancedNetworking.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dnsServiceIP: (() { final guardedValue = map['dnsServiceIP']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ipFamilies: (() { final guardedValue = map['ipFamilies']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      ipFamilies: (() { final guardedValue = map['ipFamilies']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       loadBalancerProfile: (() { final guardedValue = map['loadBalancerProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedClusterLoadBalancerProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      loadBalancerSku: (() { final guardedValue = map['loadBalancerSku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loadBalancerSku: (() { final guardedValue = map['loadBalancerSku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       natGatewayProfile: (() { final guardedValue = map['natGatewayProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedClusterNATGatewayProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      networkDataplane: (() { final guardedValue = map['networkDataplane']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      networkMode: (() { final guardedValue = map['networkMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      networkPlugin: (() { final guardedValue = map['networkPlugin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      networkPluginMode: (() { final guardedValue = map['networkPluginMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      networkPolicy: (() { final guardedValue = map['networkPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      outboundType: (() { final guardedValue = map['outboundType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkDataplane: (() { final guardedValue = map['networkDataplane']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      networkMode: (() { final guardedValue = map['networkMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      networkPlugin: (() { final guardedValue = map['networkPlugin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      networkPluginMode: (() { final guardedValue = map['networkPluginMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      networkPolicy: (() { final guardedValue = map['networkPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      outboundType: (() { final guardedValue = map['outboundType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       podCidr: (() { final guardedValue = map['podCidr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       podCidrs: (() { final guardedValue = map['podCidrs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       serviceCidr: (() { final guardedValue = map['serviceCidr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

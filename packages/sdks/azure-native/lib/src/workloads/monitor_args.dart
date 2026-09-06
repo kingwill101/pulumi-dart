@@ -11,29 +11,29 @@ import 'managed_service_identity.dart';
 /// {@macro pulumi_workloads_monitor_args_doc}
 class MonitorArgs {
   /// The SAP monitor resources will be deployed in the SAP monitoring region. The subnet region should be same as the SAP monitoring region.
-  final pulumi.Input<String>? appLocation;
+  final pulumi.Input<String?>? appLocation;
   /// App service plan configuration
-  final pulumi.Input<AppServicePlanConfiguration>? appServicePlanConfiguration;
+  final pulumi.Input<AppServicePlanConfiguration?>? appServicePlanConfiguration;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The ARM ID of the Log Analytics Workspace that is used for SAP monitoring.
-  final pulumi.Input<String>? logAnalyticsWorkspaceArmId;
+  final pulumi.Input<String?>? logAnalyticsWorkspaceArmId;
   /// Managed resource group configuration
-  final pulumi.Input<ManagedResourceGroupConfiguration>? managedResourceGroupConfiguration;
+  final pulumi.Input<ManagedResourceGroupConfiguration?>? managedResourceGroupConfiguration;
   /// Name of the SAP monitor resource.
-  final pulumi.Input<String>? monitorName;
+  final pulumi.Input<String?>? monitorName;
   /// The subnet which the SAP monitor will be deployed in
-  final pulumi.Input<String>? monitorSubnet;
+  final pulumi.Input<String?>? monitorSubnet;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET.
-  final pulumi.Input<String>? routingPreference;
+  final pulumi.Input<dynamic>? routingPreference;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Sets the preference for zone redundancy on resources created for the SAP monitor. By default resources will be created which do not support zone redundancy.
-  final pulumi.Input<String>? zoneRedundancyPreference;
+  final pulumi.Input<String?>? zoneRedundancyPreference;
 
   /// Creates a new [MonitorArgs].
   /// [appLocation] The SAP monitor resources will be deployed in the SAP monitoring region. The subnet region should be same as the SAP monitoring region.
@@ -91,7 +91,7 @@ class MonitorArgs {
       monitorName: (() { final guardedValue = map['monitorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       monitorSubnet: (() { final guardedValue = map['monitorSubnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      routingPreference: (() { final guardedValue = map['routingPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routingPreference: (() { final guardedValue = map['routingPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       zoneRedundancyPreference: (() { final guardedValue = map['zoneRedundancyPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

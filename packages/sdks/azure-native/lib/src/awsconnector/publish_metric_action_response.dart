@@ -6,7 +6,7 @@ import 'dimension_network_firewall_firewall_policy_response.dart';
 /// Definition of PublishMetricAction
 class PublishMetricActionResponse {
   /// Property dimensions
-  final pulumi.Input<List<DimensionNetworkFirewallFirewallPolicyResponse>>? dimensions;
+  final pulumi.Input<List<DimensionNetworkFirewallFirewallPolicyResponse>?>? dimensions;
 
   /// Creates a new [PublishMetricActionResponse].
   /// [dimensions] Property dimensions

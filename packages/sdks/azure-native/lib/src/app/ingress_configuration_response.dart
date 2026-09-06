@@ -6,15 +6,15 @@ import 'ingress_configuration_response_scale.dart';
 /// Settings for the ingress component, including workload profile, scaling, and connection handling.
 class IngressConfigurationResponse {
   /// Maximum number of headers per request allowed by the ingress. Must be at least 1. Defaults to 100.
-  final pulumi.Input<int>? headerCountLimit;
+  final pulumi.Input<int?>? headerCountLimit;
   /// Duration (in minutes) before idle requests are timed out. Must be at least 1 minute. Defaults to 4 minutes.
-  final pulumi.Input<int>? requestIdleTimeout;
+  final pulumi.Input<int?>? requestIdleTimeout;
   /// Scaling configuration for the ingress component. Required.
-  final pulumi.Input<IngressConfigurationResponseScale>? scale;
+  final pulumi.Input<IngressConfigurationResponseScale?>? scale;
   /// Time (in seconds) to allow active connections to complete on termination. Must be between 0 and 3600. Defaults to 480 seconds.
-  final pulumi.Input<int>? terminationGracePeriodSeconds;
+  final pulumi.Input<int?>? terminationGracePeriodSeconds;
   /// Name of the workload profile used by the ingress component. Required.
-  final pulumi.Input<String>? workloadProfileName;
+  final pulumi.Input<String?>? workloadProfileName;
 
   /// Creates a new [IngressConfigurationResponse].
   /// [headerCountLimit] Maximum number of headers per request allowed by the ingress. Must be at least 1. Defaults to 100.
@@ -42,10 +42,10 @@ class IngressConfigurationResponse {
 
   factory IngressConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return IngressConfigurationResponse(
-      headerCountLimit: (() { final guardedValue = map['headerCountLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      requestIdleTimeout: (() { final guardedValue = map['requestIdleTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      headerCountLimit: (() { final guardedValue = map['headerCountLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      requestIdleTimeout: (() { final guardedValue = map['requestIdleTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       scale: (() { final guardedValue = map['scale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IngressConfigurationResponseScale.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      terminationGracePeriodSeconds: (() { final guardedValue = map['terminationGracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      terminationGracePeriodSeconds: (() { final guardedValue = map['terminationGracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       workloadProfileName: (() { final guardedValue = map['workloadProfileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

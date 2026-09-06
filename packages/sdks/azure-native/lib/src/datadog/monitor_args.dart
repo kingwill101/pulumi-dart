@@ -10,16 +10,16 @@ import 'resource_sku.dart';
 /// {@endtemplate}
 /// {@macro pulumi_datadog_monitor_args_doc}
 class MonitorArgs {
-  final pulumi.Input<IdentityProperties>? identity;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<IdentityProperties?>? identity;
+  final pulumi.Input<String?>? location;
   /// Monitor resource name
-  final pulumi.Input<String>? monitorName;
+  final pulumi.Input<String?>? monitorName;
   /// Properties specific to the monitor resource.
-  final pulumi.Input<MonitorProperties>? properties;
+  final pulumi.Input<MonitorProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  final pulumi.Input<ResourceSku>? sku;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<ResourceSku?>? sku;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [MonitorArgs].
   /// [identity] Optional.

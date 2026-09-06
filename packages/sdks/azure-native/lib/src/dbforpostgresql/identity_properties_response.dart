@@ -5,9 +5,9 @@ import 'user_assigned_identity_server_group_cluster_response.dart';
 
 /// Describes the identity of the cluster.
 class IdentityPropertiesResponse {
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-  final pulumi.Input<Map<String, UserAssignedIdentityServerGroupClusterResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentityServerGroupClusterResponse>?>? userAssignedIdentities;
 
   /// Creates a new [IdentityPropertiesResponse].
   /// [type] Optional.

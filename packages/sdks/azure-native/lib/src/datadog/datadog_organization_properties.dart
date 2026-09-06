@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
 class DatadogOrganizationProperties {
   /// Api key associated to the Datadog organization.
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
   /// Application key associated to the Datadog organization.
-  final pulumi.Input<String>? applicationKey;
+  final pulumi.Input<String?>? applicationKey;
   /// The configuration which describes the state of cloud security posture management. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.
-  final pulumi.Input<bool>? cspm;
+  final pulumi.Input<bool?>? cspm;
   /// The Id of the Enterprise App used for Single sign on.
-  final pulumi.Input<String>? enterpriseAppId;
+  final pulumi.Input<String?>? enterpriseAppId;
   /// Id of the Datadog organization.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The auth code used to linking to an existing Datadog organization.
-  final pulumi.Input<String>? linkingAuthCode;
+  final pulumi.Input<String?>? linkingAuthCode;
   /// The client_id from an existing in exchange for an auth token to link organization.
-  final pulumi.Input<String>? linkingClientId;
+  final pulumi.Input<String?>? linkingClientId;
   /// Name of the Datadog organization.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The redirect URI for linking.
-  final pulumi.Input<String>? redirectUri;
+  final pulumi.Input<String?>? redirectUri;
 
   /// Creates a new [DatadogOrganizationProperties].
   /// [apiKey] Api key associated to the Datadog organization.

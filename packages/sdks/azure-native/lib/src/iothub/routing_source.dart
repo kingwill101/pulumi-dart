@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The source that the routing rule is to be applied to, such as DeviceMessages.
-enum RoutingSource {
+enum RoutingSource implements pulumi.PulumiEnum<String> {
   valueInvalid("Invalid"),
   valueDeviceMessages("DeviceMessages"),
   valueTwinChangeEvents("TwinChangeEvents"),
@@ -8,6 +10,7 @@ enum RoutingSource {
   valueDeviceConnectionStateEvents("DeviceConnectionStateEvents");
 
   const RoutingSource(this.wireValue);
+  @override
   final String wireValue;
 
   static RoutingSource fromValue(String value) {

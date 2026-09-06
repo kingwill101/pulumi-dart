@@ -234,4 +234,26 @@ class WorkloadNetworkPortMirroring extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [WorkloadNetworkPortMirroring] resource.
+  WorkloadNetworkPortMirroring.reference(String urn)
+    : super(
+        'azure-native:avs:WorkloadNetworkPortMirroring',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    destination = registerOutput<String?>('destination');
+    direction = registerOutput<String?>('direction');
+    displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    revision = registerOutput<double?>('revision');
+    source = registerOutput<String?>('source');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

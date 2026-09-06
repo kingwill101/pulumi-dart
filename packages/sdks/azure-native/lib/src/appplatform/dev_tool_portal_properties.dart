@@ -7,21 +7,21 @@ import 'dev_tool_portal_sso_properties.dart';
 /// Dev Tool Portal properties payload
 class DevToolPortalProperties {
   /// Settings for Dev Tool Portal
-  final pulumi.Input<DevToolPortalFeatureSettings>? features;
+  final pulumi.Input<DevToolPortalFeatureSettings?>? features;
   /// Indicates whether the resource exposes public endpoint
-  final pulumi.Input<bool>? public;
+  final pulumi.Input<bool?>? public;
   /// Single sign-on related configuration
-  final pulumi.Input<DevToolPortalSsoProperties>? ssoProperties;
+  final pulumi.Input<DevToolPortalSsoProperties?>? ssoProperties;
 
   /// Creates a new [DevToolPortalProperties].
   /// [features] Settings for Dev Tool Portal
   /// [public] Indicates whether the resource exposes public endpoint
   /// [ssoProperties] Single sign-on related configuration
-  const DevToolPortalProperties({
+  DevToolPortalProperties({
     this.features,
-    this.public,
+    pulumi.Input<bool?>? public,
     this.ssoProperties,
-  });
+  }) : public = public ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

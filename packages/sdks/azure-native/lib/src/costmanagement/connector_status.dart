@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Connector status
-enum ConnectorStatus {
+enum ConnectorStatus implements pulumi.PulumiEnum<String> {
   valueActive("active"),
   valueError("error"),
   valueSuspended("suspended");
 
   const ConnectorStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static ConnectorStatus fromValue(String value) {

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Comparison type to use for matching with the variable value.
-enum Operator {
+enum Operator implements pulumi.PulumiEnum<String> {
   any("Any"),
   iPMatch("IPMatch"),
   geoMatch("GeoMatch"),
@@ -17,6 +19,7 @@ enum Operator {
   clientFingerprint("ClientFingerprint");
 
   const Operator(this.wireValue);
+  @override
   final String wireValue;
 
   static Operator fromValue(String value) {

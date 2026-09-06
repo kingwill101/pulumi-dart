@@ -6,7 +6,7 @@ import 'load_balancer_backend_address_pool.dart';
 /// LoadBalancer the CG profile will use to interact with CGs in a backend pool
 class LoadBalancer {
   /// List of Load Balancer Backend Address Pools.
-  final pulumi.Input<List<LoadBalancerBackendAddressPool>>? backendAddressPools;
+  final pulumi.Input<List<LoadBalancerBackendAddressPool>?>? backendAddressPools;
 
   /// Creates a new [LoadBalancer].
   /// [backendAddressPools] List of Load Balancer Backend Address Pools.

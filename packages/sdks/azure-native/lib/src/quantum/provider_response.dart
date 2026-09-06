@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information about a Provider. A Provider is an entity that offers Targets to run Azure Quantum Jobs.
 class ProviderResponse {
   /// The provider's marketplace application display name.
-  final pulumi.Input<String>? applicationName;
+  final pulumi.Input<String?>? applicationName;
   /// A Uri identifying the specific instance of this provider.
-  final pulumi.Input<String>? instanceUri;
+  final pulumi.Input<String?>? instanceUri;
   /// Unique id of this provider.
-  final pulumi.Input<String>? providerId;
+  final pulumi.Input<String?>? providerId;
   /// The sku associated with pricing information for this provider.
-  final pulumi.Input<String>? providerSku;
+  final pulumi.Input<String?>? providerSku;
   /// Provisioning status field
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// Id to track resource usage for the provider.
-  final pulumi.Input<String>? resourceUsageId;
+  final pulumi.Input<String?>? resourceUsageId;
 
   /// Creates a new [ProviderResponse].
   /// [applicationName] The provider's marketplace application display name.

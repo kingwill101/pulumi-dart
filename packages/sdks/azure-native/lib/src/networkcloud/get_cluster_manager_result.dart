@@ -14,37 +14,37 @@ class GetClusterManagerResult {
   /// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version. The Azure availability zones within the region that will be used to support the cluster manager resource.
   final List<String>? availabilityZones;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The list of the cluster versions the manager supports. It is used as input in clusterVersion property of a cluster resource.
-  final List<ClusterAvailableVersionResponse> clusterVersions;
+  final List<ClusterAvailableVersionResponse>? clusterVersions;
   /// The detailed status that provides additional information about the cluster manager.
-  final String detailedStatus;
+  final String? detailedStatus;
   /// The descriptive message about the current detailed status.
-  final String detailedStatusMessage;
+  final String? detailedStatusMessage;
   /// Resource ETag.
-  final String etag;
+  final String? etag;
   /// The resource ID of the fabric controller that has one to one mapping with the cluster manager.
-  final String fabricControllerId;
+  final String? fabricControllerId;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The identity of the cluster manager.
   final ManagedServiceIdentityResponse? identity;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The configuration of the managed resource group associated with the resource.
   final ManagedResourceGroupConfigurationResponse? managedResourceGroupConfiguration;
   /// The extended location (custom location) that represents the cluster manager's control plane location. This extended location is used when creating cluster and rack manifest resources.
-  final ExtendedLocationResponse managerExtendedLocation;
+  final ExtendedLocationResponse? managerExtendedLocation;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The provisioning state of the cluster manager.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version. The size of the Azure virtual machines to use for hosting the cluster manager resource.
   final String? vmSize;
 
@@ -71,22 +71,22 @@ class GetClusterManagerResult {
   const GetClusterManagerResult({
     this.analyticsWorkspaceId,
     this.availabilityZones,
-    required this.azureApiVersion,
-    required this.clusterVersions,
-    required this.detailedStatus,
-    required this.detailedStatusMessage,
-    required this.etag,
-    required this.fabricControllerId,
-    required this.id,
+    this.azureApiVersion,
+    this.clusterVersions,
+    this.detailedStatus,
+    this.detailedStatusMessage,
+    this.etag,
+    this.fabricControllerId,
+    this.id,
     this.identity,
-    required this.location,
+    this.location,
     this.managedResourceGroupConfiguration,
-    required this.managerExtendedLocation,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
+    this.managerExtendedLocation,
+    this.name,
+    this.provisioningState,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
     this.vmSize,
   });
 
@@ -94,22 +94,22 @@ class GetClusterManagerResult {
     return <String, dynamic>{
       'analyticsWorkspaceId': ?analyticsWorkspaceId,
       'availabilityZones': ?availabilityZones,
-      'azureApiVersion': azureApiVersion,
-      'clusterVersions': pulumi.Input.encodeList<ClusterAvailableVersionResponse, Map<String, dynamic>>(clusterVersions, (value) => value.toMap()),
-      'detailedStatus': detailedStatus,
-      'detailedStatusMessage': detailedStatusMessage,
-      'etag': etag,
-      'fabricControllerId': fabricControllerId,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'clusterVersions': ?(() { final guardedValue = clusterVersions; if (guardedValue == null) return null; return pulumi.Input.encodeList<ClusterAvailableVersionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'detailedStatus': ?detailedStatus,
+      'detailedStatusMessage': ?detailedStatusMessage,
+      'etag': ?etag,
+      'fabricControllerId': ?fabricControllerId,
+      'id': ?id,
       'identity': ?identity?.toMap(),
-      'location': location,
+      'location': ?location,
       'managedResourceGroupConfiguration': ?managedResourceGroupConfiguration?.toMap(),
-      'managerExtendedLocation': managerExtendedLocation.toMap(),
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'managerExtendedLocation': ?managerExtendedLocation?.toMap(),
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'vmSize': ?vmSize,
     };
   }
@@ -118,22 +118,22 @@ class GetClusterManagerResult {
     return GetClusterManagerResult(
       analyticsWorkspaceId: (() { final guardedValue = map['analyticsWorkspaceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       availabilityZones: (() { final guardedValue = map['availabilityZones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      clusterVersions: pulumi.Input.decodeList<ClusterAvailableVersionResponse>(map['clusterVersions']!, (value) => ClusterAvailableVersionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      detailedStatus: map['detailedStatus'] as String,
-      detailedStatusMessage: map['detailedStatusMessage'] as String,
-      etag: map['etag'] as String,
-      fabricControllerId: map['fabricControllerId'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      clusterVersions: (() { final guardedValue = map['clusterVersions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterAvailableVersionResponse>(guardedValue, (value) => ClusterAvailableVersionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      detailedStatus: (() { final guardedValue = map['detailedStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      detailedStatusMessage: (() { final guardedValue = map['detailedStatusMessage']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      fabricControllerId: (() { final guardedValue = map['fabricControllerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      location: map['location'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       managedResourceGroupConfiguration: (() { final guardedValue = map['managedResourceGroupConfiguration']; if (guardedValue == null) return null; return ManagedResourceGroupConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      managerExtendedLocation: ExtendedLocationResponse.fromMap((map['managerExtendedLocation']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      managerExtendedLocation: (() { final guardedValue = map['managerExtendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       vmSize: (() { final guardedValue = map['vmSize']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

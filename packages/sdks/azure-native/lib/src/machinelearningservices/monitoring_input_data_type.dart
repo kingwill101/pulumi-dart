@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] Specifies the type of signal to monitor.
-enum MonitoringInputDataType {
+enum MonitoringInputDataType implements pulumi.PulumiEnum<String> {
   static("Static"),
   rolling("Rolling"),
   fixed("Fixed");
 
   const MonitoringInputDataType(this.wireValue);
+  @override
   final String wireValue;
 
   static MonitoringInputDataType fromValue(String value) {

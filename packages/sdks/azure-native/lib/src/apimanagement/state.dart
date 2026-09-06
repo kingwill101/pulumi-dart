@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Status of the issue.
-enum State {
+enum State implements pulumi.PulumiEnum<String> {
   valueProposed("proposed"),
   valueOpen("open"),
   valueRemoved("removed"),
@@ -7,6 +9,7 @@ enum State {
   valueClosed("closed");
 
   const State(this.wireValue);
+  @override
   final String wireValue;
 
   static State fromValue(String value) {

@@ -435,4 +435,29 @@ class SyncMember extends pulumi.CustomResource {
     usePrivateLinkConnection = registerOutput<bool?>('usePrivateLinkConnection');
     userName = registerOutput<String?>('userName');
   }
+
+  /// Creates a typed reference to an existing [SyncMember] resource.
+  SyncMember.reference(String urn)
+    : super(
+        'azure-native:sql:SyncMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    databaseName = registerOutput<String?>('databaseName');
+    databaseType = registerOutput<String?>('databaseType');
+    this.name = registerOutput<String>('name');
+    privateEndpointName = registerOutput<String>('privateEndpointName');
+    serverName = registerOutput<String?>('serverName');
+    sqlServerDatabaseId = registerOutput<String?>('sqlServerDatabaseId');
+    syncAgentId = registerOutput<String?>('syncAgentId');
+    syncDirection = registerOutput<String?>('syncDirection');
+    syncMemberAzureDatabaseResourceId = registerOutput<String?>('syncMemberAzureDatabaseResourceId');
+    syncState = registerOutput<String>('syncState');
+    type = registerOutput<String>('type');
+    usePrivateLinkConnection = registerOutput<bool?>('usePrivateLinkConnection');
+    userName = registerOutput<String?>('userName');
+  }
 }

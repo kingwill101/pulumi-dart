@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dbformariadb_virtual_network_rule_args_doc}
 class VirtualNetworkRuleArgs {
   /// Create firewall rule before the virtual network has vnet service endpoint enabled.
-  final pulumi.Input<bool>? ignoreMissingVnetServiceEndpoint;
+  final pulumi.Input<bool?>? ignoreMissingVnetServiceEndpoint;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the server.
   final pulumi.Input<String> serverName;
   /// The name of the virtual network rule.
-  final pulumi.Input<String>? virtualNetworkRuleName;
+  final pulumi.Input<String?>? virtualNetworkRuleName;
   /// The ARM resource id of the virtual network subnet.
   final pulumi.Input<String> virtualNetworkSubnetId;
 

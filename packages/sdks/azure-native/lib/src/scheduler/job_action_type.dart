@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the job action type.
-enum JobActionType {
+enum JobActionType implements pulumi.PulumiEnum<String> {
   valueHttp("Http"),
   valueHttps("Https"),
   valueStorageQueue("StorageQueue"),
@@ -7,6 +9,7 @@ enum JobActionType {
   valueServiceBusTopic("ServiceBusTopic");
 
   const JobActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static JobActionType fromValue(String value) {

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// the criteria operator.
-enum Operator {
+enum Operator implements pulumi.PulumiEnum<String> {
   valueEquals("Equals"),
   valueGreaterThan("GreaterThan"),
   valueGreaterThanOrEqual("GreaterThanOrEqual"),
@@ -7,6 +9,7 @@ enum Operator {
   valueLessThanOrEqual("LessThanOrEqual");
 
   const Operator(this.wireValue);
+  @override
   final String wireValue;
 
   static Operator fromValue(String value) {

@@ -7,19 +7,19 @@ import 'sub_resource_response.dart';
 /// Specifies an IP configuration of the network interface.
 class IpConfigurationResponse {
   /// Specifies an array of references to backend address pools of application gateways. A node type can reference backend address pools of multiple application gateways. Multiple node types cannot use the same application gateway.
-  final pulumi.Input<List<SubResourceResponse>>? applicationGatewayBackendAddressPools;
+  final pulumi.Input<List<SubResourceResponse>?>? applicationGatewayBackendAddressPools;
   /// Specifies an array of references to backend address pools of load balancers. A node type can reference backend address pools of one public and one internal load balancer. Multiple node types cannot use the same basic sku load balancer.
-  final pulumi.Input<List<SubResourceResponse>>? loadBalancerBackendAddressPools;
+  final pulumi.Input<List<SubResourceResponse>?>? loadBalancerBackendAddressPools;
   /// Specifies an array of references to inbound Nat pools of the load balancers. A node type can reference inbound nat pools of one public and one internal load balancer. Multiple node types cannot use the same basic sku load balancer.
-  final pulumi.Input<List<SubResourceResponse>>? loadBalancerInboundNatPools;
+  final pulumi.Input<List<SubResourceResponse>?>? loadBalancerInboundNatPools;
   /// Name of the network interface.
   final pulumi.Input<String> name;
   /// Specifies whether the IP configuration's private IP is IPv4 or IPv6. Default is IPv4.
-  final pulumi.Input<String>? privateIPAddressVersion;
+  final pulumi.Input<String?>? privateIPAddressVersion;
   /// The public IP address configuration of the network interface.
-  final pulumi.Input<IpConfigurationResponsePublicIPAddressConfiguration>? publicIPAddressConfiguration;
+  final pulumi.Input<IpConfigurationResponsePublicIPAddressConfiguration?>? publicIPAddressConfiguration;
   /// Specifies the subnet of the network interface.
-  final pulumi.Input<SubResourceResponse>? subnet;
+  final pulumi.Input<SubResourceResponse?>? subnet;
 
   /// Creates a new [IpConfigurationResponse].
   /// [applicationGatewayBackendAddressPools] Specifies an array of references to backend address pools of application gateways. A node type can reference backend address pools of multiple application gateways. Multiple node types cannot use the same application gateway.
@@ -29,15 +29,15 @@ class IpConfigurationResponse {
   /// [privateIPAddressVersion] Specifies whether the IP configuration's private IP is IPv4 or IPv6. Default is IPv4.
   /// [publicIPAddressConfiguration] The public IP address configuration of the network interface.
   /// [subnet] Specifies the subnet of the network interface.
-  const IpConfigurationResponse({
+  IpConfigurationResponse({
     this.applicationGatewayBackendAddressPools,
     this.loadBalancerBackendAddressPools,
     this.loadBalancerInboundNatPools,
     required this.name,
-    this.privateIPAddressVersion,
+    pulumi.Input<String?>? privateIPAddressVersion,
     this.publicIPAddressConfiguration,
     this.subnet,
-  });
+  }) : privateIPAddressVersion = privateIPAddressVersion ?? pulumi.Input.fromValue('IPv4');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

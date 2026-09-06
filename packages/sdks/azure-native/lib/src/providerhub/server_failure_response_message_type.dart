@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of server failure response message.
-enum ServerFailureResponseMessageType {
+enum ServerFailureResponseMessageType implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   outageReporting("OutageReporting");
 
   const ServerFailureResponseMessageType(this.wireValue);
+  @override
   final String wireValue;
 
   static ServerFailureResponseMessageType fromValue(String value) {

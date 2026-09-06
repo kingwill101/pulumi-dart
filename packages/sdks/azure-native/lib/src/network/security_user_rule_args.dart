@@ -11,27 +11,27 @@ class SecurityUserRuleArgs {
   /// The name of the network manager Security Configuration.
   final pulumi.Input<String> configurationName;
   /// A description for this rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The destination port ranges.
-  final pulumi.Input<List<String>>? destinationPortRanges;
+  final pulumi.Input<List<String>?>? destinationPortRanges;
   /// The destination address prefixes. CIDR or destination IP ranges.
-  final pulumi.Input<List<AddressPrefixItem>>? destinations;
+  final pulumi.Input<List<AddressPrefixItem>?>? destinations;
   /// Indicates if the traffic matched against the rule in inbound or outbound.
-  final pulumi.Input<String> direction;
+  final pulumi.Input<dynamic> direction;
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
   /// Network protocol this rule applies to.
-  final pulumi.Input<String> protocol;
+  final pulumi.Input<dynamic> protocol;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the network manager security Configuration rule collection.
   final pulumi.Input<String> ruleCollectionName;
   /// The name of the rule.
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
   /// The source port ranges.
-  final pulumi.Input<List<String>>? sourcePortRanges;
+  final pulumi.Input<List<String>?>? sourcePortRanges;
   /// The CIDR or source IP ranges.
-  final pulumi.Input<List<AddressPrefixItem>>? sources;
+  final pulumi.Input<List<AddressPrefixItem>?>? sources;
 
   /// Creates a new [SecurityUserRuleArgs].
   /// [configurationName] The name of the network manager Security Configuration.
@@ -84,9 +84,9 @@ class SecurityUserRuleArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationPortRanges: (() { final guardedValue = map['destinationPortRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       destinations: (() { final guardedValue = map['destinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AddressPrefixItem>(guardedValue, (value) => AddressPrefixItem.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      direction: pulumi.Input.fromValue(map['direction'] as String),
+      direction: pulumi.Input.fromValue(map['direction']),
       networkManagerName: pulumi.Input.fromValue(map['networkManagerName'] as String),
-      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      protocol: pulumi.Input.fromValue(map['protocol']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       ruleCollectionName: pulumi.Input.fromValue(map['ruleCollectionName'] as String),
       ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

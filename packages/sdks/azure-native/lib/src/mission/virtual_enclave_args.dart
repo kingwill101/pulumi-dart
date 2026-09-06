@@ -14,31 +14,31 @@ import 'role_assignment_item.dart';
 /// {@macro pulumi_mission_virtual_enclave_args_doc}
 class VirtualEnclaveArgs {
   /// Deploy Bastion service (True or False).
-  final pulumi.Input<bool>? bastionEnabled;
+  final pulumi.Input<bool?>? bastionEnabled;
   /// Community Resource Id.
   final pulumi.Input<String> communityResourceId;
   /// Enclave default settings.
-  final pulumi.Input<EnclaveDefaultSettingsModel>? enclaveDefaultSettings;
+  final pulumi.Input<EnclaveDefaultSettingsModel?>? enclaveDefaultSettings;
   /// Enclave role assignments
-  final pulumi.Input<List<RoleAssignmentItem>>? enclaveRoleAssignments;
+  final pulumi.Input<List<RoleAssignmentItem>?>? enclaveRoleAssignments;
   /// Virtual Network.
   final pulumi.Input<EnclaveVirtualNetworkModel> enclaveVirtualNetwork;
   /// Enclave specific policies
-  final pulumi.Input<List<GovernedServiceItem>>? governedServiceList;
+  final pulumi.Input<List<GovernedServiceItem>?>? governedServiceList;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Maintenance Mode configuration.
-  final pulumi.Input<MaintenanceModeConfigurationModel>? maintenanceModeConfiguration;
+  final pulumi.Input<MaintenanceModeConfigurationModel?>? maintenanceModeConfiguration;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the enclaveResource Resource
-  final pulumi.Input<String>? virtualEnclaveName;
+  final pulumi.Input<String?>? virtualEnclaveName;
   /// Workload role assignments
-  final pulumi.Input<List<RoleAssignmentItem>>? workloadRoleAssignments;
+  final pulumi.Input<List<RoleAssignmentItem>?>? workloadRoleAssignments;
 
   /// Creates a new [VirtualEnclaveArgs].
   /// [bastionEnabled] Deploy Bastion service (True or False).
@@ -54,8 +54,8 @@ class VirtualEnclaveArgs {
   /// [tags] Resource tags.
   /// [virtualEnclaveName] The name of the enclaveResource Resource
   /// [workloadRoleAssignments] Workload role assignments
-  const VirtualEnclaveArgs({
-    this.bastionEnabled,
+  VirtualEnclaveArgs({
+    pulumi.Input<bool?>? bastionEnabled,
     required this.communityResourceId,
     this.enclaveDefaultSettings,
     this.enclaveRoleAssignments,
@@ -68,7 +68,7 @@ class VirtualEnclaveArgs {
     this.tags,
     this.virtualEnclaveName,
     this.workloadRoleAssignments,
-  });
+  }) : bastionEnabled = bastionEnabled ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

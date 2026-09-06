@@ -6,9 +6,9 @@ import 'transit_option_params.dart';
 /// TransitOption Properties
 class TransitOption {
   /// Transit Option Params
-  final pulumi.Input<TransitOptionParams>? params;
+  final pulumi.Input<TransitOptionParams?>? params;
   /// Transit Option Type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [TransitOption].
   /// [params] Transit Option Params
@@ -28,7 +28,7 @@ class TransitOption {
   factory TransitOption.fromMap(Map<String, dynamic> map) {
     return TransitOption(
       params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TransitOptionParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

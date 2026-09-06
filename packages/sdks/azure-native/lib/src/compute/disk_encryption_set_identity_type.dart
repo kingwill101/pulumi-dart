@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of Managed Identity used by the DiskEncryptionSet. Only SystemAssigned is supported for new creations. Disk Encryption Sets can be updated with Identity type None during migration of subscription to a new Azure Active Directory tenant; it will cause the encrypted resources to lose access to the keys.
-enum DiskEncryptionSetIdentityType {
+enum DiskEncryptionSetIdentityType implements pulumi.PulumiEnum<String> {
   systemAssigned("SystemAssigned"),
   userAssigned("UserAssigned"),
   systemAssignedUserAssigned("SystemAssigned, UserAssigned"),
   none("None");
 
   const DiskEncryptionSetIdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static DiskEncryptionSetIdentityType fromValue(String value) {

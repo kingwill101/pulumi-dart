@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of the definition of a first party application of the Test Base package.
 class FirstPartyAppDefinitionResponse {
   /// The architecture of a first party application of a Test Base Account.
-  final pulumi.Input<String>? architecture;
+  final pulumi.Input<String?>? architecture;
   /// The channel info of a first party application of a Test Base Account.
-  final pulumi.Input<String>? channel;
+  final pulumi.Input<String?>? channel;
   /// Specifies how the first party applications should be inter-operated with user's application.
-  final pulumi.Input<String>? interopExecutionMode;
+  final pulumi.Input<String?>? interopExecutionMode;
   /// The media name of a first party application of a Test Base Account.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ring info of a first party application of a Test Base Account.
-  final pulumi.Input<String>? ring;
+  final pulumi.Input<String?>? ring;
 
   /// Creates a new [FirstPartyAppDefinitionResponse].
   /// [architecture] The architecture of a first party application of a Test Base Account.
@@ -21,13 +21,13 @@ class FirstPartyAppDefinitionResponse {
   /// [interopExecutionMode] Specifies how the first party applications should be inter-operated with user's application.
   /// [name] The media name of a first party application of a Test Base Account.
   /// [ring] The ring info of a first party application of a Test Base Account.
-  const FirstPartyAppDefinitionResponse({
+  FirstPartyAppDefinitionResponse({
     this.architecture,
     this.channel,
-    this.interopExecutionMode,
+    pulumi.Input<String?>? interopExecutionMode,
     this.name,
     this.ring,
-  });
+  }) : interopExecutionMode = interopExecutionMode ?? pulumi.Input.fromValue('firstPartyAppWithTests');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

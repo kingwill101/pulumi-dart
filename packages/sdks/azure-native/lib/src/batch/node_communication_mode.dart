@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// If omitted, the default value is Default.
-enum NodeCommunicationMode {
+enum NodeCommunicationMode implements pulumi.PulumiEnum<String> {
   default_("Default"),
   classic("Classic"),
   simplified("Simplified");
 
   const NodeCommunicationMode(this.wireValue);
+  @override
   final String wireValue;
 
   static NodeCommunicationMode fromValue(String value) {

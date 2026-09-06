@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// GovernedServiceItem Properties
 class GovernedServiceItemResponse {
   /// Initiative enforcement (Enabled or Disabled).
-  final pulumi.Input<String>? enforcement;
+  final pulumi.Input<String?>? enforcement;
   /// Initiatives associated with this service.
   final pulumi.Input<List<String>> initiatives;
   /// Governance option for this service (Allow, Deny, ExceptionOnly, or NotApplicable).
-  final pulumi.Input<String>? option;
+  final pulumi.Input<String?>? option;
   /// Enforcement mode for policy. AuditOnly, Enforce, or None.
-  final pulumi.Input<String>? policyAction;
+  final pulumi.Input<String?>? policyAction;
   /// Service ID
   final pulumi.Input<String> serviceId;
   /// Service name.

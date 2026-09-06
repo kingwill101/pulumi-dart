@@ -8,7 +8,7 @@ class EncryptionV2Response {
   /// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
   final pulumi.Input<String> keySource;
   /// Key Vault input properties for encryption.
-  final pulumi.Input<EncryptionV2KeyVaultPropertiesResponse>? keyVaultProperties;
+  final pulumi.Input<EncryptionV2KeyVaultPropertiesResponse?>? keyVaultProperties;
 
   /// Creates a new [EncryptionV2Response].
   /// [keySource] The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault

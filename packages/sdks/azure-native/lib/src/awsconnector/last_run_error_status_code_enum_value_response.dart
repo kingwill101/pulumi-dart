@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of LastRunErrorStatusCodeEnumValue
 class LastRunErrorStatusCodeEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [LastRunErrorStatusCodeEnumValueResponse].
   /// [value] Property value

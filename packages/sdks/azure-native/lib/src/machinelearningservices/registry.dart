@@ -3,6 +3,8 @@ import 'arm_resource_id_response.dart';
 import 'managed_resource_group_settings_response.dart';
 import 'managed_service_identity_response.dart';
 import 'registry_args.dart';
+import 'registry_private_endpoint_connection_response.dart';
+import 'registry_region_arm_details_response.dart';
 import 'sku_response.dart';
 import 'system_data_response.dart';
 
@@ -43,9 +45,9 @@ class Registry extends pulumi.CustomResource {
   /// Possible values: "Enabled" or "Disabled"
   late final pulumi.Output<String?> publicNetworkAccess;
   /// Details of each region the registry is in
-  late final pulumi.Output<List<Map<String, dynamic>>?> regionDetails;
+  late final pulumi.Output<List<RegistryRegionArmDetailsResponse>?> regionDetails;
   /// Private endpoint connections info used for pending connections in private link portal
-  late final pulumi.Output<List<Map<String, dynamic>>?> registryPrivateEndpointConnections;
+  late final pulumi.Output<List<RegistryPrivateEndpointConnectionResponse>?> registryPrivateEndpointConnections;
   /// Sku details required for ARM contract for Autoscaling.
   late final pulumi.Output<SkuResponse?> sku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -80,11 +82,39 @@ class Registry extends pulumi.CustomResource {
     mlFlowRegistryUri = registerOutput<String?>('mlFlowRegistryUri');
     this.name = registerOutput<String>('name');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    regionDetails = registerOutput<List<Map<String, dynamic>>?>('regionDetails');
-    registryPrivateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>('registryPrivateEndpointConnections');
+    regionDetails = registerOutput<List<RegistryRegionArmDetailsResponse>?>('regionDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryRegionArmDetailsResponse>(guardedValue, (value) => RegistryRegionArmDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    registryPrivateEndpointConnections = registerOutput<List<RegistryPrivateEndpointConnectionResponse>?>('registryPrivateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryPrivateEndpointConnectionResponse>(guardedValue, (value) => RegistryPrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Registry] resource.
+  Registry.reference(String urn)
+    : super(
+        'azure-native:machinelearningservices:Registry',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    discoveryUrl = registerOutput<String?>('discoveryUrl');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    intellectualPropertyPublisher = registerOutput<String?>('intellectualPropertyPublisher');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    managedResourceGroup = registerOutput<ArmResourceIdResponse?>('managedResourceGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ArmResourceIdResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managedResourceGroupSettings = registerOutput<ManagedResourceGroupSettingsResponse?>('managedResourceGroupSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedResourceGroupSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mlFlowRegistryUri = registerOutput<String?>('mlFlowRegistryUri');
+    this.name = registerOutput<String>('name');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    regionDetails = registerOutput<List<RegistryRegionArmDetailsResponse>?>('regionDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryRegionArmDetailsResponse>(guardedValue, (value) => RegistryRegionArmDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    registryPrivateEndpointConnections = registerOutput<List<RegistryPrivateEndpointConnectionResponse>?>('registryPrivateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryPrivateEndpointConnectionResponse>(guardedValue, (value) => RegistryPrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

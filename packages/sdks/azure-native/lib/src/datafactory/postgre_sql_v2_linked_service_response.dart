@@ -8,29 +8,29 @@ import 'parameter_specification_response.dart';
 /// Linked service for PostgreSQLV2 data source.
 class PostgreSqlV2LinkedServiceResponse {
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The authentication type to use. Type: string.
   final pulumi.Input<dynamic> authenticationType;
   /// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
   final pulumi.Input<dynamic>? commandTimeout;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse?>? connectVia;
   /// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer.
   final pulumi.Input<dynamic>? connectionTimeout;
   /// Database name for connection. Type: string.
   final pulumi.Input<dynamic> database;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Gets or sets the .NET encoding that will be used to encode/decode PostgreSQL string data. Type: string
   final pulumi.Input<dynamic>? encoding;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// When enabled, parameter values are logged when commands are executed. Type: boolean.
   final pulumi.Input<dynamic>? logParameters;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>?>? parameters;
   /// The Azure key vault secret reference of password in connection string. Type: string.
-  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? password;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse?>? password;
   /// Whether connection pooling should be used. Type: boolean.
   final pulumi.Input<dynamic>? pooling;
   /// The port for the connection. Type: integer.
@@ -59,7 +59,7 @@ class PostgreSqlV2LinkedServiceResponse {
   /// Username for authentication. Type: string.
   final pulumi.Input<dynamic> username;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [PostgreSqlV2LinkedServiceResponse].
   /// [annotations] List of tags that can be used for describing the linked service.

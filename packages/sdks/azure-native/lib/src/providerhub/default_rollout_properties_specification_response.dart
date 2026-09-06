@@ -15,25 +15,25 @@ import 'resource_type_registration_response.dart';
 /// The default rollout specification.
 class DefaultRolloutPropertiesSpecificationResponse {
   /// The auto provisioning config.
-  final pulumi.Input<DefaultRolloutSpecificationAutoProvisionConfigResponse>? autoProvisionConfig;
+  final pulumi.Input<DefaultRolloutSpecificationAutoProvisionConfigResponse?>? autoProvisionConfig;
   /// The canary traffic region configuration.
-  final pulumi.Input<DefaultRolloutSpecificationCanaryResponse>? canary;
+  final pulumi.Input<DefaultRolloutSpecificationCanaryResponse?>? canary;
   /// The expedited rollout definition.
-  final pulumi.Input<DefaultRolloutSpecificationExpeditedRolloutResponse>? expeditedRollout;
+  final pulumi.Input<DefaultRolloutSpecificationExpeditedRolloutResponse?>? expeditedRollout;
   /// The high traffic region configuration.
-  final pulumi.Input<DefaultRolloutSpecificationHighTrafficResponse>? highTraffic;
+  final pulumi.Input<DefaultRolloutSpecificationHighTrafficResponse?>? highTraffic;
   /// The low traffic region configuration.
-  final pulumi.Input<DefaultRolloutSpecificationLowTrafficResponse>? lowTraffic;
+  final pulumi.Input<DefaultRolloutSpecificationLowTrafficResponse?>? lowTraffic;
   /// The medium traffic region configuration.
-  final pulumi.Input<DefaultRolloutSpecificationMediumTrafficResponse>? mediumTraffic;
+  final pulumi.Input<DefaultRolloutSpecificationMediumTrafficResponse?>? mediumTraffic;
   /// The provider registration.
-  final pulumi.Input<DefaultRolloutSpecificationProviderRegistrationResponse>? providerRegistration;
+  final pulumi.Input<DefaultRolloutSpecificationProviderRegistrationResponse?>? providerRegistration;
   /// The resource type registrations.
-  final pulumi.Input<List<ResourceTypeRegistrationResponse>>? resourceTypeRegistrations;
+  final pulumi.Input<List<ResourceTypeRegistrationResponse>?>? resourceTypeRegistrations;
   /// The rest of the world group one region configuration.
-  final pulumi.Input<DefaultRolloutSpecificationRestOfTheWorldGroupOneResponse>? restOfTheWorldGroupOne;
+  final pulumi.Input<DefaultRolloutSpecificationRestOfTheWorldGroupOneResponse?>? restOfTheWorldGroupOne;
   /// The rest of the world group two region configuration.
-  final pulumi.Input<DefaultRolloutSpecificationRestOfTheWorldGroupTwoResponse>? restOfTheWorldGroupTwo;
+  final pulumi.Input<DefaultRolloutSpecificationRestOfTheWorldGroupTwoResponse?>? restOfTheWorldGroupTwo;
 
   /// Creates a new [DefaultRolloutPropertiesSpecificationResponse].
   /// [autoProvisionConfig] The auto provisioning config.

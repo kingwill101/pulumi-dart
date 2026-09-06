@@ -8,9 +8,9 @@ import 'subnet_interface_endpoint_response.dart';
 /// Frontend IP address of the load balancer.
 class FrontendIPConfigurationInterfaceEndpointResponse {
   /// A unique read-only string that changes whenever the resource is updated.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Read only. Inbound pools URIs that use this frontend IP.
   final pulumi.Input<List<SubResourceResponse>> inboundNatPools;
   /// Read only. Inbound rules URIs that use this frontend IP.
@@ -18,23 +18,23 @@ class FrontendIPConfigurationInterfaceEndpointResponse {
   /// Gets load balancing rules URIs that use this frontend IP.
   final pulumi.Input<List<SubResourceResponse>> loadBalancingRules;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Read only. Outbound rules URIs that use this frontend IP.
   final pulumi.Input<List<SubResourceResponse>> outboundRules;
   /// The private IP address of the IP configuration.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// The Private IP allocation method.
-  final pulumi.Input<String>? privateIPAllocationMethod;
+  final pulumi.Input<String?>? privateIPAllocationMethod;
   /// Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// The reference of the Public IP resource.
-  final pulumi.Input<PublicIPAddressInterfaceEndpointResponse>? publicIPAddress;
+  final pulumi.Input<PublicIPAddressInterfaceEndpointResponse?>? publicIPAddress;
   /// The reference of the Public IP Prefix resource.
-  final pulumi.Input<SubResourceResponse>? publicIPPrefix;
+  final pulumi.Input<SubResourceResponse?>? publicIPPrefix;
   /// The reference of the subnet resource.
-  final pulumi.Input<SubnetInterfaceEndpointResponse>? subnet;
+  final pulumi.Input<SubnetInterfaceEndpointResponse?>? subnet;
   /// A list of availability zones denoting the IP allocated for the resource needs to come from.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [FrontendIPConfigurationInterfaceEndpointResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.

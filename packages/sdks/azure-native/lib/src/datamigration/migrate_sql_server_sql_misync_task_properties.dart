@@ -6,11 +6,11 @@ import 'migrate_sql_server_sql_misync_task_input.dart';
 /// Properties for task that migrates SQL Server databases to Azure SQL Database Managed Instance sync scenario
 class MigrateSqlServerSqlMISyncTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// DateTime in UTC when the task was created
-  final pulumi.Input<String>? createdOn;
+  final pulumi.Input<String?>? createdOn;
   /// Task input
-  final pulumi.Input<MigrateSqlServerSqlMISyncTaskInput>? input;
+  final pulumi.Input<MigrateSqlServerSqlMISyncTaskInput?>? input;
   /// Task type.
   /// Expected value is 'Migrate.SqlServer.AzureSqlDbMI.Sync.LRS'.
   final pulumi.Input<String> taskType;

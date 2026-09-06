@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Contains properties that are applicable to both Spot and Regular.
 class PriorityProfile {
   /// Allocation strategy to follow when determining the VM sizes distribution.
-  final pulumi.Input<String>? allocationStrategy;
+  final pulumi.Input<dynamic>? allocationStrategy;
   /// Eviction Policy to follow when evicting Spot VMs.
-  final pulumi.Input<String>? evictionPolicy;
+  final pulumi.Input<dynamic>? evictionPolicy;
   /// Price per hour of each Spot VM will never exceed this.
-  final pulumi.Input<double>? maxPricePerVM;
+  final pulumi.Input<double?>? maxPricePerVM;
   /// Specifies the type of Virtual Machine.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [PriorityProfile].
   /// [allocationStrategy] Allocation strategy to follow when determining the VM sizes distribution.
@@ -36,10 +36,10 @@ class PriorityProfile {
 
   factory PriorityProfile.fromMap(Map<String, dynamic> map) {
     return PriorityProfile(
-      allocationStrategy: (() { final guardedValue = map['allocationStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      evictionPolicy: (() { final guardedValue = map['evictionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxPricePerVM: (() { final guardedValue = map['maxPricePerVM']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      allocationStrategy: (() { final guardedValue = map['allocationStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      evictionPolicy: (() { final guardedValue = map['evictionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      maxPricePerVM: (() { final guardedValue = map['maxPricePerVM']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

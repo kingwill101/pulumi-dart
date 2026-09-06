@@ -10,7 +10,7 @@ class GetAssessmentArgs {
   /// The Assessment Key - Unique key for the assessment type
   final pulumi.Input<String> assessmentName;
   /// OData expand. Optional.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The identifier of the resource.
   final pulumi.Input<String> resourceId;
 

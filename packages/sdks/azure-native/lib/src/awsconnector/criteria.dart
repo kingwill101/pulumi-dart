@@ -6,9 +6,9 @@ import 's3_words_list.dart';
 /// Definition of Criteria
 class Criteria {
   /// The S3 object key for the AllowList.
-  final pulumi.Input<String>? regex;
+  final pulumi.Input<String?>? regex;
   /// The S3 location for the AllowList.
-  final pulumi.Input<S3WordsList>? s3WordsList;
+  final pulumi.Input<S3WordsList?>? s3WordsList;
 
   /// Creates a new [Criteria].
   /// [regex] The S3 object key for the AllowList.

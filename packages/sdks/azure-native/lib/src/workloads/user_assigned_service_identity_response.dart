@@ -8,7 +8,7 @@ class UserAssignedServiceIdentityResponse {
   /// Type of manage identity
   final pulumi.Input<String> type;
   /// User assigned identities dictionary
-  final pulumi.Input<Map<String, UserAssignedIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [UserAssignedServiceIdentityResponse].
   /// [type] Type of manage identity

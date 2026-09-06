@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_avs_authorization_args_doc}
 class AuthorizationArgs {
   /// Name of the ExpressRoute Circuit Authorization
-  final pulumi.Input<String>? authorizationName;
+  final pulumi.Input<String?>? authorizationName;
   /// The ID of the ExpressRoute Circuit
-  final pulumi.Input<String>? expressRouteId;
+  final pulumi.Input<String?>? expressRouteId;
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
   /// The name of the resource group. The name is case insensitive.

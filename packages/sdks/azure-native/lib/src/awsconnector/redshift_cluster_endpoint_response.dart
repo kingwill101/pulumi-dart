@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Endpoint
 class RedshiftClusterEndpointResponse {
   /// Property address
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Property port
-  final pulumi.Input<String>? port;
+  final pulumi.Input<String?>? port;
 
   /// Creates a new [RedshiftClusterEndpointResponse].
   /// [address] Property address

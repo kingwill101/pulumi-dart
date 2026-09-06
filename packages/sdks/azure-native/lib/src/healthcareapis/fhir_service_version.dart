@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kind of FHIR Service.
-enum FhirServiceVersion {
+enum FhirServiceVersion implements pulumi.PulumiEnum<String> {
   valueSTU3("STU3"),
   valueR4("R4");
 
   const FhirServiceVersion(this.wireValue);
+  @override
   final String wireValue;
 
   static FhirServiceVersion fromValue(String value) {

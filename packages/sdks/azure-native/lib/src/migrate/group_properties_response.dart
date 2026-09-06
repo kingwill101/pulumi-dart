@@ -13,7 +13,7 @@ class GroupPropertiesResponse {
   /// Whether the group has been created and is valid.
   final pulumi.Input<String> groupStatus;
   /// The type of group.
-  final pulumi.Input<String>? groupType;
+  final pulumi.Input<String?>? groupType;
   /// Number of machines part of this group.
   final pulumi.Input<int> machineCount;
   /// Time when this group was last updated. Date-Time represented in ISO-8601 format.
@@ -56,7 +56,7 @@ class GroupPropertiesResponse {
       createdTimestamp: pulumi.Input.fromValue(map['createdTimestamp'] as String),
       groupStatus: pulumi.Input.fromValue(map['groupStatus'] as String),
       groupType: (() { final guardedValue = map['groupType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      machineCount: pulumi.Input.fromValue(map['machineCount'] as int),
+      machineCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['machineCount'])),
       updatedTimestamp: pulumi.Input.fromValue(map['updatedTimestamp'] as String),
     );
   }

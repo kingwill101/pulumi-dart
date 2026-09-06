@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The definition of a canonical profile property.
 class CanonicalProfileDefinitionResponseProperties {
   /// Profile name.
-  final pulumi.Input<String>? profileName;
+  final pulumi.Input<String?>? profileName;
   /// Property name of profile.
-  final pulumi.Input<String>? profilePropertyName;
+  final pulumi.Input<String?>? profilePropertyName;
   /// The rank.
-  final pulumi.Input<int>? rank;
+  final pulumi.Input<int?>? rank;
   /// Type of canonical property value.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Value of the canonical property.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [CanonicalProfileDefinitionResponseProperties].
   /// [profileName] Profile name.
@@ -43,7 +43,7 @@ class CanonicalProfileDefinitionResponseProperties {
     return CanonicalProfileDefinitionResponseProperties(
       profileName: (() { final guardedValue = map['profileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       profilePropertyName: (() { final guardedValue = map['profilePropertyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rank: (() { final guardedValue = map['rank']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rank: (() { final guardedValue = map['rank']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

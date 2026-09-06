@@ -6,11 +6,11 @@ import 'patch_settings_response_status.dart';
 /// Specifies the linux configuration for update management.
 class OSProfileResponseLinuxConfiguration {
   /// Specifies the assessment mode.
-  final pulumi.Input<String>? assessmentMode;
+  final pulumi.Input<String?>? assessmentMode;
   /// Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
-  final pulumi.Input<bool>? enableHotpatching;
+  final pulumi.Input<bool?>? enableHotpatching;
   /// Specifies the patch mode.
-  final pulumi.Input<String>? patchMode;
+  final pulumi.Input<String?>? patchMode;
   /// Status of the hotpatch capability enrollment or disenrollment.
   final pulumi.Input<PatchSettingsResponseStatus> status;
 

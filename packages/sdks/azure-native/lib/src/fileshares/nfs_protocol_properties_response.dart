@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties specific to the NFS protocol.
 class NfsProtocolPropertiesResponse {
   /// Root squash defines how root users on clients are mapped to the NFS share.
-  final pulumi.Input<String>? rootSquash;
+  final pulumi.Input<String?>? rootSquash;
 
   /// Creates a new [NfsProtocolPropertiesResponse].
   /// [rootSquash] Root squash defines how root users on clients are mapped to the NFS share.

@@ -8,7 +8,7 @@ class SqlServerAvailabilityGroupResourcePropertiesResponseDatabases {
   /// Link to retrieve next page of results.
   final pulumi.Input<String> nextLink;
   /// Array of Availability Group Database Replicas.
-  final pulumi.Input<List<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse>>? value;
+  final pulumi.Input<List<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse>?>? value;
 
   /// Creates a new [SqlServerAvailabilityGroupResourcePropertiesResponseDatabases].
   /// [nextLink] Link to retrieve next page of results.

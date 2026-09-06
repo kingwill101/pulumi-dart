@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of awsSnsSubscription
 class AwsSnsSubscriptionProperties {
   /// &lt;p&gt;The subscription's endpoint (format depends on the protocol).&lt;/p&gt;
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// &lt;p&gt;The subscription's owner.&lt;/p&gt;
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// &lt;p&gt;The subscription's protocol.&lt;/p&gt;
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// &lt;p&gt;The subscription's ARN.&lt;/p&gt;
-  final pulumi.Input<String>? subscriptionArn;
+  final pulumi.Input<String?>? subscriptionArn;
   /// &lt;p&gt;The ARN of the subscription's topic.&lt;/p&gt;
-  final pulumi.Input<String>? topicArn;
+  final pulumi.Input<String?>? topicArn;
 
   /// Creates a new [AwsSnsSubscriptionProperties].
   /// [endpoint] &lt;p&gt;The subscription's endpoint (format depends on the protocol).&lt;/p&gt;

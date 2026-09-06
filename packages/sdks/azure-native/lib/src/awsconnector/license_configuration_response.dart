@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of LicenseConfiguration
 class LicenseConfigurationResponse {
   /// &lt;p&gt;The Amazon Resource Name (ARN) of the license configuration.&lt;/p&gt;
-  final pulumi.Input<String>? licenseConfigurationArn;
+  final pulumi.Input<String?>? licenseConfigurationArn;
 
   /// Creates a new [LicenseConfigurationResponse].
   /// [licenseConfigurationArn] &lt;p&gt;The Amazon Resource Name (ARN) of the license configuration.&lt;/p&gt;

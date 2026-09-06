@@ -12,27 +12,27 @@ import 'contact_profiles_properties_network_configuration.dart';
 /// {@macro pulumi_orbital_contact_profile_args_doc}
 class ContactProfileArgs {
   /// Auto-tracking configuration.
-  final pulumi.Input<AutoTrackingConfiguration>? autoTrackingConfiguration;
+  final pulumi.Input<AutoTrackingConfiguration?>? autoTrackingConfiguration;
   /// Contact Profile name.
-  final pulumi.Input<String>? contactProfileName;
+  final pulumi.Input<String?>? contactProfileName;
   /// ARM resource identifier of the Event Hub used for telemetry. Requires granting Orbital Resource Provider the rights to send telemetry into the hub.
-  final pulumi.Input<String>? eventHubUri;
+  final pulumi.Input<String?>? eventHubUri;
   /// Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
   final pulumi.Input<List<ContactProfileLink>> links;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Minimum viable elevation for the contact in decimal degrees. Used for listing the available contacts with a spacecraft at a given ground station.
-  final pulumi.Input<double>? minimumElevationDegrees;
+  final pulumi.Input<double?>? minimumElevationDegrees;
   /// Minimum viable contact duration in ISO 8601 format. Used for listing the available contacts with a spacecraft at a given ground station.
-  final pulumi.Input<String>? minimumViableContactDuration;
+  final pulumi.Input<String?>? minimumViableContactDuration;
   /// Network configuration of customer virtual network.
   final pulumi.Input<ContactProfilesPropertiesNetworkConfiguration> networkConfiguration;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
-  final pulumi.Input<List<ContactProfileThirdPartyConfiguration>>? thirdPartyConfigurations;
+  final pulumi.Input<List<ContactProfileThirdPartyConfiguration>?>? thirdPartyConfigurations;
 
   /// Creates a new [ContactProfileArgs].
   /// [autoTrackingConfiguration] Auto-tracking configuration.
@@ -83,7 +83,7 @@ class ContactProfileArgs {
       eventHubUri: (() { final guardedValue = map['eventHubUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       links: pulumi.Input.fromValue(pulumi.Input.decodeList<ContactProfileLink>(map['links']!, (value) => ContactProfileLink.fromMap((value as Map).cast<String, dynamic>()))),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      minimumElevationDegrees: (() { final guardedValue = map['minimumElevationDegrees']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      minimumElevationDegrees: (() { final guardedValue = map['minimumElevationDegrees']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       minimumViableContactDuration: (() { final guardedValue = map['minimumViableContactDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkConfiguration: pulumi.Input.fromValue(ContactProfilesPropertiesNetworkConfiguration.fromMap((map['networkConfiguration']! as Map).cast<String, dynamic>())),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

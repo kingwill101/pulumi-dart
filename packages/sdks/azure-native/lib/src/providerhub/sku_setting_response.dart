@@ -8,29 +8,29 @@ import 'sku_setting_capacity_response.dart';
 
 class SkuSettingResponse {
   /// The capabilities.
-  final pulumi.Input<List<SkuCapabilityResponse>>? capabilities;
+  final pulumi.Input<List<SkuCapabilityResponse>?>? capabilities;
   /// The capacity.
-  final pulumi.Input<SkuSettingCapacityResponse>? capacity;
+  final pulumi.Input<SkuSettingCapacityResponse?>? capacity;
   /// The costs.
-  final pulumi.Input<List<SkuCostResponse>>? costs;
+  final pulumi.Input<List<SkuCostResponse>?>? costs;
   /// The family.
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// The kind.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The location info.
-  final pulumi.Input<List<SkuLocationInfoResponse>>? locationInfo;
+  final pulumi.Input<List<SkuLocationInfoResponse>?>? locationInfo;
   /// The locations.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// The name.
   final pulumi.Input<String> name;
   /// The required features.
-  final pulumi.Input<List<String>>? requiredFeatures;
+  final pulumi.Input<List<String>?>? requiredFeatures;
   /// The required quota ids.
-  final pulumi.Input<List<String>>? requiredQuotaIds;
+  final pulumi.Input<List<String>?>? requiredQuotaIds;
   /// The size.
-  final pulumi.Input<String>? size;
+  final pulumi.Input<String?>? size;
   /// The tier.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [SkuSettingResponse].
   /// [capabilities] The capabilities.

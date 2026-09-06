@@ -6,7 +6,7 @@ import 'environment_state_details_response.dart';
 /// An object that represents the status of ingress on an environment.
 class IngressEnvironmentStatusResponse {
   /// This string represents the state of ingress operations on an environment. It can be "Disabled", "Ready", "Running", "Paused" or "Unknown"
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// An object that contains the details about an environment's state.
   final pulumi.Input<EnvironmentStateDetailsResponse> stateDetails;
 

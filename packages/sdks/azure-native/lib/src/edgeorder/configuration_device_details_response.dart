@@ -11,7 +11,7 @@ class ConfigurationDeviceDetailsResponse {
   /// List of device details.
   final pulumi.Input<List<DeviceDetailsResponse>> deviceDetails;
   /// Display details of the product.
-  final pulumi.Input<DisplayInfoResponse>? displayInfo;
+  final pulumi.Input<DisplayInfoResponse?>? displayInfo;
   /// Hierarchy of the product which uniquely identifies the configuration.
   final pulumi.Input<HierarchyInformationResponse> hierarchyInformation;
   /// Identification type of the configuration.
@@ -54,7 +54,7 @@ class ConfigurationDeviceDetailsResponse {
       displayInfo: (() { final guardedValue = map['displayInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DisplayInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       hierarchyInformation: pulumi.Input.fromValue(HierarchyInformationResponse.fromMap((map['hierarchyInformation']! as Map).cast<String, dynamic>())),
       identificationType: pulumi.Input.fromValue(map['identificationType'] as String),
-      quantity: pulumi.Input.fromValue(map['quantity'] as int),
+      quantity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['quantity'])),
       termCommitmentInformation: pulumi.Input.fromValue(TermCommitmentInformationResponse.fromMap((map['termCommitmentInformation']! as Map).cast<String, dynamic>())),
     );
   }

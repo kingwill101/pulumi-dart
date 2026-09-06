@@ -8,25 +8,25 @@ import 'target_region_response.dart';
 /// The publishing profile of a gallery image version.
 class GalleryScriptVersionPublishingProfileResponse {
   /// The end of life date of the gallery image version. This property can be used for decommissioning purposes. This property is updatable.
-  final pulumi.Input<String>? endOfLifeDate;
+  final pulumi.Input<String?>? endOfLifeDate;
   /// If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
-  final pulumi.Input<bool>? excludeFromLatest;
+  final pulumi.Input<bool?>? excludeFromLatest;
   /// The timestamp for when the gallery image version is published.
   final pulumi.Input<String> publishedDate;
   /// The number of replicas of the Image Version to be created per region. This property would take effect for a region when regionalReplicaCount is not specified. This property is updatable.
-  final pulumi.Input<int>? replicaCount;
+  final pulumi.Input<int?>? replicaCount;
   /// Optional parameter which specifies the mode to be used for replication. This property is not updatable.
-  final pulumi.Input<String>? replicationMode;
+  final pulumi.Input<String?>? replicationMode;
   /// The source script from which the Script Version is going to be created.
   final pulumi.Input<ScriptSourceResponse> source;
   /// Specifies the strategy to be used when selecting the storage account type. Cannot be specified along with storageAccountType, but can be overridden per region by specifying targetRegions[].storageAccountType. This property is not updatable.
-  final pulumi.Input<String>? storageAccountStrategy;
+  final pulumi.Input<String?>? storageAccountStrategy;
   /// Specifies the storage account type to be used to store the image. Cannot be specified along with storageAccountStrategy. This property is not updatable.
-  final pulumi.Input<String>? storageAccountType;
+  final pulumi.Input<String?>? storageAccountType;
   /// The target extended locations where the Image Version is going to be replicated to. This property is updatable.
-  final pulumi.Input<List<GalleryTargetExtendedLocationResponse>>? targetExtendedLocations;
+  final pulumi.Input<List<GalleryTargetExtendedLocationResponse>?>? targetExtendedLocations;
   /// The target regions where the Image Version is going to be replicated to. This property is updatable.
-  final pulumi.Input<List<TargetRegionResponse>>? targetRegions;
+  final pulumi.Input<List<TargetRegionResponse>?>? targetRegions;
 
   /// Creates a new [GalleryScriptVersionPublishingProfileResponse].
   /// [endOfLifeDate] The end of life date of the gallery image version. This property can be used for decommissioning purposes. This property is updatable.
@@ -72,7 +72,7 @@ class GalleryScriptVersionPublishingProfileResponse {
       endOfLifeDate: (() { final guardedValue = map['endOfLifeDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       excludeFromLatest: (() { final guardedValue = map['excludeFromLatest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       publishedDate: pulumi.Input.fromValue(map['publishedDate'] as String),
-      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       replicationMode: (() { final guardedValue = map['replicationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       source: pulumi.Input.fromValue(ScriptSourceResponse.fromMap((map['source']! as Map).cast<String, dynamic>())),
       storageAccountStrategy: (() { final guardedValue = map['storageAccountStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

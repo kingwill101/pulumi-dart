@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The order by expression to be used in the report.
 class ReportConfigSortingResponse {
   /// Direction of sort.
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<String?>? direction;
   /// The name of the column to sort.
   final pulumi.Input<String> name;
 

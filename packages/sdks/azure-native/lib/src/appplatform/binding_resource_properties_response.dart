@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Binding resource properties payload
 class BindingResourcePropertiesResponse {
   /// Binding parameters of the Binding resource
-  final pulumi.Input<Map<String, String>>? bindingParameters;
+  final pulumi.Input<Map<String, String>?>? bindingParameters;
   /// Creation time of the Binding resource
   final pulumi.Input<String> createdAt;
   /// The generated Spring Boot property file for this binding. The secret will be deducted.
   final pulumi.Input<String> generatedProperties;
   /// The key of the bound resource
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The Azure resource id of the bound resource
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// The name of the bound resource
   final pulumi.Input<String> resourceName;
   /// The standard Azure resource type of the bound resource

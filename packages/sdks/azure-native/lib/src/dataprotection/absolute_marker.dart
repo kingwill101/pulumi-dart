@@ -1,4 +1,6 @@
-enum AbsoluteMarker {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum AbsoluteMarker implements pulumi.PulumiEnum<String> {
   valueAllBackup("AllBackup"),
   valueFirstOfDay("FirstOfDay"),
   valueFirstOfMonth("FirstOfMonth"),
@@ -6,6 +8,7 @@ enum AbsoluteMarker {
   valueFirstOfYear("FirstOfYear");
 
   const AbsoluteMarker(this.wireValue);
+  @override
   final String wireValue;
 
   static AbsoluteMarker fromValue(String value) {

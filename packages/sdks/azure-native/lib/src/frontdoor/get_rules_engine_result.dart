@@ -6,17 +6,17 @@ import 'rules_engine_rule_response.dart';
 /// Result data returned by getRulesEngine.
 class GetRulesEngineResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Resource status.
-  final String resourceState;
+  final String? resourceState;
   /// A list of rules that define a particular Rules Engine Configuration.
   final List<RulesEngineRuleResponse>? rules;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetRulesEngineResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -26,33 +26,33 @@ class GetRulesEngineResult {
   /// [rules] A list of rules that define a particular Rules Engine Configuration.
   /// [type] Resource type.
   const GetRulesEngineResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
-    required this.resourceState,
+    this.azureApiVersion,
+    this.id,
+    this.name,
+    this.resourceState,
     this.rules,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
-      'resourceState': resourceState,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
+      'resourceState': ?resourceState,
       'rules': ?(() { final guardedValue = rules; if (guardedValue == null) return null; return pulumi.Input.encodeList<RulesEngineRuleResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetRulesEngineResult.fromMap(Map<String, dynamic> map) {
     return GetRulesEngineResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      resourceState: map['resourceState'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceState: (() { final guardedValue = map['resourceState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RulesEngineRuleResponse>(guardedValue, (value) => RulesEngineRuleResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

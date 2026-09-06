@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
 class DatadogOrganizationPropertiesResponse {
   /// The configuration which describes the state of cloud security posture management. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.
-  final pulumi.Input<bool>? cspm;
+  final pulumi.Input<bool?>? cspm;
   /// Id of the Datadog organization.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the Datadog organization.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [DatadogOrganizationPropertiesResponse].
   /// [cspm] The configuration which describes the state of cloud security posture management. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.

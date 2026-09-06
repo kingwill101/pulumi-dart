@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_eventhub_consumer_group_args_doc}
 class ConsumerGroupArgs {
   /// The consumer group name
-  final pulumi.Input<String>? consumerGroupName;
+  final pulumi.Input<String?>? consumerGroupName;
   /// The Event Hub name
   final pulumi.Input<String> eventHubName;
   /// The Namespace name
@@ -16,7 +16,7 @@ class ConsumerGroupArgs {
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
   /// User Metadata is a placeholder to store user-defined string data with maximum length 1024. e.g. it can be used to store descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
-  final pulumi.Input<String>? userMetadata;
+  final pulumi.Input<String?>? userMetadata;
 
   /// Creates a new [ConsumerGroupArgs].
   /// [consumerGroupName] The consumer group name

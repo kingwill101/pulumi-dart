@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// cidr should not be 'any'
-enum BooleanEnum {
+enum BooleanEnum implements pulumi.PulumiEnum<String> {
   valueTRUE("TRUE"),
   valueFALSE("FALSE");
 
   const BooleanEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static BooleanEnum fromValue(String value) {

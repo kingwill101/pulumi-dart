@@ -193,4 +193,22 @@ class ProductGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ProductGroup] resource.
+  ProductGroup.reference(String urn)
+    : super(
+        'azure-native:apimanagement:ProductGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    builtIn = registerOutput<bool>('builtIn');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    externalId = registerOutput<String?>('externalId');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+  }
 }

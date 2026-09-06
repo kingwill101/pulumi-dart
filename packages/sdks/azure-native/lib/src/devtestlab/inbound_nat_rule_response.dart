@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A rule for NAT - exposing a VM's port (backendPort) on the public IP address using a load balancer.
 class InboundNatRuleResponse {
   /// The port to which the external traffic will be redirected.
-  final pulumi.Input<int>? backendPort;
+  final pulumi.Input<int?>? backendPort;
   /// The external endpoint port of the inbound connection. Possible values range between 1 and 65535, inclusive. If unspecified, a value will be allocated automatically.
-  final pulumi.Input<int>? frontendPort;
+  final pulumi.Input<int?>? frontendPort;
   /// The transport protocol for the endpoint.
-  final pulumi.Input<String>? transportProtocol;
+  final pulumi.Input<String?>? transportProtocol;
 
   /// Creates a new [InboundNatRuleResponse].
   /// [backendPort] The port to which the external traffic will be redirected.
@@ -31,8 +31,8 @@ class InboundNatRuleResponse {
 
   factory InboundNatRuleResponse.fromMap(Map<String, dynamic> map) {
     return InboundNatRuleResponse(
-      backendPort: (() { final guardedValue = map['backendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      frontendPort: (() { final guardedValue = map['frontendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      backendPort: (() { final guardedValue = map['backendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      frontendPort: (() { final guardedValue = map['frontendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       transportProtocol: (() { final guardedValue = map['transportProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

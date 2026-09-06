@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of AttributeDefinition
 class AttributeDefinition {
   /// A name for the attribute.
-  final pulumi.Input<String>? attributeName;
+  final pulumi.Input<String?>? attributeName;
   /// The data type for the attribute, where:  +   ``S`` - the attribute is of type String  +   ``N`` - the attribute is of type Number  +   ``B`` - the attribute is of type Binary
-  final pulumi.Input<String>? attributeType;
+  final pulumi.Input<String?>? attributeType;
 
   /// Creates a new [AttributeDefinition].
   /// [attributeName] A name for the attribute.

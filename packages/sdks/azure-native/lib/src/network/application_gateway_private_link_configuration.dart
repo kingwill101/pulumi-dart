@@ -6,11 +6,11 @@ import 'application_gateway_private_link_ip_configuration.dart';
 /// Private Link Configuration on an application gateway.
 class ApplicationGatewayPrivateLinkConfiguration {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// An array of application gateway private link ip configurations.
-  final pulumi.Input<List<ApplicationGatewayPrivateLinkIpConfiguration>>? ipConfigurations;
+  final pulumi.Input<List<ApplicationGatewayPrivateLinkIpConfiguration>?>? ipConfigurations;
   /// Name of the private link configuration that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ApplicationGatewayPrivateLinkConfiguration].
   /// [id] Resource ID.

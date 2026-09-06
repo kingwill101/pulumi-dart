@@ -6,15 +6,15 @@ import 'active_directory_domain_controllers_response.dart';
 /// Active Directory domain details
 class ActiveDirectoryConnectorDomainDetailsResponse {
   /// null
-  final pulumi.Input<ActiveDirectoryDomainControllersResponse>? domainControllers;
+  final pulumi.Input<ActiveDirectoryDomainControllersResponse?>? domainControllers;
   /// NETBIOS name of the Active Directory domain.
-  final pulumi.Input<String>? netbiosDomainName;
+  final pulumi.Input<String?>? netbiosDomainName;
   /// The distinguished name of the Active Directory Organizational Unit.
-  final pulumi.Input<String>? ouDistinguishedName;
+  final pulumi.Input<String?>? ouDistinguishedName;
   /// Name (uppercase) of the Active Directory domain that this AD connector will be associated with.
   final pulumi.Input<String> realm;
   /// The service account provisioning mode for this Active Directory connector.
-  final pulumi.Input<String>? serviceAccountProvisioning;
+  final pulumi.Input<String?>? serviceAccountProvisioning;
 
   /// Creates a new [ActiveDirectoryConnectorDomainDetailsResponse].
   /// [domainControllers] null
@@ -22,13 +22,13 @@ class ActiveDirectoryConnectorDomainDetailsResponse {
   /// [ouDistinguishedName] The distinguished name of the Active Directory Organizational Unit.
   /// [realm] Name (uppercase) of the Active Directory domain that this AD connector will be associated with.
   /// [serviceAccountProvisioning] The service account provisioning mode for this Active Directory connector.
-  const ActiveDirectoryConnectorDomainDetailsResponse({
+  ActiveDirectoryConnectorDomainDetailsResponse({
     this.domainControllers,
     this.netbiosDomainName,
     this.ouDistinguishedName,
     required this.realm,
-    this.serviceAccountProvisioning,
-  });
+    pulumi.Input<String?>? serviceAccountProvisioning,
+  }) : serviceAccountProvisioning = serviceAccountProvisioning ?? pulumi.Input.fromValue('manual');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

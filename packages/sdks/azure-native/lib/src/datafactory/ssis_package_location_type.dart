@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of SSIS package location.
-enum SsisPackageLocationType {
+enum SsisPackageLocationType implements pulumi.PulumiEnum<String> {
   sSISDB("SSISDB"),
   file("File"),
   inlinePackage("InlinePackage"),
   packageStore("PackageStore");
 
   const SsisPackageLocationType(this.wireValue);
+  @override
   final String wireValue;
 
   static SsisPackageLocationType fromValue(String value) {

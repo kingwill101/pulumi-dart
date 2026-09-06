@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines the state of a log scrubbing rule. Default value is enabled.
-enum ScrubbingRuleEntryState {
+enum ScrubbingRuleEntryState implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const ScrubbingRuleEntryState(this.wireValue);
+  @override
   final String wireValue;
 
   static ScrubbingRuleEntryState fromValue(String value) {

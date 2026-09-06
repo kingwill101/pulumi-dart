@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration to bind a .NET Component to another .NET Component
 class DotNetComponentServiceBind {
   /// Name of the service bind
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Resource id of the target service
-  final pulumi.Input<String>? serviceId;
+  final pulumi.Input<String?>? serviceId;
 
   /// Creates a new [DotNetComponentServiceBind].
   /// [name] Name of the service bind

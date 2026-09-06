@@ -11,35 +11,35 @@ class GetBrokerListenerResult {
   /// The flag for enabling Authorization policies on Listener Port. false - AllowAll, true - Use Authorization resource rules if present.
   final bool? authorizationEnabled;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The k8s cr/resource reference of mq/broker.
-  final String brokerRef;
+  final String? brokerRef;
   /// Extended Location
-  final ExtendedLocationPropertyResponse extendedLocation;
+  final ExtendedLocationPropertyResponse? extendedLocation;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The node port to use on the Host node.
   final int? nodePort;
   /// The port to start Listening for connections on.
-  final int port;
+  final int? port;
   /// The status of the last operation.
-  final String provisioningState;
+  final String? provisioningState;
   /// The service name to expose Listener port on.
   final String? serviceName;
   /// The Kubernetes Service type to deploy for Listener.
   final String? serviceType;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Defines configuration of a TLS server certificate. NOTE Enum - Only one TLS Cert method is supported
   final TlsCertMethodResponse? tls;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetBrokerListenerResult].
   /// [authenticationEnabled] The flag for enabling Authentication rules on Listener Port.
@@ -59,45 +59,45 @@ class GetBrokerListenerResult {
   /// [tags] Resource tags.
   /// [tls] Defines configuration of a TLS server certificate. NOTE Enum - Only one TLS Cert method is supported
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  const GetBrokerListenerResult({
-    this.authenticationEnabled,
-    this.authorizationEnabled,
-    required this.azureApiVersion,
-    required this.brokerRef,
-    required this.extendedLocation,
-    required this.id,
-    required this.location,
-    required this.name,
+  GetBrokerListenerResult({
+    bool? authenticationEnabled,
+    bool? authorizationEnabled,
+    this.azureApiVersion,
+    this.brokerRef,
+    this.extendedLocation,
+    this.id,
+    this.location,
+    this.name,
     this.nodePort,
-    required this.port,
-    required this.provisioningState,
-    this.serviceName,
-    this.serviceType,
-    required this.systemData,
+    this.port,
+    this.provisioningState,
+    String? serviceName,
+    String? serviceType,
+    this.systemData,
     this.tags,
     this.tls,
-    required this.type,
-  });
+    this.type,
+  }) : authenticationEnabled = authenticationEnabled ?? false, authorizationEnabled = authorizationEnabled ?? false, serviceName = serviceName ?? 'aio-mq-dmqtt-frontend', serviceType = serviceType ?? 'clusterIp';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authenticationEnabled': ?authenticationEnabled,
       'authorizationEnabled': ?authorizationEnabled,
-      'azureApiVersion': azureApiVersion,
-      'brokerRef': brokerRef,
-      'extendedLocation': extendedLocation.toMap(),
-      'id': id,
-      'location': location,
-      'name': name,
+      'azureApiVersion': ?azureApiVersion,
+      'brokerRef': ?brokerRef,
+      'extendedLocation': ?extendedLocation?.toMap(),
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
       'nodePort': ?nodePort,
-      'port': port,
-      'provisioningState': provisioningState,
+      'port': ?port,
+      'provisioningState': ?provisioningState,
       'serviceName': ?serviceName,
       'serviceType': ?serviceType,
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
       'tls': ?tls?.toMap(),
-      'type': type,
+      'type': ?type,
     };
   }
 
@@ -105,21 +105,21 @@ class GetBrokerListenerResult {
     return GetBrokerListenerResult(
       authenticationEnabled: (() { final guardedValue = map['authenticationEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       authorizationEnabled: (() { final guardedValue = map['authorizationEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      brokerRef: map['brokerRef'] as String,
-      extendedLocation: ExtendedLocationPropertyResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      nodePort: (() { final guardedValue = map['nodePort']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      port: map['port'] as int,
-      provisioningState: map['provisioningState'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      brokerRef: (() { final guardedValue = map['brokerRef']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nodePort: (() { final guardedValue = map['nodePort']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serviceType: (() { final guardedValue = map['serviceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       tls: (() { final guardedValue = map['tls']; if (guardedValue == null) return null; return TlsCertMethodResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

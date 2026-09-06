@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'automation_action_event_hub.dart';
 import 'automation_scope.dart';
 import 'automation_source.dart';
 
@@ -11,25 +10,25 @@ import 'automation_source.dart';
 /// {@macro pulumi_security_automation_args_doc}
 class AutomationArgs {
   /// A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true.
-  final pulumi.Input<List<AutomationActionEventHub>>? actions;
+  final pulumi.Input<List<dynamic>?>? actions;
   /// The security automation name.
-  final pulumi.Input<String>? automationName;
+  final pulumi.Input<String?>? automationName;
   /// The security automation description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Indicates whether the security automation is enabled.
-  final pulumi.Input<bool>? isEnabled;
+  final pulumi.Input<bool?>? isEnabled;
   /// Kind of the resource
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// A collection of scopes on which the security automations logic is applied. Supported scopes are the subscription itself or a resource group under that subscription. The automation will only apply on defined scopes.
-  final pulumi.Input<List<AutomationScope>>? scopes;
+  final pulumi.Input<List<AutomationScope>?>? scopes;
   /// A collection of the source event types which evaluate the security automation set of rules.
-  final pulumi.Input<List<AutomationSource>>? sources;
+  final pulumi.Input<List<AutomationSource>?>? sources;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AutomationArgs].
   /// [actions] A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true.
@@ -57,7 +56,7 @@ class AutomationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': ?pulumi.Input.mapOptionalInputValue<List<AutomationActionEventHub>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<AutomationActionEventHub, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'actions': ?actions,
       'automationName': ?automationName,
       'description': ?description,
       'isEnabled': ?isEnabled,
@@ -72,7 +71,7 @@ class AutomationArgs {
 
   factory AutomationArgs.fromMap(Map<String, dynamic> map) {
     return AutomationArgs(
-      actions: (() { final guardedValue = map['actions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AutomationActionEventHub>(guardedValue, (value) => AutomationActionEventHub.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      actions: (() { final guardedValue = map['actions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       automationName: (() { final guardedValue = map['automationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isEnabled: (() { final guardedValue = map['isEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

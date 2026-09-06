@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The target type.
-enum JobTargetType {
+enum JobTargetType implements pulumi.PulumiEnum<String> {
   valueTargetGroup("TargetGroup"),
   valueSqlDatabase("SqlDatabase"),
   valueSqlElasticPool("SqlElasticPool"),
@@ -7,6 +9,7 @@ enum JobTargetType {
   valueSqlServer("SqlServer");
 
   const JobTargetType(this.wireValue);
+  @override
   final String wireValue;
 
   static JobTargetType fromValue(String value) {

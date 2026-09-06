@@ -6,31 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloningInfo {
   /// Application setting overrides for cloned app. If specified, these settings override the settings cloned
   /// from source app. Otherwise, application settings from source app are retained.
-  final pulumi.Input<Map<String, String>>? appSettingsOverrides;
+  final pulumi.Input<Map<String, String>?>? appSettingsOverrides;
   /// &lt;code&gt;true&lt;/code&gt; to clone custom hostnames from source app; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? cloneCustomHostNames;
+  final pulumi.Input<bool?>? cloneCustomHostNames;
   /// &lt;code&gt;true&lt;/code&gt; to clone source control from source app; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? cloneSourceControl;
+  final pulumi.Input<bool?>? cloneSourceControl;
   /// &lt;code&gt;true&lt;/code&gt; to configure load balancing for source and destination app.
-  final pulumi.Input<bool>? configureLoadBalancing;
+  final pulumi.Input<bool?>? configureLoadBalancing;
   /// Correlation ID of cloning operation. This ID ties multiple cloning operations
   /// together to use the same snapshot.
-  final pulumi.Input<String>? correlationId;
+  final pulumi.Input<String?>? correlationId;
   /// App Service Environment.
-  final pulumi.Input<String>? hostingEnvironment;
+  final pulumi.Input<String?>? hostingEnvironment;
   /// &lt;code&gt;true&lt;/code&gt; to overwrite destination app; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? overwrite;
+  final pulumi.Input<bool?>? overwrite;
   /// ARM resource ID of the source app. App resource ID is of the form
   /// /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and
   /// /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   final pulumi.Input<String> sourceWebAppId;
   /// Location of source app ex: West US or North Europe
-  final pulumi.Input<String>? sourceWebAppLocation;
+  final pulumi.Input<String?>? sourceWebAppLocation;
   /// ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form
   /// /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
-  final pulumi.Input<String>? trafficManagerProfileId;
+  final pulumi.Input<String?>? trafficManagerProfileId;
   /// Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
-  final pulumi.Input<String>? trafficManagerProfileName;
+  final pulumi.Input<String?>? trafficManagerProfileName;
 
   /// Creates a new [CloningInfo].
   /// [appSettingsOverrides] Application setting overrides for cloned app. If specified, these settings override the settings cloned

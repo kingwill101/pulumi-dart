@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of DomainProcessingStatusTypeEnumValue
 class DomainProcessingStatusTypeEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [DomainProcessingStatusTypeEnumValueResponse].
   /// [value] Property value

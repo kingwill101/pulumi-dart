@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of FSxAuthorizationConfig
 class FSxAuthorizationConfig {
   /// Property credentialsParameter
-  final pulumi.Input<String>? credentialsParameter;
+  final pulumi.Input<String?>? credentialsParameter;
   /// Property domain
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
 
   /// Creates a new [FSxAuthorizationConfig].
   /// [credentialsParameter] Property credentialsParameter

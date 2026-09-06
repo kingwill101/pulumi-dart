@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_analytics_configuration_response.dart';
 
 class AppLogsConfigurationResponse {
-  final pulumi.Input<String>? destination;
-  final pulumi.Input<LogAnalyticsConfigurationResponse>? logAnalyticsConfiguration;
+  final pulumi.Input<String?>? destination;
+  final pulumi.Input<LogAnalyticsConfigurationResponse?>? logAnalyticsConfiguration;
 
   /// Creates a new [AppLogsConfigurationResponse].
   /// [destination] Optional.

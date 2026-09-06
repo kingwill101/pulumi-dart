@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The purpose of the dnc controller resource.
-enum ControllerPurpose {
+enum ControllerPurpose implements pulumi.PulumiEnum<String> {
   valueTest("test"),
   valueProd("prod");
 
   const ControllerPurpose(this.wireValue);
+  @override
   final String wireValue;
 
   static ControllerPurpose fromValue(String value) {

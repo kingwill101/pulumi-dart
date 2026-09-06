@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of MonthlyTransfer
 class MonthlyTransfer {
   /// GbPerMonthAllocated of the Instance.
-  final pulumi.Input<String>? gbPerMonthAllocated;
+  final pulumi.Input<String?>? gbPerMonthAllocated;
 
   /// Creates a new [MonthlyTransfer].
   /// [gbPerMonthAllocated] GbPerMonthAllocated of the Instance.

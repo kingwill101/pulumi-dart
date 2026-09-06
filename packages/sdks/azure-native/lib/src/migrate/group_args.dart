@@ -9,9 +9,9 @@ import 'group_properties.dart';
 /// {@macro pulumi_migrate_group_args_doc}
 class GroupArgs {
   /// For optimistic concurrency control.
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// Unique name of a group within a project.
-  final pulumi.Input<String>? groupName;
+  final pulumi.Input<String?>? groupName;
   /// Name of the Azure Migrate project.
   final pulumi.Input<String> projectName;
   /// Properties of the group.

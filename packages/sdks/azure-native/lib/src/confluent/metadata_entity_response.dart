@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Metadata of the data record
 class MetadataEntityResponse {
   /// Created Date Time
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Deleted Date time
-  final pulumi.Input<String>? deletedAt;
+  final pulumi.Input<String?>? deletedAt;
   /// Resource name of the record
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// Self lookup url
-  final pulumi.Input<String>? self;
+  final pulumi.Input<String?>? self;
   /// Updated Date time
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [MetadataEntityResponse].
   /// [createdAt] Created Date Time

@@ -6,17 +6,17 @@ import 'metadata_entity_response.dart';
 /// Record of the user
 class UserRecordResponse {
   /// Auth type of the user
-  final pulumi.Input<String>? authType;
+  final pulumi.Input<String?>? authType;
   /// Email of the user
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// Name of the user
-  final pulumi.Input<String>? fullName;
+  final pulumi.Input<String?>? fullName;
   /// Id of the user
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Type of account
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Metadata of the record
-  final pulumi.Input<MetadataEntityResponse>? metadata;
+  final pulumi.Input<MetadataEntityResponse?>? metadata;
 
   /// Creates a new [UserRecordResponse].
   /// [authType] Auth type of the user

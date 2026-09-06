@@ -13,7 +13,7 @@ class UserSettingsWithLocationArgs {
   /// The cloud shell user settings properties.
   final pulumi.Input<UserProperties> properties;
   /// The name of the user settings
-  final pulumi.Input<String>? userSettingsName;
+  final pulumi.Input<String?>? userSettingsName;
 
   /// Creates a new [UserSettingsWithLocationArgs].
   /// [location] The provider location

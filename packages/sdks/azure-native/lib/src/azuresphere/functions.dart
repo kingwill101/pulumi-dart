@@ -38,6 +38,17 @@ Future<GetCatalogResult> getCatalog(
   return GetCatalogResult.fromMap(result);
 }
 
+pulumi.Output<GetCatalogResult> getCatalogOutput(
+  GetCatalogArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuresphere:getCatalog',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCatalogResult.fromMap);
+}
+
 /// Get a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -54,6 +65,17 @@ Future<GetDeploymentResult> getDeployment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeploymentResult.fromMap(result);
+}
+
+pulumi.Output<GetDeploymentResult> getDeploymentOutput(
+  GetDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuresphere:getDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentResult.fromMap);
 }
 
 /// Get a Device. Use '.unassigned' or '.default' for the device group and product names when a device does not belong to a device group and product.
@@ -74,6 +96,17 @@ Future<GetDeviceResult> getDevice(
   return GetDeviceResult.fromMap(result);
 }
 
+pulumi.Output<GetDeviceResult> getDeviceOutput(
+  GetDeviceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuresphere:getDevice',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeviceResult.fromMap);
+}
+
 /// Get a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -90,6 +123,17 @@ Future<GetDeviceGroupResult> getDeviceGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeviceGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetDeviceGroupResult> getDeviceGroupOutput(
+  GetDeviceGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuresphere:getDeviceGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeviceGroupResult.fromMap);
 }
 
 /// Get a Image
@@ -110,6 +154,17 @@ Future<GetImageResult> getImage(
   return GetImageResult.fromMap(result);
 }
 
+pulumi.Output<GetImageResult> getImageOutput(
+  GetImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuresphere:getImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageResult.fromMap);
+}
+
 /// Get a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -126,6 +181,17 @@ Future<GetProductResult> getProduct(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProductResult.fromMap(result);
+}
+
+pulumi.Output<GetProductResult> getProductOutput(
+  GetProductArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuresphere:getProduct',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProductResult.fromMap);
 }
 
 /// Lists deployments for catalog.
@@ -146,6 +212,17 @@ Future<ListCatalogDeploymentsResult> listCatalogDeployments(
   return ListCatalogDeploymentsResult.fromMap(result);
 }
 
+pulumi.Output<ListCatalogDeploymentsResult> listCatalogDeploymentsOutput(
+  ListCatalogDeploymentsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuresphere:listCatalogDeployments',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListCatalogDeploymentsResult.fromMap);
+}
+
 /// List the device groups for the catalog.
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -162,6 +239,17 @@ Future<ListCatalogDeviceGroupsResult> listCatalogDeviceGroups(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListCatalogDeviceGroupsResult.fromMap(result);
+}
+
+pulumi.Output<ListCatalogDeviceGroupsResult> listCatalogDeviceGroupsOutput(
+  ListCatalogDeviceGroupsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuresphere:listCatalogDeviceGroups',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListCatalogDeviceGroupsResult.fromMap);
 }
 
 /// Lists device insights for catalog.
@@ -182,6 +270,17 @@ Future<ListCatalogDeviceInsightsResult> listCatalogDeviceInsights(
   return ListCatalogDeviceInsightsResult.fromMap(result);
 }
 
+pulumi.Output<ListCatalogDeviceInsightsResult> listCatalogDeviceInsightsOutput(
+  ListCatalogDeviceInsightsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuresphere:listCatalogDeviceInsights',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListCatalogDeviceInsightsResult.fromMap);
+}
+
 /// Lists devices for catalog.
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -198,4 +297,15 @@ Future<ListCatalogDevicesResult> listCatalogDevices(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListCatalogDevicesResult.fromMap(result);
+}
+
+pulumi.Output<ListCatalogDevicesResult> listCatalogDevicesOutput(
+  ListCatalogDevicesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuresphere:listCatalogDevices',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListCatalogDevicesResult.fromMap);
 }

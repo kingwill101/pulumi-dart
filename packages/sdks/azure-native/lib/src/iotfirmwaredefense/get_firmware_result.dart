@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 /// Result data returned by getFirmware.
 class GetFirmwareResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// User-specified description of the firmware.
   final String? description;
   /// File name for a firmware that user uploaded.
@@ -15,21 +15,21 @@ class GetFirmwareResult {
   /// File size of the uploaded firmware image.
   final double? fileSize;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Firmware model.
   final String? model;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The status of firmware scan.
   final String? status;
   /// A list of errors or other messages generated during firmware analysis
   final List<StatusMessageResponse>? statusMessages;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Firmware vendor.
   final String? vendor;
   /// Firmware version.
@@ -50,37 +50,37 @@ class GetFirmwareResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [vendor] Firmware vendor.
   /// [version] Firmware version.
-  const GetFirmwareResult({
-    required this.azureApiVersion,
+  GetFirmwareResult({
+    this.azureApiVersion,
     this.description,
     this.fileName,
     this.fileSize,
-    required this.id,
+    this.id,
     this.model,
-    required this.name,
-    required this.provisioningState,
-    this.status,
+    this.name,
+    this.provisioningState,
+    String? status,
     this.statusMessages,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
     this.vendor,
     this.version,
-  });
+  }) : status = status ?? 'Pending';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
       'fileName': ?fileName,
       'fileSize': ?fileSize,
-      'id': id,
+      'id': ?id,
       'model': ?model,
-      'name': name,
-      'provisioningState': provisioningState,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'status': ?status,
       'statusMessages': ?(() { final guardedValue = statusMessages; if (guardedValue == null) return null; return pulumi.Input.encodeList<StatusMessageResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
       'vendor': ?vendor,
       'version': ?version,
     };
@@ -88,18 +88,18 @@ class GetFirmwareResult {
 
   factory GetFirmwareResult.fromMap(Map<String, dynamic> map) {
     return GetFirmwareResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       fileName: (() { final guardedValue = map['fileName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      fileSize: (() { final guardedValue = map['fileSize']; if (guardedValue == null) return null; return guardedValue as double; })(),
-      id: map['id'] as String,
+      fileSize: (() { final guardedValue = map['fileSize']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
       statusMessages: (() { final guardedValue = map['statusMessages']; if (guardedValue == null) return null; return pulumi.Input.decodeList<StatusMessageResponse>(guardedValue, (value) => StatusMessageResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       vendor: (() { final guardedValue = map['vendor']; if (guardedValue == null) return null; return guardedValue as String; })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

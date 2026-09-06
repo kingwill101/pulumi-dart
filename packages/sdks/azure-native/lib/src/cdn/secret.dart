@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_first_party_managed_certificate_parameters_response.dart';
 import 'secret_args.dart';
 import 'system_data_response.dart';
 
@@ -213,7 +212,7 @@ class Secret extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// object which contains secret parameters
-  late final pulumi.Output<AzureFirstPartyManagedCertificateParametersResponse?> parameters;
+  late final pulumi.Output<dynamic> parameters;
   /// The name of the profile which holds the secret.
   late final pulumi.Output<String> profileName;
   /// Provisioning status
@@ -240,7 +239,26 @@ class Secret extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     deploymentStatus = registerOutput<String>('deploymentStatus');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<AzureFirstPartyManagedCertificateParametersResponse?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureFirstPartyManagedCertificateParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parameters = registerOutput<dynamic>('parameters');
+    profileName = registerOutput<String>('profileName');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Secret] resource.
+  Secret.reference(String urn)
+    : super(
+        'azure-native:cdn:Secret',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deploymentStatus = registerOutput<String>('deploymentStatus');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<dynamic>('parameters');
     profileName = registerOutput<String>('profileName');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -12,37 +12,37 @@ import 'subnet_response.dart';
 /// Private endpoint resource.
 class PrivateEndpointServiceGatewayResponse {
   /// Application security groups in which the private endpoint IP configuration is included.
-  final pulumi.Input<List<ApplicationSecurityGroupResponse>>? applicationSecurityGroups;
+  final pulumi.Input<List<ApplicationSecurityGroupResponse>?>? applicationSecurityGroups;
   /// An array of custom dns configurations.
-  final pulumi.Input<List<CustomDnsConfigPropertiesFormatResponse>>? customDnsConfigs;
+  final pulumi.Input<List<CustomDnsConfigPropertiesFormatResponse>?>? customDnsConfigs;
   /// The custom name of the network interface attached to the private endpoint.
-  final pulumi.Input<String>? customNetworkInterfaceName;
+  final pulumi.Input<String?>? customNetworkInterfaceName;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// The extended location of the load balancer.
-  final pulumi.Input<ExtendedLocationResponse>? extendedLocation;
+  final pulumi.Input<ExtendedLocationResponse?>? extendedLocation;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// A list of IP configurations of the private endpoint. This will be used to map to the First Party Service's endpoints.
-  final pulumi.Input<List<PrivateEndpointIPConfigurationResponse>>? ipConfigurations;
+  final pulumi.Input<List<PrivateEndpointIPConfigurationResponse>?>? ipConfigurations;
   /// Specifies the IP version type for the private IPs of the private endpoint. If not defined, this defaults to IPv4.
-  final pulumi.Input<String>? ipVersionType;
+  final pulumi.Input<String?>? ipVersionType;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource.
-  final pulumi.Input<List<PrivateLinkServiceConnectionResponse>>? manualPrivateLinkServiceConnections;
+  final pulumi.Input<List<PrivateLinkServiceConnectionResponse>?>? manualPrivateLinkServiceConnections;
   /// Resource name.
   final pulumi.Input<String> name;
   /// An array of references to the network interfaces created for this private endpoint.
   final pulumi.Input<List<NetworkInterfaceResponse>> networkInterfaces;
   /// A grouping of information about the connection to the remote resource.
-  final pulumi.Input<List<PrivateLinkServiceConnectionResponse>>? privateLinkServiceConnections;
+  final pulumi.Input<List<PrivateLinkServiceConnectionResponse>?>? privateLinkServiceConnections;
   /// The provisioning state of the private endpoint resource.
   final pulumi.Input<String> provisioningState;
   /// The ID of the subnet from which the private IP will be allocated.
-  final pulumi.Input<SubnetResponse>? subnet;
+  final pulumi.Input<SubnetResponse?>? subnet;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Resource type.
   final pulumi.Input<String> type;
 
@@ -64,7 +64,7 @@ class PrivateEndpointServiceGatewayResponse {
   /// [subnet] The ID of the subnet from which the private IP will be allocated.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  const PrivateEndpointServiceGatewayResponse({
+  PrivateEndpointServiceGatewayResponse({
     this.applicationSecurityGroups,
     this.customDnsConfigs,
     this.customNetworkInterfaceName,
@@ -72,7 +72,7 @@ class PrivateEndpointServiceGatewayResponse {
     this.extendedLocation,
     this.id,
     this.ipConfigurations,
-    this.ipVersionType,
+    pulumi.Input<String?>? ipVersionType,
     this.location,
     this.manualPrivateLinkServiceConnections,
     required this.name,
@@ -82,7 +82,7 @@ class PrivateEndpointServiceGatewayResponse {
     this.subnet,
     this.tags,
     required this.type,
-  });
+  }) : ipVersionType = ipVersionType ?? pulumi.Input.fromValue('IPv4');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

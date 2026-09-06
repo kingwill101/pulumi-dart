@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Api properties.
 class ApiPropertiesResponse {
   /// Interval in minutes for which the weather data for the api needs to be refreshed.
-  final pulumi.Input<int>? apiFreshnessTimeInMinutes;
+  final pulumi.Input<int?>? apiFreshnessTimeInMinutes;
 
   /// Creates a new [ApiPropertiesResponse].
   /// [apiFreshnessTimeInMinutes] Interval in minutes for which the weather data for the api needs to be refreshed.
@@ -21,7 +21,7 @@ class ApiPropertiesResponse {
 
   factory ApiPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ApiPropertiesResponse(
-      apiFreshnessTimeInMinutes: (() { final guardedValue = map['apiFreshnessTimeInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      apiFreshnessTimeInMinutes: (() { final guardedValue = map['apiFreshnessTimeInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

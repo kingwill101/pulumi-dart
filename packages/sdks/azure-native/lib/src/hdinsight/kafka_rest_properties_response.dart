@@ -6,9 +6,9 @@ import 'client_group_info_response.dart';
 /// The kafka rest proxy configuration which contains AAD security group information.
 class KafkaRestPropertiesResponse {
   /// The information of AAD security group.
-  final pulumi.Input<ClientGroupInfoResponse>? clientGroupInfo;
+  final pulumi.Input<ClientGroupInfoResponse?>? clientGroupInfo;
   /// The configurations that need to be overriden.
-  final pulumi.Input<Map<String, String>>? configurationOverride;
+  final pulumi.Input<Map<String, String>?>? configurationOverride;
 
   /// Creates a new [KafkaRestPropertiesResponse].
   /// [clientGroupInfo] The information of AAD security group.

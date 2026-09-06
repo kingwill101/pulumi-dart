@@ -72,6 +72,17 @@ Future<GetAutomationAccountResult> getAutomationAccount(
   return GetAutomationAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetAutomationAccountResult> getAutomationAccountOutput(
+  GetAutomationAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getAutomationAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutomationAccountResult.fromMap);
+}
+
 /// Retrieve the certificate identified by certificate name.
 ///
 /// Uses Azure REST API version 2024-10-23.
@@ -90,6 +101,17 @@ Future<GetCertificateResult> getCertificate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCertificateResult.fromMap(result);
+}
+
+pulumi.Output<GetCertificateResult> getCertificateOutput(
+  GetCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateResult.fromMap);
 }
 
 /// Retrieve the connection identified by connection name.
@@ -112,6 +134,17 @@ Future<GetConnectionResult> getConnection(
   return GetConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectionResult> getConnectionOutput(
+  GetConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionResult.fromMap);
+}
+
 /// Retrieve the connection type identified by connection type name.
 ///
 /// Uses Azure REST API version 2024-10-23.
@@ -130,6 +163,17 @@ Future<GetConnectionTypeResult> getConnectionType(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectionTypeResult.fromMap(result);
+}
+
+pulumi.Output<GetConnectionTypeResult> getConnectionTypeOutput(
+  GetConnectionTypeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getConnectionType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionTypeResult.fromMap);
 }
 
 /// Retrieve the credential identified by credential name.
@@ -152,6 +196,17 @@ Future<GetCredentialResult> getCredential(
   return GetCredentialResult.fromMap(result);
 }
 
+pulumi.Output<GetCredentialResult> getCredentialOutput(
+  GetCredentialArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getCredential',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCredentialResult.fromMap);
+}
+
 /// Retrieve the configuration identified by configuration name.
 ///
 /// Uses Azure REST API version 2024-10-23.
@@ -170,6 +225,17 @@ Future<GetDscConfigurationResult> getDscConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDscConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetDscConfigurationResult> getDscConfigurationOutput(
+  GetDscConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getDscConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDscConfigurationResult.fromMap);
 }
 
 /// Retrieve the Dsc node configurations by node configuration.
@@ -192,6 +258,17 @@ Future<GetDscNodeConfigurationResult> getDscNodeConfiguration(
   return GetDscNodeConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetDscNodeConfigurationResult> getDscNodeConfigurationOutput(
+  GetDscNodeConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getDscNodeConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDscNodeConfigurationResult.fromMap);
+}
+
 /// Retrieve a hybrid runbook worker.
 ///
 /// Uses Azure REST API version 2024-10-23.
@@ -210,6 +287,17 @@ Future<GetHybridRunbookWorkerResult> getHybridRunbookWorker(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHybridRunbookWorkerResult.fromMap(result);
+}
+
+pulumi.Output<GetHybridRunbookWorkerResult> getHybridRunbookWorkerOutput(
+  GetHybridRunbookWorkerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getHybridRunbookWorker',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHybridRunbookWorkerResult.fromMap);
 }
 
 /// Retrieve a hybrid runbook worker group.
@@ -232,6 +320,17 @@ Future<GetHybridRunbookWorkerGroupResult> getHybridRunbookWorkerGroup(
   return GetHybridRunbookWorkerGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetHybridRunbookWorkerGroupResult> getHybridRunbookWorkerGroupOutput(
+  GetHybridRunbookWorkerGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getHybridRunbookWorkerGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHybridRunbookWorkerGroupResult.fromMap);
+}
+
 /// Retrieve the job schedule identified by job schedule name.
 ///
 /// Uses Azure REST API version 2024-10-23.
@@ -250,6 +349,17 @@ Future<GetJobScheduleResult> getJobSchedule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetJobScheduleResult.fromMap(result);
+}
+
+pulumi.Output<GetJobScheduleResult> getJobScheduleOutput(
+  GetJobScheduleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getJobSchedule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobScheduleResult.fromMap);
 }
 
 /// Retrieve the module identified by module name.
@@ -272,6 +382,17 @@ Future<GetModuleResult> getModule(
   return GetModuleResult.fromMap(result);
 }
 
+pulumi.Output<GetModuleResult> getModuleOutput(
+  GetModuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getModule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetModuleResult.fromMap);
+}
+
 /// Retrieve the Package identified by Package name.
 ///
 /// Uses Azure REST API version 2024-10-23.
@@ -292,6 +413,17 @@ Future<GetPackageResult> getPackage(
   return GetPackageResult.fromMap(result);
 }
 
+pulumi.Output<GetPackageResult> getPackageOutput(
+  GetPackageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getPackage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPackageResult.fromMap);
+}
+
 /// Retrieve the module identified by module name.
 ///
 /// Uses Azure REST API version 2023-11-01.
@@ -308,6 +440,17 @@ Future<GetPowerShell72ModuleResult> getPowerShell72Module(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPowerShell72ModuleResult.fromMap(result);
+}
+
+pulumi.Output<GetPowerShell72ModuleResult> getPowerShell72ModuleOutput(
+  GetPowerShell72ModuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getPowerShell72Module',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPowerShell72ModuleResult.fromMap);
 }
 
 /// Gets a private endpoint connection.
@@ -330,6 +473,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Retrieve the python 2 package identified by package name.
 ///
 /// Uses Azure REST API version 2024-10-23.
@@ -348,6 +502,17 @@ Future<GetPython2PackageResult> getPython2Package(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPython2PackageResult.fromMap(result);
+}
+
+pulumi.Output<GetPython2PackageResult> getPython2PackageOutput(
+  GetPython2PackageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getPython2Package',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPython2PackageResult.fromMap);
 }
 
 /// Retrieve the python 3 package identified by package name.
@@ -370,6 +535,17 @@ Future<GetPython3PackageResult> getPython3Package(
   return GetPython3PackageResult.fromMap(result);
 }
 
+pulumi.Output<GetPython3PackageResult> getPython3PackageOutput(
+  GetPython3PackageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getPython3Package',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPython3PackageResult.fromMap);
+}
+
 /// Retrieve the runbook identified by runbook name.
 ///
 /// Uses Azure REST API version 2024-10-23.
@@ -388,6 +564,17 @@ Future<GetRunbookResult> getRunbook(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRunbookResult.fromMap(result);
+}
+
+pulumi.Output<GetRunbookResult> getRunbookOutput(
+  GetRunbookArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getRunbook',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRunbookResult.fromMap);
 }
 
 /// Get information about the Runtime Environment
@@ -410,6 +597,17 @@ Future<GetRuntimeEnvironmentResult> getRuntimeEnvironment(
   return GetRuntimeEnvironmentResult.fromMap(result);
 }
 
+pulumi.Output<GetRuntimeEnvironmentResult> getRuntimeEnvironmentOutput(
+  GetRuntimeEnvironmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getRuntimeEnvironment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRuntimeEnvironmentResult.fromMap);
+}
+
 /// Retrieve the schedule identified by schedule name.
 ///
 /// Uses Azure REST API version 2024-10-23.
@@ -428,6 +626,17 @@ Future<GetScheduleResult> getSchedule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetScheduleResult.fromMap(result);
+}
+
+pulumi.Output<GetScheduleResult> getScheduleOutput(
+  GetScheduleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getSchedule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScheduleResult.fromMap);
 }
 
 /// Get a single software update configuration by name.
@@ -450,6 +659,17 @@ Future<GetSoftwareUpdateConfigurationByNameResult> getSoftwareUpdateConfiguratio
   return GetSoftwareUpdateConfigurationByNameResult.fromMap(result);
 }
 
+pulumi.Output<GetSoftwareUpdateConfigurationByNameResult> getSoftwareUpdateConfigurationByNameOutput(
+  GetSoftwareUpdateConfigurationByNameArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getSoftwareUpdateConfigurationByName',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSoftwareUpdateConfigurationByNameResult.fromMap);
+}
+
 /// Retrieve the source control identified by source control name.
 ///
 /// Uses Azure REST API version 2024-10-23.
@@ -468,6 +688,17 @@ Future<GetSourceControlResult> getSourceControl(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSourceControlResult.fromMap(result);
+}
+
+pulumi.Output<GetSourceControlResult> getSourceControlOutput(
+  GetSourceControlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getSourceControl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSourceControlResult.fromMap);
 }
 
 /// Retrieve the variable identified by variable name.
@@ -490,6 +721,17 @@ Future<GetVariableResult> getVariable(
   return GetVariableResult.fromMap(result);
 }
 
+pulumi.Output<GetVariableResult> getVariableOutput(
+  GetVariableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getVariable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVariableResult.fromMap);
+}
+
 /// Retrieve the watcher identified by watcher name.
 ///
 /// Uses Azure REST API version 2024-10-23.
@@ -508,6 +750,17 @@ Future<GetWatcherResult> getWatcher(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWatcherResult.fromMap(result);
+}
+
+pulumi.Output<GetWatcherResult> getWatcherOutput(
+  GetWatcherArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getWatcher',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWatcherResult.fromMap);
 }
 
 /// Retrieve the webhook identified by webhook name.
@@ -530,6 +783,17 @@ Future<GetWebhookResult> getWebhook(
   return GetWebhookResult.fromMap(result);
 }
 
+pulumi.Output<GetWebhookResult> getWebhookOutput(
+  GetWebhookArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:getWebhook',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebhookResult.fromMap);
+}
+
 /// Retrieve the deleted runbooks for an automation account.
 ///
 /// Uses Azure REST API version 2024-10-23.
@@ -550,6 +814,17 @@ Future<ListAutomationAccountDeletedRunbooksResult> listAutomationAccountDeletedR
   return ListAutomationAccountDeletedRunbooksResult.fromMap(result);
 }
 
+pulumi.Output<ListAutomationAccountDeletedRunbooksResult> listAutomationAccountDeletedRunbooksOutput(
+  ListAutomationAccountDeletedRunbooksArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:listAutomationAccountDeletedRunbooks',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAutomationAccountDeletedRunbooksResult.fromMap);
+}
+
 /// Retrieve the automation keys for an account.
 ///
 /// Uses Azure REST API version 2024-10-23.
@@ -568,4 +843,15 @@ Future<ListKeyByAutomationAccountResult> listKeyByAutomationAccount(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListKeyByAutomationAccountResult.fromMap(result);
+}
+
+pulumi.Output<ListKeyByAutomationAccountResult> listKeyByAutomationAccountOutput(
+  ListKeyByAutomationAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automation:listKeyByAutomationAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListKeyByAutomationAccountResult.fromMap);
 }

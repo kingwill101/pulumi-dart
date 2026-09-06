@@ -6,15 +6,15 @@ import 'migrate_sql_server_sql_db_task_input.dart';
 /// Properties for the task that migrates on-prem SQL Server databases to Azure SQL Database
 class MigrateSqlServerSqlDbTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// DateTime in UTC when the task was created
-  final pulumi.Input<String>? createdOn;
+  final pulumi.Input<String?>? createdOn;
   /// Task input
-  final pulumi.Input<MigrateSqlServerSqlDbTaskInput>? input;
+  final pulumi.Input<MigrateSqlServerSqlDbTaskInput?>? input;
   /// whether the task can be cloned or not
-  final pulumi.Input<bool>? isCloneable;
+  final pulumi.Input<bool?>? isCloneable;
   /// task id
-  final pulumi.Input<String>? taskId;
+  final pulumi.Input<String?>? taskId;
   /// Task type.
   /// Expected value is 'Migrate.SqlServer.SqlDb'.
   final pulumi.Input<String> taskType;

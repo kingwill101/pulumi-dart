@@ -6,23 +6,23 @@ import 'parameter_example_contract.dart';
 /// Operation parameters details.
 class ParameterContract {
   /// Default parameter value.
-  final pulumi.Input<String>? defaultValue;
+  final pulumi.Input<String?>? defaultValue;
   /// Parameter description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Exampled defined for the parameter.
-  final pulumi.Input<Map<String, ParameterExampleContract>>? examples;
+  final pulumi.Input<Map<String, ParameterExampleContract>?>? examples;
   /// Parameter name.
   final pulumi.Input<String> name;
   /// Specifies whether parameter is required or not.
-  final pulumi.Input<bool>? required;
+  final pulumi.Input<bool?>? required;
   /// Schema identifier.
-  final pulumi.Input<String>? schemaId;
+  final pulumi.Input<String?>? schemaId;
   /// Parameter type.
   final pulumi.Input<String> type;
   /// Type name defined by the schema.
-  final pulumi.Input<String>? typeName;
+  final pulumi.Input<String?>? typeName;
   /// Parameter values.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [ParameterContract].
   /// [defaultValue] Default parameter value.

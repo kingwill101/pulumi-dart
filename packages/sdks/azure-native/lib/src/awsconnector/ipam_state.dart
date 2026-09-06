@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum IpamState {
+enum IpamState implements pulumi.PulumiEnum<String> {
   createComplete("create-complete"),
   createFailed("create-failed"),
   createInProgress("create-in-progress"),
@@ -14,6 +16,7 @@ enum IpamState {
   restoreInProgress("restore-in-progress");
 
   const IpamState(this.wireValue);
+  @override
   final String wireValue;
 
   static IpamState fromValue(String value) {

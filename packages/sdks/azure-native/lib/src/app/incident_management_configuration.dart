@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Incident Management Configurations
 class IncidentManagementConfiguration {
   /// The key for the connection
-  final pulumi.Input<String>? connectionKey;
+  final pulumi.Input<String?>? connectionKey;
   /// The name of the connection
-  final pulumi.Input<String>? connectionName;
+  final pulumi.Input<String?>? connectionName;
   /// The URL of the connection
-  final pulumi.Input<String>? connectionUrl;
+  final pulumi.Input<String?>? connectionUrl;
   /// The user for the connection
-  final pulumi.Input<String>? oboUser;
+  final pulumi.Input<String?>? oboUser;
   /// The type of incident management system
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [IncidentManagementConfiguration].
   /// [connectionKey] The key for the connection

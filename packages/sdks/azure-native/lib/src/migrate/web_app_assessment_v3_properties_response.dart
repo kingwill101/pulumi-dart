@@ -8,15 +8,15 @@ import 'web_app_assessment_settings_response.dart';
 /// WebApp assessment resource properties.
 class WebAppAssessmentV3PropertiesResponse {
   /// Gets or sets the details of the assessment.
-  final pulumi.Input<AssessmentDetailsResponse>? details;
+  final pulumi.Input<AssessmentDetailsResponse?>? details;
   /// Gets or sets the machine assessment ARM ID for VM fallback.
-  final pulumi.Input<String>? fallbackMachineAssessmentArmId;
+  final pulumi.Input<String?>? fallbackMachineAssessmentArmId;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// Gets or sets the scope of assessment.
-  final pulumi.Input<ScopeResponse>? scope;
+  final pulumi.Input<ScopeResponse?>? scope;
   /// Gets or sets the settings for the assessment.
-  final pulumi.Input<WebAppAssessmentSettingsResponse>? settings;
+  final pulumi.Input<WebAppAssessmentSettingsResponse?>? settings;
 
   /// Creates a new [WebAppAssessmentV3PropertiesResponse].
   /// [details] Gets or sets the details of the assessment.

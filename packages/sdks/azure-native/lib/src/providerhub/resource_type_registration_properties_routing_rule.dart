@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Routing rule.
 class ResourceTypeRegistrationPropertiesRoutingRule {
   /// Hosted resource type.
-  final pulumi.Input<String>? hostResourceType;
+  final pulumi.Input<String?>? hostResourceType;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesRoutingRule].
   /// [hostResourceType] Hosted resource type.

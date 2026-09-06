@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enum of the selector type.
-enum SelectorType {
+enum SelectorType implements pulumi.PulumiEnum<String> {
   valueList("List"),
   valueQuery("Query");
 
   const SelectorType(this.wireValue);
+  @override
   final String wireValue;
 
   static SelectorType fromValue(String value) {

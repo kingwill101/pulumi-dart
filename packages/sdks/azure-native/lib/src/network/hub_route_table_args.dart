@@ -9,17 +9,17 @@ import 'hub_route.dart';
 /// {@macro pulumi_network_hub_route_table_args_doc}
 class HubRouteTableArgs {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// List of labels associated with this route table.
-  final pulumi.Input<List<String>>? labels;
+  final pulumi.Input<List<String>?>? labels;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource group name of the VirtualHub.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the RouteTable.
-  final pulumi.Input<String>? routeTableName;
+  final pulumi.Input<String?>? routeTableName;
   /// List of all routes.
-  final pulumi.Input<List<HubRoute>>? routes;
+  final pulumi.Input<List<HubRoute>?>? routes;
   /// The name of the VirtualHub.
   final pulumi.Input<String> virtualHubName;
 

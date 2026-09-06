@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resource requests/limits for this instance type
 class InstanceTypeSchemaResourcesResponse {
   /// Resource limits for this instance type
-  final pulumi.Input<Map<String, String>>? limits;
+  final pulumi.Input<Map<String, String>?>? limits;
   /// Resource requests for this instance type
-  final pulumi.Input<Map<String, String>>? requests;
+  final pulumi.Input<Map<String, String>?>? requests;
 
   /// Creates a new [InstanceTypeSchemaResourcesResponse].
   /// [limits] Resource limits for this instance type

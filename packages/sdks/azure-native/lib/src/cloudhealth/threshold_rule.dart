@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Threshold-based evaluation rule for a signal definition
 class ThresholdRule {
   /// Operator how to compare the signal value with the threshold
-  final pulumi.Input<String> operator;
+  final pulumi.Input<dynamic> operator;
   /// Threshold value
   final pulumi.Input<String> threshold;
 
@@ -26,7 +26,7 @@ class ThresholdRule {
 
   factory ThresholdRule.fromMap(Map<String, dynamic> map) {
     return ThresholdRule(
-      operator: pulumi.Input.fromValue(map['operator'] as String),
+      operator: pulumi.Input.fromValue(map['operator']),
       threshold: pulumi.Input.fromValue(map['threshold'] as String),
     );
   }

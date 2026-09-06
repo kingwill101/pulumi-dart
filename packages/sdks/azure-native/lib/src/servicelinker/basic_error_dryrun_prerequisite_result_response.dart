@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The represent of basic error
 class BasicErrorDryrunPrerequisiteResultResponse {
   /// The error code.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// The error message.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The type of dryrun result.
   /// Expected value is 'basicError'.
   final pulumi.Input<String> type;

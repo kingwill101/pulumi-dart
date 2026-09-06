@@ -8,21 +8,21 @@ import 'sub_resource.dart';
 /// Pool of backend IP addresses.
 class BackendAddressPool {
   /// Amount of seconds Load Balancer waits for before sending RESET to client and backend address.
-  final pulumi.Input<int>? drainPeriodInSeconds;
+  final pulumi.Input<int?>? drainPeriodInSeconds;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// An array of backend addresses.
-  final pulumi.Input<List<LoadBalancerBackendAddress>>? loadBalancerBackendAddresses;
+  final pulumi.Input<List<LoadBalancerBackendAddress>?>? loadBalancerBackendAddresses;
   /// The location of the backend address pool.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource that is unique within the set of backend address pools used by the load balancer. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Backend address synchronous mode for the backend pool
-  final pulumi.Input<String>? syncMode;
+  final pulumi.Input<dynamic>? syncMode;
   /// An array of gateway load balancer tunnel interfaces.
-  final pulumi.Input<List<GatewayLoadBalancerTunnelInterface>>? tunnelInterfaces;
+  final pulumi.Input<List<GatewayLoadBalancerTunnelInterface>?>? tunnelInterfaces;
   /// A reference to a virtual network.
-  final pulumi.Input<SubResource>? virtualNetwork;
+  final pulumi.Input<SubResource?>? virtualNetwork;
 
   /// Creates a new [BackendAddressPool].
   /// [drainPeriodInSeconds] Amount of seconds Load Balancer waits for before sending RESET to client and backend address.
@@ -59,12 +59,12 @@ class BackendAddressPool {
 
   factory BackendAddressPool.fromMap(Map<String, dynamic> map) {
     return BackendAddressPool(
-      drainPeriodInSeconds: (() { final guardedValue = map['drainPeriodInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      drainPeriodInSeconds: (() { final guardedValue = map['drainPeriodInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loadBalancerBackendAddresses: (() { final guardedValue = map['loadBalancerBackendAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LoadBalancerBackendAddress>(guardedValue, (value) => LoadBalancerBackendAddress.fromMap((value as Map).cast<String, dynamic>()))); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      syncMode: (() { final guardedValue = map['syncMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      syncMode: (() { final guardedValue = map['syncMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tunnelInterfaces: (() { final guardedValue = map['tunnelInterfaces']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GatewayLoadBalancerTunnelInterface>(guardedValue, (value) => GatewayLoadBalancerTunnelInterface.fromMap((value as Map).cast<String, dynamic>()))); })(),
       virtualNetwork: (() { final guardedValue = map['virtualNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

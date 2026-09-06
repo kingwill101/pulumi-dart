@@ -17,47 +17,47 @@ import 'sku.dart';
 /// {@macro pulumi_solutions_application_definition_args_doc}
 class ApplicationDefinitionArgs {
   /// The name of the managed application definition.
-  final pulumi.Input<String>? applicationDefinitionName;
+  final pulumi.Input<String?>? applicationDefinitionName;
   /// The collection of managed application artifacts. The portal will use the files specified as artifacts to construct the user experience of creating a managed application from a managed application definition.
-  final pulumi.Input<List<ApplicationDefinitionArtifact>>? artifacts;
+  final pulumi.Input<List<ApplicationDefinitionArtifact>?>? artifacts;
   /// The managed application provider authorizations.
-  final pulumi.Input<List<ApplicationAuthorization>>? authorizations;
+  final pulumi.Input<List<ApplicationAuthorization>?>? authorizations;
   /// The createUiDefinition json for the backing template with Microsoft.Solutions/applications resource. It can be a JObject or well-formed JSON string.
   final pulumi.Input<dynamic>? createUiDefinition;
   /// The managed application deployment policy.
-  final pulumi.Input<ApplicationDeploymentPolicy>? deploymentPolicy;
+  final pulumi.Input<ApplicationDeploymentPolicy?>? deploymentPolicy;
   /// The managed application definition description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The managed application definition display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// A value indicating whether the package is enabled or not.
-  final pulumi.Input<bool>? isEnabled;
+  final pulumi.Input<bool?>? isEnabled;
   /// Resource location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The managed application lock level.
   final pulumi.Input<ApplicationLockLevel> lockLevel;
   /// The managed application locking policy.
-  final pulumi.Input<ApplicationPackageLockingPolicyDefinition>? lockingPolicy;
+  final pulumi.Input<ApplicationPackageLockingPolicyDefinition?>? lockingPolicy;
   /// The inline main template json which has resources to be provisioned. It can be a JObject or well-formed JSON string.
   final pulumi.Input<dynamic>? mainTemplate;
   /// ID of the resource that manages this resource.
-  final pulumi.Input<String>? managedBy;
+  final pulumi.Input<String?>? managedBy;
   /// The managed application management policy that determines publisher's access to the managed resource group.
-  final pulumi.Input<ApplicationManagementPolicy>? managementPolicy;
+  final pulumi.Input<ApplicationManagementPolicy?>? managementPolicy;
   /// The managed application notification policy.
-  final pulumi.Input<ApplicationNotificationPolicy>? notificationPolicy;
+  final pulumi.Input<ApplicationNotificationPolicy?>? notificationPolicy;
   /// The managed application definition package file Uri. Use this element
-  final pulumi.Input<String>? packageFileUri;
+  final pulumi.Input<String?>? packageFileUri;
   /// The managed application provider policies.
-  final pulumi.Input<List<ApplicationPolicy>>? policies;
+  final pulumi.Input<List<ApplicationPolicy>?>? policies;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU of the resource.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// The storage account id for bring your own storage scenario.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ApplicationDefinitionArgs].
   /// [applicationDefinitionName] The name of the managed application definition.

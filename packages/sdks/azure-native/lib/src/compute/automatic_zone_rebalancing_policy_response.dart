@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration parameters used while performing automatic AZ balancing.
 class AutomaticZoneRebalancingPolicyResponse {
   /// Specifies whether Automatic AZ Balancing should be enabled on the virtual machine scale set. The default value is false.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Type of rebalance behavior that will be used for recreating virtual machines in the scale set across availability zones. Default and only supported value for now is CreateBeforeDelete.
-  final pulumi.Input<String>? rebalanceBehavior;
+  final pulumi.Input<String?>? rebalanceBehavior;
   /// Type of rebalance strategy that will be used for rebalancing virtual machines in the scale set across availability zones. Default and only supported value for now is Recreate.
-  final pulumi.Input<String>? rebalanceStrategy;
+  final pulumi.Input<String?>? rebalanceStrategy;
 
   /// Creates a new [AutomaticZoneRebalancingPolicyResponse].
   /// [enabled] Specifies whether Automatic AZ Balancing should be enabled on the virtual machine scale set. The default value is false.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_get_inbound_nat_rule_args_doc}
 class GetInboundNatRuleArgs {
   /// Expands referenced resources.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the inbound NAT rule.
   final pulumi.Input<String> inboundNatRuleName;
   /// The name of the load balancer.

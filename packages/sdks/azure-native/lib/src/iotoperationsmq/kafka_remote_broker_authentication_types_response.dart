@@ -8,11 +8,11 @@ import 'sasl_remote_broker_basic_authentication_response.dart';
 /// Kafka RemoteBrokerConnection Authentication types. NOTE - Enum only one method is allowed to be passed.
 class KafkaRemoteBrokerAuthenticationTypesResponse {
   /// Sasl remote broker authentication method.
-  final pulumi.Input<SaslRemoteBrokerBasicAuthenticationResponse>? sasl;
+  final pulumi.Input<SaslRemoteBrokerBasicAuthenticationResponse?>? sasl;
   /// Managed identity remote broker authentication method.
-  final pulumi.Input<ManagedIdentityAuthenticationResponse>? systemAssignedManagedIdentity;
+  final pulumi.Input<ManagedIdentityAuthenticationResponse?>? systemAssignedManagedIdentity;
   /// X509 remote broker authentication method.
-  final pulumi.Input<KafkaX509AuthenticationResponse>? x509;
+  final pulumi.Input<KafkaX509AuthenticationResponse?>? x509;
 
   /// Creates a new [KafkaRemoteBrokerAuthenticationTypesResponse].
   /// [sasl] Sasl remote broker authentication method.

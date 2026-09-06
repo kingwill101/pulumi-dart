@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Field Deprecated, use virtualizationModel instead. The type of the virtio interface.
-enum VirtualMachineVirtioInterfaceType {
+enum VirtualMachineVirtioInterfaceType implements pulumi.PulumiEnum<String> {
   valueModern("Modern"),
   valueTransitional("Transitional");
 
   const VirtualMachineVirtioInterfaceType(this.wireValue);
+  @override
   final String wireValue;
 
   static VirtualMachineVirtioInterfaceType fromValue(String value) {

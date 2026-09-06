@@ -10,14 +10,14 @@ class PatchSettingsResponse {
   /// control the timing of patch assessments on a virtual machine.&lt;br /&gt;&lt;br /&gt;
   /// **AutomaticByPlatform** - The platform will trigger periodic patch assessments.
   /// The property provisionVMAgent must be true.
-  final pulumi.Input<String>? assessmentMode;
+  final pulumi.Input<String?>? assessmentMode;
   /// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
   /// Patching on Windows.
-  final pulumi.Input<WindowsVMGuestPatchAutomaticByPlatformSettingsResponse>? automaticByPlatformSettings;
+  final pulumi.Input<WindowsVMGuestPatchAutomaticByPlatformSettingsResponse?>? automaticByPlatformSettings;
   /// Enables customers to patch their Azure VMs without requiring a reboot. For
   /// enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode'
   /// must be set to 'AutomaticByPlatform'.
-  final pulumi.Input<bool>? enableHotpatching;
+  final pulumi.Input<bool?>? enableHotpatching;
   /// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
   /// machines associated to virtual machine scale set with OrchestrationMode as
   /// Flexible.&lt;br /&gt;&lt;br /&gt; Possible values are:&lt;br /&gt;&lt;br /&gt; **Manual** - You
@@ -29,7 +29,7 @@ class PatchSettingsResponse {
   /// must be true. &lt;br /&gt;&lt;br /&gt; **AutomaticByPlatform** - the virtual machine will
   /// automatically updated by the platform. The properties provisionVMAgent and
   /// WindowsConfiguration.enableAutomaticUpdates must be true
-  final pulumi.Input<String>? patchMode;
+  final pulumi.Input<String?>? patchMode;
 
   /// Creates a new [PatchSettingsResponse].
   /// [assessmentMode] Specifies the mode of VM Guest patch assessment for the IaaS virtual

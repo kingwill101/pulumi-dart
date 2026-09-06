@@ -52,6 +52,17 @@ Future<GetActionRequestResult> getActionRequest(
   return GetActionRequestResult.fromMap(result);
 }
 
+pulumi.Output<GetActionRequestResult> getActionRequestOutput(
+  GetActionRequestArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:testbase:getActionRequest',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetActionRequestResult.fromMap);
+}
+
 /// Uses Azure REST API version 2023-11-01-preview.
 ///
 /// Other available API versions: 2022-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native testbase [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
@@ -68,6 +79,17 @@ Future<GetBillingHubServiceFreeHourBalanceResult> getBillingHubServiceFreeHourBa
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBillingHubServiceFreeHourBalanceResult.fromMap(result);
+}
+
+pulumi.Output<GetBillingHubServiceFreeHourBalanceResult> getBillingHubServiceFreeHourBalanceOutput(
+  GetBillingHubServiceFreeHourBalanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:testbase:getBillingHubServiceFreeHourBalance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBillingHubServiceFreeHourBalanceResult.fromMap);
 }
 
 /// Uses Azure REST API version 2023-11-01-preview.
@@ -88,6 +110,17 @@ Future<GetBillingHubServiceUsageResult> getBillingHubServiceUsage(
   return GetBillingHubServiceUsageResult.fromMap(result);
 }
 
+pulumi.Output<GetBillingHubServiceUsageResult> getBillingHubServiceUsageOutput(
+  GetBillingHubServiceUsageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:testbase:getBillingHubServiceUsage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBillingHubServiceUsageResult.fromMap);
+}
+
 /// Gets a test base credential Resource
 ///
 /// Uses Azure REST API version 2023-11-01-preview.
@@ -106,6 +139,17 @@ Future<GetCredentialResult> getCredential(
   return GetCredentialResult.fromMap(result);
 }
 
+pulumi.Output<GetCredentialResult> getCredentialOutput(
+  GetCredentialArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:testbase:getCredential',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCredentialResult.fromMap);
+}
+
 /// Gets a test base custom image.
 ///
 /// Uses Azure REST API version 2023-11-01-preview.
@@ -122,6 +166,17 @@ Future<GetCustomImageResult> getCustomImage(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCustomImageResult.fromMap(result);
+}
+
+pulumi.Output<GetCustomImageResult> getCustomImageOutput(
+  GetCustomImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:testbase:getCustomImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomImageResult.fromMap);
 }
 
 /// Gets a Test Base CustomerEvent.
@@ -144,6 +199,17 @@ Future<GetCustomerEventResult> getCustomerEvent(
   return GetCustomerEventResult.fromMap(result);
 }
 
+pulumi.Output<GetCustomerEventResult> getCustomerEventOutput(
+  GetCustomerEventArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:testbase:getCustomerEvent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomerEventResult.fromMap);
+}
+
 /// Gets a Test Base Draft Package.
 ///
 /// Uses Azure REST API version 2023-11-01-preview.
@@ -162,6 +228,17 @@ Future<GetDraftPackageResult> getDraftPackage(
   return GetDraftPackageResult.fromMap(result);
 }
 
+pulumi.Output<GetDraftPackageResult> getDraftPackageOutput(
+  GetDraftPackageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:testbase:getDraftPackage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDraftPackageResult.fromMap);
+}
+
 /// Gets draft package path and temp working path with SAS.
 ///
 /// Uses Azure REST API version 2023-11-01-preview.
@@ -178,6 +255,17 @@ Future<GetDraftPackagePathResult> getDraftPackagePath(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDraftPackagePathResult.fromMap(result);
+}
+
+pulumi.Output<GetDraftPackagePathResult> getDraftPackagePathOutput(
+  GetDraftPackagePathArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:testbase:getDraftPackagePath',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDraftPackagePathResult.fromMap);
 }
 
 /// Gets a favorite process for a Test Base Package.
@@ -200,6 +288,17 @@ Future<GetFavoriteProcessResult> getFavoriteProcess(
   return GetFavoriteProcessResult.fromMap(result);
 }
 
+pulumi.Output<GetFavoriteProcessResult> getFavoriteProcessOutput(
+  GetFavoriteProcessArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:testbase:getFavoriteProcess',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFavoriteProcessResult.fromMap);
+}
+
 /// Get image properties under the image definition name created by test base custom image which derived from 'VHD' source.
 ///
 /// Uses Azure REST API version 2023-11-01-preview.
@@ -216,6 +315,17 @@ Future<GetImageDefinitionResult> getImageDefinition(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImageDefinitionResult.fromMap(result);
+}
+
+pulumi.Output<GetImageDefinitionResult> getImageDefinitionOutput(
+  GetImageDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:testbase:getImageDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageDefinitionResult.fromMap);
 }
 
 /// Gets a Test Base Package.
@@ -238,6 +348,17 @@ Future<GetPackageResult> getPackage(
   return GetPackageResult.fromMap(result);
 }
 
+pulumi.Output<GetPackageResult> getPackageOutput(
+  GetPackageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:testbase:getPackage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPackageResult.fromMap);
+}
+
 /// Gets the download URL of a package.
 ///
 /// Uses Azure REST API version 2023-11-01-preview.
@@ -256,6 +377,17 @@ Future<GetPackageDownloadURLResult> getPackageDownloadURL(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPackageDownloadURLResult.fromMap(result);
+}
+
+pulumi.Output<GetPackageDownloadURLResult> getPackageDownloadURLOutput(
+  GetPackageDownloadURLArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:testbase:getPackageDownloadURL',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPackageDownloadURLResult.fromMap);
 }
 
 /// Gets a Test Base Account.
@@ -278,6 +410,17 @@ Future<GetTestBaseAccountResult> getTestBaseAccount(
   return GetTestBaseAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetTestBaseAccountResult> getTestBaseAccountOutput(
+  GetTestBaseAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:testbase:getTestBaseAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTestBaseAccountResult.fromMap);
+}
+
 /// Gets the file upload URL of a Test Base Account.
 ///
 /// Uses Azure REST API version 2023-11-01-preview.
@@ -296,6 +439,17 @@ Future<GetTestBaseAccountFileUploadUrlResult> getTestBaseAccountFileUploadUrl(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTestBaseAccountFileUploadUrlResult.fromMap(result);
+}
+
+pulumi.Output<GetTestBaseAccountFileUploadUrlResult> getTestBaseAccountFileUploadUrlOutput(
+  GetTestBaseAccountFileUploadUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:testbase:getTestBaseAccountFileUploadUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTestBaseAccountFileUploadUrlResult.fromMap);
 }
 
 /// Gets the download URL of the test execution console log file.
@@ -318,6 +472,17 @@ Future<GetTestResultConsoleLogDownloadURLResult> getTestResultConsoleLogDownload
   return GetTestResultConsoleLogDownloadURLResult.fromMap(result);
 }
 
+pulumi.Output<GetTestResultConsoleLogDownloadURLResult> getTestResultConsoleLogDownloadURLOutput(
+  GetTestResultConsoleLogDownloadURLArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:testbase:getTestResultConsoleLogDownloadURL',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTestResultConsoleLogDownloadURLResult.fromMap);
+}
+
 /// Gets the download URL of the test result.
 ///
 /// Uses Azure REST API version 2023-11-01-preview.
@@ -338,6 +503,17 @@ Future<GetTestResultDownloadURLResult> getTestResultDownloadURL(
   return GetTestResultDownloadURLResult.fromMap(result);
 }
 
+pulumi.Output<GetTestResultDownloadURLResult> getTestResultDownloadURLOutput(
+  GetTestResultDownloadURLArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:testbase:getTestResultDownloadURL',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTestResultDownloadURLResult.fromMap);
+}
+
 /// Gets the download URL of the test execution screen recording.
 ///
 /// Uses Azure REST API version 2023-11-01-preview.
@@ -356,4 +532,15 @@ Future<GetTestResultVideoDownloadURLResult> getTestResultVideoDownloadURL(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTestResultVideoDownloadURLResult.fromMap(result);
+}
+
+pulumi.Output<GetTestResultVideoDownloadURLResult> getTestResultVideoDownloadURLOutput(
+  GetTestResultVideoDownloadURLArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:testbase:getTestResultVideoDownloadURL',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTestResultVideoDownloadURLResult.fromMap);
 }

@@ -4,6 +4,7 @@ import 'contact_details_response.dart';
 import 'order_args.dart';
 import 'order_status_response.dart';
 import 'system_data_response.dart';
+import 'tracking_info_response.dart';
 
 /// The order details.
 ///
@@ -266,17 +267,17 @@ class Order extends pulumi.CustomResource {
   /// Current status of the order.
   late final pulumi.Output<OrderStatusResponse> currentStatus;
   /// Tracking information for the package delivered to the customer whether it has an original or a replacement device.
-  late final pulumi.Output<List<Map<String, dynamic>>> deliveryTrackingInfo;
+  late final pulumi.Output<List<TrackingInfoResponse>> deliveryTrackingInfo;
   /// It specify the order api version.
   late final pulumi.Output<String> kind;
   /// The object name.
   late final pulumi.Output<String> name;
   /// List of status changes in the order.
-  late final pulumi.Output<List<Map<String, dynamic>>> orderHistory;
+  late final pulumi.Output<List<OrderStatusResponse>> orderHistory;
   /// It specify the order resource id.
   late final pulumi.Output<String> orderId;
   /// Tracking information for the package returned from the customer whether it has an original or a replacement device.
-  late final pulumi.Output<List<Map<String, dynamic>>> returnTrackingInfo;
+  late final pulumi.Output<List<TrackingInfoResponse>> returnTrackingInfo;
   /// Serial number of the device.
   late final pulumi.Output<String> serialNumber;
   /// ShipmentType of the order
@@ -305,12 +306,37 @@ class Order extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     contactInformation = registerOutput<ContactDetailsResponse>('contactInformation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContactDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     currentStatus = registerOutput<OrderStatusResponse>('currentStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrderStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    deliveryTrackingInfo = registerOutput<List<Map<String, dynamic>>>('deliveryTrackingInfo');
+    deliveryTrackingInfo = registerOutput<List<TrackingInfoResponse>>('deliveryTrackingInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrackingInfoResponse>(guardedValue, (value) => TrackingInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    orderHistory = registerOutput<List<Map<String, dynamic>>>('orderHistory');
+    orderHistory = registerOutput<List<OrderStatusResponse>>('orderHistory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrderStatusResponse>(guardedValue, (value) => OrderStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
     orderId = registerOutput<String>('orderId');
-    returnTrackingInfo = registerOutput<List<Map<String, dynamic>>>('returnTrackingInfo');
+    returnTrackingInfo = registerOutput<List<TrackingInfoResponse>>('returnTrackingInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrackingInfoResponse>(guardedValue, (value) => TrackingInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    serialNumber = registerOutput<String>('serialNumber');
+    shipmentType = registerOutput<String?>('shipmentType');
+    shippingAddress = registerOutput<AddressResponse?>('shippingAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Order] resource.
+  Order.reference(String urn)
+    : super(
+        'azure-native:databoxedge:Order',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contactInformation = registerOutput<ContactDetailsResponse>('contactInformation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContactDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    currentStatus = registerOutput<OrderStatusResponse>('currentStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrderStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deliveryTrackingInfo = registerOutput<List<TrackingInfoResponse>>('deliveryTrackingInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrackingInfoResponse>(guardedValue, (value) => TrackingInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    orderHistory = registerOutput<List<OrderStatusResponse>>('orderHistory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrderStatusResponse>(guardedValue, (value) => OrderStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    orderId = registerOutput<String>('orderId');
+    returnTrackingInfo = registerOutput<List<TrackingInfoResponse>>('returnTrackingInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrackingInfoResponse>(guardedValue, (value) => TrackingInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
     serialNumber = registerOutput<String>('serialNumber');
     shipmentType = registerOutput<String?>('shipmentType');
     shippingAddress = registerOutput<AddressResponse?>('shippingAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

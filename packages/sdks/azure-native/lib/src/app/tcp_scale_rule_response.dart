@@ -6,11 +6,11 @@ import 'scale_rule_auth_response.dart';
 /// Container App container Tcp scaling rule.
 class TcpScaleRuleResponse {
   /// Authentication secrets for the tcp scale rule.
-  final pulumi.Input<List<ScaleRuleAuthResponse>>? auth;
+  final pulumi.Input<List<ScaleRuleAuthResponse>?>? auth;
   /// The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
-  final pulumi.Input<String>? identity;
+  final pulumi.Input<String?>? identity;
   /// Metadata properties to describe tcp scale rule.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
 
   /// Creates a new [TcpScaleRuleResponse].
   /// [auth] Authentication secrets for the tcp scale rule.

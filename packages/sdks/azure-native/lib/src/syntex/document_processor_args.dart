@@ -9,15 +9,15 @@ import 'document_processor_properties.dart';
 /// {@macro pulumi_syntex_document_processor_args_doc}
 class DocumentProcessorArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of document processor resource.
-  final pulumi.Input<String>? processorName;
+  final pulumi.Input<String?>? processorName;
   /// Document processor properties.
-  final pulumi.Input<DocumentProcessorProperties>? properties;
+  final pulumi.Input<DocumentProcessorProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DocumentProcessorArgs].
   /// [location] The geo-location where the resource lives

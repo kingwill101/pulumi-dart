@@ -7,13 +7,13 @@ import 'k8stransparent_data_encryption_response.dart';
 /// The kubernetes security information.
 class K8sSecurityResponse {
   /// The kubernetes active directory information.
-  final pulumi.Input<K8sActiveDirectoryResponse>? activeDirectory;
+  final pulumi.Input<K8sActiveDirectoryResponse?>? activeDirectory;
   /// Admin login secret key
-  final pulumi.Input<String>? adminLoginSecret;
+  final pulumi.Input<String?>? adminLoginSecret;
   /// Service certificate secret used
-  final pulumi.Input<String>? serviceCertificateSecret;
+  final pulumi.Input<String?>? serviceCertificateSecret;
   /// Transparent data encryption information.
-  final pulumi.Input<K8stransparentDataEncryptionResponse>? transparentDataEncryption;
+  final pulumi.Input<K8stransparentDataEncryptionResponse?>? transparentDataEncryption;
 
   /// Creates a new [K8sSecurityResponse].
   /// [activeDirectory] The kubernetes active directory information.

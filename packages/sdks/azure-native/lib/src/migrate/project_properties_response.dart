@@ -6,15 +6,15 @@ import 'private_endpoint_connection_project_response.dart';
 /// Properties of a project.
 class ProjectPropertiesResponse {
   /// Assessment solution ARM id tracked by Microsoft.Migrate/migrateProjects.
-  final pulumi.Input<String>? assessmentSolutionId;
+  final pulumi.Input<String?>? assessmentSolutionId;
   /// Time when this project was created. Date-Time represented in ISO-8601 format.
   final pulumi.Input<String> createdTimestamp;
   /// The ARM id of the storage account used for interactions when public access is disabled.
-  final pulumi.Input<String>? customerStorageAccountArmId;
+  final pulumi.Input<String?>? customerStorageAccountArmId;
   /// The ARM id of service map workspace created by customer.
-  final pulumi.Input<String>? customerWorkspaceId;
+  final pulumi.Input<String?>? customerWorkspaceId;
   /// Location of service map workspace created by customer.
-  final pulumi.Input<String>? customerWorkspaceLocation;
+  final pulumi.Input<String?>? customerWorkspaceLocation;
   /// Time when last assessment was created. Date-Time represented in ISO-8601 format. This value will be null until assessment is created.
   final pulumi.Input<String> lastAssessmentTimestamp;
   /// Number of assessments created in the project.
@@ -26,11 +26,11 @@ class ProjectPropertiesResponse {
   /// The list of private endpoint connections to the project.
   final pulumi.Input<List<PrivateEndpointConnectionProjectResponse>> privateEndpointConnections;
   /// Assessment project status.
-  final pulumi.Input<String>? projectStatus;
+  final pulumi.Input<String?>? projectStatus;
   /// Provisioning state of the project.
   final pulumi.Input<String> provisioningState;
   /// This value can be set to 'enabled' to avoid breaking changes on existing customer resources and templates. If set to 'disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// Endpoint at which the collector agent can call agent REST API.
   final pulumi.Input<String> serviceEndpoint;
   /// Time when this project was last updated. Date-Time represented in ISO-8601 format.
@@ -98,9 +98,9 @@ class ProjectPropertiesResponse {
       customerWorkspaceId: (() { final guardedValue = map['customerWorkspaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customerWorkspaceLocation: (() { final guardedValue = map['customerWorkspaceLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lastAssessmentTimestamp: pulumi.Input.fromValue(map['lastAssessmentTimestamp'] as String),
-      numberOfAssessments: pulumi.Input.fromValue(map['numberOfAssessments'] as int),
-      numberOfGroups: pulumi.Input.fromValue(map['numberOfGroups'] as int),
-      numberOfMachines: pulumi.Input.fromValue(map['numberOfMachines'] as int),
+      numberOfAssessments: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberOfAssessments'])),
+      numberOfGroups: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberOfGroups'])),
+      numberOfMachines: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberOfMachines'])),
       privateEndpointConnections: pulumi.Input.fromValue(pulumi.Input.decodeList<PrivateEndpointConnectionProjectResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionProjectResponse.fromMap((value as Map).cast<String, dynamic>()))),
       projectStatus: (() { final guardedValue = map['projectStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),

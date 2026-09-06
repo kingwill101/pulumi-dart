@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A namespace junction.
 class NamespaceJunction {
   /// Namespace path on a cache for a Storage Target.
-  final pulumi.Input<String>? namespacePath;
+  final pulumi.Input<String?>? namespacePath;
   /// Name of the access policy applied to this junction.
-  final pulumi.Input<String>? nfsAccessPolicy;
+  final pulumi.Input<String?>? nfsAccessPolicy;
   /// NFS export where targetPath exists.
-  final pulumi.Input<String>? nfsExport;
+  final pulumi.Input<String?>? nfsExport;
   /// Path in Storage Target to which namespacePath points.
-  final pulumi.Input<String>? targetPath;
+  final pulumi.Input<String?>? targetPath;
 
   /// Creates a new [NamespaceJunction].
   /// [namespacePath] Namespace path on a cache for a Storage Target.
   /// [nfsAccessPolicy] Name of the access policy applied to this junction.
   /// [nfsExport] NFS export where targetPath exists.
   /// [targetPath] Path in Storage Target to which namespacePath points.
-  const NamespaceJunction({
+  NamespaceJunction({
     this.namespacePath,
-    this.nfsAccessPolicy,
+    pulumi.Input<String?>? nfsAccessPolicy,
     this.nfsExport,
     this.targetPath,
-  });
+  }) : nfsAccessPolicy = nfsAccessPolicy ?? pulumi.Input.fromValue('default');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

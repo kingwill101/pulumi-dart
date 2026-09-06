@@ -6,7 +6,7 @@ import 'day_response.dart';
 /// Daily retention format.
 class DailyRetentionFormatResponse {
   /// List of days of the month.
-  final pulumi.Input<List<DayResponse>>? daysOfTheMonth;
+  final pulumi.Input<List<DayResponse>?>? daysOfTheMonth;
 
   /// Creates a new [DailyRetentionFormatResponse].
   /// [daysOfTheMonth] List of days of the month.

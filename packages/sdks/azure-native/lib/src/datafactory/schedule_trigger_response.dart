@@ -7,11 +7,11 @@ import 'trigger_pipeline_reference_response.dart';
 /// Trigger that creates pipeline runs periodically, on schedule.
 class ScheduleTriggerResponse {
   /// List of tags that can be used for describing the trigger.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// Trigger description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Pipelines that need to be started.
-  final pulumi.Input<List<TriggerPipelineReferenceResponse>>? pipelines;
+  final pulumi.Input<List<TriggerPipelineReferenceResponse>?>? pipelines;
   /// Recurrence schedule configuration.
   final pulumi.Input<ScheduleTriggerRecurrenceResponse> recurrence;
   /// Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.

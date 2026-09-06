@@ -6,18 +6,18 @@ import 'iisweb_application.dart';
 /// IIS workload instance model custom properties.
 class IISWorkloadInstanceModelCustomProperties {
   /// Gets or sets the container Id.
-  final pulumi.Input<String>? containerName;
+  final pulumi.Input<String?>? containerName;
   /// Gets or sets the fileshare name.
-  final pulumi.Input<String>? fileshareName;
+  final pulumi.Input<String?>? fileshareName;
   /// IISWeb application.
-  final pulumi.Input<IISWebApplication>? iisWebApplication;
+  final pulumi.Input<IISWebApplication?>? iisWebApplication;
   /// Gets or sets the instance type.
   /// Expected value is 'IISWorkloadInstanceModelCustomProperties'.
   final pulumi.Input<String> instanceType;
   /// Gets or sets the Web application ARM id.
-  final pulumi.Input<String>? webAppArmId;
+  final pulumi.Input<String?>? webAppArmId;
   /// Gets or sets the Web application site name.
-  final pulumi.Input<String>? webAppSiteName;
+  final pulumi.Input<String?>? webAppSiteName;
 
   /// Creates a new [IISWorkloadInstanceModelCustomProperties].
   /// [containerName] Gets or sets the container Id.

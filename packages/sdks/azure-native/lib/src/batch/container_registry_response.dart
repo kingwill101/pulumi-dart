@@ -6,13 +6,13 @@ import 'compute_node_identity_reference_response.dart';
 /// A private container registry.
 class ContainerRegistryResponse {
   /// The reference to a user assigned identity associated with the Batch pool which a compute node will use.
-  final pulumi.Input<ComputeNodeIdentityReferenceResponse>? identityReference;
+  final pulumi.Input<ComputeNodeIdentityReferenceResponse?>? identityReference;
   /// The password to log into the registry server.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// If omitted, the default is "docker.io".
-  final pulumi.Input<String>? registryServer;
+  final pulumi.Input<String?>? registryServer;
   /// The user name to log into the registry server.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [ContainerRegistryResponse].
   /// [identityReference] The reference to a user assigned identity associated with the Batch pool which a compute node will use.

@@ -19,3 +19,14 @@ Future<GetSerialPortResult> getSerialPort(
   );
   return GetSerialPortResult.fromMap(result);
 }
+
+pulumi.Output<GetSerialPortResult> getSerialPortOutput(
+  GetSerialPortArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:serialconsole:getSerialPort',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSerialPortResult.fromMap);
+}

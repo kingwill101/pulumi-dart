@@ -6,9 +6,9 @@ import 'service_oci_artifact_entry.dart';
 /// Azure container registry configuration information
 class FhirServiceAcrConfiguration {
   /// The list of the Azure container registry login servers.
-  final pulumi.Input<List<String>>? loginServers;
+  final pulumi.Input<List<String>?>? loginServers;
   /// The list of Open Container Initiative (OCI) artifacts.
-  final pulumi.Input<List<ServiceOciArtifactEntry>>? ociArtifacts;
+  final pulumi.Input<List<ServiceOciArtifactEntry>?>? ociArtifacts;
 
   /// Creates a new [FhirServiceAcrConfiguration].
   /// [loginServers] The list of the Azure container registry login servers.

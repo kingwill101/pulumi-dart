@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// LedgerRole associated with the Security Principal of Ledger
-enum LedgerRoleName {
+enum LedgerRoleName implements pulumi.PulumiEnum<String> {
   valueReader("Reader"),
   valueContributor("Contributor"),
   valueAdministrator("Administrator");
 
   const LedgerRoleName(this.wireValue);
+  @override
   final String wireValue;
 
   static LedgerRoleName fromValue(String value) {

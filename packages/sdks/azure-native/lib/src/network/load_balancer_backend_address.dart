@@ -6,17 +6,17 @@ import 'sub_resource.dart';
 /// Load balancer backend addresses.
 class LoadBalancerBackendAddress {
   /// A list of administrative states which once set can override health probe so that Load Balancer will always forward new connections to backend, or deny new connections and reset existing connections.
-  final pulumi.Input<String>? adminState;
+  final pulumi.Input<dynamic>? adminState;
   /// IP Address belonging to the referenced virtual network.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// Reference to the frontend ip address configuration defined in regional loadbalancer.
-  final pulumi.Input<SubResource>? loadBalancerFrontendIPConfiguration;
+  final pulumi.Input<SubResource?>? loadBalancerFrontendIPConfiguration;
   /// Name of the backend address.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Reference to an existing subnet.
-  final pulumi.Input<SubResource>? subnet;
+  final pulumi.Input<SubResource?>? subnet;
   /// Reference to an existing virtual network.
-  final pulumi.Input<SubResource>? virtualNetwork;
+  final pulumi.Input<SubResource?>? virtualNetwork;
 
   /// Creates a new [LoadBalancerBackendAddress].
   /// [adminState] A list of administrative states which once set can override health probe so that Load Balancer will always forward new connections to backend, or deny new connections and reset existing connections.
@@ -47,7 +47,7 @@ class LoadBalancerBackendAddress {
 
   factory LoadBalancerBackendAddress.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendAddress(
-      adminState: (() { final guardedValue = map['adminState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      adminState: (() { final guardedValue = map['adminState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loadBalancerFrontendIPConfiguration: (() { final guardedValue = map['loadBalancerFrontendIPConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

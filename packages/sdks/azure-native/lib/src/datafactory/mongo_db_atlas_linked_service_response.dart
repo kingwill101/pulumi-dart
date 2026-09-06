@@ -7,24 +7,24 @@ import 'parameter_specification_response.dart';
 /// Linked service for MongoDB Atlas data source.
 class MongoDbAtlasLinkedServiceResponse {
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse?>? connectVia;
   /// The MongoDB Atlas connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Type: string, SecureString or AzureKeyVaultSecretReference.
   final pulumi.Input<dynamic> connectionString;
   /// The name of the MongoDB Atlas database that you want to access. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> database;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The driver version that you want to choose. Allowed value are v1 and v2. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? driverVersion;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>?>? parameters;
   /// Type of linked service.
   /// Expected value is 'MongoDbAtlas'.
   final pulumi.Input<String> type;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [MongoDbAtlasLinkedServiceResponse].
   /// [annotations] List of tags that can be used for describing the linked service.

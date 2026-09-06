@@ -6,9 +6,9 @@ import 'nic_detail.dart';
 /// The device Configuration for edge device.
 class DeviceConfiguration {
   /// Device metadata details.
-  final pulumi.Input<String>? deviceMetadata;
+  final pulumi.Input<String?>? deviceMetadata;
   /// NIC Details of device
-  final pulumi.Input<List<NicDetail>>? nicDetails;
+  final pulumi.Input<List<NicDetail>?>? nicDetails;
 
   /// Creates a new [DeviceConfiguration].
   /// [deviceMetadata] Device metadata details.

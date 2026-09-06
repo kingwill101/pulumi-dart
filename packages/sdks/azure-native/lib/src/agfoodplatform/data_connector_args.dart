@@ -9,7 +9,7 @@ import 'data_connector_properties.dart';
 /// {@macro pulumi_agfoodplatform_data_connector_args_doc}
 class DataConnectorArgs {
   /// Connector name.
-  final pulumi.Input<String>? dataConnectorName;
+  final pulumi.Input<String?>? dataConnectorName;
   /// DataManagerForAgriculture resource name.
   final pulumi.Input<String> dataManagerForAgricultureResourceName;
   /// DataConnector Properties.

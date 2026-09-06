@@ -7,9 +7,9 @@ import 'defender_cspm_aws_offering_ciem_ciem_oidc.dart';
 /// Defenders CSPM Permissions Management offering configurations
 class DefenderCspmAwsOfferingCiem {
   /// Defender CSPM Permissions Management discovery configuration
-  final pulumi.Input<DefenderCspmAwsOfferingCiemCiemDiscovery>? ciemDiscovery;
+  final pulumi.Input<DefenderCspmAwsOfferingCiemCiemDiscovery?>? ciemDiscovery;
   /// AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
-  final pulumi.Input<DefenderCspmAwsOfferingCiemCiemOidc>? ciemOidc;
+  final pulumi.Input<DefenderCspmAwsOfferingCiemCiemOidc?>? ciemOidc;
 
   /// Creates a new [DefenderCspmAwsOfferingCiem].
   /// [ciemDiscovery] Defender CSPM Permissions Management discovery configuration

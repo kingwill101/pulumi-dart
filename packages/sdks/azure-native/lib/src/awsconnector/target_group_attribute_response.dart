@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of TargetGroupAttribute
 class TargetGroupAttributeResponse {
   /// The value of the attribute.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The name of the attribute.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TargetGroupAttributeResponse].
   /// [key] The value of the attribute.

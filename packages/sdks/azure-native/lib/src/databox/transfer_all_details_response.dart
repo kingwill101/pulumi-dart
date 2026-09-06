@@ -7,19 +7,19 @@ class TransferAllDetailsResponse {
   /// Type of the account of data
   final pulumi.Input<String> dataAccountType;
   /// To indicate if all Azure blobs have to be transferred
-  final pulumi.Input<bool>? transferAllBlobs;
+  final pulumi.Input<bool?>? transferAllBlobs;
   /// To indicate if all Azure Files have to be transferred
-  final pulumi.Input<bool>? transferAllFiles;
+  final pulumi.Input<bool?>? transferAllFiles;
 
   /// Creates a new [TransferAllDetailsResponse].
   /// [dataAccountType] Type of the account of data
   /// [transferAllBlobs] To indicate if all Azure blobs have to be transferred
   /// [transferAllFiles] To indicate if all Azure Files have to be transferred
-  const TransferAllDetailsResponse({
-    required this.dataAccountType,
+  TransferAllDetailsResponse({
+    pulumi.Input<String>? dataAccountType,
     this.transferAllBlobs,
     this.transferAllFiles,
-  });
+  }) : dataAccountType = dataAccountType ?? pulumi.Input.fromValue('StorageAccount');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

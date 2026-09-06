@@ -8,7 +8,7 @@ class PyTorch {
   /// Expected value is 'PyTorch'.
   final pulumi.Input<String> distributionType;
   /// Number of processes per node.
-  final pulumi.Input<int>? processCountPerInstance;
+  final pulumi.Input<int?>? processCountPerInstance;
 
   /// Creates a new [PyTorch].
   /// [distributionType] Enum to determine the job distribution type.
@@ -28,7 +28,7 @@ class PyTorch {
   factory PyTorch.fromMap(Map<String, dynamic> map) {
     return PyTorch(
       distributionType: pulumi.Input.fromValue(map['distributionType'] as String),
-      processCountPerInstance: (() { final guardedValue = map['processCountPerInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      processCountPerInstance: (() { final guardedValue = map['processCountPerInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

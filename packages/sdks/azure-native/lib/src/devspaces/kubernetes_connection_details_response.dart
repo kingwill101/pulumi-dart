@@ -8,7 +8,7 @@ class KubernetesConnectionDetailsResponse {
   /// Expected value is 'Kubernetes'.
   final pulumi.Input<String> instanceType;
   /// Gets the kubeconfig for the cluster.
-  final pulumi.Input<String>? kubeConfig;
+  final pulumi.Input<String?>? kubeConfig;
 
   /// Creates a new [KubernetesConnectionDetailsResponse].
   /// [instanceType] Gets the Instance type.

@@ -6,7 +6,7 @@ import 'virtual_machine_config_agent_instance_view_response.dart';
 /// The instance view of a virtual machine.
 class VirtualMachineInstanceViewResponse {
   /// The VM Config Agent running on the virtual machine.
-  final pulumi.Input<VirtualMachineConfigAgentInstanceViewResponse>? vmAgent;
+  final pulumi.Input<VirtualMachineConfigAgentInstanceViewResponse?>? vmAgent;
 
   /// Creates a new [VirtualMachineInstanceViewResponse].
   /// [vmAgent] The VM Config Agent running on the virtual machine.

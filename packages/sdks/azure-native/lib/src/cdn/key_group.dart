@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_group_args.dart';
+import 'resource_reference_response.dart';
 import 'system_data_response.dart';
 
 /// Contains a list of references of UrlSigningKey type secret objects.
@@ -226,7 +227,7 @@ class KeyGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> azureApiVersion;
   late final pulumi.Output<String> deploymentStatus;
   /// Names of UrlSigningKey type secret objects
-  late final pulumi.Output<List<Map<String, dynamic>>?> keyReferences;
+  late final pulumi.Output<List<ResourceReferenceResponse>?> keyReferences;
   /// Resource name.
   late final pulumi.Output<String> name;
   /// Provisioning status
@@ -252,7 +253,25 @@ class KeyGroup extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     deploymentStatus = registerOutput<String>('deploymentStatus');
-    keyReferences = registerOutput<List<Map<String, dynamic>>?>('keyReferences');
+    keyReferences = registerOutput<List<ResourceReferenceResponse>?>('keyReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceReferenceResponse>(guardedValue, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [KeyGroup] resource.
+  KeyGroup.reference(String urn)
+    : super(
+        'azure-native:cdn:KeyGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deploymentStatus = registerOutput<String>('deploymentStatus');
+    keyReferences = registerOutput<List<ResourceReferenceResponse>?>('keyReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceReferenceResponse>(guardedValue, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

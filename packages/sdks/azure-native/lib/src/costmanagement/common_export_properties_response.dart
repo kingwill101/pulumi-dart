@@ -12,13 +12,13 @@ class CommonExportPropertiesResponse {
   /// Has delivery information for the export.
   final pulumi.Input<ExportDeliveryInfoResponse> deliveryInfo;
   /// The format of the export being delivered. Currently only 'Csv' is supported.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// If the export has an active schedule, provides an estimate of the next run time.
   final pulumi.Input<String> nextRunTimeEstimate;
   /// If set to true, exported data will be partitioned by size and placed in a blob directory together with a manifest file. Note: this option is currently available only for Microsoft Customer Agreement commerce scopes.
-  final pulumi.Input<bool>? partitionData;
+  final pulumi.Input<bool?>? partitionData;
   /// If requested, has the most recent run history for the export.
-  final pulumi.Input<ExportExecutionListResultResponse>? runHistory;
+  final pulumi.Input<ExportExecutionListResultResponse?>? runHistory;
 
   /// Creates a new [CommonExportPropertiesResponse].
   /// [definition] Has the definition for the export.

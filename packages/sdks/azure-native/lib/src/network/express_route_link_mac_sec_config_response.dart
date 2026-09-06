@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ExpressRouteLink Mac Security Configuration.
 class ExpressRouteLinkMacSecConfigResponse {
   /// Keyvault Secret Identifier URL containing Mac security CAK key.
-  final pulumi.Input<String>? cakSecretIdentifier;
+  final pulumi.Input<String?>? cakSecretIdentifier;
   /// Mac security cipher.
-  final pulumi.Input<String>? cipher;
+  final pulumi.Input<String?>? cipher;
   /// Keyvault Secret Identifier URL containing Mac security CKN key.
-  final pulumi.Input<String>? cknSecretIdentifier;
+  final pulumi.Input<String?>? cknSecretIdentifier;
   /// Sci mode enabled/disabled.
-  final pulumi.Input<String>? sciState;
+  final pulumi.Input<String?>? sciState;
 
   /// Creates a new [ExpressRouteLinkMacSecConfigResponse].
   /// [cakSecretIdentifier] Keyvault Secret Identifier URL containing Mac security CAK key.

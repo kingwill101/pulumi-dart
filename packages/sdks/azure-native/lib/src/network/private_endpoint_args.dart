@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'application_security_group_network.dart';
+import 'application_security_group.dart';
 import 'custom_dns_config_properties_format.dart';
 import 'extended_location.dart';
 import 'private_endpoint_ipconfiguration.dart';
 import 'private_link_service_connection.dart';
-import 'subnet_network.dart';
+import 'subnet.dart';
 
 /// {@template pulumi_network_private_endpoint_args_doc}
 /// The set of arguments for PrivateEndpoint.
@@ -14,31 +14,31 @@ import 'subnet_network.dart';
 /// {@macro pulumi_network_private_endpoint_args_doc}
 class PrivateEndpointArgs {
   /// Application security groups in which the private endpoint IP configuration is included.
-  final pulumi.Input<List<ApplicationSecurityGroupNetwork>>? applicationSecurityGroups;
+  final pulumi.Input<List<ApplicationSecurityGroup>?>? applicationSecurityGroups;
   /// An array of custom dns configurations.
-  final pulumi.Input<List<CustomDnsConfigPropertiesFormat>>? customDnsConfigs;
+  final pulumi.Input<List<CustomDnsConfigPropertiesFormat>?>? customDnsConfigs;
   /// The custom name of the network interface attached to the private endpoint.
-  final pulumi.Input<String>? customNetworkInterfaceName;
+  final pulumi.Input<String?>? customNetworkInterfaceName;
   /// The extended location of the load balancer.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// A list of IP configurations of the private endpoint. This will be used to map to the First Party Service's endpoints.
-  final pulumi.Input<List<PrivateEndpointIPConfiguration>>? ipConfigurations;
+  final pulumi.Input<List<PrivateEndpointIPConfiguration>?>? ipConfigurations;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource.
-  final pulumi.Input<List<PrivateLinkServiceConnection>>? manualPrivateLinkServiceConnections;
+  final pulumi.Input<List<PrivateLinkServiceConnection>?>? manualPrivateLinkServiceConnections;
   /// The name of the private endpoint.
-  final pulumi.Input<String>? privateEndpointName;
+  final pulumi.Input<String?>? privateEndpointName;
   /// A grouping of information about the connection to the remote resource.
-  final pulumi.Input<List<PrivateLinkServiceConnection>>? privateLinkServiceConnections;
+  final pulumi.Input<List<PrivateLinkServiceConnection>?>? privateLinkServiceConnections;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The ID of the subnet from which the private IP will be allocated.
-  final pulumi.Input<SubnetNetwork>? subnet;
+  final pulumi.Input<Subnet?>? subnet;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PrivateEndpointArgs].
   /// [applicationSecurityGroups] Application security groups in which the private endpoint IP configuration is included.
@@ -72,7 +72,7 @@ class PrivateEndpointArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationSecurityGroups': ?applicationSecurityGroups,
+      'applicationSecurityGroups': ?pulumi.Input.mapOptionalInputValue<List<ApplicationSecurityGroup>, List<Map<String, dynamic>>>(applicationSecurityGroups, (value) => pulumi.Input.encodeList<ApplicationSecurityGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
       'customDnsConfigs': ?pulumi.Input.mapOptionalInputValue<List<CustomDnsConfigPropertiesFormat>, List<Map<String, dynamic>>>(customDnsConfigs, (value) => pulumi.Input.encodeList<CustomDnsConfigPropertiesFormat, Map<String, dynamic>>(value, (value) => value.toMap())),
       'customNetworkInterfaceName': ?customNetworkInterfaceName,
       'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
@@ -83,14 +83,14 @@ class PrivateEndpointArgs {
       'privateEndpointName': ?privateEndpointName,
       'privateLinkServiceConnections': ?pulumi.Input.mapOptionalInputValue<List<PrivateLinkServiceConnection>, List<Map<String, dynamic>>>(privateLinkServiceConnections, (value) => pulumi.Input.encodeList<PrivateLinkServiceConnection, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceGroupName': resourceGroupName,
-      'subnet': ?subnet,
+      'subnet': ?pulumi.Input.mapOptionalInputValue<Subnet, Map<String, dynamic>>(subnet, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
 
   factory PrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointArgs(
-      applicationSecurityGroups: (() { final guardedValue = map['applicationSecurityGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<ApplicationSecurityGroupNetwork>()); })(),
+      applicationSecurityGroups: (() { final guardedValue = map['applicationSecurityGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ApplicationSecurityGroup>(guardedValue, (value) => ApplicationSecurityGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
       customDnsConfigs: (() { final guardedValue = map['customDnsConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CustomDnsConfigPropertiesFormat>(guardedValue, (value) => CustomDnsConfigPropertiesFormat.fromMap((value as Map).cast<String, dynamic>()))); })(),
       customNetworkInterfaceName: (() { final guardedValue = map['customNetworkInterfaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -101,7 +101,7 @@ class PrivateEndpointArgs {
       privateEndpointName: (() { final guardedValue = map['privateEndpointName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateLinkServiceConnections: (() { final guardedValue = map['privateLinkServiceConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PrivateLinkServiceConnection>(guardedValue, (value) => PrivateLinkServiceConnection.fromMap((value as Map).cast<String, dynamic>()))); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as SubnetNetwork); })(),
+      subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Subnet.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

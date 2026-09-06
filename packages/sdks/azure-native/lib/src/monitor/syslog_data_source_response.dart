@@ -6,15 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Only collected from Linux machines.
 class SyslogDataSourceResponse {
   /// The list of facility names.
-  final pulumi.Input<List<String>>? facilityNames;
+  final pulumi.Input<List<String>?>? facilityNames;
   /// The log levels to collect.
-  final pulumi.Input<List<String>>? logLevels;
+  final pulumi.Input<List<String>?>? logLevels;
   /// A friendly name for the data source.
   /// This name should be unique across all data sources (regardless of type) within the data collection rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of streams that this data source will be sent to.
   /// A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
-  final pulumi.Input<List<String>>? streams;
+  final pulumi.Input<List<String>?>? streams;
 
   /// Creates a new [SyslogDataSourceResponse].
   /// [facilityNames] The list of facility names.

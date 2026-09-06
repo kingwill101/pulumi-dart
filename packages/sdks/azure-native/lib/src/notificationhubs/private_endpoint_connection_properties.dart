@@ -6,9 +6,9 @@ import 'remote_private_link_service_connection_state.dart';
 /// Private Endpoint Connection properties.
 class PrivateEndpointConnectionProperties {
   /// State of the Private Link Service connection.
-  final pulumi.Input<RemotePrivateLinkServiceConnectionState>? privateLinkServiceConnectionState;
+  final pulumi.Input<RemotePrivateLinkServiceConnectionState?>? privateLinkServiceConnectionState;
   /// State of Private Endpoint Connection.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<dynamic>? provisioningState;
 
   /// Creates a new [PrivateEndpointConnectionProperties].
   /// [privateLinkServiceConnectionState] State of the Private Link Service connection.
@@ -28,7 +28,7 @@ class PrivateEndpointConnectionProperties {
   factory PrivateEndpointConnectionProperties.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionProperties(
       privateLinkServiceConnectionState: (() { final guardedValue = map['privateLinkServiceConnectionState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RemotePrivateLinkServiceConnectionState.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'plan_response.dart';
 import 'private_store_collection_offer_args.dart';
 import 'system_data_response.dart';
 
@@ -196,7 +197,7 @@ class PrivateStoreCollectionOffer extends pulumi.CustomResource {
   /// It will be displayed prominently in the marketplace
   late final pulumi.Output<String> offerDisplayName;
   /// Offer plans
-  late final pulumi.Output<List<Map<String, dynamic>>?> plans;
+  late final pulumi.Output<List<PlanResponse>?> plans;
   /// Private store unique id
   late final pulumi.Output<String> privateStoreId;
   /// Publisher name that will be displayed prominently in the marketplace
@@ -229,14 +230,40 @@ class PrivateStoreCollectionOffer extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdAt = registerOutput<String>('createdAt');
     eTag = registerOutput<String?>('eTag');
-    iconFileUris = registerOutput<Map<String, String>?>('iconFileUris');
+    iconFileUris = registerOutput<Map<String, String>?>('iconFileUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     modifiedAt = registerOutput<String>('modifiedAt');
     this.name = registerOutput<String>('name');
     offerDisplayName = registerOutput<String>('offerDisplayName');
-    plans = registerOutput<List<Map<String, dynamic>>?>('plans');
+    plans = registerOutput<List<PlanResponse>?>('plans', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanResponse>(guardedValue, (value) => PlanResponse.fromMap((value as Map).cast<String, dynamic>())); });
     privateStoreId = registerOutput<String>('privateStoreId');
     publisherDisplayName = registerOutput<String>('publisherDisplayName');
-    specificPlanIdsLimitation = registerOutput<List<String>?>('specificPlanIdsLimitation');
+    specificPlanIdsLimitation = registerOutput<List<String>?>('specificPlanIdsLimitation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    uniqueOfferId = registerOutput<String>('uniqueOfferId');
+    updateSuppressedDueIdempotence = registerOutput<bool?>('updateSuppressedDueIdempotence');
+  }
+
+  /// Creates a typed reference to an existing [PrivateStoreCollectionOffer] resource.
+  PrivateStoreCollectionOffer.reference(String urn)
+    : super(
+        'azure-native:marketplace:PrivateStoreCollectionOffer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdAt = registerOutput<String>('createdAt');
+    eTag = registerOutput<String?>('eTag');
+    iconFileUris = registerOutput<Map<String, String>?>('iconFileUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    modifiedAt = registerOutput<String>('modifiedAt');
+    this.name = registerOutput<String>('name');
+    offerDisplayName = registerOutput<String>('offerDisplayName');
+    plans = registerOutput<List<PlanResponse>?>('plans', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanResponse>(guardedValue, (value) => PlanResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    privateStoreId = registerOutput<String>('privateStoreId');
+    publisherDisplayName = registerOutput<String>('publisherDisplayName');
+    specificPlanIdsLimitation = registerOutput<List<String>?>('specificPlanIdsLimitation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     uniqueOfferId = registerOutput<String>('uniqueOfferId');

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration of Open Telemetry metrics
 class MetricsConfigurationResponse {
   /// Open telemetry metrics destinations
-  final pulumi.Input<List<String>>? destinations;
+  final pulumi.Input<List<String>?>? destinations;
   /// Boolean indicating if including keda metrics
-  final pulumi.Input<bool>? includeKeda;
+  final pulumi.Input<bool?>? includeKeda;
 
   /// Creates a new [MetricsConfigurationResponse].
   /// [destinations] Open telemetry metrics destinations

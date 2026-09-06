@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of TracingConfig
 class TracingConfig {
   /// The tracing mode.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<dynamic>? mode;
 
   /// Creates a new [TracingConfig].
   /// [mode] The tracing mode.
@@ -21,7 +21,7 @@ class TracingConfig {
 
   factory TracingConfig.fromMap(Map<String, dynamic> map) {
     return TracingConfig(
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -7,19 +7,19 @@ import 'sqltemp_db_settings.dart';
 /// Storage Configurations for SQL Data, Log and TempDb.
 class StorageConfigurationSettings {
   /// Disk configuration to apply to SQL Server.
-  final pulumi.Input<String>? diskConfigurationType;
+  final pulumi.Input<dynamic>? diskConfigurationType;
   /// Enable SQL IaaS Agent storage configuration blade in Azure Portal.
-  final pulumi.Input<bool>? enableStorageConfigBlade;
+  final pulumi.Input<bool?>? enableStorageConfigBlade;
   /// SQL Server Data Storage Settings.
-  final pulumi.Input<SQLStorageSettings>? sqlDataSettings;
+  final pulumi.Input<SQLStorageSettings?>? sqlDataSettings;
   /// SQL Server Log Storage Settings.
-  final pulumi.Input<SQLStorageSettings>? sqlLogSettings;
+  final pulumi.Input<SQLStorageSettings?>? sqlLogSettings;
   /// SQL Server SystemDb Storage on DataPool if true.
-  final pulumi.Input<bool>? sqlSystemDbOnDataDisk;
+  final pulumi.Input<bool?>? sqlSystemDbOnDataDisk;
   /// SQL Server TempDb Storage Settings.
-  final pulumi.Input<SQLTempDbSettings>? sqlTempDbSettings;
+  final pulumi.Input<SQLTempDbSettings?>? sqlTempDbSettings;
   /// Storage workload type.
-  final pulumi.Input<String>? storageWorkloadType;
+  final pulumi.Input<dynamic>? storageWorkloadType;
 
   /// Creates a new [StorageConfigurationSettings].
   /// [diskConfigurationType] Disk configuration to apply to SQL Server.
@@ -29,15 +29,15 @@ class StorageConfigurationSettings {
   /// [sqlSystemDbOnDataDisk] SQL Server SystemDb Storage on DataPool if true.
   /// [sqlTempDbSettings] SQL Server TempDb Storage Settings.
   /// [storageWorkloadType] Storage workload type.
-  const StorageConfigurationSettings({
+  StorageConfigurationSettings({
     this.diskConfigurationType,
-    this.enableStorageConfigBlade,
+    pulumi.Input<bool?>? enableStorageConfigBlade,
     this.sqlDataSettings,
     this.sqlLogSettings,
     this.sqlSystemDbOnDataDisk,
     this.sqlTempDbSettings,
     this.storageWorkloadType,
-  });
+  }) : enableStorageConfigBlade = enableStorageConfigBlade ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,13 +53,13 @@ class StorageConfigurationSettings {
 
   factory StorageConfigurationSettings.fromMap(Map<String, dynamic> map) {
     return StorageConfigurationSettings(
-      diskConfigurationType: (() { final guardedValue = map['diskConfigurationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      diskConfigurationType: (() { final guardedValue = map['diskConfigurationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       enableStorageConfigBlade: (() { final guardedValue = map['enableStorageConfigBlade']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sqlDataSettings: (() { final guardedValue = map['sqlDataSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SQLStorageSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sqlLogSettings: (() { final guardedValue = map['sqlLogSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SQLStorageSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sqlSystemDbOnDataDisk: (() { final guardedValue = map['sqlSystemDbOnDataDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sqlTempDbSettings: (() { final guardedValue = map['sqlTempDbSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SQLTempDbSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      storageWorkloadType: (() { final guardedValue = map['storageWorkloadType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageWorkloadType: (() { final guardedValue = map['storageWorkloadType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

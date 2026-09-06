@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates whether or not the encryption is enabled for the workspace.
-enum EncryptionStatus {
+enum EncryptionStatus implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const EncryptionStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static EncryptionStatus fromValue(String value) {

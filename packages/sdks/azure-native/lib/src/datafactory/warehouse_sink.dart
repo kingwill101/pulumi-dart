@@ -8,7 +8,7 @@ class WarehouseSink {
   /// Indicates to use Copy Command to copy data into SQL Data Warehouse. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? allowCopyCommand;
   /// Specifies Copy Command related settings when allowCopyCommand is true.
-  final pulumi.Input<DWCopyCommandSettings>? copyCommandSettings;
+  final pulumi.Input<DWCopyCommandSettings?>? copyCommandSettings;
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? disableMetricsCollection;
   /// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).

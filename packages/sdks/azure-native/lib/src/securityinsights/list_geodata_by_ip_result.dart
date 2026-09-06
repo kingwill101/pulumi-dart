@@ -103,10 +103,10 @@ class ListGeodataByIpResult {
       asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       carrier: (() { final guardedValue = map['carrier']; if (guardedValue == null) return null; return guardedValue as String; })(),
       city: (() { final guardedValue = map['city']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      cityConfidenceFactor: (() { final guardedValue = map['cityConfidenceFactor']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      cityConfidenceFactor: (() { final guardedValue = map['cityConfidenceFactor']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       continent: (() { final guardedValue = map['continent']; if (guardedValue == null) return null; return guardedValue as String; })(),
       country: (() { final guardedValue = map['country']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      countryConfidenceFactor: (() { final guardedValue = map['countryConfidenceFactor']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      countryConfidenceFactor: (() { final guardedValue = map['countryConfidenceFactor']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       ipAddr: (() { final guardedValue = map['ipAddr']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipRoutingType: (() { final guardedValue = map['ipRoutingType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       latitude: (() { final guardedValue = map['latitude']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -116,7 +116,7 @@ class ListGeodataByIpResult {
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
       stateCode: (() { final guardedValue = map['stateCode']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      stateConfidenceFactor: (() { final guardedValue = map['stateConfidenceFactor']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      stateConfidenceFactor: (() { final guardedValue = map['stateConfidenceFactor']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

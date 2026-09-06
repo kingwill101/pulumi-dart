@@ -5,11 +5,11 @@ import 'system_data_response.dart';
 /// Result data returned by listWebAppPublishingCredentials.
 class ListWebAppPublishingCredentialsResult {
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Kind of resource.
   final String? kind;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Password used for publishing.
   final String? publishingPassword;
   /// Password hash used for publishing.
@@ -17,13 +17,13 @@ class ListWebAppPublishingCredentialsResult {
   /// Password hash salt used for publishing.
   final String? publishingPasswordHashSalt;
   /// Username used for publishing.
-  final String publishingUserName;
+  final String? publishingUserName;
   /// Url of SCM site.
   final String? scmUri;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [ListWebAppPublishingCredentialsResult].
   /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -37,45 +37,45 @@ class ListWebAppPublishingCredentialsResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const ListWebAppPublishingCredentialsResult({
-    required this.id,
+    this.id,
     this.kind,
-    required this.name,
+    this.name,
     this.publishingPassword,
     this.publishingPasswordHash,
     this.publishingPasswordHashSalt,
-    required this.publishingUserName,
+    this.publishingUserName,
     this.scmUri,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'id': ?id,
       'kind': ?kind,
-      'name': name,
+      'name': ?name,
       'publishingPassword': ?publishingPassword,
       'publishingPasswordHash': ?publishingPasswordHash,
       'publishingPasswordHashSalt': ?publishingPasswordHashSalt,
-      'publishingUserName': publishingUserName,
+      'publishingUserName': ?publishingUserName,
       'scmUri': ?scmUri,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory ListWebAppPublishingCredentialsResult.fromMap(Map<String, dynamic> map) {
     return ListWebAppPublishingCredentialsResult(
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publishingPassword: (() { final guardedValue = map['publishingPassword']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publishingPasswordHash: (() { final guardedValue = map['publishingPasswordHash']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publishingPasswordHashSalt: (() { final guardedValue = map['publishingPasswordHashSalt']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      publishingUserName: map['publishingUserName'] as String,
+      publishingUserName: (() { final guardedValue = map['publishingUserName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       scmUri: (() { final guardedValue = map['scmUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

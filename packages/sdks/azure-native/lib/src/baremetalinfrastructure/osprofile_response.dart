@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies the operating system settings for the Azure Bare Metal instance.
 class OSProfileResponse {
   /// Specifies the host OS name of the Azure Bare Metal instance.
-  final pulumi.Input<String>? computerName;
+  final pulumi.Input<String?>? computerName;
   /// This property allows you to specify the type of the OS.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// Specifies the SSH public key used to access the operating system.
-  final pulumi.Input<String>? sshPublicKey;
+  final pulumi.Input<String?>? sshPublicKey;
   /// Specifies version of operating system.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [OSProfileResponse].
   /// [computerName] Specifies the host OS name of the Azure Bare Metal instance.

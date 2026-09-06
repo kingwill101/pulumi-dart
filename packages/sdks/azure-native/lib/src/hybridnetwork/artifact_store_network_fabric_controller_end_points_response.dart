@@ -6,7 +6,7 @@ import 'referenced_resource_response.dart';
 /// List of network fabric controller ids.
 class ArtifactStoreNetworkFabricControllerEndPointsResponse {
   /// list of network fabric controllers.
-  final pulumi.Input<List<ReferencedResourceResponse>>? networkFabricControllerIds;
+  final pulumi.Input<List<ReferencedResourceResponse>?>? networkFabricControllerIds;
 
   /// Creates a new [ArtifactStoreNetworkFabricControllerEndPointsResponse].
   /// [networkFabricControllerIds] list of network fabric controllers.

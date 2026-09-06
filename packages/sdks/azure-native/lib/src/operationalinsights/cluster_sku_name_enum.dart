@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The SKU (tier) of a cluster.
-enum ClusterSkuNameEnum {
+enum ClusterSkuNameEnum implements pulumi.PulumiEnum<String> {
   valueCapacityReservation("CapacityReservation");
 
   const ClusterSkuNameEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static ClusterSkuNameEnum fromValue(String value) {

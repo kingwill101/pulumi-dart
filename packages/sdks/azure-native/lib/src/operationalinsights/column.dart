@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Table column.
 class Column {
   /// Column data type logical hint.
-  final pulumi.Input<String>? dataTypeHint;
+  final pulumi.Input<dynamic>? dataTypeHint;
   /// Column description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Column display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Column name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Column data type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [Column].
   /// [dataTypeHint] Column data type logical hint.
@@ -41,11 +41,11 @@ class Column {
 
   factory Column.fromMap(Map<String, dynamic> map) {
     return Column(
-      dataTypeHint: (() { final guardedValue = map['dataTypeHint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataTypeHint: (() { final guardedValue = map['dataTypeHint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

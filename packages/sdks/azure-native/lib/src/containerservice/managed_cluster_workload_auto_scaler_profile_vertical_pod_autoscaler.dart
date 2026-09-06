@@ -9,9 +9,9 @@ class ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler {
 
   /// Creates a new [ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler].
   /// [enabled] Whether to enable VPA. Default value is false.
-  const ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler({
-    required this.enabled,
-  });
+  ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler({
+    pulumi.Input<bool>? enabled,
+  }) : enabled = enabled ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

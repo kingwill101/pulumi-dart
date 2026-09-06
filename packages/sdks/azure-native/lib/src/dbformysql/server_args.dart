@@ -17,47 +17,47 @@ import 'storage.dart';
 /// {@macro pulumi_dbformysql_server_args_doc}
 class ServerArgs {
   /// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
-  final pulumi.Input<String>? administratorLogin;
+  final pulumi.Input<String?>? administratorLogin;
   /// The password of the administrator login (required for server creation).
-  final pulumi.Input<String>? administratorLoginPassword;
+  final pulumi.Input<String?>? administratorLoginPassword;
   /// availability Zone information of the server.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// Backup related properties of a server.
-  final pulumi.Input<Backup>? backup;
+  final pulumi.Input<Backup?>? backup;
   /// The mode to create a new MySQL server.
-  final pulumi.Input<String>? createMode;
+  final pulumi.Input<dynamic>? createMode;
   /// The Data Encryption for CMK.
-  final pulumi.Input<DataEncryption>? dataEncryption;
+  final pulumi.Input<DataEncryption?>? dataEncryption;
   /// High availability related properties of a server.
-  final pulumi.Input<HighAvailability>? highAvailability;
+  final pulumi.Input<HighAvailability?>? highAvailability;
   /// The cmk identity for the server.
-  final pulumi.Input<MySQLServerIdentity>? identity;
+  final pulumi.Input<MySQLServerIdentity?>? identity;
   /// Source properties for import from storage.
-  final pulumi.Input<ImportSourceProperties>? importSourceProperties;
+  final pulumi.Input<ImportSourceProperties?>? importSourceProperties;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Maintenance window of a server.
-  final pulumi.Input<MaintenanceWindow>? maintenanceWindow;
+  final pulumi.Input<MaintenanceWindow?>? maintenanceWindow;
   /// Network related properties of a server.
-  final pulumi.Input<Network>? network;
+  final pulumi.Input<Network?>? network;
   /// The replication role.
-  final pulumi.Input<String>? replicationRole;
+  final pulumi.Input<dynamic>? replicationRole;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Restore point creation time (ISO8601 format), specifying the time to restore from.
-  final pulumi.Input<String>? restorePointInTime;
+  final pulumi.Input<String?>? restorePointInTime;
   /// The name of the server.
-  final pulumi.Input<String>? serverName;
+  final pulumi.Input<String?>? serverName;
   /// The SKU (pricing tier) of the server.
-  final pulumi.Input<MySQLServerSku>? sku;
+  final pulumi.Input<MySQLServerSku?>? sku;
   /// The source MySQL server id.
-  final pulumi.Input<String>? sourceServerResourceId;
+  final pulumi.Input<String?>? sourceServerResourceId;
   /// Storage related properties of a server.
-  final pulumi.Input<Storage>? storage;
+  final pulumi.Input<Storage?>? storage;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Server version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<dynamic>? version;
 
   /// Creates a new [ServerArgs].
   /// [administratorLogin] The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
@@ -137,7 +137,7 @@ class ServerArgs {
       administratorLoginPassword: (() { final guardedValue = map['administratorLoginPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       backup: (() { final guardedValue = map['backup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Backup.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       dataEncryption: (() { final guardedValue = map['dataEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataEncryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       highAvailability: (() { final guardedValue = map['highAvailability']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HighAvailability.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MySQLServerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -145,7 +145,7 @@ class ServerArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maintenanceWindow: (() { final guardedValue = map['maintenanceWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Network.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      replicationRole: (() { final guardedValue = map['replicationRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      replicationRole: (() { final guardedValue = map['replicationRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       restorePointInTime: (() { final guardedValue = map['restorePointInTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverName: (() { final guardedValue = map['serverName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -153,7 +153,7 @@ class ServerArgs {
       sourceServerResourceId: (() { final guardedValue = map['sourceServerResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storage: (() { final guardedValue = map['storage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Storage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

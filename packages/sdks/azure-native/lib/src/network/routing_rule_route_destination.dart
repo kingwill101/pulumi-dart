@@ -7,7 +7,7 @@ class RoutingRuleRouteDestination {
   /// Destination address.
   final pulumi.Input<String> destinationAddress;
   /// Destination type.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [RoutingRuleRouteDestination].
   /// [destinationAddress] Destination address.
@@ -27,7 +27,7 @@ class RoutingRuleRouteDestination {
   factory RoutingRuleRouteDestination.fromMap(Map<String, dynamic> map) {
     return RoutingRuleRouteDestination(
       destinationAddress: pulumi.Input.fromValue(map['destinationAddress'] as String),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

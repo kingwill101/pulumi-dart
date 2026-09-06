@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Marketplace SAAS Info of the resource.
 class MarketplaceSaaSInfoResponse {
   /// The Azure Subscription ID to which the Marketplace Subscription belongs and gets billed into.
-  final pulumi.Input<String>? billedAzureSubscriptionId;
+  final pulumi.Input<String?>? billedAzureSubscriptionId;
   /// Marketplace Subscription Details: SAAS Name
-  final pulumi.Input<String>? marketplaceName;
+  final pulumi.Input<String?>? marketplaceName;
   /// Marketplace Subscription Details: SaaS Subscription Status
-  final pulumi.Input<String>? marketplaceStatus;
+  final pulumi.Input<String?>? marketplaceStatus;
   /// Marketplace Subscription Id. This is a GUID-formatted string.
-  final pulumi.Input<String>? marketplaceSubscriptionId;
+  final pulumi.Input<String?>? marketplaceSubscriptionId;
   /// Flag specifying if the Marketplace status is subscribed or not.
-  final pulumi.Input<bool>? subscribed;
+  final pulumi.Input<bool?>? subscribed;
 
   /// Creates a new [MarketplaceSaaSInfoResponse].
   /// [billedAzureSubscriptionId] The Azure Subscription ID to which the Marketplace Subscription belongs and gets billed into.

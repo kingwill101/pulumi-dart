@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ActionConditionModelProperties
 class ActionConditionModelPropertiesResponse {
   /// Logic to apply to the filtering conditions. You can specify that, in order to satisfy the filter, a log must match all conditions or must match at least one condition.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
 
   /// Creates a new [ActionConditionModelPropertiesResponse].
   /// [action] Logic to apply to the filtering conditions. You can specify that, in order to satisfy the filter, a log must match all conditions or must match at least one condition.

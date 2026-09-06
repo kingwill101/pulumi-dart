@@ -7,9 +7,9 @@ import 'entra_identity_provider.dart';
 /// Definition of Mongo user resource on a cluster.
 class UserProperties {
   /// The user's identity provider definition.
-  final pulumi.Input<EntraIdentityProvider>? identityProvider;
+  final pulumi.Input<EntraIdentityProvider?>? identityProvider;
   /// Database roles that are assigned to the user.
-  final pulumi.Input<List<DatabaseRole>>? roles;
+  final pulumi.Input<List<DatabaseRole>?>? roles;
 
   /// Creates a new [UserProperties].
   /// [identityProvider] The user's identity provider definition.

@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates catalog item types.
-enum CatalogItemType {
+enum CatalogItemType implements pulumi.PulumiEnum<String> {
   valueEnvironmentDefinition("EnvironmentDefinition");
 
   const CatalogItemType(this.wireValue);
+  @override
   final String wireValue;
 
   static CatalogItemType fromValue(String value) {

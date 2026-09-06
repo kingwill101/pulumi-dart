@@ -265,4 +265,26 @@ class Schedule extends pulumi.CustomResource {
     timeZoneId = registerOutput<String>('timeZoneId');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [Schedule] resource.
+  Schedule.reference(String urn)
+    : super(
+        'azure-native:labservices:Schedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    notes = registerOutput<String?>('notes');
+    provisioningState = registerOutput<String>('provisioningState');
+    recurrencePattern = registerOutput<RecurrencePatternResponse?>('recurrencePattern', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecurrencePatternResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceOperationError = registerOutput<ResourceOperationErrorResponse>('resourceOperationError', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceOperationErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startAt = registerOutput<String?>('startAt');
+    stopAt = registerOutput<String>('stopAt');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeZoneId = registerOutput<String>('timeZoneId');
+    type = registerOutput<String>('type');
+  }
 }

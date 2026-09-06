@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountApiKeysResponse {
-  final pulumi.Input<String>? key1;
-  final pulumi.Input<String>? key2;
+  final pulumi.Input<String?>? key1;
+  final pulumi.Input<String?>? key2;
 
   /// Creates a new [AccountApiKeysResponse].
   /// [key1] Optional.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The name of blob storage event type to process.
-enum BlobStorageEventType {
+enum BlobStorageEventType implements pulumi.PulumiEnum<String> {
   valueMicrosoftStorageBlobCreated("Microsoft.Storage.BlobCreated"),
   valueMicrosoftStorageBlobRenamed("Microsoft.Storage.BlobRenamed");
 
   const BlobStorageEventType(this.wireValue);
+  @override
   final String wireValue;
 
   static BlobStorageEventType fromValue(String value) {

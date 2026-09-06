@@ -69,7 +69,36 @@ class WebAppInstanceFunctionSlot extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     config = registerOutput<dynamic>('config');
     configHref = registerOutput<String?>('configHref');
-    files = registerOutput<Map<String, String>?>('files');
+    files = registerOutput<Map<String, String>?>('files', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    functionAppId = registerOutput<String?>('functionAppId');
+    href = registerOutput<String?>('href');
+    invokeUrlTemplate = registerOutput<String?>('invokeUrlTemplate');
+    isDisabled = registerOutput<bool?>('isDisabled');
+    kind = registerOutput<String?>('kind');
+    language = registerOutput<String?>('language');
+    this.name = registerOutput<String>('name');
+    scriptHref = registerOutput<String?>('scriptHref');
+    scriptRootPathHref = registerOutput<String?>('scriptRootPathHref');
+    secretsFileHref = registerOutput<String?>('secretsFileHref');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    testData = registerOutput<String?>('testData');
+    testDataHref = registerOutput<String?>('testDataHref');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [WebAppInstanceFunctionSlot] resource.
+  WebAppInstanceFunctionSlot.reference(String urn)
+    : super(
+        'azure-native:web:WebAppInstanceFunctionSlot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    config = registerOutput<dynamic>('config');
+    configHref = registerOutput<String?>('configHref');
+    files = registerOutput<Map<String, String>?>('files', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     functionAppId = registerOutput<String?>('functionAppId');
     href = registerOutput<String?>('href');
     invokeUrlTemplate = registerOutput<String?>('invokeUrlTemplate');

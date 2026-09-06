@@ -252,7 +252,31 @@ class EnterprisePolicy extends pulumi.CustomResource {
     networkInjection = registerOutput<PropertiesNetworkInjectionResponse?>('networkInjection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PropertiesNetworkInjectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemId = registerOutput<String>('systemId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [EnterprisePolicy] resource.
+  EnterprisePolicy.reference(String urn)
+    : super(
+        'azure-native:powerplatform:EnterprisePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    encryption = registerOutput<PropertiesEncryptionResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PropertiesEncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    healthStatus = registerOutput<String?>('healthStatus');
+    identity = registerOutput<EnterprisePolicyIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterprisePolicyIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    lockbox = registerOutput<PropertiesLockboxResponse?>('lockbox', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PropertiesLockboxResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networkInjection = registerOutput<PropertiesNetworkInjectionResponse?>('networkInjection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PropertiesNetworkInjectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemId = registerOutput<String>('systemId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

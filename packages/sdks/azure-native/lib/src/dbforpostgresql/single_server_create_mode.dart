@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The mode to create a new server.
-enum SingleServerCreateMode {
+enum SingleServerCreateMode implements pulumi.PulumiEnum<String> {
   valueDefault("Default"),
   valuePointInTimeRestore("PointInTimeRestore"),
   valueGeoRestore("GeoRestore"),
   valueReplica("Replica");
 
   const SingleServerCreateMode(this.wireValue);
+  @override
   final String wireValue;
 
   static SingleServerCreateMode fromValue(String value) {

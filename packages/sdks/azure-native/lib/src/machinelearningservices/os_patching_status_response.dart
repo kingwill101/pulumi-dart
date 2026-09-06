@@ -6,15 +6,15 @@ import 'error_response_response.dart';
 /// Returns metadata about the os patching.
 class OsPatchingStatusResponse {
   /// Time of the latest os patching.
-  final pulumi.Input<String>? latestPatchTime;
+  final pulumi.Input<String?>? latestPatchTime;
   /// Collection of errors encountered when doing os patching.
-  final pulumi.Input<List<ErrorResponseResponse>>? osPatchingErrors;
+  final pulumi.Input<List<ErrorResponseResponse>?>? osPatchingErrors;
   /// The os patching status.
-  final pulumi.Input<String>? patchStatus;
+  final pulumi.Input<String?>? patchStatus;
   /// Specifies whether this compute instance is pending for reboot to finish os patching.
-  final pulumi.Input<bool>? rebootPending;
+  final pulumi.Input<bool?>? rebootPending;
   /// Time of scheduled reboot.
-  final pulumi.Input<String>? scheduledRebootTime;
+  final pulumi.Input<String?>? scheduledRebootTime;
 
   /// Creates a new [OsPatchingStatusResponse].
   /// [latestPatchTime] Time of the latest os patching.

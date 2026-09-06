@@ -7,9 +7,9 @@ import 'x509_manual_certificate_response.dart';
 /// Collection of different TLS types, NOTE- Enum at a time only one of them needs to be supported
 class TlsCertMethodResponse {
   /// Option 1 - Automatic TLS server certificate management with cert-manager.
-  final pulumi.Input<CertManagerCertificateSpecResponse>? certManagerCertificateSpec;
+  final pulumi.Input<CertManagerCertificateSpecResponse?>? certManagerCertificateSpec;
   /// Option 2 - Manual TLS server certificate management through a defined secret.
-  final pulumi.Input<X509ManualCertificateResponse>? manual;
+  final pulumi.Input<X509ManualCertificateResponse?>? manual;
   /// Mode of TLS server certificate management.
   final pulumi.Input<String> mode;
 

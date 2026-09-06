@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of rule
-enum RoleManagementPolicyRuleType {
+enum RoleManagementPolicyRuleType implements pulumi.PulumiEnum<String> {
   roleManagementPolicyApprovalRule("RoleManagementPolicyApprovalRule"),
   roleManagementPolicyAuthenticationContextRule("RoleManagementPolicyAuthenticationContextRule"),
   roleManagementPolicyEnablementRule("RoleManagementPolicyEnablementRule"),
@@ -8,6 +10,7 @@ enum RoleManagementPolicyRuleType {
   roleManagementPolicyPimOnlyModeRule("RoleManagementPolicyPimOnlyModeRule");
 
   const RoleManagementPolicyRuleType(this.wireValue);
+  @override
   final String wireValue;
 
   static RoleManagementPolicyRuleType fromValue(String value) {

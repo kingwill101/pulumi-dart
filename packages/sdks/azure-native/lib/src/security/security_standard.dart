@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'partial_assessment_properties_response.dart';
 import 'security_standard_args.dart';
 import 'standard_metadata_response.dart';
 import 'system_data_response.dart';
@@ -640,7 +641,7 @@ import 'system_data_response.dart';
 /// ```
 class SecurityStandard extends pulumi.CustomResource {
   /// List of assessment keys to apply to standard scope.
-  late final pulumi.Output<List<Map<String, dynamic>>?> assessments;
+  late final pulumi.Output<List<PartialAssessmentPropertiesResponse>?> assessments;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// List of all standard supported clouds.
@@ -676,9 +677,31 @@ class SecurityStandard extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    assessments = registerOutput<List<Map<String, dynamic>>?>('assessments');
+    assessments = registerOutput<List<PartialAssessmentPropertiesResponse>?>('assessments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PartialAssessmentPropertiesResponse>(guardedValue, (value) => PartialAssessmentPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    cloudProviders = registerOutput<List<String>?>('cloudProviders');
+    cloudProviders = registerOutput<List<String>?>('cloudProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    metadata = registerOutput<StandardMetadataResponse?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    policySetDefinitionId = registerOutput<String?>('policySetDefinitionId');
+    standardType = registerOutput<String>('standardType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SecurityStandard] resource.
+  SecurityStandard.reference(String urn)
+    : super(
+        'azure-native:security:SecurityStandard',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assessments = registerOutput<List<PartialAssessmentPropertiesResponse>?>('assessments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PartialAssessmentPropertiesResponse>(guardedValue, (value) => PartialAssessmentPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cloudProviders = registerOutput<List<String>?>('cloudProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     metadata = registerOutput<StandardMetadataResponse?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

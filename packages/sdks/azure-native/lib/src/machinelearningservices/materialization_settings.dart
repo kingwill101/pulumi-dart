@@ -7,15 +7,15 @@ import 'recurrence_trigger.dart';
 
 class MaterializationSettings {
   /// Specifies the notification details
-  final pulumi.Input<NotificationSetting>? notification;
+  final pulumi.Input<NotificationSetting?>? notification;
   /// Specifies the compute resource settings
-  final pulumi.Input<MaterializationComputeResource>? resource;
+  final pulumi.Input<MaterializationComputeResource?>? resource;
   /// Specifies the schedule details
-  final pulumi.Input<RecurrenceTrigger>? schedule;
+  final pulumi.Input<RecurrenceTrigger?>? schedule;
   /// Specifies the spark compute settings
-  final pulumi.Input<Map<String, String>>? sparkConfiguration;
+  final pulumi.Input<Map<String, String>?>? sparkConfiguration;
   /// Specifies the stores to which materialization should happen
-  final pulumi.Input<String>? storeType;
+  final pulumi.Input<dynamic>? storeType;
 
   /// Creates a new [MaterializationSettings].
   /// [notification] Specifies the notification details
@@ -23,13 +23,13 @@ class MaterializationSettings {
   /// [schedule] Specifies the schedule details
   /// [sparkConfiguration] Specifies the spark compute settings
   /// [storeType] Specifies the stores to which materialization should happen
-  const MaterializationSettings({
+  MaterializationSettings({
     this.notification,
     this.resource,
     this.schedule,
     this.sparkConfiguration,
-    this.storeType,
-  });
+    pulumi.Input<dynamic>? storeType,
+  }) : storeType = storeType ?? pulumi.Input.fromValue('None');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,7 +47,7 @@ class MaterializationSettings {
       resource: (() { final guardedValue = map['resource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MaterializationComputeResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RecurrenceTrigger.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sparkConfiguration: (() { final guardedValue = map['sparkConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      storeType: (() { final guardedValue = map['storeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storeType: (() { final guardedValue = map['storeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

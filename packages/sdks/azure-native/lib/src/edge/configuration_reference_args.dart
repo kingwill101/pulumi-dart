@@ -9,9 +9,9 @@ import 'configuration_reference_properties.dart';
 /// {@macro pulumi_edge_configuration_reference_args_doc}
 class ConfigurationReferenceArgs {
   /// The name of the ConfigurationReference
-  final pulumi.Input<String>? configurationReferenceName;
+  final pulumi.Input<String?>? configurationReferenceName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ConfigurationReferenceProperties>? properties;
+  final pulumi.Input<ConfigurationReferenceProperties?>? properties;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 

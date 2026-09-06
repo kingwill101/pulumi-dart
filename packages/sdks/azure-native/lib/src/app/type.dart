@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of probe.
-enum Type {
+enum Type implements pulumi.PulumiEnum<String> {
   valueLiveness("Liveness"),
   valueReadiness("Readiness"),
   valueStartup("Startup");
 
   const Type(this.wireValue);
+  @override
   final String wireValue;
 
   static Type fromValue(String value) {

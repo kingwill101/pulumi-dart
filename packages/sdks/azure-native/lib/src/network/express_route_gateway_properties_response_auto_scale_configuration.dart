@@ -6,7 +6,7 @@ import 'express_route_gateway_properties_response_bounds.dart';
 /// Configuration for auto scaling.
 class ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration {
   /// Minimum and maximum number of scale units to deploy.
-  final pulumi.Input<ExpressRouteGatewayPropertiesResponseBounds>? bounds;
+  final pulumi.Input<ExpressRouteGatewayPropertiesResponseBounds?>? bounds;
 
   /// Creates a new [ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration].
   /// [bounds] Minimum and maximum number of scale units to deploy.

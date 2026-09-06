@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The request header options.
 class ResourceProviderManifestPropertiesRequestHeaderOptions {
   /// The opt in headers.
-  final pulumi.Input<String>? optInHeaders;
+  final pulumi.Input<dynamic>? optInHeaders;
   /// The opt out headers.
-  final pulumi.Input<String>? optOutHeaders;
+  final pulumi.Input<dynamic>? optOutHeaders;
 
   /// Creates a new [ResourceProviderManifestPropertiesRequestHeaderOptions].
   /// [optInHeaders] The opt in headers.
@@ -26,8 +26,8 @@ class ResourceProviderManifestPropertiesRequestHeaderOptions {
 
   factory ResourceProviderManifestPropertiesRequestHeaderOptions.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManifestPropertiesRequestHeaderOptions(
-      optInHeaders: (() { final guardedValue = map['optInHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      optOutHeaders: (() { final guardedValue = map['optOutHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      optInHeaders: (() { final guardedValue = map['optInHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      optOutHeaders: (() { final guardedValue = map['optOutHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

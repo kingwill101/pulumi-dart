@@ -25,77 +25,77 @@ import 'token_auth_configuration_response.dart';
 
 class ProviderRegistrationPropertiesResponse {
   /// The capabilities.
-  final pulumi.Input<List<ResourceProviderCapabilitiesResponse>>? capabilities;
+  final pulumi.Input<List<ResourceProviderCapabilitiesResponse>?>? capabilities;
   /// The cross tenant token validation.
-  final pulumi.Input<String>? crossTenantTokenValidation;
+  final pulumi.Input<String?>? crossTenantTokenValidation;
   /// Custom manifest version.
-  final pulumi.Input<String>? customManifestVersion;
+  final pulumi.Input<String?>? customManifestVersion;
   /// The dsts configuration.
-  final pulumi.Input<ResourceProviderManifestPropertiesDstsConfigurationResponse>? dstsConfiguration;
+  final pulumi.Input<ResourceProviderManifestPropertiesDstsConfigurationResponse?>? dstsConfiguration;
   /// The enable tenant linked notification.
-  final pulumi.Input<bool>? enableTenantLinkedNotification;
+  final pulumi.Input<bool?>? enableTenantLinkedNotification;
   /// The features rule.
-  final pulumi.Input<ResourceProviderManifestPropertiesFeaturesRuleResponse>? featuresRule;
+  final pulumi.Input<ResourceProviderManifestPropertiesFeaturesRuleResponse?>? featuresRule;
   /// The global notification endpoints.
-  final pulumi.Input<List<ResourceProviderEndpointResponse>>? globalNotificationEndpoints;
+  final pulumi.Input<List<ResourceProviderEndpointResponse>?>? globalNotificationEndpoints;
   /// Legacy namespace.
-  final pulumi.Input<String>? legacyNamespace;
+  final pulumi.Input<String?>? legacyNamespace;
   /// Legacy registrations.
-  final pulumi.Input<List<String>>? legacyRegistrations;
+  final pulumi.Input<List<String>?>? legacyRegistrations;
   /// The linked notification rules.
-  final pulumi.Input<List<FanoutLinkedNotificationRuleResponse>>? linkedNotificationRules;
+  final pulumi.Input<List<FanoutLinkedNotificationRuleResponse>?>? linkedNotificationRules;
   /// The resource provider management.
-  final pulumi.Input<ResourceProviderManifestPropertiesManagementResponse>? management;
+  final pulumi.Input<ResourceProviderManifestPropertiesManagementResponse?>? management;
   /// Management groups global notification endpoints.
-  final pulumi.Input<List<ResourceProviderEndpointResponse>>? managementGroupGlobalNotificationEndpoints;
+  final pulumi.Input<List<ResourceProviderEndpointResponse>?>? managementGroupGlobalNotificationEndpoints;
   /// The metadata.
   final pulumi.Input<dynamic>? metadata;
   /// The namespace.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// Notification options.
-  final pulumi.Input<String>? notificationOptions;
+  final pulumi.Input<String?>? notificationOptions;
   /// Notification settings.
-  final pulumi.Input<ResourceProviderManifestPropertiesNotificationSettingsResponse>? notificationSettings;
+  final pulumi.Input<ResourceProviderManifestPropertiesNotificationSettingsResponse?>? notificationSettings;
   /// The notifications.
-  final pulumi.Input<List<NotificationResponse>>? notifications;
+  final pulumi.Input<List<NotificationResponse>?>? notifications;
   /// Optional features.
-  final pulumi.Input<List<String>>? optionalFeatures;
+  final pulumi.Input<List<String>?>? optionalFeatures;
   /// The private resource provider configuration.
-  final pulumi.Input<ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse>? privateResourceProviderConfiguration;
+  final pulumi.Input<ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse?>? privateResourceProviderConfiguration;
   /// The provider authentication.
-  final pulumi.Input<ResourceProviderManifestPropertiesProviderAuthenticationResponse>? providerAuthentication;
+  final pulumi.Input<ResourceProviderManifestPropertiesProviderAuthenticationResponse?>? providerAuthentication;
   /// The provider authorizations.
-  final pulumi.Input<List<ResourceProviderAuthorizationResponse>>? providerAuthorizations;
+  final pulumi.Input<List<ResourceProviderAuthorizationResponse>?>? providerAuthorizations;
   /// The provider hub metadata.
-  final pulumi.Input<ProviderRegistrationPropertiesProviderHubMetadataResponse>? providerHubMetadata;
+  final pulumi.Input<ProviderRegistrationPropertiesProviderHubMetadataResponse?>? providerHubMetadata;
   /// The provider type.
-  final pulumi.Input<String>? providerType;
+  final pulumi.Input<String?>? providerType;
   /// The provider version.
-  final pulumi.Input<String>? providerVersion;
+  final pulumi.Input<String?>? providerVersion;
   /// The provisioning state.
   final pulumi.Input<String> provisioningState;
   /// The request header options.
-  final pulumi.Input<ResourceProviderManifestPropertiesRequestHeaderOptionsResponse>? requestHeaderOptions;
+  final pulumi.Input<ResourceProviderManifestPropertiesRequestHeaderOptionsResponse?>? requestHeaderOptions;
   /// The required features.
-  final pulumi.Input<List<String>>? requiredFeatures;
+  final pulumi.Input<List<String>?>? requiredFeatures;
   /// Resource group lock option during move.
-  final pulumi.Input<ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveResponse>? resourceGroupLockOptionDuringMove;
+  final pulumi.Input<ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveResponse?>? resourceGroupLockOptionDuringMove;
   /// resource hydration accounts
-  final pulumi.Input<List<ResourceHydrationAccountResponse>>? resourceHydrationAccounts;
+  final pulumi.Input<List<ResourceHydrationAccountResponse>?>? resourceHydrationAccounts;
   /// The resource provider authorization rules.
-  final pulumi.Input<ResourceProviderAuthorizationRulesResponse>? resourceProviderAuthorizationRules;
+  final pulumi.Input<ResourceProviderAuthorizationRulesResponse?>? resourceProviderAuthorizationRules;
   /// Response options.
-  final pulumi.Input<ResourceProviderManifestPropertiesResponseOptionsResponse>? responseOptions;
+  final pulumi.Input<ResourceProviderManifestPropertiesResponseOptionsResponse?>? responseOptions;
   /// The service name.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
   /// The services.
-  final pulumi.Input<List<ResourceProviderServiceResponse>>? services;
+  final pulumi.Input<List<ResourceProviderServiceResponse>?>? services;
   /// The subscription lifecycle notification specifications.
-  final pulumi.Input<ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse>? subscriptionLifecycleNotificationSpecifications;
+  final pulumi.Input<ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse?>? subscriptionLifecycleNotificationSpecifications;
   /// The template deployment options.
-  final pulumi.Input<ResourceProviderManifestPropertiesTemplateDeploymentOptionsResponse>? templateDeploymentOptions;
+  final pulumi.Input<ResourceProviderManifestPropertiesTemplateDeploymentOptionsResponse?>? templateDeploymentOptions;
   /// The token auth configuration.
-  final pulumi.Input<TokenAuthConfigurationResponse>? tokenAuthConfiguration;
+  final pulumi.Input<TokenAuthConfigurationResponse?>? tokenAuthConfiguration;
 
   /// Creates a new [ProviderRegistrationPropertiesResponse].
   /// [capabilities] The capabilities.

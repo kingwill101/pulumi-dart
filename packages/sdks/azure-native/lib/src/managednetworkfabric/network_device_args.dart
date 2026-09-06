@@ -8,21 +8,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_managednetworkfabric_network_device_args_doc}
 class NetworkDeviceArgs {
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// The host name of the device.
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the Network Device.
-  final pulumi.Input<String>? networkDeviceName;
+  final pulumi.Input<String?>? networkDeviceName;
   /// Network Device SKU name.
-  final pulumi.Input<String>? networkDeviceSku;
+  final pulumi.Input<String?>? networkDeviceSku;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.
   final pulumi.Input<String> serialNumber;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkDeviceArgs].
   /// [annotation] Switch configuration description.

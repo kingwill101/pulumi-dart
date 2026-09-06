@@ -9,9 +9,9 @@ class LicenseResponse {
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final pulumi.Input<String> id;
   /// Describes the properties of a License.
-  final pulumi.Input<LicenseDetailsResponse>? licenseDetails;
+  final pulumi.Input<LicenseDetailsResponse?>? licenseDetails;
   /// The type of the license resource.
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<String?>? licenseType;
   /// The geo-location where the resource lives
   final pulumi.Input<String> location;
   /// The name of the resource
@@ -21,9 +21,9 @@ class LicenseResponse {
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Describes the tenant id.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
 

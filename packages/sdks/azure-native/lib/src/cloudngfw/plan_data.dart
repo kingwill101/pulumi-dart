@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Billing plan information.
 class PlanData {
   /// different billing cycles like MONTHLY/WEEKLY
-  final pulumi.Input<String> billingCycle;
+  final pulumi.Input<dynamic> billingCycle;
   /// plan id as published by Liftr.PAN
   final pulumi.Input<String> planId;
   /// different usage type like PAYG/COMMITTED
-  final pulumi.Input<String>? usageType;
+  final pulumi.Input<dynamic>? usageType;
 
   /// Creates a new [PlanData].
   /// [billingCycle] different billing cycles like MONTHLY/WEEKLY
@@ -31,9 +31,9 @@ class PlanData {
 
   factory PlanData.fromMap(Map<String, dynamic> map) {
     return PlanData(
-      billingCycle: pulumi.Input.fromValue(map['billingCycle'] as String),
+      billingCycle: pulumi.Input.fromValue(map['billingCycle']),
       planId: pulumi.Input.fromValue(map['planId'] as String),
-      usageType: (() { final guardedValue = map['usageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      usageType: (() { final guardedValue = map['usageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

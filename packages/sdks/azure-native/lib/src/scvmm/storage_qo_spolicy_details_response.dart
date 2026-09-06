@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The StorageQoSPolicyDetails definition.
 class StorageQoSPolicyDetailsResponse {
   /// The ID of the QoS policy.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [StorageQoSPolicyDetailsResponse].
   /// [id] The ID of the QoS policy.

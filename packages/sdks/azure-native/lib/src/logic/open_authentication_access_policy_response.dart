@@ -6,9 +6,9 @@ import 'open_authentication_policy_claim_response.dart';
 /// Open authentication access policy defined by user.
 class OpenAuthenticationAccessPolicyResponse {
   /// The access policy claims.
-  final pulumi.Input<List<OpenAuthenticationPolicyClaimResponse>>? claims;
+  final pulumi.Input<List<OpenAuthenticationPolicyClaimResponse>?>? claims;
   /// Type of provider for OAuth.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [OpenAuthenticationAccessPolicyResponse].
   /// [claims] The access policy claims.

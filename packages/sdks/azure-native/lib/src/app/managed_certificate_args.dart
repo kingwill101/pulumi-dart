@@ -11,15 +11,15 @@ class ManagedCertificateArgs {
   /// Name of the Managed Environment.
   final pulumi.Input<String> environmentName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the Managed Certificate.
-  final pulumi.Input<String>? managedCertificateName;
+  final pulumi.Input<String?>? managedCertificateName;
   /// Certificate resource specific properties
-  final pulumi.Input<ManagedCertificateProperties>? properties;
+  final pulumi.Input<ManagedCertificateProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ManagedCertificateArgs].
   /// [environmentName] Name of the Managed Environment.

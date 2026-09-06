@@ -22,54 +22,54 @@ import 'volume.dart';
 /// {@macro pulumi_containerinstance_container_group_args_doc}
 class ContainerGroupArgs {
   /// The properties for confidential container group
-  final pulumi.Input<ConfidentialComputeProperties>? confidentialComputeProperties;
+  final pulumi.Input<ConfidentialComputeProperties?>? confidentialComputeProperties;
   /// The name of the container group.
-  final pulumi.Input<String>? containerGroupName;
+  final pulumi.Input<String?>? containerGroupName;
   /// The reference container group profile properties.
-  final pulumi.Input<ContainerGroupProfileReferenceDefinition>? containerGroupProfile;
+  final pulumi.Input<ContainerGroupProfileReferenceDefinition?>? containerGroupProfile;
   /// The containers within the container group.
   final pulumi.Input<List<Container>> containers;
   /// The diagnostic information for a container group.
-  final pulumi.Input<ContainerGroupDiagnostics>? diagnostics;
+  final pulumi.Input<ContainerGroupDiagnostics?>? diagnostics;
   /// The DNS config information for a container group.
-  final pulumi.Input<DnsConfiguration>? dnsConfig;
+  final pulumi.Input<DnsConfiguration?>? dnsConfig;
   /// The encryption properties for a container group.
-  final pulumi.Input<EncryptionProperties>? encryptionProperties;
+  final pulumi.Input<EncryptionProperties?>? encryptionProperties;
   /// extensions used by virtual kubelet
-  final pulumi.Input<List<DeploymentExtensionSpec>>? extensions;
+  final pulumi.Input<List<DeploymentExtensionSpec>?>? extensions;
   /// The identity of the container group, if configured.
-  final pulumi.Input<ContainerGroupIdentity>? identity;
+  final pulumi.Input<ContainerGroupIdentity?>? identity;
   /// The image registry credentials by which the container group is created from.
-  final pulumi.Input<List<ImageRegistryCredential>>? imageRegistryCredentials;
+  final pulumi.Input<List<ImageRegistryCredential>?>? imageRegistryCredentials;
   /// The init containers for a container group.
-  final pulumi.Input<List<InitContainerDefinition>>? initContainers;
+  final pulumi.Input<List<InitContainerDefinition>?>? initContainers;
   /// The IP address type of the container group.
-  final pulumi.Input<IpAddress>? ipAddress;
+  final pulumi.Input<IpAddress?>? ipAddress;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The operating system type required by the containers in the container group.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<dynamic>? osType;
   /// The priority of the container group.
-  final pulumi.Input<String>? priority;
+  final pulumi.Input<dynamic>? priority;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Restart policy for all containers within the container group.
   /// - `Always` Always restart
   /// - `OnFailure` Restart on failure
   /// - `Never` Never restart
-  final pulumi.Input<String>? restartPolicy;
+  final pulumi.Input<dynamic>? restartPolicy;
   /// The SKU for a container group.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<dynamic>? sku;
   /// The reference standby pool profile properties.
-  final pulumi.Input<StandbyPoolProfileDefinition>? standbyPoolProfile;
+  final pulumi.Input<StandbyPoolProfileDefinition?>? standbyPoolProfile;
   /// The subnet resource IDs for a container group.
-  final pulumi.Input<List<ContainerGroupSubnetId>>? subnetIds;
+  final pulumi.Input<List<ContainerGroupSubnetId>?>? subnetIds;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The list of volumes that can be mounted by containers in this container group.
-  final pulumi.Input<List<Volume>>? volumes;
+  final pulumi.Input<List<Volume>?>? volumes;
   /// The zones for the container group.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [ContainerGroupArgs].
   /// [confidentialComputeProperties] The properties for confidential container group
@@ -164,11 +164,11 @@ class ContainerGroupArgs {
       initContainers: (() { final guardedValue = map['initContainers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InitContainerDefinition>(guardedValue, (value) => InitContainerDefinition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IpAddress.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      restartPolicy: (() { final guardedValue = map['restartPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      restartPolicy: (() { final guardedValue = map['restartPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       standbyPoolProfile: (() { final guardedValue = map['standbyPoolProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StandbyPoolProfileDefinition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       subnetIds: (() { final guardedValue = map['subnetIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerGroupSubnetId>(guardedValue, (value) => ContainerGroupSubnetId.fromMap((value as Map).cast<String, dynamic>()))); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

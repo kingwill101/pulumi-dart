@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// TLS settings for the resource
 class SignalRTlsSettingsResponse {
   /// Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier.
-  final pulumi.Input<bool>? clientCertEnabled;
+  final pulumi.Input<bool?>? clientCertEnabled;
 
   /// Creates a new [SignalRTlsSettingsResponse].
   /// [clientCertEnabled] Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier.
-  const SignalRTlsSettingsResponse({
-    this.clientCertEnabled,
-  });
+  SignalRTlsSettingsResponse({
+    pulumi.Input<bool?>? clientCertEnabled,
+  }) : clientCertEnabled = clientCertEnabled ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

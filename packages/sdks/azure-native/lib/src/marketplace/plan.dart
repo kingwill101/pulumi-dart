@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Plan {
   /// Plan accessibility
-  final pulumi.Input<String>? accessibility;
+  final pulumi.Input<dynamic>? accessibility;
 
   /// Creates a new [Plan].
   /// [accessibility] Plan accessibility
@@ -20,7 +20,7 @@ class Plan {
 
   factory Plan.fromMap(Map<String, dynamic> map) {
     return Plan(
-      accessibility: (() { final guardedValue = map['accessibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      accessibility: (() { final guardedValue = map['accessibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

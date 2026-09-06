@@ -10,7 +10,7 @@ class WorkspaceTagOperationLinkArgs {
   /// Full resource Id of an API operation.
   final pulumi.Input<String> operationId;
   /// Tag-operation link identifier. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? operationLinkId;
+  final pulumi.Input<String?>? operationLinkId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.

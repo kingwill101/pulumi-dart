@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storagemover_job_definition_args_doc}
 class JobDefinitionArgs {
   /// Name of the Agent to assign for new Job Runs of this Job Definition.
-  final pulumi.Input<String>? agentName;
+  final pulumi.Input<String?>? agentName;
   /// Strategy to use for copy.
-  final pulumi.Input<String> copyMode;
+  final pulumi.Input<dynamic> copyMode;
   /// A description for the Job Definition. OnPremToCloud is for migrating data from on-premises to cloud. CloudToCloud is for migrating data between cloud to cloud.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the Job Definition resource.
-  final pulumi.Input<String>? jobDefinitionName;
+  final pulumi.Input<String?>? jobDefinitionName;
   /// The name of the Project resource.
   final pulumi.Input<String> projectName;
   /// The name of the resource group. The name is case insensitive.
@@ -22,13 +22,13 @@ class JobDefinitionArgs {
   /// The name of the source Endpoint.
   final pulumi.Input<String> sourceName;
   /// The subpath to use when reading from the source Endpoint.
-  final pulumi.Input<String>? sourceSubpath;
+  final pulumi.Input<String?>? sourceSubpath;
   /// The name of the Storage Mover resource.
   final pulumi.Input<String> storageMoverName;
   /// The name of the target Endpoint.
   final pulumi.Input<String> targetName;
   /// The subpath to use when writing to the target Endpoint.
-  final pulumi.Input<String>? targetSubpath;
+  final pulumi.Input<String?>? targetSubpath;
 
   /// Creates a new [JobDefinitionArgs].
   /// [agentName] Name of the Agent to assign for new Job Runs of this Job Definition.
@@ -75,7 +75,7 @@ class JobDefinitionArgs {
   factory JobDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return JobDefinitionArgs(
       agentName: (() { final guardedValue = map['agentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      copyMode: pulumi.Input.fromValue(map['copyMode'] as String),
+      copyMode: pulumi.Input.fromValue(map['copyMode']),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       jobDefinitionName: (() { final guardedValue = map['jobDefinitionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),

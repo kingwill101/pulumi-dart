@@ -7,7 +7,7 @@ class CacheExpirationActionParametersResponse {
   /// Caching behavior for the requests
   final pulumi.Input<String> cacheBehavior;
   /// The duration for which the content needs to be cached. Allowed format is [d.]hh:mm:ss
-  final pulumi.Input<String>? cacheDuration;
+  final pulumi.Input<String?>? cacheDuration;
   /// The level at which the content needs to be cached.
   final pulumi.Input<String> cacheType;
   /// Expected value is 'DeliveryRuleCacheExpirationActionParameters'.

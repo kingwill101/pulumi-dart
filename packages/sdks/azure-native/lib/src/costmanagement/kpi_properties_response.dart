@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Each KPI must contain a 'type' and 'enabled' key.
 class KpiPropertiesResponse {
   /// show the KPI in the UI?
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// ID of resource related to metric (budget).
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// KPI type (Forecast, Budget).
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [KpiPropertiesResponse].
   /// [enabled] show the KPI in the UI?

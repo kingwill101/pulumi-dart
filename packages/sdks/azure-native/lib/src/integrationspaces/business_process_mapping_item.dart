@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of business process mapping.
 class BusinessProcessMappingItem {
   /// The logic app resource id.
-  final pulumi.Input<String>? logicAppResourceId;
+  final pulumi.Input<String?>? logicAppResourceId;
   /// The operation name.
-  final pulumi.Input<String>? operationName;
+  final pulumi.Input<String?>? operationName;
   /// The mapping item operation type of the business process.
-  final pulumi.Input<String>? operationType;
+  final pulumi.Input<String?>? operationType;
   /// The workflow name within the logic app.
-  final pulumi.Input<String>? workflowName;
+  final pulumi.Input<String?>? workflowName;
 
   /// Creates a new [BusinessProcessMappingItem].
   /// [logicAppResourceId] The logic app resource id.

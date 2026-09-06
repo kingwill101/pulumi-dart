@@ -6,11 +6,11 @@ import 'ipaddress.dart';
 /// DNS Proxy settings for Firewall
 class DNSSettings {
   /// List of IPs associated with the Firewall
-  final pulumi.Input<List<IPAddress>>? dnsServers;
+  final pulumi.Input<List<IPAddress>?>? dnsServers;
   /// Enable DNS proxy, disabled by default
-  final pulumi.Input<String>? enableDnsProxy;
+  final pulumi.Input<dynamic>? enableDnsProxy;
   /// Enabled DNS proxy type, disabled by default
-  final pulumi.Input<String>? enabledDnsType;
+  final pulumi.Input<dynamic>? enabledDnsType;
 
   /// Creates a new [DNSSettings].
   /// [dnsServers] List of IPs associated with the Firewall
@@ -33,8 +33,8 @@ class DNSSettings {
   factory DNSSettings.fromMap(Map<String, dynamic> map) {
     return DNSSettings(
       dnsServers: (() { final guardedValue = map['dnsServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IPAddress>(guardedValue, (value) => IPAddress.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      enableDnsProxy: (() { final guardedValue = map['enableDnsProxy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      enabledDnsType: (() { final guardedValue = map['enabledDnsType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enableDnsProxy: (() { final guardedValue = map['enableDnsProxy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      enabledDnsType: (() { final guardedValue = map['enabledDnsType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

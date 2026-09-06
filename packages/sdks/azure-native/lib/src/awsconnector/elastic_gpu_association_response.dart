@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ElasticGpuAssociation
 class ElasticGpuAssociationResponse {
   /// &lt;p&gt;The ID of the association.&lt;/p&gt;
-  final pulumi.Input<String>? elasticGpuAssociationId;
+  final pulumi.Input<String?>? elasticGpuAssociationId;
   /// &lt;p&gt;The state of the association between the instance and the Elastic Graphics accelerator.&lt;/p&gt;
-  final pulumi.Input<String>? elasticGpuAssociationState;
+  final pulumi.Input<String?>? elasticGpuAssociationState;
   /// &lt;p&gt;The time the Elastic Graphics accelerator was associated with the instance.&lt;/p&gt;
-  final pulumi.Input<String>? elasticGpuAssociationTime;
+  final pulumi.Input<String?>? elasticGpuAssociationTime;
   /// &lt;p&gt;The ID of the Elastic Graphics accelerator.&lt;/p&gt;
-  final pulumi.Input<String>? elasticGpuId;
+  final pulumi.Input<String?>? elasticGpuId;
 
   /// Creates a new [ElasticGpuAssociationResponse].
   /// [elasticGpuAssociationId] &lt;p&gt;The ID of the association.&lt;/p&gt;

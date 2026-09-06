@@ -7,17 +7,17 @@ class DataContainerPropertiesResponse {
   /// [Required] Specifies the type of data.
   final pulumi.Input<String> dataType;
   /// The asset description text.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Is the asset archived?
-  final pulumi.Input<bool>? isArchived;
+  final pulumi.Input<bool?>? isArchived;
   /// The latest version inside this container.
   final pulumi.Input<String> latestVersion;
   /// The next auto incremental version
   final pulumi.Input<String> nextVersion;
   /// The asset property dictionary.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DataContainerPropertiesResponse].
   /// [dataType] [Required] Specifies the type of data.
@@ -27,15 +27,15 @@ class DataContainerPropertiesResponse {
   /// [nextVersion] The next auto incremental version
   /// [properties] The asset property dictionary.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  const DataContainerPropertiesResponse({
+  DataContainerPropertiesResponse({
     required this.dataType,
     this.description,
-    this.isArchived,
+    pulumi.Input<bool?>? isArchived,
     required this.latestVersion,
     required this.nextVersion,
     this.properties,
     this.tags,
-  });
+  }) : isArchived = isArchived ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

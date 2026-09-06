@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'assessment_args.dart';
 import 'assessment_links_response.dart';
 import 'assessment_status_response_response.dart';
-import 'azure_resource_details_response.dart';
 import 'security_assessment_metadata_properties_response.dart';
 import 'security_assessment_partner_data_response.dart';
 
@@ -205,7 +204,7 @@ class Assessment extends pulumi.CustomResource {
   /// Data regarding 3rd party partner integration
   late final pulumi.Output<SecurityAssessmentPartnerDataResponse?> partnersData;
   /// Details of the resource that was assessed
-  late final pulumi.Output<AzureResourceDetailsResponse> resourceDetails;
+  late final pulumi.Output<dynamic> resourceDetails;
   /// The result of the assessment
   late final pulumi.Output<AssessmentStatusResponseResponse> status;
   /// Resource type
@@ -225,14 +224,35 @@ class Assessment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalData = registerOutput<Map<String, String>?>('additionalData');
+    additionalData = registerOutput<Map<String, String>?>('additionalData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     displayName = registerOutput<String>('displayName');
     links = registerOutput<AssessmentLinksResponse>('links', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssessmentLinksResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadata = registerOutput<SecurityAssessmentMetadataPropertiesResponse?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityAssessmentMetadataPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     partnersData = registerOutput<SecurityAssessmentPartnerDataResponse?>('partnersData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityAssessmentPartnerDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    resourceDetails = registerOutput<AzureResourceDetailsResponse>('resourceDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureResourceDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceDetails = registerOutput<dynamic>('resourceDetails');
+    status = registerOutput<AssessmentStatusResponseResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssessmentStatusResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Assessment] resource.
+  Assessment.reference(String urn)
+    : super(
+        'azure-native:security:Assessment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalData = registerOutput<Map<String, String>?>('additionalData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    displayName = registerOutput<String>('displayName');
+    links = registerOutput<AssessmentLinksResponse>('links', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssessmentLinksResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metadata = registerOutput<SecurityAssessmentMetadataPropertiesResponse?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityAssessmentMetadataPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    partnersData = registerOutput<SecurityAssessmentPartnerDataResponse?>('partnersData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityAssessmentPartnerDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceDetails = registerOutput<dynamic>('resourceDetails');
     status = registerOutput<AssessmentStatusResponseResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssessmentStatusResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

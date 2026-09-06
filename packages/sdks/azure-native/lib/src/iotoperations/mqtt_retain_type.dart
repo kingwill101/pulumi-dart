@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether or not to keep the retain setting.
-enum MqttRetainType {
+enum MqttRetainType implements pulumi.PulumiEnum<String> {
   keep("Keep"),
   never_("Never");
 
   const MqttRetainType(this.wireValue);
+  @override
   final String wireValue;
 
   static MqttRetainType fromValue(String value) {

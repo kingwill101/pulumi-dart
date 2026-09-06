@@ -26,6 +26,17 @@ Future<GetHorizonDbClusterResult> getHorizonDbCluster(
   return GetHorizonDbClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetHorizonDbClusterResult> getHorizonDbClusterOutput(
+  GetHorizonDbClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:horizondb:getHorizonDbCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHorizonDbClusterResult.fromMap);
+}
+
 /// Gets information about a HorizonDB firewall rule.
 ///
 /// Uses Azure REST API version 2026-01-20-preview.
@@ -42,6 +53,17 @@ Future<GetHorizonDbFirewallRuleResult> getHorizonDbFirewallRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHorizonDbFirewallRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetHorizonDbFirewallRuleResult> getHorizonDbFirewallRuleOutput(
+  GetHorizonDbFirewallRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:horizondb:getHorizonDbFirewallRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHorizonDbFirewallRuleResult.fromMap);
 }
 
 /// Gets information about a HorizonDB parameter group.
@@ -62,6 +84,17 @@ Future<GetHorizonDbParameterGroupResult> getHorizonDbParameterGroup(
   return GetHorizonDbParameterGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetHorizonDbParameterGroupResult> getHorizonDbParameterGroupOutput(
+  GetHorizonDbParameterGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:horizondb:getHorizonDbParameterGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHorizonDbParameterGroupResult.fromMap);
+}
+
 /// Gets information about a HorizonDB replica.
 ///
 /// Uses Azure REST API version 2026-01-20-preview.
@@ -78,4 +111,15 @@ Future<GetHorizonDbReplicaResult> getHorizonDbReplica(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHorizonDbReplicaResult.fromMap(result);
+}
+
+pulumi.Output<GetHorizonDbReplicaResult> getHorizonDbReplicaOutput(
+  GetHorizonDbReplicaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:horizondb:getHorizonDbReplica',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHorizonDbReplicaResult.fromMap);
 }

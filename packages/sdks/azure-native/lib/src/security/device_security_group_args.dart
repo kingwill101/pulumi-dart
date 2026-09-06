@@ -12,17 +12,17 @@ import 'time_window_custom_alert_rule.dart';
 /// {@macro pulumi_security_device_security_group_args_doc}
 class DeviceSecurityGroupArgs {
   /// The allow-list custom alert rules.
-  final pulumi.Input<List<AllowlistCustomAlertRule>>? allowlistRules;
+  final pulumi.Input<List<AllowlistCustomAlertRule>?>? allowlistRules;
   /// The deny-list custom alert rules.
-  final pulumi.Input<List<DenylistCustomAlertRule>>? denylistRules;
+  final pulumi.Input<List<DenylistCustomAlertRule>?>? denylistRules;
   /// The name of the device security group. Note that the name of the device security group is case insensitive.
-  final pulumi.Input<String>? deviceSecurityGroupName;
+  final pulumi.Input<String?>? deviceSecurityGroupName;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceId;
   /// The list of custom alert threshold rules.
-  final pulumi.Input<List<ThresholdCustomAlertRule>>? thresholdRules;
+  final pulumi.Input<List<ThresholdCustomAlertRule>?>? thresholdRules;
   /// The list of custom alert time-window rules.
-  final pulumi.Input<List<TimeWindowCustomAlertRule>>? timeWindowRules;
+  final pulumi.Input<List<TimeWindowCustomAlertRule>?>? timeWindowRules;
 
   /// Creates a new [DeviceSecurityGroupArgs].
   /// [allowlistRules] The allow-list custom alert rules.

@@ -6,19 +6,19 @@ import 'endpoint_deployment_model_response.dart';
 
 class SpeechEndpointDeploymentResourcePropertiesResponse {
   /// The failure reason if the creation failed.
-  final pulumi.Input<String>? failureReason;
+  final pulumi.Input<String?>? failureReason;
   /// Model used for the endpoint deployment.
   final pulumi.Input<EndpointDeploymentModelResponse> model;
   /// Read-only provision state status property.
   final pulumi.Input<String> provisioningState;
   /// The name of RAI policy.
-  final pulumi.Input<String>? raiPolicyName;
-  final pulumi.Input<CognitiveServicesSkuResponse>? sku;
+  final pulumi.Input<String?>? raiPolicyName;
+  final pulumi.Input<CognitiveServicesSkuResponse?>? sku;
   /// Kind of the deployment.
   /// Expected value is 'Azure.Speech'.
   final pulumi.Input<String> type;
   /// Deployment model version upgrade option.
-  final pulumi.Input<String>? versionUpgradeOption;
+  final pulumi.Input<String?>? versionUpgradeOption;
 
   /// Creates a new [SpeechEndpointDeploymentResourcePropertiesResponse].
   /// [failureReason] The failure reason if the creation failed.

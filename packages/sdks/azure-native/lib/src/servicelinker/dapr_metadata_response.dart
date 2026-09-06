@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The dapr component metadata.
 class DaprMetadataResponse {
   /// The description of the metadata, returned from configuration api
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Metadata property name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value indicating whether the metadata is required or not
-  final pulumi.Input<String>? required;
+  final pulumi.Input<String?>? required;
   /// The secret name where dapr could get value
-  final pulumi.Input<String>? secretRef;
+  final pulumi.Input<String?>? secretRef;
   /// Metadata property value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [DaprMetadataResponse].
   /// [description] The description of the metadata, returned from configuration api

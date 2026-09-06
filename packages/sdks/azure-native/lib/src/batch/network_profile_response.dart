@@ -6,9 +6,9 @@ import 'endpoint_access_profile_response.dart';
 /// Network profile for Batch account, which contains network rule settings for each endpoint.
 class NetworkProfileResponse {
   /// Network access profile for batchAccount endpoint (Batch account data plane API).
-  final pulumi.Input<EndpointAccessProfileResponse>? accountAccess;
+  final pulumi.Input<EndpointAccessProfileResponse?>? accountAccess;
   /// Network access profile for nodeManagement endpoint (Batch service managing compute nodes for Batch pools).
-  final pulumi.Input<EndpointAccessProfileResponse>? nodeManagementAccess;
+  final pulumi.Input<EndpointAccessProfileResponse?>? nodeManagementAccess;
 
   /// Creates a new [NetworkProfileResponse].
   /// [accountAccess] Network access profile for batchAccount endpoint (Batch account data plane API).

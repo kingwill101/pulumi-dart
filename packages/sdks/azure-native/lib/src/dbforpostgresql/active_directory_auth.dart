@@ -1,8 +1,11 @@
-enum ActiveDirectoryAuth {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ActiveDirectoryAuth implements pulumi.PulumiEnum<String> {
   enabled("enabled"),
   disabled("disabled");
 
   const ActiveDirectoryAuth(this.wireValue);
+  @override
   final String wireValue;
 
   static ActiveDirectoryAuth fromValue(String value) {

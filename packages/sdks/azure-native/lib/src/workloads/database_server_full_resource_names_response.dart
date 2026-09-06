@@ -7,11 +7,11 @@ import 'virtual_machine_resource_names_response.dart';
 /// The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
 class DatabaseServerFullResourceNamesResponse {
   /// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-DB-AvSet.
-  final pulumi.Input<String>? availabilitySetName;
+  final pulumi.Input<String?>? availabilitySetName;
   /// The resource names object for load balancer and related resources.
-  final pulumi.Input<LoadBalancerResourceNamesResponse>? loadBalancer;
+  final pulumi.Input<LoadBalancerResourceNamesResponse?>? loadBalancer;
   /// The list of virtual machine naming details.
-  final pulumi.Input<List<VirtualMachineResourceNamesResponse>>? virtualMachines;
+  final pulumi.Input<List<VirtualMachineResourceNamesResponse>?>? virtualMachines;
 
   /// Creates a new [DatabaseServerFullResourceNamesResponse].
   /// [availabilitySetName] The full name for availability set. In case name is not provided, it will be defaulted to {SID}-DB-AvSet.

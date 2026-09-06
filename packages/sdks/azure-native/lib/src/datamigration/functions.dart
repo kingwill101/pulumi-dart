@@ -48,6 +48,17 @@ Future<GetDatabaseMigrationsMongoToCosmosDbRUMongoResult> getDatabaseMigrationsM
   return GetDatabaseMigrationsMongoToCosmosDbRUMongoResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseMigrationsMongoToCosmosDbRUMongoResult> getDatabaseMigrationsMongoToCosmosDbRUMongoOutput(
+  GetDatabaseMigrationsMongoToCosmosDbRUMongoArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datamigration:getDatabaseMigrationsMongoToCosmosDbRUMongo',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseMigrationsMongoToCosmosDbRUMongoResult.fromMap);
+}
+
 /// Get Database Migration resource.
 ///
 /// Uses Azure REST API version 2023-07-15-preview.
@@ -66,6 +77,17 @@ Future<GetDatabaseMigrationsMongoToCosmosDbvCoreMongoResult> getDatabaseMigratio
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseMigrationsMongoToCosmosDbvCoreMongoResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseMigrationsMongoToCosmosDbvCoreMongoResult> getDatabaseMigrationsMongoToCosmosDbvCoreMongoOutput(
+  GetDatabaseMigrationsMongoToCosmosDbvCoreMongoArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datamigration:getDatabaseMigrationsMongoToCosmosDbvCoreMongo',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseMigrationsMongoToCosmosDbvCoreMongoResult.fromMap);
 }
 
 /// Retrieve the Database Migration resource.
@@ -88,6 +110,17 @@ Future<GetDatabaseMigrationsSqlDbResult> getDatabaseMigrationsSqlDb(
   return GetDatabaseMigrationsSqlDbResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseMigrationsSqlDbResult> getDatabaseMigrationsSqlDbOutput(
+  GetDatabaseMigrationsSqlDbArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datamigration:getDatabaseMigrationsSqlDb',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseMigrationsSqlDbResult.fromMap);
+}
+
 /// Retrieve the specified database migration for a given SQL Managed Instance.
 ///
 /// Uses Azure REST API version 2025-06-30.
@@ -106,6 +139,17 @@ Future<GetDatabaseMigrationsSqlMiResult> getDatabaseMigrationsSqlMi(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseMigrationsSqlMiResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseMigrationsSqlMiResult> getDatabaseMigrationsSqlMiOutput(
+  GetDatabaseMigrationsSqlMiArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datamigration:getDatabaseMigrationsSqlMi',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseMigrationsSqlMiResult.fromMap);
 }
 
 /// Retrieve the specified database migration for a given SQL VM.
@@ -128,6 +172,17 @@ Future<GetDatabaseMigrationsSqlVmResult> getDatabaseMigrationsSqlVm(
   return GetDatabaseMigrationsSqlVmResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseMigrationsSqlVmResult> getDatabaseMigrationsSqlVmOutput(
+  GetDatabaseMigrationsSqlVmArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datamigration:getDatabaseMigrationsSqlVm',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseMigrationsSqlVmResult.fromMap);
+}
+
 /// The files resource is a nested, proxy-only resource representing a file stored under the project resource. This method retrieves information about a file.
 ///
 /// Uses Azure REST API version 2023-07-15-preview.
@@ -146,6 +201,17 @@ Future<GetFileResult> getFile(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFileResult.fromMap(result);
+}
+
+pulumi.Output<GetFileResult> getFileOutput(
+  GetFileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datamigration:getFile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFileResult.fromMap);
 }
 
 /// Retrieve the Database Migration Service
@@ -168,6 +234,17 @@ Future<GetMigrationServiceResult> getMigrationService(
   return GetMigrationServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetMigrationServiceResult> getMigrationServiceOutput(
+  GetMigrationServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datamigration:getMigrationService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMigrationServiceResult.fromMap);
+}
+
 /// The project resource is a nested resource representing a stored migration project. The GET method retrieves information about a project.
 ///
 /// Uses Azure REST API version 2023-07-15-preview.
@@ -186,6 +263,17 @@ Future<GetProjectResult> getProject(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProjectResult.fromMap(result);
+}
+
+pulumi.Output<GetProjectResult> getProjectOutput(
+  GetProjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datamigration:getProject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectResult.fromMap);
 }
 
 /// The services resource is the top-level resource that represents the Azure Database Migration Service (classic). The GET method retrieves information about a service instance.
@@ -208,6 +296,17 @@ Future<GetServiceResult> getService(
   return GetServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datamigration:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
+}
+
 /// The service tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The GET method retrieves information about a service task.
 ///
 /// Uses Azure REST API version 2023-07-15-preview.
@@ -226,6 +325,17 @@ Future<GetServiceTaskResult> getServiceTask(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceTaskResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceTaskResult> getServiceTaskOutput(
+  GetServiceTaskArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datamigration:getServiceTask',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceTaskResult.fromMap);
 }
 
 /// Retrieve the Database Migration Service
@@ -248,6 +358,17 @@ Future<GetSqlMigrationServiceResult> getSqlMigrationService(
   return GetSqlMigrationServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlMigrationServiceResult> getSqlMigrationServiceOutput(
+  GetSqlMigrationServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datamigration:getSqlMigrationService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlMigrationServiceResult.fromMap);
+}
+
 /// The tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The GET method retrieves information about a task.
 ///
 /// Uses Azure REST API version 2023-07-15-preview.
@@ -266,6 +387,17 @@ Future<GetTaskResult> getTask(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTaskResult.fromMap(result);
+}
+
+pulumi.Output<GetTaskResult> getTaskOutput(
+  GetTaskArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datamigration:getTask',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTaskResult.fromMap);
 }
 
 /// Retrieve the List of Authentication Keys for Self Hosted Integration Runtime.
@@ -288,6 +420,17 @@ Future<ListSqlMigrationServiceAuthKeysResult> listSqlMigrationServiceAuthKeys(
   return ListSqlMigrationServiceAuthKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListSqlMigrationServiceAuthKeysResult> listSqlMigrationServiceAuthKeysOutput(
+  ListSqlMigrationServiceAuthKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datamigration:listSqlMigrationServiceAuthKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListSqlMigrationServiceAuthKeysResult.fromMap);
+}
+
 /// Retrieve the registered Integration Runtime nodes and their monitoring data for a given Database Migration Service.
 ///
 /// Uses Azure REST API version 2023-07-15-preview.
@@ -306,4 +449,15 @@ Future<ListSqlMigrationServiceMonitoringDataResult> listSqlMigrationServiceMonit
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListSqlMigrationServiceMonitoringDataResult.fromMap(result);
+}
+
+pulumi.Output<ListSqlMigrationServiceMonitoringDataResult> listSqlMigrationServiceMonitoringDataOutput(
+  ListSqlMigrationServiceMonitoringDataArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datamigration:listSqlMigrationServiceMonitoringData',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListSqlMigrationServiceMonitoringDataResult.fromMap);
 }

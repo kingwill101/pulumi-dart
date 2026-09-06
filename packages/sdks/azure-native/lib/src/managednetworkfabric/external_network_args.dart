@@ -12,27 +12,27 @@ import 'l3_option_bproperties.dart';
 /// {@macro pulumi_managednetworkfabric_external_network_args_doc}
 class ExternalNetworkArgs {
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// Export Route Policy either IPv4 or IPv6.
-  final pulumi.Input<ExportRoutePolicy>? exportRoutePolicy;
+  final pulumi.Input<ExportRoutePolicy?>? exportRoutePolicy;
   /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
-  final pulumi.Input<String>? exportRoutePolicyId;
+  final pulumi.Input<String?>? exportRoutePolicyId;
   /// Name of the External Network.
-  final pulumi.Input<String>? externalNetworkName;
+  final pulumi.Input<String?>? externalNetworkName;
   /// Import Route Policy either IPv4 or IPv6.
-  final pulumi.Input<ImportRoutePolicy>? importRoutePolicy;
+  final pulumi.Input<ImportRoutePolicy?>? importRoutePolicy;
   /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
-  final pulumi.Input<String>? importRoutePolicyId;
+  final pulumi.Input<String?>? importRoutePolicyId;
   /// Name of the L3 Isolation Domain.
   final pulumi.Input<String> l3IsolationDomainName;
   /// ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
-  final pulumi.Input<String>? networkToNetworkInterconnectId;
+  final pulumi.Input<String?>? networkToNetworkInterconnectId;
   /// option A properties object
-  final pulumi.Input<ExternalNetworkPropertiesOptionAProperties>? optionAProperties;
+  final pulumi.Input<ExternalNetworkPropertiesOptionAProperties?>? optionAProperties;
   /// option B properties object
-  final pulumi.Input<L3OptionBProperties>? optionBProperties;
+  final pulumi.Input<L3OptionBProperties?>? optionBProperties;
   /// Peering option list.
-  final pulumi.Input<String> peeringOption;
+  final pulumi.Input<dynamic> peeringOption;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -93,7 +93,7 @@ class ExternalNetworkArgs {
       networkToNetworkInterconnectId: (() { final guardedValue = map['networkToNetworkInterconnectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       optionAProperties: (() { final guardedValue = map['optionAProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExternalNetworkPropertiesOptionAProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       optionBProperties: (() { final guardedValue = map['optionBProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(L3OptionBProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      peeringOption: pulumi.Input.fromValue(map['peeringOption'] as String),
+      peeringOption: pulumi.Input.fromValue(map['peeringOption']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }

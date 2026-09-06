@@ -10,29 +10,29 @@ import 'monitoring.dart';
 /// Properties of SqlServerInstance.
 class SqlServerInstanceProperties {
   /// Authentication related configuration for the SQL Server Instance.
-  final pulumi.Input<Authentication>? authentication;
+  final pulumi.Input<Authentication?>? authentication;
   /// The backup profile for the SQL server.
-  final pulumi.Input<BackupPolicy>? backupPolicy;
+  final pulumi.Input<BackupPolicy?>? backupPolicy;
   /// Client connection related configuration.
-  final pulumi.Input<ClientConnection>? clientConnection;
+  final pulumi.Input<ClientConnection?>? clientConnection;
   /// The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
-  final pulumi.Input<String>? cores;
+  final pulumi.Input<String?>? cores;
   /// SQL Server edition.
-  final pulumi.Input<String>? edition;
+  final pulumi.Input<dynamic>? edition;
   /// Type of host for Azure Arc SQL Server
-  final pulumi.Input<String>? hostType;
+  final pulumi.Input<dynamic>? hostType;
   /// SQL Server instance name.
-  final pulumi.Input<String>? instanceName;
+  final pulumi.Input<String?>? instanceName;
   /// Migration related configuration.
-  final pulumi.Input<Migration>? migration;
+  final pulumi.Input<Migration?>? migration;
   /// The monitoring configuration.
-  final pulumi.Input<Monitoring>? monitoring;
+  final pulumi.Input<Monitoring?>? monitoring;
   /// Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host.
-  final pulumi.Input<String>? serviceType;
+  final pulumi.Input<dynamic>? serviceType;
   /// Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
-  final pulumi.Input<String>? upgradeLockedUntil;
+  final pulumi.Input<String?>? upgradeLockedUntil;
   /// SQL Server version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<dynamic>? version;
 
   /// Creates a new [SqlServerInstanceProperties].
   /// [authentication] Authentication related configuration for the SQL Server Instance.
@@ -85,14 +85,14 @@ class SqlServerInstanceProperties {
       backupPolicy: (() { final guardedValue = map['backupPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       clientConnection: (() { final guardedValue = map['clientConnection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClientConnection.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cores: (() { final guardedValue = map['cores']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      edition: (() { final guardedValue = map['edition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      hostType: (() { final guardedValue = map['hostType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      edition: (() { final guardedValue = map['edition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      hostType: (() { final guardedValue = map['hostType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       instanceName: (() { final guardedValue = map['instanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       migration: (() { final guardedValue = map['migration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Migration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       monitoring: (() { final guardedValue = map['monitoring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Monitoring.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      serviceType: (() { final guardedValue = map['serviceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceType: (() { final guardedValue = map['serviceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       upgradeLockedUntil: (() { final guardedValue = map['upgradeLockedUntil']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

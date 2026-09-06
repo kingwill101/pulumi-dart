@@ -7,7 +7,7 @@ class SparkConfigurationParametrizationReference {
   /// Reference spark configuration name. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> referenceName;
   /// Spark configuration reference type.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [SparkConfigurationParametrizationReference].
   /// [referenceName] Reference spark configuration name. Type: string (or Expression with resultType string).
@@ -27,7 +27,7 @@ class SparkConfigurationParametrizationReference {
   factory SparkConfigurationParametrizationReference.fromMap(Map<String, dynamic> map) {
     return SparkConfigurationParametrizationReference(
       referenceName: pulumi.Input.fromValue(map['referenceName']),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

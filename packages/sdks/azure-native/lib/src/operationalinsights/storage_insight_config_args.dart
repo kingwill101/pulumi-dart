@@ -9,19 +9,19 @@ import 'storage_account.dart';
 /// {@macro pulumi_operationalinsights_storage_insight_config_args_doc}
 class StorageInsightConfigArgs {
   /// The names of the blob containers that the workspace should read
-  final pulumi.Input<List<String>>? containers;
+  final pulumi.Input<List<String>?>? containers;
   /// The ETag of the storage insight.
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The storage account connection details
   final pulumi.Input<StorageAccount> storageAccount;
   /// Name of the storageInsightsConfigs resource
-  final pulumi.Input<String>? storageInsightName;
+  final pulumi.Input<String?>? storageInsightName;
   /// The names of the Azure tables that the workspace should read
-  final pulumi.Input<List<String>>? tables;
+  final pulumi.Input<List<String>?>? tables;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 

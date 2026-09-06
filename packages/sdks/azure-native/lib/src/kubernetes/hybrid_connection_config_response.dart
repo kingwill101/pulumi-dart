@@ -36,7 +36,7 @@ class HybridConnectionConfigResponse {
 
   factory HybridConnectionConfigResponse.fromMap(Map<String, dynamic> map) {
     return HybridConnectionConfigResponse(
-      expirationTime: pulumi.Input.fromValue(map['expirationTime'] as double),
+      expirationTime: pulumi.Input.fromValue((map['expirationTime'] as num).toDouble()),
       hybridConnectionName: pulumi.Input.fromValue(map['hybridConnectionName'] as String),
       relay: pulumi.Input.fromValue(map['relay'] as String),
       token: pulumi.Input.fromValue(map['token'] as String),

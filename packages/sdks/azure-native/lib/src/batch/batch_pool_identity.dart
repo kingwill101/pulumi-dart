@@ -8,7 +8,7 @@ class BatchPoolIdentity {
   /// The type of identity used for the Batch Pool.
   final pulumi.Input<PoolIdentityType> type;
   /// The list of user identities associated with the Batch pool.
-  final pulumi.Input<List<String>>? userAssignedIdentities;
+  final pulumi.Input<List<String>?>? userAssignedIdentities;
 
   /// Creates a new [BatchPoolIdentity].
   /// [type] The type of identity used for the Batch Pool.

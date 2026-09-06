@@ -12,17 +12,17 @@ class EnvironmentArgs {
   /// The custom metadata defined for API catalog entities.
   final pulumi.Input<dynamic>? customProperties;
   /// The environment description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the environment.
-  final pulumi.Input<String>? environmentName;
+  final pulumi.Input<String?>? environmentName;
   /// Environment kind.
-  final pulumi.Input<String> kind;
+  final pulumi.Input<dynamic> kind;
   /// Environment onboarding information
-  final pulumi.Input<Onboarding>? onboarding;
+  final pulumi.Input<Onboarding?>? onboarding;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Server information of the environment.
-  final pulumi.Input<EnvironmentServer>? server;
+  final pulumi.Input<EnvironmentServer?>? server;
   /// The name of Azure API Center service.
   final pulumi.Input<String> serviceName;
   /// Environment title.
@@ -74,7 +74,7 @@ class EnvironmentArgs {
       customProperties: (() { final guardedValue = map['customProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environmentName: (() { final guardedValue = map['environmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      kind: pulumi.Input.fromValue(map['kind'] as String),
+      kind: pulumi.Input.fromValue(map['kind']),
       onboarding: (() { final guardedValue = map['onboarding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Onboarding.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       server: (() { final guardedValue = map['server']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnvironmentServer.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

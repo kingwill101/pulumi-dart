@@ -10,9 +10,9 @@ class VnetRouteVpnGatewayResponse {
   /// The list of references to HubBgpConnection objects.
   final pulumi.Input<List<SubResourceResponse>> bgpConnections;
   /// List of all Static Routes.
-  final pulumi.Input<List<StaticRouteResponse>>? staticRoutes;
+  final pulumi.Input<List<StaticRouteResponse>?>? staticRoutes;
   /// Configuration for static routes on this HubVnetConnection.
-  final pulumi.Input<StaticRoutesConfigVpnGatewayResponse>? staticRoutesConfig;
+  final pulumi.Input<StaticRoutesConfigVpnGatewayResponse?>? staticRoutesConfig;
 
   /// Creates a new [VnetRouteVpnGatewayResponse].
   /// [bgpConnections] The list of references to HubBgpConnection objects.

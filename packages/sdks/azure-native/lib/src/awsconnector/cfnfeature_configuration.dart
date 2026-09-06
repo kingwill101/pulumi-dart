@@ -6,11 +6,11 @@ import 'cfnfeature_additional_configuration.dart';
 /// Definition of CFNFeatureConfiguration
 class CFNFeatureConfiguration {
   /// Property additionalConfiguration
-  final pulumi.Input<List<CFNFeatureAdditionalConfiguration>>? additionalConfiguration;
+  final pulumi.Input<List<CFNFeatureAdditionalConfiguration>?>? additionalConfiguration;
   /// Property name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Property status
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [CFNFeatureConfiguration].
   /// [additionalConfiguration] Property additionalConfiguration
@@ -34,7 +34,7 @@ class CFNFeatureConfiguration {
     return CFNFeatureConfiguration(
       additionalConfiguration: (() { final guardedValue = map['additionalConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CFNFeatureAdditionalConfiguration>(guardedValue, (value) => CFNFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -18,25 +18,25 @@ class LabArgs {
   /// The connection profile for the lab. This controls settings such as web access to lab resources or whether RDP or SSH ports are open.
   final pulumi.Input<ConnectionProfile> connectionProfile;
   /// The description of the lab.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
-  final pulumi.Input<String>? labName;
+  final pulumi.Input<String?>? labName;
   /// The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
-  final pulumi.Input<String>? labPlanId;
+  final pulumi.Input<String?>? labPlanId;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The network profile for the lab, typically applied via a lab plan. This profile cannot be modified once a lab has been created.
-  final pulumi.Input<LabNetworkProfile>? networkProfile;
+  final pulumi.Input<LabNetworkProfile?>? networkProfile;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The lab user list management profile.
-  final pulumi.Input<RosterProfile>? rosterProfile;
+  final pulumi.Input<RosterProfile?>? rosterProfile;
   /// The lab security profile.
   final pulumi.Input<SecurityProfile> securityProfile;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The title of the lab.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
   /// The profile used for creating lab virtual machines.
   final pulumi.Input<VirtualMachineProfile> virtualMachineProfile;
 

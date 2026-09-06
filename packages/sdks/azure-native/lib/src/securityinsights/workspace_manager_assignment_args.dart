@@ -15,7 +15,7 @@ class WorkspaceManagerAssignmentArgs {
   /// The resource name of the workspace manager group targeted by the workspace manager assignment
   final pulumi.Input<String> targetResourceName;
   /// The name of the workspace manager assignment
-  final pulumi.Input<String>? workspaceManagerAssignmentName;
+  final pulumi.Input<String?>? workspaceManagerAssignmentName;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 

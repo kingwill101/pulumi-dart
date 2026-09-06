@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The OS architecture.
-enum Architecture {
+enum Architecture implements pulumi.PulumiEnum<String> {
   valueAmd64("amd64"),
   valueX86("x86"),
   value386("386"),
@@ -7,6 +9,7 @@ enum Architecture {
   valueArm64("arm64");
 
   const Architecture(this.wireValue);
+  @override
   final String wireValue;
 
   static Architecture fromValue(String value) {

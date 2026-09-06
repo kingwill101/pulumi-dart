@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'run_command_input_parameter_response.dart';
 import 'run_command_managed_identity_response.dart';
 import 'system_data_response.dart';
 import 'virtual_machine_run_command_by_virtual_machine_args.dart';
@@ -338,9 +339,9 @@ class VirtualMachineRunCommandByVirtualMachine extends pulumi.CustomResource {
   /// Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter.
   late final pulumi.Output<String?> outputBlobUri;
   /// The parameters used by the script.
-  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+  late final pulumi.Output<List<RunCommandInputParameterResponse>?> parameters;
   /// The parameters used by the script.
-  late final pulumi.Output<List<Map<String, dynamic>>?> protectedParameters;
+  late final pulumi.Output<List<RunCommandInputParameterResponse>?> protectedParameters;
   /// The provisioning state, which only appears in the response. If treatFailureAsDeploymentFailure set to true, any failure in the script will fail the deployment and ProvisioningState will be marked as Failed. If treatFailureAsDeploymentFailure set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures. See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results
   late final pulumi.Output<String> provisioningState;
   /// Specifies the user account password on the VM when executing the run command.
@@ -383,14 +384,45 @@ class VirtualMachineRunCommandByVirtualMachine extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outputBlobManagedIdentity = registerOutput<RunCommandManagedIdentityResponse?>('outputBlobManagedIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunCommandManagedIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     outputBlobUri = registerOutput<String?>('outputBlobUri');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
-    protectedParameters = registerOutput<List<Map<String, dynamic>>?>('protectedParameters');
+    parameters = registerOutput<List<RunCommandInputParameterResponse>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RunCommandInputParameterResponse>(guardedValue, (value) => RunCommandInputParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    protectedParameters = registerOutput<List<RunCommandInputParameterResponse>?>('protectedParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RunCommandInputParameterResponse>(guardedValue, (value) => RunCommandInputParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     runAsPassword = registerOutput<String?>('runAsPassword');
     runAsUser = registerOutput<String?>('runAsUser');
     source = registerOutput<VirtualMachineRunCommandScriptSourceResponse?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineRunCommandScriptSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeoutInSeconds = registerOutput<int?>('timeoutInSeconds');
+    treatFailureAsDeploymentFailure = registerOutput<bool?>('treatFailureAsDeploymentFailure');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [VirtualMachineRunCommandByVirtualMachine] resource.
+  VirtualMachineRunCommandByVirtualMachine.reference(String urn)
+    : super(
+        'azure-native:compute:VirtualMachineRunCommandByVirtualMachine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    asyncExecution = registerOutput<bool?>('asyncExecution');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    errorBlobManagedIdentity = registerOutput<RunCommandManagedIdentityResponse?>('errorBlobManagedIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunCommandManagedIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    errorBlobUri = registerOutput<String?>('errorBlobUri');
+    instanceView = registerOutput<VirtualMachineRunCommandInstanceViewResponse>('instanceView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineRunCommandInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    outputBlobManagedIdentity = registerOutput<RunCommandManagedIdentityResponse?>('outputBlobManagedIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunCommandManagedIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outputBlobUri = registerOutput<String?>('outputBlobUri');
+    parameters = registerOutput<List<RunCommandInputParameterResponse>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RunCommandInputParameterResponse>(guardedValue, (value) => RunCommandInputParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    protectedParameters = registerOutput<List<RunCommandInputParameterResponse>?>('protectedParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RunCommandInputParameterResponse>(guardedValue, (value) => RunCommandInputParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    runAsPassword = registerOutput<String?>('runAsPassword');
+    runAsUser = registerOutput<String?>('runAsUser');
+    source = registerOutput<VirtualMachineRunCommandScriptSourceResponse?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineRunCommandScriptSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeoutInSeconds = registerOutput<int?>('timeoutInSeconds');
     treatFailureAsDeploymentFailure = registerOutput<bool?>('treatFailureAsDeploymentFailure');
     type = registerOutput<String>('type');

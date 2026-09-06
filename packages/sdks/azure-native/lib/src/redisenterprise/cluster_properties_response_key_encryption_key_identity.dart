@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
 class ClusterPropertiesResponseKeyEncryptionKeyIdentity {
   /// Only userAssignedIdentity is supported in this API version; other types may be supported in the future
-  final pulumi.Input<String>? identityType;
+  final pulumi.Input<String?>? identityType;
   /// User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/&lt;sub uuid&gt;/resourceGroups/&lt;resource group&gt;/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
-  final pulumi.Input<String>? userAssignedIdentityResourceId;
+  final pulumi.Input<String?>? userAssignedIdentityResourceId;
 
   /// Creates a new [ClusterPropertiesResponseKeyEncryptionKeyIdentity].
   /// [identityType] Only userAssignedIdentity is supported in this API version; other types may be supported in the future

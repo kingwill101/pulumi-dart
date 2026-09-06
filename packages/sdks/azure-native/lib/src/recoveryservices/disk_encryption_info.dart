@@ -7,9 +7,9 @@ import 'key_encryption_key_info.dart';
 /// Recovery disk encryption info (BEK and KEK).
 class DiskEncryptionInfo {
   /// The recovery KeyVault reference for secret.
-  final pulumi.Input<DiskEncryptionKeyInfo>? diskEncryptionKeyInfo;
+  final pulumi.Input<DiskEncryptionKeyInfo?>? diskEncryptionKeyInfo;
   /// The recovery KeyVault reference for key.
-  final pulumi.Input<KeyEncryptionKeyInfo>? keyEncryptionKeyInfo;
+  final pulumi.Input<KeyEncryptionKeyInfo?>? keyEncryptionKeyInfo;
 
   /// Creates a new [DiskEncryptionInfo].
   /// [diskEncryptionKeyInfo] The recovery KeyVault reference for secret.

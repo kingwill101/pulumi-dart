@@ -6,9 +6,9 @@ import 'autoscale_schedule_response.dart';
 /// Schedule-based autoscale request parameters
 class AutoscaleRecurrenceResponse {
   /// Array of schedule-based autoscale rules
-  final pulumi.Input<List<AutoscaleScheduleResponse>>? schedule;
+  final pulumi.Input<List<AutoscaleScheduleResponse>?>? schedule;
   /// The time zone for the autoscale schedule times
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [AutoscaleRecurrenceResponse].
   /// [schedule] Array of schedule-based autoscale rules

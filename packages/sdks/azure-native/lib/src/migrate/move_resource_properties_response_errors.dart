@@ -6,7 +6,7 @@ import 'move_resource_error_body_response.dart';
 /// Defines the move resource errors.
 class MoveResourcePropertiesResponseErrors {
   /// The move resource error body.
-  final pulumi.Input<MoveResourceErrorBodyResponse>? properties;
+  final pulumi.Input<MoveResourceErrorBodyResponse?>? properties;
 
   /// Creates a new [MoveResourcePropertiesResponseErrors].
   /// [properties] The move resource error body.

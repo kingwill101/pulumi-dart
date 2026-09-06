@@ -1,7 +1,10 @@
-enum DataSource {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum DataSource implements pulumi.PulumiEnum<String> {
   twinData("TwinData");
 
   const DataSource(this.wireValue);
+  @override
   final String wireValue;
 
   static DataSource fromValue(String value) {

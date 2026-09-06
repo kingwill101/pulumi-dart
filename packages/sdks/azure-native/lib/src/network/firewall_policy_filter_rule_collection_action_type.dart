@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of action.
-enum FirewallPolicyFilterRuleCollectionActionType {
+enum FirewallPolicyFilterRuleCollectionActionType implements pulumi.PulumiEnum<String> {
   valueAllow("Allow"),
   valueDeny("Deny");
 
   const FirewallPolicyFilterRuleCollectionActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static FirewallPolicyFilterRuleCollectionActionType fromValue(String value) {

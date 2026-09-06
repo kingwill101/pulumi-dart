@@ -7,13 +7,13 @@ import 'virtual_network_rule_response.dart';
 /// A set of rules governing the network accessibility of a vault.
 class NetworkRuleSetResponse {
   /// Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'.  If not specified the default is 'AzureServices'.
-  final pulumi.Input<String>? bypass;
+  final pulumi.Input<String?>? bypass;
   /// The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
-  final pulumi.Input<String>? defaultAction;
+  final pulumi.Input<String?>? defaultAction;
   /// The list of IP address rules.
-  final pulumi.Input<List<IPRuleResponse>>? ipRules;
+  final pulumi.Input<List<IPRuleResponse>?>? ipRules;
   /// The list of virtual network rules.
-  final pulumi.Input<List<VirtualNetworkRuleResponse>>? virtualNetworkRules;
+  final pulumi.Input<List<VirtualNetworkRuleResponse>?>? virtualNetworkRules;
 
   /// Creates a new [NetworkRuleSetResponse].
   /// [bypass] Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'.  If not specified the default is 'AzureServices'.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents the current execution state of an SLI.
 class ExecutionStateResponse {
   /// A descriptive message related to the execution state.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The execution state value.
   final pulumi.Input<String> state;
 

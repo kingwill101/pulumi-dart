@@ -7,19 +7,19 @@ import 'azure_firewall_rcaction_response.dart';
 /// Application rule collection resource.
 class AzureFirewallApplicationRuleCollectionResponse {
   /// The action type of a rule collection.
-  final pulumi.Input<AzureFirewallRCActionResponse>? action;
+  final pulumi.Input<AzureFirewallRCActionResponse?>? action;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within the Azure firewall. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Priority of the application rule collection resource.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// The provisioning state of the application rule collection resource.
   final pulumi.Input<String> provisioningState;
   /// Collection of rules used by a application rule collection.
-  final pulumi.Input<List<AzureFirewallApplicationRuleResponse>>? rules;
+  final pulumi.Input<List<AzureFirewallApplicationRuleResponse>?>? rules;
 
   /// Creates a new [AzureFirewallApplicationRuleCollectionResponse].
   /// [action] The action type of a rule collection.
@@ -57,7 +57,7 @@ class AzureFirewallApplicationRuleCollectionResponse {
       etag: pulumi.Input.fromValue(map['etag'] as String),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AzureFirewallApplicationRuleResponse>(guardedValue, (value) => AzureFirewallApplicationRuleResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

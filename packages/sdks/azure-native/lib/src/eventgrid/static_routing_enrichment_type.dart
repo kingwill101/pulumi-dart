@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Static routing enrichment value type. For e.g. this property value can be 'String'.
-enum StaticRoutingEnrichmentType {
+enum StaticRoutingEnrichmentType implements pulumi.PulumiEnum<String> {
   valueString("String");
 
   const StaticRoutingEnrichmentType(this.wireValue);
+  @override
   final String wireValue;
 
   static StaticRoutingEnrichmentType fromValue(String value) {

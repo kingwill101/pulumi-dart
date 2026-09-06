@@ -10,11 +10,11 @@ class ServiceProviderPropertiesResponse {
   /// Display Name of the Service Provider
   final pulumi.Input<String> displayName;
   /// The URL of icon
-  final pulumi.Input<String>? iconUrl;
+  final pulumi.Input<String?>? iconUrl;
   /// Id for Service Provider
   final pulumi.Input<String> id;
   /// The list of parameters for the Service Provider
-  final pulumi.Input<List<ServiceProviderParameterResponse>>? parameters;
+  final pulumi.Input<List<ServiceProviderParameterResponse>?>? parameters;
   /// Name of the Service Provider
   final pulumi.Input<String> serviceProviderName;
 
@@ -25,14 +25,14 @@ class ServiceProviderPropertiesResponse {
   /// [id] Id for Service Provider
   /// [parameters] The list of parameters for the Service Provider
   /// [serviceProviderName] Name of the Service Provider
-  const ServiceProviderPropertiesResponse({
+  ServiceProviderPropertiesResponse({
     required this.devPortalUrl,
     required this.displayName,
-    this.iconUrl,
+    pulumi.Input<String?>? iconUrl,
     required this.id,
     this.parameters,
     required this.serviceProviderName,
-  });
+  }) : iconUrl = iconUrl ?? pulumi.Input.fromValue('');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

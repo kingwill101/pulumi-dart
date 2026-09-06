@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
-enum HybridAksPluginType {
+enum HybridAksPluginType implements pulumi.PulumiEnum<String> {
   valueDPDK("DPDK"),
   valueSRIOV("SRIOV"),
   valueOSDevice("OSDevice");
 
   const HybridAksPluginType(this.wireValue);
+  @override
   final String wireValue;
 
   static HybridAksPluginType fromValue(String value) {

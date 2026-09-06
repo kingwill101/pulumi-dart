@@ -11,17 +11,17 @@ class LoginResponse {
   /// External URLs that can be redirected to as part of logging in or logging out of the app. Note that the query string part of the URL is ignored.
   /// This is an advanced setting typically only needed by Windows Store application backends.
   /// Note that URLs within the current domain are always implicitly allowed.
-  final pulumi.Input<List<String>>? allowedExternalRedirectUrls;
+  final pulumi.Input<List<String>?>? allowedExternalRedirectUrls;
   /// The configuration settings of the session cookie's expiration.
-  final pulumi.Input<CookieExpirationResponse>? cookieExpiration;
+  final pulumi.Input<CookieExpirationResponse?>? cookieExpiration;
   /// The configuration settings of the nonce used in the login flow.
-  final pulumi.Input<NonceResponse>? nonce;
+  final pulumi.Input<NonceResponse?>? nonce;
   /// &lt;code&gt;true&lt;/code&gt; if the fragments from the request are preserved after the login request is made; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? preserveUrlFragmentsForLogins;
+  final pulumi.Input<bool?>? preserveUrlFragmentsForLogins;
   /// The routes that specify the endpoints used for login and logout requests.
-  final pulumi.Input<LoginRoutesResponse>? routes;
+  final pulumi.Input<LoginRoutesResponse?>? routes;
   /// The configuration settings of the token store.
-  final pulumi.Input<TokenStoreResponse>? tokenStore;
+  final pulumi.Input<TokenStoreResponse?>? tokenStore;
 
   /// Creates a new [LoginResponse].
   /// [allowedExternalRedirectUrls] External URLs that can be redirected to as part of logging in or logging out of the app. Note that the query string part of the URL is ignored.

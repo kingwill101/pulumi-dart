@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Tells Dapr which protocol your application is using. Valid options are http and grpc. Default is http
-enum AppProtocol {
+enum AppProtocol implements pulumi.PulumiEnum<String> {
   valueHttp("http"),
   valueGrpc("grpc");
 
   const AppProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static AppProtocol fromValue(String value) {

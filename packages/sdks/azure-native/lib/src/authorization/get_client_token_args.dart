@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_authorization_get_client_token_args_doc}
 class GetClientTokenArgs {
   /// Optional authentication endpoint. Defaults to the endpoint of Azure Resource Manager.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
 
   /// Creates a new [GetClientTokenArgs].
   /// [endpoint] Optional authentication endpoint. Defaults to the endpoint of Azure Resource Manager.

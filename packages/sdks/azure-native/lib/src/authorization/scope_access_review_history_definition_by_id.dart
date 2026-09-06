@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'access_review_history_instance_response.dart';
 import 'access_review_recurrence_range_response.dart';
+import 'access_review_scope_response.dart';
 import 'scope_access_review_history_definition_by_id_args.dart';
 import 'system_data_response.dart';
 
@@ -151,7 +153,7 @@ class ScopeAccessReviewHistoryDefinitionById extends pulumi.CustomResource {
   /// The display name for the history definition.
   late final pulumi.Output<String?> displayName;
   /// Set of access review history instances for this history definition.
-  late final pulumi.Output<List<Map<String, dynamic>>?> instances;
+  late final pulumi.Output<List<AccessReviewHistoryInstanceResponse>?> instances;
   /// The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
   late final pulumi.Output<int?> interval;
   /// The name of the resource
@@ -169,7 +171,7 @@ class ScopeAccessReviewHistoryDefinitionById extends pulumi.CustomResource {
   /// Date time used when selecting review data, all reviews included in data start on or after this date. For use only with one-time/non-recurring reports.
   late final pulumi.Output<String> reviewHistoryPeriodStartDateTime;
   /// A collection of scopes used when selecting review history data
-  late final pulumi.Output<List<Map<String, dynamic>>?> scopes;
+  late final pulumi.Output<List<AccessReviewScopeResponse>?> scopes;
   /// This read-only field specifies the of the requested review history data. This is either requested, in-progress, done or error.
   late final pulumi.Output<String> status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -195,9 +197,9 @@ class ScopeAccessReviewHistoryDefinitionById extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdDateTime = registerOutput<String>('createdDateTime');
-    decisions = registerOutput<List<String>?>('decisions');
+    decisions = registerOutput<List<String>?>('decisions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String?>('displayName');
-    instances = registerOutput<List<Map<String, dynamic>>?>('instances');
+    instances = registerOutput<List<AccessReviewHistoryInstanceResponse>?>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessReviewHistoryInstanceResponse>(guardedValue, (value) => AccessReviewHistoryInstanceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     interval = registerOutput<int?>('interval');
     this.name = registerOutput<String>('name');
     principalId = registerOutput<String>('principalId');
@@ -206,7 +208,36 @@ class ScopeAccessReviewHistoryDefinitionById extends pulumi.CustomResource {
     range = registerOutput<AccessReviewRecurrenceRangeResponse?>('range', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessReviewRecurrenceRangeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     reviewHistoryPeriodEndDateTime = registerOutput<String>('reviewHistoryPeriodEndDateTime');
     reviewHistoryPeriodStartDateTime = registerOutput<String>('reviewHistoryPeriodStartDateTime');
-    scopes = registerOutput<List<Map<String, dynamic>>?>('scopes');
+    scopes = registerOutput<List<AccessReviewScopeResponse>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessReviewScopeResponse>(guardedValue, (value) => AccessReviewScopeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    userPrincipalName = registerOutput<String>('userPrincipalName');
+  }
+
+  /// Creates a typed reference to an existing [ScopeAccessReviewHistoryDefinitionById] resource.
+  ScopeAccessReviewHistoryDefinitionById.reference(String urn)
+    : super(
+        'azure-native:authorization:ScopeAccessReviewHistoryDefinitionById',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdDateTime = registerOutput<String>('createdDateTime');
+    decisions = registerOutput<List<String>?>('decisions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayName = registerOutput<String?>('displayName');
+    instances = registerOutput<List<AccessReviewHistoryInstanceResponse>?>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessReviewHistoryInstanceResponse>(guardedValue, (value) => AccessReviewHistoryInstanceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    interval = registerOutput<int?>('interval');
+    this.name = registerOutput<String>('name');
+    principalId = registerOutput<String>('principalId');
+    principalName = registerOutput<String>('principalName');
+    principalType = registerOutput<String>('principalType');
+    range = registerOutput<AccessReviewRecurrenceRangeResponse?>('range', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessReviewRecurrenceRangeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    reviewHistoryPeriodEndDateTime = registerOutput<String>('reviewHistoryPeriodEndDateTime');
+    reviewHistoryPeriodStartDateTime = registerOutput<String>('reviewHistoryPeriodStartDateTime');
+    scopes = registerOutput<List<AccessReviewScopeResponse>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessReviewScopeResponse>(guardedValue, (value) => AccessReviewScopeResponse.fromMap((value as Map).cast<String, dynamic>())); });
     status = registerOutput<String>('status');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');

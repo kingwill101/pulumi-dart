@@ -8,15 +8,15 @@ class SchemaResponse {
   /// Table category.
   final pulumi.Input<List<String>> categories;
   /// A list of table custom columns.
-  final pulumi.Input<List<ColumnResponse>>? columns;
+  final pulumi.Input<List<ColumnResponse>?>? columns;
   /// Table description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Table display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Table labels.
   final pulumi.Input<List<String>> labels;
   /// Table name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of solutions the table is affiliated with
   final pulumi.Input<List<String>> solutions;
   /// Table's creator.

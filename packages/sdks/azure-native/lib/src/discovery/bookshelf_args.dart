@@ -9,15 +9,15 @@ import 'bookshelf_properties.dart';
 /// {@macro pulumi_discovery_bookshelf_args_doc}
 class BookshelfArgs {
   /// The name of the Bookshelf
-  final pulumi.Input<String>? bookshelfName;
+  final pulumi.Input<String?>? bookshelfName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<BookshelfProperties>? properties;
+  final pulumi.Input<BookshelfProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [BookshelfArgs].
   /// [bookshelfName] The name of the Bookshelf

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extension_args.dart';
+import 'per_node_extension_state_response.dart';
 import 'system_data_response.dart';
 
 /// Details of a particular extension in HCI Cluster.
@@ -238,7 +239,7 @@ class Extension extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// State of Arc Extension in each of the nodes.
-  late final pulumi.Output<List<Map<String, dynamic>>> perNodeExtensionDetails;
+  late final pulumi.Output<List<PerNodeExtensionStateResponse>> perNodeExtensionDetails;
   /// Protected settings (may contain secrets).
   late final pulumi.Output<dynamic> protectedSettings;
   /// Provisioning state of the Extension proxy resource.
@@ -275,7 +276,33 @@ class Extension extends pulumi.CustomResource {
     forceUpdateTag = registerOutput<String?>('forceUpdateTag');
     managedBy = registerOutput<String>('managedBy');
     this.name = registerOutput<String>('name');
-    perNodeExtensionDetails = registerOutput<List<Map<String, dynamic>>>('perNodeExtensionDetails');
+    perNodeExtensionDetails = registerOutput<List<PerNodeExtensionStateResponse>>('perNodeExtensionDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PerNodeExtensionStateResponse>(guardedValue, (value) => PerNodeExtensionStateResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    protectedSettings = registerOutput<dynamic>('protectedSettings');
+    provisioningState = registerOutput<String>('provisioningState');
+    publisher = registerOutput<String?>('publisher');
+    settings = registerOutput<dynamic>('settings');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    typeHandlerVersion = registerOutput<String?>('typeHandlerVersion');
+  }
+
+  /// Creates a typed reference to an existing [Extension] resource.
+  Extension.reference(String urn)
+    : super(
+        'azure-native:azurestackhci:Extension',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aggregateState = registerOutput<String>('aggregateState');
+    autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    enableAutomaticUpgrade = registerOutput<bool?>('enableAutomaticUpgrade');
+    forceUpdateTag = registerOutput<String?>('forceUpdateTag');
+    managedBy = registerOutput<String>('managedBy');
+    this.name = registerOutput<String>('name');
+    perNodeExtensionDetails = registerOutput<List<PerNodeExtensionStateResponse>>('perNodeExtensionDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PerNodeExtensionStateResponse>(guardedValue, (value) => PerNodeExtensionStateResponse.fromMap((value as Map).cast<String, dynamic>())); });
     protectedSettings = registerOutput<dynamic>('protectedSettings');
     provisioningState = registerOutput<String>('provisioningState');
     publisher = registerOutput<String?>('publisher');

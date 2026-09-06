@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The identity type of the Access Connector Resource.
-enum IdentityType {
+enum IdentityType implements pulumi.PulumiEnum<String> {
   systemAssigned("SystemAssigned"),
   userAssigned("UserAssigned");
 
   const IdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static IdentityType fromValue(String value) {

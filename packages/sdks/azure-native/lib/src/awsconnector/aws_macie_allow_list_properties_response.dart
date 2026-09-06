@@ -7,19 +7,19 @@ import 'tag_response.dart';
 /// Definition of awsMacieAllowList
 class AwsMacieAllowListPropertiesResponse {
   /// AllowList ARN.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// AllowList criteria. The regex or s3 object to use for the AllowList.
-  final pulumi.Input<CriteriaResponse>? criteria;
+  final pulumi.Input<CriteriaResponse?>? criteria;
   /// Description of AllowList.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// AllowList ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of AllowList.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// AllowList status. The status for the AllowList
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// A collection of tags associated with a resource
-  final pulumi.Input<List<TagResponse>>? tags;
+  final pulumi.Input<List<TagResponse>?>? tags;
 
   /// Creates a new [AwsMacieAllowListPropertiesResponse].
   /// [arn] AllowList ARN.

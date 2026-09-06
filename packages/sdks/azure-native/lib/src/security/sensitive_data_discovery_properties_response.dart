@@ -6,7 +6,7 @@ import 'operation_status_response.dart';
 /// Properties of Sensitive Data Discovery.
 class SensitiveDataDiscoveryPropertiesResponse {
   /// Indicates whether Sensitive Data Discovery should be enabled.
-  final pulumi.Input<bool>? isEnabled;
+  final pulumi.Input<bool?>? isEnabled;
   /// Upon failure or partial success. Additional data describing Sensitive Data Discovery enable/disable operation.
   final pulumi.Input<OperationStatusResponse> operationStatus;
 

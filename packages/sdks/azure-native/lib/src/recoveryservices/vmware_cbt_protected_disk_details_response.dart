@@ -16,7 +16,7 @@ class VMwareCbtProtectedDiskDetailsResponse {
   /// The disk path.
   final pulumi.Input<String> diskPath;
   /// The disk type.
-  final pulumi.Input<String>? diskType;
+  final pulumi.Input<String?>? diskType;
   /// A value indicating the gateway operation details.
   final pulumi.Input<GatewayOperationDetailsResponse> gatewayOperationDetails;
   /// A value indicating whether the disk is the OS disk.
@@ -26,7 +26,7 @@ class VMwareCbtProtectedDiskDetailsResponse {
   /// The key vault secret name of the log storage account.
   final pulumi.Input<String> logStorageAccountSasSecretName;
   /// The logical sector size (in bytes), 512 by default.
-  final pulumi.Input<int>? sectorSizeInBytes;
+  final pulumi.Input<int?>? sectorSizeInBytes;
   /// The uri of the seed blob.
   final pulumi.Input<String> seedBlobUri;
   /// The ARM Id of the seed managed disk.
@@ -34,7 +34,7 @@ class VMwareCbtProtectedDiskDetailsResponse {
   /// The uri of the target blob.
   final pulumi.Input<String> targetBlobUri;
   /// The name for the target managed disk.
-  final pulumi.Input<String>? targetDiskName;
+  final pulumi.Input<String?>? targetDiskName;
   /// The ARM Id of the target managed disk.
   final pulumi.Input<String> targetManagedDiskId;
 
@@ -97,7 +97,7 @@ class VMwareCbtProtectedDiskDetailsResponse {
 
   factory VMwareCbtProtectedDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return VMwareCbtProtectedDiskDetailsResponse(
-      capacityInBytes: pulumi.Input.fromValue(map['capacityInBytes'] as double),
+      capacityInBytes: pulumi.Input.fromValue((map['capacityInBytes'] as num).toDouble()),
       diskEncryptionSetId: pulumi.Input.fromValue(map['diskEncryptionSetId'] as String),
       diskId: pulumi.Input.fromValue(map['diskId'] as String),
       diskName: pulumi.Input.fromValue(map['diskName'] as String),
@@ -107,7 +107,7 @@ class VMwareCbtProtectedDiskDetailsResponse {
       isOSDisk: pulumi.Input.fromValue(map['isOSDisk'] as String),
       logStorageAccountId: pulumi.Input.fromValue(map['logStorageAccountId'] as String),
       logStorageAccountSasSecretName: pulumi.Input.fromValue(map['logStorageAccountSasSecretName'] as String),
-      sectorSizeInBytes: (() { final guardedValue = map['sectorSizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sectorSizeInBytes: (() { final guardedValue = map['sectorSizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       seedBlobUri: pulumi.Input.fromValue(map['seedBlobUri'] as String),
       seedManagedDiskId: pulumi.Input.fromValue(map['seedManagedDiskId'] as String),
       targetBlobUri: pulumi.Input.fromValue(map['targetBlobUri'] as String),

@@ -6,9 +6,9 @@ import 'encryption_v2_key_vault_properties.dart';
 /// The object that contains details of encryption used on the workspace.
 class EncryptionV2 {
   /// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
-  final pulumi.Input<String> keySource;
+  final pulumi.Input<dynamic> keySource;
   /// Key Vault input properties for encryption.
-  final pulumi.Input<EncryptionV2KeyVaultProperties>? keyVaultProperties;
+  final pulumi.Input<EncryptionV2KeyVaultProperties?>? keyVaultProperties;
 
   /// Creates a new [EncryptionV2].
   /// [keySource] The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
@@ -27,7 +27,7 @@ class EncryptionV2 {
 
   factory EncryptionV2.fromMap(Map<String, dynamic> map) {
     return EncryptionV2(
-      keySource: pulumi.Input.fromValue(map['keySource'] as String),
+      keySource: pulumi.Input.fromValue(map['keySource']),
       keyVaultProperties: (() { final guardedValue = map['keyVaultProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EncryptionV2KeyVaultProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

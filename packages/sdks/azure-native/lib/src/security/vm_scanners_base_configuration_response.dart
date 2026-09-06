@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for VM scanning
 class VmScannersBaseConfigurationResponse {
   /// Tags that indicates that a resource should not be scanned
-  final pulumi.Input<Map<String, String>>? exclusionTags;
+  final pulumi.Input<Map<String, String>?>? exclusionTags;
   /// The scanning mode for the VM scan.
-  final pulumi.Input<String>? scanningMode;
+  final pulumi.Input<String?>? scanningMode;
 
   /// Creates a new [VmScannersBaseConfigurationResponse].
   /// [exclusionTags] Tags that indicates that a resource should not be scanned

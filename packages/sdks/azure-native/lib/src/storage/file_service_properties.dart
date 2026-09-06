@@ -902,4 +902,22 @@ class FileServiceProperties extends pulumi.CustomResource {
     sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [FileServiceProperties] resource.
+  FileServiceProperties.reference(String urn)
+    : super(
+        'azure-native:storage:FileServiceProperties',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cors = registerOutput<CorsRulesResponse?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CorsRulesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    protocolSettings = registerOutput<ProtocolSettingsResponse?>('protocolSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProtocolSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    shareDeleteRetentionPolicy = registerOutput<DeleteRetentionPolicyResponse?>('shareDeleteRetentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeleteRetentionPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

@@ -7,7 +7,7 @@ class ScaleRuleMetricDimension {
   /// Name of the dimension.
   final pulumi.Input<String> dimensionName;
   /// the dimension operator. Only 'Equals' and 'NotEquals' are supported. 'Equals' being equal to any of the values. 'NotEquals' being not equal to all of the values
-  final pulumi.Input<String> operator;
+  final pulumi.Input<dynamic> operator;
   /// list of dimension values. For example: ["App1","App2"].
   final pulumi.Input<List<String>> values;
 
@@ -32,7 +32,7 @@ class ScaleRuleMetricDimension {
   factory ScaleRuleMetricDimension.fromMap(Map<String, dynamic> map) {
     return ScaleRuleMetricDimension(
       dimensionName: pulumi.Input.fromValue(map['dimensionName'] as String),
-      operator: pulumi.Input.fromValue(map['operator'] as String),
+      operator: pulumi.Input.fromValue(map['operator']),
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }

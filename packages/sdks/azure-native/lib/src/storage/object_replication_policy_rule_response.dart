@@ -8,9 +8,9 @@ class ObjectReplicationPolicyRuleResponse {
   /// Required. Destination container name.
   final pulumi.Input<String> destinationContainer;
   /// Optional. An object that defines the filter set.
-  final pulumi.Input<ObjectReplicationPolicyFilterResponse>? filters;
+  final pulumi.Input<ObjectReplicationPolicyFilterResponse?>? filters;
   /// Rule Id is auto-generated for each new rule on destination account. It is required for put policy on source account.
-  final pulumi.Input<String>? ruleId;
+  final pulumi.Input<String?>? ruleId;
   /// Required. Source container name.
   final pulumi.Input<String> sourceContainer;
 

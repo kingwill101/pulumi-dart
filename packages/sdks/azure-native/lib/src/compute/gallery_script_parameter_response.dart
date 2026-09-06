@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The definition of a parameter that can be passed to a script of a Gallery Script Version.
 class GalleryScriptParameterResponse {
   /// The default value of the parameter, only applies to string types.
-  final pulumi.Input<String>? defaultValue;
+  final pulumi.Input<String?>? defaultValue;
   /// A description to help users understand what this parameter means
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A list of permissible values. Only applicable values are from 'enum' values defined in 'GalleryScriptParameter'.
-  final pulumi.Input<List<String>>? enumValues;
+  final pulumi.Input<List<String>?>? enumValues;
   /// The minimum value of parameter.
-  final pulumi.Input<String>? maxValue;
+  final pulumi.Input<String?>? maxValue;
   /// The minimum value of parameter.
-  final pulumi.Input<String>? minValue;
+  final pulumi.Input<String?>? minValue;
   /// The name of the parameter.
   final pulumi.Input<String> name;
   /// Indicates whether this parameter must be passed.
-  final pulumi.Input<bool>? required;
+  final pulumi.Input<bool?>? required;
   /// Specifies the type of the Gallery Script parameter. Possible values are: String, Int, Double, Boolean, Enum
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [GalleryScriptParameterResponse].
   /// [defaultValue] The default value of the parameter, only applies to string types.

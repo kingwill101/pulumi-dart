@@ -13,13 +13,13 @@ class ElasticBackupPropertiesResponse {
   /// ResourceId used to identify the elastic backup policy
   final pulumi.Input<String> elasticBackupPolicyResourceId;
   /// ResourceId used to identify the elastic snapshot resource. This is required when an existing snapshot needs to be used for creating a manual backup
-  final pulumi.Input<String>? elasticSnapshotResourceId;
+  final pulumi.Input<String?>? elasticSnapshotResourceId;
   /// ResourceId used to identify the Elastic Volume
   final pulumi.Input<String> elasticVolumeResourceId;
   /// Failure reason
   final pulumi.Input<String> failureReason;
   /// Label for backup
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Azure lifecycle management.
   final pulumi.Input<String> provisioningState;
   /// Size of backup in bytes
@@ -27,7 +27,7 @@ class ElasticBackupPropertiesResponse {
   /// The snapshot creation date of the backup
   final pulumi.Input<String> snapshotCreationDate;
   /// Manual backup using an already existing snapshot. This will always be CreateNewSnapshot for scheduled backups and UseExistingSnapshot/CreateNewSnapshot for manual backups
-  final pulumi.Input<String>? snapshotUsage;
+  final pulumi.Input<String?>? snapshotUsage;
   /// Specifies if the backup is for a large volume.
   final pulumi.Input<String> volumeSize;
 
@@ -45,7 +45,7 @@ class ElasticBackupPropertiesResponse {
   /// [snapshotCreationDate] The snapshot creation date of the backup
   /// [snapshotUsage] Manual backup using an already existing snapshot. This will always be CreateNewSnapshot for scheduled backups and UseExistingSnapshot/CreateNewSnapshot for manual backups
   /// [volumeSize] Specifies if the backup is for a large volume.
-  const ElasticBackupPropertiesResponse({
+  ElasticBackupPropertiesResponse({
     required this.backupType,
     required this.completionDate,
     required this.creationDate,
@@ -57,9 +57,9 @@ class ElasticBackupPropertiesResponse {
     required this.provisioningState,
     required this.size,
     required this.snapshotCreationDate,
-    this.snapshotUsage,
+    pulumi.Input<String?>? snapshotUsage,
     required this.volumeSize,
-  });
+  }) : snapshotUsage = snapshotUsage ?? pulumi.Input.fromValue('CreateNewSnapshot');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,7 +90,7 @@ class ElasticBackupPropertiesResponse {
       failureReason: pulumi.Input.fromValue(map['failureReason'] as String),
       label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
-      size: pulumi.Input.fromValue(map['size'] as double),
+      size: pulumi.Input.fromValue((map['size'] as num).toDouble()),
       snapshotCreationDate: pulumi.Input.fromValue(map['snapshotCreationDate'] as String),
       snapshotUsage: (() { final guardedValue = map['snapshotUsage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       volumeSize: pulumi.Input.fromValue(map['volumeSize'] as String),

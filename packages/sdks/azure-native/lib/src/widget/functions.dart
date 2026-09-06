@@ -21,3 +21,14 @@ Future<GetEmployeeResult> getEmployee(
   );
   return GetEmployeeResult.fromMap(result);
 }
+
+pulumi.Output<GetEmployeeResult> getEmployeeOutput(
+  GetEmployeeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:widget:getEmployee',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEmployeeResult.fromMap);
+}

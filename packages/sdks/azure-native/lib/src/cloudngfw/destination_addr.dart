@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// destination address
 class DestinationAddr {
   /// special value 'any'
-  final pulumi.Input<List<String>>? cidrs;
+  final pulumi.Input<List<String>?>? cidrs;
   /// list of countries
-  final pulumi.Input<List<String>>? countries;
+  final pulumi.Input<List<String>?>? countries;
   /// list of feeds
-  final pulumi.Input<List<String>>? feeds;
+  final pulumi.Input<List<String>?>? feeds;
   /// fqdn list
-  final pulumi.Input<List<String>>? fqdnLists;
+  final pulumi.Input<List<String>?>? fqdnLists;
   /// prefix list
-  final pulumi.Input<List<String>>? prefixLists;
+  final pulumi.Input<List<String>?>? prefixLists;
 
   /// Creates a new [DestinationAddr].
   /// [cidrs] special value 'any'

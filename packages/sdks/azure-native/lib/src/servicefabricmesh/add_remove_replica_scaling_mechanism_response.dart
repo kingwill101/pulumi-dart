@@ -38,9 +38,9 @@ class AddRemoveReplicaScalingMechanismResponse {
   factory AddRemoveReplicaScalingMechanismResponse.fromMap(Map<String, dynamic> map) {
     return AddRemoveReplicaScalingMechanismResponse(
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      maxCount: pulumi.Input.fromValue(map['maxCount'] as int),
-      minCount: pulumi.Input.fromValue(map['minCount'] as int),
-      scaleIncrement: pulumi.Input.fromValue(map['scaleIncrement'] as int),
+      maxCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxCount'])),
+      minCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minCount'])),
+      scaleIncrement: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scaleIncrement'])),
     );
   }
 }

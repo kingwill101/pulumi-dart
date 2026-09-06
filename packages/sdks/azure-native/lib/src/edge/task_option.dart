@@ -6,17 +6,17 @@ import 'error_action.dart';
 /// Task Option Properties
 class TaskOption {
   /// Parallel worker numbers of the tasks
-  final pulumi.Input<int>? concurrency;
+  final pulumi.Input<int?>? concurrency;
   /// Error action for the tasks
-  final pulumi.Input<ErrorAction>? errorAction;
+  final pulumi.Input<ErrorAction?>? errorAction;
 
   /// Creates a new [TaskOption].
   /// [concurrency] Parallel worker numbers of the tasks
   /// [errorAction] Error action for the tasks
-  const TaskOption({
-    this.concurrency,
+  TaskOption({
+    pulumi.Input<int?>? concurrency,
     this.errorAction,
-  });
+  }) : concurrency = concurrency ?? pulumi.Input.fromValue(1);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,7 +27,7 @@ class TaskOption {
 
   factory TaskOption.fromMap(Map<String, dynamic> map) {
     return TaskOption(
-      concurrency: (() { final guardedValue = map['concurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      concurrency: (() { final guardedValue = map['concurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       errorAction: (() { final guardedValue = map['errorAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ErrorAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

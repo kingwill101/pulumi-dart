@@ -30,6 +30,17 @@ Future<GetFirewallRuleResult> getFirewallRule(
   return GetFirewallRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallRuleResult> getFirewallRuleOutput(
+  GetFirewallRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:mongocluster:getFirewallRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallRuleResult.fromMap);
+}
+
 /// Gets information about a mongo cluster.
 ///
 /// Uses Azure REST API version 2024-07-01.
@@ -48,6 +59,17 @@ Future<GetMongoClusterResult> getMongoCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMongoClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetMongoClusterResult> getMongoClusterOutput(
+  GetMongoClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:mongocluster:getMongoCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMongoClusterResult.fromMap);
 }
 
 /// Get a specific private connection
@@ -70,6 +92,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:mongocluster:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Gets the defintion of a Mongo cluster user.
 ///
 /// Uses Azure REST API version 2025-04-01-preview.
@@ -90,6 +123,17 @@ Future<GetUserResult> getUser(
   return GetUserResult.fromMap(result);
 }
 
+pulumi.Output<GetUserResult> getUserOutput(
+  GetUserArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:mongocluster:getUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserResult.fromMap);
+}
+
 /// List mongo cluster connection strings. This includes the default connection string using SCRAM-SHA-256, as well as other connection strings supported by the cluster.
 ///
 /// Uses Azure REST API version 2024-07-01.
@@ -108,4 +152,15 @@ Future<ListMongoClusterConnectionStringsResult> listMongoClusterConnectionString
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListMongoClusterConnectionStringsResult.fromMap(result);
+}
+
+pulumi.Output<ListMongoClusterConnectionStringsResult> listMongoClusterConnectionStringsOutput(
+  ListMongoClusterConnectionStringsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:mongocluster:listMongoClusterConnectionStrings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListMongoClusterConnectionStringsResult.fromMap);
 }

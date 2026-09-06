@@ -9,15 +9,15 @@ import 'report_grouping_response.dart';
 /// The definition of data present in the report.
 class ReportDatasetResponse {
   /// Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
-  final pulumi.Input<Map<String, ReportAggregationResponse>>? aggregation;
+  final pulumi.Input<Map<String, ReportAggregationResponse>?>? aggregation;
   /// Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided.
-  final pulumi.Input<ReportDatasetConfigurationResponse>? configuration;
+  final pulumi.Input<ReportDatasetConfigurationResponse?>? configuration;
   /// Has filter expression to use in the report.
-  final pulumi.Input<ReportFilterResponse>? filter;
+  final pulumi.Input<ReportFilterResponse?>? filter;
   /// The granularity of rows in the report.
-  final pulumi.Input<String>? granularity;
+  final pulumi.Input<String?>? granularity;
   /// Array of group by expression to use in the report. Report can have up to 2 group by clauses.
-  final pulumi.Input<List<ReportGroupingResponse>>? grouping;
+  final pulumi.Input<List<ReportGroupingResponse>?>? grouping;
 
   /// Creates a new [ReportDatasetResponse].
   /// [aggregation] Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.

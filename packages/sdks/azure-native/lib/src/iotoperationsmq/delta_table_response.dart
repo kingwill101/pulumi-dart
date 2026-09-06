@@ -10,7 +10,7 @@ class DeltaTableResponse {
   /// Delta table name.
   final pulumi.Input<String> tableName;
   /// Delta table path.
-  final pulumi.Input<String>? tablePath;
+  final pulumi.Input<String?>? tablePath;
 
   /// Creates a new [DeltaTableResponse].
   /// [schema] Schema list supported.

@@ -224,7 +224,7 @@ class IpAllocation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allocationTags = registerOutput<Map<String, String>?>('allocationTags');
+    allocationTags = registerOutput<Map<String, String>?>('allocationTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     ipamAllocationId = registerOutput<String?>('ipamAllocationId');
@@ -234,7 +234,31 @@ class IpAllocation extends pulumi.CustomResource {
     prefixLength = registerOutput<int?>('prefixLength');
     prefixType = registerOutput<String?>('prefixType');
     subnet = registerOutput<SubResourceResponse>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    virtualNetwork = registerOutput<SubResourceResponse>('virtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [IpAllocation] resource.
+  IpAllocation.reference(String urn)
+    : super(
+        'azure-native:network:IpAllocation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allocationTags = registerOutput<Map<String, String>?>('allocationTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    ipamAllocationId = registerOutput<String?>('ipamAllocationId');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    prefix = registerOutput<String?>('prefix');
+    prefixLength = registerOutput<int?>('prefixLength');
+    prefixType = registerOutput<String?>('prefixType');
+    subnet = registerOutput<SubResourceResponse>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     virtualNetwork = registerOutput<SubResourceResponse>('virtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

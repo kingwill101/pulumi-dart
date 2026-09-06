@@ -1,8 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_rule_list_response.dart';
+import 'frontend_endpoint_link_response.dart';
 import 'managed_rule_set_list_response.dart';
 import 'policy_args.dart';
 import 'policy_settings_response.dart';
+import 'routing_rule_link_response.dart';
+import 'security_policy_link_response.dart';
 import 'sku_response.dart';
 
 /// Defines web application firewall policy.
@@ -1200,7 +1203,7 @@ class Policy extends pulumi.CustomResource {
   /// Gets a unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String?> etag;
   /// Describes Frontend Endpoints associated with this Web Application Firewall policy.
-  late final pulumi.Output<List<Map<String, dynamic>>> frontendEndpointLinks;
+  late final pulumi.Output<List<FrontendEndpointLinkResponse>> frontendEndpointLinks;
   /// Resource location.
   late final pulumi.Output<String?> location;
   /// Describes managed rules inside the policy.
@@ -1214,9 +1217,9 @@ class Policy extends pulumi.CustomResource {
   /// Resource status of the policy.
   late final pulumi.Output<String> resourceState;
   /// Describes Routing Rules associated with this Web Application Firewall policy.
-  late final pulumi.Output<List<Map<String, dynamic>>> routingRuleLinks;
+  late final pulumi.Output<List<RoutingRuleLinkResponse>> routingRuleLinks;
   /// Describes Security Policy associated with this Web Application Firewall policy.
-  late final pulumi.Output<List<Map<String, dynamic>>> securityPolicyLinks;
+  late final pulumi.Output<List<SecurityPolicyLinkResponse>> securityPolicyLinks;
   /// The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified.
   late final pulumi.Output<SkuResponse?> sku;
   /// Resource tags.
@@ -1241,17 +1244,43 @@ class Policy extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     customRules = registerOutput<CustomRuleListResponse?>('customRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomRuleListResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String?>('etag');
-    frontendEndpointLinks = registerOutput<List<Map<String, dynamic>>>('frontendEndpointLinks');
+    frontendEndpointLinks = registerOutput<List<FrontendEndpointLinkResponse>>('frontendEndpointLinks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontendEndpointLinkResponse>(guardedValue, (value) => FrontendEndpointLinkResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String?>('location');
     managedRules = registerOutput<ManagedRuleSetListResponse?>('managedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedRuleSetListResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     policySettings = registerOutput<PolicySettingsResponse?>('policySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     resourceState = registerOutput<String>('resourceState');
-    routingRuleLinks = registerOutput<List<Map<String, dynamic>>>('routingRuleLinks');
-    securityPolicyLinks = registerOutput<List<Map<String, dynamic>>>('securityPolicyLinks');
+    routingRuleLinks = registerOutput<List<RoutingRuleLinkResponse>>('routingRuleLinks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingRuleLinkResponse>(guardedValue, (value) => RoutingRuleLinkResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    securityPolicyLinks = registerOutput<List<SecurityPolicyLinkResponse>>('securityPolicyLinks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityPolicyLinkResponse>(guardedValue, (value) => SecurityPolicyLinkResponse.fromMap((value as Map).cast<String, dynamic>())); });
     sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Policy] resource.
+  Policy.reference(String urn)
+    : super(
+        'azure-native:frontdoor:Policy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customRules = registerOutput<CustomRuleListResponse?>('customRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomRuleListResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String?>('etag');
+    frontendEndpointLinks = registerOutput<List<FrontendEndpointLinkResponse>>('frontendEndpointLinks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontendEndpointLinkResponse>(guardedValue, (value) => FrontendEndpointLinkResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String?>('location');
+    managedRules = registerOutput<ManagedRuleSetListResponse?>('managedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedRuleSetListResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    policySettings = registerOutput<PolicySettingsResponse?>('policySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceState = registerOutput<String>('resourceState');
+    routingRuleLinks = registerOutput<List<RoutingRuleLinkResponse>>('routingRuleLinks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingRuleLinkResponse>(guardedValue, (value) => RoutingRuleLinkResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    securityPolicyLinks = registerOutput<List<SecurityPolicyLinkResponse>>('securityPolicyLinks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityPolicyLinkResponse>(guardedValue, (value) => SecurityPolicyLinkResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

@@ -267,4 +267,24 @@ class NamespaceTopicEventSubscription extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [NamespaceTopicEventSubscription] resource.
+  NamespaceTopicEventSubscription.reference(String urn)
+    : super(
+        'azure-native:eventgrid:NamespaceTopicEventSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deliveryConfiguration = registerOutput<DeliveryConfigurationResponse?>('deliveryConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeliveryConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    eventDeliverySchema = registerOutput<String?>('eventDeliverySchema');
+    expirationTimeUtc = registerOutput<String?>('expirationTimeUtc');
+    filtersConfiguration = registerOutput<FiltersConfigurationResponse?>('filtersConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FiltersConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

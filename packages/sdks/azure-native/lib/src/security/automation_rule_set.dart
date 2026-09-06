@@ -5,7 +5,7 @@ import 'automation_triggering_rule.dart';
 
 /// A rule set which evaluates all its rules upon an event interception. Only when all the included rules in the rule set will be evaluated as 'true', will the event trigger the defined actions.
 class AutomationRuleSet {
-  final pulumi.Input<List<AutomationTriggeringRule>>? rules;
+  final pulumi.Input<List<AutomationTriggeringRule>?>? rules;
 
   /// Creates a new [AutomationRuleSet].
   /// [rules] Optional.

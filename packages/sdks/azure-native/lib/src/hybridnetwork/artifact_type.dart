@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The artifact type.
-enum ArtifactType {
+enum ArtifactType implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueOCIArtifact("OCIArtifact"),
   valueVhdImageFile("VhdImageFile"),
@@ -7,6 +9,7 @@ enum ArtifactType {
   valueImageFile("ImageFile");
 
   const ArtifactType(this.wireValue);
+  @override
   final String wireValue;
 
   static ArtifactType fromValue(String value) {

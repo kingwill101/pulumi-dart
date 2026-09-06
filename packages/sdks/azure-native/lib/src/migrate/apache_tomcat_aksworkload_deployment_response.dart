@@ -15,33 +15,33 @@ import 'web_application_directory_response.dart';
 /// ApacheTomcat web application.
 class ApacheTomcatAKSWorkloadDeploymentResponse {
   /// Class for automation artifact.
-  final pulumi.Input<AutomationArtifactResponse>? automationArtifactProperties;
+  final pulumi.Input<AutomationArtifactResponse?>? automationArtifactProperties;
   /// Gets or sets the bindings for the application.
-  final pulumi.Input<List<BindingResponse>>? bindings;
+  final pulumi.Input<List<BindingResponse>?>? bindings;
   /// Gets or sets the build container images.
-  final pulumi.Input<List<ContainerImagePropertiesResponse>>? buildContainerImages;
+  final pulumi.Input<List<ContainerImagePropertiesResponse>?>? buildContainerImages;
   /// Class for AKSDeployment Properties.
-  final pulumi.Input<AKSDeploymentPropertiesResponse>? clusterProperties;
+  final pulumi.Input<AKSDeploymentPropertiesResponse?>? clusterProperties;
   /// Gets or sets application configuration.
-  final pulumi.Input<List<WebApplicationConfigurationResponse>>? configurations;
+  final pulumi.Input<List<WebApplicationConfigurationResponse>?>? configurations;
   /// Class for container image properties.
-  final pulumi.Input<ContainerImagePropertiesResponse>? containerImageProperties;
+  final pulumi.Input<ContainerImagePropertiesResponse?>? containerImageProperties;
   /// Gets or sets the deployment history.
   final pulumi.Input<List<DeployedResourcesPropertiesResponse>> deploymentHistory;
   /// Gets or sets the deployment name prefix.
-  final pulumi.Input<String>? deploymentNamePrefix;
+  final pulumi.Input<String?>? deploymentNamePrefix;
   /// AKS Deployment Specification.
-  final pulumi.Input<AKSDeploymentSpecificationResponse>? deploymentSpec;
+  final pulumi.Input<AKSDeploymentSpecificationResponse?>? deploymentSpec;
   /// Gets or sets application directories.
-  final pulumi.Input<List<WebApplicationDirectoryResponse>>? directories;
+  final pulumi.Input<List<WebApplicationDirectoryResponse>?>? directories;
   /// Resource Requirements.
-  final pulumi.Input<ResourceRequirementsResponse>? limits;
+  final pulumi.Input<ResourceRequirementsResponse?>? limits;
   /// Class for app insight monitoring properties.
-  final pulumi.Input<AppInsightMonitoringPropertiesResponse>? monitoringProperties;
+  final pulumi.Input<AppInsightMonitoringPropertiesResponse?>? monitoringProperties;
   /// Resource Requirements.
-  final pulumi.Input<ResourceRequirementsResponse>? requests;
+  final pulumi.Input<ResourceRequirementsResponse?>? requests;
   /// Gets or sets the target platform managed identity.
-  final pulumi.Input<String>? targetPlatformIdentity;
+  final pulumi.Input<String?>? targetPlatformIdentity;
 
   /// Creates a new [ApacheTomcatAKSWorkloadDeploymentResponse].
   /// [automationArtifactProperties] Class for automation artifact.

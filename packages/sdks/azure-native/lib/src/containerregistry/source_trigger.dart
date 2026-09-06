@@ -10,21 +10,21 @@ class SourceTrigger {
   /// The properties that describes the source(code) for the task.
   final pulumi.Input<SourceProperties> sourceRepository;
   /// The source event corresponding to the trigger.
-  final pulumi.Input<List<String>> sourceTriggerEvents;
+  final pulumi.Input<List<dynamic>> sourceTriggerEvents;
   /// The current status of trigger.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [SourceTrigger].
   /// [name] The name of the trigger.
   /// [sourceRepository] The properties that describes the source(code) for the task.
   /// [sourceTriggerEvents] The source event corresponding to the trigger.
   /// [status] The current status of trigger.
-  const SourceTrigger({
+  SourceTrigger({
     required this.name,
     required this.sourceRepository,
     required this.sourceTriggerEvents,
-    this.status,
-  });
+    pulumi.Input<dynamic>? status,
+  }) : status = status ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,8 +39,8 @@ class SourceTrigger {
     return SourceTrigger(
       name: pulumi.Input.fromValue(map['name'] as String),
       sourceRepository: pulumi.Input.fromValue(SourceProperties.fromMap((map['sourceRepository']! as Map).cast<String, dynamic>())),
-      sourceTriggerEvents: pulumi.Input.fromValue((map['sourceTriggerEvents'] as List).cast<String>()),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceTriggerEvents: pulumi.Input.fromValue((map['sourceTriggerEvents'] as List).cast<dynamic>()),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

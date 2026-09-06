@@ -6,19 +6,19 @@ import 'bfd_configuration_response.dart';
 /// option A properties
 class VpnConfigurationPropertiesResponseOptionAProperties {
   /// BFD Configuration properties.
-  final pulumi.Input<BfdConfigurationResponse>? bfdConfiguration;
+  final pulumi.Input<BfdConfigurationResponse?>? bfdConfiguration;
   /// MTU to use for option A peering.
-  final pulumi.Input<int>? mtu;
+  final pulumi.Input<int?>? mtu;
   /// Peer ASN number.Example : 28
   final pulumi.Input<double> peerASN;
   /// IPv4 Address Prefix.
-  final pulumi.Input<String>? primaryIpv4Prefix;
+  final pulumi.Input<String?>? primaryIpv4Prefix;
   /// IPv6 Address Prefix.
-  final pulumi.Input<String>? primaryIpv6Prefix;
+  final pulumi.Input<String?>? primaryIpv6Prefix;
   /// Secondary IPv4 Address Prefix.
-  final pulumi.Input<String>? secondaryIpv4Prefix;
+  final pulumi.Input<String?>? secondaryIpv4Prefix;
   /// Secondary IPv6 Address Prefix.
-  final pulumi.Input<String>? secondaryIpv6Prefix;
+  final pulumi.Input<String?>? secondaryIpv6Prefix;
   /// Vlan Id.Example : 501
   final pulumi.Input<int> vlanId;
 
@@ -31,16 +31,16 @@ class VpnConfigurationPropertiesResponseOptionAProperties {
   /// [secondaryIpv4Prefix] Secondary IPv4 Address Prefix.
   /// [secondaryIpv6Prefix] Secondary IPv6 Address Prefix.
   /// [vlanId] Vlan Id.Example : 501
-  const VpnConfigurationPropertiesResponseOptionAProperties({
+  VpnConfigurationPropertiesResponseOptionAProperties({
     this.bfdConfiguration,
-    this.mtu,
+    pulumi.Input<int?>? mtu,
     required this.peerASN,
     this.primaryIpv4Prefix,
     this.primaryIpv6Prefix,
     this.secondaryIpv4Prefix,
     this.secondaryIpv6Prefix,
     required this.vlanId,
-  });
+  }) : mtu = mtu ?? pulumi.Input.fromValue(1500);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,13 +58,13 @@ class VpnConfigurationPropertiesResponseOptionAProperties {
   factory VpnConfigurationPropertiesResponseOptionAProperties.fromMap(Map<String, dynamic> map) {
     return VpnConfigurationPropertiesResponseOptionAProperties(
       bfdConfiguration: (() { final guardedValue = map['bfdConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BfdConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      peerASN: pulumi.Input.fromValue(map['peerASN'] as double),
+      mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      peerASN: pulumi.Input.fromValue((map['peerASN'] as num).toDouble()),
       primaryIpv4Prefix: (() { final guardedValue = map['primaryIpv4Prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       primaryIpv6Prefix: (() { final guardedValue = map['primaryIpv6Prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secondaryIpv4Prefix: (() { final guardedValue = map['secondaryIpv4Prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secondaryIpv6Prefix: (() { final guardedValue = map['secondaryIpv6Prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vlanId: pulumi.Input.fromValue(map['vlanId'] as int),
+      vlanId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vlanId'])),
     );
   }
 }

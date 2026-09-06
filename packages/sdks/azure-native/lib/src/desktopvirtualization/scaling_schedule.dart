@@ -6,41 +6,41 @@ import 'time.dart';
 /// A ScalingPlanPooledSchedule.
 class ScalingSchedule {
   /// Set of days of the week on which this schedule is active.
-  final pulumi.Input<List<String>>? daysOfWeek;
+  final pulumi.Input<List<String>?>? daysOfWeek;
   /// Name of the ScalingPlanPooledSchedule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Load balancing algorithm for off-peak period.
-  final pulumi.Input<String>? offPeakLoadBalancingAlgorithm;
+  final pulumi.Input<dynamic>? offPeakLoadBalancingAlgorithm;
   /// Starting time for off-peak period.
-  final pulumi.Input<Time>? offPeakStartTime;
+  final pulumi.Input<Time?>? offPeakStartTime;
   /// Load balancing algorithm for peak period.
-  final pulumi.Input<String>? peakLoadBalancingAlgorithm;
+  final pulumi.Input<dynamic>? peakLoadBalancingAlgorithm;
   /// Starting time for peak period.
-  final pulumi.Input<Time>? peakStartTime;
+  final pulumi.Input<Time?>? peakStartTime;
   /// Capacity threshold for ramp down period.
-  final pulumi.Input<int>? rampDownCapacityThresholdPct;
+  final pulumi.Input<int?>? rampDownCapacityThresholdPct;
   /// Should users be logged off forcefully from hosts.
-  final pulumi.Input<bool>? rampDownForceLogoffUsers;
+  final pulumi.Input<bool?>? rampDownForceLogoffUsers;
   /// Load balancing algorithm for ramp down period.
-  final pulumi.Input<String>? rampDownLoadBalancingAlgorithm;
+  final pulumi.Input<dynamic>? rampDownLoadBalancingAlgorithm;
   /// Minimum host percentage for ramp down period.
-  final pulumi.Input<int>? rampDownMinimumHostsPct;
+  final pulumi.Input<int?>? rampDownMinimumHostsPct;
   /// Notification message for users during ramp down period.
-  final pulumi.Input<String>? rampDownNotificationMessage;
+  final pulumi.Input<String?>? rampDownNotificationMessage;
   /// Starting time for ramp down period.
-  final pulumi.Input<Time>? rampDownStartTime;
+  final pulumi.Input<Time?>? rampDownStartTime;
   /// Specifies when to stop hosts during ramp down period.
-  final pulumi.Input<String>? rampDownStopHostsWhen;
+  final pulumi.Input<dynamic>? rampDownStopHostsWhen;
   /// Number of minutes to wait to stop hosts during ramp down period.
-  final pulumi.Input<int>? rampDownWaitTimeMinutes;
+  final pulumi.Input<int?>? rampDownWaitTimeMinutes;
   /// Capacity threshold for ramp up period.
-  final pulumi.Input<int>? rampUpCapacityThresholdPct;
+  final pulumi.Input<int?>? rampUpCapacityThresholdPct;
   /// Load balancing algorithm for ramp up period.
-  final pulumi.Input<String>? rampUpLoadBalancingAlgorithm;
+  final pulumi.Input<dynamic>? rampUpLoadBalancingAlgorithm;
   /// Minimum host percentage for ramp up period.
-  final pulumi.Input<int>? rampUpMinimumHostsPct;
+  final pulumi.Input<int?>? rampUpMinimumHostsPct;
   /// Starting time for ramp up period.
-  final pulumi.Input<Time>? rampUpStartTime;
+  final pulumi.Input<Time?>? rampUpStartTime;
 
   /// Creates a new [ScalingSchedule].
   /// [daysOfWeek] Set of days of the week on which this schedule is active.
@@ -109,21 +109,21 @@ class ScalingSchedule {
     return ScalingSchedule(
       daysOfWeek: (() { final guardedValue = map['daysOfWeek']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      offPeakLoadBalancingAlgorithm: (() { final guardedValue = map['offPeakLoadBalancingAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      offPeakLoadBalancingAlgorithm: (() { final guardedValue = map['offPeakLoadBalancingAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       offPeakStartTime: (() { final guardedValue = map['offPeakStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Time.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      peakLoadBalancingAlgorithm: (() { final guardedValue = map['peakLoadBalancingAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peakLoadBalancingAlgorithm: (() { final guardedValue = map['peakLoadBalancingAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       peakStartTime: (() { final guardedValue = map['peakStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Time.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      rampDownCapacityThresholdPct: (() { final guardedValue = map['rampDownCapacityThresholdPct']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rampDownCapacityThresholdPct: (() { final guardedValue = map['rampDownCapacityThresholdPct']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       rampDownForceLogoffUsers: (() { final guardedValue = map['rampDownForceLogoffUsers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      rampDownLoadBalancingAlgorithm: (() { final guardedValue = map['rampDownLoadBalancingAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rampDownMinimumHostsPct: (() { final guardedValue = map['rampDownMinimumHostsPct']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rampDownLoadBalancingAlgorithm: (() { final guardedValue = map['rampDownLoadBalancingAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      rampDownMinimumHostsPct: (() { final guardedValue = map['rampDownMinimumHostsPct']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       rampDownNotificationMessage: (() { final guardedValue = map['rampDownNotificationMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rampDownStartTime: (() { final guardedValue = map['rampDownStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Time.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      rampDownStopHostsWhen: (() { final guardedValue = map['rampDownStopHostsWhen']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rampDownWaitTimeMinutes: (() { final guardedValue = map['rampDownWaitTimeMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      rampUpCapacityThresholdPct: (() { final guardedValue = map['rampUpCapacityThresholdPct']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      rampUpLoadBalancingAlgorithm: (() { final guardedValue = map['rampUpLoadBalancingAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rampUpMinimumHostsPct: (() { final guardedValue = map['rampUpMinimumHostsPct']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rampDownStopHostsWhen: (() { final guardedValue = map['rampDownStopHostsWhen']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      rampDownWaitTimeMinutes: (() { final guardedValue = map['rampDownWaitTimeMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      rampUpCapacityThresholdPct: (() { final guardedValue = map['rampUpCapacityThresholdPct']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      rampUpLoadBalancingAlgorithm: (() { final guardedValue = map['rampUpLoadBalancingAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      rampUpMinimumHostsPct: (() { final guardedValue = map['rampUpMinimumHostsPct']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       rampUpStartTime: (() { final guardedValue = map['rampUpStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Time.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

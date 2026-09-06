@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The SKU of the Maps Account.
 class Sku {
   /// The name of the SKU, in standard format (such as G2).
-  final pulumi.Input<String> name;
+  final pulumi.Input<dynamic> name;
 
   /// Creates a new [Sku].
   /// [name] The name of the SKU, in standard format (such as G2).
@@ -21,7 +21,7 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      name: pulumi.Input.fromValue(map['name'] as String),
+      name: pulumi.Input.fromValue(map['name']),
     );
   }
 }

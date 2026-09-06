@@ -12,31 +12,31 @@ import 'temporary_disk.dart';
 /// App resource properties payload
 class AppResourceProperties {
   /// Collection of addons
-  final pulumi.Input<Map<String, dynamic>>? addonConfigs;
+  final pulumi.Input<Map<String, dynamic>?>? addonConfigs;
   /// List of custom persistent disks
-  final pulumi.Input<List<CustomPersistentDiskResource>>? customPersistentDisks;
+  final pulumi.Input<List<CustomPersistentDiskResource>?>? customPersistentDisks;
   /// Indicate if end to end TLS is enabled.
-  final pulumi.Input<bool>? enableEndToEndTLS;
+  final pulumi.Input<bool?>? enableEndToEndTLS;
   /// Indicate if only https is allowed.
-  final pulumi.Input<bool>? httpsOnly;
+  final pulumi.Input<bool?>? httpsOnly;
   /// App ingress settings payload.
-  final pulumi.Input<IngressSettings>? ingressSettings;
+  final pulumi.Input<IngressSettings?>? ingressSettings;
   /// Collection of loaded certificates
-  final pulumi.Input<List<LoadedCertificate>>? loadedCertificates;
+  final pulumi.Input<List<LoadedCertificate>?>? loadedCertificates;
   /// Persistent disk settings
-  final pulumi.Input<PersistentDisk>? persistentDisk;
+  final pulumi.Input<PersistentDisk?>? persistentDisk;
   /// Indicates whether the App exposes public endpoint
-  final pulumi.Input<bool>? public;
+  final pulumi.Input<bool?>? public;
   /// Collection of auth secrets
-  final pulumi.Input<List<Secret>>? secrets;
+  final pulumi.Input<List<Secret>?>? secrets;
   /// Temporary disk settings
-  final pulumi.Input<TemporaryDisk>? temporaryDisk;
+  final pulumi.Input<TemporaryDisk?>? temporaryDisk;
   /// State of test endpoint auth.
-  final pulumi.Input<String>? testEndpointAuthState;
+  final pulumi.Input<dynamic>? testEndpointAuthState;
   /// Additional App settings in vnet injection instance
-  final pulumi.Input<AppVNetAddons>? vnetAddons;
+  final pulumi.Input<AppVNetAddons?>? vnetAddons;
   /// The workload profile used for this app. Supported for Consumption + Dedicated plan.
-  final pulumi.Input<String>? workloadProfileName;
+  final pulumi.Input<String?>? workloadProfileName;
 
   /// Creates a new [AppResourceProperties].
   /// [addonConfigs] Collection of addons
@@ -52,21 +52,21 @@ class AppResourceProperties {
   /// [testEndpointAuthState] State of test endpoint auth.
   /// [vnetAddons] Additional App settings in vnet injection instance
   /// [workloadProfileName] The workload profile used for this app. Supported for Consumption + Dedicated plan.
-  const AppResourceProperties({
+  AppResourceProperties({
     this.addonConfigs,
     this.customPersistentDisks,
-    this.enableEndToEndTLS,
-    this.httpsOnly,
+    pulumi.Input<bool?>? enableEndToEndTLS,
+    pulumi.Input<bool?>? httpsOnly,
     this.ingressSettings,
     this.loadedCertificates,
     this.persistentDisk,
     this.public,
     this.secrets,
     this.temporaryDisk,
-    this.testEndpointAuthState,
+    pulumi.Input<dynamic>? testEndpointAuthState,
     this.vnetAddons,
     this.workloadProfileName,
-  });
+  }) : enableEndToEndTLS = enableEndToEndTLS ?? pulumi.Input.fromValue(false), httpsOnly = httpsOnly ?? pulumi.Input.fromValue(false), testEndpointAuthState = testEndpointAuthState ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,7 +98,7 @@ class AppResourceProperties {
       public: (() { final guardedValue = map['public']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Secret>(guardedValue, (value) => Secret.fromMap((value as Map).cast<String, dynamic>()))); })(),
       temporaryDisk: (() { final guardedValue = map['temporaryDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TemporaryDisk.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      testEndpointAuthState: (() { final guardedValue = map['testEndpointAuthState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      testEndpointAuthState: (() { final guardedValue = map['testEndpointAuthState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       vnetAddons: (() { final guardedValue = map['vnetAddons']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppVNetAddons.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       workloadProfileName: (() { final guardedValue = map['workloadProfileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BindOptions {
   /// Indicate whether to create host path.
-  final pulumi.Input<bool>? createHostPath;
+  final pulumi.Input<bool?>? createHostPath;
   /// Type of Bind Option
-  final pulumi.Input<String>? propagation;
+  final pulumi.Input<String?>? propagation;
   /// Mention the selinux options.
-  final pulumi.Input<String>? selinux;
+  final pulumi.Input<String?>? selinux;
 
   /// Creates a new [BindOptions].
   /// [createHostPath] Indicate whether to create host path.

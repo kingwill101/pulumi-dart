@@ -6,11 +6,11 @@ import 'sub_resource.dart';
 /// IP configuration of an application gateway. Currently 1 public and 1 private IP configuration is allowed.
 class ApplicationGatewayIPConfiguration {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the IP configuration that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Reference to the subnet resource. A subnet from where application gateway gets its private address.
-  final pulumi.Input<SubResource>? subnet;
+  final pulumi.Input<SubResource?>? subnet;
 
   /// Creates a new [ApplicationGatewayIPConfiguration].
   /// [id] Resource ID.

@@ -6,13 +6,13 @@ import 'execution_statistics_response.dart';
 /// Describes query analysis results for execution in source and target
 class QueryExecutionResultResponse {
   /// Query text retrieved from the source server
-  final pulumi.Input<String>? queryText;
+  final pulumi.Input<String?>? queryText;
   /// Query analysis result from the source
-  final pulumi.Input<ExecutionStatisticsResponse>? sourceResult;
+  final pulumi.Input<ExecutionStatisticsResponse?>? sourceResult;
   /// Total no. of statements in the batch
-  final pulumi.Input<double>? statementsInBatch;
+  final pulumi.Input<double?>? statementsInBatch;
   /// Query analysis result from the target
-  final pulumi.Input<ExecutionStatisticsResponse>? targetResult;
+  final pulumi.Input<ExecutionStatisticsResponse?>? targetResult;
 
   /// Creates a new [QueryExecutionResultResponse].
   /// [queryText] Query text retrieved from the source server
@@ -39,7 +39,7 @@ class QueryExecutionResultResponse {
     return QueryExecutionResultResponse(
       queryText: (() { final guardedValue = map['queryText']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceResult: (() { final guardedValue = map['sourceResult']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExecutionStatisticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      statementsInBatch: (() { final guardedValue = map['statementsInBatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      statementsInBatch: (() { final guardedValue = map['statementsInBatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       targetResult: (() { final guardedValue = map['targetResult']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExecutionStatisticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_marketplace_private_store_collection_args_doc}
 class PrivateStoreCollectionArgs {
   /// Indicating whether all subscriptions are selected (=true) or not (=false).
-  final pulumi.Input<bool>? allSubscriptions;
+  final pulumi.Input<bool?>? allSubscriptions;
   /// Gets or sets the association with Commercial's Billing Account.
-  final pulumi.Input<String>? claim;
+  final pulumi.Input<String?>? claim;
   /// The collection ID
-  final pulumi.Input<String>? collectionId;
+  final pulumi.Input<String?>? collectionId;
   /// Gets or sets collection name.
-  final pulumi.Input<String>? collectionName;
+  final pulumi.Input<String?>? collectionName;
   /// Indicating whether the collection is enabled or disabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The store ID - must use the tenant ID
   final pulumi.Input<String> privateStoreId;
   /// Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request
-  final pulumi.Input<List<String>>? subscriptionsList;
+  final pulumi.Input<List<String>?>? subscriptionsList;
 
   /// Creates a new [PrivateStoreCollectionArgs].
   /// [allSubscriptions] Indicating whether all subscriptions are selected (=true) or not (=false).

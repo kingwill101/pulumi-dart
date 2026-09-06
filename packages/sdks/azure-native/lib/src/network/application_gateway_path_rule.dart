@@ -6,23 +6,23 @@ import 'sub_resource.dart';
 /// Path rule of URL path map of an application gateway.
 class ApplicationGatewayPathRule {
   /// Backend address pool resource of URL path map path rule.
-  final pulumi.Input<SubResource>? backendAddressPool;
+  final pulumi.Input<SubResource?>? backendAddressPool;
   /// Backend http settings resource of URL path map path rule.
-  final pulumi.Input<SubResource>? backendHttpSettings;
+  final pulumi.Input<SubResource?>? backendHttpSettings;
   /// Reference to the FirewallPolicy resource.
-  final pulumi.Input<SubResource>? firewallPolicy;
+  final pulumi.Input<SubResource?>? firewallPolicy;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Load Distribution Policy resource of URL path map path rule.
-  final pulumi.Input<SubResource>? loadDistributionPolicy;
+  final pulumi.Input<SubResource?>? loadDistributionPolicy;
   /// Name of the path rule that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Path rules of URL path map.
-  final pulumi.Input<List<String>>? paths;
+  final pulumi.Input<List<String>?>? paths;
   /// Redirect configuration resource of URL path map path rule.
-  final pulumi.Input<SubResource>? redirectConfiguration;
+  final pulumi.Input<SubResource?>? redirectConfiguration;
   /// Rewrite rule set resource of URL path map path rule.
-  final pulumi.Input<SubResource>? rewriteRuleSet;
+  final pulumi.Input<SubResource?>? rewriteRuleSet;
 
   /// Creates a new [ApplicationGatewayPathRule].
   /// [backendAddressPool] Backend address pool resource of URL path map path rule.

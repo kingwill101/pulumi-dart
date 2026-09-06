@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// InventoryConfigurationOptionalFields enum
-enum InventoryConfigurationOptionalFields {
+enum InventoryConfigurationOptionalFields implements pulumi.PulumiEnum<String> {
   bucketKeyStatus("BucketKeyStatus"),
   checksumAlgorithm("ChecksumAlgorithm"),
   eTag("ETag"),
@@ -17,6 +19,7 @@ enum InventoryConfigurationOptionalFields {
   storageClass("StorageClass");
 
   const InventoryConfigurationOptionalFields(this.wireValue);
+  @override
   final String wireValue;
 
   static InventoryConfigurationOptionalFields fromValue(String value) {

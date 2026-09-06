@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiskExclusionProperties {
   /// List of Disks' Logical Unit Numbers (LUN) to be used for VM Protection.
-  final pulumi.Input<List<int>>? diskLunList;
+  final pulumi.Input<List<int>?>? diskLunList;
   /// Flag to indicate whether DiskLunList is to be included/ excluded from backup.
-  final pulumi.Input<bool>? isInclusionList;
+  final pulumi.Input<bool?>? isInclusionList;
 
   /// Creates a new [DiskExclusionProperties].
   /// [diskLunList] List of Disks' Logical Unit Numbers (LUN) to be used for VM Protection.

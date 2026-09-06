@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Flag indicating whether writeback is enabled for the cache.
-enum EnableWriteBackState {
+enum EnableWriteBackState implements pulumi.PulumiEnum<String> {
   disabled("Disabled"),
   enabled("Enabled");
 
   const EnableWriteBackState(this.wireValue);
+  @override
   final String wireValue;
 
   static EnableWriteBackState fromValue(String value) {

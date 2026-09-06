@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Status of the schema
-enum SchemaStatus {
+enum SchemaStatus implements pulumi.PulumiEnum<String> {
   valueNew("New"),
   valueApproved("Approved");
 
   const SchemaStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static SchemaStatus fromValue(String value) {

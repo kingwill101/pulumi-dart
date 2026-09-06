@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Governance option for this service (Allow, Deny, ExceptionOnly, or NotApplicable).
-enum Option {
+enum Option implements pulumi.PulumiEnum<String> {
   valueAllow("Allow"),
   valueDeny("Deny"),
   valueExceptionOnly("ExceptionOnly"),
   valueNotApplicable("NotApplicable");
 
   const Option(this.wireValue);
+  @override
   final String wireValue;
 
   static Option fromValue(String value) {

@@ -63,13 +63,13 @@ class DraDetailsResponse {
   factory DraDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DraDetailsResponse(
       biosId: pulumi.Input.fromValue(map['biosId'] as String),
-      forwardProtectedItemCount: pulumi.Input.fromValue(map['forwardProtectedItemCount'] as int),
+      forwardProtectedItemCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['forwardProtectedItemCount'])),
       health: pulumi.Input.fromValue(map['health'] as String),
       healthErrors: pulumi.Input.fromValue(pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrors']!, (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))),
       id: pulumi.Input.fromValue(map['id'] as String),
       lastHeartbeatUtc: pulumi.Input.fromValue(map['lastHeartbeatUtc'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      reverseProtectedItemCount: pulumi.Input.fromValue(map['reverseProtectedItemCount'] as int),
+      reverseProtectedItemCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['reverseProtectedItemCount'])),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }

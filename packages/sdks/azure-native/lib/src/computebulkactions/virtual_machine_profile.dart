@@ -15,31 +15,31 @@ import 'storage_profile.dart';
 /// Describes the properties of a Virtual Machine.
 class VirtualMachineProfile {
   /// Specifies additional capabilities enabled or disabled on the virtual machine.
-  final pulumi.Input<AdditionalCapabilities>? additionalCapabilities;
+  final pulumi.Input<AdditionalCapabilities?>? additionalCapabilities;
   /// Specifies the gallery applications that should be made available to the VM.
-  final pulumi.Input<ApplicationProfile>? applicationProfile;
+  final pulumi.Input<ApplicationProfile?>? applicationProfile;
   /// Specifies information about the capacity reservation that is used to allocate virtual machine. Minimum compute api-version: 2021-04-01.
-  final pulumi.Input<CapacityReservationProfile>? capacityReservation;
+  final pulumi.Input<CapacityReservationProfile?>? capacityReservation;
   /// Specifies the boot diagnostic settings state. Minimum compute api-version: 2015-06-15.
-  final pulumi.Input<DiagnosticsProfile>? diagnosticsProfile;
+  final pulumi.Input<DiagnosticsProfile?>? diagnosticsProfile;
   /// Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). Minimum compute api-version: 2020-06-01.
-  final pulumi.Input<String>? extensionsTimeBudget;
+  final pulumi.Input<String?>? extensionsTimeBudget;
   /// Specifies that the image or disk that is being used was licensed on-premises. &lt;br&gt;&lt;br&gt; Possible values for Windows Server operating system are: &lt;br&gt;&lt;br&gt; Windows_Client &lt;br&gt;&lt;br&gt; Windows_Server &lt;br&gt;&lt;br&gt; Possible values for Linux Server operating system are: &lt;br&gt;&lt;br&gt; RHEL_BYOS (for RHEL) &lt;br&gt;&lt;br&gt; SLES_BYOS (for SUSE) &lt;br&gt;&lt;br&gt; For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) &lt;br&gt;&lt;br&gt; [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<String?>? licenseType;
   /// Specifies the network interfaces of the virtual machine.
-  final pulumi.Input<NetworkProfile>? networkProfile;
+  final pulumi.Input<NetworkProfile?>? networkProfile;
   /// Specifies the operating system settings used while creating the virtual machine. Some of the settings cannot be changed once VM is provisioned.
-  final pulumi.Input<OSProfile>? osProfile;
+  final pulumi.Input<OSProfile?>? osProfile;
   /// Specifies Redeploy, Reboot and ScheduledEventsAdditionalPublishingTargets Scheduled Event related configurations for the virtual machine.
-  final pulumi.Input<ScheduledEventsPolicy>? scheduledEventsPolicy;
+  final pulumi.Input<ScheduledEventsPolicy?>? scheduledEventsPolicy;
   /// Specifies Scheduled Event related configurations.
-  final pulumi.Input<ScheduledEventsProfile>? scheduledEventsProfile;
+  final pulumi.Input<ScheduledEventsProfile?>? scheduledEventsProfile;
   /// Specifies the Security related profile settings for the virtual machine.
-  final pulumi.Input<SecurityProfile>? securityProfile;
+  final pulumi.Input<SecurityProfile?>? securityProfile;
   /// Specifies the storage settings for the virtual machine disks.
-  final pulumi.Input<StorageProfile>? storageProfile;
+  final pulumi.Input<StorageProfile?>? storageProfile;
   /// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum compute api-version: 2021-03-01.
-  final pulumi.Input<String>? userData;
+  final pulumi.Input<String?>? userData;
 
   /// Creates a new [VirtualMachineProfile].
   /// [additionalCapabilities] Specifies additional capabilities enabled or disabled on the virtual machine.

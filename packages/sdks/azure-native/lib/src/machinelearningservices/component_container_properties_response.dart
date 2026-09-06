@@ -6,19 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// &lt;see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" /&gt;
 class ComponentContainerPropertiesResponse {
   /// The asset description text.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Is the asset archived?
-  final pulumi.Input<bool>? isArchived;
+  final pulumi.Input<bool?>? isArchived;
   /// The latest version inside this container.
   final pulumi.Input<String> latestVersion;
   /// The next auto incremental version
   final pulumi.Input<String> nextVersion;
   /// The asset property dictionary.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Provisioning state for the component container.
   final pulumi.Input<String> provisioningState;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ComponentContainerPropertiesResponse].
   /// [description] The asset description text.
@@ -28,15 +28,15 @@ class ComponentContainerPropertiesResponse {
   /// [properties] The asset property dictionary.
   /// [provisioningState] Provisioning state for the component container.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  const ComponentContainerPropertiesResponse({
+  ComponentContainerPropertiesResponse({
     this.description,
-    this.isArchived,
+    pulumi.Input<bool?>? isArchived,
     required this.latestVersion,
     required this.nextVersion,
     this.properties,
     required this.provisioningState,
     this.tags,
-  });
+  }) : isArchived = isArchived ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

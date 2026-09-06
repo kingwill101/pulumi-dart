@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Dataflow BuiltIn Transformation dataset properties
 class DataflowBuiltInTransformationDataset {
   /// A user provided optional description of the dataset.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Condition to enrich data from Broker State Store. Example: $1 &lt; 0 || $1 &gt; $2 (Assuming inputs section $1 and $2 are provided)
-  final pulumi.Input<String>? expression;
+  final pulumi.Input<String?>? expression;
   /// List of fields for enriching from the Broker State Store.
   final pulumi.Input<List<String>> inputs;
   /// The key of the dataset.
   final pulumi.Input<String> key;
   /// The reference to the schema that describes the dataset. Allowed: JSON Schema/draft-7.
-  final pulumi.Input<String>? schemaRef;
+  final pulumi.Input<String?>? schemaRef;
 
   /// Creates a new [DataflowBuiltInTransformationDataset].
   /// [description] A user provided optional description of the dataset.

@@ -7,29 +7,29 @@ import 'flavor_data_response.dart';
 /// Model asset version details.
 class ModelVersionPropertiesResponse {
   /// Array of dataset references
-  final pulumi.Input<List<DatasetReferenceResponse>>? datasets;
+  final pulumi.Input<List<DatasetReferenceResponse>?>? datasets;
   /// The asset description text.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Mapping of model flavors to their properties.
-  final pulumi.Input<Map<String, FlavorDataResponse>>? flavors;
+  final pulumi.Input<Map<String, FlavorDataResponse>?>? flavors;
   /// If the name version are system generated (anonymous registration).
-  final pulumi.Input<bool>? isAnonymous;
+  final pulumi.Input<bool?>? isAnonymous;
   /// Is the asset archived?
-  final pulumi.Input<bool>? isArchived;
+  final pulumi.Input<bool?>? isArchived;
   /// Name of the training job which produced this model
-  final pulumi.Input<String>? jobName;
+  final pulumi.Input<String?>? jobName;
   /// The storage format for this entity. Used for NCD.
-  final pulumi.Input<String>? modelType;
+  final pulumi.Input<String?>? modelType;
   /// The URI path to the model contents.
-  final pulumi.Input<String>? modelUri;
+  final pulumi.Input<String?>? modelUri;
   /// The asset property dictionary.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Provisioning state for the model version.
   final pulumi.Input<String> provisioningState;
   /// Stage in the model lifecycle assigned to this model
-  final pulumi.Input<String>? stage;
+  final pulumi.Input<String?>? stage;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ModelVersionPropertiesResponse].
   /// [datasets] Array of dataset references
@@ -44,12 +44,12 @@ class ModelVersionPropertiesResponse {
   /// [provisioningState] Provisioning state for the model version.
   /// [stage] Stage in the model lifecycle assigned to this model
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  const ModelVersionPropertiesResponse({
+  ModelVersionPropertiesResponse({
     this.datasets,
     this.description,
     this.flavors,
-    this.isAnonymous,
-    this.isArchived,
+    pulumi.Input<bool?>? isAnonymous,
+    pulumi.Input<bool?>? isArchived,
     this.jobName,
     this.modelType,
     this.modelUri,
@@ -57,7 +57,7 @@ class ModelVersionPropertiesResponse {
     required this.provisioningState,
     this.stage,
     this.tags,
-  });
+  }) : isAnonymous = isAnonymous ?? pulumi.Input.fromValue(false), isArchived = isArchived ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

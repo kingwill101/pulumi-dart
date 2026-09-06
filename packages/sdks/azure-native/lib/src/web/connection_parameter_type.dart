@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the parameter
-enum ConnectionParameterType {
+enum ConnectionParameterType implements pulumi.PulumiEnum<String> {
   valueString("string"),
   valueSecurestring("securestring"),
   valueSecureobject("secureobject"),
@@ -11,6 +13,7 @@ enum ConnectionParameterType {
   valueConnection("connection");
 
   const ConnectionParameterType(this.wireValue);
+  @override
   final String wireValue;
 
   static ConnectionParameterType fromValue(String value) {

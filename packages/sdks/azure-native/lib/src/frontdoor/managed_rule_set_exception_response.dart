@@ -14,10 +14,10 @@ class ManagedRuleSetExceptionResponse {
   /// When matchVariable is a collection, operator used to specify which elements
   /// in the collection this exception applies to.
   /// Currently supported only for RequestHeaderNames.
-  final pulumi.Input<String>? selector;
+  final pulumi.Input<String?>? selector;
   /// Comparison operator to apply to the selector when specifying which elements
   /// in the collection this exception applies to.
-  final pulumi.Input<String>? selectorMatchOperator;
+  final pulumi.Input<String?>? selectorMatchOperator;
   /// Comparison operator to apply to the value to be matched.
   final pulumi.Input<String> valueMatchOperator;
 

@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The schema object.
 class Schema {
   /// Connection ID associated with this schema
-  final pulumi.Input<String>? connectionId;
+  final pulumi.Input<String?>? connectionId;
   /// Content of the schema
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The direction of the schema.
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<dynamic>? direction;
   /// ID associated with this schema
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the schema
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Schema Type
-  final pulumi.Input<String>? schemaType;
+  final pulumi.Input<dynamic>? schemaType;
   /// Uri containing SAS token for the zipped schema
-  final pulumi.Input<String>? schemaUri;
+  final pulumi.Input<String?>? schemaUri;
   /// Status of the schema
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [Schema].
   /// [connectionId] Connection ID associated with this schema
@@ -58,12 +58,12 @@ class Schema {
     return Schema(
       connectionId: (() { final guardedValue = map['connectionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      schemaType: (() { final guardedValue = map['schemaType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schemaType: (() { final guardedValue = map['schemaType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       schemaUri: (() { final guardedValue = map['schemaUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

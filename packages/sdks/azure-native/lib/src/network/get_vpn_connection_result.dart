@@ -10,15 +10,15 @@ import 'vpn_site_link_connection_response.dart';
 /// Result data returned by getVpnConnection.
 class GetVpnConnectionResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Expected bandwidth in MBPS.
   final int? connectionBandwidth;
   /// The connection status.
-  final String connectionStatus;
+  final String? connectionStatus;
   /// DPD timeout in seconds for vpn connection.
   final int? dpdTimeoutSeconds;
   /// Egress bytes transferred.
-  final double egressBytesTransferred;
+  final double? egressBytesTransferred;
   /// EnableBgp flag.
   final bool? enableBgp;
   /// Enable internet security.
@@ -26,17 +26,17 @@ class GetVpnConnectionResult {
   /// EnableBgp flag.
   final bool? enableRateLimiting;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Resource ID.
   final String? id;
   /// Ingress bytes transferred.
-  final double ingressBytesTransferred;
+  final double? ingressBytesTransferred;
   /// The IPSec Policies to be considered by this connection.
   final List<IpsecPolicyResponse>? ipsecPolicies;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final String? name;
   /// The provisioning state of the VPN connection resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Id of the connected vpn site.
   final SubResourceResponse? remoteVpnSite;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
@@ -81,20 +81,20 @@ class GetVpnConnectionResult {
   /// [vpnConnectionProtocolType] Connection protocol used for this connection.
   /// [vpnLinkConnections] List of all vpn site link connections to the gateway.
   const GetVpnConnectionResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.connectionBandwidth,
-    required this.connectionStatus,
+    this.connectionStatus,
     this.dpdTimeoutSeconds,
-    required this.egressBytesTransferred,
+    this.egressBytesTransferred,
     this.enableBgp,
     this.enableInternetSecurity,
     this.enableRateLimiting,
-    required this.etag,
+    this.etag,
     this.id,
-    required this.ingressBytesTransferred,
+    this.ingressBytesTransferred,
     this.ipsecPolicies,
     this.name,
-    required this.provisioningState,
+    this.provisioningState,
     this.remoteVpnSite,
     this.routingConfiguration,
     this.routingWeight,
@@ -108,20 +108,20 @@ class GetVpnConnectionResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'connectionBandwidth': ?connectionBandwidth,
-      'connectionStatus': connectionStatus,
+      'connectionStatus': ?connectionStatus,
       'dpdTimeoutSeconds': ?dpdTimeoutSeconds,
-      'egressBytesTransferred': egressBytesTransferred,
+      'egressBytesTransferred': ?egressBytesTransferred,
       'enableBgp': ?enableBgp,
       'enableInternetSecurity': ?enableInternetSecurity,
       'enableRateLimiting': ?enableRateLimiting,
-      'etag': etag,
+      'etag': ?etag,
       'id': ?id,
-      'ingressBytesTransferred': ingressBytesTransferred,
+      'ingressBytesTransferred': ?ingressBytesTransferred,
       'ipsecPolicies': ?(() { final guardedValue = ipsecPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<IpsecPolicyResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'name': ?name,
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'remoteVpnSite': ?remoteVpnSite?.toMap(),
       'routingConfiguration': ?routingConfiguration?.toMap(),
       'routingWeight': ?routingWeight,
@@ -136,23 +136,23 @@ class GetVpnConnectionResult {
 
   factory GetVpnConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetVpnConnectionResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      connectionBandwidth: (() { final guardedValue = map['connectionBandwidth']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      connectionStatus: map['connectionStatus'] as String,
-      dpdTimeoutSeconds: (() { final guardedValue = map['dpdTimeoutSeconds']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      egressBytesTransferred: map['egressBytesTransferred'] as double,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      connectionBandwidth: (() { final guardedValue = map['connectionBandwidth']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      connectionStatus: (() { final guardedValue = map['connectionStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dpdTimeoutSeconds: (() { final guardedValue = map['dpdTimeoutSeconds']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      egressBytesTransferred: (() { final guardedValue = map['egressBytesTransferred']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       enableBgp: (() { final guardedValue = map['enableBgp']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       enableInternetSecurity: (() { final guardedValue = map['enableInternetSecurity']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       enableRateLimiting: (() { final guardedValue = map['enableRateLimiting']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      etag: map['etag'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      ingressBytesTransferred: map['ingressBytesTransferred'] as double,
+      ingressBytesTransferred: (() { final guardedValue = map['ingressBytesTransferred']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       ipsecPolicies: (() { final guardedValue = map['ipsecPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpsecPolicyResponse>(guardedValue, (value) => IpsecPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       remoteVpnSite: (() { final guardedValue = map['remoteVpnSite']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return RoutingConfigurationVpnConnectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      routingWeight: (() { final guardedValue = map['routingWeight']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      routingWeight: (() { final guardedValue = map['routingWeight']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       sharedKey: (() { final guardedValue = map['sharedKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
       trafficSelectorPolicies: (() { final guardedValue = map['trafficSelectorPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficSelectorPolicyResponse>(guardedValue, (value) => TrafficSelectorPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       useLocalAzureIpAddress: (() { final guardedValue = map['useLocalAzureIpAddress']; if (guardedValue == null) return null; return guardedValue as bool; })(),

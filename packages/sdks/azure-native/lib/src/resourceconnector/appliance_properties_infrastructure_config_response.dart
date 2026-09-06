@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Contains infrastructure information about the Appliance
 class AppliancePropertiesInfrastructureConfigResponse {
   /// Information about the connected appliance.
-  final pulumi.Input<String>? provider;
+  final pulumi.Input<String?>? provider;
 
   /// Creates a new [AppliancePropertiesInfrastructureConfigResponse].
   /// [provider] Information about the connected appliance.

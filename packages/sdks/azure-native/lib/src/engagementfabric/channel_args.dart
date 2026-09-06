@@ -10,13 +10,13 @@ class ChannelArgs {
   /// Account Name
   final pulumi.Input<String> accountName;
   /// The functions to be enabled for the channel
-  final pulumi.Input<List<String>>? channelFunctions;
+  final pulumi.Input<List<String>?>? channelFunctions;
   /// Channel Name
-  final pulumi.Input<String>? channelName;
+  final pulumi.Input<String?>? channelName;
   /// The channel type
   final pulumi.Input<String> channelType;
   /// The channel credentials
-  final pulumi.Input<Map<String, String>>? credentials;
+  final pulumi.Input<Map<String, String>?>? credentials;
   /// Resource Group Name
   final pulumi.Input<String> resourceGroupName;
 

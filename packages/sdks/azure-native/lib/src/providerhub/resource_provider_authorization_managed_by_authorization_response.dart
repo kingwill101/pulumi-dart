@@ -5,11 +5,11 @@ import 'additional_authorization_response.dart';
 
 /// Managed by authorization.
 class ResourceProviderAuthorizationManagedByAuthorizationResponse {
-  final pulumi.Input<List<AdditionalAuthorizationResponse>>? additionalAuthorizations;
+  final pulumi.Input<List<AdditionalAuthorizationResponse>?>? additionalAuthorizations;
   /// Indicates whether the managed by resource role definition ID should be inherited.
-  final pulumi.Input<bool>? allowManagedByInheritance;
+  final pulumi.Input<bool?>? allowManagedByInheritance;
   /// The managed by resource role definition ID for the application.
-  final pulumi.Input<String>? managedByResourceRoleDefinitionId;
+  final pulumi.Input<String?>? managedByResourceRoleDefinitionId;
 
   /// Creates a new [ResourceProviderAuthorizationManagedByAuthorizationResponse].
   /// [additionalAuthorizations] Optional.

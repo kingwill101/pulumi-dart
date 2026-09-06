@@ -1,8 +1,11 @@
-enum TriggersWhen {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum TriggersWhen implements pulumi.PulumiEnum<String> {
   valueCreated("Created"),
   valueUpdated("Updated");
 
   const TriggersWhen(this.wireValue);
+  @override
   final String wireValue;
 
   static TriggersWhen fromValue(String value) {

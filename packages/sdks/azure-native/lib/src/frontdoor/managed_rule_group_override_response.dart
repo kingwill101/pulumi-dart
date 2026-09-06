@@ -7,11 +7,11 @@ import 'managed_rule_override_response.dart';
 /// Defines a managed rule group override setting.
 class ManagedRuleGroupOverrideResponse {
   /// Describes the exclusions that are applied to all rules in the group.
-  final pulumi.Input<List<ManagedRuleExclusionResponse>>? exclusions;
+  final pulumi.Input<List<ManagedRuleExclusionResponse>?>? exclusions;
   /// Describes the managed rule group to override.
   final pulumi.Input<String> ruleGroupName;
   /// List of rules that will be disabled. If none specified, all rules in the group will be disabled.
-  final pulumi.Input<List<ManagedRuleOverrideResponse>>? rules;
+  final pulumi.Input<List<ManagedRuleOverrideResponse>?>? rules;
 
   /// Creates a new [ManagedRuleGroupOverrideResponse].
   /// [exclusions] Describes the exclusions that are applied to all rules in the group.

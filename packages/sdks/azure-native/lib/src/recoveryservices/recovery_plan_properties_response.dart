@@ -8,37 +8,37 @@ import 'recovery_plan_group_response.dart';
 /// Recovery plan properties.
 class RecoveryPlanPropertiesResponse {
   /// The list of allowed operations.
-  final pulumi.Input<List<String>>? allowedOperations;
+  final pulumi.Input<List<String>?>? allowedOperations;
   /// The current scenario details.
-  final pulumi.Input<CurrentScenarioDetailsResponse>? currentScenario;
+  final pulumi.Input<CurrentScenarioDetailsResponse?>? currentScenario;
   /// The recovery plan status.
-  final pulumi.Input<String>? currentScenarioStatus;
+  final pulumi.Input<String?>? currentScenarioStatus;
   /// The recovery plan status description.
-  final pulumi.Input<String>? currentScenarioStatusDescription;
+  final pulumi.Input<String?>? currentScenarioStatusDescription;
   /// The failover deployment model.
-  final pulumi.Input<String>? failoverDeploymentModel;
+  final pulumi.Input<String?>? failoverDeploymentModel;
   /// The friendly name.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// The recovery plan groups.
-  final pulumi.Input<List<RecoveryPlanGroupResponse>>? groups;
+  final pulumi.Input<List<RecoveryPlanGroupResponse>?>? groups;
   /// The start time of the last planned failover.
-  final pulumi.Input<String>? lastPlannedFailoverTime;
+  final pulumi.Input<String?>? lastPlannedFailoverTime;
   /// The start time of the last test failover.
-  final pulumi.Input<String>? lastTestFailoverTime;
+  final pulumi.Input<String?>? lastTestFailoverTime;
   /// The start time of the last unplanned failover.
-  final pulumi.Input<String>? lastUnplannedFailoverTime;
+  final pulumi.Input<String?>? lastUnplannedFailoverTime;
   /// The primary fabric friendly name.
-  final pulumi.Input<String>? primaryFabricFriendlyName;
+  final pulumi.Input<String?>? primaryFabricFriendlyName;
   /// The primary fabric Id.
-  final pulumi.Input<String>? primaryFabricId;
+  final pulumi.Input<String?>? primaryFabricId;
   /// The provider id and provider specific details.
-  final pulumi.Input<List<RecoveryPlanA2ADetailsResponse>>? providerSpecificDetails;
+  final pulumi.Input<List<RecoveryPlanA2ADetailsResponse>?>? providerSpecificDetails;
   /// The recovery fabric friendly name.
-  final pulumi.Input<String>? recoveryFabricFriendlyName;
+  final pulumi.Input<String?>? recoveryFabricFriendlyName;
   /// The recovery fabric Id.
-  final pulumi.Input<String>? recoveryFabricId;
+  final pulumi.Input<String?>? recoveryFabricId;
   /// The list of replication providers.
-  final pulumi.Input<List<String>>? replicationProviders;
+  final pulumi.Input<List<String>?>? replicationProviders;
 
   /// Creates a new [RecoveryPlanPropertiesResponse].
   /// [allowedOperations] The list of allowed operations.

@@ -9,15 +9,15 @@ import 'ec2_vpcendpoint_properties.dart';
 /// {@macro pulumi_awsconnector_ec2_vpc_endpoint_args_doc}
 class Ec2VpcEndpointArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of Ec2VPCEndpoint
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<Ec2VPCEndpointProperties>? properties;
+  final pulumi.Input<Ec2VPCEndpointProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [Ec2VpcEndpointArgs].
   /// [location] The geo-location where the resource lives

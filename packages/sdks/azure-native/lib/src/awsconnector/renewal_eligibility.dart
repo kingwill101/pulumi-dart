@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum RenewalEligibility {
+enum RenewalEligibility implements pulumi.PulumiEnum<String> {
   eLIGIBLE("ELIGIBLE"),
   iNELIGIBLE("INELIGIBLE");
 
   const RenewalEligibility(this.wireValue);
+  @override
   final String wireValue;
 
   static RenewalEligibility fromValue(String value) {

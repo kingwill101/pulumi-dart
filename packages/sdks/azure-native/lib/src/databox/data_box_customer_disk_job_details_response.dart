@@ -2,11 +2,9 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'contact_details_response.dart';
-import 'data_box_account_copy_log_details_response.dart';
 import 'data_box_customer_disk_copy_progress_response.dart';
 import 'data_export_details_response.dart';
 import 'data_import_details_response.dart';
-import 'datacenter_address_instruction_response_response.dart';
 import 'device_erasure_details_response.dart';
 import 'export_disk_details_response.dart';
 import 'import_disk_details_response.dart';
@@ -29,17 +27,17 @@ class DataBoxCustomerDiskJobDetailsResponse {
   /// Contact details for notification and shipping.
   final pulumi.Input<ContactDetailsResponse> contactDetails;
   /// List of copy log details.
-  final pulumi.Input<List<DataBoxAccountCopyLogDetailsResponse>> copyLogDetails;
+  final pulumi.Input<List<dynamic>> copyLogDetails;
   /// Copy progress per disk.
   final pulumi.Input<List<DataBoxCustomerDiskCopyProgressResponse>> copyProgress;
   /// DataCenter code.
   final pulumi.Input<String> dataCenterCode;
   /// Details of the data to be exported from azure.
-  final pulumi.Input<List<DataExportDetailsResponse>>? dataExportDetails;
+  final pulumi.Input<List<DataExportDetailsResponse>?>? dataExportDetails;
   /// Details of the data to be imported into azure.
-  final pulumi.Input<List<DataImportDetailsResponse>>? dataImportDetails;
+  final pulumi.Input<List<DataImportDetailsResponse>?>? dataImportDetails;
   /// Datacenter address to ship to, for the given sku and storage location.
-  final pulumi.Input<DatacenterAddressInstructionResponseResponse> datacenterAddress;
+  final pulumi.Input<dynamic> datacenterAddress;
   /// Delivery package shipping details.
   final pulumi.Input<PackageCarrierInfoResponse> deliverToDcPackageDetails;
   /// Delivery package shipping details.
@@ -47,24 +45,24 @@ class DataBoxCustomerDiskJobDetailsResponse {
   /// Holds device data erasure details
   final pulumi.Input<DeviceErasureDetailsResponse> deviceErasureDetails;
   /// Flag to indicate if disk manifest should be backed-up in the Storage Account.
-  final pulumi.Input<bool>? enableManifestBackup;
+  final pulumi.Input<bool?>? enableManifestBackup;
   /// The expected size of the data, which needs to be transferred in this job, in terabytes.
-  final pulumi.Input<int>? expectedDataSizeInTeraBytes;
+  final pulumi.Input<int?>? expectedDataSizeInTeraBytes;
   /// Contains the map of disk serial number to the disk details for export jobs.
   final pulumi.Input<Map<String, ExportDiskDetailsResponse>> exportDiskDetailsCollection;
   /// Contains the map of disk serial number to the disk details for import jobs.
-  final pulumi.Input<Map<String, ImportDiskDetailsResponse>>? importDiskDetailsCollection;
+  final pulumi.Input<Map<String, ImportDiskDetailsResponse>?>? importDiskDetailsCollection;
   /// Indicates the type of job details.
   /// Expected value is 'DataBoxCustomerDisk'.
   final pulumi.Input<String> jobDetailsType;
   /// List of stages that run in the job.
   final pulumi.Input<List<JobStagesResponse>> jobStages;
   /// Details about which key encryption type is being used.
-  final pulumi.Input<KeyEncryptionKeyResponse>? keyEncryptionKey;
+  final pulumi.Input<KeyEncryptionKeyResponse?>? keyEncryptionKey;
   /// Last mitigation action performed on the job.
   final pulumi.Input<LastMitigationActionOnJobResponse> lastMitigationActionOnJob;
   /// Preferences for the order.
-  final pulumi.Input<PreferencesResponse>? preferences;
+  final pulumi.Input<PreferencesResponse?>? preferences;
   /// Return package shipping details.
   final pulumi.Input<PackageShippingDetailsResponse> returnPackage;
   /// Return package shipping details.
@@ -72,9 +70,9 @@ class DataBoxCustomerDiskJobDetailsResponse {
   /// Shared access key to download the return shipment label
   final pulumi.Input<String> reverseShipmentLabelSasKey;
   /// Optional Reverse Shipping details for order.
-  final pulumi.Input<ReverseShippingDetailsResponse>? reverseShippingDetails;
+  final pulumi.Input<ReverseShippingDetailsResponse?>? reverseShippingDetails;
   /// Shipping address of the customer.
-  final pulumi.Input<ShippingAddressResponse>? shippingAddress;
+  final pulumi.Input<ShippingAddressResponse?>? shippingAddress;
 
   /// Creates a new [DataBoxCustomerDiskJobDetailsResponse].
   /// [actions] Available actions on the job.
@@ -103,7 +101,7 @@ class DataBoxCustomerDiskJobDetailsResponse {
   /// [reverseShipmentLabelSasKey] Shared access key to download the return shipment label
   /// [reverseShippingDetails] Optional Reverse Shipping details for order.
   /// [shippingAddress] Shipping address of the customer.
-  const DataBoxCustomerDiskJobDetailsResponse({
+  DataBoxCustomerDiskJobDetailsResponse({
     required this.actions,
     required this.chainOfCustodySasKey,
     required this.contactDetails,
@@ -116,7 +114,7 @@ class DataBoxCustomerDiskJobDetailsResponse {
     required this.deliverToDcPackageDetails,
     required this.deliveryPackage,
     required this.deviceErasureDetails,
-    this.enableManifestBackup,
+    pulumi.Input<bool?>? enableManifestBackup,
     this.expectedDataSizeInTeraBytes,
     required this.exportDiskDetailsCollection,
     this.importDiskDetailsCollection,
@@ -130,19 +128,19 @@ class DataBoxCustomerDiskJobDetailsResponse {
     required this.reverseShipmentLabelSasKey,
     this.reverseShippingDetails,
     this.shippingAddress,
-  });
+  }) : enableManifestBackup = enableManifestBackup ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actions': actions,
       'chainOfCustodySasKey': chainOfCustodySasKey,
       'contactDetails': pulumi.Input.mapInputValue<ContactDetailsResponse, Map<String, dynamic>>(contactDetails, (value) => value.toMap()),
-      'copyLogDetails': pulumi.Input.mapInputValue<List<DataBoxAccountCopyLogDetailsResponse>, List<Map<String, dynamic>>>(copyLogDetails, (value) => pulumi.Input.encodeList<DataBoxAccountCopyLogDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'copyLogDetails': copyLogDetails,
       'copyProgress': pulumi.Input.mapInputValue<List<DataBoxCustomerDiskCopyProgressResponse>, List<Map<String, dynamic>>>(copyProgress, (value) => pulumi.Input.encodeList<DataBoxCustomerDiskCopyProgressResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dataCenterCode': dataCenterCode,
       'dataExportDetails': ?pulumi.Input.mapOptionalInputValue<List<DataExportDetailsResponse>, List<Map<String, dynamic>>>(dataExportDetails, (value) => pulumi.Input.encodeList<DataExportDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'dataImportDetails': ?pulumi.Input.mapOptionalInputValue<List<DataImportDetailsResponse>, List<Map<String, dynamic>>>(dataImportDetails, (value) => pulumi.Input.encodeList<DataImportDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'datacenterAddress': pulumi.Input.mapInputValue<DatacenterAddressInstructionResponseResponse, Map<String, dynamic>>(datacenterAddress, (value) => value.toMap()),
+      'datacenterAddress': datacenterAddress,
       'deliverToDcPackageDetails': pulumi.Input.mapInputValue<PackageCarrierInfoResponse, Map<String, dynamic>>(deliverToDcPackageDetails, (value) => value.toMap()),
       'deliveryPackage': pulumi.Input.mapInputValue<PackageShippingDetailsResponse, Map<String, dynamic>>(deliveryPackage, (value) => value.toMap()),
       'deviceErasureDetails': pulumi.Input.mapInputValue<DeviceErasureDetailsResponse, Map<String, dynamic>>(deviceErasureDetails, (value) => value.toMap()),
@@ -168,17 +166,17 @@ class DataBoxCustomerDiskJobDetailsResponse {
       actions: pulumi.Input.fromValue((map['actions'] as List).cast<String>()),
       chainOfCustodySasKey: pulumi.Input.fromValue(map['chainOfCustodySasKey'] as String),
       contactDetails: pulumi.Input.fromValue(ContactDetailsResponse.fromMap((map['contactDetails']! as Map).cast<String, dynamic>())),
-      copyLogDetails: pulumi.Input.fromValue(pulumi.Input.decodeList<DataBoxAccountCopyLogDetailsResponse>(map['copyLogDetails']!, (value) => DataBoxAccountCopyLogDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      copyLogDetails: pulumi.Input.fromValue((map['copyLogDetails'] as List).cast<dynamic>()),
       copyProgress: pulumi.Input.fromValue(pulumi.Input.decodeList<DataBoxCustomerDiskCopyProgressResponse>(map['copyProgress']!, (value) => DataBoxCustomerDiskCopyProgressResponse.fromMap((value as Map).cast<String, dynamic>()))),
       dataCenterCode: pulumi.Input.fromValue(map['dataCenterCode'] as String),
       dataExportDetails: (() { final guardedValue = map['dataExportDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataExportDetailsResponse>(guardedValue, (value) => DataExportDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       dataImportDetails: (() { final guardedValue = map['dataImportDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataImportDetailsResponse>(guardedValue, (value) => DataImportDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      datacenterAddress: pulumi.Input.fromValue(DatacenterAddressInstructionResponseResponse.fromMap((map['datacenterAddress']! as Map).cast<String, dynamic>())),
+      datacenterAddress: pulumi.Input.fromValue(map['datacenterAddress']),
       deliverToDcPackageDetails: pulumi.Input.fromValue(PackageCarrierInfoResponse.fromMap((map['deliverToDcPackageDetails']! as Map).cast<String, dynamic>())),
       deliveryPackage: pulumi.Input.fromValue(PackageShippingDetailsResponse.fromMap((map['deliveryPackage']! as Map).cast<String, dynamic>())),
       deviceErasureDetails: pulumi.Input.fromValue(DeviceErasureDetailsResponse.fromMap((map['deviceErasureDetails']! as Map).cast<String, dynamic>())),
       enableManifestBackup: (() { final guardedValue = map['enableManifestBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      expectedDataSizeInTeraBytes: (() { final guardedValue = map['expectedDataSizeInTeraBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      expectedDataSizeInTeraBytes: (() { final guardedValue = map['expectedDataSizeInTeraBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       exportDiskDetailsCollection: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ExportDiskDetailsResponse>(map['exportDiskDetailsCollection']!, (value) => ExportDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))),
       importDiskDetailsCollection: (() { final guardedValue = map['importDiskDetailsCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ImportDiskDetailsResponse>(guardedValue, (value) => ImportDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       jobDetailsType: pulumi.Input.fromValue(map['jobDetailsType'] as String),

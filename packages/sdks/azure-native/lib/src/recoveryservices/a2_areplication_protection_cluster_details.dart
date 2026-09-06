@@ -6,48 +6,48 @@ import 'extended_location.dart';
 /// A2A provider specific settings.
 class A2AReplicationProtectionClusterDetails {
   /// The cluster management Id.
-  final pulumi.Input<String>? clusterManagementId;
+  final pulumi.Input<String?>? clusterManagementId;
   /// The recovery point Id to which the cluster was failed over.
-  final pulumi.Input<String>? failoverRecoveryPointId;
+  final pulumi.Input<String?>? failoverRecoveryPointId;
   /// The initial primary extended location.
-  final pulumi.Input<ExtendedLocation>? initialPrimaryExtendedLocation;
+  final pulumi.Input<ExtendedLocation?>? initialPrimaryExtendedLocation;
   /// The initial primary fabric location.
-  final pulumi.Input<String>? initialPrimaryFabricLocation;
+  final pulumi.Input<String?>? initialPrimaryFabricLocation;
   /// The initial primary availability zone.
-  final pulumi.Input<String>? initialPrimaryZone;
+  final pulumi.Input<String?>? initialPrimaryZone;
   /// The initial recovery extended location.
-  final pulumi.Input<ExtendedLocation>? initialRecoveryExtendedLocation;
+  final pulumi.Input<ExtendedLocation?>? initialRecoveryExtendedLocation;
   /// The initial recovery fabric location.
-  final pulumi.Input<String>? initialRecoveryFabricLocation;
+  final pulumi.Input<String?>? initialRecoveryFabricLocation;
   /// The initial recovery availability zone.
-  final pulumi.Input<String>? initialRecoveryZone;
+  final pulumi.Input<String?>? initialRecoveryZone;
   /// Gets the Instance type.
   /// Expected value is 'A2A'.
   final pulumi.Input<String> instanceType;
   /// The time (in UTC) when the last RPO value was calculated by Protection Service.
-  final pulumi.Input<String>? lastRpoCalculatedTime;
+  final pulumi.Input<String?>? lastRpoCalculatedTime;
   /// An id that survives actions like switch protection which change the backing PE/CPE objects internally.The lifecycle id gets carried forward to have a link/continuity in being able to have an Id that denotes the "same" protected cluster even though other internal Ids/ARM Id might be changing.
-  final pulumi.Input<String>? lifecycleId;
+  final pulumi.Input<String?>? lifecycleId;
   /// Whether Multi VM group is auto created or specified by user.
-  final pulumi.Input<String>? multiVmGroupCreateOption;
+  final pulumi.Input<dynamic>? multiVmGroupCreateOption;
   /// The multi vm group Id.
-  final pulumi.Input<String>? multiVmGroupId;
+  final pulumi.Input<String?>? multiVmGroupId;
   /// The multi vm group name.
-  final pulumi.Input<String>? multiVmGroupName;
+  final pulumi.Input<String?>? multiVmGroupName;
   /// The primary availability zone.
-  final pulumi.Input<String>? primaryAvailabilityZone;
+  final pulumi.Input<String?>? primaryAvailabilityZone;
   /// The primary Extended Location.
-  final pulumi.Input<ExtendedLocation>? primaryExtendedLocation;
+  final pulumi.Input<ExtendedLocation?>? primaryExtendedLocation;
   /// Primary fabric location.
-  final pulumi.Input<String>? primaryFabricLocation;
+  final pulumi.Input<String?>? primaryFabricLocation;
   /// The recovery availability zone.
-  final pulumi.Input<String>? recoveryAvailabilityZone;
+  final pulumi.Input<String?>? recoveryAvailabilityZone;
   /// The recovery Extended Location.
-  final pulumi.Input<ExtendedLocation>? recoveryExtendedLocation;
+  final pulumi.Input<ExtendedLocation?>? recoveryExtendedLocation;
   /// The recovery fabric location.
-  final pulumi.Input<String>? recoveryFabricLocation;
+  final pulumi.Input<String?>? recoveryFabricLocation;
   /// The last RPO value in seconds.
-  final pulumi.Input<double>? rpoInSeconds;
+  final pulumi.Input<double?>? rpoInSeconds;
 
   /// Creates a new [A2AReplicationProtectionClusterDetails].
   /// [clusterManagementId] The cluster management Id.
@@ -134,7 +134,7 @@ class A2AReplicationProtectionClusterDetails {
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       lastRpoCalculatedTime: (() { final guardedValue = map['lastRpoCalculatedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lifecycleId: (() { final guardedValue = map['lifecycleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      multiVmGroupCreateOption: (() { final guardedValue = map['multiVmGroupCreateOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      multiVmGroupCreateOption: (() { final guardedValue = map['multiVmGroupCreateOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       multiVmGroupId: (() { final guardedValue = map['multiVmGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       multiVmGroupName: (() { final guardedValue = map['multiVmGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       primaryAvailabilityZone: (() { final guardedValue = map['primaryAvailabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -143,7 +143,7 @@ class A2AReplicationProtectionClusterDetails {
       recoveryAvailabilityZone: (() { final guardedValue = map['recoveryAvailabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recoveryExtendedLocation: (() { final guardedValue = map['recoveryExtendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       recoveryFabricLocation: (() { final guardedValue = map['recoveryFabricLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rpoInSeconds: (() { final guardedValue = map['rpoInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      rpoInSeconds: (() { final guardedValue = map['rpoInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

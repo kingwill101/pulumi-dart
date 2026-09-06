@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The group type.
-enum RecoveryPlanGroupType {
+enum RecoveryPlanGroupType implements pulumi.PulumiEnum<String> {
   valueShutdown("Shutdown"),
   valueBoot("Boot"),
   valueFailover("Failover");
 
   const RecoveryPlanGroupType(this.wireValue);
+  @override
   final String wireValue;
 
   static RecoveryPlanGroupType fromValue(String value) {

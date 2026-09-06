@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ComputeType {
+enum ComputeType implements pulumi.PulumiEnum<String> {
   bUILDGENERAL12XLARGE("BUILD_GENERAL1_2XLARGE"),
   bUILDGENERAL1LARGE("BUILD_GENERAL1_LARGE"),
   bUILDGENERAL1MEDIUM("BUILD_GENERAL1_MEDIUM"),
@@ -12,6 +14,7 @@ enum ComputeType {
   bUILDLAMBDA8GB("BUILD_LAMBDA_8GB");
 
   const ComputeType(this.wireValue);
+  @override
   final String wireValue;
 
   static ComputeType fromValue(String value) {

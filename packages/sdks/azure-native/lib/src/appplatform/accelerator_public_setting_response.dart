@@ -8,7 +8,7 @@ class AcceleratorPublicSettingResponse {
   /// Expected value is 'Public'.
   final pulumi.Input<String> authType;
   /// Resource Id of CA certificate for https URL of Git repository.
-  final pulumi.Input<String>? caCertResourceId;
+  final pulumi.Input<String?>? caCertResourceId;
 
   /// Creates a new [AcceleratorPublicSettingResponse].
   /// [authType] The type of the auth setting.

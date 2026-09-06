@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiProfile {
   /// Api version.
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Profile version.
-  final pulumi.Input<String>? profileVersion;
+  final pulumi.Input<String?>? profileVersion;
 
   /// Creates a new [ApiProfile].
   /// [apiVersion] Api version.

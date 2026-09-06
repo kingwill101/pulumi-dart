@@ -4,17 +4,17 @@
 /// Result data returned by getNotebookWorkspace.
 class GetNotebookWorkspaceResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The unique resource identifier of the database account.
-  final String id;
+  final String? id;
   /// The name of the database account.
-  final String name;
+  final String? name;
   /// Specifies the endpoint of Notebook server.
-  final String notebookServerEndpoint;
+  final String? notebookServerEndpoint;
   /// Status of the notebook workspace. Possible values are: Creating, Online, Deleting, Failed, Updating.
-  final String status;
+  final String? status;
   /// The type of Azure resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetNotebookWorkspaceResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -24,33 +24,33 @@ class GetNotebookWorkspaceResult {
   /// [status] Status of the notebook workspace. Possible values are: Creating, Online, Deleting, Failed, Updating.
   /// [type] The type of Azure resource.
   const GetNotebookWorkspaceResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
-    required this.notebookServerEndpoint,
-    required this.status,
-    required this.type,
+    this.azureApiVersion,
+    this.id,
+    this.name,
+    this.notebookServerEndpoint,
+    this.status,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
-      'notebookServerEndpoint': notebookServerEndpoint,
-      'status': status,
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
+      'notebookServerEndpoint': ?notebookServerEndpoint,
+      'status': ?status,
+      'type': ?type,
     };
   }
 
   factory GetNotebookWorkspaceResult.fromMap(Map<String, dynamic> map) {
     return GetNotebookWorkspaceResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      notebookServerEndpoint: map['notebookServerEndpoint'] as String,
-      status: map['status'] as String,
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      notebookServerEndpoint: (() { final guardedValue = map['notebookServerEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

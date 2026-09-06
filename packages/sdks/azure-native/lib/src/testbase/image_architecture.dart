@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Custom image architecture.
-enum ImageArchitecture {
+enum ImageArchitecture implements pulumi.PulumiEnum<String> {
   valueX64("x64");
 
   const ImageArchitecture(this.wireValue);
+  @override
   final String wireValue;
 
   static ImageArchitecture fromValue(String value) {

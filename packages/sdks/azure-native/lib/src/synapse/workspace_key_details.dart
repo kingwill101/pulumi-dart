@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details of the customer managed key associated with the workspace
 class WorkspaceKeyDetails {
   /// Workspace Key sub-resource key vault url
-  final pulumi.Input<String>? keyVaultUrl;
+  final pulumi.Input<String?>? keyVaultUrl;
   /// Workspace Key sub-resource name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [WorkspaceKeyDetails].
   /// [keyVaultUrl] Workspace Key sub-resource key vault url

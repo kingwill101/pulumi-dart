@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of database instance
 class DatabaseInstanceProperties {
   /// Resource Id of existing database instance
-  final pulumi.Input<String>? databaseInstanceId;
+  final pulumi.Input<String?>? databaseInstanceId;
 
   /// Creates a new [DatabaseInstanceProperties].
   /// [databaseInstanceId] Resource Id of existing database instance

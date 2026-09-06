@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The load distribution policy for this rule.
-enum LoadDistribution {
+enum LoadDistribution implements pulumi.PulumiEnum<String> {
   valueDefault("Default"),
   valueSourceIP("SourceIP"),
   valueSourceIPProtocol("SourceIPProtocol");
 
   const LoadDistribution(this.wireValue);
+  @override
   final String wireValue;
 
   static LoadDistribution fromValue(String value) {

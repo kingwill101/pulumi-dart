@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of DeploymentTargets
 class DeploymentTargetsResponse {
   /// The filter type you want to apply on organizational units and accounts.
-  final pulumi.Input<String>? accountFilterType;
+  final pulumi.Input<String?>? accountFilterType;
   /// AWS accounts that you want to create stack instances in the specified Region(s) for.
-  final pulumi.Input<List<String>>? accounts;
+  final pulumi.Input<List<String>?>? accounts;
   /// Returns the value of the AccountsUrl property.
-  final pulumi.Input<String>? accountsUrl;
+  final pulumi.Input<String?>? accountsUrl;
   /// The organization root ID or organizational unit (OU) IDs to which StackSets deploys.
-  final pulumi.Input<List<String>>? organizationalUnitIds;
+  final pulumi.Input<List<String>?>? organizationalUnitIds;
 
   /// Creates a new [DeploymentTargetsResponse].
   /// [accountFilterType] The filter type you want to apply on organizational units and accounts.

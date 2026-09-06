@@ -6,13 +6,13 @@ import 'user_assigned_managed_identity_response.dart';
 /// Managed identity properties retrieved from ARM request headers.
 class ManagedIdentityPropertiesResponse {
   /// Principal Id of system-assigned managed identity.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// Tenant Id of system-assigned managed identity.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Type of the managed identity
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Properties of user-assigned managed identities
-  final pulumi.Input<Map<String, UserAssignedManagedIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedManagedIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [ManagedIdentityPropertiesResponse].
   /// [principalId] Principal Id of system-assigned managed identity.

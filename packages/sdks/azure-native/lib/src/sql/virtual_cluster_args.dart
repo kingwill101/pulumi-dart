@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sql_virtual_cluster_args_doc}
 class VirtualClusterArgs {
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Virtual cluster version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// The name of the virtual cluster.
-  final pulumi.Input<String>? virtualClusterName;
+  final pulumi.Input<String?>? virtualClusterName;
 
   /// Creates a new [VirtualClusterArgs].
   /// [location] Resource location.

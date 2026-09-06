@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of resources contained in this cost allocation rule
-enum CostAllocationResourceType {
+enum CostAllocationResourceType implements pulumi.PulumiEnum<String> {
   dimension("Dimension"),
   tag("Tag");
 
   const CostAllocationResourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static CostAllocationResourceType fromValue(String value) {

@@ -6,15 +6,15 @@ import 'subnet_configuration_response.dart';
 /// Enclave Virtual Network Properties
 class EnclaveVirtualNetworkModelResponse {
   /// Allow Subnet Communication.
-  final pulumi.Input<bool>? allowSubnetCommunication;
+  final pulumi.Input<bool?>? allowSubnetCommunication;
   /// Custom CIDR Range.
-  final pulumi.Input<String>? customCidrRange;
+  final pulumi.Input<String?>? customCidrRange;
   /// Network Name.
-  final pulumi.Input<String>? networkName;
+  final pulumi.Input<String?>? networkName;
   /// Network Size.
-  final pulumi.Input<String>? networkSize;
+  final pulumi.Input<String?>? networkSize;
   /// Subnet Configurations.
-  final pulumi.Input<List<SubnetConfigurationResponse>>? subnetConfigurations;
+  final pulumi.Input<List<SubnetConfigurationResponse>?>? subnetConfigurations;
 
   /// Creates a new [EnclaveVirtualNetworkModelResponse].
   /// [allowSubnetCommunication] Allow Subnet Communication.
@@ -22,13 +22,13 @@ class EnclaveVirtualNetworkModelResponse {
   /// [networkName] Network Name.
   /// [networkSize] Network Size.
   /// [subnetConfigurations] Subnet Configurations.
-  const EnclaveVirtualNetworkModelResponse({
-    this.allowSubnetCommunication,
+  EnclaveVirtualNetworkModelResponse({
+    pulumi.Input<bool?>? allowSubnetCommunication,
     this.customCidrRange,
     this.networkName,
     this.networkSize,
     this.subnetConfigurations,
-  });
+  }) : allowSubnetCommunication = allowSubnetCommunication ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

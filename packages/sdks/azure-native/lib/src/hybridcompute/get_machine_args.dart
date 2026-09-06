@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_hybridcompute_get_machine_args_doc}
 class GetMachineArgs {
   /// The expand expression to apply on the operation.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the hybrid machine.
   final pulumi.Input<String> machineName;
   /// The name of the resource group. The name is case insensitive.

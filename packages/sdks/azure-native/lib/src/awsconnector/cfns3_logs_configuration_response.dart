@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of CFNS3LogsConfiguration
 class CFNS3LogsConfigurationResponse {
   /// Property enable
-  final pulumi.Input<bool>? enable;
+  final pulumi.Input<bool?>? enable;
 
   /// Creates a new [CFNS3LogsConfigurationResponse].
   /// [enable] Property enable

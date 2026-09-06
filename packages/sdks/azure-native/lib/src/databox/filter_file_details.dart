@@ -7,7 +7,7 @@ class FilterFileDetails {
   /// Path of the file that contains the details of all items to transfer.
   final pulumi.Input<String> filterFilePath;
   /// Type of the filter file.
-  final pulumi.Input<String> filterFileType;
+  final pulumi.Input<dynamic> filterFileType;
 
   /// Creates a new [FilterFileDetails].
   /// [filterFilePath] Path of the file that contains the details of all items to transfer.
@@ -27,7 +27,7 @@ class FilterFileDetails {
   factory FilterFileDetails.fromMap(Map<String, dynamic> map) {
     return FilterFileDetails(
       filterFilePath: pulumi.Input.fromValue(map['filterFilePath'] as String),
-      filterFileType: pulumi.Input.fromValue(map['filterFileType'] as String),
+      filterFileType: pulumi.Input.fromValue(map['filterFileType']),
     );
   }
 }

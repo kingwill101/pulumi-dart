@@ -1,22 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'categorical_prediction_drift_metric_threshold.dart';
-import 'fixed_input_data.dart';
 
 class PredictionDriftMonitoringSignal {
   /// A dictionary that maps feature names to their respective data types.
-  final pulumi.Input<Map<String, String>>? featureDataTypeOverride;
+  final pulumi.Input<Map<String, dynamic>?>? featureDataTypeOverride;
   /// [Required] A list of metrics to calculate and their associated thresholds.
-  final pulumi.Input<List<CategoricalPredictionDriftMetricThreshold>> metricThresholds;
+  final pulumi.Input<List<dynamic>> metricThresholds;
   /// The current notification mode for this signal.
-  final pulumi.Input<List<String>>? notificationTypes;
+  final pulumi.Input<List<dynamic>?>? notificationTypes;
   /// [Required] The data which drift will be calculated for.
-  final pulumi.Input<FixedInputData> productionData;
+  final pulumi.Input<dynamic> productionData;
   /// Property dictionary. Properties can be added, but not removed or altered.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// [Required] The data to calculate drift against.
-  final pulumi.Input<FixedInputData> referenceData;
+  final pulumi.Input<dynamic> referenceData;
   /// Expected value is 'PredictionDrift'.
   final pulumi.Input<String> signalType;
 
@@ -41,23 +39,23 @@ class PredictionDriftMonitoringSignal {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'featureDataTypeOverride': ?featureDataTypeOverride,
-      'metricThresholds': pulumi.Input.mapInputValue<List<CategoricalPredictionDriftMetricThreshold>, List<Map<String, dynamic>>>(metricThresholds, (value) => pulumi.Input.encodeList<CategoricalPredictionDriftMetricThreshold, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'metricThresholds': metricThresholds,
       'notificationTypes': ?notificationTypes,
-      'productionData': pulumi.Input.mapInputValue<FixedInputData, Map<String, dynamic>>(productionData, (value) => value.toMap()),
+      'productionData': productionData,
       'properties': ?properties,
-      'referenceData': pulumi.Input.mapInputValue<FixedInputData, Map<String, dynamic>>(referenceData, (value) => value.toMap()),
+      'referenceData': referenceData,
       'signalType': signalType,
     };
   }
 
   factory PredictionDriftMonitoringSignal.fromMap(Map<String, dynamic> map) {
     return PredictionDriftMonitoringSignal(
-      featureDataTypeOverride: (() { final guardedValue = map['featureDataTypeOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      metricThresholds: pulumi.Input.fromValue(pulumi.Input.decodeList<CategoricalPredictionDriftMetricThreshold>(map['metricThresholds']!, (value) => CategoricalPredictionDriftMetricThreshold.fromMap((value as Map).cast<String, dynamic>()))),
-      notificationTypes: (() { final guardedValue = map['notificationTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      productionData: pulumi.Input.fromValue(FixedInputData.fromMap((map['productionData']! as Map).cast<String, dynamic>())),
+      featureDataTypeOverride: (() { final guardedValue = map['featureDataTypeOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
+      metricThresholds: pulumi.Input.fromValue((map['metricThresholds'] as List).cast<dynamic>()),
+      notificationTypes: (() { final guardedValue = map['notificationTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      productionData: pulumi.Input.fromValue(map['productionData']),
       properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      referenceData: pulumi.Input.fromValue(FixedInputData.fromMap((map['referenceData']! as Map).cast<String, dynamic>())),
+      referenceData: pulumi.Input.fromValue(map['referenceData']),
       signalType: pulumi.Input.fromValue(map['signalType'] as String),
     );
   }

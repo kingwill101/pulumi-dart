@@ -6,9 +6,9 @@ import 'container_registry_response.dart';
 /// The configuration for container-enabled pools.
 class ContainerConfigurationResponse {
   /// This is the full image reference, as would be specified to "docker pull". An image will be sourced from the default Docker registry unless the image is fully qualified with an alternative registry.
-  final pulumi.Input<List<String>>? containerImageNames;
+  final pulumi.Input<List<String>?>? containerImageNames;
   /// If any images must be downloaded from a private registry which requires credentials, then those credentials must be provided here.
-  final pulumi.Input<List<ContainerRegistryResponse>>? containerRegistries;
+  final pulumi.Input<List<ContainerRegistryResponse>?>? containerRegistries;
   /// The container technology to be used.
   final pulumi.Input<String> type;
 

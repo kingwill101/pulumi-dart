@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'automatic_resource_predictions_profile.dart';
 
 /// Stateless profile meaning that the machines will be cleaned up after running a job.
 class StatelessAgentProfile {
@@ -11,7 +10,7 @@ class StatelessAgentProfile {
   /// Defines pool buffer/stand-by agents.
   final pulumi.Input<dynamic>? resourcePredictions;
   /// Defines how the pool buffer/stand-by agents is provided.
-  final pulumi.Input<AutomaticResourcePredictionsProfile>? resourcePredictionsProfile;
+  final pulumi.Input<dynamic>? resourcePredictionsProfile;
 
   /// Creates a new [StatelessAgentProfile].
   /// [kind] Discriminator property for AgentProfile.
@@ -27,7 +26,7 @@ class StatelessAgentProfile {
     return <String, dynamic>{
       'kind': kind,
       'resourcePredictions': ?resourcePredictions,
-      'resourcePredictionsProfile': ?pulumi.Input.mapOptionalInputValue<AutomaticResourcePredictionsProfile, Map<String, dynamic>>(resourcePredictionsProfile, (value) => value.toMap()),
+      'resourcePredictionsProfile': ?resourcePredictionsProfile,
     };
   }
 
@@ -35,7 +34,7 @@ class StatelessAgentProfile {
     return StatelessAgentProfile(
       kind: pulumi.Input.fromValue(map['kind'] as String),
       resourcePredictions: (() { final guardedValue = map['resourcePredictions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      resourcePredictionsProfile: (() { final guardedValue = map['resourcePredictionsProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutomaticResourcePredictionsProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourcePredictionsProfile: (() { final guardedValue = map['resourcePredictionsProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

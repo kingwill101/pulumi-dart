@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A single field mapping of the mapped entity
 class FieldMappingResponse {
   /// the column name to be mapped to the identifier
-  final pulumi.Input<String>? columnName;
+  final pulumi.Input<String?>? columnName;
   /// the V3 identifier of the entity
-  final pulumi.Input<String>? identifier;
+  final pulumi.Input<String?>? identifier;
 
   /// Creates a new [FieldMappingResponse].
   /// [columnName] the column name to be mapped to the identifier

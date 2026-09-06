@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Sku.
 class SkuResponse {
   /// The display name of the sku.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The sku family.
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// The model name.
   final pulumi.Input<String> model;
   /// The sku name.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] JobLimit type.
-enum JobLimitsType {
+enum JobLimitsType implements pulumi.PulumiEnum<String> {
   command("Command"),
   sweep("Sweep");
 
   const JobLimitsType(this.wireValue);
+  @override
   final String wireValue;
 
   static JobLimitsType fromValue(String value) {

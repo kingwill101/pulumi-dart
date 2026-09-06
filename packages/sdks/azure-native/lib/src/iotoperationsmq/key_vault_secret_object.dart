@@ -7,7 +7,7 @@ class KeyVaultSecretObject {
   /// KeyVault secret name.
   final pulumi.Input<String> name;
   /// KeyVault secret version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [KeyVaultSecretObject].
   /// [name] KeyVault secret name.

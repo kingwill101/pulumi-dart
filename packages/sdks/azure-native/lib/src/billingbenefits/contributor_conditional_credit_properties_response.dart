@@ -8,32 +8,32 @@ class ContributorConditionalCreditPropertiesResponse {
   /// Fully-qualified identifier of the benefit under applicable benefit list.
   final pulumi.Input<String> benefitResourceId;
   /// The billing account resource ID
-  final pulumi.Input<String>? billingAccountResourceId;
+  final pulumi.Input<String?>? billingAccountResourceId;
   /// Display name for the conditional credit
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// End date of the conditional credit (derived from last milestone)
-  final pulumi.Input<String>? endAt;
+  final pulumi.Input<String?>? endAt;
   /// Type of conditional credit entity
   /// Expected value is 'Contributor'.
   final pulumi.Input<String> entityType;
   /// List of milestones copied from primary conditional credit (excludes award details)
   final pulumi.Input<List<ContributorConditionalCreditMilestoneResponse>> milestones;
   /// Fully-qualified billing account resource identifier of the primary CACO. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}.
-  final pulumi.Input<String>? primaryBillingAccountResourceId;
+  final pulumi.Input<String?>? primaryBillingAccountResourceId;
   /// Resource ID of the primary conditional credit (required for contributors)
-  final pulumi.Input<String>? primaryResourceId;
+  final pulumi.Input<String?>? primaryResourceId;
   /// Product code for the conditional credit
-  final pulumi.Input<String>? productCode;
+  final pulumi.Input<String?>? productCode;
   /// The provisioning state of the resource
   final pulumi.Input<String> provisioningState;
   /// Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Start date of the conditional credit
-  final pulumi.Input<String>? startAt;
+  final pulumi.Input<String?>? startAt;
   /// The status of the conditional credit
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// System identifier shared between primary and contributor conditional credits representing the same conditional credit program
-  final pulumi.Input<String>? systemId;
+  final pulumi.Input<String?>? systemId;
 
   /// Creates a new [ContributorConditionalCreditPropertiesResponse].
   /// [benefitResourceId] Fully-qualified identifier of the benefit under applicable benefit list.

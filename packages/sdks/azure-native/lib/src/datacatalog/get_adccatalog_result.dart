@@ -8,17 +8,17 @@ class GetADCCatalogResult {
   /// Azure data catalog admin list.
   final List<PrincipalsResponse>? admins;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Automatic unit adjustment enabled or not.
   final bool? enableAutomaticUnitAdjustment;
   /// Resource etag
   final String? etag;
   /// Resource Id
-  final String id;
+  final String? id;
   /// Resource location
   final String? location;
   /// Resource name
-  final String name;
+  final String? name;
   /// Azure data catalog SKU.
   final String? sku;
   /// Azure data catalog provision status.
@@ -26,7 +26,7 @@ class GetADCCatalogResult {
   /// Resource tags
   final Map<String, String>? tags;
   /// Resource type
-  final String type;
+  final String? type;
   /// Azure data catalog units.
   final int? units;
   /// Azure data catalog user list.
@@ -48,16 +48,16 @@ class GetADCCatalogResult {
   /// [users] Azure data catalog user list.
   const GetADCCatalogResult({
     this.admins,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.enableAutomaticUnitAdjustment,
     this.etag,
-    required this.id,
+    this.id,
     this.location,
-    required this.name,
+    this.name,
     this.sku,
     this.successfullyProvisioned,
     this.tags,
-    required this.type,
+    this.type,
     this.units,
     this.users,
   });
@@ -65,16 +65,16 @@ class GetADCCatalogResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'admins': ?(() { final guardedValue = admins; if (guardedValue == null) return null; return pulumi.Input.encodeList<PrincipalsResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'enableAutomaticUnitAdjustment': ?enableAutomaticUnitAdjustment,
       'etag': ?etag,
-      'id': id,
+      'id': ?id,
       'location': ?location,
-      'name': name,
+      'name': ?name,
       'sku': ?sku,
       'successfullyProvisioned': ?successfullyProvisioned,
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'units': ?units,
       'users': ?(() { final guardedValue = users; if (guardedValue == null) return null; return pulumi.Input.encodeList<PrincipalsResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
@@ -83,17 +83,17 @@ class GetADCCatalogResult {
   factory GetADCCatalogResult.fromMap(Map<String, dynamic> map) {
     return GetADCCatalogResult(
       admins: (() { final guardedValue = map['admins']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrincipalsResponse>(guardedValue, (value) => PrincipalsResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enableAutomaticUnitAdjustment: (() { final guardedValue = map['enableAutomaticUnitAdjustment']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return guardedValue as String; })(),
       successfullyProvisioned: (() { final guardedValue = map['successfullyProvisioned']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      units: (() { final guardedValue = map['units']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      units: (() { final guardedValue = map['units']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       users: (() { final guardedValue = map['users']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrincipalsResponse>(guardedValue, (value) => PrincipalsResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }

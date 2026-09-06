@@ -14,15 +14,15 @@ import 'kpi_thresholds.dart';
 /// {@macro pulumi_customerinsights_kpi_args_doc}
 class KpiArgs {
   /// The aliases.
-  final pulumi.Input<List<KpiAlias>>? aliases;
+  final pulumi.Input<List<KpiAlias>?>? aliases;
   /// The calculation window.
   final pulumi.Input<CalculationWindowTypes> calculationWindow;
   /// Name of calculation window field.
-  final pulumi.Input<String>? calculationWindowFieldName;
+  final pulumi.Input<String?>? calculationWindowFieldName;
   /// Localized description for the KPI.
-  final pulumi.Input<Map<String, String>>? description;
+  final pulumi.Input<Map<String, String>?>? description;
   /// Localized display name for the KPI.
-  final pulumi.Input<Map<String, String>>? displayName;
+  final pulumi.Input<Map<String, String>?>? displayName;
   /// The mapping entity type.
   final pulumi.Input<EntityTypes> entityType;
   /// The mapping entity name.
@@ -30,23 +30,23 @@ class KpiArgs {
   /// The computation expression for the KPI.
   final pulumi.Input<String> expression;
   /// The KPI extracts.
-  final pulumi.Input<List<KpiExtract>>? extracts;
+  final pulumi.Input<List<KpiExtract>?>? extracts;
   /// The filter expression for the KPI.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The computation function for the KPI.
   final pulumi.Input<KpiFunctions> function;
   /// the group by properties for the KPI.
-  final pulumi.Input<List<String>>? groupBy;
+  final pulumi.Input<List<String>?>? groupBy;
   /// The name of the hub.
   final pulumi.Input<String> hubName;
   /// The name of the KPI.
-  final pulumi.Input<String>? kpiName;
+  final pulumi.Input<String?>? kpiName;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The KPI thresholds.
-  final pulumi.Input<KpiThresholds>? thresHolds;
+  final pulumi.Input<KpiThresholds?>? thresHolds;
   /// The unit of measurement for the KPI.
-  final pulumi.Input<String>? unit;
+  final pulumi.Input<String?>? unit;
 
   /// Creates a new [KpiArgs].
   /// [aliases] The aliases.

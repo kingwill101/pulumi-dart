@@ -6,7 +6,7 @@ import 'access_mode_settings_exclusion_response.dart';
 /// Properties that define the scope private link mode settings.
 class AccessModeSettingsResponse {
   /// List of exclusions that override the default access mode settings for specific private endpoint connections.
-  final pulumi.Input<List<AccessModeSettingsExclusionResponse>>? exclusions;
+  final pulumi.Input<List<AccessModeSettingsExclusionResponse>?>? exclusions;
   /// Specifies the default access mode of ingestion through associated private endpoints in scope. If not specified default value is 'Open'. You can override this default setting for a specific private endpoint connection by adding an exclusion in the 'exclusions' array.
   final pulumi.Input<String> ingestionAccessMode;
   /// Specifies the default access mode of queries through associated private endpoints in scope. If not specified default value is 'Open'. You can override this default setting for a specific private endpoint connection by adding an exclusion in the 'exclusions' array.

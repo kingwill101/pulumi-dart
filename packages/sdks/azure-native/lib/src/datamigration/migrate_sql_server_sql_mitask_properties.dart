@@ -6,17 +6,17 @@ import 'migrate_sql_server_sql_mitask_input.dart';
 /// Properties for task that migrates SQL Server databases to Azure SQL Database Managed Instance
 class MigrateSqlServerSqlMITaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// DateTime in UTC when the task was created
-  final pulumi.Input<String>? createdOn;
+  final pulumi.Input<String?>? createdOn;
   /// Task input
-  final pulumi.Input<MigrateSqlServerSqlMITaskInput>? input;
+  final pulumi.Input<MigrateSqlServerSqlMITaskInput?>? input;
   /// whether the task can be cloned or not
-  final pulumi.Input<bool>? isCloneable;
+  final pulumi.Input<bool?>? isCloneable;
   /// parent task id
-  final pulumi.Input<String>? parentTaskId;
+  final pulumi.Input<String?>? parentTaskId;
   /// task id
-  final pulumi.Input<String>? taskId;
+  final pulumi.Input<String?>? taskId;
   /// Task type.
   /// Expected value is 'Migrate.SqlServer.AzureSqlDbMI'.
   final pulumi.Input<String> taskType;

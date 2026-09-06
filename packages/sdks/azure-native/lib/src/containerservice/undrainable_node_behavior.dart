@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines the behavior for undrainable nodes during upgrade. The most common cause of undrainable nodes is Pod Disruption Budgets (PDBs), but other issues, such as pod termination grace period is exceeding the remaining per-node drain timeout or pod is still being in a running state, can also cause undrainable nodes.
-enum UndrainableNodeBehavior {
+enum UndrainableNodeBehavior implements pulumi.PulumiEnum<String> {
   valueCordon("Cordon"),
   valueSchedule("Schedule");
 
   const UndrainableNodeBehavior(this.wireValue);
+  @override
   final String wireValue;
 
   static UndrainableNodeBehavior fromValue(String value) {

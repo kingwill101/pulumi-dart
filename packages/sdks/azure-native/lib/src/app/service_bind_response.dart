@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration to bind a ContainerApp to a dev ContainerApp Service
 class ServiceBindResponse {
   /// Type of the client to be used to connect to the service
-  final pulumi.Input<String>? clientType;
+  final pulumi.Input<String?>? clientType;
   /// Customized keys for customizing injected values to the app
-  final pulumi.Input<Map<String, String>>? customizedKeys;
+  final pulumi.Input<Map<String, String>?>? customizedKeys;
   /// Name of the service bind
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Resource id of the target service
-  final pulumi.Input<String>? serviceId;
+  final pulumi.Input<String?>? serviceId;
 
   /// Creates a new [ServiceBindResponse].
   /// [clientType] Type of the client to be used to connect to the service

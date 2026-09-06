@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Status of the database.
-enum RecoveryMode {
+enum RecoveryMode implements pulumi.PulumiEnum<String> {
   valueFull("Full"),
   valueBulkLogged("Bulk-logged"),
   valueSimple("Simple");
 
   const RecoveryMode(this.wireValue);
+  @override
   final String wireValue;
 
   static RecoveryMode fromValue(String value) {

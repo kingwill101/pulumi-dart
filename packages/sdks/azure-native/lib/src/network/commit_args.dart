@@ -9,11 +9,11 @@ import 'commit_properties.dart';
 /// {@macro pulumi_network_commit_args_doc}
 class CommitArgs {
   /// The name of the commit.
-  final pulumi.Input<String>? commitName;
+  final pulumi.Input<String?>? commitName;
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
   /// The Commit properties
-  final pulumi.Input<CommitProperties>? properties;
+  final pulumi.Input<CommitProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

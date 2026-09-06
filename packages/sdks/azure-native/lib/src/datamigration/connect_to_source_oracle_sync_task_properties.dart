@@ -6,9 +6,9 @@ import 'connect_to_source_oracle_sync_task_input.dart';
 /// Properties for the task that validates Oracle database connection
 class ConnectToSourceOracleSyncTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// Task input
-  final pulumi.Input<ConnectToSourceOracleSyncTaskInput>? input;
+  final pulumi.Input<ConnectToSourceOracleSyncTaskInput?>? input;
   /// Task type.
   /// Expected value is 'ConnectToSource.Oracle.Sync'.
   final pulumi.Input<String> taskType;

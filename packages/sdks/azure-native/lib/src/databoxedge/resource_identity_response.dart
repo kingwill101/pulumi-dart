@@ -9,7 +9,7 @@ class ResourceIdentityResponse {
   /// Home Tenant Id
   final pulumi.Input<String> tenantId;
   /// Identity type
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ResourceIdentityResponse].
   /// [principalId] Service Principal Id backing the Msi

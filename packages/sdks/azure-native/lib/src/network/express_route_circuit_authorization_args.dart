@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_express_route_circuit_authorization_args_doc}
 class ExpressRouteCircuitAuthorizationArgs {
   /// The authorization key.
-  final pulumi.Input<String>? authorizationKey;
+  final pulumi.Input<String?>? authorizationKey;
   /// The name of the authorization.
-  final pulumi.Input<String>? authorizationName;
+  final pulumi.Input<String?>? authorizationName;
   /// The authorization use status.
-  final pulumi.Input<String>? authorizationUseStatus;
+  final pulumi.Input<dynamic>? authorizationUseStatus;
   /// The name of the express route circuit.
   final pulumi.Input<String> circuitName;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -56,7 +56,7 @@ class ExpressRouteCircuitAuthorizationArgs {
     return ExpressRouteCircuitAuthorizationArgs(
       authorizationKey: (() { final guardedValue = map['authorizationKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       authorizationName: (() { final guardedValue = map['authorizationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      authorizationUseStatus: (() { final guardedValue = map['authorizationUseStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authorizationUseStatus: (() { final guardedValue = map['authorizationUseStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       circuitName: pulumi.Input.fromValue(map['circuitName'] as String),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

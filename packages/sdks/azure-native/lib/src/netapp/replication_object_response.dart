@@ -6,17 +6,17 @@ import 'remote_path_response.dart';
 /// Replication properties
 class ReplicationObjectResponse {
   /// Indicates whether the local volume is the source or destination for the Volume Replication
-  final pulumi.Input<String>? endpointType;
+  final pulumi.Input<String?>? endpointType;
   /// The full path to a volume that is to be migrated into ANF. Required for Migration volumes
-  final pulumi.Input<RemotePathResponse>? remotePath;
+  final pulumi.Input<RemotePathResponse?>? remotePath;
   /// The remote region for the other end of the Volume Replication.
-  final pulumi.Input<String>? remoteVolumeRegion;
+  final pulumi.Input<String?>? remoteVolumeRegion;
   /// The resource ID of the remote volume. Required for cross region and cross zone replication
-  final pulumi.Input<String>? remoteVolumeResourceId;
+  final pulumi.Input<String?>? remoteVolumeResourceId;
   /// Id
   final pulumi.Input<String> replicationId;
   /// Schedule
-  final pulumi.Input<String>? replicationSchedule;
+  final pulumi.Input<String?>? replicationSchedule;
 
   /// Creates a new [ReplicationObjectResponse].
   /// [endpointType] Indicates whether the local volume is the source or destination for the Volume Replication

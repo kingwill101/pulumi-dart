@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The detailed result of a validation or rule checking.
 class VerificationResultResponse {
   /// Message for clarification.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Indicates if the validation or rule checking is passed.
   final pulumi.Input<String> result;
   /// The name of the verification rule.
-  final pulumi.Input<String>? verificationName;
+  final pulumi.Input<String?>? verificationName;
 
   /// Creates a new [VerificationResultResponse].
   /// [message] Message for clarification.

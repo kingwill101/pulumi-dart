@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Elastic Volume Backup Properties
 class ElasticVolumeBackupPropertiesResponse {
   /// ResourceId used to identify Elastic Backup Policy
-  final pulumi.Input<String>? elasticBackupPolicyResourceId;
+  final pulumi.Input<String?>? elasticBackupPolicyResourceId;
   /// ResourceId used to identify Elastic Backup Vault
-  final pulumi.Input<String>? elasticBackupVaultResourceId;
+  final pulumi.Input<String?>? elasticBackupVaultResourceId;
   /// The property to decide policy is enforced or not on the volume
-  final pulumi.Input<String>? policyEnforcement;
+  final pulumi.Input<String?>? policyEnforcement;
 
   /// Creates a new [ElasticVolumeBackupPropertiesResponse].
   /// [elasticBackupPolicyResourceId] ResourceId used to identify Elastic Backup Policy

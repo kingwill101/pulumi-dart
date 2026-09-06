@@ -284,4 +284,26 @@ class AlertsSuppressionRule extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [AlertsSuppressionRule] resource.
+  AlertsSuppressionRule.reference(String urn)
+    : super(
+        'azure-native:security:AlertsSuppressionRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alertType = registerOutput<String>('alertType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    comment = registerOutput<String?>('comment');
+    expirationDateUtc = registerOutput<String?>('expirationDateUtc');
+    lastModifiedUtc = registerOutput<String>('lastModifiedUtc');
+    this.name = registerOutput<String>('name');
+    reason = registerOutput<String>('reason');
+    state = registerOutput<String>('state');
+    suppressionAlertsScope = registerOutput<SuppressionAlertsScopeResponse?>('suppressionAlertsScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SuppressionAlertsScopeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

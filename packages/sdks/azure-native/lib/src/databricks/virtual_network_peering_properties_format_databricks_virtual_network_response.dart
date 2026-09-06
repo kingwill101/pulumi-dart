@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
 class VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponse {
   /// The Id of the databricks virtual network.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponse].
   /// [id] The Id of the databricks virtual network.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of StatefulEngineOptions
 class StatefulEngineOptions {
   /// Property ruleOrder
-  final pulumi.Input<String>? ruleOrder;
+  final pulumi.Input<dynamic>? ruleOrder;
   /// Property streamExceptionPolicy
-  final pulumi.Input<String>? streamExceptionPolicy;
+  final pulumi.Input<dynamic>? streamExceptionPolicy;
 
   /// Creates a new [StatefulEngineOptions].
   /// [ruleOrder] Property ruleOrder
@@ -26,8 +26,8 @@ class StatefulEngineOptions {
 
   factory StatefulEngineOptions.fromMap(Map<String, dynamic> map) {
     return StatefulEngineOptions(
-      ruleOrder: (() { final guardedValue = map['ruleOrder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      streamExceptionPolicy: (() { final guardedValue = map['streamExceptionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ruleOrder: (() { final guardedValue = map['ruleOrder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      streamExceptionPolicy: (() { final guardedValue = map['streamExceptionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -233,7 +233,31 @@ class MultipleActivationKey extends pulumi.CustomResource {
     osType = registerOutput<String?>('osType');
     provisioningState = registerOutput<String>('provisioningState');
     supportType = registerOutput<String?>('supportType');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [MultipleActivationKey] resource.
+  MultipleActivationKey.reference(String urn)
+    : super(
+        'azure-native:windowsesu:MultipleActivationKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agreementNumber = registerOutput<String?>('agreementNumber');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    expirationDate = registerOutput<String>('expirationDate');
+    installedServerNumber = registerOutput<int?>('installedServerNumber');
+    isEligible = registerOutput<bool?>('isEligible');
+    location = registerOutput<String>('location');
+    multipleActivationKey = registerOutput<String>('multipleActivationKey');
+    this.name = registerOutput<String>('name');
+    osType = registerOutput<String?>('osType');
+    provisioningState = registerOutput<String>('provisioningState');
+    supportType = registerOutput<String?>('supportType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

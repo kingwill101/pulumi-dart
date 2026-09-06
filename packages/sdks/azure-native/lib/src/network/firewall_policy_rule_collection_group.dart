@@ -1485,7 +1485,7 @@ class FirewallPolicyRuleCollectionGroup extends pulumi.CustomResource {
   /// The provisioning state of the firewall policy rule collection group resource.
   late final pulumi.Output<String> provisioningState;
   /// Group of Firewall Policy rule collections.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ruleCollections;
+  late final pulumi.Output<List<dynamic>?> ruleCollections;
   /// A read-only string that represents the size of the FirewallPolicyRuleCollectionGroupProperties in MB. (ex 1.2MB)
   late final pulumi.Output<String> size;
   /// Rule Group type.
@@ -1510,7 +1510,26 @@ class FirewallPolicyRuleCollectionGroup extends pulumi.CustomResource {
     this.name = registerOutput<String?>('name');
     priority = registerOutput<int?>('priority');
     provisioningState = registerOutput<String>('provisioningState');
-    ruleCollections = registerOutput<List<Map<String, dynamic>>?>('ruleCollections');
+    ruleCollections = registerOutput<List<dynamic>?>('ruleCollections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    size = registerOutput<String>('size');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [FirewallPolicyRuleCollectionGroup] resource.
+  FirewallPolicyRuleCollectionGroup.reference(String urn)
+    : super(
+        'azure-native:network:FirewallPolicyRuleCollectionGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String?>('name');
+    priority = registerOutput<int?>('priority');
+    provisioningState = registerOutput<String>('provisioningState');
+    ruleCollections = registerOutput<List<dynamic>?>('ruleCollections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     size = registerOutput<String>('size');
     type = registerOutput<String>('type');
   }

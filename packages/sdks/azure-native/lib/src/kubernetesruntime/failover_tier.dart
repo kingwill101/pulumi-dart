@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Failover speed: NA, Slow, Fast
-enum FailoverTier {
+enum FailoverTier implements pulumi.PulumiEnum<String> {
   notAvailable("NotAvailable"),
   slow("Slow"),
   fast("Fast"),
   super_("Super");
 
   const FailoverTier(this.wireValue);
+  @override
   final String wireValue;
 
   static FailoverTier fromValue(String value) {

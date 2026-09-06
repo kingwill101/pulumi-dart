@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines parameters for http connection pooling
 class HttpConnectionPoolResponse {
   /// Maximum number of pending http1 requests allowed
-  final pulumi.Input<int>? http1MaxPendingRequests;
+  final pulumi.Input<int?>? http1MaxPendingRequests;
   /// Maximum number of http2 requests allowed
-  final pulumi.Input<int>? http2MaxRequests;
+  final pulumi.Input<int?>? http2MaxRequests;
 
   /// Creates a new [HttpConnectionPoolResponse].
   /// [http1MaxPendingRequests] Maximum number of pending http1 requests allowed
@@ -26,8 +26,8 @@ class HttpConnectionPoolResponse {
 
   factory HttpConnectionPoolResponse.fromMap(Map<String, dynamic> map) {
     return HttpConnectionPoolResponse(
-      http1MaxPendingRequests: (() { final guardedValue = map['http1MaxPendingRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      http2MaxRequests: (() { final guardedValue = map['http2MaxRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      http1MaxPendingRequests: (() { final guardedValue = map['http1MaxPendingRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      http2MaxRequests: (() { final guardedValue = map['http2MaxRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

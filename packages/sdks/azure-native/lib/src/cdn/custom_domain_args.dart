@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cdn_custom_domain_args_doc}
 class CustomDomainArgs {
   /// Name of the custom domain within an endpoint.
-  final pulumi.Input<String>? customDomainName;
+  final pulumi.Input<String?>? customDomainName;
   /// Name of the endpoint under the profile which is unique globally.
   final pulumi.Input<String> endpointName;
   /// The host name of the custom domain. Must be a domain name.

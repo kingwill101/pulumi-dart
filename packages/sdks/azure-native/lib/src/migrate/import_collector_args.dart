@@ -8,12 +8,12 @@ import 'import_collector_properties.dart';
 /// {@endtemplate}
 /// {@macro pulumi_migrate_import_collector_args_doc}
 class ImportCollectorArgs {
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// Unique name of a Import collector within a project.
-  final pulumi.Input<String>? importCollectorName;
+  final pulumi.Input<String?>? importCollectorName;
   /// Name of the Azure Migrate project.
   final pulumi.Input<String> projectName;
-  final pulumi.Input<ImportCollectorProperties>? properties;
+  final pulumi.Input<ImportCollectorProperties?>? properties;
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
 

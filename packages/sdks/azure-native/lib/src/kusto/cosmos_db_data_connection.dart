@@ -550,4 +550,29 @@ class CosmosDbDataConnection extends pulumi.CustomResource {
     tableName = registerOutput<String>('tableName');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [CosmosDbDataConnection] resource.
+  CosmosDbDataConnection.reference(String urn)
+    : super(
+        'azure-native:kusto:CosmosDbDataConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cosmosDbAccountResourceId = registerOutput<String>('cosmosDbAccountResourceId');
+    cosmosDbContainer = registerOutput<String>('cosmosDbContainer');
+    cosmosDbDatabase = registerOutput<String>('cosmosDbDatabase');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String?>('location');
+    managedIdentityObjectId = registerOutput<String>('managedIdentityObjectId');
+    managedIdentityResourceId = registerOutput<String>('managedIdentityResourceId');
+    mappingRuleName = registerOutput<String?>('mappingRuleName');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    retrievalStartDate = registerOutput<String?>('retrievalStartDate');
+    tableName = registerOutput<String>('tableName');
+    type = registerOutput<String>('type');
+  }
 }

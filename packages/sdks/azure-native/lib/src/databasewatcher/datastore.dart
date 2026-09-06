@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of a data store.
 class Datastore {
   /// The Azure resource ID of an Azure Data Explorer cluster.
-  final pulumi.Input<String>? adxClusterResourceId;
+  final pulumi.Input<String?>? adxClusterResourceId;
   /// The Kusto cluster display name.
-  final pulumi.Input<String>? kustoClusterDisplayName;
+  final pulumi.Input<String?>? kustoClusterDisplayName;
   /// The Kusto cluster URI.
   final pulumi.Input<String> kustoClusterUri;
   /// The Kusto data ingestion URI.
@@ -17,7 +17,7 @@ class Datastore {
   /// The Kusto management URL.
   final pulumi.Input<String> kustoManagementUrl;
   /// The type of a Kusto offering.
-  final pulumi.Input<String> kustoOfferingType;
+  final pulumi.Input<dynamic> kustoOfferingType;
 
   /// Creates a new [Datastore].
   /// [adxClusterResourceId] The Azure resource ID of an Azure Data Explorer cluster.
@@ -57,7 +57,7 @@ class Datastore {
       kustoDataIngestionUri: pulumi.Input.fromValue(map['kustoDataIngestionUri'] as String),
       kustoDatabaseName: pulumi.Input.fromValue(map['kustoDatabaseName'] as String),
       kustoManagementUrl: pulumi.Input.fromValue(map['kustoManagementUrl'] as String),
-      kustoOfferingType: pulumi.Input.fromValue(map['kustoOfferingType'] as String),
+      kustoOfferingType: pulumi.Input.fromValue(map['kustoOfferingType']),
     );
   }
 }

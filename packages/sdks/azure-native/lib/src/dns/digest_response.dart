@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A digest.
 class DigestResponse {
   /// The digest algorithm type represents the standard digest algorithm number used to construct the digest. See: https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml
-  final pulumi.Input<int>? algorithmType;
+  final pulumi.Input<int?>? algorithmType;
   /// The digest value is a cryptographic hash value of the referenced DNSKEY Resource Record.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [DigestResponse].
   /// [algorithmType] The digest algorithm type represents the standard digest algorithm number used to construct the digest. See: https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml
@@ -26,7 +26,7 @@ class DigestResponse {
 
   factory DigestResponse.fromMap(Map<String, dynamic> map) {
     return DigestResponse(
-      algorithmType: (() { final guardedValue = map['algorithmType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      algorithmType: (() { final guardedValue = map['algorithmType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

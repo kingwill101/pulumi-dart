@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Verify client certificate revocation status.
-enum ApplicationGatewayClientRevocationOptions {
+enum ApplicationGatewayClientRevocationOptions implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueOCSP("OCSP");
 
   const ApplicationGatewayClientRevocationOptions(this.wireValue);
+  @override
   final String wireValue;
 
   static ApplicationGatewayClientRevocationOptions fromValue(String value) {

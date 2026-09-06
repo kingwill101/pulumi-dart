@@ -7,7 +7,7 @@ class ServiceConfiguration {
   /// The port on which service is enabled.
   final pulumi.Input<double> port;
   /// Name of the service.
-  final pulumi.Input<String> serviceName;
+  final pulumi.Input<dynamic> serviceName;
 
   /// Creates a new [ServiceConfiguration].
   /// [port] The port on which service is enabled.
@@ -26,8 +26,8 @@ class ServiceConfiguration {
 
   factory ServiceConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceConfiguration(
-      port: pulumi.Input.fromValue(map['port'] as double),
-      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      port: pulumi.Input.fromValue((map['port'] as num).toDouble()),
+      serviceName: pulumi.Input.fromValue(map['serviceName']),
     );
   }
 }

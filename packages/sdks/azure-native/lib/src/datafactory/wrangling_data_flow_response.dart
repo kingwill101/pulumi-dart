@@ -7,17 +7,17 @@ import 'power_query_source_response.dart';
 /// Power Query data flow.
 class WranglingDataFlowResponse {
   /// List of tags that can be used for describing the data flow.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The description of the data flow.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Locale of the Power query mashup document.
-  final pulumi.Input<String>? documentLocale;
+  final pulumi.Input<String?>? documentLocale;
   /// The folder that this data flow is in. If not specified, Data flow will appear at the root level.
-  final pulumi.Input<DataFlowFolderResponse>? folder;
+  final pulumi.Input<DataFlowFolderResponse?>? folder;
   /// Power query mashup script.
-  final pulumi.Input<String>? script;
+  final pulumi.Input<String?>? script;
   /// List of sources in Power Query.
-  final pulumi.Input<List<PowerQuerySourceResponse>>? sources;
+  final pulumi.Input<List<PowerQuerySourceResponse>?>? sources;
   /// Type of data flow.
   /// Expected value is 'WranglingDataFlow'.
   final pulumi.Input<String> type;

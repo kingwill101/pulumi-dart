@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_group_args.dart';
 import 'system_data_response.dart';
+import 'throttling_policy_response.dart';
 
 /// The Application Group object
 ///
@@ -310,7 +311,7 @@ class ApplicationGroup extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
-  late final pulumi.Output<List<Map<String, dynamic>>?> policies;
+  late final pulumi.Output<List<ThrottlingPolicyResponse>?> policies;
   /// The system meta data relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
@@ -335,7 +336,26 @@ class ApplicationGroup extends pulumi.CustomResource {
     isEnabled = registerOutput<bool?>('isEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    policies = registerOutput<List<Map<String, dynamic>>?>('policies');
+    policies = registerOutput<List<ThrottlingPolicyResponse>?>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThrottlingPolicyResponse>(guardedValue, (value) => ThrottlingPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ApplicationGroup] resource.
+  ApplicationGroup.reference(String urn)
+    : super(
+        'azure-native:eventhub:ApplicationGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientAppGroupIdentifier = registerOutput<String>('clientAppGroupIdentifier');
+    isEnabled = registerOutput<bool?>('isEnabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    policies = registerOutput<List<ThrottlingPolicyResponse>?>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThrottlingPolicyResponse>(guardedValue, (value) => ThrottlingPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

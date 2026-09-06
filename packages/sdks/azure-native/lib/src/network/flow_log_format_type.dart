@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The file type of flow log.
-enum FlowLogFormatType {
+enum FlowLogFormatType implements pulumi.PulumiEnum<String> {
   valueJSON("JSON");
 
   const FlowLogFormatType(this.wireValue);
+  @override
   final String wireValue;
 
   static FlowLogFormatType fromValue(String value) {

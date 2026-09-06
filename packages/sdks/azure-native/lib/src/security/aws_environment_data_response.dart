@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'aws_organizational_data_master_response.dart';
 
 /// The AWS connector environment data
 class AwsEnvironmentDataResponse {
@@ -11,11 +10,11 @@ class AwsEnvironmentDataResponse {
   /// Expected value is 'AwsAccount'.
   final pulumi.Input<String> environmentType;
   /// The AWS account's organizational data
-  final pulumi.Input<AwsOrganizationalDataMasterResponse>? organizationalData;
+  final pulumi.Input<dynamic>? organizationalData;
   /// list of regions to scan
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
   /// Scan interval in hours (value should be between 1-hour to 24-hours)
-  final pulumi.Input<double>? scanInterval;
+  final pulumi.Input<double?>? scanInterval;
 
   /// Creates a new [AwsEnvironmentDataResponse].
   /// [accountName] The AWS account name
@@ -35,7 +34,7 @@ class AwsEnvironmentDataResponse {
     return <String, dynamic>{
       'accountName': accountName,
       'environmentType': environmentType,
-      'organizationalData': ?pulumi.Input.mapOptionalInputValue<AwsOrganizationalDataMasterResponse, Map<String, dynamic>>(organizationalData, (value) => value.toMap()),
+      'organizationalData': ?organizationalData,
       'regions': ?regions,
       'scanInterval': ?scanInterval,
     };
@@ -45,9 +44,9 @@ class AwsEnvironmentDataResponse {
     return AwsEnvironmentDataResponse(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       environmentType: pulumi.Input.fromValue(map['environmentType'] as String),
-      organizationalData: (() { final guardedValue = map['organizationalData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AwsOrganizationalDataMasterResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      organizationalData: (() { final guardedValue = map['organizationalData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      scanInterval: (() { final guardedValue = map['scanInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      scanInterval: (() { final guardedValue = map['scanInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

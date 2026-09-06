@@ -267,4 +267,27 @@ class StorageAccountCredential extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     userName = registerOutput<String?>('userName');
   }
+
+  /// Creates a typed reference to an existing [StorageAccountCredential] resource.
+  StorageAccountCredential.reference(String urn)
+    : super(
+        'azure-native:databoxedge:StorageAccountCredential',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountKey = registerOutput<AsymmetricEncryptedSecretResponse?>('accountKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AsymmetricEncryptedSecretResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    accountType = registerOutput<String>('accountType');
+    alias = registerOutput<String>('alias');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    blobDomainName = registerOutput<String?>('blobDomainName');
+    connectionString = registerOutput<String?>('connectionString');
+    this.name = registerOutput<String>('name');
+    sslStatus = registerOutput<String>('sslStatus');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    userName = registerOutput<String?>('userName');
+  }
 }

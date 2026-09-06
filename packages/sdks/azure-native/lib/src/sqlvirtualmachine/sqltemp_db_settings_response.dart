@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Set tempDb storage settings for SQL Server.
 class SQLTempDbSettingsResponse {
   /// SQL Server tempdb data file count
-  final pulumi.Input<int>? dataFileCount;
+  final pulumi.Input<int?>? dataFileCount;
   /// SQL Server tempdb data file size
-  final pulumi.Input<int>? dataFileSize;
+  final pulumi.Input<int?>? dataFileSize;
   /// SQL Server tempdb data file autoGrowth size
-  final pulumi.Input<int>? dataGrowth;
+  final pulumi.Input<int?>? dataGrowth;
   /// SQL Server default file path
-  final pulumi.Input<String>? defaultFilePath;
+  final pulumi.Input<String?>? defaultFilePath;
   /// SQL Server tempdb log file size
-  final pulumi.Input<int>? logFileSize;
+  final pulumi.Input<int?>? logFileSize;
   /// SQL Server tempdb log file autoGrowth size
-  final pulumi.Input<int>? logGrowth;
+  final pulumi.Input<int?>? logGrowth;
   /// Logical Unit Numbers for the disks.
-  final pulumi.Input<List<int>>? luns;
+  final pulumi.Input<List<int>?>? luns;
   /// SQL Server tempdb persist folder choice
-  final pulumi.Input<bool>? persistFolder;
+  final pulumi.Input<bool?>? persistFolder;
   /// SQL Server tempdb persist folder location
-  final pulumi.Input<String>? persistFolderPath;
+  final pulumi.Input<String?>? persistFolderPath;
   /// Use storage pool to build a drive if true or not provided
-  final pulumi.Input<bool>? useStoragePool;
+  final pulumi.Input<bool?>? useStoragePool;
 
   /// Creates a new [SQLTempDbSettingsResponse].
   /// [dataFileCount] SQL Server tempdb data file count
@@ -66,12 +66,12 @@ class SQLTempDbSettingsResponse {
 
   factory SQLTempDbSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SQLTempDbSettingsResponse(
-      dataFileCount: (() { final guardedValue = map['dataFileCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      dataFileSize: (() { final guardedValue = map['dataFileSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      dataGrowth: (() { final guardedValue = map['dataGrowth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dataFileCount: (() { final guardedValue = map['dataFileCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      dataFileSize: (() { final guardedValue = map['dataFileSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      dataGrowth: (() { final guardedValue = map['dataGrowth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       defaultFilePath: (() { final guardedValue = map['defaultFilePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      logFileSize: (() { final guardedValue = map['logFileSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      logGrowth: (() { final guardedValue = map['logGrowth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      logFileSize: (() { final guardedValue = map['logFileSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      logGrowth: (() { final guardedValue = map['logGrowth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       luns: (() { final guardedValue = map['luns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
       persistFolder: (() { final guardedValue = map['persistFolder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       persistFolderPath: (() { final guardedValue = map['persistFolderPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

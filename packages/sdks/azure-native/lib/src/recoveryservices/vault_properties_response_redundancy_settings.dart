@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The redundancy Settings of a Vault
 class VaultPropertiesResponseRedundancySettings {
   /// Flag to show if Cross Region Restore is enabled on the Vault or not
-  final pulumi.Input<String>? crossRegionRestore;
+  final pulumi.Input<String?>? crossRegionRestore;
   /// The storage redundancy setting of a vault
-  final pulumi.Input<String>? standardTierStorageRedundancy;
+  final pulumi.Input<String?>? standardTierStorageRedundancy;
 
   /// Creates a new [VaultPropertiesResponseRedundancySettings].
   /// [crossRegionRestore] Flag to show if Cross Region Restore is enabled on the Vault or not

@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_blob_fswrite_settings.dart';
 
 /// A copy activity Binary sink.
 class BinarySink {
@@ -14,7 +13,7 @@ class BinarySink {
   /// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? sinkRetryWait;
   /// Binary store settings.
-  final pulumi.Input<AzureBlobFSWriteSettings>? storeSettings;
+  final pulumi.Input<dynamic>? storeSettings;
   /// Copy sink type.
   /// Expected value is 'BinarySink'.
   final pulumi.Input<String> type;
@@ -49,7 +48,7 @@ class BinarySink {
       'maxConcurrentConnections': ?maxConcurrentConnections,
       'sinkRetryCount': ?sinkRetryCount,
       'sinkRetryWait': ?sinkRetryWait,
-      'storeSettings': ?pulumi.Input.mapOptionalInputValue<AzureBlobFSWriteSettings, Map<String, dynamic>>(storeSettings, (value) => value.toMap()),
+      'storeSettings': ?storeSettings,
       'type': type,
       'writeBatchSize': ?writeBatchSize,
       'writeBatchTimeout': ?writeBatchTimeout,
@@ -62,7 +61,7 @@ class BinarySink {
       maxConcurrentConnections: (() { final guardedValue = map['maxConcurrentConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sinkRetryCount: (() { final guardedValue = map['sinkRetryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sinkRetryWait: (() { final guardedValue = map['sinkRetryWait']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      storeSettings: (() { final guardedValue = map['storeSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureBlobFSWriteSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      storeSettings: (() { final guardedValue = map['storeSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       writeBatchSize: (() { final guardedValue = map['writeBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       writeBatchTimeout: (() { final guardedValue = map['writeBatchTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

@@ -11,7 +11,7 @@ class BookshelfKeyVaultProperties {
   /// The Key Vault URI
   final pulumi.Input<String> keyVaultUri;
   /// The Key Version in Key Vault
-  final pulumi.Input<String>? keyVersion;
+  final pulumi.Input<String?>? keyVersion;
 
   /// Creates a new [BookshelfKeyVaultProperties].
   /// [identityClientId] The client ID of the identity to use for accessing the Key Vault. Must be a workload identity assigned to the Bookshelf resource.

@@ -6,21 +6,21 @@ import 'condition.dart';
 /// Definition of Filter
 class Filter {
   /// How to handle logs that satisfy the filter's conditions and requirement.
-  final pulumi.Input<String>? behavior;
+  final pulumi.Input<dynamic>? behavior;
   /// Match conditions for the filter.
-  final pulumi.Input<List<Condition>>? conditions;
+  final pulumi.Input<List<Condition>?>? conditions;
   /// Property contains
-  final pulumi.Input<List<String>>? contains;
+  final pulumi.Input<List<String>?>? contains;
   /// Property eq
-  final pulumi.Input<List<String>>? eq;
+  final pulumi.Input<List<String>?>? eq;
   /// Property exists
-  final pulumi.Input<bool>? exists;
+  final pulumi.Input<bool?>? exists;
   /// Property neq
-  final pulumi.Input<List<String>>? neq;
+  final pulumi.Input<List<String>?>? neq;
   /// Property property
-  final pulumi.Input<String>? property;
+  final pulumi.Input<String?>? property;
   /// Logic to apply to the filtering conditions. You can specify that, in order to satisfy the filter, a log must match all conditions or must match at least one condition.
-  final pulumi.Input<String>? requirement;
+  final pulumi.Input<dynamic>? requirement;
 
   /// Creates a new [Filter].
   /// [behavior] How to handle logs that satisfy the filter's conditions and requirement.
@@ -57,14 +57,14 @@ class Filter {
 
   factory Filter.fromMap(Map<String, dynamic> map) {
     return Filter(
-      behavior: (() { final guardedValue = map['behavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      behavior: (() { final guardedValue = map['behavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Condition>(guardedValue, (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       contains: (() { final guardedValue = map['contains']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       eq: (() { final guardedValue = map['eq']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       exists: (() { final guardedValue = map['exists']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       neq: (() { final guardedValue = map['neq']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       property: (() { final guardedValue = map['property']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      requirement: (() { final guardedValue = map['requirement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requirement: (() { final guardedValue = map['requirement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

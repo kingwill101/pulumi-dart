@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Error action mode
-enum ErrorActionMode {
+enum ErrorActionMode implements pulumi.PulumiEnum<String> {
   stopOnAnyFailure("stopOnAnyFailure"),
   stopOnNFailures("stopOnNFailures"),
   silentlyContinue("silentlyContinue");
 
   const ErrorActionMode(this.wireValue);
+  @override
   final String wireValue;
 
   static ErrorActionMode fromValue(String value) {

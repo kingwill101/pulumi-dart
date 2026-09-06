@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum StatusName {
+enum StatusName implements pulumi.PulumiEnum<String> {
   reachability("reachability");
 
   const StatusName(this.wireValue);
+  @override
   final String wireValue;
 
   static StatusName fromValue(String value) {

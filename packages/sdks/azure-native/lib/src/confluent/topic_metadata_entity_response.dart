@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Metadata of the data record
 class TopicMetadataEntityResponse {
   /// Resource name of the record
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// Self lookup url
-  final pulumi.Input<String>? self;
+  final pulumi.Input<String?>? self;
 
   /// Creates a new [TopicMetadataEntityResponse].
   /// [resourceName] Resource name of the record

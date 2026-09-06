@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] Seasonality mode.
-enum SeasonalityMode {
+enum SeasonalityMode implements pulumi.PulumiEnum<String> {
   auto("Auto"),
   custom("Custom");
 
   const SeasonalityMode(this.wireValue);
+  @override
   final String wireValue;
 
   static SeasonalityMode fromValue(String value) {

@@ -12,7 +12,7 @@ import 'partner_region_info.dart';
 /// {@macro pulumi_sql_instance_failover_group_args_doc}
 class InstanceFailoverGroupArgs {
   /// The name of the failover group.
-  final pulumi.Input<String>? failoverGroupName;
+  final pulumi.Input<String?>? failoverGroupName;
   /// The name of the region where the resource is located.
   final pulumi.Input<String> locationName;
   /// List of managed instance pairs in the failover group.
@@ -20,13 +20,13 @@ class InstanceFailoverGroupArgs {
   /// Partner region information for the failover group.
   final pulumi.Input<List<PartnerRegionInfo>> partnerRegions;
   /// Read-only endpoint of the failover group instance.
-  final pulumi.Input<InstanceFailoverGroupReadOnlyEndpoint>? readOnlyEndpoint;
+  final pulumi.Input<InstanceFailoverGroupReadOnlyEndpoint?>? readOnlyEndpoint;
   /// Read-write endpoint of the failover group instance.
   final pulumi.Input<InstanceFailoverGroupReadWriteEndpoint> readWriteEndpoint;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// Type of the geo-secondary instance. Set 'Standby' if the instance is used as a DR option only.
-  final pulumi.Input<String>? secondaryType;
+  final pulumi.Input<dynamic>? secondaryType;
 
   /// Creates a new [InstanceFailoverGroupArgs].
   /// [failoverGroupName] The name of the failover group.
@@ -70,7 +70,7 @@ class InstanceFailoverGroupArgs {
       readOnlyEndpoint: (() { final guardedValue = map['readOnlyEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceFailoverGroupReadOnlyEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       readWriteEndpoint: pulumi.Input.fromValue(InstanceFailoverGroupReadWriteEndpoint.fromMap((map['readWriteEndpoint']! as Map).cast<String, dynamic>())),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      secondaryType: (() { final guardedValue = map['secondaryType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secondaryType: (() { final guardedValue = map['secondaryType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

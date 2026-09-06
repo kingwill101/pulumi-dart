@@ -8,13 +8,13 @@ class CloudErrorResponse {
   /// Gets or sets additional error info.
   final pulumi.Input<List<AdditionalErrorInfoResponse>> additionalInfo;
   /// Error code.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// Gets or sets details for the error.
   final pulumi.Input<List<CloudErrorResponse>> details;
   /// The error message parsed from the body of the http error response.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Gets or sets the target of the error.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
 
   /// Creates a new [CloudErrorResponse].
   /// [additionalInfo] Gets or sets additional error info.

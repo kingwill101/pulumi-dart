@@ -11,7 +11,7 @@ class DynamicDetectionRuleResponse {
   /// ML model sensitivity. Lowest value = high sensitivity. Supported step size = 0.5
   final pulumi.Input<double> modelSensitivity;
   /// Start time of the training in UTC.
-  final pulumi.Input<String>? trainingStartTime;
+  final pulumi.Input<String?>? trainingStartTime;
 
   /// Creates a new [DynamicDetectionRuleResponse].
   /// [dynamicThresholdDirection] Threshold direction
@@ -38,7 +38,7 @@ class DynamicDetectionRuleResponse {
     return DynamicDetectionRuleResponse(
       dynamicThresholdDirection: pulumi.Input.fromValue(map['dynamicThresholdDirection'] as String),
       dynamicThresholdModel: pulumi.Input.fromValue(map['dynamicThresholdModel'] as String),
-      modelSensitivity: pulumi.Input.fromValue(map['modelSensitivity'] as double),
+      modelSensitivity: pulumi.Input.fromValue((map['modelSensitivity'] as num).toDouble()),
       trainingStartTime: (() { final guardedValue = map['trainingStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

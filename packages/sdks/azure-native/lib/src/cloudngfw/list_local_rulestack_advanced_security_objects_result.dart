@@ -7,27 +7,27 @@ class ListLocalRulestackAdvancedSecurityObjectsResult {
   /// next link
   final String? nextLink;
   /// response value
-  final AdvSecurityObjectModelResponse value;
+  final AdvSecurityObjectModelResponse? value;
 
   /// Creates a new [ListLocalRulestackAdvancedSecurityObjectsResult].
   /// [nextLink] next link
   /// [value] response value
   const ListLocalRulestackAdvancedSecurityObjectsResult({
     this.nextLink,
-    required this.value,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': value.toMap(),
+      'value': ?value?.toMap(),
     };
   }
 
   factory ListLocalRulestackAdvancedSecurityObjectsResult.fromMap(Map<String, dynamic> map) {
     return ListLocalRulestackAdvancedSecurityObjectsResult(
       nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      value: AdvSecurityObjectModelResponse.fromMap((map['value']! as Map).cast<String, dynamic>()),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return AdvSecurityObjectModelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

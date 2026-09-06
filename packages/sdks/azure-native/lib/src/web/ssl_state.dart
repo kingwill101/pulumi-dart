@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SSL type.
-enum SslState {
+enum SslState implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueSniEnabled("SniEnabled"),
   valueIpBasedEnabled("IpBasedEnabled");
 
   const SslState(this.wireValue);
+  @override
   final String wireValue;
 
   static SslState fromValue(String value) {

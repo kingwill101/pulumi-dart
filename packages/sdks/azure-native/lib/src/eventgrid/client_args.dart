@@ -13,19 +13,19 @@ class ClientArgs {
   /// "attributes": { "room": "345", "floor": 12, "deviceTypes": ["Fan", "Light"] }
   final pulumi.Input<dynamic>? attributes;
   /// The name presented by the client for authentication. The default value is the name of the resource.
-  final pulumi.Input<String>? authenticationName;
+  final pulumi.Input<String?>? authenticationName;
   /// The client certificate authentication information.
-  final pulumi.Input<ClientCertificateAuthentication>? clientCertificateAuthentication;
+  final pulumi.Input<ClientCertificateAuthentication?>? clientCertificateAuthentication;
   /// The client name.
-  final pulumi.Input<String>? clientName;
+  final pulumi.Input<String?>? clientName;
   /// Description for the Client resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the namespace.
   final pulumi.Input<String> namespaceName;
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
   /// Indicates if the client is enabled or not. Default value is Enabled.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
 
   /// Creates a new [ClientArgs].
   /// [attributes] Attributes for the client. Supported values are int, bool, string, string[].
@@ -36,7 +36,7 @@ class ClientArgs {
   /// [namespaceName] Name of the namespace.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [state] Indicates if the client is enabled or not. Default value is Enabled.
-  const ClientArgs({
+  ClientArgs({
     this.attributes,
     this.authenticationName,
     this.clientCertificateAuthentication,
@@ -44,8 +44,8 @@ class ClientArgs {
     this.description,
     required this.namespaceName,
     required this.resourceGroupName,
-    this.state,
-  });
+    pulumi.Input<dynamic>? state,
+  }) : state = state ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,7 +69,7 @@ class ClientArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum AutoTuneState {
+enum AutoTuneState implements pulumi.PulumiEnum<String> {
   dISABLED("DISABLED"),
   dISABLEDANDROLLBACKCOMPLETE("DISABLED_AND_ROLLBACK_COMPLETE"),
   dISABLEDANDROLLBACKERROR("DISABLED_AND_ROLLBACK_ERROR"),
@@ -11,6 +13,7 @@ enum AutoTuneState {
   eRROR("ERROR");
 
   const AutoTuneState(this.wireValue);
+  @override
   final String wireValue;
 
   static AutoTuneState fromValue(String value) {

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The auto provisioning config.
 class DefaultRolloutSpecificationAutoProvisionConfigResponse {
   /// Whether auto provisioning for resource graph is enabled.
-  final pulumi.Input<bool>? resourceGraph;
+  final pulumi.Input<bool?>? resourceGraph;
   /// Whether auto provisioning for storage is enabled.
-  final pulumi.Input<bool>? storage;
+  final pulumi.Input<bool?>? storage;
 
   /// Creates a new [DefaultRolloutSpecificationAutoProvisionConfigResponse].
   /// [resourceGraph] Whether auto provisioning for resource graph is enabled.

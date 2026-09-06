@@ -6,11 +6,11 @@ import 'batch_processor.dart';
 /// Processor Info.
 class Processor {
   /// Batch processor configurations.
-  final pulumi.Input<BatchProcessor>? batch;
+  final pulumi.Input<BatchProcessor?>? batch;
   /// The name of processor.
   final pulumi.Input<String> name;
   /// The type of processor.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [Processor].
   /// [batch] Batch processor configurations.
@@ -34,7 +34,7 @@ class Processor {
     return Processor(
       batch: (() { final guardedValue = map['batch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BatchProcessor.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

@@ -5,6 +5,7 @@ import 'domain_service_args.dart';
 import 'ldaps_settings_response.dart';
 import 'migration_properties_response.dart';
 import 'notification_settings_response.dart';
+import 'replica_set_response.dart';
 import 'resource_forest_settings_response.dart';
 import 'system_data_response.dart';
 
@@ -358,7 +359,7 @@ class DomainService extends pulumi.CustomResource {
   /// the current deployment or provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
   /// List of ReplicaSets
-  late final pulumi.Output<List<Map<String, dynamic>>?> replicaSets;
+  late final pulumi.Output<List<ReplicaSetResponse>?> replicaSets;
   /// Resource Forest Settings
   late final pulumi.Output<ResourceForestSettingsResponse?> resourceForestSettings;
   /// Sku Type
@@ -408,14 +409,50 @@ class DomainService extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notificationSettings = registerOutput<NotificationSettingsResponse?>('notificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
-    replicaSets = registerOutput<List<Map<String, dynamic>>?>('replicaSets');
+    replicaSets = registerOutput<List<ReplicaSetResponse>?>('replicaSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicaSetResponse>(guardedValue, (value) => ReplicaSetResponse.fromMap((value as Map).cast<String, dynamic>())); });
     resourceForestSettings = registerOutput<ResourceForestSettingsResponse?>('resourceForestSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceForestSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sku = registerOutput<String?>('sku');
     syncApplicationId = registerOutput<String>('syncApplicationId');
     syncOwner = registerOutput<String>('syncOwner');
     syncScope = registerOutput<String?>('syncScope');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [DomainService] resource.
+  DomainService.reference(String urn)
+    : super(
+        'azure-native:aad:DomainService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configDiagnostics = registerOutput<ConfigDiagnosticsResponse?>('configDiagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigDiagnosticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deploymentId = registerOutput<String>('deploymentId');
+    domainConfigurationType = registerOutput<String?>('domainConfigurationType');
+    domainName = registerOutput<String?>('domainName');
+    domainSecuritySettings = registerOutput<DomainSecuritySettingsResponse?>('domainSecuritySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainSecuritySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String?>('etag');
+    filteredSync = registerOutput<String?>('filteredSync');
+    ldapsSettings = registerOutput<LdapsSettingsResponse?>('ldapsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LdapsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    migrationProperties = registerOutput<MigrationPropertiesResponse>('migrationProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    notificationSettings = registerOutput<NotificationSettingsResponse?>('notificationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    replicaSets = registerOutput<List<ReplicaSetResponse>?>('replicaSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicaSetResponse>(guardedValue, (value) => ReplicaSetResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceForestSettings = registerOutput<ResourceForestSettingsResponse?>('resourceForestSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceForestSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<String?>('sku');
+    syncApplicationId = registerOutput<String>('syncApplicationId');
+    syncOwner = registerOutput<String>('syncOwner');
+    syncScope = registerOutput<String?>('syncScope');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');
     version = registerOutput<int>('version');

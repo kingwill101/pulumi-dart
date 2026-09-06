@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_deviceregistry_schema_version_args_doc}
 class SchemaVersionArgs {
   /// Human-readable description of the schema.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Schema content.
@@ -18,7 +18,7 @@ class SchemaVersionArgs {
   /// Schema registry name parameter.
   final pulumi.Input<String> schemaRegistryName;
   /// Schema version name parameter.
-  final pulumi.Input<String>? schemaVersionName;
+  final pulumi.Input<String?>? schemaVersionName;
 
   /// Creates a new [SchemaVersionArgs].
   /// [description] Human-readable description of the schema.

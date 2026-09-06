@@ -16,11 +16,11 @@ class CertManagerCertOptionsResponse {
   /// [duration] Duration of CA cert.
   /// [privateKey] Cert Manager private key.
   /// [renewBefore] Renew before time of CA cert.
-  const CertManagerCertOptionsResponse({
-    required this.duration,
+  CertManagerCertOptionsResponse({
+    pulumi.Input<String>? duration,
     required this.privateKey,
-    required this.renewBefore,
-  });
+    pulumi.Input<String>? renewBefore,
+  }) : duration = duration ?? pulumi.Input.fromValue('720h'), renewBefore = renewBefore ?? pulumi.Input.fromValue('240h');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

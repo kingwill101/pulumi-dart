@@ -10,11 +10,11 @@ class ApiOperationPolicyArgs {
   /// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
   final pulumi.Input<String> apiId;
   /// Format of the policyContent.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<dynamic>? format;
   /// Operation identifier within an API. Must be unique in the current API Management service instance.
   final pulumi.Input<String> operationId;
   /// The identifier of the Policy.
-  final pulumi.Input<String>? policyId;
+  final pulumi.Input<String?>? policyId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.
@@ -30,15 +30,15 @@ class ApiOperationPolicyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   /// [value] Contents of the Policy as defined by the format.
-  const ApiOperationPolicyArgs({
+  ApiOperationPolicyArgs({
     required this.apiId,
-    this.format,
+    pulumi.Input<dynamic>? format,
     required this.operationId,
     this.policyId,
     required this.resourceGroupName,
     required this.serviceName,
     required this.value,
-  });
+  }) : format = format ?? pulumi.Input.fromValue('xml');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,7 +55,7 @@ class ApiOperationPolicyArgs {
   factory ApiOperationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ApiOperationPolicyArgs(
       apiId: pulumi.Input.fromValue(map['apiId'] as String),
-      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       operationId: pulumi.Input.fromValue(map['operationId'] as String),
       policyId: (() { final guardedValue = map['policyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

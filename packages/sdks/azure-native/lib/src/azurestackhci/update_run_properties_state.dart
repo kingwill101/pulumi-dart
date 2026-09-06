@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// State of the update run.
-enum UpdateRunPropertiesState {
+enum UpdateRunPropertiesState implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueSucceeded("Succeeded"),
   valueInProgress("InProgress"),
   valueFailed("Failed");
 
   const UpdateRunPropertiesState(this.wireValue);
+  @override
   final String wireValue;
 
   static UpdateRunPropertiesState fromValue(String value) {

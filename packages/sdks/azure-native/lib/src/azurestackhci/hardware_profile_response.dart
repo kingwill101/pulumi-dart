@@ -51,10 +51,10 @@ class HardwareProfileResponse {
 
   factory HardwareProfileResponse.fromMap(Map<String, dynamic> map) {
     return HardwareProfileResponse(
-      cpuCores: pulumi.Input.fromValue(map['cpuCores'] as double),
-      cpuSockets: pulumi.Input.fromValue(map['cpuSockets'] as double),
+      cpuCores: pulumi.Input.fromValue((map['cpuCores'] as num).toDouble()),
+      cpuSockets: pulumi.Input.fromValue((map['cpuSockets'] as num).toDouble()),
       manufacturer: pulumi.Input.fromValue(map['manufacturer'] as String),
-      memoryCapacityInGb: pulumi.Input.fromValue(map['memoryCapacityInGb'] as double),
+      memoryCapacityInGb: pulumi.Input.fromValue((map['memoryCapacityInGb'] as num).toDouble()),
       model: pulumi.Input.fromValue(map['model'] as String),
       processorType: pulumi.Input.fromValue(map['processorType'] as String),
       serialNumber: pulumi.Input.fromValue(map['serialNumber'] as String),

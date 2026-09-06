@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Service endpoints authentication details.
 class EndpointAuthenticationResponse {
   /// AAD tenant ID.
-  final pulumi.Input<String>? aadTenantID;
+  final pulumi.Input<String?>? aadTenantID;
   /// AAD principal ID.
-  final pulumi.Input<String>? principalID;
+  final pulumi.Input<String?>? principalID;
   /// AAD principal type.
-  final pulumi.Input<String>? principalType;
+  final pulumi.Input<String?>? principalType;
 
   /// Creates a new [EndpointAuthenticationResponse].
   /// [aadTenantID] AAD tenant ID.

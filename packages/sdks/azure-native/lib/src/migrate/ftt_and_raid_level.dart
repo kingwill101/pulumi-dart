@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// FTT and RAID Level.
-enum FttAndRaidLevel {
+enum FttAndRaidLevel implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   ftt1Raid1("Ftt1Raid1"),
   ftt1Raid5("Ftt1Raid5"),
@@ -8,6 +10,7 @@ enum FttAndRaidLevel {
   ftt3Raid1("Ftt3Raid1");
 
   const FttAndRaidLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static FttAndRaidLevel fromValue(String value) {

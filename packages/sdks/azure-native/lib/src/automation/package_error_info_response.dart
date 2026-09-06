@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of the package error info type.
 class PackageErrorInfoResponse {
   /// Package import error code.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// Package import error message.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [PackageErrorInfoResponse].
   /// [code] Package import error code.

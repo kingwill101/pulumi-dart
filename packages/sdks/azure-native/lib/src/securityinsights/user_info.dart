@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// User information that made some action
 class UserInfo {
   /// The object id of the user.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
 
   /// Creates a new [UserInfo].
   /// [objectId] The object id of the user.

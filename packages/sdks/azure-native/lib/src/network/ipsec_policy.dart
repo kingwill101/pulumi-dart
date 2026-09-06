@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An IPSec Policy configuration for a virtual network gateway connection.
 class IpsecPolicy {
   /// The DH Group used in IKE Phase 1 for initial SA.
-  final pulumi.Input<String> dhGroup;
+  final pulumi.Input<dynamic> dhGroup;
   /// The IKE encryption algorithm (IKE phase 2).
-  final pulumi.Input<String> ikeEncryption;
+  final pulumi.Input<dynamic> ikeEncryption;
   /// The IKE integrity algorithm (IKE phase 2).
-  final pulumi.Input<String> ikeIntegrity;
+  final pulumi.Input<dynamic> ikeIntegrity;
   /// The IPSec encryption algorithm (IKE phase 1).
-  final pulumi.Input<String> ipsecEncryption;
+  final pulumi.Input<dynamic> ipsecEncryption;
   /// The IPSec integrity algorithm (IKE phase 1).
-  final pulumi.Input<String> ipsecIntegrity;
+  final pulumi.Input<dynamic> ipsecIntegrity;
   /// The Pfs Group used in IKE Phase 2 for new child SA.
-  final pulumi.Input<String> pfsGroup;
+  final pulumi.Input<dynamic> pfsGroup;
   /// The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
   final pulumi.Input<int> saDataSizeKilobytes;
   /// The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
@@ -56,14 +56,14 @@ class IpsecPolicy {
 
   factory IpsecPolicy.fromMap(Map<String, dynamic> map) {
     return IpsecPolicy(
-      dhGroup: pulumi.Input.fromValue(map['dhGroup'] as String),
-      ikeEncryption: pulumi.Input.fromValue(map['ikeEncryption'] as String),
-      ikeIntegrity: pulumi.Input.fromValue(map['ikeIntegrity'] as String),
-      ipsecEncryption: pulumi.Input.fromValue(map['ipsecEncryption'] as String),
-      ipsecIntegrity: pulumi.Input.fromValue(map['ipsecIntegrity'] as String),
-      pfsGroup: pulumi.Input.fromValue(map['pfsGroup'] as String),
-      saDataSizeKilobytes: pulumi.Input.fromValue(map['saDataSizeKilobytes'] as int),
-      saLifeTimeSeconds: pulumi.Input.fromValue(map['saLifeTimeSeconds'] as int),
+      dhGroup: pulumi.Input.fromValue(map['dhGroup']),
+      ikeEncryption: pulumi.Input.fromValue(map['ikeEncryption']),
+      ikeIntegrity: pulumi.Input.fromValue(map['ikeIntegrity']),
+      ipsecEncryption: pulumi.Input.fromValue(map['ipsecEncryption']),
+      ipsecIntegrity: pulumi.Input.fromValue(map['ipsecIntegrity']),
+      pfsGroup: pulumi.Input.fromValue(map['pfsGroup']),
+      saDataSizeKilobytes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['saDataSizeKilobytes'])),
+      saLifeTimeSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['saLifeTimeSeconds'])),
     );
   }
 }

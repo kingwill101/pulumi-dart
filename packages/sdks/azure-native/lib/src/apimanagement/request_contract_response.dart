@@ -7,13 +7,13 @@ import 'representation_contract_response.dart';
 /// Operation request details.
 class RequestContractResponse {
   /// Operation request description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Collection of operation request headers.
-  final pulumi.Input<List<ParameterContractResponse>>? headers;
+  final pulumi.Input<List<ParameterContractResponse>?>? headers;
   /// Collection of operation request query parameters.
-  final pulumi.Input<List<ParameterContractResponse>>? queryParameters;
+  final pulumi.Input<List<ParameterContractResponse>?>? queryParameters;
   /// Collection of operation request representations.
-  final pulumi.Input<List<RepresentationContractResponse>>? representations;
+  final pulumi.Input<List<RepresentationContractResponse>?>? representations;
 
   /// Creates a new [RequestContractResponse].
   /// [description] Operation request description.

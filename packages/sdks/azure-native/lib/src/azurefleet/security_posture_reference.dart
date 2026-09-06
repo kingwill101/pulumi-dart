@@ -7,12 +7,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityPostureReference {
   /// List of virtual machine extension names to exclude when applying the security
   /// posture.
-  final pulumi.Input<List<String>>? excludeExtensions;
+  final pulumi.Input<List<String>?>? excludeExtensions;
   /// The security posture reference id in the form of
   /// /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Whether the security posture can be overridden by the user.
-  final pulumi.Input<bool>? isOverridable;
+  final pulumi.Input<bool?>? isOverridable;
 
   /// Creates a new [SecurityPostureReference].
   /// [excludeExtensions] List of virtual machine extension names to exclude when applying the security

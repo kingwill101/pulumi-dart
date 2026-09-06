@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resource type common attribute management.
 class ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement {
   /// Common api versions merge mode.
-  final pulumi.Input<String>? commonApiVersionsMergeMode;
+  final pulumi.Input<dynamic>? commonApiVersionsMergeMode;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement].
   /// [commonApiVersionsMergeMode] Common api versions merge mode.
@@ -21,7 +21,7 @@ class ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement {
 
   factory ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement(
-      commonApiVersionsMergeMode: (() { final guardedValue = map['commonApiVersionsMergeMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      commonApiVersionsMergeMode: (() { final guardedValue = map['commonApiVersionsMergeMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

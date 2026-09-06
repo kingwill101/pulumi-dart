@@ -6,9 +6,9 @@ import 'encryption_properties_identity.dart';
 /// Key and identity details for Customer Managed Key encryption of load test resource.
 class EncryptionProperties {
   /// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
-  final pulumi.Input<EncryptionPropertiesIdentity>? identity;
+  final pulumi.Input<EncryptionPropertiesIdentity?>? identity;
   /// key encryption key Url, versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
-  final pulumi.Input<String>? keyUrl;
+  final pulumi.Input<String?>? keyUrl;
 
   /// Creates a new [EncryptionProperties].
   /// [identity] All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.

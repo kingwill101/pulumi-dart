@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Sql always encrypted AKV authentication type. Type: string.
-enum SqlAlwaysEncryptedAkvAuthType {
+enum SqlAlwaysEncryptedAkvAuthType implements pulumi.PulumiEnum<String> {
   servicePrincipal("ServicePrincipal"),
   managedIdentity("ManagedIdentity"),
   userAssignedManagedIdentity("UserAssignedManagedIdentity");
 
   const SqlAlwaysEncryptedAkvAuthType(this.wireValue);
+  @override
   final String wireValue;
 
   static SqlAlwaysEncryptedAkvAuthType fromValue(String value) {

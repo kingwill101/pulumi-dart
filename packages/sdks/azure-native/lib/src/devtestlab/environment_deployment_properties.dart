@@ -6,9 +6,9 @@ import 'arm_template_parameter_properties.dart';
 /// Properties of an environment deployment.
 class EnvironmentDeploymentProperties {
   /// The Azure Resource Manager template's identifier.
-  final pulumi.Input<String>? armTemplateId;
+  final pulumi.Input<String?>? armTemplateId;
   /// The parameters of the Azure Resource Manager template.
-  final pulumi.Input<List<ArmTemplateParameterProperties>>? parameters;
+  final pulumi.Input<List<ArmTemplateParameterProperties>?>? parameters;
 
   /// Creates a new [EnvironmentDeploymentProperties].
   /// [armTemplateId] The Azure Resource Manager template's identifier.

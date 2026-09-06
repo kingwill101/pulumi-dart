@@ -4,19 +4,19 @@
 /// Result data returned by getChannel.
 class GetChannelResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The functions to be enabled for the channel
   final List<String>? channelFunctions;
   /// The channel type
-  final String channelType;
+  final String? channelType;
   /// The channel credentials
   final Map<String, String>? credentials;
   /// The ID of the resource
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The fully qualified type of the resource
-  final String type;
+  final String? type;
 
   /// Creates a new [GetChannelResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -27,36 +27,36 @@ class GetChannelResult {
   /// [name] The name of the resource
   /// [type] The fully qualified type of the resource
   const GetChannelResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.channelFunctions,
-    required this.channelType,
+    this.channelType,
     this.credentials,
-    required this.id,
-    required this.name,
-    required this.type,
+    this.id,
+    this.name,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'channelFunctions': ?channelFunctions,
-      'channelType': channelType,
+      'channelType': ?channelType,
       'credentials': ?credentials,
-      'id': id,
-      'name': name,
-      'type': type,
+      'id': ?id,
+      'name': ?name,
+      'type': ?type,
     };
   }
 
   factory GetChannelResult.fromMap(Map<String, dynamic> map) {
     return GetChannelResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       channelFunctions: (() { final guardedValue = map['channelFunctions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      channelType: map['channelType'] as String,
+      channelType: (() { final guardedValue = map['channelType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      type: map['type'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

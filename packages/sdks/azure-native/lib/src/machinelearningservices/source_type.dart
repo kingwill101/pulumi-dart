@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Data source type.
-enum SourceType {
+enum SourceType implements pulumi.PulumiEnum<String> {
   valueDelimitedFiles("delimited_files"),
   valueJsonLinesFiles("json_lines_files"),
   valueParquetFiles("parquet_files");
 
   const SourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static SourceType fromValue(String value) {

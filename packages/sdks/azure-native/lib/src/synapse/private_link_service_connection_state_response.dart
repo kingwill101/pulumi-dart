@@ -7,9 +7,9 @@ class PrivateLinkServiceConnectionStateResponse {
   /// The actions required for private link service connection.
   final pulumi.Input<String> actionsRequired;
   /// The private link service connection description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The private link service connection status.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [PrivateLinkServiceConnectionStateResponse].
   /// [actionsRequired] The actions required for private link service connection.

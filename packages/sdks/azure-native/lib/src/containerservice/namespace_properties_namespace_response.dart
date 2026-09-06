@@ -7,17 +7,17 @@ import 'resource_quota_response.dart';
 /// Properties of a namespace managed by ARM
 class NamespacePropertiesNamespaceResponse {
   /// Action if Kubernetes namespace with same name already exists.
-  final pulumi.Input<String>? adoptionPolicy;
+  final pulumi.Input<String?>? adoptionPolicy;
   /// The annotations of managed namespace.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. All the network policies will be enforced.
-  final pulumi.Input<NetworkPoliciesResponse>? defaultNetworkPolicy;
+  final pulumi.Input<NetworkPoliciesResponse?>? defaultNetworkPolicy;
   /// The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
-  final pulumi.Input<ResourceQuotaResponse>? defaultResourceQuota;
+  final pulumi.Input<ResourceQuotaResponse?>? defaultResourceQuota;
   /// Delete options of a namespace.
-  final pulumi.Input<String>? deletePolicy;
+  final pulumi.Input<String?>? deletePolicy;
   /// The labels of managed namespace.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The current provisioning state of the namespace.
   final pulumi.Input<String> provisioningState;
 

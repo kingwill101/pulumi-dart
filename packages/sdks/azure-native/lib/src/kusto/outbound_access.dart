@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates whether outbound access is permitted for the specified URI pattern.
-enum OutboundAccess {
+enum OutboundAccess implements pulumi.PulumiEnum<String> {
   valueAllow("Allow"),
   valueDeny("Deny");
 
   const OutboundAccess(this.wireValue);
+  @override
   final String wireValue;
 
   static OutboundAccess fromValue(String value) {

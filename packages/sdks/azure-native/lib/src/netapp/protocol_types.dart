@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol
-enum ProtocolTypes {
+enum ProtocolTypes implements pulumi.PulumiEnum<String> {
   nFSv3("NFSv3"),
   nFSv4("NFSv4"),
   sMB("SMB");
 
   const ProtocolTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static ProtocolTypes fromValue(String value) {

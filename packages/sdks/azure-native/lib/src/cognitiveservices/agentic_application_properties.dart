@@ -4,28 +4,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_reference_properties.dart';
 import 'application_traffic_routing_policy.dart';
 import 'assigned_identity.dart';
-import 'channels_built_in_authorization_policy.dart';
 
 /// Resource type representing an agentic application as a management construct.
 class AgenticApplicationProperties {
   /// The EntraId Agentic Blueprint of the application.
-  final pulumi.Input<AssignedIdentity>? agentIdentityBlueprint;
+  final pulumi.Input<AssignedIdentity?>? agentIdentityBlueprint;
   /// The list of agent definitions comprising this application, returned as references to the objects under the parent project; use this to obtain a flat list of all agent-version pairs represented by this application.
-  final pulumi.Input<List<AgentReferenceProperties>>? agents;
+  final pulumi.Input<List<AgentReferenceProperties>?>? agents;
   /// Gets or sets the authorization policy associated with this agentic application instance.
-  final pulumi.Input<ChannelsBuiltInAuthorizationPolicy>? authorizationPolicy;
+  final pulumi.Input<dynamic>? authorizationPolicy;
   /// The application's dedicated invocation endpoint.
-  final pulumi.Input<String>? baseUrl;
+  final pulumi.Input<String?>? baseUrl;
   /// The (default) agent instance identity of the application.
-  final pulumi.Input<AssignedIdentity>? defaultInstanceIdentity;
+  final pulumi.Input<AssignedIdentity?>? defaultInstanceIdentity;
   /// The asset description text.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the application.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Gets or sets the traffic routing policy for the application's deployments.
-  final pulumi.Input<ApplicationTrafficRoutingPolicy>? trafficRoutingPolicy;
+  final pulumi.Input<ApplicationTrafficRoutingPolicy?>? trafficRoutingPolicy;
 
   /// Creates a new [AgenticApplicationProperties].
   /// [agentIdentityBlueprint] The EntraId Agentic Blueprint of the application.
@@ -53,7 +52,7 @@ class AgenticApplicationProperties {
     return <String, dynamic>{
       'agentIdentityBlueprint': ?pulumi.Input.mapOptionalInputValue<AssignedIdentity, Map<String, dynamic>>(agentIdentityBlueprint, (value) => value.toMap()),
       'agents': ?pulumi.Input.mapOptionalInputValue<List<AgentReferenceProperties>, List<Map<String, dynamic>>>(agents, (value) => pulumi.Input.encodeList<AgentReferenceProperties, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'authorizationPolicy': ?pulumi.Input.mapOptionalInputValue<ChannelsBuiltInAuthorizationPolicy, Map<String, dynamic>>(authorizationPolicy, (value) => value.toMap()),
+      'authorizationPolicy': ?authorizationPolicy,
       'baseUrl': ?baseUrl,
       'defaultInstanceIdentity': ?pulumi.Input.mapOptionalInputValue<AssignedIdentity, Map<String, dynamic>>(defaultInstanceIdentity, (value) => value.toMap()),
       'description': ?description,
@@ -67,7 +66,7 @@ class AgenticApplicationProperties {
     return AgenticApplicationProperties(
       agentIdentityBlueprint: (() { final guardedValue = map['agentIdentityBlueprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AssignedIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       agents: (() { final guardedValue = map['agents']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentReferenceProperties>(guardedValue, (value) => AgentReferenceProperties.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      authorizationPolicy: (() { final guardedValue = map['authorizationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelsBuiltInAuthorizationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      authorizationPolicy: (() { final guardedValue = map['authorizationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       baseUrl: (() { final guardedValue = map['baseUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultInstanceIdentity: (() { final guardedValue = map['defaultInstanceIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AssignedIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

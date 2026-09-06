@@ -7,7 +7,7 @@ class ExportRecurrencePeriod {
   /// The start date of recurrence.
   final pulumi.Input<String> from;
   /// The end date of recurrence.
-  final pulumi.Input<String>? to;
+  final pulumi.Input<String?>? to;
 
   /// Creates a new [ExportRecurrencePeriod].
   /// [from] The start date of recurrence.

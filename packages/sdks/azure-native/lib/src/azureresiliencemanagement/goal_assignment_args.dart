@@ -9,9 +9,9 @@ import 'goal_assignment_properties.dart';
 /// {@macro pulumi_azureresiliencemanagement_goal_assignment_args_doc}
 class GoalAssignmentArgs {
   /// The name of the GoalAssignment
-  final pulumi.Input<String>? goalAssignmentName;
+  final pulumi.Input<String?>? goalAssignmentName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<GoalAssignmentProperties>? properties;
+  final pulumi.Input<GoalAssignmentProperties?>? properties;
   /// The name of the service group.
   final pulumi.Input<String> serviceGroupName;
 

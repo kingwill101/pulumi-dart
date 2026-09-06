@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Description of a NotificationHub GcmCredential.
 class GcmCredential {
   /// Gets or sets the GCM endpoint.
-  final pulumi.Input<String>? gcmEndpoint;
+  final pulumi.Input<String?>? gcmEndpoint;
   /// Gets or sets the Google API key.
   final pulumi.Input<String> googleApiKey;
 

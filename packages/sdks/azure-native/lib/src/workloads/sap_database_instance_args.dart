@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_workloads_sap_database_instance_args_doc}
 class SapDatabaseInstanceArgs {
   /// Database resource name string modeled as parameter for auto generation to work correctly.
-  final pulumi.Input<String>? databaseInstanceName;
+  final pulumi.Input<String?>? databaseInstanceName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Virtual Instances for SAP solutions resource
   final pulumi.Input<String> sapVirtualInstanceName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SapDatabaseInstanceArgs].
   /// [databaseInstanceName] Database resource name string modeled as parameter for auto generation to work correctly.

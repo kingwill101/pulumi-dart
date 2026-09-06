@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Name of this SKU.
-enum ClusterSkuName {
+enum ClusterSkuName implements pulumi.PulumiEnum<String> {
   valueDedicated("Dedicated");
 
   const ClusterSkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static ClusterSkuName fromValue(String value) {

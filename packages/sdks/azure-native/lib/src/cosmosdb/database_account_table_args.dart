@@ -17,7 +17,7 @@ class DatabaseAccountTableArgs {
   /// Name of an Azure resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Cosmos DB table name.
-  final pulumi.Input<String>? tableName;
+  final pulumi.Input<String?>? tableName;
 
   /// Creates a new [DatabaseAccountTableArgs].
   /// [accountName] Cosmos DB database account name.

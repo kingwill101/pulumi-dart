@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// IP Rule to be applied as part of Network Rule Set
 class NetworkRuleSetIpRuleResponse {
   /// IP Filter Action
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// Name of the IP filter rule.
   final pulumi.Input<String> filterName;
   /// A string that contains the IP address range in CIDR notation for the rule.
@@ -15,11 +15,11 @@ class NetworkRuleSetIpRuleResponse {
   /// [action] IP Filter Action
   /// [filterName] Name of the IP filter rule.
   /// [ipMask] A string that contains the IP address range in CIDR notation for the rule.
-  const NetworkRuleSetIpRuleResponse({
-    this.action,
+  NetworkRuleSetIpRuleResponse({
+    pulumi.Input<String?>? action,
     required this.filterName,
     required this.ipMask,
-  });
+  }) : action = action ?? pulumi.Input.fromValue('Allow');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

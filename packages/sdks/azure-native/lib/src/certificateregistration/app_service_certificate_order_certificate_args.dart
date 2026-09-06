@@ -10,19 +10,19 @@ class AppServiceCertificateOrderCertificateArgs {
   /// Name of the certificate order.
   final pulumi.Input<String> certificateOrderName;
   /// Key Vault resource Id.
-  final pulumi.Input<String>? keyVaultId;
+  final pulumi.Input<String?>? keyVaultId;
   /// Key Vault secret name.
-  final pulumi.Input<String>? keyVaultSecretName;
+  final pulumi.Input<String?>? keyVaultSecretName;
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Resource Location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the certificate.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AppServiceCertificateOrderCertificateArgs].
   /// [certificateOrderName] Name of the certificate order.

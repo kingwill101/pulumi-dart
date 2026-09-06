@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details about the SaaS offer purchased from the marketplace.
 class SaasPropertiesResponse {
   /// Resource ID of the SaaS offer purchased from the marketplace.
-  final pulumi.Input<String>? saasResourceId;
+  final pulumi.Input<String?>? saasResourceId;
   /// Subscription ID of the SaaS offer purchased from the marketplace.
-  final pulumi.Input<String>? saasSubscriptionId;
+  final pulumi.Input<String?>? saasSubscriptionId;
 
   /// Creates a new [SaasPropertiesResponse].
   /// [saasResourceId] Resource ID of the SaaS offer purchased from the marketplace.

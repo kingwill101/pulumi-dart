@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of AuthenticationModeEnumValue
 class AuthenticationModeEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [AuthenticationModeEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class AuthenticationModeEnumValue {
 
   factory AuthenticationModeEnumValue.fromMap(Map<String, dynamic> map) {
     return AuthenticationModeEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

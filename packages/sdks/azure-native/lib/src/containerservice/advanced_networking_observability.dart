@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Observability profile to enable advanced network metrics and flow logs with historical contexts.
 class AdvancedNetworkingObservability {
   /// Indicates the enablement of Advanced Networking observability functionalities on clusters.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [AdvancedNetworkingObservability].
   /// [enabled] Indicates the enablement of Advanced Networking observability functionalities on clusters.

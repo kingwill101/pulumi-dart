@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The application package contact information.
 class ApplicationPackageContactResponse {
   /// The contact name.
-  final pulumi.Input<String>? contactName;
+  final pulumi.Input<String?>? contactName;
   /// The contact email.
   final pulumi.Input<String> email;
   /// The contact phone number.

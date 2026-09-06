@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Cross-Origin-Resource-Sharing policy
 class CorsPolicyResponse {
   /// Specifies whether the resource allows credentials
-  final pulumi.Input<bool>? allowCredentials;
+  final pulumi.Input<bool?>? allowCredentials;
   /// Specifies the content for the access-control-allow-headers header
-  final pulumi.Input<List<String>>? allowedHeaders;
+  final pulumi.Input<List<String>?>? allowedHeaders;
   /// Specifies the content for the access-control-allow-methods header
-  final pulumi.Input<List<String>>? allowedMethods;
+  final pulumi.Input<List<String>?>? allowedMethods;
   /// Specifies the content for the access-control-allow-origins header
   final pulumi.Input<List<String>> allowedOrigins;
   /// Specifies the content for the access-control-expose-headers header
-  final pulumi.Input<List<String>>? exposeHeaders;
+  final pulumi.Input<List<String>?>? exposeHeaders;
   /// Specifies the content for the access-control-max-age header
-  final pulumi.Input<int>? maxAge;
+  final pulumi.Input<int?>? maxAge;
 
   /// Creates a new [CorsPolicyResponse].
   /// [allowCredentials] Specifies whether the resource allows credentials
@@ -51,7 +51,7 @@ class CorsPolicyResponse {
       allowedMethods: (() { final guardedValue = map['allowedMethods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       allowedOrigins: pulumi.Input.fromValue((map['allowedOrigins'] as List).cast<String>()),
       exposeHeaders: (() { final guardedValue = map['exposeHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      maxAge: (() { final guardedValue = map['maxAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxAge: (() { final guardedValue = map['maxAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -32,7 +32,7 @@ class ValidationThresholdResponse {
     return ValidationThresholdResponse(
       grouping: pulumi.Input.fromValue(map['grouping'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
-      value: pulumi.Input.fromValue(map['value'] as double),
+      value: pulumi.Input.fromValue((map['value'] as num).toDouble()),
     );
   }
 }

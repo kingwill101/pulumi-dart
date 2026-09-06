@@ -69,9 +69,9 @@ class ServerBlobAuditingPolicyArgs {
   /// SELECT on SCHEMA::mySchema by public
   ///
   /// For more information, see [Database-Level Audit Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
-  final pulumi.Input<List<String>>? auditActionsAndGroups;
+  final pulumi.Input<List<String>?>? auditActionsAndGroups;
   /// The name of the blob auditing policy.
-  final pulumi.Input<String>? blobAuditingPolicyName;
+  final pulumi.Input<String?>? blobAuditingPolicyName;
   /// Specifies whether audit events are sent to Azure Monitor.
   /// In order to send the events to Azure Monitor, specify 'State' as 'Enabled' and 'IsAzureMonitorTargetEnabled' as true.
   ///
@@ -83,7 +83,7 @@ class ServerBlobAuditingPolicyArgs {
   ///
   /// For more information, see [Diagnostic Settings REST API](https://go.microsoft.com/fwlink/?linkid=2033207)
   /// or [Diagnostic Settings PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
-  final pulumi.Input<bool>? isAzureMonitorTargetEnabled;
+  final pulumi.Input<bool?>? isAzureMonitorTargetEnabled;
   /// Specifies the state of devops audit. If state is Enabled, devops logs will be sent to Azure Monitor.
   /// In order to send the events to Azure Monitor, specify 'State' as 'Enabled', 'IsAzureMonitorTargetEnabled' as true and 'IsDevopsAuditEnabled' as true
   ///
@@ -94,18 +94,18 @@ class ServerBlobAuditingPolicyArgs {
   ///
   /// For more information, see [Diagnostic Settings REST API](https://go.microsoft.com/fwlink/?linkid=2033207)
   /// or [Diagnostic Settings PowerShell](https://go.microsoft.com/fwlink/?linkid=2033043)
-  final pulumi.Input<bool>? isDevopsAuditEnabled;
+  final pulumi.Input<bool?>? isDevopsAuditEnabled;
   /// Specifies whether Managed Identity is used to access blob storage
-  final pulumi.Input<bool>? isManagedIdentityInUse;
+  final pulumi.Input<bool?>? isManagedIdentityInUse;
   /// Specifies whether storageAccountAccessKey value is the storage's secondary key.
-  final pulumi.Input<bool>? isStorageSecondaryKeyInUse;
+  final pulumi.Input<bool?>? isStorageSecondaryKeyInUse;
   /// Specifies the amount of time in milliseconds that can elapse before audit actions are forced to be processed.
   /// The default minimum value is 1000 (1 second). The maximum is 2,147,483,647.
-  final pulumi.Input<int>? queueDelayMs;
+  final pulumi.Input<int?>? queueDelayMs;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the number of days to keep in the audit logs in the storage account.
-  final pulumi.Input<int>? retentionDays;
+  final pulumi.Input<int?>? retentionDays;
   /// The name of the server.
   final pulumi.Input<String> serverName;
   /// Specifies the state of the audit. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
@@ -116,11 +116,11 @@ class ServerBlobAuditingPolicyArgs {
   /// 1. Assign SQL Server a system-assigned managed identity in Azure Active Directory (AAD).
   /// 2. Grant SQL Server identity access to the storage account by adding 'Storage Blob Data Contributor' RBAC role to the server identity.
   /// For more information, see [Auditing to storage using Managed Identity authentication](https://go.microsoft.com/fwlink/?linkid=2114355)
-  final pulumi.Input<String>? storageAccountAccessKey;
+  final pulumi.Input<String?>? storageAccountAccessKey;
   /// Specifies the blob storage subscription Id.
-  final pulumi.Input<String>? storageAccountSubscriptionId;
+  final pulumi.Input<String?>? storageAccountSubscriptionId;
   /// Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled is required.
-  final pulumi.Input<String>? storageEndpoint;
+  final pulumi.Input<String?>? storageEndpoint;
 
   /// Creates a new [ServerBlobAuditingPolicyArgs].
   /// [auditActionsAndGroups] Specifies the Actions-Groups and Actions to audit.
@@ -181,9 +181,9 @@ class ServerBlobAuditingPolicyArgs {
       isDevopsAuditEnabled: (() { final guardedValue = map['isDevopsAuditEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isManagedIdentityInUse: (() { final guardedValue = map['isManagedIdentityInUse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isStorageSecondaryKeyInUse: (() { final guardedValue = map['isStorageSecondaryKeyInUse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      queueDelayMs: (() { final guardedValue = map['queueDelayMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      queueDelayMs: (() { final guardedValue = map['queueDelayMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
       state: pulumi.Input.fromValue(BlobAuditingPolicyState.fromValue(map['state']! as String)),
       storageAccountAccessKey: (() { final guardedValue = map['storageAccountAccessKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SummaryRules rule type: User.
-enum RuleTypeEnum {
+enum RuleTypeEnum implements pulumi.PulumiEnum<String> {
   user("User");
 
   const RuleTypeEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static RuleTypeEnum fromValue(String value) {

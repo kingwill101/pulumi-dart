@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Path to match for routing.
 class HttpRouteMatchPathResponse {
   /// replacement string for matched part of the Uri.
-  final pulumi.Input<String>? rewrite;
+  final pulumi.Input<String?>? rewrite;
   /// how to match value in the Uri
   final pulumi.Input<String> type;
   /// Uri path to match for request.

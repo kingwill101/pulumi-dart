@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NotebookPreparationErrorResponse {
-  final pulumi.Input<String>? errorMessage;
-  final pulumi.Input<int>? statusCode;
+  final pulumi.Input<String?>? errorMessage;
+  final pulumi.Input<int?>? statusCode;
 
   /// Creates a new [NotebookPreparationErrorResponse].
   /// [errorMessage] Optional.
@@ -24,7 +24,7 @@ class NotebookPreparationErrorResponse {
   factory NotebookPreparationErrorResponse.fromMap(Map<String, dynamic> map) {
     return NotebookPreparationErrorResponse(
       errorMessage: (() { final guardedValue = map['errorMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      statusCode: (() { final guardedValue = map['statusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      statusCode: (() { final guardedValue = map['statusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

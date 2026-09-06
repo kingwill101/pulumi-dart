@@ -34,7 +34,7 @@ class ServerEndpointRecallStatusResponse {
     return ServerEndpointRecallStatusResponse(
       lastUpdatedTimestamp: pulumi.Input.fromValue(map['lastUpdatedTimestamp'] as String),
       recallErrors: pulumi.Input.fromValue(pulumi.Input.decodeList<ServerEndpointRecallErrorResponse>(map['recallErrors']!, (value) => ServerEndpointRecallErrorResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      totalRecallErrorsCount: pulumi.Input.fromValue(map['totalRecallErrorsCount'] as double),
+      totalRecallErrorsCount: pulumi.Input.fromValue((map['totalRecallErrorsCount'] as num).toDouble()),
     );
   }
 }

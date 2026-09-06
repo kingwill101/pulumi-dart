@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specify the credential type (key or cert) is used for service principal.
-enum ODataAadServicePrincipalCredentialType {
+enum ODataAadServicePrincipalCredentialType implements pulumi.PulumiEnum<String> {
   servicePrincipalKey("ServicePrincipalKey"),
   servicePrincipalCert("ServicePrincipalCert");
 
   const ODataAadServicePrincipalCredentialType(this.wireValue);
+  @override
   final String wireValue;
 
   static ODataAadServicePrincipalCredentialType fromValue(String value) {

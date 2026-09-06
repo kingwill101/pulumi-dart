@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// EngagementFabric channel description
 class ChannelTypeDescriptionResponse {
   /// Text description for the channel
-  final pulumi.Input<String>? channelDescription;
+  final pulumi.Input<String?>? channelDescription;
   /// All the available functions for the channel
-  final pulumi.Input<List<String>>? channelFunctions;
+  final pulumi.Input<List<String>?>? channelFunctions;
   /// Channel type
-  final pulumi.Input<String>? channelType;
+  final pulumi.Input<String?>? channelType;
 
   /// Creates a new [ChannelTypeDescriptionResponse].
   /// [channelDescription] Text description for the channel

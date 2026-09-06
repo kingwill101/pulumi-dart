@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Name of Nat Gateway SKU.
-enum NatGatewaySkuName {
+enum NatGatewaySkuName implements pulumi.PulumiEnum<String> {
   valueStandard("Standard");
 
   const NatGatewaySkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static NatGatewaySkuName fromValue(String value) {

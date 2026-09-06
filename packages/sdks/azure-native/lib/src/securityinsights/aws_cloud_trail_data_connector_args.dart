@@ -9,9 +9,9 @@ import 'aws_cloud_trail_data_connector_data_types.dart';
 /// {@macro pulumi_securityinsights_aws_cloud_trail_data_connector_args_doc}
 class AwsCloudTrailDataConnectorArgs {
   /// The Aws Role Arn (with CloudTrailReadOnly policy) that is used to access the Aws account.
-  final pulumi.Input<String>? awsRoleArn;
+  final pulumi.Input<String?>? awsRoleArn;
   /// Connector ID
-  final pulumi.Input<String>? dataConnectorId;
+  final pulumi.Input<String?>? dataConnectorId;
   /// The available data types for the connector.
   final pulumi.Input<AwsCloudTrailDataConnectorDataTypes> dataTypes;
   /// The kind of the data connector

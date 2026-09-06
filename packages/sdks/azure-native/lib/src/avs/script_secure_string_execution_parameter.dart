@@ -7,7 +7,7 @@ class ScriptSecureStringExecutionParameter {
   /// The parameter name
   final pulumi.Input<String> name;
   /// A secure value for the passed parameter, not to be stored in logs
-  final pulumi.Input<String>? secureValue;
+  final pulumi.Input<String?>? secureValue;
   /// script execution parameter type
   /// Expected value is 'SecureValue'.
   final pulumi.Input<String> type;

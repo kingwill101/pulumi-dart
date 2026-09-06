@@ -9,13 +9,13 @@ import 'create_management_group_details.dart';
 /// {@macro pulumi_management_management_group_args_doc}
 class ManagementGroupArgs {
   /// The details of a management group used during creation.
-  final pulumi.Input<CreateManagementGroupDetails>? details;
+  final pulumi.Input<CreateManagementGroupDetails?>? details;
   /// The friendly name of the management group. If no value is passed then this  field will be set to the groupId.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Management Group ID.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// The name of the management group. For example, 00000000-0000-0000-0000-000000000000
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ManagementGroupArgs].
   /// [details] The details of a management group used during creation.

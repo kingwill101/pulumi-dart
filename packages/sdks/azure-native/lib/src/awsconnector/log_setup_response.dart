@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of LogSetup
 class LogSetupResponse {
   /// &lt;p&gt;If a log type is enabled, that log type exports its control plane logs to CloudWatch Logs. If a log type isn't enabled, that log type doesn't export its control plane logs. Each individual log type can be enabled or disabled independently.&lt;/p&gt;
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// &lt;p&gt;The available cluster control plane log types.&lt;/p&gt;
-  final pulumi.Input<List<String>>? types;
+  final pulumi.Input<List<String>?>? types;
 
   /// Creates a new [LogSetupResponse].
   /// [enabled] &lt;p&gt;If a log type is enabled, that log type exports its control plane logs to CloudWatch Logs. If a log type isn't enabled, that log type doesn't export its control plane logs. Each individual log type can be enabled or disabled independently.&lt;/p&gt;

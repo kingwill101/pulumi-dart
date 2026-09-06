@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies the Prometheus alert rule configuration.
 class PrometheusRuleResolveConfiguration {
   /// Enable alert auto-resolution.
-  final pulumi.Input<bool>? autoResolved;
+  final pulumi.Input<bool?>? autoResolved;
   /// Alert auto-resolution timeout.
-  final pulumi.Input<String>? timeToResolve;
+  final pulumi.Input<String?>? timeToResolve;
 
   /// Creates a new [PrometheusRuleResolveConfiguration].
   /// [autoResolved] Enable alert auto-resolution.

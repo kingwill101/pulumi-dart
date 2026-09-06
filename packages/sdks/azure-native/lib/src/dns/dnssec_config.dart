@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dnssec_config_args.dart';
+import 'signing_key_response.dart';
 import 'system_data_response.dart';
 
 /// Represents the DNSSEC configuration.
@@ -150,7 +151,7 @@ class DnssecConfig extends pulumi.CustomResource {
   /// Provisioning State of the DNSSEC configuration.
   late final pulumi.Output<String> provisioningState;
   /// The list of signing keys.
-  late final pulumi.Output<List<Map<String, dynamic>>> signingKeys;
+  late final pulumi.Output<List<SigningKeyResponse>> signingKeys;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -174,7 +175,25 @@ class DnssecConfig extends pulumi.CustomResource {
     etag = registerOutput<String?>('etag');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    signingKeys = registerOutput<List<Map<String, dynamic>>>('signingKeys');
+    signingKeys = registerOutput<List<SigningKeyResponse>>('signingKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SigningKeyResponse>(guardedValue, (value) => SigningKeyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DnssecConfig] resource.
+  DnssecConfig.reference(String urn)
+    : super(
+        'azure-native:dns:DnssecConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    signingKeys = registerOutput<List<SigningKeyResponse>>('signingKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SigningKeyResponse>(guardedValue, (value) => SigningKeyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

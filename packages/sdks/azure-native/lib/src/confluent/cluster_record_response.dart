@@ -8,17 +8,17 @@ import 'metadata_entity_response.dart';
 /// Details of cluster record
 class ClusterRecordResponse {
   /// Display name of the cluster
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Id of the cluster
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Type of cluster
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Metadata of the record
-  final pulumi.Input<MetadataEntityResponse>? metadata;
+  final pulumi.Input<MetadataEntityResponse?>? metadata;
   /// Specification of the cluster
-  final pulumi.Input<ClusterSpecEntityResponse>? spec;
+  final pulumi.Input<ClusterSpecEntityResponse?>? spec;
   /// Specification of the cluster
-  final pulumi.Input<ClusterStatusEntityResponse>? status;
+  final pulumi.Input<ClusterStatusEntityResponse?>? status;
 
   /// Creates a new [ClusterRecordResponse].
   /// [displayName] Display name of the cluster

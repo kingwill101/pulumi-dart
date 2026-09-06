@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SCM type.
-enum ScmType {
+enum ScmType implements pulumi.PulumiEnum<String> {
   none("None"),
   dropbox("Dropbox"),
   tfs("Tfs"),
@@ -16,6 +18,7 @@ enum ScmType {
   vSTSRM("VSTSRM");
 
   const ScmType(this.wireValue);
+  @override
   final String wireValue;
 
   static ScmType fromValue(String value) {

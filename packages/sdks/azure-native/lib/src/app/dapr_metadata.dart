@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Dapr component metadata.
 class DaprMetadata {
   /// Metadata property name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Name of the Dapr Component secret from which to pull the metadata property value.
-  final pulumi.Input<String>? secretRef;
+  final pulumi.Input<String?>? secretRef;
   /// Metadata property value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [DaprMetadata].
   /// [name] Metadata property name.

@@ -34,6 +34,17 @@ Future<GetAmlFilesystemResult> getAmlFilesystem(
   return GetAmlFilesystemResult.fromMap(result);
 }
 
+pulumi.Output<GetAmlFilesystemResult> getAmlFilesystemOutput(
+  GetAmlFilesystemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storagecache:getAmlFilesystem',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAmlFilesystemResult.fromMap);
+}
+
 /// Returns an auto export job.
 ///
 /// Uses Azure REST API version 2024-07-01.
@@ -52,6 +63,17 @@ Future<GetAutoExportJobResult> getAutoExportJob(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAutoExportJobResult.fromMap(result);
+}
+
+pulumi.Output<GetAutoExportJobResult> getAutoExportJobOutput(
+  GetAutoExportJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storagecache:getAutoExportJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutoExportJobResult.fromMap);
 }
 
 /// Returns an auto import job.
@@ -74,6 +96,17 @@ Future<GetAutoImportJobResult> getAutoImportJob(
   return GetAutoImportJobResult.fromMap(result);
 }
 
+pulumi.Output<GetAutoImportJobResult> getAutoImportJobOutput(
+  GetAutoImportJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storagecache:getAutoImportJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutoImportJobResult.fromMap);
+}
+
 /// Returns a cache.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -92,6 +125,17 @@ Future<GetCacheResult> getCache(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCacheResult.fromMap(result);
+}
+
+pulumi.Output<GetCacheResult> getCacheOutput(
+  GetCacheArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storagecache:getCache',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCacheResult.fromMap);
 }
 
 /// Returns an import job.
@@ -114,6 +158,17 @@ Future<GetImportJobResult> getImportJob(
   return GetImportJobResult.fromMap(result);
 }
 
+pulumi.Output<GetImportJobResult> getImportJobOutput(
+  GetImportJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storagecache:getImportJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImportJobResult.fromMap);
+}
+
 /// Get the number of available IP addresses needed for the AML file system information provided.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -134,6 +189,17 @@ Future<GetRequiredAmlFSSubnetsSizeResult> getRequiredAmlFSSubnetsSize(
   return GetRequiredAmlFSSubnetsSizeResult.fromMap(result);
 }
 
+pulumi.Output<GetRequiredAmlFSSubnetsSizeResult> getRequiredAmlFSSubnetsSizeOutput(
+  GetRequiredAmlFSSubnetsSizeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storagecache:getRequiredAmlFSSubnetsSize',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRequiredAmlFSSubnetsSizeResult.fromMap);
+}
+
 /// Returns a Storage Target from a cache.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -152,4 +218,15 @@ Future<GetStorageTargetResult> getStorageTarget(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStorageTargetResult.fromMap(result);
+}
+
+pulumi.Output<GetStorageTargetResult> getStorageTargetOutput(
+  GetStorageTargetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storagecache:getStorageTarget',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageTargetResult.fromMap);
 }

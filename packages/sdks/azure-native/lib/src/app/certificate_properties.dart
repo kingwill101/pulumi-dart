@@ -6,13 +6,13 @@ import 'certificate_key_vault_properties.dart';
 /// Certificate resource specific properties
 class CertificateProperties {
   /// Properties for a certificate stored in a Key Vault.
-  final pulumi.Input<CertificateKeyVaultProperties>? certificateKeyVaultProperties;
+  final pulumi.Input<CertificateKeyVaultProperties?>? certificateKeyVaultProperties;
   /// The type of the certificate. Allowed values are `ServerSSLCertificate` and `ImagePullTrustedCA`
-  final pulumi.Input<String>? certificateType;
+  final pulumi.Input<dynamic>? certificateType;
   /// Certificate password.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// PFX or PEM blob
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [CertificateProperties].
   /// [certificateKeyVaultProperties] Properties for a certificate stored in a Key Vault.
@@ -38,7 +38,7 @@ class CertificateProperties {
   factory CertificateProperties.fromMap(Map<String, dynamic> map) {
     return CertificateProperties(
       certificateKeyVaultProperties: (() { final guardedValue = map['certificateKeyVaultProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CertificateKeyVaultProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      certificateType: (() { final guardedValue = map['certificateType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      certificateType: (() { final guardedValue = map['certificateType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

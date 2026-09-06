@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Base class for file properties.
 class ProjectFileProperties {
   /// Optional File extension. If submitted it should not have a leading period and must match the extension from filePath.
-  final pulumi.Input<String>? extension;
+  final pulumi.Input<String?>? extension;
   /// Relative path of this file resource. This property can be set when creating or updating the file resource.
-  final pulumi.Input<String>? filePath;
+  final pulumi.Input<String?>? filePath;
   /// File content type. This property can be modified to reflect the file content type.
-  final pulumi.Input<String>? mediaType;
+  final pulumi.Input<String?>? mediaType;
 
   /// Creates a new [ProjectFileProperties].
   /// [extension] Optional File extension. If submitted it should not have a leading period and must match the extension from filePath.

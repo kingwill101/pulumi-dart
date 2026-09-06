@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SqlUserDefinedFunctionGetPropertiesResponseResource {
   /// Body of the User Defined Function
-  final pulumi.Input<String>? body;
+  final pulumi.Input<String?>? body;
   /// A system generated property representing the resource etag required for optimistic concurrency control.
   final pulumi.Input<String> etag;
   /// Name of the Cosmos DB SQL userDefinedFunction
@@ -44,7 +44,7 @@ class SqlUserDefinedFunctionGetPropertiesResponseResource {
       etag: pulumi.Input.fromValue(map['etag'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       rid: pulumi.Input.fromValue(map['rid'] as String),
-      ts: pulumi.Input.fromValue(map['ts'] as double),
+      ts: pulumi.Input.fromValue((map['ts'] as num).toDouble()),
     );
   }
 }

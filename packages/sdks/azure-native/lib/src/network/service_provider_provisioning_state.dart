@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The ServiceProviderProvisioningState state of the resource.
-enum ServiceProviderProvisioningState {
+enum ServiceProviderProvisioningState implements pulumi.PulumiEnum<String> {
   valueNotProvisioned("NotProvisioned"),
   valueProvisioning("Provisioning"),
   valueProvisioned("Provisioned"),
   valueDeprovisioning("Deprovisioning");
 
   const ServiceProviderProvisioningState(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceProviderProvisioningState fromValue(String value) {

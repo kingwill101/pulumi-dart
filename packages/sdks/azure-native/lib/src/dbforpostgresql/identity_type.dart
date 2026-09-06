@@ -1,8 +1,11 @@
-enum IdentityType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum IdentityType implements pulumi.PulumiEnum<String> {
   userAssigned("UserAssigned"),
   systemAssigned("SystemAssigned");
 
   const IdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static IdentityType fromValue(String value) {

@@ -13,22 +13,22 @@ import 'twitter_response.dart';
 /// The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
 class IdentityProvidersResponse {
   /// The configuration settings of the Apple provider.
-  final pulumi.Input<AppleResponse>? apple;
+  final pulumi.Input<AppleResponse?>? apple;
   /// The configuration settings of the Azure Active directory provider.
-  final pulumi.Input<AzureActiveDirectoryResponse>? azureActiveDirectory;
+  final pulumi.Input<AzureActiveDirectoryResponse?>? azureActiveDirectory;
   /// The configuration settings of the Azure Static Web Apps provider.
-  final pulumi.Input<AzureStaticWebAppsResponse>? azureStaticWebApps;
+  final pulumi.Input<AzureStaticWebAppsResponse?>? azureStaticWebApps;
   /// The map of the name of the alias of each custom Open ID Connect provider to the
   /// configuration settings of the custom Open ID Connect provider.
-  final pulumi.Input<Map<String, CustomOpenIdConnectProviderResponse>>? customOpenIdConnectProviders;
+  final pulumi.Input<Map<String, CustomOpenIdConnectProviderResponse>?>? customOpenIdConnectProviders;
   /// The configuration settings of the Facebook provider.
-  final pulumi.Input<FacebookResponse>? facebook;
+  final pulumi.Input<FacebookResponse?>? facebook;
   /// The configuration settings of the GitHub provider.
-  final pulumi.Input<GitHubResponse>? gitHub;
+  final pulumi.Input<GitHubResponse?>? gitHub;
   /// The configuration settings of the Google provider.
-  final pulumi.Input<GoogleResponse>? google;
+  final pulumi.Input<GoogleResponse?>? google;
   /// The configuration settings of the Twitter provider.
-  final pulumi.Input<TwitterResponse>? twitter;
+  final pulumi.Input<TwitterResponse?>? twitter;
 
   /// Creates a new [IdentityProvidersResponse].
   /// [apple] The configuration settings of the Apple provider.

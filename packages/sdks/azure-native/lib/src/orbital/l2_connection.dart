@@ -306,7 +306,29 @@ class L2Connection extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    vlanId = registerOutput<int>('vlanId');
+  }
+
+  /// Creates a typed reference to an existing [L2Connection] resource.
+  L2Connection.reference(String urn)
+    : super(
+        'azure-native:orbital:L2Connection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    circuitId = registerOutput<String>('circuitId');
+    edgeSite = registerOutput<L2ConnectionsPropertiesResponseEdgeSite>('edgeSite', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return L2ConnectionsPropertiesResponseEdgeSite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    groundStation = registerOutput<L2ConnectionsPropertiesResponseGroundStation>('groundStation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return L2ConnectionsPropertiesResponseGroundStation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    groundStationPartnerRouter = registerOutput<L2ConnectionsPropertiesResponseGroundStationPartnerRouter>('groundStationPartnerRouter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return L2ConnectionsPropertiesResponseGroundStationPartnerRouter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     vlanId = registerOutput<int>('vlanId');
   }

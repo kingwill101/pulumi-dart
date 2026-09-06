@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// WebApplication certificate.
 class CertResponse {
   /// Gets or sets the Certificate data.
-  final pulumi.Input<String>? certData;
+  final pulumi.Input<String?>? certData;
   /// Gets or sets a value indicating whether certificate is needed or not.
-  final pulumi.Input<bool>? certNeeded;
+  final pulumi.Input<bool?>? certNeeded;
   /// Gets or sets a value indicating whether certificate is provided or not.
-  final pulumi.Input<bool>? certProvided;
+  final pulumi.Input<bool?>? certProvided;
   /// Gets or sets the type of secret store for the certificate.
-  final pulumi.Input<String>? secretStore;
+  final pulumi.Input<String?>? secretStore;
 
   /// Creates a new [CertResponse].
   /// [certData] Gets or sets the Certificate data.

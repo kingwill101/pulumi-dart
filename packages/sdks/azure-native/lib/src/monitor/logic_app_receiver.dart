@@ -7,13 +7,13 @@ class LogicAppReceiver {
   /// The callback url where http request sent to.
   final pulumi.Input<String> callbackUrl;
   /// The principal id of the managed identity. The value can be "None", "SystemAssigned"
-  final pulumi.Input<String>? managedIdentity;
+  final pulumi.Input<String?>? managedIdentity;
   /// The name of the logic app receiver. Names must be unique across all receivers within an action group.
   final pulumi.Input<String> name;
   /// The azure resource id of the logic app receiver.
   final pulumi.Input<String> resourceId;
   /// Indicates whether to use common alert schema.
-  final pulumi.Input<bool>? useCommonAlertSchema;
+  final pulumi.Input<bool?>? useCommonAlertSchema;
 
   /// Creates a new [LogicAppReceiver].
   /// [callbackUrl] The callback url where http request sent to.
@@ -21,13 +21,13 @@ class LogicAppReceiver {
   /// [name] The name of the logic app receiver. Names must be unique across all receivers within an action group.
   /// [resourceId] The azure resource id of the logic app receiver.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
-  const LogicAppReceiver({
+  LogicAppReceiver({
     required this.callbackUrl,
     this.managedIdentity,
     required this.name,
     required this.resourceId,
-    this.useCommonAlertSchema,
-  });
+    pulumi.Input<bool?>? useCommonAlertSchema,
+  }) : useCommonAlertSchema = useCommonAlertSchema ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

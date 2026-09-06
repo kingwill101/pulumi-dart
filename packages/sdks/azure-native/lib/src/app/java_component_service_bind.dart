@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration to bind a Java Component to another Java Component
 class JavaComponentServiceBind {
   /// Name of the service bind
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Resource id of the target service
-  final pulumi.Input<String>? serviceId;
+  final pulumi.Input<String?>? serviceId;
 
   /// Creates a new [JavaComponentServiceBind].
   /// [name] Name of the service bind

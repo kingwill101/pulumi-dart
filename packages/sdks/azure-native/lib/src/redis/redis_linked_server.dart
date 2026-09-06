@@ -205,4 +205,22 @@ class RedisLinkedServer extends pulumi.CustomResource {
     serverRole = registerOutput<String>('serverRole');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [RedisLinkedServer] resource.
+  RedisLinkedServer.reference(String urn)
+    : super(
+        'azure-native:redis:RedisLinkedServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    linkedRedisCacheId = registerOutput<String>('linkedRedisCacheId');
+    linkedRedisCacheLocation = registerOutput<String>('linkedRedisCacheLocation');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    serverRole = registerOutput<String>('serverRole');
+    type = registerOutput<String>('type');
+  }
 }

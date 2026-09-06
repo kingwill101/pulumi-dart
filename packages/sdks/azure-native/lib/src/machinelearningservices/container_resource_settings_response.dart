@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerResourceSettingsResponse {
   /// Number of vCPUs request/limit for container. More info:
   /// https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
-  final pulumi.Input<String>? cpu;
+  final pulumi.Input<String?>? cpu;
   /// Number of Nvidia GPU cards request/limit for container. More info:
   /// https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
-  final pulumi.Input<String>? gpu;
+  final pulumi.Input<String?>? gpu;
   /// Memory size request/limit for container. More info:
   /// https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
-  final pulumi.Input<String>? memory;
+  final pulumi.Input<String?>? memory;
 
   /// Creates a new [ContainerResourceSettingsResponse].
   /// [cpu] Number of vCPUs request/limit for container. More info:

@@ -6,7 +6,7 @@ import 'nsp_access_rule_properties_response.dart';
 /// Information of Access Rule in a profile
 class NspAccessRuleResponse {
   /// Name of the access rule
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Properties of Access Rule
   final pulumi.Input<NspAccessRulePropertiesResponse> properties;
 

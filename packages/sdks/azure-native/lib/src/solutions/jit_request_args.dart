@@ -14,15 +14,15 @@ class JitRequestArgs {
   /// The JIT authorization policies.
   final pulumi.Input<List<JitAuthorizationPolicies>> jitAuthorizationPolicies;
   /// The name of the JIT request.
-  final pulumi.Input<String>? jitRequestName;
+  final pulumi.Input<String?>? jitRequestName;
   /// The JIT request properties.
   final pulumi.Input<JitSchedulingPolicy> jitSchedulingPolicy;
   /// Resource location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [JitRequestArgs].
   /// [applicationResourceId] The parent application id.

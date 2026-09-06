@@ -17,33 +17,33 @@ import 'service_managed_identity_identity.dart';
 /// {@macro pulumi_healthcareapis_fhir_service_args_doc}
 class FhirServiceArgs {
   /// Fhir Service Azure container registry configuration.
-  final pulumi.Input<FhirServiceAcrConfiguration>? acrConfiguration;
+  final pulumi.Input<FhirServiceAcrConfiguration?>? acrConfiguration;
   /// Fhir Service authentication configuration.
-  final pulumi.Input<FhirServiceAuthenticationConfiguration>? authenticationConfiguration;
+  final pulumi.Input<FhirServiceAuthenticationConfiguration?>? authenticationConfiguration;
   /// Fhir Service Cors configuration.
-  final pulumi.Input<FhirServiceCorsConfiguration>? corsConfiguration;
+  final pulumi.Input<FhirServiceCorsConfiguration?>? corsConfiguration;
   /// The encryption settings of the FHIR service
-  final pulumi.Input<Encryption>? encryption;
+  final pulumi.Input<Encryption?>? encryption;
   /// Fhir Service export configuration.
-  final pulumi.Input<FhirServiceExportConfiguration>? exportConfiguration;
+  final pulumi.Input<FhirServiceExportConfiguration?>? exportConfiguration;
   /// The name of FHIR Service resource.
-  final pulumi.Input<String>? fhirServiceName;
+  final pulumi.Input<String?>? fhirServiceName;
   /// Setting indicating whether the service has a managed identity associated with it.
-  final pulumi.Input<ServiceManagedIdentityIdentity>? identity;
+  final pulumi.Input<ServiceManagedIdentityIdentity?>? identity;
   /// Implementation Guides configuration.
-  final pulumi.Input<ImplementationGuidesConfiguration>? implementationGuidesConfiguration;
+  final pulumi.Input<ImplementationGuidesConfiguration?>? implementationGuidesConfiguration;
   /// Fhir Service import configuration.
-  final pulumi.Input<FhirServiceImportConfiguration>? importConfiguration;
+  final pulumi.Input<FhirServiceImportConfiguration?>? importConfiguration;
   /// The kind of the service.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<dynamic>? kind;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group that contains the service instance.
   final pulumi.Input<String> resourceGroupName;
   /// Determines tracking of history for resources.
-  final pulumi.Input<ResourceVersionPolicyConfiguration>? resourceVersionPolicyConfiguration;
+  final pulumi.Input<ResourceVersionPolicyConfiguration?>? resourceVersionPolicyConfiguration;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of workspace resource.
   final pulumi.Input<String> workspaceName;
 
@@ -112,7 +112,7 @@ class FhirServiceArgs {
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceManagedIdentityIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       implementationGuidesConfiguration: (() { final guardedValue = map['implementationGuidesConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ImplementationGuidesConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       importConfiguration: (() { final guardedValue = map['importConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FhirServiceImportConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceVersionPolicyConfiguration: (() { final guardedValue = map['resourceVersionPolicyConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceVersionPolicyConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

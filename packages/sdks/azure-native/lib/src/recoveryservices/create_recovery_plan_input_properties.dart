@@ -7,13 +7,13 @@ import 'recovery_plan_group.dart';
 /// Recovery plan creation properties.
 class CreateRecoveryPlanInputProperties {
   /// The failover deployment model.
-  final pulumi.Input<String>? failoverDeploymentModel;
+  final pulumi.Input<dynamic>? failoverDeploymentModel;
   /// The recovery plan groups.
   final pulumi.Input<List<RecoveryPlanGroup>> groups;
   /// The primary fabric Id.
   final pulumi.Input<String> primaryFabricId;
   /// The provider specific input.
-  final pulumi.Input<List<RecoveryPlanA2AInput>>? providerSpecificInput;
+  final pulumi.Input<List<RecoveryPlanA2AInput>?>? providerSpecificInput;
   /// The recovery fabric Id.
   final pulumi.Input<String> recoveryFabricId;
 
@@ -43,7 +43,7 @@ class CreateRecoveryPlanInputProperties {
 
   factory CreateRecoveryPlanInputProperties.fromMap(Map<String, dynamic> map) {
     return CreateRecoveryPlanInputProperties(
-      failoverDeploymentModel: (() { final guardedValue = map['failoverDeploymentModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      failoverDeploymentModel: (() { final guardedValue = map['failoverDeploymentModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       groups: pulumi.Input.fromValue(pulumi.Input.decodeList<RecoveryPlanGroup>(map['groups']!, (value) => RecoveryPlanGroup.fromMap((value as Map).cast<String, dynamic>()))),
       primaryFabricId: pulumi.Input.fromValue(map['primaryFabricId'] as String),
       providerSpecificInput: (() { final guardedValue = map['providerSpecificInput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RecoveryPlanA2AInput>(guardedValue, (value) => RecoveryPlanA2AInput.fromMap((value as Map).cast<String, dynamic>()))); })(),

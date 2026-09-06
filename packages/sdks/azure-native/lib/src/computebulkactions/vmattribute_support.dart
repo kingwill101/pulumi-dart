@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies whether the VMSize supporting RDMA (Remote Direct Memory Access) should be used to build launch instances or not.
-enum VMAttributeSupport {
+enum VMAttributeSupport implements pulumi.PulumiEnum<String> {
   excluded("Excluded"),
   included("Included"),
   required("Required");
 
   const VMAttributeSupport(this.wireValue);
+  @override
   final String wireValue;
 
   static VMAttributeSupport fromValue(String value) {

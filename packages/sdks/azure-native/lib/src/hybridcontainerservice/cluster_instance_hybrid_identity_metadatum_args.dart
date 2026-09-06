@@ -10,9 +10,9 @@ class ClusterInstanceHybridIdentityMetadatumArgs {
   /// The fully qualified Azure Resource Manager identifier of the connected cluster resource.
   final pulumi.Input<String> connectedClusterResourceUri;
   /// Onboarding public key for provisioning the Managed identity for the connected cluster.
-  final pulumi.Input<String>? publicKey;
+  final pulumi.Input<String?>? publicKey;
   /// Unique id of the parent provisioned cluster resource.
-  final pulumi.Input<String>? resourceUid;
+  final pulumi.Input<String?>? resourceUid;
 
   /// Creates a new [ClusterInstanceHybridIdentityMetadatumArgs].
   /// [connectedClusterResourceUri] The fully qualified Azure Resource Manager identifier of the connected cluster resource.

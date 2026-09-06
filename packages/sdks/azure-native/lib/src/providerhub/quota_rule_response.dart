@@ -5,11 +5,11 @@ import 'location_quota_rule_response.dart';
 
 class QuotaRuleResponse {
   /// The location rules.
-  final pulumi.Input<List<LocationQuotaRuleResponse>>? locationRules;
+  final pulumi.Input<List<LocationQuotaRuleResponse>?>? locationRules;
   /// The quota policy.
-  final pulumi.Input<String>? quotaPolicy;
+  final pulumi.Input<String?>? quotaPolicy;
   /// The required features.
-  final pulumi.Input<List<String>>? requiredFeatures;
+  final pulumi.Input<List<String>?>? requiredFeatures;
 
   /// Creates a new [QuotaRuleResponse].
   /// [locationRules] The location rules.

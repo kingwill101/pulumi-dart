@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Threats impact of the assessment
-enum Threats {
+enum Threats implements pulumi.PulumiEnum<String> {
   valueAccountBreach("accountBreach"),
   valueDataExfiltration("dataExfiltration"),
   valueDataSpillage("dataSpillage"),
@@ -10,6 +12,7 @@ enum Threats {
   valueDenialOfService("denialOfService");
 
   const Threats(this.wireValue);
+  @override
   final String wireValue;
 
   static Threats fromValue(String value) {

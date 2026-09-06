@@ -61,7 +61,7 @@ class MigrateSqlServerSqlDbSyncTaskOutputMigrationLevelResponse {
 
   factory MigrateSqlServerSqlDbSyncTaskOutputMigrationLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlDbSyncTaskOutputMigrationLevelResponse(
-      databaseCount: pulumi.Input.fromValue(map['databaseCount'] as int),
+      databaseCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['databaseCount'])),
       endedOn: pulumi.Input.fromValue(map['endedOn'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       resultType: pulumi.Input.fromValue(map['resultType'] as String),

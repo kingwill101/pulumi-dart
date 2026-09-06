@@ -1,8 +1,11 @@
-enum IsDeviceMatchValue {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum IsDeviceMatchValue implements pulumi.PulumiEnum<String> {
   mobile("Mobile"),
   desktop("Desktop");
 
   const IsDeviceMatchValue(this.wireValue);
+  @override
   final String wireValue;
 
   static IsDeviceMatchValue fromValue(String value) {

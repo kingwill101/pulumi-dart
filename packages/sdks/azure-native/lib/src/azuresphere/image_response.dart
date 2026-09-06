@@ -12,9 +12,9 @@ class ImageResponse {
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final pulumi.Input<String> id;
   /// Image as a UTF-8 encoded base 64 string on image create. This field contains the image URI on image reads.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// Image ID
-  final pulumi.Input<String>? imageId;
+  final pulumi.Input<String?>? imageId;
   /// Image name
   final pulumi.Input<String> imageName;
   /// The image type.
@@ -24,7 +24,7 @@ class ImageResponse {
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// Regional data boundary for an image
-  final pulumi.Input<String>? regionalDataBoundary;
+  final pulumi.Input<String?>? regionalDataBoundary;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

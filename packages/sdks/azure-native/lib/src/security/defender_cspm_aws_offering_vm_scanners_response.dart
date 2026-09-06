@@ -6,11 +6,11 @@ import 'vm_scanners_base_configuration_response.dart';
 /// The Microsoft Defender for CSPM offering VM scanning configuration
 class DefenderCspmAwsOfferingVmScannersResponse {
   /// The cloud role ARN in AWS for this feature
-  final pulumi.Input<String>? cloudRoleArn;
+  final pulumi.Input<String?>? cloudRoleArn;
   /// Configuration for VM scanning
-  final pulumi.Input<VmScannersBaseConfigurationResponse>? configuration;
+  final pulumi.Input<VmScannersBaseConfigurationResponse?>? configuration;
   /// Is VM scanning enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [DefenderCspmAwsOfferingVmScannersResponse].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature

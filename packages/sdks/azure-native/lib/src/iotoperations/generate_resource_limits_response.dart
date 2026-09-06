@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// GenerateResourceLimits properties
 class GenerateResourceLimitsResponse {
   /// The toggle to enable/disable cpu resource limits.
-  final pulumi.Input<String>? cpu;
+  final pulumi.Input<String?>? cpu;
 
   /// Creates a new [GenerateResourceLimitsResponse].
   /// [cpu] The toggle to enable/disable cpu resource limits.
-  const GenerateResourceLimitsResponse({
-    this.cpu,
-  });
+  GenerateResourceLimitsResponse({
+    pulumi.Input<String?>? cpu,
+  }) : cpu = cpu ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

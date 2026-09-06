@@ -9,13 +9,13 @@ import 'data_masking_state.dart';
 /// {@macro pulumi_sql_data_masking_policy_args_doc}
 class DataMaskingPolicyArgs {
   /// The name of the database for which the data masking policy applies.
-  final pulumi.Input<String>? dataMaskingPolicyName;
+  final pulumi.Input<String?>? dataMaskingPolicyName;
   /// The state of the data masking policy.
   final pulumi.Input<DataMaskingState> dataMaskingState;
   /// The name of the database.
   final pulumi.Input<String> databaseName;
   /// The list of the exempt principals. Specifies the semicolon-separated list of database users for which the data masking policy does not apply. The specified users receive data results without masking for all of the database queries.
-  final pulumi.Input<String>? exemptPrincipals;
+  final pulumi.Input<String?>? exemptPrincipals;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the server.

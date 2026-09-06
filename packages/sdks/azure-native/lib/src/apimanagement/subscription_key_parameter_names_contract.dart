@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Subscription key parameter names details.
 class SubscriptionKeyParameterNamesContract {
   /// Subscription key header name.
-  final pulumi.Input<String>? header;
+  final pulumi.Input<String?>? header;
   /// Subscription key query string parameter name.
-  final pulumi.Input<String>? query;
+  final pulumi.Input<String?>? query;
 
   /// Creates a new [SubscriptionKeyParameterNamesContract].
   /// [header] Subscription key header name.

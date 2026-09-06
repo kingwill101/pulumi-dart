@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Device details.
 class DeviceDetail {
   /// Resource Id of the device.
-  final pulumi.Input<String>? deviceResourceId;
+  final pulumi.Input<String?>? deviceResourceId;
 
   /// Creates a new [DeviceDetail].
   /// [deviceResourceId] Resource Id of the device.

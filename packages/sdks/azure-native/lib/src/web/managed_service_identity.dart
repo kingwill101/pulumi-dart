@@ -6,9 +6,9 @@ import 'managed_service_identity_type.dart';
 /// Managed service identity.
 class ManagedServiceIdentity {
   /// Type of managed service identity.
-  final pulumi.Input<ManagedServiceIdentityType>? type;
+  final pulumi.Input<ManagedServiceIdentityType?>? type;
   /// The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
-  final pulumi.Input<List<String>>? userAssignedIdentities;
+  final pulumi.Input<List<String>?>? userAssignedIdentities;
 
   /// Creates a new [ManagedServiceIdentity].
   /// [type] Type of managed service identity.

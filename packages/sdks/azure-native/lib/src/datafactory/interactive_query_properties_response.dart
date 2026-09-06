@@ -26,7 +26,7 @@ class InteractiveQueryPropertiesResponse {
 
   factory InteractiveQueryPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return InteractiveQueryPropertiesResponse(
-      autoTerminationMinutes: pulumi.Input.fromValue(map['autoTerminationMinutes'] as int),
+      autoTerminationMinutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['autoTerminationMinutes'])),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }

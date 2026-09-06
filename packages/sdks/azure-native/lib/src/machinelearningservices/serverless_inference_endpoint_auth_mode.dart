@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] Specifies the authentication mode for the Serverless endpoint.
-enum ServerlessInferenceEndpointAuthMode {
+enum ServerlessInferenceEndpointAuthMode implements pulumi.PulumiEnum<String> {
   key("Key"),
   aAD("AAD"),
   keyAndAAD("KeyAndAAD");
 
   const ServerlessInferenceEndpointAuthMode(this.wireValue);
+  @override
   final String wireValue;
 
   static ServerlessInferenceEndpointAuthMode fromValue(String value) {

@@ -40,7 +40,7 @@ class GetUserTablesSqlSyncTaskOutputResponse {
     return GetUserTablesSqlSyncTaskOutputResponse(
       databasesToSourceTables: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<List<DatabaseTableResponse>>(map['databasesToSourceTables']!, (value) => pulumi.Input.decodeList<DatabaseTableResponse>(value, (value) => DatabaseTableResponse.fromMap((value as Map).cast<String, dynamic>())))),
       databasesToTargetTables: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<List<DatabaseTableResponse>>(map['databasesToTargetTables']!, (value) => pulumi.Input.decodeList<DatabaseTableResponse>(value, (value) => DatabaseTableResponse.fromMap((value as Map).cast<String, dynamic>())))),
-      tableValidationErrors: pulumi.Input.fromValue((map['tableValidationErrors'] as Map).cast<String, List<String>>()),
+      tableValidationErrors: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<List<String>>(map['tableValidationErrors']!, (value) => (value as List).cast<String>())),
       validationErrors: pulumi.Input.fromValue(pulumi.Input.decodeList<ReportableExceptionResponse>(map['validationErrors']!, (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

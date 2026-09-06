@@ -6,7 +6,7 @@ import 'cspm_monitor_aws_offering_native_cloud_connection.dart';
 /// The CSPM monitoring for AWS offering
 class CspmMonitorAwsOffering {
   /// The native cloud connection configuration
-  final pulumi.Input<CspmMonitorAwsOfferingNativeCloudConnection>? nativeCloudConnection;
+  final pulumi.Input<CspmMonitorAwsOfferingNativeCloudConnection?>? nativeCloudConnection;
   /// The type of the security offering.
   /// Expected value is 'CspmMonitorAws'.
   final pulumi.Input<String> offeringType;

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mongo_dbresource_mongo_role_definition_args.dart';
+import 'privilege_response.dart';
+import 'role_response.dart';
 
 /// An Azure Cosmos DB Mongo Role Definition.
 ///
@@ -277,11 +279,11 @@ class MongoDBResourceMongoRoleDefinition extends pulumi.CustomResource {
   /// The name of the database account.
   late final pulumi.Output<String> name;
   /// A set of privileges contained by the Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Scopes higher than Database are not enforceable as privilege.
-  late final pulumi.Output<List<Map<String, dynamic>>?> privileges;
+  late final pulumi.Output<List<PrivilegeResponse>?> privileges;
   /// A user-friendly name for the Role Definition. Must be unique for the database account.
   late final pulumi.Output<String?> roleName;
   /// The set of roles inherited by this Role Definition.
-  late final pulumi.Output<List<Map<String, dynamic>>?> roles;
+  late final pulumi.Output<List<RoleResponse>?> roles;
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
 
@@ -302,9 +304,27 @@ class MongoDBResourceMongoRoleDefinition extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     databaseName = registerOutput<String?>('databaseName');
     this.name = registerOutput<String>('name');
-    privileges = registerOutput<List<Map<String, dynamic>>?>('privileges');
+    privileges = registerOutput<List<PrivilegeResponse>?>('privileges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivilegeResponse>(guardedValue, (value) => PrivilegeResponse.fromMap((value as Map).cast<String, dynamic>())); });
     roleName = registerOutput<String?>('roleName');
-    roles = registerOutput<List<Map<String, dynamic>>?>('roles');
+    roles = registerOutput<List<RoleResponse>?>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoleResponse>(guardedValue, (value) => RoleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [MongoDBResourceMongoRoleDefinition] resource.
+  MongoDBResourceMongoRoleDefinition.reference(String urn)
+    : super(
+        'azure-native:cosmosdb:MongoDBResourceMongoRoleDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    databaseName = registerOutput<String?>('databaseName');
+    this.name = registerOutput<String>('name');
+    privileges = registerOutput<List<PrivilegeResponse>?>('privileges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivilegeResponse>(guardedValue, (value) => PrivilegeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    roleName = registerOutput<String?>('roleName');
+    roles = registerOutput<List<RoleResponse>?>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoleResponse>(guardedValue, (value) => RoleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
 }

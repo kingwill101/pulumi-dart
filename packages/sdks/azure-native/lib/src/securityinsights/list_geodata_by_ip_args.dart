@@ -10,7 +10,7 @@ class ListGeodataByIpArgs {
   /// Enrichment type
   final pulumi.Input<String> enrichmentType;
   /// The dotted-decimal or colon-separated string representation of the IP address
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the workspace.

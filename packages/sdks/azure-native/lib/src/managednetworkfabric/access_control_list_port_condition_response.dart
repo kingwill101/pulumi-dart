@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the port condition that needs to be matched.
 class AccessControlListPortConditionResponse {
   /// List of protocol flags that need to be matched. Example: established | initial | &lt;List-of-TCP-flags&gt;. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
-  final pulumi.Input<List<String>>? flags;
+  final pulumi.Input<List<String>?>? flags;
   /// Layer4 protocol type that needs to be matched.
   final pulumi.Input<String> layer4Protocol;
   /// List of the port Group Names that need to be matched.
-  final pulumi.Input<List<String>>? portGroupNames;
+  final pulumi.Input<List<String>?>? portGroupNames;
   /// Port type that needs to be matched.
-  final pulumi.Input<String>? portType;
+  final pulumi.Input<String?>? portType;
   /// List of the Ports that need to be matched.
-  final pulumi.Input<List<String>>? ports;
+  final pulumi.Input<List<String>?>? ports;
 
   /// Creates a new [AccessControlListPortConditionResponse].
   /// [flags] List of protocol flags that need to be matched. Example: established | initial | &lt;List-of-TCP-flags&gt;. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg

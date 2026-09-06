@@ -9,11 +9,11 @@ class EmailChannelResponse {
   /// Expected value is 'EmailChannel'.
   final pulumi.Input<String> channelName;
   /// Entity Tag of the resource
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Specifies the location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The set of properties specific to email channel resource
-  final pulumi.Input<EmailChannelPropertiesResponse>? properties;
+  final pulumi.Input<EmailChannelPropertiesResponse?>? properties;
   /// Provisioning state of the resource
   final pulumi.Input<String> provisioningState;
 
@@ -23,13 +23,13 @@ class EmailChannelResponse {
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to email channel resource
   /// [provisioningState] Provisioning state of the resource
-  const EmailChannelResponse({
+  EmailChannelResponse({
     required this.channelName,
     this.etag,
-    this.location,
+    pulumi.Input<String?>? location,
     this.properties,
     required this.provisioningState,
-  });
+  }) : location = location ?? pulumi.Input.fromValue('global');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

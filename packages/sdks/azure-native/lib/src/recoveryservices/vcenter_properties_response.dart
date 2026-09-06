@@ -6,27 +6,27 @@ import 'health_error_response.dart';
 /// vCenter properties.
 class VCenterPropertiesResponse {
   /// The VCenter discovery status.
-  final pulumi.Input<String>? discoveryStatus;
+  final pulumi.Input<String?>? discoveryStatus;
   /// The ARM resource name of the fabric containing this VCenter.
-  final pulumi.Input<String>? fabricArmResourceName;
+  final pulumi.Input<String?>? fabricArmResourceName;
   /// Friendly name of the vCenter.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// The health errors for this VCenter.
-  final pulumi.Input<List<HealthErrorResponse>>? healthErrors;
+  final pulumi.Input<List<HealthErrorResponse>?>? healthErrors;
   /// The infrastructure Id of vCenter.
-  final pulumi.Input<String>? infrastructureId;
+  final pulumi.Input<String?>? infrastructureId;
   /// VCenter internal ID.
-  final pulumi.Input<String>? internalId;
+  final pulumi.Input<String?>? internalId;
   /// The IP address of the vCenter.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// The time when the last heartbeat was received by vCenter.
-  final pulumi.Input<String>? lastHeartbeat;
+  final pulumi.Input<String?>? lastHeartbeat;
   /// The port number for discovery.
-  final pulumi.Input<String>? port;
+  final pulumi.Input<String?>? port;
   /// The process server Id.
-  final pulumi.Input<String>? processServerId;
+  final pulumi.Input<String?>? processServerId;
   /// The account Id which has privileges to discover the vCenter.
-  final pulumi.Input<String>? runAsAccountId;
+  final pulumi.Input<String?>? runAsAccountId;
 
   /// Creates a new [VCenterPropertiesResponse].
   /// [discoveryStatus] The VCenter discovery status.

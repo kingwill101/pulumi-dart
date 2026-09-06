@@ -2,10 +2,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_configuration_response.dart';
 import 'agent_upgrade_response.dart';
 import 'cloud_metadata_response.dart';
+import 'error_detail_response.dart';
 import 'identity_response.dart';
 import 'license_profile_machine_instance_view_response.dart';
 import 'location_data_response.dart';
 import 'machine_args.dart';
+import 'machine_extension_instance_view_response.dart';
+import 'machine_extension_response.dart';
 import 'network_profile_response.dart';
 import 'osprofile_response.dart';
 import 'service_statuses_response.dart';
@@ -291,9 +294,9 @@ class Machine extends pulumi.CustomResource {
   /// Specifies the Windows domain name.
   late final pulumi.Output<String> domainName;
   /// Details about the error state.
-  late final pulumi.Output<List<Map<String, dynamic>>> errorDetails;
+  late final pulumi.Output<List<ErrorDetailResponse>> errorDetails;
   /// Machine Extensions information (deprecated field)
-  late final pulumi.Output<List<Map<String, dynamic>>?> extensions;
+  late final pulumi.Output<List<MachineExtensionInstanceViewResponse>?> extensions;
   /// Identity for the resource.
   late final pulumi.Output<IdentityResponse?> identity;
   /// Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
@@ -333,7 +336,7 @@ class Machine extends pulumi.CustomResource {
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
   /// The list of extensions affiliated to the machine
-  late final pulumi.Output<List<Map<String, dynamic>>> resources;
+  late final pulumi.Output<List<MachineExtensionResponse>> resources;
   /// Statuses of dependent services that are reported back to ARM.
   late final pulumi.Output<ServiceStatusesResponse?> serviceStatuses;
   /// The status of the hybrid machine agent.
@@ -370,12 +373,12 @@ class Machine extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clientPublicKey = registerOutput<String?>('clientPublicKey');
     cloudMetadata = registerOutput<CloudMetadataResponse?>('cloudMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    detectedProperties = registerOutput<Map<String, String>>('detectedProperties');
+    detectedProperties = registerOutput<Map<String, String>>('detectedProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     displayName = registerOutput<String>('displayName');
     dnsFqdn = registerOutput<String>('dnsFqdn');
     domainName = registerOutput<String>('domainName');
-    errorDetails = registerOutput<List<Map<String, dynamic>>>('errorDetails');
-    extensions = registerOutput<List<Map<String, dynamic>>?>('extensions');
+    errorDetails = registerOutput<List<ErrorDetailResponse>>('errorDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ErrorDetailResponse>(guardedValue, (value) => ErrorDetailResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    extensions = registerOutput<List<MachineExtensionInstanceViewResponse>?>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MachineExtensionInstanceViewResponse>(guardedValue, (value) => MachineExtensionInstanceViewResponse.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
     lastStatusChange = registerOutput<String>('lastStatusChange');
@@ -395,11 +398,62 @@ class Machine extends pulumi.CustomResource {
     parentClusterResourceId = registerOutput<String?>('parentClusterResourceId');
     privateLinkScopeResourceId = registerOutput<String?>('privateLinkScopeResourceId');
     provisioningState = registerOutput<String>('provisioningState');
-    resources = registerOutput<List<Map<String, dynamic>>>('resources');
+    resources = registerOutput<List<MachineExtensionResponse>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MachineExtensionResponse>(guardedValue, (value) => MachineExtensionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     serviceStatuses = registerOutput<ServiceStatusesResponse?>('serviceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceStatusesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    vmId = registerOutput<String?>('vmId');
+    vmUuid = registerOutput<String>('vmUuid');
+  }
+
+  /// Creates a typed reference to an existing [Machine] resource.
+  Machine.reference(String urn)
+    : super(
+        'azure-native:hybridcompute:Machine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    adFqdn = registerOutput<String>('adFqdn');
+    agentConfiguration = registerOutput<AgentConfigurationResponse>('agentConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    agentUpgrade = registerOutput<AgentUpgradeResponse?>('agentUpgrade', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentUpgradeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    agentVersion = registerOutput<String>('agentVersion');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientPublicKey = registerOutput<String?>('clientPublicKey');
+    cloudMetadata = registerOutput<CloudMetadataResponse?>('cloudMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    detectedProperties = registerOutput<Map<String, String>>('detectedProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    displayName = registerOutput<String>('displayName');
+    dnsFqdn = registerOutput<String>('dnsFqdn');
+    domainName = registerOutput<String>('domainName');
+    errorDetails = registerOutput<List<ErrorDetailResponse>>('errorDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ErrorDetailResponse>(guardedValue, (value) => ErrorDetailResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    extensions = registerOutput<List<MachineExtensionInstanceViewResponse>?>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MachineExtensionInstanceViewResponse>(guardedValue, (value) => MachineExtensionInstanceViewResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String?>('kind');
+    lastStatusChange = registerOutput<String>('lastStatusChange');
+    licenseProfile = registerOutput<LicenseProfileMachineInstanceViewResponse?>('licenseProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LicenseProfileMachineInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    locationData = registerOutput<LocationDataResponse?>('locationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    machineFqdn = registerOutput<String>('machineFqdn');
+    mssqlDiscovered = registerOutput<String?>('mssqlDiscovered');
+    this.name = registerOutput<String>('name');
+    networkProfile = registerOutput<NetworkProfileResponse>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    osEdition = registerOutput<String>('osEdition');
+    osName = registerOutput<String>('osName');
+    osProfile = registerOutput<OSProfileResponse?>('osProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OSProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    osSku = registerOutput<String>('osSku');
+    osType = registerOutput<String?>('osType');
+    osVersion = registerOutput<String>('osVersion');
+    parentClusterResourceId = registerOutput<String?>('parentClusterResourceId');
+    privateLinkScopeResourceId = registerOutput<String?>('privateLinkScopeResourceId');
+    provisioningState = registerOutput<String>('provisioningState');
+    resources = registerOutput<List<MachineExtensionResponse>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MachineExtensionResponse>(guardedValue, (value) => MachineExtensionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    serviceStatuses = registerOutput<ServiceStatusesResponse?>('serviceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceStatusesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     vmId = registerOutput<String?>('vmId');
     vmUuid = registerOutput<String>('vmUuid');

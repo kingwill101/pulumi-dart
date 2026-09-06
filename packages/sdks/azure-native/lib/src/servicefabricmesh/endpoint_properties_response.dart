@@ -7,7 +7,7 @@ class EndpointPropertiesResponse {
   /// The name of the endpoint.
   final pulumi.Input<String> name;
   /// Port used by the container.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
 
   /// Creates a new [EndpointPropertiesResponse].
   /// [name] The name of the endpoint.
@@ -27,7 +27,7 @@ class EndpointPropertiesResponse {
   factory EndpointPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EndpointPropertiesResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

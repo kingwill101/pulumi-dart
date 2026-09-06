@@ -9,35 +9,35 @@ class GetOuContainerResult {
   /// The list of container accounts
   final List<ContainerAccountResponse>? accounts;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The OuContainer name
-  final String containerId;
+  final String? containerId;
   /// The Deployment id
-  final String deploymentId;
+  final String? deploymentId;
   /// Distinguished Name of OuContainer instance
-  final String distinguishedName;
+  final String? distinguishedName;
   /// The domain name of Domain Services.
-  final String domainName;
+  final String? domainName;
   /// Resource etag
   final String? etag;
   /// Resource Id
-  final String id;
+  final String? id;
   /// Resource location
   final String? location;
   /// Resource name
-  final String name;
+  final String? name;
   /// The current deployment or provisioning state, which only appears in the response.
-  final String provisioningState;
+  final String? provisioningState;
   /// Status of OuContainer instance
-  final String serviceStatus;
+  final String? serviceStatus;
   /// The system meta data relating to this resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags
   final Map<String, String>? tags;
   /// Azure Active Directory tenant id
-  final String tenantId;
+  final String? tenantId;
   /// Resource type
-  final String type;
+  final String? type;
 
   /// Creates a new [GetOuContainerResult].
   /// [accounts] The list of container accounts
@@ -58,62 +58,62 @@ class GetOuContainerResult {
   /// [type] Resource type
   const GetOuContainerResult({
     this.accounts,
-    required this.azureApiVersion,
-    required this.containerId,
-    required this.deploymentId,
-    required this.distinguishedName,
-    required this.domainName,
+    this.azureApiVersion,
+    this.containerId,
+    this.deploymentId,
+    this.distinguishedName,
+    this.domainName,
     this.etag,
-    required this.id,
+    this.id,
     this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.serviceStatus,
-    required this.systemData,
+    this.name,
+    this.provisioningState,
+    this.serviceStatus,
+    this.systemData,
     this.tags,
-    required this.tenantId,
-    required this.type,
+    this.tenantId,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accounts': ?(() { final guardedValue = accounts; if (guardedValue == null) return null; return pulumi.Input.encodeList<ContainerAccountResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'azureApiVersion': azureApiVersion,
-      'containerId': containerId,
-      'deploymentId': deploymentId,
-      'distinguishedName': distinguishedName,
-      'domainName': domainName,
+      'azureApiVersion': ?azureApiVersion,
+      'containerId': ?containerId,
+      'deploymentId': ?deploymentId,
+      'distinguishedName': ?distinguishedName,
+      'domainName': ?domainName,
       'etag': ?etag,
-      'id': id,
+      'id': ?id,
       'location': ?location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'serviceStatus': serviceStatus,
-      'systemData': systemData.toMap(),
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'serviceStatus': ?serviceStatus,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'tenantId': tenantId,
-      'type': type,
+      'tenantId': ?tenantId,
+      'type': ?type,
     };
   }
 
   factory GetOuContainerResult.fromMap(Map<String, dynamic> map) {
     return GetOuContainerResult(
       accounts: (() { final guardedValue = map['accounts']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerAccountResponse>(guardedValue, (value) => ContainerAccountResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      containerId: map['containerId'] as String,
-      deploymentId: map['deploymentId'] as String,
-      distinguishedName: map['distinguishedName'] as String,
-      domainName: map['domainName'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      containerId: (() { final guardedValue = map['containerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deploymentId: (() { final guardedValue = map['deploymentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      distinguishedName: (() { final guardedValue = map['distinguishedName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      serviceStatus: map['serviceStatus'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceStatus: (() { final guardedValue = map['serviceStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

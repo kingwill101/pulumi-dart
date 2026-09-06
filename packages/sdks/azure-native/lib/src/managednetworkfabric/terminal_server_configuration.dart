@@ -9,13 +9,13 @@ class TerminalServerConfiguration {
   /// IPv4 Address Prefix.
   final pulumi.Input<String> primaryIpv4Prefix;
   /// IPv6 Address Prefix.
-  final pulumi.Input<String>? primaryIpv6Prefix;
+  final pulumi.Input<String?>? primaryIpv6Prefix;
   /// Secondary IPv4 Address Prefix.
   final pulumi.Input<String> secondaryIpv4Prefix;
   /// Secondary IPv6 Address Prefix.
-  final pulumi.Input<String>? secondaryIpv6Prefix;
+  final pulumi.Input<String?>? secondaryIpv6Prefix;
   /// Serial Number of Terminal server.
-  final pulumi.Input<String>? serialNumber;
+  final pulumi.Input<String?>? serialNumber;
   /// Username for the terminal server connection.
   final pulumi.Input<String> username;
 

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Managed service identity (either system assigned, or none)
 class SystemAssignedServiceIdentity {
   /// Type of managed service identity (either system assigned, or none).
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [SystemAssignedServiceIdentity].
   /// [type] Type of managed service identity (either system assigned, or none).
@@ -21,7 +21,7 @@ class SystemAssignedServiceIdentity {
 
   factory SystemAssignedServiceIdentity.fromMap(Map<String, dynamic> map) {
     return SystemAssignedServiceIdentity(
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

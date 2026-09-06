@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// HTTPGetAction describes an action based on HTTP Get requests.
 class HTTPGetAction {
   /// Path to access on the HTTP server.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Scheme to use for connecting to the host. Defaults to HTTP.
   ///
   /// Possible enum values:
   /// - `"HTTP"` means that the scheme used will be http://
   /// - `"HTTPS"` means that the scheme used will be https://
-  final pulumi.Input<String>? scheme;
+  final pulumi.Input<dynamic>? scheme;
   /// The type of the action to take to perform the health check.
   /// Expected value is 'HTTPGetAction'.
   final pulumi.Input<String> type;
@@ -37,7 +37,7 @@ class HTTPGetAction {
   factory HTTPGetAction.fromMap(Map<String, dynamic> map) {
     return HTTPGetAction(
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      scheme: (() { final guardedValue = map['scheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scheme: (() { final guardedValue = map['scheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

@@ -10,19 +10,19 @@ import 'storage_properties.dart';
 /// {@macro pulumi_baremetalinfrastructure_azure_bare_metal_storage_instance_args_doc}
 class AzureBareMetalStorageInstanceArgs {
   /// Name of the Azure Bare Metal Storage Instance, also known as the ResourceName.
-  final pulumi.Input<String>? azureBareMetalStorageInstanceName;
+  final pulumi.Input<String?>? azureBareMetalStorageInstanceName;
   /// Specifies the AzureBareMetaStorageInstance unique ID.
-  final pulumi.Input<String>? azureBareMetalStorageInstanceUniqueIdentifier;
+  final pulumi.Input<String?>? azureBareMetalStorageInstanceUniqueIdentifier;
   /// The identity of Azure Bare Metal Storage Instance, if configured.
-  final pulumi.Input<AzureBareMetalStorageInstanceIdentity>? identity;
+  final pulumi.Input<AzureBareMetalStorageInstanceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the storage properties for the AzureBareMetalStorage instance.
-  final pulumi.Input<StorageProperties>? storageProperties;
+  final pulumi.Input<StorageProperties?>? storageProperties;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AzureBareMetalStorageInstanceArgs].
   /// [azureBareMetalStorageInstanceName] Name of the Azure Bare Metal Storage Instance, also known as the ResourceName.

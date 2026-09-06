@@ -6,7 +6,7 @@ import 'kubernetes_ipconfiguration_response.dart';
 /// Kubernetes node info
 class NodeInfoResponse {
   /// IP Configuration of the Kubernetes node.
-  final pulumi.Input<List<KubernetesIPConfigurationResponse>>? ipConfiguration;
+  final pulumi.Input<List<KubernetesIPConfigurationResponse>?>? ipConfiguration;
   /// Node name.
   final pulumi.Input<String> name;
   /// Node type - Master/Worker

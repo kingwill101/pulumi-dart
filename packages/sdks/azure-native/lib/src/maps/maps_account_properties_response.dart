@@ -9,15 +9,15 @@ import 'maps_account_properties_response_locations.dart';
 /// Additional Maps account properties
 class MapsAccountPropertiesResponse {
   /// Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service.
-  final pulumi.Input<CorsRulesResponse>? cors;
+  final pulumi.Input<CorsRulesResponse?>? cors;
   /// Allows toggle functionality on Azure Policy to disable Azure Maps local authentication support. This will disable Shared Keys and Shared Access Signature Token authentication from any usage.
-  final pulumi.Input<bool>? disableLocalAuth;
+  final pulumi.Input<bool?>? disableLocalAuth;
   /// All encryption configuration for a resource.
-  final pulumi.Input<EncryptionResponse>? encryption;
+  final pulumi.Input<EncryptionResponse?>? encryption;
   /// The array of associated resources to the Maps account. Linked resource in the array cannot individually update, you must update all linked resources in the array together. These resources may be used on operations on the Azure Maps REST API. Access is controlled by the Maps Account Managed Identity(s) permissions to those resource(s).
-  final pulumi.Input<List<LinkedResourceResponse>>? linkedResources;
+  final pulumi.Input<List<LinkedResourceResponse>?>? linkedResources;
   /// List of additional data processing regions for the Maps Account, which may result in requests being processed in another geography. Some features or results may be restricted to specific regions. By default, Maps REST APIs process requests according to the account location or the [geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).
-  final pulumi.Input<List<MapsAccountPropertiesResponseLocations>>? locations;
+  final pulumi.Input<List<MapsAccountPropertiesResponseLocations>?>? locations;
   /// The provisioning state of the Maps account resource, Account updates can only be performed on terminal states. Terminal states: `Succeeded` and `Failed`
   final pulumi.Input<String> provisioningState;
   /// A unique identifier for the Maps Account
@@ -31,15 +31,15 @@ class MapsAccountPropertiesResponse {
   /// [locations] List of additional data processing regions for the Maps Account, which may result in requests being processed in another geography. Some features or results may be restricted to specific regions. By default, Maps REST APIs process requests according to the account location or the [geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).
   /// [provisioningState] The provisioning state of the Maps account resource, Account updates can only be performed on terminal states. Terminal states: `Succeeded` and `Failed`
   /// [uniqueId] A unique identifier for the Maps Account
-  const MapsAccountPropertiesResponse({
+  MapsAccountPropertiesResponse({
     this.cors,
-    this.disableLocalAuth,
+    pulumi.Input<bool?>? disableLocalAuth,
     this.encryption,
     this.linkedResources,
     this.locations,
     required this.provisioningState,
     required this.uniqueId,
-  });
+  }) : disableLocalAuth = disableLocalAuth ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

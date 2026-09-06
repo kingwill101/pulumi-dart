@@ -1,4 +1,6 @@
-enum Month {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum Month implements pulumi.PulumiEnum<String> {
   valueApril("April"),
   valueAugust("August"),
   valueDecember("December"),
@@ -13,6 +15,7 @@ enum Month {
   valueSeptember("September");
 
   const Month(this.wireValue);
+  @override
   final String wireValue;
 
   static Month fromValue(String value) {

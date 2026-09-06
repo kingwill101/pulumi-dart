@@ -2,7 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_model_with_allowed_property_set_response_identity.dart';
 import 'resource_model_with_allowed_property_set_response_plan.dart';
 import 'resource_model_with_allowed_property_set_response_sku.dart';
+import 'scaling_host_pool_reference_response.dart';
 import 'scaling_plan_args.dart';
+import 'scaling_schedule_response.dart';
 import 'system_data_response.dart';
 
 /// Represents a scaling plan definition.
@@ -520,7 +522,7 @@ class ScalingPlan extends pulumi.CustomResource {
   /// User friendly name of scaling plan.
   late final pulumi.Output<String?> friendlyName;
   /// List of ScalingHostPoolReference definitions.
-  late final pulumi.Output<List<Map<String, dynamic>>?> hostPoolReferences;
+  late final pulumi.Output<List<ScalingHostPoolReferenceResponse>?> hostPoolReferences;
   /// HostPool type for desktop.
   late final pulumi.Output<String?> hostPoolType;
   late final pulumi.Output<ResourceModelWithAllowedPropertySetResponseIdentity?> identity;
@@ -536,7 +538,7 @@ class ScalingPlan extends pulumi.CustomResource {
   late final pulumi.Output<String> objectId;
   late final pulumi.Output<ResourceModelWithAllowedPropertySetResponsePlan?> plan;
   /// List of ScalingPlanPooledSchedule definitions.
-  late final pulumi.Output<List<Map<String, dynamic>>?> schedules;
+  late final pulumi.Output<List<ScalingScheduleResponse>?> schedules;
   late final pulumi.Output<ResourceModelWithAllowedPropertySetResponseSku?> sku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
@@ -566,7 +568,7 @@ class ScalingPlan extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     exclusionTag = registerOutput<String?>('exclusionTag');
     friendlyName = registerOutput<String?>('friendlyName');
-    hostPoolReferences = registerOutput<List<Map<String, dynamic>>?>('hostPoolReferences');
+    hostPoolReferences = registerOutput<List<ScalingHostPoolReferenceResponse>?>('hostPoolReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScalingHostPoolReferenceResponse>(guardedValue, (value) => ScalingHostPoolReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     hostPoolType = registerOutput<String?>('hostPoolType');
     identity = registerOutput<ResourceModelWithAllowedPropertySetResponseIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
@@ -575,10 +577,41 @@ class ScalingPlan extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     objectId = registerOutput<String>('objectId');
     plan = registerOutput<ResourceModelWithAllowedPropertySetResponsePlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponsePlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    schedules = registerOutput<List<Map<String, dynamic>>?>('schedules');
+    schedules = registerOutput<List<ScalingScheduleResponse>?>('schedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScalingScheduleResponse>(guardedValue, (value) => ScalingScheduleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     sku = registerOutput<ResourceModelWithAllowedPropertySetResponseSku?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponseSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeZone = registerOutput<String>('timeZone');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ScalingPlan] resource.
+  ScalingPlan.reference(String urn)
+    : super(
+        'azure-native:desktopvirtualization:ScalingPlan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    exclusionTag = registerOutput<String?>('exclusionTag');
+    friendlyName = registerOutput<String?>('friendlyName');
+    hostPoolReferences = registerOutput<List<ScalingHostPoolReferenceResponse>?>('hostPoolReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScalingHostPoolReferenceResponse>(guardedValue, (value) => ScalingHostPoolReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    hostPoolType = registerOutput<String?>('hostPoolType');
+    identity = registerOutput<ResourceModelWithAllowedPropertySetResponseIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    managedBy = registerOutput<String?>('managedBy');
+    this.name = registerOutput<String>('name');
+    objectId = registerOutput<String>('objectId');
+    plan = registerOutput<ResourceModelWithAllowedPropertySetResponsePlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponsePlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    schedules = registerOutput<List<ScalingScheduleResponse>?>('schedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScalingScheduleResponse>(guardedValue, (value) => ScalingScheduleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    sku = registerOutput<ResourceModelWithAllowedPropertySetResponseSku?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponseSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeZone = registerOutput<String>('timeZone');
     type = registerOutput<String>('type');
   }

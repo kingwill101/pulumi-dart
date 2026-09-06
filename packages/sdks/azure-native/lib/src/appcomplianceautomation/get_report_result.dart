@@ -10,44 +10,44 @@ import 'system_data_response.dart';
 /// Result data returned by getReport.
 class GetReportResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// List of synchronized certification records.
-  final List<CertSyncRecordResponse> certRecords;
+  final List<CertSyncRecordResponse>? certRecords;
   /// Report compliance status.
-  final ReportComplianceStatusResponse complianceStatus;
+  final ReportComplianceStatusResponse? complianceStatus;
   /// List of report error codes.
-  final List<String> errors;
+  final List<String>? errors;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Report last collection trigger time.
-  final String lastTriggerTime;
+  final String? lastTriggerTime;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Report next collection trigger time.
-  final String nextTriggerTime;
+  final String? nextTriggerTime;
   /// A list of comma-separated offerGuids indicates a series of offerGuids that map to the report. For example, "00000000-0000-0000-0000-000000000001,00000000-0000-0000-0000-000000000002" and "00000000-0000-0000-0000-000000000003".
   final String? offerGuid;
   /// Azure lifecycle management
-  final String provisioningState;
+  final String? provisioningState;
   /// List of resource data.
-  final List<ResourceMetadataResponse> resources;
+  final List<ResourceMetadataResponse>? resources;
   /// Report status.
-  final String status;
+  final String? status;
   /// The information of 'bring your own storage' binding to the report
   final StorageInfoResponse? storageInfo;
   /// List of subscription Ids.
-  final List<String> subscriptions;
+  final List<String>? subscriptions;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Report's tenant id.
-  final String tenantId;
+  final String? tenantId;
   /// Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
   /// An example of valid timezone id is "Pacific Standard Time".
-  final String timeZone;
+  final String? timeZone;
   /// Report collection trigger time.
-  final String triggerTime;
+  final String? triggerTime;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetReportResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -70,72 +70,72 @@ class GetReportResult {
   /// [triggerTime] Report collection trigger time.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetReportResult({
-    required this.azureApiVersion,
-    required this.certRecords,
-    required this.complianceStatus,
-    required this.errors,
-    required this.id,
-    required this.lastTriggerTime,
-    required this.name,
-    required this.nextTriggerTime,
+    this.azureApiVersion,
+    this.certRecords,
+    this.complianceStatus,
+    this.errors,
+    this.id,
+    this.lastTriggerTime,
+    this.name,
+    this.nextTriggerTime,
     this.offerGuid,
-    required this.provisioningState,
-    required this.resources,
-    required this.status,
+    this.provisioningState,
+    this.resources,
+    this.status,
     this.storageInfo,
-    required this.subscriptions,
-    required this.systemData,
-    required this.tenantId,
-    required this.timeZone,
-    required this.triggerTime,
-    required this.type,
+    this.subscriptions,
+    this.systemData,
+    this.tenantId,
+    this.timeZone,
+    this.triggerTime,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'certRecords': pulumi.Input.encodeList<CertSyncRecordResponse, Map<String, dynamic>>(certRecords, (value) => value.toMap()),
-      'complianceStatus': complianceStatus.toMap(),
-      'errors': errors,
-      'id': id,
-      'lastTriggerTime': lastTriggerTime,
-      'name': name,
-      'nextTriggerTime': nextTriggerTime,
+      'azureApiVersion': ?azureApiVersion,
+      'certRecords': ?(() { final guardedValue = certRecords; if (guardedValue == null) return null; return pulumi.Input.encodeList<CertSyncRecordResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'complianceStatus': ?complianceStatus?.toMap(),
+      'errors': ?errors,
+      'id': ?id,
+      'lastTriggerTime': ?lastTriggerTime,
+      'name': ?name,
+      'nextTriggerTime': ?nextTriggerTime,
       'offerGuid': ?offerGuid,
-      'provisioningState': provisioningState,
-      'resources': pulumi.Input.encodeList<ResourceMetadataResponse, Map<String, dynamic>>(resources, (value) => value.toMap()),
-      'status': status,
+      'provisioningState': ?provisioningState,
+      'resources': ?(() { final guardedValue = resources; if (guardedValue == null) return null; return pulumi.Input.encodeList<ResourceMetadataResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'status': ?status,
       'storageInfo': ?storageInfo?.toMap(),
-      'subscriptions': subscriptions,
-      'systemData': systemData.toMap(),
-      'tenantId': tenantId,
-      'timeZone': timeZone,
-      'triggerTime': triggerTime,
-      'type': type,
+      'subscriptions': ?subscriptions,
+      'systemData': ?systemData?.toMap(),
+      'tenantId': ?tenantId,
+      'timeZone': ?timeZone,
+      'triggerTime': ?triggerTime,
+      'type': ?type,
     };
   }
 
   factory GetReportResult.fromMap(Map<String, dynamic> map) {
     return GetReportResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      certRecords: pulumi.Input.decodeList<CertSyncRecordResponse>(map['certRecords']!, (value) => CertSyncRecordResponse.fromMap((value as Map).cast<String, dynamic>())),
-      complianceStatus: ReportComplianceStatusResponse.fromMap((map['complianceStatus']! as Map).cast<String, dynamic>()),
-      errors: (map['errors'] as List).cast<String>(),
-      id: map['id'] as String,
-      lastTriggerTime: map['lastTriggerTime'] as String,
-      name: map['name'] as String,
-      nextTriggerTime: map['nextTriggerTime'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      certRecords: (() { final guardedValue = map['certRecords']; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertSyncRecordResponse>(guardedValue, (value) => CertSyncRecordResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      complianceStatus: (() { final guardedValue = map['complianceStatus']; if (guardedValue == null) return null; return ReportComplianceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      errors: (() { final guardedValue = map['errors']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastTriggerTime: (() { final guardedValue = map['lastTriggerTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nextTriggerTime: (() { final guardedValue = map['nextTriggerTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       offerGuid: (() { final guardedValue = map['offerGuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
-      resources: pulumi.Input.decodeList<ResourceMetadataResponse>(map['resources']!, (value) => ResourceMetadataResponse.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceMetadataResponse>(guardedValue, (value) => ResourceMetadataResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storageInfo: (() { final guardedValue = map['storageInfo']; if (guardedValue == null) return null; return StorageInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      subscriptions: (map['subscriptions'] as List).cast<String>(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      tenantId: map['tenantId'] as String,
-      timeZone: map['timeZone'] as String,
-      triggerTime: map['triggerTime'] as String,
-      type: map['type'] as String,
+      subscriptions: (() { final guardedValue = map['subscriptions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      triggerTime: (() { final guardedValue = map['triggerTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

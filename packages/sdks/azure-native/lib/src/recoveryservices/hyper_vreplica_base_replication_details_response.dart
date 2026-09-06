@@ -8,22 +8,22 @@ import 'vmnic_details_response.dart';
 /// Hyper V replica provider specific settings base class.
 class HyperVReplicaBaseReplicationDetailsResponse {
   /// Initial replication details.
-  final pulumi.Input<InitialReplicationDetailsResponse>? initialReplicationDetails;
+  final pulumi.Input<InitialReplicationDetailsResponse?>? initialReplicationDetails;
   /// Gets the Instance type.
   /// Expected value is 'HyperVReplicaBaseReplicationDetails'.
   final pulumi.Input<String> instanceType;
   /// The Last replication time.
-  final pulumi.Input<String>? lastReplicatedTime;
+  final pulumi.Input<String?>? lastReplicatedTime;
   /// VM disk details.
-  final pulumi.Input<List<DiskDetailsResponse>>? vMDiskDetails;
+  final pulumi.Input<List<DiskDetailsResponse>?>? vMDiskDetails;
   /// The virtual machine Id.
-  final pulumi.Input<String>? vmId;
+  final pulumi.Input<String?>? vmId;
   /// The PE Network details.
-  final pulumi.Input<List<VMNicDetailsResponse>>? vmNics;
+  final pulumi.Input<List<VMNicDetailsResponse>?>? vmNics;
   /// The protection state for the vm.
-  final pulumi.Input<String>? vmProtectionState;
+  final pulumi.Input<String?>? vmProtectionState;
   /// The protection state description for the vm.
-  final pulumi.Input<String>? vmProtectionStateDescription;
+  final pulumi.Input<String?>? vmProtectionStateDescription;
 
   /// Creates a new [HyperVReplicaBaseReplicationDetailsResponse].
   /// [initialReplicationDetails] Initial replication details.

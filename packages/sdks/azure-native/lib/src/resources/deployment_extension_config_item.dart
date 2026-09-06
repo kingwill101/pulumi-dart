@@ -6,7 +6,7 @@ import 'key_vault_parameter_reference.dart';
 /// The value or how to get a value for an extension config property.
 class DeploymentExtensionConfigItem {
   /// The key vault reference of the config item.
-  final pulumi.Input<KeyVaultParameterReference>? keyVaultReference;
+  final pulumi.Input<KeyVaultParameterReference?>? keyVaultReference;
   /// The value of the config item. The type is determined by the extension config schema.
   final pulumi.Input<dynamic>? value;
 

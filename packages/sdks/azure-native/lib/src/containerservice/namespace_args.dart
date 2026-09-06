@@ -9,17 +9,17 @@ import 'namespace_properties.dart';
 /// {@macro pulumi_containerservice_namespace_args_doc}
 class NamespaceArgs {
   /// The location of the namespace.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the namespace.
-  final pulumi.Input<String>? namespaceName;
+  final pulumi.Input<String?>? namespaceName;
   /// Properties of a namespace.
-  final pulumi.Input<NamespaceProperties>? properties;
+  final pulumi.Input<NamespaceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the managed cluster resource.
   final pulumi.Input<String> resourceName;
   /// The tags to be persisted on the managed cluster namespace.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NamespaceArgs].
   /// [location] The location of the namespace.

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceHydrationAccount {
   /// The account name.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// The encrypted key.
-  final pulumi.Input<String>? encryptedKey;
+  final pulumi.Input<String?>? encryptedKey;
   /// The max child resource consistency job limit.
-  final pulumi.Input<double>? maxChildResourceConsistencyJobLimit;
+  final pulumi.Input<double?>? maxChildResourceConsistencyJobLimit;
   /// The subscription id.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [ResourceHydrationAccount].
   /// [accountName] The account name.
@@ -37,7 +37,7 @@ class ResourceHydrationAccount {
     return ResourceHydrationAccount(
       accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encryptedKey: (() { final guardedValue = map['encryptedKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxChildResourceConsistencyJobLimit: (() { final guardedValue = map['maxChildResourceConsistencyJobLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maxChildResourceConsistencyJobLimit: (() { final guardedValue = map['maxChildResourceConsistencyJobLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

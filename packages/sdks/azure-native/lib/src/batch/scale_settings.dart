@@ -7,9 +7,9 @@ import 'fixed_scale_settings.dart';
 /// Defines the desired size of the pool. This can either be 'fixedScale' where the requested targetDedicatedNodes is specified, or 'autoScale' which defines a formula which is periodically reevaluated. If this property is not specified, the pool will have a fixed scale with 0 targetDedicatedNodes.
 class ScaleSettings {
   /// This property and fixedScale are mutually exclusive and one of the properties must be specified.
-  final pulumi.Input<AutoScaleSettings>? autoScale;
+  final pulumi.Input<AutoScaleSettings?>? autoScale;
   /// This property and autoScale are mutually exclusive and one of the properties must be specified.
-  final pulumi.Input<FixedScaleSettings>? fixedScale;
+  final pulumi.Input<FixedScaleSettings?>? fixedScale;
 
   /// Creates a new [ScaleSettings].
   /// [autoScale] This property and fixedScale are mutually exclusive and one of the properties must be specified.

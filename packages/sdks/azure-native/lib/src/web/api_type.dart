@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The API type
-enum ApiType {
+enum ApiType implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueRest("Rest"),
   valueSoap("Soap");
 
   const ApiType(this.wireValue);
+  @override
   final String wireValue;
 
   static ApiType fromValue(String value) {

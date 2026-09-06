@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ProcessorFeature
 class ProcessorFeatureResponse {
   /// &lt;p&gt;The name of the processor feature. Valid names are &lt;code&gt;coreCount&lt;/code&gt; and &lt;code&gt;threadsPerCore&lt;/code&gt;.&lt;/p&gt;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// &lt;p&gt;The value of a processor feature name.&lt;/p&gt;
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ProcessorFeatureResponse].
   /// [name] &lt;p&gt;The name of the processor feature. Valid names are &lt;code&gt;coreCount&lt;/code&gt; and &lt;code&gt;threadsPerCore&lt;/code&gt;.&lt;/p&gt;

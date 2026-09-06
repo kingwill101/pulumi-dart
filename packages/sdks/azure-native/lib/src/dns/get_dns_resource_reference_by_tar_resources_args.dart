@@ -9,7 +9,7 @@ import 'sub_resource.dart';
 /// {@macro pulumi_dns_get_dns_resource_reference_by_tar_resources_args_doc}
 class GetDnsResourceReferenceByTarResourcesArgs {
   /// A list of references to azure resources for which referencing dns records need to be queried.
-  final pulumi.Input<List<SubResource>>? targetResources;
+  final pulumi.Input<List<SubResource>?>? targetResources;
 
   /// Creates a new [GetDnsResourceReferenceByTarResourcesArgs].
   /// [targetResources] A list of references to azure resources for which referencing dns records need to be queried.

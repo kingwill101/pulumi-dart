@@ -5,35 +5,35 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Edifact envelope override settings.
 class EdifactEnvelopeOverrideResponse {
   /// The application password.
-  final pulumi.Input<String>? applicationPassword;
+  final pulumi.Input<String?>? applicationPassword;
   /// The association assigned code.
-  final pulumi.Input<String>? associationAssignedCode;
+  final pulumi.Input<String?>? associationAssignedCode;
   /// The controlling agency code.
-  final pulumi.Input<String>? controllingAgencyCode;
+  final pulumi.Input<String?>? controllingAgencyCode;
   /// The functional group id.
-  final pulumi.Input<String>? functionalGroupId;
+  final pulumi.Input<String?>? functionalGroupId;
   /// The group header message release.
-  final pulumi.Input<String>? groupHeaderMessageRelease;
+  final pulumi.Input<String?>? groupHeaderMessageRelease;
   /// The group header message version.
-  final pulumi.Input<String>? groupHeaderMessageVersion;
+  final pulumi.Input<String?>? groupHeaderMessageVersion;
   /// The message association assigned code.
-  final pulumi.Input<String>? messageAssociationAssignedCode;
+  final pulumi.Input<String?>? messageAssociationAssignedCode;
   /// The message id on which this envelope settings has to be applied.
-  final pulumi.Input<String>? messageId;
+  final pulumi.Input<String?>? messageId;
   /// The message release version on which this envelope settings has to be applied.
-  final pulumi.Input<String>? messageRelease;
+  final pulumi.Input<String?>? messageRelease;
   /// The message version on which this envelope settings has to be applied.
-  final pulumi.Input<String>? messageVersion;
+  final pulumi.Input<String?>? messageVersion;
   /// The receiver application id.
-  final pulumi.Input<String>? receiverApplicationId;
+  final pulumi.Input<String?>? receiverApplicationId;
   /// The receiver application qualifier.
-  final pulumi.Input<String>? receiverApplicationQualifier;
+  final pulumi.Input<String?>? receiverApplicationQualifier;
   /// The sender application id.
-  final pulumi.Input<String>? senderApplicationId;
+  final pulumi.Input<String?>? senderApplicationId;
   /// The sender application qualifier.
-  final pulumi.Input<String>? senderApplicationQualifier;
+  final pulumi.Input<String?>? senderApplicationQualifier;
   /// The target namespace on which this envelope settings has to be applied.
-  final pulumi.Input<String>? targetNamespace;
+  final pulumi.Input<String?>? targetNamespace;
 
   /// Creates a new [EdifactEnvelopeOverrideResponse].
   /// [applicationPassword] The application password.

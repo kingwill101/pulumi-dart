@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The check name availability specifications.
 class ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecificationsResponse {
   /// Whether default validation is enabled.
-  final pulumi.Input<bool>? enableDefaultValidation;
+  final pulumi.Input<bool?>? enableDefaultValidation;
   /// The resource types with custom validation.
-  final pulumi.Input<List<String>>? resourceTypesWithCustomValidation;
+  final pulumi.Input<List<String>?>? resourceTypesWithCustomValidation;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecificationsResponse].
   /// [enableDefaultValidation] Whether default validation is enabled.

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Site properties
 class SitePropertiesResponse {
   /// AddressResource ArmId of Site resource
-  final pulumi.Input<String>? addressResourceId;
+  final pulumi.Input<String?>? addressResourceId;
   /// Description of Site resource
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// displayName of Site resource
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Provisioning state of last operation
   final pulumi.Input<String> provisioningState;
 

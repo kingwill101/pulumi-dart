@@ -6,7 +6,7 @@ import 'resource_log_category_response.dart';
 /// Resource log configuration of a Microsoft.SignalRService resource.
 class ResourceLogConfigurationResponse {
   /// Gets or sets the list of category configurations.
-  final pulumi.Input<List<ResourceLogCategoryResponse>>? categories;
+  final pulumi.Input<List<ResourceLogCategoryResponse>?>? categories;
 
   /// Creates a new [ResourceLogConfigurationResponse].
   /// [categories] Gets or sets the list of category configurations.

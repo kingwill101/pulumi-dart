@@ -6,9 +6,9 @@ import 'privilege_response_resource.dart';
 /// The set of data plane operations permitted through this Role Definition.
 class PrivilegeResponse {
   /// An array of actions that are allowed.
-  final pulumi.Input<List<String>>? actions;
+  final pulumi.Input<List<String>?>? actions;
   /// An Azure Cosmos DB Mongo DB Resource.
-  final pulumi.Input<PrivilegeResponseResource>? resource;
+  final pulumi.Input<PrivilegeResponseResource?>? resource;
 
   /// Creates a new [PrivilegeResponse].
   /// [actions] An array of actions that are allowed.

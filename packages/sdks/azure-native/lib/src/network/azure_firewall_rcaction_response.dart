@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of the AzureFirewallRCAction.
 class AzureFirewallRCActionResponse {
   /// The type of action.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [AzureFirewallRCActionResponse].
   /// [type] The type of action.

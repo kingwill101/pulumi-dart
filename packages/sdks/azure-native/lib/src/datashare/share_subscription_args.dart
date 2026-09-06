@@ -10,13 +10,13 @@ class ShareSubscriptionArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
   /// The expiration date of the share subscription.
-  final pulumi.Input<String>? expirationDate;
+  final pulumi.Input<String?>? expirationDate;
   /// The invitation id.
   final pulumi.Input<String> invitationId;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the shareSubscription.
-  final pulumi.Input<String>? shareSubscriptionName;
+  final pulumi.Input<String?>? shareSubscriptionName;
   /// Source share location.
   final pulumi.Input<String> sourceShareLocation;
 

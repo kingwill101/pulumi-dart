@@ -9,7 +9,7 @@ class PipelineResponse {
   /// Name of the pipeline.
   final pulumi.Input<String> name;
   /// Reference to processors configured for the pipeline.
-  final pulumi.Input<List<String>>? processors;
+  final pulumi.Input<List<String>?>? processors;
   /// Reference to receivers configured for the pipeline.
   final pulumi.Input<List<String>> receivers;
   /// The type of pipeline

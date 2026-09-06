@@ -9,17 +9,17 @@ import 'artifact_store_properties_format.dart';
 /// {@macro pulumi_hybridnetwork_artifact_store_args_doc}
 class ArtifactStoreArgs {
   /// The name of the artifact store.
-  final pulumi.Input<String>? artifactStoreName;
+  final pulumi.Input<String?>? artifactStoreName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// ArtifactStores properties.
-  final pulumi.Input<ArtifactStorePropertiesFormat>? properties;
+  final pulumi.Input<ArtifactStorePropertiesFormat?>? properties;
   /// The name of the publisher.
   final pulumi.Input<String> publisherName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ArtifactStoreArgs].
   /// [artifactStoreName] The name of the artifact store.

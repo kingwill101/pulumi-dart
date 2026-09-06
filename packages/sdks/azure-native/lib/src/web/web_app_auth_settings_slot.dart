@@ -166,9 +166,9 @@ class WebAppAuthSettingsSlot extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     aadClaimsAuthorization = registerOutput<String?>('aadClaimsAuthorization');
-    additionalLoginParams = registerOutput<List<String>?>('additionalLoginParams');
-    allowedAudiences = registerOutput<List<String>?>('allowedAudiences');
-    allowedExternalRedirectUrls = registerOutput<List<String>?>('allowedExternalRedirectUrls');
+    additionalLoginParams = registerOutput<List<String>?>('additionalLoginParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowedAudiences = registerOutput<List<String>?>('allowedAudiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowedExternalRedirectUrls = registerOutput<List<String>?>('allowedExternalRedirectUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authFilePath = registerOutput<String?>('authFilePath');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clientId = registerOutput<String?>('clientId');
@@ -181,22 +181,75 @@ class WebAppAuthSettingsSlot extends pulumi.CustomResource {
     facebookAppId = registerOutput<String?>('facebookAppId');
     facebookAppSecret = registerOutput<String?>('facebookAppSecret');
     facebookAppSecretSettingName = registerOutput<String?>('facebookAppSecretSettingName');
-    facebookOAuthScopes = registerOutput<List<String>?>('facebookOAuthScopes');
+    facebookOAuthScopes = registerOutput<List<String>?>('facebookOAuthScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     gitHubClientId = registerOutput<String?>('gitHubClientId');
     gitHubClientSecret = registerOutput<String?>('gitHubClientSecret');
     gitHubClientSecretSettingName = registerOutput<String?>('gitHubClientSecretSettingName');
-    gitHubOAuthScopes = registerOutput<List<String>?>('gitHubOAuthScopes');
+    gitHubOAuthScopes = registerOutput<List<String>?>('gitHubOAuthScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     googleClientId = registerOutput<String?>('googleClientId');
     googleClientSecret = registerOutput<String?>('googleClientSecret');
     googleClientSecretSettingName = registerOutput<String?>('googleClientSecretSettingName');
-    googleOAuthScopes = registerOutput<List<String>?>('googleOAuthScopes');
+    googleOAuthScopes = registerOutput<List<String>?>('googleOAuthScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     isAuthFromFile = registerOutput<String?>('isAuthFromFile');
     issuer = registerOutput<String?>('issuer');
     kind = registerOutput<String?>('kind');
     microsoftAccountClientId = registerOutput<String?>('microsoftAccountClientId');
     microsoftAccountClientSecret = registerOutput<String?>('microsoftAccountClientSecret');
     microsoftAccountClientSecretSettingName = registerOutput<String?>('microsoftAccountClientSecretSettingName');
-    microsoftAccountOAuthScopes = registerOutput<List<String>?>('microsoftAccountOAuthScopes');
+    microsoftAccountOAuthScopes = registerOutput<List<String>?>('microsoftAccountOAuthScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    runtimeVersion = registerOutput<String?>('runtimeVersion');
+    tokenRefreshExtensionHours = registerOutput<double?>('tokenRefreshExtensionHours');
+    tokenStoreEnabled = registerOutput<bool?>('tokenStoreEnabled');
+    twitterConsumerKey = registerOutput<String?>('twitterConsumerKey');
+    twitterConsumerSecret = registerOutput<String?>('twitterConsumerSecret');
+    twitterConsumerSecretSettingName = registerOutput<String?>('twitterConsumerSecretSettingName');
+    type = registerOutput<String>('type');
+    unauthenticatedClientAction = registerOutput<String?>('unauthenticatedClientAction');
+    validateIssuer = registerOutput<bool?>('validateIssuer');
+  }
+
+  /// Creates a typed reference to an existing [WebAppAuthSettingsSlot] resource.
+  WebAppAuthSettingsSlot.reference(String urn)
+    : super(
+        'azure-native:web:WebAppAuthSettingsSlot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aadClaimsAuthorization = registerOutput<String?>('aadClaimsAuthorization');
+    additionalLoginParams = registerOutput<List<String>?>('additionalLoginParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowedAudiences = registerOutput<List<String>?>('allowedAudiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowedExternalRedirectUrls = registerOutput<List<String>?>('allowedExternalRedirectUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    authFilePath = registerOutput<String?>('authFilePath');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientId = registerOutput<String?>('clientId');
+    clientSecret = registerOutput<String?>('clientSecret');
+    clientSecretCertificateThumbprint = registerOutput<String?>('clientSecretCertificateThumbprint');
+    clientSecretSettingName = registerOutput<String?>('clientSecretSettingName');
+    configVersion = registerOutput<String?>('configVersion');
+    defaultProvider = registerOutput<String?>('defaultProvider');
+    enabled = registerOutput<bool?>('enabled');
+    facebookAppId = registerOutput<String?>('facebookAppId');
+    facebookAppSecret = registerOutput<String?>('facebookAppSecret');
+    facebookAppSecretSettingName = registerOutput<String?>('facebookAppSecretSettingName');
+    facebookOAuthScopes = registerOutput<List<String>?>('facebookOAuthScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    gitHubClientId = registerOutput<String?>('gitHubClientId');
+    gitHubClientSecret = registerOutput<String?>('gitHubClientSecret');
+    gitHubClientSecretSettingName = registerOutput<String?>('gitHubClientSecretSettingName');
+    gitHubOAuthScopes = registerOutput<List<String>?>('gitHubOAuthScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    googleClientId = registerOutput<String?>('googleClientId');
+    googleClientSecret = registerOutput<String?>('googleClientSecret');
+    googleClientSecretSettingName = registerOutput<String?>('googleClientSecretSettingName');
+    googleOAuthScopes = registerOutput<List<String>?>('googleOAuthScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    isAuthFromFile = registerOutput<String?>('isAuthFromFile');
+    issuer = registerOutput<String?>('issuer');
+    kind = registerOutput<String?>('kind');
+    microsoftAccountClientId = registerOutput<String?>('microsoftAccountClientId');
+    microsoftAccountClientSecret = registerOutput<String?>('microsoftAccountClientSecret');
+    microsoftAccountClientSecretSettingName = registerOutput<String?>('microsoftAccountClientSecretSettingName');
+    microsoftAccountOAuthScopes = registerOutput<List<String>?>('microsoftAccountOAuthScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     runtimeVersion = registerOutput<String?>('runtimeVersion');
     tokenRefreshExtensionHours = registerOutput<double?>('tokenRefreshExtensionHours');

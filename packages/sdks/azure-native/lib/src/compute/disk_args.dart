@@ -17,65 +17,65 @@ import 'supported_capabilities.dart';
 /// {@macro pulumi_compute_disk_args_doc}
 class DiskArgs {
   /// Set to true to enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks.
-  final pulumi.Input<bool>? burstingEnabled;
+  final pulumi.Input<bool?>? burstingEnabled;
   /// Percentage complete for the background copy when a resource is created via the CopyStart operation.
-  final pulumi.Input<double>? completionPercent;
+  final pulumi.Input<double?>? completionPercent;
   /// Disk source information. CreationData information cannot be changed after the disk has been created.
   final pulumi.Input<CreationData> creationData;
   /// Additional authentication requirements when exporting or uploading to a disk or snapshot.
-  final pulumi.Input<String>? dataAccessAuthMode;
+  final pulumi.Input<dynamic>? dataAccessAuthMode;
   /// ARM id of the DiskAccess resource for using private endpoints on disks.
-  final pulumi.Input<String>? diskAccessId;
+  final pulumi.Input<String?>? diskAccessId;
   /// The total number of IOPS that will be allowed across all VMs mounting the shared disk as ReadOnly. One operation can transfer between 4k and 256k bytes.
-  final pulumi.Input<double>? diskIOPSReadOnly;
+  final pulumi.Input<double?>? diskIOPSReadOnly;
   /// The number of IOPS allowed for this disk; only settable for UltraSSD disks. One operation can transfer between 4k and 256k bytes.
-  final pulumi.Input<double>? diskIOPSReadWrite;
+  final pulumi.Input<double?>? diskIOPSReadWrite;
   /// The total throughput (MBps) that will be allowed across all VMs mounting the shared disk as ReadOnly. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10.
-  final pulumi.Input<double>? diskMBpsReadOnly;
+  final pulumi.Input<double?>? diskMBpsReadOnly;
   /// The bandwidth allowed for this disk; only settable for UltraSSD disks. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10.
-  final pulumi.Input<double>? diskMBpsReadWrite;
+  final pulumi.Input<double?>? diskMBpsReadWrite;
   /// The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
-  final pulumi.Input<String>? diskName;
+  final pulumi.Input<String?>? diskName;
   /// If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size.
-  final pulumi.Input<int>? diskSizeGB;
+  final pulumi.Input<int?>? diskSizeGB;
   /// Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys.
-  final pulumi.Input<Encryption>? encryption;
+  final pulumi.Input<Encryption?>? encryption;
   /// Encryption settings collection used for Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot.
-  final pulumi.Input<EncryptionSettingsCollection>? encryptionSettingsCollection;
+  final pulumi.Input<EncryptionSettingsCollection?>? encryptionSettingsCollection;
   /// The extended location where the disk will be created. Extended location cannot be changed.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
-  final pulumi.Input<String>? hyperVGeneration;
+  final pulumi.Input<dynamic>? hyperVGeneration;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The maximum number of VMs that can attach to the disk at the same time. Value greater than one indicates a disk that can be mounted on multiple VMs at the same time.
-  final pulumi.Input<int>? maxShares;
+  final pulumi.Input<int?>? maxShares;
   /// Policy for accessing the disk via network.
-  final pulumi.Input<String>? networkAccessPolicy;
+  final pulumi.Input<dynamic>? networkAccessPolicy;
   /// Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine.
-  final pulumi.Input<bool>? optimizedForFrequentAttach;
+  final pulumi.Input<bool?>? optimizedForFrequentAttach;
   /// The Operating System type.
-  final pulumi.Input<OperatingSystemTypes>? osType;
+  final pulumi.Input<OperatingSystemTypes?>? osType;
   /// Policy for controlling export on the disk.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// Purchase plan information for the the image from which the OS disk was created. E.g. - {name: 2019-Datacenter, publisher: MicrosoftWindowsServer, product: WindowsServer}
-  final pulumi.Input<DiskPurchasePlan>? purchasePlan;
+  final pulumi.Input<DiskPurchasePlan?>? purchasePlan;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Contains the security related information for the resource.
-  final pulumi.Input<DiskSecurityProfile>? securityProfile;
+  final pulumi.Input<DiskSecurityProfile?>? securityProfile;
   /// The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS.
-  final pulumi.Input<DiskSku>? sku;
+  final pulumi.Input<DiskSku?>? sku;
   /// List of supported capabilities for the image from which the OS disk was created.
-  final pulumi.Input<SupportedCapabilities>? supportedCapabilities;
+  final pulumi.Input<SupportedCapabilities?>? supportedCapabilities;
   /// Indicates the OS on a disk supports hibernation.
-  final pulumi.Input<bool>? supportsHibernation;
+  final pulumi.Input<bool?>? supportsHibernation;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
   /// The Logical zone list for Disk.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [DiskArgs].
   /// [burstingEnabled] Set to true to enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks.
@@ -179,26 +179,26 @@ class DiskArgs {
   factory DiskArgs.fromMap(Map<String, dynamic> map) {
     return DiskArgs(
       burstingEnabled: (() { final guardedValue = map['burstingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      completionPercent: (() { final guardedValue = map['completionPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      completionPercent: (() { final guardedValue = map['completionPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       creationData: pulumi.Input.fromValue(CreationData.fromMap((map['creationData']! as Map).cast<String, dynamic>())),
-      dataAccessAuthMode: (() { final guardedValue = map['dataAccessAuthMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataAccessAuthMode: (() { final guardedValue = map['dataAccessAuthMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       diskAccessId: (() { final guardedValue = map['diskAccessId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      diskIOPSReadOnly: (() { final guardedValue = map['diskIOPSReadOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      diskIOPSReadWrite: (() { final guardedValue = map['diskIOPSReadWrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      diskMBpsReadOnly: (() { final guardedValue = map['diskMBpsReadOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      diskMBpsReadWrite: (() { final guardedValue = map['diskMBpsReadWrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      diskIOPSReadOnly: (() { final guardedValue = map['diskIOPSReadOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      diskIOPSReadWrite: (() { final guardedValue = map['diskIOPSReadWrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      diskMBpsReadOnly: (() { final guardedValue = map['diskMBpsReadOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      diskMBpsReadWrite: (() { final guardedValue = map['diskMBpsReadWrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       diskName: (() { final guardedValue = map['diskName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      diskSizeGB: (() { final guardedValue = map['diskSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      diskSizeGB: (() { final guardedValue = map['diskSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Encryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       encryptionSettingsCollection: (() { final guardedValue = map['encryptionSettingsCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EncryptionSettingsCollection.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      hyperVGeneration: (() { final guardedValue = map['hyperVGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hyperVGeneration: (() { final guardedValue = map['hyperVGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxShares: (() { final guardedValue = map['maxShares']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      networkAccessPolicy: (() { final guardedValue = map['networkAccessPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxShares: (() { final guardedValue = map['maxShares']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      networkAccessPolicy: (() { final guardedValue = map['networkAccessPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       optimizedForFrequentAttach: (() { final guardedValue = map['optimizedForFrequentAttach']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OperatingSystemTypes.fromValue(guardedValue as String)); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       purchasePlan: (() { final guardedValue = map['purchasePlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiskPurchasePlan.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       securityProfile: (() { final guardedValue = map['securityProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiskSecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -11,27 +11,27 @@ import 'virtual_network_profile_response.dart';
 /// Describes a role on the cluster.
 class RoleResponse {
   /// The autoscale configurations.
-  final pulumi.Input<AutoscaleResponse>? autoscaleConfiguration;
+  final pulumi.Input<AutoscaleResponse?>? autoscaleConfiguration;
   /// The data disks groups for the role.
-  final pulumi.Input<List<DataDisksGroupsResponse>>? dataDisksGroups;
+  final pulumi.Input<List<DataDisksGroupsResponse>?>? dataDisksGroups;
   /// Indicates whether encrypt the data disks.
-  final pulumi.Input<bool>? encryptDataDisks;
+  final pulumi.Input<bool?>? encryptDataDisks;
   /// The hardware profile.
-  final pulumi.Input<HardwareProfileResponse>? hardwareProfile;
+  final pulumi.Input<HardwareProfileResponse?>? hardwareProfile;
   /// The minimum instance count of the cluster.
-  final pulumi.Input<int>? minInstanceCount;
+  final pulumi.Input<int?>? minInstanceCount;
   /// The name of the role.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The operating system profile.
-  final pulumi.Input<OsProfileResponse>? osProfile;
+  final pulumi.Input<OsProfileResponse?>? osProfile;
   /// The list of script actions on the role.
-  final pulumi.Input<List<ScriptActionResponse>>? scriptActions;
+  final pulumi.Input<List<ScriptActionResponse>?>? scriptActions;
   /// The instance count of the cluster.
-  final pulumi.Input<int>? targetInstanceCount;
+  final pulumi.Input<int?>? targetInstanceCount;
   /// The name of the virtual machine group.
-  final pulumi.Input<String>? vMGroupName;
+  final pulumi.Input<String?>? vMGroupName;
   /// The virtual network profile.
-  final pulumi.Input<VirtualNetworkProfileResponse>? virtualNetworkProfile;
+  final pulumi.Input<VirtualNetworkProfileResponse?>? virtualNetworkProfile;
 
   /// Creates a new [RoleResponse].
   /// [autoscaleConfiguration] The autoscale configurations.
@@ -45,10 +45,10 @@ class RoleResponse {
   /// [targetInstanceCount] The instance count of the cluster.
   /// [vMGroupName] The name of the virtual machine group.
   /// [virtualNetworkProfile] The virtual network profile.
-  const RoleResponse({
+  RoleResponse({
     this.autoscaleConfiguration,
     this.dataDisksGroups,
-    this.encryptDataDisks,
+    pulumi.Input<bool?>? encryptDataDisks,
     this.hardwareProfile,
     this.minInstanceCount,
     this.name,
@@ -57,7 +57,7 @@ class RoleResponse {
     this.targetInstanceCount,
     this.vMGroupName,
     this.virtualNetworkProfile,
-  });
+  }) : encryptDataDisks = encryptDataDisks ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,11 +81,11 @@ class RoleResponse {
       dataDisksGroups: (() { final guardedValue = map['dataDisksGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataDisksGroupsResponse>(guardedValue, (value) => DataDisksGroupsResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       encryptDataDisks: (() { final guardedValue = map['encryptDataDisks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       hardwareProfile: (() { final guardedValue = map['hardwareProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HardwareProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      minInstanceCount: (() { final guardedValue = map['minInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minInstanceCount: (() { final guardedValue = map['minInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       osProfile: (() { final guardedValue = map['osProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OsProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       scriptActions: (() { final guardedValue = map['scriptActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ScriptActionResponse>(guardedValue, (value) => ScriptActionResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      targetInstanceCount: (() { final guardedValue = map['targetInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetInstanceCount: (() { final guardedValue = map['targetInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       vMGroupName: (() { final guardedValue = map['vMGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       virtualNetworkProfile: (() { final guardedValue = map['virtualNetworkProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualNetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

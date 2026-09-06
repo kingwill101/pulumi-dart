@@ -39,7 +39,7 @@ class GetApplicationGatewayResult {
   /// Autoscale Configuration.
   final ApplicationGatewayAutoscaleConfigurationResponse? autoscaleConfiguration;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Backend address pool of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
   final List<ApplicationGatewayBackendAddressPoolResponse>? backendAddressPools;
   /// Backend http settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
@@ -49,13 +49,13 @@ class GetApplicationGatewayResult {
   /// Custom error configurations of the application gateway resource.
   final List<ApplicationGatewayCustomErrorResponse>? customErrorConfigurations;
   /// The default predefined SSL Policy applied on the application gateway resource.
-  final String defaultPredefinedSslPolicy;
+  final String? defaultPredefinedSslPolicy;
   /// Whether FIPS is enabled on the application gateway resource.
   final bool? enableFips;
   /// Whether HTTP2 is enabled on the application gateway resource.
   final bool? enableHttp2;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Reference to the FirewallPolicy resource.
   final SubResourceResponse? firewallPolicy;
   /// If true, associates a firewall policy with an application gateway regardless whether the policy differs from the WAF Config.
@@ -81,23 +81,23 @@ class GetApplicationGatewayResult {
   /// Resource location.
   final String? location;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Operational state of the application gateway resource.
-  final String operationalState;
+  final String? operationalState;
   /// Private Endpoint connections on application gateway.
-  final List<ApplicationGatewayPrivateEndpointConnectionResponse> privateEndpointConnections;
+  final List<ApplicationGatewayPrivateEndpointConnectionResponse>? privateEndpointConnections;
   /// PrivateLink configurations on application gateway.
   final List<ApplicationGatewayPrivateLinkConfigurationResponse>? privateLinkConfigurations;
   /// Probes of the application gateway resource.
   final List<ApplicationGatewayProbeResponse>? probes;
   /// The provisioning state of the application gateway resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Redirect configurations of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
   final List<ApplicationGatewayRedirectConfigurationResponse>? redirectConfigurations;
   /// Request routing rules of the application gateway resource.
   final List<ApplicationGatewayRequestRoutingRuleResponse>? requestRoutingRules;
   /// The resource GUID property of the application gateway resource.
-  final String resourceGuid;
+  final String? resourceGuid;
   /// Rewrite rules for the application gateway resource.
   final List<ApplicationGatewayRewriteRuleSetResponse>? rewriteRuleSets;
   /// Routing rules of the application gateway resource.
@@ -117,7 +117,7 @@ class GetApplicationGatewayResult {
   /// Trusted Root certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
   final List<ApplicationGatewayTrustedRootCertificateResponse>? trustedRootCertificates;
   /// Resource type.
-  final String type;
+  final String? type;
   /// URL path map of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
   final List<ApplicationGatewayUrlPathMapResponse>? urlPathMaps;
   /// Web application firewall configuration.
@@ -174,15 +174,15 @@ class GetApplicationGatewayResult {
   const GetApplicationGatewayResult({
     this.authenticationCertificates,
     this.autoscaleConfiguration,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.backendAddressPools,
     this.backendHttpSettingsCollection,
     this.backendSettingsCollection,
     this.customErrorConfigurations,
-    required this.defaultPredefinedSslPolicy,
+    this.defaultPredefinedSslPolicy,
     this.enableFips,
     this.enableHttp2,
-    required this.etag,
+    this.etag,
     this.firewallPolicy,
     this.forceFirewallPolicyAssociation,
     this.frontendIPConfigurations,
@@ -195,15 +195,15 @@ class GetApplicationGatewayResult {
     this.listeners,
     this.loadDistributionPolicies,
     this.location,
-    required this.name,
-    required this.operationalState,
-    required this.privateEndpointConnections,
+    this.name,
+    this.operationalState,
+    this.privateEndpointConnections,
     this.privateLinkConfigurations,
     this.probes,
-    required this.provisioningState,
+    this.provisioningState,
     this.redirectConfigurations,
     this.requestRoutingRules,
-    required this.resourceGuid,
+    this.resourceGuid,
     this.rewriteRuleSets,
     this.routingRules,
     this.sku,
@@ -213,7 +213,7 @@ class GetApplicationGatewayResult {
     this.tags,
     this.trustedClientCertificates,
     this.trustedRootCertificates,
-    required this.type,
+    this.type,
     this.urlPathMaps,
     this.webApplicationFirewallConfiguration,
     this.zones,
@@ -223,15 +223,15 @@ class GetApplicationGatewayResult {
     return <String, dynamic>{
       'authenticationCertificates': ?(() { final guardedValue = authenticationCertificates; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationGatewayAuthenticationCertificateResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'autoscaleConfiguration': ?autoscaleConfiguration?.toMap(),
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'backendAddressPools': ?(() { final guardedValue = backendAddressPools; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationGatewayBackendAddressPoolResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'backendHttpSettingsCollection': ?(() { final guardedValue = backendHttpSettingsCollection; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationGatewayBackendHttpSettingsResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'backendSettingsCollection': ?(() { final guardedValue = backendSettingsCollection; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationGatewayBackendSettingsResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'customErrorConfigurations': ?(() { final guardedValue = customErrorConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationGatewayCustomErrorResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'defaultPredefinedSslPolicy': defaultPredefinedSslPolicy,
+      'defaultPredefinedSslPolicy': ?defaultPredefinedSslPolicy,
       'enableFips': ?enableFips,
       'enableHttp2': ?enableHttp2,
-      'etag': etag,
+      'etag': ?etag,
       'firewallPolicy': ?firewallPolicy?.toMap(),
       'forceFirewallPolicyAssociation': ?forceFirewallPolicyAssociation,
       'frontendIPConfigurations': ?(() { final guardedValue = frontendIPConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationGatewayFrontendIPConfigurationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
@@ -244,15 +244,15 @@ class GetApplicationGatewayResult {
       'listeners': ?(() { final guardedValue = listeners; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationGatewayListenerResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'loadDistributionPolicies': ?(() { final guardedValue = loadDistributionPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationGatewayLoadDistributionPolicyResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'location': ?location,
-      'name': name,
-      'operationalState': operationalState,
-      'privateEndpointConnections': pulumi.Input.encodeList<ApplicationGatewayPrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
+      'name': ?name,
+      'operationalState': ?operationalState,
+      'privateEndpointConnections': ?(() { final guardedValue = privateEndpointConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationGatewayPrivateEndpointConnectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'privateLinkConfigurations': ?(() { final guardedValue = privateLinkConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationGatewayPrivateLinkConfigurationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'probes': ?(() { final guardedValue = probes; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationGatewayProbeResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'redirectConfigurations': ?(() { final guardedValue = redirectConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationGatewayRedirectConfigurationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'requestRoutingRules': ?(() { final guardedValue = requestRoutingRules; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationGatewayRequestRoutingRuleResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'resourceGuid': resourceGuid,
+      'resourceGuid': ?resourceGuid,
       'rewriteRuleSets': ?(() { final guardedValue = rewriteRuleSets; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationGatewayRewriteRuleSetResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'routingRules': ?(() { final guardedValue = routingRules; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationGatewayRoutingRuleResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'sku': ?sku?.toMap(),
@@ -262,7 +262,7 @@ class GetApplicationGatewayResult {
       'tags': ?tags,
       'trustedClientCertificates': ?(() { final guardedValue = trustedClientCertificates; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationGatewayTrustedClientCertificateResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'trustedRootCertificates': ?(() { final guardedValue = trustedRootCertificates; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationGatewayTrustedRootCertificateResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'type': type,
+      'type': ?type,
       'urlPathMaps': ?(() { final guardedValue = urlPathMaps; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationGatewayUrlPathMapResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'webApplicationFirewallConfiguration': ?webApplicationFirewallConfiguration?.toMap(),
       'zones': ?zones,
@@ -273,15 +273,15 @@ class GetApplicationGatewayResult {
     return GetApplicationGatewayResult(
       authenticationCertificates: (() { final guardedValue = map['authenticationCertificates']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayAuthenticationCertificateResponse>(guardedValue, (value) => ApplicationGatewayAuthenticationCertificateResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       autoscaleConfiguration: (() { final guardedValue = map['autoscaleConfiguration']; if (guardedValue == null) return null; return ApplicationGatewayAutoscaleConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       backendAddressPools: (() { final guardedValue = map['backendAddressPools']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayBackendAddressPoolResponse>(guardedValue, (value) => ApplicationGatewayBackendAddressPoolResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       backendHttpSettingsCollection: (() { final guardedValue = map['backendHttpSettingsCollection']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayBackendHttpSettingsResponse>(guardedValue, (value) => ApplicationGatewayBackendHttpSettingsResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       backendSettingsCollection: (() { final guardedValue = map['backendSettingsCollection']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayBackendSettingsResponse>(guardedValue, (value) => ApplicationGatewayBackendSettingsResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       customErrorConfigurations: (() { final guardedValue = map['customErrorConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayCustomErrorResponse>(guardedValue, (value) => ApplicationGatewayCustomErrorResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      defaultPredefinedSslPolicy: map['defaultPredefinedSslPolicy'] as String,
+      defaultPredefinedSslPolicy: (() { final guardedValue = map['defaultPredefinedSslPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enableFips: (() { final guardedValue = map['enableFips']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       enableHttp2: (() { final guardedValue = map['enableHttp2']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      etag: map['etag'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       firewallPolicy: (() { final guardedValue = map['firewallPolicy']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       forceFirewallPolicyAssociation: (() { final guardedValue = map['forceFirewallPolicyAssociation']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       frontendIPConfigurations: (() { final guardedValue = map['frontendIPConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayFrontendIPConfigurationResponse>(guardedValue, (value) => ApplicationGatewayFrontendIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
@@ -294,15 +294,15 @@ class GetApplicationGatewayResult {
       listeners: (() { final guardedValue = map['listeners']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayListenerResponse>(guardedValue, (value) => ApplicationGatewayListenerResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       loadDistributionPolicies: (() { final guardedValue = map['loadDistributionPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayLoadDistributionPolicyResponse>(guardedValue, (value) => ApplicationGatewayLoadDistributionPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      operationalState: map['operationalState'] as String,
-      privateEndpointConnections: pulumi.Input.decodeList<ApplicationGatewayPrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => ApplicationGatewayPrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      operationalState: (() { final guardedValue = map['operationalState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayPrivateEndpointConnectionResponse>(guardedValue, (value) => ApplicationGatewayPrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       privateLinkConfigurations: (() { final guardedValue = map['privateLinkConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayPrivateLinkConfigurationResponse>(guardedValue, (value) => ApplicationGatewayPrivateLinkConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       probes: (() { final guardedValue = map['probes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayProbeResponse>(guardedValue, (value) => ApplicationGatewayProbeResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       redirectConfigurations: (() { final guardedValue = map['redirectConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayRedirectConfigurationResponse>(guardedValue, (value) => ApplicationGatewayRedirectConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       requestRoutingRules: (() { final guardedValue = map['requestRoutingRules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayRequestRoutingRuleResponse>(guardedValue, (value) => ApplicationGatewayRequestRoutingRuleResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      resourceGuid: map['resourceGuid'] as String,
+      resourceGuid: (() { final guardedValue = map['resourceGuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
       rewriteRuleSets: (() { final guardedValue = map['rewriteRuleSets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayRewriteRuleSetResponse>(guardedValue, (value) => ApplicationGatewayRewriteRuleSetResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       routingRules: (() { final guardedValue = map['routingRules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayRoutingRuleResponse>(guardedValue, (value) => ApplicationGatewayRoutingRuleResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return ApplicationGatewaySkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
@@ -312,7 +312,7 @@ class GetApplicationGatewayResult {
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       trustedClientCertificates: (() { final guardedValue = map['trustedClientCertificates']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayTrustedClientCertificateResponse>(guardedValue, (value) => ApplicationGatewayTrustedClientCertificateResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       trustedRootCertificates: (() { final guardedValue = map['trustedRootCertificates']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayTrustedRootCertificateResponse>(guardedValue, (value) => ApplicationGatewayTrustedRootCertificateResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       urlPathMaps: (() { final guardedValue = map['urlPathMaps']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayUrlPathMapResponse>(guardedValue, (value) => ApplicationGatewayUrlPathMapResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       webApplicationFirewallConfiguration: (() { final guardedValue = map['webApplicationFirewallConfiguration']; if (guardedValue == null) return null; return ApplicationGatewayWebApplicationFirewallConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),

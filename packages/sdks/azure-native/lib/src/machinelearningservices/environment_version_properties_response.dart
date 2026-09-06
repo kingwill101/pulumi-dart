@@ -7,36 +7,36 @@ import 'inference_container_properties_environment_version_response.dart';
 /// Environment version details.
 class EnvironmentVersionPropertiesResponse {
   /// AutoRebuild setting for the derived image
-  final pulumi.Input<String>? autoRebuild;
+  final pulumi.Input<String?>? autoRebuild;
   /// Configuration settings for Docker build context.
-  final pulumi.Input<BuildContextResponse>? build;
+  final pulumi.Input<BuildContextResponse?>? build;
   /// Standard configuration file used by Conda that lets you install any kind of package, including Python, R, and C/C++ packages.
   /// &lt;see href="https://repo2docker.readthedocs.io/en/latest/config_files.html#environment-yml-install-a-conda-environment" /&gt;
-  final pulumi.Input<String>? condaFile;
+  final pulumi.Input<String?>? condaFile;
   /// The asset description text.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Environment type is either user managed or curated by the Azure ML service
   /// &lt;see href="https://docs.microsoft.com/en-us/azure/machine-learning/resource-curated-environments" /&gt;
   final pulumi.Input<String> environmentType;
   /// Name of the image that will be used for the environment.
   /// &lt;seealso href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image" /&gt;
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// Defines configuration specific to inference.
-  final pulumi.Input<InferenceContainerPropertiesEnvironmentVersionResponse>? inferenceConfig;
+  final pulumi.Input<InferenceContainerPropertiesEnvironmentVersionResponse?>? inferenceConfig;
   /// If the name version are system generated (anonymous registration).
-  final pulumi.Input<bool>? isAnonymous;
+  final pulumi.Input<bool?>? isAnonymous;
   /// Is the asset archived?
-  final pulumi.Input<bool>? isArchived;
+  final pulumi.Input<bool?>? isArchived;
   /// The type of operating system.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// The asset property dictionary.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Provisioning state for the environment version.
   final pulumi.Input<String> provisioningState;
   /// Stage in the environment lifecycle assigned to this environment
-  final pulumi.Input<String>? stage;
+  final pulumi.Input<String?>? stage;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EnvironmentVersionPropertiesResponse].
   /// [autoRebuild] AutoRebuild setting for the derived image
@@ -53,22 +53,22 @@ class EnvironmentVersionPropertiesResponse {
   /// [provisioningState] Provisioning state for the environment version.
   /// [stage] Stage in the environment lifecycle assigned to this environment
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  const EnvironmentVersionPropertiesResponse({
-    this.autoRebuild,
+  EnvironmentVersionPropertiesResponse({
+    pulumi.Input<String?>? autoRebuild,
     this.build,
     this.condaFile,
     this.description,
     required this.environmentType,
     this.image,
     this.inferenceConfig,
-    this.isAnonymous,
-    this.isArchived,
-    this.osType,
+    pulumi.Input<bool?>? isAnonymous,
+    pulumi.Input<bool?>? isArchived,
+    pulumi.Input<String?>? osType,
     this.properties,
     required this.provisioningState,
     this.stage,
     this.tags,
-  });
+  }) : autoRebuild = autoRebuild ?? pulumi.Input.fromValue('Disabled'), isAnonymous = isAnonymous ?? pulumi.Input.fromValue(false), isArchived = isArchived ?? pulumi.Input.fromValue(false), osType = osType ?? pulumi.Input.fromValue('Linux');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

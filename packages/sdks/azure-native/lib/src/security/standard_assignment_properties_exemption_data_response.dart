@@ -6,9 +6,9 @@ import 'assigned_assessment_item_response.dart';
 /// Additional data about assignment that has Exempt effect
 class StandardAssignmentPropertiesExemptionDataResponse {
   /// Component item with key as applied to this standard assignment over the given scope
-  final pulumi.Input<AssignedAssessmentItemResponse>? assignedAssessment;
+  final pulumi.Input<AssignedAssessmentItemResponse?>? assignedAssessment;
   /// Exemption category of this assignment
-  final pulumi.Input<String>? exemptionCategory;
+  final pulumi.Input<String?>? exemptionCategory;
 
   /// Creates a new [StandardAssignmentPropertiesExemptionDataResponse].
   /// [assignedAssessment] Component item with key as applied to this standard assignment over the given scope

@@ -6,15 +6,15 @@ import 'site_address_properties_response.dart';
 /// Site properties
 class SitePropertiesSitesByServiceGroupResponse {
   /// Description of Site resource
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// displayName of Site resource
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Key-value pairs for labeling the site resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Provisioning state of last operation
   final pulumi.Input<String> provisioningState;
   /// Physical address of the site
-  final pulumi.Input<SiteAddressPropertiesResponse>? siteAddress;
+  final pulumi.Input<SiteAddressPropertiesResponse?>? siteAddress;
 
   /// Creates a new [SitePropertiesSitesByServiceGroupResponse].
   /// [description] Description of Site resource

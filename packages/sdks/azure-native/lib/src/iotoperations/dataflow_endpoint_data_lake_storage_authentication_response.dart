@@ -8,13 +8,13 @@ import 'dataflow_endpoint_authentication_user_assigned_managed_identity_response
 /// Azure Data Lake endpoint Authentication properties.  NOTE Enum - Only one method is supported for one entry
 class DataflowEndpointDataLakeStorageAuthenticationResponse {
   /// SAS token authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationAccessTokenResponse>? accessTokenSettings;
+  final pulumi.Input<DataflowEndpointAuthenticationAccessTokenResponse?>? accessTokenSettings;
   /// Mode of Authentication.
   final pulumi.Input<String> method;
   /// System-assigned managed identity authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse>? systemAssignedManagedIdentitySettings;
+  final pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse?>? systemAssignedManagedIdentitySettings;
   /// User-assigned managed identity authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse>? userAssignedManagedIdentitySettings;
+  final pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse?>? userAssignedManagedIdentitySettings;
 
   /// Creates a new [DataflowEndpointDataLakeStorageAuthenticationResponse].
   /// [accessTokenSettings] SAS token authentication.

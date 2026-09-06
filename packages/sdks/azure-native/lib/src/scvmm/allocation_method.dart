@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the mac address type.
-enum AllocationMethod {
+enum AllocationMethod implements pulumi.PulumiEnum<String> {
   valueDynamic("Dynamic"),
   valueStatic("Static");
 
   const AllocationMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static AllocationMethod fromValue(String value) {

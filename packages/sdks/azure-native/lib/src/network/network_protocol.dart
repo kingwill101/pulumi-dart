@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Network protocol this resource applies to.
-enum NetworkProtocol {
+enum NetworkProtocol implements pulumi.PulumiEnum<String> {
   valueAny("Any"),
   valueTCP("TCP"),
   valueUDP("UDP"),
   valueICMP("ICMP");
 
   const NetworkProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkProtocol fromValue(String value) {

@@ -8,9 +8,9 @@ class MigrationSecretParameters {
   /// Credentials of administrator users for source and target servers.
   final pulumi.Input<AdminCredentials> adminCredentials;
   /// Gets or sets the name of the user for the source server. This user doesn't need to be an administrator.
-  final pulumi.Input<String>? sourceServerUsername;
+  final pulumi.Input<String?>? sourceServerUsername;
   /// Gets or sets the name of the user for the target server. This user doesn't need to be an administrator.
-  final pulumi.Input<String>? targetServerUsername;
+  final pulumi.Input<String?>? targetServerUsername;
 
   /// Creates a new [MigrationSecretParameters].
   /// [adminCredentials] Credentials of administrator users for source and target servers.

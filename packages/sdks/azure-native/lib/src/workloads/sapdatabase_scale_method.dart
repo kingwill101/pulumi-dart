@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The DB scale method.
-enum SAPDatabaseScaleMethod {
+enum SAPDatabaseScaleMethod implements pulumi.PulumiEnum<String> {
   scaleUp("ScaleUp");
 
   const SAPDatabaseScaleMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static SAPDatabaseScaleMethod fromValue(String value) {

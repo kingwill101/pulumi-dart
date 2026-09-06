@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Kind of the guest configuration. For example:DSC
-enum Kind {
+enum Kind implements pulumi.PulumiEnum<String> {
   dSC("DSC");
 
   const Kind(this.wireValue);
+  @override
   final String wireValue;
 
   static Kind fromValue(String value) {

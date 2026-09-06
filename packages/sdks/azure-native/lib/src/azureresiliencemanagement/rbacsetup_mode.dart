@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// RBAC setup mode.
-enum RBACSetupMode {
+enum RBACSetupMode implements pulumi.PulumiEnum<String> {
   automatedCustomRole("AutomatedCustomRole"),
   automatedBuiltinRoles("AutomatedBuiltinRoles"),
   manual("Manual");
 
   const RBACSetupMode(this.wireValue);
+  @override
   final String wireValue;
 
   static RBACSetupMode fromValue(String value) {

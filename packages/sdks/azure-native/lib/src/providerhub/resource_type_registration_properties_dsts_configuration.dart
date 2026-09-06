@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The dsts configuration.
 class ResourceTypeRegistrationPropertiesDstsConfiguration {
   /// This is a URI property.
-  final pulumi.Input<String>? serviceDnsName;
+  final pulumi.Input<String?>? serviceDnsName;
   /// The service name.
   final pulumi.Input<String> serviceName;
 

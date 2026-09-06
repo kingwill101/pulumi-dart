@@ -11,11 +11,11 @@ class ElasticVolumePropertiesResponse {
   /// Current availability status of the resource.
   final pulumi.Input<String> availabilityStatus;
   /// Resource identifier used to identify the Elastic Backup.
-  final pulumi.Input<String>? backupResourceId;
+  final pulumi.Input<String?>? backupResourceId;
   /// Data protection configuration option for the volume, including snapshot policies and backup.
-  final pulumi.Input<ElasticVolumeDataProtectionPropertiesResponse>? dataProtection;
+  final pulumi.Input<ElasticVolumeDataProtectionPropertiesResponse?>? dataProtection;
   /// Set of export policy rules
-  final pulumi.Input<ElasticExportPolicyResponse>? exportPolicy;
+  final pulumi.Input<ElasticExportPolicyResponse?>? exportPolicy;
   /// A unique file path for the volume. Used when creating mount targets. This needs to be unique within the elastic capacity pool.
   final pulumi.Input<String> filePath;
   /// List of mount targets that can be used to mount this volume
@@ -29,11 +29,11 @@ class ElasticVolumePropertiesResponse {
   /// Maximum size allowed for a volume in bytes. Valid values are in the range 1GiB to 16TiB. Values expressed in bytes as multiples of 1 GiB.
   final pulumi.Input<double> size;
   /// SMB Properties
-  final pulumi.Input<ElasticSmbPropertiesResponse>? smbProperties;
+  final pulumi.Input<ElasticSmbPropertiesResponse?>? smbProperties;
   /// Controls the visibility of the volume's read-only snapshot directory, which provides access to each of the volume's snapshots.
-  final pulumi.Input<String>? snapshotDirectoryVisibility;
+  final pulumi.Input<String?>? snapshotDirectoryVisibility;
   /// Resource identifier used to identify the Elastic Snapshot.
-  final pulumi.Input<String>? snapshotResourceId;
+  final pulumi.Input<String?>? snapshotResourceId;
 
   /// Creates a new [ElasticVolumePropertiesResponse].
   /// [availabilityStatus] Current availability status of the resource.
@@ -94,7 +94,7 @@ class ElasticVolumePropertiesResponse {
       protocolTypes: pulumi.Input.fromValue((map['protocolTypes'] as List).cast<String>()),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       restorationState: pulumi.Input.fromValue(map['restorationState'] as String),
-      size: pulumi.Input.fromValue(map['size'] as double),
+      size: pulumi.Input.fromValue((map['size'] as num).toDouble()),
       smbProperties: (() { final guardedValue = map['smbProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ElasticSmbPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       snapshotDirectoryVisibility: (() { final guardedValue = map['snapshotDirectoryVisibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       snapshotResourceId: (() { final guardedValue = map['snapshotResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

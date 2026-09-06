@@ -7,11 +7,11 @@ class SecretAttributesResponse {
   /// Creation time in seconds since 1970-01-01T00:00:00Z.
   final pulumi.Input<int> created;
   /// Determines whether the object is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Expiry date in seconds since 1970-01-01T00:00:00Z.
-  final pulumi.Input<int>? expires;
+  final pulumi.Input<int?>? expires;
   /// Not before date in seconds since 1970-01-01T00:00:00Z.
-  final pulumi.Input<int>? notBefore;
+  final pulumi.Input<int?>? notBefore;
   /// Last updated time in seconds since 1970-01-01T00:00:00Z.
   final pulumi.Input<int> updated;
 
@@ -41,11 +41,11 @@ class SecretAttributesResponse {
 
   factory SecretAttributesResponse.fromMap(Map<String, dynamic> map) {
     return SecretAttributesResponse(
-      created: pulumi.Input.fromValue(map['created'] as int),
+      created: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['created'])),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      expires: (() { final guardedValue = map['expires']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      notBefore: (() { final guardedValue = map['notBefore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      updated: pulumi.Input.fromValue(map['updated'] as int),
+      expires: (() { final guardedValue = map['expires']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      notBefore: (() { final guardedValue = map['notBefore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      updated: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['updated'])),
     );
   }
 }

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The license type.
-enum LicenseType {
+enum LicenseType implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueNoLicenseType("NoLicenseType"),
   valueWindowsServer("WindowsServer");
 
   const LicenseType(this.wireValue);
+  @override
   final String wireValue;
 
   static LicenseType fromValue(String value) {

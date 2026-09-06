@@ -7,13 +7,13 @@ import 'token_auth_configuration_response.dart';
 
 class FanoutLinkedNotificationRuleResponse {
   /// The actions.
-  final pulumi.Input<List<String>>? actions;
+  final pulumi.Input<List<String>?>? actions;
   /// The dsts configuration.
-  final pulumi.Input<FanoutLinkedNotificationRuleDstsConfigurationResponse>? dstsConfiguration;
+  final pulumi.Input<FanoutLinkedNotificationRuleDstsConfigurationResponse?>? dstsConfiguration;
   /// The endpoints.
-  final pulumi.Input<List<ResourceProviderEndpointResponse>>? endpoints;
+  final pulumi.Input<List<ResourceProviderEndpointResponse>?>? endpoints;
   /// The token auth configuration.
-  final pulumi.Input<TokenAuthConfigurationResponse>? tokenAuthConfiguration;
+  final pulumi.Input<TokenAuthConfigurationResponse?>? tokenAuthConfiguration;
 
   /// Creates a new [FanoutLinkedNotificationRuleResponse].
   /// [actions] The actions.

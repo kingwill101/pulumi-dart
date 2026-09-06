@@ -42,7 +42,7 @@ class ContainerStateResponse {
   factory ContainerStateResponse.fromMap(Map<String, dynamic> map) {
     return ContainerStateResponse(
       detailStatus: pulumi.Input.fromValue(map['detailStatus'] as String),
-      exitCode: pulumi.Input.fromValue(map['exitCode'] as int),
+      exitCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['exitCode'])),
       finishTime: pulumi.Input.fromValue(map['finishTime'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),

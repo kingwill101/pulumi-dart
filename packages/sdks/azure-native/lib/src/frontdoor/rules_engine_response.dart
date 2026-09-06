@@ -12,7 +12,7 @@ class RulesEngineResponse {
   /// Resource status.
   final pulumi.Input<String> resourceState;
   /// A list of rules that define a particular Rules Engine Configuration.
-  final pulumi.Input<List<RulesEngineRuleResponse>>? rules;
+  final pulumi.Input<List<RulesEngineRuleResponse>?>? rules;
   /// Resource type.
   final pulumi.Input<String> type;
 

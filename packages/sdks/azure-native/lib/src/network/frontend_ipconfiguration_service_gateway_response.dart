@@ -10,9 +10,9 @@ class FrontendIPConfigurationServiceGatewayResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// The reference to gateway load balancer frontend IP.
-  final pulumi.Input<SubResourceResponse>? gatewayLoadBalancer;
+  final pulumi.Input<SubResourceResponse?>? gatewayLoadBalancer;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// An array of references to inbound pools that use this frontend IP.
   final pulumi.Input<List<SubResourceResponse>> inboundNatPools;
   /// An array of references to inbound rules that use this frontend IP.
@@ -20,27 +20,27 @@ class FrontendIPConfigurationServiceGatewayResponse {
   /// An array of references to load balancing rules that use this frontend IP.
   final pulumi.Input<List<SubResourceResponse>> loadBalancingRules;
   /// Name of the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// An array of references to outbound rules that use this frontend IP.
   final pulumi.Input<List<SubResourceResponse>> outboundRules;
   /// The private IP address of the IP configuration.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// Whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
-  final pulumi.Input<String>? privateIPAddressVersion;
+  final pulumi.Input<String?>? privateIPAddressVersion;
   /// The Private IP allocation method.
-  final pulumi.Input<String>? privateIPAllocationMethod;
+  final pulumi.Input<String?>? privateIPAllocationMethod;
   /// The provisioning state of the frontend IP configuration resource.
   final pulumi.Input<String> provisioningState;
   /// The reference to the Public IP resource.
-  final pulumi.Input<PublicIPAddressResponseV1>? publicIPAddress;
+  final pulumi.Input<PublicIPAddressResponseV1?>? publicIPAddress;
   /// The reference to the Public IP Prefix resource.
-  final pulumi.Input<SubResourceResponse>? publicIPPrefix;
+  final pulumi.Input<SubResourceResponse?>? publicIPPrefix;
   /// The reference to the subnet resource.
-  final pulumi.Input<SubnetResponse>? subnet;
+  final pulumi.Input<SubnetResponse?>? subnet;
   /// Resource type.
   final pulumi.Input<String> type;
   /// A list of availability zones denoting the IP allocated for the resource needs to come from.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [FrontendIPConfigurationServiceGatewayResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.

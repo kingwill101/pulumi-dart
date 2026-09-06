@@ -22,6 +22,17 @@ Future<GetAzureKeyVaultSecretProviderClassResult> getAzureKeyVaultSecretProvider
   return GetAzureKeyVaultSecretProviderClassResult.fromMap(result);
 }
 
+pulumi.Output<GetAzureKeyVaultSecretProviderClassResult> getAzureKeyVaultSecretProviderClassOutput(
+  GetAzureKeyVaultSecretProviderClassArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:secretsynccontroller:getAzureKeyVaultSecretProviderClass',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAzureKeyVaultSecretProviderClassResult.fromMap);
+}
+
 /// Gets the properties of a SecretSync instance.
 ///
 /// Uses Azure REST API version 2024-08-21-preview.
@@ -38,4 +49,15 @@ Future<GetSecretSyncResult> getSecretSync(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecretSyncResult.fromMap(result);
+}
+
+pulumi.Output<GetSecretSyncResult> getSecretSyncOutput(
+  GetSecretSyncArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:secretsynccontroller:getSecretSync',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretSyncResult.fromMap);
 }

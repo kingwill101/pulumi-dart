@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether the placement policy is enabled or disabled
-enum PlacementPolicyState {
+enum PlacementPolicyState implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const PlacementPolicyState(this.wireValue);
+  @override
   final String wireValue;
 
   static PlacementPolicyState fromValue(String value) {

@@ -1,9 +1,12 @@
-enum ManagedPERequirement {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ManagedPERequirement implements pulumi.PulumiEnum<String> {
   required("Required"),
   notRequired("NotRequired"),
   notApplicable("NotApplicable");
 
   const ManagedPERequirement(this.wireValue);
+  @override
   final String wireValue;
 
   static ManagedPERequirement fromValue(String value) {

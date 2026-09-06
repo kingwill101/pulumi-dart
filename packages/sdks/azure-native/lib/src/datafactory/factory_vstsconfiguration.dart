@@ -9,9 +9,9 @@ class FactoryVSTSConfiguration {
   /// Collaboration branch.
   final pulumi.Input<String> collaborationBranch;
   /// Disable manual publish operation in ADF studio to favor automated publish.
-  final pulumi.Input<bool>? disablePublish;
+  final pulumi.Input<bool?>? disablePublish;
   /// Last commit id.
-  final pulumi.Input<String>? lastCommitId;
+  final pulumi.Input<String?>? lastCommitId;
   /// VSTS project name.
   final pulumi.Input<String> projectName;
   /// Repository name.
@@ -19,7 +19,7 @@ class FactoryVSTSConfiguration {
   /// Root folder.
   final pulumi.Input<String> rootFolder;
   /// VSTS tenant id.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Type of repo configuration.
   /// Expected value is 'FactoryVSTSConfiguration'.
   final pulumi.Input<String> type;

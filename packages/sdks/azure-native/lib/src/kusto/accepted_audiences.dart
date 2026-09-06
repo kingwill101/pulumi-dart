@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents an accepted audience trusted by the cluster.
 class AcceptedAudiences {
   /// GUID or valid URL representing an accepted audience.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [AcceptedAudiences].
   /// [value] GUID or valid URL representing an accepted audience.

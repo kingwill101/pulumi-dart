@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_scvmm_inventory_item_args_doc}
 class InventoryItemArgs {
   /// Name of the inventoryItem.
-  final pulumi.Input<String>? inventoryItemName;
+  final pulumi.Input<String?>? inventoryItemName;
   /// They inventory type.
-  final pulumi.Input<String> inventoryType;
+  final pulumi.Input<dynamic> inventoryType;
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the VMMServer.
@@ -45,7 +45,7 @@ class InventoryItemArgs {
   factory InventoryItemArgs.fromMap(Map<String, dynamic> map) {
     return InventoryItemArgs(
       inventoryItemName: (() { final guardedValue = map['inventoryItemName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      inventoryType: pulumi.Input.fromValue(map['inventoryType'] as String),
+      inventoryType: pulumi.Input.fromValue(map['inventoryType']),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       vmmServerName: pulumi.Input.fromValue(map['vmmServerName'] as String),

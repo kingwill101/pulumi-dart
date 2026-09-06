@@ -14,23 +14,23 @@ import 'xiaomi_credential.dart';
 /// Collection of Notification Hub or Notification Hub Namespace PNS credentials.
 class PnsCredentials {
   /// Description of a NotificationHub AdmCredential.
-  final pulumi.Input<AdmCredential>? admCredential;
+  final pulumi.Input<AdmCredential?>? admCredential;
   /// Description of a NotificationHub ApnsCredential.
-  final pulumi.Input<ApnsCredential>? apnsCredential;
+  final pulumi.Input<ApnsCredential?>? apnsCredential;
   /// Description of a NotificationHub BaiduCredential.
-  final pulumi.Input<BaiduCredential>? baiduCredential;
+  final pulumi.Input<BaiduCredential?>? baiduCredential;
   /// Description of a NotificationHub BrowserCredential.
-  final pulumi.Input<BrowserCredential>? browserCredential;
+  final pulumi.Input<BrowserCredential?>? browserCredential;
   /// Description of a NotificationHub FcmV1Credential.
-  final pulumi.Input<FcmV1Credential>? fcmV1Credential;
+  final pulumi.Input<FcmV1Credential?>? fcmV1Credential;
   /// Description of a NotificationHub GcmCredential.
-  final pulumi.Input<GcmCredential>? gcmCredential;
+  final pulumi.Input<GcmCredential?>? gcmCredential;
   /// Description of a NotificationHub MpnsCredential.
-  final pulumi.Input<MpnsCredential>? mpnsCredential;
+  final pulumi.Input<MpnsCredential?>? mpnsCredential;
   /// Description of a NotificationHub WnsCredential.
-  final pulumi.Input<WnsCredential>? wnsCredential;
+  final pulumi.Input<WnsCredential?>? wnsCredential;
   /// Description of a NotificationHub XiaomiCredential.
-  final pulumi.Input<XiaomiCredential>? xiaomiCredential;
+  final pulumi.Input<XiaomiCredential?>? xiaomiCredential;
 
   /// Creates a new [PnsCredentials].
   /// [admCredential] Description of a NotificationHub AdmCredential.

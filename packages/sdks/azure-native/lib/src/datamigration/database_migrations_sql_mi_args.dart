@@ -10,11 +10,11 @@ import 'database_migration_properties_sql_mi.dart';
 class DatabaseMigrationsSqlMiArgs {
   final pulumi.Input<String> managedInstanceName;
   /// Database Migration Resource properties for SQL Managed Instance.
-  final pulumi.Input<DatabaseMigrationPropertiesSqlMi>? properties;
+  final pulumi.Input<DatabaseMigrationPropertiesSqlMi?>? properties;
   /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the target database.
-  final pulumi.Input<String>? targetDbName;
+  final pulumi.Input<String?>? targetDbName;
 
   /// Creates a new [DatabaseMigrationsSqlMiArgs].
   /// [managedInstanceName] Required.

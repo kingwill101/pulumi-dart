@@ -6,7 +6,7 @@ import 'gallery_script_parameter.dart';
 /// The source script from which the Script Version is going to be created.
 class ScriptSource {
   /// Optional. Any input parameters that needs to passed to the script and are accessed within the script for its execution.
-  final pulumi.Input<List<GalleryScriptParameter>>? parameters;
+  final pulumi.Input<List<GalleryScriptParameter>?>? parameters;
   /// Required. The link of the source script, it must be a readable storage blob with SAS URI or publicly accessible URI or managed identity enabled.
   final pulumi.Input<String> scriptLink;
 

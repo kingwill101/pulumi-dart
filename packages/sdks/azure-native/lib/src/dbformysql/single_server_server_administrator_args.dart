@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dbformysql_single_server_server_administrator_args_doc}
 class SingleServerServerAdministratorArgs {
   /// The type of administrator.
-  final pulumi.Input<String> administratorType;
+  final pulumi.Input<dynamic> administratorType;
   /// The server administrator login account name.
   final pulumi.Input<String> login;
   /// The name of the resource group. The name is case insensitive.
@@ -49,7 +49,7 @@ class SingleServerServerAdministratorArgs {
 
   factory SingleServerServerAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return SingleServerServerAdministratorArgs(
-      administratorType: pulumi.Input.fromValue(map['administratorType'] as String),
+      administratorType: pulumi.Input.fromValue(map['administratorType']),
       login: pulumi.Input.fromValue(map['login'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),

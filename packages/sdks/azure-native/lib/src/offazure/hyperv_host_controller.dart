@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'health_error_details_response.dart';
 import 'hyperv_host_controller_args.dart';
 import 'system_data_response.dart';
 
@@ -176,7 +177,7 @@ class HypervHostController extends pulumi.CustomResource {
   /// Gets the timestamp marking Hyper-V host creation.
   late final pulumi.Output<String> createdTimestamp;
   /// Gets the errors.
-  late final pulumi.Output<List<Map<String, dynamic>>> errors;
+  late final pulumi.Output<List<HealthErrorDetailsResponse>> errors;
   /// Gets or sets the FQDN/IPAddress of the Hyper-V host.
   late final pulumi.Output<String?> fqdn;
   /// The name of the resource
@@ -210,7 +211,29 @@ class HypervHostController extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdTimestamp = registerOutput<String>('createdTimestamp');
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
+    errors = registerOutput<List<HealthErrorDetailsResponse>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HealthErrorDetailsResponse>(guardedValue, (value) => HealthErrorDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    fqdn = registerOutput<String?>('fqdn');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String?>('provisioningState');
+    runAsAccountId = registerOutput<String?>('runAsAccountId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    updatedTimestamp = registerOutput<String>('updatedTimestamp');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [HypervHostController] resource.
+  HypervHostController.reference(String urn)
+    : super(
+        'azure-native:offazure:HypervHostController',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    errors = registerOutput<List<HealthErrorDetailsResponse>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HealthErrorDetailsResponse>(guardedValue, (value) => HealthErrorDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); });
     fqdn = registerOutput<String?>('fqdn');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String?>('provisioningState');

@@ -7,25 +7,25 @@ import 'user_info.dart';
 /// Properties specific to the monitor resource.
 class MonitorProperties {
   /// Flag to determine if User API Key has to be generated and shared.
-  final pulumi.Input<bool>? generateApiKey;
+  final pulumi.Input<bool?>? generateApiKey;
   /// Flag specifying if the resource monitoring is enabled or disabled.
-  final pulumi.Input<String>? monitoringStatus;
+  final pulumi.Input<dynamic>? monitoringStatus;
   /// Plan details of the monitor resource.
-  final pulumi.Input<PlanDetails>? planDetails;
+  final pulumi.Input<PlanDetails?>? planDetails;
   /// Provisioning state of the monitor resource.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<dynamic>? provisioningState;
   /// Status of Azure Subscription where Marketplace SaaS is located.
-  final pulumi.Input<String>? saaSAzureSubscriptionStatus;
+  final pulumi.Input<String?>? saaSAzureSubscriptionStatus;
   /// A unique identifier associated with the campaign.
-  final pulumi.Input<String>? sourceCampaignId;
+  final pulumi.Input<String?>? sourceCampaignId;
   /// Name of the marketing campaign.
-  final pulumi.Input<String>? sourceCampaignName;
+  final pulumi.Input<String?>? sourceCampaignName;
   /// State of the Azure Subscription containing the monitor resource
-  final pulumi.Input<String>? subscriptionState;
+  final pulumi.Input<String?>? subscriptionState;
   /// User information.
-  final pulumi.Input<UserInfo>? userInfo;
+  final pulumi.Input<UserInfo?>? userInfo;
   /// Version of elastic of the monitor resource
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [MonitorProperties].
   /// [generateApiKey] Flag to determine if User API Key has to be generated and shared.
@@ -69,9 +69,9 @@ class MonitorProperties {
   factory MonitorProperties.fromMap(Map<String, dynamic> map) {
     return MonitorProperties(
       generateApiKey: (() { final guardedValue = map['generateApiKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      monitoringStatus: (() { final guardedValue = map['monitoringStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      monitoringStatus: (() { final guardedValue = map['monitoringStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       planDetails: (() { final guardedValue = map['planDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PlanDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       saaSAzureSubscriptionStatus: (() { final guardedValue = map['saaSAzureSubscriptionStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceCampaignId: (() { final guardedValue = map['sourceCampaignId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceCampaignName: (() { final guardedValue = map['sourceCampaignName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

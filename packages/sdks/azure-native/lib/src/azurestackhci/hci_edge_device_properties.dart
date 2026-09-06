@@ -6,7 +6,7 @@ import 'device_configuration.dart';
 /// properties for Arc-enabled edge device with HCI OS.
 class HciEdgeDeviceProperties {
   /// Device Configuration
-  final pulumi.Input<DeviceConfiguration>? deviceConfiguration;
+  final pulumi.Input<DeviceConfiguration?>? deviceConfiguration;
 
   /// Creates a new [HciEdgeDeviceProperties].
   /// [deviceConfiguration] Device Configuration

@@ -9,23 +9,23 @@ import 'subnet_ip_configuration_reference_response.dart';
 /// Properties of the subnet.
 class SubnetResponse {
   /// The address prefix for the subnet: Cidr for this subnet - IPv4, IPv6.
-  final pulumi.Input<String>? addressPrefix;
+  final pulumi.Input<String?>? addressPrefix;
   /// List of address prefixes for the subnet.
-  final pulumi.Input<List<String>>? addressPrefixes;
+  final pulumi.Input<List<String>?>? addressPrefixes;
   /// IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic'
-  final pulumi.Input<String>? ipAllocationMethod;
+  final pulumi.Input<String?>? ipAllocationMethod;
   /// IPConfigurationReferences - list of IPConfigurationReferences
-  final pulumi.Input<List<SubnetIpConfigurationReferenceResponse>>? ipConfigurationReferences;
+  final pulumi.Input<List<SubnetIpConfigurationReferenceResponse>?>? ipConfigurationReferences;
   /// network associated pool of IP Addresses
-  final pulumi.Input<List<IPPoolResponse>>? ipPools;
+  final pulumi.Input<List<IPPoolResponse>?>? ipPools;
   /// Name - The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// NetworkSecurityGroup - Network Security Group attached to the logical network.
-  final pulumi.Input<NetworkSecurityGroupArmReferenceResponse>? networkSecurityGroup;
+  final pulumi.Input<NetworkSecurityGroupArmReferenceResponse?>? networkSecurityGroup;
   /// Route table resource.
-  final pulumi.Input<RouteTableResponse>? routeTable;
+  final pulumi.Input<RouteTableResponse?>? routeTable;
   /// Vlan to use for the subnet
-  final pulumi.Input<int>? vlan;
+  final pulumi.Input<int?>? vlan;
 
   /// Creates a new [SubnetResponse].
   /// [addressPrefix] The address prefix for the subnet: Cidr for this subnet - IPv4, IPv6.
@@ -73,7 +73,7 @@ class SubnetResponse {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkSecurityGroup: (() { final guardedValue = map['networkSecurityGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkSecurityGroupArmReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       routeTable: (() { final guardedValue = map['routeTable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouteTableResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

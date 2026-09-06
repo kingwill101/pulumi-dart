@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum InstanceAutoRecoveryState {
+enum InstanceAutoRecoveryState implements pulumi.PulumiEnum<String> {
   default_("default"),
   disabled("disabled");
 
   const InstanceAutoRecoveryState(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceAutoRecoveryState fromValue(String value) {

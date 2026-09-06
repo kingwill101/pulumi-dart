@@ -10,29 +10,29 @@ import 'managed_resource_group_configuration.dart';
 /// {@macro pulumi_managednetworkfabric_network_fabric_controller_args_doc}
 class NetworkFabricControllerArgs {
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute)
-  final pulumi.Input<List<ExpressRouteConnectionInformation>>? infrastructureExpressRouteConnections;
+  final pulumi.Input<List<ExpressRouteConnectionInformation>?>? infrastructureExpressRouteConnections;
   /// IPv4 Network Fabric Controller Address Space.
-  final pulumi.Input<String>? ipv4AddressSpace;
+  final pulumi.Input<String?>? ipv4AddressSpace;
   /// IPv6 Network Fabric Controller Address Space.
-  final pulumi.Input<String>? ipv6AddressSpace;
+  final pulumi.Input<String?>? ipv6AddressSpace;
   /// A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints.
-  final pulumi.Input<String>? isWorkloadManagementNetworkEnabled;
+  final pulumi.Input<dynamic>? isWorkloadManagementNetworkEnabled;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Managed Resource Group configuration properties.
-  final pulumi.Input<ManagedResourceGroupConfiguration>? managedResourceGroupConfiguration;
+  final pulumi.Input<ManagedResourceGroupConfiguration?>? managedResourceGroupConfiguration;
   /// Name of the Network Fabric Controller.
-  final pulumi.Input<String>? networkFabricControllerName;
+  final pulumi.Input<String?>? networkFabricControllerName;
   /// Network Fabric Controller SKU.
-  final pulumi.Input<String>? nfcSku;
+  final pulumi.Input<dynamic>? nfcSku;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute).
-  final pulumi.Input<List<ExpressRouteConnectionInformation>>? workloadExpressRouteConnections;
+  final pulumi.Input<List<ExpressRouteConnectionInformation>?>? workloadExpressRouteConnections;
 
   /// Creates a new [NetworkFabricControllerArgs].
   /// [annotation] Switch configuration description.
@@ -47,20 +47,20 @@ class NetworkFabricControllerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [workloadExpressRouteConnections] As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute).
-  const NetworkFabricControllerArgs({
+  NetworkFabricControllerArgs({
     this.annotation,
     this.infrastructureExpressRouteConnections,
-    this.ipv4AddressSpace,
-    this.ipv6AddressSpace,
-    this.isWorkloadManagementNetworkEnabled,
+    pulumi.Input<String?>? ipv4AddressSpace,
+    pulumi.Input<String?>? ipv6AddressSpace,
+    pulumi.Input<dynamic>? isWorkloadManagementNetworkEnabled,
     this.location,
     this.managedResourceGroupConfiguration,
     this.networkFabricControllerName,
-    this.nfcSku,
+    pulumi.Input<dynamic>? nfcSku,
     required this.resourceGroupName,
     this.tags,
     this.workloadExpressRouteConnections,
-  });
+  }) : ipv4AddressSpace = ipv4AddressSpace ?? pulumi.Input.fromValue('10.0.0.0/19'), ipv6AddressSpace = ipv6AddressSpace ?? pulumi.Input.fromValue('FC00::/59'), isWorkloadManagementNetworkEnabled = isWorkloadManagementNetworkEnabled ?? pulumi.Input.fromValue('True'), nfcSku = nfcSku ?? pulumi.Input.fromValue('Standard');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,11 +85,11 @@ class NetworkFabricControllerArgs {
       infrastructureExpressRouteConnections: (() { final guardedValue = map['infrastructureExpressRouteConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ExpressRouteConnectionInformation>(guardedValue, (value) => ExpressRouteConnectionInformation.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipv4AddressSpace: (() { final guardedValue = map['ipv4AddressSpace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipv6AddressSpace: (() { final guardedValue = map['ipv6AddressSpace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      isWorkloadManagementNetworkEnabled: (() { final guardedValue = map['isWorkloadManagementNetworkEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isWorkloadManagementNetworkEnabled: (() { final guardedValue = map['isWorkloadManagementNetworkEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedResourceGroupConfiguration: (() { final guardedValue = map['managedResourceGroupConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedResourceGroupConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       networkFabricControllerName: (() { final guardedValue = map['networkFabricControllerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      nfcSku: (() { final guardedValue = map['nfcSku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nfcSku: (() { final guardedValue = map['nfcSku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       workloadExpressRouteConnections: (() { final guardedValue = map['workloadExpressRouteConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ExpressRouteConnectionInformation>(guardedValue, (value) => ExpressRouteConnectionInformation.fromMap((value as Map).cast<String, dynamic>()))); })(),

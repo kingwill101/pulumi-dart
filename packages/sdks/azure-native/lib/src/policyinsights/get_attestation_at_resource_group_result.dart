@@ -9,7 +9,7 @@ class GetAttestationAtResourceGroupResult {
   /// The time the evidence was assessed
   final String? assessmentDate;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Comments describing why this attestation was created.
   final String? comments;
   /// The compliance state that should be set on the resource.
@@ -19,25 +19,25 @@ class GetAttestationAtResourceGroupResult {
   /// The time the compliance state should expire.
   final String? expiresOn;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The time the compliance state was last changed in this attestation.
-  final String lastComplianceStateChangeAt;
+  final String? lastComplianceStateChangeAt;
   /// Additional metadata for this attestation
   final dynamic metadata;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The person responsible for setting the state of the resource. This value is typically an Azure Active Directory object ID.
   final String? owner;
   /// The resource ID of the policy assignment that the attestation is setting the state for.
-  final String policyAssignmentId;
+  final String? policyAssignmentId;
   /// The policy definition reference ID from a policy set definition that the attestation is setting the state for. If the policy assignment assigns a policy set definition the attestation can choose a definition within the set definition with this property or omit this and set the state for the entire set definition.
   final String? policyDefinitionReferenceId;
   /// The status of the attestation.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetAttestationAtResourceGroupResult].
   /// [assessmentDate] The time the evidence was assessed
@@ -58,62 +58,62 @@ class GetAttestationAtResourceGroupResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetAttestationAtResourceGroupResult({
     this.assessmentDate,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.comments,
     this.complianceState,
     this.evidence,
     this.expiresOn,
-    required this.id,
-    required this.lastComplianceStateChangeAt,
+    this.id,
+    this.lastComplianceStateChangeAt,
     this.metadata,
-    required this.name,
+    this.name,
     this.owner,
-    required this.policyAssignmentId,
+    this.policyAssignmentId,
     this.policyDefinitionReferenceId,
-    required this.provisioningState,
-    required this.systemData,
-    required this.type,
+    this.provisioningState,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'assessmentDate': ?assessmentDate,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'comments': ?comments,
       'complianceState': ?complianceState,
       'evidence': ?(() { final guardedValue = evidence; if (guardedValue == null) return null; return pulumi.Input.encodeList<AttestationEvidenceResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'expiresOn': ?expiresOn,
-      'id': id,
-      'lastComplianceStateChangeAt': lastComplianceStateChangeAt,
+      'id': ?id,
+      'lastComplianceStateChangeAt': ?lastComplianceStateChangeAt,
       'metadata': ?metadata,
-      'name': name,
+      'name': ?name,
       'owner': ?owner,
-      'policyAssignmentId': policyAssignmentId,
+      'policyAssignmentId': ?policyAssignmentId,
       'policyDefinitionReferenceId': ?policyDefinitionReferenceId,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetAttestationAtResourceGroupResult.fromMap(Map<String, dynamic> map) {
     return GetAttestationAtResourceGroupResult(
       assessmentDate: (() { final guardedValue = map['assessmentDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       comments: (() { final guardedValue = map['comments']; if (guardedValue == null) return null; return guardedValue as String; })(),
       complianceState: (() { final guardedValue = map['complianceState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       evidence: (() { final guardedValue = map['evidence']; if (guardedValue == null) return null; return pulumi.Input.decodeList<AttestationEvidenceResponse>(guardedValue, (value) => AttestationEvidenceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       expiresOn: (() { final guardedValue = map['expiresOn']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      lastComplianceStateChangeAt: map['lastComplianceStateChangeAt'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastComplianceStateChangeAt: (() { final guardedValue = map['lastComplianceStateChangeAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return guardedValue; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      policyAssignmentId: map['policyAssignmentId'] as String,
+      policyAssignmentId: (() { final guardedValue = map['policyAssignmentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       policyDefinitionReferenceId: (() { final guardedValue = map['policyDefinitionReferenceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

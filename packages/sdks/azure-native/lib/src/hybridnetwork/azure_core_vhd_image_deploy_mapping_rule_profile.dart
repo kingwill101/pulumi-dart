@@ -6,9 +6,9 @@ import 'vhd_image_mapping_rule_profile.dart';
 /// Azure vhd deploy mapping rule profile.
 class AzureCoreVhdImageDeployMappingRuleProfile {
   /// The application enablement.
-  final pulumi.Input<String>? applicationEnablement;
+  final pulumi.Input<dynamic>? applicationEnablement;
   /// The vhd mapping rule profile.
-  final pulumi.Input<VhdImageMappingRuleProfile>? vhdImageMappingRuleProfile;
+  final pulumi.Input<VhdImageMappingRuleProfile?>? vhdImageMappingRuleProfile;
 
   /// Creates a new [AzureCoreVhdImageDeployMappingRuleProfile].
   /// [applicationEnablement] The application enablement.
@@ -27,7 +27,7 @@ class AzureCoreVhdImageDeployMappingRuleProfile {
 
   factory AzureCoreVhdImageDeployMappingRuleProfile.fromMap(Map<String, dynamic> map) {
     return AzureCoreVhdImageDeployMappingRuleProfile(
-      applicationEnablement: (() { final guardedValue = map['applicationEnablement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      applicationEnablement: (() { final guardedValue = map['applicationEnablement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       vhdImageMappingRuleProfile: (() { final guardedValue = map['vhdImageMappingRuleProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VhdImageMappingRuleProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

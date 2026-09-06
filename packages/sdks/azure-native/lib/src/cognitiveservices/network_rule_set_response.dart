@@ -7,13 +7,13 @@ import 'virtual_network_rule_response.dart';
 /// A set of rules governing the network accessibility.
 class NetworkRuleSetResponse {
   /// Setting for trusted services.
-  final pulumi.Input<String>? bypass;
+  final pulumi.Input<String?>? bypass;
   /// The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
-  final pulumi.Input<String>? defaultAction;
+  final pulumi.Input<String?>? defaultAction;
   /// The list of IP address rules.
-  final pulumi.Input<List<IpRuleResponse>>? ipRules;
+  final pulumi.Input<List<IpRuleResponse>?>? ipRules;
   /// The list of virtual network rules.
-  final pulumi.Input<List<VirtualNetworkRuleResponse>>? virtualNetworkRules;
+  final pulumi.Input<List<VirtualNetworkRuleResponse>?>? virtualNetworkRules;
 
   /// Creates a new [NetworkRuleSetResponse].
   /// [bypass] Setting for trusted services.

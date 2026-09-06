@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Provisioning state of the Private Endpoint Connection.
-enum EndPointProvisioningState {
+enum EndPointProvisioningState implements pulumi.PulumiEnum<String> {
   creating("Creating"),
   updating("Updating"),
   deleting("Deleting"),
@@ -8,6 +10,7 @@ enum EndPointProvisioningState {
   failed("Failed");
 
   const EndPointProvisioningState(this.wireValue);
+  @override
   final String wireValue;
 
   static EndPointProvisioningState fromValue(String value) {

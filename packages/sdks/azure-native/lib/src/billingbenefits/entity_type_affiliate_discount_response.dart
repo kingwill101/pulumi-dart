@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Entity type for affiliate discounts
 class EntityTypeAffiliateDiscountResponse {
   /// List of applied scopes supported for discounts.
-  final pulumi.Input<String>? appliedScopeType;
+  final pulumi.Input<String?>? appliedScopeType;
   /// Fully-qualified identifier of the benefit under applicable benefit list.
   final pulumi.Input<String> benefitResourceId;
   /// Billing account resource id where the discount metadata is present.
@@ -15,7 +15,7 @@ class EntityTypeAffiliateDiscountResponse {
   /// Customer resource id where the discount is scoped to.
   final pulumi.Input<String> customerResourceId;
   /// This defines a user friendly display name for the discount.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate.
   final pulumi.Input<String> endAt;
   /// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
@@ -32,7 +32,7 @@ class EntityTypeAffiliateDiscountResponse {
   /// Represents the current status of the discount.
   final pulumi.Input<String> status;
   /// This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
-  final pulumi.Input<String>? systemId;
+  final pulumi.Input<String?>? systemId;
 
   /// Creates a new [EntityTypeAffiliateDiscountResponse].
   /// [appliedScopeType] List of applied scopes supported for discounts.

@@ -6,13 +6,13 @@ import 'app_attach_package_info_properties_response.dart';
 /// Schema for App Attach Package properties.
 class AppAttachPackagePropertiesResponse {
   /// Parameter indicating how the health check should behave if this package fails staging
-  final pulumi.Input<String>? failHealthCheckOnStagingFailure;
+  final pulumi.Input<String?>? failHealthCheckOnStagingFailure;
   /// List of Hostpool resource Ids.
-  final pulumi.Input<List<String>>? hostPoolReferences;
+  final pulumi.Input<List<String>?>? hostPoolReferences;
   /// Detailed properties for App Attach Package
-  final pulumi.Input<AppAttachPackageInfoPropertiesResponse>? image;
+  final pulumi.Input<AppAttachPackageInfoPropertiesResponse?>? image;
   /// URL path to certificate name located in keyVault
-  final pulumi.Input<String>? keyVaultURL;
+  final pulumi.Input<String?>? keyVaultURL;
   /// The provisioning state of the App Attach Package.
   final pulumi.Input<String> provisioningState;
 

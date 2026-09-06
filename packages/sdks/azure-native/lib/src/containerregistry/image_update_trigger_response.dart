@@ -6,11 +6,11 @@ import 'image_descriptor_response.dart';
 /// The image update trigger that caused a build.
 class ImageUpdateTriggerResponse {
   /// The unique ID of the trigger.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The list of image updates that caused the build.
-  final pulumi.Input<List<ImageDescriptorResponse>>? images;
+  final pulumi.Input<List<ImageDescriptorResponse>?>? images;
   /// The timestamp when the image update happened.
-  final pulumi.Input<String>? timestamp;
+  final pulumi.Input<String?>? timestamp;
 
   /// Creates a new [ImageUpdateTriggerResponse].
   /// [id] The unique ID of the trigger.

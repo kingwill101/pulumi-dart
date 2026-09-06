@@ -1,4 +1,6 @@
-enum MonthOfYear {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum MonthOfYear implements pulumi.PulumiEnum<String> {
   valueInvalid("Invalid"),
   valueJanuary("January"),
   valueFebruary("February"),
@@ -14,6 +16,7 @@ enum MonthOfYear {
   valueDecember("December");
 
   const MonthOfYear(this.wireValue);
+  @override
   final String wireValue;
 
   static MonthOfYear fromValue(String value) {

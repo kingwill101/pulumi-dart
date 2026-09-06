@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information used to connect to an NFS file system.
 class NFSMountConfiguration {
   /// These are 'net use' options in Windows and 'mount' options in Linux.
-  final pulumi.Input<String>? mountOptions;
+  final pulumi.Input<String?>? mountOptions;
   /// All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
   final pulumi.Input<String> relativeMountPath;
   /// The URI of the file system to mount.

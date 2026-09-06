@@ -13,23 +13,23 @@ import 'trigger_operator.dart';
 /// {@macro pulumi_securityinsights_scheduled_alert_rule_args_doc}
 class ScheduledAlertRuleArgs {
   /// The alert details override settings
-  final pulumi.Input<AlertDetailsOverride>? alertDetailsOverride;
+  final pulumi.Input<AlertDetailsOverride?>? alertDetailsOverride;
   /// The Name of the alert rule template used to create this rule.
-  final pulumi.Input<String>? alertRuleTemplateName;
+  final pulumi.Input<String?>? alertRuleTemplateName;
   /// Dictionary of string key-value pairs of columns to be attached to the alert
-  final pulumi.Input<Map<String, String>>? customDetails;
+  final pulumi.Input<Map<String, String>?>? customDetails;
   /// The description of the alert rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name for alerts created by this alert rule.
   final pulumi.Input<String> displayName;
   /// Determines whether this alert rule is enabled or disabled.
   final pulumi.Input<bool> enabled;
   /// Array of the entity mappings of the alert rule
-  final pulumi.Input<List<EntityMapping>>? entityMappings;
+  final pulumi.Input<List<EntityMapping>?>? entityMappings;
   /// The event grouping settings.
-  final pulumi.Input<EventGroupingSettings>? eventGroupingSettings;
+  final pulumi.Input<EventGroupingSettings?>? eventGroupingSettings;
   /// The settings of the incidents that created from alerts triggered by this analytics rule
-  final pulumi.Input<IncidentConfiguration>? incidentConfiguration;
+  final pulumi.Input<IncidentConfiguration?>? incidentConfiguration;
   /// The kind of the alert rule
   /// Expected value is 'Scheduled'.
   final pulumi.Input<String> kind;
@@ -42,19 +42,19 @@ class ScheduledAlertRuleArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Alert rule ID
-  final pulumi.Input<String>? ruleId;
+  final pulumi.Input<String?>? ruleId;
   /// The severity for alerts created by this alert rule.
-  final pulumi.Input<String> severity;
+  final pulumi.Input<dynamic> severity;
   /// The suppression (in ISO 8601 duration format) to wait since last time this alert rule been triggered.
   final pulumi.Input<String> suppressionDuration;
   /// Determines whether the suppression for this alert rule is enabled or disabled.
   final pulumi.Input<bool> suppressionEnabled;
   /// The tactics of the alert rule
-  final pulumi.Input<List<String>>? tactics;
+  final pulumi.Input<List<dynamic>?>? tactics;
   /// The techniques of the alert rule
-  final pulumi.Input<List<String>>? techniques;
+  final pulumi.Input<List<String>?>? techniques;
   /// The version of the alert rule template used to create this rule - in format &lt;a.b.c&gt;, where all are numbers, for example 0 &lt;1.0.2&gt;
-  final pulumi.Input<String>? templateVersion;
+  final pulumi.Input<String?>? templateVersion;
   /// The operation against the threshold that triggers alert rule.
   final pulumi.Input<TriggerOperator> triggerOperator;
   /// The threshold triggers this alert rule.
@@ -160,14 +160,14 @@ class ScheduledAlertRuleArgs {
       queryPeriod: pulumi.Input.fromValue(map['queryPeriod'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       ruleId: (() { final guardedValue = map['ruleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      severity: pulumi.Input.fromValue(map['severity'] as String),
+      severity: pulumi.Input.fromValue(map['severity']),
       suppressionDuration: pulumi.Input.fromValue(map['suppressionDuration'] as String),
       suppressionEnabled: pulumi.Input.fromValue(map['suppressionEnabled'] as bool),
-      tactics: (() { final guardedValue = map['tactics']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      tactics: (() { final guardedValue = map['tactics']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       techniques: (() { final guardedValue = map['techniques']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       templateVersion: (() { final guardedValue = map['templateVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       triggerOperator: pulumi.Input.fromValue(TriggerOperator.fromValue(map['triggerOperator']! as String)),
-      triggerThreshold: pulumi.Input.fromValue(map['triggerThreshold'] as int),
+      triggerThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['triggerThreshold'])),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }

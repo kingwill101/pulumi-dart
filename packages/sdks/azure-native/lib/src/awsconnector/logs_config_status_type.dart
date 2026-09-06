@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum LogsConfigStatusType {
+enum LogsConfigStatusType implements pulumi.PulumiEnum<String> {
   dISABLED("DISABLED"),
   eNABLED("ENABLED");
 
   const LogsConfigStatusType(this.wireValue);
+  @override
   final String wireValue;
 
   static LogsConfigStatusType fromValue(String value) {

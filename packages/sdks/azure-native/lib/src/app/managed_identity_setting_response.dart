@@ -7,15 +7,15 @@ class ManagedIdentitySettingResponse {
   /// The resource ID of a user-assigned managed identity that is assigned to the Session Pool, or 'system' for system-assigned identity.
   final pulumi.Input<String> identity;
   /// Use to select the lifecycle stages of a Session Pool during which the Managed Identity should be available.
-  final pulumi.Input<String>? lifecycle;
+  final pulumi.Input<String?>? lifecycle;
 
   /// Creates a new [ManagedIdentitySettingResponse].
   /// [identity] The resource ID of a user-assigned managed identity that is assigned to the Session Pool, or 'system' for system-assigned identity.
   /// [lifecycle] Use to select the lifecycle stages of a Session Pool during which the Managed Identity should be available.
-  const ManagedIdentitySettingResponse({
+  ManagedIdentitySettingResponse({
     required this.identity,
-    this.lifecycle,
-  });
+    pulumi.Input<String?>? lifecycle,
+  }) : lifecycle = lifecycle ?? pulumi.Input.fromValue('None');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

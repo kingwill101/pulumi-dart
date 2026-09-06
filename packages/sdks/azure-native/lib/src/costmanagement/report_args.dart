@@ -15,11 +15,11 @@ class ReportArgs {
   /// Has delivery information for the report.
   final pulumi.Input<ReportDeliveryInfo> deliveryInfo;
   /// The format of the report being delivered.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<dynamic>? format;
   /// Report Name.
-  final pulumi.Input<String>? reportName;
+  final pulumi.Input<String?>? reportName;
   /// Has schedule information for the report.
-  final pulumi.Input<ReportSchedule>? schedule;
+  final pulumi.Input<ReportSchedule?>? schedule;
 
   /// Creates a new [ReportArgs].
   /// [definition] Has definition for the report.
@@ -49,7 +49,7 @@ class ReportArgs {
     return ReportArgs(
       definition: pulumi.Input.fromValue(ReportDefinition.fromMap((map['definition']! as Map).cast<String, dynamic>())),
       deliveryInfo: pulumi.Input.fromValue(ReportDeliveryInfo.fromMap((map['deliveryInfo']! as Map).cast<String, dynamic>())),
-      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       reportName: (() { final guardedValue = map['reportName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReportSchedule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

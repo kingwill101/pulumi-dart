@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The storage type for the disk (i.e. Standard, Premium).
-enum StorageType {
+enum StorageType implements pulumi.PulumiEnum<String> {
   standard("Standard"),
   premium("Premium"),
   standardSSD("StandardSSD");
 
   const StorageType(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageType fromValue(String value) {

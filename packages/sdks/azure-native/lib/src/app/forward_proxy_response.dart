@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration settings of a forward proxy used to make the requests.
 class ForwardProxyResponse {
   /// The convention used to determine the url of the request made.
-  final pulumi.Input<String>? convention;
+  final pulumi.Input<String?>? convention;
   /// The name of the header containing the host of the request.
-  final pulumi.Input<String>? customHostHeaderName;
+  final pulumi.Input<String?>? customHostHeaderName;
   /// The name of the header containing the scheme of the request.
-  final pulumi.Input<String>? customProtoHeaderName;
+  final pulumi.Input<String?>? customProtoHeaderName;
 
   /// Creates a new [ForwardProxyResponse].
   /// [convention] The convention used to determine the url of the request made.

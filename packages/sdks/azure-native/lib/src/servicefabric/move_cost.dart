@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the move cost for the service.
-enum MoveCost {
+enum MoveCost implements pulumi.PulumiEnum<String> {
   valueZero("Zero"),
   valueLow("Low"),
   valueMedium("Medium"),
   valueHigh("High");
 
   const MoveCost(this.wireValue);
+  @override
   final String wireValue;
 
   static MoveCost fromValue(String value) {

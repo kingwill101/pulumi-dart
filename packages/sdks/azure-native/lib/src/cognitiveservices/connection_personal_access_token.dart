@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionPersonalAccessToken {
-  final pulumi.Input<String>? pat;
+  final pulumi.Input<String?>? pat;
 
   /// Creates a new [ConnectionPersonalAccessToken].
   /// [pat] Optional.

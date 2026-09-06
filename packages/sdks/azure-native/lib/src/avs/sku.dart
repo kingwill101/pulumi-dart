@@ -6,15 +6,15 @@ import 'sku_tier.dart';
 /// The resource model definition representing SKU
 class Sku {
   /// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
   /// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// The name of the SKU. E.g. P3. It is typically a letter+number code
   final pulumi.Input<String> name;
   /// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-  final pulumi.Input<String>? size;
+  final pulumi.Input<String?>? size;
   /// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-  final pulumi.Input<SkuTier>? tier;
+  final pulumi.Input<SkuTier?>? tier;
 
   /// Creates a new [Sku].
   /// [capacity] If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
@@ -42,7 +42,7 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       family: (() { final guardedValue = map['family']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -7,19 +7,19 @@ import 'event_type_info.dart';
 class PartnerTopicInfo {
   /// Azure subscription ID of the subscriber. The partner topic associated with the channel will be
   /// created under this Azure subscription.
-  final pulumi.Input<String>? azureSubscriptionId;
+  final pulumi.Input<String?>? azureSubscriptionId;
   /// Event Type Information for the partner topic. This information is provided by the publisher and can be used by the
   /// subscriber to view different types of events that are published.
-  final pulumi.Input<EventTypeInfo>? eventTypeInfo;
+  final pulumi.Input<EventTypeInfo?>? eventTypeInfo;
   /// Name of the partner topic associated with the channel.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Azure Resource Group of the subscriber. The partner topic associated with the channel will be
   /// created under this resource group.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The source information is provided by the publisher to determine the scope or context from which the events
   /// are originating. This information can be used by the subscriber during the approval process of the
   /// created partner topic.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [PartnerTopicInfo].
   /// [azureSubscriptionId] Azure subscription ID of the subscriber. The partner topic associated with the channel will be

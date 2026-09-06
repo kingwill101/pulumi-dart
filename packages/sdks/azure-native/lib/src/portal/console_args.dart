@@ -9,7 +9,7 @@ import 'console_create_properties.dart';
 /// {@macro pulumi_portal_console_args_doc}
 class ConsoleArgs {
   /// The name of the console
-  final pulumi.Input<String>? consoleName;
+  final pulumi.Input<String?>? consoleName;
   /// Cloud shell properties for creating a console.
   final pulumi.Input<ConsoleCreateProperties> properties;
 

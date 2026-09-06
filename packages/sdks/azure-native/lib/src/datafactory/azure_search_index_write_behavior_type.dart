@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specify the write behavior when upserting documents into Azure Search Index.
-enum AzureSearchIndexWriteBehaviorType {
+enum AzureSearchIndexWriteBehaviorType implements pulumi.PulumiEnum<String> {
   merge("Merge"),
   upload("Upload");
 
   const AzureSearchIndexWriteBehaviorType(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureSearchIndexWriteBehaviorType fromValue(String value) {

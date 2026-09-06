@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The managed application lock level.
-enum ApplicationLockLevel {
+enum ApplicationLockLevel implements pulumi.PulumiEnum<String> {
   valueCanNotDelete("CanNotDelete"),
   valueReadOnly("ReadOnly"),
   valueNone("None");
 
   const ApplicationLockLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static ApplicationLockLevel fromValue(String value) {

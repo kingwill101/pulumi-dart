@@ -8,19 +8,19 @@ import 'object_status_condition_definition_response.dart';
 /// Statuses of objects deployed by the user-specified kustomizations from the git repository.
 class ObjectStatusDefinitionResponse {
   /// Object reference to the Kustomization that applied this object
-  final pulumi.Input<ObjectReferenceDefinitionResponse>? appliedBy;
+  final pulumi.Input<ObjectReferenceDefinitionResponse?>? appliedBy;
   /// Compliance state of the applied object showing whether the applied object has come into a ready state on the cluster.
-  final pulumi.Input<String>? complianceState;
+  final pulumi.Input<String?>? complianceState;
   /// Additional properties that are provided from objects of the HelmRelease kind
-  final pulumi.Input<HelmReleasePropertiesDefinitionResponse>? helmReleaseProperties;
+  final pulumi.Input<HelmReleasePropertiesDefinitionResponse?>? helmReleaseProperties;
   /// Kind of the applied object
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the applied object
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Namespace of the applied object
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// List of Kubernetes object status conditions present on the cluster
-  final pulumi.Input<List<ObjectStatusConditionDefinitionResponse>>? statusConditions;
+  final pulumi.Input<List<ObjectStatusConditionDefinitionResponse>?>? statusConditions;
 
   /// Creates a new [ObjectStatusDefinitionResponse].
   /// [appliedBy] Object reference to the Kustomization that applied this object

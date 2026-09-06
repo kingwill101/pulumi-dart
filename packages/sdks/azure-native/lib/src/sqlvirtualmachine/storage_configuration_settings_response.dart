@@ -7,17 +7,17 @@ import 'sqltemp_db_settings_response.dart';
 /// Storage Configurations for SQL Data, Log and TempDb.
 class StorageConfigurationSettingsResponse {
   /// Disk configuration to apply to SQL Server.
-  final pulumi.Input<String>? diskConfigurationType;
+  final pulumi.Input<String?>? diskConfigurationType;
   /// SQL Server Data Storage Settings.
-  final pulumi.Input<SQLStorageSettingsResponse>? sqlDataSettings;
+  final pulumi.Input<SQLStorageSettingsResponse?>? sqlDataSettings;
   /// SQL Server Log Storage Settings.
-  final pulumi.Input<SQLStorageSettingsResponse>? sqlLogSettings;
+  final pulumi.Input<SQLStorageSettingsResponse?>? sqlLogSettings;
   /// SQL Server SystemDb Storage on DataPool if true.
-  final pulumi.Input<bool>? sqlSystemDbOnDataDisk;
+  final pulumi.Input<bool?>? sqlSystemDbOnDataDisk;
   /// SQL Server TempDb Storage Settings.
-  final pulumi.Input<SQLTempDbSettingsResponse>? sqlTempDbSettings;
+  final pulumi.Input<SQLTempDbSettingsResponse?>? sqlTempDbSettings;
   /// Storage workload type.
-  final pulumi.Input<String>? storageWorkloadType;
+  final pulumi.Input<String?>? storageWorkloadType;
 
   /// Creates a new [StorageConfigurationSettingsResponse].
   /// [diskConfigurationType] Disk configuration to apply to SQL Server.

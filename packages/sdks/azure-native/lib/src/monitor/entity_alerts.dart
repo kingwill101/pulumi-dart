@@ -6,9 +6,9 @@ import 'alert_configuration.dart';
 /// Alert configuration for an entity
 class EntityAlerts {
   /// Alert to be triggered on state change to degraded
-  final pulumi.Input<AlertConfiguration>? degraded;
+  final pulumi.Input<AlertConfiguration?>? degraded;
   /// Alert to be triggered on state change to unhealthy
-  final pulumi.Input<AlertConfiguration>? unhealthy;
+  final pulumi.Input<AlertConfiguration?>? unhealthy;
 
   /// Creates a new [EntityAlerts].
   /// [degraded] Alert to be triggered on state change to degraded

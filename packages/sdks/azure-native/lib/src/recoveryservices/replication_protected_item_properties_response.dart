@@ -1,72 +1,71 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'a2_across_cluster_migration_replication_details_response.dart';
 import 'current_scenario_details_response.dart';
 import 'health_error_response.dart';
 
 /// Replication protected item custom data details.
 class ReplicationProtectedItemPropertiesResponse {
   /// The Current active location of the PE.
-  final pulumi.Input<String>? activeLocation;
+  final pulumi.Input<String?>? activeLocation;
   /// The allowed operations on the Replication protected item.
-  final pulumi.Input<List<String>>? allowedOperations;
+  final pulumi.Input<List<String>?>? allowedOperations;
   /// The current scenario.
-  final pulumi.Input<CurrentScenarioDetailsResponse>? currentScenario;
+  final pulumi.Input<CurrentScenarioDetailsResponse?>? currentScenario;
   /// The correlation Id for events associated with this protected item.
-  final pulumi.Input<String>? eventCorrelationId;
+  final pulumi.Input<String?>? eventCorrelationId;
   /// The consolidated failover health for the VM.
-  final pulumi.Input<String>? failoverHealth;
+  final pulumi.Input<String?>? failoverHealth;
   /// The recovery point ARM Id to which the Vm was failed over.
-  final pulumi.Input<String>? failoverRecoveryPointId;
+  final pulumi.Input<String?>? failoverRecoveryPointId;
   /// The name.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// List of health errors.
-  final pulumi.Input<List<HealthErrorResponse>>? healthErrors;
+  final pulumi.Input<List<HealthErrorResponse>?>? healthErrors;
   /// The Last successful failover time.
-  final pulumi.Input<String>? lastSuccessfulFailoverTime;
+  final pulumi.Input<String?>? lastSuccessfulFailoverTime;
   /// The Last successful test failover time.
-  final pulumi.Input<String>? lastSuccessfulTestFailoverTime;
+  final pulumi.Input<String?>? lastSuccessfulTestFailoverTime;
   /// The name of Policy governing this PE.
-  final pulumi.Input<String>? policyFriendlyName;
+  final pulumi.Input<String?>? policyFriendlyName;
   /// The ID of Policy governing this PE.
-  final pulumi.Input<String>? policyId;
+  final pulumi.Input<String?>? policyId;
   /// The friendly name of the primary fabric.
-  final pulumi.Input<String>? primaryFabricFriendlyName;
+  final pulumi.Input<String?>? primaryFabricFriendlyName;
   /// The fabric provider of the primary fabric.
-  final pulumi.Input<String>? primaryFabricProvider;
+  final pulumi.Input<String?>? primaryFabricProvider;
   /// The name of primary protection container friendly name.
-  final pulumi.Input<String>? primaryProtectionContainerFriendlyName;
+  final pulumi.Input<String?>? primaryProtectionContainerFriendlyName;
   /// The protected item ARM Id.
-  final pulumi.Input<String>? protectableItemId;
+  final pulumi.Input<String?>? protectableItemId;
   /// The type of protected item type.
-  final pulumi.Input<String>? protectedItemType;
+  final pulumi.Input<String?>? protectedItemType;
   /// The protection status.
-  final pulumi.Input<String>? protectionState;
+  final pulumi.Input<String?>? protectionState;
   /// The protection state description.
-  final pulumi.Input<String>? protectionStateDescription;
+  final pulumi.Input<String?>? protectionStateDescription;
   /// The Replication provider custom settings.
-  final pulumi.Input<A2ACrossClusterMigrationReplicationDetailsResponse>? providerSpecificDetails;
+  final pulumi.Input<dynamic>? providerSpecificDetails;
   /// The recovery container Id.
-  final pulumi.Input<String>? recoveryContainerId;
+  final pulumi.Input<String?>? recoveryContainerId;
   /// The friendly name of recovery fabric.
-  final pulumi.Input<String>? recoveryFabricFriendlyName;
+  final pulumi.Input<String?>? recoveryFabricFriendlyName;
   /// The Arm Id of recovery fabric.
-  final pulumi.Input<String>? recoveryFabricId;
+  final pulumi.Input<String?>? recoveryFabricId;
   /// The name of recovery container friendly name.
-  final pulumi.Input<String>? recoveryProtectionContainerFriendlyName;
+  final pulumi.Input<String?>? recoveryProtectionContainerFriendlyName;
   /// The recovery provider ARM Id.
-  final pulumi.Input<String>? recoveryServicesProviderId;
+  final pulumi.Input<String?>? recoveryServicesProviderId;
   /// The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
-  final pulumi.Input<String>? replicationHealth;
+  final pulumi.Input<String?>? replicationHealth;
   /// The switch provider state.
-  final pulumi.Input<String>? switchProviderState;
+  final pulumi.Input<String?>? switchProviderState;
   /// The switch provider state description.
-  final pulumi.Input<String>? switchProviderStateDescription;
+  final pulumi.Input<String?>? switchProviderStateDescription;
   /// The Test failover state.
-  final pulumi.Input<String>? testFailoverState;
+  final pulumi.Input<String?>? testFailoverState;
   /// The Test failover state description.
-  final pulumi.Input<String>? testFailoverStateDescription;
+  final pulumi.Input<String?>? testFailoverStateDescription;
 
   /// Creates a new [ReplicationProtectedItemPropertiesResponse].
   /// [activeLocation] The Current active location of the PE.
@@ -153,7 +152,7 @@ class ReplicationProtectedItemPropertiesResponse {
       'protectedItemType': ?protectedItemType,
       'protectionState': ?protectionState,
       'protectionStateDescription': ?protectionStateDescription,
-      'providerSpecificDetails': ?pulumi.Input.mapOptionalInputValue<A2ACrossClusterMigrationReplicationDetailsResponse, Map<String, dynamic>>(providerSpecificDetails, (value) => value.toMap()),
+      'providerSpecificDetails': ?providerSpecificDetails,
       'recoveryContainerId': ?recoveryContainerId,
       'recoveryFabricFriendlyName': ?recoveryFabricFriendlyName,
       'recoveryFabricId': ?recoveryFabricId,
@@ -188,7 +187,7 @@ class ReplicationProtectedItemPropertiesResponse {
       protectedItemType: (() { final guardedValue = map['protectedItemType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protectionState: (() { final guardedValue = map['protectionState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protectionStateDescription: (() { final guardedValue = map['protectionStateDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      providerSpecificDetails: (() { final guardedValue = map['providerSpecificDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(A2ACrossClusterMigrationReplicationDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      providerSpecificDetails: (() { final guardedValue = map['providerSpecificDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       recoveryContainerId: (() { final guardedValue = map['recoveryContainerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recoveryFabricFriendlyName: (() { final guardedValue = map['recoveryFabricFriendlyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recoveryFabricId: (() { final guardedValue = map['recoveryFabricId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

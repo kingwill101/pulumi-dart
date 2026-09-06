@@ -11,9 +11,9 @@ class CategoryConfigurationResponse {
   /// IaC results.
   /// Secrets scanning results.
   /// Container scanning results.
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// Gets or sets minimum severity level for a given category.
-  final pulumi.Input<String>? minimumSeverityLevel;
+  final pulumi.Input<String?>? minimumSeverityLevel;
 
   /// Creates a new [CategoryConfigurationResponse].
   /// [category] Rule categories.

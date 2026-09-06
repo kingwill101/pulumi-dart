@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// HTTP redirection type.
-enum ApplicationGatewayRedirectType {
+enum ApplicationGatewayRedirectType implements pulumi.PulumiEnum<String> {
   valuePermanent("Permanent"),
   valueFound("Found"),
   valueSeeOther("SeeOther"),
   valueTemporary("Temporary");
 
   const ApplicationGatewayRedirectType(this.wireValue);
+  @override
   final String wireValue;
 
   static ApplicationGatewayRedirectType fromValue(String value) {

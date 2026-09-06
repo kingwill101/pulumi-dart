@@ -6,9 +6,9 @@ import 'routing_configuration.dart';
 /// Properties of the ConnectionPolicy resource.
 class ConnectionPolicyProperties {
   /// Enable internet security.
-  final pulumi.Input<bool>? enableInternetSecurity;
+  final pulumi.Input<bool?>? enableInternetSecurity;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  final pulumi.Input<RoutingConfiguration>? routingConfiguration;
+  final pulumi.Input<RoutingConfiguration?>? routingConfiguration;
 
   /// Creates a new [ConnectionPolicyProperties].
   /// [enableInternetSecurity] Enable internet security.

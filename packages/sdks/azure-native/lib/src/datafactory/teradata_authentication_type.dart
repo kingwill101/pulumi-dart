@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// AuthenticationType to be used for connection.
-enum TeradataAuthenticationType {
+enum TeradataAuthenticationType implements pulumi.PulumiEnum<String> {
   basic("Basic"),
   windows("Windows");
 
   const TeradataAuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static TeradataAuthenticationType fromValue(String value) {

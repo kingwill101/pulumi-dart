@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An API Version Set contains the common configuration for a set of API Versions relating
 class ApiVersionSetContractDetails {
   /// Description of API Version Set.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Identifier for existing API Version Set. Omit this value to create a new Version Set.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The display Name of the API Version Set.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Name of HTTP header parameter that indicates the API Version if versioningScheme is set to `header`.
-  final pulumi.Input<String>? versionHeaderName;
+  final pulumi.Input<String?>? versionHeaderName;
   /// Name of query parameter that indicates the API Version if versioningScheme is set to `query`.
-  final pulumi.Input<String>? versionQueryName;
+  final pulumi.Input<String?>? versionQueryName;
   /// An value that determines where the API Version identifier will be located in a HTTP request.
-  final pulumi.Input<String>? versioningScheme;
+  final pulumi.Input<dynamic>? versioningScheme;
 
   /// Creates a new [ApiVersionSetContractDetails].
   /// [description] Description of API Version Set.
@@ -51,7 +51,7 @@ class ApiVersionSetContractDetails {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       versionHeaderName: (() { final guardedValue = map['versionHeaderName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       versionQueryName: (() { final guardedValue = map['versionQueryName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      versioningScheme: (() { final guardedValue = map['versioningScheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      versioningScheme: (() { final guardedValue = map['versioningScheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

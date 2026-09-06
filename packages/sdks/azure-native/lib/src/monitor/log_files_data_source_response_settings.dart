@@ -6,7 +6,7 @@ import 'log_file_settings_response_text.dart';
 /// The log files specific settings.
 class LogFilesDataSourceResponseSettings {
   /// Text settings
-  final pulumi.Input<LogFileSettingsResponseText>? text;
+  final pulumi.Input<LogFileSettingsResponseText?>? text;
 
   /// Creates a new [LogFilesDataSourceResponseSettings].
   /// [text] Text settings

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Base class for file properties.
 class ProjectFilePropertiesResponse {
   /// Optional File extension. If submitted it should not have a leading period and must match the extension from filePath.
-  final pulumi.Input<String>? extension;
+  final pulumi.Input<String?>? extension;
   /// Relative path of this file resource. This property can be set when creating or updating the file resource.
-  final pulumi.Input<String>? filePath;
+  final pulumi.Input<String?>? filePath;
   /// Modification DateTime.
   final pulumi.Input<String> lastModified;
   /// File content type. This property can be modified to reflect the file content type.
-  final pulumi.Input<String>? mediaType;
+  final pulumi.Input<String?>? mediaType;
   /// File size.
   final pulumi.Input<double> size;
 
@@ -45,7 +45,7 @@ class ProjectFilePropertiesResponse {
       filePath: (() { final guardedValue = map['filePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lastModified: pulumi.Input.fromValue(map['lastModified'] as String),
       mediaType: (() { final guardedValue = map['mediaType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      size: pulumi.Input.fromValue(map['size'] as double),
+      size: pulumi.Input.fromValue((map['size'] as num).toDouble()),
     );
   }
 }

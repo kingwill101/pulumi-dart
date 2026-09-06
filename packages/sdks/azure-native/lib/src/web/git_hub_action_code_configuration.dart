@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The GitHub action code configuration.
 class GitHubActionCodeConfiguration {
   /// Runtime stack is used to determine the workflow file content for code base apps.
-  final pulumi.Input<String>? runtimeStack;
+  final pulumi.Input<String?>? runtimeStack;
   /// Runtime version is used to determine what build version to set in the workflow file.
-  final pulumi.Input<String>? runtimeVersion;
+  final pulumi.Input<String?>? runtimeVersion;
 
   /// Creates a new [GitHubActionCodeConfiguration].
   /// [runtimeStack] Runtime stack is used to determine the workflow file content for code base apps.

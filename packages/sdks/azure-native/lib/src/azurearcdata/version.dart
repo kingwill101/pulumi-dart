@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The SQL Server version the license covers.
-enum Version {
+enum Version implements pulumi.PulumiEnum<String> {
   valueSQLServer2012("SQL Server 2012"),
   valueSQLServer2014("SQL Server 2014");
 
   const Version(this.wireValue);
+  @override
   final String wireValue;
 
   static Version fromValue(String value) {

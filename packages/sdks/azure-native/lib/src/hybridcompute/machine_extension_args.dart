@@ -9,17 +9,17 @@ import 'machine_extension_properties.dart';
 /// {@macro pulumi_hybridcompute_machine_extension_args_doc}
 class MachineExtensionArgs {
   /// The name of the machine extension.
-  final pulumi.Input<String>? extensionName;
+  final pulumi.Input<String?>? extensionName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the machine where the extension should be created or updated.
   final pulumi.Input<String> machineName;
   /// Describes Machine Extension Properties.
-  final pulumi.Input<MachineExtensionProperties>? properties;
+  final pulumi.Input<MachineExtensionProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [MachineExtensionArgs].
   /// [extensionName] The name of the machine extension.

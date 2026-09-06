@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_azuredata_get_sql_server_args_doc}
 class GetSqlServerArgs {
   /// The child resources to include in the response.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the SQL Server.

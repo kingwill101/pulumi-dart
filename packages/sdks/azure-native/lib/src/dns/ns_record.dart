@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An NS record.
 class NsRecord {
   /// The name server name for this NS record.
-  final pulumi.Input<String>? nsdname;
+  final pulumi.Input<String?>? nsdname;
 
   /// Creates a new [NsRecord].
   /// [nsdname] The name server name for this NS record.

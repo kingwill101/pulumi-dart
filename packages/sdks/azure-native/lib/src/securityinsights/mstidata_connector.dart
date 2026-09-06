@@ -638,4 +638,23 @@ class MSTIDataConnector extends pulumi.CustomResource {
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [MSTIDataConnector] resource.
+  MSTIDataConnector.reference(String urn)
+    : super(
+        'azure-native:securityinsights:MSTIDataConnector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataTypes = registerOutput<MSTIDataConnectorDataTypesResponse>('dataTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MSTIDataConnectorDataTypesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String?>('etag');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+  }
 }

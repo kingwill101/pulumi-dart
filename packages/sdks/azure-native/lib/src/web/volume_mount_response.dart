@@ -6,9 +6,9 @@ class VolumeMountResponse {
   /// Target path on the container where volume is mounted on
   final pulumi.Input<String> containerMountPath;
   /// Config Data to be mounted on the volume
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   /// Boolean to specify if the mount is read only on the container
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// Sub path in the volume where volume is mounted from.
   final pulumi.Input<String> volumeSubPath;
 

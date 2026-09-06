@@ -13,33 +13,33 @@ import 'node_tolerations.dart';
 /// {@macro pulumi_iotoperationsmq_mqtt_bridge_connector_args_doc}
 class MqttBridgeConnectorArgs {
   /// The number of instances to deploy for a bridge rollout.
-  final pulumi.Input<int>? bridgeInstances;
+  final pulumi.Input<int?>? bridgeInstances;
   /// The client id prefix of the dynamically generated client ids.
-  final pulumi.Input<String>? clientIdPrefix;
+  final pulumi.Input<String?>? clientIdPrefix;
   /// Extended Location
   final pulumi.Input<ExtendedLocationProperty> extendedLocation;
   /// The details of MqttBridge Docker Image.
   final pulumi.Input<ContainerImage> image;
   /// The details for connecting with Local Broker.
-  final pulumi.Input<LocalBrokerConnectionSpec>? localBrokerConnection;
+  final pulumi.Input<LocalBrokerConnectionSpec?>? localBrokerConnection;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The log level of the Bridge Connector instances.
-  final pulumi.Input<String>? logLevel;
+  final pulumi.Input<String?>? logLevel;
   /// Name of MQ resource
   final pulumi.Input<String> mqName;
   /// Name of MQ mqttBridgeConnector resource
-  final pulumi.Input<String>? mqttBridgeConnectorName;
+  final pulumi.Input<String?>? mqttBridgeConnectorName;
   /// The Node Tolerations for the Bridge Connector pods.
-  final pulumi.Input<NodeTolerations>? nodeTolerations;
+  final pulumi.Input<NodeTolerations?>? nodeTolerations;
   /// The protocol to use for connecting with Brokers.
-  final pulumi.Input<String> protocol;
+  final pulumi.Input<dynamic> protocol;
   /// The details for connecting with Remote Broker.
   final pulumi.Input<MqttBridgeRemoteBrokerConnectionSpec> remoteBrokerConnection;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [MqttBridgeConnectorArgs].
   /// [bridgeInstances] The number of instances to deploy for a bridge rollout.
@@ -94,7 +94,7 @@ class MqttBridgeConnectorArgs {
 
   factory MqttBridgeConnectorArgs.fromMap(Map<String, dynamic> map) {
     return MqttBridgeConnectorArgs(
-      bridgeInstances: (() { final guardedValue = map['bridgeInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bridgeInstances: (() { final guardedValue = map['bridgeInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       clientIdPrefix: (() { final guardedValue = map['clientIdPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       extendedLocation: pulumi.Input.fromValue(ExtendedLocationProperty.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())),
       image: pulumi.Input.fromValue(ContainerImage.fromMap((map['image']! as Map).cast<String, dynamic>())),
@@ -104,7 +104,7 @@ class MqttBridgeConnectorArgs {
       mqName: pulumi.Input.fromValue(map['mqName'] as String),
       mqttBridgeConnectorName: (() { final guardedValue = map['mqttBridgeConnectorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeTolerations: (() { final guardedValue = map['nodeTolerations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeTolerations.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      protocol: pulumi.Input.fromValue(map['protocol']),
       remoteBrokerConnection: pulumi.Input.fromValue(MqttBridgeRemoteBrokerConnectionSpec.fromMap((map['remoteBrokerConnection']! as Map).cast<String, dynamic>())),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

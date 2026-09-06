@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'container_account_response.dart';
 import 'ou_container_args.dart';
 import 'system_data_response.dart';
 
@@ -172,7 +173,7 @@ import 'system_data_response.dart';
 /// ```
 class OuContainer extends pulumi.CustomResource {
   /// The list of container accounts
-  late final pulumi.Output<List<Map<String, dynamic>>?> accounts;
+  late final pulumi.Output<List<ContainerAccountResponse>?> accounts;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The OuContainer name
@@ -216,7 +217,7 @@ class OuContainer extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accounts = registerOutput<List<Map<String, dynamic>>?>('accounts');
+    accounts = registerOutput<List<ContainerAccountResponse>?>('accounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerAccountResponse>(guardedValue, (value) => ContainerAccountResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     containerId = registerOutput<String>('containerId');
     deploymentId = registerOutput<String>('deploymentId');
@@ -228,7 +229,33 @@ class OuContainer extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     serviceStatus = registerOutput<String>('serviceStatus');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [OuContainer] resource.
+  OuContainer.reference(String urn)
+    : super(
+        'azure-native:aad:OuContainer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accounts = registerOutput<List<ContainerAccountResponse>?>('accounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerAccountResponse>(guardedValue, (value) => ContainerAccountResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    containerId = registerOutput<String>('containerId');
+    deploymentId = registerOutput<String>('deploymentId');
+    distinguishedName = registerOutput<String>('distinguishedName');
+    domainName = registerOutput<String>('domainName');
+    etag = registerOutput<String?>('etag');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    serviceStatus = registerOutput<String>('serviceStatus');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');
   }

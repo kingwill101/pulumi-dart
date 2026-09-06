@@ -6,9 +6,9 @@ import 'vmdisk_security_profile_response.dart';
 /// The managed disk parameters.
 class ManagedDiskResponse {
   /// Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
-  final pulumi.Input<VMDiskSecurityProfileResponse>? securityProfile;
+  final pulumi.Input<VMDiskSecurityProfileResponse?>? securityProfile;
   /// The storage account type for use in creating data disks or OS disk.
-  final pulumi.Input<String>? storageAccountType;
+  final pulumi.Input<String?>? storageAccountType;
 
   /// Creates a new [ManagedDiskResponse].
   /// [securityProfile] Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.

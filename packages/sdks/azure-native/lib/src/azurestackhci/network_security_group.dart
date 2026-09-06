@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
+import 'logical_network_arm_reference_response.dart';
+import 'network_interface_arm_reference_response.dart';
 import 'network_security_group_args.dart';
 import 'network_security_group_status_response.dart';
 import 'system_data_response.dart';
@@ -163,13 +165,13 @@ class NetworkSecurityGroup extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// A collection of references to network interfaces that are currently using this NSG.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
+  late final pulumi.Output<List<NetworkInterfaceArmReferenceResponse>> networkInterfaces;
   /// The provisioning state of the network security group resource.
   late final pulumi.Output<String> provisioningState;
   /// The observed state of Network Security Group
   late final pulumi.Output<NetworkSecurityGroupStatusResponse> status;
   /// A collection of references to logical networks that are currently using this NSG
-  late final pulumi.Output<List<Map<String, dynamic>>> subnets;
+  late final pulumi.Output<List<LogicalNetworkArmReferenceResponse>> subnets;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
@@ -196,12 +198,35 @@ class NetworkSecurityGroup extends pulumi.CustomResource {
     extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
+    networkInterfaces = registerOutput<List<NetworkInterfaceArmReferenceResponse>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceArmReferenceResponse>(guardedValue, (value) => NetworkInterfaceArmReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<NetworkSecurityGroupStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkSecurityGroupStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    subnets = registerOutput<List<Map<String, dynamic>>>('subnets');
+    subnets = registerOutput<List<LogicalNetworkArmReferenceResponse>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogicalNetworkArmReferenceResponse>(guardedValue, (value) => LogicalNetworkArmReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [NetworkSecurityGroup] resource.
+  NetworkSecurityGroup.reference(String urn)
+    : super(
+        'azure-native:azurestackhci:NetworkSecurityGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eTag = registerOutput<String>('eTag');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkInterfaces = registerOutput<List<NetworkInterfaceArmReferenceResponse>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceArmReferenceResponse>(guardedValue, (value) => NetworkInterfaceArmReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<NetworkSecurityGroupStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkSecurityGroupStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subnets = registerOutput<List<LogicalNetworkArmReferenceResponse>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogicalNetworkArmReferenceResponse>(guardedValue, (value) => LogicalNetworkArmReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

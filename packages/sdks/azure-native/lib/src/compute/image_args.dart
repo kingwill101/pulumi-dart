@@ -11,21 +11,21 @@ import 'sub_resource.dart';
 /// {@macro pulumi_compute_image_args_doc}
 class ImageArgs {
   /// The extended location of the Image.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// Specifies the HyperVGenerationType of the VirtualMachine created from the image. From API Version 2019-03-01 if the image source is a blob, then we need the user to specify the value, if the source is managed resource like disk or snapshot, we may require the user to specify the property if we cannot deduce it from the source managed resource.
-  final pulumi.Input<String>? hyperVGeneration;
+  final pulumi.Input<dynamic>? hyperVGeneration;
   /// The name of the image.
-  final pulumi.Input<String>? imageName;
+  final pulumi.Input<String?>? imageName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The source virtual machine from which Image is created.
-  final pulumi.Input<SubResource>? sourceVirtualMachine;
+  final pulumi.Input<SubResource?>? sourceVirtualMachine;
   /// Specifies the storage settings for the virtual machine disks.
-  final pulumi.Input<ImageStorageProfile>? storageProfile;
+  final pulumi.Input<ImageStorageProfile?>? storageProfile;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ImageArgs].
   /// [extendedLocation] The extended location of the Image.
@@ -63,7 +63,7 @@ class ImageArgs {
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
       extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      hyperVGeneration: (() { final guardedValue = map['hyperVGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hyperVGeneration: (() { final guardedValue = map['hyperVGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       imageName: (() { final guardedValue = map['imageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

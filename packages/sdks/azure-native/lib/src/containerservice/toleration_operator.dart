@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a ClusterResourcePlacement can tolerate all taints of a particular category.
-enum TolerationOperator {
+enum TolerationOperator implements pulumi.PulumiEnum<String> {
   exists("Exists"),
   equal("Equal");
 
   const TolerationOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static TolerationOperator fromValue(String value) {

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Kafka Output Data Format Type
-enum DataFormatType {
+enum DataFormatType implements pulumi.PulumiEnum<String> {
   aVRO("AVRO"),
   jSON("JSON"),
   sTRING("STRING"),
@@ -7,6 +9,7 @@ enum DataFormatType {
   pROTOBUF("PROTOBUF");
 
   const DataFormatType(this.wireValue);
+  @override
   final String wireValue;
 
   static DataFormatType fromValue(String value) {

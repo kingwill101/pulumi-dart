@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Execution policy for an activity that supports secure input and output.
 class SecureInputOutputPolicyResponse {
   /// When set to true, Input from activity is considered as secure and will not be logged to monitoring.
-  final pulumi.Input<bool>? secureInput;
+  final pulumi.Input<bool?>? secureInput;
   /// When set to true, Output from activity is considered as secure and will not be logged to monitoring.
-  final pulumi.Input<bool>? secureOutput;
+  final pulumi.Input<bool?>? secureOutput;
 
   /// Creates a new [SecureInputOutputPolicyResponse].
   /// [secureInput] When set to true, Input from activity is considered as secure and will not be logged to monitoring.

@@ -18,35 +18,35 @@ import 'trusted_id_provider_state.dart';
 /// {@macro pulumi_datalakestore_account_args_doc}
 class AccountArgs {
   /// The name of the Data Lake Store account.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// The default owner group for all new folders and files created in the Data Lake Store account.
-  final pulumi.Input<String>? defaultGroup;
+  final pulumi.Input<String?>? defaultGroup;
   /// The Key Vault encryption configuration.
-  final pulumi.Input<EncryptionConfig>? encryptionConfig;
+  final pulumi.Input<EncryptionConfig?>? encryptionConfig;
   /// The current state of encryption for this Data Lake Store account.
-  final pulumi.Input<EncryptionState>? encryptionState;
+  final pulumi.Input<EncryptionState?>? encryptionState;
   /// The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced.
-  final pulumi.Input<FirewallAllowAzureIpsState>? firewallAllowAzureIps;
+  final pulumi.Input<FirewallAllowAzureIpsState?>? firewallAllowAzureIps;
   /// The list of firewall rules associated with this Data Lake Store account.
-  final pulumi.Input<List<CreateFirewallRuleWithAccountParameters>>? firewallRules;
+  final pulumi.Input<List<CreateFirewallRuleWithAccountParameters>?>? firewallRules;
   /// The current state of the IP address firewall for this Data Lake Store account.
-  final pulumi.Input<FirewallState>? firewallState;
+  final pulumi.Input<FirewallState?>? firewallState;
   /// The Key Vault encryption identity, if any.
-  final pulumi.Input<EncryptionIdentity>? identity;
+  final pulumi.Input<EncryptionIdentity?>? identity;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The commitment tier to use for next month.
-  final pulumi.Input<TierType>? newTier;
+  final pulumi.Input<TierType?>? newTier;
   /// The name of the Azure resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The current state of the trusted identity provider feature for this Data Lake Store account.
-  final pulumi.Input<TrustedIdProviderState>? trustedIdProviderState;
+  final pulumi.Input<TrustedIdProviderState?>? trustedIdProviderState;
   /// The list of trusted identity providers associated with this Data Lake Store account.
-  final pulumi.Input<List<CreateTrustedIdProviderWithAccountParameters>>? trustedIdProviders;
+  final pulumi.Input<List<CreateTrustedIdProviderWithAccountParameters>?>? trustedIdProviders;
   /// The list of virtual network rules associated with this Data Lake Store account.
-  final pulumi.Input<List<CreateVirtualNetworkRuleWithAccountParameters>>? virtualNetworkRules;
+  final pulumi.Input<List<CreateVirtualNetworkRuleWithAccountParameters>?>? virtualNetworkRules;
 
   /// Creates a new [AccountArgs].
   /// [accountName] The name of the Data Lake Store account.

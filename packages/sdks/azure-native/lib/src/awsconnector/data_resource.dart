@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of DataResource
 class DataResource {
   /// The resource type in which you want to log data events. You can specify AWS::S3::Object or AWS::Lambda::Function resources.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// An array of Amazon Resource Name (ARN) strings or partial ARN strings for the specified objects.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [DataResource].
   /// [type] The resource type in which you want to log data events. You can specify AWS::S3::Object or AWS::Lambda::Function resources.

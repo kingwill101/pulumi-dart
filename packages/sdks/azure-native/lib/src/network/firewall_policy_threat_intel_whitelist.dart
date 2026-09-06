@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ThreatIntel Whitelist for Firewall Policy.
 class FirewallPolicyThreatIntelWhitelist {
   /// List of FQDNs for the ThreatIntel Whitelist.
-  final pulumi.Input<List<String>>? fqdns;
+  final pulumi.Input<List<String>?>? fqdns;
   /// List of IP addresses for the ThreatIntel Whitelist.
-  final pulumi.Input<List<String>>? ipAddresses;
+  final pulumi.Input<List<String>?>? ipAddresses;
 
   /// Creates a new [FirewallPolicyThreatIntelWhitelist].
   /// [fqdns] List of FQDNs for the ThreatIntel Whitelist.

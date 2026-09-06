@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Intrusion detection signatures specification states.
 class FirewallPolicyIntrusionDetectionSignatureSpecificationResponse {
   /// Signature id.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The signature state.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
 
   /// Creates a new [FirewallPolicyIntrusionDetectionSignatureSpecificationResponse].
   /// [id] Signature id.

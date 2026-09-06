@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of GraphQLApiVisibilityEnumValue
 class GraphQLApiVisibilityEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [GraphQLApiVisibilityEnumValueResponse].
   /// [value] Property value

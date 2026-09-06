@@ -6,7 +6,7 @@ import 'cluster_resource_placement_spec_response.dart';
 /// The configuration profile for default ClusterResourcePlacement for placement.
 class PlacementProfileResponse {
   /// The default ClusterResourcePlacement policy configuration.
-  final pulumi.Input<ClusterResourcePlacementSpecResponse>? defaultClusterResourcePlacement;
+  final pulumi.Input<ClusterResourcePlacementSpecResponse?>? defaultClusterResourcePlacement;
 
   /// Creates a new [PlacementProfileResponse].
   /// [defaultClusterResourcePlacement] The default ClusterResourcePlacement policy configuration.

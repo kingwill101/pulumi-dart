@@ -8,7 +8,7 @@ class ZoneAllocationPolicyResponse {
   /// Distribution strategy used for zone allocation policy.
   final pulumi.Input<String> distributionStrategy;
   /// Zone preferences, required when zone distribution strategy is Prioritized.
-  final pulumi.Input<List<ZonePreferenceResponse>>? zonePreferences;
+  final pulumi.Input<List<ZonePreferenceResponse>?>? zonePreferences;
 
   /// Creates a new [ZoneAllocationPolicyResponse].
   /// [distributionStrategy] Distribution strategy used for zone allocation policy.

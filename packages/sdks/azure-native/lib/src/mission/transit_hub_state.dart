@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The state of the transitHub.
-enum TransitHubState {
+enum TransitHubState implements pulumi.PulumiEnum<String> {
   pendingApproval("PendingApproval"),
   approved("Approved"),
   pendingUpdate("PendingUpdate"),
@@ -7,6 +9,7 @@ enum TransitHubState {
   failed("Failed");
 
   const TransitHubState(this.wireValue);
+  @override
   final String wireValue;
 
   static TransitHubState fromValue(String value) {

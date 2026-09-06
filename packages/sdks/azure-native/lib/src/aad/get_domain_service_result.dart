@@ -13,11 +13,11 @@ import 'system_data_response.dart';
 /// Result data returned by getDomainService.
 class GetDomainServiceResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Configuration diagnostics data containing latest execution from client.
   final ConfigDiagnosticsResponse? configDiagnostics;
   /// Deployment Id
-  final String deploymentId;
+  final String? deploymentId;
   /// Domain Configuration Type
   final String? domainConfigurationType;
   /// The name of the Azure domain that the user would like to deploy Domain Services to.
@@ -29,19 +29,19 @@ class GetDomainServiceResult {
   /// Enabled or Disabled flag to turn on Group-based filtered sync
   final String? filteredSync;
   /// Resource Id
-  final String id;
+  final String? id;
   /// Secure LDAP Settings
   final LdapsSettingsResponse? ldapsSettings;
   /// Resource location
   final String? location;
   /// Migration Properties
-  final MigrationPropertiesResponse migrationProperties;
+  final MigrationPropertiesResponse? migrationProperties;
   /// Resource name
-  final String name;
+  final String? name;
   /// Notification Settings
   final NotificationSettingsResponse? notificationSettings;
   /// the current deployment or provisioning state, which only appears in the response.
-  final String provisioningState;
+  final String? provisioningState;
   /// List of ReplicaSets
   final List<ReplicaSetResponse>? replicaSets;
   /// Resource Forest Settings
@@ -49,21 +49,21 @@ class GetDomainServiceResult {
   /// Sku Type
   final String? sku;
   /// The unique sync application id of the Azure AD Domain Services deployment.
-  final String syncApplicationId;
+  final String? syncApplicationId;
   /// SyncOwner ReplicaSet Id
-  final String syncOwner;
+  final String? syncOwner;
   /// All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud
   final String? syncScope;
   /// The system meta data relating to this resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags
   final Map<String, String>? tags;
   /// Azure Active Directory Tenant Id
-  final String tenantId;
+  final String? tenantId;
   /// Resource type
-  final String type;
+  final String? type;
   /// Data Model Version
-  final int version;
+  final int? version;
 
   /// Creates a new [GetDomainServiceResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -92,94 +92,94 @@ class GetDomainServiceResult {
   /// [tenantId] Azure Active Directory Tenant Id
   /// [type] Resource type
   /// [version] Data Model Version
-  const GetDomainServiceResult({
-    required this.azureApiVersion,
+  GetDomainServiceResult({
+    this.azureApiVersion,
     this.configDiagnostics,
-    required this.deploymentId,
+    this.deploymentId,
     this.domainConfigurationType,
     this.domainName,
     this.domainSecuritySettings,
     this.etag,
     this.filteredSync,
-    required this.id,
+    this.id,
     this.ldapsSettings,
     this.location,
-    required this.migrationProperties,
-    required this.name,
+    this.migrationProperties,
+    this.name,
     this.notificationSettings,
-    required this.provisioningState,
+    this.provisioningState,
     this.replicaSets,
     this.resourceForestSettings,
     this.sku,
-    required this.syncApplicationId,
-    required this.syncOwner,
-    this.syncScope,
-    required this.systemData,
+    this.syncApplicationId,
+    this.syncOwner,
+    String? syncScope,
+    this.systemData,
     this.tags,
-    required this.tenantId,
-    required this.type,
-    required this.version,
-  });
+    this.tenantId,
+    this.type,
+    this.version,
+  }) : syncScope = syncScope ?? 'All';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'configDiagnostics': ?configDiagnostics?.toMap(),
-      'deploymentId': deploymentId,
+      'deploymentId': ?deploymentId,
       'domainConfigurationType': ?domainConfigurationType,
       'domainName': ?domainName,
       'domainSecuritySettings': ?domainSecuritySettings?.toMap(),
       'etag': ?etag,
       'filteredSync': ?filteredSync,
-      'id': id,
+      'id': ?id,
       'ldapsSettings': ?ldapsSettings?.toMap(),
       'location': ?location,
-      'migrationProperties': migrationProperties.toMap(),
-      'name': name,
+      'migrationProperties': ?migrationProperties?.toMap(),
+      'name': ?name,
       'notificationSettings': ?notificationSettings?.toMap(),
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'replicaSets': ?(() { final guardedValue = replicaSets; if (guardedValue == null) return null; return pulumi.Input.encodeList<ReplicaSetResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'resourceForestSettings': ?resourceForestSettings?.toMap(),
       'sku': ?sku,
-      'syncApplicationId': syncApplicationId,
-      'syncOwner': syncOwner,
+      'syncApplicationId': ?syncApplicationId,
+      'syncOwner': ?syncOwner,
       'syncScope': ?syncScope,
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'tenantId': tenantId,
-      'type': type,
-      'version': version,
+      'tenantId': ?tenantId,
+      'type': ?type,
+      'version': ?version,
     };
   }
 
   factory GetDomainServiceResult.fromMap(Map<String, dynamic> map) {
     return GetDomainServiceResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       configDiagnostics: (() { final guardedValue = map['configDiagnostics']; if (guardedValue == null) return null; return ConfigDiagnosticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      deploymentId: map['deploymentId'] as String,
+      deploymentId: (() { final guardedValue = map['deploymentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       domainConfigurationType: (() { final guardedValue = map['domainConfigurationType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       domainSecuritySettings: (() { final guardedValue = map['domainSecuritySettings']; if (guardedValue == null) return null; return DomainSecuritySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filteredSync: (() { final guardedValue = map['filteredSync']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ldapsSettings: (() { final guardedValue = map['ldapsSettings']; if (guardedValue == null) return null; return LdapsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      migrationProperties: MigrationPropertiesResponse.fromMap((map['migrationProperties']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
+      migrationProperties: (() { final guardedValue = map['migrationProperties']; if (guardedValue == null) return null; return MigrationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       notificationSettings: (() { final guardedValue = map['notificationSettings']; if (guardedValue == null) return null; return NotificationSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       replicaSets: (() { final guardedValue = map['replicaSets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicaSetResponse>(guardedValue, (value) => ReplicaSetResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       resourceForestSettings: (() { final guardedValue = map['resourceForestSettings']; if (guardedValue == null) return null; return ResourceForestSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      syncApplicationId: map['syncApplicationId'] as String,
-      syncOwner: map['syncOwner'] as String,
+      syncApplicationId: (() { final guardedValue = map['syncApplicationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      syncOwner: (() { final guardedValue = map['syncOwner']; if (guardedValue == null) return null; return guardedValue as String; })(),
       syncScope: (() { final guardedValue = map['syncScope']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
-      version: map['version'] as int,
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

@@ -10,17 +10,17 @@ import 'managed_cassandra_managed_service_identity.dart';
 /// {@macro pulumi_cosmosdb_garnet_cluster_args_doc}
 class GarnetClusterArgs {
   /// The name of the GarnetClusterResource
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// Identity for the resource.
-  final pulumi.Input<ManagedCassandraManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedCassandraManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<GarnetClusterResourceProperties>? properties;
+  final pulumi.Input<GarnetClusterResourceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GarnetClusterArgs].
   /// [clusterName] The name of the GarnetClusterResource

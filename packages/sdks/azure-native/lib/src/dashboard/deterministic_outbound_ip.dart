@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether a Grafana instance uses deterministic outbound IPs.
-enum DeterministicOutboundIP {
+enum DeterministicOutboundIP implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
   const DeterministicOutboundIP(this.wireValue);
+  @override
   final String wireValue;
 
   static DeterministicOutboundIP fromValue(String value) {

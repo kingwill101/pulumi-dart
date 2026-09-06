@@ -8,37 +8,37 @@ import 'system_data_response.dart';
 /// Result data returned by getStorageSyncService.
 class GetStorageSyncServiceResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The managed service identities assigned to this resource.
   final ManagedServiceIdentityResponse? identity;
   /// Incoming Traffic Policy
   final String? incomingTrafficPolicy;
   /// Resource Last Operation Name
-  final String lastOperationName;
+  final String? lastOperationName;
   /// StorageSyncService lastWorkflowId
-  final String lastWorkflowId;
+  final String? lastWorkflowId;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// List of private endpoint connection associated with the specified storage sync service
-  final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
+  final List<PrivateEndpointConnectionResponse>? privateEndpointConnections;
   /// StorageSyncService Provisioning State
-  final String provisioningState;
+  final String? provisioningState;
   /// Storage Sync service status.
-  final int storageSyncServiceStatus;
+  final int? storageSyncServiceStatus;
   /// Storage Sync service Uid
-  final String storageSyncServiceUid;
+  final String? storageSyncServiceUid;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Use Identity authorization when customer have finished setup RBAC permissions.
-  final bool useIdentity;
+  final bool? useIdentity;
 
   /// Creates a new [GetStorageSyncServiceResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -58,63 +58,63 @@ class GetStorageSyncServiceResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [useIdentity] Use Identity authorization when customer have finished setup RBAC permissions.
   const GetStorageSyncServiceResult({
-    required this.azureApiVersion,
-    required this.id,
+    this.azureApiVersion,
+    this.id,
     this.identity,
     this.incomingTrafficPolicy,
-    required this.lastOperationName,
-    required this.lastWorkflowId,
-    required this.location,
-    required this.name,
-    required this.privateEndpointConnections,
-    required this.provisioningState,
-    required this.storageSyncServiceStatus,
-    required this.storageSyncServiceUid,
-    required this.systemData,
+    this.lastOperationName,
+    this.lastWorkflowId,
+    this.location,
+    this.name,
+    this.privateEndpointConnections,
+    this.provisioningState,
+    this.storageSyncServiceStatus,
+    this.storageSyncServiceUid,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.useIdentity,
+    this.type,
+    this.useIdentity,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'incomingTrafficPolicy': ?incomingTrafficPolicy,
-      'lastOperationName': lastOperationName,
-      'lastWorkflowId': lastWorkflowId,
-      'location': location,
-      'name': name,
-      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
-      'provisioningState': provisioningState,
-      'storageSyncServiceStatus': storageSyncServiceStatus,
-      'storageSyncServiceUid': storageSyncServiceUid,
-      'systemData': systemData.toMap(),
+      'lastOperationName': ?lastOperationName,
+      'lastWorkflowId': ?lastWorkflowId,
+      'location': ?location,
+      'name': ?name,
+      'privateEndpointConnections': ?(() { final guardedValue = privateEndpointConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'provisioningState': ?provisioningState,
+      'storageSyncServiceStatus': ?storageSyncServiceStatus,
+      'storageSyncServiceUid': ?storageSyncServiceUid,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'useIdentity': useIdentity,
+      'type': ?type,
+      'useIdentity': ?useIdentity,
     };
   }
 
   factory GetStorageSyncServiceResult.fromMap(Map<String, dynamic> map) {
     return GetStorageSyncServiceResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       incomingTrafficPolicy: (() { final guardedValue = map['incomingTrafficPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      lastOperationName: map['lastOperationName'] as String,
-      lastWorkflowId: map['lastWorkflowId'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      storageSyncServiceStatus: map['storageSyncServiceStatus'] as int,
-      storageSyncServiceUid: map['storageSyncServiceUid'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      lastOperationName: (() { final guardedValue = map['lastOperationName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastWorkflowId: (() { final guardedValue = map['lastWorkflowId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageSyncServiceStatus: (() { final guardedValue = map['storageSyncServiceStatus']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      storageSyncServiceUid: (() { final guardedValue = map['storageSyncServiceUid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      useIdentity: map['useIdentity'] as bool,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      useIdentity: (() { final guardedValue = map['useIdentity']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }

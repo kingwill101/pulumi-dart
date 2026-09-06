@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The cloud that the standard is supported on.
-enum StandardSupportedClouds {
+enum StandardSupportedClouds implements pulumi.PulumiEnum<String> {
   aWS("AWS"),
   gCP("GCP");
 
   const StandardSupportedClouds(this.wireValue);
+  @override
   final String wireValue;
 
   static StandardSupportedClouds fromValue(String value) {

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Application
 class ApplicationResponse {
   /// &lt;p&gt;This option is for advanced users only. This is meta information about third-party applications that third-party vendors use for testing purposes.&lt;/p&gt;
-  final pulumi.Input<Map<String, String>>? additionalInfo;
+  final pulumi.Input<Map<String, String>?>? additionalInfo;
   /// &lt;p&gt;Arguments for Amazon EMR to pass to the application.&lt;/p&gt;
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// &lt;p&gt;The name of the application.&lt;/p&gt;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// &lt;p&gt;The version of the application.&lt;/p&gt;
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ApplicationResponse].
   /// [additionalInfo] &lt;p&gt;This option is for advanced users only. This is meta information about third-party applications that third-party vendors use for testing purposes.&lt;/p&gt;

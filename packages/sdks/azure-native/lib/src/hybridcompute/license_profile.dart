@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'error_detail_response.dart';
+import 'esu_key_response.dart';
 import 'license_profile_args.dart';
+import 'product_feature_response.dart';
 import 'system_data_response.dart';
 
 /// Describes a license profile in a hybrid machine.
@@ -241,13 +243,13 @@ class LicenseProfile extends pulumi.CustomResource {
   /// Indicates whether there is an ESU Key currently active for the machine.
   late final pulumi.Output<String> esuKeyState;
   /// The list of ESU keys.
-  late final pulumi.Output<List<Map<String, dynamic>>> esuKeys;
+  late final pulumi.Output<List<EsuKeyResponse>> esuKeys;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The list of product features.
-  late final pulumi.Output<List<Map<String, dynamic>>?> productFeatures;
+  late final pulumi.Output<List<ProductFeatureResponse>?> productFeatures;
   /// Indicates the product type of the license.
   late final pulumi.Output<String?> productType;
   /// The provisioning state, which only appears in the response.
@@ -289,17 +291,50 @@ class LicenseProfile extends pulumi.CustomResource {
     error = registerOutput<ErrorDetailResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     esuEligibility = registerOutput<String>('esuEligibility');
     esuKeyState = registerOutput<String>('esuKeyState');
-    esuKeys = registerOutput<List<Map<String, dynamic>>>('esuKeys');
+    esuKeys = registerOutput<List<EsuKeyResponse>>('esuKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EsuKeyResponse>(guardedValue, (value) => EsuKeyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    productFeatures = registerOutput<List<Map<String, dynamic>>?>('productFeatures');
+    productFeatures = registerOutput<List<ProductFeatureResponse>?>('productFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProductFeatureResponse>(guardedValue, (value) => ProductFeatureResponse.fromMap((value as Map).cast<String, dynamic>())); });
     productType = registerOutput<String?>('productType');
     provisioningState = registerOutput<String>('provisioningState');
     serverType = registerOutput<String>('serverType');
     softwareAssuranceCustomer = registerOutput<bool?>('softwareAssuranceCustomer');
     subscriptionStatus = registerOutput<String?>('subscriptionStatus');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [LicenseProfile] resource.
+  LicenseProfile.reference(String urn)
+    : super(
+        'azure-native:hybridcompute:LicenseProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assignedLicense = registerOutput<String?>('assignedLicense');
+    assignedLicenseImmutableId = registerOutput<String>('assignedLicenseImmutableId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    billingEndDate = registerOutput<String>('billingEndDate');
+    billingStartDate = registerOutput<String>('billingStartDate');
+    disenrollmentDate = registerOutput<String>('disenrollmentDate');
+    enrollmentDate = registerOutput<String>('enrollmentDate');
+    error = registerOutput<ErrorDetailResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    esuEligibility = registerOutput<String>('esuEligibility');
+    esuKeyState = registerOutput<String>('esuKeyState');
+    esuKeys = registerOutput<List<EsuKeyResponse>>('esuKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EsuKeyResponse>(guardedValue, (value) => EsuKeyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    productFeatures = registerOutput<List<ProductFeatureResponse>?>('productFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProductFeatureResponse>(guardedValue, (value) => ProductFeatureResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    productType = registerOutput<String?>('productType');
+    provisioningState = registerOutput<String>('provisioningState');
+    serverType = registerOutput<String>('serverType');
+    softwareAssuranceCustomer = registerOutput<bool?>('softwareAssuranceCustomer');
+    subscriptionStatus = registerOutput<String?>('subscriptionStatus');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

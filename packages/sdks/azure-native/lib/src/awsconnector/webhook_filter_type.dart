@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum WebhookFilterType {
+enum WebhookFilterType implements pulumi.PulumiEnum<String> {
   aCTORACCOUNTID("ACTOR_ACCOUNT_ID"),
   bASEREF("BASE_REF"),
   cOMMITMESSAGE("COMMIT_MESSAGE"),
@@ -11,6 +13,7 @@ enum WebhookFilterType {
   wORKFLOWNAME("WORKFLOW_NAME");
 
   const WebhookFilterType(this.wireValue);
+  @override
   final String wireValue;
 
   static WebhookFilterType fromValue(String value) {

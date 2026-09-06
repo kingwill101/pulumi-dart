@@ -7,11 +7,11 @@ class ActivityPolicyResponse {
   /// Maximum ordinary retry attempts. Default is 0. Type: integer (or Expression with resultType integer), minimum: 0.
   final pulumi.Input<dynamic>? retry;
   /// Interval between each retry attempt (in seconds). The default is 30 sec.
-  final pulumi.Input<int>? retryIntervalInSeconds;
+  final pulumi.Input<int?>? retryIntervalInSeconds;
   /// When set to true, Input from activity is considered as secure and will not be logged to monitoring.
-  final pulumi.Input<bool>? secureInput;
+  final pulumi.Input<bool?>? secureInput;
   /// When set to true, Output from activity is considered as secure and will not be logged to monitoring.
-  final pulumi.Input<bool>? secureOutput;
+  final pulumi.Input<bool?>? secureOutput;
   /// Specifies the timeout for the activity to run. The default timeout is 7 days. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? timeout;
 
@@ -42,7 +42,7 @@ class ActivityPolicyResponse {
   factory ActivityPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ActivityPolicyResponse(
       retry: (() { final guardedValue = map['retry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      retryIntervalInSeconds: (() { final guardedValue = map['retryIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retryIntervalInSeconds: (() { final guardedValue = map['retryIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       secureInput: (() { final guardedValue = map['secureInput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       secureOutput: (() { final guardedValue = map['secureOutput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsFirewallLogsDataSourceResponse {
   /// A friendly name for the data source.
   /// This name should be unique across all data sources (regardless of type) within the data collection rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Firewall logs streams
   final pulumi.Input<List<String>> streams;
 

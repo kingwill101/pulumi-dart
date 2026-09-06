@@ -7,7 +7,7 @@ class AsymmetricEncryptedSecretResponse {
   /// The algorithm used to encrypt "Value".
   final pulumi.Input<String> encryptionAlgorithm;
   /// Thumbprint certificate used to encrypt \"Value\". If the value is unencrypted, it will be null.
-  final pulumi.Input<String>? encryptionCertThumbprint;
+  final pulumi.Input<String?>? encryptionCertThumbprint;
   /// The value of the secret.
   final pulumi.Input<String> value;
 

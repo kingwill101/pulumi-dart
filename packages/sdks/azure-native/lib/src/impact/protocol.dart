@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Protocol used for the connection
-enum Protocol {
+enum Protocol implements pulumi.PulumiEnum<String> {
   tCP("TCP"),
   uDP("UDP"),
   hTTP("HTTP"),
@@ -10,6 +12,7 @@ enum Protocol {
   other("Other");
 
   const Protocol(this.wireValue);
+  @override
   final String wireValue;
 
   static Protocol fromValue(String value) {

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Encryption at rest settings for disk or snapshot
 class Encryption {
   /// ResourceId of the disk encryption set to use for enabling encryption at rest.
-  final pulumi.Input<String>? diskEncryptionSetId;
+  final pulumi.Input<String?>? diskEncryptionSetId;
   /// The type of key used to encrypt the data of the disk.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [Encryption].
   /// [diskEncryptionSetId] ResourceId of the disk encryption set to use for enabling encryption at rest.
@@ -27,7 +27,7 @@ class Encryption {
   factory Encryption.fromMap(Map<String, dynamic> map) {
     return Encryption(
       diskEncryptionSetId: (() { final guardedValue = map['diskEncryptionSetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

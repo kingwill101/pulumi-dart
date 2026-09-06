@@ -11,21 +11,21 @@ import 'log_configuration.dart';
 /// Properties of the Agent
 class AgentProperties {
   /// Configuration for action
-  final pulumi.Input<ActionConfiguration>? actionConfiguration;
+  final pulumi.Input<ActionConfiguration?>? actionConfiguration;
   /// Agent identity configuration for accessing resources
-  final pulumi.Input<AgentIdentity>? agentIdentity;
+  final pulumi.Input<AgentIdentity?>? agentIdentity;
   /// The agent space ID referenced by the agent
-  final pulumi.Input<String>? agentSpaceId;
+  final pulumi.Input<String?>? agentSpaceId;
   /// Default AI model configuration for the agent
-  final pulumi.Input<DefaultModel>? defaultModel;
+  final pulumi.Input<DefaultModel?>? defaultModel;
   /// Incident management configurations
-  final pulumi.Input<IncidentManagementConfiguration>? incidentManagementConfiguration;
+  final pulumi.Input<IncidentManagementConfiguration?>? incidentManagementConfiguration;
   /// Knowledge graph configuration for agent
-  final pulumi.Input<KnowledgeGraphConfiguration>? knowledgeGraphConfiguration;
+  final pulumi.Input<KnowledgeGraphConfiguration?>? knowledgeGraphConfiguration;
   /// Log configurations
-  final pulumi.Input<LogConfiguration>? logConfiguration;
+  final pulumi.Input<LogConfiguration?>? logConfiguration;
   /// The upgrade channel of the agent
-  final pulumi.Input<String>? upgradeChannel;
+  final pulumi.Input<dynamic>? upgradeChannel;
 
   /// Creates a new [AgentProperties].
   /// [actionConfiguration] Configuration for action
@@ -69,7 +69,7 @@ class AgentProperties {
       incidentManagementConfiguration: (() { final guardedValue = map['incidentManagementConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IncidentManagementConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       knowledgeGraphConfiguration: (() { final guardedValue = map['knowledgeGraphConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KnowledgeGraphConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       logConfiguration: (() { final guardedValue = map['logConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LogConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      upgradeChannel: (() { final guardedValue = map['upgradeChannel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      upgradeChannel: (() { final guardedValue = map['upgradeChannel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

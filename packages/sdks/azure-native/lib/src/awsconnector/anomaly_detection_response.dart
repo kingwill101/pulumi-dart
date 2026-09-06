@@ -7,9 +7,9 @@ import 'mitigation_in_effect_enum_enum_value_response.dart';
 /// Definition of AnomalyDetection
 class AnomalyDetectionResponse {
   /// &lt;p&gt;Indicates whether anomaly mitigation is in progress.&lt;/p&gt;
-  final pulumi.Input<MitigationInEffectEnumEnumValueResponse>? mitigationInEffect;
+  final pulumi.Input<MitigationInEffectEnumEnumValueResponse?>? mitigationInEffect;
   /// &lt;p&gt;The latest anomaly detection result.&lt;/p&gt;
-  final pulumi.Input<AnomalyResultEnumEnumValueResponse>? result;
+  final pulumi.Input<AnomalyResultEnumEnumValueResponse?>? result;
 
   /// Creates a new [AnomalyDetectionResponse].
   /// [mitigationInEffect] &lt;p&gt;Indicates whether anomaly mitigation is in progress.&lt;/p&gt;

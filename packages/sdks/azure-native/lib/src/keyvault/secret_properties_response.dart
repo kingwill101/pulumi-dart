@@ -6,15 +6,15 @@ import 'secret_attributes_response.dart';
 /// Properties of the secret
 class SecretPropertiesResponse {
   /// The attributes of the secret.
-  final pulumi.Input<SecretAttributesResponse>? attributes;
+  final pulumi.Input<SecretAttributesResponse?>? attributes;
   /// The content type of the secret.
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// The URI to retrieve the current version of the secret.
   final pulumi.Input<String> secretUri;
   /// The URI to retrieve the specific version of the secret.
   final pulumi.Input<String> secretUriWithVersion;
   /// The value of the secret. NOTE: 'value' will never be returned from the service, as APIs using this model are is intended for internal use in ARM deployments. Users should use the data-plane REST service for interaction with vault secrets.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [SecretPropertiesResponse].
   /// [attributes] The attributes of the secret.

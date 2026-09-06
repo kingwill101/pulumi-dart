@@ -230,9 +230,31 @@ class WorkloadNetworkDnsZone extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     displayName = registerOutput<String?>('displayName');
-    dnsServerIps = registerOutput<List<String>?>('dnsServerIps');
+    dnsServerIps = registerOutput<List<String>?>('dnsServerIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dnsServices = registerOutput<double?>('dnsServices');
-    domain = registerOutput<List<String>?>('domain');
+    domain = registerOutput<List<String>?>('domain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    revision = registerOutput<double?>('revision');
+    sourceIp = registerOutput<String?>('sourceIp');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [WorkloadNetworkDnsZone] resource.
+  WorkloadNetworkDnsZone.reference(String urn)
+    : super(
+        'azure-native:avs:WorkloadNetworkDnsZone',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    displayName = registerOutput<String?>('displayName');
+    dnsServerIps = registerOutput<List<String>?>('dnsServerIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dnsServices = registerOutput<double?>('dnsServices');
+    domain = registerOutput<List<String>?>('domain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     revision = registerOutput<double?>('revision');

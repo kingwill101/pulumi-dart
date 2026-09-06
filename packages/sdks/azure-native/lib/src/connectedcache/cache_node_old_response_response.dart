@@ -6,17 +6,17 @@ import 'error_detail_response.dart';
 /// Model representing Cache Node for ConnectedCache resource
 class CacheNodeOldResponseResponse {
   /// The error details
-  final pulumi.Input<ErrorDetailResponse>? error;
+  final pulumi.Input<ErrorDetailResponse?>? error;
   /// The provisioned state of the resource
   final pulumi.Input<String> provisioningState;
   /// status of the HTTP error code
   final pulumi.Input<String> status;
   /// statusCode used to get code details of Mcc response object
-  final pulumi.Input<String>? statusCode;
+  final pulumi.Input<String?>? statusCode;
   /// statusDetails used to get inner details of Mcc response object
-  final pulumi.Input<String>? statusDetails;
+  final pulumi.Input<String?>? statusDetails;
   /// statusText used to get status details in string format of Mcc response object
-  final pulumi.Input<String>? statusText;
+  final pulumi.Input<String?>? statusText;
 
   /// Creates a new [CacheNodeOldResponseResponse].
   /// [error] The error details

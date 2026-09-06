@@ -11,21 +11,21 @@ import 'sku.dart';
 /// {@macro pulumi_cdn_profile_args_doc}
 class ProfileArgs {
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
-  final pulumi.Input<ProfileLogScrubbing>? logScrubbing;
+  final pulumi.Input<ProfileLogScrubbing?>? logScrubbing;
   /// Send and receive timeout on forwarding request to the origin. When timeout is reached, the request fails and returns.
-  final pulumi.Input<int>? originResponseTimeoutSeconds;
+  final pulumi.Input<int?>? originResponseTimeoutSeconds;
   /// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
-  final pulumi.Input<String>? profileName;
+  final pulumi.Input<String?>? profileName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile.
   final pulumi.Input<Sku> sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ProfileArgs].
   /// [identity] The managed service identities assigned to this resource.
@@ -65,7 +65,7 @@ class ProfileArgs {
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       logScrubbing: (() { final guardedValue = map['logScrubbing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProfileLogScrubbing.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      originResponseTimeoutSeconds: (() { final guardedValue = map['originResponseTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      originResponseTimeoutSeconds: (() { final guardedValue = map['originResponseTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       profileName: (() { final guardedValue = map['profileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sku: pulumi.Input.fromValue(Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())),

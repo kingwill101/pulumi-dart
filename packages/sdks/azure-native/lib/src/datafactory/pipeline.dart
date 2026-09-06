@@ -11,9 +11,9 @@ import 'variable_specification_response.dart';
 /// Uses Azure REST API version 2018-06-01. In version 2.x of the Azure Native provider, it used API version 2018-06-01.
 class Pipeline extends pulumi.CustomResource {
   /// List of activities in pipeline.
-  late final pulumi.Output<List<Map<String, dynamic>>?> activities;
+  late final pulumi.Output<List<dynamic>?> activities;
   /// List of tags that can be used for describing the Pipeline.
-  late final pulumi.Output<List<Map<String, dynamic>>?> annotations;
+  late final pulumi.Output<List<dynamic>?> annotations;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The max number of concurrent runs for the pipeline.
@@ -53,8 +53,33 @@ class Pipeline extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    activities = registerOutput<List<Map<String, dynamic>>?>('activities');
-    annotations = registerOutput<List<Map<String, dynamic>>?>('annotations');
+    activities = registerOutput<List<dynamic>?>('activities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    annotations = registerOutput<List<dynamic>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    concurrency = registerOutput<int?>('concurrency');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    folder = registerOutput<PipelineFolderResponse?>('folder', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineFolderResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, ParameterSpecificationResponse>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(guardedValue, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    policy = registerOutput<PipelinePolicyResponse?>('policy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelinePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    runDimensions = registerOutput<dynamic>('runDimensions');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    variables = registerOutput<Map<String, VariableSpecificationResponse>?>('variables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<VariableSpecificationResponse>(guardedValue, (value) => VariableSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Pipeline] resource.
+  Pipeline.reference(String urn)
+    : super(
+        'azure-native:datafactory:Pipeline',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activities = registerOutput<List<dynamic>?>('activities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    annotations = registerOutput<List<dynamic>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     concurrency = registerOutput<int?>('concurrency');
     description = registerOutput<String?>('description');

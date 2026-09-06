@@ -9,13 +9,13 @@ import 'settings.dart';
 /// {@macro pulumi_migrate_business_case_operation_args_doc}
 class BusinessCaseOperationArgs {
   /// Business case ARM name
-  final pulumi.Input<String>? businessCaseName;
+  final pulumi.Input<String?>? businessCaseName;
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Business case settings.
-  final pulumi.Input<Settings>? settings;
+  final pulumi.Input<Settings?>? settings;
 
   /// Creates a new [BusinessCaseOperationArgs].
   /// [businessCaseName] Business case ARM name

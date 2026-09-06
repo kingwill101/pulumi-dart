@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Target destination.
-enum EventDestinationTarget {
+enum EventDestinationTarget implements pulumi.PulumiEnum<String> {
   mqtt("Mqtt"),
   storage("Storage");
 
   const EventDestinationTarget(this.wireValue);
+  @override
   final String wireValue;
 
   static EventDestinationTarget fromValue(String value) {

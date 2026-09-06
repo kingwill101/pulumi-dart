@@ -6,31 +6,31 @@ import 'advanced_schedule.dart';
 /// Definition of schedule parameters.
 class SUCScheduleProperties {
   /// Gets or sets the advanced schedule.
-  final pulumi.Input<AdvancedSchedule>? advancedSchedule;
+  final pulumi.Input<AdvancedSchedule?>? advancedSchedule;
   /// Gets or sets the creation time.
-  final pulumi.Input<String>? creationTime;
+  final pulumi.Input<String?>? creationTime;
   /// Gets or sets the description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Gets or sets the end time of the schedule.
-  final pulumi.Input<String>? expiryTime;
+  final pulumi.Input<String?>? expiryTime;
   /// Gets or sets the expiry time's offset in minutes.
-  final pulumi.Input<double>? expiryTimeOffsetMinutes;
+  final pulumi.Input<double?>? expiryTimeOffsetMinutes;
   /// Gets or sets the frequency of the schedule.
-  final pulumi.Input<String>? frequency;
+  final pulumi.Input<dynamic>? frequency;
   /// Gets or sets the interval of the schedule.
-  final pulumi.Input<double>? interval;
+  final pulumi.Input<double?>? interval;
   /// Gets or sets a value indicating whether this schedule is enabled.
-  final pulumi.Input<bool>? isEnabled;
+  final pulumi.Input<bool?>? isEnabled;
   /// Gets or sets the last modified time.
-  final pulumi.Input<String>? lastModifiedTime;
+  final pulumi.Input<String?>? lastModifiedTime;
   /// Gets or sets the next run time of the schedule.
-  final pulumi.Input<String>? nextRun;
+  final pulumi.Input<String?>? nextRun;
   /// Gets or sets the next run time's offset in minutes.
-  final pulumi.Input<double>? nextRunOffsetMinutes;
+  final pulumi.Input<double?>? nextRunOffsetMinutes;
   /// Gets or sets the start time of the schedule.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Gets or sets the time zone of the schedule.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [SUCScheduleProperties].
   /// [advancedSchedule] Gets or sets the advanced schedule.
@@ -86,13 +86,13 @@ class SUCScheduleProperties {
       creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expiryTime: (() { final guardedValue = map['expiryTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      expiryTimeOffsetMinutes: (() { final guardedValue = map['expiryTimeOffsetMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      expiryTimeOffsetMinutes: (() { final guardedValue = map['expiryTimeOffsetMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       isEnabled: (() { final guardedValue = map['isEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nextRun: (() { final guardedValue = map['nextRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      nextRunOffsetMinutes: (() { final guardedValue = map['nextRunOffsetMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      nextRunOffsetMinutes: (() { final guardedValue = map['nextRunOffsetMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

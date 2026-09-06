@@ -9,15 +9,15 @@ import 'access_analyzer_analyzer_properties.dart';
 /// {@macro pulumi_awsconnector_access_analyzer_analyzer_args_doc}
 class AccessAnalyzerAnalyzerArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of AccessAnalyzerAnalyzer
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<AccessAnalyzerAnalyzerProperties>? properties;
+  final pulumi.Input<AccessAnalyzerAnalyzerProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccessAnalyzerAnalyzerArgs].
   /// [location] The geo-location where the resource lives

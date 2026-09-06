@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentResourceConfigurationResponse {
   /// Optional number of instances or nodes used by the compute target.
-  final pulumi.Input<int>? instanceCount;
+  final pulumi.Input<int?>? instanceCount;
   /// Optional type of VM used as supported by the compute target.
-  final pulumi.Input<String>? instanceType;
+  final pulumi.Input<String?>? instanceType;
   /// Additional properties bag.
-  final pulumi.Input<Map<String, dynamic>>? properties;
+  final pulumi.Input<Map<String, dynamic>?>? properties;
 
   /// Creates a new [DeploymentResourceConfigurationResponse].
   /// [instanceCount] Optional number of instances or nodes used by the compute target.
   /// [instanceType] Optional type of VM used as supported by the compute target.
   /// [properties] Additional properties bag.
-  const DeploymentResourceConfigurationResponse({
-    this.instanceCount,
+  DeploymentResourceConfigurationResponse({
+    pulumi.Input<int?>? instanceCount,
     this.instanceType,
     this.properties,
-  });
+  }) : instanceCount = instanceCount ?? pulumi.Input.fromValue(1);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,7 +30,7 @@ class DeploymentResourceConfigurationResponse {
 
   factory DeploymentResourceConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentResourceConfigurationResponse(
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
     );

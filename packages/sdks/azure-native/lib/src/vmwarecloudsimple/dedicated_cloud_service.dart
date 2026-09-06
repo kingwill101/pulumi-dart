@@ -194,7 +194,27 @@ class DedicatedCloudService extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     nodes = registerOutput<int>('nodes');
     serviceURL = registerOutput<String>('serviceURL');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DedicatedCloudService] resource.
+  DedicatedCloudService.reference(String urn)
+    : super(
+        'azure-native:vmwarecloudsimple:DedicatedCloudService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    gatewaySubnet = registerOutput<String>('gatewaySubnet');
+    isAccountOnboarded = registerOutput<String>('isAccountOnboarded');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    nodes = registerOutput<int>('nodes');
+    serviceURL = registerOutput<String>('serviceURL');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

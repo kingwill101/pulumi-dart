@@ -10,23 +10,23 @@ import 'vicredential.dart';
 /// {@macro pulumi_connectedvmwarevsphere_vcenter_args_doc}
 class VCenterArgs {
   /// Username / Password Credentials to connect to vcenter.
-  final pulumi.Input<VICredential>? credentials;
+  final pulumi.Input<VICredential?>? credentials;
   /// Gets or sets the extended location.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// Gets or sets the FQDN/IPAddress of the vCenter.
   final pulumi.Input<String> fqdn;
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Gets or sets the location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Gets or sets the port of the vCenter.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// The Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Name of the vCenter.
-  final pulumi.Input<String>? vcenterName;
+  final pulumi.Input<String?>? vcenterName;
 
   /// Creates a new [VCenterArgs].
   /// [credentials] Username / Password Credentials to connect to vcenter.
@@ -71,7 +71,7 @@ class VCenterArgs {
       fqdn: pulumi.Input.fromValue(map['fqdn'] as String),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       vcenterName: (() { final guardedValue = map['vcenterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

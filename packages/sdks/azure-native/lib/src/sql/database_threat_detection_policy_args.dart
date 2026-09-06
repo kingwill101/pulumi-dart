@@ -10,29 +10,29 @@ class DatabaseThreatDetectionPolicyArgs {
   /// The name of the database for which database Threat Detection policy is defined.
   final pulumi.Input<String> databaseName;
   /// Specifies the semicolon-separated list of alerts that are disabled, or empty string to disable no alerts. Possible values: Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly; Data_Exfiltration; Unsafe_Action.
-  final pulumi.Input<String>? disabledAlerts;
+  final pulumi.Input<String?>? disabledAlerts;
   /// Specifies that the alert is sent to the account administrators.
-  final pulumi.Input<String>? emailAccountAdmins;
+  final pulumi.Input<dynamic>? emailAccountAdmins;
   /// Specifies the semicolon-separated list of e-mail addresses to which the alert is sent.
-  final pulumi.Input<String>? emailAddresses;
+  final pulumi.Input<String?>? emailAddresses;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the number of days to keep in the Threat Detection audit logs.
-  final pulumi.Input<int>? retentionDays;
+  final pulumi.Input<int?>? retentionDays;
   /// The name of the security alert policy.
-  final pulumi.Input<String>? securityAlertPolicyName;
+  final pulumi.Input<String?>? securityAlertPolicyName;
   /// The name of the server.
   final pulumi.Input<String> serverName;
   /// Specifies the state of the policy. If state is Enabled, storageEndpoint and storageAccountAccessKey are required.
-  final pulumi.Input<String> state;
+  final pulumi.Input<dynamic> state;
   /// Specifies the identifier key of the Threat Detection audit storage account. If state is Enabled, storageAccountAccessKey is required.
-  final pulumi.Input<String>? storageAccountAccessKey;
+  final pulumi.Input<String?>? storageAccountAccessKey;
   /// Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs. If state is Enabled, storageEndpoint is required.
-  final pulumi.Input<String>? storageEndpoint;
+  final pulumi.Input<String?>? storageEndpoint;
   /// Specifies whether to use the default server policy.
-  final pulumi.Input<String>? useServerDefault;
+  final pulumi.Input<dynamic>? useServerDefault;
 
   /// Creates a new [DatabaseThreatDetectionPolicyArgs].
   /// [databaseName] The name of the database for which database Threat Detection policy is defined.
@@ -86,17 +86,17 @@ class DatabaseThreatDetectionPolicyArgs {
     return DatabaseThreatDetectionPolicyArgs(
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
       disabledAlerts: (() { final guardedValue = map['disabledAlerts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      emailAccountAdmins: (() { final guardedValue = map['emailAccountAdmins']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      emailAccountAdmins: (() { final guardedValue = map['emailAccountAdmins']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       emailAddresses: (() { final guardedValue = map['emailAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       securityAlertPolicyName: (() { final guardedValue = map['securityAlertPolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
-      state: pulumi.Input.fromValue(map['state'] as String),
+      state: pulumi.Input.fromValue(map['state']),
       storageAccountAccessKey: (() { final guardedValue = map['storageAccountAccessKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageEndpoint: (() { final guardedValue = map['storageEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      useServerDefault: (() { final guardedValue = map['useServerDefault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      useServerDefault: (() { final guardedValue = map['useServerDefault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

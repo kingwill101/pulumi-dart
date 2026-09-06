@@ -11,7 +11,7 @@ class UserManagedHttpsParametersResponse {
   /// Defines the certificate source parameters using user's keyvault certificate for enabling SSL.
   final pulumi.Input<KeyVaultCertificateSourceParametersResponse> certificateSourceParameters;
   /// TLS protocol version that will be used for Https
-  final pulumi.Input<String>? minimumTlsVersion;
+  final pulumi.Input<String?>? minimumTlsVersion;
   /// Defines the TLS extension protocol that is used for secure delivery.
   final pulumi.Input<String> protocolType;
 

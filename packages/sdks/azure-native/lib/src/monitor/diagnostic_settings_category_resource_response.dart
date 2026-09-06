@@ -6,9 +6,9 @@ import 'system_data_response.dart';
 /// The diagnostic settings category resource.
 class DiagnosticSettingsCategoryResourceResponse {
   /// the collection of what category groups are supported.
-  final pulumi.Input<List<String>>? categoryGroups;
+  final pulumi.Input<List<String>?>? categoryGroups;
   /// The type of the diagnostic settings category.
-  final pulumi.Input<String>? categoryType;
+  final pulumi.Input<String?>? categoryType;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
   /// The name of the resource

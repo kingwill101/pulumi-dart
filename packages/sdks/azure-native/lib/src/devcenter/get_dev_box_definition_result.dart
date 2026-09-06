@@ -8,37 +8,37 @@ import 'system_data_response.dart';
 /// Result data returned by getDevBoxDefinition.
 class GetDevBoxDefinitionResult {
   /// Image reference information for the currently active image (only populated during updates).
-  final ImageReferenceResponse activeImageReference;
+  final ImageReferenceResponse? activeImageReference;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
   final String? hibernateSupport;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Image reference information.
-  final ImageReferenceResponse imageReference;
+  final ImageReferenceResponse? imageReference;
   /// Details for image validator error. Populated when the image validation is not successful.
-  final ImageValidationErrorDetailsResponse imageValidationErrorDetails;
+  final ImageValidationErrorDetailsResponse? imageValidationErrorDetails;
   /// Validation status of the configured image.
-  final String imageValidationStatus;
+  final String? imageValidationStatus;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The storage type used for the Operating System disk of Dev Boxes created using this definition.
   final String? osStorageType;
   /// The provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The SKU for Dev Boxes created using this definition.
-  final SkuResponse sku;
+  final SkuResponse? sku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Validation status for the Dev Box Definition.
-  final String validationStatus;
+  final String? validationStatus;
 
   /// Creates a new [GetDevBoxDefinitionResult].
   /// [activeImageReference] Image reference information for the currently active image (only populated during updates).
@@ -58,63 +58,63 @@ class GetDevBoxDefinitionResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [validationStatus] Validation status for the Dev Box Definition.
   const GetDevBoxDefinitionResult({
-    required this.activeImageReference,
-    required this.azureApiVersion,
+    this.activeImageReference,
+    this.azureApiVersion,
     this.hibernateSupport,
-    required this.id,
-    required this.imageReference,
-    required this.imageValidationErrorDetails,
-    required this.imageValidationStatus,
-    required this.location,
-    required this.name,
+    this.id,
+    this.imageReference,
+    this.imageValidationErrorDetails,
+    this.imageValidationStatus,
+    this.location,
+    this.name,
     this.osStorageType,
-    required this.provisioningState,
-    required this.sku,
-    required this.systemData,
+    this.provisioningState,
+    this.sku,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.validationStatus,
+    this.type,
+    this.validationStatus,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activeImageReference': activeImageReference.toMap(),
-      'azureApiVersion': azureApiVersion,
+      'activeImageReference': ?activeImageReference?.toMap(),
+      'azureApiVersion': ?azureApiVersion,
       'hibernateSupport': ?hibernateSupport,
-      'id': id,
-      'imageReference': imageReference.toMap(),
-      'imageValidationErrorDetails': imageValidationErrorDetails.toMap(),
-      'imageValidationStatus': imageValidationStatus,
-      'location': location,
-      'name': name,
+      'id': ?id,
+      'imageReference': ?imageReference?.toMap(),
+      'imageValidationErrorDetails': ?imageValidationErrorDetails?.toMap(),
+      'imageValidationStatus': ?imageValidationStatus,
+      'location': ?location,
+      'name': ?name,
       'osStorageType': ?osStorageType,
-      'provisioningState': provisioningState,
-      'sku': sku.toMap(),
-      'systemData': systemData.toMap(),
+      'provisioningState': ?provisioningState,
+      'sku': ?sku?.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'validationStatus': validationStatus,
+      'type': ?type,
+      'validationStatus': ?validationStatus,
     };
   }
 
   factory GetDevBoxDefinitionResult.fromMap(Map<String, dynamic> map) {
     return GetDevBoxDefinitionResult(
-      activeImageReference: ImageReferenceResponse.fromMap((map['activeImageReference']! as Map).cast<String, dynamic>()),
-      azureApiVersion: map['azureApiVersion'] as String,
+      activeImageReference: (() { final guardedValue = map['activeImageReference']; if (guardedValue == null) return null; return ImageReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       hibernateSupport: (() { final guardedValue = map['hibernateSupport']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      imageReference: ImageReferenceResponse.fromMap((map['imageReference']! as Map).cast<String, dynamic>()),
-      imageValidationErrorDetails: ImageValidationErrorDetailsResponse.fromMap((map['imageValidationErrorDetails']! as Map).cast<String, dynamic>()),
-      imageValidationStatus: map['imageValidationStatus'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      imageReference: (() { final guardedValue = map['imageReference']; if (guardedValue == null) return null; return ImageReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      imageValidationErrorDetails: (() { final guardedValue = map['imageValidationErrorDetails']; if (guardedValue == null) return null; return ImageValidationErrorDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      imageValidationStatus: (() { final guardedValue = map['imageValidationStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       osStorageType: (() { final guardedValue = map['osStorageType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
-      sku: SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      validationStatus: map['validationStatus'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      validationStatus: (() { final guardedValue = map['validationStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

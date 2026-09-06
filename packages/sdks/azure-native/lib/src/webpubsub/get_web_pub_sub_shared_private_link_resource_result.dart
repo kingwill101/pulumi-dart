@@ -5,25 +5,25 @@ import 'system_data_response.dart';
 /// Result data returned by getWebPubSubSharedPrivateLinkResource.
 class GetWebPubSubSharedPrivateLinkResourceResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The group id from the provider of resource the shared private link resource is for
-  final String groupId;
+  final String? groupId;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The resource id of the resource the shared private link resource is for
-  final String privateLinkResourceId;
+  final String? privateLinkResourceId;
   /// Provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The request message for requesting approval of the shared private link resource
   final String? requestMessage;
   /// Status of the shared private link resource
-  final String status;
+  final String? status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetWebPubSubSharedPrivateLinkResourceResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -37,45 +37,45 @@ class GetWebPubSubSharedPrivateLinkResourceResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetWebPubSubSharedPrivateLinkResourceResult({
-    required this.azureApiVersion,
-    required this.groupId,
-    required this.id,
-    required this.name,
-    required this.privateLinkResourceId,
-    required this.provisioningState,
+    this.azureApiVersion,
+    this.groupId,
+    this.id,
+    this.name,
+    this.privateLinkResourceId,
+    this.provisioningState,
     this.requestMessage,
-    required this.status,
-    required this.systemData,
-    required this.type,
+    this.status,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'groupId': groupId,
-      'id': id,
-      'name': name,
-      'privateLinkResourceId': privateLinkResourceId,
-      'provisioningState': provisioningState,
+      'azureApiVersion': ?azureApiVersion,
+      'groupId': ?groupId,
+      'id': ?id,
+      'name': ?name,
+      'privateLinkResourceId': ?privateLinkResourceId,
+      'provisioningState': ?provisioningState,
       'requestMessage': ?requestMessage,
-      'status': status,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'status': ?status,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetWebPubSubSharedPrivateLinkResourceResult.fromMap(Map<String, dynamic> map) {
     return GetWebPubSubSharedPrivateLinkResourceResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      groupId: map['groupId'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      privateLinkResourceId: map['privateLinkResourceId'] as String,
-      provisioningState: map['provisioningState'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      groupId: (() { final guardedValue = map['groupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateLinkResourceId: (() { final guardedValue = map['privateLinkResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       requestMessage: (() { final guardedValue = map['requestMessage']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BillingHubGetUsageRequestResponse {
   final pulumi.Input<String> endTimeStamp;
-  final pulumi.Input<int>? pageIndex;
-  final pulumi.Input<int>? pageSize;
+  final pulumi.Input<int?>? pageIndex;
+  final pulumi.Input<int?>? pageSize;
   final pulumi.Input<String> startTimeStamp;
 
   /// Creates a new [BillingHubGetUsageRequestResponse].
@@ -32,8 +32,8 @@ class BillingHubGetUsageRequestResponse {
   factory BillingHubGetUsageRequestResponse.fromMap(Map<String, dynamic> map) {
     return BillingHubGetUsageRequestResponse(
       endTimeStamp: pulumi.Input.fromValue(map['endTimeStamp'] as String),
-      pageIndex: (() { final guardedValue = map['pageIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      pageIndex: (() { final guardedValue = map['pageIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       startTimeStamp: pulumi.Input.fromValue(map['startTimeStamp'] as String),
     );
   }

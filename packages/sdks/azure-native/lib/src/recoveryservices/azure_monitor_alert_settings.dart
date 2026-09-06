@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings for Azure Monitor based alerts
 class AzureMonitorAlertSettings {
-  final pulumi.Input<String>? alertsForAllFailoverIssues;
-  final pulumi.Input<String>? alertsForAllJobFailures;
-  final pulumi.Input<String>? alertsForAllReplicationIssues;
+  final pulumi.Input<dynamic>? alertsForAllFailoverIssues;
+  final pulumi.Input<dynamic>? alertsForAllJobFailures;
+  final pulumi.Input<dynamic>? alertsForAllReplicationIssues;
 
   /// Creates a new [AzureMonitorAlertSettings].
   /// [alertsForAllFailoverIssues] Optional.
@@ -28,9 +28,9 @@ class AzureMonitorAlertSettings {
 
   factory AzureMonitorAlertSettings.fromMap(Map<String, dynamic> map) {
     return AzureMonitorAlertSettings(
-      alertsForAllFailoverIssues: (() { final guardedValue = map['alertsForAllFailoverIssues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      alertsForAllJobFailures: (() { final guardedValue = map['alertsForAllJobFailures']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      alertsForAllReplicationIssues: (() { final guardedValue = map['alertsForAllReplicationIssues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      alertsForAllFailoverIssues: (() { final guardedValue = map['alertsForAllFailoverIssues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      alertsForAllJobFailures: (() { final guardedValue = map['alertsForAllJobFailures']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      alertsForAllReplicationIssues: (() { final guardedValue = map['alertsForAllReplicationIssues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

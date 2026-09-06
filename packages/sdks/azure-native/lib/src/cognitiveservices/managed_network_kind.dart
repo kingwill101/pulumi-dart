@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled.
-enum ManagedNetworkKind {
+enum ManagedNetworkKind implements pulumi.PulumiEnum<String> {
   v1("V1"),
   v2("V2");
 
   const ManagedNetworkKind(this.wireValue);
+  @override
   final String wireValue;
 
   static ManagedNetworkKind fromValue(String value) {

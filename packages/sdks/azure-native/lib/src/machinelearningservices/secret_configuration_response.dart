@@ -6,9 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecretConfigurationResponse {
   /// Secret Uri.
   /// Sample Uri : https://myvault.vault.azure.net/secrets/mysecretname/secretversion
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
   /// Name of secret in workspace key vault.
-  final pulumi.Input<String>? workspaceSecretName;
+  final pulumi.Input<String?>? workspaceSecretName;
 
   /// Creates a new [SecretConfigurationResponse].
   /// [uri] Secret Uri.

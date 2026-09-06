@@ -4,70 +4,70 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkloadCrrAccessTokenResponse {
   /// Access token used for authentication
-  final pulumi.Input<String>? accessTokenString;
+  final pulumi.Input<String?>? accessTokenString;
   /// Active region name of BMS Stamp
-  final pulumi.Input<String>? bMSActiveRegion;
+  final pulumi.Input<String?>? bMSActiveRegion;
   /// Backup Management Type
-  final pulumi.Input<String>? backupManagementType;
+  final pulumi.Input<String?>? backupManagementType;
   /// Container Id
-  final pulumi.Input<String>? containerId;
+  final pulumi.Input<String?>? containerId;
   /// Container Unique name
-  final pulumi.Input<String>? containerName;
+  final pulumi.Input<String?>? containerName;
   /// Container Type
-  final pulumi.Input<String>? containerType;
+  final pulumi.Input<String?>? containerType;
   /// CoordinatorServiceStampId to be used by BCM in restore call
-  final pulumi.Input<String>? coordinatorServiceStampId;
+  final pulumi.Input<String?>? coordinatorServiceStampId;
   /// CoordinatorServiceStampUri to be used by BCM in restore call
-  final pulumi.Input<String>? coordinatorServiceStampUri;
+  final pulumi.Input<String?>? coordinatorServiceStampUri;
   /// Datasource Container Unique Name
-  final pulumi.Input<String>? datasourceContainerName;
+  final pulumi.Input<String?>? datasourceContainerName;
   /// Datasource Id
-  final pulumi.Input<String>? datasourceId;
+  final pulumi.Input<String?>? datasourceId;
   /// Datasource Friendly Name
-  final pulumi.Input<String>? datasourceName;
+  final pulumi.Input<String?>? datasourceName;
   /// Datasource Type
-  final pulumi.Input<String>? datasourceType;
+  final pulumi.Input<String?>? datasourceType;
   /// Type of the specific object - used for deserializing
   /// Expected value is 'WorkloadCrrAccessToken'.
   final pulumi.Input<String> objectType;
   /// Policy Id
-  final pulumi.Input<String>? policyId;
+  final pulumi.Input<String?>? policyId;
   /// Policy Name
-  final pulumi.Input<String>? policyName;
-  final pulumi.Input<String>? protectableObjectContainerHostOsName;
-  final pulumi.Input<String>? protectableObjectFriendlyName;
-  final pulumi.Input<String>? protectableObjectParentLogicalContainerName;
-  final pulumi.Input<String>? protectableObjectProtectionState;
-  final pulumi.Input<String>? protectableObjectUniqueName;
-  final pulumi.Input<String>? protectableObjectWorkloadType;
+  final pulumi.Input<String?>? policyName;
+  final pulumi.Input<String?>? protectableObjectContainerHostOsName;
+  final pulumi.Input<String?>? protectableObjectFriendlyName;
+  final pulumi.Input<String?>? protectableObjectParentLogicalContainerName;
+  final pulumi.Input<String?>? protectableObjectProtectionState;
+  final pulumi.Input<String?>? protectableObjectUniqueName;
+  final pulumi.Input<String?>? protectableObjectWorkloadType;
   /// Protected item container id
-  final pulumi.Input<double>? protectionContainerId;
+  final pulumi.Input<double?>? protectionContainerId;
   /// ProtectionServiceStampId to be used by BCM in restore call
-  final pulumi.Input<String>? protectionServiceStampId;
+  final pulumi.Input<String?>? protectionServiceStampId;
   /// ProtectionServiceStampUri to be used by BCM in restore call
-  final pulumi.Input<String>? protectionServiceStampUri;
+  final pulumi.Input<String?>? protectionServiceStampUri;
   /// Recovery Point Id
-  final pulumi.Input<String>? recoveryPointId;
+  final pulumi.Input<String?>? recoveryPointId;
   /// Recovery Point Time
-  final pulumi.Input<String>? recoveryPointTime;
+  final pulumi.Input<String?>? recoveryPointTime;
   /// Resource Group name of the source vault
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Resource Id of the source vault
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Resource Name of the source vault
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// Recovery point information: Managed virtual machine
-  final pulumi.Input<bool>? rpIsManagedVirtualMachine;
+  final pulumi.Input<bool?>? rpIsManagedVirtualMachine;
   /// Recovery point information: Original SA option
-  final pulumi.Input<bool>? rpOriginalSAOption;
+  final pulumi.Input<bool?>? rpOriginalSAOption;
   /// Recovery point Tier Information
-  final pulumi.Input<Map<String, String>>? rpTierInformation;
+  final pulumi.Input<Map<String, String>?>? rpTierInformation;
   /// Recovery point information: VM size description
-  final pulumi.Input<String>? rpVMSizeDescription;
+  final pulumi.Input<String?>? rpVMSizeDescription;
   /// Subscription Id of the source vault
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// Extended Information about the token like FileSpec etc.
-  final pulumi.Input<String>? tokenExtendedInformation;
+  final pulumi.Input<String?>? tokenExtendedInformation;
 
   /// Creates a new [WorkloadCrrAccessTokenResponse].
   /// [accessTokenString] Access token used for authentication
@@ -206,7 +206,7 @@ class WorkloadCrrAccessTokenResponse {
       protectableObjectProtectionState: (() { final guardedValue = map['protectableObjectProtectionState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protectableObjectUniqueName: (() { final guardedValue = map['protectableObjectUniqueName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protectableObjectWorkloadType: (() { final guardedValue = map['protectableObjectWorkloadType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      protectionContainerId: (() { final guardedValue = map['protectionContainerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      protectionContainerId: (() { final guardedValue = map['protectionContainerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       protectionServiceStampId: (() { final guardedValue = map['protectionServiceStampId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protectionServiceStampUri: (() { final guardedValue = map['protectionServiceStampUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recoveryPointId: (() { final guardedValue = map['recoveryPointId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

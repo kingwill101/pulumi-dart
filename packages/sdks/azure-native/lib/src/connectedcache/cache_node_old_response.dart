@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Model representing Cache Node for ConnectedCache resource
 class CacheNodeOldResponse {
   /// statusCode used to get code details of Mcc response object
-  final pulumi.Input<String>? statusCode;
+  final pulumi.Input<String?>? statusCode;
   /// statusDetails used to get inner details of Mcc response object
-  final pulumi.Input<String>? statusDetails;
+  final pulumi.Input<String?>? statusDetails;
   /// statusText used to get status details in string format of Mcc response object
-  final pulumi.Input<String>? statusText;
+  final pulumi.Input<String?>? statusText;
 
   /// Creates a new [CacheNodeOldResponse].
   /// [statusCode] statusCode used to get code details of Mcc response object

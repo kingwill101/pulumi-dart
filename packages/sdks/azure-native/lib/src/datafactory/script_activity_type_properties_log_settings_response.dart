@@ -8,7 +8,7 @@ class ScriptActivityTypePropertiesLogSettingsResponse {
   /// The destination of logs. Type: string.
   final pulumi.Input<String> logDestination;
   /// Log location settings customer needs to provide when enabling log.
-  final pulumi.Input<LogLocationSettingsResponse>? logLocationSettings;
+  final pulumi.Input<LogLocationSettingsResponse?>? logLocationSettings;
 
   /// Creates a new [ScriptActivityTypePropertiesLogSettingsResponse].
   /// [logDestination] The destination of logs. Type: string.

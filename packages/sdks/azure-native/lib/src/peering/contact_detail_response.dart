@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The contact detail class.
 class ContactDetailResponse {
   /// The e-mail address of the contact.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The phone number of the contact.
-  final pulumi.Input<String>? phone;
+  final pulumi.Input<String?>? phone;
   /// The role of the contact.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [ContactDetailResponse].
   /// [email] The e-mail address of the contact.

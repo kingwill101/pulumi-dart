@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'apache_tomcat_workload_instance_model_custom_properties_response.dart';
 import 'health_error_model_response.dart';
 import 'workload_instance_model_properties_response_current_job.dart';
 
@@ -11,19 +10,19 @@ class WorkloadInstanceModelPropertiesResponse {
   final pulumi.Input<List<String>> allowedOperations;
   final pulumi.Input<WorkloadInstanceModelPropertiesResponseCurrentJob> currentJob;
   /// Workload instance model custom properties.
-  final pulumi.Input<ApacheTomcatWorkloadInstanceModelCustomPropertiesResponse>? customProperties;
+  final pulumi.Input<dynamic>? customProperties;
   /// Gets or sets the display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Gets or sets the list of health errors.
   final pulumi.Input<List<HealthErrorModelResponse>> healthErrors;
   /// Gets or sets the Last successful replication cycle time.
   final pulumi.Input<String> lastSuccessfulReplicationCycleTime;
   /// Gets or Sets the master site name.
-  final pulumi.Input<String>? masterSiteName;
+  final pulumi.Input<String?>? masterSiteName;
   /// Gets or sets the migrate agent id associated with the workload instance.
-  final pulumi.Input<String>? migrateAgentId;
+  final pulumi.Input<String?>? migrateAgentId;
   /// Gets or sets the workload instance name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Gets or sets the provisioning state of the workload instance.
   final pulumi.Input<String> provisioningState;
   /// Gets or sets the replication health of the workload instance.
@@ -33,9 +32,9 @@ class WorkloadInstanceModelPropertiesResponse {
   /// Gets or sets the workload replication state description.
   final pulumi.Input<String> replicationStatusDescription;
   /// Gets or sets the source name.
-  final pulumi.Input<String>? sourceName;
+  final pulumi.Input<String?>? sourceName;
   /// Gets or sets the source platform.
-  final pulumi.Input<String>? sourcePlatform;
+  final pulumi.Input<String?>? sourcePlatform;
 
   /// Creates a new [WorkloadInstanceModelPropertiesResponse].
   /// [allowedOperations] Gets or sets the allowed scenarios on the workload instance.
@@ -75,7 +74,7 @@ class WorkloadInstanceModelPropertiesResponse {
     return <String, dynamic>{
       'allowedOperations': allowedOperations,
       'currentJob': pulumi.Input.mapInputValue<WorkloadInstanceModelPropertiesResponseCurrentJob, Map<String, dynamic>>(currentJob, (value) => value.toMap()),
-      'customProperties': ?pulumi.Input.mapOptionalInputValue<ApacheTomcatWorkloadInstanceModelCustomPropertiesResponse, Map<String, dynamic>>(customProperties, (value) => value.toMap()),
+      'customProperties': ?customProperties,
       'displayName': ?displayName,
       'healthErrors': pulumi.Input.mapInputValue<List<HealthErrorModelResponse>, List<Map<String, dynamic>>>(healthErrors, (value) => pulumi.Input.encodeList<HealthErrorModelResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lastSuccessfulReplicationCycleTime': lastSuccessfulReplicationCycleTime,
@@ -95,7 +94,7 @@ class WorkloadInstanceModelPropertiesResponse {
     return WorkloadInstanceModelPropertiesResponse(
       allowedOperations: pulumi.Input.fromValue((map['allowedOperations'] as List).cast<String>()),
       currentJob: pulumi.Input.fromValue(WorkloadInstanceModelPropertiesResponseCurrentJob.fromMap((map['currentJob']! as Map).cast<String, dynamic>())),
-      customProperties: (() { final guardedValue = map['customProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApacheTomcatWorkloadInstanceModelCustomPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      customProperties: (() { final guardedValue = map['customProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       healthErrors: pulumi.Input.fromValue(pulumi.Input.decodeList<HealthErrorModelResponse>(map['healthErrors']!, (value) => HealthErrorModelResponse.fromMap((value as Map).cast<String, dynamic>()))),
       lastSuccessfulReplicationCycleTime: pulumi.Input.fromValue(map['lastSuccessfulReplicationCycleTime'] as String),

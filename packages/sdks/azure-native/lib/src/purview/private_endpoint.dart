@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A private endpoint class.
 class PrivateEndpoint {
   /// The private endpoint identifier.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [PrivateEndpoint].
   /// [id] The private endpoint identifier.

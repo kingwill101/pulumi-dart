@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of endpoint for the virtual endpoints.
-enum VirtualEndpointType {
+enum VirtualEndpointType implements pulumi.PulumiEnum<String> {
   readWrite("ReadWrite");
 
   const VirtualEndpointType(this.wireValue);
+  @override
   final String wireValue;
 
   static VirtualEndpointType fromValue(String value) {

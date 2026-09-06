@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the Power State of the cluster
 class PowerStateResponse {
   /// Tells whether the cluster is Running or Stopped
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
 
   /// Creates a new [PowerStateResponse].
   /// [code] Tells whether the cluster is Running or Stopped

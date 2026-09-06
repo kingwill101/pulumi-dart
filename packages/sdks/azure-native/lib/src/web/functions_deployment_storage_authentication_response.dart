@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Authentication method to access the storage account for deployment.
 class FunctionsDeploymentStorageAuthenticationResponse {
   /// Use this property for StorageAccountConnectionString. Set the name of the app setting that has the storage account connection string. Do not set a value for this property when using other authentication type.
-  final pulumi.Input<String>? storageAccountConnectionStringName;
+  final pulumi.Input<String?>? storageAccountConnectionStringName;
   /// Property to select authentication type to access the selected storage account. Available options: SystemAssignedIdentity, UserAssignedIdentity, StorageAccountConnectionString.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Use this property for UserAssignedIdentity. Set the resource ID of the identity. Do not set a value for this property when using other authentication type.
-  final pulumi.Input<String>? userAssignedIdentityResourceId;
+  final pulumi.Input<String?>? userAssignedIdentityResourceId;
 
   /// Creates a new [FunctionsDeploymentStorageAuthenticationResponse].
   /// [storageAccountConnectionStringName] Use this property for StorageAccountConnectionString. Set the name of the app setting that has the storage account connection string. Do not set a value for this property when using other authentication type.

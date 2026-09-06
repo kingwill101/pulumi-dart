@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a repository.
 class RepoResponse {
   /// Array of branches.
-  final pulumi.Input<List<String>>? branches;
+  final pulumi.Input<List<String>?>? branches;
   /// The name of the repository.
-  final pulumi.Input<String>? fullName;
+  final pulumi.Input<String?>? fullName;
   /// The installation id of the repository.
-  final pulumi.Input<double>? installationId;
+  final pulumi.Input<double?>? installationId;
   /// The url to access the repository.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [RepoResponse].
   /// [branches] Array of branches.
@@ -38,7 +38,7 @@ class RepoResponse {
     return RepoResponse(
       branches: (() { final guardedValue = map['branches']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       fullName: (() { final guardedValue = map['fullName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      installationId: (() { final guardedValue = map['installationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      installationId: (() { final guardedValue = map['installationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

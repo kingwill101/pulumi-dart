@@ -6,17 +6,17 @@ import 'commitment_period.dart';
 /// Properties of Cognitive Services account commitment plan.
 class CommitmentPlanProperties {
   /// AutoRenew commitment plan.
-  final pulumi.Input<bool>? autoRenew;
+  final pulumi.Input<bool?>? autoRenew;
   /// Commitment plan guid.
-  final pulumi.Input<String>? commitmentPlanGuid;
+  final pulumi.Input<String?>? commitmentPlanGuid;
   /// Cognitive Services account commitment period.
-  final pulumi.Input<CommitmentPeriod>? current;
+  final pulumi.Input<CommitmentPeriod?>? current;
   /// Account hosting model.
-  final pulumi.Input<String>? hostingModel;
+  final pulumi.Input<dynamic>? hostingModel;
   /// Cognitive Services account commitment period.
-  final pulumi.Input<CommitmentPeriod>? next;
+  final pulumi.Input<CommitmentPeriod?>? next;
   /// Commitment plan type.
-  final pulumi.Input<String>? planType;
+  final pulumi.Input<String?>? planType;
 
   /// Creates a new [CommitmentPlanProperties].
   /// [autoRenew] AutoRenew commitment plan.
@@ -50,7 +50,7 @@ class CommitmentPlanProperties {
       autoRenew: (() { final guardedValue = map['autoRenew']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       commitmentPlanGuid: (() { final guardedValue = map['commitmentPlanGuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       current: (() { final guardedValue = map['current']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CommitmentPeriod.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      hostingModel: (() { final guardedValue = map['hostingModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostingModel: (() { final guardedValue = map['hostingModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       next: (() { final guardedValue = map['next']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CommitmentPeriod.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       planType: (() { final guardedValue = map['planType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

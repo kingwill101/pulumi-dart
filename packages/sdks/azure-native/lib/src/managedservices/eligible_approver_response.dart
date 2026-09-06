@@ -7,7 +7,7 @@ class EligibleApproverResponse {
   /// The identifier of the Azure Active Directory principal.
   final pulumi.Input<String> principalId;
   /// The display name of the Azure Active Directory principal.
-  final pulumi.Input<String>? principalIdDisplayName;
+  final pulumi.Input<String?>? principalIdDisplayName;
 
   /// Creates a new [EligibleApproverResponse].
   /// [principalId] The identifier of the Azure Active Directory principal.

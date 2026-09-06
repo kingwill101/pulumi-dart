@@ -10,7 +10,7 @@ class ScriptStatusResponse {
   /// End time of the script execution.
   final pulumi.Input<String> endTime;
   /// Error that is relayed from the script execution.
-  final pulumi.Input<ErrorDetailResponse>? error;
+  final pulumi.Input<ErrorDetailResponse?>? error;
   /// Time the deployment script resource will expire.
   final pulumi.Input<String> expirationTime;
   /// Start time of the script execution.

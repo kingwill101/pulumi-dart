@@ -22,6 +22,17 @@ Future<GetAppLinkResult> getAppLink(
   return GetAppLinkResult.fromMap(result);
 }
 
+pulumi.Output<GetAppLinkResult> getAppLinkOutput(
+  GetAppLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:applink:getAppLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppLinkResult.fromMap);
+}
+
 /// Get an AppLinkMember.
 ///
 /// Uses Azure REST API version 2025-08-01-preview.
@@ -38,4 +49,15 @@ Future<GetAppLinkMemberResult> getAppLinkMember(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAppLinkMemberResult.fromMap(result);
+}
+
+pulumi.Output<GetAppLinkMemberResult> getAppLinkMemberOutput(
+  GetAppLinkMemberArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:applink:getAppLinkMember',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppLinkMemberResult.fromMap);
 }

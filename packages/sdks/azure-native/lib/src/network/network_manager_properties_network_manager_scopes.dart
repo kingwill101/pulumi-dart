@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Scope of Network Manager.
 class NetworkManagerPropertiesNetworkManagerScopes {
   /// List of management groups.
-  final pulumi.Input<List<String>>? managementGroups;
+  final pulumi.Input<List<String>?>? managementGroups;
   /// List of subscriptions.
-  final pulumi.Input<List<String>>? subscriptions;
+  final pulumi.Input<List<String>?>? subscriptions;
 
   /// Creates a new [NetworkManagerPropertiesNetworkManagerScopes].
   /// [managementGroups] List of management groups.

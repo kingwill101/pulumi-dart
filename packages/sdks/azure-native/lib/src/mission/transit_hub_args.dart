@@ -11,17 +11,17 @@ class TransitHubArgs {
   /// The name of the communityResource Resource
   final pulumi.Input<String> communityName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The state of the transitHub.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the TransitHub Resource
-  final pulumi.Input<String>? transitHubName;
+  final pulumi.Input<String?>? transitHubName;
   /// The TransitOption of the transitHub.
-  final pulumi.Input<TransitOption>? transitOption;
+  final pulumi.Input<TransitOption?>? transitOption;
 
   /// Creates a new [TransitHubArgs].
   /// [communityName] The name of the communityResource Resource
@@ -58,7 +58,7 @@ class TransitHubArgs {
       communityName: pulumi.Input.fromValue(map['communityName'] as String),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       transitHubName: (() { final guardedValue = map['transitHubName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       transitOption: (() { final guardedValue = map['transitOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TransitOption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

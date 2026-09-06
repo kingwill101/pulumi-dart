@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The property to evaluate in an automation rule property condition.
-enum AutomationRulePropertyConditionSupportedProperty {
+enum AutomationRulePropertyConditionSupportedProperty implements pulumi.PulumiEnum<String> {
   valueIncidentTitle("IncidentTitle"),
   valueIncidentDescription("IncidentDescription"),
   valueIncidentSeverity("IncidentSeverity"),
@@ -60,6 +62,7 @@ enum AutomationRulePropertyConditionSupportedProperty {
   valueUrl("Url");
 
   const AutomationRulePropertyConditionSupportedProperty(this.wireValue);
+  @override
   final String wireValue;
 
   static AutomationRulePropertyConditionSupportedProperty fromValue(String value) {

@@ -6,13 +6,13 @@ import 'authentication_response.dart';
 /// Metadata of IoT device/IoT Edge device to be configured.
 class IoTDeviceInfoResponse {
   /// Encrypted IoT device/IoT edge device connection string.
-  final pulumi.Input<AuthenticationResponse>? authentication;
+  final pulumi.Input<AuthenticationResponse?>? authentication;
   /// ID of the IoT device/edge device.
   final pulumi.Input<String> deviceId;
   /// Host name for the IoT hub associated to the device.
   final pulumi.Input<String> ioTHostHub;
   /// Id for the IoT hub associated to the device.
-  final pulumi.Input<String>? ioTHostHubId;
+  final pulumi.Input<String?>? ioTHostHubId;
 
   /// Creates a new [IoTDeviceInfoResponse].
   /// [authentication] Encrypted IoT device/IoT edge device connection string.

@@ -9,11 +9,11 @@ class VirtualMachinePublicIPAddressConfiguration {
   /// The publicIP address configuration name.
   final pulumi.Input<String> name;
   /// Describes a virtual machines IP Configuration's PublicIPAddress configuration
-  final pulumi.Input<VirtualMachinePublicIPAddressConfigurationProperties>? properties;
+  final pulumi.Input<VirtualMachinePublicIPAddressConfigurationProperties?>? properties;
   /// Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
-  final pulumi.Input<PublicIPAddressSku>? sku;
+  final pulumi.Input<PublicIPAddressSku?>? sku;
   /// Resource tags applied to the publicIP address created by this PublicIPAddressConfiguration
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [VirtualMachinePublicIPAddressConfiguration].
   /// [name] The publicIP address configuration name.

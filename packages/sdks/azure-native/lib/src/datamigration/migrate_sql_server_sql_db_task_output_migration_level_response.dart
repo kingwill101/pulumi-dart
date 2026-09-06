@@ -22,9 +22,9 @@ class MigrateSqlServerSqlDbTaskOutputMigrationLevelResponse {
   /// Migration progress message
   final pulumi.Input<String> message;
   /// Migration Report Result, provides unique url for downloading your migration report.
-  final pulumi.Input<MigrationReportResultResponse>? migrationReportResult;
+  final pulumi.Input<MigrationReportResultResponse?>? migrationReportResult;
   /// Migration Validation Results
-  final pulumi.Input<MigrationValidationResultResponse>? migrationValidationResult;
+  final pulumi.Input<MigrationValidationResultResponse?>? migrationValidationResult;
   /// Result type
   /// Expected value is 'MigrationLevelOutput'.
   final pulumi.Input<String> resultType;
@@ -107,7 +107,7 @@ class MigrateSqlServerSqlDbTaskOutputMigrationLevelResponse {
     return MigrateSqlServerSqlDbTaskOutputMigrationLevelResponse(
       databaseSummary: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<DatabaseSummaryResultResponse>(map['databaseSummary']!, (value) => DatabaseSummaryResultResponse.fromMap((value as Map).cast<String, dynamic>()))),
       databases: pulumi.Input.fromValue((map['databases'] as Map).cast<String, String>()),
-      durationInSeconds: pulumi.Input.fromValue(map['durationInSeconds'] as double),
+      durationInSeconds: pulumi.Input.fromValue((map['durationInSeconds'] as num).toDouble()),
       endedOn: pulumi.Input.fromValue(map['endedOn'] as String),
       exceptionsAndWarnings: pulumi.Input.fromValue(pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings']!, (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))),
       id: pulumi.Input.fromValue(map['id'] as String),

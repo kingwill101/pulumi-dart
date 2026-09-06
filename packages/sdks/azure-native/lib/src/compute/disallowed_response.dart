@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the disallowed disk types.
 class DisallowedResponse {
   /// A list of disk types.
-  final pulumi.Input<List<String>>? diskTypes;
+  final pulumi.Input<List<String>?>? diskTypes;
 
   /// Creates a new [DisallowedResponse].
   /// [diskTypes] A list of disk types.

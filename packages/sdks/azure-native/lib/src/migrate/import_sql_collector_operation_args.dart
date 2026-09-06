@@ -9,11 +9,11 @@ import 'import_sql_collector_properties.dart';
 /// {@macro pulumi_migrate_import_sql_collector_operation_args_doc}
 class ImportSqlCollectorOperationArgs {
   /// Import SQL Collector arm name.
-  final pulumi.Input<String>? importSqlCollectorsName;
+  final pulumi.Input<String?>? importSqlCollectorsName;
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ImportSqlCollectorProperties>? properties;
+  final pulumi.Input<ImportSqlCollectorProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

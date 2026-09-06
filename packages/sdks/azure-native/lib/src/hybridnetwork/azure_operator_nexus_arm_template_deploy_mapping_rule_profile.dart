@@ -6,9 +6,9 @@ import 'arm_template_mapping_rule_profile.dart';
 /// Azure Operator Distributed Services template deploy mapping rule profile.
 class AzureOperatorNexusArmTemplateDeployMappingRuleProfile {
   /// The application enablement.
-  final pulumi.Input<String>? applicationEnablement;
+  final pulumi.Input<dynamic>? applicationEnablement;
   /// The template mapping rule profile.
-  final pulumi.Input<ArmTemplateMappingRuleProfile>? templateMappingRuleProfile;
+  final pulumi.Input<ArmTemplateMappingRuleProfile?>? templateMappingRuleProfile;
 
   /// Creates a new [AzureOperatorNexusArmTemplateDeployMappingRuleProfile].
   /// [applicationEnablement] The application enablement.
@@ -27,7 +27,7 @@ class AzureOperatorNexusArmTemplateDeployMappingRuleProfile {
 
   factory AzureOperatorNexusArmTemplateDeployMappingRuleProfile.fromMap(Map<String, dynamic> map) {
     return AzureOperatorNexusArmTemplateDeployMappingRuleProfile(
-      applicationEnablement: (() { final guardedValue = map['applicationEnablement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      applicationEnablement: (() { final guardedValue = map['applicationEnablement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       templateMappingRuleProfile: (() { final guardedValue = map['templateMappingRuleProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ArmTemplateMappingRuleProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes the types of schema for analytical storage.
-enum AnalyticalStorageSchemaType {
+enum AnalyticalStorageSchemaType implements pulumi.PulumiEnum<String> {
   valueWellDefined("WellDefined"),
   valueFullFidelity("FullFidelity");
 
   const AnalyticalStorageSchemaType(this.wireValue);
+  @override
   final String wireValue;
 
   static AnalyticalStorageSchemaType fromValue(String value) {

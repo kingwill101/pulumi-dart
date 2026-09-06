@@ -726,4 +726,27 @@ class VendorSkus extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [VendorSkus] resource.
+  VendorSkus.reference(String urn)
+    : super(
+        'azure-native:hybridnetwork:VendorSkus',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deploymentMode = registerOutput<String?>('deploymentMode');
+    managedApplicationParameters = registerOutput<dynamic>('managedApplicationParameters');
+    managedApplicationTemplate = registerOutput<dynamic>('managedApplicationTemplate');
+    this.name = registerOutput<String>('name');
+    networkFunctionTemplate = registerOutput<NetworkFunctionTemplateResponse?>('networkFunctionTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkFunctionTemplateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    networkFunctionType = registerOutput<String?>('networkFunctionType');
+    preview = registerOutput<bool?>('preview');
+    provisioningState = registerOutput<String>('provisioningState');
+    skuType = registerOutput<String?>('skuType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

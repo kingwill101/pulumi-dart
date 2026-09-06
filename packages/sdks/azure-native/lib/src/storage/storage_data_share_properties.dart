@@ -17,7 +17,7 @@ class StorageDataShareProperties {
   /// If provided with a non-null value, the existing assets are replaced with the specified list.
   final pulumi.Input<List<StorageDataShareAsset>> assets;
   /// Arbitrary description of this Data Share. Max 250 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
 
   /// Creates a new [StorageDataShareProperties].
   /// [accessPolicies] List of access policies that specify the permission allowed to a managed identity.

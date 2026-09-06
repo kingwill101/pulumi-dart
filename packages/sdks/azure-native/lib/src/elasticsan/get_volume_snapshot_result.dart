@@ -6,23 +6,23 @@ import 'system_data_response.dart';
 /// Result data returned by getVolumeSnapshot.
 class GetVolumeSnapshotResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Data used when creating a volume snapshot.
-  final SnapshotCreationDataResponse creationData;
+  final SnapshotCreationDataResponse? creationData;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// State of the operation on the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Size of Source Volume
-  final double sourceVolumeSizeGiB;
+  final double? sourceVolumeSizeGiB;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Source Volume Name of a snapshot
-  final String volumeName;
+  final String? volumeName;
 
   /// Creates a new [GetVolumeSnapshotResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -35,42 +35,42 @@ class GetVolumeSnapshotResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [volumeName] Source Volume Name of a snapshot
   const GetVolumeSnapshotResult({
-    required this.azureApiVersion,
-    required this.creationData,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
-    required this.sourceVolumeSizeGiB,
-    required this.systemData,
-    required this.type,
-    required this.volumeName,
+    this.azureApiVersion,
+    this.creationData,
+    this.id,
+    this.name,
+    this.provisioningState,
+    this.sourceVolumeSizeGiB,
+    this.systemData,
+    this.type,
+    this.volumeName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'creationData': creationData.toMap(),
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
-      'sourceVolumeSizeGiB': sourceVolumeSizeGiB,
-      'systemData': systemData.toMap(),
-      'type': type,
-      'volumeName': volumeName,
+      'azureApiVersion': ?azureApiVersion,
+      'creationData': ?creationData?.toMap(),
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'sourceVolumeSizeGiB': ?sourceVolumeSizeGiB,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
+      'volumeName': ?volumeName,
     };
   }
 
   factory GetVolumeSnapshotResult.fromMap(Map<String, dynamic> map) {
     return GetVolumeSnapshotResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      creationData: SnapshotCreationDataResponse.fromMap((map['creationData']! as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      sourceVolumeSizeGiB: map['sourceVolumeSizeGiB'] as double,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      volumeName: map['volumeName'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      creationData: (() { final guardedValue = map['creationData']; if (guardedValue == null) return null; return SnapshotCreationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceVolumeSizeGiB: (() { final guardedValue = map['sourceVolumeSizeGiB']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      volumeName: (() { final guardedValue = map['volumeName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

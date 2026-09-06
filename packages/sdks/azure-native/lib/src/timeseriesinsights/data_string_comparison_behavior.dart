@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which means case sensitive key comparison will be performed while joining reference data with events or while adding new reference data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used.
-enum DataStringComparisonBehavior {
+enum DataStringComparisonBehavior implements pulumi.PulumiEnum<String> {
   valueOrdinal("Ordinal"),
   valueOrdinalIgnoreCase("OrdinalIgnoreCase");
 
   const DataStringComparisonBehavior(this.wireValue);
+  @override
   final String wireValue;
 
   static DataStringComparisonBehavior fromValue(String value) {

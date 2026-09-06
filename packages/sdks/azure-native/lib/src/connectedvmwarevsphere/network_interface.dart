@@ -6,17 +6,17 @@ import 'nic_ipsettings.dart';
 /// Network Interface model
 class NetworkInterface {
   /// Gets or sets the device key value.
-  final pulumi.Input<int>? deviceKey;
+  final pulumi.Input<int?>? deviceKey;
   /// Gets or sets the ipsettings.
-  final pulumi.Input<NicIPSettings>? ipSettings;
+  final pulumi.Input<NicIPSettings?>? ipSettings;
   /// Gets or sets the name of the network interface.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Gets or sets the ARM Id of the network resource to connect the virtual machine.
-  final pulumi.Input<String>? networkId;
+  final pulumi.Input<String?>? networkId;
   /// NIC type
-  final pulumi.Input<String>? nicType;
+  final pulumi.Input<dynamic>? nicType;
   /// Gets or sets the power on boot.
-  final pulumi.Input<String>? powerOnBoot;
+  final pulumi.Input<dynamic>? powerOnBoot;
 
   /// Creates a new [NetworkInterface].
   /// [deviceKey] Gets or sets the device key value.
@@ -47,12 +47,12 @@ class NetworkInterface {
 
   factory NetworkInterface.fromMap(Map<String, dynamic> map) {
     return NetworkInterface(
-      deviceKey: (() { final guardedValue = map['deviceKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deviceKey: (() { final guardedValue = map['deviceKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipSettings: (() { final guardedValue = map['ipSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NicIPSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkId: (() { final guardedValue = map['networkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      nicType: (() { final guardedValue = map['nicType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      powerOnBoot: (() { final guardedValue = map['powerOnBoot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nicType: (() { final guardedValue = map['nicType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      powerOnBoot: (() { final guardedValue = map['powerOnBoot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of HibernationOptions
 class HibernationOptions {
   /// &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, your instance is enabled for hibernation; otherwise, it is not enabled for hibernation.&lt;/p&gt;
-  final pulumi.Input<bool>? configured;
+  final pulumi.Input<bool?>? configured;
 
   /// Creates a new [HibernationOptions].
   /// [configured] &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, your instance is enabled for hibernation; otherwise, it is not enabled for hibernation.&lt;/p&gt;

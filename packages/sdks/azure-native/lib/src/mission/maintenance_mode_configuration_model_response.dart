@@ -6,21 +6,21 @@ import 'principal_response.dart';
 /// Maintenance Mode
 class MaintenanceModeConfigurationModelResponse {
   /// Justification for entering or exiting Maintenance Mode
-  final pulumi.Input<String>? justification;
+  final pulumi.Input<String?>? justification;
   /// Current mode of Maintenance Mode Configuration
   final pulumi.Input<String> mode;
   /// The user, group or service principal object affected by Maintenance Mode
-  final pulumi.Input<List<PrincipalResponse>>? principals;
+  final pulumi.Input<List<PrincipalResponse>?>? principals;
 
   /// Creates a new [MaintenanceModeConfigurationModelResponse].
   /// [justification] Justification for entering or exiting Maintenance Mode
   /// [mode] Current mode of Maintenance Mode Configuration
   /// [principals] The user, group or service principal object affected by Maintenance Mode
-  const MaintenanceModeConfigurationModelResponse({
-    this.justification,
-    required this.mode,
+  MaintenanceModeConfigurationModelResponse({
+    pulumi.Input<String?>? justification,
+    pulumi.Input<String>? mode,
     this.principals,
-  });
+  }) : justification = justification ?? pulumi.Input.fromValue('Off'), mode = mode ?? pulumi.Input.fromValue('Off');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

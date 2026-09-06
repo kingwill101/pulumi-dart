@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Detail about the webhook object.
 class Webhook {
   /// A flag to instruct the backend service to rotate webhook secret.
-  final pulumi.Input<bool>? rotateWebhookSecret;
+  final pulumi.Input<bool?>? rotateWebhookSecret;
 
   /// Creates a new [Webhook].
   /// [rotateWebhookSecret] A flag to instruct the backend service to rotate webhook secret.

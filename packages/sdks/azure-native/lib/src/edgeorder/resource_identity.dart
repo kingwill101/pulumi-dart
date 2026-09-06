@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Msi identity details of the resource
 class ResourceIdentity {
   /// Identity type
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// User Assigned Identities
-  final pulumi.Input<List<String>>? userAssignedIdentities;
+  final pulumi.Input<List<String>?>? userAssignedIdentities;
 
   /// Creates a new [ResourceIdentity].
   /// [type] Identity type
   /// [userAssignedIdentities] User Assigned Identities
-  const ResourceIdentity({
-    this.type,
+  ResourceIdentity({
+    pulumi.Input<String?>? type,
     this.userAssignedIdentities,
-  });
+  }) : type = type ?? pulumi.Input.fromValue('None');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

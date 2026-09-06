@@ -241,4 +241,24 @@ class GatewayHostnameConfiguration extends pulumi.CustomResource {
     tls11Enabled = registerOutput<bool?>('tls11Enabled');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [GatewayHostnameConfiguration] resource.
+  GatewayHostnameConfiguration.reference(String urn)
+    : super(
+        'azure-native:apimanagement:GatewayHostnameConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    certificateId = registerOutput<String?>('certificateId');
+    hostname = registerOutput<String?>('hostname');
+    http2Enabled = registerOutput<bool?>('http2Enabled');
+    this.name = registerOutput<String>('name');
+    negotiateClientCertificate = registerOutput<bool?>('negotiateClientCertificate');
+    tls10Enabled = registerOutput<bool?>('tls10Enabled');
+    tls11Enabled = registerOutput<bool?>('tls11Enabled');
+    type = registerOutput<String>('type');
+  }
 }

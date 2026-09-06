@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_vmwarecloudsimple_dedicated_cloud_service_args_doc}
 class DedicatedCloudServiceArgs {
   /// dedicated cloud Service name
-  final pulumi.Input<String>? dedicatedCloudServiceName;
+  final pulumi.Input<String?>? dedicatedCloudServiceName;
   /// gateway Subnet for the account. It will collect the subnet address and always treat it as /28
   final pulumi.Input<String> gatewaySubnet;
   /// Azure region
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group
   final pulumi.Input<String> resourceGroupName;
   /// The list of tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DedicatedCloudServiceArgs].
   /// [dedicatedCloudServiceName] dedicated cloud Service name

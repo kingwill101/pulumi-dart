@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'management_group_diagnostic_setting_args.dart';
+import 'management_group_log_settings_response.dart';
 import 'system_data_response.dart';
 
 /// The management group diagnostic setting resource.
@@ -441,7 +442,7 @@ class ManagementGroupDiagnosticSetting extends pulumi.CustomResource {
   /// The name of the event hub. If none is specified, the default event hub will be selected.
   late final pulumi.Output<String?> eventHubName;
   /// The list of logs settings.
-  late final pulumi.Output<List<Map<String, dynamic>>?> logs;
+  late final pulumi.Output<List<ManagementGroupLogSettingsResponse>?> logs;
   /// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
   late final pulumi.Output<String?> marketplacePartnerId;
   /// The name of the resource
@@ -474,7 +475,29 @@ class ManagementGroupDiagnosticSetting extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     eventHubAuthorizationRuleId = registerOutput<String?>('eventHubAuthorizationRuleId');
     eventHubName = registerOutput<String?>('eventHubName');
-    logs = registerOutput<List<Map<String, dynamic>>?>('logs');
+    logs = registerOutput<List<ManagementGroupLogSettingsResponse>?>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagementGroupLogSettingsResponse>(guardedValue, (value) => ManagementGroupLogSettingsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    marketplacePartnerId = registerOutput<String?>('marketplacePartnerId');
+    this.name = registerOutput<String>('name');
+    serviceBusRuleId = registerOutput<String?>('serviceBusRuleId');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    workspaceId = registerOutput<String?>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [ManagementGroupDiagnosticSetting] resource.
+  ManagementGroupDiagnosticSetting.reference(String urn)
+    : super(
+        'azure-native:monitor:ManagementGroupDiagnosticSetting',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eventHubAuthorizationRuleId = registerOutput<String?>('eventHubAuthorizationRuleId');
+    eventHubName = registerOutput<String?>('eventHubName');
+    logs = registerOutput<List<ManagementGroupLogSettingsResponse>?>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagementGroupLogSettingsResponse>(guardedValue, (value) => ManagementGroupLogSettingsResponse.fromMap((value as Map).cast<String, dynamic>())); });
     marketplacePartnerId = registerOutput<String?>('marketplacePartnerId');
     this.name = registerOutput<String>('name');
     serviceBusRuleId = registerOutput<String?>('serviceBusRuleId');

@@ -7,9 +7,9 @@ import 'report_time_period_response.dart';
 /// The definition of a report.
 class ReportDefinitionResponse {
   /// Has definition for data in this report.
-  final pulumi.Input<ReportDatasetResponse>? dataset;
+  final pulumi.Input<ReportDatasetResponse?>? dataset;
   /// Has time period for pulling data for the report.
-  final pulumi.Input<ReportTimePeriodResponse>? timePeriod;
+  final pulumi.Input<ReportTimePeriodResponse?>? timePeriod;
   /// The time frame for pulling data for the report. If custom, then a specific time period must be provided.
   final pulumi.Input<String> timeframe;
   /// The type of the report.

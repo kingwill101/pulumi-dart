@@ -8,11 +8,11 @@ class InquiryValidationResponse {
   /// Error Additional Detail in case the status is non-success.
   final pulumi.Input<String> additionalDetail;
   /// Error Detail in case the status is non-success.
-  final pulumi.Input<ErrorDetailResponse>? errorDetail;
+  final pulumi.Input<ErrorDetailResponse?>? errorDetail;
   /// Dictionary to store the count of ProtectableItems with key POType.
   final pulumi.Input<dynamic> protectableItemCount;
   /// Status for the Inquiry Validation.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [InquiryValidationResponse].
   /// [additionalDetail] Error Additional Detail in case the status is non-success.

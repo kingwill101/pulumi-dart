@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Address prefix item.
 class AddressPrefixItemResponse {
   /// Address prefix.
-  final pulumi.Input<String>? addressPrefix;
+  final pulumi.Input<String?>? addressPrefix;
   /// Address prefix type.
-  final pulumi.Input<String>? addressPrefixType;
+  final pulumi.Input<String?>? addressPrefixType;
 
   /// Creates a new [AddressPrefixItemResponse].
   /// [addressPrefix] Address prefix.

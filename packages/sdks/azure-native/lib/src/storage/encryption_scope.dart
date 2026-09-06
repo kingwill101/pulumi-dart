@@ -330,4 +330,24 @@ class EncryptionScope extends pulumi.CustomResource {
     state = registerOutput<String?>('state');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [EncryptionScope] resource.
+  EncryptionScope.reference(String urn)
+    : super(
+        'azure-native:storage:EncryptionScope',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationTime = registerOutput<String>('creationTime');
+    keyVaultProperties = registerOutput<EncryptionScopeKeyVaultPropertiesResponse?>('keyVaultProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionScopeKeyVaultPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    this.name = registerOutput<String>('name');
+    requireInfrastructureEncryption = registerOutput<bool?>('requireInfrastructureEncryption');
+    source = registerOutput<String?>('source');
+    state = registerOutput<String?>('state');
+    type = registerOutput<String>('type');
+  }
 }

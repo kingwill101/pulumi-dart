@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Image registry credential.
 class ImageRegistryCredential {
   /// The password for the private registry. The password is required for create or update operations, however it is not returned in the get or list operations.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Docker image registry server, without protocol such as `http` and `https`.
   final pulumi.Input<String> server;
   /// The username for the private registry.

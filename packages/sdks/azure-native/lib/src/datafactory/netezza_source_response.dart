@@ -14,7 +14,7 @@ class NetezzaSourceResponse {
   /// The partition mechanism that will be used for Netezza read in parallel. Possible values include: "None", "DataSlice", "DynamicRange".
   final pulumi.Input<dynamic>? partitionOption;
   /// The settings that will be leveraged for Netezza source partitioning.
-  final pulumi.Input<NetezzaPartitionSettingsResponse>? partitionSettings;
+  final pulumi.Input<NetezzaPartitionSettingsResponse?>? partitionSettings;
   /// A query to retrieve data from source. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? query;
   /// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).

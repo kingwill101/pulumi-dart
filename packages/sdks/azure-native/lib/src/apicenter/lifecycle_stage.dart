@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Current lifecycle stage of the API.
-enum LifecycleStage {
+enum LifecycleStage implements pulumi.PulumiEnum<String> {
   design("design"),
   development("development"),
   testing("testing"),
@@ -9,6 +11,7 @@ enum LifecycleStage {
   retired("retired");
 
   const LifecycleStage(this.wireValue);
+  @override
   final String wireValue;
 
   static LifecycleStage fromValue(String value) {

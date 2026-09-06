@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_machinelearningservices_get_featureset_version_feature_args_doc}
 class GetFeaturesetVersionFeatureArgs {
   /// Specifies name of the feature.
-  final pulumi.Input<String>? featureName;
+  final pulumi.Input<String?>? featureName;
   /// Feature set name. This is case-sensitive.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.

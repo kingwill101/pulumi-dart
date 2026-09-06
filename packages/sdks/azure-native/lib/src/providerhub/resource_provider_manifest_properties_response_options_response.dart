@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Response options.
 class ResourceProviderManifestPropertiesResponseOptionsResponse {
-  final pulumi.Input<String>? serviceClientOptionsType;
+  final pulumi.Input<String?>? serviceClientOptionsType;
 
   /// Creates a new [ResourceProviderManifestPropertiesResponseOptionsResponse].
   /// [serviceClientOptionsType] Optional.

@@ -21,3 +21,14 @@ Future<GetFabricCapacityResult> getFabricCapacity(
   );
   return GetFabricCapacityResult.fromMap(result);
 }
+
+pulumi.Output<GetFabricCapacityResult> getFabricCapacityOutput(
+  GetFabricCapacityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:fabric:getFabricCapacity',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFabricCapacityResult.fromMap);
+}

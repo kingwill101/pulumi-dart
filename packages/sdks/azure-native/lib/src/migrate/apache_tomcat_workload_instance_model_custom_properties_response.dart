@@ -6,14 +6,14 @@ import 'apache_tomcat_web_application_response.dart';
 /// ApacheTomcat workload instance model custom properties.
 class ApacheTomcatWorkloadInstanceModelCustomPropertiesResponse {
   /// ApacheTomcat web application.
-  final pulumi.Input<ApacheTomcatWebApplicationResponse>? apacheTomcatWebApplication;
+  final pulumi.Input<ApacheTomcatWebApplicationResponse?>? apacheTomcatWebApplication;
   /// Gets or sets the instance type.
   /// Expected value is 'ApacheTomcatWorkloadInstanceModelCustomProperties'.
   final pulumi.Input<String> instanceType;
   /// Gets or sets the Web application ARM id.
-  final pulumi.Input<String>? webAppArmId;
+  final pulumi.Input<String?>? webAppArmId;
   /// Gets or sets the Web application site name.
-  final pulumi.Input<String>? webAppSiteName;
+  final pulumi.Input<String?>? webAppSiteName;
 
   /// Creates a new [ApacheTomcatWorkloadInstanceModelCustomPropertiesResponse].
   /// [apacheTomcatWebApplication] ApacheTomcat web application.

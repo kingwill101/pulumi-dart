@@ -5,20 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A2A provider specific settings.
 class A2ACrossClusterMigrationReplicationDetailsResponse {
   /// The fabric specific object Id of the virtual machine.
-  final pulumi.Input<String>? fabricObjectId;
+  final pulumi.Input<String?>? fabricObjectId;
   /// Gets the Instance type.
   /// Expected value is 'A2ACrossClusterMigration'.
   final pulumi.Input<String> instanceType;
   /// An id associated with the PE that survives actions like switch protection which change the backing PE/CPE objects internally.The lifecycle id gets carried forward to have a link/continuity in being able to have an Id that denotes the "same" protected item even though other internal Ids/ARM Id might be changing.
-  final pulumi.Input<String>? lifecycleId;
+  final pulumi.Input<String?>? lifecycleId;
   /// The type of operating system.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// Primary fabric location.
-  final pulumi.Input<String>? primaryFabricLocation;
+  final pulumi.Input<String?>? primaryFabricLocation;
   /// The protection state for the vm.
-  final pulumi.Input<String>? vmProtectionState;
+  final pulumi.Input<String?>? vmProtectionState;
   /// The protection state description for the vm.
-  final pulumi.Input<String>? vmProtectionStateDescription;
+  final pulumi.Input<String?>? vmProtectionStateDescription;
 
   /// Creates a new [A2ACrossClusterMigrationReplicationDetailsResponse].
   /// [fabricObjectId] The fabric specific object Id of the virtual machine.

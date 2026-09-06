@@ -6,9 +6,9 @@ import 'azure_machine_learning_web_service_input_column_response.dart';
 /// The inputs for the Azure Machine Learning web service endpoint.
 class AzureMachineLearningWebServiceInputsResponse {
   /// A list of input columns for the Azure Machine Learning web service endpoint.
-  final pulumi.Input<List<AzureMachineLearningWebServiceInputColumnResponse>>? columnNames;
+  final pulumi.Input<List<AzureMachineLearningWebServiceInputColumnResponse>?>? columnNames;
   /// The name of the input. This is the name provided while authoring the endpoint.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AzureMachineLearningWebServiceInputsResponse].
   /// [columnNames] A list of input columns for the Azure Machine Learning web service endpoint.

@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the underlying resource to mount as a persistent disk.
-enum Type {
+enum Type implements pulumi.PulumiEnum<String> {
   valueAzureFileVolume("AzureFileVolume");
 
   const Type(this.wireValue);
+  @override
   final String wireValue;
 
   static Type fromValue(String value) {

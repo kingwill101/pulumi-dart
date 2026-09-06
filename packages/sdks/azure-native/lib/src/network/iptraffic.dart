@@ -8,7 +8,7 @@ class IPTraffic {
   final pulumi.Input<List<String>> destinationIps;
   /// The destination ports of the traffic.
   final pulumi.Input<List<String>> destinationPorts;
-  final pulumi.Input<List<String>> protocols;
+  final pulumi.Input<List<dynamic>> protocols;
   /// List of source IP addresses of the traffic..
   final pulumi.Input<List<String>> sourceIps;
   /// The source ports of the traffic.
@@ -42,7 +42,7 @@ class IPTraffic {
     return IPTraffic(
       destinationIps: pulumi.Input.fromValue((map['destinationIps'] as List).cast<String>()),
       destinationPorts: pulumi.Input.fromValue((map['destinationPorts'] as List).cast<String>()),
-      protocols: pulumi.Input.fromValue((map['protocols'] as List).cast<String>()),
+      protocols: pulumi.Input.fromValue((map['protocols'] as List).cast<dynamic>()),
       sourceIps: pulumi.Input.fromValue((map['sourceIps'] as List).cast<String>()),
       sourcePorts: pulumi.Input.fromValue((map['sourcePorts'] as List).cast<String>()),
     );

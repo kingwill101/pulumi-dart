@@ -22,13 +22,13 @@ class GetInferenceGroupDeltaModelsStatusAsyncResult {
   /// [expectedInstanceCount] Gets or sets expected instance count.
   /// [revisionId] Gets or sets revision ID.
   /// [targetBaseModel] Gets or sets target base model.
-  const GetInferenceGroupDeltaModelsStatusAsyncResult({
-    this.actualInstanceCount,
+  GetInferenceGroupDeltaModelsStatusAsyncResult({
+    int? actualInstanceCount,
     this.deltaModels,
-    this.expectedInstanceCount,
+    int? expectedInstanceCount,
     this.revisionId,
     this.targetBaseModel,
-  });
+  }) : actualInstanceCount = actualInstanceCount ?? 0, expectedInstanceCount = expectedInstanceCount ?? 0;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,9 +42,9 @@ class GetInferenceGroupDeltaModelsStatusAsyncResult {
 
   factory GetInferenceGroupDeltaModelsStatusAsyncResult.fromMap(Map<String, dynamic> map) {
     return GetInferenceGroupDeltaModelsStatusAsyncResult(
-      actualInstanceCount: (() { final guardedValue = map['actualInstanceCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      actualInstanceCount: (() { final guardedValue = map['actualInstanceCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       deltaModels: (() { final guardedValue = map['deltaModels']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<DeltaModelCurrentStateResponse>>(guardedValue, (value) => pulumi.Input.decodeList<DeltaModelCurrentStateResponse>(value, (value) => DeltaModelCurrentStateResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      expectedInstanceCount: (() { final guardedValue = map['expectedInstanceCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      expectedInstanceCount: (() { final guardedValue = map['expectedInstanceCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       revisionId: (() { final guardedValue = map['revisionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       targetBaseModel: (() { final guardedValue = map['targetBaseModel']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

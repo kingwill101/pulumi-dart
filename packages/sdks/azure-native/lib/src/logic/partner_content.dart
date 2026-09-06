@@ -6,7 +6,7 @@ import 'b2_bpartner_content.dart';
 /// The integration account partner content.
 class PartnerContent {
   /// The B2B partner content.
-  final pulumi.Input<B2BPartnerContent>? b2b;
+  final pulumi.Input<B2BPartnerContent?>? b2b;
 
   /// Creates a new [PartnerContent].
   /// [b2b] The B2B partner content.

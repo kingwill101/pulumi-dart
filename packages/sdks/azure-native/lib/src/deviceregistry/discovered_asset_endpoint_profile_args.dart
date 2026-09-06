@@ -9,9 +9,9 @@ import 'extended_location.dart';
 /// {@macro pulumi_deviceregistry_discovered_asset_endpoint_profile_args_doc}
 class DiscoveredAssetEndpointProfileArgs {
   /// Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
-  final pulumi.Input<String>? additionalConfiguration;
+  final pulumi.Input<String?>? additionalConfiguration;
   /// Discovered Asset Endpoint Profile name parameter.
-  final pulumi.Input<String>? discoveredAssetEndpointProfileName;
+  final pulumi.Input<String?>? discoveredAssetEndpointProfileName;
   /// Identifier used to detect changes in the asset endpoint profile.
   final pulumi.Input<String> discoveryId;
   /// Defines the configuration for the connector type that is being used with the endpoint profile.
@@ -19,13 +19,13 @@ class DiscoveredAssetEndpointProfileArgs {
   /// The extended location.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// List of supported authentication methods supported by the target server.
-  final pulumi.Input<List<String>>? supportedAuthenticationMethods;
+  final pulumi.Input<List<dynamic>?>? supportedAuthenticationMethods;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
   final pulumi.Input<String> targetAddress;
   /// An integer that is incremented each time the resource is modified.
@@ -82,10 +82,10 @@ class DiscoveredAssetEndpointProfileArgs {
       extendedLocation: pulumi.Input.fromValue(ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      supportedAuthenticationMethods: (() { final guardedValue = map['supportedAuthenticationMethods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      supportedAuthenticationMethods: (() { final guardedValue = map['supportedAuthenticationMethods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       targetAddress: pulumi.Input.fromValue(map['targetAddress'] as String),
-      version: pulumi.Input.fromValue(map['version'] as double),
+      version: pulumi.Input.fromValue((map['version'] as num).toDouble()),
     );
   }
 }

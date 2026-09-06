@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_virtual_router_peering_args_doc}
 class VirtualRouterPeeringArgs {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the virtual router peering that is unique within a virtual router.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Peer ASN.
-  final pulumi.Input<double>? peerAsn;
+  final pulumi.Input<double?>? peerAsn;
   /// Peer IP.
-  final pulumi.Input<String>? peerIp;
+  final pulumi.Input<String?>? peerIp;
   /// The name of the Virtual Router Peering.
-  final pulumi.Input<String>? peeringName;
+  final pulumi.Input<String?>? peeringName;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Virtual Router.
@@ -56,7 +56,7 @@ class VirtualRouterPeeringArgs {
     return VirtualRouterPeeringArgs(
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      peerAsn: (() { final guardedValue = map['peerAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      peerAsn: (() { final guardedValue = map['peerAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       peerIp: (() { final guardedValue = map['peerIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       peeringName: (() { final guardedValue = map['peeringName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

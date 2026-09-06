@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The zone redundancy setting of the Grafana instance.
-enum ZoneRedundancy {
+enum ZoneRedundancy implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
   const ZoneRedundancy(this.wireValue);
+  @override
   final String wireValue;
 
   static ZoneRedundancy fromValue(String value) {

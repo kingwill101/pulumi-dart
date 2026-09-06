@@ -8,15 +8,15 @@ import 'sub_resource.dart';
 /// SSL profile of an application gateway.
 class ApplicationGatewaySslProfile {
   /// Client authentication configuration of the application gateway resource.
-  final pulumi.Input<ApplicationGatewayClientAuthConfiguration>? clientAuthConfiguration;
+  final pulumi.Input<ApplicationGatewayClientAuthConfiguration?>? clientAuthConfiguration;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the SSL profile that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// SSL policy of the application gateway resource.
-  final pulumi.Input<ApplicationGatewaySslPolicy>? sslPolicy;
+  final pulumi.Input<ApplicationGatewaySslPolicy?>? sslPolicy;
   /// Array of references to application gateway trusted client certificates.
-  final pulumi.Input<List<SubResource>>? trustedClientCertificates;
+  final pulumi.Input<List<SubResource>?>? trustedClientCertificates;
 
   /// Creates a new [ApplicationGatewaySslProfile].
   /// [clientAuthConfiguration] Client authentication configuration of the application gateway resource.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// User assigned managed identity associated with a server.
 class UserIdentity {
   /// Identifier of the client of the service principal associated to the user assigned managed identity.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Identifier of the object of the service principal associated to the user assigned managed identity.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
 
   /// Creates a new [UserIdentity].
   /// [clientId] Identifier of the client of the service principal associated to the user assigned managed identity.

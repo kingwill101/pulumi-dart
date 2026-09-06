@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Profile for how to handle networking for Lab Plans.
 class LabPlanNetworkProfile {
   /// The external subnet resource id
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [LabPlanNetworkProfile].
   /// [subnetId] The external subnet resource id

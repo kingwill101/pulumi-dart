@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Partner region information for the failover group.
 class PartnerRegionInfo {
   /// Geo location of the partner managed instances.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
 
   /// Creates a new [PartnerRegionInfo].
   /// [location] Geo location of the partner managed instances.

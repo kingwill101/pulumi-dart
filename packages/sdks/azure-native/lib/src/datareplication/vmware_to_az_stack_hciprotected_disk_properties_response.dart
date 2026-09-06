@@ -72,7 +72,7 @@ class VMwareToAzStackHCIProtectedDiskPropertiesResponse {
 
   factory VMwareToAzStackHCIProtectedDiskPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VMwareToAzStackHCIProtectedDiskPropertiesResponse(
-      capacityInBytes: pulumi.Input.fromValue(map['capacityInBytes'] as double),
+      capacityInBytes: pulumi.Input.fromValue((map['capacityInBytes'] as num).toDouble()),
       diskType: pulumi.Input.fromValue(map['diskType'] as String),
       isDynamic: pulumi.Input.fromValue(map['isDynamic'] as bool),
       isOsDisk: pulumi.Input.fromValue(map['isOsDisk'] as bool),

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Define a match condition
 class RulesEngineMatchConditionResponse {
   /// Describes if this is negate condition or not
-  final pulumi.Input<bool>? negateCondition;
+  final pulumi.Input<bool?>? negateCondition;
   /// Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
   final pulumi.Input<List<String>> rulesEngineMatchValue;
   /// Match Variable
@@ -13,9 +13,9 @@ class RulesEngineMatchConditionResponse {
   /// Describes operator to apply to the match condition.
   final pulumi.Input<String> rulesEngineOperator;
   /// Name of selector in RequestHeader or RequestBody to be matched
-  final pulumi.Input<String>? selector;
+  final pulumi.Input<String?>? selector;
   /// List of transforms
-  final pulumi.Input<List<String>>? transforms;
+  final pulumi.Input<List<String>?>? transforms;
 
   /// Creates a new [RulesEngineMatchConditionResponse].
   /// [negateCondition] Describes if this is negate condition or not

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Parameter to pass to ARM template
 class ArmTemplateParameterResponse {
   /// name of the parameter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// value for the parameter. In Jtoken
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ArmTemplateParameterResponse].
   /// [name] name of the parameter.

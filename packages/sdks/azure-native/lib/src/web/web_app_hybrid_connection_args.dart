@@ -8,30 +8,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_web_web_app_hybrid_connection_args_doc}
 class WebAppHybridConnectionArgs {
   /// The hostname of the endpoint.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The name of the web app.
   final pulumi.Input<String> name;
   /// The namespace for this hybrid connection.
   final pulumi.Input<String> namespaceName;
   /// The port of the endpoint.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// The ARM URI to the Service Bus relay.
-  final pulumi.Input<String>? relayArmUri;
+  final pulumi.Input<String?>? relayArmUri;
   /// The name of the Service Bus relay.
-  final pulumi.Input<String>? relayName;
+  final pulumi.Input<String?>? relayName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Service Bus key which has Send permissions. This is used to authenticate to Service Bus.
-  final pulumi.Input<String>? sendKeyName;
+  final pulumi.Input<String?>? sendKeyName;
   /// The value of the Service Bus key. This is used to authenticate to Service Bus. In ARM this key will not be returned
   /// normally, use the POST /listKeys API instead.
-  final pulumi.Input<String>? sendKeyValue;
+  final pulumi.Input<String?>? sendKeyValue;
   /// The name of the Service Bus namespace.
-  final pulumi.Input<String>? serviceBusNamespace;
+  final pulumi.Input<String?>? serviceBusNamespace;
   /// The suffix for the service bus endpoint. By default this is .servicebus.windows.net
-  final pulumi.Input<String>? serviceBusSuffix;
+  final pulumi.Input<String?>? serviceBusSuffix;
 
   /// Creates a new [WebAppHybridConnectionArgs].
   /// [hostname] The hostname of the endpoint.
@@ -84,7 +84,7 @@ class WebAppHybridConnectionArgs {
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       relayArmUri: (() { final guardedValue = map['relayArmUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       relayName: (() { final guardedValue = map['relayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

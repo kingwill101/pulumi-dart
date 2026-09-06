@@ -217,4 +217,23 @@ class WorkspaceApiVersionSet extends pulumi.CustomResource {
     versionQueryName = registerOutput<String?>('versionQueryName');
     versioningScheme = registerOutput<String>('versioningScheme');
   }
+
+  /// Creates a typed reference to an existing [WorkspaceApiVersionSet] resource.
+  WorkspaceApiVersionSet.reference(String urn)
+    : super(
+        'azure-native:apimanagement:WorkspaceApiVersionSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+    versionHeaderName = registerOutput<String?>('versionHeaderName');
+    versionQueryName = registerOutput<String?>('versionQueryName');
+    versioningScheme = registerOutput<String>('versioningScheme');
+  }
 }

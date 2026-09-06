@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The service endpoint properties.
 class ServiceEndpoint {
   /// A list of locations.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// The type of the endpoint service.
   final pulumi.Input<String> service;
 

@@ -14,25 +14,25 @@ class GalleryImageVersionArgs {
   /// The name of the gallery image definition to be retrieved.
   final pulumi.Input<String> galleryImageName;
   /// The name of the gallery image version to be retrieved.
-  final pulumi.Input<String>? galleryImageVersionName;
+  final pulumi.Input<String?>? galleryImageVersionName;
   /// The name of the Shared Image Gallery.
   final pulumi.Input<String> galleryName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The publishing profile of a gallery image Version.
-  final pulumi.Input<GalleryImageVersionPublishingProfile>? publishingProfile;
+  final pulumi.Input<GalleryImageVersionPublishingProfile?>? publishingProfile;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Indicates if this is a soft-delete resource restoration request.
-  final pulumi.Input<bool>? restore;
+  final pulumi.Input<bool?>? restore;
   /// This is the safety profile of the Gallery Image Version.
-  final pulumi.Input<GalleryImageVersionSafetyProfile>? safetyProfile;
+  final pulumi.Input<GalleryImageVersionSafetyProfile?>? safetyProfile;
   /// The security profile of a gallery image version
-  final pulumi.Input<ImageVersionSecurityProfile>? securityProfile;
+  final pulumi.Input<ImageVersionSecurityProfile?>? securityProfile;
   /// This is the storage profile of a Gallery Image Version.
   final pulumi.Input<GalleryImageVersionStorageProfile> storageProfile;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GalleryImageVersionArgs].
   /// [galleryImageName] The name of the gallery image definition to be retrieved.

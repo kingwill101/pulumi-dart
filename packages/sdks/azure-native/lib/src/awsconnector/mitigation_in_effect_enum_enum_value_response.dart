@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of MitigationInEffectEnumEnumValue
 class MitigationInEffectEnumEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [MitigationInEffectEnumEnumValueResponse].
   /// [value] Property value

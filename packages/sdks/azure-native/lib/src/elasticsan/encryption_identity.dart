@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Encryption identity for the volume group.
 class EncryptionIdentity {
   /// Resource identifier of the UserAssigned identity to be associated with server-side encryption on the volume group.
-  final pulumi.Input<String>? encryptionUserAssignedIdentity;
+  final pulumi.Input<String?>? encryptionUserAssignedIdentity;
 
   /// Creates a new [EncryptionIdentity].
   /// [encryptionUserAssignedIdentity] Resource identifier of the UserAssigned identity to be associated with server-side encryption on the volume group.

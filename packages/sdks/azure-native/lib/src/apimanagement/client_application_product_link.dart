@@ -191,4 +191,19 @@ class ClientApplicationProductLink extends pulumi.CustomResource {
     productId = registerOutput<String>('productId');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ClientApplicationProductLink] resource.
+  ClientApplicationProductLink.reference(String urn)
+    : super(
+        'azure-native:apimanagement:ClientApplicationProductLink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    productId = registerOutput<String>('productId');
+    type = registerOutput<String>('type');
+  }
 }

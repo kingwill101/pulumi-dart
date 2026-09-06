@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of a managed network Outbound Rule of a machine learning workspace.
-enum RuleStatus {
+enum RuleStatus implements pulumi.PulumiEnum<String> {
   inactive("Inactive"),
   active("Active"),
   provisioning("Provisioning"),
@@ -7,6 +9,7 @@ enum RuleStatus {
   failed("Failed");
 
   const RuleStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static RuleStatus fromValue(String value) {

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Cognitive Services account commitment quota.
 class CommitmentQuotaResponse {
   /// Commitment quota quantity.
-  final pulumi.Input<double>? quantity;
+  final pulumi.Input<double?>? quantity;
   /// Commitment quota unit.
-  final pulumi.Input<String>? unit;
+  final pulumi.Input<String?>? unit;
 
   /// Creates a new [CommitmentQuotaResponse].
   /// [quantity] Commitment quota quantity.
@@ -26,7 +26,7 @@ class CommitmentQuotaResponse {
 
   factory CommitmentQuotaResponse.fromMap(Map<String, dynamic> map) {
     return CommitmentQuotaResponse(
-      quantity: (() { final guardedValue = map['quantity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      quantity: (() { final guardedValue = map['quantity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       unit: (() { final guardedValue = map['unit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -9,22 +9,22 @@ import 'parameter_value.dart';
 /// {@macro pulumi_blueprint_template_artifact_args_doc}
 class TemplateArtifactArgs {
   /// Name of the blueprint artifact.
-  final pulumi.Input<String>? artifactName;
+  final pulumi.Input<String?>? artifactName;
   /// Name of the blueprint definition.
   final pulumi.Input<String> blueprintName;
   /// Artifacts which need to be deployed before the specified artifact.
-  final pulumi.Input<List<String>>? dependsOn;
+  final pulumi.Input<List<String>?>? dependsOn;
   /// Multi-line explain this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// One-liner string explain this resource.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Specifies the kind of blueprint artifact.
   /// Expected value is 'template'.
   final pulumi.Input<String> kind;
   /// Resource Manager template blueprint artifact parameter values.
   final pulumi.Input<Map<String, ParameterValue>> parameters;
   /// If applicable, the name of the resource group placeholder to which the Resource Manager template blueprint artifact will be deployed.
-  final pulumi.Input<String>? resourceGroup;
+  final pulumi.Input<String?>? resourceGroup;
   /// The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   final pulumi.Input<String> resourceScope;
   /// The Resource Manager template blueprint artifact body.

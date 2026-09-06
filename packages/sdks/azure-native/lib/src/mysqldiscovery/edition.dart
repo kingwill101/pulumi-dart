@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// mysql server edition.
-enum Edition {
+enum Edition implements pulumi.PulumiEnum<String> {
   valueCommunity("Community"),
   valueEnterprise("Enterprise");
 
   const Edition(this.wireValue);
+  @override
   final String wireValue;
 
   static Edition fromValue(String value) {

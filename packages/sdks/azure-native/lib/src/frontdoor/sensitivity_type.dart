@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes the override sensitivity to be applied when rule matches.
-enum SensitivityType {
+enum SensitivityType implements pulumi.PulumiEnum<String> {
   low("Low"),
   medium("Medium"),
   high("High");
 
   const SensitivityType(this.wireValue);
+  @override
   final String wireValue;
 
   static SensitivityType fromValue(String value) {

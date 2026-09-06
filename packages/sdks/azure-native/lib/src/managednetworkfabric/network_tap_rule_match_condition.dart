@@ -8,15 +8,15 @@ import 'vlan_match_condition.dart';
 /// Defines the match condition that is supported to filter the traffic.
 class NetworkTapRuleMatchCondition {
   /// Encapsulation Type that needs to be matched.
-  final pulumi.Input<String>? encapsulationType;
+  final pulumi.Input<dynamic>? encapsulationType;
   /// IP condition that needs to be matched.
-  final pulumi.Input<IpMatchCondition>? ipCondition;
+  final pulumi.Input<IpMatchCondition?>? ipCondition;
   /// Defines the port condition that needs to be matched.
-  final pulumi.Input<PortCondition>? portCondition;
+  final pulumi.Input<PortCondition?>? portCondition;
   /// List of the protocols that need to be matched.
-  final pulumi.Input<List<String>>? protocolTypes;
+  final pulumi.Input<List<String>?>? protocolTypes;
   /// Vlan match condition that needs to be matched.
-  final pulumi.Input<VlanMatchCondition>? vlanMatchCondition;
+  final pulumi.Input<VlanMatchCondition?>? vlanMatchCondition;
 
   /// Creates a new [NetworkTapRuleMatchCondition].
   /// [encapsulationType] Encapsulation Type that needs to be matched.
@@ -24,13 +24,13 @@ class NetworkTapRuleMatchCondition {
   /// [portCondition] Defines the port condition that needs to be matched.
   /// [protocolTypes] List of the protocols that need to be matched.
   /// [vlanMatchCondition] Vlan match condition that needs to be matched.
-  const NetworkTapRuleMatchCondition({
-    this.encapsulationType,
+  NetworkTapRuleMatchCondition({
+    pulumi.Input<dynamic>? encapsulationType,
     this.ipCondition,
     this.portCondition,
     this.protocolTypes,
     this.vlanMatchCondition,
-  });
+  }) : encapsulationType = encapsulationType ?? pulumi.Input.fromValue('None');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,7 +44,7 @@ class NetworkTapRuleMatchCondition {
 
   factory NetworkTapRuleMatchCondition.fromMap(Map<String, dynamic> map) {
     return NetworkTapRuleMatchCondition(
-      encapsulationType: (() { final guardedValue = map['encapsulationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encapsulationType: (() { final guardedValue = map['encapsulationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       ipCondition: (() { final guardedValue = map['ipCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IpMatchCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       portCondition: (() { final guardedValue = map['portCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PortCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       protocolTypes: (() { final guardedValue = map['protocolTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the property.
-enum PropertyType {
+enum PropertyType implements pulumi.PulumiEnum<String> {
   valueString("String");
 
   const PropertyType(this.wireValue);
+  @override
   final String wireValue;
 
   static PropertyType fromValue(String value) {

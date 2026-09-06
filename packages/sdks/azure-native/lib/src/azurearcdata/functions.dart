@@ -46,6 +46,17 @@ Future<GetActiveDirectoryConnectorResult> getActiveDirectoryConnector(
   return GetActiveDirectoryConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetActiveDirectoryConnectorResult> getActiveDirectoryConnectorOutput(
+  GetActiveDirectoryConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurearcdata:getActiveDirectoryConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetActiveDirectoryConnectorResult.fromMap);
+}
+
 /// Retrieves a dataController resource
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
@@ -64,6 +75,17 @@ Future<GetDataControllerResult> getDataController(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDataControllerResult.fromMap(result);
+}
+
+pulumi.Output<GetDataControllerResult> getDataControllerOutput(
+  GetDataControllerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurearcdata:getDataController',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataControllerResult.fromMap);
 }
 
 /// Retrieves a failover group resource
@@ -86,6 +108,17 @@ Future<GetFailoverGroupResult> getFailoverGroup(
   return GetFailoverGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetFailoverGroupResult> getFailoverGroupOutput(
+  GetFailoverGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurearcdata:getFailoverGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFailoverGroupResult.fromMap);
+}
+
 /// Retrieves a postgres Instance resource
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
@@ -104,6 +137,17 @@ Future<GetPostgresInstanceResult> getPostgresInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPostgresInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetPostgresInstanceResult> getPostgresInstanceOutput(
+  GetPostgresInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurearcdata:getPostgresInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPostgresInstanceResult.fromMap);
 }
 
 /// Retrieves a SQL Managed Instance resource
@@ -126,6 +170,17 @@ Future<GetSqlManagedInstanceResult> getSqlManagedInstance(
   return GetSqlManagedInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlManagedInstanceResult> getSqlManagedInstanceOutput(
+  GetSqlManagedInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurearcdata:getSqlManagedInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlManagedInstanceResult.fromMap);
+}
+
 /// Retrieves an Arc Sql Server availability group.
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
@@ -144,6 +199,17 @@ Future<GetSqlServerAvailabilityGroupResult> getSqlServerAvailabilityGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSqlServerAvailabilityGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetSqlServerAvailabilityGroupResult> getSqlServerAvailabilityGroupOutput(
+  GetSqlServerAvailabilityGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurearcdata:getSqlServerAvailabilityGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlServerAvailabilityGroupResult.fromMap);
 }
 
 /// Retrieves detailed properties of the Availability Group.
@@ -166,6 +232,17 @@ Future<GetSqlServerAvailabilityGroupDetailViewResult> getSqlServerAvailabilityGr
   return GetSqlServerAvailabilityGroupDetailViewResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlServerAvailabilityGroupDetailViewResult> getSqlServerAvailabilityGroupDetailViewOutput(
+  GetSqlServerAvailabilityGroupDetailViewArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurearcdata:getSqlServerAvailabilityGroupDetailView',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlServerAvailabilityGroupDetailViewResult.fromMap);
+}
+
 /// Retrieves an Arc Sql Server database.
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
@@ -184,6 +261,17 @@ Future<GetSqlServerDatabaseResult> getSqlServerDatabase(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSqlServerDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetSqlServerDatabaseResult> getSqlServerDatabaseOutput(
+  GetSqlServerDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurearcdata:getSqlServerDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlServerDatabaseResult.fromMap);
 }
 
 /// Retrieves a SQL Server ESU license resource
@@ -206,6 +294,17 @@ Future<GetSqlServerEsuLicenseResult> getSqlServerEsuLicense(
   return GetSqlServerEsuLicenseResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlServerEsuLicenseResult> getSqlServerEsuLicenseOutput(
+  GetSqlServerEsuLicenseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurearcdata:getSqlServerEsuLicense',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlServerEsuLicenseResult.fromMap);
+}
+
 /// Retrieves a SQL Server Instance resource
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
@@ -224,6 +323,17 @@ Future<GetSqlServerInstanceResult> getSqlServerInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSqlServerInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetSqlServerInstanceResult> getSqlServerInstanceOutput(
+  GetSqlServerInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurearcdata:getSqlServerInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlServerInstanceResult.fromMap);
 }
 
 /// Gets jobs status details for sql arc resource
@@ -246,6 +356,17 @@ Future<GetSqlServerInstanceJobsStatusResult> getSqlServerInstanceJobsStatus(
   return GetSqlServerInstanceJobsStatusResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlServerInstanceJobsStatusResult> getSqlServerInstanceJobsStatusOutput(
+  GetSqlServerInstanceJobsStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurearcdata:getSqlServerInstanceJobsStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlServerInstanceJobsStatusResult.fromMap);
+}
+
 /// Retrieves SQL Server instance telemetry
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
@@ -266,6 +387,17 @@ Future<GetSqlServerInstanceTelemetryResult> getSqlServerInstanceTelemetry(
   return GetSqlServerInstanceTelemetryResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlServerInstanceTelemetryResult> getSqlServerInstanceTelemetryOutput(
+  GetSqlServerInstanceTelemetryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurearcdata:getSqlServerInstanceTelemetry',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlServerInstanceTelemetryResult.fromMap);
+}
+
 /// Retrieves a SQL Server license resource
 ///
 /// Uses Azure REST API version 2025-03-01-preview.
@@ -284,4 +416,15 @@ Future<GetSqlServerLicenseResult> getSqlServerLicense(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSqlServerLicenseResult.fromMap(result);
+}
+
+pulumi.Output<GetSqlServerLicenseResult> getSqlServerLicenseOutput(
+  GetSqlServerLicenseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurearcdata:getSqlServerLicense',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlServerLicenseResult.fromMap);
 }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information regarding how the subnet to which the gateway should be injected.
 class BackendSubnetConfiguration {
   /// The ARM ID of the subnet in which the backend systems are hosted.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [BackendSubnetConfiguration].
   /// [id] The ARM ID of the subnet in which the backend systems are hosted.

@@ -6,23 +6,23 @@ import 'aws_ec2_ipam_properties_response.dart';
 /// Definition of Ec2Ipam
 class Ec2IpamPropertiesResponse {
   /// Amazon Resource Name (ARN)
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// AWS Account ID
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// AWS Properties
-  final pulumi.Input<AwsEc2IpamPropertiesResponse>? awsProperties;
+  final pulumi.Input<AwsEc2IpamPropertiesResponse?>? awsProperties;
   /// AWS Region
-  final pulumi.Input<String>? awsRegion;
+  final pulumi.Input<String?>? awsRegion;
   /// AWS Source Schema
-  final pulumi.Input<String>? awsSourceSchema;
+  final pulumi.Input<String?>? awsSourceSchema;
   /// AWS Tags
-  final pulumi.Input<Map<String, String>>? awsTags;
+  final pulumi.Input<Map<String, String>?>? awsTags;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// Public Cloud Connectors Resource ID
-  final pulumi.Input<String>? publicCloudConnectorsResourceId;
+  final pulumi.Input<String?>? publicCloudConnectorsResourceId;
   /// Public Cloud Resource Name
-  final pulumi.Input<String>? publicCloudResourceName;
+  final pulumi.Input<String?>? publicCloudResourceName;
 
   /// Creates a new [Ec2IpamPropertiesResponse].
   /// [arn] Amazon Resource Name (ARN)

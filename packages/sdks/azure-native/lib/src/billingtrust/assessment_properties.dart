@@ -6,9 +6,9 @@ import 'edu_initial_value.dart';
 /// The properties of an Assessment resource
 class AssessmentProperties {
   /// The name of the assessment template whose rules will be evaluated (e.g. 'Edu'). Immutable after creation.
-  final pulumi.Input<String> assessmentType;
+  final pulumi.Input<dynamic> assessmentType;
   /// Optional initial values applied to the rules created with this assessment. Write-only — these values are routed to the per-kind rules and are not returned on read.
-  final pulumi.Input<List<EduInitialValue>>? initialValues;
+  final pulumi.Input<List<EduInitialValue>?>? initialValues;
 
   /// Creates a new [AssessmentProperties].
   /// [assessmentType] The name of the assessment template whose rules will be evaluated (e.g. 'Edu'). Immutable after creation.
@@ -27,7 +27,7 @@ class AssessmentProperties {
 
   factory AssessmentProperties.fromMap(Map<String, dynamic> map) {
     return AssessmentProperties(
-      assessmentType: pulumi.Input.fromValue(map['assessmentType'] as String),
+      assessmentType: pulumi.Input.fromValue(map['assessmentType']),
       initialValues: (() { final guardedValue = map['initialValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EduInitialValue>(guardedValue, (value) => EduInitialValue.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

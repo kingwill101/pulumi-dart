@@ -10,11 +10,11 @@ class JWTAuthenticatorProperties {
   /// The mappings that define how user attributes are extracted from the token claims.
   final pulumi.Input<JWTAuthenticatorClaimMappings> claimMappings;
   /// The rules that are applied to validate token claims to authenticate users. All the expressions must evaluate to true for validation to succeed.
-  final pulumi.Input<List<JWTAuthenticatorValidationRule>>? claimValidationRules;
+  final pulumi.Input<List<JWTAuthenticatorValidationRule>?>? claimValidationRules;
   /// The JWT OIDC issuer details.
   final pulumi.Input<JWTAuthenticatorIssuer> issuer;
   /// The rules that are applied to the mapped user before completing authentication. All the expressions must evaluate to true for validation to succeed.
-  final pulumi.Input<List<JWTAuthenticatorValidationRule>>? userValidationRules;
+  final pulumi.Input<List<JWTAuthenticatorValidationRule>?>? userValidationRules;
 
   /// Creates a new [JWTAuthenticatorProperties].
   /// [claimMappings] The mappings that define how user attributes are extracted from the token claims.

@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Data flow reference type.
-enum DataFlowReferenceType {
+enum DataFlowReferenceType implements pulumi.PulumiEnum<String> {
   dataFlowReference("DataFlowReference");
 
   const DataFlowReferenceType(this.wireValue);
+  @override
   final String wireValue;
 
   static DataFlowReferenceType fromValue(String value) {

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The indicator of how this network will be utilized by the Kubernetes cluster.
-enum KubernetesPluginType {
+enum KubernetesPluginType implements pulumi.PulumiEnum<String> {
   valueDPDK("DPDK"),
   valueSRIOV("SRIOV"),
   valueOSDevice("OSDevice"),
@@ -7,6 +9,7 @@ enum KubernetesPluginType {
   valueIPVLAN("IPVLAN");
 
   const KubernetesPluginType(this.wireValue);
+  @override
   final String wireValue;
 
   static KubernetesPluginType fromValue(String value) {

@@ -6,7 +6,7 @@ import 'export_policy_rule.dart';
 /// Set of export policy rules
 class VolumePropertiesExportPolicy {
   /// Export policy rule
-  final pulumi.Input<List<ExportPolicyRule>>? rules;
+  final pulumi.Input<List<ExportPolicyRule>?>? rules;
 
   /// Creates a new [VolumePropertiesExportPolicy].
   /// [rules] Export policy rule

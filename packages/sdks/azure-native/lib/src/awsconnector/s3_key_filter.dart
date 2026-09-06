@@ -6,7 +6,7 @@ import 'filter_rule.dart';
 /// Definition of S3KeyFilter
 class S3KeyFilter {
   /// A list of containers for the key-value pair that defines the criteria for the filter rule.
-  final pulumi.Input<List<FilterRule>>? rules;
+  final pulumi.Input<List<FilterRule>?>? rules;
 
   /// Creates a new [S3KeyFilter].
   /// [rules] A list of containers for the key-value pair that defines the criteria for the filter rule.

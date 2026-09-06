@@ -6,9 +6,9 @@ import 'draft_package_intune_app_metadata_item.dart';
 /// The metadata of Intune app(s) used for generation.
 class DraftPackageIntuneAppMetadata {
   /// The Metadata of the Intune App through intunewin file uploading.
-  final pulumi.Input<DraftPackageIntuneAppMetadataItem>? intuneApp;
+  final pulumi.Input<DraftPackageIntuneAppMetadataItem?>? intuneApp;
   /// The Metadata of dependencies of the Intune App through intunewin file uploading.
-  final pulumi.Input<List<DraftPackageIntuneAppMetadataItem>>? intuneAppDependencies;
+  final pulumi.Input<List<DraftPackageIntuneAppMetadataItem>?>? intuneAppDependencies;
 
   /// Creates a new [DraftPackageIntuneAppMetadata].
   /// [intuneApp] The Metadata of the Intune App through intunewin file uploading.

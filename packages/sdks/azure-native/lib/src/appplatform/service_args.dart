@@ -10,17 +10,17 @@ import 'sku.dart';
 /// {@macro pulumi_appplatform_service_args_doc}
 class ServiceArgs {
   /// The GEO location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Properties of the Service resource
-  final pulumi.Input<ClusterResourceProperties>? properties;
+  final pulumi.Input<ClusterResourceProperties?>? properties;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Service resource.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
   /// Sku of the Service resource
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Tags of the service which is a list of key value pairs that describe the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ServiceArgs].
   /// [location] The GEO location of the resource.

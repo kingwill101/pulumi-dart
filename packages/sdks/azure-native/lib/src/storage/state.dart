@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets the state of virtual network rule.
-enum State {
+enum State implements pulumi.PulumiEnum<String> {
   valueProvisioning("Provisioning"),
   valueDeprovisioning("Deprovisioning"),
   valueSucceeded("Succeeded"),
@@ -7,6 +9,7 @@ enum State {
   valueNetworkSourceDeleted("NetworkSourceDeleted");
 
   const State(this.wireValue);
+  @override
   final String wireValue;
 
   static State fromValue(String value) {

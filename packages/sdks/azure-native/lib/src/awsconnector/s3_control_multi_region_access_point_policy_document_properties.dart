@@ -6,21 +6,21 @@ import 'aws_s3_control_multi_region_access_point_policy_document_properties.dart
 /// Definition of S3ControlMultiRegionAccessPointPolicyDocument
 class S3ControlMultiRegionAccessPointPolicyDocumentProperties {
   /// Amazon Resource Name (ARN)
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// AWS Account ID
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// AWS Properties
-  final pulumi.Input<AwsS3ControlMultiRegionAccessPointPolicyDocumentProperties>? awsProperties;
+  final pulumi.Input<AwsS3ControlMultiRegionAccessPointPolicyDocumentProperties?>? awsProperties;
   /// AWS Region
-  final pulumi.Input<String>? awsRegion;
+  final pulumi.Input<String?>? awsRegion;
   /// AWS Source Schema
-  final pulumi.Input<String>? awsSourceSchema;
+  final pulumi.Input<String?>? awsSourceSchema;
   /// AWS Tags
-  final pulumi.Input<Map<String, String>>? awsTags;
+  final pulumi.Input<Map<String, String>?>? awsTags;
   /// Public Cloud Connectors Resource ID
-  final pulumi.Input<String>? publicCloudConnectorsResourceId;
+  final pulumi.Input<String?>? publicCloudConnectorsResourceId;
   /// Public Cloud Resource Name
-  final pulumi.Input<String>? publicCloudResourceName;
+  final pulumi.Input<String?>? publicCloudResourceName;
 
   /// Creates a new [S3ControlMultiRegionAccessPointPolicyDocumentProperties].
   /// [arn] Amazon Resource Name (ARN)

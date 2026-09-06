@@ -477,7 +477,45 @@ class Watchlist extends pulumi.CustomResource {
     etag = registerOutput<String?>('etag');
     isDeleted = registerOutput<bool?>('isDeleted');
     itemsSearchKey = registerOutput<String>('itemsSearchKey');
-    labels = registerOutput<List<String>?>('labels');
+    labels = registerOutput<List<String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    numberOfLinesToSkip = registerOutput<int?>('numberOfLinesToSkip');
+    provider = registerOutput<String>('provider');
+    provisioningState = registerOutput<String>('provisioningState');
+    rawContent = registerOutput<String?>('rawContent');
+    source = registerOutput<String?>('source');
+    sourceType = registerOutput<String?>('sourceType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tenantId = registerOutput<String?>('tenantId');
+    type = registerOutput<String>('type');
+    updated = registerOutput<String?>('updated');
+    updatedBy = registerOutput<WatchlistUserInfoResponse?>('updatedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WatchlistUserInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uploadStatus = registerOutput<String?>('uploadStatus');
+    watchlistAlias = registerOutput<String?>('watchlistAlias');
+    watchlistId = registerOutput<String?>('watchlistId');
+    watchlistType = registerOutput<String?>('watchlistType');
+  }
+
+  /// Creates a typed reference to an existing [Watchlist] resource.
+  Watchlist.reference(String urn)
+    : super(
+        'azure-native:securityinsights:Watchlist',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contentType = registerOutput<String?>('contentType');
+    created = registerOutput<String?>('created');
+    createdBy = registerOutput<WatchlistUserInfoResponse?>('createdBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WatchlistUserInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultDuration = registerOutput<String?>('defaultDuration');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String?>('etag');
+    isDeleted = registerOutput<bool?>('isDeleted');
+    itemsSearchKey = registerOutput<String>('itemsSearchKey');
+    labels = registerOutput<List<String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     numberOfLinesToSkip = registerOutput<int?>('numberOfLinesToSkip');
     provider = registerOutput<String>('provider');

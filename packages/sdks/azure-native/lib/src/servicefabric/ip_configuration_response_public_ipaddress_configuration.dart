@@ -6,21 +6,21 @@ import 'ip_tag_response.dart';
 /// The public IP address configuration of the network interface.
 class IpConfigurationResponsePublicIPAddressConfiguration {
   /// Specifies the list of IP tags associated with the public IP address.
-  final pulumi.Input<List<IpTagResponse>>? ipTags;
+  final pulumi.Input<List<IpTagResponse>?>? ipTags;
   /// Name of the network interface.
   final pulumi.Input<String> name;
   /// Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
-  final pulumi.Input<String>? publicIPAddressVersion;
+  final pulumi.Input<String?>? publicIPAddressVersion;
 
   /// Creates a new [IpConfigurationResponsePublicIPAddressConfiguration].
   /// [ipTags] Specifies the list of IP tags associated with the public IP address.
   /// [name] Name of the network interface.
   /// [publicIPAddressVersion] Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
-  const IpConfigurationResponsePublicIPAddressConfiguration({
+  IpConfigurationResponsePublicIPAddressConfiguration({
     this.ipTags,
     required this.name,
-    this.publicIPAddressVersion,
-  });
+    pulumi.Input<String?>? publicIPAddressVersion,
+  }) : publicIPAddressVersion = publicIPAddressVersion ?? pulumi.Input.fromValue('IPv4');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

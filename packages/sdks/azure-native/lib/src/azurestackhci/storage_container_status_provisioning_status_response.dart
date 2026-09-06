@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Storage container provisioning status
 class StorageContainerStatusProvisioningStatusResponse {
   /// The ID of the operation performed on the storage container
-  final pulumi.Input<String>? operationId;
+  final pulumi.Input<String?>? operationId;
   /// The status of the operation performed on the storage container [Succeeded, Failed, InProgress]
   final pulumi.Input<String> status;
 

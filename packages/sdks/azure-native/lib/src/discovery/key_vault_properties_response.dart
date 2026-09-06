@@ -9,7 +9,7 @@ class KeyVaultPropertiesResponse {
   /// The Key Vault URI
   final pulumi.Input<String> keyVaultUri;
   /// The Key Version in Key Vault
-  final pulumi.Input<String>? keyVersion;
+  final pulumi.Input<String?>? keyVersion;
 
   /// Creates a new [KeyVaultPropertiesResponse].
   /// [keyName] The Key Name in Key Vault

@@ -7,9 +7,9 @@ import 'periodic_mode_properties_response.dart';
 /// The object representing periodic mode backup policy.
 class PeriodicModeBackupPolicyResponse {
   /// The object representing the state of the migration between the backup policies.
-  final pulumi.Input<BackupPolicyMigrationStateResponse>? migrationState;
+  final pulumi.Input<BackupPolicyMigrationStateResponse?>? migrationState;
   /// Configuration values for periodic mode backup
-  final pulumi.Input<PeriodicModePropertiesResponse>? periodicModeProperties;
+  final pulumi.Input<PeriodicModePropertiesResponse?>? periodicModeProperties;
   /// Describes the mode of backups.
   /// Expected value is 'Periodic'.
   final pulumi.Input<String> type;

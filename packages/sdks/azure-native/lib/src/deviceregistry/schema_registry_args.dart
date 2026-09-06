@@ -9,23 +9,23 @@ import 'system_assigned_service_identity.dart';
 /// {@macro pulumi_deviceregistry_schema_registry_args_doc}
 class SchemaRegistryArgs {
   /// Human-readable description of the schema registry.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Human-readable display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<SystemAssignedServiceIdentity>? identity;
+  final pulumi.Input<SystemAssignedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Schema registry namespace. Uniquely identifies a schema registry within a tenant.
   final pulumi.Input<String> namespace;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Schema registry name parameter.
-  final pulumi.Input<String>? schemaRegistryName;
+  final pulumi.Input<String?>? schemaRegistryName;
   /// The Storage Account's Container URL where schemas will be stored.
   final pulumi.Input<String> storageAccountContainerUrl;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SchemaRegistryArgs].
   /// [description] Human-readable description of the schema registry.

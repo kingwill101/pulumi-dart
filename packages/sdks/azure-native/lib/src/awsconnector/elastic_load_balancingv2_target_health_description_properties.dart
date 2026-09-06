@@ -6,21 +6,21 @@ import 'aws_elastic_load_balancingv2_target_health_description_properties.dart';
 /// Definition of ElasticLoadBalancingv2TargetHealthDescription
 class ElasticLoadBalancingv2TargetHealthDescriptionProperties {
   /// Amazon Resource Name (ARN)
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// AWS Account ID
-  final pulumi.Input<String>? awsAccountId;
+  final pulumi.Input<String?>? awsAccountId;
   /// AWS Properties
-  final pulumi.Input<AwsElasticLoadBalancingv2TargetHealthDescriptionProperties>? awsProperties;
+  final pulumi.Input<AwsElasticLoadBalancingv2TargetHealthDescriptionProperties?>? awsProperties;
   /// AWS Region
-  final pulumi.Input<String>? awsRegion;
+  final pulumi.Input<String?>? awsRegion;
   /// AWS Source Schema
-  final pulumi.Input<String>? awsSourceSchema;
+  final pulumi.Input<String?>? awsSourceSchema;
   /// AWS Tags
-  final pulumi.Input<Map<String, String>>? awsTags;
+  final pulumi.Input<Map<String, String>?>? awsTags;
   /// Public Cloud Connectors Resource ID
-  final pulumi.Input<String>? publicCloudConnectorsResourceId;
+  final pulumi.Input<String?>? publicCloudConnectorsResourceId;
   /// Public Cloud Resource Name
-  final pulumi.Input<String>? publicCloudResourceName;
+  final pulumi.Input<String?>? publicCloudResourceName;
 
   /// Creates a new [ElasticLoadBalancingv2TargetHealthDescriptionProperties].
   /// [arn] Amazon Resource Name (ARN)

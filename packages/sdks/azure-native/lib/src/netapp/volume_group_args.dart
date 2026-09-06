@@ -12,15 +12,15 @@ class VolumeGroupArgs {
   /// The name of the NetApp account
   final pulumi.Input<String> accountName;
   /// Volume group details
-  final pulumi.Input<VolumeGroupMetaData>? groupMetaData;
+  final pulumi.Input<VolumeGroupMetaData?>? groupMetaData;
   /// Resource location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the volumeGroup
-  final pulumi.Input<String>? volumeGroupName;
+  final pulumi.Input<String?>? volumeGroupName;
   /// List of volumes from group
-  final pulumi.Input<List<VolumeGroupVolumeProperties>>? volumes;
+  final pulumi.Input<List<VolumeGroupVolumeProperties>?>? volumes;
 
   /// Creates a new [VolumeGroupArgs].
   /// [accountName] The name of the NetApp account

@@ -26,7 +26,7 @@ class GetVirtualNetworkGatewayResult {
   /// Autoscale configuration for virutal network gateway
   final VirtualNetworkGatewayAutoScaleConfigurationResponse? autoScaleConfiguration;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Virtual network gateway's BGP speaker settings.
   final BgpSettingsResponse? bgpSettings;
   /// The reference to the address space resource which represents the custom routes address space specified by the customer for virtual network gateway and VpnClient.
@@ -42,7 +42,7 @@ class GetVirtualNetworkGatewayResult {
   /// Whether private IP needs to be enabled on this gateway for connections or not.
   final bool? enablePrivateIpAddress;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// The extended location of type local virtual network gateway.
   final ExtendedLocationResponse? extendedLocation;
   /// The reference to the LocalNetworkGateway resource which represents local network site having default routes. Assign Null value in case of removing existing default site setting.
@@ -54,27 +54,27 @@ class GetVirtualNetworkGatewayResult {
   /// The identity of the virtual network gateway, if configured.
   final ManagedServiceIdentityResponse? identity;
   /// The IP address allocated by the gateway to which dns requests can be sent.
-  final String inboundDnsForwardingEndpoint;
+  final String? inboundDnsForwardingEndpoint;
   /// IP configurations for virtual network gateway.
   final List<VirtualNetworkGatewayIPConfigurationResponse>? ipConfigurations;
   /// Resource location.
   final String? location;
   /// Resource name.
-  final String name;
+  final String? name;
   /// NatRules for virtual network gateway.
   final List<VirtualNetworkGatewayNatRuleResponse>? natRules;
   /// The provisioning state of the virtual network gateway resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Property to indicate if the Express Route Gateway has resiliency model of MultiHomed or SingleHomed
   final String? resiliencyModel;
   /// The resource GUID property of the virtual network gateway resource.
-  final String resourceGuid;
+  final String? resourceGuid;
   /// The reference to the VirtualNetworkGatewaySku resource which represents the SKU selected for Virtual network gateway.
   final VirtualNetworkGatewaySkuResponse? sku;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Resource type.
-  final String type;
+  final String? type;
   /// Customer vnet resource id. VirtualNetworkGateway of type local gateway is associated with the customer vnet.
   final String? vNetExtendedLocationResourceId;
   /// The reference to the VirtualNetworkGatewayPolicyGroup resource which represents the available VirtualNetworkGatewayPolicyGroup for the gateway.
@@ -128,7 +128,7 @@ class GetVirtualNetworkGatewayResult {
     this.allowRemoteVnetTraffic,
     this.allowVirtualWanTraffic,
     this.autoScaleConfiguration,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.bgpSettings,
     this.customRoutes,
     this.disableIPSecReplayProtection,
@@ -136,23 +136,23 @@ class GetVirtualNetworkGatewayResult {
     this.enableBgpRouteTranslationForNat,
     this.enableDnsForwarding,
     this.enablePrivateIpAddress,
-    required this.etag,
+    this.etag,
     this.extendedLocation,
     this.gatewayDefaultSite,
     this.gatewayType,
     this.id,
     this.identity,
-    required this.inboundDnsForwardingEndpoint,
+    this.inboundDnsForwardingEndpoint,
     this.ipConfigurations,
     this.location,
-    required this.name,
+    this.name,
     this.natRules,
-    required this.provisioningState,
+    this.provisioningState,
     this.resiliencyModel,
-    required this.resourceGuid,
+    this.resourceGuid,
     this.sku,
     this.tags,
-    required this.type,
+    this.type,
     this.vNetExtendedLocationResourceId,
     this.virtualNetworkGatewayPolicyGroups,
     this.vpnClientConfiguration,
@@ -167,7 +167,7 @@ class GetVirtualNetworkGatewayResult {
       'allowRemoteVnetTraffic': ?allowRemoteVnetTraffic,
       'allowVirtualWanTraffic': ?allowVirtualWanTraffic,
       'autoScaleConfiguration': ?autoScaleConfiguration?.toMap(),
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'bgpSettings': ?bgpSettings?.toMap(),
       'customRoutes': ?customRoutes?.toMap(),
       'disableIPSecReplayProtection': ?disableIPSecReplayProtection,
@@ -175,23 +175,23 @@ class GetVirtualNetworkGatewayResult {
       'enableBgpRouteTranslationForNat': ?enableBgpRouteTranslationForNat,
       'enableDnsForwarding': ?enableDnsForwarding,
       'enablePrivateIpAddress': ?enablePrivateIpAddress,
-      'etag': etag,
+      'etag': ?etag,
       'extendedLocation': ?extendedLocation?.toMap(),
       'gatewayDefaultSite': ?gatewayDefaultSite?.toMap(),
       'gatewayType': ?gatewayType,
       'id': ?id,
       'identity': ?identity?.toMap(),
-      'inboundDnsForwardingEndpoint': inboundDnsForwardingEndpoint,
+      'inboundDnsForwardingEndpoint': ?inboundDnsForwardingEndpoint,
       'ipConfigurations': ?(() { final guardedValue = ipConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<VirtualNetworkGatewayIPConfigurationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'location': ?location,
-      'name': name,
+      'name': ?name,
       'natRules': ?(() { final guardedValue = natRules; if (guardedValue == null) return null; return pulumi.Input.encodeList<VirtualNetworkGatewayNatRuleResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'resiliencyModel': ?resiliencyModel,
-      'resourceGuid': resourceGuid,
+      'resourceGuid': ?resourceGuid,
       'sku': ?sku?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'vNetExtendedLocationResourceId': ?vNetExtendedLocationResourceId,
       'virtualNetworkGatewayPolicyGroups': ?(() { final guardedValue = virtualNetworkGatewayPolicyGroups; if (guardedValue == null) return null; return pulumi.Input.encodeList<VirtualNetworkGatewayPolicyGroupResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'vpnClientConfiguration': ?vpnClientConfiguration?.toMap(),
@@ -207,7 +207,7 @@ class GetVirtualNetworkGatewayResult {
       allowRemoteVnetTraffic: (() { final guardedValue = map['allowRemoteVnetTraffic']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       allowVirtualWanTraffic: (() { final guardedValue = map['allowVirtualWanTraffic']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       autoScaleConfiguration: (() { final guardedValue = map['autoScaleConfiguration']; if (guardedValue == null) return null; return VirtualNetworkGatewayAutoScaleConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       bgpSettings: (() { final guardedValue = map['bgpSettings']; if (guardedValue == null) return null; return BgpSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       customRoutes: (() { final guardedValue = map['customRoutes']; if (guardedValue == null) return null; return AddressSpaceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       disableIPSecReplayProtection: (() { final guardedValue = map['disableIPSecReplayProtection']; if (guardedValue == null) return null; return guardedValue as bool; })(),
@@ -215,23 +215,23 @@ class GetVirtualNetworkGatewayResult {
       enableBgpRouteTranslationForNat: (() { final guardedValue = map['enableBgpRouteTranslationForNat']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       enableDnsForwarding: (() { final guardedValue = map['enableDnsForwarding']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       enablePrivateIpAddress: (() { final guardedValue = map['enablePrivateIpAddress']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      etag: map['etag'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       gatewayDefaultSite: (() { final guardedValue = map['gatewayDefaultSite']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       gatewayType: (() { final guardedValue = map['gatewayType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      inboundDnsForwardingEndpoint: map['inboundDnsForwardingEndpoint'] as String,
+      inboundDnsForwardingEndpoint: (() { final guardedValue = map['inboundDnsForwardingEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipConfigurations: (() { final guardedValue = map['ipConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkGatewayIPConfigurationResponse>(guardedValue, (value) => VirtualNetworkGatewayIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       natRules: (() { final guardedValue = map['natRules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkGatewayNatRuleResponse>(guardedValue, (value) => VirtualNetworkGatewayNatRuleResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resiliencyModel: (() { final guardedValue = map['resiliencyModel']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      resourceGuid: map['resourceGuid'] as String,
+      resourceGuid: (() { final guardedValue = map['resourceGuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return VirtualNetworkGatewaySkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       vNetExtendedLocationResourceId: (() { final guardedValue = map['vNetExtendedLocationResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       virtualNetworkGatewayPolicyGroups: (() { final guardedValue = map['virtualNetworkGatewayPolicyGroups']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkGatewayPolicyGroupResponse>(guardedValue, (value) => VirtualNetworkGatewayPolicyGroupResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       vpnClientConfiguration: (() { final guardedValue = map['vpnClientConfiguration']; if (guardedValue == null) return null; return VpnClientConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),

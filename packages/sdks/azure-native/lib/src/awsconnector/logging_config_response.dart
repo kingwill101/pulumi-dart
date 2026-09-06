@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of LoggingConfig
 class LoggingConfigResponse {
   /// Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where ``TRACE`` is the highest level and ``FATAL`` is the lowest.
-  final pulumi.Input<String>? applicationLogLevel;
+  final pulumi.Input<String?>? applicationLogLevel;
   /// The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON.
-  final pulumi.Input<String>? logFormat;
+  final pulumi.Input<String?>? logFormat;
   /// The name of the Amazon CloudWatch log group the function sends logs to. By default, Lambda functions send logs to a default log group named ``/aws/lambda/&lt;function name&gt;``. To use a different log group, enter an existing log group or enter a new log group name.
-  final pulumi.Input<String>? logGroup;
+  final pulumi.Input<String?>? logGroup;
   /// Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where ``DEBUG`` is the highest level and ``WARN`` is the lowest.
-  final pulumi.Input<String>? systemLogLevel;
+  final pulumi.Input<String?>? systemLogLevel;
 
   /// Creates a new [LoggingConfigResponse].
   /// [applicationLogLevel] Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where ``TRACE`` is the highest level and ``FATAL`` is the lowest.

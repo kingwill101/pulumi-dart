@@ -6,7 +6,7 @@ import 'lifecycle_configuration.dart';
 /// Dynamic pool configuration.
 class DynamicPoolConfiguration {
   /// The lifecycle configuration of a session in the dynamic session pool
-  final pulumi.Input<LifecycleConfiguration>? lifecycleConfiguration;
+  final pulumi.Input<LifecycleConfiguration?>? lifecycleConfiguration;
 
   /// Creates a new [DynamicPoolConfiguration].
   /// [lifecycleConfiguration] The lifecycle configuration of a session in the dynamic session pool

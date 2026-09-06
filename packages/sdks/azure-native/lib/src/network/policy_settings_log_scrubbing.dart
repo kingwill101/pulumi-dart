@@ -6,9 +6,9 @@ import 'web_application_firewall_scrubbing_rules.dart';
 /// To scrub sensitive log fields
 class PolicySettingsLogScrubbing {
   /// The rules that are applied to the logs for scrubbing.
-  final pulumi.Input<List<WebApplicationFirewallScrubbingRules>>? scrubbingRules;
+  final pulumi.Input<List<WebApplicationFirewallScrubbingRules>?>? scrubbingRules;
   /// State of the log scrubbing config. Default value is Enabled.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
 
   /// Creates a new [PolicySettingsLogScrubbing].
   /// [scrubbingRules] The rules that are applied to the logs for scrubbing.
@@ -28,7 +28,7 @@ class PolicySettingsLogScrubbing {
   factory PolicySettingsLogScrubbing.fromMap(Map<String, dynamic> map) {
     return PolicySettingsLogScrubbing(
       scrubbingRules: (() { final guardedValue = map['scrubbingRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WebApplicationFirewallScrubbingRules>(guardedValue, (value) => WebApplicationFirewallScrubbingRules.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

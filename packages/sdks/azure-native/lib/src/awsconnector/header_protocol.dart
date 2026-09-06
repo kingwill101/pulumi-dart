@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property protocol
-enum HeaderProtocol {
+enum HeaderProtocol implements pulumi.PulumiEnum<String> {
   dCERPC("DCERPC"),
   dHCP("DHCP"),
   dNS("DNS"),
@@ -21,6 +23,7 @@ enum HeaderProtocol {
   uDP("UDP");
 
   const HeaderProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static HeaderProtocol fromValue(String value) {

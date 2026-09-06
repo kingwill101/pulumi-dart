@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The sourceType of the watchlist
-enum SourceType {
+enum SourceType implements pulumi.PulumiEnum<String> {
   valueLocal("Local"),
   valueAzureStorage("AzureStorage");
 
   const SourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static SourceType fromValue(String value) {

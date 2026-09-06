@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of VPN client root certificate of VpnServerConfiguration.
 class VpnServerConfigVpnClientRootCertificateResponse {
   /// The certificate name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The certificate public data.
-  final pulumi.Input<String>? publicCertData;
+  final pulumi.Input<String?>? publicCertData;
 
   /// Creates a new [VpnServerConfigVpnClientRootCertificateResponse].
   /// [name] The certificate name.

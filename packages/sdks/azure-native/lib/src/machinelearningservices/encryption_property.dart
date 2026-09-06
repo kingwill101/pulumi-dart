@@ -7,19 +7,19 @@ import 'key_vault_properties.dart';
 class EncryptionProperty {
   /// The byok cosmosdb account that customer brings to store customer's data
   /// with encryption
-  final pulumi.Input<String>? cosmosDbResourceId;
+  final pulumi.Input<String?>? cosmosDbResourceId;
   /// Identity to be used with the keyVault
-  final pulumi.Input<IdentityForCmk>? identity;
+  final pulumi.Input<IdentityForCmk?>? identity;
   /// KeyVault details to do the encryption
   final pulumi.Input<KeyVaultProperties> keyVaultProperties;
   /// The byok search account that customer brings to store customer's data
   /// with encryption
-  final pulumi.Input<String>? searchAccountResourceId;
+  final pulumi.Input<String?>? searchAccountResourceId;
   /// Indicates whether or not the encryption is enabled for the workspace.
-  final pulumi.Input<String> status;
+  final pulumi.Input<dynamic> status;
   /// The byok storage account that customer brings to store customer's data
   /// with encryption
-  final pulumi.Input<String>? storageAccountResourceId;
+  final pulumi.Input<String?>? storageAccountResourceId;
 
   /// Creates a new [EncryptionProperty].
   /// [cosmosDbResourceId] The byok cosmosdb account that customer brings to store customer's data
@@ -54,7 +54,7 @@ class EncryptionProperty {
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IdentityForCmk.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       keyVaultProperties: pulumi.Input.fromValue(KeyVaultProperties.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())),
       searchAccountResourceId: (() { final guardedValue = map['searchAccountResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      status: pulumi.Input.fromValue(map['status'] as String),
+      status: pulumi.Input.fromValue(map['status']),
       storageAccountResourceId: (() { final guardedValue = map['storageAccountResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

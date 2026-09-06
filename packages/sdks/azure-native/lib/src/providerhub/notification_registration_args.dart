@@ -9,8 +9,8 @@ import 'notification_registration_properties.dart';
 /// {@macro pulumi_providerhub_notification_registration_args_doc}
 class NotificationRegistrationArgs {
   /// The notification registration.
-  final pulumi.Input<String>? notificationRegistrationName;
-  final pulumi.Input<NotificationRegistrationProperties>? properties;
+  final pulumi.Input<String?>? notificationRegistrationName;
+  final pulumi.Input<NotificationRegistrationProperties?>? properties;
   /// The name of the resource provider hosted within ProviderHub.
   final pulumi.Input<String> providerNamespace;
 

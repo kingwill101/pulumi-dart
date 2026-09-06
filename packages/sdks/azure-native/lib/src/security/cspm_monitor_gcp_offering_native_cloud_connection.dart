@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The native cloud connection configuration
 class CspmMonitorGcpOfferingNativeCloudConnection {
   /// The service account email address in GCP for this offering
-  final pulumi.Input<String>? serviceAccountEmailAddress;
+  final pulumi.Input<String?>? serviceAccountEmailAddress;
   /// The GCP workload identity provider id for the offering
-  final pulumi.Input<String>? workloadIdentityProviderId;
+  final pulumi.Input<String?>? workloadIdentityProviderId;
 
   /// Creates a new [CspmMonitorGcpOfferingNativeCloudConnection].
   /// [serviceAccountEmailAddress] The service account email address in GCP for this offering

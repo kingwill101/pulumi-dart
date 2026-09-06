@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Status of the scheduled action.
-enum ScheduledActionStatus {
+enum ScheduledActionStatus implements pulumi.PulumiEnum<String> {
   disabled("Disabled"),
   enabled("Enabled"),
   expired("Expired");
 
   const ScheduledActionStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static ScheduledActionStatus fromValue(String value) {

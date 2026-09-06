@@ -7,9 +7,9 @@ class VirtualNetworkGatewaySkuResponse {
   /// The capacity.
   final pulumi.Input<int> capacity;
   /// Gateway SKU name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Gateway SKU tier.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [VirtualNetworkGatewaySkuResponse].
   /// [capacity] The capacity.
@@ -31,7 +31,7 @@ class VirtualNetworkGatewaySkuResponse {
 
   factory VirtualNetworkGatewaySkuResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewaySkuResponse(
-      capacity: pulumi.Input.fromValue(map['capacity'] as int),
+      capacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['capacity'])),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

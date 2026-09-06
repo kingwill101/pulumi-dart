@@ -14,35 +14,35 @@ class FileSharePropertiesResponse {
   /// Max burst IOPS credits shows the maximum number of burst credits the share can have at the current IOPS provisioning level.
   final pulumi.Input<double> maxBurstIOPerSecCredits;
   /// The storage media tier of the file share.
-  final pulumi.Input<String>? mediaTier;
+  final pulumi.Input<String?>? mediaTier;
   /// The name of the file share as seen by the end user when mounting the share, such as in a URI or UNC format in their operating system.
-  final pulumi.Input<String>? mountName;
+  final pulumi.Input<String?>? mountName;
   /// Protocol settings specific NFS.
-  final pulumi.Input<NfsProtocolPropertiesResponse>? nfsProtocolProperties;
+  final pulumi.Input<NfsProtocolPropertiesResponse?>? nfsProtocolProperties;
   /// The list of associated private endpoint connections.
   final pulumi.Input<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// The file sharing protocol for this file share.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// The provisioned IO / sec of the share.
-  final pulumi.Input<int>? provisionedIOPerSec;
+  final pulumi.Input<int?>? provisionedIOPerSec;
   /// A date/time value that specifies when the provisioned IOPS for the file share is permitted to be reduced.
   final pulumi.Input<String> provisionedIOPerSecNextAllowedDowngrade;
   /// The provisioned storage size of the share in GiB (1 GiB is 1024^3 bytes or 1073741824 bytes). A component of the file share's bill is the provisioned storage, regardless of the amount of used storage.
-  final pulumi.Input<int>? provisionedStorageGiB;
+  final pulumi.Input<int?>? provisionedStorageGiB;
   /// A date/time value that specifies when the provisioned storage for the file share is permitted to be reduced.
   final pulumi.Input<String> provisionedStorageNextAllowedDowngrade;
   /// The provisioned throughput / sec of the share.
-  final pulumi.Input<int>? provisionedThroughputMiBPerSec;
+  final pulumi.Input<int?>? provisionedThroughputMiBPerSec;
   /// A date/time value that specifies when the provisioned throughput for the file share is permitted to be reduced.
   final pulumi.Input<String> provisionedThroughputNextAllowedDowngrade;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// The set of properties for control public access.
-  final pulumi.Input<PublicAccessPropertiesResponse>? publicAccessProperties;
+  final pulumi.Input<PublicAccessPropertiesResponse?>? publicAccessProperties;
   /// Gets or sets allow or disallow public network access to azure managed file share
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// The chosen redundancy level of the file share.
-  final pulumi.Input<String>? redundancy;
+  final pulumi.Input<String?>? redundancy;
 
   /// Creates a new [FileSharePropertiesResponse].
   /// [hostName] The host name of the file share.
@@ -110,18 +110,18 @@ class FileSharePropertiesResponse {
   factory FileSharePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FileSharePropertiesResponse(
       hostName: pulumi.Input.fromValue(map['hostName'] as String),
-      includedBurstIOPerSec: pulumi.Input.fromValue(map['includedBurstIOPerSec'] as int),
-      maxBurstIOPerSecCredits: pulumi.Input.fromValue(map['maxBurstIOPerSecCredits'] as double),
+      includedBurstIOPerSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['includedBurstIOPerSec'])),
+      maxBurstIOPerSecCredits: pulumi.Input.fromValue((map['maxBurstIOPerSecCredits'] as num).toDouble()),
       mediaTier: (() { final guardedValue = map['mediaTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mountName: (() { final guardedValue = map['mountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nfsProtocolProperties: (() { final guardedValue = map['nfsProtocolProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NfsProtocolPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       privateEndpointConnections: pulumi.Input.fromValue(pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      provisionedIOPerSec: (() { final guardedValue = map['provisionedIOPerSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      provisionedIOPerSec: (() { final guardedValue = map['provisionedIOPerSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       provisionedIOPerSecNextAllowedDowngrade: pulumi.Input.fromValue(map['provisionedIOPerSecNextAllowedDowngrade'] as String),
-      provisionedStorageGiB: (() { final guardedValue = map['provisionedStorageGiB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      provisionedStorageGiB: (() { final guardedValue = map['provisionedStorageGiB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       provisionedStorageNextAllowedDowngrade: pulumi.Input.fromValue(map['provisionedStorageNextAllowedDowngrade'] as String),
-      provisionedThroughputMiBPerSec: (() { final guardedValue = map['provisionedThroughputMiBPerSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      provisionedThroughputMiBPerSec: (() { final guardedValue = map['provisionedThroughputMiBPerSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       provisionedThroughputNextAllowedDowngrade: pulumi.Input.fromValue(map['provisionedThroughputNextAllowedDowngrade'] as String),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       publicAccessProperties: (() { final guardedValue = map['publicAccessProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PublicAccessPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

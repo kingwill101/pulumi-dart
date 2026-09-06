@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of TpmSupportValuesEnumValue
 class TpmSupportValuesEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TpmSupportValuesEnumValueResponse].
   /// [value] Property value

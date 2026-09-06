@@ -11,19 +11,19 @@ import 'volume_definition_response.dart';
 /// Specifies the custom service configuration
 class CustomServiceResponse {
   /// Describes the docker settings for the image
-  final pulumi.Input<DockerResponse>? docker;
+  final pulumi.Input<DockerResponse?>? docker;
   /// Configuring the endpoints for the container
-  final pulumi.Input<List<EndpointResponse>>? endpoints;
+  final pulumi.Input<List<EndpointResponse>?>? endpoints;
   /// Environment Variable for the container
-  final pulumi.Input<Map<String, EnvironmentVariableResponse>>? environmentVariables;
+  final pulumi.Input<Map<String, EnvironmentVariableResponse>?>? environmentVariables;
   /// Describes the Image Specifications
-  final pulumi.Input<ImageResponse>? image;
+  final pulumi.Input<ImageResponse?>? image;
   /// Describes the jupyter kernel settings for the image if its a custom environment
-  final pulumi.Input<JupyterKernelConfigResponse>? kernel;
+  final pulumi.Input<JupyterKernelConfigResponse?>? kernel;
   /// Name of the Custom Service
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuring the volumes for the container
-  final pulumi.Input<List<VolumeDefinitionResponse>>? volumes;
+  final pulumi.Input<List<VolumeDefinitionResponse>?>? volumes;
 
   /// Creates a new [CustomServiceResponse].
   /// [docker] Describes the docker settings for the image

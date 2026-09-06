@@ -9,19 +9,19 @@ import 'git_catalog.dart';
 /// {@macro pulumi_devcenter_catalog_args_doc}
 class CatalogArgs {
   /// Properties for an Azure DevOps catalog type.
-  final pulumi.Input<GitCatalog>? adoGit;
+  final pulumi.Input<GitCatalog?>? adoGit;
   /// The name of the Catalog.
-  final pulumi.Input<String>? catalogName;
+  final pulumi.Input<String?>? catalogName;
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
   /// Properties for a GitHub catalog type.
-  final pulumi.Input<GitCatalog>? gitHub;
+  final pulumi.Input<GitCatalog?>? gitHub;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Indicates the type of sync that is configured for the catalog.
-  final pulumi.Input<String>? syncType;
+  final pulumi.Input<dynamic>? syncType;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CatalogArgs].
   /// [adoGit] Properties for an Azure DevOps catalog type.
@@ -60,7 +60,7 @@ class CatalogArgs {
       devCenterName: pulumi.Input.fromValue(map['devCenterName'] as String),
       gitHub: (() { final guardedValue = map['gitHub']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GitCatalog.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      syncType: (() { final guardedValue = map['syncType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      syncType: (() { final guardedValue = map['syncType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

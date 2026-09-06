@@ -10,15 +10,15 @@ class ComputePolicyArgs {
   /// The name of the Data Lake Analytics account.
   final pulumi.Input<String> accountName;
   /// The name of the compute policy to create or update.
-  final pulumi.Input<String>? computePolicyName;
+  final pulumi.Input<String?>? computePolicyName;
   /// The maximum degree of parallelism per job this user can use to submit jobs. This property, the min priority per job property, or both must be passed.
-  final pulumi.Input<int>? maxDegreeOfParallelismPerJob;
+  final pulumi.Input<int?>? maxDegreeOfParallelismPerJob;
   /// The minimum priority per job this user can use to submit jobs. This property, the max degree of parallelism per job property, or both must be passed.
-  final pulumi.Input<int>? minPriorityPerJob;
+  final pulumi.Input<int?>? minPriorityPerJob;
   /// The AAD object identifier for the entity to create a policy for.
   final pulumi.Input<String> objectId;
   /// The type of AAD object the object identifier refers to.
-  final pulumi.Input<String> objectType;
+  final pulumi.Input<dynamic> objectType;
   /// The name of the Azure resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -56,10 +56,10 @@ class ComputePolicyArgs {
     return ComputePolicyArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       computePolicyName: (() { final guardedValue = map['computePolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxDegreeOfParallelismPerJob: (() { final guardedValue = map['maxDegreeOfParallelismPerJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minPriorityPerJob: (() { final guardedValue = map['minPriorityPerJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxDegreeOfParallelismPerJob: (() { final guardedValue = map['maxDegreeOfParallelismPerJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minPriorityPerJob: (() { final guardedValue = map['minPriorityPerJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       objectId: pulumi.Input.fromValue(map['objectId'] as String),
-      objectType: pulumi.Input.fromValue(map['objectType'] as String),
+      objectType: pulumi.Input.fromValue(map['objectType']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }

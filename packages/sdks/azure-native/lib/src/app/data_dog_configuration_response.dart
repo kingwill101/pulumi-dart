@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration of datadog
 class DataDogConfigurationResponse {
   /// The data dog api key
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The data dog site
-  final pulumi.Input<String>? site;
+  final pulumi.Input<String?>? site;
 
   /// Creates a new [DataDogConfigurationResponse].
   /// [key] The data dog api key

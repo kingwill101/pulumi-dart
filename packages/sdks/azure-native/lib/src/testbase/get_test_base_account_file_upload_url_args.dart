@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_testbase_get_test_base_account_file_upload_url_args_doc}
 class GetTestBaseAccountFileUploadUrlArgs {
   /// The custom file name of the uploaded blob.
-  final pulumi.Input<String>? blobName;
+  final pulumi.Input<String?>? blobName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource type for file uploading.
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<dynamic>? resourceType;
   /// The resource name of the Test Base Account.
   final pulumi.Input<String> testBaseAccountName;
 
@@ -41,7 +41,7 @@ class GetTestBaseAccountFileUploadUrlArgs {
     return GetTestBaseAccountFileUploadUrlArgs(
       blobName: (() { final guardedValue = map['blobName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       testBaseAccountName: pulumi.Input.fromValue(map['testBaseAccountName'] as String),
     );
   }

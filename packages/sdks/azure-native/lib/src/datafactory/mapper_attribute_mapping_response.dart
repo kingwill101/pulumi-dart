@@ -6,17 +6,17 @@ import 'mapper_attribute_reference_response.dart';
 /// Source and target column mapping details.
 class MapperAttributeMappingResponse {
   /// Reference of the source column used in the mapping. It is used for 'Direct' mapping type only.
-  final pulumi.Input<MapperAttributeReferenceResponse>? attributeReference;
+  final pulumi.Input<MapperAttributeReferenceResponse?>? attributeReference;
   /// List of references for source columns. It is used for 'Derived' and 'Aggregate' type mappings only.
-  final pulumi.Input<List<MapperAttributeReferenceResponse>>? attributeReferences;
+  final pulumi.Input<List<MapperAttributeReferenceResponse>?>? attributeReferences;
   /// Expression used for 'Aggregate' and 'Derived' type mapping.
-  final pulumi.Input<String>? expression;
+  final pulumi.Input<String?>? expression;
   /// Name of the function used for 'Aggregate' and 'Derived' (except 'Advanced') type mapping.
-  final pulumi.Input<String>? functionName;
+  final pulumi.Input<String?>? functionName;
   /// Name of the target column.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Type of the CDC attribute mapping. Note: 'Advanced' mapping type is also saved as 'Derived'.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [MapperAttributeMappingResponse].
   /// [attributeReference] Reference of the source column used in the mapping. It is used for 'Direct' mapping type only.

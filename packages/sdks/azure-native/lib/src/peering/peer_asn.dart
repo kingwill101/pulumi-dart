@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'contact_detail_response.dart';
 import 'peer_asn_args.dart';
 
 /// The essential information related to the peer's ASN.
@@ -272,7 +273,7 @@ class PeerAsn extends pulumi.CustomResource {
   /// The Autonomous System Number (ASN) of the peer.
   late final pulumi.Output<int?> peerAsn;
   /// The contact details of the peer.
-  late final pulumi.Output<List<Map<String, dynamic>>?> peerContactDetail;
+  late final pulumi.Output<List<ContactDetailResponse>?> peerContactDetail;
   /// The name of the peer.
   late final pulumi.Output<String?> peerName;
   /// The type of the resource.
@@ -298,7 +299,26 @@ class PeerAsn extends pulumi.CustomResource {
     errorMessage = registerOutput<String>('errorMessage');
     this.name = registerOutput<String>('name');
     peerAsn = registerOutput<int?>('peerAsn');
-    peerContactDetail = registerOutput<List<Map<String, dynamic>>?>('peerContactDetail');
+    peerContactDetail = registerOutput<List<ContactDetailResponse>?>('peerContactDetail', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContactDetailResponse>(guardedValue, (value) => ContactDetailResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    peerName = registerOutput<String?>('peerName');
+    type = registerOutput<String>('type');
+    validationState = registerOutput<String>('validationState');
+  }
+
+  /// Creates a typed reference to an existing [PeerAsn] resource.
+  PeerAsn.reference(String urn)
+    : super(
+        'azure-native:peering:PeerAsn',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    errorMessage = registerOutput<String>('errorMessage');
+    this.name = registerOutput<String>('name');
+    peerAsn = registerOutput<int?>('peerAsn');
+    peerContactDetail = registerOutput<List<ContactDetailResponse>?>('peerContactDetail', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContactDetailResponse>(guardedValue, (value) => ContactDetailResponse.fromMap((value as Map).cast<String, dynamic>())); });
     peerName = registerOutput<String?>('peerName');
     type = registerOutput<String>('type');
     validationState = registerOutput<String>('validationState');

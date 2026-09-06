@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings for Cross Subscription Restore Settings
 class CrossSubscriptionRestoreSettings {
-  final pulumi.Input<String>? crossSubscriptionRestoreState;
+  final pulumi.Input<dynamic>? crossSubscriptionRestoreState;
 
   /// Creates a new [CrossSubscriptionRestoreSettings].
   /// [crossSubscriptionRestoreState] Optional.
@@ -20,7 +20,7 @@ class CrossSubscriptionRestoreSettings {
 
   factory CrossSubscriptionRestoreSettings.fromMap(Map<String, dynamic> map) {
     return CrossSubscriptionRestoreSettings(
-      crossSubscriptionRestoreState: (() { final guardedValue = map['crossSubscriptionRestoreState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      crossSubscriptionRestoreState: (() { final guardedValue = map['crossSubscriptionRestoreState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

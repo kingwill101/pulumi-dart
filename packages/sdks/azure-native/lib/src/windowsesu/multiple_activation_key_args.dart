@@ -8,23 +8,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_windowsesu_multiple_activation_key_args_doc}
 class MultipleActivationKeyArgs {
   /// Agreement number under which the key is requested.
-  final pulumi.Input<String>? agreementNumber;
+  final pulumi.Input<String?>? agreementNumber;
   /// Number of activations/servers using the MAK key.
-  final pulumi.Input<int>? installedServerNumber;
+  final pulumi.Input<int?>? installedServerNumber;
   /// &lt;code&gt; true &lt;/code&gt; if user has eligible on-premises Windows physical or virtual machines, and that the requested key will only be used in their organization; &lt;code&gt; false &lt;/code&gt; otherwise.
-  final pulumi.Input<bool>? isEligible;
+  final pulumi.Input<bool?>? isEligible;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the MAK key.
-  final pulumi.Input<String>? multipleActivationKeyName;
+  final pulumi.Input<String?>? multipleActivationKeyName;
   /// Type of OS for which the key is requested.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<dynamic>? osType;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Type of support
-  final pulumi.Input<String>? supportType;
+  final pulumi.Input<dynamic>? supportType;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [MultipleActivationKeyArgs].
   /// [agreementNumber] Agreement number under which the key is requested.
@@ -36,7 +36,7 @@ class MultipleActivationKeyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [supportType] Type of support
   /// [tags] Resource tags.
-  const MultipleActivationKeyArgs({
+  MultipleActivationKeyArgs({
     this.agreementNumber,
     this.installedServerNumber,
     this.isEligible,
@@ -44,9 +44,9 @@ class MultipleActivationKeyArgs {
     this.multipleActivationKeyName,
     this.osType,
     required this.resourceGroupName,
-    this.supportType,
+    pulumi.Input<dynamic>? supportType,
     this.tags,
-  });
+  }) : supportType = supportType ?? pulumi.Input.fromValue('SupplementalServicing');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,13 +65,13 @@ class MultipleActivationKeyArgs {
   factory MultipleActivationKeyArgs.fromMap(Map<String, dynamic> map) {
     return MultipleActivationKeyArgs(
       agreementNumber: (() { final guardedValue = map['agreementNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      installedServerNumber: (() { final guardedValue = map['installedServerNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      installedServerNumber: (() { final guardedValue = map['installedServerNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       isEligible: (() { final guardedValue = map['isEligible']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       multipleActivationKeyName: (() { final guardedValue = map['multipleActivationKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      supportType: (() { final guardedValue = map['supportType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      supportType: (() { final guardedValue = map['supportType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

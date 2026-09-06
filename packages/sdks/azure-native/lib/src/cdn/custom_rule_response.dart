@@ -8,7 +8,7 @@ class CustomRuleResponse {
   /// Describes what action to be applied when rule matches
   final pulumi.Input<String> action;
   /// Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
-  final pulumi.Input<String>? enabledState;
+  final pulumi.Input<String?>? enabledState;
   /// List of match conditions.
   final pulumi.Input<List<MatchConditionResponse>> matchConditions;
   /// Defines the name of the custom rule
@@ -46,7 +46,7 @@ class CustomRuleResponse {
       enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       matchConditions: pulumi.Input.fromValue(pulumi.Input.decodeList<MatchConditionResponse>(map['matchConditions']!, (value) => MatchConditionResponse.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
     );
   }
 }

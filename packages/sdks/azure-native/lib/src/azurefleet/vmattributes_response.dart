@@ -9,55 +9,55 @@ class VMAttributesResponse {
   /// The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.
   /// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
   /// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
-  final pulumi.Input<VMAttributeMinMaxIntegerResponse>? acceleratorCount;
+  final pulumi.Input<VMAttributeMinMaxIntegerResponse?>? acceleratorCount;
   /// The accelerator manufacturers specified as a list.
   /// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
   /// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
-  final pulumi.Input<List<String>>? acceleratorManufacturers;
+  final pulumi.Input<List<String>?>? acceleratorManufacturers;
   /// Specifies whether the VMSize supporting accelerator should be used to build Fleet or not.
   /// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
   /// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
-  final pulumi.Input<String>? acceleratorSupport;
+  final pulumi.Input<String?>? acceleratorSupport;
   /// The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
   /// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
-  final pulumi.Input<List<String>>? acceleratorTypes;
+  final pulumi.Input<List<String>?>? acceleratorTypes;
   /// The VM architecture types specified as a list. Optional parameter.
-  final pulumi.Input<List<String>>? architectureTypes;
+  final pulumi.Input<List<String>?>? architectureTypes;
   /// Specifies whether the VMSize supporting burstable capability should be used to build Fleet or not.
-  final pulumi.Input<String>? burstableSupport;
+  final pulumi.Input<String?>? burstableSupport;
   /// The VM CPU manufacturers specified as a list. Optional parameter.
-  final pulumi.Input<List<String>>? cpuManufacturers;
+  final pulumi.Input<List<String>?>? cpuManufacturers;
   /// The range of data disk count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
-  final pulumi.Input<VMAttributeMinMaxIntegerResponse>? dataDiskCount;
+  final pulumi.Input<VMAttributeMinMaxIntegerResponse?>? dataDiskCount;
   /// Specifies which VMSizes should be excluded while building Fleet. Optional parameter.
-  final pulumi.Input<List<String>>? excludedVMSizes;
+  final pulumi.Input<List<String>?>? excludedVMSizes;
   /// The local storage disk types specified as a list. LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
   /// If localStorageSupport is "Excluded", this VMAttribute can not be used.
-  final pulumi.Input<List<String>>? localStorageDiskTypes;
+  final pulumi.Input<List<String>?>? localStorageDiskTypes;
   /// LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
   /// If localStorageSupport is "Excluded", this VMAttribute can not be used.
-  final pulumi.Input<VMAttributeMinMaxDoubleResponse>? localStorageInGiB;
+  final pulumi.Input<VMAttributeMinMaxDoubleResponse?>? localStorageInGiB;
   /// Specifies whether the VMSize supporting local storage should be used to build Fleet or not.
   /// Included - Default if not specified as most Azure VMs support local storage.
-  final pulumi.Input<String>? localStorageSupport;
+  final pulumi.Input<String?>? localStorageSupport;
   /// The range of memory specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
   final pulumi.Input<VMAttributeMinMaxDoubleResponse> memoryInGiB;
   /// The range of memory in GiB per vCPU specified from min to max. Optional parameter. Either Min or Max is required if specified.
-  final pulumi.Input<VMAttributeMinMaxDoubleResponse>? memoryInGiBPerVCpu;
+  final pulumi.Input<VMAttributeMinMaxDoubleResponse?>? memoryInGiBPerVCpu;
   /// The range of network bandwidth in Mbps specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
-  final pulumi.Input<VMAttributeMinMaxDoubleResponse>? networkBandwidthInMbps;
+  final pulumi.Input<VMAttributeMinMaxDoubleResponse?>? networkBandwidthInMbps;
   /// The range of network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
-  final pulumi.Input<VMAttributeMinMaxIntegerResponse>? networkInterfaceCount;
+  final pulumi.Input<VMAttributeMinMaxIntegerResponse?>? networkInterfaceCount;
   /// The range of RDMA (Remote Direct Memory Access) network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
   /// rdmaSupport should be set to "Included" or "Required" to use this VMAttribute.
   /// If rdmaSupport is "Excluded", this VMAttribute can not be used.
-  final pulumi.Input<VMAttributeMinMaxIntegerResponse>? rdmaNetworkInterfaceCount;
+  final pulumi.Input<VMAttributeMinMaxIntegerResponse?>? rdmaNetworkInterfaceCount;
   /// Specifies whether the VMSize supporting RDMA (Remote Direct Memory Access) should be used to build Fleet or not.
-  final pulumi.Input<String>? rdmaSupport;
+  final pulumi.Input<String?>? rdmaSupport;
   /// The range of vCpuCount specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
   final pulumi.Input<VMAttributeMinMaxIntegerResponse> vCpuCount;
   /// The VM category specified as a list. Optional parameter.
-  final pulumi.Input<List<String>>? vmCategories;
+  final pulumi.Input<List<String>?>? vmCategories;
 
   /// Creates a new [VMAttributesResponse].
   /// [acceleratorCount] The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_communication_sender_username_args_doc}
 class SenderUsernameArgs {
   /// The display name for the senderUsername.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The name of the Domains resource.
   final pulumi.Input<String> domainName;
   /// The name of the EmailService resource.
@@ -16,7 +16,7 @@ class SenderUsernameArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The valid sender Username.
-  final pulumi.Input<String>? senderUsername;
+  final pulumi.Input<String?>? senderUsername;
   /// A sender senderUsername to be used when sending emails.
   final pulumi.Input<String> username;
 

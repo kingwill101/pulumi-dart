@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of single sign on Secret Type.
-enum SSOSecretType {
+enum SSOSecretType implements pulumi.PulumiEnum<String> {
   valueSharedKey("SharedKey"),
   valueCertificate("Certificate"),
   valueSharedKeyInKeyVault("SharedKeyInKeyVault"),
   valueCertificateInKeyVault("CertificateInKeyVault");
 
   const SSOSecretType(this.wireValue);
+  @override
   final String wireValue;
 
   static SSOSecretType fromValue(String value) {

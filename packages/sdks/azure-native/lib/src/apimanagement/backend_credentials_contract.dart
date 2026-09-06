@@ -6,15 +6,15 @@ import 'backend_authorization_header_credentials.dart';
 /// Details of the Credentials used to connect to Backend.
 class BackendCredentialsContract {
   /// Authorization header authentication
-  final pulumi.Input<BackendAuthorizationHeaderCredentials>? authorization;
+  final pulumi.Input<BackendAuthorizationHeaderCredentials?>? authorization;
   /// List of Client Certificate Thumbprints. Will be ignored if certificatesIds are provided.
-  final pulumi.Input<List<String>>? certificate;
+  final pulumi.Input<List<String>?>? certificate;
   /// List of Client Certificate Ids.
-  final pulumi.Input<List<String>>? certificateIds;
+  final pulumi.Input<List<String>?>? certificateIds;
   /// Header Parameter description.
-  final pulumi.Input<Map<String, List<String>>>? header;
+  final pulumi.Input<Map<String, List<String>>?>? header;
   /// Query Parameter description.
-  final pulumi.Input<Map<String, List<String>>>? query;
+  final pulumi.Input<Map<String, List<String>>?>? query;
 
   /// Creates a new [BackendCredentialsContract].
   /// [authorization] Authorization header authentication
@@ -45,8 +45,8 @@ class BackendCredentialsContract {
       authorization: (() { final guardedValue = map['authorization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackendAuthorizationHeaderCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       certificate: (() { final guardedValue = map['certificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       certificateIds: (() { final guardedValue = map['certificateIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      header: (() { final guardedValue = map['header']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, List<String>>()); })(),
-      query: (() { final guardedValue = map['query']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, List<String>>()); })(),
+      header: (() { final guardedValue = map['header']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>())); })(),
+      query: (() { final guardedValue = map['query']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>())); })(),
     );
   }
 }

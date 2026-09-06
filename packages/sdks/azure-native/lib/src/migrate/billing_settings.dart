@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Billing settings class.
 class BillingSettings {
   /// Gets or sets the licensing program.
-  final pulumi.Input<String>? licensingProgram;
+  final pulumi.Input<dynamic>? licensingProgram;
   /// Gets or sets the subscription ID for licensing program selected.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [BillingSettings].
   /// [licensingProgram] Gets or sets the licensing program.
@@ -26,7 +26,7 @@ class BillingSettings {
 
   factory BillingSettings.fromMap(Map<String, dynamic> map) {
     return BillingSettings(
-      licensingProgram: (() { final guardedValue = map['licensingProgram']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      licensingProgram: (() { final guardedValue = map['licensingProgram']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Allocation strategy to follow when determining the VM sizes distribution for Regular VMs.
-enum RegularPriorityAllocationStrategy {
+enum RegularPriorityAllocationStrategy implements pulumi.PulumiEnum<String> {
   lowestPrice("LowestPrice"),
   prioritized("Prioritized");
 
   const RegularPriorityAllocationStrategy(this.wireValue);
+  @override
   final String wireValue;
 
   static RegularPriorityAllocationStrategy fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A CNAME record.
 class CnameRecordResponse {
   /// The canonical name for this CNAME record.
-  final pulumi.Input<String>? cname;
+  final pulumi.Input<String?>? cname;
 
   /// Creates a new [CnameRecordResponse].
   /// [cname] The canonical name for this CNAME record.

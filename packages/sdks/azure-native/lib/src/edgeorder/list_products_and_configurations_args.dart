@@ -10,11 +10,11 @@ import 'customer_subscription_details.dart';
 /// {@macro pulumi_edgeorder_list_products_and_configurations_args_doc}
 class ListProductsAndConfigurationsArgs {
   /// Holds details about product hierarchy information and filterable property.
-  final pulumi.Input<ConfigurationFilter>? configurationFilter;
+  final pulumi.Input<ConfigurationFilter?>? configurationFilter;
   /// Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details.
-  final pulumi.Input<CustomerSubscriptionDetails>? customerSubscriptionDetails;
+  final pulumi.Input<CustomerSubscriptionDetails?>? customerSubscriptionDetails;
   /// $skipToken is supported on list of configurations, which provides the next page in the list of configurations.
-  final pulumi.Input<String>? skipToken;
+  final pulumi.Input<String?>? skipToken;
 
   /// Creates a new [ListProductsAndConfigurationsArgs].
   /// [configurationFilter] Holds details about product hierarchy information and filterable property.

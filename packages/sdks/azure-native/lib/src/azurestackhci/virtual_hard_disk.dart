@@ -431,7 +431,37 @@ class VirtualHardDisk extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<VirtualHardDiskStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualHardDiskStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [VirtualHardDisk] resource.
+  VirtualHardDisk.reference(String urn)
+    : super(
+        'azure-native:azurestackhci:VirtualHardDisk',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    blockSizeBytes = registerOutput<int?>('blockSizeBytes');
+    containerId = registerOutput<String?>('containerId');
+    createFromLocal = registerOutput<bool?>('createFromLocal');
+    diskFileFormat = registerOutput<String?>('diskFileFormat');
+    diskSizeGB = registerOutput<double?>('diskSizeGB');
+    downloadUrl = registerOutput<String?>('downloadUrl');
+    dynamic_ = registerOutput<bool?>('dynamic');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hyperVGeneration = registerOutput<String?>('hyperVGeneration');
+    location = registerOutput<String>('location');
+    logicalSectorBytes = registerOutput<int?>('logicalSectorBytes');
+    this.name = registerOutput<String>('name');
+    physicalSectorBytes = registerOutput<int?>('physicalSectorBytes');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<VirtualHardDiskStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualHardDiskStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

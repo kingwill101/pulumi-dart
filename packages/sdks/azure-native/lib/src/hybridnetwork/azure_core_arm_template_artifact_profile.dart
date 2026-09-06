@@ -7,9 +7,9 @@ import 'referenced_resource.dart';
 /// Azure template artifact profile properties.
 class AzureCoreArmTemplateArtifactProfile {
   /// The reference to artifact store.
-  final pulumi.Input<ReferencedResource>? artifactStore;
+  final pulumi.Input<ReferencedResource?>? artifactStore;
   /// Template artifact profile.
-  final pulumi.Input<ArmTemplateArtifactProfile>? templateArtifactProfile;
+  final pulumi.Input<ArmTemplateArtifactProfile?>? templateArtifactProfile;
 
   /// Creates a new [AzureCoreArmTemplateArtifactProfile].
   /// [artifactStore] The reference to artifact store.

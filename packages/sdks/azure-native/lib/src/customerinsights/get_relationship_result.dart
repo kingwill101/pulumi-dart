@@ -7,7 +7,7 @@ import 'relationship_type_mapping_response.dart';
 /// Result data returned by getRelationship.
 class GetRelationshipResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The Relationship Cardinality.
   final String? cardinality;
   /// Localized descriptions for the Relationship.
@@ -19,25 +19,25 @@ class GetRelationshipResult {
   /// The properties of the Relationship.
   final List<PropertyDefinitionResponse>? fields;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Optional property to be used to map fields in profile to their strong ids in related profile.
   final List<RelationshipTypeMappingResponse>? lookupMappings;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Profile type.
-  final String profileType;
+  final String? profileType;
   /// Provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// Related profile being referenced.
-  final String relatedProfileType;
+  final String? relatedProfileType;
   /// The relationship guid id.
-  final String relationshipGuidId;
+  final String? relationshipGuidId;
   /// The Relationship name.
-  final String relationshipName;
+  final String? relationshipName;
   /// The hub name.
-  final String tenantId;
+  final String? tenantId;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetRelationshipResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -57,63 +57,63 @@ class GetRelationshipResult {
   /// [tenantId] The hub name.
   /// [type] Resource type.
   const GetRelationshipResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.cardinality,
     this.description,
     this.displayName,
     this.expiryDateTimeUtc,
     this.fields,
-    required this.id,
+    this.id,
     this.lookupMappings,
-    required this.name,
-    required this.profileType,
-    required this.provisioningState,
-    required this.relatedProfileType,
-    required this.relationshipGuidId,
-    required this.relationshipName,
-    required this.tenantId,
-    required this.type,
+    this.name,
+    this.profileType,
+    this.provisioningState,
+    this.relatedProfileType,
+    this.relationshipGuidId,
+    this.relationshipName,
+    this.tenantId,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'cardinality': ?cardinality,
       'description': ?description,
       'displayName': ?displayName,
       'expiryDateTimeUtc': ?expiryDateTimeUtc,
       'fields': ?(() { final guardedValue = fields; if (guardedValue == null) return null; return pulumi.Input.encodeList<PropertyDefinitionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
+      'id': ?id,
       'lookupMappings': ?(() { final guardedValue = lookupMappings; if (guardedValue == null) return null; return pulumi.Input.encodeList<RelationshipTypeMappingResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'name': name,
-      'profileType': profileType,
-      'provisioningState': provisioningState,
-      'relatedProfileType': relatedProfileType,
-      'relationshipGuidId': relationshipGuidId,
-      'relationshipName': relationshipName,
-      'tenantId': tenantId,
-      'type': type,
+      'name': ?name,
+      'profileType': ?profileType,
+      'provisioningState': ?provisioningState,
+      'relatedProfileType': ?relatedProfileType,
+      'relationshipGuidId': ?relationshipGuidId,
+      'relationshipName': ?relationshipName,
+      'tenantId': ?tenantId,
+      'type': ?type,
     };
   }
 
   factory GetRelationshipResult.fromMap(Map<String, dynamic> map) {
     return GetRelationshipResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       cardinality: (() { final guardedValue = map['cardinality']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       expiryDateTimeUtc: (() { final guardedValue = map['expiryDateTimeUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
       fields: (() { final guardedValue = map['fields']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PropertyDefinitionResponse>(guardedValue, (value) => PropertyDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lookupMappings: (() { final guardedValue = map['lookupMappings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RelationshipTypeMappingResponse>(guardedValue, (value) => RelationshipTypeMappingResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      name: map['name'] as String,
-      profileType: map['profileType'] as String,
-      provisioningState: map['provisioningState'] as String,
-      relatedProfileType: map['relatedProfileType'] as String,
-      relationshipGuidId: map['relationshipGuidId'] as String,
-      relationshipName: map['relationshipName'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      profileType: (() { final guardedValue = map['profileType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      relatedProfileType: (() { final guardedValue = map['relatedProfileType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      relationshipGuidId: (() { final guardedValue = map['relationshipGuidId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      relationshipName: (() { final guardedValue = map['relationshipName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

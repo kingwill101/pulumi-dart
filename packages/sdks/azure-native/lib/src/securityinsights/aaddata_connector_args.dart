@@ -9,9 +9,9 @@ import 'alerts_data_type_of_data_connector.dart';
 /// {@macro pulumi_securityinsights_aaddata_connector_args_doc}
 class AADDataConnectorArgs {
   /// Connector ID
-  final pulumi.Input<String>? dataConnectorId;
+  final pulumi.Input<String?>? dataConnectorId;
   /// The available data types for the connector.
-  final pulumi.Input<AlertsDataTypeOfDataConnector>? dataTypes;
+  final pulumi.Input<AlertsDataTypeOfDataConnector?>? dataTypes;
   /// The kind of the data connector
   /// Expected value is 'AzureActiveDirectory'.
   final pulumi.Input<String> kind;

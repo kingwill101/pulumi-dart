@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
-enum CustomDomainIdentityType {
+enum CustomDomainIdentityType implements pulumi.PulumiEnum<String> {
   valueSystemAssigned("SystemAssigned"),
   valueUserAssigned("UserAssigned");
 
   const CustomDomainIdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static CustomDomainIdentityType fromValue(String value) {

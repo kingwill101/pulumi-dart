@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Header
 class HeaderResponse {
   /// Property destination
-  final pulumi.Input<String>? destination;
+  final pulumi.Input<String?>? destination;
   /// Property destinationPort
-  final pulumi.Input<String>? destinationPort;
+  final pulumi.Input<String?>? destinationPort;
   /// Property direction
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<String?>? direction;
   /// Property protocol
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Property source
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// Property sourcePort
-  final pulumi.Input<String>? sourcePort;
+  final pulumi.Input<String?>? sourcePort;
 
   /// Creates a new [HeaderResponse].
   /// [destination] Property destination

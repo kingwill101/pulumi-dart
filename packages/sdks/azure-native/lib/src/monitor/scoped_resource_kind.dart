@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kind of scoped Azure monitor resource.
-enum ScopedResourceKind {
+enum ScopedResourceKind implements pulumi.PulumiEnum<String> {
   resource("Resource"),
   metrics("Metrics");
 
   const ScopedResourceKind(this.wireValue);
+  @override
   final String wireValue;
 
   static ScopedResourceKind fromValue(String value) {

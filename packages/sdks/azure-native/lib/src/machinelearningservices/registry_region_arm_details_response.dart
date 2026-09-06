@@ -7,11 +7,11 @@ import 'storage_account_details_response.dart';
 /// Details for each region the registry is in
 class RegistryRegionArmDetailsResponse {
   /// List of ACR accounts
-  final pulumi.Input<List<AcrDetailsResponse>>? acrDetails;
+  final pulumi.Input<List<AcrDetailsResponse>?>? acrDetails;
   /// The location where the registry exists
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// List of storage accounts
-  final pulumi.Input<List<StorageAccountDetailsResponse>>? storageAccountDetails;
+  final pulumi.Input<List<StorageAccountDetailsResponse>?>? storageAccountDetails;
 
   /// Creates a new [RegistryRegionArmDetailsResponse].
   /// [acrDetails] List of ACR accounts

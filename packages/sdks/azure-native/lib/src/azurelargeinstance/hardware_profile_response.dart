@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies the hardware settings for the Azure Large Instance.
 class HardwareProfileResponse {
   /// Specifies the Azure Large Instance SKU.
-  final pulumi.Input<String>? azureLargeInstanceSize;
+  final pulumi.Input<String?>? azureLargeInstanceSize;
   /// Name of the hardware type (vendor and/or their product name)
-  final pulumi.Input<String>? hardwareType;
+  final pulumi.Input<String?>? hardwareType;
 
   /// Creates a new [HardwareProfileResponse].
   /// [azureLargeInstanceSize] Specifies the Azure Large Instance SKU.

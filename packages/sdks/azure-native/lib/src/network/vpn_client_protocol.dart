@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// VPN client protocol enabled for the virtual network gateway.
-enum VpnClientProtocol {
+enum VpnClientProtocol implements pulumi.PulumiEnum<String> {
   valueIkeV2("IkeV2"),
   valueSSTP("SSTP"),
   valueOpenVPN("OpenVPN");
 
   const VpnClientProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static VpnClientProtocol fromValue(String value) {

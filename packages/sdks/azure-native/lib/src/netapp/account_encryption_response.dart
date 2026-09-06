@@ -7,21 +7,21 @@ import 'key_vault_properties_response.dart';
 /// Encryption settings
 class AccountEncryptionResponse {
   /// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
-  final pulumi.Input<EncryptionIdentityResponse>? identity;
+  final pulumi.Input<EncryptionIdentityResponse?>? identity;
   /// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.NetApp, Microsoft.KeyVault
-  final pulumi.Input<String>? keySource;
+  final pulumi.Input<String?>? keySource;
   /// Properties provided by KeVault. Applicable if keySource is 'Microsoft.KeyVault'.
-  final pulumi.Input<KeyVaultPropertiesResponse>? keyVaultProperties;
+  final pulumi.Input<KeyVaultPropertiesResponse?>? keyVaultProperties;
 
   /// Creates a new [AccountEncryptionResponse].
   /// [identity] Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
   /// [keySource] The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.NetApp, Microsoft.KeyVault
   /// [keyVaultProperties] Properties provided by KeVault. Applicable if keySource is 'Microsoft.KeyVault'.
-  const AccountEncryptionResponse({
+  AccountEncryptionResponse({
     this.identity,
-    this.keySource,
+    pulumi.Input<String?>? keySource,
     this.keyVaultProperties,
-  });
+  }) : keySource = keySource ?? pulumi.Input.fromValue('Microsoft.NetApp');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

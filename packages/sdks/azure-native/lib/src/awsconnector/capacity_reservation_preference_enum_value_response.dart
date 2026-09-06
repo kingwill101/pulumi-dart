@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of CapacityReservationPreferenceEnumValue
 class CapacityReservationPreferenceEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [CapacityReservationPreferenceEnumValueResponse].
   /// [value] Property value

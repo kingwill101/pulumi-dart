@@ -9,7 +9,7 @@ class CompoundAssessmentPropertiesResponse {
   /// Details of the compound assessment.
   final pulumi.Input<CompoundAssessmentDetailsResponse> details;
   /// Fallback machine assessment ARM ID.
-  final pulumi.Input<String>? fallbackMachineAssessmentArmId;
+  final pulumi.Input<String?>? fallbackMachineAssessmentArmId;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// ARM IDs of the target assessments.

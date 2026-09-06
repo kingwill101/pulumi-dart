@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of pipeline
-enum PipelineType {
+enum PipelineType implements pulumi.PulumiEnum<String> {
   logs("Logs");
 
   const PipelineType(this.wireValue);
+  @override
   final String wireValue;
 
   static PipelineType fromValue(String value) {

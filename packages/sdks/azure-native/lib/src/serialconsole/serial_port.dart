@@ -196,4 +196,19 @@ class SerialPort extends pulumi.CustomResource {
     state = registerOutput<String?>('state');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [SerialPort] resource.
+  SerialPort.reference(String urn)
+    : super(
+        'azure-native:serialconsole:SerialPort',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    state = registerOutput<String?>('state');
+    type = registerOutput<String>('type');
+  }
 }

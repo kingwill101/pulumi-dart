@@ -9,17 +9,17 @@ import 'container_network_interface_configuration.dart';
 /// {@macro pulumi_network_network_profile_args_doc}
 class NetworkProfileArgs {
   /// List of chid container network interface configurations.
-  final pulumi.Input<List<ContainerNetworkInterfaceConfiguration>>? containerNetworkInterfaceConfigurations;
+  final pulumi.Input<List<ContainerNetworkInterfaceConfiguration>?>? containerNetworkInterfaceConfigurations;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the network profile.
-  final pulumi.Input<String>? networkProfileName;
+  final pulumi.Input<String?>? networkProfileName;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkProfileArgs].
   /// [containerNetworkInterfaceConfigurations] List of chid container network interface configurations.

@@ -8,15 +8,15 @@ import 'vnet_route.dart';
 /// Routing Configuration indicating the associated and propagated route tables for this connection.
 class RoutingConfiguration {
   /// The resource id RouteTable associated with this RoutingConfiguration.
-  final pulumi.Input<SubResource>? associatedRouteTable;
+  final pulumi.Input<SubResource?>? associatedRouteTable;
   /// The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
-  final pulumi.Input<SubResource>? inboundRouteMap;
+  final pulumi.Input<SubResource?>? inboundRouteMap;
   /// The resource id of theRouteMap associated with this RoutingConfiguration for outbound advertised routes.
-  final pulumi.Input<SubResource>? outboundRouteMap;
+  final pulumi.Input<SubResource?>? outboundRouteMap;
   /// The list of RouteTables to advertise the routes to.
-  final pulumi.Input<PropagatedRouteTable>? propagatedRouteTables;
+  final pulumi.Input<PropagatedRouteTable?>? propagatedRouteTables;
   /// List of routes that control routing from VirtualHub into a virtual network connection.
-  final pulumi.Input<VnetRoute>? vnetRoutes;
+  final pulumi.Input<VnetRoute?>? vnetRoutes;
 
   /// Creates a new [RoutingConfiguration].
   /// [associatedRouteTable] The resource id RouteTable associated with this RoutingConfiguration.

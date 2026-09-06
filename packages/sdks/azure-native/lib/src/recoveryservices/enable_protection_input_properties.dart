@@ -1,16 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'a2_across_cluster_migration_enable_protection_input.dart';
 
 /// Enable protection input properties.
 class EnableProtectionInputProperties {
   /// The Policy Id.
-  final pulumi.Input<String>? policyId;
+  final pulumi.Input<String?>? policyId;
   /// The protectable item Id.
-  final pulumi.Input<String>? protectableItemId;
+  final pulumi.Input<String?>? protectableItemId;
   /// The ReplicationProviderInput. For HyperVReplicaAzure provider, it will be AzureEnableProtectionInput object. For San provider, it will be SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be null.
-  final pulumi.Input<A2ACrossClusterMigrationEnableProtectionInput>? providerSpecificDetails;
+  final pulumi.Input<dynamic>? providerSpecificDetails;
 
   /// Creates a new [EnableProtectionInputProperties].
   /// [policyId] The Policy Id.
@@ -26,7 +25,7 @@ class EnableProtectionInputProperties {
     return <String, dynamic>{
       'policyId': ?policyId,
       'protectableItemId': ?protectableItemId,
-      'providerSpecificDetails': ?pulumi.Input.mapOptionalInputValue<A2ACrossClusterMigrationEnableProtectionInput, Map<String, dynamic>>(providerSpecificDetails, (value) => value.toMap()),
+      'providerSpecificDetails': ?providerSpecificDetails,
     };
   }
 
@@ -34,7 +33,7 @@ class EnableProtectionInputProperties {
     return EnableProtectionInputProperties(
       policyId: (() { final guardedValue = map['policyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protectableItemId: (() { final guardedValue = map['protectableItemId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      providerSpecificDetails: (() { final guardedValue = map['providerSpecificDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(A2ACrossClusterMigrationEnableProtectionInput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      providerSpecificDetails: (() { final guardedValue = map['providerSpecificDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

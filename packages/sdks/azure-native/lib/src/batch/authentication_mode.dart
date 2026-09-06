@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The authentication mode for the Batch account.
-enum AuthenticationMode {
+enum AuthenticationMode implements pulumi.PulumiEnum<String> {
   sharedKey("SharedKey"),
   aAD("AAD"),
   taskAuthenticationToken("TaskAuthenticationToken");
 
   const AuthenticationMode(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthenticationMode fromValue(String value) {

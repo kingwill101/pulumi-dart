@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// ML model to use for dynamic thresholds
-enum DynamicThresholdModel {
+enum DynamicThresholdModel implements pulumi.PulumiEnum<String> {
   anomalyDetection("AnomalyDetection");
 
   const DynamicThresholdModel(this.wireValue);
+  @override
   final String wireValue;
 
   static DynamicThresholdModel fromValue(String value) {

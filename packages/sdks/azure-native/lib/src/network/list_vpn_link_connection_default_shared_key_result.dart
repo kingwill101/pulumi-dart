@@ -9,9 +9,9 @@ class ListVpnLinkConnectionDefaultSharedKeyResult {
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final String? name;
   /// Properties of the shared key.
-  final SharedKeyPropertiesResponse properties;
+  final SharedKeyPropertiesResponse? properties;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [ListVpnLinkConnectionDefaultSharedKeyResult].
   /// [id] Resource ID.
@@ -21,16 +21,16 @@ class ListVpnLinkConnectionDefaultSharedKeyResult {
   const ListVpnLinkConnectionDefaultSharedKeyResult({
     this.id,
     this.name,
-    required this.properties,
-    required this.type,
+    this.properties,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
       'name': ?name,
-      'properties': properties.toMap(),
-      'type': type,
+      'properties': ?properties?.toMap(),
+      'type': ?type,
     };
   }
 
@@ -38,8 +38,8 @@ class ListVpnLinkConnectionDefaultSharedKeyResult {
     return ListVpnLinkConnectionDefaultSharedKeyResult(
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      properties: SharedKeyPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return SharedKeyPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

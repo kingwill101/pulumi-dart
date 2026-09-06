@@ -6,7 +6,7 @@ import 'cross_subscription_restore_settings_response.dart';
 /// Restore Settings  of the vault
 class RestoreSettingsResponse {
   /// Settings for CrossSubscriptionRestore
-  final pulumi.Input<CrossSubscriptionRestoreSettingsResponse>? crossSubscriptionRestoreSettings;
+  final pulumi.Input<CrossSubscriptionRestoreSettingsResponse?>? crossSubscriptionRestoreSettings;
 
   /// Creates a new [RestoreSettingsResponse].
   /// [crossSubscriptionRestoreSettings] Settings for CrossSubscriptionRestore

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Encryption details for the fabric.
 class EncryptionDetailsResponse {
   /// The key encryption key certificate expiry date.
-  final pulumi.Input<String>? kekCertExpiryDate;
+  final pulumi.Input<String?>? kekCertExpiryDate;
   /// The key encryption key certificate thumbprint.
-  final pulumi.Input<String>? kekCertThumbprint;
+  final pulumi.Input<String?>? kekCertThumbprint;
   /// The key encryption key state for the Vmm.
-  final pulumi.Input<String>? kekState;
+  final pulumi.Input<String?>? kekState;
 
   /// Creates a new [EncryptionDetailsResponse].
   /// [kekCertExpiryDate] The key encryption key certificate expiry date.

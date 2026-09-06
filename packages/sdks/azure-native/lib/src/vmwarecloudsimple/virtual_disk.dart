@@ -12,7 +12,7 @@ class VirtualDisk {
   /// Disk's total size
   final pulumi.Input<int> totalSize;
   /// Disk's id
-  final pulumi.Input<String>? virtualDiskId;
+  final pulumi.Input<String?>? virtualDiskId;
 
   /// Creates a new [VirtualDisk].
   /// [controllerId] Disk's Controller id
@@ -39,7 +39,7 @@ class VirtualDisk {
     return VirtualDisk(
       controllerId: pulumi.Input.fromValue(map['controllerId'] as String),
       independenceMode: pulumi.Input.fromValue(DiskIndependenceMode.fromValue(map['independenceMode']! as String)),
-      totalSize: pulumi.Input.fromValue(map['totalSize'] as int),
+      totalSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalSize'])),
       virtualDiskId: (() { final guardedValue = map['virtualDiskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

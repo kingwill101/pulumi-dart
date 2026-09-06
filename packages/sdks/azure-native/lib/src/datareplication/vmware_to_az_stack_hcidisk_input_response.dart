@@ -12,11 +12,11 @@ class VMwareToAzStackHCIDiskInputResponse {
   final pulumi.Input<double> diskSizeGB;
   /// Gets or sets a value indicating whether dynamic sizing is enabled on the virtual hard
   /// disk.
-  final pulumi.Input<bool>? isDynamic;
+  final pulumi.Input<bool?>? isDynamic;
   /// Gets or sets a value indicating whether disk is os disk.
   final pulumi.Input<bool> isOsDisk;
   /// Gets or sets the target storage account ARM Id.
-  final pulumi.Input<String>? storageContainerId;
+  final pulumi.Input<String?>? storageContainerId;
 
   /// Creates a new [VMwareToAzStackHCIDiskInputResponse].
   /// [diskFileFormat] Gets or sets the type of the virtual hard disk, vhd or vhdx.
@@ -49,7 +49,7 @@ class VMwareToAzStackHCIDiskInputResponse {
     return VMwareToAzStackHCIDiskInputResponse(
       diskFileFormat: pulumi.Input.fromValue(map['diskFileFormat'] as String),
       diskId: pulumi.Input.fromValue(map['diskId'] as String),
-      diskSizeGB: pulumi.Input.fromValue(map['diskSizeGB'] as double),
+      diskSizeGB: pulumi.Input.fromValue((map['diskSizeGB'] as num).toDouble()),
       isDynamic: (() { final guardedValue = map['isDynamic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isOsDisk: pulumi.Input.fromValue(map['isOsDisk'] as bool),
       storageContainerId: (() { final guardedValue = map['storageContainerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_function_event_subscription_destination_response.dart';
 import 'dead_letter_with_resource_identity_response.dart';
 import 'delivery_with_resource_identity_response.dart';
 
@@ -9,13 +8,13 @@ import 'delivery_with_resource_identity_response.dart';
 class PushInfoResponse {
   /// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
   /// Uses the managed identity setup on the parent resource (namely, namespace) to acquire the authentication tokens being used during dead-lettering.
-  final pulumi.Input<DeadLetterWithResourceIdentityResponse>? deadLetterDestinationWithResourceIdentity;
+  final pulumi.Input<DeadLetterWithResourceIdentityResponse?>? deadLetterDestinationWithResourceIdentity;
   /// Information about the destination where events have to be delivered for the event subscription.
   /// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
-  final pulumi.Input<DeliveryWithResourceIdentityResponse>? deliveryWithResourceIdentity;
+  final pulumi.Input<DeliveryWithResourceIdentityResponse?>? deliveryWithResourceIdentity;
   /// Information about the destination where events have to be delivered for the event subscription.
   /// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery.
-  final pulumi.Input<AzureFunctionEventSubscriptionDestinationResponse>? destination;
+  final pulumi.Input<dynamic>? destination;
   /// Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
   /// This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where:
   /// - (n) is replaced by the value of each time element that follows the (n).
@@ -32,9 +31,9 @@ class PushInfoResponse {
   /// by topic’s EventRetentionInDays value. The followings are examples of valid values:
   /// - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
   /// - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
-  final pulumi.Input<String>? eventTimeToLive;
+  final pulumi.Input<String?>? eventTimeToLive;
   /// The maximum delivery count of the events.
-  final pulumi.Input<int>? maxDeliveryCount;
+  final pulumi.Input<int?>? maxDeliveryCount;
 
   /// Creates a new [PushInfoResponse].
   /// [deadLetterDestinationWithResourceIdentity] The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
@@ -54,7 +53,7 @@ class PushInfoResponse {
     return <String, dynamic>{
       'deadLetterDestinationWithResourceIdentity': ?pulumi.Input.mapOptionalInputValue<DeadLetterWithResourceIdentityResponse, Map<String, dynamic>>(deadLetterDestinationWithResourceIdentity, (value) => value.toMap()),
       'deliveryWithResourceIdentity': ?pulumi.Input.mapOptionalInputValue<DeliveryWithResourceIdentityResponse, Map<String, dynamic>>(deliveryWithResourceIdentity, (value) => value.toMap()),
-      'destination': ?pulumi.Input.mapOptionalInputValue<AzureFunctionEventSubscriptionDestinationResponse, Map<String, dynamic>>(destination, (value) => value.toMap()),
+      'destination': ?destination,
       'eventTimeToLive': ?eventTimeToLive,
       'maxDeliveryCount': ?maxDeliveryCount,
     };
@@ -64,9 +63,9 @@ class PushInfoResponse {
     return PushInfoResponse(
       deadLetterDestinationWithResourceIdentity: (() { final guardedValue = map['deadLetterDestinationWithResourceIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeadLetterWithResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deliveryWithResourceIdentity: (() { final guardedValue = map['deliveryWithResourceIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeliveryWithResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureFunctionEventSubscriptionDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       eventTimeToLive: (() { final guardedValue = map['eventTimeToLive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxDeliveryCount: (() { final guardedValue = map['maxDeliveryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxDeliveryCount: (() { final guardedValue = map['maxDeliveryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

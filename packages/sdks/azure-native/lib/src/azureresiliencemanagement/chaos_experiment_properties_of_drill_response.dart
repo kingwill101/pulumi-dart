@@ -8,15 +8,15 @@ class ChaosExperimentPropertiesOfDrillResponse {
   /// Chaos Experiment resource created for this Drill
   final pulumi.Input<String> chaosExperimentId;
   /// Identity to be used by the Chaos Experiment for invoking faults on resources.
-  final pulumi.Input<AssociatedIdentityResponse>? chaosExperimentIdentityForFaults;
+  final pulumi.Input<AssociatedIdentityResponse?>? chaosExperimentIdentityForFaults;
   /// Duration of faults.
   final pulumi.Input<int> faultDurationInMin;
   /// Identity to use for Chaos Experiment operations.
-  final pulumi.Input<AssociatedIdentityResponse>? identity;
+  final pulumi.Input<AssociatedIdentityResponse?>? identity;
   /// Region for chaosExperiment resource.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Subscription for chaosExperiment resource.
-  final pulumi.Input<String>? subscription;
+  final pulumi.Input<String?>? subscription;
 
   /// Creates a new [ChaosExperimentPropertiesOfDrillResponse].
   /// [chaosExperimentId] Chaos Experiment resource created for this Drill
@@ -49,7 +49,7 @@ class ChaosExperimentPropertiesOfDrillResponse {
     return ChaosExperimentPropertiesOfDrillResponse(
       chaosExperimentId: pulumi.Input.fromValue(map['chaosExperimentId'] as String),
       chaosExperimentIdentityForFaults: (() { final guardedValue = map['chaosExperimentIdentityForFaults']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AssociatedIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      faultDurationInMin: pulumi.Input.fromValue(map['faultDurationInMin'] as int),
+      faultDurationInMin: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['faultDurationInMin'])),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AssociatedIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subscription: (() { final guardedValue = map['subscription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

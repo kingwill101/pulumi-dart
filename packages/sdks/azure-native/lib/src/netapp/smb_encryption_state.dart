@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol cache.
-enum SmbEncryptionState {
+enum SmbEncryptionState implements pulumi.PulumiEnum<String> {
   disabled("Disabled"),
   enabled("Enabled");
 
   const SmbEncryptionState(this.wireValue);
+  @override
   final String wireValue;
 
   static SmbEncryptionState fromValue(String value) {

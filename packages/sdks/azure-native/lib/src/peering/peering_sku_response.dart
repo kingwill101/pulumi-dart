@@ -7,7 +7,7 @@ class PeeringSkuResponse {
   /// The family of the peering SKU.
   final pulumi.Input<String> family;
   /// The name of the peering SKU.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The size of the peering SKU.
   final pulumi.Input<String> size;
   /// The tier of the peering SKU.

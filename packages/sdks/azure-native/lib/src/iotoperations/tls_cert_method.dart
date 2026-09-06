@@ -7,11 +7,11 @@ import 'x509_manual_certificate.dart';
 /// Collection of different TLS types, NOTE- Enum at a time only one of them needs to be supported
 class TlsCertMethod {
   /// Option 1 - Automatic TLS server certificate management with cert-manager.
-  final pulumi.Input<CertManagerCertificateSpec>? certManagerCertificateSpec;
+  final pulumi.Input<CertManagerCertificateSpec?>? certManagerCertificateSpec;
   /// Option 2 - Manual TLS server certificate management through a defined secret.
-  final pulumi.Input<X509ManualCertificate>? manual;
+  final pulumi.Input<X509ManualCertificate?>? manual;
   /// Mode of TLS server certificate management.
-  final pulumi.Input<String> mode;
+  final pulumi.Input<dynamic> mode;
 
   /// Creates a new [TlsCertMethod].
   /// [certManagerCertificateSpec] Option 1 - Automatic TLS server certificate management with cert-manager.
@@ -35,7 +35,7 @@ class TlsCertMethod {
     return TlsCertMethod(
       certManagerCertificateSpec: (() { final guardedValue = map['certManagerCertificateSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CertManagerCertificateSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       manual: (() { final guardedValue = map['manual']; if (guardedValue == null) return null; return pulumi.Input.fromValue(X509ManualCertificate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      mode: pulumi.Input.fromValue(map['mode'] as String),
+      mode: pulumi.Input.fromValue(map['mode']),
     );
   }
 }

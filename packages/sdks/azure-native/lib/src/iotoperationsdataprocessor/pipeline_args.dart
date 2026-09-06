@@ -11,7 +11,7 @@ import 'pipeline_stage.dart';
 /// {@macro pulumi_iotoperationsdataprocessor_pipeline_args_doc}
 class PipelineArgs {
   /// Detailed description of the Pipeline.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Flag indicating whether the pipeline should be running or not.
   final pulumi.Input<bool> enabled;
   /// Edge location of the resource.
@@ -21,15 +21,15 @@ class PipelineArgs {
   /// Name of instance.
   final pulumi.Input<String> instanceName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of pipeline
-  final pulumi.Input<String>? pipelineName;
+  final pulumi.Input<String?>? pipelineName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Map of stage ids to stage configurations for all pipeline processing and output stages.
   final pulumi.Input<Map<String, PipelineStage>> stages;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PipelineArgs].
   /// [description] Detailed description of the Pipeline.

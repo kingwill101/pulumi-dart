@@ -10,13 +10,13 @@ import 'sku.dart';
 /// {@macro pulumi_community_community_training_args_doc}
 class CommunityTrainingArgs {
   /// The name of the Community Training Resource
-  final pulumi.Input<String>? communityTrainingName;
+  final pulumi.Input<String?>? communityTrainingName;
   /// To indicate whether the Community Training instance has Disaster Recovery enabled
   final pulumi.Input<bool> disasterRecoveryEnabled;
   /// The identity configuration of the Community Training resource
   final pulumi.Input<IdentityConfigurationProperties> identityConfiguration;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The email address of the portal admin
   final pulumi.Input<String> portalAdminEmailAddress;
   /// The portal name (website name) of the Community Training instance
@@ -28,9 +28,9 @@ class CommunityTrainingArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU (Stock Keeping Unit) assigned to this resource.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// To indicate whether the Community Training instance has Zone Redundancy enabled
   final pulumi.Input<bool> zoneRedundancyEnabled;
 

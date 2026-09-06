@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum SnapshotState {
+enum SnapshotState implements pulumi.PulumiEnum<String> {
   completed("completed"),
   error("error"),
   pending("pending"),
@@ -7,6 +9,7 @@ enum SnapshotState {
   recovering("recovering");
 
   const SnapshotState(this.wireValue);
+  @override
   final String wireValue;
 
   static SnapshotState fromValue(String value) {

@@ -9,9 +9,9 @@ import 'sql_server_database_resource_properties.dart';
 /// {@macro pulumi_azurearcdata_sql_server_database_args_doc}
 class SqlServerDatabaseArgs {
   /// Name of the database
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Properties of Arc Sql Server database
   final pulumi.Input<SqlServerDatabaseResourceProperties> properties;
   /// The name of the Azure resource group
@@ -19,7 +19,7 @@ class SqlServerDatabaseArgs {
   /// Name of SQL Server Instance
   final pulumi.Input<String> sqlServerInstanceName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SqlServerDatabaseArgs].
   /// [databaseName] Name of the database

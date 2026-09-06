@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'community_endpoint_args.dart';
+import 'community_endpoint_destination_rule_response.dart';
 import 'system_data_response.dart';
 
 /// CommunityEndpoint Model Resource
@@ -248,7 +249,7 @@ class CommunityEndpoint extends pulumi.CustomResource {
   /// List of resource ids created by community endpoint.
   late final pulumi.Output<List<String>> resourceCollection;
   /// Community Endpoint Rule Collection.
-  late final pulumi.Output<List<Map<String, dynamic>>> ruleCollection;
+  late final pulumi.Output<List<CommunityEndpointDestinationRuleResponse>> ruleCollection;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
@@ -274,10 +275,30 @@ class CommunityEndpoint extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    resourceCollection = registerOutput<List<String>>('resourceCollection');
-    ruleCollection = registerOutput<List<Map<String, dynamic>>>('ruleCollection');
+    resourceCollection = registerOutput<List<String>>('resourceCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ruleCollection = registerOutput<List<CommunityEndpointDestinationRuleResponse>>('ruleCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CommunityEndpointDestinationRuleResponse>(guardedValue, (value) => CommunityEndpointDestinationRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [CommunityEndpoint] resource.
+  CommunityEndpoint.reference(String urn)
+    : super(
+        'azure-native:mission:CommunityEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceCollection = registerOutput<List<String>>('resourceCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ruleCollection = registerOutput<List<CommunityEndpointDestinationRuleResponse>>('ruleCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CommunityEndpointDestinationRuleResponse>(guardedValue, (value) => CommunityEndpointDestinationRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

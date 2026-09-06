@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes how input data is compressed
 class Compression {
   /// Indicates the type of compression that the input uses. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [Compression].
   /// [type] Indicates the type of compression that the input uses. Required on PUT (CreateOrReplace) requests.
@@ -21,7 +21,7 @@ class Compression {
 
   factory Compression.fromMap(Map<String, dynamic> map) {
     return Compression(
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Image model size.
-enum ModelSize {
+enum ModelSize implements pulumi.PulumiEnum<String> {
   none("None"),
   small("Small"),
   medium("Medium"),
@@ -7,6 +9,7 @@ enum ModelSize {
   extraLarge("ExtraLarge");
 
   const ModelSize(this.wireValue);
+  @override
   final String wireValue;
 
   static ModelSize fromValue(String value) {

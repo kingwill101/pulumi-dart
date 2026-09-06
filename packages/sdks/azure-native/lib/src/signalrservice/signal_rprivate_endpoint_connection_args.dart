@@ -10,11 +10,11 @@ import 'private_link_service_connection_state.dart';
 /// {@macro pulumi_signalrservice_signal_rprivate_endpoint_connection_args_doc}
 class SignalRPrivateEndpointConnectionArgs {
   /// Private endpoint
-  final pulumi.Input<PrivateEndpoint>? privateEndpoint;
+  final pulumi.Input<PrivateEndpoint?>? privateEndpoint;
   /// The name of the private endpoint connection associated with the Azure resource.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// Connection state of the private endpoint connection
-  final pulumi.Input<PrivateLinkServiceConnectionState>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionState?>? privateLinkServiceConnectionState;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the resource.

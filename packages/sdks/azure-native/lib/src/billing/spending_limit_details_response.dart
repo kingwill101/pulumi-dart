@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The billing profile spending limit.
 class SpendingLimitDetailsResponse {
   /// The initial amount for the billing profile.
-  final pulumi.Input<double>? amount;
+  final pulumi.Input<double?>? amount;
   /// The currency in which the charges for the billing profile are billed.
-  final pulumi.Input<String>? currency;
+  final pulumi.Input<String?>? currency;
   /// The date when this spending limit is no longer in effect.
-  final pulumi.Input<String>? endDate;
+  final pulumi.Input<String?>? endDate;
   /// The date when this spending limit goes into effect.
-  final pulumi.Input<String>? startDate;
+  final pulumi.Input<String?>? startDate;
   /// The status of current spending limit.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The type of spending limit.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [SpendingLimitDetailsResponse].
   /// [amount] The initial amount for the billing profile.
@@ -46,7 +46,7 @@ class SpendingLimitDetailsResponse {
 
   factory SpendingLimitDetailsResponse.fromMap(Map<String, dynamic> map) {
     return SpendingLimitDetailsResponse(
-      amount: (() { final guardedValue = map['amount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      amount: (() { final guardedValue = map['amount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       currency: (() { final guardedValue = map['currency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endDate: (() { final guardedValue = map['endDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startDate: (() { final guardedValue = map['startDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

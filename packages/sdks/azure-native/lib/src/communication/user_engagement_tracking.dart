@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes whether user engagement tracking is enabled or disabled.
-enum UserEngagementTracking {
-  valueDisabled("Disabled"),
-  valueEnabled("Enabled");
+enum UserEngagementTracking implements pulumi.PulumiEnum<String> {
+  disabled("Disabled"),
+  enabled("Enabled");
 
   const UserEngagementTracking(this.wireValue);
+  @override
   final String wireValue;
 
   static UserEngagementTracking fromValue(String value) {

@@ -6,23 +6,23 @@ import 'feature_window_response.dart';
 /// Dto object representing the feature set job
 class FeaturesetJobResponse {
   /// Specifies the created date
-  final pulumi.Input<String>? createdDate;
+  final pulumi.Input<String?>? createdDate;
   /// Specifies the display name
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Specifies the duration
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
   /// Specifies the experiment id
-  final pulumi.Input<String>? experimentId;
+  final pulumi.Input<String?>? experimentId;
   /// Specifies the backfill feature window to be materialized
-  final pulumi.Input<FeatureWindowResponse>? featureWindow;
+  final pulumi.Input<FeatureWindowResponse?>? featureWindow;
   /// Specifies the job id
-  final pulumi.Input<String>? jobId;
+  final pulumi.Input<String?>? jobId;
   /// Specifies the job status
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Specifies the tags if any
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the feature store job type
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [FeaturesetJobResponse].
   /// [createdDate] Specifies the created date
@@ -34,17 +34,17 @@ class FeaturesetJobResponse {
   /// [status] Specifies the job status
   /// [tags] Specifies the tags if any
   /// [type] Specifies the feature store job type
-  const FeaturesetJobResponse({
+  FeaturesetJobResponse({
     this.createdDate,
     this.displayName,
     this.duration,
     this.experimentId,
     this.featureWindow,
     this.jobId,
-    this.status,
+    pulumi.Input<String?>? status,
     this.tags,
-    this.type,
-  });
+    pulumi.Input<String?>? type,
+  }) : status = status ?? pulumi.Input.fromValue('Unknown'), type = type ?? pulumi.Input.fromValue('RecurrentMaterialization');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

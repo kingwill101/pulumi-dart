@@ -9,15 +9,15 @@ import 'network_firewall_firewall_policy_properties.dart';
 /// {@macro pulumi_awsconnector_network_firewall_firewall_policy_args_doc}
 class NetworkFirewallFirewallPolicyArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of NetworkFirewallFirewallPolicy
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<NetworkFirewallFirewallPolicyProperties>? properties;
+  final pulumi.Input<NetworkFirewallFirewallPolicyProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkFirewallFirewallPolicyArgs].
   /// [location] The geo-location where the resource lives

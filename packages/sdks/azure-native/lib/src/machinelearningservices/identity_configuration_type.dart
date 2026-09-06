@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] Specifies the type of identity framework.
-enum IdentityConfigurationType {
+enum IdentityConfigurationType implements pulumi.PulumiEnum<String> {
   managed("Managed"),
   aMLToken("AMLToken"),
   userIdentity("UserIdentity");
 
   const IdentityConfigurationType(this.wireValue);
+  @override
   final String wireValue;
 
   static IdentityConfigurationType fromValue(String value) {

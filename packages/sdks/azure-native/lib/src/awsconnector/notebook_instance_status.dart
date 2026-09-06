@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum NotebookInstanceStatus {
+enum NotebookInstanceStatus implements pulumi.PulumiEnum<String> {
   deleting("Deleting"),
   failed("Failed"),
   inService("InService"),
@@ -9,6 +11,7 @@ enum NotebookInstanceStatus {
   updating("Updating");
 
   const NotebookInstanceStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static NotebookInstanceStatus fromValue(String value) {

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_redis_access_policy_args_doc}
 class AccessPolicyArgs {
   /// The name of the access policy that is being added to the Redis cache.
-  final pulumi.Input<String>? accessPolicyName;
+  final pulumi.Input<String?>? accessPolicyName;
   /// The name of the Redis cache.
   final pulumi.Input<String> cacheName;
   /// Permissions for the access policy. Learn how to configure permissions at https://aka.ms/redis/AADPreRequisites

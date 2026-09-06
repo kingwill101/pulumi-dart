@@ -11,19 +11,19 @@ import 'dataflow_endpoint_mqtt_response.dart';
 /// DataflowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource
 class DataflowEndpointPropertiesResponse {
   /// Azure Data Explorer endpoint.
-  final pulumi.Input<DataflowEndpointDataExplorerResponse>? dataExplorerSettings;
+  final pulumi.Input<DataflowEndpointDataExplorerResponse?>? dataExplorerSettings;
   /// Azure Data Lake endpoint.
-  final pulumi.Input<DataflowEndpointDataLakeStorageResponse>? dataLakeStorageSettings;
+  final pulumi.Input<DataflowEndpointDataLakeStorageResponse?>? dataLakeStorageSettings;
   /// Endpoint Type.
   final pulumi.Input<String> endpointType;
   /// Microsoft Fabric endpoint.
-  final pulumi.Input<DataflowEndpointFabricOneLakeResponse>? fabricOneLakeSettings;
+  final pulumi.Input<DataflowEndpointFabricOneLakeResponse?>? fabricOneLakeSettings;
   /// Kafka endpoint.
-  final pulumi.Input<DataflowEndpointKafkaResponse>? kafkaSettings;
+  final pulumi.Input<DataflowEndpointKafkaResponse?>? kafkaSettings;
   /// Local persistent volume endpoint.
-  final pulumi.Input<DataflowEndpointLocalStorageResponse>? localStorageSettings;
+  final pulumi.Input<DataflowEndpointLocalStorageResponse?>? localStorageSettings;
   /// Broker endpoint.
-  final pulumi.Input<DataflowEndpointMqttResponse>? mqttSettings;
+  final pulumi.Input<DataflowEndpointMqttResponse?>? mqttSettings;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
 

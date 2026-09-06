@@ -6,13 +6,13 @@ import 'certificate_key_vault_properties.dart';
 /// Configuration properties for apps environment custom domain
 class CustomDomainConfiguration {
   /// Certificate stored in Azure Key Vault.
-  final pulumi.Input<CertificateKeyVaultProperties>? certificateKeyVaultProperties;
+  final pulumi.Input<CertificateKeyVaultProperties?>? certificateKeyVaultProperties;
   /// Certificate password
-  final pulumi.Input<String>? certificatePassword;
+  final pulumi.Input<String?>? certificatePassword;
   /// PFX or PEM blob
-  final pulumi.Input<String>? certificateValue;
+  final pulumi.Input<String?>? certificateValue;
   /// Dns suffix for the environment domain
-  final pulumi.Input<String>? dnsSuffix;
+  final pulumi.Input<String?>? dnsSuffix;
 
   /// Creates a new [CustomDomainConfiguration].
   /// [certificateKeyVaultProperties] Certificate stored in Azure Key Vault.

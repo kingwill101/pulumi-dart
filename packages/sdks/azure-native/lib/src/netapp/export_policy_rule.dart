@@ -5,43 +5,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Volume Export Policy Rule
 class ExportPolicyRule {
   /// Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
-  final pulumi.Input<String>? allowedClients;
+  final pulumi.Input<String?>? allowedClients;
   /// This parameter specifies who is authorized to change the ownership of a file. restricted - Only root user can change the ownership of the file. unrestricted - Non-root users can change ownership of files that they own.
-  final pulumi.Input<String>? chownMode;
+  final pulumi.Input<dynamic>? chownMode;
   /// Allows CIFS protocol
-  final pulumi.Input<bool>? cifs;
+  final pulumi.Input<bool?>? cifs;
   /// Has root access to volume
-  final pulumi.Input<bool>? hasRootAccess;
+  final pulumi.Input<bool?>? hasRootAccess;
   /// Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
-  final pulumi.Input<bool>? kerberos5IReadOnly;
+  final pulumi.Input<bool?>? kerberos5IReadOnly;
   /// Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
-  final pulumi.Input<bool>? kerberos5IReadWrite;
+  final pulumi.Input<bool?>? kerberos5IReadWrite;
   /// Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
-  final pulumi.Input<bool>? kerberos5PReadOnly;
+  final pulumi.Input<bool?>? kerberos5PReadOnly;
   /// Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
-  final pulumi.Input<bool>? kerberos5PReadWrite;
+  final pulumi.Input<bool?>? kerberos5PReadWrite;
   /// Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
-  final pulumi.Input<bool>? kerberos5ReadOnly;
+  final pulumi.Input<bool?>? kerberos5ReadOnly;
   /// Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
-  final pulumi.Input<bool>? kerberos5ReadWrite;
+  final pulumi.Input<bool?>? kerberos5ReadWrite;
   /// Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
-  final pulumi.Input<bool>? kerberos5iReadOnly;
+  final pulumi.Input<bool?>? kerberos5iReadOnly;
   /// Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
-  final pulumi.Input<bool>? kerberos5iReadWrite;
+  final pulumi.Input<bool?>? kerberos5iReadWrite;
   /// Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
-  final pulumi.Input<bool>? kerberos5pReadOnly;
+  final pulumi.Input<bool?>? kerberos5pReadOnly;
   /// Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
-  final pulumi.Input<bool>? kerberos5pReadWrite;
+  final pulumi.Input<bool?>? kerberos5pReadWrite;
   /// Allows NFSv3 protocol. Enable only for NFSv3 type volumes
-  final pulumi.Input<bool>? nfsv3;
+  final pulumi.Input<bool?>? nfsv3;
   /// Allows NFSv4.1 protocol. Enable only for NFSv4.1 type volumes
-  final pulumi.Input<bool>? nfsv41;
+  final pulumi.Input<bool?>? nfsv41;
   /// Order index
-  final pulumi.Input<int>? ruleIndex;
+  final pulumi.Input<int?>? ruleIndex;
   /// Read only access
-  final pulumi.Input<bool>? unixReadOnly;
+  final pulumi.Input<bool?>? unixReadOnly;
   /// Read and write access
-  final pulumi.Input<bool>? unixReadWrite;
+  final pulumi.Input<bool?>? unixReadWrite;
 
   /// Creates a new [ExportPolicyRule].
   /// [allowedClients] Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
@@ -63,27 +63,27 @@ class ExportPolicyRule {
   /// [ruleIndex] Order index
   /// [unixReadOnly] Read only access
   /// [unixReadWrite] Read and write access
-  const ExportPolicyRule({
+  ExportPolicyRule({
     this.allowedClients,
-    this.chownMode,
+    pulumi.Input<dynamic>? chownMode,
     this.cifs,
-    this.hasRootAccess,
-    this.kerberos5IReadOnly,
-    this.kerberos5IReadWrite,
-    this.kerberos5PReadOnly,
-    this.kerberos5PReadWrite,
-    this.kerberos5ReadOnly,
-    this.kerberos5ReadWrite,
-    this.kerberos5iReadOnly,
-    this.kerberos5iReadWrite,
-    this.kerberos5pReadOnly,
-    this.kerberos5pReadWrite,
+    pulumi.Input<bool?>? hasRootAccess,
+    pulumi.Input<bool?>? kerberos5IReadOnly,
+    pulumi.Input<bool?>? kerberos5IReadWrite,
+    pulumi.Input<bool?>? kerberos5PReadOnly,
+    pulumi.Input<bool?>? kerberos5PReadWrite,
+    pulumi.Input<bool?>? kerberos5ReadOnly,
+    pulumi.Input<bool?>? kerberos5ReadWrite,
+    pulumi.Input<bool?>? kerberos5iReadOnly,
+    pulumi.Input<bool?>? kerberos5iReadWrite,
+    pulumi.Input<bool?>? kerberos5pReadOnly,
+    pulumi.Input<bool?>? kerberos5pReadWrite,
     this.nfsv3,
     this.nfsv41,
     this.ruleIndex,
     this.unixReadOnly,
     this.unixReadWrite,
-  });
+  }) : chownMode = chownMode ?? pulumi.Input.fromValue('Restricted'), hasRootAccess = hasRootAccess ?? pulumi.Input.fromValue(true), kerberos5IReadOnly = kerberos5IReadOnly ?? pulumi.Input.fromValue(false), kerberos5IReadWrite = kerberos5IReadWrite ?? pulumi.Input.fromValue(false), kerberos5PReadOnly = kerberos5PReadOnly ?? pulumi.Input.fromValue(false), kerberos5PReadWrite = kerberos5PReadWrite ?? pulumi.Input.fromValue(false), kerberos5ReadOnly = kerberos5ReadOnly ?? pulumi.Input.fromValue(false), kerberos5ReadWrite = kerberos5ReadWrite ?? pulumi.Input.fromValue(false), kerberos5iReadOnly = kerberos5iReadOnly ?? pulumi.Input.fromValue(false), kerberos5iReadWrite = kerberos5iReadWrite ?? pulumi.Input.fromValue(false), kerberos5pReadOnly = kerberos5pReadOnly ?? pulumi.Input.fromValue(false), kerberos5pReadWrite = kerberos5pReadWrite ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -112,7 +112,7 @@ class ExportPolicyRule {
   factory ExportPolicyRule.fromMap(Map<String, dynamic> map) {
     return ExportPolicyRule(
       allowedClients: (() { final guardedValue = map['allowedClients']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      chownMode: (() { final guardedValue = map['chownMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      chownMode: (() { final guardedValue = map['chownMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       cifs: (() { final guardedValue = map['cifs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       hasRootAccess: (() { final guardedValue = map['hasRootAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kerberos5IReadOnly: (() { final guardedValue = map['kerberos5IReadOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -127,7 +127,7 @@ class ExportPolicyRule {
       kerberos5pReadWrite: (() { final guardedValue = map['kerberos5pReadWrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       nfsv3: (() { final guardedValue = map['nfsv3']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       nfsv41: (() { final guardedValue = map['nfsv41']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      ruleIndex: (() { final guardedValue = map['ruleIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ruleIndex: (() { final guardedValue = map['ruleIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       unixReadOnly: (() { final guardedValue = map['unixReadOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       unixReadWrite: (() { final guardedValue = map['unixReadWrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

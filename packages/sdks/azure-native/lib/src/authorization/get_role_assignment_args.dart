@@ -12,7 +12,7 @@ class GetRoleAssignmentArgs {
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> scope;
   /// Tenant ID for cross-tenant request
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [GetRoleAssignmentArgs].
   /// [roleAssignmentName] The name of the role assignment. It can be any valid GUID.

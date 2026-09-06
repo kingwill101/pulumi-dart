@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of TimeToLiveSpecification
 class TimeToLiveSpecification {
   /// The name of the TTL attribute used to store the expiration time for items in the table.   +  The ``AttributeName`` property is required when enabling the TTL, or when TTL is already enabled.  +  To update this property, you must first disable TTL and then enable TTL with the new attribute name.
-  final pulumi.Input<String>? attributeName;
+  final pulumi.Input<String?>? attributeName;
   /// Indicates whether TTL is to be enabled (true) or disabled (false) on the table.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [TimeToLiveSpecification].
   /// [attributeName] The name of the TTL attribute used to store the expiration time for items in the table.   +  The ``AttributeName`` property is required when enabling the TTL, or when TTL is already enabled.  +  To update this property, you must first disable TTL and then enable TTL with the new attribute name.

@@ -6,19 +6,19 @@ import 'tag.dart';
 /// Definition of awsIamServerCertificate
 class AwsIamServerCertificateProperties {
   /// Amazon Resource Name (ARN) of the server certificate
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Property certificateBody
-  final pulumi.Input<String>? certificateBody;
+  final pulumi.Input<String?>? certificateBody;
   /// Property certificateChain
-  final pulumi.Input<String>? certificateChain;
+  final pulumi.Input<String?>? certificateChain;
   /// Property path
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Property privateKey
-  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String?>? privateKey;
   /// Property serverCertificateName
-  final pulumi.Input<String>? serverCertificateName;
+  final pulumi.Input<String?>? serverCertificateName;
   /// Property tags
-  final pulumi.Input<List<Tag>>? tags;
+  final pulumi.Input<List<Tag>?>? tags;
 
   /// Creates a new [AwsIamServerCertificateProperties].
   /// [arn] Amazon Resource Name (ARN) of the server certificate

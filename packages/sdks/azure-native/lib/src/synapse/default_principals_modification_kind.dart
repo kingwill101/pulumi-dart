@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The default principals modification kind
-enum DefaultPrincipalsModificationKind {
+enum DefaultPrincipalsModificationKind implements pulumi.PulumiEnum<String> {
   valueUnion("Union"),
   valueReplace("Replace"),
   valueNone("None");
 
   const DefaultPrincipalsModificationKind(this.wireValue);
+  @override
   final String wireValue;
 
   static DefaultPrincipalsModificationKind fromValue(String value) {

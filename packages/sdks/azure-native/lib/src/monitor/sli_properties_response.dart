@@ -7,13 +7,13 @@ import 'window_uptime_criteria_response.dart';
 /// Defines the properties of an SLI.
 class SliPropertiesResponse {
   /// Represents good signals used in request-based SLI calculations.
-  final pulumi.Input<SignalResponse>? goodSignals;
+  final pulumi.Input<SignalResponse?>? goodSignals;
   /// Signals used for window-based SLI calculations.
-  final pulumi.Input<SignalResponse>? signals;
+  final pulumi.Input<SignalResponse?>? signals;
   /// Represents total signals used in request-based SLI calculations.
-  final pulumi.Input<SignalResponse>? totalSignals;
+  final pulumi.Input<SignalResponse?>? totalSignals;
   /// Defines the uptime criteria for window-based SLIs.
-  final pulumi.Input<WindowUptimeCriteriaResponse>? windowUptimeCriteria;
+  final pulumi.Input<WindowUptimeCriteriaResponse?>? windowUptimeCriteria;
 
   /// Creates a new [SliPropertiesResponse].
   /// [goodSignals] Represents good signals used in request-based SLI calculations.

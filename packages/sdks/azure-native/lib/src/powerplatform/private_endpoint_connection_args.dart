@@ -11,7 +11,7 @@ class PrivateEndpointConnectionArgs {
   /// The EnterprisePolicy name.
   final pulumi.Input<String> enterprisePolicyName;
   /// The name of the private endpoint connection.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// A collection of information about the state of the connection between service consumer and provider.
   final pulumi.Input<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState;
   /// The name of the resource group. The name is case insensitive.

@@ -8,11 +8,11 @@ import 'timer_trigger_response.dart';
 /// The properties of a trigger.
 class TriggerPropertiesResponse {
   /// The trigger based on base image dependencies.
-  final pulumi.Input<BaseImageTriggerResponse>? baseImageTrigger;
+  final pulumi.Input<BaseImageTriggerResponse?>? baseImageTrigger;
   /// The collection of triggers based on source code repository.
-  final pulumi.Input<List<SourceTriggerResponse>>? sourceTriggers;
+  final pulumi.Input<List<SourceTriggerResponse>?>? sourceTriggers;
   /// The collection of timer triggers.
-  final pulumi.Input<List<TimerTriggerResponse>>? timerTriggers;
+  final pulumi.Input<List<TimerTriggerResponse>?>? timerTriggers;
 
   /// Creates a new [TriggerPropertiesResponse].
   /// [baseImageTrigger] The trigger based on base image dependencies.

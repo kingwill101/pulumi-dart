@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A Kubernetes add-on profile for a managed cluster.
 class ManagedClusterAddonProfile {
   /// Key-value pairs for configuring an add-on.
-  final pulumi.Input<Map<String, String>>? config;
+  final pulumi.Input<Map<String, String>?>? config;
   /// Whether the add-on is enabled or not.
   final pulumi.Input<bool> enabled;
 

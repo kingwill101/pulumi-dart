@@ -215,4 +215,24 @@ class SecuritySetting extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     wdacComplianceAssignment = registerOutput<String?>('wdacComplianceAssignment');
   }
+
+  /// Creates a typed reference to an existing [SecuritySetting] resource.
+  SecuritySetting.reference(String urn)
+    : super(
+        'azure-native:azurestackhci:SecuritySetting',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    securedCoreComplianceAssignment = registerOutput<String?>('securedCoreComplianceAssignment');
+    securityComplianceStatus = registerOutput<SecurityComplianceStatusResponse>('securityComplianceStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityComplianceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    smbEncryptionForIntraClusterTrafficComplianceAssignment = registerOutput<String?>('smbEncryptionForIntraClusterTrafficComplianceAssignment');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    wdacComplianceAssignment = registerOutput<String?>('wdacComplianceAssignment');
+  }
 }

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Additional information about every inline event.
 class InlineEventPropertiesResponse {
   /// The dataSchemaUrl for the inline event.
-  final pulumi.Input<String>? dataSchemaUrl;
+  final pulumi.Input<String?>? dataSchemaUrl;
   /// The description for the inline event.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The displayName for the inline event.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The documentationUrl for the inline event.
-  final pulumi.Input<String>? documentationUrl;
+  final pulumi.Input<String?>? documentationUrl;
 
   /// Creates a new [InlineEventPropertiesResponse].
   /// [dataSchemaUrl] The dataSchemaUrl for the inline event.

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'participant_profile_property_reference_response.dart';
 import 'relationship_link_args.dart';
+import 'relationship_link_field_mapping_response.dart';
 
 /// The relationship link resource format.
 ///
@@ -277,15 +279,15 @@ class RelationshipLink extends pulumi.CustomResource {
   /// The name of the Relationship Link.
   late final pulumi.Output<String> linkName;
   /// The mappings between Interaction and Relationship fields.
-  late final pulumi.Output<List<Map<String, dynamic>>?> mappings;
+  late final pulumi.Output<List<RelationshipLinkFieldMappingResponse>?> mappings;
   /// Resource name.
   late final pulumi.Output<String> name;
   /// The property references for the Profile of the Relationship.
-  late final pulumi.Output<List<Map<String, dynamic>>> profilePropertyReferences;
+  late final pulumi.Output<List<ParticipantProfilePropertyReferenceResponse>> profilePropertyReferences;
   /// Provisioning state.
   late final pulumi.Output<String> provisioningState;
   /// The property references for the Related Profile of the Relationship.
-  late final pulumi.Output<List<Map<String, dynamic>>> relatedProfilePropertyReferences;
+  late final pulumi.Output<List<ParticipantProfilePropertyReferenceResponse>> relatedProfilePropertyReferences;
   /// The relationship guid id.
   late final pulumi.Output<String> relationshipGuidId;
   /// The Relationship associated with the Link.
@@ -310,15 +312,40 @@ class RelationshipLink extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    description = registerOutput<Map<String, String>?>('description');
-    displayName = registerOutput<Map<String, String>?>('displayName');
+    description = registerOutput<Map<String, String>?>('description', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    displayName = registerOutput<Map<String, String>?>('displayName', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     interactionType = registerOutput<String>('interactionType');
     linkName = registerOutput<String>('linkName');
-    mappings = registerOutput<List<Map<String, dynamic>>?>('mappings');
+    mappings = registerOutput<List<RelationshipLinkFieldMappingResponse>?>('mappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RelationshipLinkFieldMappingResponse>(guardedValue, (value) => RelationshipLinkFieldMappingResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    profilePropertyReferences = registerOutput<List<Map<String, dynamic>>>('profilePropertyReferences');
+    profilePropertyReferences = registerOutput<List<ParticipantProfilePropertyReferenceResponse>>('profilePropertyReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParticipantProfilePropertyReferenceResponse>(guardedValue, (value) => ParticipantProfilePropertyReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
-    relatedProfilePropertyReferences = registerOutput<List<Map<String, dynamic>>>('relatedProfilePropertyReferences');
+    relatedProfilePropertyReferences = registerOutput<List<ParticipantProfilePropertyReferenceResponse>>('relatedProfilePropertyReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParticipantProfilePropertyReferenceResponse>(guardedValue, (value) => ParticipantProfilePropertyReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    relationshipGuidId = registerOutput<String>('relationshipGuidId');
+    relationshipName = registerOutput<String>('relationshipName');
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [RelationshipLink] resource.
+  RelationshipLink.reference(String urn)
+    : super(
+        'azure-native:customerinsights:RelationshipLink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<Map<String, String>?>('description', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    displayName = registerOutput<Map<String, String>?>('displayName', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    interactionType = registerOutput<String>('interactionType');
+    linkName = registerOutput<String>('linkName');
+    mappings = registerOutput<List<RelationshipLinkFieldMappingResponse>?>('mappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RelationshipLinkFieldMappingResponse>(guardedValue, (value) => RelationshipLinkFieldMappingResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    profilePropertyReferences = registerOutput<List<ParticipantProfilePropertyReferenceResponse>>('profilePropertyReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParticipantProfilePropertyReferenceResponse>(guardedValue, (value) => ParticipantProfilePropertyReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    relatedProfilePropertyReferences = registerOutput<List<ParticipantProfilePropertyReferenceResponse>>('relatedProfilePropertyReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParticipantProfilePropertyReferenceResponse>(guardedValue, (value) => ParticipantProfilePropertyReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     relationshipGuidId = registerOutput<String>('relationshipGuidId');
     relationshipName = registerOutput<String>('relationshipName');
     tenantId = registerOutput<String>('tenantId');

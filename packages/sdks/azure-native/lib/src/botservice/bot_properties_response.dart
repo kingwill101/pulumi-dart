@@ -7,25 +7,25 @@ import 'private_endpoint_connection_response.dart';
 /// The parameters to provide for the Bot.
 class BotPropertiesResponse {
   /// Contains resource all settings defined as key/value pairs.
-  final pulumi.Input<Map<String, String>>? allSettings;
+  final pulumi.Input<Map<String, String>?>? allSettings;
   /// The hint (e.g. keyVault secret resourceId) on how to fetch the app secret
-  final pulumi.Input<String>? appPasswordHint;
+  final pulumi.Input<String?>? appPasswordHint;
   /// The CMK encryption status
   final pulumi.Input<String> cmekEncryptionStatus;
   /// The CMK Url
-  final pulumi.Input<String>? cmekKeyVaultUrl;
+  final pulumi.Input<String?>? cmekKeyVaultUrl;
   /// Collection of channels for which the bot is configured
   final pulumi.Input<List<String>> configuredChannels;
   /// The description of the bot
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Application Insights key
-  final pulumi.Input<String>? developerAppInsightKey;
+  final pulumi.Input<String?>? developerAppInsightKey;
   /// The Application Insights Api Key
-  final pulumi.Input<String>? developerAppInsightsApiKey;
+  final pulumi.Input<String?>? developerAppInsightsApiKey;
   /// The Application Insights App Id
-  final pulumi.Input<String>? developerAppInsightsApplicationId;
+  final pulumi.Input<String?>? developerAppInsightsApplicationId;
   /// Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
-  final pulumi.Input<bool>? disableLocalAuth;
+  final pulumi.Input<bool?>? disableLocalAuth;
   /// The Name of the bot
   final pulumi.Input<String> displayName;
   /// Collection of channels for which the bot is enabled
@@ -35,49 +35,49 @@ class BotPropertiesResponse {
   /// The bot's endpoint version
   final pulumi.Input<String> endpointVersion;
   /// The Icon Url of the bot
-  final pulumi.Input<String>? iconUrl;
+  final pulumi.Input<String?>? iconUrl;
   /// Whether Cmek is enabled
-  final pulumi.Input<bool>? isCmekEnabled;
+  final pulumi.Input<bool?>? isCmekEnabled;
   /// Whether the bot is developerAppInsightsApiKey set
   final pulumi.Input<bool> isDeveloperAppInsightsApiKeySet;
   /// Whether the bot is streaming supported
-  final pulumi.Input<bool>? isStreamingSupported;
+  final pulumi.Input<bool?>? isStreamingSupported;
   /// Collection of LUIS App Ids
-  final pulumi.Input<List<String>>? luisAppIds;
+  final pulumi.Input<List<String>?>? luisAppIds;
   /// The LUIS Key
-  final pulumi.Input<String>? luisKey;
+  final pulumi.Input<String?>? luisKey;
   /// The bot's manifest url
-  final pulumi.Input<String>? manifestUrl;
+  final pulumi.Input<String?>? manifestUrl;
   /// Token used to migrate non Azure bot to azure subscription
   final pulumi.Input<String> migrationToken;
   /// Microsoft App Id for the bot
   final pulumi.Input<String> msaAppId;
   /// Microsoft App Managed Identity Resource Id for the bot
-  final pulumi.Input<String>? msaAppMSIResourceId;
+  final pulumi.Input<String?>? msaAppMSIResourceId;
   /// Microsoft App Tenant Id for the bot
-  final pulumi.Input<String>? msaAppTenantId;
+  final pulumi.Input<String?>? msaAppTenantId;
   /// Microsoft App Type for the bot
-  final pulumi.Input<String>? msaAppType;
+  final pulumi.Input<String?>? msaAppType;
   /// List of Network Security Perimeter configurations for the bot
   final pulumi.Input<List<NetworkSecurityPerimeterConfigurationResponse>> networkSecurityPerimeterConfigurations;
   /// The hint to browser (e.g. protocol handler) on how to open the bot for authoring
-  final pulumi.Input<String>? openWithHint;
+  final pulumi.Input<String?>? openWithHint;
   /// Contains resource parameters defined as key/value pairs.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// List of Private Endpoint Connections configured for the bot
   final pulumi.Input<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// Provisioning state of the resource
   final pulumi.Input<String> provisioningState;
   /// Whether the bot is in an isolated network
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// Publishing credentials of the resource
-  final pulumi.Input<String>? publishingCredentials;
+  final pulumi.Input<String?>? publishingCredentials;
   /// The channel schema transformation version for the bot
-  final pulumi.Input<String>? schemaTransformationVersion;
+  final pulumi.Input<String?>? schemaTransformationVersion;
   /// The storage resourceId for the bot
-  final pulumi.Input<String>? storageResourceId;
+  final pulumi.Input<String?>? storageResourceId;
   /// The Tenant Id for the bot
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [BotPropertiesResponse].
   /// [allSettings] Contains resource all settings defined as key/value pairs.
@@ -116,7 +116,7 @@ class BotPropertiesResponse {
   /// [schemaTransformationVersion] The channel schema transformation version for the bot
   /// [storageResourceId] The storage resourceId for the bot
   /// [tenantId] The Tenant Id for the bot
-  const BotPropertiesResponse({
+  BotPropertiesResponse({
     this.allSettings,
     this.appPasswordHint,
     required this.cmekEncryptionStatus,
@@ -131,10 +131,10 @@ class BotPropertiesResponse {
     required this.enabledChannels,
     required this.endpoint,
     required this.endpointVersion,
-    this.iconUrl,
-    this.isCmekEnabled,
+    pulumi.Input<String?>? iconUrl,
+    pulumi.Input<bool?>? isCmekEnabled,
     required this.isDeveloperAppInsightsApiKeySet,
-    this.isStreamingSupported,
+    pulumi.Input<bool?>? isStreamingSupported,
     this.luisAppIds,
     this.luisKey,
     this.manifestUrl,
@@ -148,12 +148,12 @@ class BotPropertiesResponse {
     this.parameters,
     required this.privateEndpointConnections,
     required this.provisioningState,
-    this.publicNetworkAccess,
+    pulumi.Input<String?>? publicNetworkAccess,
     this.publishingCredentials,
     this.schemaTransformationVersion,
     this.storageResourceId,
     this.tenantId,
-  });
+  }) : iconUrl = iconUrl ?? pulumi.Input.fromValue(''), isCmekEnabled = isCmekEnabled ?? pulumi.Input.fromValue(false), isStreamingSupported = isStreamingSupported ?? pulumi.Input.fromValue(false), publicNetworkAccess = publicNetworkAccess ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

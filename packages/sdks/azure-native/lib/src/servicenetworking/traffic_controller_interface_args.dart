@@ -9,15 +9,15 @@ import 'security_policy_configurations.dart';
 /// {@macro pulumi_servicenetworking_traffic_controller_interface_args_doc}
 class TrafficControllerInterfaceArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Security Policy Configuration
-  final pulumi.Input<SecurityPolicyConfigurations>? securityPolicyConfigurations;
+  final pulumi.Input<SecurityPolicyConfigurations?>? securityPolicyConfigurations;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// traffic controller name for path
-  final pulumi.Input<String>? trafficControllerName;
+  final pulumi.Input<String?>? trafficControllerName;
 
   /// Creates a new [TrafficControllerInterfaceArgs].
   /// [location] The geo-location where the resource lives

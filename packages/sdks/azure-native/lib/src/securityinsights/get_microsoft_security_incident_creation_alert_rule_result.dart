@@ -7,36 +7,36 @@ class GetMicrosoftSecurityIncidentCreationAlertRuleResult {
   /// The Name of the alert rule template used to create this rule.
   final String? alertRuleTemplateName;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The description of the alert rule.
   final String? description;
   /// The display name for alerts created by this alert rule.
-  final String displayName;
+  final String? displayName;
   /// the alerts' displayNames on which the cases will not be generated
   final List<String>? displayNamesExcludeFilter;
   /// the alerts' displayNames on which the cases will be generated
   final List<String>? displayNamesFilter;
   /// Determines whether this alert rule is enabled or disabled.
-  final bool enabled;
+  final bool? enabled;
   /// Etag of the azure resource
   final String? etag;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The kind of the alert rule
   /// Expected value is 'MicrosoftSecurityIncidentCreation'.
-  final String kind;
+  final String? kind;
   /// The last time that this alert has been modified.
-  final String lastModifiedUtc;
+  final String? lastModifiedUtc;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The alerts' productName on which the cases will be generated
-  final String productFilter;
+  final String? productFilter;
   /// the alerts' severities on which the cases will be generated
   final List<String>? severitiesFilter;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetMicrosoftSecurityIncidentCreationAlertRuleResult].
   /// [alertRuleTemplateName] The Name of the alert rule template used to create this rule.
@@ -57,62 +57,62 @@ class GetMicrosoftSecurityIncidentCreationAlertRuleResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetMicrosoftSecurityIncidentCreationAlertRuleResult({
     this.alertRuleTemplateName,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.description,
-    required this.displayName,
+    this.displayName,
     this.displayNamesExcludeFilter,
     this.displayNamesFilter,
-    required this.enabled,
+    this.enabled,
     this.etag,
-    required this.id,
-    required this.kind,
-    required this.lastModifiedUtc,
-    required this.name,
-    required this.productFilter,
+    this.id,
+    this.kind,
+    this.lastModifiedUtc,
+    this.name,
+    this.productFilter,
     this.severitiesFilter,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'alertRuleTemplateName': ?alertRuleTemplateName,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
-      'displayName': displayName,
+      'displayName': ?displayName,
       'displayNamesExcludeFilter': ?displayNamesExcludeFilter,
       'displayNamesFilter': ?displayNamesFilter,
-      'enabled': enabled,
+      'enabled': ?enabled,
       'etag': ?etag,
-      'id': id,
-      'kind': kind,
-      'lastModifiedUtc': lastModifiedUtc,
-      'name': name,
-      'productFilter': productFilter,
+      'id': ?id,
+      'kind': ?kind,
+      'lastModifiedUtc': ?lastModifiedUtc,
+      'name': ?name,
+      'productFilter': ?productFilter,
       'severitiesFilter': ?severitiesFilter,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetMicrosoftSecurityIncidentCreationAlertRuleResult.fromMap(Map<String, dynamic> map) {
     return GetMicrosoftSecurityIncidentCreationAlertRuleResult(
       alertRuleTemplateName: (() { final guardedValue = map['alertRuleTemplateName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      displayName: map['displayName'] as String,
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayNamesExcludeFilter: (() { final guardedValue = map['displayNamesExcludeFilter']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       displayNamesFilter: (() { final guardedValue = map['displayNamesFilter']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      enabled: map['enabled'] as bool,
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      kind: map['kind'] as String,
-      lastModifiedUtc: map['lastModifiedUtc'] as String,
-      name: map['name'] as String,
-      productFilter: map['productFilter'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastModifiedUtc: (() { final guardedValue = map['lastModifiedUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      productFilter: (() { final guardedValue = map['productFilter']; if (guardedValue == null) return null; return guardedValue as String; })(),
       severitiesFilter: (() { final guardedValue = map['severitiesFilter']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

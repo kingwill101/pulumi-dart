@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The transport protocol to use in the Thrift layer.
-enum SparkThriftTransportProtocol {
+enum SparkThriftTransportProtocol implements pulumi.PulumiEnum<String> {
   binary("Binary"),
   sASL("SASL"),
   hTTP("HTTP ");
 
   const SparkThriftTransportProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static SparkThriftTransportProtocol fromValue(String value) {

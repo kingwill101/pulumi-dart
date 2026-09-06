@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// App Dapr configuration.
 class DaprConfigResponse {
   /// Dapr application identifier
-  final pulumi.Input<String>? appId;
+  final pulumi.Input<String?>? appId;
   /// Tells Dapr which port your application is listening on
-  final pulumi.Input<int>? appPort;
+  final pulumi.Input<int?>? appPort;
   /// Enables API logging for the Dapr sidecar
-  final pulumi.Input<bool>? enableApiLogging;
+  final pulumi.Input<bool?>? enableApiLogging;
   /// Boolean indicating if the Dapr side car is enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Increasing max size of request body http servers parameter in MB to handle uploading of big files. Default is 4 MB.
-  final pulumi.Input<int>? httpMaxRequestSize;
+  final pulumi.Input<int?>? httpMaxRequestSize;
   /// Dapr max size of http header read buffer in KB to handle when sending multi-KB headers. Default is 65KB.
-  final pulumi.Input<int>? httpReadBufferSize;
+  final pulumi.Input<int?>? httpReadBufferSize;
   /// Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
-  final pulumi.Input<String>? logLevel;
+  final pulumi.Input<String?>? logLevel;
 
   /// Creates a new [DaprConfigResponse].
   /// [appId] Dapr application identifier
@@ -27,15 +27,15 @@ class DaprConfigResponse {
   /// [httpMaxRequestSize] Increasing max size of request body http servers parameter in MB to handle uploading of big files. Default is 4 MB.
   /// [httpReadBufferSize] Dapr max size of http header read buffer in KB to handle when sending multi-KB headers. Default is 65KB.
   /// [logLevel] Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
-  const DaprConfigResponse({
+  DaprConfigResponse({
     this.appId,
     this.appPort,
     this.enableApiLogging,
-    this.enabled,
+    pulumi.Input<bool?>? enabled,
     this.httpMaxRequestSize,
     this.httpReadBufferSize,
     this.logLevel,
-  });
+  }) : enabled = enabled ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +52,11 @@ class DaprConfigResponse {
   factory DaprConfigResponse.fromMap(Map<String, dynamic> map) {
     return DaprConfigResponse(
       appId: (() { final guardedValue = map['appId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      appPort: (() { final guardedValue = map['appPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      appPort: (() { final guardedValue = map['appPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       enableApiLogging: (() { final guardedValue = map['enableApiLogging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      httpMaxRequestSize: (() { final guardedValue = map['httpMaxRequestSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      httpReadBufferSize: (() { final guardedValue = map['httpReadBufferSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      httpMaxRequestSize: (() { final guardedValue = map['httpMaxRequestSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      httpReadBufferSize: (() { final guardedValue = map['httpReadBufferSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       logLevel: (() { final guardedValue = map['logLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

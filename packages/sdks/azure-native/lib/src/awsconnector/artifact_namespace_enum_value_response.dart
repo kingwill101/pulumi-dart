@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ArtifactNamespaceEnumValue
 class ArtifactNamespaceEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ArtifactNamespaceEnumValueResponse].
   /// [value] Property value

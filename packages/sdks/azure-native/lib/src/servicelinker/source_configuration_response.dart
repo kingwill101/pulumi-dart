@@ -7,13 +7,13 @@ class SourceConfigurationResponse {
   /// The type of setting
   final pulumi.Input<String> configType;
   /// Descriptive information for the configuration
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The identity for key vault reference, system or user-assigned managed identity ID
-  final pulumi.Input<String>? keyVaultReferenceIdentity;
+  final pulumi.Input<String?>? keyVaultReferenceIdentity;
   /// The name of setting.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value of setting
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [SourceConfigurationResponse].
   /// [configType] The type of setting

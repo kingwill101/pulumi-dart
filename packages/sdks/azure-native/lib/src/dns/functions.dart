@@ -28,6 +28,17 @@ Future<GetDnsResourceReferenceByTarResourcesResult> getDnsResourceReferenceByTar
   return GetDnsResourceReferenceByTarResourcesResult.fromMap(result);
 }
 
+pulumi.Output<GetDnsResourceReferenceByTarResourcesResult> getDnsResourceReferenceByTarResourcesOutput(
+  GetDnsResourceReferenceByTarResourcesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dns:getDnsResourceReferenceByTarResources',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDnsResourceReferenceByTarResourcesResult.fromMap);
+}
+
 /// Gets the DNSSEC configuration.
 ///
 /// Uses Azure REST API version 2023-07-01-preview.
@@ -44,6 +55,17 @@ Future<GetDnssecConfigResult> getDnssecConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDnssecConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetDnssecConfigResult> getDnssecConfigOutput(
+  GetDnssecConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dns:getDnssecConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDnssecConfigResult.fromMap);
 }
 
 /// Gets a record set.
@@ -66,6 +88,17 @@ Future<GetRecordSetResult> getRecordSet(
   return GetRecordSetResult.fromMap(result);
 }
 
+pulumi.Output<GetRecordSetResult> getRecordSetOutput(
+  GetRecordSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dns:getRecordSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRecordSetResult.fromMap);
+}
+
 /// Gets a DNS zone. Retrieves the zone properties, but not the record sets within the zone.
 ///
 /// Uses Azure REST API version 2023-07-01-preview.
@@ -84,4 +117,15 @@ Future<GetZoneResult> getZone(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetZoneResult.fromMap(result);
+}
+
+pulumi.Output<GetZoneResult> getZoneOutput(
+  GetZoneArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dns:getZone',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZoneResult.fromMap);
 }

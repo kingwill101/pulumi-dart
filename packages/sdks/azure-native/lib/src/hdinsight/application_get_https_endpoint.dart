@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Gets the application HTTP endpoints.
 class ApplicationGetHttpsEndpoint {
   /// The list of access modes for the application.
-  final pulumi.Input<List<String>>? accessModes;
+  final pulumi.Input<List<String>?>? accessModes;
   /// The destination port to connect to.
-  final pulumi.Input<int>? destinationPort;
+  final pulumi.Input<int?>? destinationPort;
   /// The value indicates whether to disable GatewayAuth.
-  final pulumi.Input<bool>? disableGatewayAuth;
+  final pulumi.Input<bool?>? disableGatewayAuth;
   /// The private ip address of the endpoint.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// The subdomain suffix of the application.
-  final pulumi.Input<String>? subDomainSuffix;
+  final pulumi.Input<String?>? subDomainSuffix;
 
   /// Creates a new [ApplicationGetHttpsEndpoint].
   /// [accessModes] The list of access modes for the application.
@@ -42,7 +42,7 @@ class ApplicationGetHttpsEndpoint {
   factory ApplicationGetHttpsEndpoint.fromMap(Map<String, dynamic> map) {
     return ApplicationGetHttpsEndpoint(
       accessModes: (() { final guardedValue = map['accessModes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      destinationPort: (() { final guardedValue = map['destinationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      destinationPort: (() { final guardedValue = map['destinationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       disableGatewayAuth: (() { final guardedValue = map['disableGatewayAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       privateIPAddress: (() { final guardedValue = map['privateIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subDomainSuffix: (() { final guardedValue = map['subDomainSuffix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

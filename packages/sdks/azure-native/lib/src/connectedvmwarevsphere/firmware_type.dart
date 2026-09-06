@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Firmware type
-enum FirmwareType {
+enum FirmwareType implements pulumi.PulumiEnum<String> {
   valueBios("bios"),
   valueEfi("efi");
 
   const FirmwareType(this.wireValue);
+  @override
   final String wireValue;
 
   static FirmwareType fromValue(String value) {

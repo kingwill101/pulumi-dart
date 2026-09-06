@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Credit breakdown item representing a milestone, line-item, or no-charge service
 class CreditPolicies {
   /// Expiration policy of the Credit
-  final pulumi.Input<String>? expiration;
+  final pulumi.Input<dynamic>? expiration;
   /// Redemption policy of the Credit
-  final pulumi.Input<String>? redemption;
+  final pulumi.Input<dynamic>? redemption;
 
   /// Creates a new [CreditPolicies].
   /// [expiration] Expiration policy of the Credit
@@ -26,8 +26,8 @@ class CreditPolicies {
 
   factory CreditPolicies.fromMap(Map<String, dynamic> map) {
     return CreditPolicies(
-      expiration: (() { final guardedValue = map['expiration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      redemption: (() { final guardedValue = map['redemption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      expiration: (() { final guardedValue = map['expiration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      redemption: (() { final guardedValue = map['redemption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

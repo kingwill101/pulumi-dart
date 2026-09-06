@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Kafka to Mqtt route properties
 class KafkaToMqttRoutesResponse {
   /// The consumer group id to use.
-  final pulumi.Input<String>? consumerGroupId;
+  final pulumi.Input<String?>? consumerGroupId;
   /// The kafka topic to pull from.
   final pulumi.Input<String> kafkaTopic;
   /// The mqtt topic to publish to.
@@ -13,7 +13,7 @@ class KafkaToMqttRoutesResponse {
   /// The name of the route.
   final pulumi.Input<String> name;
   /// The qos to use for mqtt.
-  final pulumi.Input<int>? qos;
+  final pulumi.Input<int?>? qos;
 
   /// Creates a new [KafkaToMqttRoutesResponse].
   /// [consumerGroupId] The consumer group id to use.
@@ -21,13 +21,13 @@ class KafkaToMqttRoutesResponse {
   /// [mqttTopic] The mqtt topic to publish to.
   /// [name] The name of the route.
   /// [qos] The qos to use for mqtt.
-  const KafkaToMqttRoutesResponse({
+  KafkaToMqttRoutesResponse({
     this.consumerGroupId,
     required this.kafkaTopic,
     required this.mqttTopic,
     required this.name,
-    this.qos,
-  });
+    pulumi.Input<int?>? qos,
+  }) : qos = qos ?? pulumi.Input.fromValue(1);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,7 +45,7 @@ class KafkaToMqttRoutesResponse {
       kafkaTopic: pulumi.Input.fromValue(map['kafkaTopic'] as String),
       mqttTopic: pulumi.Input.fromValue(map['mqttTopic'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      qos: (() { final guardedValue = map['qos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      qos: (() { final guardedValue = map['qos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -12,9 +12,9 @@ class HyperVToAzStackHCIReplicationExtensionModelCustomProperties {
   /// Expected value is 'HyperVToAzStackHCI'.
   final pulumi.Input<String> instanceType;
   /// Gets or sets the storage account Id.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// Gets or sets the Sas Secret of storage account.
-  final pulumi.Input<String>? storageAccountSasSecretName;
+  final pulumi.Input<String?>? storageAccountSasSecretName;
 
   /// Creates a new [HyperVToAzStackHCIReplicationExtensionModelCustomProperties].
   /// [azStackHciFabricArmId] Gets or sets the ARM Id of the target AzStackHCI fabric.

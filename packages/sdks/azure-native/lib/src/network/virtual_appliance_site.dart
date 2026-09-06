@@ -245,4 +245,22 @@ class VirtualApplianceSite extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [VirtualApplianceSite] resource.
+  VirtualApplianceSite.reference(String urn)
+    : super(
+        'azure-native:network:VirtualApplianceSite',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressPrefix = registerOutput<String?>('addressPrefix');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String?>('name');
+    o365Policy = registerOutput<Office365PolicyPropertiesResponse?>('o365Policy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Office365PolicyPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
+  }
 }

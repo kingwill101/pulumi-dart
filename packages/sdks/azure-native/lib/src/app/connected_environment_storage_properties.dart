@@ -7,9 +7,9 @@ import 'smb_storage.dart';
 /// Storage properties
 class ConnectedEnvironmentStorageProperties {
   /// Azure file properties
-  final pulumi.Input<AzureFileProperties>? azureFile;
+  final pulumi.Input<AzureFileProperties?>? azureFile;
   /// SMB storage properties
-  final pulumi.Input<SmbStorage>? smb;
+  final pulumi.Input<SmbStorage?>? smb;
 
   /// Creates a new [ConnectedEnvironmentStorageProperties].
   /// [azureFile] Azure file properties

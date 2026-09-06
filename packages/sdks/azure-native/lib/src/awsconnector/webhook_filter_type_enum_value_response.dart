@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of WebhookFilterTypeEnumValue
 class WebhookFilterTypeEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [WebhookFilterTypeEnumValueResponse].
   /// [value] Property value

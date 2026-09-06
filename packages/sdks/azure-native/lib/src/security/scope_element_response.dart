@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A more specific scope used to identify the alerts to suppress.
 class ScopeElementResponse {
   /// The alert entity type to suppress by.
-  final pulumi.Input<String>? field;
+  final pulumi.Input<String?>? field;
 
   /// Creates a new [ScopeElementResponse].
   /// [field] The alert entity type to suppress by.

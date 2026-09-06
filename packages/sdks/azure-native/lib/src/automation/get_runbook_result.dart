@@ -9,7 +9,7 @@ import 'system_data_response.dart';
 /// Result data returned by getRunbook.
 class GetRunbookResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Gets or sets the creation time.
   final String? creationTime;
   /// Gets or sets the description.
@@ -19,7 +19,7 @@ class GetRunbookResult {
   /// Gets or sets the etag of the resource.
   final String? etag;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Gets or sets the job count of the runbook.
   final int? jobCount;
   /// Gets or sets the last modified by.
@@ -27,7 +27,7 @@ class GetRunbookResult {
   /// Gets or sets the last modified time.
   final String? lastModifiedTime;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// Gets or sets the option to log activity trace of the runbook.
   final int? logActivityTrace;
   /// Gets or sets progress log option.
@@ -35,7 +35,7 @@ class GetRunbookResult {
   /// Gets or sets verbose log option.
   final bool? logVerbose;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Gets or sets the runbook output types.
   final List<String>? outputTypes;
   /// Gets or sets the runbook parameters.
@@ -51,11 +51,11 @@ class GetRunbookResult {
   /// Gets or sets the state of the runbook.
   final String? state;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetRunbookResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -83,20 +83,20 @@ class GetRunbookResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetRunbookResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.creationTime,
     this.description,
     this.draft,
     this.etag,
-    required this.id,
+    this.id,
     this.jobCount,
     this.lastModifiedBy,
     this.lastModifiedTime,
-    required this.location,
+    this.location,
     this.logActivityTrace,
     this.logProgress,
     this.logVerbose,
-    required this.name,
+    this.name,
     this.outputTypes,
     this.parameters,
     this.provisioningState,
@@ -104,27 +104,27 @@ class GetRunbookResult {
     this.runbookType,
     this.runtimeEnvironment,
     this.state,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'creationTime': ?creationTime,
       'description': ?description,
       'draft': ?draft?.toMap(),
       'etag': ?etag,
-      'id': id,
+      'id': ?id,
       'jobCount': ?jobCount,
       'lastModifiedBy': ?lastModifiedBy,
       'lastModifiedTime': ?lastModifiedTime,
-      'location': location,
+      'location': ?location,
       'logActivityTrace': ?logActivityTrace,
       'logProgress': ?logProgress,
       'logVerbose': ?logVerbose,
-      'name': name,
+      'name': ?name,
       'outputTypes': ?outputTypes,
       'parameters': ?(() { final guardedValue = parameters; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<RunbookParameterResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'provisioningState': ?provisioningState,
@@ -132,28 +132,28 @@ class GetRunbookResult {
       'runbookType': ?runbookType,
       'runtimeEnvironment': ?runtimeEnvironment,
       'state': ?state,
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetRunbookResult.fromMap(Map<String, dynamic> map) {
     return GetRunbookResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       draft: (() { final guardedValue = map['draft']; if (guardedValue == null) return null; return RunbookDraftResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      jobCount: (() { final guardedValue = map['jobCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      jobCount: (() { final guardedValue = map['jobCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       lastModifiedBy: (() { final guardedValue = map['lastModifiedBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      location: map['location'] as String,
-      logActivityTrace: (() { final guardedValue = map['logActivityTrace']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      logActivityTrace: (() { final guardedValue = map['logActivityTrace']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       logProgress: (() { final guardedValue = map['logProgress']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       logVerbose: (() { final guardedValue = map['logVerbose']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       outputTypes: (() { final guardedValue = map['outputTypes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<RunbookParameterResponse>(guardedValue, (value) => RunbookParameterResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -161,9 +161,9 @@ class GetRunbookResult {
       runbookType: (() { final guardedValue = map['runbookType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       runtimeEnvironment: (() { final guardedValue = map['runtimeEnvironment']; if (guardedValue == null) return null; return guardedValue as String; })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

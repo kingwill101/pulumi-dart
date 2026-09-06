@@ -10,13 +10,13 @@ class ReceiverResponse {
   /// The name of receiver.
   final pulumi.Input<String> name;
   /// OTLP receiver configurations. This field is mandatory for OTLP and pipelineGroup receivers.
-  final pulumi.Input<OtlpReceiverResponse>? otlp;
+  final pulumi.Input<OtlpReceiverResponse?>? otlp;
   /// Syslog configurations. This field is mandatory for syslog type receivers.
-  final pulumi.Input<SyslogReceiverResponse>? syslog;
+  final pulumi.Input<SyslogReceiverResponse?>? syslog;
   /// The type of receiver.
   final pulumi.Input<String> type;
   /// UDP receiver configurations. This field is mandatory for UDP receivers.
-  final pulumi.Input<UdpReceiverResponse>? udp;
+  final pulumi.Input<UdpReceiverResponse?>? udp;
 
   /// Creates a new [ReceiverResponse].
   /// [name] The name of receiver.

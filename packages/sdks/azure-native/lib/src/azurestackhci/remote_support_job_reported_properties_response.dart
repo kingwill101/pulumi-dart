@@ -46,7 +46,7 @@ class RemoteSupportJobReportedPropertiesResponse {
     return RemoteSupportJobReportedPropertiesResponse(
       deploymentStatus: pulumi.Input.fromValue(EceActionStatusResponse.fromMap((map['deploymentStatus']! as Map).cast<String, dynamic>())),
       nodeSettings: pulumi.Input.fromValue(RemoteSupportJobNodeSettingsResponse.fromMap((map['nodeSettings']! as Map).cast<String, dynamic>())),
-      percentComplete: pulumi.Input.fromValue(map['percentComplete'] as int),
+      percentComplete: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['percentComplete'])),
       sessionDetails: pulumi.Input.fromValue(pulumi.Input.decodeList<RemoteSupportSessionResponse>(map['sessionDetails']!, (value) => RemoteSupportSessionResponse.fromMap((value as Map).cast<String, dynamic>()))),
       validationStatus: pulumi.Input.fromValue(EceActionStatusResponse.fromMap((map['validationStatus']! as Map).cast<String, dynamic>())),
     );

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Application Gateway global configuration.
 class ApplicationGatewayGlobalConfigurationResponse {
   /// Enable request buffering.
-  final pulumi.Input<bool>? enableRequestBuffering;
+  final pulumi.Input<bool?>? enableRequestBuffering;
   /// Enable response buffering.
-  final pulumi.Input<bool>? enableResponseBuffering;
+  final pulumi.Input<bool?>? enableResponseBuffering;
 
   /// Creates a new [ApplicationGatewayGlobalConfigurationResponse].
   /// [enableRequestBuffering] Enable request buffering.

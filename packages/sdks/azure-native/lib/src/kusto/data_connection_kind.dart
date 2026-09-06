@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Kind of the endpoint for the data connection
-enum DataConnectionKind {
+enum DataConnectionKind implements pulumi.PulumiEnum<String> {
   valueEventHub("EventHub"),
   valueEventGrid("EventGrid"),
   valueIotHub("IotHub"),
   valueCosmosDb("CosmosDb");
 
   const DataConnectionKind(this.wireValue);
+  @override
   final String wireValue;
 
   static DataConnectionKind fromValue(String value) {

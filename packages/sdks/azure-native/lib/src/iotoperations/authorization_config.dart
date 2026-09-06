@@ -6,17 +6,17 @@ import 'authorization_rule.dart';
 /// Broker AuthorizationConfig properties
 class AuthorizationConfig {
   /// Enable caching of the authorization rules.
-  final pulumi.Input<String>? cache;
+  final pulumi.Input<dynamic>? cache;
   /// The authorization rules to follow. If no rule is set, but Authorization Resource is used that would mean DenyAll.
-  final pulumi.Input<List<AuthorizationRule>>? rules;
+  final pulumi.Input<List<AuthorizationRule>?>? rules;
 
   /// Creates a new [AuthorizationConfig].
   /// [cache] Enable caching of the authorization rules.
   /// [rules] The authorization rules to follow. If no rule is set, but Authorization Resource is used that would mean DenyAll.
-  const AuthorizationConfig({
-    this.cache,
+  AuthorizationConfig({
+    pulumi.Input<dynamic>? cache,
     this.rules,
-  });
+  }) : cache = cache ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,7 +27,7 @@ class AuthorizationConfig {
 
   factory AuthorizationConfig.fromMap(Map<String, dynamic> map) {
     return AuthorizationConfig(
-      cache: (() { final guardedValue = map['cache']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cache: (() { final guardedValue = map['cache']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AuthorizationRule>(guardedValue, (value) => AuthorizationRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

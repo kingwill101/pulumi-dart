@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ARM IDs of the target assessments.
 class TargetAssessmentArmIds {
   /// ARM ID for Azure Kubernetes Service assessment.
-  final pulumi.Input<String>? aks;
+  final pulumi.Input<String?>? aks;
   /// ARM ID for Azure App Service assessment.
-  final pulumi.Input<String>? azureAppService;
+  final pulumi.Input<String?>? azureAppService;
   /// ARM ID for Azure App Service Container assessment.
-  final pulumi.Input<String>? azureAppServiceContainer;
+  final pulumi.Input<String?>? azureAppServiceContainer;
 
   /// Creates a new [TargetAssessmentArmIds].
   /// [aks] ARM ID for Azure Kubernetes Service assessment.

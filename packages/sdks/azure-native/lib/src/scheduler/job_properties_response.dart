@@ -7,13 +7,13 @@ import 'job_status_response.dart';
 
 class JobPropertiesResponse {
   /// Gets or sets the job action.
-  final pulumi.Input<JobActionResponse>? action;
+  final pulumi.Input<JobActionResponse?>? action;
   /// Gets or sets the job recurrence.
-  final pulumi.Input<JobRecurrenceResponse>? recurrence;
+  final pulumi.Input<JobRecurrenceResponse?>? recurrence;
   /// Gets or sets the job start time.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Gets or set the job state.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Gets the job status.
   final pulumi.Input<JobStatusResponse> status;
 

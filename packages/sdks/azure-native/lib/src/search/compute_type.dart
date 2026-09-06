@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Configure this property to support the search service using either the Default Compute or Azure Confidential Compute.
-enum ComputeType {
+enum ComputeType implements pulumi.PulumiEnum<String> {
   default_("Default"),
   confidential("Confidential");
 
   const ComputeType(this.wireValue);
+  @override
   final String wireValue;
 
   static ComputeType fromValue(String value) {

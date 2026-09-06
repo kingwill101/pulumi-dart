@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The filters that will be applied to determine which resources to remediate.
 class RemediationFiltersResponse {
   /// The resource locations that will be remediated.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// The IDs of the resources that will be remediated. Can specify at most 100 IDs. This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance, and cannot be empty if provided.
-  final pulumi.Input<List<String>>? resourceIds;
+  final pulumi.Input<List<String>?>? resourceIds;
 
   /// Creates a new [RemediationFiltersResponse].
   /// [locations] The resource locations that will be remediated.

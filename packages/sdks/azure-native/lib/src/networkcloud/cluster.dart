@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'analytics_output_settings_response.dart';
 import 'cluster_args.dart';
+import 'cluster_available_upgrade_version_response.dart';
 import 'cluster_capacity_response.dart';
 import 'cluster_secret_archive_response.dart';
 import 'cluster_update_strategy_response.dart';
@@ -34,7 +35,7 @@ class Cluster extends pulumi.CustomResource {
   /// Field Deprecated. The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
   late final pulumi.Output<String?> analyticsWorkspaceId;
   /// The list of cluster runtime version upgrades available for this cluster.
-  late final pulumi.Output<List<Map<String, dynamic>>> availableUpgradeVersions;
+  late final pulumi.Output<List<ClusterAvailableUpgradeVersionResponse>> availableUpgradeVersions;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The capacity supported by this cluster.
@@ -61,7 +62,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<ValidationThresholdResponse?> computeDeploymentThreshold;
   /// The list of rack definitions for the compute racks in a multi-rack
   /// cluster, or an empty list in a single-rack cluster.
-  late final pulumi.Output<List<Map<String, dynamic>>?> computeRackDefinitions;
+  late final pulumi.Output<List<RackDefinitionResponse>?> computeRackDefinitions;
   /// The current detailed status of the cluster.
   late final pulumi.Output<String> detailedStatus;
   /// The descriptive message about the detailed status.
@@ -124,7 +125,7 @@ class Cluster extends pulumi.CustomResource {
     aggregatorOrSingleRackDefinition = registerOutput<RackDefinitionResponse>('aggregatorOrSingleRackDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RackDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     analyticsOutputSettings = registerOutput<AnalyticsOutputSettingsResponse?>('analyticsOutputSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsOutputSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     analyticsWorkspaceId = registerOutput<String?>('analyticsWorkspaceId');
-    availableUpgradeVersions = registerOutput<List<Map<String, dynamic>>>('availableUpgradeVersions');
+    availableUpgradeVersions = registerOutput<List<ClusterAvailableUpgradeVersionResponse>>('availableUpgradeVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterAvailableUpgradeVersionResponse>(guardedValue, (value) => ClusterAvailableUpgradeVersionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clusterCapacity = registerOutput<ClusterCapacityResponse>('clusterCapacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCapacityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterConnectionStatus = registerOutput<String>('clusterConnectionStatus');
@@ -137,7 +138,7 @@ class Cluster extends pulumi.CustomResource {
     clusterVersion = registerOutput<String>('clusterVersion');
     commandOutputSettings = registerOutput<CommandOutputSettingsResponse?>('commandOutputSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CommandOutputSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     computeDeploymentThreshold = registerOutput<ValidationThresholdResponse?>('computeDeploymentThreshold', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidationThresholdResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    computeRackDefinitions = registerOutput<List<Map<String, dynamic>>?>('computeRackDefinitions');
+    computeRackDefinitions = registerOutput<List<RackDefinitionResponse>?>('computeRackDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RackDefinitionResponse>(guardedValue, (value) => RackDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     detailedStatus = registerOutput<String>('detailedStatus');
     detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
     etag = registerOutput<String>('etag');
@@ -155,10 +156,60 @@ class Cluster extends pulumi.CustomResource {
     secretArchiveSettings = registerOutput<SecretArchiveSettingsResponse?>('secretArchiveSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretArchiveSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     supportExpiryDate = registerOutput<String>('supportExpiryDate');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     updateStrategy = registerOutput<ClusterUpdateStrategyResponse?>('updateStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterUpdateStrategyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vulnerabilityScanningSettings = registerOutput<VulnerabilityScanningSettingsResponse?>('vulnerabilityScanningSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VulnerabilityScanningSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    workloadResourceIds = registerOutput<List<String>>('workloadResourceIds');
+    workloadResourceIds = registerOutput<List<String>>('workloadResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'azure-native:networkcloud:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aggregatorOrSingleRackDefinition = registerOutput<RackDefinitionResponse>('aggregatorOrSingleRackDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RackDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    analyticsOutputSettings = registerOutput<AnalyticsOutputSettingsResponse?>('analyticsOutputSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsOutputSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    analyticsWorkspaceId = registerOutput<String?>('analyticsWorkspaceId');
+    availableUpgradeVersions = registerOutput<List<ClusterAvailableUpgradeVersionResponse>>('availableUpgradeVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterAvailableUpgradeVersionResponse>(guardedValue, (value) => ClusterAvailableUpgradeVersionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterCapacity = registerOutput<ClusterCapacityResponse>('clusterCapacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCapacityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterConnectionStatus = registerOutput<String>('clusterConnectionStatus');
+    clusterExtendedLocation = registerOutput<ExtendedLocationResponse>('clusterExtendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterLocation = registerOutput<String?>('clusterLocation');
+    clusterManagerConnectionStatus = registerOutput<String>('clusterManagerConnectionStatus');
+    clusterManagerId = registerOutput<String>('clusterManagerId');
+    clusterServicePrincipal = registerOutput<ServicePrincipalInformationResponse?>('clusterServicePrincipal', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePrincipalInformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterType = registerOutput<String>('clusterType');
+    clusterVersion = registerOutput<String>('clusterVersion');
+    commandOutputSettings = registerOutput<CommandOutputSettingsResponse?>('commandOutputSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CommandOutputSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    computeDeploymentThreshold = registerOutput<ValidationThresholdResponse?>('computeDeploymentThreshold', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidationThresholdResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    computeRackDefinitions = registerOutput<List<RackDefinitionResponse>?>('computeRackDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RackDefinitionResponse>(guardedValue, (value) => RackDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    detailedStatus = registerOutput<String>('detailedStatus');
+    detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hybridAksExtendedLocation = registerOutput<ExtendedLocationResponse>('hybridAksExtendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    managedResourceGroupConfiguration = registerOutput<ManagedResourceGroupConfigurationResponse?>('managedResourceGroupConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedResourceGroupConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    manualActionCount = registerOutput<double>('manualActionCount');
+    this.name = registerOutput<String>('name');
+    networkFabricId = registerOutput<String>('networkFabricId');
+    provisioningState = registerOutput<String>('provisioningState');
+    runtimeProtectionConfiguration = registerOutput<RuntimeProtectionConfigurationResponse?>('runtimeProtectionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeProtectionConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secretArchive = registerOutput<ClusterSecretArchiveResponse?>('secretArchive', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecretArchiveResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secretArchiveSettings = registerOutput<SecretArchiveSettingsResponse?>('secretArchiveSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretArchiveSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    supportExpiryDate = registerOutput<String>('supportExpiryDate');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    updateStrategy = registerOutput<ClusterUpdateStrategyResponse?>('updateStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterUpdateStrategyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vulnerabilityScanningSettings = registerOutput<VulnerabilityScanningSettingsResponse?>('vulnerabilityScanningSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VulnerabilityScanningSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workloadResourceIds = registerOutput<List<String>>('workloadResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

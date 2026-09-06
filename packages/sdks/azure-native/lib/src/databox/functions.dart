@@ -24,6 +24,17 @@ Future<GetJobResult> getJob(
   return GetJobResult.fromMap(result);
 }
 
+pulumi.Output<GetJobResult> getJobOutput(
+  GetJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databox:getJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobResult.fromMap);
+}
+
 /// This method gets the unencrypted secrets related to the job.
 ///
 /// Uses Azure REST API version 2024-03-01-preview.
@@ -42,4 +53,15 @@ Future<ListJobCredentialsResult> listJobCredentials(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListJobCredentialsResult.fromMap(result);
+}
+
+pulumi.Output<ListJobCredentialsResult> listJobCredentialsOutput(
+  ListJobCredentialsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databox:listJobCredentials',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListJobCredentialsResult.fromMap);
 }

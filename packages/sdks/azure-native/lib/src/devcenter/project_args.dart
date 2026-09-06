@@ -10,25 +10,25 @@ import 'project_catalog_settings.dart';
 /// {@macro pulumi_devcenter_project_args_doc}
 class ProjectArgs {
   /// Settings to be used when associating a project with a catalog.
-  final pulumi.Input<ProjectCatalogSettings>? catalogSettings;
+  final pulumi.Input<ProjectCatalogSettings?>? catalogSettings;
   /// Description of the project.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Resource Id of an associated DevCenter
-  final pulumi.Input<String>? devCenterId;
+  final pulumi.Input<String?>? devCenterId;
   /// The display name of the project.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Managed identity properties
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project. This will have no effect on existing Dev Boxes when reduced.
-  final pulumi.Input<int>? maxDevBoxesPerUser;
+  final pulumi.Input<int?>? maxDevBoxesPerUser;
   /// The name of the project.
-  final pulumi.Input<String>? projectName;
+  final pulumi.Input<String?>? projectName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ProjectArgs].
   /// [catalogSettings] Settings to be used when associating a project with a catalog.
@@ -77,7 +77,7 @@ class ProjectArgs {
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxDevBoxesPerUser: (() { final guardedValue = map['maxDevBoxesPerUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxDevBoxesPerUser: (() { final guardedValue = map['maxDevBoxesPerUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       projectName: (() { final guardedValue = map['projectName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

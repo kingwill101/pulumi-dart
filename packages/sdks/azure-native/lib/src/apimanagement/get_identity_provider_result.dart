@@ -8,17 +8,17 @@ class GetIdentityProviderResult {
   /// OpenID Connect discovery endpoint hostname for AAD or AAD B2C.
   final String? authority;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Client Id of the Application in the external Identity Provider. It is App ID for Facebook login, Client ID for Google login, App ID for Microsoft.
-  final String clientId;
+  final String? clientId;
   /// The client library to be used in the developer portal. Only applies to AAD and AAD B2C Identity Provider.
   final String? clientLibrary;
   /// Client secret of the Application in external Identity Provider, used to authenticate login request. For example, it is App Secret for Facebook login, API Key for Google login, Public Key for Microsoft. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
   final String? clientSecret;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Password Reset Policy Name. Only applies to AAD B2C Identity Provider.
   final String? passwordResetPolicyName;
   /// Profile Editing Policy Name. Only applies to AAD B2C Identity Provider.
@@ -30,7 +30,7 @@ class GetIdentityProviderResult {
   /// Signup Policy Name. Only applies to AAD B2C Identity Provider.
   final String? signupPolicyName;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetIdentityProviderResult].
   /// [allowedTenants] List of Allowed Tenants when configuring Azure Active Directory login.
@@ -50,36 +50,36 @@ class GetIdentityProviderResult {
   const GetIdentityProviderResult({
     this.allowedTenants,
     this.authority,
-    required this.azureApiVersion,
-    required this.clientId,
+    this.azureApiVersion,
+    this.clientId,
     this.clientLibrary,
     this.clientSecret,
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
     this.passwordResetPolicyName,
     this.profileEditingPolicyName,
     this.signinPolicyName,
     this.signinTenant,
     this.signupPolicyName,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowedTenants': ?allowedTenants,
       'authority': ?authority,
-      'azureApiVersion': azureApiVersion,
-      'clientId': clientId,
+      'azureApiVersion': ?azureApiVersion,
+      'clientId': ?clientId,
       'clientLibrary': ?clientLibrary,
       'clientSecret': ?clientSecret,
-      'id': id,
-      'name': name,
+      'id': ?id,
+      'name': ?name,
       'passwordResetPolicyName': ?passwordResetPolicyName,
       'profileEditingPolicyName': ?profileEditingPolicyName,
       'signinPolicyName': ?signinPolicyName,
       'signinTenant': ?signinTenant,
       'signupPolicyName': ?signupPolicyName,
-      'type': type,
+      'type': ?type,
     };
   }
 
@@ -87,18 +87,18 @@ class GetIdentityProviderResult {
     return GetIdentityProviderResult(
       allowedTenants: (() { final guardedValue = map['allowedTenants']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       authority: (() { final guardedValue = map['authority']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      clientId: map['clientId'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       clientLibrary: (() { final guardedValue = map['clientLibrary']; if (guardedValue == null) return null; return guardedValue as String; })(),
       clientSecret: (() { final guardedValue = map['clientSecret']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       passwordResetPolicyName: (() { final guardedValue = map['passwordResetPolicyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       profileEditingPolicyName: (() { final guardedValue = map['profileEditingPolicyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       signinPolicyName: (() { final guardedValue = map['signinPolicyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       signinTenant: (() { final guardedValue = map['signinTenant']; if (guardedValue == null) return null; return guardedValue as String; })(),
       signupPolicyName: (() { final guardedValue = map['signupPolicyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

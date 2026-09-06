@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The resource reference arm id type.
-enum IdType {
+enum IdType implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueOpen("Open"),
   valueSecret("Secret");
 
   const IdType(this.wireValue);
+  @override
   final String wireValue;
 
   static IdType fromValue(String value) {

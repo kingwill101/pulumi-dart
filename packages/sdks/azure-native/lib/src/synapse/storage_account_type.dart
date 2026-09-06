@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The storage account type used to store backups for this sql pool.
-enum StorageAccountType {
+enum StorageAccountType implements pulumi.PulumiEnum<String> {
   valueGRS("GRS"),
   valueLRS("LRS");
 
   const StorageAccountType(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageAccountType fromValue(String value) {

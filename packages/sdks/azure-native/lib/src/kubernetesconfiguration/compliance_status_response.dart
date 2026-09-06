@@ -7,11 +7,11 @@ class ComplianceStatusResponse {
   /// The compliance state of the configuration.
   final pulumi.Input<String> complianceState;
   /// Datetime the configuration was last applied.
-  final pulumi.Input<String>? lastConfigApplied;
+  final pulumi.Input<String?>? lastConfigApplied;
   /// Message from when the configuration was applied.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Level of the message.
-  final pulumi.Input<String>? messageLevel;
+  final pulumi.Input<String?>? messageLevel;
 
   /// Creates a new [ComplianceStatusResponse].
   /// [complianceState] The compliance state of the configuration.

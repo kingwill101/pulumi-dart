@@ -15,9 +15,9 @@ class TargetProperties {
   /// Hierarchy Level
   final pulumi.Input<String> hierarchyLevel;
   /// Scope of the target resource
-  final pulumi.Input<String>? solutionScope;
+  final pulumi.Input<String?>? solutionScope;
   /// State of resource
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// target spec
   final pulumi.Input<dynamic> targetSpecification;
 
@@ -62,7 +62,7 @@ class TargetProperties {
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       hierarchyLevel: pulumi.Input.fromValue(map['hierarchyLevel'] as String),
       solutionScope: (() { final guardedValue = map['solutionScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       targetSpecification: pulumi.Input.fromValue(map['targetSpecification']),
     );
   }

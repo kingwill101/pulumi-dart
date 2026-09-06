@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'assignment_item_response.dart';
 import 'system_data_response.dart';
 import 'workspace_manager_assignment_args.dart';
 
@@ -214,7 +215,7 @@ class WorkspaceManagerAssignment extends pulumi.CustomResource {
   /// Resource Etag.
   late final pulumi.Output<String> etag;
   /// List of resources included in this workspace manager assignment
-  late final pulumi.Output<List<Map<String, dynamic>>> items;
+  late final pulumi.Output<List<AssignmentItemResponse>> items;
   /// The time the last job associated to this assignment ended at
   late final pulumi.Output<String> lastJobEndTime;
   /// State of the last job associated to this assignment
@@ -244,7 +245,27 @@ class WorkspaceManagerAssignment extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
-    items = registerOutput<List<Map<String, dynamic>>>('items');
+    items = registerOutput<List<AssignmentItemResponse>>('items', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssignmentItemResponse>(guardedValue, (value) => AssignmentItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    lastJobEndTime = registerOutput<String>('lastJobEndTime');
+    lastJobProvisioningState = registerOutput<String>('lastJobProvisioningState');
+    this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetResourceName = registerOutput<String>('targetResourceName');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [WorkspaceManagerAssignment] resource.
+  WorkspaceManagerAssignment.reference(String urn)
+    : super(
+        'azure-native:securityinsights:WorkspaceManagerAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    items = registerOutput<List<AssignmentItemResponse>>('items', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssignmentItemResponse>(guardedValue, (value) => AssignmentItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
     lastJobEndTime = registerOutput<String>('lastJobEndTime');
     lastJobProvisioningState = registerOutput<String>('lastJobProvisioningState');
     this.name = registerOutput<String>('name');

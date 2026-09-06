@@ -9,11 +9,11 @@ import 'migration_entity_group_properties.dart';
 /// {@macro pulumi_migrate_migration_entity_group_args_doc}
 class MigrationEntityGroupArgs {
   /// Migration Entity Group ARM name
-  final pulumi.Input<String>? migrationEntityGroupName;
+  final pulumi.Input<String?>? migrationEntityGroupName;
   /// Migrate Project Name
   final pulumi.Input<String> projectName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<MigrationEntityGroupProperties>? properties;
+  final pulumi.Input<MigrationEntityGroupProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

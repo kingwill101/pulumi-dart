@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Appliance SSHKey definition.
 class SSHKeyResponse {
   /// User Private Key.
-  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String?>? privateKey;
   /// User Public Key.
-  final pulumi.Input<String>? publicKey;
+  final pulumi.Input<String?>? publicKey;
 
   /// Creates a new [SSHKeyResponse].
   /// [privateKey] User Private Key.

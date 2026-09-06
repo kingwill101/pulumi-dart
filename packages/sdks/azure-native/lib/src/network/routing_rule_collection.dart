@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'network_manager_routing_group_item_response.dart';
 import 'routing_rule_collection_args.dart';
 import 'system_data_response.dart';
 
@@ -192,7 +193,7 @@ import 'system_data_response.dart';
 /// ```
 class RoutingRuleCollection extends pulumi.CustomResource {
   /// Groups for configuration
-  late final pulumi.Output<List<Map<String, dynamic>>> appliesTo;
+  late final pulumi.Output<List<NetworkManagerRoutingGroupItemResponse>> appliesTo;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// A description of the routing rule collection.
@@ -226,7 +227,28 @@ class RoutingRuleCollection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    appliesTo = registerOutput<List<Map<String, dynamic>>>('appliesTo');
+    appliesTo = registerOutput<List<NetworkManagerRoutingGroupItemResponse>>('appliesTo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkManagerRoutingGroupItemResponse>(guardedValue, (value) => NetworkManagerRoutingGroupItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    disableBgpRoutePropagation = registerOutput<String?>('disableBgpRoutePropagation');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [RoutingRuleCollection] resource.
+  RoutingRuleCollection.reference(String urn)
+    : super(
+        'azure-native:network:RoutingRuleCollection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appliesTo = registerOutput<List<NetworkManagerRoutingGroupItemResponse>>('appliesTo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkManagerRoutingGroupItemResponse>(guardedValue, (value) => NetworkManagerRoutingGroupItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     disableBgpRoutePropagation = registerOutput<String?>('disableBgpRoutePropagation');

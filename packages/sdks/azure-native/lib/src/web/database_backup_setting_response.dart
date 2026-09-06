@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Database backup settings.
 class DatabaseBackupSettingResponse {
   /// Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
-  final pulumi.Input<String>? connectionString;
+  final pulumi.Input<String?>? connectionString;
   /// Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.
   /// This is used during restore with overwrite connection strings options.
-  final pulumi.Input<String>? connectionStringName;
+  final pulumi.Input<String?>? connectionStringName;
   /// Database type (e.g. SqlAzure / MySql).
   final pulumi.Input<String> databaseType;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [DatabaseBackupSettingResponse].
   /// [connectionString] Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.

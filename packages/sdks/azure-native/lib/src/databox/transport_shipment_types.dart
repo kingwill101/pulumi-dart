@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates Shipment Logistics type that the customer preferred.
-enum TransportShipmentTypes {
+enum TransportShipmentTypes implements pulumi.PulumiEnum<String> {
   valueCustomerManaged("CustomerManaged"),
   valueMicrosoftManaged("MicrosoftManaged");
 
   const TransportShipmentTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static TransportShipmentTypes fromValue(String value) {

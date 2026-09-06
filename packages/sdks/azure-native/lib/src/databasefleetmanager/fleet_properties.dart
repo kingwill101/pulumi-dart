@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Database Fleet properties.
 class FleetProperties {
   /// Fleet description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
 
   /// Creates a new [FleetProperties].
   /// [description] Fleet description.

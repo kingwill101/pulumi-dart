@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Connector mapping property format.
 class ConnectorMappingFormatResponse {
   /// The oData language.
-  final pulumi.Input<String>? acceptLanguage;
+  final pulumi.Input<String?>? acceptLanguage;
   /// Character separating array elements.
-  final pulumi.Input<String>? arraySeparator;
+  final pulumi.Input<String?>? arraySeparator;
   /// The character that signifies a break between columns.
-  final pulumi.Input<String>? columnDelimiter;
+  final pulumi.Input<String?>? columnDelimiter;
   /// The type mapping format.
   final pulumi.Input<String> formatType;
   /// Quote character, used to indicate enquoted fields.
-  final pulumi.Input<String>? quoteCharacter;
+  final pulumi.Input<String?>? quoteCharacter;
   /// Escape character for quotes, can be the same as the quoteCharacter.
-  final pulumi.Input<String>? quoteEscapeCharacter;
+  final pulumi.Input<String?>? quoteEscapeCharacter;
 
   /// Creates a new [ConnectorMappingFormatResponse].
   /// [acceptLanguage] The oData language.

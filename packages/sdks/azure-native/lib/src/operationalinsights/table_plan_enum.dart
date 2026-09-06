@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Instruct the system how to handle and charge the logs ingested to this table.
-enum TablePlanEnum {
+enum TablePlanEnum implements pulumi.PulumiEnum<String> {
   valueBasic("Basic"),
   valueAnalytics("Analytics");
 
   const TablePlanEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static TablePlanEnum fromValue(String value) {

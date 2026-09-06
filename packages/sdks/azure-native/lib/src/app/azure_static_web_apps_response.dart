@@ -6,9 +6,9 @@ import 'azure_static_web_apps_registration_response.dart';
 /// The configuration settings of the Azure Static Web Apps provider.
 class AzureStaticWebAppsResponse {
   /// &lt;code&gt;false&lt;/code&gt; if the Azure Static Web Apps provider should not be enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The configuration settings of the Azure Static Web Apps registration.
-  final pulumi.Input<AzureStaticWebAppsRegistrationResponse>? registration;
+  final pulumi.Input<AzureStaticWebAppsRegistrationResponse?>? registration;
 
   /// Creates a new [AzureStaticWebAppsResponse].
   /// [enabled] &lt;code&gt;false&lt;/code&gt; if the Azure Static Web Apps provider should not be enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.

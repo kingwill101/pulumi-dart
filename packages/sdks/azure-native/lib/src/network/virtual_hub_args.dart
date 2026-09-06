@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sub_resource.dart';
 import 'virtual_hub_route_table.dart';
-import 'virtual_hub_route_table_v2_network.dart';
+import 'virtual_hub_route_table_v2.dart';
 import 'virtual_router_auto_scale_configuration.dart';
 
 /// {@template pulumi_network_virtual_hub_args_doc}
@@ -12,50 +12,50 @@ import 'virtual_router_auto_scale_configuration.dart';
 /// {@macro pulumi_network_virtual_hub_args_doc}
 class VirtualHubArgs {
   /// Address-prefix for this VirtualHub.
-  final pulumi.Input<String>? addressPrefix;
+  final pulumi.Input<String?>? addressPrefix;
   /// Flag to control transit for VirtualRouter hub.
-  final pulumi.Input<bool>? allowBranchToBranchTraffic;
+  final pulumi.Input<bool?>? allowBranchToBranchTraffic;
   /// The azureFirewall associated with this VirtualHub.
-  final pulumi.Input<SubResource>? azureFirewall;
+  final pulumi.Input<SubResource?>? azureFirewall;
   /// The expressRouteGateway associated with this VirtualHub.
-  final pulumi.Input<SubResource>? expressRouteGateway;
+  final pulumi.Input<SubResource?>? expressRouteGateway;
   /// The hubRoutingPreference of this VirtualHub.
-  final pulumi.Input<String>? hubRoutingPreference;
+  final pulumi.Input<dynamic>? hubRoutingPreference;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The P2SVpnGateway associated with this VirtualHub.
-  final pulumi.Input<SubResource>? p2SVpnGateway;
+  final pulumi.Input<SubResource?>? p2SVpnGateway;
   /// The preferred gateway to route on-prem traffic
-  final pulumi.Input<String>? preferredRoutingGateway;
+  final pulumi.Input<dynamic>? preferredRoutingGateway;
   /// The resource group name of the VirtualHub.
   final pulumi.Input<String> resourceGroupName;
   /// The routeTable associated with this virtual hub.
-  final pulumi.Input<VirtualHubRouteTable>? routeTable;
+  final pulumi.Input<VirtualHubRouteTable?>? routeTable;
   /// The securityPartnerProvider associated with this VirtualHub.
-  final pulumi.Input<SubResource>? securityPartnerProvider;
+  final pulumi.Input<SubResource?>? securityPartnerProvider;
   /// The Security Provider name.
-  final pulumi.Input<String>? securityProviderName;
+  final pulumi.Input<String?>? securityProviderName;
   /// The sku of this VirtualHub.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the VirtualHub.
-  final pulumi.Input<String>? virtualHubName;
+  final pulumi.Input<String?>? virtualHubName;
   /// List of all virtual hub route table v2s associated with this VirtualHub.
   /// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
-  final pulumi.Input<List<VirtualHubRouteTableV2Network>>? virtualHubRouteTableV2s;
+  final pulumi.Input<List<VirtualHubRouteTableV2>?>? virtualHubRouteTableV2s;
   /// VirtualRouter ASN.
-  final pulumi.Input<double>? virtualRouterAsn;
+  final pulumi.Input<double?>? virtualRouterAsn;
   /// The VirtualHub Router autoscale configuration.
-  final pulumi.Input<VirtualRouterAutoScaleConfiguration>? virtualRouterAutoScaleConfiguration;
+  final pulumi.Input<VirtualRouterAutoScaleConfiguration?>? virtualRouterAutoScaleConfiguration;
   /// VirtualRouter IPs.
-  final pulumi.Input<List<String>>? virtualRouterIps;
+  final pulumi.Input<List<String>?>? virtualRouterIps;
   /// The VirtualWAN to which the VirtualHub belongs.
-  final pulumi.Input<SubResource>? virtualWan;
+  final pulumi.Input<SubResource?>? virtualWan;
   /// The VpnGateway associated with this VirtualHub.
-  final pulumi.Input<SubResource>? vpnGateway;
+  final pulumi.Input<SubResource?>? vpnGateway;
 
   /// Creates a new [VirtualHubArgs].
   /// [addressPrefix] Address-prefix for this VirtualHub.
@@ -123,7 +123,7 @@ class VirtualHubArgs {
       'sku': ?sku,
       'tags': ?tags,
       'virtualHubName': ?virtualHubName,
-      'virtualHubRouteTableV2s': ?virtualHubRouteTableV2s,
+      'virtualHubRouteTableV2s': ?pulumi.Input.mapOptionalInputValue<List<VirtualHubRouteTableV2>, List<Map<String, dynamic>>>(virtualHubRouteTableV2s, (value) => pulumi.Input.encodeList<VirtualHubRouteTableV2, Map<String, dynamic>>(value, (value) => value.toMap())),
       'virtualRouterAsn': ?virtualRouterAsn,
       'virtualRouterAutoScaleConfiguration': ?pulumi.Input.mapOptionalInputValue<VirtualRouterAutoScaleConfiguration, Map<String, dynamic>>(virtualRouterAutoScaleConfiguration, (value) => value.toMap()),
       'virtualRouterIps': ?virtualRouterIps,
@@ -138,11 +138,11 @@ class VirtualHubArgs {
       allowBranchToBranchTraffic: (() { final guardedValue = map['allowBranchToBranchTraffic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       azureFirewall: (() { final guardedValue = map['azureFirewall']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       expressRouteGateway: (() { final guardedValue = map['expressRouteGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      hubRoutingPreference: (() { final guardedValue = map['hubRoutingPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hubRoutingPreference: (() { final guardedValue = map['hubRoutingPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       p2SVpnGateway: (() { final guardedValue = map['p2SVpnGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      preferredRoutingGateway: (() { final guardedValue = map['preferredRoutingGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      preferredRoutingGateway: (() { final guardedValue = map['preferredRoutingGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       routeTable: (() { final guardedValue = map['routeTable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualHubRouteTable.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       securityPartnerProvider: (() { final guardedValue = map['securityPartnerProvider']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -150,8 +150,8 @@ class VirtualHubArgs {
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       virtualHubName: (() { final guardedValue = map['virtualHubName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      virtualHubRouteTableV2s: (() { final guardedValue = map['virtualHubRouteTableV2s']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<VirtualHubRouteTableV2Network>()); })(),
-      virtualRouterAsn: (() { final guardedValue = map['virtualRouterAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      virtualHubRouteTableV2s: (() { final guardedValue = map['virtualHubRouteTableV2s']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualHubRouteTableV2>(guardedValue, (value) => VirtualHubRouteTableV2.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      virtualRouterAsn: (() { final guardedValue = map['virtualRouterAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       virtualRouterAutoScaleConfiguration: (() { final guardedValue = map['virtualRouterAutoScaleConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualRouterAutoScaleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       virtualRouterIps: (() { final guardedValue = map['virtualRouterIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       virtualWan: (() { final guardedValue = map['virtualWan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

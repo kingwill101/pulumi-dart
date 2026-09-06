@@ -1,9 +1,12 @@
-enum SchemaCompatibility {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum SchemaCompatibility implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueBackward("Backward"),
   valueForward("Forward");
 
   const SchemaCompatibility(this.wireValue);
+  @override
   final String wireValue;
 
   static SchemaCompatibility fromValue(String value) {

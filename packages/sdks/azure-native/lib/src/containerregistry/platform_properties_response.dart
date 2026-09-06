@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The platform properties against which the run has to happen.
 class PlatformPropertiesResponse {
   /// The OS architecture.
-  final pulumi.Input<String>? architecture;
+  final pulumi.Input<String?>? architecture;
   /// The operating system type required for the run.
   final pulumi.Input<String> os;
   /// Variant of the CPU.
-  final pulumi.Input<String>? variant;
+  final pulumi.Input<String?>? variant;
 
   /// Creates a new [PlatformPropertiesResponse].
   /// [architecture] The OS architecture.

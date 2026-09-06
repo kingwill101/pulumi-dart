@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of entity.
-enum EntityTypes {
+enum EntityTypes implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueProfile("Profile"),
   valueInteraction("Interaction"),
   valueRelationship("Relationship");
 
   const EntityTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static EntityTypes fromValue(String value) {

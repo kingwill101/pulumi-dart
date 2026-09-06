@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of VirtualizationTypeEnumValue
 class VirtualizationTypeEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [VirtualizationTypeEnumValueResponse].
   /// [value] Property value

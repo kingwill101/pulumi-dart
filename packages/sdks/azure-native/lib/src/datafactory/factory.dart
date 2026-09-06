@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'encryption_configuration_response.dart';
 import 'factory_args.dart';
-import 'factory_git_hub_configuration_response.dart';
 import 'factory_identity_response.dart';
 import 'global_parameter_specification_response.dart';
 import 'purview_configuration_response.dart';
@@ -176,7 +175,7 @@ class Factory extends pulumi.CustomResource {
   /// Purview information of the factory.
   late final pulumi.Output<PurviewConfigurationResponse?> purviewConfiguration;
   /// Git repo information of the factory.
-  late final pulumi.Output<FactoryGitHubConfigurationResponse?> repoConfiguration;
+  late final pulumi.Output<dynamic> repoConfiguration;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The resource tags.
@@ -211,9 +210,36 @@ class Factory extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     purviewConfiguration = registerOutput<PurviewConfigurationResponse?>('purviewConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PurviewConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    repoConfiguration = registerOutput<FactoryGitHubConfigurationResponse?>('repoConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FactoryGitHubConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    repoConfiguration = registerOutput<dynamic>('repoConfiguration');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [Factory] resource.
+  Factory.reference(String urn)
+    : super(
+        'azure-native:datafactory:Factory',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createTime = registerOutput<String>('createTime');
+    eTag = registerOutput<String>('eTag');
+    encryption = registerOutput<EncryptionConfigurationResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    globalParameters = registerOutput<Map<String, GlobalParameterSpecificationResponse>?>('globalParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<GlobalParameterSpecificationResponse>(guardedValue, (value) => GlobalParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    identity = registerOutput<FactoryIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FactoryIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    purviewConfiguration = registerOutput<PurviewConfigurationResponse?>('purviewConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PurviewConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    repoConfiguration = registerOutput<dynamic>('repoConfiguration');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');
   }

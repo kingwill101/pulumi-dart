@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Target service's firewall rules. to allow connections from source service.
 class FirewallRulesResponse {
   /// Allow Azure services to access the target service if true.
-  final pulumi.Input<String>? azureServices;
+  final pulumi.Input<String?>? azureServices;
   /// Allow caller client IP to access the target service if true. the property is used when connecting local application to target service.
-  final pulumi.Input<String>? callerClientIP;
+  final pulumi.Input<String?>? callerClientIP;
   /// This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.
-  final pulumi.Input<List<String>>? ipRanges;
+  final pulumi.Input<List<String>?>? ipRanges;
 
   /// Creates a new [FirewallRulesResponse].
   /// [azureServices] Allow Azure services to access the target service if true.

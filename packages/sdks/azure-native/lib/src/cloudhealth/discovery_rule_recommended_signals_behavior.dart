@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether to add all recommended signals to the discovered entities.
-enum DiscoveryRuleRecommendedSignalsBehavior {
+enum DiscoveryRuleRecommendedSignalsBehavior implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const DiscoveryRuleRecommendedSignalsBehavior(this.wireValue);
+  @override
   final String wireValue;
 
   static DiscoveryRuleRecommendedSignalsBehavior fromValue(String value) {

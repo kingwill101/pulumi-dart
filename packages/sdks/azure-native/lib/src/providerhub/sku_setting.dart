@@ -8,29 +8,29 @@ import 'sku_setting_capacity.dart';
 
 class SkuSetting {
   /// The capabilities.
-  final pulumi.Input<List<SkuCapability>>? capabilities;
+  final pulumi.Input<List<SkuCapability>?>? capabilities;
   /// The capacity.
-  final pulumi.Input<SkuSettingCapacity>? capacity;
+  final pulumi.Input<SkuSettingCapacity?>? capacity;
   /// The costs.
-  final pulumi.Input<List<SkuCost>>? costs;
+  final pulumi.Input<List<SkuCost>?>? costs;
   /// The family.
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// The kind.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The location info.
-  final pulumi.Input<List<SkuLocationInfo>>? locationInfo;
+  final pulumi.Input<List<SkuLocationInfo>?>? locationInfo;
   /// The locations.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// The name.
   final pulumi.Input<String> name;
   /// The required features.
-  final pulumi.Input<List<String>>? requiredFeatures;
+  final pulumi.Input<List<String>?>? requiredFeatures;
   /// The required quota ids.
-  final pulumi.Input<List<String>>? requiredQuotaIds;
+  final pulumi.Input<List<String>?>? requiredQuotaIds;
   /// The size.
-  final pulumi.Input<String>? size;
+  final pulumi.Input<String?>? size;
   /// The tier.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [SkuSetting].
   /// [capabilities] The capabilities.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The indicator to specify if the load balancer peers with the network fabric.
-enum FabricPeeringEnabled {
+enum FabricPeeringEnabled implements pulumi.PulumiEnum<String> {
   valueTrue("True"),
   valueFalse("False");
 
   const FabricPeeringEnabled(this.wireValue);
+  @override
   final String wireValue;
 
   static FabricPeeringEnabled fromValue(String value) {

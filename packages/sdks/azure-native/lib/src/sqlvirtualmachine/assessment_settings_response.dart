@@ -6,11 +6,11 @@ import 'schedule_response.dart';
 /// Configure SQL best practices Assessment for databases in your SQL virtual machine.
 class AssessmentSettingsResponse {
   /// Enable or disable SQL best practices Assessment feature on SQL virtual machine.
-  final pulumi.Input<bool>? enable;
+  final pulumi.Input<bool?>? enable;
   /// Run SQL best practices Assessment immediately on SQL virtual machine.
-  final pulumi.Input<bool>? runImmediately;
+  final pulumi.Input<bool?>? runImmediately;
   /// Schedule for SQL best practices Assessment.
-  final pulumi.Input<ScheduleResponse>? schedule;
+  final pulumi.Input<ScheduleResponse?>? schedule;
 
   /// Creates a new [AssessmentSettingsResponse].
   /// [enable] Enable or disable SQL best practices Assessment feature on SQL virtual machine.

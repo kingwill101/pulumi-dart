@@ -13,23 +13,23 @@ class A2AReplicationDetailsResponse {
   /// Agent certificate expiry date.
   final pulumi.Input<String> agentCertificateExpiryDate;
   /// Agent expiry date.
-  final pulumi.Input<String>? agentExpiryDate;
+  final pulumi.Input<String?>? agentExpiryDate;
   /// The agent version.
-  final pulumi.Input<String>? agentVersion;
+  final pulumi.Input<String?>? agentVersion;
   /// A value indicating whether the auto protection is enabled.
-  final pulumi.Input<String>? autoProtectionOfDataDisk;
+  final pulumi.Input<String?>? autoProtectionOfDataDisk;
   /// A value indicating the churn option selected by user.
   final pulumi.Input<String> churnOptionSelected;
   /// The fabric specific object Id of the virtual machine.
-  final pulumi.Input<String>? fabricObjectId;
+  final pulumi.Input<String?>? fabricObjectId;
   /// The initial primary extended location.
-  final pulumi.Input<ExtendedLocationResponse>? initialPrimaryExtendedLocation;
+  final pulumi.Input<ExtendedLocationResponse?>? initialPrimaryExtendedLocation;
   /// The initial primary fabric location.
   final pulumi.Input<String> initialPrimaryFabricLocation;
   /// The initial primary availability zone.
   final pulumi.Input<String> initialPrimaryZone;
   /// The initial recovery extended location.
-  final pulumi.Input<ExtendedLocationResponse>? initialRecoveryExtendedLocation;
+  final pulumi.Input<ExtendedLocationResponse?>? initialRecoveryExtendedLocation;
   /// The initial recovery fabric location.
   final pulumi.Input<String> initialRecoveryFabricLocation;
   /// The initial recovery availability zone.
@@ -38,93 +38,93 @@ class A2AReplicationDetailsResponse {
   /// Expected value is 'A2A'.
   final pulumi.Input<String> instanceType;
   /// A value indicating if the cluster infra is ready or not.
-  final pulumi.Input<bool>? isClusterInfraReady;
+  final pulumi.Input<bool?>? isClusterInfraReady;
   /// A value indicating whether agent certificate update is required.
-  final pulumi.Input<bool>? isReplicationAgentCertificateUpdateRequired;
+  final pulumi.Input<bool?>? isReplicationAgentCertificateUpdateRequired;
   /// A value indicating whether replication agent update is required.
-  final pulumi.Input<bool>? isReplicationAgentUpdateRequired;
+  final pulumi.Input<bool?>? isReplicationAgentUpdateRequired;
   /// The last heartbeat received from the source server.
-  final pulumi.Input<String>? lastHeartbeat;
+  final pulumi.Input<String?>? lastHeartbeat;
   /// The time (in UTC) when the last RPO value was calculated by Protection Service.
-  final pulumi.Input<String>? lastRpoCalculatedTime;
+  final pulumi.Input<String?>? lastRpoCalculatedTime;
   /// An id associated with the PE that survives actions like switch protection which change the backing PE/CPE objects internally.The lifecycle id gets carried forward to have a link/continuity in being able to have an Id that denotes the "same" protected item even though other internal Ids/ARM Id might be changing.
-  final pulumi.Input<String>? lifecycleId;
+  final pulumi.Input<String?>? lifecycleId;
   /// The management Id.
-  final pulumi.Input<String>? managementId;
+  final pulumi.Input<String?>? managementId;
   /// The type of the monitoring job. The progress is contained in MonitoringPercentageCompletion property.
-  final pulumi.Input<String>? monitoringJobType;
+  final pulumi.Input<String?>? monitoringJobType;
   /// The percentage of the monitoring job. The type of the monitoring job is defined by MonitoringJobType property.
-  final pulumi.Input<int>? monitoringPercentageCompletion;
+  final pulumi.Input<int?>? monitoringPercentageCompletion;
   /// Whether Multi VM group is auto created or specified by user.
-  final pulumi.Input<String>? multiVmGroupCreateOption;
+  final pulumi.Input<String?>? multiVmGroupCreateOption;
   /// The multi vm group Id.
-  final pulumi.Input<String>? multiVmGroupId;
+  final pulumi.Input<String?>? multiVmGroupId;
   /// The multi vm group name.
-  final pulumi.Input<String>? multiVmGroupName;
+  final pulumi.Input<String?>? multiVmGroupName;
   /// The type of operating system.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// The primary availability zone.
-  final pulumi.Input<String>? primaryAvailabilityZone;
+  final pulumi.Input<String?>? primaryAvailabilityZone;
   /// The primary Extended Location.
-  final pulumi.Input<ExtendedLocationResponse>? primaryExtendedLocation;
+  final pulumi.Input<ExtendedLocationResponse?>? primaryExtendedLocation;
   /// Primary fabric location.
-  final pulumi.Input<String>? primaryFabricLocation;
+  final pulumi.Input<String?>? primaryFabricLocation;
   /// The list of protected disks.
-  final pulumi.Input<List<A2AProtectedDiskDetailsResponse>>? protectedDisks;
+  final pulumi.Input<List<A2AProtectedDiskDetailsResponse>?>? protectedDisks;
   /// The list of protected managed disks.
-  final pulumi.Input<List<A2AProtectedManagedDiskDetailsResponse>>? protectedManagedDisks;
+  final pulumi.Input<List<A2AProtectedManagedDiskDetailsResponse>?>? protectedManagedDisks;
   /// The replication protection cluster Id.
-  final pulumi.Input<String>? protectionClusterId;
+  final pulumi.Input<String?>? protectionClusterId;
   /// The recovery availability set.
-  final pulumi.Input<String>? recoveryAvailabilitySet;
+  final pulumi.Input<String?>? recoveryAvailabilitySet;
   /// The recovery availability zone.
-  final pulumi.Input<String>? recoveryAvailabilityZone;
+  final pulumi.Input<String?>? recoveryAvailabilityZone;
   /// The recovery azure generation.
   final pulumi.Input<String> recoveryAzureGeneration;
   /// The recovery resource group.
-  final pulumi.Input<String>? recoveryAzureResourceGroupId;
+  final pulumi.Input<String?>? recoveryAzureResourceGroupId;
   /// The name of recovery virtual machine.
-  final pulumi.Input<String>? recoveryAzureVMName;
+  final pulumi.Input<String?>? recoveryAzureVMName;
   /// The size of recovery virtual machine.
-  final pulumi.Input<String>? recoveryAzureVMSize;
+  final pulumi.Input<String?>? recoveryAzureVMSize;
   /// The recovery boot diagnostic storage account Arm Id.
-  final pulumi.Input<String>? recoveryBootDiagStorageAccountId;
+  final pulumi.Input<String?>? recoveryBootDiagStorageAccountId;
   /// The recovery capacity reservation group Id.
-  final pulumi.Input<String>? recoveryCapacityReservationGroupId;
+  final pulumi.Input<String?>? recoveryCapacityReservationGroupId;
   /// The recovery cloud service.
-  final pulumi.Input<String>? recoveryCloudService;
+  final pulumi.Input<String?>? recoveryCloudService;
   /// The recovery Extended Location.
-  final pulumi.Input<ExtendedLocationResponse>? recoveryExtendedLocation;
+  final pulumi.Input<ExtendedLocationResponse?>? recoveryExtendedLocation;
   /// The recovery fabric location.
-  final pulumi.Input<String>? recoveryFabricLocation;
+  final pulumi.Input<String?>? recoveryFabricLocation;
   /// The recovery fabric object Id.
-  final pulumi.Input<String>? recoveryFabricObjectId;
+  final pulumi.Input<String?>? recoveryFabricObjectId;
   /// The recovery proximity placement group Id.
-  final pulumi.Input<String>? recoveryProximityPlacementGroupId;
+  final pulumi.Input<String?>? recoveryProximityPlacementGroupId;
   /// The recovery virtual machine scale set id.
-  final pulumi.Input<String>? recoveryVirtualMachineScaleSetId;
+  final pulumi.Input<String?>? recoveryVirtualMachineScaleSetId;
   /// The last RPO value in seconds.
-  final pulumi.Input<double>? rpoInSeconds;
+  final pulumi.Input<double?>? rpoInSeconds;
   /// The recovery virtual network.
-  final pulumi.Input<String>? selectedRecoveryAzureNetworkId;
+  final pulumi.Input<String?>? selectedRecoveryAzureNetworkId;
   /// The test failover virtual network.
-  final pulumi.Input<String>? selectedTfoAzureNetworkId;
+  final pulumi.Input<String?>? selectedTfoAzureNetworkId;
   /// The test failover fabric object Id.
-  final pulumi.Input<String>? testFailoverRecoveryFabricObjectId;
+  final pulumi.Input<String?>? testFailoverRecoveryFabricObjectId;
   /// The test failover vm name.
-  final pulumi.Input<String>? tfoAzureVMName;
+  final pulumi.Input<String?>? tfoAzureVMName;
   /// The list of unprotected disks.
-  final pulumi.Input<List<A2AUnprotectedDiskDetailsResponse>>? unprotectedDisks;
+  final pulumi.Input<List<A2AUnprotectedDiskDetailsResponse>?>? unprotectedDisks;
   /// The encryption type of the VM.
   final pulumi.Input<String> vmEncryptionType;
   /// The virtual machine nic details.
-  final pulumi.Input<List<VMNicDetailsResponse>>? vmNics;
+  final pulumi.Input<List<VMNicDetailsResponse>?>? vmNics;
   /// The protection state for the vm.
-  final pulumi.Input<String>? vmProtectionState;
+  final pulumi.Input<String?>? vmProtectionState;
   /// The protection state description for the vm.
-  final pulumi.Input<String>? vmProtectionStateDescription;
+  final pulumi.Input<String?>? vmProtectionStateDescription;
   /// The synced configuration details.
-  final pulumi.Input<AzureToAzureVmSyncedConfigDetailsResponse>? vmSyncedConfigDetails;
+  final pulumi.Input<AzureToAzureVmSyncedConfigDetailsResponse?>? vmSyncedConfigDetails;
 
   /// Creates a new [A2AReplicationDetailsResponse].
   /// [agentCertificateExpiryDate] Agent certificate expiry date.
@@ -329,7 +329,7 @@ class A2AReplicationDetailsResponse {
       lifecycleId: (() { final guardedValue = map['lifecycleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managementId: (() { final guardedValue = map['managementId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       monitoringJobType: (() { final guardedValue = map['monitoringJobType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      monitoringPercentageCompletion: (() { final guardedValue = map['monitoringPercentageCompletion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      monitoringPercentageCompletion: (() { final guardedValue = map['monitoringPercentageCompletion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       multiVmGroupCreateOption: (() { final guardedValue = map['multiVmGroupCreateOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       multiVmGroupId: (() { final guardedValue = map['multiVmGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       multiVmGroupName: (() { final guardedValue = map['multiVmGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -354,7 +354,7 @@ class A2AReplicationDetailsResponse {
       recoveryFabricObjectId: (() { final guardedValue = map['recoveryFabricObjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recoveryProximityPlacementGroupId: (() { final guardedValue = map['recoveryProximityPlacementGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recoveryVirtualMachineScaleSetId: (() { final guardedValue = map['recoveryVirtualMachineScaleSetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rpoInSeconds: (() { final guardedValue = map['rpoInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      rpoInSeconds: (() { final guardedValue = map['rpoInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       selectedRecoveryAzureNetworkId: (() { final guardedValue = map['selectedRecoveryAzureNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       selectedTfoAzureNetworkId: (() { final guardedValue = map['selectedTfoAzureNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       testFailoverRecoveryFabricObjectId: (() { final guardedValue = map['testFailoverRecoveryFabricObjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

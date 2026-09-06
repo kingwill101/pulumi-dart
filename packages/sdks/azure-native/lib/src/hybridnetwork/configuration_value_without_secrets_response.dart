@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'open_deployment_resource_reference_response.dart';
 
 /// The ConfigurationValue with no secrets.
 class ConfigurationValueWithoutSecretsResponse {
@@ -10,12 +9,12 @@ class ConfigurationValueWithoutSecretsResponse {
   /// The location of the configuration group schema offering.
   final pulumi.Input<String> configurationGroupSchemaOfferingLocation;
   /// The configuration group schema resource reference.
-  final pulumi.Input<OpenDeploymentResourceReferenceResponse>? configurationGroupSchemaResourceReference;
+  final pulumi.Input<dynamic>? configurationGroupSchemaResourceReference;
   /// The secret type which indicates if secret or not.
   /// Expected value is 'Open'.
   final pulumi.Input<String> configurationType;
   /// Name and value pairs that define the configuration value. It can be a well formed escaped JSON string.
-  final pulumi.Input<String>? configurationValue;
+  final pulumi.Input<String?>? configurationValue;
   /// The provisioning state of the site resource.
   final pulumi.Input<String> provisioningState;
   /// The publisher name for the configuration group schema.
@@ -47,7 +46,7 @@ class ConfigurationValueWithoutSecretsResponse {
     return <String, dynamic>{
       'configurationGroupSchemaName': configurationGroupSchemaName,
       'configurationGroupSchemaOfferingLocation': configurationGroupSchemaOfferingLocation,
-      'configurationGroupSchemaResourceReference': ?pulumi.Input.mapOptionalInputValue<OpenDeploymentResourceReferenceResponse, Map<String, dynamic>>(configurationGroupSchemaResourceReference, (value) => value.toMap()),
+      'configurationGroupSchemaResourceReference': ?configurationGroupSchemaResourceReference,
       'configurationType': configurationType,
       'configurationValue': ?configurationValue,
       'provisioningState': provisioningState,
@@ -60,7 +59,7 @@ class ConfigurationValueWithoutSecretsResponse {
     return ConfigurationValueWithoutSecretsResponse(
       configurationGroupSchemaName: pulumi.Input.fromValue(map['configurationGroupSchemaName'] as String),
       configurationGroupSchemaOfferingLocation: pulumi.Input.fromValue(map['configurationGroupSchemaOfferingLocation'] as String),
-      configurationGroupSchemaResourceReference: (() { final guardedValue = map['configurationGroupSchemaResourceReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OpenDeploymentResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      configurationGroupSchemaResourceReference: (() { final guardedValue = map['configurationGroupSchemaResourceReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       configurationType: pulumi.Input.fromValue(map['configurationType'] as String),
       configurationValue: (() { final guardedValue = map['configurationValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),

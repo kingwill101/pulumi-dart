@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// IP Address Space
 class IPAddressSpace {
   /// Address Space
-  final pulumi.Input<String>? addressSpace;
+  final pulumi.Input<String?>? addressSpace;
   /// Resource Id
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [IPAddressSpace].
   /// [addressSpace] Address Space

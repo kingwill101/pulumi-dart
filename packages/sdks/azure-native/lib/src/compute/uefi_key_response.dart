@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A UEFI key signature.
 class UefiKeyResponse {
   /// The type of key signature.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The value of the key signature.
-  final pulumi.Input<List<String>>? value;
+  final pulumi.Input<List<String>?>? value;
 
   /// Creates a new [UefiKeyResponse].
   /// [type] The type of key signature.

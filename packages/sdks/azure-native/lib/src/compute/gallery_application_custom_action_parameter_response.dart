@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The definition of a parameter that can be passed to a custom action of a Gallery Application Version.
 class GalleryApplicationCustomActionParameterResponse {
   /// The default value of the parameter.  Only applies to string types
-  final pulumi.Input<String>? defaultValue;
+  final pulumi.Input<String?>? defaultValue;
   /// A description to help users understand what this parameter means
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the custom action.  Must be unique within the Gallery Application Version.
   final pulumi.Input<String> name;
   /// Indicates whether this parameter must be passed when running the custom action.
-  final pulumi.Input<bool>? required;
+  final pulumi.Input<bool?>? required;
   /// Specifies the type of the custom action parameter. Possible values are: String, ConfigurationDataBlob or LogOutputBlob
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [GalleryApplicationCustomActionParameterResponse].
   /// [defaultValue] The default value of the parameter.  Only applies to string types

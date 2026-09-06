@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Azure Resource ID for a resource consuming IP on a subnet
 class VirtualNetworkSubnetIpConfigurationReferenceResponse {
   /// The Azure Resource ID for a Network Interface.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [VirtualNetworkSubnetIpConfigurationReferenceResponse].
   /// [id] The Azure Resource ID for a Network Interface.

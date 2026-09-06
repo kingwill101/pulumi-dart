@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Elastic Volume Backup Properties
 class ElasticVolumeBackupProperties {
   /// ResourceId used to identify Elastic Backup Policy
-  final pulumi.Input<String>? elasticBackupPolicyResourceId;
+  final pulumi.Input<String?>? elasticBackupPolicyResourceId;
   /// ResourceId used to identify Elastic Backup Vault
-  final pulumi.Input<String>? elasticBackupVaultResourceId;
+  final pulumi.Input<String?>? elasticBackupVaultResourceId;
   /// The property to decide policy is enforced or not on the volume
-  final pulumi.Input<String>? policyEnforcement;
+  final pulumi.Input<dynamic>? policyEnforcement;
 
   /// Creates a new [ElasticVolumeBackupProperties].
   /// [elasticBackupPolicyResourceId] ResourceId used to identify Elastic Backup Policy
@@ -33,7 +33,7 @@ class ElasticVolumeBackupProperties {
     return ElasticVolumeBackupProperties(
       elasticBackupPolicyResourceId: (() { final guardedValue = map['elasticBackupPolicyResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       elasticBackupVaultResourceId: (() { final guardedValue = map['elasticBackupVaultResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      policyEnforcement: (() { final guardedValue = map['policyEnforcement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyEnforcement: (() { final guardedValue = map['policyEnforcement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_web_list_site_identifiers_assigned_to_host_name_args_doc}
 class ListSiteIdentifiersAssignedToHostNameArgs {
   /// Name of the object.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ListSiteIdentifiersAssignedToHostNameArgs].
   /// [name] Name of the object.

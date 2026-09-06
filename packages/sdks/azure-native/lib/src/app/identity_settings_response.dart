@@ -7,15 +7,15 @@ class IdentitySettingsResponse {
   /// The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
   final pulumi.Input<String> identity;
   /// Use to select the lifecycle stages of a Container App during which the Managed Identity should be available.
-  final pulumi.Input<String>? lifecycle;
+  final pulumi.Input<String?>? lifecycle;
 
   /// Creates a new [IdentitySettingsResponse].
   /// [identity] The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
   /// [lifecycle] Use to select the lifecycle stages of a Container App during which the Managed Identity should be available.
-  const IdentitySettingsResponse({
+  IdentitySettingsResponse({
     required this.identity,
-    this.lifecycle,
-  });
+    pulumi.Input<String?>? lifecycle,
+  }) : lifecycle = lifecycle ?? pulumi.Input.fromValue('All');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

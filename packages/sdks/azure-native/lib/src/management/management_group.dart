@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'management_group_args.dart';
+import 'management_group_child_info_response.dart';
 import 'management_group_details_response.dart';
 import 'system_data_response.dart';
 
@@ -184,7 +185,7 @@ class ManagementGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The list of children.
-  late final pulumi.Output<List<Map<String, dynamic>>?> children;
+  late final pulumi.Output<List<ManagementGroupChildInfoResponse>?> children;
   /// The details of a management group.
   late final pulumi.Output<ManagementGroupDetailsResponse?> details;
   /// The friendly name of the management group.
@@ -213,7 +214,26 @@ class ManagementGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    children = registerOutput<List<Map<String, dynamic>>?>('children');
+    children = registerOutput<List<ManagementGroupChildInfoResponse>?>('children', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagementGroupChildInfoResponse>(guardedValue, (value) => ManagementGroupChildInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    details = registerOutput<ManagementGroupDetailsResponse?>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementGroupDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tenantId = registerOutput<String?>('tenantId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ManagementGroup] resource.
+  ManagementGroup.reference(String urn)
+    : super(
+        'azure-native:management:ManagementGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    children = registerOutput<List<ManagementGroupChildInfoResponse>?>('children', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagementGroupChildInfoResponse>(guardedValue, (value) => ManagementGroupChildInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
     details = registerOutput<ManagementGroupDetailsResponse?>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementGroupDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');

@@ -12,7 +12,7 @@ class WebAppSiteExtensionSlotArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Site extension name.
-  final pulumi.Input<String>? siteExtensionId;
+  final pulumi.Input<String?>? siteExtensionId;
   /// Name of the deployment slot. If a slot is not specified, the API uses the production slot.
   final pulumi.Input<String> slot;
 

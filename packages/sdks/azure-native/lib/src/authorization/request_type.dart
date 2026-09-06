@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the role assignment schedule request. Eg: SelfActivate, AdminAssign etc
-enum RequestType {
+enum RequestType implements pulumi.PulumiEnum<String> {
   valueAdminAssign("AdminAssign"),
   valueAdminRemove("AdminRemove"),
   valueAdminUpdate("AdminUpdate"),
@@ -11,6 +13,7 @@ enum RequestType {
   valueSelfRenew("SelfRenew");
 
   const RequestType(this.wireValue);
+  @override
   final String wireValue;
 
   static RequestType fromValue(String value) {

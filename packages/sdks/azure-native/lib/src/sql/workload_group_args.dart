@@ -10,23 +10,23 @@ class WorkloadGroupArgs {
   /// The name of the database.
   final pulumi.Input<String> databaseName;
   /// The workload group importance level.
-  final pulumi.Input<String>? importance;
+  final pulumi.Input<String?>? importance;
   /// The workload group cap percentage resource.
   final pulumi.Input<int> maxResourcePercent;
   /// The workload group request maximum grant percentage.
-  final pulumi.Input<double>? maxResourcePercentPerRequest;
+  final pulumi.Input<double?>? maxResourcePercentPerRequest;
   /// The workload group minimum percentage resource.
   final pulumi.Input<int> minResourcePercent;
   /// The workload group request minimum grant percentage.
   final pulumi.Input<double> minResourcePercentPerRequest;
   /// The workload group query execution timeout.
-  final pulumi.Input<int>? queryExecutionTimeout;
+  final pulumi.Input<int?>? queryExecutionTimeout;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the server.
   final pulumi.Input<String> serverName;
   /// The name of the workload group.
-  final pulumi.Input<String>? workloadGroupName;
+  final pulumi.Input<String?>? workloadGroupName;
 
   /// Creates a new [WorkloadGroupArgs].
   /// [databaseName] The name of the database.
@@ -71,11 +71,11 @@ class WorkloadGroupArgs {
     return WorkloadGroupArgs(
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
       importance: (() { final guardedValue = map['importance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxResourcePercent: pulumi.Input.fromValue(map['maxResourcePercent'] as int),
-      maxResourcePercentPerRequest: (() { final guardedValue = map['maxResourcePercentPerRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      minResourcePercent: pulumi.Input.fromValue(map['minResourcePercent'] as int),
-      minResourcePercentPerRequest: pulumi.Input.fromValue(map['minResourcePercentPerRequest'] as double),
-      queryExecutionTimeout: (() { final guardedValue = map['queryExecutionTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxResourcePercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxResourcePercent'])),
+      maxResourcePercentPerRequest: (() { final guardedValue = map['maxResourcePercentPerRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      minResourcePercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minResourcePercent'])),
+      minResourcePercentPerRequest: pulumi.Input.fromValue((map['minResourcePercentPerRequest'] as num).toDouble()),
+      queryExecutionTimeout: (() { final guardedValue = map['queryExecutionTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
       workloadGroupName: (() { final guardedValue = map['workloadGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

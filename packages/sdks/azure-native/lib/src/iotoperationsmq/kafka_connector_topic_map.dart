@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_property_response.dart';
 import 'kafka_connector_topic_map_args.dart';
+import 'kafka_routes_response.dart';
 import 'kafka_topic_map_batching_response.dart';
 import 'system_data_response.dart';
 
@@ -451,7 +452,7 @@ class KafkaConnectorTopicMap extends pulumi.CustomResource {
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
   /// The route details for Kafka connector.
-  late final pulumi.Output<List<Map<String, dynamic>>> routes;
+  late final pulumi.Output<List<KafkaRoutesResponse>> routes;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
@@ -484,9 +485,35 @@ class KafkaConnectorTopicMap extends pulumi.CustomResource {
     partitionKeyProperty = registerOutput<String?>('partitionKeyProperty');
     partitionStrategy = registerOutput<String?>('partitionStrategy');
     provisioningState = registerOutput<String>('provisioningState');
-    routes = registerOutput<List<Map<String, dynamic>>>('routes');
+    routes = registerOutput<List<KafkaRoutesResponse>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KafkaRoutesResponse>(guardedValue, (value) => KafkaRoutesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [KafkaConnectorTopicMap] resource.
+  KafkaConnectorTopicMap.reference(String urn)
+    : super(
+        'azure-native:iotoperationsmq:KafkaConnectorTopicMap',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    batching = registerOutput<KafkaTopicMapBatchingResponse?>('batching', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaTopicMapBatchingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    compression = registerOutput<String?>('compression');
+    copyMqttProperties = registerOutput<String?>('copyMqttProperties');
+    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kafkaConnectorRef = registerOutput<String>('kafkaConnectorRef');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    partitionKeyProperty = registerOutput<String?>('partitionKeyProperty');
+    partitionStrategy = registerOutput<String?>('partitionStrategy');
+    provisioningState = registerOutput<String>('provisioningState');
+    routes = registerOutput<List<KafkaRoutesResponse>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KafkaRoutesResponse>(guardedValue, (value) => KafkaRoutesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

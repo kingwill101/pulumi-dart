@@ -6,15 +6,15 @@ import 'remote_path.dart';
 /// Replication properties
 class ReplicationObject {
   /// Indicates whether the local volume is the source or destination for the Volume Replication
-  final pulumi.Input<String>? endpointType;
+  final pulumi.Input<dynamic>? endpointType;
   /// The full path to a volume that is to be migrated into ANF. Required for Migration volumes
-  final pulumi.Input<RemotePath>? remotePath;
+  final pulumi.Input<RemotePath?>? remotePath;
   /// The remote region for the other end of the Volume Replication.
-  final pulumi.Input<String>? remoteVolumeRegion;
+  final pulumi.Input<String?>? remoteVolumeRegion;
   /// The resource ID of the remote volume. Required for cross region and cross zone replication
-  final pulumi.Input<String>? remoteVolumeResourceId;
+  final pulumi.Input<String?>? remoteVolumeResourceId;
   /// Schedule
-  final pulumi.Input<String>? replicationSchedule;
+  final pulumi.Input<dynamic>? replicationSchedule;
 
   /// Creates a new [ReplicationObject].
   /// [endpointType] Indicates whether the local volume is the source or destination for the Volume Replication
@@ -42,11 +42,11 @@ class ReplicationObject {
 
   factory ReplicationObject.fromMap(Map<String, dynamic> map) {
     return ReplicationObject(
-      endpointType: (() { final guardedValue = map['endpointType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endpointType: (() { final guardedValue = map['endpointType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       remotePath: (() { final guardedValue = map['remotePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RemotePath.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       remoteVolumeRegion: (() { final guardedValue = map['remoteVolumeRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       remoteVolumeResourceId: (() { final guardedValue = map['remoteVolumeResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      replicationSchedule: (() { final guardedValue = map['replicationSchedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      replicationSchedule: (() { final guardedValue = map['replicationSchedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

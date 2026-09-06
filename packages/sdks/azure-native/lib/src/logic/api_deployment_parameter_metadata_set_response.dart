@@ -6,9 +6,9 @@ import 'api_deployment_parameter_metadata_response.dart';
 /// The API deployment parameters metadata.
 class ApiDeploymentParameterMetadataSetResponse {
   /// The package content link parameter.
-  final pulumi.Input<ApiDeploymentParameterMetadataResponse>? packageContentLink;
+  final pulumi.Input<ApiDeploymentParameterMetadataResponse?>? packageContentLink;
   /// The package content link parameter.
-  final pulumi.Input<ApiDeploymentParameterMetadataResponse>? redisCacheConnectionString;
+  final pulumi.Input<ApiDeploymentParameterMetadataResponse?>? redisCacheConnectionString;
 
   /// Creates a new [ApiDeploymentParameterMetadataSetResponse].
   /// [packageContentLink] The package content link parameter.

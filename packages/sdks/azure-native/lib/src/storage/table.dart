@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_args.dart';
+import 'table_signed_identifier_response.dart';
 
 /// Properties of the table, including Id, resource name, resource type.
 ///
@@ -407,7 +408,7 @@ class Table extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// List of stored access policies specified on the table.
-  late final pulumi.Output<List<Map<String, dynamic>>?> signedIdentifiers;
+  late final pulumi.Output<List<TableSignedIdentifierResponse>?> signedIdentifiers;
   /// Table name under the specified account
   late final pulumi.Output<String> tableName;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -429,7 +430,23 @@ class Table extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    signedIdentifiers = registerOutput<List<Map<String, dynamic>>?>('signedIdentifiers');
+    signedIdentifiers = registerOutput<List<TableSignedIdentifierResponse>?>('signedIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableSignedIdentifierResponse>(guardedValue, (value) => TableSignedIdentifierResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tableName = registerOutput<String>('tableName');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Table] resource.
+  Table.reference(String urn)
+    : super(
+        'azure-native:storage:Table',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    signedIdentifiers = registerOutput<List<TableSignedIdentifierResponse>?>('signedIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableSignedIdentifierResponse>(guardedValue, (value) => TableSignedIdentifierResponse.fromMap((value as Map).cast<String, dynamic>())); });
     tableName = registerOutput<String>('tableName');
     type = registerOutput<String>('type');
   }

@@ -25,13 +25,13 @@ class StudentArgs {
   /// Last Name
   final pulumi.Input<String> lastName;
   /// Student Role
-  final pulumi.Input<String> role;
+  final pulumi.Input<dynamic> role;
   /// The student alias.
-  final pulumi.Input<String>? studentAlias;
+  final pulumi.Input<String?>? studentAlias;
   /// Subscription alias
-  final pulumi.Input<String>? subscriptionAlias;
+  final pulumi.Input<String?>? subscriptionAlias;
   /// subscription invite last sent date
-  final pulumi.Input<String>? subscriptionInviteLastSentDate;
+  final pulumi.Input<String?>? subscriptionInviteLastSentDate;
 
   /// Creates a new [StudentArgs].
   /// [billingAccountName] The name of the billing account.
@@ -88,7 +88,7 @@ class StudentArgs {
       firstName: pulumi.Input.fromValue(map['firstName'] as String),
       invoiceSectionName: pulumi.Input.fromValue(map['invoiceSectionName'] as String),
       lastName: pulumi.Input.fromValue(map['lastName'] as String),
-      role: pulumi.Input.fromValue(map['role'] as String),
+      role: pulumi.Input.fromValue(map['role']),
       studentAlias: (() { final guardedValue = map['studentAlias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subscriptionAlias: (() { final guardedValue = map['subscriptionAlias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subscriptionInviteLastSentDate: (() { final guardedValue = map['subscriptionInviteLastSentDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

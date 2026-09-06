@@ -187,4 +187,20 @@ class CustomerSubscription extends pulumi.CustomResource {
     tenantId = registerOutput<String?>('tenantId');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [CustomerSubscription] resource.
+  CustomerSubscription.reference(String urn)
+    : super(
+        'azure-native:azurestack:CustomerSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
+    this.name = registerOutput<String>('name');
+    tenantId = registerOutput<String?>('tenantId');
+    type = registerOutput<String>('type');
+  }
 }

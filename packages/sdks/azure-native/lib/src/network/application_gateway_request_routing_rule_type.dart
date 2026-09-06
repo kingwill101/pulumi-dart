@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Rule type.
-enum ApplicationGatewayRequestRoutingRuleType {
+enum ApplicationGatewayRequestRoutingRuleType implements pulumi.PulumiEnum<String> {
   valueBasic("Basic"),
   valuePathBasedRouting("PathBasedRouting");
 
   const ApplicationGatewayRequestRoutingRuleType(this.wireValue);
+  @override
   final String wireValue;
 
   static ApplicationGatewayRequestRoutingRuleType fromValue(String value) {

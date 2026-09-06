@@ -9,7 +9,7 @@ class ExtensionResponseAksAssignedIdentity {
   /// The tenant ID of resource.
   final pulumi.Input<String> tenantId;
   /// The identity type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ExtensionResponseAksAssignedIdentity].
   /// [principalId] The principal ID of resource identity.

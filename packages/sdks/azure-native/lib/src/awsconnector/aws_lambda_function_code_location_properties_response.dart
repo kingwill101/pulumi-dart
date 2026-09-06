@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of awsLambdaFunctionCodeLocation
 class AwsLambdaFunctionCodeLocationPropertiesResponse {
   /// &lt;p&gt;URI of a container image in the Amazon ECR registry.&lt;/p&gt;
-  final pulumi.Input<String>? imageUri;
+  final pulumi.Input<String?>? imageUri;
   /// &lt;p&gt;A presigned URL that you can use to download the deployment package.&lt;/p&gt;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// &lt;p&gt;The service that's hosting the file.&lt;/p&gt;
-  final pulumi.Input<String>? repositoryType;
+  final pulumi.Input<String?>? repositoryType;
   /// &lt;p&gt;The resolved URI for the image.&lt;/p&gt;
-  final pulumi.Input<String>? resolvedImageUri;
+  final pulumi.Input<String?>? resolvedImageUri;
 
   /// Creates a new [AwsLambdaFunctionCodeLocationPropertiesResponse].
   /// [imageUri] &lt;p&gt;URI of a container image in the Amazon ECR registry.&lt;/p&gt;

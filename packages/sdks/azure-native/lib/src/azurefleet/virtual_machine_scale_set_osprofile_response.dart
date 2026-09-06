@@ -15,29 +15,29 @@ class VirtualMachineScaleSetOSProfileResponse {
   /// "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5".
   /// &lt;br&gt;&lt;br&gt; **Minimum-length (Linux):** 1  character &lt;br&gt;&lt;br&gt; **Max-length
   /// (Linux):** 64 characters &lt;br&gt;&lt;br&gt; **Max-length (Windows):** 20 characters
-  final pulumi.Input<String>? adminUsername;
+  final pulumi.Input<String?>? adminUsername;
   /// Specifies whether extension operations should be allowed on the virtual machine
   /// scale set. This may only be set to False when no extensions are present on the
   /// virtual machine scale set.
-  final pulumi.Input<bool>? allowExtensionOperations;
+  final pulumi.Input<bool?>? allowExtensionOperations;
   /// Specifies the computer name prefix for all of the virtual machines in the scale
   /// set. Computer name prefixes must be 1 to 15 characters long.
-  final pulumi.Input<String>? computerNamePrefix;
+  final pulumi.Input<String?>? computerNamePrefix;
   /// Specifies the Linux operating system settings on the virtual machine. For a
   /// list of supported Linux distributions, see [Linux on Azure-Endorsed
   /// Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
-  final pulumi.Input<LinuxConfigurationResponse>? linuxConfiguration;
+  final pulumi.Input<LinuxConfigurationResponse?>? linuxConfiguration;
   /// Optional property which must either be set to True or omitted.
-  final pulumi.Input<bool>? requireGuestProvisionSignal;
+  final pulumi.Input<bool?>? requireGuestProvisionSignal;
   /// Specifies set of certificates that should be installed onto the virtual
   /// machines in the scale set. To install certificates on a virtual machine it is
   /// recommended to use the [Azure Key Vault virtual machine extension for
   /// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
   /// or the [Azure Key Vault virtual machine extension for
   /// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
-  final pulumi.Input<List<VaultSecretGroupResponse>>? secrets;
+  final pulumi.Input<List<VaultSecretGroupResponse>?>? secrets;
   /// Specifies Windows operating system settings on the virtual machine.
-  final pulumi.Input<WindowsConfigurationResponse>? windowsConfiguration;
+  final pulumi.Input<WindowsConfigurationResponse?>? windowsConfiguration;
 
   /// Creates a new [VirtualMachineScaleSetOSProfileResponse].
   /// [adminUsername] Specifies the name of the administrator account. &lt;br&gt;&lt;br&gt; **Windows-only

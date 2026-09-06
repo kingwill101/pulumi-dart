@@ -10,7 +10,7 @@ class AddonArcPropertiesResponse {
   /// The state of the addon provisioning
   final pulumi.Input<String> provisioningState;
   /// The VMware vCenter resource ID
-  final pulumi.Input<String>? vCenter;
+  final pulumi.Input<String?>? vCenter;
 
   /// Creates a new [AddonArcPropertiesResponse].
   /// [addonType] Addon type

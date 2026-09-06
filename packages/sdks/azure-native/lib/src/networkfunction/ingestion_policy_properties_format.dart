@@ -6,9 +6,9 @@ import 'ingestion_sources_properties_format.dart';
 /// Ingestion Policy properties.
 class IngestionPolicyPropertiesFormat {
   /// Ingestion Sources.
-  final pulumi.Input<List<IngestionSourcesPropertiesFormat>>? ingestionSources;
+  final pulumi.Input<List<IngestionSourcesPropertiesFormat>?>? ingestionSources;
   /// The ingestion type.
-  final pulumi.Input<String>? ingestionType;
+  final pulumi.Input<dynamic>? ingestionType;
 
   /// Creates a new [IngestionPolicyPropertiesFormat].
   /// [ingestionSources] Ingestion Sources.
@@ -28,7 +28,7 @@ class IngestionPolicyPropertiesFormat {
   factory IngestionPolicyPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return IngestionPolicyPropertiesFormat(
       ingestionSources: (() { final guardedValue = map['ingestionSources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IngestionSourcesPropertiesFormat>(guardedValue, (value) => IngestionSourcesPropertiesFormat.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      ingestionType: (() { final guardedValue = map['ingestionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ingestionType: (() { final guardedValue = map['ingestionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

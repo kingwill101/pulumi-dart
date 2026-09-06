@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Protocol type.
-enum AzureFirewallApplicationRuleProtocolType {
+enum AzureFirewallApplicationRuleProtocolType implements pulumi.PulumiEnum<String> {
   valueHttp("Http"),
   valueHttps("Https"),
   valueMssql("Mssql");
 
   const AzureFirewallApplicationRuleProtocolType(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureFirewallApplicationRuleProtocolType fromValue(String value) {

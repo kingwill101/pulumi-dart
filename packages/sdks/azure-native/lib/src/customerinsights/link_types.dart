@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Link type.
-enum LinkTypes {
+enum LinkTypes implements pulumi.PulumiEnum<String> {
   valueUpdateAlways("UpdateAlways"),
   valueCopyIfNull("CopyIfNull");
 
   const LinkTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static LinkTypes fromValue(String value) {

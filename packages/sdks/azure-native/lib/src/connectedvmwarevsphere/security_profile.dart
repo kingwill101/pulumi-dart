@@ -6,7 +6,7 @@ import 'uefi_settings.dart';
 /// Specifies the Security profile settings for the virtual machine.
 class SecurityProfile {
   /// Specifies the security settings like secure boot used while creating the virtual machine.
-  final pulumi.Input<UefiSettings>? uefiSettings;
+  final pulumi.Input<UefiSettings?>? uefiSettings;
 
   /// Creates a new [SecurityProfile].
   /// [uefiSettings] Specifies the security settings like secure boot used while creating the virtual machine.

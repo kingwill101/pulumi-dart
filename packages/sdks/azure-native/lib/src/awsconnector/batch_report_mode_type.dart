@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum BatchReportModeType {
+enum BatchReportModeType implements pulumi.PulumiEnum<String> {
   rEPORTAGGREGATEDBATCH("REPORT_AGGREGATED_BATCH"),
   rEPORTINDIVIDUALBUILDS("REPORT_INDIVIDUAL_BUILDS");
 
   const BatchReportModeType(this.wireValue);
+  @override
   final String wireValue;
 
   static BatchReportModeType fromValue(String value) {

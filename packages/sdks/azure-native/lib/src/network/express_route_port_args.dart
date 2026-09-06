@@ -10,27 +10,27 @@ import 'managed_service_identity.dart';
 /// {@macro pulumi_network_express_route_port_args_doc}
 class ExpressRoutePortArgs {
   /// Bandwidth of procured ports in Gbps.
-  final pulumi.Input<int>? bandwidthInGbps;
+  final pulumi.Input<int?>? bandwidthInGbps;
   /// The billing type of the ExpressRoutePort resource.
-  final pulumi.Input<String>? billingType;
+  final pulumi.Input<dynamic>? billingType;
   /// Encapsulation method on physical ports.
-  final pulumi.Input<String>? encapsulation;
+  final pulumi.Input<dynamic>? encapsulation;
   /// The name of the ExpressRoutePort resource.
-  final pulumi.Input<String>? expressRoutePortName;
+  final pulumi.Input<String?>? expressRoutePortName;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The identity of ExpressRoutePort, if configured.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The set of physical links of the ExpressRoutePort resource.
-  final pulumi.Input<List<ExpressRouteLink>>? links;
+  final pulumi.Input<List<ExpressRouteLink>?>? links;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the peering location that the ExpressRoutePort is mapped to physically.
-  final pulumi.Input<String>? peeringLocation;
+  final pulumi.Input<String?>? peeringLocation;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ExpressRoutePortArgs].
   /// [bandwidthInGbps] Bandwidth of procured ports in Gbps.
@@ -76,9 +76,9 @@ class ExpressRoutePortArgs {
 
   factory ExpressRoutePortArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRoutePortArgs(
-      bandwidthInGbps: (() { final guardedValue = map['bandwidthInGbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      billingType: (() { final guardedValue = map['billingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      encapsulation: (() { final guardedValue = map['encapsulation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bandwidthInGbps: (() { final guardedValue = map['bandwidthInGbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      billingType: (() { final guardedValue = map['billingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      encapsulation: (() { final guardedValue = map['encapsulation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       expressRoutePortName: (() { final guardedValue = map['expressRoutePortName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

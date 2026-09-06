@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Internal use only.
 class DeploymentCapacitySettingsResponse {
   /// The designated capacity.
-  final pulumi.Input<int>? designatedCapacity;
+  final pulumi.Input<int?>? designatedCapacity;
   /// The priority of this capacity setting.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
 
   /// Creates a new [DeploymentCapacitySettingsResponse].
   /// [designatedCapacity] The designated capacity.
@@ -26,8 +26,8 @@ class DeploymentCapacitySettingsResponse {
 
   factory DeploymentCapacitySettingsResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentCapacitySettingsResponse(
-      designatedCapacity: (() { final guardedValue = map['designatedCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      designatedCapacity: (() { final guardedValue = map['designatedCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

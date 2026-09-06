@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_managementpartner_partner_args_doc}
 class PartnerArgs {
   /// Id of the Partner
-  final pulumi.Input<String>? partnerId;
+  final pulumi.Input<String?>? partnerId;
 
   /// Creates a new [PartnerArgs].
   /// [partnerId] Id of the Partner

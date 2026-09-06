@@ -68,7 +68,7 @@ class DBMEndpointResponse {
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       isDynamicPort: pulumi.Input.fromValue(map['isDynamicPort'] as bool),
       isEncryptionEnabled: pulumi.Input.fromValue(map['isEncryptionEnabled'] as bool),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       role: pulumi.Input.fromValue(map['role'] as String),
     );
   }

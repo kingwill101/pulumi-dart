@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections.
-enum SecondaryAllowConnections {
+enum SecondaryAllowConnections implements pulumi.PulumiEnum<String> {
   valueNO("NO"),
   valueALL("ALL"),
   valueREADONLY("READ_ONLY");
 
   const SecondaryAllowConnections(this.wireValue);
+  @override
   final String wireValue;
 
   static SecondaryAllowConnections fromValue(String value) {

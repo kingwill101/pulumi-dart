@@ -28,6 +28,17 @@ Future<GetADOOAuthInfoResult> getADOOAuthInfo(
   return GetADOOAuthInfoResult.fromMap(result);
 }
 
+pulumi.Output<GetADOOAuthInfoResult> getADOOAuthInfoOutput(
+  GetADOOAuthInfoArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devhub:getADOOAuthInfo',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetADOOAuthInfoResult.fromMap);
+}
+
 /// URL used to authorize the Developer Hub GitHub App
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -46,6 +57,17 @@ Future<GetGitHubOAuthResult> getGitHubOAuth(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGitHubOAuthResult.fromMap(result);
+}
+
+pulumi.Output<GetGitHubOAuthResult> getGitHubOAuthOutput(
+  GetGitHubOAuthArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devhub:getGitHubOAuth',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGitHubOAuthResult.fromMap);
 }
 
 /// Resource representation of a IacProfile.
@@ -68,6 +90,17 @@ Future<GetIacProfileResult> getIacProfile(
   return GetIacProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetIacProfileResult> getIacProfileOutput(
+  GetIacProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devhub:getIacProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIacProfileResult.fromMap);
+}
+
 /// Resource representation of a workflow
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -86,4 +119,15 @@ Future<GetWorkflowResult> getWorkflow(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkflowResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkflowResult> getWorkflowOutput(
+  GetWorkflowArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devhub:getWorkflow',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkflowResult.fromMap);
 }

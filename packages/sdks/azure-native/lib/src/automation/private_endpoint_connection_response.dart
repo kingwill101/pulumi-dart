@@ -8,15 +8,15 @@ import 'system_data_response.dart';
 /// A private endpoint connection
 class PrivateEndpointConnectionResponse {
   /// Gets the groupIds.
-  final pulumi.Input<List<String>>? groupIds;
+  final pulumi.Input<List<String>?>? groupIds;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
   /// The name of the resource
   final pulumi.Input<String> name;
   /// Private endpoint which the connection belongs to.
-  final pulumi.Input<PrivateEndpointPropertyResponse>? privateEndpoint;
+  final pulumi.Input<PrivateEndpointPropertyResponse?>? privateEndpoint;
   /// Connection State of the Private Endpoint Connection.
-  final pulumi.Input<PrivateLinkServiceConnectionStatePropertyResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStatePropertyResponse?>? privateLinkServiceConnectionState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

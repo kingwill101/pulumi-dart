@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the parameters for UrlPath match conditions
 class UrlPathMatchConditionParametersResponse {
   /// The match value for the condition of the delivery rule
-  final pulumi.Input<List<String>>? matchValues;
+  final pulumi.Input<List<String>?>? matchValues;
   /// Describes if this is negate condition or not
-  final pulumi.Input<bool>? negateCondition;
+  final pulumi.Input<bool?>? negateCondition;
   /// Describes operator to be matched
   final pulumi.Input<String> operator;
   /// List of transforms
-  final pulumi.Input<List<String>>? transforms;
+  final pulumi.Input<List<String>?>? transforms;
   /// Expected value is 'DeliveryRuleUrlPathMatchConditionParameters'.
   final pulumi.Input<String> typeName;
 
@@ -21,13 +21,13 @@ class UrlPathMatchConditionParametersResponse {
   /// [operator] Describes operator to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRuleUrlPathMatchConditionParameters'.
-  const UrlPathMatchConditionParametersResponse({
+  UrlPathMatchConditionParametersResponse({
     this.matchValues,
-    this.negateCondition,
+    pulumi.Input<bool?>? negateCondition,
     required this.operator,
     this.transforms,
     required this.typeName,
-  });
+  }) : negateCondition = negateCondition ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

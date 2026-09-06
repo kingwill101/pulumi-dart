@@ -6,11 +6,11 @@ import 'subnet.dart';
 /// IP configuration profile child resource.
 class IPConfigurationProfile {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The reference to the subnet resource to create a container network interface ip configuration.
-  final pulumi.Input<Subnet>? subnet;
+  final pulumi.Input<Subnet?>? subnet;
 
   /// Creates a new [IPConfigurationProfile].
   /// [id] Resource ID.

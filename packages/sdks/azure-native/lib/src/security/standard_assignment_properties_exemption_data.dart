@@ -6,9 +6,9 @@ import 'assigned_assessment_item.dart';
 /// Additional data about assignment that has Exempt effect
 class StandardAssignmentPropertiesExemptionData {
   /// Component item with key as applied to this standard assignment over the given scope
-  final pulumi.Input<AssignedAssessmentItem>? assignedAssessment;
+  final pulumi.Input<AssignedAssessmentItem?>? assignedAssessment;
   /// Exemption category of this assignment
-  final pulumi.Input<String>? exemptionCategory;
+  final pulumi.Input<dynamic>? exemptionCategory;
 
   /// Creates a new [StandardAssignmentPropertiesExemptionData].
   /// [assignedAssessment] Component item with key as applied to this standard assignment over the given scope
@@ -28,7 +28,7 @@ class StandardAssignmentPropertiesExemptionData {
   factory StandardAssignmentPropertiesExemptionData.fromMap(Map<String, dynamic> map) {
     return StandardAssignmentPropertiesExemptionData(
       assignedAssessment: (() { final guardedValue = map['assignedAssessment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AssignedAssessmentItem.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      exemptionCategory: (() { final guardedValue = map['exemptionCategory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      exemptionCategory: (() { final guardedValue = map['exemptionCategory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

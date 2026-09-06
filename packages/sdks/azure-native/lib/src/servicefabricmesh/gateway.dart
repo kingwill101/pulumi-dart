@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gateway_args.dart';
+import 'http_config_response.dart';
 import 'network_ref_response.dart';
+import 'tcp_config_response.dart';
 
 /// This type describes a gateway resource.
 ///
@@ -493,7 +495,7 @@ class Gateway extends pulumi.CustomResource {
   /// Network that the Application is using.
   late final pulumi.Output<NetworkRefResponse> destinationNetwork;
   /// Configuration for http connectivity for this gateway.
-  late final pulumi.Output<List<Map<String, dynamic>>?> http;
+  late final pulumi.Output<List<HttpConfigResponse>?> http;
   /// IP address of the gateway. This is populated in the response and is ignored for incoming requests.
   late final pulumi.Output<String> ipAddress;
   /// The geo-location where the resource lives
@@ -511,7 +513,7 @@ class Gateway extends pulumi.CustomResource {
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Configuration for tcp connectivity for this gateway.
-  late final pulumi.Output<List<Map<String, dynamic>>?> tcp;
+  late final pulumi.Output<List<TcpConfigResponse>?> tcp;
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   late final pulumi.Output<String> type;
 
@@ -532,7 +534,7 @@ class Gateway extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     destinationNetwork = registerOutput<NetworkRefResponse>('destinationNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkRefResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    http = registerOutput<List<Map<String, dynamic>>?>('http');
+    http = registerOutput<List<HttpConfigResponse>?>('http', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HttpConfigResponse>(guardedValue, (value) => HttpConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
     ipAddress = registerOutput<String>('ipAddress');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -540,8 +542,33 @@ class Gateway extends pulumi.CustomResource {
     sourceNetwork = registerOutput<NetworkRefResponse>('sourceNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkRefResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     statusDetails = registerOutput<String>('statusDetails');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tcp = registerOutput<List<Map<String, dynamic>>?>('tcp');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tcp = registerOutput<List<TcpConfigResponse>?>('tcp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TcpConfigResponse>(guardedValue, (value) => TcpConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Gateway] resource.
+  Gateway.reference(String urn)
+    : super(
+        'azure-native:servicefabricmesh:Gateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    destinationNetwork = registerOutput<NetworkRefResponse>('destinationNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkRefResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    http = registerOutput<List<HttpConfigResponse>?>('http', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HttpConfigResponse>(guardedValue, (value) => HttpConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    ipAddress = registerOutput<String>('ipAddress');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourceNetwork = registerOutput<NetworkRefResponse>('sourceNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkRefResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    statusDetails = registerOutput<String>('statusDetails');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tcp = registerOutput<List<TcpConfigResponse>?>('tcp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TcpConfigResponse>(guardedValue, (value) => TcpConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
 }

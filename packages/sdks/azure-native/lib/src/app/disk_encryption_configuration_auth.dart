@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration properties for the authentication to the Key Vault
 class DiskEncryptionConfigurationAuth {
   /// Resource ID of a user-assigned managed identity to authenticate to the Key Vault. The identity must be assigned to the managed environment, in the same tenant as the Key Vault, and it must have the following key permissions on the Key Vault: wrapkey, unwrapkey, get.
-  final pulumi.Input<String>? identity;
+  final pulumi.Input<String?>? identity;
 
   /// Creates a new [DiskEncryptionConfigurationAuth].
   /// [identity] Resource ID of a user-assigned managed identity to authenticate to the Key Vault. The identity must be assigned to the managed environment, in the same tenant as the Key Vault, and it must have the following key permissions on the Key Vault: wrapkey, unwrapkey, get.

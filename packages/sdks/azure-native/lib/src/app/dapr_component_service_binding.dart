@@ -6,11 +6,11 @@ import 'dapr_service_bind_metadata.dart';
 /// Configuration to bind a Dapr Component to a dev ContainerApp Service
 class DaprComponentServiceBinding {
   /// Service bind metadata
-  final pulumi.Input<DaprServiceBindMetadata>? metadata;
+  final pulumi.Input<DaprServiceBindMetadata?>? metadata;
   /// Name of the service bind
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Resource id of the target service
-  final pulumi.Input<String>? serviceId;
+  final pulumi.Input<String?>? serviceId;
 
   /// Creates a new [DaprComponentServiceBinding].
   /// [metadata] Service bind metadata

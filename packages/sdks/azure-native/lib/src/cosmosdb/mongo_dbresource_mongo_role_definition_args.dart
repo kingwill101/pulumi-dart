@@ -13,19 +13,19 @@ class MongoDBResourceMongoRoleDefinitionArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
   /// The database name for which access is being granted for this Role Definition.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// The ID for the Role Definition {dbName.roleName}.
-  final pulumi.Input<String>? mongoRoleDefinitionId;
+  final pulumi.Input<String?>? mongoRoleDefinitionId;
   /// A set of privileges contained by the Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Scopes higher than Database are not enforceable as privilege.
-  final pulumi.Input<List<Privilege>>? privileges;
+  final pulumi.Input<List<Privilege>?>? privileges;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// A user-friendly name for the Role Definition. Must be unique for the database account.
-  final pulumi.Input<String>? roleName;
+  final pulumi.Input<String?>? roleName;
   /// The set of roles inherited by this Role Definition.
-  final pulumi.Input<List<Role>>? roles;
+  final pulumi.Input<List<Role>?>? roles;
   /// Indicates whether the Role Definition was built-in or user created.
-  final pulumi.Input<MongoRoleDefinitionType>? type;
+  final pulumi.Input<MongoRoleDefinitionType?>? type;
 
   /// Creates a new [MongoDBResourceMongoRoleDefinitionArgs].
   /// [accountName] Cosmos DB database account name.

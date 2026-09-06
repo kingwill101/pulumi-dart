@@ -11,29 +11,29 @@ import 'qos_port_range.dart';
 /// {@macro pulumi_network_dscp_configuration_args_doc}
 class DscpConfigurationArgs {
   /// Destination IP ranges.
-  final pulumi.Input<List<QosIpRange>>? destinationIpRanges;
+  final pulumi.Input<List<QosIpRange>?>? destinationIpRanges;
   /// Destination port ranges.
-  final pulumi.Input<List<QosPortRange>>? destinationPortRanges;
+  final pulumi.Input<List<QosPortRange>?>? destinationPortRanges;
   /// The name of the resource.
-  final pulumi.Input<String>? dscpConfigurationName;
+  final pulumi.Input<String?>? dscpConfigurationName;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// List of markings to be used in the configuration.
-  final pulumi.Input<List<int>>? markings;
+  final pulumi.Input<List<int>?>? markings;
   /// RNM supported protocol types.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<dynamic>? protocol;
   /// QoS object definitions
-  final pulumi.Input<List<QosDefinition>>? qosDefinitionCollection;
+  final pulumi.Input<List<QosDefinition>?>? qosDefinitionCollection;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Source IP ranges.
-  final pulumi.Input<List<QosIpRange>>? sourceIpRanges;
+  final pulumi.Input<List<QosIpRange>?>? sourceIpRanges;
   /// Sources port ranges.
-  final pulumi.Input<List<QosPortRange>>? sourcePortRanges;
+  final pulumi.Input<List<QosPortRange>?>? sourcePortRanges;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DscpConfigurationArgs].
   /// [destinationIpRanges] Destination IP ranges.
@@ -88,7 +88,7 @@ class DscpConfigurationArgs {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       markings: (() { final guardedValue = map['markings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
-      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       qosDefinitionCollection: (() { final guardedValue = map['qosDefinitionCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<QosDefinition>(guardedValue, (value) => QosDefinition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sourceIpRanges: (() { final guardedValue = map['sourceIpRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<QosIpRange>(guardedValue, (value) => QosIpRange.fromMap((value as Map).cast<String, dynamic>()))); })(),

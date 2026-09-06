@@ -6,11 +6,11 @@ import 'virtual_machine_ssh_credentials.dart';
 /// HDInsight compute properties
 class HDInsightProperties {
   /// Public IP address of the master node of the cluster.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Admin credentials for master node of the cluster
-  final pulumi.Input<VirtualMachineSshCredentials>? administratorAccount;
+  final pulumi.Input<VirtualMachineSshCredentials?>? administratorAccount;
   /// Port open for ssh connections on the master node of the cluster.
-  final pulumi.Input<int>? sshPort;
+  final pulumi.Input<int?>? sshPort;
 
   /// Creates a new [HDInsightProperties].
   /// [address] Public IP address of the master node of the cluster.
@@ -34,7 +34,7 @@ class HDInsightProperties {
     return HDInsightProperties(
       address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       administratorAccount: (() { final guardedValue = map['administratorAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineSshCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      sshPort: (() { final guardedValue = map['sshPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sshPort: (() { final guardedValue = map['sshPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

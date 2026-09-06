@@ -42,6 +42,17 @@ Future<GetBookshelfResult> getBookshelf(
   return GetBookshelfResult.fromMap(result);
 }
 
+pulumi.Output<GetBookshelfResult> getBookshelfOutput(
+  GetBookshelfArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:discovery:getBookshelf',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBookshelfResult.fromMap);
+}
+
 /// Gets the specified private endpoint connection associated with the bookshelf.
 ///
 /// Uses Azure REST API version 2026-02-01-preview.
@@ -60,6 +71,17 @@ Future<GetBookshelfPrivateEndpointConnectionResult> getBookshelfPrivateEndpointC
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBookshelfPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetBookshelfPrivateEndpointConnectionResult> getBookshelfPrivateEndpointConnectionOutput(
+  GetBookshelfPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:discovery:getBookshelfPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBookshelfPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Get a ChatModelDeployment
@@ -82,6 +104,17 @@ Future<GetChatModelDeploymentResult> getChatModelDeployment(
   return GetChatModelDeploymentResult.fromMap(result);
 }
 
+pulumi.Output<GetChatModelDeploymentResult> getChatModelDeploymentOutput(
+  GetChatModelDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:discovery:getChatModelDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetChatModelDeploymentResult.fromMap);
+}
+
 /// Get a NodePool
 ///
 /// Uses Azure REST API version 2026-02-01-preview.
@@ -100,6 +133,17 @@ Future<GetNodePoolResult> getNodePool(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNodePoolResult.fromMap(result);
+}
+
+pulumi.Output<GetNodePoolResult> getNodePoolOutput(
+  GetNodePoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:discovery:getNodePool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNodePoolResult.fromMap);
 }
 
 /// Get a Project
@@ -122,6 +166,17 @@ Future<GetProjectResult> getProject(
   return GetProjectResult.fromMap(result);
 }
 
+pulumi.Output<GetProjectResult> getProjectOutput(
+  GetProjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:discovery:getProject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectResult.fromMap);
+}
+
 /// Get a StorageAsset
 ///
 /// Uses Azure REST API version 2026-02-01-preview.
@@ -140,6 +195,17 @@ Future<GetStorageAssetResult> getStorageAsset(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStorageAssetResult.fromMap(result);
+}
+
+pulumi.Output<GetStorageAssetResult> getStorageAssetOutput(
+  GetStorageAssetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:discovery:getStorageAsset',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageAssetResult.fromMap);
 }
 
 /// Get a StorageContainer
@@ -162,6 +228,17 @@ Future<GetStorageContainerResult> getStorageContainer(
   return GetStorageContainerResult.fromMap(result);
 }
 
+pulumi.Output<GetStorageContainerResult> getStorageContainerOutput(
+  GetStorageContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:discovery:getStorageContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageContainerResult.fromMap);
+}
+
 /// Get a Supercomputer
 ///
 /// Uses Azure REST API version 2026-02-01-preview.
@@ -180,6 +257,17 @@ Future<GetSupercomputerResult> getSupercomputer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSupercomputerResult.fromMap(result);
+}
+
+pulumi.Output<GetSupercomputerResult> getSupercomputerOutput(
+  GetSupercomputerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:discovery:getSupercomputer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSupercomputerResult.fromMap);
 }
 
 /// Get a Tool
@@ -202,6 +290,17 @@ Future<GetToolResult> getTool(
   return GetToolResult.fromMap(result);
 }
 
+pulumi.Output<GetToolResult> getToolOutput(
+  GetToolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:discovery:getTool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetToolResult.fromMap);
+}
+
 /// Get a Workspace
 ///
 /// Uses Azure REST API version 2026-02-01-preview.
@@ -222,6 +321,17 @@ Future<GetWorkspaceResult> getWorkspace(
   return GetWorkspaceResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:discovery:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
+}
+
 /// Gets the specified private endpoint connection associated with the workspace.
 ///
 /// Uses Azure REST API version 2026-02-01-preview.
@@ -240,4 +350,15 @@ Future<GetWorkspacePrivateEndpointConnectionResult> getWorkspacePrivateEndpointC
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspacePrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspacePrivateEndpointConnectionResult> getWorkspacePrivateEndpointConnectionOutput(
+  GetWorkspacePrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:discovery:getWorkspacePrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspacePrivateEndpointConnectionResult.fromMap);
 }

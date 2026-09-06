@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The behavior of the endpoint filter. Currently only 'Include' is supported.
-enum ConnectionMonitorEndpointFilterType {
+enum ConnectionMonitorEndpointFilterType implements pulumi.PulumiEnum<String> {
   valueInclude("Include");
 
   const ConnectionMonitorEndpointFilterType(this.wireValue);
+  @override
   final String wireValue;
 
   static ConnectionMonitorEndpointFilterType fromValue(String value) {

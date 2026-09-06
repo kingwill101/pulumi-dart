@@ -19,3 +19,14 @@ Future<GetCopilotSettingResult> getCopilotSetting(
   );
   return GetCopilotSettingResult.fromMap(result);
 }
+
+pulumi.Output<GetCopilotSettingResult> getCopilotSettingOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:portalservices:getCopilotSetting',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetCopilotSettingResult.fromMap);
+}

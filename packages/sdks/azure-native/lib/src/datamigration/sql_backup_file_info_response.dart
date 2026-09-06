@@ -56,14 +56,14 @@ class SqlBackupFileInfoResponse {
 
   factory SqlBackupFileInfoResponse.fromMap(Map<String, dynamic> map) {
     return SqlBackupFileInfoResponse(
-      copyDuration: pulumi.Input.fromValue(map['copyDuration'] as int),
-      copyThroughput: pulumi.Input.fromValue(map['copyThroughput'] as double),
-      dataRead: pulumi.Input.fromValue(map['dataRead'] as double),
-      dataWritten: pulumi.Input.fromValue(map['dataWritten'] as double),
-      familySequenceNumber: pulumi.Input.fromValue(map['familySequenceNumber'] as int),
+      copyDuration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['copyDuration'])),
+      copyThroughput: pulumi.Input.fromValue((map['copyThroughput'] as num).toDouble()),
+      dataRead: pulumi.Input.fromValue((map['dataRead'] as num).toDouble()),
+      dataWritten: pulumi.Input.fromValue((map['dataWritten'] as num).toDouble()),
+      familySequenceNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['familySequenceNumber'])),
       fileName: pulumi.Input.fromValue(map['fileName'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
-      totalSize: pulumi.Input.fromValue(map['totalSize'] as double),
+      totalSize: pulumi.Input.fromValue((map['totalSize'] as num).toDouble()),
     );
   }
 }

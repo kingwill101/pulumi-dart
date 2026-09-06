@@ -361,7 +361,34 @@ class OperatorApiConnection extends pulumi.CustomResource {
     saasProperties = registerOutput<SaasPropertiesResponse?>('saasProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SaasPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<StatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [OperatorApiConnection] resource.
+  OperatorApiConnection.reference(String urn)
+    : super(
+        'azure-native:programmableconnectivity:OperatorApiConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountType = registerOutput<String>('accountType');
+    appId = registerOutput<String?>('appId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    camaraApiName = registerOutput<String>('camaraApiName');
+    configuredApplication = registerOutput<ApplicationPropertiesResponse?>('configuredApplication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gatewayId = registerOutput<String>('gatewayId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    operatorApiPlanId = registerOutput<String>('operatorApiPlanId');
+    operatorName = registerOutput<String>('operatorName');
+    provisioningState = registerOutput<String>('provisioningState');
+    saasProperties = registerOutput<SaasPropertiesResponse?>('saasProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SaasPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<StatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

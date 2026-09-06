@@ -7,9 +7,9 @@ class LinkStateResponse {
   /// The timestamp of the last update of the link state.
   final pulumi.Input<String> lastUpdatedOn;
   /// The state message.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The state of the link.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [LinkStateResponse].
   /// [lastUpdatedOn] The timestamp of the last update of the link state.

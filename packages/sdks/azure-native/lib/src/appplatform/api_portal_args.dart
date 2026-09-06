@@ -10,15 +10,15 @@ import 'sku.dart';
 /// {@macro pulumi_appplatform_api_portal_args_doc}
 class ApiPortalArgs {
   /// The name of API portal.
-  final pulumi.Input<String>? apiPortalName;
+  final pulumi.Input<String?>? apiPortalName;
   /// API portal properties payload
-  final pulumi.Input<ApiPortalProperties>? properties;
+  final pulumi.Input<ApiPortalProperties?>? properties;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
   /// Sku of the API portal resource
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
 
   /// Creates a new [ApiPortalArgs].
   /// [apiPortalName] The name of API portal.

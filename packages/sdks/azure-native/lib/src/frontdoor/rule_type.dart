@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes type of rule.
-enum RuleType {
+enum RuleType implements pulumi.PulumiEnum<String> {
   matchRule("MatchRule"),
   rateLimitRule("RateLimitRule");
 
   const RuleType(this.wireValue);
+  @override
   final String wireValue;
 
   static RuleType fromValue(String value) {

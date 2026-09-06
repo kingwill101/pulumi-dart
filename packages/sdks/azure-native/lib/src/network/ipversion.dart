@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether the specific IP configuration is IPv4 or IPv6. Default is IPv4.
-enum IPVersion {
+enum IPVersion implements pulumi.PulumiEnum<String> {
   valueIPv4("IPv4"),
   valueIPv6("IPv6");
 
   const IPVersion(this.wireValue);
+  @override
   final String wireValue;
 
   static IPVersion fromValue(String value) {

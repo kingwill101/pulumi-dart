@@ -7,11 +7,11 @@ class IstioEgressGatewayResponse {
   /// Whether to enable the egress gateway.
   final pulumi.Input<bool> enabled;
   /// Name of the gateway configuration custom resource for the Istio add-on egress gateway. Must be specified when enabling the Istio egress gateway. Must be deployed in the same namespace that the Istio egress gateway will be deployed in.
-  final pulumi.Input<String>? gatewayConfigurationName;
+  final pulumi.Input<String?>? gatewayConfigurationName;
   /// Name of the Istio add-on egress gateway.
   final pulumi.Input<String> name;
   /// Namespace that the Istio add-on egress gateway should be deployed in. If unspecified, the default is aks-istio-egress.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
 
   /// Creates a new [IstioEgressGatewayResponse].
   /// [enabled] Whether to enable the egress gateway.

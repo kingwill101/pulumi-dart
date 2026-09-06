@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The protocol used for the probe.
-enum ApplicationGatewayProtocol {
+enum ApplicationGatewayProtocol implements pulumi.PulumiEnum<String> {
   valueHttp("Http"),
   valueHttps("Https"),
   valueTcp("Tcp"),
   valueTls("Tls");
 
   const ApplicationGatewayProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static ApplicationGatewayProtocol fromValue(String value) {

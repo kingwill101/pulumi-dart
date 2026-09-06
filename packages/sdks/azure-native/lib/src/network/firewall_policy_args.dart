@@ -19,39 +19,39 @@ import 'sub_resource.dart';
 /// {@macro pulumi_network_firewall_policy_args_doc}
 class FirewallPolicyArgs {
   /// The parent firewall policy from which rules are inherited.
-  final pulumi.Input<SubResource>? basePolicy;
+  final pulumi.Input<SubResource?>? basePolicy;
   /// DNS Proxy Settings definition.
-  final pulumi.Input<DnsSettings>? dnsSettings;
+  final pulumi.Input<DnsSettings?>? dnsSettings;
   /// Explicit Proxy Settings definition.
-  final pulumi.Input<ExplicitProxy>? explicitProxy;
+  final pulumi.Input<ExplicitProxy?>? explicitProxy;
   /// The name of the Firewall Policy.
-  final pulumi.Input<String>? firewallPolicyName;
+  final pulumi.Input<String?>? firewallPolicyName;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The identity of the firewall policy.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// Insights on Firewall Policy.
-  final pulumi.Input<FirewallPolicyInsights>? insights;
+  final pulumi.Input<FirewallPolicyInsights?>? insights;
   /// The configuration for Intrusion detection.
-  final pulumi.Input<FirewallPolicyIntrusionDetection>? intrusionDetection;
+  final pulumi.Input<FirewallPolicyIntrusionDetection?>? intrusionDetection;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The Firewall Policy SKU.
-  final pulumi.Input<FirewallPolicySku>? sku;
+  final pulumi.Input<FirewallPolicySku?>? sku;
   /// The private IP addresses/IP ranges to which traffic will not be SNAT.
-  final pulumi.Input<FirewallPolicySNAT>? snat;
+  final pulumi.Input<FirewallPolicySNAT?>? snat;
   /// SQL Settings definition.
-  final pulumi.Input<FirewallPolicySQL>? sql;
+  final pulumi.Input<FirewallPolicySQL?>? sql;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The operation mode for Threat Intelligence.
-  final pulumi.Input<String>? threatIntelMode;
+  final pulumi.Input<dynamic>? threatIntelMode;
   /// ThreatIntel Whitelist for Firewall Policy.
-  final pulumi.Input<FirewallPolicyThreatIntelWhitelist>? threatIntelWhitelist;
+  final pulumi.Input<FirewallPolicyThreatIntelWhitelist?>? threatIntelWhitelist;
   /// TLS Configuration definition.
-  final pulumi.Input<FirewallPolicyTransportSecurity>? transportSecurity;
+  final pulumi.Input<FirewallPolicyTransportSecurity?>? transportSecurity;
 
   /// Creates a new [FirewallPolicyArgs].
   /// [basePolicy] The parent firewall policy from which rules are inherited.
@@ -129,7 +129,7 @@ class FirewallPolicyArgs {
       snat: (() { final guardedValue = map['snat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallPolicySNAT.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sql: (() { final guardedValue = map['sql']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallPolicySQL.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      threatIntelMode: (() { final guardedValue = map['threatIntelMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      threatIntelMode: (() { final guardedValue = map['threatIntelMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       threatIntelWhitelist: (() { final guardedValue = map['threatIntelWhitelist']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallPolicyThreatIntelWhitelist.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       transportSecurity: (() { final guardedValue = map['transportSecurity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallPolicyTransportSecurity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The mapping between a particular user and the access type on the SMB share.
 class UserAccessRight {
   /// Type of access to be allowed for the user.
-  final pulumi.Input<String> accessType;
+  final pulumi.Input<dynamic> accessType;
   /// User ID (already existing in the device).
   final pulumi.Input<String> userId;
 
@@ -26,7 +26,7 @@ class UserAccessRight {
 
   factory UserAccessRight.fromMap(Map<String, dynamic> map) {
     return UserAccessRight(
-      accessType: pulumi.Input.fromValue(map['accessType'] as String),
+      accessType: pulumi.Input.fromValue(map['accessType']),
       userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }

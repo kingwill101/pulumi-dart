@@ -11,17 +11,17 @@ import 'sqlinstance_settings_response.dart';
 /// Set the connectivity, storage and workload settings.
 class ServerConfigurationsManagementSettingsResponse {
   /// Additional SQL feature settings.
-  final pulumi.Input<AdditionalFeaturesServerConfigurationsResponse>? additionalFeaturesServerConfigurations;
+  final pulumi.Input<AdditionalFeaturesServerConfigurationsResponse?>? additionalFeaturesServerConfigurations;
   /// Azure AD authentication Settings.
-  final pulumi.Input<AADAuthenticationSettingsResponse>? azureAdAuthenticationSettings;
+  final pulumi.Input<AADAuthenticationSettingsResponse?>? azureAdAuthenticationSettings;
   /// SQL connectivity type settings.
-  final pulumi.Input<SqlConnectivityUpdateSettingsResponse>? sqlConnectivityUpdateSettings;
+  final pulumi.Input<SqlConnectivityUpdateSettingsResponse?>? sqlConnectivityUpdateSettings;
   /// SQL Instance settings.
-  final pulumi.Input<SQLInstanceSettingsResponse>? sqlInstanceSettings;
+  final pulumi.Input<SQLInstanceSettingsResponse?>? sqlInstanceSettings;
   /// SQL storage update settings.
-  final pulumi.Input<SqlStorageUpdateSettingsResponse>? sqlStorageUpdateSettings;
+  final pulumi.Input<SqlStorageUpdateSettingsResponse?>? sqlStorageUpdateSettings;
   /// SQL workload type settings.
-  final pulumi.Input<SqlWorkloadTypeUpdateSettingsResponse>? sqlWorkloadTypeUpdateSettings;
+  final pulumi.Input<SqlWorkloadTypeUpdateSettingsResponse?>? sqlWorkloadTypeUpdateSettings;
 
   /// Creates a new [ServerConfigurationsManagementSettingsResponse].
   /// [additionalFeaturesServerConfigurations] Additional SQL feature settings.

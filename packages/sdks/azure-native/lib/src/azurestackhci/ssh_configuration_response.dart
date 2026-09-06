@@ -6,7 +6,7 @@ import 'ssh_public_key_response.dart';
 /// SSH configuration for Linux based VMs running on Azure
 class SshConfigurationResponse {
   /// The list of SSH public keys used to authenticate with linux based VMs.
-  final pulumi.Input<List<SshPublicKeyResponse>>? publicKeys;
+  final pulumi.Input<List<SshPublicKeyResponse>?>? publicKeys;
 
   /// Creates a new [SshConfigurationResponse].
   /// [publicKeys] The list of SSH public keys used to authenticate with linux based VMs.

@@ -8,23 +8,23 @@ import 'parameter_specification.dart';
 /// Vertica linked service.
 class VerticaLinkedService {
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference?>? connectVia;
   /// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
   final pulumi.Input<dynamic>? connectionString;
   /// Database name for connection. Type: string.
   final pulumi.Input<dynamic>? database;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>?>? parameters;
   /// The port for the connection. Type: integer.
   final pulumi.Input<dynamic>? port;
   /// The Azure key vault secret reference of password in connection string.
-  final pulumi.Input<AzureKeyVaultSecretReference>? pwd;
+  final pulumi.Input<AzureKeyVaultSecretReference?>? pwd;
   /// Server name for connection. Type: string.
   final pulumi.Input<dynamic>? server;
   /// Type of linked service.
@@ -33,7 +33,7 @@ class VerticaLinkedService {
   /// Username for authentication. Type: string.
   final pulumi.Input<dynamic>? uid;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [VerticaLinkedService].
   /// [annotations] List of tags that can be used for describing the linked service.

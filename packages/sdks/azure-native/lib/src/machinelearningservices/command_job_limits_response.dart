@@ -7,7 +7,7 @@ class CommandJobLimitsResponse {
   /// Expected value is 'Command'.
   final pulumi.Input<String> jobLimitsType;
   /// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [CommandJobLimitsResponse].
   /// [jobLimitsType] Expected value is 'Command'.

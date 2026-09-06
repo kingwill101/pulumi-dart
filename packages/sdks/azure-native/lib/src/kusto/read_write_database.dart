@@ -361,4 +361,27 @@ class ReadWriteDatabase extends pulumi.CustomResource {
     suspensionDetails = registerOutput<SuspensionDetailsResponse>('suspensionDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SuspensionDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ReadWriteDatabase] resource.
+  ReadWriteDatabase.reference(String urn)
+    : super(
+        'azure-native:kusto:ReadWriteDatabase',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    hotCachePeriod = registerOutput<String?>('hotCachePeriod');
+    isFollowed = registerOutput<bool>('isFollowed');
+    keyVaultProperties = registerOutput<KeyVaultPropertiesResponse?>('keyVaultProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyVaultPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    softDeletePeriod = registerOutput<String?>('softDeletePeriod');
+    statistics = registerOutput<DatabaseStatisticsResponse>('statistics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseStatisticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    suspensionDetails = registerOutput<SuspensionDetailsResponse>('suspensionDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SuspensionDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

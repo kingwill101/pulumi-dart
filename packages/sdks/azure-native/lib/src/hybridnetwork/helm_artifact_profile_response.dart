@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Helm artifact profile.
 class HelmArtifactProfileResponse {
   /// Helm package name.
-  final pulumi.Input<String>? helmPackageName;
+  final pulumi.Input<String?>? helmPackageName;
   /// Helm package version range.
-  final pulumi.Input<String>? helmPackageVersionRange;
+  final pulumi.Input<String?>? helmPackageVersionRange;
   /// The image pull secrets values path list.
-  final pulumi.Input<List<String>>? imagePullSecretsValuesPaths;
+  final pulumi.Input<List<String>?>? imagePullSecretsValuesPaths;
   /// The registry values path list.
-  final pulumi.Input<List<String>>? registryValuesPaths;
+  final pulumi.Input<List<String>?>? registryValuesPaths;
 
   /// Creates a new [HelmArtifactProfileResponse].
   /// [helmPackageName] Helm package name.

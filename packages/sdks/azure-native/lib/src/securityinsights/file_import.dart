@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'file_import_args.dart';
 import 'file_metadata_response.dart';
 import 'system_data_response.dart';
+import 'validation_error_response.dart';
 
 /// Represents a file import in Azure Security Insights.
 ///
@@ -217,7 +218,7 @@ class FileImport extends pulumi.CustomResource {
   /// Represents the error file (if the import was ingested with errors or failed the validation).
   late final pulumi.Output<FileMetadataResponse> errorFile;
   /// An ordered list of some of the errors that were encountered during validation.
-  late final pulumi.Output<List<Map<String, dynamic>>> errorsPreview;
+  late final pulumi.Output<List<ValidationErrorResponse>> errorsPreview;
   /// The time the files associated with this import are deleted from the storage account.
   late final pulumi.Output<String> filesValidUntilTimeUTC;
   /// Represents the imported file.
@@ -261,7 +262,35 @@ class FileImport extends pulumi.CustomResource {
     contentType = registerOutput<String>('contentType');
     createdTimeUTC = registerOutput<String>('createdTimeUTC');
     errorFile = registerOutput<FileMetadataResponse>('errorFile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    errorsPreview = registerOutput<List<Map<String, dynamic>>>('errorsPreview');
+    errorsPreview = registerOutput<List<ValidationErrorResponse>>('errorsPreview', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ValidationErrorResponse>(guardedValue, (value) => ValidationErrorResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    filesValidUntilTimeUTC = registerOutput<String>('filesValidUntilTimeUTC');
+    importFile = registerOutput<FileMetadataResponse>('importFile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    importValidUntilTimeUTC = registerOutput<String>('importValidUntilTimeUTC');
+    ingestedRecordCount = registerOutput<int>('ingestedRecordCount');
+    ingestionMode = registerOutput<String>('ingestionMode');
+    this.name = registerOutput<String>('name');
+    source = registerOutput<String>('source');
+    state = registerOutput<String>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    totalRecordCount = registerOutput<int>('totalRecordCount');
+    type = registerOutput<String>('type');
+    validRecordCount = registerOutput<int>('validRecordCount');
+  }
+
+  /// Creates a typed reference to an existing [FileImport] resource.
+  FileImport.reference(String urn)
+    : super(
+        'azure-native:securityinsights:FileImport',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contentType = registerOutput<String>('contentType');
+    createdTimeUTC = registerOutput<String>('createdTimeUTC');
+    errorFile = registerOutput<FileMetadataResponse>('errorFile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    errorsPreview = registerOutput<List<ValidationErrorResponse>>('errorsPreview', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ValidationErrorResponse>(guardedValue, (value) => ValidationErrorResponse.fromMap((value as Map).cast<String, dynamic>())); });
     filesValidUntilTimeUTC = registerOutput<String>('filesValidUntilTimeUTC');
     importFile = registerOutput<FileMetadataResponse>('importFile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     importValidUntilTimeUTC = registerOutput<String>('importValidUntilTimeUTC');

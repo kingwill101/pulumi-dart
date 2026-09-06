@@ -6,9 +6,9 @@ import 'cache_identity_type.dart';
 /// Cache identity properties.
 class CacheIdentity {
   /// The type of identity used for the cache
-  final pulumi.Input<CacheIdentityType>? type;
+  final pulumi.Input<CacheIdentityType?>? type;
   /// A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
-  final pulumi.Input<List<String>>? userAssignedIdentities;
+  final pulumi.Input<List<String>?>? userAssignedIdentities;
 
   /// Creates a new [CacheIdentity].
   /// [type] The type of identity used for the cache

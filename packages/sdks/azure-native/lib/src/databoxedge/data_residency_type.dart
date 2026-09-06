@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// DataResidencyType enum
-enum DataResidencyType {
+enum DataResidencyType implements pulumi.PulumiEnum<String> {
   valueGeoZoneReplication("GeoZoneReplication"),
   valueZoneReplication("ZoneReplication");
 
   const DataResidencyType(this.wireValue);
+  @override
   final String wireValue;
 
   static DataResidencyType fromValue(String value) {

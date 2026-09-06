@@ -512,4 +512,23 @@ class SandboxCustomImage extends pulumi.CustomResource {
     requirementsFileContent = registerOutput<String?>('requirementsFileContent');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [SandboxCustomImage] resource.
+  SandboxCustomImage.reference(String urn)
+    : super(
+        'azure-native:kusto:SandboxCustomImage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    baseImageName = registerOutput<String?>('baseImageName');
+    language = registerOutput<String>('language');
+    languageVersion = registerOutput<String?>('languageVersion');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    requirementsFileContent = registerOutput<String?>('requirementsFileContent');
+    type = registerOutput<String>('type');
+  }
 }

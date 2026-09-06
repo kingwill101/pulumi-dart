@@ -8,13 +8,13 @@ import 'login_scopes_response.dart';
 /// The configuration settings of the Google provider.
 class GoogleResponse {
   /// &lt;code&gt;false&lt;/code&gt; if the Google provider should not be enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The configuration settings of the login flow.
-  final pulumi.Input<LoginScopesResponse>? login;
+  final pulumi.Input<LoginScopesResponse?>? login;
   /// The configuration settings of the app registration for the Google provider.
-  final pulumi.Input<ClientRegistrationResponse>? registration;
+  final pulumi.Input<ClientRegistrationResponse?>? registration;
   /// The configuration settings of the Azure Active Directory token validation flow.
-  final pulumi.Input<AllowedAudiencesValidationResponse>? validation;
+  final pulumi.Input<AllowedAudiencesValidationResponse?>? validation;
 
   /// Creates a new [GoogleResponse].
   /// [enabled] &lt;code&gt;false&lt;/code&gt; if the Google provider should not be enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.

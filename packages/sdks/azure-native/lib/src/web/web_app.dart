@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dapr_config_response.dart';
 import 'extended_location_response.dart';
 import 'function_app_config_response.dart';
+import 'host_name_ssl_state_response.dart';
 import 'hosting_environment_profile_response.dart';
 import 'managed_service_identity_response.dart';
 import 'outbound_vnet_routing_response.dart';
@@ -1286,7 +1287,7 @@ class WebApp extends pulumi.CustomResource {
   /// Configuration specific of the Azure Function app.
   late final pulumi.Output<FunctionAppConfigResponse?> functionAppConfig;
   /// Hostname SSL states are used to manage the SSL bindings for app's hostnames.
-  late final pulumi.Output<List<Map<String, dynamic>>?> hostNameSslStates;
+  late final pulumi.Output<List<HostNameSslStateResponse>?> hostNameSslStates;
   /// Hostnames associated with the app.
   late final pulumi.Output<List<String>> hostNames;
   /// &lt;code&gt;true&lt;/code&gt; to disable the public hostnames of the app; otherwise, &lt;code&gt;false&lt;/code&gt;.
@@ -1408,12 +1409,12 @@ class WebApp extends pulumi.CustomResource {
     defaultHostName = registerOutput<String>('defaultHostName');
     dnsConfiguration = registerOutput<SiteDnsConfigResponse?>('dnsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteDnsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enabled = registerOutput<bool?>('enabled');
-    enabledHostNames = registerOutput<List<String>>('enabledHostNames');
+    enabledHostNames = registerOutput<List<String>>('enabledHostNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     endToEndEncryptionEnabled = registerOutput<bool?>('endToEndEncryptionEnabled');
     extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     functionAppConfig = registerOutput<FunctionAppConfigResponse?>('functionAppConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionAppConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    hostNameSslStates = registerOutput<List<Map<String, dynamic>>?>('hostNameSslStates');
-    hostNames = registerOutput<List<String>>('hostNames');
+    hostNameSslStates = registerOutput<List<HostNameSslStateResponse>?>('hostNameSslStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostNameSslStateResponse>(guardedValue, (value) => HostNameSslStateResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    hostNames = registerOutput<List<String>>('hostNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     hostNamesDisabled = registerOutput<bool?>('hostNamesDisabled');
     hostingEnvironmentProfile = registerOutput<HostingEnvironmentProfileResponse?>('hostingEnvironmentProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HostingEnvironmentProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     httpsOnly = registerOutput<bool?>('httpsOnly');
@@ -1449,9 +1450,84 @@ class WebApp extends pulumi.CustomResource {
     storageAccountRequired = registerOutput<bool?>('storageAccountRequired');
     suspendedTill = registerOutput<String>('suspendedTill');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetSwapSlot = registerOutput<String>('targetSwapSlot');
-    trafficManagerHostNames = registerOutput<List<String>>('trafficManagerHostNames');
+    trafficManagerHostNames = registerOutput<List<String>>('trafficManagerHostNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String>('type');
+    usageState = registerOutput<String>('usageState');
+    virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
+    workloadProfileName = registerOutput<String?>('workloadProfileName');
+  }
+
+  /// Creates a typed reference to an existing [WebApp] resource.
+  WebApp.reference(String urn)
+    : super(
+        'azure-native:web:WebApp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoGeneratedDomainNameLabelScope = registerOutput<String?>('autoGeneratedDomainNameLabelScope');
+    availabilityState = registerOutput<String>('availabilityState');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientAffinityEnabled = registerOutput<bool?>('clientAffinityEnabled');
+    clientAffinityPartitioningEnabled = registerOutput<bool?>('clientAffinityPartitioningEnabled');
+    clientAffinityProxyEnabled = registerOutput<bool?>('clientAffinityProxyEnabled');
+    clientCertEnabled = registerOutput<bool?>('clientCertEnabled');
+    clientCertExclusionPaths = registerOutput<String?>('clientCertExclusionPaths');
+    clientCertMode = registerOutput<String?>('clientCertMode');
+    containerSize = registerOutput<int?>('containerSize');
+    customDomainVerificationId = registerOutput<String?>('customDomainVerificationId');
+    dailyMemoryTimeQuota = registerOutput<int?>('dailyMemoryTimeQuota');
+    daprConfig = registerOutput<DaprConfigResponse?>('daprConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DaprConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultHostName = registerOutput<String>('defaultHostName');
+    dnsConfiguration = registerOutput<SiteDnsConfigResponse?>('dnsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteDnsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enabled = registerOutput<bool?>('enabled');
+    enabledHostNames = registerOutput<List<String>>('enabledHostNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    endToEndEncryptionEnabled = registerOutput<bool?>('endToEndEncryptionEnabled');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    functionAppConfig = registerOutput<FunctionAppConfigResponse?>('functionAppConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionAppConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hostNameSslStates = registerOutput<List<HostNameSslStateResponse>?>('hostNameSslStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostNameSslStateResponse>(guardedValue, (value) => HostNameSslStateResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    hostNames = registerOutput<List<String>>('hostNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    hostNamesDisabled = registerOutput<bool?>('hostNamesDisabled');
+    hostingEnvironmentProfile = registerOutput<HostingEnvironmentProfileResponse?>('hostingEnvironmentProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HostingEnvironmentProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    hyperV = registerOutput<bool?>('hyperV');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inProgressOperationId = registerOutput<String>('inProgressOperationId');
+    ipMode = registerOutput<String?>('ipMode');
+    isDefaultContainer = registerOutput<bool>('isDefaultContainer');
+    isXenon = registerOutput<bool?>('isXenon');
+    keyVaultReferenceIdentity = registerOutput<String?>('keyVaultReferenceIdentity');
+    kind = registerOutput<String?>('kind');
+    lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
+    location = registerOutput<String>('location');
+    managedEnvironmentId = registerOutput<String?>('managedEnvironmentId');
+    maxNumberOfWorkers = registerOutput<int>('maxNumberOfWorkers');
+    this.name = registerOutput<String>('name');
+    outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
+    outboundVnetRouting = registerOutput<OutboundVnetRoutingResponse?>('outboundVnetRouting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutboundVnetRoutingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    redundancyMode = registerOutput<String?>('redundancyMode');
+    repositorySiteName = registerOutput<String>('repositorySiteName');
+    reserved = registerOutput<bool?>('reserved');
+    resourceConfig = registerOutput<ResourceConfigResponse?>('resourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroup = registerOutput<String>('resourceGroup');
+    scmSiteAlsoStopped = registerOutput<bool?>('scmSiteAlsoStopped');
+    serverFarmId = registerOutput<String?>('serverFarmId');
+    siteConfig = registerOutput<SiteConfigResponse?>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<String>('sku');
+    slotSwapStatus = registerOutput<SlotSwapStatusResponse>('slotSwapStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlotSwapStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sshEnabled = registerOutput<bool?>('sshEnabled');
+    state = registerOutput<String>('state');
+    storageAccountRequired = registerOutput<bool?>('storageAccountRequired');
+    suspendedTill = registerOutput<String>('suspendedTill');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetSwapSlot = registerOutput<String>('targetSwapSlot');
+    trafficManagerHostNames = registerOutput<List<String>>('trafficManagerHostNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
     usageState = registerOutput<String>('usageState');
     virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');

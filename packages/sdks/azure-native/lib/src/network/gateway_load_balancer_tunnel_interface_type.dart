@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Traffic type of gateway load balancer tunnel interface.
-enum GatewayLoadBalancerTunnelInterfaceType {
+enum GatewayLoadBalancerTunnelInterfaceType implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueInternal("Internal"),
   valueExternal("External");
 
   const GatewayLoadBalancerTunnelInterfaceType(this.wireValue);
+  @override
   final String wireValue;
 
   static GatewayLoadBalancerTunnelInterfaceType fromValue(String value) {

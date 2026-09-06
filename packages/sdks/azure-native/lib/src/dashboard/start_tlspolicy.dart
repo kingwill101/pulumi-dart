@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The StartTLSPolicy setting of the SMTP configuration
 /// https://pkg.go.dev/github.com/go-mail/mail#StartTLSPolicy
-enum StartTLSPolicy {
+enum StartTLSPolicy implements pulumi.PulumiEnum<String> {
   valueOpportunisticStartTLS("OpportunisticStartTLS"),
   valueMandatoryStartTLS("MandatoryStartTLS"),
   valueNoStartTLS("NoStartTLS");
 
   const StartTLSPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static StartTLSPolicy fromValue(String value) {

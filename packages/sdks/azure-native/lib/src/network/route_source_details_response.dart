@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouteSourceDetailsResponse {
   /// Express Route Circuit identifier
-  final pulumi.Input<String>? circuit;
+  final pulumi.Input<String?>? circuit;
   /// Flag to indicate if the route learned from the primary device is active or passive
-  final pulumi.Input<String>? pri;
+  final pulumi.Input<String?>? pri;
   /// Flag to indicate if the route learned from the secondary device is active or passive
-  final pulumi.Input<String>? sec;
+  final pulumi.Input<String?>? sec;
 
   /// Creates a new [RouteSourceDetailsResponse].
   /// [circuit] Express Route Circuit identifier

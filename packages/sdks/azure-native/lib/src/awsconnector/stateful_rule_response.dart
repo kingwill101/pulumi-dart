@@ -7,11 +7,11 @@ import 'rule_option_response.dart';
 /// Definition of StatefulRule
 class StatefulRuleResponse {
   /// Property action
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// Property header
-  final pulumi.Input<HeaderResponse>? header;
+  final pulumi.Input<HeaderResponse?>? header;
   /// Property ruleOptions
-  final pulumi.Input<List<RuleOptionResponse>>? ruleOptions;
+  final pulumi.Input<List<RuleOptionResponse>?>? ruleOptions;
 
   /// Creates a new [StatefulRuleResponse].
   /// [action] Property action

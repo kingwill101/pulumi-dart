@@ -8,11 +8,11 @@ class TestBaseAccountSKUResponse {
   /// The capabilities of a SKU.
   final pulumi.Input<List<TestBaseAccountSKUCapabilityResponse>> capabilities;
   /// The locations that the SKU is available.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// The name of the SKU. This is typically a letter + number code, such as B0 or S0.
   final pulumi.Input<String> name;
   /// The type of resource the SKU applies to.
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
   /// The tier of this particular SKU.
   final pulumi.Input<String> tier;
 

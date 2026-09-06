@@ -8,13 +8,13 @@ class WebApplicationDirectory {
   /// Gets or sets a value indicating whether the directory object is editable.
   /// True when the directory is added as an optional directory, false when discovery is done
   /// manually.
-  final pulumi.Input<bool>? isEditable;
+  final pulumi.Input<bool?>? isEditable;
   /// Gets or sets the paths of the directory on the source machine.
-  final pulumi.Input<List<String>>? sourcePaths;
+  final pulumi.Input<List<String>?>? sourcePaths;
   /// Gets or sets the size of the directory on the source machine.
-  final pulumi.Input<String>? sourceSize;
+  final pulumi.Input<String?>? sourceSize;
   /// Storage profile for the directory on the target container.
-  final pulumi.Input<TargetStorageProfile>? storageProfile;
+  final pulumi.Input<TargetStorageProfile?>? storageProfile;
 
   /// Creates a new [WebApplicationDirectory].
   /// [isEditable] Gets or sets a value indicating whether the directory object is editable.

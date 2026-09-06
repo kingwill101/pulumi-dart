@@ -6,13 +6,13 @@ import 'associated_identity.dart';
 /// Chaos Experiment properties.
 class ChaosExperimentPropertiesOfDrill {
   /// Identity to be used by the Chaos Experiment for invoking faults on resources.
-  final pulumi.Input<AssociatedIdentity>? chaosExperimentIdentityForFaults;
+  final pulumi.Input<AssociatedIdentity?>? chaosExperimentIdentityForFaults;
   /// Identity to use for Chaos Experiment operations.
-  final pulumi.Input<AssociatedIdentity>? identity;
+  final pulumi.Input<AssociatedIdentity?>? identity;
   /// Region for chaosExperiment resource.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Subscription for chaosExperiment resource.
-  final pulumi.Input<String>? subscription;
+  final pulumi.Input<String?>? subscription;
 
   /// Creates a new [ChaosExperimentPropertiesOfDrill].
   /// [chaosExperimentIdentityForFaults] Identity to be used by the Chaos Experiment for invoking faults on resources.

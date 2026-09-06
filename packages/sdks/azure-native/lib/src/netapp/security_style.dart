@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The security style of volume, default unix, defaults to ntfs for dual protocol or CIFS protocol
-enum SecurityStyle {
+enum SecurityStyle implements pulumi.PulumiEnum<String> {
   valueNtfs("ntfs"),
   valueUnix("unix");
 
   const SecurityStyle(this.wireValue);
+  @override
   final String wireValue;
 
   static SecurityStyle fromValue(String value) {

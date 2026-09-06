@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_appcomplianceautomation_list_provider_action_in_use_storage_accounts_args_doc}
 class ListProviderActionInUseStorageAccountsArgs {
   /// List of subscription ids to be query. If the list is null or empty, the API will query all the subscriptions of the user.
-  final pulumi.Input<List<String>>? subscriptionIds;
+  final pulumi.Input<List<String>?>? subscriptionIds;
 
   /// Creates a new [ListProviderActionInUseStorageAccountsArgs].
   /// [subscriptionIds] List of subscription ids to be query. If the list is null or empty, the API will query all the subscriptions of the user.

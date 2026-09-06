@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'system_data_response.dart';
 import 'workload_network_segment_args.dart';
+import 'workload_network_segment_port_vif_response.dart';
 import 'workload_network_segment_subnet_response.dart';
 
 /// NSX Segment
@@ -216,7 +217,7 @@ class WorkloadNetworkSegment extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Port Vif which segment is associated with.
-  late final pulumi.Output<List<Map<String, dynamic>>> portVif;
+  late final pulumi.Output<List<WorkloadNetworkSegmentPortVifResponse>> portVif;
   /// The provisioning state
   late final pulumi.Output<String> provisioningState;
   /// NSX revision number.
@@ -248,7 +249,29 @@ class WorkloadNetworkSegment extends pulumi.CustomResource {
     connectedGateway = registerOutput<String?>('connectedGateway');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    portVif = registerOutput<List<Map<String, dynamic>>>('portVif');
+    portVif = registerOutput<List<WorkloadNetworkSegmentPortVifResponse>>('portVif', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadNetworkSegmentPortVifResponse>(guardedValue, (value) => WorkloadNetworkSegmentPortVifResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    revision = registerOutput<double?>('revision');
+    status = registerOutput<String>('status');
+    subnet = registerOutput<WorkloadNetworkSegmentSubnetResponse?>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadNetworkSegmentSubnetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [WorkloadNetworkSegment] resource.
+  WorkloadNetworkSegment.reference(String urn)
+    : super(
+        'azure-native:avs:WorkloadNetworkSegment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectedGateway = registerOutput<String?>('connectedGateway');
+    displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    portVif = registerOutput<List<WorkloadNetworkSegmentPortVifResponse>>('portVif', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadNetworkSegmentPortVifResponse>(guardedValue, (value) => WorkloadNetworkSegmentPortVifResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     revision = registerOutput<double?>('revision');
     status = registerOutput<String>('status');

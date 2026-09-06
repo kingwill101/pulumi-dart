@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Network protocol this rule applies to.
-enum NsgProtocol {
+enum NsgProtocol implements pulumi.PulumiEnum<String> {
   valueHttp("http"),
   valueHttps("https"),
   valueTcp("tcp"),
@@ -9,6 +11,7 @@ enum NsgProtocol {
   valueEsp("esp");
 
   const NsgProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static NsgProtocol fromValue(String value) {

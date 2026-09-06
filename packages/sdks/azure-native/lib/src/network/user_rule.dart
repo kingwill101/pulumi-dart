@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'address_prefix_item_response.dart';
 import 'system_data_response.dart';
 import 'user_rule_args.dart';
 
@@ -436,7 +437,7 @@ class UserRule extends pulumi.CustomResource {
   /// The destination port ranges.
   late final pulumi.Output<List<String>?> destinationPortRanges;
   /// The destination address prefixes. CIDR or destination IP ranges.
-  late final pulumi.Output<List<Map<String, dynamic>>?> destinations;
+  late final pulumi.Output<List<AddressPrefixItemResponse>?> destinations;
   /// Indicates if the traffic matched against the rule in inbound or outbound.
   late final pulumi.Output<String> direction;
   /// A unique read-only string that changes whenever the resource is updated.
@@ -453,7 +454,7 @@ class UserRule extends pulumi.CustomResource {
   /// The source port ranges.
   late final pulumi.Output<List<String>?> sourcePortRanges;
   /// The CIDR or source IP ranges.
-  late final pulumi.Output<List<Map<String, dynamic>>?> sources;
+  late final pulumi.Output<List<AddressPrefixItemResponse>?> sources;
   /// The system metadata related to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource type.
@@ -475,16 +476,41 @@ class UserRule extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
-    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges');
-    destinations = registerOutput<List<Map<String, dynamic>>?>('destinations');
+    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    destinations = registerOutput<List<AddressPrefixItemResponse>?>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AddressPrefixItemResponse>(guardedValue, (value) => AddressPrefixItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
     direction = registerOutput<String>('direction');
     etag = registerOutput<String>('etag');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     protocol = registerOutput<String>('protocol');
     provisioningState = registerOutput<String>('provisioningState');
-    sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges');
-    sources = registerOutput<List<Map<String, dynamic>>?>('sources');
+    sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sources = registerOutput<List<AddressPrefixItemResponse>?>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AddressPrefixItemResponse>(guardedValue, (value) => AddressPrefixItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [UserRule] resource.
+  UserRule.reference(String urn)
+    : super(
+        'azure-native:network:UserRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    destinations = registerOutput<List<AddressPrefixItemResponse>?>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AddressPrefixItemResponse>(guardedValue, (value) => AddressPrefixItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    direction = registerOutput<String>('direction');
+    etag = registerOutput<String>('etag');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    protocol = registerOutput<String>('protocol');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sources = registerOutput<List<AddressPrefixItemResponse>?>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AddressPrefixItemResponse>(guardedValue, (value) => AddressPrefixItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

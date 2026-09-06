@@ -7,37 +7,37 @@ import 'system_data_response.dart';
 /// Result data returned by getCommunityTraining.
 class GetCommunityTrainingResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// To indicate whether the Community Training instance has Disaster Recovery enabled
-  final bool disasterRecoveryEnabled;
+  final bool? disasterRecoveryEnabled;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The identity configuration of the Community Training resource
-  final IdentityConfigurationPropertiesResponse identityConfiguration;
+  final IdentityConfigurationPropertiesResponse? identityConfiguration;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The email address of the portal admin
-  final String portalAdminEmailAddress;
+  final String? portalAdminEmailAddress;
   /// The portal name (website name) of the Community Training instance
-  final String portalName;
+  final String? portalName;
   /// The email address of the portal owner. Will be used as the primary contact
-  final String portalOwnerEmailAddress;
+  final String? portalOwnerEmailAddress;
   /// The organization name of the portal owner
-  final String portalOwnerOrganizationName;
+  final String? portalOwnerOrganizationName;
   /// The status of the last operation.
-  final String provisioningState;
+  final String? provisioningState;
   /// The SKU (Stock Keeping Unit) assigned to this resource.
   final SkuResponse? sku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// To indicate whether the Community Training instance has Zone Redundancy enabled
-  final bool zoneRedundancyEnabled;
+  final bool? zoneRedundancyEnabled;
 
   /// Creates a new [GetCommunityTrainingResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -57,63 +57,63 @@ class GetCommunityTrainingResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [zoneRedundancyEnabled] To indicate whether the Community Training instance has Zone Redundancy enabled
   const GetCommunityTrainingResult({
-    required this.azureApiVersion,
-    required this.disasterRecoveryEnabled,
-    required this.id,
-    required this.identityConfiguration,
-    required this.location,
-    required this.name,
-    required this.portalAdminEmailAddress,
-    required this.portalName,
-    required this.portalOwnerEmailAddress,
-    required this.portalOwnerOrganizationName,
-    required this.provisioningState,
+    this.azureApiVersion,
+    this.disasterRecoveryEnabled,
+    this.id,
+    this.identityConfiguration,
+    this.location,
+    this.name,
+    this.portalAdminEmailAddress,
+    this.portalName,
+    this.portalOwnerEmailAddress,
+    this.portalOwnerOrganizationName,
+    this.provisioningState,
     this.sku,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.zoneRedundancyEnabled,
+    this.type,
+    this.zoneRedundancyEnabled,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'disasterRecoveryEnabled': disasterRecoveryEnabled,
-      'id': id,
-      'identityConfiguration': identityConfiguration.toMap(),
-      'location': location,
-      'name': name,
-      'portalAdminEmailAddress': portalAdminEmailAddress,
-      'portalName': portalName,
-      'portalOwnerEmailAddress': portalOwnerEmailAddress,
-      'portalOwnerOrganizationName': portalOwnerOrganizationName,
-      'provisioningState': provisioningState,
+      'azureApiVersion': ?azureApiVersion,
+      'disasterRecoveryEnabled': ?disasterRecoveryEnabled,
+      'id': ?id,
+      'identityConfiguration': ?identityConfiguration?.toMap(),
+      'location': ?location,
+      'name': ?name,
+      'portalAdminEmailAddress': ?portalAdminEmailAddress,
+      'portalName': ?portalName,
+      'portalOwnerEmailAddress': ?portalOwnerEmailAddress,
+      'portalOwnerOrganizationName': ?portalOwnerOrganizationName,
+      'provisioningState': ?provisioningState,
       'sku': ?sku?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'zoneRedundancyEnabled': zoneRedundancyEnabled,
+      'type': ?type,
+      'zoneRedundancyEnabled': ?zoneRedundancyEnabled,
     };
   }
 
   factory GetCommunityTrainingResult.fromMap(Map<String, dynamic> map) {
     return GetCommunityTrainingResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      disasterRecoveryEnabled: map['disasterRecoveryEnabled'] as bool,
-      id: map['id'] as String,
-      identityConfiguration: IdentityConfigurationPropertiesResponse.fromMap((map['identityConfiguration']! as Map).cast<String, dynamic>()),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      portalAdminEmailAddress: map['portalAdminEmailAddress'] as String,
-      portalName: map['portalName'] as String,
-      portalOwnerEmailAddress: map['portalOwnerEmailAddress'] as String,
-      portalOwnerOrganizationName: map['portalOwnerOrganizationName'] as String,
-      provisioningState: map['provisioningState'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      disasterRecoveryEnabled: (() { final guardedValue = map['disasterRecoveryEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identityConfiguration: (() { final guardedValue = map['identityConfiguration']; if (guardedValue == null) return null; return IdentityConfigurationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      portalAdminEmailAddress: (() { final guardedValue = map['portalAdminEmailAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      portalName: (() { final guardedValue = map['portalName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      portalOwnerEmailAddress: (() { final guardedValue = map['portalOwnerEmailAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      portalOwnerOrganizationName: (() { final guardedValue = map['portalOwnerOrganizationName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      zoneRedundancyEnabled: map['zoneRedundancyEnabled'] as bool,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      zoneRedundancyEnabled: (() { final guardedValue = map['zoneRedundancyEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Advertise Connected Subnets. Ex: "True" | "False".
-enum RedistributeConnectedSubnets {
+enum RedistributeConnectedSubnets implements pulumi.PulumiEnum<String> {
   valueTrue("True"),
   valueFalse("False");
 
   const RedistributeConnectedSubnets(this.wireValue);
+  @override
   final String wireValue;
 
   static RedistributeConnectedSubnets fromValue(String value) {

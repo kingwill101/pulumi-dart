@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointModelDeprecationPropertiesResponse {
   /// The datetime of deprecation of the fineTune Model.
-  final pulumi.Input<String>? fineTune;
+  final pulumi.Input<String?>? fineTune;
   /// The datetime of deprecation of the inference Model.
-  final pulumi.Input<String>? inference;
+  final pulumi.Input<String?>? inference;
 
   /// Creates a new [EndpointModelDeprecationPropertiesResponse].
   /// [fineTune] The datetime of deprecation of the fineTune Model.

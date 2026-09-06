@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Status of the Addon
-enum AddOnStatus {
+enum AddOnStatus implements pulumi.PulumiEnum<String> {
   disabled("Disabled"),
   disabling("Disabling"),
   enabled("Enabled"),
@@ -9,6 +11,7 @@ enum AddOnStatus {
   terminating("Terminating");
 
   const AddOnStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static AddOnStatus fromValue(String value) {

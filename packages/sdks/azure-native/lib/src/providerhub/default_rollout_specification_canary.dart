@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The canary traffic region configuration.
 class DefaultRolloutSpecificationCanary {
   /// The regions.
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
   /// The skip regions.
-  final pulumi.Input<List<String>>? skipRegions;
+  final pulumi.Input<List<String>?>? skipRegions;
 
   /// Creates a new [DefaultRolloutSpecificationCanary].
   /// [regions] The regions.

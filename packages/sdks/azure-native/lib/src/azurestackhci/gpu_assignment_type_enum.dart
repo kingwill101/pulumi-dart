@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// GPU assignment type
-enum GpuAssignmentTypeEnum {
+enum GpuAssignmentTypeEnum implements pulumi.PulumiEnum<String> {
   gpuDDA("GpuDDA"),
   gpuP("GpuP");
 
   const GpuAssignmentTypeEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static GpuAssignmentTypeEnum fromValue(String value) {

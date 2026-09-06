@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The authentication mechanism used to connect to the Phoenix server.
-enum PhoenixAuthenticationType {
+enum PhoenixAuthenticationType implements pulumi.PulumiEnum<String> {
   anonymous("Anonymous"),
   usernameAndPassword("UsernameAndPassword"),
   windowsAzureHDInsightService("WindowsAzureHDInsightService");
 
   const PhoenixAuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static PhoenixAuthenticationType fromValue(String value) {

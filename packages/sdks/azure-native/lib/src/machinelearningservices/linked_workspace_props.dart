@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// LinkedWorkspace specific properties.
 class LinkedWorkspaceProps {
   /// ResourceId of the link target of the linked workspace.
-  final pulumi.Input<String>? linkedWorkspaceResourceId;
+  final pulumi.Input<String?>? linkedWorkspaceResourceId;
   /// ResourceId of the user assigned identity for the linked workspace.
-  final pulumi.Input<String>? userAssignedIdentityResourceId;
+  final pulumi.Input<String?>? userAssignedIdentityResourceId;
 
   /// Creates a new [LinkedWorkspaceProps].
   /// [linkedWorkspaceResourceId] ResourceId of the link target of the linked workspace.

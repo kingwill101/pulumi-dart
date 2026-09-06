@@ -5,7 +5,7 @@ import 'open_api_validation_response.dart';
 
 class OpenApiConfigurationResponse {
   /// The open api validation.
-  final pulumi.Input<OpenApiValidationResponse>? validation;
+  final pulumi.Input<OpenApiValidationResponse?>? validation;
 
   /// Creates a new [OpenApiConfigurationResponse].
   /// [validation] The open api validation.

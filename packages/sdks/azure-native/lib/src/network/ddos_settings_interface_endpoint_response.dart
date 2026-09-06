@@ -6,9 +6,9 @@ import 'sub_resource_response.dart';
 /// Contains the DDoS protection settings of the public IP.
 class DdosSettingsInterfaceEndpointResponse {
   /// The DDoS custom policy associated with the public IP.
-  final pulumi.Input<SubResourceResponse>? ddosCustomPolicy;
+  final pulumi.Input<SubResourceResponse?>? ddosCustomPolicy;
   /// The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
-  final pulumi.Input<String>? protectionCoverage;
+  final pulumi.Input<String?>? protectionCoverage;
 
   /// Creates a new [DdosSettingsInterfaceEndpointResponse].
   /// [ddosCustomPolicy] The DDoS custom policy associated with the public IP.

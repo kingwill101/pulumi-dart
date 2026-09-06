@@ -8,7 +8,7 @@ class ImageRepositoryCredentialResponse {
   /// Image repository url (e.g.: mcr.microsoft.com).
   final pulumi.Input<String> imageRepositoryUrl;
   /// Repository user password.
-  final pulumi.Input<AsymmetricEncryptedSecretResponse>? password;
+  final pulumi.Input<AsymmetricEncryptedSecretResponse?>? password;
   /// Repository user name.
   final pulumi.Input<String> userName;
 

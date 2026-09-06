@@ -1,41 +1,41 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'domain_properties_response_verification_records.dart';
-import 'domain_properties_response_verification_states.dart';
+import 'domain_properties_verification_records_response.dart';
+import 'domain_properties_verification_states_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getDomain.
 class GetDomainResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The location where the Domains resource data is stored at rest.
-  final String dataLocation;
+  final String? dataLocation;
   /// Describes how a Domains resource is being managed.
-  final String domainManagement;
+  final String? domainManagement;
   /// P2 sender domain that is displayed to the email recipients [RFC 5322].
-  final String fromSenderDomain;
+  final String? fromSenderDomain;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// P1 sender domain that is present on the email envelope [RFC 5321].
-  final String mailFromSenderDomain;
+  final String? mailFromSenderDomain;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Describes whether user engagement tracking is enabled or disabled.
   final String? userEngagementTracking;
   /// List of DnsRecord
-  final DomainPropertiesResponseVerificationRecords verificationRecords;
+  final DomainPropertiesVerificationRecordsResponse? verificationRecords;
   /// List of VerificationStatusRecord
-  final DomainPropertiesResponseVerificationStates verificationStates;
+  final DomainPropertiesVerificationStatesResponse? verificationStates;
 
   /// Creates a new [GetDomainResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -54,60 +54,60 @@ class GetDomainResult {
   /// [verificationRecords] List of DnsRecord
   /// [verificationStates] List of VerificationStatusRecord
   const GetDomainResult({
-    required this.azureApiVersion,
-    required this.dataLocation,
-    required this.domainManagement,
-    required this.fromSenderDomain,
-    required this.id,
-    required this.location,
-    required this.mailFromSenderDomain,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
+    this.azureApiVersion,
+    this.dataLocation,
+    this.domainManagement,
+    this.fromSenderDomain,
+    this.id,
+    this.location,
+    this.mailFromSenderDomain,
+    this.name,
+    this.provisioningState,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
     this.userEngagementTracking,
-    required this.verificationRecords,
-    required this.verificationStates,
+    this.verificationRecords,
+    this.verificationStates,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'dataLocation': dataLocation,
-      'domainManagement': domainManagement,
-      'fromSenderDomain': fromSenderDomain,
-      'id': id,
-      'location': location,
-      'mailFromSenderDomain': mailFromSenderDomain,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'dataLocation': ?dataLocation,
+      'domainManagement': ?domainManagement,
+      'fromSenderDomain': ?fromSenderDomain,
+      'id': ?id,
+      'location': ?location,
+      'mailFromSenderDomain': ?mailFromSenderDomain,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'userEngagementTracking': ?userEngagementTracking,
-      'verificationRecords': verificationRecords.toMap(),
-      'verificationStates': verificationStates.toMap(),
+      'verificationRecords': ?verificationRecords?.toMap(),
+      'verificationStates': ?verificationStates?.toMap(),
     };
   }
 
   factory GetDomainResult.fromMap(Map<String, dynamic> map) {
     return GetDomainResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      dataLocation: map['dataLocation'] as String,
-      domainManagement: map['domainManagement'] as String,
-      fromSenderDomain: map['fromSenderDomain'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      mailFromSenderDomain: map['mailFromSenderDomain'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dataLocation: (() { final guardedValue = map['dataLocation']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      domainManagement: (() { final guardedValue = map['domainManagement']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      fromSenderDomain: (() { final guardedValue = map['fromSenderDomain']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      mailFromSenderDomain: (() { final guardedValue = map['mailFromSenderDomain']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       userEngagementTracking: (() { final guardedValue = map['userEngagementTracking']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      verificationRecords: DomainPropertiesResponseVerificationRecords.fromMap((map['verificationRecords']! as Map).cast<String, dynamic>()),
-      verificationStates: DomainPropertiesResponseVerificationStates.fromMap((map['verificationStates']! as Map).cast<String, dynamic>()),
+      verificationRecords: (() { final guardedValue = map['verificationRecords']; if (guardedValue == null) return null; return DomainPropertiesVerificationRecordsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      verificationStates: (() { final guardedValue = map['verificationStates']; if (guardedValue == null) return null; return DomainPropertiesVerificationStatesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

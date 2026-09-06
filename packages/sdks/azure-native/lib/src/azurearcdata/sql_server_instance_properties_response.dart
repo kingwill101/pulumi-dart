@@ -14,37 +14,37 @@ class SqlServerInstancePropertiesResponse {
   /// The role of the SQL Server, based on availability.
   final pulumi.Input<String> alwaysOnRole;
   /// Authentication related configuration for the SQL Server Instance.
-  final pulumi.Input<AuthenticationResponse>? authentication;
+  final pulumi.Input<AuthenticationResponse?>? authentication;
   /// Status of Azure Defender.
   final pulumi.Input<String> azureDefenderStatus;
   /// Timestamp of last Azure Defender status update.
   final pulumi.Input<String> azureDefenderStatusLastUpdated;
   /// The backup profile for the SQL server.
-  final pulumi.Input<BackupPolicyResponse>? backupPolicy;
+  final pulumi.Input<BackupPolicyResponse?>? backupPolicy;
   /// Client connection related configuration.
-  final pulumi.Input<ClientConnectionResponse>? clientConnection;
+  final pulumi.Input<ClientConnectionResponse?>? clientConnection;
   /// SQL Server collation.
   final pulumi.Input<String> collation;
   /// ARM Resource id of the container resource (Azure Arc for Servers).
   final pulumi.Input<String> containerResourceId;
   /// The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
-  final pulumi.Input<String>? cores;
+  final pulumi.Input<String?>? cores;
   /// The time when the resource was created.
   final pulumi.Input<String> createTime;
   /// SQL Server current version.
   final pulumi.Input<String> currentVersion;
   /// Database mirroring endpoint related properties.
-  final pulumi.Input<DBMEndpointResponse>? databaseMirroringEndpoint;
+  final pulumi.Input<DBMEndpointResponse?>? databaseMirroringEndpoint;
   /// Indicates whether database master key exists in SQL Server.
   final pulumi.Input<bool> dbMasterKeyExists;
   /// SQL Server edition.
-  final pulumi.Input<String>? edition;
+  final pulumi.Input<String?>? edition;
   /// Failover Cluster Instance properties.
-  final pulumi.Input<FailoverClusterResponse>? failoverCluster;
+  final pulumi.Input<FailoverClusterResponse?>? failoverCluster;
   /// Type of host for Azure Arc SQL Server
-  final pulumi.Input<String>? hostType;
+  final pulumi.Input<String?>? hostType;
   /// SQL Server instance name.
-  final pulumi.Input<String>? instanceName;
+  final pulumi.Input<String?>? instanceName;
   /// Indicates whether DigiCert PKI root-authority certificate (trusted by Azure) exists in SQL Server and trusted for Azure database.windows.net domains.
   final pulumi.Input<bool> isDigiCertPkiCertTrustConfigured;
   /// Indicates whether always On availability groups is enabled in SQL Server.
@@ -60,9 +60,9 @@ class SqlServerInstancePropertiesResponse {
   /// max server memory (MB) value configured for this instance.
   final pulumi.Input<double> maxServerMemoryMB;
   /// Migration related configuration.
-  final pulumi.Input<MigrationResponse>? migration;
+  final pulumi.Input<MigrationResponse?>? migration;
   /// The monitoring configuration.
-  final pulumi.Input<MonitoringResponse>? monitoring;
+  final pulumi.Input<MonitoringResponse?>? monitoring;
   /// SQL Server update level.
   final pulumi.Input<String> patchLevel;
   /// SQL Server product ID.
@@ -70,7 +70,7 @@ class SqlServerInstancePropertiesResponse {
   /// The provisioning state of the Arc-enabled SQL Server resource.
   final pulumi.Input<String> provisioningState;
   /// Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host.
-  final pulumi.Input<String>? serviceType;
+  final pulumi.Input<String?>? serviceType;
   /// The cloud connectivity status.
   final pulumi.Input<String> status;
   /// Dynamic TCP ports used by SQL Server.
@@ -80,11 +80,11 @@ class SqlServerInstancePropertiesResponse {
   /// An array of integers, where each value represents the enabled trace flags in SQL Server.
   final pulumi.Input<List<int>> traceFlags;
   /// Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
-  final pulumi.Input<String>? upgradeLockedUntil;
+  final pulumi.Input<String?>? upgradeLockedUntil;
   /// The number of logical processors used by the SQL Server instance.
   final pulumi.Input<String> vCore;
   /// SQL Server version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// The unique ID of the hybrid machine that this resource belongs to.
   final pulumi.Input<String> vmId;
 
@@ -236,7 +236,7 @@ class SqlServerInstancePropertiesResponse {
       lastInventoryUploadTime: pulumi.Input.fromValue(map['lastInventoryUploadTime'] as String),
       lastUsageUploadTime: pulumi.Input.fromValue(map['lastUsageUploadTime'] as String),
       licenseType: pulumi.Input.fromValue(map['licenseType'] as String),
-      maxServerMemoryMB: pulumi.Input.fromValue(map['maxServerMemoryMB'] as double),
+      maxServerMemoryMB: pulumi.Input.fromValue((map['maxServerMemoryMB'] as num).toDouble()),
       migration: (() { final guardedValue = map['migration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MigrationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       monitoring: (() { final guardedValue = map['monitoring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MonitoringResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       patchLevel: pulumi.Input.fromValue(map['patchLevel'] as String),

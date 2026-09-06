@@ -34,6 +34,17 @@ Future<GetDraResult> getDra(
   return GetDraResult.fromMap(result);
 }
 
+pulumi.Output<GetDraResult> getDraOutput(
+  GetDraArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datareplication:getDra',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDraResult.fromMap);
+}
+
 /// Gets the details of the fabric.
 ///
 /// Uses Azure REST API version 2021-02-16-preview.
@@ -52,6 +63,17 @@ Future<GetFabricResult> getFabric(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFabricResult.fromMap(result);
+}
+
+pulumi.Output<GetFabricResult> getFabricOutput(
+  GetFabricArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datareplication:getFabric',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFabricResult.fromMap);
 }
 
 /// Gets the details of the fabric agent.
@@ -74,6 +96,17 @@ Future<GetFabricAgentResult> getFabricAgent(
   return GetFabricAgentResult.fromMap(result);
 }
 
+pulumi.Output<GetFabricAgentResult> getFabricAgentOutput(
+  GetFabricAgentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datareplication:getFabricAgent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFabricAgentResult.fromMap);
+}
+
 /// Gets the details of the policy.
 ///
 /// Uses Azure REST API version 2021-02-16-preview.
@@ -92,6 +125,17 @@ Future<GetPolicyResult> getPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetPolicyResult> getPolicyOutput(
+  GetPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datareplication:getPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyResult.fromMap);
 }
 
 /// Gets the private endpoint connection details.
@@ -114,6 +158,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datareplication:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Gets the details of the protected item.
 ///
 /// Uses Azure REST API version 2021-02-16-preview.
@@ -132,6 +187,17 @@ Future<GetProtectedItemResult> getProtectedItem(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProtectedItemResult.fromMap(result);
+}
+
+pulumi.Output<GetProtectedItemResult> getProtectedItemOutput(
+  GetProtectedItemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datareplication:getProtectedItem',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProtectedItemResult.fromMap);
 }
 
 /// Gets the details of the replication extension.
@@ -154,6 +220,17 @@ Future<GetReplicationExtensionResult> getReplicationExtension(
   return GetReplicationExtensionResult.fromMap(result);
 }
 
+pulumi.Output<GetReplicationExtensionResult> getReplicationExtensionOutput(
+  GetReplicationExtensionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datareplication:getReplicationExtension',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationExtensionResult.fromMap);
+}
+
 /// Gets the details of the vault.
 ///
 /// Uses Azure REST API version 2021-02-16-preview.
@@ -172,4 +249,15 @@ Future<GetVaultResult> getVault(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVaultResult.fromMap(result);
+}
+
+pulumi.Output<GetVaultResult> getVaultOutput(
+  GetVaultArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datareplication:getVault',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVaultResult.fromMap);
 }

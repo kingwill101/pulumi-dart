@@ -6,13 +6,13 @@ import 'run_command_managed_identity.dart';
 /// Describes the script sources for run command. Use only one of script, scriptUri, commandId.
 class MachineRunCommandScriptSource {
   /// Specifies the commandId of predefined built-in script.
-  final pulumi.Input<String>? commandId;
+  final pulumi.Input<String?>? commandId;
   /// Specifies the script content to be executed on the machine.
-  final pulumi.Input<String>? script;
+  final pulumi.Input<String?>? script;
   /// Specifies the script download location. It can be either SAS URI of an Azure storage blob with read access or public URI.
-  final pulumi.Input<String>? scriptUri;
+  final pulumi.Input<String?>? scriptUri;
   /// User-assigned managed identity that has access to scriptUri in case of Azure storage blob. Use an empty object in case of system-assigned identity. Make sure the Azure storage blob exists, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
-  final pulumi.Input<RunCommandManagedIdentity>? scriptUriManagedIdentity;
+  final pulumi.Input<RunCommandManagedIdentity?>? scriptUriManagedIdentity;
 
   /// Creates a new [MachineRunCommandScriptSource].
   /// [commandId] Specifies the commandId of predefined built-in script.

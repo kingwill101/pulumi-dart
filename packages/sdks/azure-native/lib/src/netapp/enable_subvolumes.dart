@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Flag indicating whether subvolume operations are enabled on the volume
-enum EnableSubvolumes {
+enum EnableSubvolumes implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const EnableSubvolumes(this.wireValue);
+  @override
   final String wireValue;
 
   static EnableSubvolumes fromValue(String value) {

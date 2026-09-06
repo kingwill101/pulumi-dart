@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'availability_set_resource_settings_response.dart';
 import 'move_resource_dependency_override_response.dart';
 import 'move_resource_dependency_response.dart';
 import 'move_resource_properties_response_errors.dart';
@@ -12,11 +11,11 @@ class MoveResourcePropertiesResponse {
   /// Gets or sets the move resource dependencies.
   final pulumi.Input<List<MoveResourceDependencyResponse>> dependsOn;
   /// Gets or sets the move resource dependencies overrides.
-  final pulumi.Input<List<MoveResourceDependencyOverrideResponse>>? dependsOnOverrides;
+  final pulumi.Input<List<MoveResourceDependencyOverrideResponse>?>? dependsOnOverrides;
   /// Defines the move resource errors.
   final pulumi.Input<MoveResourcePropertiesResponseErrors> errors;
   /// Gets or sets the existing target ARM Id of the resource.
-  final pulumi.Input<String>? existingTargetId;
+  final pulumi.Input<String?>? existingTargetId;
   /// Gets a value indicating whether the resolve action is required over the move collection.
   final pulumi.Input<bool> isResolveRequired;
   /// Defines the move resource status.
@@ -24,11 +23,11 @@ class MoveResourcePropertiesResponse {
   /// Defines the provisioning states.
   final pulumi.Input<String> provisioningState;
   /// Gets or sets the resource settings.
-  final pulumi.Input<AvailabilitySetResourceSettingsResponse>? resourceSettings;
+  final pulumi.Input<dynamic>? resourceSettings;
   /// Gets or sets the Source ARM Id of the resource.
   final pulumi.Input<String> sourceId;
   /// Gets or sets the source resource settings.
-  final pulumi.Input<AvailabilitySetResourceSettingsResponse> sourceResourceSettings;
+  final pulumi.Input<dynamic> sourceResourceSettings;
   /// Gets or sets the Target ARM Id of the resource.
   final pulumi.Input<String> targetId;
 
@@ -67,9 +66,9 @@ class MoveResourcePropertiesResponse {
       'isResolveRequired': isResolveRequired,
       'moveStatus': pulumi.Input.mapInputValue<MoveResourcePropertiesResponseMoveStatus, Map<String, dynamic>>(moveStatus, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'resourceSettings': ?pulumi.Input.mapOptionalInputValue<AvailabilitySetResourceSettingsResponse, Map<String, dynamic>>(resourceSettings, (value) => value.toMap()),
+      'resourceSettings': ?resourceSettings,
       'sourceId': sourceId,
-      'sourceResourceSettings': pulumi.Input.mapInputValue<AvailabilitySetResourceSettingsResponse, Map<String, dynamic>>(sourceResourceSettings, (value) => value.toMap()),
+      'sourceResourceSettings': sourceResourceSettings,
       'targetId': targetId,
     };
   }
@@ -83,9 +82,9 @@ class MoveResourcePropertiesResponse {
       isResolveRequired: pulumi.Input.fromValue(map['isResolveRequired'] as bool),
       moveStatus: pulumi.Input.fromValue(MoveResourcePropertiesResponseMoveStatus.fromMap((map['moveStatus']! as Map).cast<String, dynamic>())),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
-      resourceSettings: (() { final guardedValue = map['resourceSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AvailabilitySetResourceSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceSettings: (() { final guardedValue = map['resourceSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sourceId: pulumi.Input.fromValue(map['sourceId'] as String),
-      sourceResourceSettings: pulumi.Input.fromValue(AvailabilitySetResourceSettingsResponse.fromMap((map['sourceResourceSettings']! as Map).cast<String, dynamic>())),
+      sourceResourceSettings: pulumi.Input.fromValue(map['sourceResourceSettings']),
       targetId: pulumi.Input.fromValue(map['targetId'] as String),
     );
   }

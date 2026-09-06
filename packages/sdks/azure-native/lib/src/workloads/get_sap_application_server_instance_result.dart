@@ -9,51 +9,51 @@ import 'system_data_response.dart';
 /// Result data returned by getSapApplicationServerInstance.
 class GetSapApplicationServerInstanceResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Application server instance dispatcher status.
-  final String dispatcherStatus;
+  final String? dispatcherStatus;
   /// Defines the Application Instance errors.
-  final SAPVirtualInstanceErrorResponse errors;
+  final SAPVirtualInstanceErrorResponse? errors;
   /// Application server instance gateway Port.
-  final double gatewayPort;
+  final double? gatewayPort;
   /// Defines the health of SAP Instances.
-  final String health;
+  final String? health;
   /// Application server instance SAP hostname.
-  final String hostname;
+  final String? hostname;
   /// Application server instance ICM HTTP Port.
-  final double icmHttpPort;
+  final double? icmHttpPort;
   /// Application server instance ICM HTTPS Port.
-  final double icmHttpsPort;
+  final double? icmHttpsPort;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Application server Instance Number.
-  final String instanceNo;
+  final String? instanceNo;
   /// Application server instance SAP IP Address.
-  final String ipAddress;
+  final String? ipAddress;
   /// Application server instance SAP Kernel Patch level.
-  final String kernelPatch;
+  final String? kernelPatch;
   /// Application server instance SAP Kernel Version.
-  final String kernelVersion;
+  final String? kernelVersion;
   /// The Load Balancer details such as LoadBalancer ID attached to Application Server Virtual Machines
-  final LoadBalancerDetailsResponse loadBalancerDetails;
+  final LoadBalancerDetailsResponse? loadBalancerDetails;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Defines the provisioning states.
-  final String provisioningState;
+  final String? provisioningState;
   /// Defines the SAP Instance status.
-  final String status;
+  final String? status;
   /// Application server Subnet.
-  final String subnet;
+  final String? subnet;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// The list of virtual machines.
-  final List<ApplicationServerVmDetailsResponse> vmDetails;
+  final List<ApplicationServerVmDetailsResponse>? vmDetails;
 
   /// Creates a new [GetSapApplicationServerInstanceResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -80,84 +80,84 @@ class GetSapApplicationServerInstanceResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [vmDetails] The list of virtual machines.
   const GetSapApplicationServerInstanceResult({
-    required this.azureApiVersion,
-    required this.dispatcherStatus,
-    required this.errors,
-    required this.gatewayPort,
-    required this.health,
-    required this.hostname,
-    required this.icmHttpPort,
-    required this.icmHttpsPort,
-    required this.id,
-    required this.instanceNo,
-    required this.ipAddress,
-    required this.kernelPatch,
-    required this.kernelVersion,
-    required this.loadBalancerDetails,
-    required this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.status,
-    required this.subnet,
-    required this.systemData,
+    this.azureApiVersion,
+    this.dispatcherStatus,
+    this.errors,
+    this.gatewayPort,
+    this.health,
+    this.hostname,
+    this.icmHttpPort,
+    this.icmHttpsPort,
+    this.id,
+    this.instanceNo,
+    this.ipAddress,
+    this.kernelPatch,
+    this.kernelVersion,
+    this.loadBalancerDetails,
+    this.location,
+    this.name,
+    this.provisioningState,
+    this.status,
+    this.subnet,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.vmDetails,
+    this.type,
+    this.vmDetails,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'dispatcherStatus': dispatcherStatus,
-      'errors': errors.toMap(),
-      'gatewayPort': gatewayPort,
-      'health': health,
-      'hostname': hostname,
-      'icmHttpPort': icmHttpPort,
-      'icmHttpsPort': icmHttpsPort,
-      'id': id,
-      'instanceNo': instanceNo,
-      'ipAddress': ipAddress,
-      'kernelPatch': kernelPatch,
-      'kernelVersion': kernelVersion,
-      'loadBalancerDetails': loadBalancerDetails.toMap(),
-      'location': location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'status': status,
-      'subnet': subnet,
-      'systemData': systemData.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'dispatcherStatus': ?dispatcherStatus,
+      'errors': ?errors?.toMap(),
+      'gatewayPort': ?gatewayPort,
+      'health': ?health,
+      'hostname': ?hostname,
+      'icmHttpPort': ?icmHttpPort,
+      'icmHttpsPort': ?icmHttpsPort,
+      'id': ?id,
+      'instanceNo': ?instanceNo,
+      'ipAddress': ?ipAddress,
+      'kernelPatch': ?kernelPatch,
+      'kernelVersion': ?kernelVersion,
+      'loadBalancerDetails': ?loadBalancerDetails?.toMap(),
+      'location': ?location,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'status': ?status,
+      'subnet': ?subnet,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'vmDetails': pulumi.Input.encodeList<ApplicationServerVmDetailsResponse, Map<String, dynamic>>(vmDetails, (value) => value.toMap()),
+      'type': ?type,
+      'vmDetails': ?(() { final guardedValue = vmDetails; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationServerVmDetailsResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetSapApplicationServerInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetSapApplicationServerInstanceResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      dispatcherStatus: map['dispatcherStatus'] as String,
-      errors: SAPVirtualInstanceErrorResponse.fromMap((map['errors']! as Map).cast<String, dynamic>()),
-      gatewayPort: map['gatewayPort'] as double,
-      health: map['health'] as String,
-      hostname: map['hostname'] as String,
-      icmHttpPort: map['icmHttpPort'] as double,
-      icmHttpsPort: map['icmHttpsPort'] as double,
-      id: map['id'] as String,
-      instanceNo: map['instanceNo'] as String,
-      ipAddress: map['ipAddress'] as String,
-      kernelPatch: map['kernelPatch'] as String,
-      kernelVersion: map['kernelVersion'] as String,
-      loadBalancerDetails: LoadBalancerDetailsResponse.fromMap((map['loadBalancerDetails']! as Map).cast<String, dynamic>()),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      status: map['status'] as String,
-      subnet: map['subnet'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dispatcherStatus: (() { final guardedValue = map['dispatcherStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      errors: (() { final guardedValue = map['errors']; if (guardedValue == null) return null; return SAPVirtualInstanceErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      gatewayPort: (() { final guardedValue = map['gatewayPort']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      health: (() { final guardedValue = map['health']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      icmHttpPort: (() { final guardedValue = map['icmHttpPort']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      icmHttpsPort: (() { final guardedValue = map['icmHttpsPort']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceNo: (() { final guardedValue = map['instanceNo']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kernelPatch: (() { final guardedValue = map['kernelPatch']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kernelVersion: (() { final guardedValue = map['kernelVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      loadBalancerDetails: (() { final guardedValue = map['loadBalancerDetails']; if (guardedValue == null) return null; return LoadBalancerDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      vmDetails: pulumi.Input.decodeList<ApplicationServerVmDetailsResponse>(map['vmDetails']!, (value) => ApplicationServerVmDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vmDetails: (() { final guardedValue = map['vmDetails']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationServerVmDetailsResponse>(guardedValue, (value) => ApplicationServerVmDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

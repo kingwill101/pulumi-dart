@@ -11,19 +11,19 @@ class EmailReceiverResponse {
   /// The receiver status of the e-mail.
   final pulumi.Input<String> status;
   /// Indicates whether to use common alert schema.
-  final pulumi.Input<bool>? useCommonAlertSchema;
+  final pulumi.Input<bool?>? useCommonAlertSchema;
 
   /// Creates a new [EmailReceiverResponse].
   /// [emailAddress] The email address of this receiver.
   /// [name] The name of the email receiver. Names must be unique across all receivers within an action group.
   /// [status] The receiver status of the e-mail.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
-  const EmailReceiverResponse({
+  EmailReceiverResponse({
     required this.emailAddress,
     required this.name,
     required this.status,
-    this.useCommonAlertSchema,
-  });
+    pulumi.Input<bool?>? useCommonAlertSchema,
+  }) : useCommonAlertSchema = useCommonAlertSchema ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

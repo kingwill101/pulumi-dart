@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of DestinationOptionsModelProperties
 class DestinationOptionsModelProperties {
   /// Property fileFormat
-  final pulumi.Input<String>? fileFormat;
+  final pulumi.Input<dynamic>? fileFormat;
   /// Property hiveCompatiblePartitions
-  final pulumi.Input<bool>? hiveCompatiblePartitions;
+  final pulumi.Input<bool?>? hiveCompatiblePartitions;
   /// Property perHourPartition
-  final pulumi.Input<bool>? perHourPartition;
+  final pulumi.Input<bool?>? perHourPartition;
 
   /// Creates a new [DestinationOptionsModelProperties].
   /// [fileFormat] Property fileFormat
@@ -31,7 +31,7 @@ class DestinationOptionsModelProperties {
 
   factory DestinationOptionsModelProperties.fromMap(Map<String, dynamic> map) {
     return DestinationOptionsModelProperties(
-      fileFormat: (() { final guardedValue = map['fileFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fileFormat: (() { final guardedValue = map['fileFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       hiveCompatiblePartitions: (() { final guardedValue = map['hiveCompatiblePartitions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       perHourPartition: (() { final guardedValue = map['perHourPartition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

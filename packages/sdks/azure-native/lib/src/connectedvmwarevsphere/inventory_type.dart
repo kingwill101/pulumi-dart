@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// They inventory type.
-enum InventoryType {
+enum InventoryType implements pulumi.PulumiEnum<String> {
   valueResourcePool("ResourcePool"),
   valueVirtualMachine("VirtualMachine"),
   valueVirtualMachineTemplate("VirtualMachineTemplate"),
@@ -9,6 +11,7 @@ enum InventoryType {
   valueHost("Host");
 
   const InventoryType(this.wireValue);
+  @override
   final String wireValue;
 
   static InventoryType fromValue(String value) {

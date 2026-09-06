@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cosmosdb_throughput_pool_account_args_doc}
 class ThroughputPoolAccountArgs {
   /// The location of  global database account in the throughputPool.
-  final pulumi.Input<String>? accountLocation;
+  final pulumi.Input<String?>? accountLocation;
   /// The resource identifier of global database account in the throughputPool.
-  final pulumi.Input<String>? accountResourceIdentifier;
+  final pulumi.Input<String?>? accountResourceIdentifier;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Cosmos DB global database account in a Throughput Pool
-  final pulumi.Input<String>? throughputPoolAccountName;
+  final pulumi.Input<String?>? throughputPoolAccountName;
   /// Cosmos DB Throughput Pool name.
   final pulumi.Input<String> throughputPoolName;
 

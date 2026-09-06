@@ -14,37 +14,37 @@ import 'vpn_server_configuration_policy_group_response.dart';
 /// Parameters for VpnServerConfiguration.
 class VpnServerConfigurationPropertiesResponse {
   /// The set of aad vpn authentication parameters.
-  final pulumi.Input<AadAuthenticationParametersResponse>? aadAuthenticationParameters;
+  final pulumi.Input<AadAuthenticationParametersResponse?>? aadAuthenticationParameters;
   /// List of all VpnServerConfigurationPolicyGroups.
-  final pulumi.Input<List<VpnServerConfigurationPolicyGroupResponse>>? configurationPolicyGroups;
+  final pulumi.Input<List<VpnServerConfigurationPolicyGroupResponse>?>? configurationPolicyGroups;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// The name of the VpnServerConfiguration that is unique within a resource group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of references to P2SVpnGateways.
   final pulumi.Input<List<P2SVpnGatewayResponse>> p2SVpnGateways;
   /// The provisioning state of the VpnServerConfiguration resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   final pulumi.Input<String> provisioningState;
   /// Radius client root certificate of VpnServerConfiguration.
-  final pulumi.Input<List<VpnServerConfigRadiusClientRootCertificateResponse>>? radiusClientRootCertificates;
+  final pulumi.Input<List<VpnServerConfigRadiusClientRootCertificateResponse>?>? radiusClientRootCertificates;
   /// The radius server address property of the VpnServerConfiguration resource for point to site client connection.
-  final pulumi.Input<String>? radiusServerAddress;
+  final pulumi.Input<String?>? radiusServerAddress;
   /// Radius Server root certificate of VpnServerConfiguration.
-  final pulumi.Input<List<VpnServerConfigRadiusServerRootCertificateResponse>>? radiusServerRootCertificates;
+  final pulumi.Input<List<VpnServerConfigRadiusServerRootCertificateResponse>?>? radiusServerRootCertificates;
   /// The radius secret property of the VpnServerConfiguration resource for point to site client connection.
-  final pulumi.Input<String>? radiusServerSecret;
+  final pulumi.Input<String?>? radiusServerSecret;
   /// Multiple Radius Server configuration for VpnServerConfiguration.
-  final pulumi.Input<List<RadiusServerResponse>>? radiusServers;
+  final pulumi.Input<List<RadiusServerResponse>?>? radiusServers;
   /// VPN authentication types for the VpnServerConfiguration.
-  final pulumi.Input<List<String>>? vpnAuthenticationTypes;
+  final pulumi.Input<List<String>?>? vpnAuthenticationTypes;
   /// VpnClientIpsecPolicies for VpnServerConfiguration.
-  final pulumi.Input<List<IpsecPolicyResponse>>? vpnClientIpsecPolicies;
+  final pulumi.Input<List<IpsecPolicyResponse>?>? vpnClientIpsecPolicies;
   /// VPN client revoked certificate of VpnServerConfiguration.
-  final pulumi.Input<List<VpnServerConfigVpnClientRevokedCertificateResponse>>? vpnClientRevokedCertificates;
+  final pulumi.Input<List<VpnServerConfigVpnClientRevokedCertificateResponse>?>? vpnClientRevokedCertificates;
   /// VPN client root certificate of VpnServerConfiguration.
-  final pulumi.Input<List<VpnServerConfigVpnClientRootCertificateResponse>>? vpnClientRootCertificates;
+  final pulumi.Input<List<VpnServerConfigVpnClientRootCertificateResponse>?>? vpnClientRootCertificates;
   /// VPN protocols for the VpnServerConfiguration.
-  final pulumi.Input<List<String>>? vpnProtocols;
+  final pulumi.Input<List<String>?>? vpnProtocols;
 
   /// Creates a new [VpnServerConfigurationPropertiesResponse].
   /// [aadAuthenticationParameters] The set of aad vpn authentication parameters.

@@ -7,9 +7,9 @@ import 'referenced_resource.dart';
 /// Azure arc kubernetes artifact profile properties.
 class AzureArcKubernetesArtifactProfile {
   /// The reference to artifact store.
-  final pulumi.Input<ReferencedResource>? artifactStore;
+  final pulumi.Input<ReferencedResource?>? artifactStore;
   /// Helm artifact profile.
-  final pulumi.Input<HelmArtifactProfile>? helmArtifactProfile;
+  final pulumi.Input<HelmArtifactProfile?>? helmArtifactProfile;
 
   /// Creates a new [AzureArcKubernetesArtifactProfile].
   /// [artifactStore] The reference to artifact store.

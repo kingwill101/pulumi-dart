@@ -8,9 +8,9 @@ class PipelineSourceTriggerPropertiesResponse {
 
   /// Creates a new [PipelineSourceTriggerPropertiesResponse].
   /// [status] The current status of the source trigger.
-  const PipelineSourceTriggerPropertiesResponse({
-    required this.status,
-  });
+  PipelineSourceTriggerPropertiesResponse({
+    pulumi.Input<String>? status,
+  }) : status = status ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

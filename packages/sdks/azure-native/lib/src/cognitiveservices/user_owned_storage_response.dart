@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The user owned storage for Cognitive Services account.
 class UserOwnedStorageResponse {
-  final pulumi.Input<String>? identityClientId;
+  final pulumi.Input<String?>? identityClientId;
   /// Full resource id of a Microsoft.Storage resource.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [UserOwnedStorageResponse].
   /// [identityClientId] Optional.

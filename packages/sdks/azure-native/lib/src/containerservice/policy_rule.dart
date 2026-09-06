@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Ingress policy for the network.
-enum PolicyRule {
+enum PolicyRule implements pulumi.PulumiEnum<String> {
   valueDenyAll("DenyAll"),
   valueAllowAll("AllowAll"),
   valueAllowSameNamespace("AllowSameNamespace");
 
   const PolicyRule(this.wireValue);
+  @override
   final String wireValue;
 
   static PolicyRule fromValue(String value) {

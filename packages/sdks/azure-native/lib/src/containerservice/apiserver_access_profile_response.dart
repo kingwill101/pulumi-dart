@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Access profile for the Fleet hub API server.
 class APIServerAccessProfileResponse {
   /// Whether to create the Fleet hub as a private cluster or not.
-  final pulumi.Input<bool>? enablePrivateCluster;
+  final pulumi.Input<bool?>? enablePrivateCluster;
   /// Whether to enable apiserver vnet integration for the Fleet hub or not.
-  final pulumi.Input<bool>? enableVnetIntegration;
+  final pulumi.Input<bool?>? enableVnetIntegration;
   /// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new Fleet with BYO vnet.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [APIServerAccessProfileResponse].
   /// [enablePrivateCluster] Whether to create the Fleet hub as a private cluster or not.

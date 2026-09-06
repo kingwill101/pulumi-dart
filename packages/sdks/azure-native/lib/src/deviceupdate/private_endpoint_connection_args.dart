@@ -11,9 +11,9 @@ class PrivateEndpointConnectionArgs {
   /// Account name.
   final pulumi.Input<String> accountName;
   /// Array of group IDs.
-  final pulumi.Input<List<String>>? groupIds;
+  final pulumi.Input<List<String>?>? groupIds;
   /// The name of the private endpoint connection associated with the Azure resource
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// A collection of information about the state of the connection between service consumer and provider.
   final pulumi.Input<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState;
   /// The resource group name.

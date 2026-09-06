@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines the minimal attach path risk level which will be sent as email notifications
-enum MinimalRiskLevel {
+enum MinimalRiskLevel implements pulumi.PulumiEnum<String> {
   critical("Critical"),
   high("High"),
   medium("Medium"),
   low("Low");
 
   const MinimalRiskLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static MinimalRiskLevel fromValue(String value) {

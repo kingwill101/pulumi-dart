@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A CAA record.
 class CaaRecord {
   /// The flags for this CAA record as an integer between 0 and 255.
-  final pulumi.Input<int>? flags;
+  final pulumi.Input<int?>? flags;
   /// The tag for this CAA record.
-  final pulumi.Input<String>? tag;
+  final pulumi.Input<String?>? tag;
   /// The value for this CAA record.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [CaaRecord].
   /// [flags] The flags for this CAA record as an integer between 0 and 255.
@@ -31,7 +31,7 @@ class CaaRecord {
 
   factory CaaRecord.fromMap(Map<String, dynamic> map) {
     return CaaRecord(
-      flags: (() { final guardedValue = map['flags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      flags: (() { final guardedValue = map['flags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

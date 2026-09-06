@@ -9,13 +9,13 @@ import 'pipeline_run_request.dart';
 /// {@macro pulumi_containerregistry_pipeline_run_args_doc}
 class PipelineRunArgs {
   /// How the pipeline run should be forced to recreate even if the pipeline run configuration has not changed.
-  final pulumi.Input<String>? forceUpdateTag;
+  final pulumi.Input<String?>? forceUpdateTag;
   /// The name of the pipeline run.
-  final pulumi.Input<String>? pipelineRunName;
+  final pulumi.Input<String?>? pipelineRunName;
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
   /// The request parameters for a pipeline run.
-  final pulumi.Input<PipelineRunRequest>? request;
+  final pulumi.Input<PipelineRunRequest?>? request;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

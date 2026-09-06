@@ -6,25 +6,25 @@ import 'key_vault_properties_response.dart';
 /// Properties to EncryptionScope
 class EncryptionScopePropertiesResponse {
   /// Enumerates the possible value of keySource for Encryption
-  final pulumi.Input<String>? keySource;
+  final pulumi.Input<String?>? keySource;
   /// Properties of KeyVault
-  final pulumi.Input<KeyVaultPropertiesResponse>? keyVaultProperties;
+  final pulumi.Input<KeyVaultPropertiesResponse?>? keyVaultProperties;
   /// Gets the status of the resource at the time the operation was called.
   final pulumi.Input<String> provisioningState;
   /// The encryptionScope state.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [EncryptionScopePropertiesResponse].
   /// [keySource] Enumerates the possible value of keySource for Encryption
   /// [keyVaultProperties] Properties of KeyVault
   /// [provisioningState] Gets the status of the resource at the time the operation was called.
   /// [state] The encryptionScope state.
-  const EncryptionScopePropertiesResponse({
-    this.keySource,
+  EncryptionScopePropertiesResponse({
+    pulumi.Input<String?>? keySource,
     this.keyVaultProperties,
     required this.provisioningState,
     this.state,
-  });
+  }) : keySource = keySource ?? pulumi.Input.fromValue('Microsoft.KeyVault');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

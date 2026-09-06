@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies how the service is partitioned.
-enum PartitionScheme {
+enum PartitionScheme implements pulumi.PulumiEnum<String> {
   valueSingleton("Singleton"),
   valueUniformInt64Range("UniformInt64Range"),
   valueNamed("Named");
 
   const PartitionScheme(this.wireValue);
+  @override
   final String wireValue;
 
   static PartitionScheme fromValue(String value) {

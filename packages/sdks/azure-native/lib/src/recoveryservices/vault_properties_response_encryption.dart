@@ -7,11 +7,11 @@ import 'cmk_key_vault_properties_response.dart';
 /// Customer Managed Key details of the resource.
 class VaultPropertiesResponseEncryption {
   /// Enabling/Disabling the Double Encryption state
-  final pulumi.Input<String>? infrastructureEncryption;
+  final pulumi.Input<String?>? infrastructureEncryption;
   /// The details of the identity used for CMK
-  final pulumi.Input<CmkKekIdentityResponse>? kekIdentity;
+  final pulumi.Input<CmkKekIdentityResponse?>? kekIdentity;
   /// The properties of the Key Vault which hosts CMK
-  final pulumi.Input<CmkKeyVaultPropertiesResponse>? keyVaultProperties;
+  final pulumi.Input<CmkKeyVaultPropertiesResponse?>? keyVaultProperties;
 
   /// Creates a new [VaultPropertiesResponseEncryption].
   /// [infrastructureEncryption] Enabling/Disabling the Double Encryption state

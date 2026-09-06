@@ -6,11 +6,11 @@ import 'nsg_reference.dart';
 /// Defines the virtual network subnets resource settings.
 class SubnetResourceSettings {
   /// Gets or sets address prefix for the subnet.
-  final pulumi.Input<String>? addressPrefix;
+  final pulumi.Input<String?>? addressPrefix;
   /// Gets or sets the Subnet name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Defines reference to NSG.
-  final pulumi.Input<NsgReference>? networkSecurityGroup;
+  final pulumi.Input<NsgReference?>? networkSecurityGroup;
 
   /// Creates a new [SubnetResourceSettings].
   /// [addressPrefix] Gets or sets address prefix for the subnet.

@@ -6,25 +6,25 @@ import 'backup_file_info_response.dart';
 /// Information of backup set
 class BackupSetInfoResponse {
   /// Date and time that the backup operation finished
-  final pulumi.Input<String>? backupFinishedDate;
+  final pulumi.Input<String?>? backupFinishedDate;
   /// Id for the set of backup files
-  final pulumi.Input<String>? backupSetId;
+  final pulumi.Input<String?>? backupSetId;
   /// Date and time that the backup operation began
-  final pulumi.Input<String>? backupStartDate;
+  final pulumi.Input<String?>? backupStartDate;
   /// Enum of the different backup types
-  final pulumi.Input<String>? backupType;
+  final pulumi.Input<String?>? backupType;
   /// Name of the database to which the backup set belongs
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// First log sequence number of the backup file
-  final pulumi.Input<String>? firstLsn;
+  final pulumi.Input<String?>? firstLsn;
   /// Whether the backup set is restored or not
-  final pulumi.Input<bool>? isBackupRestored;
+  final pulumi.Input<bool?>? isBackupRestored;
   /// Last log sequence number of the backup file
-  final pulumi.Input<String>? lastLsn;
+  final pulumi.Input<String?>? lastLsn;
   /// Last modified time of the backup file in share location
-  final pulumi.Input<String>? lastModifiedTime;
+  final pulumi.Input<String?>? lastModifiedTime;
   /// List of files in the backup set
-  final pulumi.Input<List<BackupFileInfoResponse>>? listOfBackupFiles;
+  final pulumi.Input<List<BackupFileInfoResponse>?>? listOfBackupFiles;
 
   /// Creates a new [BackupSetInfoResponse].
   /// [backupFinishedDate] Date and time that the backup operation finished

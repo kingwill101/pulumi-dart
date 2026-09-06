@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Name of a service gateway SKU.
-enum ServiceGatewaySkuName {
+enum ServiceGatewaySkuName implements pulumi.PulumiEnum<String> {
   standard("Standard");
 
   const ServiceGatewaySkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceGatewaySkuName fromValue(String value) {

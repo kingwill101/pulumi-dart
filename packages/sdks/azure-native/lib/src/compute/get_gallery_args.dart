@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_get_gallery_args_doc}
 class GetGalleryArgs {
   /// The expand query option to apply on the operation.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the Shared Image Gallery.
   final pulumi.Input<String> galleryName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The select expression to apply on the operation.
-  final pulumi.Input<String>? select;
+  final pulumi.Input<String?>? select;
 
   /// Creates a new [GetGalleryArgs].
   /// [expand] The expand query option to apply on the operation.

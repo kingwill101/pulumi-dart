@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The rule type of the rule.
-enum RouteFilterRuleType {
+enum RouteFilterRuleType implements pulumi.PulumiEnum<String> {
   valueCommunity("Community");
 
   const RouteFilterRuleType(this.wireValue);
+  @override
   final String wireValue;
 
   static RouteFilterRuleType fromValue(String value) {

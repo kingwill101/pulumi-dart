@@ -9,13 +9,13 @@ import 'managed_network_peering_policy_properties.dart';
 /// {@macro pulumi_managednetwork_managed_network_peering_policy_args_doc}
 class ManagedNetworkPeeringPolicyArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Managed Network.
   final pulumi.Input<String> managedNetworkName;
   /// The name of the Managed Network Peering Policy.
-  final pulumi.Input<String>? managedNetworkPeeringPolicyName;
+  final pulumi.Input<String?>? managedNetworkPeeringPolicyName;
   /// Gets or sets the properties of a Managed Network Policy
-  final pulumi.Input<ManagedNetworkPeeringPolicyProperties>? properties;
+  final pulumi.Input<ManagedNetworkPeeringPolicyProperties?>? properties;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 

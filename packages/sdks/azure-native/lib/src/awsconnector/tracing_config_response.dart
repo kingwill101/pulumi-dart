@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of TracingConfig
 class TracingConfigResponse {
   /// The tracing mode.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
 
   /// Creates a new [TracingConfigResponse].
   /// [mode] The tracing mode.

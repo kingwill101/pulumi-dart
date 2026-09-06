@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Account-level tool label definition.
 class RaiToolLabelPropertiesAccountScope {
   /// Dictionary of label key-value pairs for the account scope.
-  final pulumi.Input<Map<String, String>>? labelValues;
+  final pulumi.Input<Map<String, String>?>? labelValues;
 
   /// Creates a new [RaiToolLabelPropertiesAccountScope].
   /// [labelValues] Dictionary of label key-value pairs for the account scope.

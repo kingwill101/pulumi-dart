@@ -1,7 +1,10 @@
-enum BackupType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum BackupType implements pulumi.PulumiEnum<String> {
   fULL("FULL");
 
   const BackupType(this.wireValue);
+  @override
   final String wireValue;
 
   static BackupType fromValue(String value) {

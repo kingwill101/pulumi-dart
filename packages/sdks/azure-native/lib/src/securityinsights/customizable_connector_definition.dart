@@ -642,4 +642,25 @@ class CustomizableConnectorDefinition extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [CustomizableConnectorDefinition] resource.
+  CustomizableConnectorDefinition.reference(String urn)
+    : super(
+        'azure-native:securityinsights:CustomizableConnectorDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectionsConfig = registerOutput<CustomizableConnectionsConfigResponse?>('connectionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomizableConnectionsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectorUiConfig = registerOutput<CustomizableConnectorUiConfigResponse>('connectorUiConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomizableConnectorUiConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdTimeUtc = registerOutput<String?>('createdTimeUtc');
+    etag = registerOutput<String?>('etag');
+    kind = registerOutput<String>('kind');
+    lastModifiedUtc = registerOutput<String?>('lastModifiedUtc');
+    this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

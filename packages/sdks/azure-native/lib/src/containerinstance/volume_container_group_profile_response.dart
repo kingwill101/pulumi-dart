@@ -7,15 +7,15 @@ import 'git_repo_volume_response.dart';
 /// The properties of the volume.
 class VolumeContainerGroupProfileResponse {
   /// The Azure File volume.
-  final pulumi.Input<AzureFileVolumeContainerGroupProfileResponse>? azureFile;
+  final pulumi.Input<AzureFileVolumeContainerGroupProfileResponse?>? azureFile;
   /// The empty directory volume.
   final pulumi.Input<dynamic>? emptyDir;
   /// The git repo volume.
-  final pulumi.Input<GitRepoVolumeResponse>? gitRepo;
+  final pulumi.Input<GitRepoVolumeResponse?>? gitRepo;
   /// The name of the volume.
   final pulumi.Input<String> name;
   /// The secret volume.
-  final pulumi.Input<Map<String, String>>? secret;
+  final pulumi.Input<Map<String, String>?>? secret;
 
   /// Creates a new [VolumeContainerGroupProfileResponse].
   /// [azureFile] The Azure File volume.

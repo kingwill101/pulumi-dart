@@ -8,11 +8,11 @@ class SharedAccessSignatureAuthorizationRule {
   /// The name of the shared access policy.
   final pulumi.Input<String> keyName;
   /// The primary key.
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// The permissions assigned to the shared access policy.
   final pulumi.Input<AccessRights> rights;
   /// The secondary key.
-  final pulumi.Input<String>? secondaryKey;
+  final pulumi.Input<String?>? secondaryKey;
 
   /// Creates a new [SharedAccessSignatureAuthorizationRule].
   /// [keyName] The name of the shared access policy.

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The event delivery schema for the event subscription.
-enum EventDeliverySchema {
+enum EventDeliverySchema implements pulumi.PulumiEnum<String> {
   valueEventGridSchema("EventGridSchema"),
   valueCustomInputSchema("CustomInputSchema"),
   valueCloudEventSchemaV10("CloudEventSchemaV1_0");
 
   const EventDeliverySchema(this.wireValue);
+  @override
   final String wireValue;
 
   static EventDeliverySchema fromValue(String value) {

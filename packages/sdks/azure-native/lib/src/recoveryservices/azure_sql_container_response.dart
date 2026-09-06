@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Azure Sql workload-specific container.
 class AzureSqlContainerResponse {
   /// Type of backup management for the container.
-  final pulumi.Input<String>? backupManagementType;
+  final pulumi.Input<String?>? backupManagementType;
   /// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
   /// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
   /// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
@@ -13,13 +13,13 @@ class AzureSqlContainerResponse {
   /// Expected value is 'AzureSqlContainer'.
   final pulumi.Input<String> containerType;
   /// Friendly name of the container.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// Status of health of the container.
-  final pulumi.Input<String>? healthStatus;
+  final pulumi.Input<String?>? healthStatus;
   /// Type of the protectable object associated with this container
-  final pulumi.Input<String>? protectableObjectType;
+  final pulumi.Input<String?>? protectableObjectType;
   /// Status of registration of the container with the Recovery Services Vault.
-  final pulumi.Input<String>? registrationStatus;
+  final pulumi.Input<String?>? registrationStatus;
 
   /// Creates a new [AzureSqlContainerResponse].
   /// [backupManagementType] Type of backup management for the container.

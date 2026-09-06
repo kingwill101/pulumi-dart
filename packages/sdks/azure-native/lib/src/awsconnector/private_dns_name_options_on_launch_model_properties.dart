@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of PrivateDnsNameOptionsOnLaunchModelProperties
 class PrivateDnsNameOptionsOnLaunchModelProperties {
   /// Property enableResourceNameDnsAAAARecord
-  final pulumi.Input<bool>? enableResourceNameDnsAAAARecord;
+  final pulumi.Input<bool?>? enableResourceNameDnsAAAARecord;
   /// Property enableResourceNameDnsARecord
-  final pulumi.Input<bool>? enableResourceNameDnsARecord;
+  final pulumi.Input<bool?>? enableResourceNameDnsARecord;
   /// Property hostnameType
-  final pulumi.Input<String>? hostnameType;
+  final pulumi.Input<String?>? hostnameType;
 
   /// Creates a new [PrivateDnsNameOptionsOnLaunchModelProperties].
   /// [enableResourceNameDnsAAAARecord] Property enableResourceNameDnsAAAARecord

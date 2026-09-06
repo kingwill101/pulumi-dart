@@ -42,6 +42,17 @@ Future<GetPrivateEndpointConnectionsAdtAPIResult> getPrivateEndpointConnectionsA
   return GetPrivateEndpointConnectionsAdtAPIResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionsAdtAPIResult> getPrivateEndpointConnectionsAdtAPIOutput(
+  GetPrivateEndpointConnectionsAdtAPIArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:m365securityandcompliance:getPrivateEndpointConnectionsAdtAPI',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionsAdtAPIResult.fromMap);
+}
+
 /// Gets the specified private endpoint connection associated with the service.
 ///
 /// Uses Azure REST API version 2021-03-25-preview.
@@ -58,6 +69,17 @@ Future<GetPrivateEndpointConnectionsCompResult> getPrivateEndpointConnectionsCom
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionsCompResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionsCompResult> getPrivateEndpointConnectionsCompOutput(
+  GetPrivateEndpointConnectionsCompArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:m365securityandcompliance:getPrivateEndpointConnectionsComp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionsCompResult.fromMap);
 }
 
 /// Gets the specified private endpoint connection associated with the service.
@@ -78,6 +100,17 @@ Future<GetPrivateEndpointConnectionsForEDMResult> getPrivateEndpointConnectionsF
   return GetPrivateEndpointConnectionsForEDMResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionsForEDMResult> getPrivateEndpointConnectionsForEDMOutput(
+  GetPrivateEndpointConnectionsForEDMArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:m365securityandcompliance:getPrivateEndpointConnectionsForEDM',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionsForEDMResult.fromMap);
+}
+
 /// Gets the specified private endpoint connection associated with the service.
 ///
 /// Uses Azure REST API version 2021-03-25-preview.
@@ -94,6 +127,17 @@ Future<GetPrivateEndpointConnectionsForMIPPolicySyncResult> getPrivateEndpointCo
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionsForMIPPolicySyncResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionsForMIPPolicySyncResult> getPrivateEndpointConnectionsForMIPPolicySyncOutput(
+  GetPrivateEndpointConnectionsForMIPPolicySyncArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:m365securityandcompliance:getPrivateEndpointConnectionsForMIPPolicySync',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionsForMIPPolicySyncResult.fromMap);
 }
 
 /// Gets the specified private endpoint connection associated with the service.
@@ -114,6 +158,17 @@ Future<GetPrivateEndpointConnectionsForSCCPowershellResult> getPrivateEndpointCo
   return GetPrivateEndpointConnectionsForSCCPowershellResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionsForSCCPowershellResult> getPrivateEndpointConnectionsForSCCPowershellOutput(
+  GetPrivateEndpointConnectionsForSCCPowershellArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:m365securityandcompliance:getPrivateEndpointConnectionsForSCCPowershell',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionsForSCCPowershellResult.fromMap);
+}
+
 /// Gets the specified private endpoint connection associated with the service.
 ///
 /// Uses Azure REST API version 2021-03-25-preview.
@@ -130,6 +185,17 @@ Future<GetPrivateEndpointConnectionsSecResult> getPrivateEndpointConnectionsSec(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionsSecResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionsSecResult> getPrivateEndpointConnectionsSecOutput(
+  GetPrivateEndpointConnectionsSecArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:m365securityandcompliance:getPrivateEndpointConnectionsSec',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionsSecResult.fromMap);
 }
 
 /// Get the metadata of a privateLinkServicesForEDMUpload resource.
@@ -150,6 +216,17 @@ Future<GetPrivateLinkServicesForEDMUploadResult> getPrivateLinkServicesForEDMUpl
   return GetPrivateLinkServicesForEDMUploadResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateLinkServicesForEDMUploadResult> getPrivateLinkServicesForEDMUploadOutput(
+  GetPrivateLinkServicesForEDMUploadArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:m365securityandcompliance:getPrivateLinkServicesForEDMUpload',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateLinkServicesForEDMUploadResult.fromMap);
+}
+
 /// Get the metadata of a privateLinkServicesForM365ComplianceCenter resource.
 ///
 /// Uses Azure REST API version 2021-03-25-preview.
@@ -166,6 +243,17 @@ Future<GetPrivateLinkServicesForM365ComplianceCenterResult> getPrivateLinkServic
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateLinkServicesForM365ComplianceCenterResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateLinkServicesForM365ComplianceCenterResult> getPrivateLinkServicesForM365ComplianceCenterOutput(
+  GetPrivateLinkServicesForM365ComplianceCenterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:m365securityandcompliance:getPrivateLinkServicesForM365ComplianceCenter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateLinkServicesForM365ComplianceCenterResult.fromMap);
 }
 
 /// Get the metadata of a privateLinkServicesForM365SecurityCenter resource.
@@ -186,6 +274,17 @@ Future<GetPrivateLinkServicesForM365SecurityCenterResult> getPrivateLinkServices
   return GetPrivateLinkServicesForM365SecurityCenterResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateLinkServicesForM365SecurityCenterResult> getPrivateLinkServicesForM365SecurityCenterOutput(
+  GetPrivateLinkServicesForM365SecurityCenterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:m365securityandcompliance:getPrivateLinkServicesForM365SecurityCenter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateLinkServicesForM365SecurityCenterResult.fromMap);
+}
+
 /// Get the metadata of a privateLinkServicesForMIPPolicySync resource.
 ///
 /// Uses Azure REST API version 2021-03-25-preview.
@@ -202,6 +301,17 @@ Future<GetPrivateLinkServicesForMIPPolicySyncResult> getPrivateLinkServicesForMI
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateLinkServicesForMIPPolicySyncResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateLinkServicesForMIPPolicySyncResult> getPrivateLinkServicesForMIPPolicySyncOutput(
+  GetPrivateLinkServicesForMIPPolicySyncArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:m365securityandcompliance:getPrivateLinkServicesForMIPPolicySync',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateLinkServicesForMIPPolicySyncResult.fromMap);
 }
 
 /// Get the metadata of a privateLinkServicesForO365ManagementActivityAPI resource.
@@ -222,6 +332,17 @@ Future<GetPrivateLinkServicesForO365ManagementActivityAPIResult> getPrivateLinkS
   return GetPrivateLinkServicesForO365ManagementActivityAPIResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateLinkServicesForO365ManagementActivityAPIResult> getPrivateLinkServicesForO365ManagementActivityAPIOutput(
+  GetPrivateLinkServicesForO365ManagementActivityAPIArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:m365securityandcompliance:getPrivateLinkServicesForO365ManagementActivityAPI',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateLinkServicesForO365ManagementActivityAPIResult.fromMap);
+}
+
 /// Get the metadata of a privateLinkServicesForSCCPowershell resource.
 ///
 /// Uses Azure REST API version 2021-03-25-preview.
@@ -238,4 +359,15 @@ Future<GetPrivateLinkServicesForSCCPowershellResult> getPrivateLinkServicesForSC
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateLinkServicesForSCCPowershellResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateLinkServicesForSCCPowershellResult> getPrivateLinkServicesForSCCPowershellOutput(
+  GetPrivateLinkServicesForSCCPowershellArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:m365securityandcompliance:getPrivateLinkServicesForSCCPowershell',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateLinkServicesForSCCPowershellResult.fromMap);
 }

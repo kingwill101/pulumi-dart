@@ -6,15 +6,15 @@ import 'parameter_values_value.dart';
 /// The policy definition reference.
 class PolicyDefinitionReference {
   /// The version of the policy definition to use.
-  final pulumi.Input<String>? definitionVersion;
+  final pulumi.Input<String?>? definitionVersion;
   /// The name of the groups that this policy definition reference belongs to.
-  final pulumi.Input<List<String>>? groupNames;
+  final pulumi.Input<List<String>?>? groupNames;
   /// The parameter values for the referenced policy rule. The keys are the parameter names.
-  final pulumi.Input<Map<String, ParameterValuesValue>>? parameters;
+  final pulumi.Input<Map<String, ParameterValuesValue>?>? parameters;
   /// The ID of the policy definition or policy set definition.
   final pulumi.Input<String> policyDefinitionId;
   /// A unique id (within the policy set definition) for this policy definition reference.
-  final pulumi.Input<String>? policyDefinitionReferenceId;
+  final pulumi.Input<String?>? policyDefinitionReferenceId;
 
   /// Creates a new [PolicyDefinitionReference].
   /// [definitionVersion] The version of the policy definition to use.

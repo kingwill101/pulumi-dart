@@ -11,35 +11,35 @@ import 'extended_location.dart';
 /// {@endtemplate}
 /// {@macro pulumi_web_kube_environment_args_doc}
 class KubeEnvironmentArgs {
-  final pulumi.Input<String>? aksResourceID;
+  final pulumi.Input<String?>? aksResourceID;
   /// Cluster configuration which enables the log daemon to export
   /// app logs to a destination. Currently only "log-analytics" is
   /// supported
-  final pulumi.Input<AppLogsConfiguration>? appLogsConfiguration;
+  final pulumi.Input<AppLogsConfiguration?>? appLogsConfiguration;
   /// Cluster configuration which determines the ARC cluster
   /// components types. Eg: Choosing between BuildService kind,
   /// FrontEnd Service ArtifactsStorageType etc.
-  final pulumi.Input<ArcConfiguration>? arcConfiguration;
+  final pulumi.Input<ArcConfiguration?>? arcConfiguration;
   /// Cluster configuration for Container Apps Environments to configure Dapr Instrumentation Key and VNET Configuration
-  final pulumi.Input<ContainerAppsConfiguration>? containerAppsConfiguration;
+  final pulumi.Input<ContainerAppsConfiguration?>? containerAppsConfiguration;
   /// Type of Kubernetes Environment. Only supported for Container App Environments with value as Managed
-  final pulumi.Input<String>? environmentType;
+  final pulumi.Input<String?>? environmentType;
   /// Extended Location.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// Only visible within Vnet/Subnet
-  final pulumi.Input<bool>? internalLoadBalancerEnabled;
+  final pulumi.Input<bool?>? internalLoadBalancerEnabled;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the Kubernetes Environment.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Static IP of the KubeEnvironment
-  final pulumi.Input<String>? staticIp;
+  final pulumi.Input<String?>? staticIp;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [KubeEnvironmentArgs].
   /// [aksResourceID] Optional.

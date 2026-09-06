@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Connector Class
-enum ConnectorClass {
+enum ConnectorClass implements pulumi.PulumiEnum<String> {
   aZUREBLOBSOURCE("AZUREBLOBSOURCE"),
   aZUREBLOBSINK("AZUREBLOBSINK");
 
   const ConnectorClass(this.wireValue);
+  @override
   final String wireValue;
 
   static ConnectorClass fromValue(String value) {

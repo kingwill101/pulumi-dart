@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The specifications of the failover group resource.
 class FailoverGroupSpec {
   /// The name of the partner SQL managed instance.
-  final pulumi.Input<String>? partnerMI;
+  final pulumi.Input<String?>? partnerMI;
   /// The mirroring endpoint public certificate for the partner SQL managed instance. Only PEM format is supported.
-  final pulumi.Input<String>? partnerMirroringCert;
+  final pulumi.Input<String?>? partnerMirroringCert;
   /// The mirroring endpoint URL of the partner SQL managed instance.
-  final pulumi.Input<String>? partnerMirroringURL;
+  final pulumi.Input<String?>? partnerMirroringURL;
   /// The partner sync mode of the SQL managed instance.
-  final pulumi.Input<String>? partnerSyncMode;
+  final pulumi.Input<dynamic>? partnerSyncMode;
   /// The role of the SQL managed instance in this failover group.
-  final pulumi.Input<String> role;
+  final pulumi.Input<dynamic> role;
   /// The shared name of the failover group for this SQL managed instance. Both SQL managed instance and its partner have to use the same shared name.
-  final pulumi.Input<String>? sharedName;
+  final pulumi.Input<String?>? sharedName;
   /// The name of the SQL managed instance with this failover group role.
-  final pulumi.Input<String>? sourceMI;
+  final pulumi.Input<String?>? sourceMI;
 
   /// Creates a new [FailoverGroupSpec].
   /// [partnerMI] The name of the partner SQL managed instance.
@@ -27,15 +27,15 @@ class FailoverGroupSpec {
   /// [role] The role of the SQL managed instance in this failover group.
   /// [sharedName] The shared name of the failover group for this SQL managed instance. Both SQL managed instance and its partner have to use the same shared name.
   /// [sourceMI] The name of the SQL managed instance with this failover group role.
-  const FailoverGroupSpec({
+  FailoverGroupSpec({
     this.partnerMI,
     this.partnerMirroringCert,
     this.partnerMirroringURL,
-    this.partnerSyncMode,
-    required this.role,
+    pulumi.Input<dynamic>? partnerSyncMode,
+    pulumi.Input<dynamic>? role,
     this.sharedName,
     this.sourceMI,
-  });
+  }) : partnerSyncMode = partnerSyncMode ?? pulumi.Input.fromValue('async'), role = role ?? pulumi.Input.fromValue('primary');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,8 +54,8 @@ class FailoverGroupSpec {
       partnerMI: (() { final guardedValue = map['partnerMI']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       partnerMirroringCert: (() { final guardedValue = map['partnerMirroringCert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       partnerMirroringURL: (() { final guardedValue = map['partnerMirroringURL']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      partnerSyncMode: (() { final guardedValue = map['partnerSyncMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      role: pulumi.Input.fromValue(map['role'] as String),
+      partnerSyncMode: (() { final guardedValue = map['partnerSyncMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      role: pulumi.Input.fromValue(map['role']),
       sharedName: (() { final guardedValue = map['sharedName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceMI: (() { final guardedValue = map['sourceMI']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

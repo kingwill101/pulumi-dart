@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'system_data_response.dart';
+import 'vnet_route_response.dart';
 import 'web_app_vnet_connection_args.dart';
 
 /// Virtual Network information ARM resource.
@@ -32,7 +33,7 @@ class WebAppVnetConnection extends pulumi.CustomResource {
   /// &lt;code&gt;true&lt;/code&gt; if a resync is required; otherwise, &lt;code&gt;false&lt;/code&gt;.
   late final pulumi.Output<bool> resyncRequired;
   /// The routes that this Virtual Network connection uses.
-  late final pulumi.Output<List<Map<String, dynamic>>> routes;
+  late final pulumi.Output<List<VnetRouteResponse>> routes;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -62,7 +63,30 @@ class WebAppVnetConnection extends pulumi.CustomResource {
     kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
     resyncRequired = registerOutput<bool>('resyncRequired');
-    routes = registerOutput<List<Map<String, dynamic>>>('routes');
+    routes = registerOutput<List<VnetRouteResponse>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VnetRouteResponse>(guardedValue, (value) => VnetRouteResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    vnetResourceId = registerOutput<String?>('vnetResourceId');
+  }
+
+  /// Creates a typed reference to an existing [WebAppVnetConnection] resource.
+  WebAppVnetConnection.reference(String urn)
+    : super(
+        'azure-native:web:WebAppVnetConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    certBlob = registerOutput<String?>('certBlob');
+    certThumbprint = registerOutput<String>('certThumbprint');
+    dnsServers = registerOutput<String?>('dnsServers');
+    isSwift = registerOutput<bool?>('isSwift');
+    kind = registerOutput<String?>('kind');
+    this.name = registerOutput<String>('name');
+    resyncRequired = registerOutput<bool>('resyncRequired');
+    routes = registerOutput<List<VnetRouteResponse>>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VnetRouteResponse>(guardedValue, (value) => VnetRouteResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     vnetResourceId = registerOutput<String?>('vnetResourceId');

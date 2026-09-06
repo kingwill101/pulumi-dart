@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Compute type of the cluster which will execute data flow job.
-enum DataFlowComputeType {
+enum DataFlowComputeType implements pulumi.PulumiEnum<String> {
   valueGeneral("General"),
   valueMemoryOptimized("MemoryOptimized"),
   valueComputeOptimized("ComputeOptimized");
 
   const DataFlowComputeType(this.wireValue);
+  @override
   final String wireValue;
 
   static DataFlowComputeType fromValue(String value) {

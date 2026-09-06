@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Activity query definitions
 class ActivityEntityQueriesPropertiesResponseQueryDefinitions {
   /// The Activity query to run on a given entity
-  final pulumi.Input<String>? query;
+  final pulumi.Input<String?>? query;
 
   /// Creates a new [ActivityEntityQueriesPropertiesResponseQueryDefinitions].
   /// [query] The Activity query to run on a given entity

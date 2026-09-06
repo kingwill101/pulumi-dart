@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The dapr component metadata.
 class DaprMetadata {
   /// The description of the metadata, returned from configuration api
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Metadata property name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value indicating whether the metadata is required or not
-  final pulumi.Input<String>? required;
+  final pulumi.Input<dynamic>? required;
   /// The secret name where dapr could get value
-  final pulumi.Input<String>? secretRef;
+  final pulumi.Input<String?>? secretRef;
   /// Metadata property value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [DaprMetadata].
   /// [description] The description of the metadata, returned from configuration api
@@ -43,7 +43,7 @@ class DaprMetadata {
     return DaprMetadata(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      required: (() { final guardedValue = map['required']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      required: (() { final guardedValue = map['required']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       secretRef: (() { final guardedValue = map['secretRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

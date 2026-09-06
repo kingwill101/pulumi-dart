@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The verbosity of logs persisted on the connected registry.
-enum LogLevel {
+enum LogLevel implements pulumi.PulumiEnum<String> {
   valueDebug("Debug"),
   valueInformation("Information"),
   valueWarning("Warning"),
@@ -7,6 +9,7 @@ enum LogLevel {
   valueNone("None");
 
   const LogLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static LogLevel fromValue(String value) {

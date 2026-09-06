@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specific Gremlin Databases to restore.
 class GremlinDatabaseRestoreResource {
   /// The name of the gremlin database available for restore.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// The names of the graphs available for restore.
-  final pulumi.Input<List<String>>? graphNames;
+  final pulumi.Input<List<String>?>? graphNames;
 
   /// Creates a new [GremlinDatabaseRestoreResource].
   /// [databaseName] The name of the gremlin database available for restore.

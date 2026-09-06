@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kind (type) of Enterprise Policy.
-enum EnterprisePolicyKind {
+enum EnterprisePolicyKind implements pulumi.PulumiEnum<String> {
   lockbox("Lockbox"),
   privateEndpoint("PrivateEndpoint"),
   encryption("Encryption"),
@@ -7,6 +9,7 @@ enum EnterprisePolicyKind {
   identity("Identity");
 
   const EnterprisePolicyKind(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterprisePolicyKind fromValue(String value) {

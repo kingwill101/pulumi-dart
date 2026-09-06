@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies resource limits for the migration
 class MongoDbThrottlingSettingsResponse {
   /// The maximum number of work items (e.g. collection copies) that will be processed in parallel
-  final pulumi.Input<int>? maxParallelism;
+  final pulumi.Input<int?>? maxParallelism;
   /// The percentage of CPU time that the migrator will try to avoid using, from 0 to 100
-  final pulumi.Input<int>? minFreeCpu;
+  final pulumi.Input<int?>? minFreeCpu;
   /// The number of megabytes of RAM that the migrator will try to avoid using
-  final pulumi.Input<int>? minFreeMemoryMb;
+  final pulumi.Input<int?>? minFreeMemoryMb;
 
   /// Creates a new [MongoDbThrottlingSettingsResponse].
   /// [maxParallelism] The maximum number of work items (e.g. collection copies) that will be processed in parallel
@@ -31,9 +31,9 @@ class MongoDbThrottlingSettingsResponse {
 
   factory MongoDbThrottlingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return MongoDbThrottlingSettingsResponse(
-      maxParallelism: (() { final guardedValue = map['maxParallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minFreeCpu: (() { final guardedValue = map['minFreeCpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minFreeMemoryMb: (() { final guardedValue = map['minFreeMemoryMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxParallelism: (() { final guardedValue = map['maxParallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minFreeCpu: (() { final guardedValue = map['minFreeCpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minFreeMemoryMb: (() { final guardedValue = map['minFreeMemoryMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

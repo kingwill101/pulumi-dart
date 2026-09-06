@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of notification.
-enum NotificationDeliveryMechanism {
+enum NotificationDeliveryMechanism implements pulumi.PulumiEnum<String> {
   email("Email");
 
   const NotificationDeliveryMechanism(this.wireValue);
+  @override
   final String wireValue;
 
   static NotificationDeliveryMechanism fromValue(String value) {

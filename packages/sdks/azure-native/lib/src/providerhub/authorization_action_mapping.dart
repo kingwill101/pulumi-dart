@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AuthorizationActionMapping {
   /// The desired action name.
-  final pulumi.Input<String>? desired;
+  final pulumi.Input<String?>? desired;
   /// The original action name.
-  final pulumi.Input<String>? original;
+  final pulumi.Input<String?>? original;
 
   /// Creates a new [AuthorizationActionMapping].
   /// [desired] The desired action name.

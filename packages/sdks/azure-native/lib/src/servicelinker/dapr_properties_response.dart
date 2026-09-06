@@ -8,17 +8,17 @@ class DaprPropertiesResponse {
   /// The direction supported by the dapr binding component
   final pulumi.Input<String> bindingComponentDirection;
   /// The dapr component type
-  final pulumi.Input<String>? componentType;
+  final pulumi.Input<String?>? componentType;
   /// Additional dapr metadata
-  final pulumi.Input<List<DaprMetadataResponse>>? metadata;
+  final pulumi.Input<List<DaprMetadataResponse>?>? metadata;
   /// The runtime version supported by the properties
   final pulumi.Input<String> runtimeVersion;
   /// The dapr component scopes
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
   /// The name of a secret store dapr to retrieve secret
-  final pulumi.Input<String>? secretStoreComponent;
+  final pulumi.Input<String?>? secretStoreComponent;
   /// The dapr component version
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [DaprPropertiesResponse].
   /// [bindingComponentDirection] The direction supported by the dapr binding component

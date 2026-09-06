@@ -7,9 +7,9 @@ import 'metrics.dart';
 /// DataflowProfile Diagnostics properties
 class ProfileDiagnostics {
   /// Diagnostic log settings for the resource.
-  final pulumi.Input<DiagnosticsLogs>? logs;
+  final pulumi.Input<DiagnosticsLogs?>? logs;
   /// The metrics settings for the resource.
-  final pulumi.Input<Metrics>? metrics;
+  final pulumi.Input<Metrics?>? metrics;
 
   /// Creates a new [ProfileDiagnostics].
   /// [logs] Diagnostic log settings for the resource.

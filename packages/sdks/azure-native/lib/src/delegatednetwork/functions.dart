@@ -26,6 +26,17 @@ Future<GetControllerDetailsResult> getControllerDetails(
   return GetControllerDetailsResult.fromMap(result);
 }
 
+pulumi.Output<GetControllerDetailsResult> getControllerDetailsOutput(
+  GetControllerDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:delegatednetwork:getControllerDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetControllerDetailsResult.fromMap);
+}
+
 /// Gets details about the specified dnc DelegatedSubnet Link.
 ///
 /// Uses Azure REST API version 2023-06-27-preview.
@@ -46,6 +57,17 @@ Future<GetDelegatedSubnetServiceDetailsResult> getDelegatedSubnetServiceDetails(
   return GetDelegatedSubnetServiceDetailsResult.fromMap(result);
 }
 
+pulumi.Output<GetDelegatedSubnetServiceDetailsResult> getDelegatedSubnetServiceDetailsOutput(
+  GetDelegatedSubnetServiceDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:delegatednetwork:getDelegatedSubnetServiceDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDelegatedSubnetServiceDetailsResult.fromMap);
+}
+
 /// Gets details about the orchestrator instance.
 ///
 /// Uses Azure REST API version 2023-06-27-preview.
@@ -64,4 +86,15 @@ Future<GetOrchestratorInstanceServiceDetailsResult> getOrchestratorInstanceServi
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrchestratorInstanceServiceDetailsResult.fromMap(result);
+}
+
+pulumi.Output<GetOrchestratorInstanceServiceDetailsResult> getOrchestratorInstanceServiceDetailsOutput(
+  GetOrchestratorInstanceServiceDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:delegatednetwork:getOrchestratorInstanceServiceDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrchestratorInstanceServiceDetailsResult.fromMap);
 }

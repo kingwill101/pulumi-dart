@@ -32,7 +32,7 @@ class RelativeMonthlyScheduleResponse {
   factory RelativeMonthlyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return RelativeMonthlyScheduleResponse(
       dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
-      intervalMonths: pulumi.Input.fromValue(map['intervalMonths'] as int),
+      intervalMonths: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['intervalMonths'])),
       weekIndex: pulumi.Input.fromValue(map['weekIndex'] as String),
     );
   }

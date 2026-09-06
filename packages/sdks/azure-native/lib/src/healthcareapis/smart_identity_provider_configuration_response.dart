@@ -6,9 +6,9 @@ import 'smart_identity_provider_application_response.dart';
 /// An object to configure an identity provider for use with SMART on FHIR authentication.
 class SmartIdentityProviderConfigurationResponse {
   /// The array of identity provider applications for SMART on FHIR authentication.
-  final pulumi.Input<List<SmartIdentityProviderApplicationResponse>>? applications;
+  final pulumi.Input<List<SmartIdentityProviderApplicationResponse>?>? applications;
   /// The identity provider token authority also known as the token issuing authority.
-  final pulumi.Input<String>? authority;
+  final pulumi.Input<String?>? authority;
 
   /// Creates a new [SmartIdentityProviderConfigurationResponse].
   /// [applications] The array of identity provider applications for SMART on FHIR authentication.

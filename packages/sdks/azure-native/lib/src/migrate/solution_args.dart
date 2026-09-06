@@ -11,11 +11,11 @@ class SolutionArgs {
   /// Name of the Azure Migrate project.
   final pulumi.Input<String> migrateProjectName;
   /// Gets or sets the properties of the solution.
-  final pulumi.Input<SolutionProperties>? properties;
+  final pulumi.Input<SolutionProperties?>? properties;
   /// Name of the Azure Resource Group that migrate project is part of.
   final pulumi.Input<String> resourceGroupName;
   /// Unique name of a migration solution within a migrate project.
-  final pulumi.Input<String>? solutionName;
+  final pulumi.Input<String?>? solutionName;
 
   /// Creates a new [SolutionArgs].
   /// [migrateProjectName] Name of the Azure Migrate project.

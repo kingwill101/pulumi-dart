@@ -9,15 +9,15 @@ import 'enclave_endpoint_destination_rule.dart';
 /// {@macro pulumi_mission_enclave_endpoint_args_doc}
 class EnclaveEndpointArgs {
   /// The name of the Enclave Endpoint Resource
-  final pulumi.Input<String>? enclaveEndpointName;
+  final pulumi.Input<String?>? enclaveEndpointName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Enclave Endpoint Rule Collection.
   final pulumi.Input<List<EnclaveEndpointDestinationRule>> ruleCollection;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the enclaveResource Resource
   final pulumi.Input<String> virtualEnclaveName;
 

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'administrative_credentials_response.dart';
 import 'extended_location_response.dart';
+import 'secret_rotation_status_response.dart';
 import 'storage_appliance_args.dart';
 import 'system_data_response.dart';
 
@@ -303,7 +304,7 @@ class StorageAppliance extends pulumi.CustomResource {
   /// The indicator of whether the remote vendor management feature is enabled or disabled, or unsupported if it is an unsupported feature.
   late final pulumi.Output<String> remoteVendorManagementStatus;
   /// The list of statuses that represent secret rotation activity.
-  late final pulumi.Output<List<Map<String, dynamic>>> secretRotationStatus;
+  late final pulumi.Output<List<SecretRotationStatusResponse>> secretRotationStatus;
   /// The serial number for the storage appliance.
   late final pulumi.Output<String> serialNumber;
   /// The SKU for the storage appliance.
@@ -350,11 +351,48 @@ class StorageAppliance extends pulumi.CustomResource {
     rackSlot = registerOutput<double>('rackSlot');
     remoteVendorManagementFeature = registerOutput<String>('remoteVendorManagementFeature');
     remoteVendorManagementStatus = registerOutput<String>('remoteVendorManagementStatus');
-    secretRotationStatus = registerOutput<List<Map<String, dynamic>>>('secretRotationStatus');
+    secretRotationStatus = registerOutput<List<SecretRotationStatusResponse>>('secretRotationStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretRotationStatusResponse>(guardedValue, (value) => SecretRotationStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
     serialNumber = registerOutput<String>('serialNumber');
     storageApplianceSkuId = registerOutput<String>('storageApplianceSkuId');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [StorageAppliance] resource.
+  StorageAppliance.reference(String urn)
+    : super(
+        'azure-native:networkcloud:StorageAppliance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    administratorCredentials = registerOutput<AdministrativeCredentialsResponse>('administratorCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AdministrativeCredentialsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    capacity = registerOutput<double>('capacity');
+    capacityUsed = registerOutput<double>('capacityUsed');
+    clusterId = registerOutput<String>('clusterId');
+    detailedStatus = registerOutput<String>('detailedStatus');
+    detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    managementIpv4Address = registerOutput<String>('managementIpv4Address');
+    manufacturer = registerOutput<String>('manufacturer');
+    model = registerOutput<String>('model');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    rackId = registerOutput<String>('rackId');
+    rackSlot = registerOutput<double>('rackSlot');
+    remoteVendorManagementFeature = registerOutput<String>('remoteVendorManagementFeature');
+    remoteVendorManagementStatus = registerOutput<String>('remoteVendorManagementStatus');
+    secretRotationStatus = registerOutput<List<SecretRotationStatusResponse>>('secretRotationStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretRotationStatusResponse>(guardedValue, (value) => SecretRotationStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    serialNumber = registerOutput<String>('serialNumber');
+    storageApplianceSkuId = registerOutput<String>('storageApplianceSkuId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');
   }

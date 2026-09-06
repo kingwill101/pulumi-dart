@@ -9,15 +9,15 @@ import 'fabric_model_properties.dart';
 /// {@macro pulumi_datareplication_fabric_args_doc}
 class FabricArgs {
   /// The fabric name.
-  final pulumi.Input<String>? fabricName;
+  final pulumi.Input<String?>? fabricName;
   /// Gets or sets the location of the fabric.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Fabric model properties.
   final pulumi.Input<FabricModelProperties> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FabricArgs].
   /// [fabricName] The fabric name.

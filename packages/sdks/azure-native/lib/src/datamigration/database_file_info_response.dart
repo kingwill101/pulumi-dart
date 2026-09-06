@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Database file specific information
 class DatabaseFileInfoResponse {
   /// Name of the database
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// Database file type
-  final pulumi.Input<String>? fileType;
+  final pulumi.Input<String?>? fileType;
   /// Unique identifier for database file
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Logical name of the file
-  final pulumi.Input<String>? logicalName;
+  final pulumi.Input<String?>? logicalName;
   /// Operating-system full path of the file
-  final pulumi.Input<String>? physicalFullName;
+  final pulumi.Input<String?>? physicalFullName;
   /// Suggested full path of the file for restoring
-  final pulumi.Input<String>? restoreFullName;
+  final pulumi.Input<String?>? restoreFullName;
   /// Size of the file in megabytes
-  final pulumi.Input<double>? sizeMB;
+  final pulumi.Input<double?>? sizeMB;
 
   /// Creates a new [DatabaseFileInfoResponse].
   /// [databaseName] Name of the database
@@ -57,7 +57,7 @@ class DatabaseFileInfoResponse {
       logicalName: (() { final guardedValue = map['logicalName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       physicalFullName: (() { final guardedValue = map['physicalFullName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       restoreFullName: (() { final guardedValue = map['restoreFullName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sizeMB: (() { final guardedValue = map['sizeMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      sizeMB: (() { final guardedValue = map['sizeMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

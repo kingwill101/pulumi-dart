@@ -8,15 +8,15 @@ import 'dataflow_source_operation_settings_response.dart';
 /// Dataflow Operation properties. NOTE - One only method is allowed to be used for one entry.
 class DataflowOperationResponse {
   /// Built In Transformation configuration.
-  final pulumi.Input<DataflowBuiltInTransformationSettingsResponse>? builtInTransformationSettings;
+  final pulumi.Input<DataflowBuiltInTransformationSettingsResponse?>? builtInTransformationSettings;
   /// Destination configuration.
-  final pulumi.Input<DataflowDestinationOperationSettingsResponse>? destinationSettings;
+  final pulumi.Input<DataflowDestinationOperationSettingsResponse?>? destinationSettings;
   /// Optional user provided name of the transformation.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Type of operation.
   final pulumi.Input<String> operationType;
   /// Source configuration.
-  final pulumi.Input<DataflowSourceOperationSettingsResponse>? sourceSettings;
+  final pulumi.Input<DataflowSourceOperationSettingsResponse?>? sourceSettings;
 
   /// Creates a new [DataflowOperationResponse].
   /// [builtInTransformationSettings] Built In Transformation configuration.

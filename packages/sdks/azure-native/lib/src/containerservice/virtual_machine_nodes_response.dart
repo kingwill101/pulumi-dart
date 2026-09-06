@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Current status on a group of nodes of the same vm size.
 class VirtualMachineNodesResponse {
   /// Number of nodes.
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
   /// The VM size of the agents used to host this group of nodes.
-  final pulumi.Input<String>? size;
+  final pulumi.Input<String?>? size;
 
   /// Creates a new [VirtualMachineNodesResponse].
   /// [count] Number of nodes.
@@ -26,7 +26,7 @@ class VirtualMachineNodesResponse {
 
   factory VirtualMachineNodesResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineNodesResponse(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

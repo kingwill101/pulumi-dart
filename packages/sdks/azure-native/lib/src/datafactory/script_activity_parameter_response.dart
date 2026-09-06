@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Parameters of a script block.
 class ScriptActivityParameterResponse {
   /// The direction of the parameter.
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<String?>? direction;
   /// The name of the parameter. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? name;
   /// The size of the output direction parameter.
-  final pulumi.Input<int>? size;
+  final pulumi.Input<int?>? size;
   /// The type of the parameter.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The value of the parameter. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? value;
 
@@ -43,7 +43,7 @@ class ScriptActivityParameterResponse {
     return ScriptActivityParameterResponse(
       direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );

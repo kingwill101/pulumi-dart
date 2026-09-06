@@ -7,9 +7,9 @@ import 'file_system_http_logs_config.dart';
 /// Http logs configuration.
 class HttpLogsConfig {
   /// Http logs to azure blob storage configuration.
-  final pulumi.Input<AzureBlobStorageHttpLogsConfig>? azureBlobStorage;
+  final pulumi.Input<AzureBlobStorageHttpLogsConfig?>? azureBlobStorage;
   /// Http logs to file system configuration.
-  final pulumi.Input<FileSystemHttpLogsConfig>? fileSystem;
+  final pulumi.Input<FileSystemHttpLogsConfig?>? fileSystem;
 
   /// Creates a new [HttpLogsConfig].
   /// [azureBlobStorage] Http logs to azure blob storage configuration.

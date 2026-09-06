@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SKU of Firewall policy.
 class FirewallPolicySkuResponse {
   /// Tier of Firewall Policy.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [FirewallPolicySkuResponse].
   /// [tier] Tier of Firewall Policy.

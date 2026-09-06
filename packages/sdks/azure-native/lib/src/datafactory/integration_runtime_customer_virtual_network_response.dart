@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The definition and properties of virtual network to which Azure-SSIS integration runtime will join.
 class IntegrationRuntimeCustomerVirtualNetworkResponse {
   /// The ID of subnet to which Azure-SSIS integration runtime will join.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [IntegrationRuntimeCustomerVirtualNetworkResponse].
   /// [subnetId] The ID of subnet to which Azure-SSIS integration runtime will join.

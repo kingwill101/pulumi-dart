@@ -1,9 +1,12 @@
-enum CrossSubscriptionRestoreState {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum CrossSubscriptionRestoreState implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled"),
   valuePermanentlyDisabled("PermanentlyDisabled");
 
   const CrossSubscriptionRestoreState(this.wireValue);
+  @override
   final String wireValue;
 
   static CrossSubscriptionRestoreState fromValue(String value) {

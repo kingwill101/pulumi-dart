@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The policy type.
-enum IAASVMPolicyType {
+enum IAASVMPolicyType implements pulumi.PulumiEnum<String> {
   valueInvalid("Invalid"),
   valueV1("V1"),
   valueV2("V2");
 
   const IAASVMPolicyType(this.wireValue);
+  @override
   final String wireValue;
 
   static IAASVMPolicyType fromValue(String value) {

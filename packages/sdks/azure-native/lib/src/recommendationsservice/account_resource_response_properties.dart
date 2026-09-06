@@ -7,15 +7,15 @@ import 'endpoint_authentication_response.dart';
 /// Account resource properties.
 class AccountResourceResponseProperties {
   /// Account configuration. This can only be set at RecommendationsService Account creation.
-  final pulumi.Input<String>? configuration;
+  final pulumi.Input<String?>? configuration;
   /// The list of CORS details.
-  final pulumi.Input<List<CorsRuleResponse>>? cors;
+  final pulumi.Input<List<CorsRuleResponse>?>? cors;
   /// The list of service endpoints authentication details.
-  final pulumi.Input<List<EndpointAuthenticationResponse>>? endpointAuthentications;
+  final pulumi.Input<List<EndpointAuthenticationResponse>?>? endpointAuthentications;
   /// The resource provisioning state.
   final pulumi.Input<String> provisioningState;
   /// Connection string to write Accounts reports to.
-  final pulumi.Input<String>? reportsConnectionString;
+  final pulumi.Input<String?>? reportsConnectionString;
 
   /// Creates a new [AccountResourceResponseProperties].
   /// [configuration] Account configuration. This can only be set at RecommendationsService Account creation.

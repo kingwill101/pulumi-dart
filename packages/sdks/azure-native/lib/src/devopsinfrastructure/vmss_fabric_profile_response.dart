@@ -15,13 +15,13 @@ class VmssFabricProfileResponse {
   /// Expected value is 'Vmss'.
   final pulumi.Input<String> kind;
   /// The network profile of the machines in the pool.
-  final pulumi.Input<NetworkProfileResponse>? networkProfile;
+  final pulumi.Input<NetworkProfileResponse?>? networkProfile;
   /// The OS profile of the machines in the pool.
-  final pulumi.Input<OsProfileResponse>? osProfile;
+  final pulumi.Input<OsProfileResponse?>? osProfile;
   /// The Azure SKU of the machines in the pool.
   final pulumi.Input<DevOpsAzureSkuResponse> sku;
   /// The storage profile of the machines in the pool.
-  final pulumi.Input<StorageProfileResponse>? storageProfile;
+  final pulumi.Input<StorageProfileResponse?>? storageProfile;
 
   /// Creates a new [VmssFabricProfileResponse].
   /// [images] The VM images of the machines in the pool.

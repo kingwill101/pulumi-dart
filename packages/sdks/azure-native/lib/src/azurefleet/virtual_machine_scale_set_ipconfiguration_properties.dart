@@ -12,28 +12,28 @@ class VirtualMachineScaleSetIPConfigurationProperties {
   /// gateways. A scale set can reference backend address pools of multiple
   /// application gateways. Multiple scale sets cannot use the same application
   /// gateway.
-  final pulumi.Input<List<SubResource>>? applicationGatewayBackendAddressPools;
+  final pulumi.Input<List<SubResource>?>? applicationGatewayBackendAddressPools;
   /// Specifies an array of references to application security group.
-  final pulumi.Input<List<SubResource>>? applicationSecurityGroups;
+  final pulumi.Input<List<SubResource>?>? applicationSecurityGroups;
   /// Specifies an array of references to backend address pools of load balancers. A
   /// scale set can reference backend address pools of one public and one internal
   /// load balancer. Multiple scale sets cannot use the same basic sku load balancer.
-  final pulumi.Input<List<SubResource>>? loadBalancerBackendAddressPools;
+  final pulumi.Input<List<SubResource>?>? loadBalancerBackendAddressPools;
   /// Specifies an array of references to inbound Nat pools of the load balancers. A
   /// scale set can reference inbound nat pools of one public and one internal load
   /// balancer. Multiple scale sets cannot use the same basic sku load balancer.
-  final pulumi.Input<List<SubResource>>? loadBalancerInboundNatPools;
+  final pulumi.Input<List<SubResource>?>? loadBalancerInboundNatPools;
   /// Specifies the primary network interface in case the virtual machine has more
   /// than 1 network interface.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
   /// Available from Api-Version 2017-03-30 onwards, it represents whether the
   /// specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible
   /// values are: 'IPv4' and 'IPv6'.
-  final pulumi.Input<String>? privateIPAddressVersion;
+  final pulumi.Input<dynamic>? privateIPAddressVersion;
   /// The publicIPAddressConfiguration.
-  final pulumi.Input<VirtualMachineScaleSetPublicIPAddressConfiguration>? publicIPAddressConfiguration;
+  final pulumi.Input<VirtualMachineScaleSetPublicIPAddressConfiguration?>? publicIPAddressConfiguration;
   /// Specifies the identifier of the subnet.
-  final pulumi.Input<ApiEntityReference>? subnet;
+  final pulumi.Input<ApiEntityReference?>? subnet;
 
   /// Creates a new [VirtualMachineScaleSetIPConfigurationProperties].
   /// [applicationGatewayBackendAddressPools] Specifies an array of references to backend address pools of application
@@ -75,7 +75,7 @@ class VirtualMachineScaleSetIPConfigurationProperties {
       loadBalancerBackendAddressPools: (() { final guardedValue = map['loadBalancerBackendAddressPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubResource>(guardedValue, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))); })(),
       loadBalancerInboundNatPools: (() { final guardedValue = map['loadBalancerInboundNatPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubResource>(guardedValue, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))); })(),
       primary: (() { final guardedValue = map['primary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      privateIPAddressVersion: (() { final guardedValue = map['privateIPAddressVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateIPAddressVersion: (() { final guardedValue = map['privateIPAddressVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       publicIPAddressConfiguration: (() { final guardedValue = map['publicIPAddressConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineScaleSetPublicIPAddressConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApiEntityReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

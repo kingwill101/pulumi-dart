@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets maintenanceScope of the configuration
-enum MaintenanceScope {
+enum MaintenanceScope implements pulumi.PulumiEnum<String> {
   host("Host"),
   resource("Resource"),
   oSImage("OSImage"),
@@ -9,6 +11,7 @@ enum MaintenanceScope {
   sQLManagedInstance("SQLManagedInstance");
 
   const MaintenanceScope(this.wireValue);
+  @override
   final String wireValue;
 
   static MaintenanceScope fromValue(String value) {

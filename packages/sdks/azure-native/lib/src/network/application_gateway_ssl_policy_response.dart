@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Application Gateway Ssl policy.
 class ApplicationGatewaySslPolicyResponse {
   /// Ssl cipher suites to be enabled in the specified order to application gateway.
-  final pulumi.Input<List<String>>? cipherSuites;
+  final pulumi.Input<List<String>?>? cipherSuites;
   /// Ssl protocols to be disabled on application gateway.
-  final pulumi.Input<List<String>>? disabledSslProtocols;
+  final pulumi.Input<List<String>?>? disabledSslProtocols;
   /// Minimum version of Ssl protocol to be supported on application gateway.
-  final pulumi.Input<String>? minProtocolVersion;
+  final pulumi.Input<String?>? minProtocolVersion;
   /// Name of Ssl predefined policy.
-  final pulumi.Input<String>? policyName;
+  final pulumi.Input<String?>? policyName;
   /// Type of Ssl Policy.
-  final pulumi.Input<String>? policyType;
+  final pulumi.Input<String?>? policyType;
 
   /// Creates a new [ApplicationGatewaySslPolicyResponse].
   /// [cipherSuites] Ssl cipher suites to be enabled in the specified order to application gateway.

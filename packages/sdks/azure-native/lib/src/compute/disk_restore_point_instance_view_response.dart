@@ -6,9 +6,9 @@ import 'disk_restore_point_replication_status_response.dart';
 /// The instance view of a disk restore point.
 class DiskRestorePointInstanceViewResponse {
   /// Disk restore point Id.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The disk restore point replication status information.
-  final pulumi.Input<DiskRestorePointReplicationStatusResponse>? replicationStatus;
+  final pulumi.Input<DiskRestorePointReplicationStatusResponse?>? replicationStatus;
 
   /// Creates a new [DiskRestorePointInstanceViewResponse].
   /// [id] Disk restore point Id.

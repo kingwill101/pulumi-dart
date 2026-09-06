@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines how replicas are placed across availability zones.
-enum ZonePlacementPolicy {
+enum ZonePlacementPolicy implements pulumi.PulumiEnum<String> {
   strict("Strict"),
   bestEffort("BestEffort");
 
   const ZonePlacementPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static ZonePlacementPolicy fromValue(String value) {

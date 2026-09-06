@@ -7,7 +7,7 @@ class SecurityAssessmentMetadataPartnerData {
   /// Name of the company of the partner
   final pulumi.Input<String> partnerName;
   /// Name of the product of the partner that created the assessment
-  final pulumi.Input<String>? productName;
+  final pulumi.Input<String?>? productName;
   /// Secret to authenticate the partner and verify it created the assessment - write only
   final pulumi.Input<String> secret;
 

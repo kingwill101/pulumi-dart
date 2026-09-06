@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The principal type of the user.
-enum EntraPrincipalType {
+enum EntraPrincipalType implements pulumi.PulumiEnum<String> {
   user("user"),
   servicePrincipal("servicePrincipal");
 
   const EntraPrincipalType(this.wireValue);
+  @override
   final String wireValue;
 
   static EntraPrincipalType fromValue(String value) {

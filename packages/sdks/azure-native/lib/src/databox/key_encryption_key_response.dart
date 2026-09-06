@@ -6,25 +6,25 @@ import 'identity_properties_response.dart';
 /// Encryption key containing details about key to encrypt different keys.
 class KeyEncryptionKeyResponse {
   /// Managed identity properties used for key encryption.
-  final pulumi.Input<IdentityPropertiesResponse>? identityProperties;
+  final pulumi.Input<IdentityPropertiesResponse?>? identityProperties;
   /// Type of encryption key used for key encryption.
   final pulumi.Input<String> kekType;
   /// Key encryption key. It is required in case of Customer managed KekType.
-  final pulumi.Input<String>? kekUrl;
+  final pulumi.Input<String?>? kekUrl;
   /// Kek vault resource id. It is required in case of Customer managed KekType.
-  final pulumi.Input<String>? kekVaultResourceID;
+  final pulumi.Input<String?>? kekVaultResourceID;
 
   /// Creates a new [KeyEncryptionKeyResponse].
   /// [identityProperties] Managed identity properties used for key encryption.
   /// [kekType] Type of encryption key used for key encryption.
   /// [kekUrl] Key encryption key. It is required in case of Customer managed KekType.
   /// [kekVaultResourceID] Kek vault resource id. It is required in case of Customer managed KekType.
-  const KeyEncryptionKeyResponse({
+  KeyEncryptionKeyResponse({
     this.identityProperties,
-    required this.kekType,
+    pulumi.Input<String>? kekType,
     this.kekUrl,
     this.kekVaultResourceID,
-  });
+  }) : kekType = kekType ?? pulumi.Input.fromValue('MicrosoftManaged');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

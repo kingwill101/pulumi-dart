@@ -12,42 +12,42 @@ import 'storage_account_configuration.dart';
 /// {@macro pulumi_resources_azure_power_shell_script_args_doc}
 class AzurePowerShellScriptArgs {
   /// Command line arguments to pass to the script. Arguments are separated by spaces. ex: -Name blue* -Location 'West US 2'
-  final pulumi.Input<String>? arguments;
+  final pulumi.Input<String?>? arguments;
   /// Azure PowerShell module version to be used.
   final pulumi.Input<String> azPowerShellVersion;
   /// The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'.
-  final pulumi.Input<String>? cleanupPreference;
+  final pulumi.Input<dynamic>? cleanupPreference;
   /// Container settings.
-  final pulumi.Input<ContainerConfiguration>? containerSettings;
+  final pulumi.Input<ContainerConfiguration?>? containerSettings;
   /// The environment variables to pass over to the script.
-  final pulumi.Input<List<EnvironmentVariable>>? environmentVariables;
+  final pulumi.Input<List<EnvironmentVariable>?>? environmentVariables;
   /// Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID.
-  final pulumi.Input<String>? forceUpdateTag;
+  final pulumi.Input<String?>? forceUpdateTag;
   /// Optional property. Managed identity to be used for this deployment script. Currently, only user-assigned MSI is supported.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// Type of the script.
   /// Expected value is 'AzurePowerShell'.
   final pulumi.Input<String> kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Uri for the script. This is the entry point for the external script.
-  final pulumi.Input<String>? primaryScriptUri;
+  final pulumi.Input<String?>? primaryScriptUri;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Interval for which the service retains the script resource after it reaches a terminal state. Resource will be deleted when this duration expires. Duration is based on ISO 8601 pattern (for example P1D means one day).
   final pulumi.Input<String> retentionInterval;
   /// Script body.
-  final pulumi.Input<String>? scriptContent;
+  final pulumi.Input<String?>? scriptContent;
   /// Name of the deployment script.
-  final pulumi.Input<String>? scriptName;
+  final pulumi.Input<String?>? scriptName;
   /// Storage Account settings.
-  final pulumi.Input<StorageAccountConfiguration>? storageAccountSettings;
+  final pulumi.Input<StorageAccountConfiguration?>? storageAccountSettings;
   /// Supporting files for the external script.
-  final pulumi.Input<List<String>>? supportingScriptUris;
+  final pulumi.Input<List<String>?>? supportingScriptUris;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Maximum allowed script execution time specified in ISO 8601 format. Default value is P1D
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [AzurePowerShellScriptArgs].
   /// [arguments] Command line arguments to pass to the script. Arguments are separated by spaces. ex: -Name blue* -Location 'West US 2'
@@ -68,10 +68,10 @@ class AzurePowerShellScriptArgs {
   /// [supportingScriptUris] Supporting files for the external script.
   /// [tags] Resource tags.
   /// [timeout] Maximum allowed script execution time specified in ISO 8601 format. Default value is P1D
-  const AzurePowerShellScriptArgs({
+  AzurePowerShellScriptArgs({
     this.arguments,
     required this.azPowerShellVersion,
-    this.cleanupPreference,
+    pulumi.Input<dynamic>? cleanupPreference,
     this.containerSettings,
     this.environmentVariables,
     this.forceUpdateTag,
@@ -86,8 +86,8 @@ class AzurePowerShellScriptArgs {
     this.storageAccountSettings,
     this.supportingScriptUris,
     this.tags,
-    this.timeout,
-  });
+    pulumi.Input<String?>? timeout,
+  }) : cleanupPreference = cleanupPreference ?? pulumi.Input.fromValue('Always'), timeout = timeout ?? pulumi.Input.fromValue('P1D');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -116,7 +116,7 @@ class AzurePowerShellScriptArgs {
     return AzurePowerShellScriptArgs(
       arguments: (() { final guardedValue = map['arguments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       azPowerShellVersion: pulumi.Input.fromValue(map['azPowerShellVersion'] as String),
-      cleanupPreference: (() { final guardedValue = map['cleanupPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cleanupPreference: (() { final guardedValue = map['cleanupPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       containerSettings: (() { final guardedValue = map['containerSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContainerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       environmentVariables: (() { final guardedValue = map['environmentVariables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EnvironmentVariable>(guardedValue, (value) => EnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))); })(),
       forceUpdateTag: (() { final guardedValue = map['forceUpdateTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

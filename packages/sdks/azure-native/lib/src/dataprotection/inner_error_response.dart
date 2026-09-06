@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Inner Error
 class InnerErrorResponse {
   /// Any Key value pairs that can be provided to the client for additional  verbose information.
-  final pulumi.Input<Map<String, String>>? additionalInfo;
+  final pulumi.Input<Map<String, String>?>? additionalInfo;
   /// Unique code for this error
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// Child Inner Error, to allow Nesting.
-  final pulumi.Input<InnerErrorResponse>? embeddedInnerError;
+  final pulumi.Input<InnerErrorResponse?>? embeddedInnerError;
 
   /// Creates a new [InnerErrorResponse].
   /// [additionalInfo] Any Key value pairs that can be provided to the client for additional  verbose information.

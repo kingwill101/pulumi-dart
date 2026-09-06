@@ -7,11 +7,11 @@ class SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse {
   /// Name of the key.
   final pulumi.Input<String> keyName;
   /// Primary SAS key value.
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// Rights that this key has.
   final pulumi.Input<String> rights;
   /// Secondary SAS key value.
-  final pulumi.Input<String>? secondaryKey;
+  final pulumi.Input<String?>? secondaryKey;
 
   /// Creates a new [SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse].
   /// [keyName] Name of the key.

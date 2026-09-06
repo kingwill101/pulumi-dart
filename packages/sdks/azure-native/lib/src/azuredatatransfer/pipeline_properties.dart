@@ -6,15 +6,15 @@ import 'subscriber.dart';
 /// Properties of pipeline
 class PipelineProperties {
   /// Display name of this pipeline
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The flow types allowed for this pipeline
-  final pulumi.Input<List<String>>? flowTypes;
+  final pulumi.Input<List<dynamic>?>? flowTypes;
   /// The policies for this pipeline
-  final pulumi.Input<List<String>>? policies;
+  final pulumi.Input<List<String>?>? policies;
   /// Remote cloud of the data to be transferred or received
   final pulumi.Input<String> remoteCloud;
   /// Subscribers of this resource
-  final pulumi.Input<List<Subscriber>>? subscribers;
+  final pulumi.Input<List<Subscriber>?>? subscribers;
 
   /// Creates a new [PipelineProperties].
   /// [displayName] Display name of this pipeline
@@ -43,7 +43,7 @@ class PipelineProperties {
   factory PipelineProperties.fromMap(Map<String, dynamic> map) {
     return PipelineProperties(
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      flowTypes: (() { final guardedValue = map['flowTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      flowTypes: (() { final guardedValue = map['flowTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       policies: (() { final guardedValue = map['policies']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       remoteCloud: pulumi.Input.fromValue(map['remoteCloud'] as String),
       subscribers: (() { final guardedValue = map['subscribers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Subscriber>(guardedValue, (value) => Subscriber.fromMap((value as Map).cast<String, dynamic>()))); })(),

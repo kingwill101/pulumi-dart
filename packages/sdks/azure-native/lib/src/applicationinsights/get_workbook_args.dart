@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_applicationinsights_get_workbook_args_doc}
 class GetWorkbookArgs {
   /// Flag indicating whether or not to return the full content for each applicable workbook. If false, only return summary content for workbooks.
-  final pulumi.Input<bool>? canFetchContent;
+  final pulumi.Input<bool?>? canFetchContent;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the workbook resource. The value must be an UUID.

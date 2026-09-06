@@ -6,7 +6,7 @@ import 'configuration_info_response.dart';
 /// Information about the guest configuration assignment.
 class AssignmentInfoResponse {
   /// Information about the configuration.
-  final pulumi.Input<ConfigurationInfoResponse>? configuration;
+  final pulumi.Input<ConfigurationInfoResponse?>? configuration;
   /// Name of the guest configuration assignment.
   final pulumi.Input<String> name;
 

@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'action_group.dart';
 
 /// {@template pulumi_alertsmanagement_action_rule_by_name_args_doc}
 /// The set of arguments for ActionRuleByName.
@@ -9,15 +8,15 @@ import 'action_group.dart';
 /// {@macro pulumi_alertsmanagement_action_rule_by_name_args_doc}
 class ActionRuleByNameArgs {
   /// The name of action rule that needs to be created/updated
-  final pulumi.Input<String>? actionRuleName;
+  final pulumi.Input<String?>? actionRuleName;
   /// Resource location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// action rule properties
-  final pulumi.Input<ActionGroup>? properties;
+  final pulumi.Input<dynamic>? properties;
   /// Resource group name where the resource is created.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ActionRuleByNameArgs].
   /// [actionRuleName] The name of action rule that needs to be created/updated
@@ -37,7 +36,7 @@ class ActionRuleByNameArgs {
     return <String, dynamic>{
       'actionRuleName': ?actionRuleName,
       'location': ?location,
-      'properties': ?pulumi.Input.mapOptionalInputValue<ActionGroup, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': ?properties,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -47,7 +46,7 @@ class ActionRuleByNameArgs {
     return ActionRuleByNameArgs(
       actionRuleName: (() { final guardedValue = map['actionRuleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActionGroup.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

@@ -9,15 +9,15 @@ import 'sql_server_license_properties.dart';
 /// {@macro pulumi_azurearcdata_sql_server_license_args_doc}
 class SqlServerLicenseArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// SQL Server license properties
   final pulumi.Input<SqlServerLicenseProperties> properties;
   /// The name of the Azure resource group
   final pulumi.Input<String> resourceGroupName;
   /// Name of SQL Server License
-  final pulumi.Input<String>? sqlServerLicenseName;
+  final pulumi.Input<String?>? sqlServerLicenseName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SqlServerLicenseArgs].
   /// [location] The geo-location where the resource lives

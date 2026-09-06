@@ -6,9 +6,9 @@ import 'datadog_logs_agent_response.dart';
 
 class DatadogHostMetadataResponse {
   /// The agent version.
-  final pulumi.Input<String>? agentVersion;
-  final pulumi.Input<DatadogInstallMethodResponse>? installMethod;
-  final pulumi.Input<DatadogLogsAgentResponse>? logsAgent;
+  final pulumi.Input<String?>? agentVersion;
+  final pulumi.Input<DatadogInstallMethodResponse?>? installMethod;
+  final pulumi.Input<DatadogLogsAgentResponse?>? logsAgent;
 
   /// Creates a new [DatadogHostMetadataResponse].
   /// [agentVersion] The agent version.

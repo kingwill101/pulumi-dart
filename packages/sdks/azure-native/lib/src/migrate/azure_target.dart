@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Azure Target
-enum AzureTarget {
+enum AzureTarget implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   sqlDatabase("SqlDatabase"),
   sqlMI("SqlMI"),
@@ -16,6 +18,7 @@ enum AzureTarget {
   avs("Avs");
 
   const AzureTarget(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureTarget fromValue(String value) {

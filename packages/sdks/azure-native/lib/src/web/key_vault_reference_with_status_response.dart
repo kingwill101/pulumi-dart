@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Object to hold key vault reference and the resolution status
 class KeyVaultReferenceWithStatusResponse {
   /// Reference status of the key vault secret.
-  final pulumi.Input<String>? referenceStatus;
+  final pulumi.Input<String?>? referenceStatus;
   /// Key vault secret URI.
-  final pulumi.Input<String>? secretUri;
+  final pulumi.Input<String?>? secretUri;
 
   /// Creates a new [KeyVaultReferenceWithStatusResponse].
   /// [referenceStatus] Reference status of the key vault secret.

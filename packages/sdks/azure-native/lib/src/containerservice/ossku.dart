@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the OS SKU used by the agent pool. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes &lt;= 1.24 or Windows2022 when Kubernetes &gt;= 1.25 if OSType is Windows.
-enum OSSKU {
+enum OSSKU implements pulumi.PulumiEnum<String> {
   valueUbuntu("Ubuntu"),
   valueAzureLinux("AzureLinux"),
   valueAzureLinux3("AzureLinux3"),
@@ -9,6 +11,7 @@ enum OSSKU {
   valueUbuntu2204("Ubuntu2204");
 
   const OSSKU(this.wireValue);
+  @override
   final String wireValue;
 
   static OSSKU fromValue(String value) {

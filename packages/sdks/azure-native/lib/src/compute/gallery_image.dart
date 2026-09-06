@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'disallowed_response.dart';
 import 'gallery_image_args.dart';
+import 'gallery_image_feature_response.dart';
 import 'gallery_image_identifier_response.dart';
 import 'image_purchase_plan_response.dart';
 import 'recommended_machine_configuration_response.dart';
@@ -233,7 +234,7 @@ class GalleryImage extends pulumi.CustomResource {
   /// The Eula agreement for the gallery image definition.
   late final pulumi.Output<String?> eula;
   /// A list of gallery image features.
-  late final pulumi.Output<List<Map<String, dynamic>>?> features;
+  late final pulumi.Output<List<GalleryImageFeatureResponse>?> features;
   /// The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
   late final pulumi.Output<String?> hyperVGeneration;
   /// This is the gallery image definition identifier.
@@ -284,7 +285,7 @@ class GalleryImage extends pulumi.CustomResource {
     disallowed = registerOutput<DisallowedResponse?>('disallowed', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DisallowedResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endOfLifeDate = registerOutput<String?>('endOfLifeDate');
     eula = registerOutput<String?>('eula');
-    features = registerOutput<List<Map<String, dynamic>>?>('features');
+    features = registerOutput<List<GalleryImageFeatureResponse>?>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GalleryImageFeatureResponse>(guardedValue, (value) => GalleryImageFeatureResponse.fromMap((value as Map).cast<String, dynamic>())); });
     hyperVGeneration = registerOutput<String?>('hyperVGeneration');
     identifier = registerOutput<GalleryImageIdentifierResponse>('identifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryImageIdentifierResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
@@ -297,7 +298,40 @@ class GalleryImage extends pulumi.CustomResource {
     recommended = registerOutput<RecommendedMachineConfigurationResponse?>('recommended', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecommendedMachineConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     releaseNoteUri = registerOutput<String?>('releaseNoteUri');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [GalleryImage] resource.
+  GalleryImage.reference(String urn)
+    : super(
+        'azure-native:compute:GalleryImage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowUpdateImage = registerOutput<bool?>('allowUpdateImage');
+    architecture = registerOutput<String?>('architecture');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    disallowed = registerOutput<DisallowedResponse?>('disallowed', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DisallowedResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endOfLifeDate = registerOutput<String?>('endOfLifeDate');
+    eula = registerOutput<String?>('eula');
+    features = registerOutput<List<GalleryImageFeatureResponse>?>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GalleryImageFeatureResponse>(guardedValue, (value) => GalleryImageFeatureResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    hyperVGeneration = registerOutput<String?>('hyperVGeneration');
+    identifier = registerOutput<GalleryImageIdentifierResponse>('identifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryImageIdentifierResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    osState = registerOutput<String>('osState');
+    osType = registerOutput<String>('osType');
+    privacyStatementUri = registerOutput<String?>('privacyStatementUri');
+    provisioningState = registerOutput<String>('provisioningState');
+    purchasePlan = registerOutput<ImagePurchasePlanResponse?>('purchasePlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImagePurchasePlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    recommended = registerOutput<RecommendedMachineConfigurationResponse?>('recommended', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecommendedMachineConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    releaseNoteUri = registerOutput<String?>('releaseNoteUri');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

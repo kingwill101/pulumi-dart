@@ -10,7 +10,7 @@ class SecurityOperatorArgs {
   /// Name of the pricing configuration.
   final pulumi.Input<String> pricingName;
   /// Name of the security operator.
-  final pulumi.Input<String>? securityOperatorName;
+  final pulumi.Input<String?>? securityOperatorName;
 
   /// Creates a new [SecurityOperatorArgs].
   /// [pricingName] Name of the pricing configuration.

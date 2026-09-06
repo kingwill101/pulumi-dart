@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The SKU (Stock Keeping Unit) assigned to this durable task scheduler
 class SchedulerSku {
   /// The SKU capacity. This allows scale out/in for the resource and impacts zone redundancy
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
   /// The name of the SKU
   final pulumi.Input<String> name;
 
@@ -26,7 +26,7 @@ class SchedulerSku {
 
   factory SchedulerSku.fromMap(Map<String, dynamic> map) {
     return SchedulerSku(
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

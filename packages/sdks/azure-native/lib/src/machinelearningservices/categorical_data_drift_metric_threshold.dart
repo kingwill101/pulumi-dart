@@ -7,9 +7,9 @@ class CategoricalDataDriftMetricThreshold {
   /// Expected value is 'Categorical'.
   final pulumi.Input<String> dataType;
   /// [Required] The categorical data drift metric to calculate.
-  final pulumi.Input<String> metric;
+  final pulumi.Input<dynamic> metric;
   /// The threshold value. If null, a default value will be set depending on the selected metric.
-  final pulumi.Input<MonitoringThreshold>? threshold;
+  final pulumi.Input<MonitoringThreshold?>? threshold;
 
   /// Creates a new [CategoricalDataDriftMetricThreshold].
   /// [dataType] Expected value is 'Categorical'.
@@ -32,7 +32,7 @@ class CategoricalDataDriftMetricThreshold {
   factory CategoricalDataDriftMetricThreshold.fromMap(Map<String, dynamic> map) {
     return CategoricalDataDriftMetricThreshold(
       dataType: pulumi.Input.fromValue(map['dataType'] as String),
-      metric: pulumi.Input.fromValue(map['metric'] as String),
+      metric: pulumi.Input.fromValue(map['metric']),
       threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MonitoringThreshold.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

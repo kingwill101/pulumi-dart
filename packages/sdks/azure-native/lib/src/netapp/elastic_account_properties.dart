@@ -6,7 +6,7 @@ import 'elastic_encryption.dart';
 /// NetApp elastic account properties
 class ElasticAccountProperties {
   /// Encryption settings
-  final pulumi.Input<ElasticEncryption>? encryption;
+  final pulumi.Input<ElasticEncryption?>? encryption;
 
   /// Creates a new [ElasticAccountProperties].
   /// [encryption] Encryption settings

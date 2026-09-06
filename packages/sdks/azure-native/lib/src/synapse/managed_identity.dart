@@ -6,9 +6,9 @@ import 'resource_identity_type.dart';
 /// The workspace managed identity
 class ManagedIdentity {
   /// The type of managed identity for the workspace
-  final pulumi.Input<ResourceIdentityType>? type;
+  final pulumi.Input<ResourceIdentityType?>? type;
   /// The user assigned managed identities.
-  final pulumi.Input<List<String>>? userAssignedIdentities;
+  final pulumi.Input<List<String>?>? userAssignedIdentities;
 
   /// Creates a new [ManagedIdentity].
   /// [type] The type of managed identity for the workspace

@@ -8,7 +8,7 @@ class Mpi {
   /// Expected value is 'Mpi'.
   final pulumi.Input<String> distributionType;
   /// Number of processes per MPI node.
-  final pulumi.Input<int>? processCountPerInstance;
+  final pulumi.Input<int?>? processCountPerInstance;
 
   /// Creates a new [Mpi].
   /// [distributionType] Enum to determine the job distribution type.
@@ -28,7 +28,7 @@ class Mpi {
   factory Mpi.fromMap(Map<String, dynamic> map) {
     return Mpi(
       distributionType: pulumi.Input.fromValue(map['distributionType'] as String),
-      processCountPerInstance: (() { final guardedValue = map['processCountPerInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      processCountPerInstance: (() { final guardedValue = map['processCountPerInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

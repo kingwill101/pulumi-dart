@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets user preference indicating intent of multi-subnet configuration.
-enum MultiSubnetIntent {
+enum MultiSubnetIntent implements pulumi.PulumiEnum<String> {
   none("None"),
   highAvailability("HighAvailability"),
   disasterRecovery("DisasterRecovery");
 
   const MultiSubnetIntent(this.wireValue);
+  @override
   final String wireValue;
 
   static MultiSubnetIntent fromValue(String value) {

@@ -7,9 +7,9 @@ import 'elevation_level.dart';
 /// Specifies the parameters for the auto user that runs a task on the Batch service.
 class AutoUserSpecification {
   /// The default value is nonAdmin.
-  final pulumi.Input<ElevationLevel>? elevationLevel;
+  final pulumi.Input<ElevationLevel?>? elevationLevel;
   /// The default value is Pool. If the pool is running Windows a value of Task should be specified if stricter isolation between tasks is required. For example, if the task mutates the registry in a way which could impact other tasks, or if certificates have been specified on the pool which should not be accessible by normal tasks but should be accessible by start tasks.
-  final pulumi.Input<AutoUserScope>? scope;
+  final pulumi.Input<AutoUserScope?>? scope;
 
   /// Creates a new [AutoUserSpecification].
   /// [elevationLevel] The default value is nonAdmin.

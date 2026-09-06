@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterCapacityResponse {
   /// The remaining appliance-based storage in GB available for workload use. Measured in gibibytes.
-  final pulumi.Input<double>? availableApplianceStorageGB;
+  final pulumi.Input<double?>? availableApplianceStorageGB;
   /// The remaining number of cores that are available in this cluster for workload use.
-  final pulumi.Input<double>? availableCoreCount;
+  final pulumi.Input<double?>? availableCoreCount;
   /// The remaining machine or host-based storage in GB available for workload use. Measured in gibibytes.
-  final pulumi.Input<double>? availableHostStorageGB;
+  final pulumi.Input<double?>? availableHostStorageGB;
   /// The remaining memory in GB that are available in this cluster for workload use. Measured in gibibytes.
-  final pulumi.Input<double>? availableMemoryGB;
+  final pulumi.Input<double?>? availableMemoryGB;
   /// The total appliance-based storage in GB supported by this cluster for workload use. Measured in gibibytes.
-  final pulumi.Input<double>? totalApplianceStorageGB;
+  final pulumi.Input<double?>? totalApplianceStorageGB;
   /// The total number of cores that are supported by this cluster for workload use.
-  final pulumi.Input<double>? totalCoreCount;
+  final pulumi.Input<double?>? totalCoreCount;
   /// The total machine or host-based storage in GB supported by this cluster for workload use. Measured in gibibytes.
-  final pulumi.Input<double>? totalHostStorageGB;
+  final pulumi.Input<double?>? totalHostStorageGB;
   /// The total memory supported by this cluster for workload use. Measured in gibibytes.
-  final pulumi.Input<double>? totalMemoryGB;
+  final pulumi.Input<double?>? totalMemoryGB;
 
   /// Creates a new [ClusterCapacityResponse].
   /// [availableApplianceStorageGB] The remaining appliance-based storage in GB available for workload use. Measured in gibibytes.
@@ -55,14 +55,14 @@ class ClusterCapacityResponse {
 
   factory ClusterCapacityResponse.fromMap(Map<String, dynamic> map) {
     return ClusterCapacityResponse(
-      availableApplianceStorageGB: (() { final guardedValue = map['availableApplianceStorageGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      availableCoreCount: (() { final guardedValue = map['availableCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      availableHostStorageGB: (() { final guardedValue = map['availableHostStorageGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      availableMemoryGB: (() { final guardedValue = map['availableMemoryGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      totalApplianceStorageGB: (() { final guardedValue = map['totalApplianceStorageGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      totalCoreCount: (() { final guardedValue = map['totalCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      totalHostStorageGB: (() { final guardedValue = map['totalHostStorageGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      totalMemoryGB: (() { final guardedValue = map['totalMemoryGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      availableApplianceStorageGB: (() { final guardedValue = map['availableApplianceStorageGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      availableCoreCount: (() { final guardedValue = map['availableCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      availableHostStorageGB: (() { final guardedValue = map['availableHostStorageGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      availableMemoryGB: (() { final guardedValue = map['availableMemoryGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      totalApplianceStorageGB: (() { final guardedValue = map['totalApplianceStorageGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      totalCoreCount: (() { final guardedValue = map['totalCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      totalHostStorageGB: (() { final guardedValue = map['totalHostStorageGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      totalMemoryGB: (() { final guardedValue = map['totalMemoryGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

@@ -9,23 +9,23 @@ class AlexaChannel {
   /// Expected value is 'AlexaChannel'.
   final pulumi.Input<String> channelName;
   /// Entity Tag of the resource
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Specifies the location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The set of properties specific to Alexa channel resource
-  final pulumi.Input<AlexaChannelProperties>? properties;
+  final pulumi.Input<AlexaChannelProperties?>? properties;
 
   /// Creates a new [AlexaChannel].
   /// [channelName] The channel name
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Alexa channel resource
-  const AlexaChannel({
+  AlexaChannel({
     required this.channelName,
     this.etag,
-    this.location,
+    pulumi.Input<String?>? location,
     this.properties,
-  });
+  }) : location = location ?? pulumi.Input.fromValue('global');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

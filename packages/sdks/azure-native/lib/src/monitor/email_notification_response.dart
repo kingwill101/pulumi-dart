@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Email notification of an autoscale event.
 class EmailNotificationResponse {
   /// the custom e-mails list. This value can be null or empty, in which case this attribute will be ignored.
-  final pulumi.Input<List<String>>? customEmails;
+  final pulumi.Input<List<String>?>? customEmails;
   /// a value indicating whether to send email to subscription administrator.
-  final pulumi.Input<bool>? sendToSubscriptionAdministrator;
+  final pulumi.Input<bool?>? sendToSubscriptionAdministrator;
   /// a value indicating whether to send email to subscription co-administrators.
-  final pulumi.Input<bool>? sendToSubscriptionCoAdministrators;
+  final pulumi.Input<bool?>? sendToSubscriptionCoAdministrators;
 
   /// Creates a new [EmailNotificationResponse].
   /// [customEmails] the custom e-mails list. This value can be null or empty, in which case this attribute will be ignored.
   /// [sendToSubscriptionAdministrator] a value indicating whether to send email to subscription administrator.
   /// [sendToSubscriptionCoAdministrators] a value indicating whether to send email to subscription co-administrators.
-  const EmailNotificationResponse({
+  EmailNotificationResponse({
     this.customEmails,
-    this.sendToSubscriptionAdministrator,
-    this.sendToSubscriptionCoAdministrators,
-  });
+    pulumi.Input<bool?>? sendToSubscriptionAdministrator,
+    pulumi.Input<bool?>? sendToSubscriptionCoAdministrators,
+  }) : sendToSubscriptionAdministrator = sendToSubscriptionAdministrator ?? pulumi.Input.fromValue(false), sendToSubscriptionCoAdministrators = sendToSubscriptionCoAdministrators ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -9,13 +9,13 @@ import 'project_file_properties.dart';
 /// {@macro pulumi_datamigration_file_args_doc}
 class FileArgs {
   /// Name of the File
-  final pulumi.Input<String>? fileName;
+  final pulumi.Input<String?>? fileName;
   /// Name of the resource group
   final pulumi.Input<String> groupName;
   /// Name of the project
   final pulumi.Input<String> projectName;
   /// Custom file properties
-  final pulumi.Input<ProjectFileProperties>? properties;
+  final pulumi.Input<ProjectFileProperties?>? properties;
   /// Name of the service
   final pulumi.Input<String> serviceName;
 

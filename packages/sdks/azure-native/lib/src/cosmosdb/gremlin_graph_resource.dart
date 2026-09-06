@@ -10,23 +10,23 @@ import 'unique_key_policy.dart';
 /// Cosmos DB Gremlin graph resource object
 class GremlinGraphResource {
   /// Analytical TTL.
-  final pulumi.Input<double>? analyticalStorageTtl;
+  final pulumi.Input<double?>? analyticalStorageTtl;
   /// The conflict resolution policy for the graph.
-  final pulumi.Input<ConflictResolutionPolicy>? conflictResolutionPolicy;
+  final pulumi.Input<ConflictResolutionPolicy?>? conflictResolutionPolicy;
   /// Enum to indicate the mode of resource creation.
-  final pulumi.Input<String>? createMode;
+  final pulumi.Input<dynamic>? createMode;
   /// Default time to live
-  final pulumi.Input<int>? defaultTtl;
+  final pulumi.Input<int?>? defaultTtl;
   /// Name of the Cosmos DB Gremlin graph
   final pulumi.Input<String> id;
   /// The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the graph
-  final pulumi.Input<IndexingPolicy>? indexingPolicy;
+  final pulumi.Input<IndexingPolicy?>? indexingPolicy;
   /// The configuration of the partition key to be used for partitioning data into multiple partitions
-  final pulumi.Input<ContainerPartitionKey>? partitionKey;
+  final pulumi.Input<ContainerPartitionKey?>? partitionKey;
   /// Parameters to indicate the information about the restore
-  final pulumi.Input<ResourceRestoreParameters>? restoreParameters;
+  final pulumi.Input<ResourceRestoreParameters?>? restoreParameters;
   /// The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
-  final pulumi.Input<UniqueKeyPolicy>? uniqueKeyPolicy;
+  final pulumi.Input<UniqueKeyPolicy?>? uniqueKeyPolicy;
 
   /// Creates a new [GremlinGraphResource].
   /// [analyticalStorageTtl] Analytical TTL.
@@ -66,10 +66,10 @@ class GremlinGraphResource {
 
   factory GremlinGraphResource.fromMap(Map<String, dynamic> map) {
     return GremlinGraphResource(
-      analyticalStorageTtl: (() { final guardedValue = map['analyticalStorageTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      analyticalStorageTtl: (() { final guardedValue = map['analyticalStorageTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       conflictResolutionPolicy: (() { final guardedValue = map['conflictResolutionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConflictResolutionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      defaultTtl: (() { final guardedValue = map['defaultTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      defaultTtl: (() { final guardedValue = map['defaultTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
       indexingPolicy: (() { final guardedValue = map['indexingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IndexingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       partitionKey: (() { final guardedValue = map['partitionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContainerPartitionKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

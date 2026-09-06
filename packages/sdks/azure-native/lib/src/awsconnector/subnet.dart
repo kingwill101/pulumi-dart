@@ -6,11 +6,11 @@ import 'availability_zone.dart';
 /// Definition of Subnet
 class Subnet {
   /// &lt;p&gt;The Availability Zone of the subnet.&lt;/p&gt;
-  final pulumi.Input<AvailabilityZone>? subnetAvailabilityZone;
+  final pulumi.Input<AvailabilityZone?>? subnetAvailabilityZone;
   /// &lt;p&gt;The subnet identifier.&lt;/p&gt;
-  final pulumi.Input<String>? subnetIdentifier;
+  final pulumi.Input<String?>? subnetIdentifier;
   /// &lt;p&gt;The status of the subnet.&lt;/p&gt;
-  final pulumi.Input<String>? subnetStatus;
+  final pulumi.Input<String?>? subnetStatus;
 
   /// Creates a new [Subnet].
   /// [subnetAvailabilityZone] &lt;p&gt;The Availability Zone of the subnet.&lt;/p&gt;

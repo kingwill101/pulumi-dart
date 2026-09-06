@@ -8,45 +8,45 @@ import 'version_details_response.dart';
 /// Recovery services provider properties.
 class RecoveryServicesProviderPropertiesResponse {
   /// The scenarios allowed on this provider.
-  final pulumi.Input<List<String>>? allowedScenarios;
+  final pulumi.Input<List<String>?>? allowedScenarios;
   /// The authentication identity details.
-  final pulumi.Input<IdentityProviderDetailsResponse>? authenticationIdentityDetails;
+  final pulumi.Input<IdentityProviderDetailsResponse?>? authenticationIdentityDetails;
   /// The Bios Id.
-  final pulumi.Input<String>? biosId;
+  final pulumi.Input<String?>? biosId;
   /// A value indicating whether DRA is responsive.
-  final pulumi.Input<String>? connectionStatus;
+  final pulumi.Input<String?>? connectionStatus;
   /// The data plane authentication identity details.
-  final pulumi.Input<IdentityProviderDetailsResponse>? dataPlaneAuthenticationIdentityDetails;
+  final pulumi.Input<IdentityProviderDetailsResponse?>? dataPlaneAuthenticationIdentityDetails;
   /// The DRA Id.
-  final pulumi.Input<String>? draIdentifier;
+  final pulumi.Input<String?>? draIdentifier;
   /// The fabric friendly name.
-  final pulumi.Input<String>? fabricFriendlyName;
+  final pulumi.Input<String?>? fabricFriendlyName;
   /// Type of the site.
-  final pulumi.Input<String>? fabricType;
+  final pulumi.Input<String?>? fabricType;
   /// Friendly name of the DRA.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// The recovery services provider health error details.
-  final pulumi.Input<List<HealthErrorResponse>>? healthErrorDetails;
+  final pulumi.Input<List<HealthErrorResponse>?>? healthErrorDetails;
   /// Time when last heartbeat was sent by the DRA.
-  final pulumi.Input<String>? lastHeartBeat;
+  final pulumi.Input<String?>? lastHeartBeat;
   /// The machine Id.
-  final pulumi.Input<String>? machineId;
+  final pulumi.Input<String?>? machineId;
   /// The machine name.
-  final pulumi.Input<String>? machineName;
+  final pulumi.Input<String?>? machineName;
   /// Number of protected VMs currently managed by the DRA.
-  final pulumi.Input<int>? protectedItemCount;
+  final pulumi.Input<int?>? protectedItemCount;
   /// The provider version.
-  final pulumi.Input<String>? providerVersion;
+  final pulumi.Input<String?>? providerVersion;
   /// The provider version details.
-  final pulumi.Input<VersionDetailsResponse>? providerVersionDetails;
+  final pulumi.Input<VersionDetailsResponse?>? providerVersionDetails;
   /// Expiry date of the version.
-  final pulumi.Input<String>? providerVersionExpiryDate;
+  final pulumi.Input<String?>? providerVersionExpiryDate;
   /// DRA version status.
-  final pulumi.Input<String>? providerVersionState;
+  final pulumi.Input<String?>? providerVersionState;
   /// The resource access identity details.
-  final pulumi.Input<IdentityProviderDetailsResponse>? resourceAccessIdentityDetails;
+  final pulumi.Input<IdentityProviderDetailsResponse?>? resourceAccessIdentityDetails;
   /// The fabric provider.
-  final pulumi.Input<String>? serverVersion;
+  final pulumi.Input<String?>? serverVersion;
 
   /// Creates a new [RecoveryServicesProviderPropertiesResponse].
   /// [allowedScenarios] The scenarios allowed on this provider.
@@ -132,7 +132,7 @@ class RecoveryServicesProviderPropertiesResponse {
       lastHeartBeat: (() { final guardedValue = map['lastHeartBeat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       machineId: (() { final guardedValue = map['machineId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       machineName: (() { final guardedValue = map['machineName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      protectedItemCount: (() { final guardedValue = map['protectedItemCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      protectedItemCount: (() { final guardedValue = map['protectedItemCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       providerVersion: (() { final guardedValue = map['providerVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       providerVersionDetails: (() { final guardedValue = map['providerVersionDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VersionDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       providerVersionExpiryDate: (() { final guardedValue = map['providerVersionExpiryDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

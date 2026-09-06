@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Savings settings class.
 class SavingsSettingsResponse {
   /// Gets or sets the Azure offer code.
-  final pulumi.Input<String>? azureOfferCode;
+  final pulumi.Input<String?>? azureOfferCode;
   /// Gets or sets the savings options.
-  final pulumi.Input<String>? savingsOptions;
+  final pulumi.Input<String?>? savingsOptions;
 
   /// Creates a new [SavingsSettingsResponse].
   /// [azureOfferCode] Gets or sets the Azure offer code.

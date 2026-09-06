@@ -9,9 +9,9 @@ class PrivateEndpointConnectionPropertiesResponse {
   /// Group IDs.
   final pulumi.Input<List<String>> groupIds;
   /// Private endpoint which the connection belongs to.
-  final pulumi.Input<PrivateEndpointPropertyResponse>? privateEndpoint;
+  final pulumi.Input<PrivateEndpointPropertyResponse?>? privateEndpoint;
   /// Connection state of the private endpoint connection.
-  final pulumi.Input<PrivateLinkServiceConnectionStatePropertyResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStatePropertyResponse?>? privateLinkServiceConnectionState;
   /// State of the private endpoint connection.
   final pulumi.Input<String> provisioningState;
 

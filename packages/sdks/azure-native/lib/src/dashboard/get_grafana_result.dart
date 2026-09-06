@@ -8,25 +8,25 @@ import 'system_data_response.dart';
 /// Result data returned by getGrafana.
 class GetGrafanaResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// ARM id of the grafana resource
-  final String id;
+  final String? id;
   /// The managed identity of the grafana resource.
   final ManagedServiceIdentityResponse? identity;
   /// The geo-location where the grafana resource lives
   final String? location;
   /// Name of the grafana resource.
-  final String name;
+  final String? name;
   /// Properties specific to the grafana resource.
-  final ManagedGrafanaPropertiesResponse properties;
+  final ManagedGrafanaPropertiesResponse? properties;
   /// The Sku of the grafana resource.
   final ResourceSkuResponse? sku;
   /// The system meta data relating to this grafana resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The tags for grafana resource.
   final Map<String, String>? tags;
   /// The type of the grafana resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetGrafanaResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -40,45 +40,45 @@ class GetGrafanaResult {
   /// [tags] The tags for grafana resource.
   /// [type] The type of the grafana resource.
   const GetGrafanaResult({
-    required this.azureApiVersion,
-    required this.id,
+    this.azureApiVersion,
+    this.id,
     this.identity,
     this.location,
-    required this.name,
-    required this.properties,
+    this.name,
+    this.properties,
     this.sku,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'location': ?location,
-      'name': name,
-      'properties': properties.toMap(),
+      'name': ?name,
+      'properties': ?properties?.toMap(),
       'sku': ?sku?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetGrafanaResult.fromMap(Map<String, dynamic> map) {
     return GetGrafanaResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      properties: ManagedGrafanaPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return ManagedGrafanaPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return ResourceSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

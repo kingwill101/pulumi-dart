@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of FixedResponseConfig
 class FixedResponseConfigResponse {
   /// The content type. Valid Values: text/plain | text/css | text/html | application/javascript | application/json
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// The message.
-  final pulumi.Input<String>? messageBody;
+  final pulumi.Input<String?>? messageBody;
   /// The HTTP response code (2XX, 4XX, or 5XX).
-  final pulumi.Input<String>? statusCode;
+  final pulumi.Input<String?>? statusCode;
 
   /// Creates a new [FixedResponseConfigResponse].
   /// [contentType] The content type. Valid Values: text/plain | text/css | text/html | application/javascript | application/json

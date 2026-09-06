@@ -9,15 +9,15 @@ import 'chat_model_deployment_properties.dart';
 /// {@macro pulumi_discovery_chat_model_deployment_args_doc}
 class ChatModelDeploymentArgs {
   /// The name of the ChatModelDeployment
-  final pulumi.Input<String>? chatModelDeploymentName;
+  final pulumi.Input<String?>? chatModelDeploymentName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ChatModelDeploymentProperties>? properties;
+  final pulumi.Input<ChatModelDeploymentProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the Workspace
   final pulumi.Input<String> workspaceName;
 

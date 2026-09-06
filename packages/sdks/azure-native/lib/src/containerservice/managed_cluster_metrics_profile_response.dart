@@ -6,7 +6,7 @@ import 'managed_cluster_cost_analysis_response.dart';
 /// The metrics profile for the ManagedCluster.
 class ManagedClusterMetricsProfileResponse {
   /// The configuration for detailed per-Kubernetes resource cost analysis.
-  final pulumi.Input<ManagedClusterCostAnalysisResponse>? costAnalysis;
+  final pulumi.Input<ManagedClusterCostAnalysisResponse?>? costAnalysis;
 
   /// Creates a new [ManagedClusterMetricsProfileResponse].
   /// [costAnalysis] The configuration for detailed per-Kubernetes resource cost analysis.

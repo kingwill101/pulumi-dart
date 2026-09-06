@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describe whether this data type connection is enabled or not.
-enum DataTypeState {
+enum DataTypeState implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const DataTypeState(this.wireValue);
+  @override
   final String wireValue;
 
   static DataTypeState fromValue(String value) {

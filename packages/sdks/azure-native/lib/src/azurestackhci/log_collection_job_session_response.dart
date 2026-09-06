@@ -48,7 +48,7 @@ class LogCollectionJobSessionResponse {
     return LogCollectionJobSessionResponse(
       correlationId: pulumi.Input.fromValue(map['correlationId'] as String),
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
-      logSize: pulumi.Input.fromValue(map['logSize'] as int),
+      logSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['logSize'])),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       timeCollected: pulumi.Input.fromValue(map['timeCollected'] as String),

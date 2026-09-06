@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created.
-enum AccessKeysAuthentication {
+enum AccessKeysAuthentication implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
   const AccessKeysAuthentication(this.wireValue);
+  @override
   final String wireValue;
 
   static AccessKeysAuthentication fromValue(String value) {

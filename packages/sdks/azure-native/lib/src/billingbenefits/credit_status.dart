@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Status of the credit
-enum CreditStatus {
+enum CreditStatus implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   pending("Pending"),
   active("Active"),
@@ -11,6 +13,7 @@ enum CreditStatus {
   notStarted("NotStarted");
 
   const CreditStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static CreditStatus fromValue(String value) {

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'diagnostic_storage_properties_response.dart';
 import 'instance_args.dart';
+import 'iot_hub_settings_response.dart';
 import 'system_data_response.dart';
 
 /// Device Update instance details.
@@ -235,7 +236,7 @@ class Instance extends pulumi.CustomResource {
   /// Enables or Disables the diagnostic logs collection
   late final pulumi.Output<bool?> enableDiagnostics;
   /// List of IoT Hubs associated with the account.
-  late final pulumi.Output<List<Map<String, dynamic>>?> iotHubs;
+  late final pulumi.Output<List<IotHubSettingsResponse>?> iotHubs;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// The name of the resource
@@ -267,12 +268,34 @@ class Instance extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     diagnosticStorageProperties = registerOutput<DiagnosticStoragePropertiesResponse?>('diagnosticStorageProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiagnosticStoragePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enableDiagnostics = registerOutput<bool?>('enableDiagnostics');
-    iotHubs = registerOutput<List<Map<String, dynamic>>?>('iotHubs');
+    iotHubs = registerOutput<List<IotHubSettingsResponse>?>('iotHubs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IotHubSettingsResponse>(guardedValue, (value) => IotHubSettingsResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'azure-native:deviceupdate:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountName = registerOutput<String>('accountName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    diagnosticStorageProperties = registerOutput<DiagnosticStoragePropertiesResponse?>('diagnosticStorageProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiagnosticStoragePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enableDiagnostics = registerOutput<bool?>('enableDiagnostics');
+    iotHubs = registerOutput<List<IotHubSettingsResponse>?>('iotHubs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IotHubSettingsResponse>(guardedValue, (value) => IotHubSettingsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

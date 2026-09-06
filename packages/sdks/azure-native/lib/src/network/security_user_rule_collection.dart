@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'security_user_group_item_response.dart';
 import 'security_user_rule_collection_args.dart';
 import 'system_data_response.dart';
 
@@ -192,7 +193,7 @@ import 'system_data_response.dart';
 /// ```
 class SecurityUserRuleCollection extends pulumi.CustomResource {
   /// Groups for configuration
-  late final pulumi.Output<List<Map<String, dynamic>>> appliesToGroups;
+  late final pulumi.Output<List<SecurityUserGroupItemResponse>> appliesToGroups;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// A description of the security user rule collection.
@@ -224,7 +225,27 @@ class SecurityUserRuleCollection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    appliesToGroups = registerOutput<List<Map<String, dynamic>>>('appliesToGroups');
+    appliesToGroups = registerOutput<List<SecurityUserGroupItemResponse>>('appliesToGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityUserGroupItemResponse>(guardedValue, (value) => SecurityUserGroupItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SecurityUserRuleCollection] resource.
+  SecurityUserRuleCollection.reference(String urn)
+    : super(
+        'azure-native:network:SecurityUserRuleCollection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appliesToGroups = registerOutput<List<SecurityUserGroupItemResponse>>('appliesToGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityUserGroupItemResponse>(guardedValue, (value) => SecurityUserGroupItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');

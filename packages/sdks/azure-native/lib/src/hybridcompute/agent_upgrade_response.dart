@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The info w.r.t Agent Upgrade.
 class AgentUpgradeResponse {
   /// The correlation ID passed in from RSM per upgrade.
-  final pulumi.Input<String>? correlationId;
+  final pulumi.Input<String?>? correlationId;
   /// Specifies the version info w.r.t AgentUpgrade for the machine.
-  final pulumi.Input<String>? desiredVersion;
+  final pulumi.Input<String?>? desiredVersion;
   /// Specifies if RSM should try to upgrade this machine
-  final pulumi.Input<bool>? enableAutomaticUpgrade;
+  final pulumi.Input<bool?>? enableAutomaticUpgrade;
   /// Specifies the version of the last attempt
   final pulumi.Input<String> lastAttemptDesiredVersion;
   /// Failure message of last upgrade attempt if any.

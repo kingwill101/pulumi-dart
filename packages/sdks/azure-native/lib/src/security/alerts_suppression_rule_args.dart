@@ -12,17 +12,17 @@ class AlertsSuppressionRuleArgs {
   /// Type of the alert to automatically suppress. For all alert types, use '*'
   final pulumi.Input<String> alertType;
   /// The unique name of the suppression alert rule
-  final pulumi.Input<String>? alertsSuppressionRuleName;
+  final pulumi.Input<String?>? alertsSuppressionRuleName;
   /// Any comment regarding the rule
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// Expiration date of the rule, if value is not provided or provided as null there will no expiration at all
-  final pulumi.Input<String>? expirationDateUtc;
+  final pulumi.Input<String?>? expirationDateUtc;
   /// The reason for dismissing the alert
   final pulumi.Input<String> reason;
   /// Possible states of the rule
   final pulumi.Input<RuleState> state;
   /// The suppression conditions
-  final pulumi.Input<SuppressionAlertsScope>? suppressionAlertsScope;
+  final pulumi.Input<SuppressionAlertsScope?>? suppressionAlertsScope;
 
   /// Creates a new [AlertsSuppressionRuleArgs].
   /// [alertType] Type of the alert to automatically suppress. For all alert types, use '*'

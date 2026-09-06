@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Link with additional information about a product.
 class ProductLinkResponse {
   /// The description of the link.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The URI corresponding to the link.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [ProductLinkResponse].
   /// [displayName] The description of the link.

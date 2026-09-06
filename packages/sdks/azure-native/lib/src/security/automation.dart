@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'automation_args.dart';
+import 'automation_scope_response.dart';
+import 'automation_source_response.dart';
 import 'system_data_response.dart';
 
 /// The security automation resource.
@@ -912,7 +914,7 @@ import 'system_data_response.dart';
 /// ```
 class Automation extends pulumi.CustomResource {
   /// A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true.
-  late final pulumi.Output<List<Map<String, dynamic>>?> actions;
+  late final pulumi.Output<List<dynamic>?> actions;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The security automation description.
@@ -928,9 +930,9 @@ class Automation extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// A collection of scopes on which the security automations logic is applied. Supported scopes are the subscription itself or a resource group under that subscription. The automation will only apply on defined scopes.
-  late final pulumi.Output<List<Map<String, dynamic>>?> scopes;
+  late final pulumi.Output<List<AutomationScopeResponse>?> scopes;
   /// A collection of the source event types which evaluate the security automation set of rules.
-  late final pulumi.Output<List<Map<String, dynamic>>?> sources;
+  late final pulumi.Output<List<AutomationSourceResponse>?> sources;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
@@ -952,7 +954,7 @@ class Automation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>?>('actions');
+    actions = registerOutput<List<dynamic>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     etag = registerOutput<String?>('etag');
@@ -960,10 +962,34 @@ class Automation extends pulumi.CustomResource {
     kind = registerOutput<String?>('kind');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    scopes = registerOutput<List<Map<String, dynamic>>?>('scopes');
-    sources = registerOutput<List<Map<String, dynamic>>?>('sources');
+    scopes = registerOutput<List<AutomationScopeResponse>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationScopeResponse>(guardedValue, (value) => AutomationScopeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    sources = registerOutput<List<AutomationSourceResponse>?>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationSourceResponse>(guardedValue, (value) => AutomationSourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Automation] resource.
+  Automation.reference(String urn)
+    : super(
+        'azure-native:security:Automation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actions = registerOutput<List<dynamic>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String?>('etag');
+    isEnabled = registerOutput<bool?>('isEnabled');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    scopes = registerOutput<List<AutomationScopeResponse>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationScopeResponse>(guardedValue, (value) => AutomationScopeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    sources = registerOutput<List<AutomationSourceResponse>?>('sources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationSourceResponse>(guardedValue, (value) => AutomationSourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

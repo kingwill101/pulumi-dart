@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Aggregation type for child dependencies.
-enum DependenciesAggregationType {
+enum DependenciesAggregationType implements pulumi.PulumiEnum<String> {
   worstOf("WorstOf"),
   thresholds("Thresholds");
 
   const DependenciesAggregationType(this.wireValue);
+  @override
   final String wireValue;
 
   static DependenciesAggregationType fromValue(String value) {

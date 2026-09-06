@@ -13,13 +13,13 @@ class AdminRuleCollectionArgs {
   /// The name of the network manager Security Configuration.
   final pulumi.Input<String> configurationName;
   /// A description of the admin rule collection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the network manager security Configuration rule collection.
-  final pulumi.Input<String>? ruleCollectionName;
+  final pulumi.Input<String?>? ruleCollectionName;
 
   /// Creates a new [AdminRuleCollectionArgs].
   /// [appliesToGroups] Groups for configuration

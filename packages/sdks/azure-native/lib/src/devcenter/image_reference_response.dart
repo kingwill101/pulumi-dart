@@ -7,7 +7,7 @@ class ImageReferenceResponse {
   /// The actual version of the image after use. When id references a gallery image latest version, this will indicate the actual version in use.
   final pulumi.Input<String> exactVersion;
   /// Image ID, or Image version ID. When Image ID is provided, its latest version will be used.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [ImageReferenceResponse].
   /// [exactVersion] The actual version of the image after use. When id references a gallery image latest version, this will indicate the actual version in use.

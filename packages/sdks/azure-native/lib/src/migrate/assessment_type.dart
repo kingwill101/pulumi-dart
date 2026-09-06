@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Assessment type of the assessment.
-enum AssessmentType {
+enum AssessmentType implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueMachineAssessment("MachineAssessment"),
   valueAvsAssessment("AvsAssessment"),
@@ -7,6 +9,7 @@ enum AssessmentType {
   valueWebAppAssessment("WebAppAssessment");
 
   const AssessmentType(this.wireValue);
+  @override
   final String wireValue;
 
   static AssessmentType fromValue(String value) {

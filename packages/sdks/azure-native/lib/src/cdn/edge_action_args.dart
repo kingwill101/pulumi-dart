@@ -9,15 +9,15 @@ import 'sku_type.dart';
 /// {@macro pulumi_cdn_edge_action_args_doc}
 class EdgeActionArgs {
   /// The name of the Edge Action
-  final pulumi.Input<String>? edgeActionName;
+  final pulumi.Input<String?>? edgeActionName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The sku type of the edge action
   final pulumi.Input<SkuType> sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EdgeActionArgs].
   /// [edgeActionName] The name of the Edge Action

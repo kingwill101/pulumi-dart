@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_authorization_list_subscriptions_args_doc}
 class ListSubscriptionsArgs {
   /// The API version to use for the request. Defaults to '2022-12-01'.
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
 
   /// Creates a new [ListSubscriptionsArgs].
   /// [apiVersion] The API version to use for the request. Defaults to '2022-12-01'.

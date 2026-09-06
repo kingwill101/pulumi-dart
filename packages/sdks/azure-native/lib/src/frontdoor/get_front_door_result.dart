@@ -12,45 +12,45 @@ import 'rules_engine_response.dart';
 /// Result data returned by getFrontDoor.
 class GetFrontDoorResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Backend pools available to routing rules.
   final List<BackendPoolResponse>? backendPools;
   /// Settings for all backendPools
   final BackendPoolsSettingsResponse? backendPoolsSettings;
   /// The host that each frontendEndpoint must CNAME to.
-  final String cname;
+  final String? cname;
   /// Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled'
   final String? enabledState;
   /// Key-Value pair representing additional properties for frontdoor.
-  final Map<String, String> extendedProperties;
+  final Map<String, String>? extendedProperties;
   /// A friendly name for the frontDoor
   final String? friendlyName;
   /// The Id of the frontdoor.
-  final String frontdoorId;
+  final String? frontdoorId;
   /// Frontend endpoints available to routing rules.
   final List<FrontendEndpointResponse>? frontendEndpoints;
   /// Health probe settings associated with this Front Door instance.
   final List<HealthProbeSettingsModelResponse>? healthProbeSettings;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Load balancing settings associated with this Front Door instance.
   final List<LoadBalancingSettingsModelResponse>? loadBalancingSettings;
   /// Resource location.
   final String? location;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Provisioning state of the Front Door.
-  final String provisioningState;
+  final String? provisioningState;
   /// Resource status of the Front Door.
-  final String resourceState;
+  final String? resourceState;
   /// Routing rules associated with this Front Door.
   final List<RoutingRuleResponse>? routingRules;
   /// Rules Engine Configurations available to routing rules.
-  final List<RulesEngineResponse> rulesEngines;
+  final List<RulesEngineResponse>? rulesEngines;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetFrontDoorResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -74,75 +74,75 @@ class GetFrontDoorResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   const GetFrontDoorResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.backendPools,
     this.backendPoolsSettings,
-    required this.cname,
+    this.cname,
     this.enabledState,
-    required this.extendedProperties,
+    this.extendedProperties,
     this.friendlyName,
-    required this.frontdoorId,
+    this.frontdoorId,
     this.frontendEndpoints,
     this.healthProbeSettings,
-    required this.id,
+    this.id,
     this.loadBalancingSettings,
     this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.resourceState,
+    this.name,
+    this.provisioningState,
+    this.resourceState,
     this.routingRules,
-    required this.rulesEngines,
+    this.rulesEngines,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'backendPools': ?(() { final guardedValue = backendPools; if (guardedValue == null) return null; return pulumi.Input.encodeList<BackendPoolResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'backendPoolsSettings': ?backendPoolsSettings?.toMap(),
-      'cname': cname,
+      'cname': ?cname,
       'enabledState': ?enabledState,
-      'extendedProperties': extendedProperties,
+      'extendedProperties': ?extendedProperties,
       'friendlyName': ?friendlyName,
-      'frontdoorId': frontdoorId,
+      'frontdoorId': ?frontdoorId,
       'frontendEndpoints': ?(() { final guardedValue = frontendEndpoints; if (guardedValue == null) return null; return pulumi.Input.encodeList<FrontendEndpointResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'healthProbeSettings': ?(() { final guardedValue = healthProbeSettings; if (guardedValue == null) return null; return pulumi.Input.encodeList<HealthProbeSettingsModelResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
+      'id': ?id,
       'loadBalancingSettings': ?(() { final guardedValue = loadBalancingSettings; if (guardedValue == null) return null; return pulumi.Input.encodeList<LoadBalancingSettingsModelResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'location': ?location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'resourceState': resourceState,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'resourceState': ?resourceState,
       'routingRules': ?(() { final guardedValue = routingRules; if (guardedValue == null) return null; return pulumi.Input.encodeList<RoutingRuleResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'rulesEngines': pulumi.Input.encodeList<RulesEngineResponse, Map<String, dynamic>>(rulesEngines, (value) => value.toMap()),
+      'rulesEngines': ?(() { final guardedValue = rulesEngines; if (guardedValue == null) return null; return pulumi.Input.encodeList<RulesEngineResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetFrontDoorResult.fromMap(Map<String, dynamic> map) {
     return GetFrontDoorResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       backendPools: (() { final guardedValue = map['backendPools']; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendPoolResponse>(guardedValue, (value) => BackendPoolResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       backendPoolsSettings: (() { final guardedValue = map['backendPoolsSettings']; if (guardedValue == null) return null; return BackendPoolsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      cname: map['cname'] as String,
+      cname: (() { final guardedValue = map['cname']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      extendedProperties: (map['extendedProperties'] as Map).cast<String, String>(),
+      extendedProperties: (() { final guardedValue = map['extendedProperties']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      frontdoorId: map['frontdoorId'] as String,
+      frontdoorId: (() { final guardedValue = map['frontdoorId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       frontendEndpoints: (() { final guardedValue = map['frontendEndpoints']; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontendEndpointResponse>(guardedValue, (value) => FrontendEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       healthProbeSettings: (() { final guardedValue = map['healthProbeSettings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<HealthProbeSettingsModelResponse>(guardedValue, (value) => HealthProbeSettingsModelResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       loadBalancingSettings: (() { final guardedValue = map['loadBalancingSettings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancingSettingsModelResponse>(guardedValue, (value) => LoadBalancingSettingsModelResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      resourceState: map['resourceState'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceState: (() { final guardedValue = map['resourceState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       routingRules: (() { final guardedValue = map['routingRules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingRuleResponse>(guardedValue, (value) => RoutingRuleResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      rulesEngines: pulumi.Input.decodeList<RulesEngineResponse>(map['rulesEngines']!, (value) => RulesEngineResponse.fromMap((value as Map).cast<String, dynamic>())),
+      rulesEngines: (() { final guardedValue = map['rulesEngines']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RulesEngineResponse>(guardedValue, (value) => RulesEngineResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

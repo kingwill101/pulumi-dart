@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of a run argument.
 class Argument {
   /// Flag to indicate whether the argument represents a secret and want to be removed from build logs.
-  final pulumi.Input<bool>? isSecret;
+  final pulumi.Input<bool?>? isSecret;
   /// The name of the argument.
   final pulumi.Input<String> name;
   /// The value of the argument.
@@ -15,11 +15,11 @@ class Argument {
   /// [isSecret] Flag to indicate whether the argument represents a secret and want to be removed from build logs.
   /// [name] The name of the argument.
   /// [value] The value of the argument.
-  const Argument({
-    this.isSecret,
+  Argument({
+    pulumi.Input<bool?>? isSecret,
     required this.name,
     required this.value,
-  });
+  }) : isSecret = isSecret ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

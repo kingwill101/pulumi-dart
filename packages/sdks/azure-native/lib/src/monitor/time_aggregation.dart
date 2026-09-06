@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Aggregation type. Relevant and required only for rules of the kind LogAlert.
-enum TimeAggregation {
+enum TimeAggregation implements pulumi.PulumiEnum<String> {
   count("Count"),
   average("Average"),
   minimum("Minimum"),
@@ -7,6 +9,7 @@ enum TimeAggregation {
   total("Total");
 
   const TimeAggregation(this.wireValue);
+  @override
   final String wireValue;
 
   static TimeAggregation fromValue(String value) {

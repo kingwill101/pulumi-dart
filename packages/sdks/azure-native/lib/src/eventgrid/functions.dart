@@ -110,6 +110,17 @@ Future<GetCaCertificateResult> getCaCertificate(
   return GetCaCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetCaCertificateResult> getCaCertificateOutput(
+  GetCaCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getCaCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCaCertificateResult.fromMap);
+}
+
 /// Get properties of a channel.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -128,6 +139,17 @@ Future<GetChannelResult> getChannel(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetChannelResult.fromMap(result);
+}
+
+pulumi.Output<GetChannelResult> getChannelOutput(
+  GetChannelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getChannel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetChannelResult.fromMap);
 }
 
 /// Get the full endpoint URL of a partner destination channel.
@@ -150,6 +172,17 @@ Future<GetChannelFullUrlResult> getChannelFullUrl(
   return GetChannelFullUrlResult.fromMap(result);
 }
 
+pulumi.Output<GetChannelFullUrlResult> getChannelFullUrlOutput(
+  GetChannelFullUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getChannelFullUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetChannelFullUrlResult.fromMap);
+}
+
 /// Get properties of a client.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -168,6 +201,17 @@ Future<GetClientResult> getClient(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClientResult.fromMap(result);
+}
+
+pulumi.Output<GetClientResult> getClientOutput(
+  GetClientArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getClient',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClientResult.fromMap);
 }
 
 /// Get properties of a client group.
@@ -190,6 +234,17 @@ Future<GetClientGroupResult> getClientGroup(
   return GetClientGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetClientGroupResult> getClientGroupOutput(
+  GetClientGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getClientGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClientGroupResult.fromMap);
+}
+
 /// Get properties of a domain.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -208,6 +263,17 @@ Future<GetDomainResult> getDomain(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDomainResult.fromMap(result);
+}
+
+pulumi.Output<GetDomainResult> getDomainOutput(
+  GetDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainResult.fromMap);
 }
 
 /// Get properties of an event subscription of a domain.
@@ -230,6 +296,17 @@ Future<GetDomainEventSubscriptionResult> getDomainEventSubscription(
   return GetDomainEventSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetDomainEventSubscriptionResult> getDomainEventSubscriptionOutput(
+  GetDomainEventSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getDomainEventSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainEventSubscriptionResult.fromMap);
+}
+
 /// Get all delivery attributes for an event subscription for domain.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -248,6 +325,17 @@ Future<GetDomainEventSubscriptionDeliveryAttributesResult> getDomainEventSubscri
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDomainEventSubscriptionDeliveryAttributesResult.fromMap(result);
+}
+
+pulumi.Output<GetDomainEventSubscriptionDeliveryAttributesResult> getDomainEventSubscriptionDeliveryAttributesOutput(
+  GetDomainEventSubscriptionDeliveryAttributesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getDomainEventSubscriptionDeliveryAttributes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainEventSubscriptionDeliveryAttributesResult.fromMap);
 }
 
 /// Get the full endpoint URL for an event subscription for domain.
@@ -270,6 +358,17 @@ Future<GetDomainEventSubscriptionFullUrlResult> getDomainEventSubscriptionFullUr
   return GetDomainEventSubscriptionFullUrlResult.fromMap(result);
 }
 
+pulumi.Output<GetDomainEventSubscriptionFullUrlResult> getDomainEventSubscriptionFullUrlOutput(
+  GetDomainEventSubscriptionFullUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getDomainEventSubscriptionFullUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainEventSubscriptionFullUrlResult.fromMap);
+}
+
 /// Get properties of a domain topic.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -288,6 +387,17 @@ Future<GetDomainTopicResult> getDomainTopic(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDomainTopicResult.fromMap(result);
+}
+
+pulumi.Output<GetDomainTopicResult> getDomainTopicOutput(
+  GetDomainTopicArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getDomainTopic',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainTopicResult.fromMap);
 }
 
 /// Get properties of a nested event subscription for a domain topic.
@@ -310,6 +420,17 @@ Future<GetDomainTopicEventSubscriptionResult> getDomainTopicEventSubscription(
   return GetDomainTopicEventSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetDomainTopicEventSubscriptionResult> getDomainTopicEventSubscriptionOutput(
+  GetDomainTopicEventSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getDomainTopicEventSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainTopicEventSubscriptionResult.fromMap);
+}
+
 /// Get all delivery attributes for an event subscription for domain topic.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -328,6 +449,17 @@ Future<GetDomainTopicEventSubscriptionDeliveryAttributesResult> getDomainTopicEv
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDomainTopicEventSubscriptionDeliveryAttributesResult.fromMap(result);
+}
+
+pulumi.Output<GetDomainTopicEventSubscriptionDeliveryAttributesResult> getDomainTopicEventSubscriptionDeliveryAttributesOutput(
+  GetDomainTopicEventSubscriptionDeliveryAttributesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getDomainTopicEventSubscriptionDeliveryAttributes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainTopicEventSubscriptionDeliveryAttributesResult.fromMap);
 }
 
 /// Get the full endpoint URL for a nested event subscription for domain topic.
@@ -350,6 +482,17 @@ Future<GetDomainTopicEventSubscriptionFullUrlResult> getDomainTopicEventSubscrip
   return GetDomainTopicEventSubscriptionFullUrlResult.fromMap(result);
 }
 
+pulumi.Output<GetDomainTopicEventSubscriptionFullUrlResult> getDomainTopicEventSubscriptionFullUrlOutput(
+  GetDomainTopicEventSubscriptionFullUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getDomainTopicEventSubscriptionFullUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainTopicEventSubscriptionFullUrlResult.fromMap);
+}
+
 /// Get properties of an event subscription.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -368,6 +511,17 @@ Future<GetEventSubscriptionResult> getEventSubscription(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEventSubscriptionResult.fromMap(result);
+}
+
+pulumi.Output<GetEventSubscriptionResult> getEventSubscriptionOutput(
+  GetEventSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getEventSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEventSubscriptionResult.fromMap);
 }
 
 /// Get all delivery attributes for an event subscription.
@@ -390,6 +544,17 @@ Future<GetEventSubscriptionDeliveryAttributesResult> getEventSubscriptionDeliver
   return GetEventSubscriptionDeliveryAttributesResult.fromMap(result);
 }
 
+pulumi.Output<GetEventSubscriptionDeliveryAttributesResult> getEventSubscriptionDeliveryAttributesOutput(
+  GetEventSubscriptionDeliveryAttributesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getEventSubscriptionDeliveryAttributes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEventSubscriptionDeliveryAttributesResult.fromMap);
+}
+
 /// Get the full endpoint URL for an event subscription.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -408,6 +573,17 @@ Future<GetEventSubscriptionFullUrlResult> getEventSubscriptionFullUrl(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEventSubscriptionFullUrlResult.fromMap(result);
+}
+
+pulumi.Output<GetEventSubscriptionFullUrlResult> getEventSubscriptionFullUrlOutput(
+  GetEventSubscriptionFullUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getEventSubscriptionFullUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEventSubscriptionFullUrlResult.fromMap);
 }
 
 /// Get properties of a namespace.
@@ -430,6 +606,17 @@ Future<GetNamespaceResult> getNamespace(
   return GetNamespaceResult.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceResult> getNamespaceOutput(
+  GetNamespaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceResult.fromMap);
+}
+
 /// Get properties of a namespace topic.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -448,6 +635,17 @@ Future<GetNamespaceTopicResult> getNamespaceTopic(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNamespaceTopicResult.fromMap(result);
+}
+
+pulumi.Output<GetNamespaceTopicResult> getNamespaceTopicOutput(
+  GetNamespaceTopicArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getNamespaceTopic',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceTopicResult.fromMap);
 }
 
 /// Get properties of an event subscription of a namespace topic.
@@ -470,6 +668,17 @@ Future<GetNamespaceTopicEventSubscriptionResult> getNamespaceTopicEventSubscript
   return GetNamespaceTopicEventSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceTopicEventSubscriptionResult> getNamespaceTopicEventSubscriptionOutput(
+  GetNamespaceTopicEventSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getNamespaceTopicEventSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceTopicEventSubscriptionResult.fromMap);
+}
+
 /// Get all delivery attributes for an event subscription of a namespace topic.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -488,6 +697,17 @@ Future<GetNamespaceTopicEventSubscriptionDeliveryAttributesResult> getNamespaceT
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNamespaceTopicEventSubscriptionDeliveryAttributesResult.fromMap(result);
+}
+
+pulumi.Output<GetNamespaceTopicEventSubscriptionDeliveryAttributesResult> getNamespaceTopicEventSubscriptionDeliveryAttributesOutput(
+  GetNamespaceTopicEventSubscriptionDeliveryAttributesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getNamespaceTopicEventSubscriptionDeliveryAttributes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceTopicEventSubscriptionDeliveryAttributesResult.fromMap);
 }
 
 /// Get the full endpoint URL for an event subscription of a namespace topic.
@@ -510,6 +730,17 @@ Future<GetNamespaceTopicEventSubscriptionFullUrlResult> getNamespaceTopicEventSu
   return GetNamespaceTopicEventSubscriptionFullUrlResult.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceTopicEventSubscriptionFullUrlResult> getNamespaceTopicEventSubscriptionFullUrlOutput(
+  GetNamespaceTopicEventSubscriptionFullUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getNamespaceTopicEventSubscriptionFullUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceTopicEventSubscriptionFullUrlResult.fromMap);
+}
+
 /// Get properties of a partner configuration.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -528,6 +759,17 @@ Future<GetPartnerConfigurationResult> getPartnerConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPartnerConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetPartnerConfigurationResult> getPartnerConfigurationOutput(
+  GetPartnerConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getPartnerConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPartnerConfigurationResult.fromMap);
 }
 
 /// Get properties of a partner destination.
@@ -550,6 +792,17 @@ Future<GetPartnerDestinationResult> getPartnerDestination(
   return GetPartnerDestinationResult.fromMap(result);
 }
 
+pulumi.Output<GetPartnerDestinationResult> getPartnerDestinationOutput(
+  GetPartnerDestinationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getPartnerDestination',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPartnerDestinationResult.fromMap);
+}
+
 /// Get properties of a partner namespace.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -568,6 +821,17 @@ Future<GetPartnerNamespaceResult> getPartnerNamespace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPartnerNamespaceResult.fromMap(result);
+}
+
+pulumi.Output<GetPartnerNamespaceResult> getPartnerNamespaceOutput(
+  GetPartnerNamespaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getPartnerNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPartnerNamespaceResult.fromMap);
 }
 
 /// Gets a partner registration with the specified parameters.
@@ -590,6 +854,17 @@ Future<GetPartnerRegistrationResult> getPartnerRegistration(
   return GetPartnerRegistrationResult.fromMap(result);
 }
 
+pulumi.Output<GetPartnerRegistrationResult> getPartnerRegistrationOutput(
+  GetPartnerRegistrationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getPartnerRegistration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPartnerRegistrationResult.fromMap);
+}
+
 /// Get properties of a partner topic.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -608,6 +883,17 @@ Future<GetPartnerTopicResult> getPartnerTopic(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPartnerTopicResult.fromMap(result);
+}
+
+pulumi.Output<GetPartnerTopicResult> getPartnerTopicOutput(
+  GetPartnerTopicArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getPartnerTopic',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPartnerTopicResult.fromMap);
 }
 
 /// Get properties of an event subscription of a partner topic.
@@ -630,6 +916,17 @@ Future<GetPartnerTopicEventSubscriptionResult> getPartnerTopicEventSubscription(
   return GetPartnerTopicEventSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetPartnerTopicEventSubscriptionResult> getPartnerTopicEventSubscriptionOutput(
+  GetPartnerTopicEventSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getPartnerTopicEventSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPartnerTopicEventSubscriptionResult.fromMap);
+}
+
 /// Get all delivery attributes for an event subscription of a partner topic.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -648,6 +945,17 @@ Future<GetPartnerTopicEventSubscriptionDeliveryAttributesResult> getPartnerTopic
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPartnerTopicEventSubscriptionDeliveryAttributesResult.fromMap(result);
+}
+
+pulumi.Output<GetPartnerTopicEventSubscriptionDeliveryAttributesResult> getPartnerTopicEventSubscriptionDeliveryAttributesOutput(
+  GetPartnerTopicEventSubscriptionDeliveryAttributesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getPartnerTopicEventSubscriptionDeliveryAttributes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPartnerTopicEventSubscriptionDeliveryAttributesResult.fromMap);
 }
 
 /// Get the full endpoint URL for an event subscription of a partner topic.
@@ -670,6 +978,17 @@ Future<GetPartnerTopicEventSubscriptionFullUrlResult> getPartnerTopicEventSubscr
   return GetPartnerTopicEventSubscriptionFullUrlResult.fromMap(result);
 }
 
+pulumi.Output<GetPartnerTopicEventSubscriptionFullUrlResult> getPartnerTopicEventSubscriptionFullUrlOutput(
+  GetPartnerTopicEventSubscriptionFullUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getPartnerTopicEventSubscriptionFullUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPartnerTopicEventSubscriptionFullUrlResult.fromMap);
+}
+
 /// Get properties of a permission binding.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -688,6 +1007,17 @@ Future<GetPermissionBindingResult> getPermissionBinding(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPermissionBindingResult.fromMap(result);
+}
+
+pulumi.Output<GetPermissionBindingResult> getPermissionBindingOutput(
+  GetPermissionBindingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getPermissionBinding',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPermissionBindingResult.fromMap);
 }
 
 /// Get a specific private endpoint connection under a topic, domain, or partner namespace or namespace.
@@ -710,6 +1040,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Get properties of a system topic.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -728,6 +1069,17 @@ Future<GetSystemTopicResult> getSystemTopic(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSystemTopicResult.fromMap(result);
+}
+
+pulumi.Output<GetSystemTopicResult> getSystemTopicOutput(
+  GetSystemTopicArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getSystemTopic',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSystemTopicResult.fromMap);
 }
 
 /// Get an event subscription.
@@ -750,6 +1102,17 @@ Future<GetSystemTopicEventSubscriptionResult> getSystemTopicEventSubscription(
   return GetSystemTopicEventSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetSystemTopicEventSubscriptionResult> getSystemTopicEventSubscriptionOutput(
+  GetSystemTopicEventSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getSystemTopicEventSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSystemTopicEventSubscriptionResult.fromMap);
+}
+
 /// Get all delivery attributes for an event subscription.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -768,6 +1131,17 @@ Future<GetSystemTopicEventSubscriptionDeliveryAttributesResult> getSystemTopicEv
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSystemTopicEventSubscriptionDeliveryAttributesResult.fromMap(result);
+}
+
+pulumi.Output<GetSystemTopicEventSubscriptionDeliveryAttributesResult> getSystemTopicEventSubscriptionDeliveryAttributesOutput(
+  GetSystemTopicEventSubscriptionDeliveryAttributesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getSystemTopicEventSubscriptionDeliveryAttributes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSystemTopicEventSubscriptionDeliveryAttributesResult.fromMap);
 }
 
 /// Get the full endpoint URL for an event subscription of a system topic.
@@ -790,6 +1164,17 @@ Future<GetSystemTopicEventSubscriptionFullUrlResult> getSystemTopicEventSubscrip
   return GetSystemTopicEventSubscriptionFullUrlResult.fromMap(result);
 }
 
+pulumi.Output<GetSystemTopicEventSubscriptionFullUrlResult> getSystemTopicEventSubscriptionFullUrlOutput(
+  GetSystemTopicEventSubscriptionFullUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getSystemTopicEventSubscriptionFullUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSystemTopicEventSubscriptionFullUrlResult.fromMap);
+}
+
 /// Get properties of a topic.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -808,6 +1193,17 @@ Future<GetTopicResult> getTopic(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTopicResult.fromMap(result);
+}
+
+pulumi.Output<GetTopicResult> getTopicOutput(
+  GetTopicArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getTopic',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTopicResult.fromMap);
 }
 
 /// Get properties of an event subscription of a topic.
@@ -830,6 +1226,17 @@ Future<GetTopicEventSubscriptionResult> getTopicEventSubscription(
   return GetTopicEventSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetTopicEventSubscriptionResult> getTopicEventSubscriptionOutput(
+  GetTopicEventSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getTopicEventSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTopicEventSubscriptionResult.fromMap);
+}
+
 /// Get all delivery attributes for an event subscription for topic.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -848,6 +1255,17 @@ Future<GetTopicEventSubscriptionDeliveryAttributesResult> getTopicEventSubscript
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTopicEventSubscriptionDeliveryAttributesResult.fromMap(result);
+}
+
+pulumi.Output<GetTopicEventSubscriptionDeliveryAttributesResult> getTopicEventSubscriptionDeliveryAttributesOutput(
+  GetTopicEventSubscriptionDeliveryAttributesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getTopicEventSubscriptionDeliveryAttributes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTopicEventSubscriptionDeliveryAttributesResult.fromMap);
 }
 
 /// Get the full endpoint URL for an event subscription for topic.
@@ -870,6 +1288,17 @@ Future<GetTopicEventSubscriptionFullUrlResult> getTopicEventSubscriptionFullUrl(
   return GetTopicEventSubscriptionFullUrlResult.fromMap(result);
 }
 
+pulumi.Output<GetTopicEventSubscriptionFullUrlResult> getTopicEventSubscriptionFullUrlOutput(
+  GetTopicEventSubscriptionFullUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getTopicEventSubscriptionFullUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTopicEventSubscriptionFullUrlResult.fromMap);
+}
+
 /// Get properties of a topic space.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -888,6 +1317,17 @@ Future<GetTopicSpaceResult> getTopicSpace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTopicSpaceResult.fromMap(result);
+}
+
+pulumi.Output<GetTopicSpaceResult> getTopicSpaceOutput(
+  GetTopicSpaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:getTopicSpace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTopicSpaceResult.fromMap);
 }
 
 /// List the two keys used to publish to a domain.
@@ -910,6 +1350,17 @@ Future<ListDomainSharedAccessKeysResult> listDomainSharedAccessKeys(
   return ListDomainSharedAccessKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListDomainSharedAccessKeysResult> listDomainSharedAccessKeysOutput(
+  ListDomainSharedAccessKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:listDomainSharedAccessKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListDomainSharedAccessKeysResult.fromMap);
+}
+
 /// List the two keys used to publish to a namespace.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -928,6 +1379,17 @@ Future<ListNamespaceSharedAccessKeysResult> listNamespaceSharedAccessKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListNamespaceSharedAccessKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListNamespaceSharedAccessKeysResult> listNamespaceSharedAccessKeysOutput(
+  ListNamespaceSharedAccessKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:listNamespaceSharedAccessKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListNamespaceSharedAccessKeysResult.fromMap);
 }
 
 /// List the two keys used to publish to a namespace topic.
@@ -950,6 +1412,17 @@ Future<ListNamespaceTopicSharedAccessKeysResult> listNamespaceTopicSharedAccessK
   return ListNamespaceTopicSharedAccessKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListNamespaceTopicSharedAccessKeysResult> listNamespaceTopicSharedAccessKeysOutput(
+  ListNamespaceTopicSharedAccessKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:listNamespaceTopicSharedAccessKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListNamespaceTopicSharedAccessKeysResult.fromMap);
+}
+
 /// List the two keys used to publish to a partner namespace.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -970,6 +1443,17 @@ Future<ListPartnerNamespaceSharedAccessKeysResult> listPartnerNamespaceSharedAcc
   return ListPartnerNamespaceSharedAccessKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListPartnerNamespaceSharedAccessKeysResult> listPartnerNamespaceSharedAccessKeysOutput(
+  ListPartnerNamespaceSharedAccessKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:listPartnerNamespaceSharedAccessKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListPartnerNamespaceSharedAccessKeysResult.fromMap);
+}
+
 /// List the two keys used to publish to a topic.
 ///
 /// Uses Azure REST API version 2025-02-15.
@@ -988,4 +1472,15 @@ Future<ListTopicSharedAccessKeysResult> listTopicSharedAccessKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListTopicSharedAccessKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListTopicSharedAccessKeysResult> listTopicSharedAccessKeysOutput(
+  ListTopicSharedAccessKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventgrid:listTopicSharedAccessKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListTopicSharedAccessKeysResult.fromMap);
 }

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a filtering condition.
 class ConditionV1 {
   /// Dimension name used in filtering.
-  final pulumi.Input<String>? dimensionName;
+  final pulumi.Input<String?>? dimensionName;
   /// Operator used in the filtering condition.
-  final pulumi.Input<String> operator;
+  final pulumi.Input<dynamic> operator;
   /// Defines the sampling type.
-  final pulumi.Input<String>? samplingType;
+  final pulumi.Input<dynamic>? samplingType;
   /// Scalar function applied for filtering.
-  final pulumi.Input<String>? scalarFunction;
+  final pulumi.Input<dynamic>? scalarFunction;
   /// Value used in filtering. For most operators (eq, ne, lt, lte, gt, gte, startswith, notstartswith, contains, notcontains) this is a single value (for example "GetContosoUsers"). For the `in` and `notin` operators, multiple values must be joined by the delimiter `^^` (for example "east^^west^^north").
   final pulumi.Input<String> value;
 
@@ -42,9 +42,9 @@ class ConditionV1 {
   factory ConditionV1.fromMap(Map<String, dynamic> map) {
     return ConditionV1(
       dimensionName: (() { final guardedValue = map['dimensionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      operator: pulumi.Input.fromValue(map['operator'] as String),
-      samplingType: (() { final guardedValue = map['samplingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      scalarFunction: (() { final guardedValue = map['scalarFunction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operator: pulumi.Input.fromValue(map['operator']),
+      samplingType: (() { final guardedValue = map['samplingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      scalarFunction: (() { final guardedValue = map['scalarFunction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }

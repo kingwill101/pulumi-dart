@@ -278,4 +278,33 @@ class ExpressRouteCrossConnectionPeering extends pulumi.CustomResource {
     state = registerOutput<String?>('state');
     vlanId = registerOutput<int?>('vlanId');
   }
+
+  /// Creates a typed reference to an existing [ExpressRouteCrossConnectionPeering] resource.
+  ExpressRouteCrossConnectionPeering.reference(String urn)
+    : super(
+        'azure-native:network:ExpressRouteCrossConnectionPeering',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureASN = registerOutput<int>('azureASN');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    gatewayManagerEtag = registerOutput<String?>('gatewayManagerEtag');
+    ipv6PeeringConfig = registerOutput<Ipv6ExpressRouteCircuitPeeringConfigResponse?>('ipv6PeeringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Ipv6ExpressRouteCircuitPeeringConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastModifiedBy = registerOutput<String>('lastModifiedBy');
+    microsoftPeeringConfig = registerOutput<ExpressRouteCircuitPeeringConfigResponse?>('microsoftPeeringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteCircuitPeeringConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String?>('name');
+    peerASN = registerOutput<double?>('peerASN');
+    peeringType = registerOutput<String?>('peeringType');
+    primaryAzurePort = registerOutput<String>('primaryAzurePort');
+    primaryPeerAddressPrefix = registerOutput<String?>('primaryPeerAddressPrefix');
+    provisioningState = registerOutput<String>('provisioningState');
+    secondaryAzurePort = registerOutput<String>('secondaryAzurePort');
+    secondaryPeerAddressPrefix = registerOutput<String?>('secondaryPeerAddressPrefix');
+    sharedKey = registerOutput<String?>('sharedKey');
+    state = registerOutput<String?>('state');
+    vlanId = registerOutput<int?>('vlanId');
+  }
 }

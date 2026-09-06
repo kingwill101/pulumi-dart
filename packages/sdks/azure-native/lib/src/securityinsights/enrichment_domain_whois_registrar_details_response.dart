@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The registrar associated with this domain
 class EnrichmentDomainWhoisRegistrarDetailsResponse {
   /// This registrar's abuse contact email
-  final pulumi.Input<String>? abuseContactEmail;
+  final pulumi.Input<String?>? abuseContactEmail;
   /// This registrar's abuse contact phone number
-  final pulumi.Input<String>? abuseContactPhone;
+  final pulumi.Input<String?>? abuseContactPhone;
   /// This registrar's Internet Assigned Numbers Authority id
-  final pulumi.Input<String>? ianaId;
+  final pulumi.Input<String?>? ianaId;
   /// The name of this registrar
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// This registrar's URL
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
   /// The hostname of this registrar's whois server
-  final pulumi.Input<String>? whoisServer;
+  final pulumi.Input<String?>? whoisServer;
 
   /// Creates a new [EnrichmentDomainWhoisRegistrarDetailsResponse].
   /// [abuseContactEmail] This registrar's abuse contact email

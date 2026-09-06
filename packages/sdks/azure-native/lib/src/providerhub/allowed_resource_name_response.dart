@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AllowedResourceNameResponse {
   /// Get action verb.
-  final pulumi.Input<String>? getActionVerb;
+  final pulumi.Input<String?>? getActionVerb;
   /// Resource name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AllowedResourceNameResponse].
   /// [getActionVerb] Get action verb.

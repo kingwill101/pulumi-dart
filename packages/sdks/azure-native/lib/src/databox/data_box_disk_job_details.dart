@@ -14,26 +14,26 @@ class DataBoxDiskJobDetails {
   /// Contact details for notification and shipping.
   final pulumi.Input<ContactDetails> contactDetails;
   /// Details of the data to be exported from azure.
-  final pulumi.Input<List<DataExportDetails>>? dataExportDetails;
+  final pulumi.Input<List<DataExportDetails>?>? dataExportDetails;
   /// Details of the data to be imported into azure.
-  final pulumi.Input<List<DataImportDetails>>? dataImportDetails;
+  final pulumi.Input<List<DataImportDetails>?>? dataImportDetails;
   /// The expected size of the data, which needs to be transferred in this job, in terabytes.
-  final pulumi.Input<int>? expectedDataSizeInTeraBytes;
+  final pulumi.Input<int?>? expectedDataSizeInTeraBytes;
   /// Indicates the type of job details.
   /// Expected value is 'DataBoxDisk'.
   final pulumi.Input<String> jobDetailsType;
   /// Details about which key encryption type is being used.
-  final pulumi.Input<KeyEncryptionKey>? keyEncryptionKey;
+  final pulumi.Input<KeyEncryptionKey?>? keyEncryptionKey;
   /// User entered passkey for DataBox Disk job.
-  final pulumi.Input<String>? passkey;
+  final pulumi.Input<String?>? passkey;
   /// Preferences for the order.
-  final pulumi.Input<Preferences>? preferences;
+  final pulumi.Input<Preferences?>? preferences;
   /// User preference on what size disks are needed for the job. The map is from the disk size in TB to the count. Eg. {2,5} means 5 disks of 2 TB size. Key is string but will be checked against an int.
-  final pulumi.Input<Map<String, int>>? preferredDisks;
+  final pulumi.Input<Map<String, int>?>? preferredDisks;
   /// Optional Reverse Shipping details for order.
-  final pulumi.Input<ReverseShippingDetails>? reverseShippingDetails;
+  final pulumi.Input<ReverseShippingDetails?>? reverseShippingDetails;
   /// Shipping address of the customer.
-  final pulumi.Input<ShippingAddress>? shippingAddress;
+  final pulumi.Input<ShippingAddress?>? shippingAddress;
 
   /// Creates a new [DataBoxDiskJobDetails].
   /// [contactDetails] Contact details for notification and shipping.
@@ -82,7 +82,7 @@ class DataBoxDiskJobDetails {
       contactDetails: pulumi.Input.fromValue(ContactDetails.fromMap((map['contactDetails']! as Map).cast<String, dynamic>())),
       dataExportDetails: (() { final guardedValue = map['dataExportDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataExportDetails>(guardedValue, (value) => DataExportDetails.fromMap((value as Map).cast<String, dynamic>()))); })(),
       dataImportDetails: (() { final guardedValue = map['dataImportDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataImportDetails>(guardedValue, (value) => DataImportDetails.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      expectedDataSizeInTeraBytes: (() { final guardedValue = map['expectedDataSizeInTeraBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      expectedDataSizeInTeraBytes: (() { final guardedValue = map['expectedDataSizeInTeraBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       jobDetailsType: pulumi.Input.fromValue(map['jobDetailsType'] as String),
       keyEncryptionKey: (() { final guardedValue = map['keyEncryptionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       passkey: (() { final guardedValue = map['passkey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

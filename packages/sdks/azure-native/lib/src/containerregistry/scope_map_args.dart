@@ -12,13 +12,13 @@ class ScopeMapArgs {
   /// repositories/repository-name/metadata/write
   final pulumi.Input<List<String>> actions;
   /// The user friendly description of the scope map.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the scope map.
-  final pulumi.Input<String>? scopeMapName;
+  final pulumi.Input<String?>? scopeMapName;
 
   /// Creates a new [ScopeMapArgs].
   /// [actions] The list of scoped permissions for registry artifacts.

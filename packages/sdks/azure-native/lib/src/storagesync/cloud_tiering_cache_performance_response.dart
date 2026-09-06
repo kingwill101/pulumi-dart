@@ -36,9 +36,9 @@ class CloudTieringCachePerformanceResponse {
 
   factory CloudTieringCachePerformanceResponse.fromMap(Map<String, dynamic> map) {
     return CloudTieringCachePerformanceResponse(
-      cacheHitBytes: pulumi.Input.fromValue(map['cacheHitBytes'] as double),
-      cacheHitBytesPercent: pulumi.Input.fromValue(map['cacheHitBytesPercent'] as int),
-      cacheMissBytes: pulumi.Input.fromValue(map['cacheMissBytes'] as double),
+      cacheHitBytes: pulumi.Input.fromValue((map['cacheHitBytes'] as num).toDouble()),
+      cacheHitBytesPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cacheHitBytesPercent'])),
+      cacheMissBytes: pulumi.Input.fromValue((map['cacheMissBytes'] as num).toDouble()),
       lastUpdatedTimestamp: pulumi.Input.fromValue(map['lastUpdatedTimestamp'] as String),
     );
   }

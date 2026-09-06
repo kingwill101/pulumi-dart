@@ -206,7 +206,25 @@ class FederatedIdentityCredential extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    audiences = registerOutput<List<String>>('audiences');
+    audiences = registerOutput<List<String>>('audiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    issuer = registerOutput<String>('issuer');
+    this.name = registerOutput<String>('name');
+    subject = registerOutput<String>('subject');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [FederatedIdentityCredential] resource.
+  FederatedIdentityCredential.reference(String urn)
+    : super(
+        'azure-native:managedidentity:FederatedIdentityCredential',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    audiences = registerOutput<List<String>>('audiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     issuer = registerOutput<String>('issuer');
     this.name = registerOutput<String>('name');

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An update history of the ImmutabilityPolicy of a blob container.
 class UpdateHistoryPropertyResponse {
   /// This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API.
-  final pulumi.Input<bool>? allowProtectedAppendWrites;
+  final pulumi.Input<bool?>? allowProtectedAppendWrites;
   /// This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API. The 'allowProtectedAppendWrites' and 'allowProtectedAppendWritesAll' properties are mutually exclusive.
-  final pulumi.Input<bool>? allowProtectedAppendWritesAll;
+  final pulumi.Input<bool?>? allowProtectedAppendWritesAll;
   /// The immutability period for the blobs in the container since the policy creation, in days.
   final pulumi.Input<int> immutabilityPeriodSinceCreationInDays;
   /// Returns the Object ID of the user who updated the ImmutabilityPolicy.
@@ -58,7 +58,7 @@ class UpdateHistoryPropertyResponse {
     return UpdateHistoryPropertyResponse(
       allowProtectedAppendWrites: (() { final guardedValue = map['allowProtectedAppendWrites']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       allowProtectedAppendWritesAll: (() { final guardedValue = map['allowProtectedAppendWritesAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      immutabilityPeriodSinceCreationInDays: pulumi.Input.fromValue(map['immutabilityPeriodSinceCreationInDays'] as int),
+      immutabilityPeriodSinceCreationInDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['immutabilityPeriodSinceCreationInDays'])),
       objectIdentifier: pulumi.Input.fromValue(map['objectIdentifier'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
       timestamp: pulumi.Input.fromValue(map['timestamp'] as String),

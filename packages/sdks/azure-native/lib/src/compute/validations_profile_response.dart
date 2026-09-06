@@ -6,11 +6,11 @@ import 'platform_attribute_response.dart';
 
 /// This is the validations profile of a Gallery Image Version.
 class ValidationsProfileResponse {
-  final pulumi.Input<List<ExecutedValidationResponse>>? executedValidations;
+  final pulumi.Input<List<ExecutedValidationResponse>?>? executedValidations;
   /// This specifies the pub, offer, sku and version of the image version metadata
-  final pulumi.Input<List<PlatformAttributeResponse>>? platformAttributes;
+  final pulumi.Input<List<PlatformAttributeResponse>?>? platformAttributes;
   /// The published time of the image version
-  final pulumi.Input<String>? validationEtag;
+  final pulumi.Input<String?>? validationEtag;
 
   /// Creates a new [ValidationsProfileResponse].
   /// [executedValidations] Optional.

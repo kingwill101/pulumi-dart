@@ -9,23 +9,23 @@ import 'nlp_vertical_limit_settings.dart';
 /// NLP - Natural Language Processing.
 class TextClassification {
   /// Featurization inputs needed for AutoML job.
-  final pulumi.Input<NlpVerticalFeaturizationSettings>? featurizationSettings;
+  final pulumi.Input<NlpVerticalFeaturizationSettings?>? featurizationSettings;
   /// Execution constraints for AutoMLJob.
-  final pulumi.Input<NlpVerticalLimitSettings>? limitSettings;
+  final pulumi.Input<NlpVerticalLimitSettings?>? limitSettings;
   /// Enum for setting log verbosity.
-  final pulumi.Input<String>? logVerbosity;
+  final pulumi.Input<dynamic>? logVerbosity;
   /// Primary metrics for classification tasks.
-  final pulumi.Input<String>? primaryMetric;
+  final pulumi.Input<dynamic>? primaryMetric;
   /// Target column name: This is prediction values column.
   /// Also known as label column name in context of classification tasks.
-  final pulumi.Input<String>? targetColumnName;
+  final pulumi.Input<String?>? targetColumnName;
   /// AutoMLJob Task type.
   /// Expected value is 'TextClassification'.
   final pulumi.Input<String> taskType;
   /// [Required] Training data input.
   final pulumi.Input<MLTableJobInput> trainingData;
   /// Validation data inputs.
-  final pulumi.Input<MLTableJobInput>? validationData;
+  final pulumi.Input<MLTableJobInput?>? validationData;
 
   /// Creates a new [TextClassification].
   /// [featurizationSettings] Featurization inputs needed for AutoML job.
@@ -36,16 +36,16 @@ class TextClassification {
   /// [taskType] AutoMLJob Task type.
   /// [trainingData] [Required] Training data input.
   /// [validationData] Validation data inputs.
-  const TextClassification({
+  TextClassification({
     this.featurizationSettings,
     this.limitSettings,
-    this.logVerbosity,
-    this.primaryMetric,
+    pulumi.Input<dynamic>? logVerbosity,
+    pulumi.Input<dynamic>? primaryMetric,
     this.targetColumnName,
     required this.taskType,
     required this.trainingData,
     this.validationData,
-  });
+  }) : logVerbosity = logVerbosity ?? pulumi.Input.fromValue('Info'), primaryMetric = primaryMetric ?? pulumi.Input.fromValue('Accuracy');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,8 +64,8 @@ class TextClassification {
     return TextClassification(
       featurizationSettings: (() { final guardedValue = map['featurizationSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NlpVerticalFeaturizationSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       limitSettings: (() { final guardedValue = map['limitSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NlpVerticalLimitSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      logVerbosity: (() { final guardedValue = map['logVerbosity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      primaryMetric: (() { final guardedValue = map['primaryMetric']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      logVerbosity: (() { final guardedValue = map['logVerbosity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      primaryMetric: (() { final guardedValue = map['primaryMetric']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       targetColumnName: (() { final guardedValue = map['targetColumnName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       taskType: pulumi.Input.fromValue(map['taskType'] as String),
       trainingData: pulumi.Input.fromValue(MLTableJobInput.fromMap((map['trainingData']! as Map).cast<String, dynamic>())),

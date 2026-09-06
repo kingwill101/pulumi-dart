@@ -8,7 +8,7 @@ class IncidentConfiguration {
   /// Create incidents from alerts triggered by this analytics rule
   final pulumi.Input<bool> createIncident;
   /// Set how the alerts that are triggered by this analytics rule, are grouped into incidents
-  final pulumi.Input<GroupingConfiguration>? groupingConfiguration;
+  final pulumi.Input<GroupingConfiguration?>? groupingConfiguration;
 
   /// Creates a new [IncidentConfiguration].
   /// [createIncident] Create incidents from alerts triggered by this analytics rule

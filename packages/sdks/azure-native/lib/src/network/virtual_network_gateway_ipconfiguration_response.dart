@@ -8,19 +8,19 @@ class VirtualNetworkGatewayIPConfigurationResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Private IP Address for this gateway.
   final pulumi.Input<String> privateIPAddress;
   /// The private IP address allocation method.
-  final pulumi.Input<String>? privateIPAllocationMethod;
+  final pulumi.Input<String?>? privateIPAllocationMethod;
   /// The provisioning state of the virtual network gateway IP configuration resource.
   final pulumi.Input<String> provisioningState;
   /// The reference to the public IP resource.
-  final pulumi.Input<SubResourceResponse>? publicIPAddress;
+  final pulumi.Input<SubResourceResponse?>? publicIPAddress;
   /// The reference to the subnet resource.
-  final pulumi.Input<SubResourceResponse>? subnet;
+  final pulumi.Input<SubResourceResponse?>? subnet;
 
   /// Creates a new [VirtualNetworkGatewayIPConfigurationResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.

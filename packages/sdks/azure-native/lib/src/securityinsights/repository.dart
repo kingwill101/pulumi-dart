@@ -7,7 +7,7 @@ class Repository {
   /// Branch name of repository.
   final pulumi.Input<String> branch;
   /// Display url of repository.
-  final pulumi.Input<String>? displayUrl;
+  final pulumi.Input<String?>? displayUrl;
   /// Url of repository.
   final pulumi.Input<String> url;
 

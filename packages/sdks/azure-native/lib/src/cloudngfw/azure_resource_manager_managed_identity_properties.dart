@@ -6,9 +6,9 @@ import 'azure_resource_manager_user_assigned_identity.dart';
 /// The properties of the managed service identities assigned to this resource.
 class AzureResourceManagerManagedIdentityProperties {
   /// The type of managed identity assigned to this resource.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
   /// The identities assigned to this resource by the user.
-  final pulumi.Input<Map<String, AzureResourceManagerUserAssignedIdentity>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, AzureResourceManagerUserAssignedIdentity>?>? userAssignedIdentities;
 
   /// Creates a new [AzureResourceManagerManagedIdentityProperties].
   /// [type] The type of managed identity assigned to this resource.
@@ -27,7 +27,7 @@ class AzureResourceManagerManagedIdentityProperties {
 
   factory AzureResourceManagerManagedIdentityProperties.fromMap(Map<String, dynamic> map) {
     return AzureResourceManagerManagedIdentityProperties(
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
       userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<AzureResourceManagerUserAssignedIdentity>(guardedValue, (value) => AzureResourceManagerUserAssignedIdentity.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

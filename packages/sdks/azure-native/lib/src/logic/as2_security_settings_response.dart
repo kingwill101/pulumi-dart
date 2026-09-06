@@ -17,13 +17,13 @@ class AS2SecuritySettingsResponse {
   /// The value indicating whether to enable NRR for outbound MDN.
   final pulumi.Input<bool> enableNRRForOutboundMDN;
   /// The name of the encryption certificate.
-  final pulumi.Input<String>? encryptionCertificateName;
+  final pulumi.Input<String?>? encryptionCertificateName;
   /// The value indicating whether to send or request a MDN.
   final pulumi.Input<bool> overrideGroupSigningCertificate;
   /// The Sha2 algorithm format. Valid values are Sha2, ShaHashSize, ShaHyphenHashSize, Sha2UnderscoreHashSize.
-  final pulumi.Input<String>? sha2AlgorithmFormat;
+  final pulumi.Input<String?>? sha2AlgorithmFormat;
   /// The name of the signing certificate.
-  final pulumi.Input<String>? signingCertificateName;
+  final pulumi.Input<String?>? signingCertificateName;
 
   /// Creates a new [AS2SecuritySettingsResponse].
   /// [enableNRRForInboundDecodedMessages] The value indicating whether to enable NRR for inbound decoded messages.

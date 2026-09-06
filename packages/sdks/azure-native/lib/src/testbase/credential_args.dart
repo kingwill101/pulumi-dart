@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_testbase_credential_args_doc}
 class CredentialArgs {
   /// The credential resource name.
-  final pulumi.Input<String>? credentialName;
+  final pulumi.Input<String?>? credentialName;
   /// Credential type.
-  final pulumi.Input<String> credentialType;
+  final pulumi.Input<dynamic> credentialType;
   /// Credential display name.
   final pulumi.Input<String> displayName;
   /// The name of the resource group. The name is case insensitive.
@@ -45,7 +45,7 @@ class CredentialArgs {
   factory CredentialArgs.fromMap(Map<String, dynamic> map) {
     return CredentialArgs(
       credentialName: (() { final guardedValue = map['credentialName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      credentialType: pulumi.Input.fromValue(map['credentialType'] as String),
+      credentialType: pulumi.Input.fromValue(map['credentialType']),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       testBaseAccountName: pulumi.Input.fromValue(map['testBaseAccountName'] as String),

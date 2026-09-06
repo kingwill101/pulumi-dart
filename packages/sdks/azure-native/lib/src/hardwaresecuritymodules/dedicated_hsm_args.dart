@@ -10,23 +10,23 @@ import 'sku.dart';
 /// {@macro pulumi_hardwaresecuritymodules_dedicated_hsm_args_doc}
 class DedicatedHsmArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the management network interfaces of the dedicated hsm.
-  final pulumi.Input<NetworkProfile>? managementNetworkProfile;
+  final pulumi.Input<NetworkProfile?>? managementNetworkProfile;
   /// Name of the dedicated Hsm
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the network interfaces of the dedicated hsm.
-  final pulumi.Input<NetworkProfile>? networkProfile;
+  final pulumi.Input<NetworkProfile?>? networkProfile;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// SKU details
   final pulumi.Input<Sku> sku;
   /// This field will be used when RP does not support Availability zones.
-  final pulumi.Input<String>? stampId;
+  final pulumi.Input<String?>? stampId;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The Dedicated Hsm zones.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [DedicatedHsmArgs].
   /// [location] The geo-location where the resource lives

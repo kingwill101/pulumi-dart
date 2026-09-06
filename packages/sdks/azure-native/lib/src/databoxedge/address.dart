@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The shipping address of the customer.
 class Address {
   /// The address line1.
-  final pulumi.Input<String>? addressLine1;
+  final pulumi.Input<String?>? addressLine1;
   /// The address line2.
-  final pulumi.Input<String>? addressLine2;
+  final pulumi.Input<String?>? addressLine2;
   /// The address line3.
-  final pulumi.Input<String>? addressLine3;
+  final pulumi.Input<String?>? addressLine3;
   /// The city name.
-  final pulumi.Input<String>? city;
+  final pulumi.Input<String?>? city;
   /// The country name.
   final pulumi.Input<String> country;
   /// The postal code.
-  final pulumi.Input<String>? postalCode;
+  final pulumi.Input<String?>? postalCode;
   /// The state name.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [Address].
   /// [addressLine1] The address line1.

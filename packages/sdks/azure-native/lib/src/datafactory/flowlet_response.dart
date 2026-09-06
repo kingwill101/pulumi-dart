@@ -9,21 +9,21 @@ import 'transformation_response.dart';
 /// Data flow flowlet
 class FlowletResponse {
   /// List of tags that can be used for describing the data flow.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The description of the data flow.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The folder that this data flow is in. If not specified, Data flow will appear at the root level.
-  final pulumi.Input<DataFlowFolderResponse>? folder;
+  final pulumi.Input<DataFlowFolderResponse?>? folder;
   /// Flowlet script.
-  final pulumi.Input<String>? script;
+  final pulumi.Input<String?>? script;
   /// Flowlet script lines.
-  final pulumi.Input<List<String>>? scriptLines;
+  final pulumi.Input<List<String>?>? scriptLines;
   /// List of sinks in Flowlet.
-  final pulumi.Input<List<DataFlowSinkResponse>>? sinks;
+  final pulumi.Input<List<DataFlowSinkResponse>?>? sinks;
   /// List of sources in Flowlet.
-  final pulumi.Input<List<DataFlowSourceResponse>>? sources;
+  final pulumi.Input<List<DataFlowSourceResponse>?>? sources;
   /// List of transformations in Flowlet.
-  final pulumi.Input<List<TransformationResponse>>? transformations_;
+  final pulumi.Input<List<TransformationResponse>?>? transformations_;
   /// Type of data flow.
   /// Expected value is 'Flowlet'.
   final pulumi.Input<String> type;

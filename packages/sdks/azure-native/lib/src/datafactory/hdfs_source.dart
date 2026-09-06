@@ -8,7 +8,7 @@ class HdfsSource {
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? disableMetricsCollection;
   /// Specifies Distcp-related settings.
-  final pulumi.Input<DistcpSettings>? distcpSettings;
+  final pulumi.Input<DistcpSettings?>? distcpSettings;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// If true, files under the folder path will be read recursively. Default is true. Type: boolean (or Expression with resultType boolean).

@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The name of the credential.
-enum CredentialName {
+enum CredentialName implements pulumi.PulumiEnum<String> {
   valueCredential1("Credential1");
 
   const CredentialName(this.wireValue);
+  @override
   final String wireValue;
 
   static CredentialName fromValue(String value) {

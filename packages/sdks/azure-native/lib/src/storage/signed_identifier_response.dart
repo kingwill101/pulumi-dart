@@ -5,9 +5,9 @@ import 'access_policy_response.dart';
 
 class SignedIdentifierResponse {
   /// Access policy
-  final pulumi.Input<AccessPolicyResponse>? accessPolicy;
+  final pulumi.Input<AccessPolicyResponse?>? accessPolicy;
   /// An unique identifier of the stored access policy.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [SignedIdentifierResponse].
   /// [accessPolicy] Access policy

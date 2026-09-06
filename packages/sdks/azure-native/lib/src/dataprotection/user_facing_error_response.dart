@@ -6,22 +6,22 @@ import 'inner_error_response.dart';
 /// Error object used by layers that have access to localized content, and propagate that to user
 class UserFacingErrorResponse {
   /// Unique code for this error
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// Additional related Errors
-  final pulumi.Input<List<UserFacingErrorResponse>>? details;
+  final pulumi.Input<List<UserFacingErrorResponse>?>? details;
   /// Inner Error
-  final pulumi.Input<InnerErrorResponse>? innerError;
+  final pulumi.Input<InnerErrorResponse?>? innerError;
   /// Whether the operation will be retryable or not
-  final pulumi.Input<bool>? isRetryable;
+  final pulumi.Input<bool?>? isRetryable;
   /// Whether the operation is due to a user error or service error
-  final pulumi.Input<bool>? isUserError;
-  final pulumi.Input<String>? message;
+  final pulumi.Input<bool?>? isUserError;
+  final pulumi.Input<String?>? message;
   /// Any key value pairs that can be injected inside error object
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// RecommendedAction � localized.
-  final pulumi.Input<List<String>>? recommendedAction;
+  final pulumi.Input<List<String>?>? recommendedAction;
   /// Target of the error.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
 
   /// Creates a new [UserFacingErrorResponse].
   /// [code] Unique code for this error

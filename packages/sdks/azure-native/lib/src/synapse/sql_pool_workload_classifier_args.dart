@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_synapse_sql_pool_workload_classifier_args_doc}
 class SqlPoolWorkloadClassifierArgs {
   /// The workload classifier context.
-  final pulumi.Input<String>? context;
+  final pulumi.Input<String?>? context;
   /// The workload classifier end time for classification.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// The workload classifier importance.
-  final pulumi.Input<String>? importance;
+  final pulumi.Input<String?>? importance;
   /// The workload classifier label.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// The workload classifier member name.
   final pulumi.Input<String> memberName;
   /// The name of the resource group. The name is case insensitive.
@@ -22,9 +22,9 @@ class SqlPoolWorkloadClassifierArgs {
   /// SQL pool name
   final pulumi.Input<String> sqlPoolName;
   /// The workload classifier start time for classification.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// The name of the workload classifier.
-  final pulumi.Input<String>? workloadClassifierName;
+  final pulumi.Input<String?>? workloadClassifierName;
   /// The name of the workload group.
   final pulumi.Input<String> workloadGroupName;
   /// The name of the workspace.

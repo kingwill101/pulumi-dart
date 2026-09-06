@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// whether to enable ssl verification
-enum EnableSslVerification {
+enum EnableSslVerification implements pulumi.PulumiEnum<String> {
   true_("true"),
   false_("false");
 
   const EnableSslVerification(this.wireValue);
+  @override
   final String wireValue;
 
   static EnableSslVerification fromValue(String value) {

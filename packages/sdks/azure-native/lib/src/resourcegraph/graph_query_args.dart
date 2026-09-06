@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_resourcegraph_graph_query_args_doc}
 class GraphQueryArgs {
   /// The description of a graph query.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The location of the resource
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// KQL query that will be graph.
   final pulumi.Input<String> query;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Graph Query resource.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GraphQueryArgs].
   /// [description] The description of a graph query.

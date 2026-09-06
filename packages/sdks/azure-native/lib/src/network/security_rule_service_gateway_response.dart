@@ -8,25 +8,25 @@ class SecurityRuleServiceGatewayResponse {
   /// The network traffic is allowed or denied.
   final pulumi.Input<String> access;
   /// A description for this rule. Restricted to 140 chars.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
-  final pulumi.Input<String>? destinationAddressPrefix;
+  final pulumi.Input<String?>? destinationAddressPrefix;
   /// The destination address prefixes. CIDR or destination IP ranges.
-  final pulumi.Input<List<String>>? destinationAddressPrefixes;
+  final pulumi.Input<List<String>?>? destinationAddressPrefixes;
   /// The application security group specified as destination.
-  final pulumi.Input<List<ApplicationSecurityGroupResponse>>? destinationApplicationSecurityGroups;
+  final pulumi.Input<List<ApplicationSecurityGroupResponse>?>? destinationApplicationSecurityGroups;
   /// The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-  final pulumi.Input<String>? destinationPortRange;
+  final pulumi.Input<String?>? destinationPortRange;
   /// The destination port ranges.
-  final pulumi.Input<List<String>>? destinationPortRanges;
+  final pulumi.Input<List<String>?>? destinationPortRanges;
   /// The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
   final pulumi.Input<String> direction;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
   final pulumi.Input<int> priority;
   /// Network protocol this rule applies to.
@@ -34,15 +34,15 @@ class SecurityRuleServiceGatewayResponse {
   /// The provisioning state of the security rule resource.
   final pulumi.Input<String> provisioningState;
   /// The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from.
-  final pulumi.Input<String>? sourceAddressPrefix;
+  final pulumi.Input<String?>? sourceAddressPrefix;
   /// The CIDR or source IP ranges.
-  final pulumi.Input<List<String>>? sourceAddressPrefixes;
+  final pulumi.Input<List<String>?>? sourceAddressPrefixes;
   /// The application security group specified as source.
-  final pulumi.Input<List<ApplicationSecurityGroupResponse>>? sourceApplicationSecurityGroups;
+  final pulumi.Input<List<ApplicationSecurityGroupResponse>?>? sourceApplicationSecurityGroups;
   /// The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-  final pulumi.Input<String>? sourcePortRange;
+  final pulumi.Input<String?>? sourcePortRange;
   /// The source port ranges.
-  final pulumi.Input<List<String>>? sourcePortRanges;
+  final pulumi.Input<List<String>?>? sourcePortRanges;
   /// Resource type.
   final pulumi.Input<String> type;
 
@@ -128,7 +128,7 @@ class SecurityRuleServiceGatewayResponse {
       etag: pulumi.Input.fromValue(map['etag'] as String),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       sourceAddressPrefix: (() { final guardedValue = map['sourceAddressPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

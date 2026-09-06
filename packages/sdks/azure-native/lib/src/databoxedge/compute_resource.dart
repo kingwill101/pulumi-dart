@@ -26,8 +26,8 @@ class ComputeResource {
 
   factory ComputeResource.fromMap(Map<String, dynamic> map) {
     return ComputeResource(
-      memoryInGB: pulumi.Input.fromValue(map['memoryInGB'] as double),
-      processorCount: pulumi.Input.fromValue(map['processorCount'] as int),
+      memoryInGB: pulumi.Input.fromValue((map['memoryInGB'] as num).toDouble()),
+      processorCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['processorCount'])),
     );
   }
 }

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Authentication method to access the storage account for deployment.
 class FunctionsDeploymentStorageAuthentication {
   /// Use this property for StorageAccountConnectionString. Set the name of the app setting that has the storage account connection string. Do not set a value for this property when using other authentication type.
-  final pulumi.Input<String>? storageAccountConnectionStringName;
+  final pulumi.Input<String?>? storageAccountConnectionStringName;
   /// Property to select authentication type to access the selected storage account. Available options: SystemAssignedIdentity, UserAssignedIdentity, StorageAccountConnectionString.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
   /// Use this property for UserAssignedIdentity. Set the resource ID of the identity. Do not set a value for this property when using other authentication type.
-  final pulumi.Input<String>? userAssignedIdentityResourceId;
+  final pulumi.Input<String?>? userAssignedIdentityResourceId;
 
   /// Creates a new [FunctionsDeploymentStorageAuthentication].
   /// [storageAccountConnectionStringName] Use this property for StorageAccountConnectionString. Set the name of the app setting that has the storage account connection string. Do not set a value for this property when using other authentication type.
@@ -32,7 +32,7 @@ class FunctionsDeploymentStorageAuthentication {
   factory FunctionsDeploymentStorageAuthentication.fromMap(Map<String, dynamic> map) {
     return FunctionsDeploymentStorageAuthentication(
       storageAccountConnectionStringName: (() { final guardedValue = map['storageAccountConnectionStringName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       userAssignedIdentityResourceId: (() { final guardedValue = map['userAssignedIdentityResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

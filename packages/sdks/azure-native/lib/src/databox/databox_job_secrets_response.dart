@@ -15,7 +15,7 @@ class DataboxJobSecretsResponse {
   /// Expected value is 'DataBox'.
   final pulumi.Input<String> jobSecretsType;
   /// Contains the list of secret objects for a job.
-  final pulumi.Input<List<DataBoxSecretResponse>>? podSecrets;
+  final pulumi.Input<List<DataBoxSecretResponse>?>? podSecrets;
 
   /// Creates a new [DataboxJobSecretsResponse].
   /// [dcAccessSecurityCode] Dc Access Security Code for Customer Managed Shipping

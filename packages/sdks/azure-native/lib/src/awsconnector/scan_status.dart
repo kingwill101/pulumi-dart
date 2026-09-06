@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ScanStatus {
+enum ScanStatus implements pulumi.PulumiEnum<String> {
   aCTIVE("ACTIVE"),
   cOMPLETE("COMPLETE"),
   fAILED("FAILED"),
@@ -10,6 +12,7 @@ enum ScanStatus {
   uNSUPPORTEDIMAGE("UNSUPPORTED_IMAGE");
 
   const ScanStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static ScanStatus fromValue(String value) {

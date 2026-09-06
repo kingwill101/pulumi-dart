@@ -10,25 +10,25 @@ import 'p2_svpn_server_config_vpn_client_root_certificate.dart';
 /// Parameters for P2SVpnServerConfiguration.
 class P2SVpnServerConfigurationProperties {
   /// A unique read-only string that changes whenever the resource is updated.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The name of the P2SVpnServerConfiguration that is unique within a VirtualWan in a resource group. This name can be used to access the resource along with Paren VirtualWan resource name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Radius client root certificate of P2SVpnServerConfiguration.
-  final pulumi.Input<List<P2SVpnServerConfigRadiusClientRootCertificate>>? p2SVpnServerConfigRadiusClientRootCertificates;
+  final pulumi.Input<List<P2SVpnServerConfigRadiusClientRootCertificate>?>? p2SVpnServerConfigRadiusClientRootCertificates;
   /// Radius Server root certificate of P2SVpnServerConfiguration.
-  final pulumi.Input<List<P2SVpnServerConfigRadiusServerRootCertificate>>? p2SVpnServerConfigRadiusServerRootCertificates;
+  final pulumi.Input<List<P2SVpnServerConfigRadiusServerRootCertificate>?>? p2SVpnServerConfigRadiusServerRootCertificates;
   /// VPN client revoked certificate of P2SVpnServerConfiguration.
-  final pulumi.Input<List<P2SVpnServerConfigVpnClientRevokedCertificate>>? p2SVpnServerConfigVpnClientRevokedCertificates;
+  final pulumi.Input<List<P2SVpnServerConfigVpnClientRevokedCertificate>?>? p2SVpnServerConfigVpnClientRevokedCertificates;
   /// VPN client root certificate of P2SVpnServerConfiguration.
-  final pulumi.Input<List<P2SVpnServerConfigVpnClientRootCertificate>>? p2SVpnServerConfigVpnClientRootCertificates;
+  final pulumi.Input<List<P2SVpnServerConfigVpnClientRootCertificate>?>? p2SVpnServerConfigVpnClientRootCertificates;
   /// The radius server address property of the P2SVpnServerConfiguration resource for point to site client connection.
-  final pulumi.Input<String>? radiusServerAddress;
+  final pulumi.Input<String?>? radiusServerAddress;
   /// The radius secret property of the P2SVpnServerConfiguration resource for point to site client connection.
-  final pulumi.Input<String>? radiusServerSecret;
+  final pulumi.Input<String?>? radiusServerSecret;
   /// VpnClientIpsecPolicies for P2SVpnServerConfiguration.
-  final pulumi.Input<List<IpsecPolicy>>? vpnClientIpsecPolicies;
+  final pulumi.Input<List<IpsecPolicy>?>? vpnClientIpsecPolicies;
   /// VPN protocols for the P2SVpnServerConfiguration.
-  final pulumi.Input<List<String>>? vpnProtocols;
+  final pulumi.Input<List<dynamic>?>? vpnProtocols;
 
   /// Creates a new [P2SVpnServerConfigurationProperties].
   /// [etag] A unique read-only string that changes whenever the resource is updated.
@@ -80,7 +80,7 @@ class P2SVpnServerConfigurationProperties {
       radiusServerAddress: (() { final guardedValue = map['radiusServerAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       radiusServerSecret: (() { final guardedValue = map['radiusServerSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpnClientIpsecPolicies: (() { final guardedValue = map['vpnClientIpsecPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IpsecPolicy>(guardedValue, (value) => IpsecPolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      vpnProtocols: (() { final guardedValue = map['vpnProtocols']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      vpnProtocols: (() { final guardedValue = map['vpnProtocols']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
     );
   }
 }

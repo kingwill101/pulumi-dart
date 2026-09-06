@@ -6,7 +6,7 @@ import 'dashboard_lens.dart';
 /// Dashboard Properties with Provisioning state
 class DashboardPropertiesWithProvisioningState {
   /// The dashboard lenses.
-  final pulumi.Input<List<DashboardLens>>? lenses;
+  final pulumi.Input<List<DashboardLens>?>? lenses;
   /// The dashboard metadata.
   final pulumi.Input<dynamic>? metadata;
 

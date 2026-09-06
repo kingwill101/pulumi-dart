@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Event grouping settings property bag.
 class EventGroupingSettingsResponse {
   /// The event grouping aggregation kinds
-  final pulumi.Input<String>? aggregationKind;
+  final pulumi.Input<String?>? aggregationKind;
 
   /// Creates a new [EventGroupingSettingsResponse].
   /// [aggregationKind] The event grouping aggregation kinds

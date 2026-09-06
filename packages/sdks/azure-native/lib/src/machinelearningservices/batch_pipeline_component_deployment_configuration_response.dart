@@ -6,16 +6,16 @@ import 'id_asset_reference_response.dart';
 /// Properties for a Batch Pipeline Component Deployment.
 class BatchPipelineComponentDeploymentConfigurationResponse {
   /// The ARM id of the component to be run.
-  final pulumi.Input<IdAssetReferenceResponse>? componentId;
+  final pulumi.Input<IdAssetReferenceResponse?>? componentId;
   /// The enumerated property types for batch deployments.
   /// Expected value is 'PipelineComponent'.
   final pulumi.Input<String> deploymentConfigurationType;
   /// The description which will be applied to the job.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Run-time settings for the pipeline job.
-  final pulumi.Input<Map<String, String>>? settings;
+  final pulumi.Input<Map<String, String>?>? settings;
   /// The tags which will be applied to the job.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [BatchPipelineComponentDeploymentConfigurationResponse].
   /// [componentId] The ARM id of the component to be run.

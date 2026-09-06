@@ -40,7 +40,7 @@ class LogCollectionReportedPropertiesResponse {
     return LogCollectionReportedPropertiesResponse(
       deploymentStatus: pulumi.Input.fromValue(EceActionStatusResponse.fromMap((map['deploymentStatus']! as Map).cast<String, dynamic>())),
       logCollectionSessionDetails: pulumi.Input.fromValue(pulumi.Input.decodeList<LogCollectionJobSessionResponse>(map['logCollectionSessionDetails']!, (value) => LogCollectionJobSessionResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      percentComplete: pulumi.Input.fromValue(map['percentComplete'] as int),
+      percentComplete: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['percentComplete'])),
       validationStatus: pulumi.Input.fromValue(EceActionStatusResponse.fromMap((map['validationStatus']! as Map).cast<String, dynamic>())),
     );
   }

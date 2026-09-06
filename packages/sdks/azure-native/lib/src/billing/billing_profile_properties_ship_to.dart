@@ -7,33 +7,33 @@ class BillingProfilePropertiesShipTo {
   /// Address line 1.
   final pulumi.Input<String> addressLine1;
   /// Address line 2.
-  final pulumi.Input<String>? addressLine2;
+  final pulumi.Input<String?>? addressLine2;
   /// Address line 3.
-  final pulumi.Input<String>? addressLine3;
+  final pulumi.Input<String?>? addressLine3;
   /// Address city.
-  final pulumi.Input<String>? city;
+  final pulumi.Input<String?>? city;
   /// Company name. Optional for MCA Individual (Pay-as-you-go).
-  final pulumi.Input<String>? companyName;
+  final pulumi.Input<String?>? companyName;
   /// Country code uses ISO 3166-1 Alpha-2 format.
   final pulumi.Input<String> country;
   /// Address district.
-  final pulumi.Input<String>? district;
+  final pulumi.Input<String?>? district;
   /// Email address.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// First name. Optional for MCA Enterprise.
-  final pulumi.Input<String>? firstName;
+  final pulumi.Input<String?>? firstName;
   /// Indicates if the address is incomplete.
-  final pulumi.Input<bool>? isValidAddress;
+  final pulumi.Input<bool?>? isValidAddress;
   /// Last name. Optional for MCA Enterprise.
-  final pulumi.Input<String>? lastName;
+  final pulumi.Input<String?>? lastName;
   /// Middle name.
-  final pulumi.Input<String>? middleName;
+  final pulumi.Input<String?>? middleName;
   /// Phone number.
-  final pulumi.Input<String>? phoneNumber;
+  final pulumi.Input<String?>? phoneNumber;
   /// Postal code.
-  final pulumi.Input<String>? postalCode;
+  final pulumi.Input<String?>? postalCode;
   /// Address region.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [BillingProfilePropertiesShipTo].
   /// [addressLine1] Address line 1.

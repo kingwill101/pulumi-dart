@@ -5,7 +5,7 @@ import 'monitor_email_notification_settings.dart';
 
 class MonitorNotificationSettings {
   /// The AML notification email settings.
-  final pulumi.Input<MonitorEmailNotificationSettings>? emailNotificationSettings;
+  final pulumi.Input<MonitorEmailNotificationSettings?>? emailNotificationSettings;
 
   /// Creates a new [MonitorNotificationSettings].
   /// [emailNotificationSettings] The AML notification email settings.

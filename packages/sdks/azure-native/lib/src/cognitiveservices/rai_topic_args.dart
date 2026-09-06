@@ -11,13 +11,13 @@ class RaiTopicArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
   /// Properties of Cognitive Services Rai Topic.
-  final pulumi.Input<RaiTopicProperties>? properties;
+  final pulumi.Input<RaiTopicProperties?>? properties;
   /// The name of the Rai Topic associated with the Cognitive Services Account
-  final pulumi.Input<String>? raiTopicName;
+  final pulumi.Input<String?>? raiTopicName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RaiTopicArgs].
   /// [accountName] The name of Cognitive Services account.

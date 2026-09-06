@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of backup management for the backed up item.
-enum BackupManagementType {
+enum BackupManagementType implements pulumi.PulumiEnum<String> {
   valueInvalid("Invalid"),
   valueAzureIaasVM("AzureIaasVM"),
   valueMAB("MAB"),
@@ -11,6 +13,7 @@ enum BackupManagementType {
   valueDefaultBackup("DefaultBackup");
 
   const BackupManagementType(this.wireValue);
+  @override
   final String wireValue;
 
   static BackupManagementType fromValue(String value) {

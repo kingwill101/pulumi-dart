@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Custom error of an application gateway.
 class ApplicationGatewayCustomErrorResponse {
   /// Error page URL of the application gateway custom error.
-  final pulumi.Input<String>? customErrorPageUrl;
+  final pulumi.Input<String?>? customErrorPageUrl;
   /// Status code of the application gateway custom error.
-  final pulumi.Input<String>? statusCode;
+  final pulumi.Input<String?>? statusCode;
 
   /// Creates a new [ApplicationGatewayCustomErrorResponse].
   /// [customErrorPageUrl] Error page URL of the application gateway custom error.

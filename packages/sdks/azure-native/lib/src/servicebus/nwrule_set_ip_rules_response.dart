@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Description of NetWorkRuleSet - IpRules resource.
 class NWRuleSetIpRulesResponse {
   /// The IP Filter Action
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// IP Mask
-  final pulumi.Input<String>? ipMask;
+  final pulumi.Input<String?>? ipMask;
 
   /// Creates a new [NWRuleSetIpRulesResponse].
   /// [action] The IP Filter Action
   /// [ipMask] IP Mask
-  const NWRuleSetIpRulesResponse({
-    this.action,
+  NWRuleSetIpRulesResponse({
+    pulumi.Input<String?>? action,
     this.ipMask,
-  });
+  }) : action = action ?? pulumi.Input.fromValue('Allow');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

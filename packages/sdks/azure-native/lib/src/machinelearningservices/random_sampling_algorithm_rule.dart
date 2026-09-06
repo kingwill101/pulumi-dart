@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The specific type of random algorithm
-enum RandomSamplingAlgorithmRule {
+enum RandomSamplingAlgorithmRule implements pulumi.PulumiEnum<String> {
   random("Random"),
   sobol("Sobol");
 
   const RandomSamplingAlgorithmRule(this.wireValue);
+  @override
   final String wireValue;
 
   static RandomSamplingAlgorithmRule fromValue(String value) {

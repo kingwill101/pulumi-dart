@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Forest Trust Setting
 class ForestTrust {
   /// Friendly Name
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// Remote Dns ips
-  final pulumi.Input<String>? remoteDnsIps;
+  final pulumi.Input<String?>? remoteDnsIps;
   /// Trust Direction
-  final pulumi.Input<String>? trustDirection;
+  final pulumi.Input<String?>? trustDirection;
   /// Trust Password
-  final pulumi.Input<String>? trustPassword;
+  final pulumi.Input<String?>? trustPassword;
   /// Trusted Domain FQDN
-  final pulumi.Input<String>? trustedDomainFqdn;
+  final pulumi.Input<String?>? trustedDomainFqdn;
 
   /// Creates a new [ForestTrust].
   /// [friendlyName] Friendly Name

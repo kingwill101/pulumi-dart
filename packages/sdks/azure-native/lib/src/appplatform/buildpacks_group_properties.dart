@@ -6,9 +6,9 @@ import 'buildpack_properties.dart';
 /// Buildpack group properties of the Builder
 class BuildpacksGroupProperties {
   /// Buildpacks in the buildpack group
-  final pulumi.Input<List<BuildpackProperties>>? buildpacks;
+  final pulumi.Input<List<BuildpackProperties>?>? buildpacks;
   /// Buildpack group name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [BuildpacksGroupProperties].
   /// [buildpacks] Buildpacks in the buildpack group

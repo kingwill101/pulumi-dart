@@ -6,13 +6,13 @@ import 'storage_discovery_scope_response.dart';
 /// Storage Discovery Workspace Properties
 class StorageDiscoveryWorkspacePropertiesResponse {
   /// The description of the storage discovery workspace
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// The scopes of the storage discovery workspace.
   final pulumi.Input<List<StorageDiscoveryScopeResponse>> scopes;
   /// The storage discovery sku
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// The view level storage discovery data estate
   final pulumi.Input<List<String>> workspaceRoots;
 
@@ -22,13 +22,13 @@ class StorageDiscoveryWorkspacePropertiesResponse {
   /// [scopes] The scopes of the storage discovery workspace.
   /// [sku] The storage discovery sku
   /// [workspaceRoots] The view level storage discovery data estate
-  const StorageDiscoveryWorkspacePropertiesResponse({
+  StorageDiscoveryWorkspacePropertiesResponse({
     this.description,
     required this.provisioningState,
     required this.scopes,
-    this.sku,
+    pulumi.Input<String?>? sku,
     required this.workspaceRoots,
-  });
+  }) : sku = sku ?? pulumi.Input.fromValue('Standard');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

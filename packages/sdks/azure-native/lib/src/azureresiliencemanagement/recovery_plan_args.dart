@@ -10,11 +10,11 @@ import 'recovery_plan_properties.dart';
 /// {@macro pulumi_azureresiliencemanagement_recovery_plan_args_doc}
 class RecoveryPlanArgs {
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<RecoveryPlanProperties>? properties;
+  final pulumi.Input<RecoveryPlanProperties?>? properties;
   /// The name of the recovery orchestration plan.
-  final pulumi.Input<String>? recoveryPlanName;
+  final pulumi.Input<String?>? recoveryPlanName;
   /// The name of the service group.
   final pulumi.Input<String> serviceGroupName;
 

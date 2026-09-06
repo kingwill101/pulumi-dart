@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The storage Account.
 class StorageAccount {
   /// The container in the storage account, only to be specified for WASB storage accounts.
-  final pulumi.Input<String>? container;
+  final pulumi.Input<String?>? container;
   /// Enable secure channel or not, it's an optional field. Default value is false when cluster version &lt; 5.1 and true when cluster version &gt;= 5.1 ,
-  final pulumi.Input<bool>? enableSecureChannel;
+  final pulumi.Input<bool?>? enableSecureChannel;
   /// The filesystem, only to be specified for Azure Data Lake Storage Gen 2.
-  final pulumi.Input<String>? fileSystem;
+  final pulumi.Input<String?>? fileSystem;
   /// The file share name.
-  final pulumi.Input<String>? fileshare;
+  final pulumi.Input<String?>? fileshare;
   /// Whether or not the storage account is the default storage account.
-  final pulumi.Input<bool>? isDefault;
+  final pulumi.Input<bool?>? isDefault;
   /// The storage account access key.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The managed identity (MSI) that is allowed to access the storage account, only to be specified for Azure Data Lake Storage Gen 2.
-  final pulumi.Input<String>? msiResourceId;
+  final pulumi.Input<String?>? msiResourceId;
   /// The name of the storage account.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource ID of storage account, only to be specified for Azure Data Lake Storage Gen 2.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// The shared access signature key.
-  final pulumi.Input<String>? saskey;
+  final pulumi.Input<String?>? saskey;
 
   /// Creates a new [StorageAccount].
   /// [container] The container in the storage account, only to be specified for WASB storage accounts.

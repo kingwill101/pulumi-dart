@@ -11,9 +11,9 @@ class RelationshipPropertiesResponse {
   /// Discovered by which discovery rule. If set, the relationship cannot be deleted manually.
   final pulumi.Input<String> discoveredBy;
   /// Display name
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional set of labels (key-value pairs)
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource name of the parent entity
   final pulumi.Input<String> parentEntityName;
   /// The status of the last operation.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of direct peering.
-enum DirectPeeringType {
+enum DirectPeeringType implements pulumi.PulumiEnum<String> {
   valueEdge("Edge"),
   valueTransit("Transit"),
   valueCdn("Cdn"),
@@ -10,6 +12,7 @@ enum DirectPeeringType {
   valueEdgeZoneForOperators("EdgeZoneForOperators");
 
   const DirectPeeringType(this.wireValue);
+  @override
   final String wireValue;
 
   static DirectPeeringType fromValue(String value) {

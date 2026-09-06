@@ -12,9 +12,9 @@ class ListFeaturesetVersionFeaturesArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Continuation token for pagination.
-  final pulumi.Input<String>? skip;
+  final pulumi.Input<String?>? skip;
   /// Comma-separated list of tag names (and optionally values). Example: tag1,tag2=value2
-  final pulumi.Input<String>? tags;
+  final pulumi.Input<String?>? tags;
   /// Featureset Version identifier. This is case-sensitive.
   final pulumi.Input<String> version;
   /// Name of Azure Machine Learning workspace.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The App Service plan tier.
-enum AppServicePlanTier {
+enum AppServicePlanTier implements pulumi.PulumiEnum<String> {
   elasticPremium("ElasticPremium"),
   premiumV3("PremiumV3");
 
   const AppServicePlanTier(this.wireValue);
+  @override
   final String wireValue;
 
   static AppServicePlanTier fromValue(String value) {

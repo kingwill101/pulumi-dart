@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the software license type that will be applied to the VMs deployed on the dedicated host. Possible values are: **None,** **Windows_Server_Hybrid,** **Windows_Server_Perpetual.** The default value is: **None.**
-enum DedicatedHostLicenseTypes {
+enum DedicatedHostLicenseTypes implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueWindowsServerHybrid("Windows_Server_Hybrid"),
   valueWindowsServerPerpetual("Windows_Server_Perpetual");
 
   const DedicatedHostLicenseTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static DedicatedHostLicenseTypes fromValue(String value) {

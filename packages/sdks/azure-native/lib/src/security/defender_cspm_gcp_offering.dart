@@ -10,18 +10,18 @@ import 'defender_cspm_gcp_offering_vm_scanners.dart';
 /// The CSPM P1 for GCP offering
 class DefenderCspmGcpOffering {
   /// GCP Defenders CSPM Permissions Management OIDC (Open ID connect) connection configurations
-  final pulumi.Input<DefenderCspmGcpOfferingCiemDiscovery>? ciemDiscovery;
+  final pulumi.Input<DefenderCspmGcpOfferingCiemDiscovery?>? ciemDiscovery;
   /// The Microsoft Defender Data Sensitivity discovery configuration
-  final pulumi.Input<DefenderCspmGcpOfferingDataSensitivityDiscovery>? dataSensitivityDiscovery;
+  final pulumi.Input<DefenderCspmGcpOfferingDataSensitivityDiscovery?>? dataSensitivityDiscovery;
   /// The Microsoft Defender Container agentless discovery configuration
-  final pulumi.Input<DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8S>? mdcContainersAgentlessDiscoveryK8S;
+  final pulumi.Input<DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8S?>? mdcContainersAgentlessDiscoveryK8S;
   /// The Microsoft Defender Container image assessment configuration
-  final pulumi.Input<DefenderCspmGcpOfferingMdcContainersImageAssessment>? mdcContainersImageAssessment;
+  final pulumi.Input<DefenderCspmGcpOfferingMdcContainersImageAssessment?>? mdcContainersImageAssessment;
   /// The type of the security offering.
   /// Expected value is 'DefenderCspmGcp'.
   final pulumi.Input<String> offeringType;
   /// The Microsoft Defender for CSPM VM scanning configuration
-  final pulumi.Input<DefenderCspmGcpOfferingVmScanners>? vmScanners;
+  final pulumi.Input<DefenderCspmGcpOfferingVmScanners?>? vmScanners;
 
   /// Creates a new [DefenderCspmGcpOffering].
   /// [ciemDiscovery] GCP Defenders CSPM Permissions Management OIDC (Open ID connect) connection configurations

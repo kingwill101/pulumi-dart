@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ConfigChangeStatus {
+enum ConfigChangeStatus implements pulumi.PulumiEnum<String> {
   applyingChanges("ApplyingChanges"),
   cancelled("Cancelled"),
   completed("Completed"),
@@ -10,6 +12,7 @@ enum ConfigChangeStatus {
   validationFailed("ValidationFailed");
 
   const ConfigChangeStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static ConfigChangeStatus fromValue(String value) {

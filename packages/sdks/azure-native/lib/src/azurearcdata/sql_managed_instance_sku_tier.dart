@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The pricing tier for the instance.
-enum SqlManagedInstanceSkuTier {
+enum SqlManagedInstanceSkuTier implements pulumi.PulumiEnum<String> {
   valueGeneralPurpose("GeneralPurpose"),
   valueBusinessCritical("BusinessCritical");
 
   const SqlManagedInstanceSkuTier(this.wireValue);
+  @override
   final String wireValue;
 
   static SqlManagedInstanceSkuTier fromValue(String value) {

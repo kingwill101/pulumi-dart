@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of authentication used to connect to the REST service.
-enum RestServiceAuthenticationType {
+enum RestServiceAuthenticationType implements pulumi.PulumiEnum<String> {
   anonymous("Anonymous"),
   basic("Basic"),
   aadServicePrincipal("AadServicePrincipal"),
@@ -7,6 +9,7 @@ enum RestServiceAuthenticationType {
   oAuth2ClientCredential("OAuth2ClientCredential");
 
   const RestServiceAuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static RestServiceAuthenticationType fromValue(String value) {

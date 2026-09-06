@@ -6,11 +6,11 @@ import 'key_vault_reference_with_status_response.dart';
 /// Server farm registry adapter configuration.
 class RegistryAdapterResponse {
   /// Key vault reference to the value that will be placed in the registry location
-  final pulumi.Input<KeyVaultReferenceWithStatusResponse>? keyVaultSecretReference;
+  final pulumi.Input<KeyVaultReferenceWithStatusResponse?>? keyVaultSecretReference;
   /// Registry key for the adapter.
-  final pulumi.Input<String>? registryKey;
+  final pulumi.Input<String?>? registryKey;
   /// Type of the registry adapter.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [RegistryAdapterResponse].
   /// [keyVaultSecretReference] Key vault reference to the value that will be placed in the registry location

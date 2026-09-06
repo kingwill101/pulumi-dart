@@ -10,39 +10,39 @@ import 'system_data_response.dart';
 /// Result data returned by getMqttBridgeConnector.
 class GetMqttBridgeConnectorResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The number of instances to deploy for a bridge rollout.
   final int? bridgeInstances;
   /// The client id prefix of the dynamically generated client ids.
   final String? clientIdPrefix;
   /// Extended Location
-  final ExtendedLocationPropertyResponse extendedLocation;
+  final ExtendedLocationPropertyResponse? extendedLocation;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The details of MqttBridge Docker Image.
-  final ContainerImageResponse image;
+  final ContainerImageResponse? image;
   /// The details for connecting with Local Broker.
   final LocalBrokerConnectionSpecResponse? localBrokerConnection;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The log level of the Bridge Connector instances.
   final String? logLevel;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The Node Tolerations for the Bridge Connector pods.
   final NodeTolerationsResponse? nodeTolerations;
   /// The protocol to use for connecting with Brokers.
-  final String protocol;
+  final String? protocol;
   /// The status of the last operation.
-  final String provisioningState;
+  final String? provisioningState;
   /// The details for connecting with Remote Broker.
-  final MqttBridgeRemoteBrokerConnectionSpecResponse remoteBrokerConnection;
+  final MqttBridgeRemoteBrokerConnectionSpecResponse? remoteBrokerConnection;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetMqttBridgeConnectorResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -63,66 +63,66 @@ class GetMqttBridgeConnectorResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetMqttBridgeConnectorResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.bridgeInstances,
     this.clientIdPrefix,
-    required this.extendedLocation,
-    required this.id,
-    required this.image,
+    this.extendedLocation,
+    this.id,
+    this.image,
     this.localBrokerConnection,
-    required this.location,
+    this.location,
     this.logLevel,
-    required this.name,
+    this.name,
     this.nodeTolerations,
-    required this.protocol,
-    required this.provisioningState,
-    required this.remoteBrokerConnection,
-    required this.systemData,
+    this.protocol,
+    this.provisioningState,
+    this.remoteBrokerConnection,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'bridgeInstances': ?bridgeInstances,
       'clientIdPrefix': ?clientIdPrefix,
-      'extendedLocation': extendedLocation.toMap(),
-      'id': id,
-      'image': image.toMap(),
+      'extendedLocation': ?extendedLocation?.toMap(),
+      'id': ?id,
+      'image': ?image?.toMap(),
       'localBrokerConnection': ?localBrokerConnection?.toMap(),
-      'location': location,
+      'location': ?location,
       'logLevel': ?logLevel,
-      'name': name,
+      'name': ?name,
       'nodeTolerations': ?nodeTolerations?.toMap(),
-      'protocol': protocol,
-      'provisioningState': provisioningState,
-      'remoteBrokerConnection': remoteBrokerConnection.toMap(),
-      'systemData': systemData.toMap(),
+      'protocol': ?protocol,
+      'provisioningState': ?provisioningState,
+      'remoteBrokerConnection': ?remoteBrokerConnection?.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetMqttBridgeConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetMqttBridgeConnectorResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      bridgeInstances: (() { final guardedValue = map['bridgeInstances']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      bridgeInstances: (() { final guardedValue = map['bridgeInstances']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       clientIdPrefix: (() { final guardedValue = map['clientIdPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      extendedLocation: ExtendedLocationPropertyResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      image: ContainerImageResponse.fromMap((map['image']! as Map).cast<String, dynamic>()),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return ContainerImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       localBrokerConnection: (() { final guardedValue = map['localBrokerConnection']; if (guardedValue == null) return null; return LocalBrokerConnectionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      location: map['location'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       logLevel: (() { final guardedValue = map['logLevel']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       nodeTolerations: (() { final guardedValue = map['nodeTolerations']; if (guardedValue == null) return null; return NodeTolerationsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      protocol: map['protocol'] as String,
-      provisioningState: map['provisioningState'] as String,
-      remoteBrokerConnection: MqttBridgeRemoteBrokerConnectionSpecResponse.fromMap((map['remoteBrokerConnection']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      remoteBrokerConnection: (() { final guardedValue = map['remoteBrokerConnection']; if (guardedValue == null) return null; return MqttBridgeRemoteBrokerConnectionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

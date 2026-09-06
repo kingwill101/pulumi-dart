@@ -357,4 +357,24 @@ class DataMaskingPolicy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [DataMaskingPolicy] resource.
+  DataMaskingPolicy.reference(String urn)
+    : super(
+        'azure-native:sql:DataMaskingPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationPrincipals = registerOutput<String>('applicationPrincipals');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataMaskingState = registerOutput<String>('dataMaskingState');
+    exemptPrincipals = registerOutput<String?>('exemptPrincipals');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    maskingLevel = registerOutput<String>('maskingLevel');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+  }
 }

@@ -7,19 +7,19 @@ import 'target_branch_configuration_response.dart';
 /// Configuration payload for PR Annotations.
 class ActionableRemediationResponse {
   /// Repository branch configuration for PR Annotations.
-  final pulumi.Input<TargetBranchConfigurationResponse>? branchConfiguration;
+  final pulumi.Input<TargetBranchConfigurationResponse?>? branchConfiguration;
   /// Gets or sets list of categories and severity levels.
-  final pulumi.Input<List<CategoryConfigurationResponse>>? categoryConfigurations;
+  final pulumi.Input<List<CategoryConfigurationResponse>?>? categoryConfigurations;
   /// Update Settings.
   ///
   /// Enabled - Resource should inherit configurations from parent.
   /// Disabled - Resource should not inherit configurations from parent.
-  final pulumi.Input<String>? inheritFromParentState;
+  final pulumi.Input<String?>? inheritFromParentState;
   /// ActionableRemediation Setting.
   /// None - the setting was never set.
   /// Enabled - ActionableRemediation is enabled.
   /// Disabled - ActionableRemediation is disabled.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [ActionableRemediationResponse].
   /// [branchConfiguration] Repository branch configuration for PR Annotations.

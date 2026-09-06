@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The virtual network properties.
 class VirtualNetworkProfile {
   /// The ID of the virtual network.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the subnet.
-  final pulumi.Input<String>? subnet;
+  final pulumi.Input<String?>? subnet;
 
   /// Creates a new [VirtualNetworkProfile].
   /// [id] The ID of the virtual network.

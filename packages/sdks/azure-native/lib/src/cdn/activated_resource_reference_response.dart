@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Reference to another resource along with its state.
 class ActivatedResourceReferenceResponse {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Whether the resource is active or inactive
   final pulumi.Input<bool> isActive;
 

@@ -9,31 +9,31 @@ import 'parameter_specification.dart';
 /// The azure blob storage linked service.
 class AzureBlobStorageLinkedService {
   /// The Azure key vault secret reference of accountKey in connection string.
-  final pulumi.Input<AzureKeyVaultSecretReference>? accountKey;
+  final pulumi.Input<AzureKeyVaultSecretReference?>? accountKey;
   /// Specify the kind of your storage account. Allowed values are: Storage (general purpose v1), StorageV2 (general purpose v2), BlobStorage, or BlockBlobStorage. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? accountKind;
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The type used for authentication. Type: string.
-  final pulumi.Input<String>? authenticationType;
+  final pulumi.Input<dynamic>? authenticationType;
   /// Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? azureCloudType;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference?>? connectVia;
   /// The connection string. It is mutually exclusive with sasUri, serviceEndpoint property. Type: string, SecureString or AzureKeyVaultSecretReference.
   final pulumi.Input<dynamic>? connectionString;
   /// Container uri of the Azure Blob Storage resource only support for anonymous access. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? containerUri;
   /// The credential reference containing authentication information.
-  final pulumi.Input<CredentialReference>? credential;
+  final pulumi.Input<CredentialReference?>? credential;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>?>? parameters;
   /// The Azure key vault secret reference of sasToken in sas uri.
-  final pulumi.Input<AzureKeyVaultSecretReference>? sasToken;
+  final pulumi.Input<AzureKeyVaultSecretReference?>? sasToken;
   /// SAS URI of the Azure Blob Storage resource. It is mutually exclusive with connectionString, serviceEndpoint property. Type: string, SecureString or AzureKeyVaultSecretReference.
   final pulumi.Input<dynamic>? sasUri;
   /// Blob service endpoint of the Azure Blob Storage resource. It is mutually exclusive with connectionString, sasUri property.
@@ -41,14 +41,14 @@ class AzureBlobStorageLinkedService {
   /// The ID of the service principal used to authenticate against Azure SQL Data Warehouse. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? servicePrincipalId;
   /// The key of the service principal used to authenticate against Azure SQL Data Warehouse.
-  final pulumi.Input<AzureKeyVaultSecretReference>? servicePrincipalKey;
+  final pulumi.Input<dynamic>? servicePrincipalKey;
   /// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? tenant;
   /// Type of linked service.
   /// Expected value is 'AzureBlobStorage'.
   final pulumi.Input<String> type;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [AzureBlobStorageLinkedService].
   /// [accountKey] The Azure key vault secret reference of accountKey in connection string.
@@ -112,7 +112,7 @@ class AzureBlobStorageLinkedService {
       'sasUri': ?sasUri,
       'serviceEndpoint': ?serviceEndpoint,
       'servicePrincipalId': ?servicePrincipalId,
-      'servicePrincipalKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(servicePrincipalKey, (value) => value.toMap()),
+      'servicePrincipalKey': ?servicePrincipalKey,
       'tenant': ?tenant,
       'type': type,
       'version': ?version,
@@ -124,7 +124,7 @@ class AzureBlobStorageLinkedService {
       accountKey: (() { final guardedValue = map['accountKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       accountKind: (() { final guardedValue = map['accountKind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
-      authenticationType: (() { final guardedValue = map['authenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authenticationType: (() { final guardedValue = map['authenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       azureCloudType: (() { final guardedValue = map['azureCloudType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       connectVia: (() { final guardedValue = map['connectVia']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationRuntimeReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       connectionString: (() { final guardedValue = map['connectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
@@ -137,7 +137,7 @@ class AzureBlobStorageLinkedService {
       sasUri: (() { final guardedValue = map['sasUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       serviceEndpoint: (() { final guardedValue = map['serviceEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       servicePrincipalId: (() { final guardedValue = map['servicePrincipalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      servicePrincipalKey: (() { final guardedValue = map['servicePrincipalKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      servicePrincipalKey: (() { final guardedValue = map['servicePrincipalKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tenant: (() { final guardedValue = map['tenant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

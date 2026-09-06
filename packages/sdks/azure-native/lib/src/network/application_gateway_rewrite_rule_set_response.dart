@@ -8,13 +8,13 @@ class ApplicationGatewayRewriteRuleSetResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the rewrite rule set that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The provisioning state of the rewrite rule set resource.
   final pulumi.Input<String> provisioningState;
   /// Rewrite rules in the rewrite rule set.
-  final pulumi.Input<List<ApplicationGatewayRewriteRuleResponse>>? rewriteRules;
+  final pulumi.Input<List<ApplicationGatewayRewriteRuleResponse>?>? rewriteRules;
 
   /// Creates a new [ApplicationGatewayRewriteRuleSetResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.

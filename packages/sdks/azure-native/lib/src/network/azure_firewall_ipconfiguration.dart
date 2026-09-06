@@ -6,13 +6,13 @@ import 'sub_resource.dart';
 /// IP configuration of an Azure Firewall.
 class AzureFirewallIPConfiguration {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Reference to the PublicIP resource. This field is a mandatory input if subnet is not null.
-  final pulumi.Input<SubResource>? publicIPAddress;
+  final pulumi.Input<SubResource?>? publicIPAddress;
   /// Reference to the subnet resource. This resource must be named 'AzureFirewallSubnet' or 'AzureFirewallManagementSubnet'.
-  final pulumi.Input<SubResource>? subnet;
+  final pulumi.Input<SubResource?>? subnet;
 
   /// Creates a new [AzureFirewallIPConfiguration].
   /// [id] Resource ID.

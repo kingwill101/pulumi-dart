@@ -6,7 +6,7 @@ import 'sql_availability_group_database_replica_resource_properties.dart';
 /// A list of Availability Group Database Replicas.
 class SqlServerAvailabilityGroupResourcePropertiesDatabases {
   /// Array of Availability Group Database Replicas.
-  final pulumi.Input<List<SqlAvailabilityGroupDatabaseReplicaResourceProperties>>? value;
+  final pulumi.Input<List<SqlAvailabilityGroupDatabaseReplicaResourceProperties>?>? value;
 
   /// Creates a new [SqlServerAvailabilityGroupResourcePropertiesDatabases].
   /// [value] Array of Availability Group Database Replicas.

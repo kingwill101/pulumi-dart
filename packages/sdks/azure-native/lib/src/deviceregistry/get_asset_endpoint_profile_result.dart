@@ -12,33 +12,33 @@ class GetAssetEndpointProfileResult {
   /// Defines the client authentication mechanism to the server.
   final AuthenticationResponse? authentication;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Reference to a discovered asset endpoint profile. Populated only if the asset endpoint profile has been created from discovery flow. Discovered asset endpoint profile name must be provided.
   final String? discoveredAssetEndpointProfileRef;
   /// Defines the configuration for the connector type that is being used with the endpoint profile.
-  final String endpointProfileType;
+  final String? endpointProfileType;
   /// The extended location.
-  final ExtendedLocationResponse extendedLocation;
+  final ExtendedLocationResponse? extendedLocation;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Read only object to reflect changes that have occurred on the Edge. Similar to Kubernetes status property for custom resources.
-  final AssetEndpointProfileStatusResponse status;
+  final AssetEndpointProfileStatusResponse? status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
-  final String targetAddress;
+  final String? targetAddress;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Globally unique, immutable, non-reusable id.
-  final String uuid;
+  final String? uuid;
 
   /// Creates a new [GetAssetEndpointProfileResult].
   /// [additionalConfiguration] Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
@@ -60,40 +60,40 @@ class GetAssetEndpointProfileResult {
   const GetAssetEndpointProfileResult({
     this.additionalConfiguration,
     this.authentication,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.discoveredAssetEndpointProfileRef,
-    required this.endpointProfileType,
-    required this.extendedLocation,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.status,
-    required this.systemData,
+    this.endpointProfileType,
+    this.extendedLocation,
+    this.id,
+    this.location,
+    this.name,
+    this.provisioningState,
+    this.status,
+    this.systemData,
     this.tags,
-    required this.targetAddress,
-    required this.type,
-    required this.uuid,
+    this.targetAddress,
+    this.type,
+    this.uuid,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'additionalConfiguration': ?additionalConfiguration,
       'authentication': ?authentication?.toMap(),
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'discoveredAssetEndpointProfileRef': ?discoveredAssetEndpointProfileRef,
-      'endpointProfileType': endpointProfileType,
-      'extendedLocation': extendedLocation.toMap(),
-      'id': id,
-      'location': location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'status': status.toMap(),
-      'systemData': systemData.toMap(),
+      'endpointProfileType': ?endpointProfileType,
+      'extendedLocation': ?extendedLocation?.toMap(),
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'status': ?status?.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'targetAddress': targetAddress,
-      'type': type,
-      'uuid': uuid,
+      'targetAddress': ?targetAddress,
+      'type': ?type,
+      'uuid': ?uuid,
     };
   }
 
@@ -101,20 +101,20 @@ class GetAssetEndpointProfileResult {
     return GetAssetEndpointProfileResult(
       additionalConfiguration: (() { final guardedValue = map['additionalConfiguration']; if (guardedValue == null) return null; return guardedValue as String; })(),
       authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return AuthenticationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       discoveredAssetEndpointProfileRef: (() { final guardedValue = map['discoveredAssetEndpointProfileRef']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      endpointProfileType: map['endpointProfileType'] as String,
-      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      status: AssetEndpointProfileStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      endpointProfileType: (() { final guardedValue = map['endpointProfileType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return AssetEndpointProfileStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      targetAddress: map['targetAddress'] as String,
-      type: map['type'] as String,
-      uuid: map['uuid'] as String,
+      targetAddress: (() { final guardedValue = map['targetAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

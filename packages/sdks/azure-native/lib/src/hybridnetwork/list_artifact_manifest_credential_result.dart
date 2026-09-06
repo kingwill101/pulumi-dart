@@ -4,23 +4,23 @@
 /// Result data returned by listArtifactManifestCredential.
 class ListArtifactManifestCredentialResult {
   /// The credential type.
-  final String credentialType;
+  final String? credentialType;
 
   /// Creates a new [ListArtifactManifestCredentialResult].
   /// [credentialType] The credential type.
   const ListArtifactManifestCredentialResult({
-    required this.credentialType,
+    this.credentialType,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'credentialType': credentialType,
+      'credentialType': ?credentialType,
     };
   }
 
   factory ListArtifactManifestCredentialResult.fromMap(Map<String, dynamic> map) {
     return ListArtifactManifestCredentialResult(
-      credentialType: map['credentialType'] as String,
+      credentialType: (() { final guardedValue = map['credentialType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

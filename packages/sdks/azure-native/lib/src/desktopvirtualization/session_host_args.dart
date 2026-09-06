@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_desktopvirtualization_session_host_args_doc}
 class SessionHostArgs {
   /// Allow a new session.
-  final pulumi.Input<bool>? allowNewSession;
+  final pulumi.Input<bool?>? allowNewSession;
   /// User assigned to SessionHost.
-  final pulumi.Input<String>? assignedUser;
+  final pulumi.Input<String?>? assignedUser;
   /// Friendly name of SessionHost
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// The name of the host pool within the specified resource group
   final pulumi.Input<String> hostPoolName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the session host within the specified host pool
-  final pulumi.Input<String>? sessionHostName;
+  final pulumi.Input<String?>? sessionHostName;
 
   /// Creates a new [SessionHostArgs].
   /// [allowNewSession] Allow a new session.

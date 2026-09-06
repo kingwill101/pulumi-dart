@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The artifact type.
-enum AzureCoreArtifactType {
+enum AzureCoreArtifactType implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueVhdImageFile("VhdImageFile"),
   valueArmTemplate("ArmTemplate");
 
   const AzureCoreArtifactType(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureCoreArtifactType fromValue(String value) {

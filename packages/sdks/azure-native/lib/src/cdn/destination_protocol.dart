@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Protocol to use for the redirect. The default value is MatchRequest
-enum DestinationProtocol {
+enum DestinationProtocol implements pulumi.PulumiEnum<String> {
   matchRequest("MatchRequest"),
   http("Http"),
   https("Https");
 
   const DestinationProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static DestinationProtocol fromValue(String value) {

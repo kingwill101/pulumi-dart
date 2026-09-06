@@ -322,4 +322,40 @@ class ServerEndpoint extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     volumeFreeSpacePercent = registerOutput<int?>('volumeFreeSpacePercent');
   }
+
+  /// Creates a typed reference to an existing [ServerEndpoint] resource.
+  ServerEndpoint.reference(String urn)
+    : super(
+        'azure-native:storagesync:ServerEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cloudTiering = registerOutput<String?>('cloudTiering');
+    cloudTieringStatus = registerOutput<ServerEndpointCloudTieringStatusResponse>('cloudTieringStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerEndpointCloudTieringStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    friendlyName = registerOutput<String?>('friendlyName');
+    initialDownloadPolicy = registerOutput<String?>('initialDownloadPolicy');
+    initialUploadPolicy = registerOutput<String?>('initialUploadPolicy');
+    lastOperationName = registerOutput<String>('lastOperationName');
+    lastWorkflowId = registerOutput<String>('lastWorkflowId');
+    localCacheMode = registerOutput<String?>('localCacheMode');
+    this.name = registerOutput<String>('name');
+    offlineDataTransfer = registerOutput<String?>('offlineDataTransfer');
+    offlineDataTransferShareName = registerOutput<String?>('offlineDataTransferShareName');
+    offlineDataTransferStorageAccountResourceId = registerOutput<String>('offlineDataTransferStorageAccountResourceId');
+    offlineDataTransferStorageAccountTenantId = registerOutput<String>('offlineDataTransferStorageAccountTenantId');
+    provisioningState = registerOutput<String>('provisioningState');
+    recallStatus = registerOutput<ServerEndpointRecallStatusResponse>('recallStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerEndpointRecallStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serverEndpointProvisioningStatus = registerOutput<ServerEndpointProvisioningStatusResponse?>('serverEndpointProvisioningStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerEndpointProvisioningStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serverLocalPath = registerOutput<String?>('serverLocalPath');
+    serverName = registerOutput<String>('serverName');
+    serverResourceId = registerOutput<String?>('serverResourceId');
+    syncStatus = registerOutput<ServerEndpointSyncStatusResponse>('syncStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerEndpointSyncStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tierFilesOlderThanDays = registerOutput<int?>('tierFilesOlderThanDays');
+    type = registerOutput<String>('type');
+    volumeFreeSpacePercent = registerOutput<int?>('volumeFreeSpacePercent');
+  }
 }

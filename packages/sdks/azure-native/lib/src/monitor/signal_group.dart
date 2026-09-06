@@ -9,13 +9,13 @@ import 'log_analytics_signal_group.dart';
 /// Contains various signal groups that can be assigned to an entity
 class SignalGroup {
   /// Log Analytics Signal Group
-  final pulumi.Input<LogAnalyticsSignalGroup>? azureLogAnalytics;
+  final pulumi.Input<LogAnalyticsSignalGroup?>? azureLogAnalytics;
   /// Azure Monitor Workspace Signal Group
-  final pulumi.Input<AzureMonitorWorkspaceSignalGroup>? azureMonitorWorkspace;
+  final pulumi.Input<AzureMonitorWorkspaceSignalGroup?>? azureMonitorWorkspace;
   /// Azure Resource Signal Group
-  final pulumi.Input<AzureResourceSignalGroup>? azureResource;
+  final pulumi.Input<AzureResourceSignalGroup?>? azureResource;
   /// Settings for dependency signals to control how the health state of child entities influences the health state of the parent entity.
-  final pulumi.Input<DependenciesSignalGroup>? dependencies;
+  final pulumi.Input<DependenciesSignalGroup?>? dependencies;
 
   /// Creates a new [SignalGroup].
   /// [azureLogAnalytics] Log Analytics Signal Group

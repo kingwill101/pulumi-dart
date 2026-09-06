@@ -6,17 +6,17 @@ import 'acrproperties.dart';
 /// Class for container image properties.
 class ContainerImageProperties {
   /// Gets or sets the dockerfile for the container image.
-  final pulumi.Input<String>? dockerfile;
+  final pulumi.Input<String?>? dockerfile;
   /// Gets or sets the container image name.
-  final pulumi.Input<String>? imageName;
+  final pulumi.Input<String?>? imageName;
   /// Gets or sets the container image tag.
-  final pulumi.Input<String>? imageTag;
+  final pulumi.Input<String?>? imageTag;
   /// Class for ACR Properties.
-  final pulumi.Input<ACRProperties>? registryProperties;
+  final pulumi.Input<ACRProperties?>? registryProperties;
   /// Gets or sets the RunId.
-  final pulumi.Input<String>? runId;
+  final pulumi.Input<String?>? runId;
   /// Gets or sets the RunStatus.
-  final pulumi.Input<String>? runStatus;
+  final pulumi.Input<String?>? runStatus;
 
   /// Creates a new [ContainerImageProperties].
   /// [dockerfile] Gets or sets the dockerfile for the container image.

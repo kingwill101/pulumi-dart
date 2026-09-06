@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Stream governance configuration
 class StreamGovernanceConfig {
   /// Stream governance configuration
-  final pulumi.Input<String>? package;
+  final pulumi.Input<dynamic>? package;
 
   /// Creates a new [StreamGovernanceConfig].
   /// [package] Stream governance configuration
@@ -21,7 +21,7 @@ class StreamGovernanceConfig {
 
   factory StreamGovernanceConfig.fromMap(Map<String, dynamic> map) {
     return StreamGovernanceConfig(
-      package: (() { final guardedValue = map['package']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      package: (() { final guardedValue = map['package']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

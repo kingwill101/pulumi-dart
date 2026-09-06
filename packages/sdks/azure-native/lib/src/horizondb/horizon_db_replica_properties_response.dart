@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of a HorizonDB replica.
 class HorizonDbReplicaPropertiesResponse {
   /// The availability zone of the replica.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// The fully qualified domain name of the replica.
   final pulumi.Input<String> fullyQualifiedDomainName;
   /// The provisioning state of the replica.
   final pulumi.Input<String> provisioningState;
   /// Role of the replica.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// Current status of the replica.
   final pulumi.Input<String> status;
 

@@ -11,13 +11,13 @@ class ExtensionAzureMonitorStatusArgs {
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
   /// The Log Analytics workspace key.
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The selected configurations.
-  final pulumi.Input<AzureMonitorSelectedConfigurations>? selectedConfigurations;
+  final pulumi.Input<AzureMonitorSelectedConfigurations?>? selectedConfigurations;
   /// The Log Analytics workspace ID.
-  final pulumi.Input<String>? workspaceId;
+  final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [ExtensionAzureMonitorStatusArgs].
   /// [clusterName] The name of the cluster.

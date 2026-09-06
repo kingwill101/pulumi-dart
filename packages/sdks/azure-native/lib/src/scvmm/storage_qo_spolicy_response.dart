@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The StorageQoSPolicy definition.
 class StorageQoSPolicyResponse {
   /// The Bandwidth Limit for internet traffic.
-  final pulumi.Input<double>? bandwidthLimit;
+  final pulumi.Input<double?>? bandwidthLimit;
   /// The ID of the QoS policy.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The maximum IO operations per second.
-  final pulumi.Input<double>? iopsMaximum;
+  final pulumi.Input<double?>? iopsMaximum;
   /// The minimum IO operations per second.
-  final pulumi.Input<double>? iopsMinimum;
+  final pulumi.Input<double?>? iopsMinimum;
   /// The name of the policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The underlying policy.
-  final pulumi.Input<String>? policyId;
+  final pulumi.Input<String?>? policyId;
 
   /// Creates a new [StorageQoSPolicyResponse].
   /// [bandwidthLimit] The Bandwidth Limit for internet traffic.
@@ -46,10 +46,10 @@ class StorageQoSPolicyResponse {
 
   factory StorageQoSPolicyResponse.fromMap(Map<String, dynamic> map) {
     return StorageQoSPolicyResponse(
-      bandwidthLimit: (() { final guardedValue = map['bandwidthLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      bandwidthLimit: (() { final guardedValue = map['bandwidthLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      iopsMaximum: (() { final guardedValue = map['iopsMaximum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      iopsMinimum: (() { final guardedValue = map['iopsMinimum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      iopsMaximum: (() { final guardedValue = map['iopsMaximum']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      iopsMinimum: (() { final guardedValue = map['iopsMinimum']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyId: (() { final guardedValue = map['policyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

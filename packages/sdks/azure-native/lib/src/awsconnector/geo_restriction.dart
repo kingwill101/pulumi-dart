@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of GeoRestriction
 class GeoRestriction {
   /// A complex type that contains a ``Location`` element for each country in which you want CloudFront either to distribute your content or not distribute your content.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// The method that you want to use to restrict distribution of your content by country.
-  final pulumi.Input<String>? restrictionType;
+  final pulumi.Input<String?>? restrictionType;
 
   /// Creates a new [GeoRestriction].
   /// [locations] A complex type that contains a ``Location`` element for each country in which you want CloudFront either to distribute your content or not distribute your content.

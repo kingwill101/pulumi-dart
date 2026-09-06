@@ -64,7 +64,7 @@ class SqlServerEsuLicensePropertiesResponse {
       activatedAt: pulumi.Input.fromValue(map['activatedAt'] as String),
       activationState: pulumi.Input.fromValue(map['activationState'] as String),
       billingPlan: pulumi.Input.fromValue(map['billingPlan'] as String),
-      physicalCores: pulumi.Input.fromValue(map['physicalCores'] as int),
+      physicalCores: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['physicalCores'])),
       scopeType: pulumi.Input.fromValue(map['scopeType'] as String),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
       terminatedAt: pulumi.Input.fromValue(map['terminatedAt'] as String),

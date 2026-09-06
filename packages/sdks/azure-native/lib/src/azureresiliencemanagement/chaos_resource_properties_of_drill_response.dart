@@ -39,7 +39,7 @@ class ChaosResourcePropertiesOfDrillResponse {
     return ChaosResourcePropertiesOfDrillResponse(
       chaosResourceId: pulumi.Input.fromValue(map['chaosResourceId'] as String),
       chaosResourceIdentityForFaults: pulumi.Input.fromValue(AssociatedIdentityResponse.fromMap((map['chaosResourceIdentityForFaults']! as Map).cast<String, dynamic>())),
-      faultDurationInMin: pulumi.Input.fromValue(map['faultDurationInMin'] as int),
+      faultDurationInMin: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['faultDurationInMin'])),
       identity: pulumi.Input.fromValue(AssociatedIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())),
     );
   }

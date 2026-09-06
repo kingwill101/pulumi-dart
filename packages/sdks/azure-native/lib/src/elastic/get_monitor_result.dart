@@ -8,25 +8,25 @@ import 'system_data_response.dart';
 /// Result data returned by getMonitor.
 class GetMonitorResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// ARM id of the monitor resource.
-  final String id;
+  final String? id;
   /// Identity properties of the monitor resource.
   final IdentityPropertiesResponse? identity;
   /// The location of the monitor resource
-  final String location;
+  final String? location;
   /// Name of the monitor resource.
-  final String name;
+  final String? name;
   /// Properties of the monitor resource.
-  final MonitorPropertiesResponse properties;
+  final MonitorPropertiesResponse? properties;
   /// SKU of the monitor resource.
   final ResourceSkuResponse? sku;
   /// The system metadata relating to this resource
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The tags of the monitor resource.
   final Map<String, String>? tags;
   /// The type of the monitor resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetMonitorResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -40,45 +40,45 @@ class GetMonitorResult {
   /// [tags] The tags of the monitor resource.
   /// [type] The type of the monitor resource.
   const GetMonitorResult({
-    required this.azureApiVersion,
-    required this.id,
+    this.azureApiVersion,
+    this.id,
     this.identity,
-    required this.location,
-    required this.name,
-    required this.properties,
+    this.location,
+    this.name,
+    this.properties,
     this.sku,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
       'identity': ?identity?.toMap(),
-      'location': location,
-      'name': name,
-      'properties': properties.toMap(),
+      'location': ?location,
+      'name': ?name,
+      'properties': ?properties?.toMap(),
       'sku': ?sku?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetMonitorResult.fromMap(Map<String, dynamic> map) {
     return GetMonitorResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      properties: MonitorPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return MonitorPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return ResourceSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

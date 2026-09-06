@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Logic to apply to the filtering conditions. You can specify that, in order to satisfy the filter, a log must match all conditions or must match at least one condition.
-enum Action {
+enum Action implements pulumi.PulumiEnum<String> {
   aLLOW("ALLOW"),
   bLOCK("BLOCK"),
   cAPTCHA("CAPTCHA"),
@@ -8,6 +10,7 @@ enum Action {
   eXCLUDEDASCOUNT("EXCLUDED_AS_COUNT");
 
   const Action(this.wireValue);
+  @override
   final String wireValue;
 
   static Action fromValue(String value) {

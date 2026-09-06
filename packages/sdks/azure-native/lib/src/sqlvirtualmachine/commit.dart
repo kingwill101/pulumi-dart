@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Replica commit mode in availability group.
-enum Commit {
+enum Commit implements pulumi.PulumiEnum<String> {
   synchronousCommit("Synchronous_Commit"),
   asynchronousCommit("Asynchronous_Commit");
 
   const Commit(this.wireValue);
+  @override
   final String wireValue;
 
   static Commit fromValue(String value) {

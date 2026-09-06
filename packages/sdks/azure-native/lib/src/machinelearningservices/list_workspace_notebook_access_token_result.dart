@@ -3,58 +3,58 @@
 
 /// Result data returned by listWorkspaceNotebookAccessToken.
 class ListWorkspaceNotebookAccessTokenResult {
-  final String accessToken;
-  final int expiresIn;
-  final String hostName;
-  final String notebookResourceId;
-  final String publicDns;
-  final String refreshToken;
-  final String scope;
-  final String tokenType;
+  final String? accessToken;
+  final int? expiresIn;
+  final String? hostName;
+  final String? notebookResourceId;
+  final String? publicDns;
+  final String? refreshToken;
+  final String? scope;
+  final String? tokenType;
 
   /// Creates a new [ListWorkspaceNotebookAccessTokenResult].
-  /// [accessToken] Required.
-  /// [expiresIn] Required.
-  /// [hostName] Required.
-  /// [notebookResourceId] Required.
-  /// [publicDns] Required.
-  /// [refreshToken] Required.
-  /// [scope] Required.
-  /// [tokenType] Required.
+  /// [accessToken] Optional.
+  /// [expiresIn] Optional.
+  /// [hostName] Optional.
+  /// [notebookResourceId] Optional.
+  /// [publicDns] Optional.
+  /// [refreshToken] Optional.
+  /// [scope] Optional.
+  /// [tokenType] Optional.
   const ListWorkspaceNotebookAccessTokenResult({
-    required this.accessToken,
-    required this.expiresIn,
-    required this.hostName,
-    required this.notebookResourceId,
-    required this.publicDns,
-    required this.refreshToken,
-    required this.scope,
-    required this.tokenType,
+    this.accessToken,
+    this.expiresIn,
+    this.hostName,
+    this.notebookResourceId,
+    this.publicDns,
+    this.refreshToken,
+    this.scope,
+    this.tokenType,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessToken': accessToken,
-      'expiresIn': expiresIn,
-      'hostName': hostName,
-      'notebookResourceId': notebookResourceId,
-      'publicDns': publicDns,
-      'refreshToken': refreshToken,
-      'scope': scope,
-      'tokenType': tokenType,
+      'accessToken': ?accessToken,
+      'expiresIn': ?expiresIn,
+      'hostName': ?hostName,
+      'notebookResourceId': ?notebookResourceId,
+      'publicDns': ?publicDns,
+      'refreshToken': ?refreshToken,
+      'scope': ?scope,
+      'tokenType': ?tokenType,
     };
   }
 
   factory ListWorkspaceNotebookAccessTokenResult.fromMap(Map<String, dynamic> map) {
     return ListWorkspaceNotebookAccessTokenResult(
-      accessToken: map['accessToken'] as String,
-      expiresIn: map['expiresIn'] as int,
-      hostName: map['hostName'] as String,
-      notebookResourceId: map['notebookResourceId'] as String,
-      publicDns: map['publicDns'] as String,
-      refreshToken: map['refreshToken'] as String,
-      scope: map['scope'] as String,
-      tokenType: map['tokenType'] as String,
+      accessToken: (() { final guardedValue = map['accessToken']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      expiresIn: (() { final guardedValue = map['expiresIn']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      hostName: (() { final guardedValue = map['hostName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      notebookResourceId: (() { final guardedValue = map['notebookResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      publicDns: (() { final guardedValue = map['publicDns']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      refreshToken: (() { final guardedValue = map['refreshToken']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tokenType: (() { final guardedValue = map['tokenType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

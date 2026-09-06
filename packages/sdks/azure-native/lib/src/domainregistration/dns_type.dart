@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Target DNS type (would be used for migration)
-enum DnsType {
+enum DnsType implements pulumi.PulumiEnum<String> {
   valueAzureDns("AzureDns"),
   valueDefaultDomainRegistrarDns("DefaultDomainRegistrarDns");
 
   const DnsType(this.wireValue);
+  @override
   final String wireValue;
 
   static DnsType fromValue(String value) {

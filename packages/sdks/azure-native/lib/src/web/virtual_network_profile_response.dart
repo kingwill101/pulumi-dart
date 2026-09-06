@@ -9,7 +9,7 @@ class VirtualNetworkProfileResponse {
   /// Name of the Virtual Network (read-only).
   final pulumi.Input<String> name;
   /// Subnet within the Virtual Network.
-  final pulumi.Input<String>? subnet;
+  final pulumi.Input<String?>? subnet;
   /// Resource type of the Virtual Network (read-only).
   final pulumi.Input<String> type;
 

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Filter details to transfer Azure Blobs
 class BlobFilterDetailsResponse {
   /// List of full path of the blobs to be transferred.
-  final pulumi.Input<List<String>>? blobPathList;
+  final pulumi.Input<List<String>?>? blobPathList;
   /// Prefix list of the Azure blobs to be transferred.
-  final pulumi.Input<List<String>>? blobPrefixList;
+  final pulumi.Input<List<String>?>? blobPrefixList;
   /// List of blob containers to be transferred.
-  final pulumi.Input<List<String>>? containerList;
+  final pulumi.Input<List<String>?>? containerList;
 
   /// Creates a new [BlobFilterDetailsResponse].
   /// [blobPathList] List of full path of the blobs to be transferred.

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the kind of blueprint artifact.
-enum ArtifactKind {
+enum ArtifactKind implements pulumi.PulumiEnum<String> {
   valueTemplate("template"),
   valueRoleAssignment("roleAssignment"),
   valuePolicyAssignment("policyAssignment");
 
   const ArtifactKind(this.wireValue);
+  @override
   final String wireValue;
 
   static ArtifactKind fromValue(String value) {

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of business process identifier.
 class BusinessProcessIdentifierResponse {
   /// The property name of the business process identifier.
-  final pulumi.Input<String>? propertyName;
+  final pulumi.Input<String?>? propertyName;
   /// The property type of the business process identifier.
-  final pulumi.Input<String>? propertyType;
+  final pulumi.Input<String?>? propertyType;
 
   /// Creates a new [BusinessProcessIdentifierResponse].
   /// [propertyName] The property name of the business process identifier.

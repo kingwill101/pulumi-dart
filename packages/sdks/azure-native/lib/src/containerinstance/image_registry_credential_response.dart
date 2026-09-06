@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Image registry credential.
 class ImageRegistryCredentialResponse {
   /// The identity for the private registry.
-  final pulumi.Input<String>? identity;
+  final pulumi.Input<String?>? identity;
   /// The identity URL for the private registry.
-  final pulumi.Input<String>? identityUrl;
+  final pulumi.Input<String?>? identityUrl;
   /// The password for the private registry.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The reference for the private registry password.
-  final pulumi.Input<String>? passwordReference;
+  final pulumi.Input<String?>? passwordReference;
   /// The Docker image registry server without a protocol such as "http" and "https".
   final pulumi.Input<String> server;
   /// The username for the private registry.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [ImageRegistryCredentialResponse].
   /// [identity] The identity for the private registry.

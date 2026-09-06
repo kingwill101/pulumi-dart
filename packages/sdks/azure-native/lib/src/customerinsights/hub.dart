@@ -225,7 +225,28 @@ class Hub extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantFeatures = registerOutput<int?>('tenantFeatures');
+    type = registerOutput<String>('type');
+    webEndpoint = registerOutput<String>('webEndpoint');
+  }
+
+  /// Creates a typed reference to an existing [Hub] resource.
+  Hub.reference(String urn)
+    : super(
+        'azure-native:customerinsights:Hub',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiEndpoint = registerOutput<String>('apiEndpoint');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    hubBillingInfo = registerOutput<HubBillingInfoFormatResponse?>('hubBillingInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HubBillingInfoFormatResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantFeatures = registerOutput<int?>('tenantFeatures');
     type = registerOutput<String>('type');
     webEndpoint = registerOutput<String>('webEndpoint');

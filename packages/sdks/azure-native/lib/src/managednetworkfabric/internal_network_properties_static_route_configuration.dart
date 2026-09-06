@@ -7,25 +7,25 @@ import 'static_route_properties.dart';
 /// Static Route Configuration properties.
 class InternalNetworkPropertiesStaticRouteConfiguration {
   /// BFD configuration properties
-  final pulumi.Input<BfdConfiguration>? bfdConfiguration;
+  final pulumi.Input<BfdConfiguration?>? bfdConfiguration;
   /// Extension. Example: NoExtension | NPB.
-  final pulumi.Input<String>? extension;
+  final pulumi.Input<dynamic>? extension;
   /// List of IPv4 Routes.
-  final pulumi.Input<List<StaticRouteProperties>>? ipv4Routes;
+  final pulumi.Input<List<StaticRouteProperties>?>? ipv4Routes;
   /// List of IPv6 Routes.
-  final pulumi.Input<List<StaticRouteProperties>>? ipv6Routes;
+  final pulumi.Input<List<StaticRouteProperties>?>? ipv6Routes;
 
   /// Creates a new [InternalNetworkPropertiesStaticRouteConfiguration].
   /// [bfdConfiguration] BFD configuration properties
   /// [extension] Extension. Example: NoExtension | NPB.
   /// [ipv4Routes] List of IPv4 Routes.
   /// [ipv6Routes] List of IPv6 Routes.
-  const InternalNetworkPropertiesStaticRouteConfiguration({
+  InternalNetworkPropertiesStaticRouteConfiguration({
     this.bfdConfiguration,
-    this.extension,
+    pulumi.Input<dynamic>? extension,
     this.ipv4Routes,
     this.ipv6Routes,
-  });
+  }) : extension = extension ?? pulumi.Input.fromValue('NoExtension');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,7 +39,7 @@ class InternalNetworkPropertiesStaticRouteConfiguration {
   factory InternalNetworkPropertiesStaticRouteConfiguration.fromMap(Map<String, dynamic> map) {
     return InternalNetworkPropertiesStaticRouteConfiguration(
       bfdConfiguration: (() { final guardedValue = map['bfdConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BfdConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      extension: (() { final guardedValue = map['extension']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      extension: (() { final guardedValue = map['extension']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       ipv4Routes: (() { final guardedValue = map['ipv4Routes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<StaticRouteProperties>(guardedValue, (value) => StaticRouteProperties.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipv6Routes: (() { final guardedValue = map['ipv6Routes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<StaticRouteProperties>(guardedValue, (value) => StaticRouteProperties.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

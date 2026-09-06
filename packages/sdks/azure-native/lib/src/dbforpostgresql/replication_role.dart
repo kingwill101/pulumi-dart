@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Role of the server in a replication set.
-enum ReplicationRole {
+enum ReplicationRole implements pulumi.PulumiEnum<String> {
   none("None"),
   primary("Primary"),
   asyncReplica("AsyncReplica"),
   geoAsyncReplica("GeoAsyncReplica");
 
   const ReplicationRole(this.wireValue);
+  @override
   final String wireValue;
 
   static ReplicationRole fromValue(String value) {

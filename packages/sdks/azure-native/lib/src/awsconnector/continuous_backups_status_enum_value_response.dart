@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ContinuousBackupsStatusEnumValue
 class ContinuousBackupsStatusEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ContinuousBackupsStatusEnumValueResponse].
   /// [value] Property value

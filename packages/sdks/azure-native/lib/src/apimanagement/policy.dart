@@ -225,4 +225,20 @@ class Policy extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     value = registerOutput<String>('value');
   }
+
+  /// Creates a typed reference to an existing [Policy] resource.
+  Policy.reference(String urn)
+    : super(
+        'azure-native:apimanagement:Policy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    format = registerOutput<String?>('format');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+    value = registerOutput<String>('value');
+  }
 }

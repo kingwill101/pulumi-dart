@@ -6,7 +6,7 @@ import 'network_interfaces.dart';
 /// Defines the resource properties.
 class NetworkProfile {
   /// Gets or sets the list of network interfaces associated with the virtual machine.
-  final pulumi.Input<List<NetworkInterfaces>>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterfaces>?>? networkInterfaces;
 
   /// Creates a new [NetworkProfile].
   /// [networkInterfaces] Gets or sets the list of network interfaces associated with the virtual machine.

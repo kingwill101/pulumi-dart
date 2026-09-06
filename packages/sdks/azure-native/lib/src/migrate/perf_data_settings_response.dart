@@ -7,9 +7,9 @@ class PerfDataSettingsResponse {
   /// Gets percentile utilization for performance data.
   final pulumi.Input<String> percentile;
   /// Gets or sets perf data end time.
-  final pulumi.Input<String>? perfDataEndTime;
+  final pulumi.Input<String?>? perfDataEndTime;
   /// Gets or sets perf data start time.
-  final pulumi.Input<String>? perfDataStartTime;
+  final pulumi.Input<String?>? perfDataStartTime;
   /// Gets perf data time range.
   final pulumi.Input<String> timeRange;
 

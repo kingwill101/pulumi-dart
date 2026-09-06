@@ -1,5 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'avs_assessments_operation_args.dart';
+import 'avs_estimated_external_storage_response.dart';
+import 'avs_estimated_network_response.dart';
+import 'avs_estimated_node_response.dart';
+import 'cost_component_response.dart';
 import 'system_data_response.dart';
 
 /// AVS assessment resource.
@@ -409,11 +413,11 @@ class AvsAssessmentsOperation extends pulumi.CustomResource {
   /// AVS Assessment Scenario.
   late final pulumi.Output<String?> avsAssessmentScenario;
   /// Estimated External Storage for Assessment.
-  late final pulumi.Output<List<Map<String, dynamic>>> avsEstimatedExternalStorages;
+  late final pulumi.Output<List<AvsEstimatedExternalStorageResponse>> avsEstimatedExternalStorages;
   /// Estimated External Storage for Assessment.
-  late final pulumi.Output<List<Map<String, dynamic>>> avsEstimatedNetworks;
+  late final pulumi.Output<List<AvsEstimatedNetworkResponse>> avsEstimatedNetworks;
   /// Estimated AVS SKU for Assessment.
-  late final pulumi.Output<List<Map<String, dynamic>>> avsEstimatedNodes;
+  late final pulumi.Output<List<AvsEstimatedNodeResponse>> avsEstimatedNodes;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Azure Location or Azure region where to which the machines will be migrated.
@@ -423,7 +427,7 @@ class AvsAssessmentsOperation extends pulumi.CustomResource {
   /// Confidence Rating in Percentage.
   late final pulumi.Output<double> confidenceRatingInPercentage;
   /// collection of cost components.
-  late final pulumi.Output<List<Map<String, dynamic>>> costComponents;
+  late final pulumi.Output<List<CostComponentResponse>> costComponents;
   /// Percentage of CPU capacity reserved for processing additional workloads.
   late final pulumi.Output<double?> cpuHeadroom;
   /// Predicted CPU utilization.
@@ -531,26 +535,26 @@ class AvsAssessmentsOperation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    assessmentErrorSummary = registerOutput<Map<String, int>>('assessmentErrorSummary');
+    assessmentErrorSummary = registerOutput<Map<String, int>>('assessmentErrorSummary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, int>(); });
     assessmentType = registerOutput<String>('assessmentType');
     avsAssessmentScenario = registerOutput<String?>('avsAssessmentScenario');
-    avsEstimatedExternalStorages = registerOutput<List<Map<String, dynamic>>>('avsEstimatedExternalStorages');
-    avsEstimatedNetworks = registerOutput<List<Map<String, dynamic>>>('avsEstimatedNetworks');
-    avsEstimatedNodes = registerOutput<List<Map<String, dynamic>>>('avsEstimatedNodes');
+    avsEstimatedExternalStorages = registerOutput<List<AvsEstimatedExternalStorageResponse>>('avsEstimatedExternalStorages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AvsEstimatedExternalStorageResponse>(guardedValue, (value) => AvsEstimatedExternalStorageResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    avsEstimatedNetworks = registerOutput<List<AvsEstimatedNetworkResponse>>('avsEstimatedNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AvsEstimatedNetworkResponse>(guardedValue, (value) => AvsEstimatedNetworkResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    avsEstimatedNodes = registerOutput<List<AvsEstimatedNodeResponse>>('avsEstimatedNodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AvsEstimatedNodeResponse>(guardedValue, (value) => AvsEstimatedNodeResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     azureLocation = registerOutput<String?>('azureLocation');
     azureOfferCode = registerOutput<String?>('azureOfferCode');
     confidenceRatingInPercentage = registerOutput<double>('confidenceRatingInPercentage');
-    costComponents = registerOutput<List<Map<String, dynamic>>>('costComponents');
+    costComponents = registerOutput<List<CostComponentResponse>>('costComponents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CostComponentResponse>(guardedValue, (value) => CostComponentResponse.fromMap((value as Map).cast<String, dynamic>())); });
     cpuHeadroom = registerOutput<double?>('cpuHeadroom');
     cpuUtilization = registerOutput<double>('cpuUtilization');
     createdTimestamp = registerOutput<String>('createdTimestamp');
     currency = registerOutput<String?>('currency');
     dedupeCompression = registerOutput<double?>('dedupeCompression');
     discountPercentage = registerOutput<double?>('discountPercentage');
-    externalStorageTypes = registerOutput<List<String>?>('externalStorageTypes');
+    externalStorageTypes = registerOutput<List<String>?>('externalStorageTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     failuresToTolerateAndRaidLevel = registerOutput<String?>('failuresToTolerateAndRaidLevel');
-    failuresToTolerateAndRaidLevelList = registerOutput<List<String>?>('failuresToTolerateAndRaidLevelList');
+    failuresToTolerateAndRaidLevelList = registerOutput<List<String>?>('failuresToTolerateAndRaidLevelList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     groupType = registerOutput<String>('groupType');
     isStretchClusterEnabled = registerOutput<bool?>('isStretchClusterEnabled');
     isVcfByolEnabled = registerOutput<bool?>('isVcfByolEnabled');
@@ -558,7 +562,7 @@ class AvsAssessmentsOperation extends pulumi.CustomResource {
     memOvercommit = registerOutput<double?>('memOvercommit');
     this.name = registerOutput<String>('name');
     nodeType = registerOutput<String?>('nodeType');
-    nodeTypes = registerOutput<List<String>?>('nodeTypes');
+    nodeTypes = registerOutput<List<String>?>('nodeTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     numberOfMachines = registerOutput<int>('numberOfMachines');
     numberOfNodes = registerOutput<int>('numberOfNodes');
     percentile = registerOutput<String?>('percentile');
@@ -576,7 +580,73 @@ class AvsAssessmentsOperation extends pulumi.CustomResource {
     storageUtilization = registerOutput<double>('storageUtilization');
     suitability = registerOutput<String>('suitability');
     suitabilityExplanation = registerOutput<String>('suitabilityExplanation');
-    suitabilitySummary = registerOutput<Map<String, int>>('suitabilitySummary');
+    suitabilitySummary = registerOutput<Map<String, int>>('suitabilitySummary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, int>(); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeRange = registerOutput<String?>('timeRange');
+    totalCpuCores = registerOutput<double>('totalCpuCores');
+    totalMonthlyCost = registerOutput<double>('totalMonthlyCost');
+    totalRamInGB = registerOutput<double>('totalRamInGB');
+    totalStorageInGB = registerOutput<double>('totalStorageInGB');
+    type = registerOutput<String>('type');
+    updatedTimestamp = registerOutput<String>('updatedTimestamp');
+    vcpuOversubscription = registerOutput<double?>('vcpuOversubscription');
+  }
+
+  /// Creates a typed reference to an existing [AvsAssessmentsOperation] resource.
+  AvsAssessmentsOperation.reference(String urn)
+    : super(
+        'azure-native:migrate:AvsAssessmentsOperation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assessmentErrorSummary = registerOutput<Map<String, int>>('assessmentErrorSummary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, int>(); });
+    assessmentType = registerOutput<String>('assessmentType');
+    avsAssessmentScenario = registerOutput<String?>('avsAssessmentScenario');
+    avsEstimatedExternalStorages = registerOutput<List<AvsEstimatedExternalStorageResponse>>('avsEstimatedExternalStorages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AvsEstimatedExternalStorageResponse>(guardedValue, (value) => AvsEstimatedExternalStorageResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    avsEstimatedNetworks = registerOutput<List<AvsEstimatedNetworkResponse>>('avsEstimatedNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AvsEstimatedNetworkResponse>(guardedValue, (value) => AvsEstimatedNetworkResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    avsEstimatedNodes = registerOutput<List<AvsEstimatedNodeResponse>>('avsEstimatedNodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AvsEstimatedNodeResponse>(guardedValue, (value) => AvsEstimatedNodeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureLocation = registerOutput<String?>('azureLocation');
+    azureOfferCode = registerOutput<String?>('azureOfferCode');
+    confidenceRatingInPercentage = registerOutput<double>('confidenceRatingInPercentage');
+    costComponents = registerOutput<List<CostComponentResponse>>('costComponents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CostComponentResponse>(guardedValue, (value) => CostComponentResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    cpuHeadroom = registerOutput<double?>('cpuHeadroom');
+    cpuUtilization = registerOutput<double>('cpuUtilization');
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    currency = registerOutput<String?>('currency');
+    dedupeCompression = registerOutput<double?>('dedupeCompression');
+    discountPercentage = registerOutput<double?>('discountPercentage');
+    externalStorageTypes = registerOutput<List<String>?>('externalStorageTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    failuresToTolerateAndRaidLevel = registerOutput<String?>('failuresToTolerateAndRaidLevel');
+    failuresToTolerateAndRaidLevelList = registerOutput<List<String>?>('failuresToTolerateAndRaidLevelList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    groupType = registerOutput<String>('groupType');
+    isStretchClusterEnabled = registerOutput<bool?>('isStretchClusterEnabled');
+    isVcfByolEnabled = registerOutput<bool?>('isVcfByolEnabled');
+    limitingFactor = registerOutput<String>('limitingFactor');
+    memOvercommit = registerOutput<double?>('memOvercommit');
+    this.name = registerOutput<String>('name');
+    nodeType = registerOutput<String?>('nodeType');
+    nodeTypes = registerOutput<List<String>?>('nodeTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    numberOfMachines = registerOutput<int>('numberOfMachines');
+    numberOfNodes = registerOutput<int>('numberOfNodes');
+    percentile = registerOutput<String?>('percentile');
+    perfDataEndTime = registerOutput<String?>('perfDataEndTime');
+    perfDataStartTime = registerOutput<String?>('perfDataStartTime');
+    pricesTimestamp = registerOutput<String>('pricesTimestamp');
+    provisioningState = registerOutput<String?>('provisioningState');
+    ramUtilization = registerOutput<double>('ramUtilization');
+    reservedInstance = registerOutput<String?>('reservedInstance');
+    scalingFactor = registerOutput<double?>('scalingFactor');
+    schemaVersion = registerOutput<String>('schemaVersion');
+    sizingCriterion = registerOutput<String?>('sizingCriterion');
+    stage = registerOutput<String>('stage');
+    status = registerOutput<String>('status');
+    storageUtilization = registerOutput<double>('storageUtilization');
+    suitability = registerOutput<String>('suitability');
+    suitabilityExplanation = registerOutput<String>('suitabilityExplanation');
+    suitabilitySummary = registerOutput<Map<String, int>>('suitabilitySummary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, int>(); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeRange = registerOutput<String?>('timeRange');
     totalCpuCores = registerOutput<double>('totalCpuCores');

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The artifact store type.
-enum ArtifactStoreType {
+enum ArtifactStoreType implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueAzureContainerRegistry("AzureContainerRegistry"),
   valueAzureStorageAccount("AzureStorageAccount");
 
   const ArtifactStoreType(this.wireValue);
+  @override
   final String wireValue;
 
   static ArtifactStoreType fromValue(String value) {

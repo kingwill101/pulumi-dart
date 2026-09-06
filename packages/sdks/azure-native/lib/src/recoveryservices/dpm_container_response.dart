@@ -6,11 +6,11 @@ import 'dpmcontainer_extended_info_response.dart';
 /// DPM workload-specific protection container.
 class DpmContainerResponse {
   /// Type of backup management for the container.
-  final pulumi.Input<String>? backupManagementType;
+  final pulumi.Input<String?>? backupManagementType;
   /// Specifies whether the container is re-registrable.
-  final pulumi.Input<bool>? canReRegister;
+  final pulumi.Input<bool?>? canReRegister;
   /// ID of container.
-  final pulumi.Input<String>? containerId;
+  final pulumi.Input<String?>? containerId;
   /// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
   /// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
   /// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
@@ -18,25 +18,25 @@ class DpmContainerResponse {
   /// Expected value is 'DPMContainer'.
   final pulumi.Input<String> containerType;
   /// Backup engine Agent version
-  final pulumi.Input<String>? dpmAgentVersion;
+  final pulumi.Input<String?>? dpmAgentVersion;
   /// List of BackupEngines protecting the container
-  final pulumi.Input<List<String>>? dpmServers;
+  final pulumi.Input<List<String>?>? dpmServers;
   /// Extended Info of the container.
-  final pulumi.Input<DPMContainerExtendedInfoResponse>? extendedInfo;
+  final pulumi.Input<DPMContainerExtendedInfoResponse?>? extendedInfo;
   /// Friendly name of the container.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// Status of health of the container.
-  final pulumi.Input<String>? healthStatus;
+  final pulumi.Input<String?>? healthStatus;
   /// Type of the protectable object associated with this container
-  final pulumi.Input<String>? protectableObjectType;
+  final pulumi.Input<String?>? protectableObjectType;
   /// Number of protected items in the BackupEngine
-  final pulumi.Input<double>? protectedItemCount;
+  final pulumi.Input<double?>? protectedItemCount;
   /// Protection status of the container.
-  final pulumi.Input<String>? protectionStatus;
+  final pulumi.Input<String?>? protectionStatus;
   /// Status of registration of the container with the Recovery Services Vault.
-  final pulumi.Input<String>? registrationStatus;
+  final pulumi.Input<String?>? registrationStatus;
   /// To check if upgrade available
-  final pulumi.Input<bool>? upgradeAvailable;
+  final pulumi.Input<bool?>? upgradeAvailable;
 
   /// Creates a new [DpmContainerResponse].
   /// [backupManagementType] Type of backup management for the container.
@@ -101,7 +101,7 @@ class DpmContainerResponse {
       friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       healthStatus: (() { final guardedValue = map['healthStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protectableObjectType: (() { final guardedValue = map['protectableObjectType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      protectedItemCount: (() { final guardedValue = map['protectedItemCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      protectedItemCount: (() { final guardedValue = map['protectedItemCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       protectionStatus: (() { final guardedValue = map['protectionStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       registrationStatus: (() { final guardedValue = map['registrationStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       upgradeAvailable: (() { final guardedValue = map['upgradeAvailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

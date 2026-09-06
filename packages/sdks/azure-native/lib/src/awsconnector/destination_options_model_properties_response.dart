@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of DestinationOptionsModelProperties
 class DestinationOptionsModelPropertiesResponse {
   /// Property fileFormat
-  final pulumi.Input<String>? fileFormat;
+  final pulumi.Input<String?>? fileFormat;
   /// Property hiveCompatiblePartitions
-  final pulumi.Input<bool>? hiveCompatiblePartitions;
+  final pulumi.Input<bool?>? hiveCompatiblePartitions;
   /// Property perHourPartition
-  final pulumi.Input<bool>? perHourPartition;
+  final pulumi.Input<bool?>? perHourPartition;
 
   /// Creates a new [DestinationOptionsModelPropertiesResponse].
   /// [fileFormat] Property fileFormat

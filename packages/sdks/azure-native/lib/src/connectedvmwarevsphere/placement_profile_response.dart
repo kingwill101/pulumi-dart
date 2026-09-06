@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies the compute and storage placement settings for the virtual machine.
 class PlacementProfileResponse {
   /// Gets or sets the ARM Id of the cluster resource on which this virtual machine will deploy.
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// Gets or sets the ARM Id of the datastore resource on which the data for the virtual machine will be kept.
-  final pulumi.Input<String>? datastoreId;
+  final pulumi.Input<String?>? datastoreId;
   /// Gets or sets the ARM Id of the host resource on which this virtual machine will deploy.
-  final pulumi.Input<String>? hostId;
+  final pulumi.Input<String?>? hostId;
   /// Gets or sets the ARM Id of the resourcePool resource on which this virtual machine will deploy.
-  final pulumi.Input<String>? resourcePoolId;
+  final pulumi.Input<String?>? resourcePoolId;
 
   /// Creates a new [PlacementProfileResponse].
   /// [clusterId] Gets or sets the ARM Id of the cluster resource on which this virtual machine will deploy.

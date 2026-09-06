@@ -36,7 +36,7 @@ class DatasetResponseSqlDataPath {
 
   factory DatasetResponseSqlDataPath.fromMap(Map<String, dynamic> map) {
     return DatasetResponseSqlDataPath(
-      queryTimeout: pulumi.Input.fromValue(map['queryTimeout'] as double),
+      queryTimeout: pulumi.Input.fromValue((map['queryTimeout'] as num).toDouble()),
       sqlQuery: pulumi.Input.fromValue(map['sqlQuery'] as String),
       sqlStoredProcedureName: pulumi.Input.fromValue(map['sqlStoredProcedureName'] as String),
       sqlTableName: pulumi.Input.fromValue(map['sqlTableName'] as String),

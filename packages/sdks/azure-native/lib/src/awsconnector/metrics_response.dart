@@ -6,9 +6,9 @@ import 'replication_time_value_response.dart';
 /// Definition of Metrics
 class MetricsResponse {
   /// A container specifying the time threshold for emitting the ``s3:Replication:OperationMissedThreshold`` event. A container specifying the time value for S3 Replication Time Control (S3 RTC) and replication metrics ``EventThreshold``.
-  final pulumi.Input<ReplicationTimeValueResponse>? eventThreshold;
+  final pulumi.Input<ReplicationTimeValueResponse?>? eventThreshold;
   /// Specifies whether the replication metrics are enabled.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [MetricsResponse].
   /// [eventThreshold] A container specifying the time threshold for emitting the ``s3:Replication:OperationMissedThreshold`` event. A container specifying the time value for S3 Replication Time Control (S3 RTC) and replication metrics ``EventThreshold``.

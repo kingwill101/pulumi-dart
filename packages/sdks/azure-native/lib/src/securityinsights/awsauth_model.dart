@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Model for API authentication with AWS.
 class AWSAuthModel {
   /// AWS STS assume role external ID. This is used to prevent the confused deputy problem: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html'
-  final pulumi.Input<String>? externalId;
+  final pulumi.Input<String?>? externalId;
   /// AWS STS assume role ARN
   final pulumi.Input<String> roleArn;
   /// Type of paging

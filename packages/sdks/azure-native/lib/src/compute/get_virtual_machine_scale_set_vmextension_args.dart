@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_get_virtual_machine_scale_set_vmextension_args_doc}
 class GetVirtualMachineScaleSetVMExtensionArgs {
   /// The expand expression to apply on the operation.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The instance ID of the virtual machine.
   final pulumi.Input<String> instanceId;
   /// The name of the resource group. The name is case insensitive.

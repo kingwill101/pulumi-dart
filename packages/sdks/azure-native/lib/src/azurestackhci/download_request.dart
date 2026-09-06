@@ -8,7 +8,7 @@ class DownloadRequest {
   /// Operating system profile.
   final pulumi.Input<DownloadOsProfile> osProfile;
   /// Target operating system to support polymorphic resource.
-  final pulumi.Input<String> target;
+  final pulumi.Input<dynamic> target;
 
   /// Creates a new [DownloadRequest].
   /// [osProfile] Operating system profile.
@@ -28,7 +28,7 @@ class DownloadRequest {
   factory DownloadRequest.fromMap(Map<String, dynamic> map) {
     return DownloadRequest(
       osProfile: pulumi.Input.fromValue(DownloadOsProfile.fromMap((map['osProfile']! as Map).cast<String, dynamic>())),
-      target: pulumi.Input.fromValue(map['target'] as String),
+      target: pulumi.Input.fromValue(map['target']),
     );
   }
 }

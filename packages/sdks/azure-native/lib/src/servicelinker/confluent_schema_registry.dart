@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The service properties when target service type is ConfluentSchemaRegistry
 class ConfluentSchemaRegistry {
   /// The endpoint of service.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// The target service type.
   /// Expected value is 'ConfluentSchemaRegistry'.
   final pulumi.Input<String> type;

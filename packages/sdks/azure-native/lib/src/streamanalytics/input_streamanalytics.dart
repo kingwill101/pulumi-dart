@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'input_args_type.dart';
-import 'reference_input_properties_response.dart';
 
 /// An input object, containing all information associated with the named input. All inputs are contained under a streaming job.
 ///
@@ -1389,7 +1388,7 @@ class InputStreamanalytics extends pulumi.CustomResource {
   /// Resource name
   late final pulumi.Output<String?> name;
   /// The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
-  late final pulumi.Output<ReferenceInputPropertiesResponse> properties;
+  late final pulumi.Output<dynamic> properties;
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -1409,7 +1408,22 @@ class InputStreamanalytics extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String?>('name');
-    properties = registerOutput<ReferenceInputPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReferenceInputPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<dynamic>('properties');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [InputStreamanalytics] resource.
+  InputStreamanalytics.reference(String urn)
+    : super(
+        'azure-native:streamanalytics:Input',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String?>('name');
+    properties = registerOutput<dynamic>('properties');
     type = registerOutput<String>('type');
   }
 }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// whether to send notification under any event.
-enum SendAllEvents {
+enum SendAllEvents implements pulumi.PulumiEnum<String> {
   true_("true"),
   false_("false");
 
   const SendAllEvents(this.wireValue);
+  @override
   final String wireValue;
 
   static SendAllEvents fromValue(String value) {

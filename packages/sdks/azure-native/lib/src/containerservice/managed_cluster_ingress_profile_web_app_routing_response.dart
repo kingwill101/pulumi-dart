@@ -7,13 +7,13 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// Application Routing add-on settings for the ingress profile.
 class ManagedClusterIngressProfileWebAppRoutingResponse {
   /// Resource IDs of the DNS zones to be associated with the Application Routing add-on. Used only when Application Routing add-on is enabled. Public and private DNS zones can be in different resource groups, but all public DNS zones must be in the same resource group and all private DNS zones must be in the same resource group.
-  final pulumi.Input<List<String>>? dnsZoneResourceIds;
+  final pulumi.Input<List<String>?>? dnsZoneResourceIds;
   /// Whether to enable the Application Routing add-on.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Managed identity of the Application Routing add-on. This is the identity that should be granted permissions, for example, to manage the associated Azure DNS resource and get certificates from Azure Key Vault. See [this overview of the add-on](https://learn.microsoft.com/en-us/azure/aks/web-app-routing?tabs=with-osm) for more instructions.
   final pulumi.Input<UserAssignedIdentityManagedClusterResponse> identity;
   /// Configuration for the default NginxIngressController. See more at https://learn.microsoft.com/en-us/azure/aks/app-routing-nginx-configuration#the-default-nginx-ingress-controller.
-  final pulumi.Input<ManagedClusterIngressProfileNginxResponse>? nginx;
+  final pulumi.Input<ManagedClusterIngressProfileNginxResponse?>? nginx;
 
   /// Creates a new [ManagedClusterIngressProfileWebAppRoutingResponse].
   /// [dnsZoneResourceIds] Resource IDs of the DNS zones to be associated with the Application Routing add-on. Used only when Application Routing add-on is enabled. Public and private DNS zones can be in different resource groups, but all public DNS zones must be in the same resource group and all private DNS zones must be in the same resource group.

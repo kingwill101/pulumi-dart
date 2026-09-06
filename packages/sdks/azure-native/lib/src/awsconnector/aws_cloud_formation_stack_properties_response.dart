@@ -7,51 +7,51 @@ import 'tag_response.dart';
 /// Definition of awsCloudFormationStack
 class AwsCloudFormationStackPropertiesResponse {
   /// Property capabilities
-  final pulumi.Input<List<String>>? capabilities;
+  final pulumi.Input<List<String>?>? capabilities;
   /// Property changeSetId
-  final pulumi.Input<String>? changeSetId;
+  final pulumi.Input<String?>? changeSetId;
   /// Property creationTime
-  final pulumi.Input<String>? creationTime;
+  final pulumi.Input<String?>? creationTime;
   /// Property description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Property disableRollback
-  final pulumi.Input<bool>? disableRollback;
+  final pulumi.Input<bool?>? disableRollback;
   /// Property enableTerminationProtection
-  final pulumi.Input<bool>? enableTerminationProtection;
+  final pulumi.Input<bool?>? enableTerminationProtection;
   /// Property lastUpdateTime
-  final pulumi.Input<String>? lastUpdateTime;
+  final pulumi.Input<String?>? lastUpdateTime;
   /// Property notificationARNs
-  final pulumi.Input<List<String>>? notificationARNs;
+  final pulumi.Input<List<String>?>? notificationARNs;
   /// Property outputs
-  final pulumi.Input<List<OutputResponse>>? outputs;
+  final pulumi.Input<List<OutputResponse>?>? outputs;
   /// Property parameters
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Property parentId
-  final pulumi.Input<String>? parentId;
+  final pulumi.Input<String?>? parentId;
   /// Property roleARN
-  final pulumi.Input<String>? roleARN;
+  final pulumi.Input<String?>? roleARN;
   /// Property rootId
-  final pulumi.Input<String>? rootId;
+  final pulumi.Input<String?>? rootId;
   /// Property stackId
-  final pulumi.Input<String>? stackId;
+  final pulumi.Input<String?>? stackId;
   /// Property stackName
-  final pulumi.Input<String>? stackName;
+  final pulumi.Input<String?>? stackName;
   /// Property stackPolicyBody
   final pulumi.Input<dynamic>? stackPolicyBody;
   /// Property stackPolicyURL
-  final pulumi.Input<String>? stackPolicyURL;
+  final pulumi.Input<String?>? stackPolicyURL;
   /// Property stackStatus
-  final pulumi.Input<String>? stackStatus;
+  final pulumi.Input<String?>? stackStatus;
   /// Property stackStatusReason
-  final pulumi.Input<String>? stackStatusReason;
+  final pulumi.Input<String?>? stackStatusReason;
   /// Property tags
-  final pulumi.Input<List<TagResponse>>? tags;
+  final pulumi.Input<List<TagResponse>?>? tags;
   /// Property templateBody
   final pulumi.Input<dynamic>? templateBody;
   /// Property templateURL
-  final pulumi.Input<String>? templateURL;
+  final pulumi.Input<String?>? templateURL;
   /// Property timeoutInMinutes
-  final pulumi.Input<int>? timeoutInMinutes;
+  final pulumi.Input<int?>? timeoutInMinutes;
 
   /// Creates a new [AwsCloudFormationStackPropertiesResponse].
   /// [capabilities] Property capabilities
@@ -155,7 +155,7 @@ class AwsCloudFormationStackPropertiesResponse {
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TagResponse>(guardedValue, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       templateBody: (() { final guardedValue = map['templateBody']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       templateURL: (() { final guardedValue = map['templateURL']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      timeoutInMinutes: (() { final guardedValue = map['timeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutInMinutes: (() { final guardedValue = map['timeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

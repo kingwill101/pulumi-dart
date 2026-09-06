@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Azure AVS Node type
-enum AzureAvsNodeType {
+enum AzureAvsNodeType implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   aV36("AV36"),
   aV36P("AV36P"),
@@ -7,6 +9,7 @@ enum AzureAvsNodeType {
   aV64("AV64");
 
   const AzureAvsNodeType(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureAvsNodeType fromValue(String value) {

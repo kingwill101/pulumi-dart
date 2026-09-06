@@ -62,8 +62,8 @@ class RosettaNetPipActivityBehaviorResponse {
       nonRepudiationOfOriginAndContent: pulumi.Input.fromValue(map['nonRepudiationOfOriginAndContent'] as bool),
       persistentConfidentialityScope: pulumi.Input.fromValue(map['persistentConfidentialityScope'] as String),
       responseType: pulumi.Input.fromValue(map['responseType'] as String),
-      retryCount: pulumi.Input.fromValue(map['retryCount'] as int),
-      timeToPerformInSeconds: pulumi.Input.fromValue(map['timeToPerformInSeconds'] as int),
+      retryCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retryCount'])),
+      timeToPerformInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeToPerformInSeconds'])),
     );
   }
 }

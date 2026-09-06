@@ -14,7 +14,7 @@ class PureStoragePolicyArgs {
   /// Definition of a Pure Storage Policy Based Management policy
   final pulumi.Input<String> storagePolicyDefinition;
   /// Name of the storage policy.
-  final pulumi.Input<String>? storagePolicyName;
+  final pulumi.Input<String?>? storagePolicyName;
   /// Azure resource ID of the Pure Storage Pool associated with the storage policy
   final pulumi.Input<String> storagePoolId;
 

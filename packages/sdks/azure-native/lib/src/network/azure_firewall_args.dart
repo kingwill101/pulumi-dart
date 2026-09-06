@@ -16,41 +16,41 @@ import 'sub_resource.dart';
 /// {@macro pulumi_network_azure_firewall_args_doc}
 class AzureFirewallArgs {
   /// The additional properties used to further config this azure firewall.
-  final pulumi.Input<Map<String, String>>? additionalProperties;
+  final pulumi.Input<Map<String, String>?>? additionalProperties;
   /// Collection of application rule collections used by Azure Firewall.
-  final pulumi.Input<List<AzureFirewallApplicationRuleCollection>>? applicationRuleCollections;
+  final pulumi.Input<List<AzureFirewallApplicationRuleCollection>?>? applicationRuleCollections;
   /// Properties to provide a custom autoscale configuration to this azure firewall.
-  final pulumi.Input<AzureFirewallAutoscaleConfiguration>? autoscaleConfiguration;
+  final pulumi.Input<AzureFirewallAutoscaleConfiguration?>? autoscaleConfiguration;
   /// The name of the Azure Firewall.
-  final pulumi.Input<String>? azureFirewallName;
+  final pulumi.Input<String?>? azureFirewallName;
   /// The firewallPolicy associated with this azure firewall.
-  final pulumi.Input<SubResource>? firewallPolicy;
+  final pulumi.Input<SubResource?>? firewallPolicy;
   /// IP addresses associated with AzureFirewall.
-  final pulumi.Input<HubIPAddresses>? hubIPAddresses;
+  final pulumi.Input<HubIPAddresses?>? hubIPAddresses;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// IP configuration of the Azure Firewall resource.
-  final pulumi.Input<List<AzureFirewallIPConfiguration>>? ipConfigurations;
+  final pulumi.Input<List<AzureFirewallIPConfiguration>?>? ipConfigurations;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// IP configuration of the Azure Firewall used for management traffic.
-  final pulumi.Input<AzureFirewallIPConfiguration>? managementIpConfiguration;
+  final pulumi.Input<AzureFirewallIPConfiguration?>? managementIpConfiguration;
   /// Collection of NAT rule collections used by Azure Firewall.
-  final pulumi.Input<List<AzureFirewallNatRuleCollection>>? natRuleCollections;
+  final pulumi.Input<List<AzureFirewallNatRuleCollection>?>? natRuleCollections;
   /// Collection of network rule collections used by Azure Firewall.
-  final pulumi.Input<List<AzureFirewallNetworkRuleCollection>>? networkRuleCollections;
+  final pulumi.Input<List<AzureFirewallNetworkRuleCollection>?>? networkRuleCollections;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The Azure Firewall Resource SKU.
-  final pulumi.Input<AzureFirewallSku>? sku;
+  final pulumi.Input<AzureFirewallSku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The operation mode for Threat Intelligence.
-  final pulumi.Input<String>? threatIntelMode;
+  final pulumi.Input<dynamic>? threatIntelMode;
   /// The virtualHub to which the firewall belongs.
-  final pulumi.Input<SubResource>? virtualHub;
+  final pulumi.Input<SubResource?>? virtualHub;
   /// A list of availability zones denoting where the resource needs to come from.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [AzureFirewallArgs].
   /// [additionalProperties] The additional properties used to further config this azure firewall.
@@ -132,7 +132,7 @@ class AzureFirewallArgs {
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureFirewallSku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      threatIntelMode: (() { final guardedValue = map['threatIntelMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      threatIntelMode: (() { final guardedValue = map['threatIntelMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       virtualHub: (() { final guardedValue = map['virtualHub']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

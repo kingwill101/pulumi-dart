@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The implementation effort required to remediate this assessment
-enum ImplementationEffort {
+enum ImplementationEffort implements pulumi.PulumiEnum<String> {
   valueLow("Low"),
   valueModerate("Moderate"),
   valueHigh("High");
 
   const ImplementationEffort(this.wireValue);
+  @override
   final String wireValue;
 
   static ImplementationEffort fromValue(String value) {

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The V3 alert property
-enum AlertProperty {
+enum AlertProperty implements pulumi.PulumiEnum<String> {
   valueAlertLink("AlertLink"),
   valueConfidenceLevel("ConfidenceLevel"),
   valueConfidenceScore("ConfidenceScore"),
@@ -11,6 +13,7 @@ enum AlertProperty {
   valueTechniques("Techniques");
 
   const AlertProperty(this.wireValue);
+  @override
   final String wireValue;
 
   static AlertProperty fromValue(String value) {

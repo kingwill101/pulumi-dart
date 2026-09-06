@@ -7,15 +7,15 @@ import 'managed_service_identity.dart';
 /// Azure Blob Details
 class AzureBlob {
   /// Storage Account Key.
-  final pulumi.Input<String>? accountKey;
+  final pulumi.Input<String?>? accountKey;
   /// Authentication type used for accessing Azure Blob Storage.
-  final pulumi.Input<AuthType>? authType;
+  final pulumi.Input<AuthType?>? authType;
   /// Blob container name where backups are stored.
-  final pulumi.Input<String>? blobContainerName;
+  final pulumi.Input<String?>? blobContainerName;
   /// Identity details for authentication using a Managed Identity.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// Resource Id of the storage account where backups are stored.
-  final pulumi.Input<String>? storageAccountResourceId;
+  final pulumi.Input<String?>? storageAccountResourceId;
 
   /// Creates a new [AzureBlob].
   /// [accountKey] Storage Account Key.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes operator to be matched
-enum PostArgsOperator {
+enum PostArgsOperator implements pulumi.PulumiEnum<String> {
   any("Any"),
   equal("Equal"),
   contains("Contains"),
@@ -12,6 +14,7 @@ enum PostArgsOperator {
   regEx("RegEx");
 
   const PostArgsOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static PostArgsOperator fromValue(String value) {

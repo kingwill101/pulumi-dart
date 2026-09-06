@@ -13,7 +13,7 @@ class AssignedIdentityResponse {
   /// Represents the provisioning state of an identity resource.
   final pulumi.Input<String> provisioningState;
   /// The subject of this identity assignment.
-  final pulumi.Input<String>? subject;
+  final pulumi.Input<String?>? subject;
   /// The tenant ID of the identity.
   final pulumi.Input<String> tenantId;
   /// Enumeration of identity types, from the perspective of management.

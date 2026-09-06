@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_applicationinsights_get_analytics_item_args_doc}
 class GetAnalyticsItemArgs {
   /// The Id of a specific item defined in the Application Insights component
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of a specific item defined in the Application Insights component
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Application Insights component resource.

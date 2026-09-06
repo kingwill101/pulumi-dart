@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Kind of synchronization on trigger.
-enum TriggerKind {
+enum TriggerKind implements pulumi.PulumiEnum<String> {
   valueScheduleBased("ScheduleBased");
 
   const TriggerKind(this.wireValue);
+  @override
   final String wireValue;
 
   static TriggerKind fromValue(String value) {

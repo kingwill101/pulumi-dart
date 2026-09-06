@@ -6,13 +6,13 @@ import 'access_review_reviewer.dart';
 /// Access Review Instance.
 class AccessReviewInstance {
   /// This is the collection of backup reviewers.
-  final pulumi.Input<List<AccessReviewReviewer>>? backupReviewers;
+  final pulumi.Input<List<AccessReviewReviewer>?>? backupReviewers;
   /// The DateTime when the review instance is scheduled to end.
-  final pulumi.Input<String>? endDateTime;
+  final pulumi.Input<String?>? endDateTime;
   /// This is the collection of reviewers.
-  final pulumi.Input<List<AccessReviewReviewer>>? reviewers;
+  final pulumi.Input<List<AccessReviewReviewer>?>? reviewers;
   /// The DateTime when the review instance is scheduled to be start.
-  final pulumi.Input<String>? startDateTime;
+  final pulumi.Input<String?>? startDateTime;
 
   /// Creates a new [AccessReviewInstance].
   /// [backupReviewers] This is the collection of backup reviewers.

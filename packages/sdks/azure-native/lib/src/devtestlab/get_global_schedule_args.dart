@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_devtestlab_get_global_schedule_args_doc}
 class GetGlobalScheduleArgs {
   /// Specify the $expand query. Example: 'properties($select=status)'
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the Schedule
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.

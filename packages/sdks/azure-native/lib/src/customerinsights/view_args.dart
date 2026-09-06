@@ -10,15 +10,15 @@ class ViewArgs {
   /// View definition.
   final pulumi.Input<String> definition;
   /// Localized display name for the view.
-  final pulumi.Input<Map<String, String>>? displayName;
+  final pulumi.Input<Map<String, String>?>? displayName;
   /// The name of the hub.
   final pulumi.Input<String> hubName;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// the user ID.
-  final pulumi.Input<String>? userId;
+  final pulumi.Input<String?>? userId;
   /// The name of the view.
-  final pulumi.Input<String>? viewName;
+  final pulumi.Input<String?>? viewName;
 
   /// Creates a new [ViewArgs].
   /// [definition] View definition.

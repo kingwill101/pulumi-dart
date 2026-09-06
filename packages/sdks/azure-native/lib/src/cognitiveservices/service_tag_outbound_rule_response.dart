@@ -6,14 +6,14 @@ import 'service_tag_outbound_rule_destination_response.dart';
 /// Service Tag outbound rule for the managed network of a cognitive services account.
 class ServiceTagOutboundRuleResponse {
   /// Category of a managed network Outbound Rule of a cognitive services account.
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// Service Tag destination.
-  final pulumi.Input<ServiceTagOutboundRuleDestinationResponse>? destination;
+  final pulumi.Input<ServiceTagOutboundRuleDestinationResponse?>? destination;
   /// Error information about an outbound rule of a cognitive services account if RuleStatus is failed.
   final pulumi.Input<String> errorInformation;
   final pulumi.Input<List<String>> parentRuleNames;
   /// Type of a managed network Outbound Rule of a cognitive services account.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Type of a managed network Outbound Rule of a cognitive services account.
   /// Expected value is 'ServiceTag'.
   final pulumi.Input<String> type;

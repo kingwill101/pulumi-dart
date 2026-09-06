@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum GraphQLApiIntrospectionConfig {
+enum GraphQLApiIntrospectionConfig implements pulumi.PulumiEnum<String> {
   dISABLED("DISABLED"),
   eNABLED("ENABLED");
 
   const GraphQLApiIntrospectionConfig(this.wireValue);
+  @override
   final String wireValue;
 
   static GraphQLApiIntrospectionConfig fromValue(String value) {

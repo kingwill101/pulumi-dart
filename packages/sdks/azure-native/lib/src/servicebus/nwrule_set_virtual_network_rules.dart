@@ -6,9 +6,9 @@ import 'subnet.dart';
 /// Description of VirtualNetworkRules - NetworkRules resource.
 class NWRuleSetVirtualNetworkRules {
   /// Value that indicates whether to ignore missing VNet Service Endpoint
-  final pulumi.Input<bool>? ignoreMissingVnetServiceEndpoint;
+  final pulumi.Input<bool?>? ignoreMissingVnetServiceEndpoint;
   /// Subnet properties
-  final pulumi.Input<Subnet>? subnet;
+  final pulumi.Input<Subnet?>? subnet;
 
   /// Creates a new [NWRuleSetVirtualNetworkRules].
   /// [ignoreMissingVnetServiceEndpoint] Value that indicates whether to ignore missing VNet Service Endpoint

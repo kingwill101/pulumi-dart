@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Image mapping rule profile
 class ImageMappingRuleProfileResponse {
   /// List of values.
-  final pulumi.Input<String>? userConfiguration;
+  final pulumi.Input<String?>? userConfiguration;
 
   /// Creates a new [ImageMappingRuleProfileResponse].
   /// [userConfiguration] List of values.

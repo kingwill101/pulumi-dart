@@ -7,15 +7,15 @@ import 'sub_resource_response.dart';
 /// A backend pool is a collection of backends that can be routed to.
 class BackendPoolResponse {
   /// The set of backends for this pool
-  final pulumi.Input<List<BackendResponse>>? backends;
+  final pulumi.Input<List<BackendResponse>?>? backends;
   /// L7 health probe settings for a backend pool
-  final pulumi.Input<SubResourceResponse>? healthProbeSettings;
+  final pulumi.Input<SubResourceResponse?>? healthProbeSettings;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Load balancing settings for a backend pool
-  final pulumi.Input<SubResourceResponse>? loadBalancingSettings;
+  final pulumi.Input<SubResourceResponse?>? loadBalancingSettings;
   /// Resource name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Resource status.
   final pulumi.Input<String> resourceState;
   /// Resource type.

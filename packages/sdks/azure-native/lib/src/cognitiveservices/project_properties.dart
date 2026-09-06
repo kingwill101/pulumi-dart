@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of Cognitive Services Project'.
 class ProjectProperties {
   /// The description of the Cognitive Services Project.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the Cognitive Services Project.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
 
   /// Creates a new [ProjectProperties].
   /// [description] The description of the Cognitive Services Project.

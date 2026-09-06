@@ -7,33 +7,33 @@ import 'system_data_response.dart';
 /// Result data returned by getStorageTask.
 class GetStorageTaskResult {
   /// The storage task action that is executed
-  final StorageTaskActionResponse action;
+  final StorageTaskActionResponse? action;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The creation date and time of the storage task in UTC.
-  final String creationTimeInUtc;
+  final String? creationTimeInUtc;
   /// Text that describes the purpose of the storage task
-  final String description;
+  final String? description;
   /// Storage Task is enabled when set to true and disabled when set to false
-  final bool enabled;
+  final bool? enabled;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The managed service identity of the resource.
-  final ManagedServiceIdentityResponse identity;
+  final ManagedServiceIdentityResponse? identity;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Represents the provisioning state of the storage task.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Storage task version.
-  final double taskVersion;
+  final double? taskVersion;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetStorageTaskResult].
   /// [action] The storage task action that is executed
@@ -51,57 +51,57 @@ class GetStorageTaskResult {
   /// [taskVersion] Storage task version.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetStorageTaskResult({
-    required this.action,
-    required this.azureApiVersion,
-    required this.creationTimeInUtc,
-    required this.description,
-    required this.enabled,
-    required this.id,
-    required this.identity,
-    required this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
+    this.action,
+    this.azureApiVersion,
+    this.creationTimeInUtc,
+    this.description,
+    this.enabled,
+    this.id,
+    this.identity,
+    this.location,
+    this.name,
+    this.provisioningState,
+    this.systemData,
     this.tags,
-    required this.taskVersion,
-    required this.type,
+    this.taskVersion,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': action.toMap(),
-      'azureApiVersion': azureApiVersion,
-      'creationTimeInUtc': creationTimeInUtc,
-      'description': description,
-      'enabled': enabled,
-      'id': id,
-      'identity': identity.toMap(),
-      'location': location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'action': ?action?.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'creationTimeInUtc': ?creationTimeInUtc,
+      'description': ?description,
+      'enabled': ?enabled,
+      'id': ?id,
+      'identity': ?identity?.toMap(),
+      'location': ?location,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'taskVersion': taskVersion,
-      'type': type,
+      'taskVersion': ?taskVersion,
+      'type': ?type,
     };
   }
 
   factory GetStorageTaskResult.fromMap(Map<String, dynamic> map) {
     return GetStorageTaskResult(
-      action: StorageTaskActionResponse.fromMap((map['action']! as Map).cast<String, dynamic>()),
-      azureApiVersion: map['azureApiVersion'] as String,
-      creationTimeInUtc: map['creationTimeInUtc'] as String,
-      description: map['description'] as String,
-      enabled: map['enabled'] as bool,
-      id: map['id'] as String,
-      identity: ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return StorageTaskActionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      creationTimeInUtc: (() { final guardedValue = map['creationTimeInUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      taskVersion: map['taskVersion'] as double,
-      type: map['type'] as String,
+      taskVersion: (() { final guardedValue = map['taskVersion']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

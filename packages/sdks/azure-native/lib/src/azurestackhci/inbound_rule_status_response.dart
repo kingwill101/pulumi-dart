@@ -6,11 +6,11 @@ import 'inbound_rule_status_provisioning_status_response.dart';
 /// The observed state of inbound rule
 class InboundRuleStatusResponse {
   /// InboundRule provisioning error code
-  final pulumi.Input<String>? errorCode;
+  final pulumi.Input<String?>? errorCode;
   /// Descriptive error message
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// InboundRule provisioning status
-  final pulumi.Input<InboundRuleStatusProvisioningStatusResponse>? provisioningStatus;
+  final pulumi.Input<InboundRuleStatusProvisioningStatusResponse?>? provisioningStatus;
 
   /// Creates a new [InboundRuleStatusResponse].
   /// [errorCode] InboundRule provisioning error code

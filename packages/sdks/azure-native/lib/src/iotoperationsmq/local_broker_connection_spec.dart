@@ -7,21 +7,21 @@ import 'local_broker_connection_tls.dart';
 /// Mqtt Local Broker ConnectionSpec details
 class LocalBrokerConnectionSpec {
   /// The authentication methods for LocalBroker connection. NOTE - Enum only one method at a time is supported.
-  final pulumi.Input<LocalBrokerAuthenticationMethods>? authentication;
+  final pulumi.Input<LocalBrokerAuthenticationMethods?>? authentication;
   /// The endpoint of local broker to connect to.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// TLS details for Local broker Connection.
-  final pulumi.Input<LocalBrokerConnectionTls>? tls;
+  final pulumi.Input<LocalBrokerConnectionTls?>? tls;
 
   /// Creates a new [LocalBrokerConnectionSpec].
   /// [authentication] The authentication methods for LocalBroker connection. NOTE - Enum only one method at a time is supported.
   /// [endpoint] The endpoint of local broker to connect to.
   /// [tls] TLS details for Local broker Connection.
-  const LocalBrokerConnectionSpec({
+  LocalBrokerConnectionSpec({
     this.authentication,
-    this.endpoint,
+    pulumi.Input<String?>? endpoint,
     this.tls,
-  });
+  }) : endpoint = endpoint ?? pulumi.Input.fromValue('aio-mq-dmqtt-frontend:1883');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

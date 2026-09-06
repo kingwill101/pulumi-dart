@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Soft delete related settings
 class SoftDeleteSettingsResponse {
   /// Soft delete retention duration
-  final pulumi.Input<double>? retentionDurationInDays;
+  final pulumi.Input<double?>? retentionDurationInDays;
   /// State of soft delete
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [SoftDeleteSettingsResponse].
   /// [retentionDurationInDays] Soft delete retention duration
@@ -26,7 +26,7 @@ class SoftDeleteSettingsResponse {
 
   factory SoftDeleteSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SoftDeleteSettingsResponse(
-      retentionDurationInDays: (() { final guardedValue = map['retentionDurationInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      retentionDurationInDays: (() { final guardedValue = map['retentionDurationInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

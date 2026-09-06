@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dns_security_rule_action_response.dart';
 import 'dns_security_rule_args.dart';
+import 'sub_resource_response.dart';
 import 'system_data_response.dart';
 
 /// Describes a DNS security rule.
@@ -252,7 +253,7 @@ class DnsSecurityRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// DNS resolver policy domains lists that the DNS security rule applies to.
-  late final pulumi.Output<List<Map<String, dynamic>>> dnsResolverDomainLists;
+  late final pulumi.Output<List<SubResourceResponse>> dnsResolverDomainLists;
   /// The state of DNS security rule.
   late final pulumi.Output<String?> dnsSecurityRuleState;
   /// ETag of the DNS security rule.
@@ -288,7 +289,7 @@ class DnsSecurityRule extends pulumi.CustomResource {
         ) {
     action = registerOutput<DnsSecurityRuleActionResponse>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsSecurityRuleActionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    dnsResolverDomainLists = registerOutput<List<Map<String, dynamic>>>('dnsResolverDomainLists');
+    dnsResolverDomainLists = registerOutput<List<SubResourceResponse>>('dnsResolverDomainLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     dnsSecurityRuleState = registerOutput<String?>('dnsSecurityRuleState');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -296,7 +297,30 @@ class DnsSecurityRule extends pulumi.CustomResource {
     priority = registerOutput<int>('priority');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DnsSecurityRule] resource.
+  DnsSecurityRule.reference(String urn)
+    : super(
+        'azure-native:dnsresolver:DnsSecurityRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<DnsSecurityRuleActionResponse>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsSecurityRuleActionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dnsResolverDomainLists = registerOutput<List<SubResourceResponse>>('dnsResolverDomainLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    dnsSecurityRuleState = registerOutput<String?>('dnsSecurityRuleState');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    priority = registerOutput<int>('priority');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

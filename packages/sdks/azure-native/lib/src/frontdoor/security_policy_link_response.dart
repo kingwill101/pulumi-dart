@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the Resource ID for a Security Policy.
 class SecurityPolicyLinkResponse {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [SecurityPolicyLinkResponse].
   /// [id] Resource ID.

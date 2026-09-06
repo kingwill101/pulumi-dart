@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of data mapping.
-enum AnalyticsConnectorMappingType {
+enum AnalyticsConnectorMappingType implements pulumi.PulumiEnum<String> {
   valueFhirToParquet("fhirToParquet");
 
   const AnalyticsConnectorMappingType(this.wireValue);
+  @override
   final String wireValue;
 
   static AnalyticsConnectorMappingType fromValue(String value) {

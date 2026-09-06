@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Deployment dependency information.
 class BasicDependencyResponse {
   /// The ID of the dependency.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The dependency resource name.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// The dependency resource type.
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
 
   /// Creates a new [BasicDependencyResponse].
   /// [id] The ID of the dependency.

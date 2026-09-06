@@ -9,11 +9,11 @@ import 'configuration_profile_assignment_properties.dart';
 /// {@macro pulumi_automanage_configuration_profile_hcrpassignment_args_doc}
 class ConfigurationProfileHCRPAssignmentArgs {
   /// Name of the configuration profile assignment. Only default is supported.
-  final pulumi.Input<String>? configurationProfileAssignmentName;
+  final pulumi.Input<String?>? configurationProfileAssignmentName;
   /// The name of the Arc machine.
   final pulumi.Input<String> machineName;
   /// Properties of the configuration profile assignment.
-  final pulumi.Input<ConfigurationProfileAssignmentProperties>? properties;
+  final pulumi.Input<ConfigurationProfileAssignmentProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

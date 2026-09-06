@@ -6,7 +6,7 @@ import 'keytab_information.dart';
 /// Active Directory information that related to the resource.
 class ActiveDirectoryInformation {
   /// Keytab information that is used for the Sql Managed Instance when Active Directory authentication is used.
-  final pulumi.Input<KeytabInformation>? keytabInformation;
+  final pulumi.Input<KeytabInformation?>? keytabInformation;
 
   /// Creates a new [ActiveDirectoryInformation].
   /// [keytabInformation] Keytab information that is used for the Sql Managed Instance when Active Directory authentication is used.

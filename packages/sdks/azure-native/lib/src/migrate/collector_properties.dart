@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'collector_agent_properties.dart';
 
 class CollectorProperties {
-  final pulumi.Input<CollectorAgentProperties>? agentProperties;
+  final pulumi.Input<CollectorAgentProperties?>? agentProperties;
   /// The ARM id of the discovery service site.
-  final pulumi.Input<String>? discoverySiteId;
+  final pulumi.Input<String?>? discoverySiteId;
 
   /// Creates a new [CollectorProperties].
   /// [agentProperties] Optional.

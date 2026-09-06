@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dbforpostgresql_virtual_endpoint_args_doc}
 class VirtualEndpointArgs {
   /// Type of endpoint for the virtual endpoints.
-  final pulumi.Input<String>? endpointType;
+  final pulumi.Input<dynamic>? endpointType;
   /// List of servers that one of the virtual endpoints can refer to.
-  final pulumi.Input<List<String>>? members;
+  final pulumi.Input<List<String>?>? members;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the server.
   final pulumi.Input<String> serverName;
   /// Base name of the virtual endpoints.
-  final pulumi.Input<String>? virtualEndpointName;
+  final pulumi.Input<String?>? virtualEndpointName;
 
   /// Creates a new [VirtualEndpointArgs].
   /// [endpointType] Type of endpoint for the virtual endpoints.
@@ -44,7 +44,7 @@ class VirtualEndpointArgs {
 
   factory VirtualEndpointArgs.fromMap(Map<String, dynamic> map) {
     return VirtualEndpointArgs(
-      endpointType: (() { final guardedValue = map['endpointType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endpointType: (() { final guardedValue = map['endpointType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       members: (() { final guardedValue = map['members']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),

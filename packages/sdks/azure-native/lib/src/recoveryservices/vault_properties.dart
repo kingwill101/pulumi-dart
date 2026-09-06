@@ -10,19 +10,19 @@ import 'vault_properties_redundancy_settings.dart';
 /// Properties of the vault.
 class VaultProperties {
   /// Customer Managed Key details of the resource.
-  final pulumi.Input<VaultPropertiesEncryption>? encryption;
+  final pulumi.Input<VaultPropertiesEncryption?>? encryption;
   /// Monitoring Settings of the vault
-  final pulumi.Input<MonitoringSettings>? monitoringSettings;
+  final pulumi.Input<MonitoringSettings?>? monitoringSettings;
   /// property to enable or disable resource provider inbound network traffic from public clients
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// The redundancy Settings of a Vault
-  final pulumi.Input<VaultPropertiesRedundancySettings>? redundancySettings;
+  final pulumi.Input<VaultPropertiesRedundancySettings?>? redundancySettings;
   /// ResourceGuardOperationRequests on which LAC check will be performed
-  final pulumi.Input<List<String>>? resourceGuardOperationRequests;
+  final pulumi.Input<List<String>?>? resourceGuardOperationRequests;
   /// Restore Settings of the vault
-  final pulumi.Input<RestoreSettings>? restoreSettings;
+  final pulumi.Input<RestoreSettings?>? restoreSettings;
   /// Security Settings of the vault
-  final pulumi.Input<SecuritySettings>? securitySettings;
+  final pulumi.Input<SecuritySettings?>? securitySettings;
 
   /// Creates a new [VaultProperties].
   /// [encryption] Customer Managed Key details of the resource.
@@ -58,7 +58,7 @@ class VaultProperties {
     return VaultProperties(
       encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VaultPropertiesEncryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       monitoringSettings: (() { final guardedValue = map['monitoringSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MonitoringSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       redundancySettings: (() { final guardedValue = map['redundancySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VaultPropertiesRedundancySettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGuardOperationRequests: (() { final guardedValue = map['resourceGuardOperationRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       restoreSettings: (() { final guardedValue = map['restoreSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RestoreSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

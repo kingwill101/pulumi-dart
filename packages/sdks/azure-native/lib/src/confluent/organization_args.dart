@@ -11,17 +11,17 @@ import 'user_detail.dart';
 /// {@macro pulumi_confluent_organization_args_doc}
 class OrganizationArgs {
   /// Link an existing Confluent organization
-  final pulumi.Input<LinkOrganization>? linkOrganization;
+  final pulumi.Input<LinkOrganization?>? linkOrganization;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Confluent offer detail
   final pulumi.Input<OfferDetail> offerDetail;
   /// Organization resource name
-  final pulumi.Input<String>? organizationName;
+  final pulumi.Input<String?>? organizationName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Subscriber detail
   final pulumi.Input<UserDetail> userDetail;
 

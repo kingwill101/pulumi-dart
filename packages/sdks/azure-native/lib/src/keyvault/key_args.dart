@@ -9,13 +9,13 @@ import 'key_properties.dart';
 /// {@macro pulumi_keyvault_key_args_doc}
 class KeyArgs {
   /// The name of the key to be created. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information.
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// The properties of the key to be created.
   final pulumi.Input<KeyProperties> properties;
   /// The name of the resource group which contains the specified key vault.
   final pulumi.Input<String> resourceGroupName;
   /// The tags that will be assigned to the key.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the key vault which contains the key to be created.
   final pulumi.Input<String> vaultName;
 

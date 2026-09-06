@@ -3,7 +3,9 @@ import 'data_plane_auth_options_response.dart';
 import 'encryption_with_cmk_response.dart';
 import 'identity_response.dart';
 import 'network_rule_set_response.dart';
+import 'private_endpoint_connection_response.dart';
 import 'service_args.dart';
+import 'shared_private_link_resource_response.dart';
 import 'sku_response.dart';
 import 'system_data_response.dart';
 
@@ -2075,7 +2077,7 @@ class Service extends pulumi.CustomResource {
   /// The number of partitions in the dedicated search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
   late final pulumi.Output<int?> partitionCount;
   /// The list of private endpoint connections to the Azure AI Search service.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// The state of the last provisioning operation performed on the search service. Provisioning is an intermediate state that occurs while service capacity is being established. After capacity is set up, provisioningState changes to either 'Succeeded' or 'Failed'. Client applications can poll provisioning status (the recommended polling interval is from 30 seconds to one minute) by using the Get Search Service operation to see when an operation is completed. If you are using the free service, this value tends to come back as 'Succeeded' directly in the call to Create search service. This is because the free service uses capacity that is already set up.
   late final pulumi.Output<String> provisioningState;
   /// This value can be set to 'Enabled' to avoid breaking changes on existing customer resources and templates. If set to 'Disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
@@ -2087,7 +2089,7 @@ class Service extends pulumi.CustomResource {
   /// The date and time the search service was last upgraded. This field will be null until the service gets upgraded for the first time.
   late final pulumi.Output<String> serviceUpgradedAt;
   /// The list of shared private link resources managed by the Azure AI Search service.
-  late final pulumi.Output<List<Map<String, dynamic>>> sharedPrivateLinkResources;
+  late final pulumi.Output<List<SharedPrivateLinkResourceResponse>> sharedPrivateLinkResources;
   /// The SKU of the search service, which determines price tier and capacity limits. This property is required when creating a new search service.
   late final pulumi.Output<SkuResponse?> sku;
   /// The status of the search service. Possible values include: 'running': The search service is running and no provisioning operations are underway. 'provisioning': The search service is being provisioned or scaled up or down. 'deleting': The search service is being deleted. 'degraded': The search service is degraded. This can occur when the underlying search units are not healthy. The search service is most likely operational, but performance might be slow and some requests might be dropped. 'disabled': The search service is disabled. In this state, the service will reject all API requests. 'error': The search service is in an error state. 'stopped': The search service is in a subscription that's disabled. If your service is in the degraded, disabled, or error states, it means the Azure AI Search team is actively investigating the underlying issue. Dedicated services in these states are still chargeable based on the number of search units provisioned.
@@ -2120,7 +2122,7 @@ class Service extends pulumi.CustomResource {
     authOptions = registerOutput<DataPlaneAuthOptionsResponse?>('authOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataPlaneAuthOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     computeType = registerOutput<String?>('computeType');
-    dataExfiltrationProtections = registerOutput<List<String>?>('dataExfiltrationProtections');
+    dataExfiltrationProtections = registerOutput<List<String>?>('dataExfiltrationProtections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
     eTag = registerOutput<String>('eTag');
     encryptionWithCmk = registerOutput<EncryptionWithCmkResponse?>('encryptionWithCmk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionWithCmkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2131,18 +2133,57 @@ class Service extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkRuleSet = registerOutput<NetworkRuleSetResponse?>('networkRuleSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkRuleSetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     partitionCount = registerOutput<int?>('partitionCount');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     replicaCount = registerOutput<int?>('replicaCount');
     semanticSearch = registerOutput<String?>('semanticSearch');
     serviceUpgradedAt = registerOutput<String>('serviceUpgradedAt');
-    sharedPrivateLinkResources = registerOutput<List<Map<String, dynamic>>>('sharedPrivateLinkResources');
+    sharedPrivateLinkResources = registerOutput<List<SharedPrivateLinkResourceResponse>>('sharedPrivateLinkResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SharedPrivateLinkResourceResponse>(guardedValue, (value) => SharedPrivateLinkResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
     statusDetails = registerOutput<String>('statusDetails');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    upgradeAvailable = registerOutput<String?>('upgradeAvailable');
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'azure-native:search:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authOptions = registerOutput<DataPlaneAuthOptionsResponse?>('authOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataPlaneAuthOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    computeType = registerOutput<String?>('computeType');
+    dataExfiltrationProtections = registerOutput<List<String>?>('dataExfiltrationProtections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
+    eTag = registerOutput<String>('eTag');
+    encryptionWithCmk = registerOutput<EncryptionWithCmkResponse?>('encryptionWithCmk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionWithCmkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpoint = registerOutput<String?>('endpoint');
+    hostingMode = registerOutput<String?>('hostingMode');
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkRuleSet = registerOutput<NetworkRuleSetResponse?>('networkRuleSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkRuleSetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    partitionCount = registerOutput<int?>('partitionCount');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    replicaCount = registerOutput<int?>('replicaCount');
+    semanticSearch = registerOutput<String?>('semanticSearch');
+    serviceUpgradedAt = registerOutput<String>('serviceUpgradedAt');
+    sharedPrivateLinkResources = registerOutput<List<SharedPrivateLinkResourceResponse>>('sharedPrivateLinkResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SharedPrivateLinkResourceResponse>(guardedValue, (value) => SharedPrivateLinkResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    statusDetails = registerOutput<String>('statusDetails');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     upgradeAvailable = registerOutput<String?>('upgradeAvailable');
   }

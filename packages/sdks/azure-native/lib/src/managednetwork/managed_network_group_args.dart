@@ -9,23 +9,23 @@ import 'resource_id.dart';
 /// {@macro pulumi_managednetwork_managed_network_group_args_doc}
 class ManagedNetworkGroupArgs {
   /// Responsibility role under which this Managed Network Group will be created
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<dynamic>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Managed Network Group.
-  final pulumi.Input<String>? managedNetworkGroupName;
+  final pulumi.Input<String?>? managedNetworkGroupName;
   /// The name of the Managed Network.
   final pulumi.Input<String> managedNetworkName;
   /// The collection of management groups covered by the Managed Network
-  final pulumi.Input<List<ResourceId>>? managementGroups;
+  final pulumi.Input<List<ResourceId>?>? managementGroups;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The collection of  subnets covered by the Managed Network
-  final pulumi.Input<List<ResourceId>>? subnets;
+  final pulumi.Input<List<ResourceId>?>? subnets;
   /// The collection of subscriptions covered by the Managed Network
-  final pulumi.Input<List<ResourceId>>? subscriptions;
+  final pulumi.Input<List<ResourceId>?>? subscriptions;
   /// The collection of virtual nets covered by the Managed Network
-  final pulumi.Input<List<ResourceId>>? virtualNetworks;
+  final pulumi.Input<List<ResourceId>?>? virtualNetworks;
 
   /// Creates a new [ManagedNetworkGroupArgs].
   /// [kind] Responsibility role under which this Managed Network Group will be created
@@ -65,7 +65,7 @@ class ManagedNetworkGroupArgs {
 
   factory ManagedNetworkGroupArgs.fromMap(Map<String, dynamic> map) {
     return ManagedNetworkGroupArgs(
-      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedNetworkGroupName: (() { final guardedValue = map['managedNetworkGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedNetworkName: pulumi.Input.fromValue(map['managedNetworkName'] as String),

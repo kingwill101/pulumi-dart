@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The sku of this Bastion Host.
 class SkuResponse {
   /// The name of the sku of this Bastion Host.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [SkuResponse].
   /// [name] The name of the sku of this Bastion Host.
-  const SkuResponse({
-    this.name,
-  });
+  SkuResponse({
+    pulumi.Input<String?>? name,
+  }) : name = name ?? pulumi.Input.fromValue('Standard');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

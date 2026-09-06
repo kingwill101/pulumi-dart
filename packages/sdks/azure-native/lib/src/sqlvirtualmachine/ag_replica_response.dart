@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Availability group replica configuration.
 class AgReplicaResponse {
   /// Replica commit mode in availability group.
-  final pulumi.Input<String>? commit;
+  final pulumi.Input<String?>? commit;
   /// Replica failover mode in availability group.
-  final pulumi.Input<String>? failover;
+  final pulumi.Input<String?>? failover;
   /// Replica readable secondary mode in availability group.
-  final pulumi.Input<String>? readableSecondary;
+  final pulumi.Input<String?>? readableSecondary;
   /// Replica Role in availability group.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// Sql VirtualMachine Instance Id.
-  final pulumi.Input<String>? sqlVirtualMachineInstanceId;
+  final pulumi.Input<String?>? sqlVirtualMachineInstanceId;
 
   /// Creates a new [AgReplicaResponse].
   /// [commit] Replica commit mode in availability group.

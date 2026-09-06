@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The status of the conditional credit
-enum ConditionalCreditStatus {
+enum ConditionalCreditStatus implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   scheduled("Scheduled"),
   active("Active"),
@@ -11,6 +13,7 @@ enum ConditionalCreditStatus {
   pendingSettlement("PendingSettlement");
 
   const ConditionalCreditStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static ConditionalCreditStatus fromValue(String value) {

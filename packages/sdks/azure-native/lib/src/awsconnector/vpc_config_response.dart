@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of VpcConfigResponse
 class VpcConfigResponse {
   /// &lt;p&gt;The cluster security group that was created by Amazon EKS for the cluster. Managed node groups use this security group for control-plane-to-data-plane communication.&lt;/p&gt;
-  final pulumi.Input<String>? clusterSecurityGroupId;
+  final pulumi.Input<String?>? clusterSecurityGroupId;
   /// &lt;p&gt;This parameter indicates whether the Amazon EKS private API server endpoint is enabled. If the Amazon EKS private API server endpoint is enabled, Kubernetes API requests that originate from within your cluster's VPC use the private VPC endpoint instead of traversing the internet. If this value is disabled and you have nodes or Fargate pods in the cluster, then ensure that &lt;code&gt;publicAccessCidrs&lt;/code&gt; includes the necessary CIDR blocks for communication with the nodes or Fargate pods. For more information, see &lt;a href='https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html'&gt;Amazon EKS cluster endpoint access control&lt;/a&gt; in the &lt;i&gt; &lt;i&gt;Amazon EKS User Guide&lt;/i&gt; &lt;/i&gt;.&lt;/p&gt;
-  final pulumi.Input<bool>? endpointPrivateAccess;
+  final pulumi.Input<bool?>? endpointPrivateAccess;
   /// &lt;p&gt;Whether the public API server endpoint is enabled.&lt;/p&gt;
-  final pulumi.Input<bool>? endpointPublicAccess;
+  final pulumi.Input<bool?>? endpointPublicAccess;
   /// &lt;p&gt;The CIDR blocks that are allowed access to your cluster's public Kubernetes API server endpoint.&lt;/p&gt;
-  final pulumi.Input<List<String>>? publicAccessCidrs;
+  final pulumi.Input<List<String>?>? publicAccessCidrs;
   /// &lt;p&gt;The security groups associated with the cross-account elastic network interfaces that are used to allow communication between your nodes and the Kubernetes control plane.&lt;/p&gt;
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// &lt;p&gt;The subnets associated with your cluster.&lt;/p&gt;
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<List<String>?>? subnetIds;
   /// &lt;p&gt;A list of one or more subnet IDs in your Amazon VPC.&lt;/p&gt;
-  final pulumi.Input<List<String>>? subnets;
+  final pulumi.Input<List<String>?>? subnets;
   /// &lt;p&gt;The VPC associated with your cluster.&lt;/p&gt;
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [VpcConfigResponse].
   /// [clusterSecurityGroupId] &lt;p&gt;The cluster security group that was created by Amazon EKS for the cluster. Managed node groups use this security group for control-plane-to-data-plane communication.&lt;/p&gt;

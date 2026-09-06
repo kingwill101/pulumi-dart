@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ColdStorageOptions
 class ColdStorageOptionsResponse {
   /// &lt;p&gt;Whether to enable or disable cold storage on the domain. You must enable UltraWarm storage to enable cold storage.&lt;/p&gt;
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ColdStorageOptionsResponse].
   /// [enabled] &lt;p&gt;Whether to enable or disable cold storage on the domain. You must enable UltraWarm storage to enable cold storage.&lt;/p&gt;

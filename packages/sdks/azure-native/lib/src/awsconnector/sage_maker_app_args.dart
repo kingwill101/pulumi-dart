@@ -9,15 +9,15 @@ import 'sage_maker_app_properties.dart';
 /// {@macro pulumi_awsconnector_sage_maker_app_args_doc}
 class SageMakerAppArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of SageMakerApp
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<SageMakerAppProperties>? properties;
+  final pulumi.Input<SageMakerAppProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SageMakerAppArgs].
   /// [location] The geo-location where the resource lives

@@ -6,13 +6,13 @@ import 'content_hash.dart';
 /// Definition of the content source.
 class ContentSource {
   /// Gets or sets the hash.
-  final pulumi.Input<ContentHash>? hash;
+  final pulumi.Input<ContentHash?>? hash;
   /// Gets or sets the content source type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
   /// Gets or sets the value of the content. This is based on the content source type.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
   /// Gets or sets the version of the content.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ContentSource].
   /// [hash] Gets or sets the hash.
@@ -38,7 +38,7 @@ class ContentSource {
   factory ContentSource.fromMap(Map<String, dynamic> map) {
     return ContentSource(
       hash: (() { final guardedValue = map['hash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContentHash.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

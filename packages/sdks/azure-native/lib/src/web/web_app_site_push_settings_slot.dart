@@ -57,4 +57,23 @@ class WebAppSitePushSettingsSlot extends pulumi.CustomResource {
     tagsRequiringAuth = registerOutput<String?>('tagsRequiringAuth');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [WebAppSitePushSettingsSlot] resource.
+  WebAppSitePushSettingsSlot.reference(String urn)
+    : super(
+        'azure-native:web:WebAppSitePushSettingsSlot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dynamicTagsJson = registerOutput<String?>('dynamicTagsJson');
+    isPushEnabled = registerOutput<bool>('isPushEnabled');
+    kind = registerOutput<String?>('kind');
+    this.name = registerOutput<String>('name');
+    tagWhitelistJson = registerOutput<String?>('tagWhitelistJson');
+    tagsRequiringAuth = registerOutput<String?>('tagsRequiringAuth');
+    type = registerOutput<String>('type');
+  }
 }

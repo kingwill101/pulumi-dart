@@ -13,38 +13,38 @@ import 'user_owned_storage.dart';
 /// Properties of Cognitive Services account.
 class AccountProperties {
   /// Specifies whether this resource support project management as child resources, used as containers for access management, data isolation and cost in AI Foundry.
-  final pulumi.Input<bool>? allowProjectManagement;
-  final pulumi.Input<List<String>>? allowedFqdnList;
+  final pulumi.Input<bool?>? allowProjectManagement;
+  final pulumi.Input<List<String>?>? allowedFqdnList;
   /// The user owned AML account properties.
-  final pulumi.Input<UserOwnedAmlWorkspace>? amlWorkspace;
+  final pulumi.Input<UserOwnedAmlWorkspace?>? amlWorkspace;
   /// The api properties for special APIs.
-  final pulumi.Input<ApiProperties>? apiProperties;
+  final pulumi.Input<ApiProperties?>? apiProperties;
   /// Specifies the projects, by project name, that are associated with this resource.
-  final pulumi.Input<List<String>>? associatedProjects;
+  final pulumi.Input<List<String>?>? associatedProjects;
   /// Optional subdomain name used for token-based authentication.
-  final pulumi.Input<String>? customSubDomainName;
+  final pulumi.Input<String?>? customSubDomainName;
   /// Specifies the project, by project name, that is targeted when data plane endpoints are called without a project parameter.
-  final pulumi.Input<String>? defaultProject;
-  final pulumi.Input<bool>? disableLocalAuth;
+  final pulumi.Input<String?>? defaultProject;
+  final pulumi.Input<bool?>? disableLocalAuth;
   /// The flag to enable dynamic throttling.
-  final pulumi.Input<bool>? dynamicThrottlingEnabled;
+  final pulumi.Input<bool?>? dynamicThrottlingEnabled;
   /// The encryption properties for this resource.
-  final pulumi.Input<Encryption>? encryption;
+  final pulumi.Input<Encryption?>? encryption;
   /// The multiregion settings of Cognitive Services account.
-  final pulumi.Input<MultiRegionSettings>? locations;
+  final pulumi.Input<MultiRegionSettings?>? locations;
   /// Resource migration token.
-  final pulumi.Input<String>? migrationToken;
+  final pulumi.Input<String?>? migrationToken;
   /// A collection of rules governing the accessibility from specific network locations.
-  final pulumi.Input<NetworkRuleSet>? networkAcls;
-  final pulumi.Input<List<NetworkInjection>>? networkInjections;
+  final pulumi.Input<NetworkRuleSet?>? networkAcls;
+  final pulumi.Input<List<NetworkInjection>?>? networkInjections;
   /// Whether or not public endpoint access is allowed for this account.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// Cognitive Services Rai Monitor Config.
-  final pulumi.Input<RaiMonitorConfig>? raiMonitorConfig;
-  final pulumi.Input<bool>? restore;
-  final pulumi.Input<bool>? restrictOutboundNetworkAccess;
+  final pulumi.Input<RaiMonitorConfig?>? raiMonitorConfig;
+  final pulumi.Input<bool?>? restore;
+  final pulumi.Input<bool?>? restrictOutboundNetworkAccess;
   /// The storage accounts for this resource.
-  final pulumi.Input<List<UserOwnedStorage>>? userOwnedStorage;
+  final pulumi.Input<List<UserOwnedStorage>?>? userOwnedStorage;
 
   /// Creates a new [AccountProperties].
   /// [allowProjectManagement] Specifies whether this resource support project management as child resources, used as containers for access management, data isolation and cost in AI Foundry.
@@ -128,7 +128,7 @@ class AccountProperties {
       migrationToken: (() { final guardedValue = map['migrationToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkAcls: (() { final guardedValue = map['networkAcls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkRuleSet.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       networkInjections: (() { final guardedValue = map['networkInjections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInjection>(guardedValue, (value) => NetworkInjection.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       raiMonitorConfig: (() { final guardedValue = map['raiMonitorConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RaiMonitorConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       restore: (() { final guardedValue = map['restore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       restrictOutboundNetworkAccess: (() { final guardedValue = map['restrictOutboundNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

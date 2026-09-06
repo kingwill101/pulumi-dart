@@ -9,7 +9,7 @@ class BucketServerPropertiesResponse {
   /// The bucket server's certificate expiry date.
   final pulumi.Input<String> certificateExpiryDate;
   /// The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// The bucket server's IPv4 address
   final pulumi.Input<String> ipAddress;
 

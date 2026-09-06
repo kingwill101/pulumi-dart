@@ -214,4 +214,24 @@ class StaticSiteLinkedBackendForBuild extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [StaticSiteLinkedBackendForBuild] resource.
+  StaticSiteLinkedBackendForBuild.reference(String urn)
+    : super(
+        'azure-native:web:StaticSiteLinkedBackendForBuild',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backendResourceId = registerOutput<String?>('backendResourceId');
+    createdOn = registerOutput<String>('createdOn');
+    kind = registerOutput<String?>('kind');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    region = registerOutput<String?>('region');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

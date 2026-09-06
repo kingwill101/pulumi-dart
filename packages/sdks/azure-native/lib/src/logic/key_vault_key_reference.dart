@@ -10,7 +10,7 @@ class KeyVaultKeyReference {
   /// The key vault reference.
   final pulumi.Input<KeyVaultKeyReferenceKeyVault> keyVault;
   /// The private key version in key vault.
-  final pulumi.Input<String>? keyVersion;
+  final pulumi.Input<String?>? keyVersion;
 
   /// Creates a new [KeyVaultKeyReference].
   /// [keyName] The private key name in key vault.

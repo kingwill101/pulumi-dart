@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of GitSubmodulesConfig
 class GitSubmodulesConfig {
   /// &lt;p&gt; Set to true to fetch Git submodules for your CodeBuild build project. &lt;/p&gt;
-  final pulumi.Input<bool>? fetchSubmodules;
+  final pulumi.Input<bool?>? fetchSubmodules;
 
   /// Creates a new [GitSubmodulesConfig].
   /// [fetchSubmodules] &lt;p&gt; Set to true to fetch Git submodules for your CodeBuild build project. &lt;/p&gt;

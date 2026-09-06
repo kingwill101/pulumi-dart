@@ -5,29 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// properties for creation saas
 class SaasCreationProperties {
   /// Whether the SaaS subscription will auto renew upon term end.
-  final pulumi.Input<bool>? autoRenew;
+  final pulumi.Input<bool?>? autoRenew;
   /// The offer id.
-  final pulumi.Input<String>? offerId;
+  final pulumi.Input<String?>? offerId;
   /// The metadata about the SaaS subscription such as the AzureSubscriptionId and ResourceUri.
-  final pulumi.Input<Map<String, String>>? paymentChannelMetadata;
+  final pulumi.Input<Map<String, String>?>? paymentChannelMetadata;
   /// The Payment channel for the SaasSubscription.
-  final pulumi.Input<String>? paymentChannelType;
+  final pulumi.Input<dynamic>? paymentChannelType;
   /// The publisher id.
-  final pulumi.Input<String>? publisherId;
+  final pulumi.Input<String?>? publisherId;
   /// The environment in the publisher side for this resource.
-  final pulumi.Input<String>? publisherTestEnvironment;
+  final pulumi.Input<String?>? publisherTestEnvironment;
   /// The seat count.
-  final pulumi.Input<double>? quantity;
+  final pulumi.Input<double?>? quantity;
   /// The SaaS resource name.
-  final pulumi.Input<String>? saasResourceName;
+  final pulumi.Input<String?>? saasResourceName;
   /// The saas session id used for dev service migration request.
-  final pulumi.Input<String>? saasSessionId;
+  final pulumi.Input<String?>? saasSessionId;
   /// The saas subscription id used for tenant to subscription level migration request.
-  final pulumi.Input<String>? saasSubscriptionId;
+  final pulumi.Input<String?>? saasSubscriptionId;
   /// The plan id.
-  final pulumi.Input<String>? skuId;
+  final pulumi.Input<String?>? skuId;
   /// The current Term id.
-  final pulumi.Input<String>? termId;
+  final pulumi.Input<String?>? termId;
 
   /// Creates a new [SaasCreationProperties].
   /// [autoRenew] Whether the SaaS subscription will auto renew upon term end.
@@ -79,10 +79,10 @@ class SaasCreationProperties {
       autoRenew: (() { final guardedValue = map['autoRenew']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       offerId: (() { final guardedValue = map['offerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       paymentChannelMetadata: (() { final guardedValue = map['paymentChannelMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      paymentChannelType: (() { final guardedValue = map['paymentChannelType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      paymentChannelType: (() { final guardedValue = map['paymentChannelType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       publisherId: (() { final guardedValue = map['publisherId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publisherTestEnvironment: (() { final guardedValue = map['publisherTestEnvironment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      quantity: (() { final guardedValue = map['quantity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      quantity: (() { final guardedValue = map['quantity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       saasResourceName: (() { final guardedValue = map['saasResourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       saasSessionId: (() { final guardedValue = map['saasSessionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       saasSubscriptionId: (() { final guardedValue = map['saasSubscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

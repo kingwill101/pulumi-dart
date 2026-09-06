@@ -56,14 +56,14 @@ class ServerEndpointSyncActivityStatusResponse {
 
   factory ServerEndpointSyncActivityStatusResponse.fromMap(Map<String, dynamic> map) {
     return ServerEndpointSyncActivityStatusResponse(
-      appliedBytes: pulumi.Input.fromValue(map['appliedBytes'] as double),
-      appliedItemCount: pulumi.Input.fromValue(map['appliedItemCount'] as double),
-      perItemErrorCount: pulumi.Input.fromValue(map['perItemErrorCount'] as double),
-      sessionMinutesRemaining: pulumi.Input.fromValue(map['sessionMinutesRemaining'] as int),
+      appliedBytes: pulumi.Input.fromValue((map['appliedBytes'] as num).toDouble()),
+      appliedItemCount: pulumi.Input.fromValue((map['appliedItemCount'] as num).toDouble()),
+      perItemErrorCount: pulumi.Input.fromValue((map['perItemErrorCount'] as num).toDouble()),
+      sessionMinutesRemaining: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sessionMinutesRemaining'])),
       syncMode: pulumi.Input.fromValue(map['syncMode'] as String),
       timestamp: pulumi.Input.fromValue(map['timestamp'] as String),
-      totalBytes: pulumi.Input.fromValue(map['totalBytes'] as double),
-      totalItemCount: pulumi.Input.fromValue(map['totalItemCount'] as double),
+      totalBytes: pulumi.Input.fromValue((map['totalBytes'] as num).toDouble()),
+      totalItemCount: pulumi.Input.fromValue((map['totalItemCount'] as num).toDouble()),
     );
   }
 }

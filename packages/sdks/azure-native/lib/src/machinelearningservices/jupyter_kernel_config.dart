@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Jupyter kernel configuration.
 class JupyterKernelConfig {
   /// Argument to the the runtime
-  final pulumi.Input<List<String>>? argv;
+  final pulumi.Input<List<String>?>? argv;
   /// Display name of the kernel
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Language of the kernel [Example value: python]
-  final pulumi.Input<String>? language;
+  final pulumi.Input<String?>? language;
 
   /// Creates a new [JupyterKernelConfig].
   /// [argv] Argument to the the runtime

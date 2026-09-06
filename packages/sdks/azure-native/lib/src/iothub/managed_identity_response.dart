@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of the Managed identity.
 class ManagedIdentityResponse {
   /// The user assigned identity.
-  final pulumi.Input<String>? userAssignedIdentity;
+  final pulumi.Input<String?>? userAssignedIdentity;
 
   /// Creates a new [ManagedIdentityResponse].
   /// [userAssignedIdentity] The user assigned identity.

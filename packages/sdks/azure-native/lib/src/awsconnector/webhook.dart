@@ -7,19 +7,19 @@ import 'webhook_build_type_enum_value.dart';
 /// Definition of Webhook
 class Webhook {
   /// &lt;p&gt;A regular expression used to determine which repository branches are built when a webhook is triggered. If the name of a branch matches the regular expression, then it is built. If &lt;code&gt;branchFilter&lt;/code&gt; is empty, then all branches are built.&lt;/p&gt; &lt;note&gt; &lt;p&gt;It is recommended that you use &lt;code&gt;filterGroups&lt;/code&gt; instead of &lt;code&gt;branchFilter&lt;/code&gt;. &lt;/p&gt; &lt;/note&gt;
-  final pulumi.Input<String>? branchFilter;
+  final pulumi.Input<String?>? branchFilter;
   /// &lt;p&gt;Specifies the type of build this webhook will trigger.&lt;/p&gt;
-  final pulumi.Input<WebhookBuildTypeEnumValue>? buildType;
+  final pulumi.Input<WebhookBuildTypeEnumValue?>? buildType;
   /// &lt;p&gt;An array of arrays of &lt;code&gt;WebhookFilter&lt;/code&gt; objects used to determine which webhooks are triggered. At least one &lt;code&gt;WebhookFilter&lt;/code&gt; in the array must specify &lt;code&gt;EVENT&lt;/code&gt; as its &lt;code&gt;type&lt;/code&gt;. &lt;/p&gt; &lt;p&gt;For a build to be triggered, at least one filter group in the &lt;code&gt;filterGroups&lt;/code&gt; array must pass. For a filter group to pass, each of its filters must pass. &lt;/p&gt;
-  final pulumi.Input<List<FilterGroup>>? filterGroups;
+  final pulumi.Input<List<FilterGroup>?>? filterGroups;
   /// &lt;p&gt;A timestamp that indicates the last time a repository's secret token was modified. &lt;/p&gt;
-  final pulumi.Input<String>? lastModifiedSecret;
+  final pulumi.Input<String?>? lastModifiedSecret;
   /// &lt;p&gt;The CodeBuild endpoint where webhook events are sent.&lt;/p&gt;
-  final pulumi.Input<String>? payloadUrl;
+  final pulumi.Input<String?>? payloadUrl;
   /// &lt;p&gt;The secret token of the associated repository. &lt;/p&gt; &lt;note&gt; &lt;p&gt;A Bitbucket webhook does not support &lt;code&gt;secret&lt;/code&gt;. &lt;/p&gt; &lt;/note&gt;
-  final pulumi.Input<String>? secret;
+  final pulumi.Input<String?>? secret;
   /// &lt;p&gt;The URL to the webhook.&lt;/p&gt;
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [Webhook].
   /// [branchFilter] &lt;p&gt;A regular expression used to determine which repository branches are built when a webhook is triggered. If the name of a branch matches the regular expression, then it is built. If &lt;code&gt;branchFilter&lt;/code&gt; is empty, then all branches are built.&lt;/p&gt; &lt;note&gt; &lt;p&gt;It is recommended that you use &lt;code&gt;filterGroups&lt;/code&gt; instead of &lt;code&gt;branchFilter&lt;/code&gt;. &lt;/p&gt; &lt;/note&gt;

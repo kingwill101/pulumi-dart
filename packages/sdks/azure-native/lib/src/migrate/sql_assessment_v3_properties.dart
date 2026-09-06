@@ -7,11 +7,11 @@ import 'sql_assessment_settings.dart';
 /// SQL assessment properties class.
 class SqlAssessmentV3Properties {
   /// Gets or sets the machine assessment ARM ID for VM fallback.
-  final pulumi.Input<String>? fallbackMachineAssessmentArmId;
+  final pulumi.Input<String?>? fallbackMachineAssessmentArmId;
   /// Gets or sets the scope of assessment.
-  final pulumi.Input<Scope>? scope;
+  final pulumi.Input<Scope?>? scope;
   /// Gets or sets the settings for the assessment.
-  final pulumi.Input<SqlAssessmentSettings>? settings;
+  final pulumi.Input<SqlAssessmentSettings?>? settings;
 
   /// Creates a new [SqlAssessmentV3Properties].
   /// [fallbackMachineAssessmentArmId] Gets or sets the machine assessment ARM ID for VM fallback.

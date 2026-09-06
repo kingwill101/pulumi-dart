@@ -9,9 +9,9 @@ class DataflowEndpointDataExplorerAuthenticationResponse {
   /// Mode of Authentication.
   final pulumi.Input<dynamic> method;
   /// System-assigned managed identity authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse>? systemAssignedManagedIdentitySettings;
+  final pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse?>? systemAssignedManagedIdentitySettings;
   /// User-assigned managed identity authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse>? userAssignedManagedIdentitySettings;
+  final pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse?>? userAssignedManagedIdentitySettings;
 
   /// Creates a new [DataflowEndpointDataExplorerAuthenticationResponse].
   /// [method] Mode of Authentication.

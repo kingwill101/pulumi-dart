@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The rule bypass protocol.
-enum FirewallPolicyIntrusionDetectionProtocol {
+enum FirewallPolicyIntrusionDetectionProtocol implements pulumi.PulumiEnum<String> {
   valueTCP("TCP"),
   valueUDP("UDP"),
   valueICMP("ICMP"),
   valueANY("ANY");
 
   const FirewallPolicyIntrusionDetectionProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static FirewallPolicyIntrusionDetectionProtocol fromValue(String value) {

@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Cross-Origin Resource Sharing property
 class GatewayCorsProperties {
   /// Whether user credentials are supported on cross-site requests. Valid values: `true`, `false`.
-  final pulumi.Input<bool>? allowCredentials;
+  final pulumi.Input<bool?>? allowCredentials;
   /// Allowed headers in cross-site requests. The special value `*` allows actual requests to send any header.
-  final pulumi.Input<List<String>>? allowedHeaders;
+  final pulumi.Input<List<String>?>? allowedHeaders;
   /// Allowed HTTP methods on cross-site requests. The special value `*` allows all methods. If not set, `GET` and `HEAD` are allowed by default.
-  final pulumi.Input<List<String>>? allowedMethods;
+  final pulumi.Input<List<String>?>? allowedMethods;
   /// Allowed origin patterns to make cross-site requests.
-  final pulumi.Input<List<String>>? allowedOriginPatterns;
+  final pulumi.Input<List<String>?>? allowedOriginPatterns;
   /// Allowed origins to make cross-site requests. The special value `*` allows all domains.
-  final pulumi.Input<List<String>>? allowedOrigins;
+  final pulumi.Input<List<String>?>? allowedOrigins;
   /// HTTP response headers to expose for cross-site requests.
-  final pulumi.Input<List<String>>? exposedHeaders;
+  final pulumi.Input<List<String>?>? exposedHeaders;
   /// How long, in seconds, the response from a pre-flight request can be cached by clients.
-  final pulumi.Input<int>? maxAge;
+  final pulumi.Input<int?>? maxAge;
 
   /// Creates a new [GatewayCorsProperties].
   /// [allowCredentials] Whether user credentials are supported on cross-site requests. Valid values: `true`, `false`.
@@ -57,7 +57,7 @@ class GatewayCorsProperties {
       allowedOriginPatterns: (() { final guardedValue = map['allowedOriginPatterns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       allowedOrigins: (() { final guardedValue = map['allowedOrigins']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       exposedHeaders: (() { final guardedValue = map['exposedHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      maxAge: (() { final guardedValue = map['maxAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxAge: (() { final guardedValue = map['maxAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

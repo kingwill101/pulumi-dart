@@ -6,9 +6,9 @@ import 'vhd_image_mapping_rule_profile_response.dart';
 /// Azure vhd deploy mapping rule profile.
 class AzureCoreVhdImageDeployMappingRuleProfileResponse {
   /// The application enablement.
-  final pulumi.Input<String>? applicationEnablement;
+  final pulumi.Input<String?>? applicationEnablement;
   /// The vhd mapping rule profile.
-  final pulumi.Input<VhdImageMappingRuleProfileResponse>? vhdImageMappingRuleProfile;
+  final pulumi.Input<VhdImageMappingRuleProfileResponse?>? vhdImageMappingRuleProfile;
 
   /// Creates a new [AzureCoreVhdImageDeployMappingRuleProfileResponse].
   /// [applicationEnablement] The application enablement.

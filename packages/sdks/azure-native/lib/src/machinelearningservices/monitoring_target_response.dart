@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Monitoring target definition.
 class MonitoringTargetResponse {
   /// Reference to the deployment asset targeted by this monitor.
-  final pulumi.Input<String>? deploymentId;
+  final pulumi.Input<String?>? deploymentId;
   /// Reference to the model asset targeted by this monitor.
-  final pulumi.Input<String>? modelId;
+  final pulumi.Input<String?>? modelId;
   /// [Required] The machine learning task type of the monitored model.
   final pulumi.Input<String> taskType;
 

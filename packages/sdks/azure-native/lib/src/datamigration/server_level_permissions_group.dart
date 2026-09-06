@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Permission group for validations
-enum ServerLevelPermissionsGroup {
+enum ServerLevelPermissionsGroup implements pulumi.PulumiEnum<String> {
   valueDefault("Default"),
   valueMigrationFromSqlServerToAzureDB("MigrationFromSqlServerToAzureDB"),
   valueMigrationFromSqlServerToAzureMI("MigrationFromSqlServerToAzureMI"),
@@ -7,6 +9,7 @@ enum ServerLevelPermissionsGroup {
   valueMigrationFromSqlServerToAzureVM("MigrationFromSqlServerToAzureVM");
 
   const ServerLevelPermissionsGroup(this.wireValue);
+  @override
   final String wireValue;
 
   static ServerLevelPermissionsGroup fromValue(String value) {

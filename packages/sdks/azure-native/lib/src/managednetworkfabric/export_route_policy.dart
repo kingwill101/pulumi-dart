@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Export Route Policy either IPv4 or IPv6.
 class ExportRoutePolicy {
   /// ARM resource ID of RoutePolicy.
-  final pulumi.Input<String>? exportIpv4RoutePolicyId;
+  final pulumi.Input<String?>? exportIpv4RoutePolicyId;
   /// ARM resource ID of RoutePolicy.
-  final pulumi.Input<String>? exportIpv6RoutePolicyId;
+  final pulumi.Input<String?>? exportIpv6RoutePolicyId;
 
   /// Creates a new [ExportRoutePolicy].
   /// [exportIpv4RoutePolicyId] ARM resource ID of RoutePolicy.

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The GitHub action container configuration.
 class GitHubActionContainerConfiguration {
   /// The image name for the build.
-  final pulumi.Input<String>? imageName;
+  final pulumi.Input<String?>? imageName;
   /// The password used to upload the image to the container registry.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The server URL for the container registry where the build will be hosted.
-  final pulumi.Input<String>? serverUrl;
+  final pulumi.Input<String?>? serverUrl;
   /// The username used to upload the image to the container registry.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GitHubActionContainerConfiguration].
   /// [imageName] The image name for the build.

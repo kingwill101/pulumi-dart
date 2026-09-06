@@ -7,9 +7,9 @@ import 'auto_heal_triggers_response.dart';
 /// Rules that can be defined for auto-heal.
 class AutoHealRulesResponse {
   /// Actions to be executed when a rule is triggered.
-  final pulumi.Input<AutoHealActionsResponse>? actions;
+  final pulumi.Input<AutoHealActionsResponse?>? actions;
   /// Conditions that describe when to execute the auto-heal actions.
-  final pulumi.Input<AutoHealTriggersResponse>? triggers;
+  final pulumi.Input<AutoHealTriggersResponse?>? triggers;
 
   /// Creates a new [AutoHealRulesResponse].
   /// [actions] Actions to be executed when a rule is triggered.

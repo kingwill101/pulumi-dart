@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'collector_policy_args.dart';
+import 'emission_policies_properties_format_response.dart';
 import 'ingestion_policy_properties_format_response.dart';
 import 'system_data_response.dart';
 
@@ -267,7 +268,7 @@ class CollectorPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Emission policies.
-  late final pulumi.Output<List<Map<String, dynamic>>?> emissionPolicies;
+  late final pulumi.Output<List<EmissionPoliciesPropertiesFormatResponse>?> emissionPolicies;
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
   /// Ingestion policies.
@@ -300,14 +301,35 @@ class CollectorPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    emissionPolicies = registerOutput<List<Map<String, dynamic>>?>('emissionPolicies');
+    emissionPolicies = registerOutput<List<EmissionPoliciesPropertiesFormatResponse>?>('emissionPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmissionPoliciesPropertiesFormatResponse>(guardedValue, (value) => EmissionPoliciesPropertiesFormatResponse.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
     ingestionPolicy = registerOutput<IngestionPolicyPropertiesFormatResponse?>('ingestionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngestionPolicyPropertiesFormatResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [CollectorPolicy] resource.
+  CollectorPolicy.reference(String urn)
+    : super(
+        'azure-native:networkfunction:CollectorPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    emissionPolicies = registerOutput<List<EmissionPoliciesPropertiesFormatResponse>?>('emissionPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmissionPoliciesPropertiesFormatResponse>(guardedValue, (value) => EmissionPoliciesPropertiesFormatResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String>('etag');
+    ingestionPolicy = registerOutput<IngestionPolicyPropertiesFormatResponse?>('ingestionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngestionPolicyPropertiesFormatResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

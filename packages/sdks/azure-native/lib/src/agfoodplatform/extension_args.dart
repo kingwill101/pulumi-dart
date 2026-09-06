@@ -9,13 +9,13 @@ import 'api_properties.dart';
 /// {@macro pulumi_agfoodplatform_extension_args_doc}
 class ExtensionArgs {
   /// Additional Api Properties.
-  final pulumi.Input<Map<String, ApiProperties>>? additionalApiProperties;
+  final pulumi.Input<Map<String, ApiProperties>?>? additionalApiProperties;
   /// DataManagerForAgriculture resource name.
   final pulumi.Input<String> dataManagerForAgricultureResourceName;
   /// Id of extension resource.
-  final pulumi.Input<String>? extensionId;
+  final pulumi.Input<String?>? extensionId;
   /// Extension Version.
-  final pulumi.Input<String>? extensionVersion;
+  final pulumi.Input<String?>? extensionVersion;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

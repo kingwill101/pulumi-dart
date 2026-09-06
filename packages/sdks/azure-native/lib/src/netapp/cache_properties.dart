@@ -10,37 +10,37 @@ class CacheProperties {
   /// The Azure Resource URI for a delegated cache subnet that will be used to allocate data IPs.
   final pulumi.Input<String> cacheSubnetResourceId;
   /// Flag indicating whether a CIFS change notification is enabled for the cache.
-  final pulumi.Input<String>? cifsChangeNotifications;
+  final pulumi.Input<dynamic>? cifsChangeNotifications;
   /// Source of key used to encrypt data in the cache. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
-  final pulumi.Input<String> encryptionKeySource;
+  final pulumi.Input<dynamic> encryptionKeySource;
   /// Set of export policy rules
-  final pulumi.Input<CachePropertiesExportPolicy>? exportPolicy;
+  final pulumi.Input<CachePropertiesExportPolicy?>? exportPolicy;
   /// The file path of the Cache.
   final pulumi.Input<String> filepath;
   /// Flag indicating whether the global file lock is enabled for the cache.
-  final pulumi.Input<String>? globalFileLocking;
+  final pulumi.Input<dynamic>? globalFileLocking;
   /// Describe if a cache is Kerberos enabled.
-  final pulumi.Input<String>? kerberos;
+  final pulumi.Input<dynamic>? kerberos;
   /// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
-  final pulumi.Input<String>? keyVaultPrivateEndpointResourceId;
+  final pulumi.Input<String?>? keyVaultPrivateEndpointResourceId;
   /// Specifies whether LDAP is enabled or not for flexcache volume.
-  final pulumi.Input<String>? ldap;
+  final pulumi.Input<dynamic>? ldap;
   /// Specifies the type of LDAP server for flexcache volume.
-  final pulumi.Input<String>? ldapServerType;
+  final pulumi.Input<dynamic>? ldapServerType;
   /// Origin cluster information
   final pulumi.Input<OriginClusterInformation> originClusterInformation;
   /// The Azure Resource URI for a delegated subnet that will be used for ANF Intercluster Interface IP addresses.
   final pulumi.Input<String> peeringSubnetResourceId;
   /// Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol
-  final pulumi.Input<List<String>>? protocolTypes;
+  final pulumi.Input<List<dynamic>?>? protocolTypes;
   /// Maximum storage quota allowed for a file system in bytes. Valid values are in the range 50GiB to 1PiB. Values expressed in bytes as multiples of 1GiB.
   final pulumi.Input<double> size;
   /// SMB information for the cache
-  final pulumi.Input<SmbSettings>? smbSettings;
+  final pulumi.Input<SmbSettings?>? smbSettings;
   /// Maximum throughput in MiB/s that can be achieved by this cache volume and this will be accepted as input only for manual qosType cache
-  final pulumi.Input<double>? throughputMibps;
+  final pulumi.Input<double?>? throughputMibps;
   /// Flag indicating whether writeback is enabled for the cache.
-  final pulumi.Input<String>? writeBack;
+  final pulumi.Input<dynamic>? writeBack;
 
   /// Creates a new [CacheProperties].
   /// [cacheSubnetResourceId] The Azure Resource URI for a delegated cache subnet that will be used to allocate data IPs.
@@ -105,22 +105,22 @@ class CacheProperties {
   factory CacheProperties.fromMap(Map<String, dynamic> map) {
     return CacheProperties(
       cacheSubnetResourceId: pulumi.Input.fromValue(map['cacheSubnetResourceId'] as String),
-      cifsChangeNotifications: (() { final guardedValue = map['cifsChangeNotifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      encryptionKeySource: pulumi.Input.fromValue(map['encryptionKeySource'] as String),
+      cifsChangeNotifications: (() { final guardedValue = map['cifsChangeNotifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      encryptionKeySource: pulumi.Input.fromValue(map['encryptionKeySource']),
       exportPolicy: (() { final guardedValue = map['exportPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CachePropertiesExportPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       filepath: pulumi.Input.fromValue(map['filepath'] as String),
-      globalFileLocking: (() { final guardedValue = map['globalFileLocking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      kerberos: (() { final guardedValue = map['kerberos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      globalFileLocking: (() { final guardedValue = map['globalFileLocking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      kerberos: (() { final guardedValue = map['kerberos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       keyVaultPrivateEndpointResourceId: (() { final guardedValue = map['keyVaultPrivateEndpointResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ldap: (() { final guardedValue = map['ldap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ldapServerType: (() { final guardedValue = map['ldapServerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ldap: (() { final guardedValue = map['ldap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      ldapServerType: (() { final guardedValue = map['ldapServerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       originClusterInformation: pulumi.Input.fromValue(OriginClusterInformation.fromMap((map['originClusterInformation']! as Map).cast<String, dynamic>())),
       peeringSubnetResourceId: pulumi.Input.fromValue(map['peeringSubnetResourceId'] as String),
-      protocolTypes: (() { final guardedValue = map['protocolTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      size: pulumi.Input.fromValue(map['size'] as double),
+      protocolTypes: (() { final guardedValue = map['protocolTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      size: pulumi.Input.fromValue((map['size'] as num).toDouble()),
       smbSettings: (() { final guardedValue = map['smbSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SmbSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      throughputMibps: (() { final guardedValue = map['throughputMibps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      writeBack: (() { final guardedValue = map['writeBack']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      throughputMibps: (() { final guardedValue = map['throughputMibps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      writeBack: (() { final guardedValue = map['writeBack']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

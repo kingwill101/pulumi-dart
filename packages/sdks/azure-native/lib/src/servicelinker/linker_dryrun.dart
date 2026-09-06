@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'create_or_update_dryrun_parameters_response.dart';
+import 'dryrun_operation_preview_response.dart';
 import 'linker_dryrun_args.dart';
 import 'system_data_response.dart';
 
@@ -255,11 +256,11 @@ class LinkerDryrun extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// the preview of the operations for creation
-  late final pulumi.Output<List<Map<String, dynamic>>> operationPreviews;
+  late final pulumi.Output<List<DryrunOperationPreviewResponse>> operationPreviews;
   /// The parameters of the dryrun
   late final pulumi.Output<CreateOrUpdateDryrunParametersResponse?> parameters;
   /// the result of the dryrun
-  late final pulumi.Output<List<Map<String, dynamic>>> prerequisiteResults;
+  late final pulumi.Output<List<dynamic>> prerequisiteResults;
   /// The provisioning state.
   late final pulumi.Output<String> provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -283,9 +284,28 @@ class LinkerDryrun extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    operationPreviews = registerOutput<List<Map<String, dynamic>>>('operationPreviews');
+    operationPreviews = registerOutput<List<DryrunOperationPreviewResponse>>('operationPreviews', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DryrunOperationPreviewResponse>(guardedValue, (value) => DryrunOperationPreviewResponse.fromMap((value as Map).cast<String, dynamic>())); });
     parameters = registerOutput<CreateOrUpdateDryrunParametersResponse?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CreateOrUpdateDryrunParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    prerequisiteResults = registerOutput<List<Map<String, dynamic>>>('prerequisiteResults');
+    prerequisiteResults = registerOutput<List<dynamic>>('prerequisiteResults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [LinkerDryrun] resource.
+  LinkerDryrun.reference(String urn)
+    : super(
+        'azure-native:servicelinker:LinkerDryrun',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    operationPreviews = registerOutput<List<DryrunOperationPreviewResponse>>('operationPreviews', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DryrunOperationPreviewResponse>(guardedValue, (value) => DryrunOperationPreviewResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    parameters = registerOutput<CreateOrUpdateDryrunParametersResponse?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CreateOrUpdateDryrunParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    prerequisiteResults = registerOutput<List<dynamic>>('prerequisiteResults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');

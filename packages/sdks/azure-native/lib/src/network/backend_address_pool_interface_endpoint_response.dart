@@ -9,19 +9,19 @@ class BackendAddressPoolInterfaceEndpointResponse {
   /// Gets collection of references to IP addresses defined in network interfaces.
   final pulumi.Input<List<NetworkInterfaceIPConfigurationResponse>> backendIPConfigurations;
   /// A unique read-only string that changes whenever the resource is updated.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Gets load balancing rules that use this backend address pool.
   final pulumi.Input<List<SubResourceResponse>> loadBalancingRules;
   /// Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Gets outbound rules that use this backend address pool.
   final pulumi.Input<SubResourceResponse> outboundRule;
   /// Gets outbound rules that use this backend address pool.
   final pulumi.Input<List<SubResourceResponse>> outboundRules;
   /// Get provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
 
   /// Creates a new [BackendAddressPoolInterfaceEndpointResponse].
   /// [backendIPConfigurations] Gets collection of references to IP addresses defined in network interfaces.

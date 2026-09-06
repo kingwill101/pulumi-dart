@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The SKU type.
 class SkuResponse {
   /// SKU name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The SKU tier. This is based on the SKU name.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [SkuResponse].
   /// [name] SKU name.

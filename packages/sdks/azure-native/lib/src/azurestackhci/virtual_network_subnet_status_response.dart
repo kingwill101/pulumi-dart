@@ -6,11 +6,11 @@ import 'virtual_network_subnet_status_provisioning_status_response.dart';
 /// Status of virtual network subnet operations
 class VirtualNetworkSubnetStatusResponse {
   /// VirtualNetworkSubnet provisioning error code
-  final pulumi.Input<String>? errorCode;
+  final pulumi.Input<String?>? errorCode;
   /// Descriptive error message
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// Public IP provisioning status
-  final pulumi.Input<VirtualNetworkSubnetStatusProvisioningStatusResponse>? provisioningStatus;
+  final pulumi.Input<VirtualNetworkSubnetStatusProvisioningStatusResponse?>? provisioningStatus;
 
   /// Creates a new [VirtualNetworkSubnetStatusResponse].
   /// [errorCode] VirtualNetworkSubnet provisioning error code

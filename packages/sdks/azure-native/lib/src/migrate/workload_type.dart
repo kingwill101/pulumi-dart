@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the instance type.
-enum WorkloadType {
+enum WorkloadType implements pulumi.PulumiEnum<String> {
   valueIISWorkload("IISWorkload"),
   valueApacheTomcatWorkload("ApacheTomcatWorkload");
 
   const WorkloadType(this.wireValue);
+  @override
   final String wireValue;
 
   static WorkloadType fromValue(String value) {

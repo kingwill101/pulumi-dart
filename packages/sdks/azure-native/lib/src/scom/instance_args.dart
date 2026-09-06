@@ -10,19 +10,19 @@ import 'monitoring_instance_properties.dart';
 /// {@macro pulumi_scom_instance_args_doc}
 class InstanceArgs {
   /// The Azure Active Directory identity of the SCOM instance
-  final pulumi.Input<ManagedIdentity>? identity;
+  final pulumi.Input<ManagedIdentity?>? identity;
   /// Name of the Azure Monitor Operations Manager Managed Instance (SCOM MI)
-  final pulumi.Input<String>? instanceName;
+  final pulumi.Input<String?>? instanceName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The properties of a SCOM instance resource
-  final pulumi.Input<MonitoringInstanceProperties>? properties;
+  final pulumi.Input<MonitoringInstanceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Validation mode for the SCOM managed instance
-  final pulumi.Input<bool>? validationMode;
+  final pulumi.Input<bool?>? validationMode;
 
   /// Creates a new [InstanceArgs].
   /// [identity] The Azure Active Directory identity of the SCOM instance

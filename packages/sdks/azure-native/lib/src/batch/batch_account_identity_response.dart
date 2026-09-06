@@ -12,7 +12,7 @@ class BatchAccountIdentityResponse {
   /// The type of identity used for the Batch account.
   final pulumi.Input<String> type;
   /// The list of user identities associated with the Batch account.
-  final pulumi.Input<Map<String, UserAssignedIdentitiesResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentitiesResponse>?>? userAssignedIdentities;
 
   /// Creates a new [BatchAccountIdentityResponse].
   /// [principalId] The principal id of the Batch account. This property will only be provided for a system assigned identity.

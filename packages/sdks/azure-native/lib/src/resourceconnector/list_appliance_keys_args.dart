@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_resourceconnector_list_appliance_keys_args_doc}
 class ListApplianceKeysArgs {
   /// This sets the type of artifact being returned, when empty no artifact endpoint is returned.
-  final pulumi.Input<String>? artifactType;
+  final pulumi.Input<String?>? artifactType;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Appliances name.

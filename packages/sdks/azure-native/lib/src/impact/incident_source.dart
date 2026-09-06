@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Client incident source. ex : source system name where the incident is created
-enum IncidentSource {
+enum IncidentSource implements pulumi.PulumiEnum<String> {
   azureDevops("AzureDevops"),
   iCM("ICM"),
   jira("Jira"),
@@ -7,6 +9,7 @@ enum IncidentSource {
   other("Other");
 
   const IncidentSource(this.wireValue);
+  @override
   final String wireValue;
 
   static IncidentSource fromValue(String value) {

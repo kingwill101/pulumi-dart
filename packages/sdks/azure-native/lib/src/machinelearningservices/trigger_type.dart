@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required]
-enum TriggerType {
+enum TriggerType implements pulumi.PulumiEnum<String> {
   recurrence("Recurrence"),
   cron("Cron");
 
   const TriggerType(this.wireValue);
+  @override
   final String wireValue;
 
   static TriggerType fromValue(String value) {

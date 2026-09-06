@@ -6,30 +6,30 @@ class GetMultipleActivationKeyResult {
   /// Agreement number under which the key is requested.
   final String? agreementNumber;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// End of support of security updates activated by the MAK key.
-  final String expirationDate;
+  final String? expirationDate;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Number of activations/servers using the MAK key.
   final int? installedServerNumber;
   /// &lt;code&gt; true &lt;/code&gt; if user has eligible on-premises Windows physical or virtual machines, and that the requested key will only be used in their organization; &lt;code&gt; false &lt;/code&gt; otherwise.
   final bool? isEligible;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// MAK 5x5 key.
-  final String multipleActivationKey;
+  final String? multipleActivationKey;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Type of OS for which the key is requested.
   final String? osType;
-  final String provisioningState;
+  final String? provisioningState;
   /// Type of support
   final String? supportType;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetMultipleActivationKeyResult].
   /// [agreementNumber] Agreement number under which the key is requested.
@@ -42,62 +42,62 @@ class GetMultipleActivationKeyResult {
   /// [multipleActivationKey] MAK 5x5 key.
   /// [name] The name of the resource
   /// [osType] Type of OS for which the key is requested.
-  /// [provisioningState] Required.
+  /// [provisioningState] Optional.
   /// [supportType] Type of support
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  const GetMultipleActivationKeyResult({
+  GetMultipleActivationKeyResult({
     this.agreementNumber,
-    required this.azureApiVersion,
-    required this.expirationDate,
-    required this.id,
+    this.azureApiVersion,
+    this.expirationDate,
+    this.id,
     this.installedServerNumber,
     this.isEligible,
-    required this.location,
-    required this.multipleActivationKey,
-    required this.name,
+    this.location,
+    this.multipleActivationKey,
+    this.name,
     this.osType,
-    required this.provisioningState,
-    this.supportType,
+    this.provisioningState,
+    String? supportType,
     this.tags,
-    required this.type,
-  });
+    this.type,
+  }) : supportType = supportType ?? 'SupplementalServicing';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'agreementNumber': ?agreementNumber,
-      'azureApiVersion': azureApiVersion,
-      'expirationDate': expirationDate,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'expirationDate': ?expirationDate,
+      'id': ?id,
       'installedServerNumber': ?installedServerNumber,
       'isEligible': ?isEligible,
-      'location': location,
-      'multipleActivationKey': multipleActivationKey,
-      'name': name,
+      'location': ?location,
+      'multipleActivationKey': ?multipleActivationKey,
+      'name': ?name,
       'osType': ?osType,
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'supportType': ?supportType,
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetMultipleActivationKeyResult.fromMap(Map<String, dynamic> map) {
     return GetMultipleActivationKeyResult(
       agreementNumber: (() { final guardedValue = map['agreementNumber']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      expirationDate: map['expirationDate'] as String,
-      id: map['id'] as String,
-      installedServerNumber: (() { final guardedValue = map['installedServerNumber']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      expirationDate: (() { final guardedValue = map['expirationDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      installedServerNumber: (() { final guardedValue = map['installedServerNumber']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       isEligible: (() { final guardedValue = map['isEligible']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      location: map['location'] as String,
-      multipleActivationKey: map['multipleActivationKey'] as String,
-      name: map['name'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      multipleActivationKey: (() { final guardedValue = map['multipleActivationKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       supportType: (() { final guardedValue = map['supportType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

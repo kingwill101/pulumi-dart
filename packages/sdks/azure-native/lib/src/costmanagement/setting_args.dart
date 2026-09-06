@@ -9,13 +9,13 @@ import 'settings_properties_cache.dart';
 /// {@macro pulumi_costmanagement_setting_args_doc}
 class SettingArgs {
   /// Array of scopes with additional details used by Cost Management in the Azure portal.
-  final pulumi.Input<List<SettingsPropertiesCache>>? cache;
+  final pulumi.Input<List<SettingsPropertiesCache>?>? cache;
   /// Sets the default scope the current user will see when they sign into Azure Cost Management in the Azure portal.
   final pulumi.Input<String> scope;
   /// Name of the setting. Allowed values: myscope
-  final pulumi.Input<String>? settingName;
+  final pulumi.Input<String?>? settingName;
   /// Indicates what scope Cost Management in the Azure portal should default to. Allowed values: LastUsed.
-  final pulumi.Input<String>? startOn;
+  final pulumi.Input<String?>? startOn;
 
   /// Creates a new [SettingArgs].
   /// [cache] Array of scopes with additional details used by Cost Management in the Azure portal.

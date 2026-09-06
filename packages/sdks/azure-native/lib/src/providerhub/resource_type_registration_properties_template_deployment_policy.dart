@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The template deployment policy.
 class ResourceTypeRegistrationPropertiesTemplateDeploymentPolicy {
   /// The capabilities.
-  final pulumi.Input<String> capabilities;
+  final pulumi.Input<dynamic> capabilities;
   /// The preflight notifications.
-  final pulumi.Input<String>? preflightNotifications;
+  final pulumi.Input<dynamic>? preflightNotifications;
   /// The preflight options.
-  final pulumi.Input<String> preflightOptions;
+  final pulumi.Input<dynamic> preflightOptions;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesTemplateDeploymentPolicy].
   /// [capabilities] The capabilities.
@@ -31,9 +31,9 @@ class ResourceTypeRegistrationPropertiesTemplateDeploymentPolicy {
 
   factory ResourceTypeRegistrationPropertiesTemplateDeploymentPolicy.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesTemplateDeploymentPolicy(
-      capabilities: pulumi.Input.fromValue(map['capabilities'] as String),
-      preflightNotifications: (() { final guardedValue = map['preflightNotifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      preflightOptions: pulumi.Input.fromValue(map['preflightOptions'] as String),
+      capabilities: pulumi.Input.fromValue(map['capabilities']),
+      preflightNotifications: (() { final guardedValue = map['preflightNotifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      preflightOptions: pulumi.Input.fromValue(map['preflightOptions']),
     );
   }
 }

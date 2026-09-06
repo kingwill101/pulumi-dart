@@ -1,8 +1,11 @@
-enum NGroupUpdateMode {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum NGroupUpdateMode implements pulumi.PulumiEnum<String> {
   manual("Manual"),
   rolling("Rolling");
 
   const NGroupUpdateMode(this.wireValue);
+  @override
   final String wireValue;
 
   static NGroupUpdateMode fromValue(String value) {

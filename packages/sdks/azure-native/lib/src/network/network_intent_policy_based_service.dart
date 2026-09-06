@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Network intent policy based services.
-enum NetworkIntentPolicyBasedService {
+enum NetworkIntentPolicyBasedService implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueAll("All"),
   valueAllowRulesOnly("AllowRulesOnly");
 
   const NetworkIntentPolicyBasedService(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkIntentPolicyBasedService fromValue(String value) {

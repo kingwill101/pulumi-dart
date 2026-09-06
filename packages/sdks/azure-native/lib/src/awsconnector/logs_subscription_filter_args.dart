@@ -9,15 +9,15 @@ import 'logs_subscription_filter_properties.dart';
 /// {@macro pulumi_awsconnector_logs_subscription_filter_args_doc}
 class LogsSubscriptionFilterArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of LogsSubscriptionFilter
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<LogsSubscriptionFilterProperties>? properties;
+  final pulumi.Input<LogsSubscriptionFilterProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [LogsSubscriptionFilterArgs].
   /// [location] The geo-location where the resource lives

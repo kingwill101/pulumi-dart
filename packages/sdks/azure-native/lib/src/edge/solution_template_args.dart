@@ -9,15 +9,15 @@ import 'solution_template_properties.dart';
 /// {@macro pulumi_edge_solution_template_args_doc}
 class SolutionTemplateArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<SolutionTemplateProperties>? properties;
+  final pulumi.Input<SolutionTemplateProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the SolutionTemplate
-  final pulumi.Input<String>? solutionTemplateName;
+  final pulumi.Input<String?>? solutionTemplateName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SolutionTemplateArgs].
   /// [location] The geo-location where the resource lives

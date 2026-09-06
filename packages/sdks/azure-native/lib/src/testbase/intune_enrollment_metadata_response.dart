@@ -6,11 +6,11 @@ import 'enrolled_intune_app_response.dart';
 /// The metadata of Intune enrollment.
 class IntuneEnrollmentMetadataResponse {
   /// The enrolled Intune apps.
-  final pulumi.Input<List<EnrolledIntuneAppResponse>>? appList;
+  final pulumi.Input<List<EnrolledIntuneAppResponse>?>? appList;
   /// The id of the Intune enrollment credential.
-  final pulumi.Input<String>? credentialId;
+  final pulumi.Input<String?>? credentialId;
   /// The expected duration of Intune applications and policies deployment.
-  final pulumi.Input<int>? expectedDeploymentDurationInMinute;
+  final pulumi.Input<int?>? expectedDeploymentDurationInMinute;
 
   /// Creates a new [IntuneEnrollmentMetadataResponse].
   /// [appList] The enrolled Intune apps.
@@ -34,7 +34,7 @@ class IntuneEnrollmentMetadataResponse {
     return IntuneEnrollmentMetadataResponse(
       appList: (() { final guardedValue = map['appList']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EnrolledIntuneAppResponse>(guardedValue, (value) => EnrolledIntuneAppResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       credentialId: (() { final guardedValue = map['credentialId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      expectedDeploymentDurationInMinute: (() { final guardedValue = map['expectedDeploymentDurationInMinute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      expectedDeploymentDurationInMinute: (() { final guardedValue = map['expectedDeploymentDurationInMinute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

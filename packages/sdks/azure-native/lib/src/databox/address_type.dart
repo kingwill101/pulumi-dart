@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of address.
-enum AddressType {
+enum AddressType implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueResidential("Residential"),
   valueCommercial("Commercial");
 
   const AddressType(this.wireValue);
+  @override
   final String wireValue;
 
   static AddressType fromValue(String value) {

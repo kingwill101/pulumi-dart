@@ -6,34 +6,34 @@ import 'system_data_response.dart';
 /// Result data returned by getReadOnlyFollowingDatabase.
 class GetReadOnlyFollowingDatabaseResult {
   /// The name of the attached database configuration cluster
-  final String attachedDatabaseConfigurationName;
+  final String? attachedDatabaseConfigurationName;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The time the data should be kept in cache for fast queries in TimeSpan.
   final String? hotCachePeriod;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Kind of the database
   /// Expected value is 'ReadOnlyFollowing'.
-  final String kind;
+  final String? kind;
   /// The name of the leader cluster
-  final String leaderClusterResourceId;
+  final String? leaderClusterResourceId;
   /// Resource location.
   final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The principals modification kind of the database
-  final String principalsModificationKind;
+  final String? principalsModificationKind;
   /// The provisioned state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The time the data should be kept before it stops being accessible to queries in TimeSpan.
-  final String softDeletePeriod;
+  final String? softDeletePeriod;
   /// The statistics of the database.
-  final DatabaseStatisticsResponse statistics;
+  final DatabaseStatisticsResponse? statistics;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetReadOnlyFollowingDatabaseResult].
   /// [attachedDatabaseConfigurationName] The name of the attached database configuration cluster
@@ -51,57 +51,57 @@ class GetReadOnlyFollowingDatabaseResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetReadOnlyFollowingDatabaseResult({
-    required this.attachedDatabaseConfigurationName,
-    required this.azureApiVersion,
+    this.attachedDatabaseConfigurationName,
+    this.azureApiVersion,
     this.hotCachePeriod,
-    required this.id,
-    required this.kind,
-    required this.leaderClusterResourceId,
+    this.id,
+    this.kind,
+    this.leaderClusterResourceId,
     this.location,
-    required this.name,
-    required this.principalsModificationKind,
-    required this.provisioningState,
-    required this.softDeletePeriod,
-    required this.statistics,
-    required this.systemData,
-    required this.type,
+    this.name,
+    this.principalsModificationKind,
+    this.provisioningState,
+    this.softDeletePeriod,
+    this.statistics,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachedDatabaseConfigurationName': attachedDatabaseConfigurationName,
-      'azureApiVersion': azureApiVersion,
+      'attachedDatabaseConfigurationName': ?attachedDatabaseConfigurationName,
+      'azureApiVersion': ?azureApiVersion,
       'hotCachePeriod': ?hotCachePeriod,
-      'id': id,
-      'kind': kind,
-      'leaderClusterResourceId': leaderClusterResourceId,
+      'id': ?id,
+      'kind': ?kind,
+      'leaderClusterResourceId': ?leaderClusterResourceId,
       'location': ?location,
-      'name': name,
-      'principalsModificationKind': principalsModificationKind,
-      'provisioningState': provisioningState,
-      'softDeletePeriod': softDeletePeriod,
-      'statistics': statistics.toMap(),
-      'systemData': systemData.toMap(),
-      'type': type,
+      'name': ?name,
+      'principalsModificationKind': ?principalsModificationKind,
+      'provisioningState': ?provisioningState,
+      'softDeletePeriod': ?softDeletePeriod,
+      'statistics': ?statistics?.toMap(),
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetReadOnlyFollowingDatabaseResult.fromMap(Map<String, dynamic> map) {
     return GetReadOnlyFollowingDatabaseResult(
-      attachedDatabaseConfigurationName: map['attachedDatabaseConfigurationName'] as String,
-      azureApiVersion: map['azureApiVersion'] as String,
+      attachedDatabaseConfigurationName: (() { final guardedValue = map['attachedDatabaseConfigurationName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       hotCachePeriod: (() { final guardedValue = map['hotCachePeriod']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      kind: map['kind'] as String,
-      leaderClusterResourceId: map['leaderClusterResourceId'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      leaderClusterResourceId: (() { final guardedValue = map['leaderClusterResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      principalsModificationKind: map['principalsModificationKind'] as String,
-      provisioningState: map['provisioningState'] as String,
-      softDeletePeriod: map['softDeletePeriod'] as String,
-      statistics: DatabaseStatisticsResponse.fromMap((map['statistics']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      principalsModificationKind: (() { final guardedValue = map['principalsModificationKind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      softDeletePeriod: (() { final guardedValue = map['softDeletePeriod']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      statistics: (() { final guardedValue = map['statistics']; if (guardedValue == null) return null; return DatabaseStatisticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of integration runtime.
-enum IntegrationRuntimeType {
+enum IntegrationRuntimeType implements pulumi.PulumiEnum<String> {
   managed("Managed"),
   selfHosted("SelfHosted");
 
   const IntegrationRuntimeType(this.wireValue);
+  @override
   final String wireValue;
 
   static IntegrationRuntimeType fromValue(String value) {

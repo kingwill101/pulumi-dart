@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'stateful_service_properties.dart';
 
 /// {@template pulumi_servicefabric_managed_cluster_service_args_doc}
 /// The set of arguments for ManagedClusterService.
@@ -13,15 +12,15 @@ class ManagedClusterServiceArgs {
   /// The name of the cluster resource.
   final pulumi.Input<String> clusterName;
   /// Resource location depends on the parent resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The service resource properties.
-  final pulumi.Input<StatefulServiceProperties>? properties;
+  final pulumi.Input<dynamic>? properties;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the service resource in the format of {applicationName}~{serviceName}.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
   /// Azure resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ManagedClusterServiceArgs].
   /// [applicationName] The name of the application resource.
@@ -46,7 +45,7 @@ class ManagedClusterServiceArgs {
       'applicationName': applicationName,
       'clusterName': clusterName,
       'location': ?location,
-      'properties': ?pulumi.Input.mapOptionalInputValue<StatefulServiceProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': ?properties,
       'resourceGroupName': resourceGroupName,
       'serviceName': ?serviceName,
       'tags': ?tags,
@@ -58,7 +57,7 @@ class ManagedClusterServiceArgs {
       applicationName: pulumi.Input.fromValue(map['applicationName'] as String),
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StatefulServiceProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

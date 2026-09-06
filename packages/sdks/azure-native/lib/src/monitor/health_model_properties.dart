@@ -6,7 +6,7 @@ import 'model_discovery_settings.dart';
 /// HealthModel properties
 class HealthModelProperties {
   /// Configure to automatically discover entities from a given scope, such as a Service Group. The discovered entities will be linked to the root entity of the health model.
-  final pulumi.Input<ModelDiscoverySettings>? discovery;
+  final pulumi.Input<ModelDiscoverySettings?>? discovery;
 
   /// Creates a new [HealthModelProperties].
   /// [discovery] Configure to automatically discover entities from a given scope, such as a Service Group. The discovered entities will be linked to the root entity of the health model.

@@ -9,11 +9,11 @@ import 'site_properties.dart';
 /// {@macro pulumi_edge_sites_by_service_group_args_doc}
 class SitesByServiceGroupArgs {
   /// The resource-specific properties for this resource.
-  final pulumi.Input<SiteProperties>? properties;
+  final pulumi.Input<SiteProperties?>? properties;
   /// The name of the service group
   final pulumi.Input<String> servicegroupName;
   /// The name of the Site
-  final pulumi.Input<String>? siteName;
+  final pulumi.Input<String?>? siteName;
 
   /// Creates a new [SitesByServiceGroupArgs].
   /// [properties] The resource-specific properties for this resource.

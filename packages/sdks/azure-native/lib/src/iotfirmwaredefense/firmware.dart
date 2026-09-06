@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firmware_args.dart';
+import 'status_message_response.dart';
 import 'system_data_response.dart';
 
 /// Firmware definition
@@ -373,7 +374,7 @@ class Firmware extends pulumi.CustomResource {
   /// The status of firmware scan.
   late final pulumi.Output<String?> status;
   /// A list of errors or other messages generated during firmware analysis
-  late final pulumi.Output<List<Map<String, dynamic>>?> statusMessages;
+  late final pulumi.Output<List<StatusMessageResponse>?> statusMessages;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -405,7 +406,31 @@ class Firmware extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String?>('status');
-    statusMessages = registerOutput<List<Map<String, dynamic>>?>('statusMessages');
+    statusMessages = registerOutput<List<StatusMessageResponse>?>('statusMessages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StatusMessageResponse>(guardedValue, (value) => StatusMessageResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    vendor = registerOutput<String?>('vendor');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [Firmware] resource.
+  Firmware.reference(String urn)
+    : super(
+        'azure-native:iotfirmwaredefense:Firmware',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    fileName = registerOutput<String?>('fileName');
+    fileSize = registerOutput<double?>('fileSize');
+    model = registerOutput<String?>('model');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<String?>('status');
+    statusMessages = registerOutput<List<StatusMessageResponse>?>('statusMessages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StatusMessageResponse>(guardedValue, (value) => StatusMessageResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     vendor = registerOutput<String?>('vendor');

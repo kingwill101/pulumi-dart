@@ -6,15 +6,15 @@ import 'sub_resource.dart';
 /// IP configuration for virtual network gateway.
 class VirtualNetworkGatewayIPConfiguration {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The private IP address allocation method.
-  final pulumi.Input<String>? privateIPAllocationMethod;
+  final pulumi.Input<dynamic>? privateIPAllocationMethod;
   /// The reference to the public IP resource.
-  final pulumi.Input<SubResource>? publicIPAddress;
+  final pulumi.Input<SubResource?>? publicIPAddress;
   /// The reference to the subnet resource.
-  final pulumi.Input<SubResource>? subnet;
+  final pulumi.Input<SubResource?>? subnet;
 
   /// Creates a new [VirtualNetworkGatewayIPConfiguration].
   /// [id] Resource ID.
@@ -44,7 +44,7 @@ class VirtualNetworkGatewayIPConfiguration {
     return VirtualNetworkGatewayIPConfiguration(
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      privateIPAllocationMethod: (() { final guardedValue = map['privateIPAllocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateIPAllocationMethod: (() { final guardedValue = map['privateIPAllocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       publicIPAddress: (() { final guardedValue = map['publicIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

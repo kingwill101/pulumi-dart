@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AzureFirewall NAT Rule Collection Action.
 class AzureFirewallNatRCAction {
   /// The type of action.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [AzureFirewallNatRCAction].
   /// [type] The type of action.
@@ -21,7 +21,7 @@ class AzureFirewallNatRCAction {
 
   factory AzureFirewallNatRCAction.fromMap(Map<String, dynamic> map) {
     return AzureFirewallNatRCAction(
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -6,7 +6,7 @@ import 'metric_criteria.dart';
 /// Specifies the metric alert criteria for a single resource that has multiple metric criteria.
 class MetricAlertSingleResourceMultipleMetricCriteria {
   /// The list of metric criteria for this 'all of' operation.
-  final pulumi.Input<List<MetricCriteria>>? allOf;
+  final pulumi.Input<List<MetricCriteria>?>? allOf;
   /// specifies the type of the alert criteria.
   /// Expected value is 'Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria'.
   final pulumi.Input<String> odataType;

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Guest disk signature based disk exclusion option when doing enable protection of virtual machine in InMage provider.
 class InMageDiskSignatureExclusionOptions {
   /// The guest signature of disk to be excluded from replication.
-  final pulumi.Input<String>? diskSignature;
+  final pulumi.Input<String?>? diskSignature;
 
   /// Creates a new [InMageDiskSignatureExclusionOptions].
   /// [diskSignature] The guest signature of disk to be excluded from replication.

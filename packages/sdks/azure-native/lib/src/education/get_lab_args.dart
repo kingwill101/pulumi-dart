@@ -12,7 +12,7 @@ class GetLabArgs {
   /// The name of the billing profile.
   final pulumi.Input<String> billingProfileName;
   /// May be used to include budget information.
-  final pulumi.Input<bool>? includeBudget;
+  final pulumi.Input<bool?>? includeBudget;
   /// The name of the invoice section.
   final pulumi.Input<String> invoiceSectionName;
 

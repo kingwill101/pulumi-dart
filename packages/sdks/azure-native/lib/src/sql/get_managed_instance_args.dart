@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sql_get_managed_instance_args_doc}
 class GetManagedInstanceArgs {
   /// The child resources to include in the response.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the managed instance.
   final pulumi.Input<String> managedInstanceName;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.

@@ -241,7 +241,30 @@ class WorkloadNetworkDnsService extends pulumi.CustomResource {
     defaultDnsZone = registerOutput<String?>('defaultDnsZone');
     displayName = registerOutput<String?>('displayName');
     dnsServiceIp = registerOutput<String?>('dnsServiceIp');
-    fqdnZones = registerOutput<List<String>?>('fqdnZones');
+    fqdnZones = registerOutput<List<String>?>('fqdnZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    logLevel = registerOutput<String?>('logLevel');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    revision = registerOutput<double?>('revision');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [WorkloadNetworkDnsService] resource.
+  WorkloadNetworkDnsService.reference(String urn)
+    : super(
+        'azure-native:avs:WorkloadNetworkDnsService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultDnsZone = registerOutput<String?>('defaultDnsZone');
+    displayName = registerOutput<String?>('displayName');
+    dnsServiceIp = registerOutput<String?>('dnsServiceIp');
+    fqdnZones = registerOutput<List<String>?>('fqdnZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     logLevel = registerOutput<String?>('logLevel');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');

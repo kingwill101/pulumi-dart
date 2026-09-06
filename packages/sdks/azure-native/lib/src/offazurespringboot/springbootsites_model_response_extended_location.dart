@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The extended location definition.
 class SpringbootsitesModelResponseExtendedLocation {
   /// The extended location name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The extended location type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [SpringbootsitesModelResponseExtendedLocation].
   /// [name] The extended location name.

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Schedule info describing when the server should be started or stopped.
 class ScheduleItem {
   /// Start day.
-  final pulumi.Input<String> startDay;
+  final pulumi.Input<dynamic> startDay;
   /// Start time.
   final pulumi.Input<String> startTime;
   /// Stop day.
-  final pulumi.Input<String> stopDay;
+  final pulumi.Input<dynamic> stopDay;
   /// Stop time.
   final pulumi.Input<String> stopTime;
 
@@ -36,9 +36,9 @@ class ScheduleItem {
 
   factory ScheduleItem.fromMap(Map<String, dynamic> map) {
     return ScheduleItem(
-      startDay: pulumi.Input.fromValue(map['startDay'] as String),
+      startDay: pulumi.Input.fromValue(map['startDay']),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
-      stopDay: pulumi.Input.fromValue(map['stopDay'] as String),
+      stopDay: pulumi.Input.fromValue(map['stopDay']),
       stopTime: pulumi.Input.fromValue(map['stopTime'] as String),
     );
   }

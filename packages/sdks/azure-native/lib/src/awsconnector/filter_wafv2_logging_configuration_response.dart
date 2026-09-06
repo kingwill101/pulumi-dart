@@ -6,11 +6,11 @@ import 'condition_response.dart';
 /// Definition of Filter
 class FilterWafv2LoggingConfigurationResponse {
   /// How to handle logs that satisfy the filter's conditions and requirement.
-  final pulumi.Input<String>? behavior;
+  final pulumi.Input<String?>? behavior;
   /// Match conditions for the filter.
-  final pulumi.Input<List<ConditionResponse>>? conditions;
+  final pulumi.Input<List<ConditionResponse>?>? conditions;
   /// Logic to apply to the filtering conditions. You can specify that, in order to satisfy the filter, a log must match all conditions or must match at least one condition.
-  final pulumi.Input<String>? requirement;
+  final pulumi.Input<String?>? requirement;
 
   /// Creates a new [FilterWafv2LoggingConfigurationResponse].
   /// [behavior] How to handle logs that satisfy the filter's conditions and requirement.

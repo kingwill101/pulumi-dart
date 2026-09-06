@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The strategy for creating the OS disk.
-enum OsDiskCreateOption {
+enum OsDiskCreateOption implements pulumi.PulumiEnum<String> {
   ephemeral("Ephemeral"),
   persistent("Persistent");
 
   const OsDiskCreateOption(this.wireValue);
+  @override
   final String wireValue;
 
   static OsDiskCreateOption fromValue(String value) {

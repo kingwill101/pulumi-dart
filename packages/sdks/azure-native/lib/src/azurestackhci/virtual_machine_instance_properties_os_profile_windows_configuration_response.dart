@@ -6,15 +6,15 @@ import 'ssh_configuration_response.dart';
 /// Windows Configuration for the virtual machine instance
 class VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse {
   /// Whether to EnableAutomaticUpdates on the machine
-  final pulumi.Input<bool>? enableAutomaticUpdates;
+  final pulumi.Input<bool?>? enableAutomaticUpdates;
   /// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
-  final pulumi.Input<bool>? provisionVMAgent;
+  final pulumi.Input<bool?>? provisionVMAgent;
   /// Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
-  final pulumi.Input<bool>? provisionVMConfigAgent;
+  final pulumi.Input<bool?>? provisionVMConfigAgent;
   /// Specifies the ssh key configuration for Windows OS.
-  final pulumi.Input<SshConfigurationResponse>? ssh;
+  final pulumi.Input<SshConfigurationResponse?>? ssh;
   /// TimeZone for the virtual machine instance
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse].
   /// [enableAutomaticUpdates] Whether to EnableAutomaticUpdates on the machine
@@ -22,13 +22,13 @@ class VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse {
   /// [provisionVMConfigAgent] Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
   /// [ssh] Specifies the ssh key configuration for Windows OS.
   /// [timeZone] TimeZone for the virtual machine instance
-  const VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse({
+  VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse({
     this.enableAutomaticUpdates,
-    this.provisionVMAgent,
-    this.provisionVMConfigAgent,
+    pulumi.Input<bool?>? provisionVMAgent,
+    pulumi.Input<bool?>? provisionVMConfigAgent,
     this.ssh,
     this.timeZone,
-  });
+  }) : provisionVMAgent = provisionVMAgent ?? pulumi.Input.fromValue(true), provisionVMConfigAgent = provisionVMConfigAgent ?? pulumi.Input.fromValue(true);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

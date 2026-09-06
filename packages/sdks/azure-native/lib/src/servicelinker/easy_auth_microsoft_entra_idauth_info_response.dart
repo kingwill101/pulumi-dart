@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The authentication info when authType is EasyAuth Microsoft Entra ID
 class EasyAuthMicrosoftEntraIDAuthInfoResponse {
   /// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
-  final pulumi.Input<String>? authMode;
+  final pulumi.Input<String?>? authMode;
   /// The authentication type.
   /// Expected value is 'easyAuthMicrosoftEntraID'.
   final pulumi.Input<String> authType;
   /// Application clientId for EasyAuth Microsoft Entra ID.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Indicates whether to clean up previous operation when Linker is updating or deleting
-  final pulumi.Input<String>? deleteOrUpdateBehavior;
+  final pulumi.Input<String?>? deleteOrUpdateBehavior;
   /// Application Secret for EasyAuth Microsoft Entra ID.
-  final pulumi.Input<String>? secret;
+  final pulumi.Input<String?>? secret;
 
   /// Creates a new [EasyAuthMicrosoftEntraIDAuthInfoResponse].
   /// [authMode] Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.

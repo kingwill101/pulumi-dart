@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Client secret information for factory's bring your own app repository configuration.
 class GitHubClientSecret {
   /// Bring your own app client secret AKV URL.
-  final pulumi.Input<String>? byoaSecretAkvUrl;
+  final pulumi.Input<String?>? byoaSecretAkvUrl;
   /// Bring your own app client secret name in AKV.
-  final pulumi.Input<String>? byoaSecretName;
+  final pulumi.Input<String?>? byoaSecretName;
 
   /// Creates a new [GitHubClientSecret].
   /// [byoaSecretAkvUrl] Bring your own app client secret AKV URL.

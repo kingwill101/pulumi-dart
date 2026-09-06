@@ -10,21 +10,21 @@ class RuntimeEnvironmentArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
   /// List of Default packages for Environment
-  final pulumi.Input<Map<String, String>>? defaultPackages;
+  final pulumi.Input<Map<String, String>?>? defaultPackages;
   /// Gets or sets the description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Language of Runtime Environment
-  final pulumi.Input<String>? language;
+  final pulumi.Input<String?>? language;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Runtime Environment.
-  final pulumi.Input<String>? runtimeEnvironmentName;
+  final pulumi.Input<String?>? runtimeEnvironmentName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Version of Language
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [RuntimeEnvironmentArgs].
   /// [automationAccountName] The name of the automation account.

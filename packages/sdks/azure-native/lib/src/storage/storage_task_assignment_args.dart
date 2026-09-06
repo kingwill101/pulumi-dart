@@ -15,7 +15,7 @@ class StorageTaskAssignmentArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  final pulumi.Input<String>? storageTaskAssignmentName;
+  final pulumi.Input<String?>? storageTaskAssignmentName;
 
   /// Creates a new [StorageTaskAssignmentArgs].
   /// [accountName] The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.

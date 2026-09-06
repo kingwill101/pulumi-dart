@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Notebook parameter.
 class NotebookParameter {
   /// Notebook parameter type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
   /// Notebook parameter value. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? value;
 
@@ -26,7 +26,7 @@ class NotebookParameter {
 
   factory NotebookParameter.fromMap(Map<String, dynamic> map) {
     return NotebookParameter(
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }

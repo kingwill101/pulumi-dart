@@ -12,7 +12,7 @@ class DockerImage {
   /// Expected value is 'Image'.
   final pulumi.Input<String> dockerSpecificationType;
   /// The platform information of the docker image.
-  final pulumi.Input<DockerImagePlatform>? platform;
+  final pulumi.Input<DockerImagePlatform?>? platform;
 
   /// Creates a new [DockerImage].
   /// [dockerImageUri] [Required] Image name of a custom base image.

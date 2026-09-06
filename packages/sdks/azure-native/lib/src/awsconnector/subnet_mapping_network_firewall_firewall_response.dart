@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of SubnetMapping
 class SubnetMappingNetworkFirewallFirewallResponse {
   /// A IPAddressType
-  final pulumi.Input<String>? ipAddressType;
+  final pulumi.Input<String?>? ipAddressType;
   /// A SubnetId.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [SubnetMappingNetworkFirewallFirewallResponse].
   /// [ipAddressType] A IPAddressType

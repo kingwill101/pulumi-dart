@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of custom data column.
 class ColumnDefinitionResponse {
   /// The name of the column.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The type of the column data.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ColumnDefinitionResponse].
   /// [name] The name of the column.

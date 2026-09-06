@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Image reference information
 class ImageReference {
   /// Image ID, or Image version ID. When Image ID is provided, its latest version will be used.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [ImageReference].
   /// [id] Image ID, or Image version ID. When Image ID is provided, its latest version will be used.

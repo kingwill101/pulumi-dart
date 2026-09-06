@@ -87,7 +87,7 @@ class ServerEndpointSyncStatusResponse {
       lastUpdatedTimestamp: pulumi.Input.fromValue(map['lastUpdatedTimestamp'] as String),
       offlineDataTransferStatus: pulumi.Input.fromValue(map['offlineDataTransferStatus'] as String),
       syncActivity: pulumi.Input.fromValue(map['syncActivity'] as String),
-      totalPersistentFilesNotSyncingCount: pulumi.Input.fromValue(map['totalPersistentFilesNotSyncingCount'] as double),
+      totalPersistentFilesNotSyncingCount: pulumi.Input.fromValue((map['totalPersistentFilesNotSyncingCount'] as num).toDouble()),
       uploadActivity: pulumi.Input.fromValue(ServerEndpointSyncActivityStatusResponse.fromMap((map['uploadActivity']! as Map).cast<String, dynamic>())),
       uploadHealth: pulumi.Input.fromValue(map['uploadHealth'] as String),
       uploadStatus: pulumi.Input.fromValue(ServerEndpointSyncSessionStatusResponse.fromMap((map['uploadStatus']! as Map).cast<String, dynamic>())),

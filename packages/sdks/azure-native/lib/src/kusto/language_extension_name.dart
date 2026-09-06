@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The language extension name.
-enum LanguageExtensionName {
+enum LanguageExtensionName implements pulumi.PulumiEnum<String> {
   valuePYTHON("PYTHON"),
   valueR("R");
 
   const LanguageExtensionName(this.wireValue);
+  @override
   final String wireValue;
 
   static LanguageExtensionName fromValue(String value) {

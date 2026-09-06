@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Compute information of a server.
 class ServerSkuResponse {
   /// Compute tier and size of the database server. This object is empty for an Azure Database for PostgreSQL single server.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Tier of the compute assigned to a server.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [ServerSkuResponse].
   /// [name] Compute tier and size of the database server. This object is empty for an Azure Database for PostgreSQL single server.

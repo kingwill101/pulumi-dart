@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Pairs of virtual network ID and private endpoint ID. Every virtual network that has volumes encrypted with customer-managed keys needs its own key vault private endpoint.
 class KeyVaultPrivateEndpointResponse {
   /// Identifier of the private endpoint to reach the Azure Key Vault
-  final pulumi.Input<String>? privateEndpointId;
+  final pulumi.Input<String?>? privateEndpointId;
   /// Identifier for the virtual network id
-  final pulumi.Input<String>? virtualNetworkId;
+  final pulumi.Input<String?>? virtualNetworkId;
 
   /// Creates a new [KeyVaultPrivateEndpointResponse].
   /// [privateEndpointId] Identifier of the private endpoint to reach the Azure Key Vault

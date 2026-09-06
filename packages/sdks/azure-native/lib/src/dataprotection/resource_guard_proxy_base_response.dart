@@ -5,10 +5,10 @@ import 'resource_guard_operation_detail_response.dart';
 
 /// ResourceGuardProxyBase object, used in ResourceGuardProxyBaseResource
 class ResourceGuardProxyBaseResponse {
-  final pulumi.Input<String>? description;
-  final pulumi.Input<String>? lastUpdatedTime;
-  final pulumi.Input<List<ResourceGuardOperationDetailResponse>>? resourceGuardOperationDetails;
-  final pulumi.Input<String>? resourceGuardResourceId;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<String?>? lastUpdatedTime;
+  final pulumi.Input<List<ResourceGuardOperationDetailResponse>?>? resourceGuardOperationDetails;
+  final pulumi.Input<String?>? resourceGuardResourceId;
 
   /// Creates a new [ResourceGuardProxyBaseResponse].
   /// [description] Optional.

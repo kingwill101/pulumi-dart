@@ -6,13 +6,13 @@ import 'sql_availability_group_static_iplistener_properties_response_ip_v4_addre
 /// The properties of a static IP Arc Sql availability group listener
 class SqlAvailabilityGroupStaticIPListenerPropertiesResponse {
   /// the DNS name for the listener.
-  final pulumi.Input<String>? dnsName;
+  final pulumi.Input<String?>? dnsName;
   /// IP V4 Addresses and masks for the listener.
-  final pulumi.Input<List<SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks>>? ipV4AddressesAndMasks;
+  final pulumi.Input<List<SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks>?>? ipV4AddressesAndMasks;
   /// IP V6 Addresses for the listener
-  final pulumi.Input<List<String>>? ipV6Addresses;
+  final pulumi.Input<List<String>?>? ipV6Addresses;
   /// Network port for the listener. Default is 1433.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
 
   /// Creates a new [SqlAvailabilityGroupStaticIPListenerPropertiesResponse].
   /// [dnsName] the DNS name for the listener.
@@ -40,7 +40,7 @@ class SqlAvailabilityGroupStaticIPListenerPropertiesResponse {
       dnsName: (() { final guardedValue = map['dnsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipV4AddressesAndMasks: (() { final guardedValue = map['ipV4AddressesAndMasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks>(guardedValue, (value) => SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipV6Addresses: (() { final guardedValue = map['ipV6Addresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -7,7 +7,7 @@ class MySQLServerSku {
   /// The name of the sku, e.g. Standard_D32s_v3.
   final pulumi.Input<String> name;
   /// The tier of the particular SKU, e.g. GeneralPurpose.
-  final pulumi.Input<String> tier;
+  final pulumi.Input<dynamic> tier;
 
   /// Creates a new [MySQLServerSku].
   /// [name] The name of the sku, e.g. Standard_D32s_v3.
@@ -27,7 +27,7 @@ class MySQLServerSku {
   factory MySQLServerSku.fromMap(Map<String, dynamic> map) {
     return MySQLServerSku(
       name: pulumi.Input.fromValue(map['name'] as String),
-      tier: pulumi.Input.fromValue(map['tier'] as String),
+      tier: pulumi.Input.fromValue(map['tier']),
     );
   }
 }

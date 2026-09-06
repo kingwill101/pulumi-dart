@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or set the job state.
-enum JobState {
+enum JobState implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled"),
   valueFaulted("Faulted"),
   valueCompleted("Completed");
 
   const JobState(this.wireValue);
+  @override
   final String wireValue;
 
   static JobState fromValue(String value) {

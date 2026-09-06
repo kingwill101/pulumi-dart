@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Connection monitor output destination type. Currently, only "Workspace" is supported.
-enum OutputType {
+enum OutputType implements pulumi.PulumiEnum<String> {
   valueWorkspace("Workspace");
 
   const OutputType(this.wireValue);
+  @override
   final String wireValue;
 
   static OutputType fromValue(String value) {

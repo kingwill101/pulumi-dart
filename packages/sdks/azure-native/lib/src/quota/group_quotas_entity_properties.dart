@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupQuotasEntityProperties {
   /// Display name of the GroupQuota entity.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
 
   /// Creates a new [GroupQuotasEntityProperties].
   /// [displayName] Display name of the GroupQuota entity.

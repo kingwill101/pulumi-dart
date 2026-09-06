@@ -8,15 +8,15 @@ import 'subnet_interface_endpoint_response.dart';
 /// Interface endpoint resource.
 class InterfaceEndpointResponse {
   /// A reference to the service being brought into the virtual network.
-  final pulumi.Input<EndpointServiceResponse>? endpointService;
+  final pulumi.Input<EndpointServiceResponse?>? endpointService;
   /// Gets a unique read-only string that changes whenever the resource is updated.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// A first-party service's FQDN that is mapped to the private IP allocated via this interface endpoint.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource name.
   final pulumi.Input<String> name;
   /// Gets an array of references to the network interfaces created for this interface endpoint.
@@ -26,9 +26,9 @@ class InterfaceEndpointResponse {
   /// The provisioning state of the interface endpoint. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   final pulumi.Input<String> provisioningState;
   /// The ID of the subnet from which the private IP will be allocated.
-  final pulumi.Input<SubnetInterfaceEndpointResponse>? subnet;
+  final pulumi.Input<SubnetInterfaceEndpointResponse?>? subnet;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Resource type.
   final pulumi.Input<String> type;
 

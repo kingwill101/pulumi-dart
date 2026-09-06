@@ -285,7 +285,35 @@ class ArtifactSource extends pulumi.CustomResource {
     sourceType = registerOutput<String?>('sourceType');
     status = registerOutput<String?>('status');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+    uri = registerOutput<String?>('uri');
+  }
+
+  /// Creates a typed reference to an existing [ArtifactSource] resource.
+  ArtifactSource.reference(String urn)
+    : super(
+        'azure-native:devtestlab:ArtifactSource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    armTemplateFolderPath = registerOutput<String?>('armTemplateFolderPath');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    branchRef = registerOutput<String?>('branchRef');
+    createdDate = registerOutput<String>('createdDate');
+    displayName = registerOutput<String?>('displayName');
+    folderPath = registerOutput<String?>('folderPath');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    securityToken = registerOutput<String?>('securityToken');
+    sourceType = registerOutput<String?>('sourceType');
+    status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
     uri = registerOutput<String?>('uri');

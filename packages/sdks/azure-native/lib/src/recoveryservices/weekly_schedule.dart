@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'day_of_week.dart';
 
 class WeeklySchedule {
-  final pulumi.Input<List<DayOfWeek>>? scheduleRunDays;
+  final pulumi.Input<List<DayOfWeek>?>? scheduleRunDays;
   /// List of times of day this schedule has to be run.
-  final pulumi.Input<List<String>>? scheduleRunTimes;
+  final pulumi.Input<List<String>?>? scheduleRunTimes;
 
   /// Creates a new [WeeklySchedule].
   /// [scheduleRunDays] Optional.

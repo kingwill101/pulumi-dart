@@ -6,11 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SettingsResponse {
   /// Workload compression flag. This has been added so that 'isSqlCompression'
   /// will be deprecated once clients upgrade to consider this flag.
-  final pulumi.Input<bool>? isCompression;
+  final pulumi.Input<bool?>? isCompression;
   /// SQL compression flag
-  final pulumi.Input<bool>? issqlcompression;
+  final pulumi.Input<bool?>? issqlcompression;
   /// TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [SettingsResponse].
   /// [isCompression] Workload compression flag. This has been added so that 'isSqlCompression'

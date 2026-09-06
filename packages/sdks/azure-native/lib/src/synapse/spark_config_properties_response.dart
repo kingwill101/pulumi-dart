@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SparkConfig Properties for a Big Data pool powered by Apache Spark
 class SparkConfigPropertiesResponse {
   /// The type of the spark config properties file.
-  final pulumi.Input<String>? configurationType;
+  final pulumi.Input<String?>? configurationType;
   /// The spark config properties.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The filename of the spark config properties file.
-  final pulumi.Input<String>? filename;
+  final pulumi.Input<String?>? filename;
   /// The last update time of the spark config properties file.
   final pulumi.Input<String> time;
 

@@ -8,17 +8,17 @@ class MoveCollectionPropertiesResponse {
   /// Defines the move collection errors.
   final pulumi.Input<MoveCollectionPropertiesResponseErrors> errors;
   /// Gets or sets the move region which indicates the region where the VM Regional to Zonal move will be conducted.
-  final pulumi.Input<String>? moveRegion;
+  final pulumi.Input<String?>? moveRegion;
   /// Defines the MoveType.
-  final pulumi.Input<String>? moveType;
+  final pulumi.Input<String?>? moveType;
   /// Defines the provisioning states.
   final pulumi.Input<String> provisioningState;
   /// Gets or sets the source region.
-  final pulumi.Input<String>? sourceRegion;
+  final pulumi.Input<String?>? sourceRegion;
   /// Gets or sets the target region.
-  final pulumi.Input<String>? targetRegion;
+  final pulumi.Input<String?>? targetRegion;
   /// Gets or sets the version of move collection.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [MoveCollectionPropertiesResponse].
   /// [errors] Defines the move collection errors.

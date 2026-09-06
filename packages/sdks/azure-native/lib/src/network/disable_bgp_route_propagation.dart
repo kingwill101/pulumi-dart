@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Determines whether BGP route propagation is enabled. Defaults to true.
-enum DisableBgpRoutePropagation {
+enum DisableBgpRoutePropagation implements pulumi.PulumiEnum<String> {
   valueFalse("False"),
   valueTrue("True");
 
   const DisableBgpRoutePropagation(this.wireValue);
+  @override
   final String wireValue;
 
   static DisableBgpRoutePropagation fromValue(String value) {

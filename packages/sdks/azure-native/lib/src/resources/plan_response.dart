@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Plan for the resource.
 class PlanResponse {
   /// The plan ID.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The offer ID.
-  final pulumi.Input<String>? product;
+  final pulumi.Input<String?>? product;
   /// The promotion code.
-  final pulumi.Input<String>? promotionCode;
+  final pulumi.Input<String?>? promotionCode;
   /// The publisher ID.
-  final pulumi.Input<String>? publisher;
+  final pulumi.Input<String?>? publisher;
   /// The plan's version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [PlanResponse].
   /// [name] The plan ID.

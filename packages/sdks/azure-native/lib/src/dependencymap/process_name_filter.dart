@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Process name filter for dependency map visualization apis
 class ProcessNameFilter {
   /// Operator for process name filter
-  final pulumi.Input<String> operator;
+  final pulumi.Input<dynamic> operator;
   /// List of process names on which the operator should be applied
   final pulumi.Input<List<String>> processNames;
 
@@ -26,7 +26,7 @@ class ProcessNameFilter {
 
   factory ProcessNameFilter.fromMap(Map<String, dynamic> map) {
     return ProcessNameFilter(
-      operator: pulumi.Input.fromValue(map['operator'] as String),
+      operator: pulumi.Input.fromValue(map['operator']),
       processNames: pulumi.Input.fromValue((map['processNames'] as List).cast<String>()),
     );
   }

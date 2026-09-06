@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.
 class VirtualNetworkPropertiesDhcpOptions {
   /// The list of DNS servers IP addresses.
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
 
   /// Creates a new [VirtualNetworkPropertiesDhcpOptions].
   /// [dnsServers] The list of DNS servers IP addresses.

@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the azure PAAS SQL instance type.
-enum AzureSqlDataBaseType {
+enum AzureSqlDataBaseType implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   automatic("Automatic"),
   singleDatabase("SingleDatabase"),
   elasticPool("ElasticPool");
 
   const AzureSqlDataBaseType(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureSqlDataBaseType fromValue(String value) {

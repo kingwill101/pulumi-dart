@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies datastore type.
-enum DatastoreTypeArm {
+enum DatastoreTypeArm implements pulumi.PulumiEnum<String> {
   valueBlob("blob"),
   valueAdls("adls"),
   valueAdlsGen2("adls-gen2"),
@@ -10,6 +12,7 @@ enum DatastoreTypeArm {
   valuePsqldb("psqldb");
 
   const DatastoreTypeArm(this.wireValue);
+  @override
   final String wireValue;
 
   static DatastoreTypeArm fromValue(String value) {

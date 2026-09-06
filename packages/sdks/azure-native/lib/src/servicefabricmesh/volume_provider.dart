@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Provider of the volume.
-enum VolumeProvider {
+enum VolumeProvider implements pulumi.PulumiEnum<String> {
   valueSFAzureFile("SFAzureFile");
 
   const VolumeProvider(this.wireValue);
+  @override
   final String wireValue;
 
   static VolumeProvider fromValue(String value) {

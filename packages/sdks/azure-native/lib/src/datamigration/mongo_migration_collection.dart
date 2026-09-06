@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Mongo source and target database and collection details.
 class MongoMigrationCollection {
   /// Source collection name.
-  final pulumi.Input<String>? sourceCollection;
+  final pulumi.Input<String?>? sourceCollection;
   /// Source database name.
-  final pulumi.Input<String>? sourceDatabase;
+  final pulumi.Input<String?>? sourceDatabase;
   /// Target collection name.
-  final pulumi.Input<String>? targetCollection;
+  final pulumi.Input<String?>? targetCollection;
   /// Target database name.
-  final pulumi.Input<String>? targetDatabase;
+  final pulumi.Input<String?>? targetDatabase;
 
   /// Creates a new [MongoMigrationCollection].
   /// [sourceCollection] Source collection name.

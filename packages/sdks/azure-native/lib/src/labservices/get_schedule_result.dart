@@ -7,29 +7,29 @@ import 'system_data_response.dart';
 /// Result data returned by getSchedule.
 class GetScheduleResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Notes for this schedule.
   final String? notes;
   /// Current provisioning state of the schedule.
-  final String provisioningState;
+  final String? provisioningState;
   /// The recurrence pattern of the scheduled actions.
   final RecurrencePatternResponse? recurrencePattern;
   /// Error details of last operation done on schedule.
-  final ResourceOperationErrorResponse resourceOperationError;
+  final ResourceOperationErrorResponse? resourceOperationError;
   /// When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead.
   final String? startAt;
   /// When lab user virtual machines will be stopped. Timestamp offsets will be ignored and timeZoneId is used instead.
-  final String stopAt;
+  final String? stopAt;
   /// Metadata pertaining to creation and last modification of the schedule.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The IANA timezone id for the schedule.
-  final String timeZoneId;
+  final String? timeZoneId;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetScheduleResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -45,51 +45,51 @@ class GetScheduleResult {
   /// [timeZoneId] The IANA timezone id for the schedule.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetScheduleResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
+    this.azureApiVersion,
+    this.id,
+    this.name,
     this.notes,
-    required this.provisioningState,
+    this.provisioningState,
     this.recurrencePattern,
-    required this.resourceOperationError,
+    this.resourceOperationError,
     this.startAt,
-    required this.stopAt,
-    required this.systemData,
-    required this.timeZoneId,
-    required this.type,
+    this.stopAt,
+    this.systemData,
+    this.timeZoneId,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
       'notes': ?notes,
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'recurrencePattern': ?recurrencePattern?.toMap(),
-      'resourceOperationError': resourceOperationError.toMap(),
+      'resourceOperationError': ?resourceOperationError?.toMap(),
       'startAt': ?startAt,
-      'stopAt': stopAt,
-      'systemData': systemData.toMap(),
-      'timeZoneId': timeZoneId,
-      'type': type,
+      'stopAt': ?stopAt,
+      'systemData': ?systemData?.toMap(),
+      'timeZoneId': ?timeZoneId,
+      'type': ?type,
     };
   }
 
   factory GetScheduleResult.fromMap(Map<String, dynamic> map) {
     return GetScheduleResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       notes: (() { final guardedValue = map['notes']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       recurrencePattern: (() { final guardedValue = map['recurrencePattern']; if (guardedValue == null) return null; return RecurrencePatternResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      resourceOperationError: ResourceOperationErrorResponse.fromMap((map['resourceOperationError']! as Map).cast<String, dynamic>()),
+      resourceOperationError: (() { final guardedValue = map['resourceOperationError']; if (guardedValue == null) return null; return ResourceOperationErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       startAt: (() { final guardedValue = map['startAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      stopAt: map['stopAt'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      timeZoneId: map['timeZoneId'] as String,
-      type: map['type'] as String,
+      stopAt: (() { final guardedValue = map['stopAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      timeZoneId: (() { final guardedValue = map['timeZoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -6,9 +6,9 @@ import 'virtual_machine_resource_names.dart';
 /// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
 class ApplicationServerFullResourceNames {
   /// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-App-AvSet.
-  final pulumi.Input<String>? availabilitySetName;
+  final pulumi.Input<String?>? availabilitySetName;
   /// The list of virtual machine naming details.
-  final pulumi.Input<List<VirtualMachineResourceNames>>? virtualMachines;
+  final pulumi.Input<List<VirtualMachineResourceNames>?>? virtualMachines;
 
   /// Creates a new [ApplicationServerFullResourceNames].
   /// [availabilitySetName] The full name for availability set. In case name is not provided, it will be defaulted to {SID}-App-AvSet.

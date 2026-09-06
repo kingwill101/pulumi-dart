@@ -9,17 +9,17 @@ class ArmRoleReceiverResponse {
   /// The arm role id.
   final pulumi.Input<String> roleId;
   /// Indicates whether to use common alert schema.
-  final pulumi.Input<bool>? useCommonAlertSchema;
+  final pulumi.Input<bool?>? useCommonAlertSchema;
 
   /// Creates a new [ArmRoleReceiverResponse].
   /// [name] The name of the arm role receiver. Names must be unique across all receivers within an action group.
   /// [roleId] The arm role id.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
-  const ArmRoleReceiverResponse({
+  ArmRoleReceiverResponse({
     required this.name,
     required this.roleId,
-    this.useCommonAlertSchema,
-  });
+    pulumi.Input<bool?>? useCommonAlertSchema,
+  }) : useCommonAlertSchema = useCommonAlertSchema ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -12,7 +12,7 @@ class ADLSGen2FolderDataSetMappingArgs {
   /// The id of the source data set.
   final pulumi.Input<String> dataSetId;
   /// The name of the data set mapping to be created.
-  final pulumi.Input<String>? dataSetMappingName;
+  final pulumi.Input<String?>? dataSetMappingName;
   /// File system to which the folder belongs.
   final pulumi.Input<String> fileSystem;
   /// Folder path within the file system.

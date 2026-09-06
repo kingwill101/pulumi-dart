@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_managednetworkfabric_network_packet_broker_args_doc}
 class NetworkPacketBrokerArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// ARM resource ID of the Network Fabric.
   final pulumi.Input<String> networkFabricId;
   /// Name of the Network Packet Broker.
-  final pulumi.Input<String>? networkPacketBrokerName;
+  final pulumi.Input<String?>? networkPacketBrokerName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkPacketBrokerArgs].
   /// [location] The geo-location where the resource lives

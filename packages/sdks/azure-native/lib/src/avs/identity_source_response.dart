@@ -5,27 +5,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// vCenter Single Sign On Identity Source
 class IdentitySourceResponse {
   /// The domain's NetBIOS name
-  final pulumi.Input<String>? alias;
+  final pulumi.Input<String?>? alias;
   /// The base distinguished name for groups
-  final pulumi.Input<String>? baseGroupDN;
+  final pulumi.Input<String?>? baseGroupDN;
   /// The base distinguished name for users
-  final pulumi.Input<String>? baseUserDN;
+  final pulumi.Input<String?>? baseUserDN;
   /// The domain's DNS name
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
   /// The name of the identity source
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The password of the Active Directory user with a minimum of read-only access to
   /// Base DN for users and groups.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Primary server URL
-  final pulumi.Input<String>? primaryServer;
+  final pulumi.Input<String?>? primaryServer;
   /// Secondary server URL
-  final pulumi.Input<String>? secondaryServer;
+  final pulumi.Input<String?>? secondaryServer;
   /// Protect LDAP communication using SSL certificate (LDAPS)
-  final pulumi.Input<String>? ssl;
+  final pulumi.Input<String?>? ssl;
   /// The ID of an Active Directory user with a minimum of read-only access to Base
   /// DN for users and group
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [IdentitySourceResponse].
   /// [alias] The domain's NetBIOS name

@@ -6,7 +6,7 @@ import 'rule_response.dart';
 /// Definition of LifecycleConfiguration
 class LifecycleConfigurationResponse {
   /// A lifecycle rule for individual objects in an Amazon S3 bucket.
-  final pulumi.Input<List<RuleResponse>>? rules;
+  final pulumi.Input<List<RuleResponse>?>? rules;
 
   /// Creates a new [LifecycleConfigurationResponse].
   /// [rules] A lifecycle rule for individual objects in an Amazon S3 bucket.

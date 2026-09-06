@@ -6,7 +6,7 @@ import 'resource_identity_type.dart';
 /// The identity of the EnterprisePolicy.
 class EnterprisePolicyIdentity {
   /// The type of identity used for the EnterprisePolicy. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
-  final pulumi.Input<ResourceIdentityType>? type;
+  final pulumi.Input<ResourceIdentityType?>? type;
 
   /// Creates a new [EnterprisePolicyIdentity].
   /// [type] The type of identity used for the EnterprisePolicy. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The notification mode.
-enum NotificationMode {
+enum NotificationMode implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   eventHub("EventHub"),
   webHook("WebHook");
 
   const NotificationMode(this.wireValue);
+  @override
   final String wireValue;
 
   static NotificationMode fromValue(String value) {

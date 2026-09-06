@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of IoT Security recommendation.
-enum RecommendationType {
+enum RecommendationType implements pulumi.PulumiEnum<String> {
   ioTACRAuthentication("IoT_ACRAuthentication"),
   ioTAgentSendsUnutilizedMessages("IoT_AgentSendsUnutilizedMessages"),
   ioTBaseline("IoT_Baseline"),
@@ -18,6 +20,7 @@ enum RecommendationType {
   ioTVulnerableTLSCipherSuite("IoT_VulnerableTLSCipherSuite");
 
   const RecommendationType(this.wireValue);
+  @override
   final String wireValue;
 
   static RecommendationType fromValue(String value) {

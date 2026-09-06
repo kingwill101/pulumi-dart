@@ -6,7 +6,7 @@ import 'asymmetric_encrypted_secret_response.dart';
 /// Symmetric key for authentication.
 class SymmetricKeyResponse {
   /// Connection string based on the symmetric key.
-  final pulumi.Input<AsymmetricEncryptedSecretResponse>? connectionString;
+  final pulumi.Input<AsymmetricEncryptedSecretResponse?>? connectionString;
 
   /// Creates a new [SymmetricKeyResponse].
   /// [connectionString] Connection string based on the symmetric key.

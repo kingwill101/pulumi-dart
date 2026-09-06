@@ -6,7 +6,7 @@ import 'disk_encryption_configuration_response_key_vault_configuration.dart';
 /// Configuration properties for disk encryption
 class DiskEncryptionConfigurationResponse {
   /// The Key Vault that contains your key to use for disk encryption. The Key Vault must be in the same region as the Managed Environment.
-  final pulumi.Input<DiskEncryptionConfigurationResponseKeyVaultConfiguration>? keyVaultConfiguration;
+  final pulumi.Input<DiskEncryptionConfigurationResponseKeyVaultConfiguration?>? keyVaultConfiguration;
 
   /// Creates a new [DiskEncryptionConfigurationResponse].
   /// [keyVaultConfiguration] The Key Vault that contains your key to use for disk encryption. The Key Vault must be in the same region as the Managed Environment.

@@ -10,17 +10,17 @@ class GetSAPSupportedSkuArgs {
   /// The geo-location where the resource is to be created.
   final pulumi.Input<String> appLocation;
   /// The database type. Eg: HANA, DB2, etc
-  final pulumi.Input<String> databaseType;
+  final pulumi.Input<dynamic> databaseType;
   /// The deployment type. Eg: SingleServer/ThreeTier
-  final pulumi.Input<String> deploymentType;
+  final pulumi.Input<dynamic> deploymentType;
   /// Defines the environment type - Production/Non Production.
-  final pulumi.Input<String> environment;
+  final pulumi.Input<dynamic> environment;
   /// The high availability type.
-  final pulumi.Input<String>? highAvailabilityType;
+  final pulumi.Input<dynamic>? highAvailabilityType;
   /// The name of Azure region.
   final pulumi.Input<String> location;
   /// Defines the SAP Product type.
-  final pulumi.Input<String> sapProduct;
+  final pulumi.Input<dynamic> sapProduct;
 
   /// Creates a new [GetSAPSupportedSkuArgs].
   /// [appLocation] The geo-location where the resource is to be created.
@@ -55,12 +55,12 @@ class GetSAPSupportedSkuArgs {
   factory GetSAPSupportedSkuArgs.fromMap(Map<String, dynamic> map) {
     return GetSAPSupportedSkuArgs(
       appLocation: pulumi.Input.fromValue(map['appLocation'] as String),
-      databaseType: pulumi.Input.fromValue(map['databaseType'] as String),
-      deploymentType: pulumi.Input.fromValue(map['deploymentType'] as String),
-      environment: pulumi.Input.fromValue(map['environment'] as String),
-      highAvailabilityType: (() { final guardedValue = map['highAvailabilityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      databaseType: pulumi.Input.fromValue(map['databaseType']),
+      deploymentType: pulumi.Input.fromValue(map['deploymentType']),
+      environment: pulumi.Input.fromValue(map['environment']),
+      highAvailabilityType: (() { final guardedValue = map['highAvailabilityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
-      sapProduct: pulumi.Input.fromValue(map['sapProduct'] as String),
+      sapProduct: pulumi.Input.fromValue(map['sapProduct']),
     );
   }
 }

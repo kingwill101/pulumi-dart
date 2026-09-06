@@ -1,7 +1,10 @@
-enum KeyVaultSigningKeyParametersType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum KeyVaultSigningKeyParametersType implements pulumi.PulumiEnum<String> {
   keyVaultSigningKeyParameters("KeyVaultSigningKeyParameters");
 
   const KeyVaultSigningKeyParametersType(this.wireValue);
+  @override
   final String wireValue;
 
   static KeyVaultSigningKeyParametersType fromValue(String value) {

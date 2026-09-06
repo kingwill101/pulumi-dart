@@ -14,35 +14,35 @@ class VirtualMachineArgs {
   /// The amount of memory
   final pulumi.Input<int> amountOfRam;
   /// Virtual machine properties
-  final pulumi.Input<GuestOSCustomization>? customization;
+  final pulumi.Input<GuestOSCustomization?>? customization;
   /// The list of Virtual Disks
-  final pulumi.Input<List<VirtualDisk>>? disks;
+  final pulumi.Input<List<VirtualDisk>?>? disks;
   /// Expose Guest OS or not
-  final pulumi.Input<bool>? exposeToGuestVM;
+  final pulumi.Input<bool?>? exposeToGuestVM;
   /// Azure region
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The list of Virtual NICs
-  final pulumi.Input<List<VirtualNic>>? nics;
+  final pulumi.Input<List<VirtualNic>?>? nics;
   /// The number of CPU cores
   final pulumi.Input<int> numberOfCores;
   /// Password for login. Deprecated - use customization property
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Private Cloud Id
   final pulumi.Input<String> privateCloudId;
   /// The name of the resource group
   final pulumi.Input<String> resourceGroupName;
   /// Virtual Machines Resource Pool
-  final pulumi.Input<ResourcePool>? resourcePool;
+  final pulumi.Input<ResourcePool?>? resourcePool;
   /// The list of tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Virtual Machine Template Id
-  final pulumi.Input<String>? templateId;
+  final pulumi.Input<String?>? templateId;
   /// Username for login. Deprecated - use customization property
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
   /// The list of Virtual VSphere Networks
-  final pulumi.Input<List<String>>? vSphereNetworks;
+  final pulumi.Input<List<String>?>? vSphereNetworks;
   /// virtual machine name
-  final pulumi.Input<String>? virtualMachineName;
+  final pulumi.Input<String?>? virtualMachineName;
 
   /// Creates a new [VirtualMachineArgs].
   /// [amountOfRam] The amount of memory
@@ -103,13 +103,13 @@ class VirtualMachineArgs {
 
   factory VirtualMachineArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineArgs(
-      amountOfRam: pulumi.Input.fromValue(map['amountOfRam'] as int),
+      amountOfRam: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['amountOfRam'])),
       customization: (() { final guardedValue = map['customization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GuestOSCustomization.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       disks: (() { final guardedValue = map['disks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualDisk>(guardedValue, (value) => VirtualDisk.fromMap((value as Map).cast<String, dynamic>()))); })(),
       exposeToGuestVM: (() { final guardedValue = map['exposeToGuestVM']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nics: (() { final guardedValue = map['nics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualNic>(guardedValue, (value) => VirtualNic.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      numberOfCores: pulumi.Input.fromValue(map['numberOfCores'] as int),
+      numberOfCores: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberOfCores'])),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateCloudId: pulumi.Input.fromValue(map['privateCloudId'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

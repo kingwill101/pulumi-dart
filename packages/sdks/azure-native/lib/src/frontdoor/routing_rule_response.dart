@@ -1,34 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'forwarding_configuration_response.dart';
 import 'routing_rule_update_parameters_web_application_firewall_policy_link_response.dart';
 import 'sub_resource_response.dart';
 
 /// A routing rule represents a specification for traffic to treat and where to send it, along with health probe information.
 class RoutingRuleResponse {
   /// Protocol schemes to match for this rule
-  final pulumi.Input<List<String>>? acceptedProtocols;
+  final pulumi.Input<List<String>?>? acceptedProtocols;
   /// Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
-  final pulumi.Input<String>? enabledState;
+  final pulumi.Input<String?>? enabledState;
   /// Frontend endpoints associated with this rule
-  final pulumi.Input<List<SubResourceResponse>>? frontendEndpoints;
+  final pulumi.Input<List<SubResourceResponse>?>? frontendEndpoints;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The route patterns of the rule.
-  final pulumi.Input<List<String>>? patternsToMatch;
+  final pulumi.Input<List<String>?>? patternsToMatch;
   /// Resource status.
   final pulumi.Input<String> resourceState;
   /// A reference to the routing configuration.
-  final pulumi.Input<ForwardingConfigurationResponse>? routeConfiguration;
+  final pulumi.Input<dynamic>? routeConfiguration;
   /// A reference to a specific Rules Engine Configuration to apply to this route.
-  final pulumi.Input<SubResourceResponse>? rulesEngine;
+  final pulumi.Input<SubResourceResponse?>? rulesEngine;
   /// Resource type.
   final pulumi.Input<String> type;
   /// Defines the Web Application Firewall policy for each routing rule (if applicable)
-  final pulumi.Input<RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkResponse>? webApplicationFirewallPolicyLink;
+  final pulumi.Input<RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkResponse?>? webApplicationFirewallPolicyLink;
 
   /// Creates a new [RoutingRuleResponse].
   /// [acceptedProtocols] Protocol schemes to match for this rule
@@ -65,7 +64,7 @@ class RoutingRuleResponse {
       'name': ?name,
       'patternsToMatch': ?patternsToMatch,
       'resourceState': resourceState,
-      'routeConfiguration': ?pulumi.Input.mapOptionalInputValue<ForwardingConfigurationResponse, Map<String, dynamic>>(routeConfiguration, (value) => value.toMap()),
+      'routeConfiguration': ?routeConfiguration,
       'rulesEngine': ?pulumi.Input.mapOptionalInputValue<SubResourceResponse, Map<String, dynamic>>(rulesEngine, (value) => value.toMap()),
       'type': type,
       'webApplicationFirewallPolicyLink': ?pulumi.Input.mapOptionalInputValue<RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkResponse, Map<String, dynamic>>(webApplicationFirewallPolicyLink, (value) => value.toMap()),
@@ -81,7 +80,7 @@ class RoutingRuleResponse {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       patternsToMatch: (() { final guardedValue = map['patternsToMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       resourceState: pulumi.Input.fromValue(map['resourceState'] as String),
-      routeConfiguration: (() { final guardedValue = map['routeConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ForwardingConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      routeConfiguration: (() { final guardedValue = map['routeConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       rulesEngine: (() { final guardedValue = map['rulesEngine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       webApplicationFirewallPolicyLink: (() { final guardedValue = map['webApplicationFirewallPolicyLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

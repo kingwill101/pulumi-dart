@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_web_web_app_vnet_connection_slot_args_doc}
 class WebAppVnetConnectionSlotArgs {
   /// A certificate file (.cer) blob containing the public key of the private key used to authenticate a \nPoint-To-Site VPN connection.
-  final pulumi.Input<String>? certBlob;
+  final pulumi.Input<String?>? certBlob;
   /// DNS servers to be used by this Virtual Network. This should be a comma-separated list of IP addresses.
-  final pulumi.Input<String>? dnsServers;
+  final pulumi.Input<String?>? dnsServers;
   /// Flag that is used to denote if this is VNET injection
-  final pulumi.Input<bool>? isSwift;
+  final pulumi.Input<bool?>? isSwift;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
@@ -22,9 +22,9 @@ class WebAppVnetConnectionSlotArgs {
   /// Name of the deployment slot. If a slot is not specified, the API will get the named virtual network for the production slot.
   final pulumi.Input<String> slot;
   /// Name of the virtual network.
-  final pulumi.Input<String>? vnetName;
+  final pulumi.Input<String?>? vnetName;
   /// The Virtual Network's resource ID.
-  final pulumi.Input<String>? vnetResourceId;
+  final pulumi.Input<String?>? vnetResourceId;
 
   /// Creates a new [WebAppVnetConnectionSlotArgs].
   /// [certBlob] A certificate file (.cer) blob containing the public key of the private key used to authenticate a \nPoint-To-Site VPN connection.

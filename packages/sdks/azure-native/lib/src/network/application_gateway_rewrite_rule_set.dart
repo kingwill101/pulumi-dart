@@ -6,11 +6,11 @@ import 'application_gateway_rewrite_rule.dart';
 /// Rewrite rule set of an application gateway.
 class ApplicationGatewayRewriteRuleSet {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the rewrite rule set that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Rewrite rules in the rewrite rule set.
-  final pulumi.Input<List<ApplicationGatewayRewriteRule>>? rewriteRules;
+  final pulumi.Input<List<ApplicationGatewayRewriteRule>?>? rewriteRules;
 
   /// Creates a new [ApplicationGatewayRewriteRuleSet].
   /// [id] Resource ID.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Exchange data type connection.
 class OfficeDataConnectorDataTypesExchange {
   /// Describe whether this data type connection is enabled or not.
-  final pulumi.Input<String> state;
+  final pulumi.Input<dynamic> state;
 
   /// Creates a new [OfficeDataConnectorDataTypesExchange].
   /// [state] Describe whether this data type connection is enabled or not.
@@ -21,7 +21,7 @@ class OfficeDataConnectorDataTypesExchange {
 
   factory OfficeDataConnectorDataTypesExchange.fromMap(Map<String, dynamic> map) {
     return OfficeDataConnectorDataTypesExchange(
-      state: pulumi.Input.fromValue(map['state'] as String),
+      state: pulumi.Input.fromValue(map['state']),
     );
   }
 }

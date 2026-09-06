@@ -6,6 +6,9 @@ import 'managed_service_identity_response.dart';
 import 'sub_resource_response.dart';
 import 'virtual_network_gateway_args.dart';
 import 'virtual_network_gateway_auto_scale_configuration_response.dart';
+import 'virtual_network_gateway_ipconfiguration_response.dart';
+import 'virtual_network_gateway_nat_rule_response.dart';
+import 'virtual_network_gateway_policy_group_response.dart';
 import 'virtual_network_gateway_sku_response.dart';
 import 'vpn_client_configuration_response.dart';
 
@@ -1227,13 +1230,13 @@ class VirtualNetworkGatewayNetwork extends pulumi.CustomResource {
   /// The IP address allocated by the gateway to which dns requests can be sent.
   late final pulumi.Output<String> inboundDnsForwardingEndpoint;
   /// IP configurations for virtual network gateway.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ipConfigurations;
+  late final pulumi.Output<List<VirtualNetworkGatewayIPConfigurationResponse>?> ipConfigurations;
   /// Resource location.
   late final pulumi.Output<String?> location;
   /// Resource name.
   late final pulumi.Output<String> name;
   /// NatRules for virtual network gateway.
-  late final pulumi.Output<List<Map<String, dynamic>>?> natRules;
+  late final pulumi.Output<List<VirtualNetworkGatewayNatRuleResponse>?> natRules;
   /// The provisioning state of the virtual network gateway resource.
   late final pulumi.Output<String> provisioningState;
   /// Property to indicate if the Express Route Gateway has resiliency model of MultiHomed or SingleHomed
@@ -1249,7 +1252,7 @@ class VirtualNetworkGatewayNetwork extends pulumi.CustomResource {
   /// Customer vnet resource id. VirtualNetworkGateway of type local gateway is associated with the customer vnet.
   late final pulumi.Output<String?> vNetExtendedLocationResourceId;
   /// The reference to the VirtualNetworkGatewayPolicyGroup resource which represents the available VirtualNetworkGatewayPolicyGroup for the gateway.
-  late final pulumi.Output<List<Map<String, dynamic>>?> virtualNetworkGatewayPolicyGroups;
+  late final pulumi.Output<List<VirtualNetworkGatewayPolicyGroupResponse>?> virtualNetworkGatewayPolicyGroups;
   /// The reference to the VpnClientConfiguration resource which represents the P2S VpnClient configurations.
   late final pulumi.Output<VpnClientConfigurationResponse?> vpnClientConfiguration;
   /// The generation for this VirtualNetworkGateway. Must be None if gatewayType is not VPN.
@@ -1290,18 +1293,63 @@ class VirtualNetworkGatewayNetwork extends pulumi.CustomResource {
     gatewayType = registerOutput<String?>('gatewayType');
     identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inboundDnsForwardingEndpoint = registerOutput<String>('inboundDnsForwardingEndpoint');
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>('ipConfigurations');
+    ipConfigurations = registerOutput<List<VirtualNetworkGatewayIPConfigurationResponse>?>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkGatewayIPConfigurationResponse>(guardedValue, (value) => VirtualNetworkGatewayIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    natRules = registerOutput<List<Map<String, dynamic>>?>('natRules');
+    natRules = registerOutput<List<VirtualNetworkGatewayNatRuleResponse>?>('natRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkGatewayNatRuleResponse>(guardedValue, (value) => VirtualNetworkGatewayNatRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     resiliencyModel = registerOutput<String?>('resiliencyModel');
     resourceGuid = registerOutput<String>('resourceGuid');
     sku = registerOutput<VirtualNetworkGatewaySkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewaySkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     vNetExtendedLocationResourceId = registerOutput<String?>('vNetExtendedLocationResourceId');
-    virtualNetworkGatewayPolicyGroups = registerOutput<List<Map<String, dynamic>>?>('virtualNetworkGatewayPolicyGroups');
+    virtualNetworkGatewayPolicyGroups = registerOutput<List<VirtualNetworkGatewayPolicyGroupResponse>?>('virtualNetworkGatewayPolicyGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkGatewayPolicyGroupResponse>(guardedValue, (value) => VirtualNetworkGatewayPolicyGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    vpnClientConfiguration = registerOutput<VpnClientConfigurationResponse?>('vpnClientConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnClientConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpnGatewayGeneration = registerOutput<String?>('vpnGatewayGeneration');
+    vpnType = registerOutput<String?>('vpnType');
+  }
+
+  /// Creates a typed reference to an existing [VirtualNetworkGatewayNetwork] resource.
+  VirtualNetworkGatewayNetwork.reference(String urn)
+    : super(
+        'azure-native:network:VirtualNetworkGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activeActive = registerOutput<bool?>('activeActive');
+    adminState = registerOutput<String?>('adminState');
+    allowRemoteVnetTraffic = registerOutput<bool?>('allowRemoteVnetTraffic');
+    allowVirtualWanTraffic = registerOutput<bool?>('allowVirtualWanTraffic');
+    autoScaleConfiguration = registerOutput<VirtualNetworkGatewayAutoScaleConfigurationResponse?>('autoScaleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayAutoScaleConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bgpSettings = registerOutput<BgpSettingsResponse?>('bgpSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BgpSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customRoutes = registerOutput<AddressSpaceResponse?>('customRoutes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddressSpaceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    disableIPSecReplayProtection = registerOutput<bool?>('disableIPSecReplayProtection');
+    enableBgp = registerOutput<bool?>('enableBgp');
+    enableBgpRouteTranslationForNat = registerOutput<bool?>('enableBgpRouteTranslationForNat');
+    enableDnsForwarding = registerOutput<bool?>('enableDnsForwarding');
+    enablePrivateIpAddress = registerOutput<bool?>('enablePrivateIpAddress');
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gatewayDefaultSite = registerOutput<SubResourceResponse?>('gatewayDefaultSite', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gatewayType = registerOutput<String?>('gatewayType');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inboundDnsForwardingEndpoint = registerOutput<String>('inboundDnsForwardingEndpoint');
+    ipConfigurations = registerOutput<List<VirtualNetworkGatewayIPConfigurationResponse>?>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkGatewayIPConfigurationResponse>(guardedValue, (value) => VirtualNetworkGatewayIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    natRules = registerOutput<List<VirtualNetworkGatewayNatRuleResponse>?>('natRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkGatewayNatRuleResponse>(guardedValue, (value) => VirtualNetworkGatewayNatRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    resiliencyModel = registerOutput<String?>('resiliencyModel');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    sku = registerOutput<VirtualNetworkGatewaySkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewaySkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    vNetExtendedLocationResourceId = registerOutput<String?>('vNetExtendedLocationResourceId');
+    virtualNetworkGatewayPolicyGroups = registerOutput<List<VirtualNetworkGatewayPolicyGroupResponse>?>('virtualNetworkGatewayPolicyGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkGatewayPolicyGroupResponse>(guardedValue, (value) => VirtualNetworkGatewayPolicyGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
     vpnClientConfiguration = registerOutput<VpnClientConfigurationResponse?>('vpnClientConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnClientConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpnGatewayGeneration = registerOutput<String?>('vpnGatewayGeneration');
     vpnType = registerOutput<String?>('vpnType');

@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The environment authentication details
 class AccessTokenAuthentication {
   /// The access token that will be used while authenticating with the onboarded environment
-  final pulumi.Input<String>? accessToken;
+  final pulumi.Input<String?>? accessToken;
   /// The authentication type
   /// Expected value is 'AccessToken'.
   final pulumi.Input<String> authenticationType;
   /// The user name that will be used while authenticating with the onboarded environment
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [AccessTokenAuthentication].
   /// [accessToken] The access token that will be used while authenticating with the onboarded environment

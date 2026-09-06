@@ -9,17 +9,17 @@ class TimerTrigger {
   /// The CRON expression for the task schedule
   final pulumi.Input<String> schedule;
   /// The current status of trigger.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [TimerTrigger].
   /// [name] The name of the trigger.
   /// [schedule] The CRON expression for the task schedule
   /// [status] The current status of trigger.
-  const TimerTrigger({
+  TimerTrigger({
     required this.name,
     required this.schedule,
-    this.status,
-  });
+    pulumi.Input<dynamic>? status,
+  }) : status = status ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,7 +33,7 @@ class TimerTrigger {
     return TimerTrigger(
       name: pulumi.Input.fromValue(map['name'] as String),
       schedule: pulumi.Input.fromValue(map['schedule'] as String),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

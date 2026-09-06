@@ -7,9 +7,9 @@ import 'cache_username_download_settings.dart';
 /// Cache Directory Services settings.
 class CacheDirectorySettings {
   /// Specifies settings for joining the HPC Cache to an Active Directory domain.
-  final pulumi.Input<CacheActiveDirectorySettings>? activeDirectory;
+  final pulumi.Input<CacheActiveDirectorySettings?>? activeDirectory;
   /// Specifies settings for Extended Groups. Extended Groups allows users to be members of more than 16 groups.
-  final pulumi.Input<CacheUsernameDownloadSettings>? usernameDownload;
+  final pulumi.Input<CacheUsernameDownloadSettings?>? usernameDownload;
 
   /// Creates a new [CacheDirectorySettings].
   /// [activeDirectory] Specifies settings for joining the HPC Cache to an Active Directory domain.

@@ -6,12 +6,12 @@ import 'access_token_authentication_response.dart';
 /// The Docker Hub connector environment data
 class DockerHubEnvironmentDataResponse {
   /// The Docker Hub organization authentication details
-  final pulumi.Input<AccessTokenAuthenticationResponse>? authentication;
+  final pulumi.Input<AccessTokenAuthenticationResponse?>? authentication;
   /// The type of the environment data.
   /// Expected value is 'DockerHubOrganization'.
   final pulumi.Input<String> environmentType;
   /// Scan interval in hours (value should be between 1-hour to 24-hours)
-  final pulumi.Input<double>? scanInterval;
+  final pulumi.Input<double?>? scanInterval;
 
   /// Creates a new [DockerHubEnvironmentDataResponse].
   /// [authentication] The Docker Hub organization authentication details
@@ -35,7 +35,7 @@ class DockerHubEnvironmentDataResponse {
     return DockerHubEnvironmentDataResponse(
       authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessTokenAuthenticationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       environmentType: pulumi.Input.fromValue(map['environmentType'] as String),
-      scanInterval: (() { final guardedValue = map['scanInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      scanInterval: (() { final guardedValue = map['scanInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

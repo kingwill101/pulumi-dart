@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the authentication properties. Controls the type of the authProperties object
-enum StorageConnectorAuthType {
+enum StorageConnectorAuthType implements pulumi.PulumiEnum<String> {
   managedIdentity("ManagedIdentity");
 
   const StorageConnectorAuthType(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageConnectorAuthType fromValue(String value) {

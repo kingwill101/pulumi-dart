@@ -27,7 +27,7 @@ class WeeklyScheduleResponse {
   factory WeeklyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return WeeklyScheduleResponse(
       dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
-      intervalWeeks: pulumi.Input.fromValue(map['intervalWeeks'] as int),
+      intervalWeeks: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['intervalWeeks'])),
     );
   }
 }

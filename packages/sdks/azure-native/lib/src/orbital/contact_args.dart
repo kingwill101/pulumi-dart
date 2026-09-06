@@ -9,7 +9,7 @@ import 'contacts_properties_contact_profile.dart';
 /// {@macro pulumi_orbital_contact_args_doc}
 class ContactArgs {
   /// Contact name.
-  final pulumi.Input<String>? contactName;
+  final pulumi.Input<String?>? contactName;
   /// The reference to the contact profile resource.
   final pulumi.Input<ContactsPropertiesContactProfile> contactProfile;
   /// Azure Ground Station name.

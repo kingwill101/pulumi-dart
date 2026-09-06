@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Additional information about Azure File Share backup item.
 class AzureFileshareProtectedItemExtendedInfo {
   /// The oldest backup copy available for this item in the service.
-  final pulumi.Input<String>? oldestRecoveryPoint;
+  final pulumi.Input<String?>? oldestRecoveryPoint;
   /// Indicates consistency of policy object and policy applied to this backup item.
-  final pulumi.Input<String>? policyState;
+  final pulumi.Input<String?>? policyState;
   /// Number of available backup copies associated with this backup item.
-  final pulumi.Input<int>? recoveryPointCount;
+  final pulumi.Input<int?>? recoveryPointCount;
 
   /// Creates a new [AzureFileshareProtectedItemExtendedInfo].
   /// [oldestRecoveryPoint] The oldest backup copy available for this item in the service.
@@ -33,7 +33,7 @@ class AzureFileshareProtectedItemExtendedInfo {
     return AzureFileshareProtectedItemExtendedInfo(
       oldestRecoveryPoint: (() { final guardedValue = map['oldestRecoveryPoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyState: (() { final guardedValue = map['policyState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      recoveryPointCount: (() { final guardedValue = map['recoveryPointCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      recoveryPointCount: (() { final guardedValue = map['recoveryPointCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

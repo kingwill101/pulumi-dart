@@ -8,9 +8,9 @@ import 'virtual_machine_profile_response.dart';
 class ComputeProfileResponse {
   /// Specifies the Microsoft.Compute API version to use when creating underlying Virtual Machines.
   /// The default value will be the latest supported computeApiVersion by LaunchBulkInstancesOperation.
-  final pulumi.Input<String>? computeApiVersion;
+  final pulumi.Input<String?>? computeApiVersion;
   /// Virtual Machine Extensions Array to be specified according to "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachine.json#/definitions/VirtualMachineExtension"
-  final pulumi.Input<List<VirtualMachineExtensionResponse>>? extensions;
+  final pulumi.Input<List<VirtualMachineExtensionResponse>?>? extensions;
   /// Base Virtual Machine Profile Properties to be specified according to "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachine.json#/definitions/VirtualMachineProperties"
   final pulumi.Input<VirtualMachineProfileResponse> virtualMachineProfile;
 

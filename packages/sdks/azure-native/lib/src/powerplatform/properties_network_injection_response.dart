@@ -6,7 +6,7 @@ import 'virtual_network_properties_response.dart';
 /// Settings concerning network injection.
 class PropertiesNetworkInjectionResponse {
   /// Network injection configuration
-  final pulumi.Input<List<VirtualNetworkPropertiesResponse>>? virtualNetworks;
+  final pulumi.Input<List<VirtualNetworkPropertiesResponse>?>? virtualNetworks;
 
   /// Creates a new [PropertiesNetworkInjectionResponse].
   /// [virtualNetworks] Network injection configuration

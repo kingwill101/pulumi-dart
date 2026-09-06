@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of OperationLevelMetricsConfigEnumValue
 class OperationLevelMetricsConfigEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [OperationLevelMetricsConfigEnumValueResponse].
   /// [value] Property value

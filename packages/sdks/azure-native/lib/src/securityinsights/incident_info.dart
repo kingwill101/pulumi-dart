@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes related incident information for the bookmark
 class IncidentInfo {
   /// Incident Id
-  final pulumi.Input<String>? incidentId;
+  final pulumi.Input<String?>? incidentId;
   /// Relation Name
-  final pulumi.Input<String>? relationName;
+  final pulumi.Input<String?>? relationName;
   /// The severity of the incident
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<dynamic>? severity;
   /// The title of the incident
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [IncidentInfo].
   /// [incidentId] Incident Id
@@ -38,7 +38,7 @@ class IncidentInfo {
     return IncidentInfo(
       incidentId: (() { final guardedValue = map['incidentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       relationName: (() { final guardedValue = map['relationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

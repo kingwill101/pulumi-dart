@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A header to add to the WebTest.
 class HeaderField {
   /// The name of the header.
-  final pulumi.Input<String>? headerFieldName;
+  final pulumi.Input<String?>? headerFieldName;
   /// The value of the header.
-  final pulumi.Input<String>? headerFieldValue;
+  final pulumi.Input<String?>? headerFieldValue;
 
   /// Creates a new [HeaderField].
   /// [headerFieldName] The name of the header.

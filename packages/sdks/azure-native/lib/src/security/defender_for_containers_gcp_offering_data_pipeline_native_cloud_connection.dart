@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The native cloud connection configuration
 class DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection {
   /// The data collection service account email address in GCP for this offering
-  final pulumi.Input<String>? serviceAccountEmailAddress;
+  final pulumi.Input<String?>? serviceAccountEmailAddress;
   /// The data collection GCP workload identity provider id for this offering
-  final pulumi.Input<String>? workloadIdentityProviderId;
+  final pulumi.Input<String?>? workloadIdentityProviderId;
 
   /// Creates a new [DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection].
   /// [serviceAccountEmailAddress] The data collection service account email address in GCP for this offering

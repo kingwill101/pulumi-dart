@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The property to decide policy is enforced or not on the volume
-enum ElasticVolumePolicyEnforcement {
+enum ElasticVolumePolicyEnforcement implements pulumi.PulumiEnum<String> {
   enforced("Enforced"),
   notEnforced("NotEnforced");
 
   const ElasticVolumePolicyEnforcement(this.wireValue);
+  @override
   final String wireValue;
 
   static ElasticVolumePolicyEnforcement fromValue(String value) {

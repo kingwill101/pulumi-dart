@@ -46,7 +46,7 @@ class ServerPropertiesResponse {
 
   factory ServerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ServerPropertiesResponse(
-      serverDatabaseCount: pulumi.Input.fromValue(map['serverDatabaseCount'] as int),
+      serverDatabaseCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['serverDatabaseCount'])),
       serverEdition: pulumi.Input.fromValue(map['serverEdition'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
       serverOperatingSystemVersion: pulumi.Input.fromValue(map['serverOperatingSystemVersion'] as String),

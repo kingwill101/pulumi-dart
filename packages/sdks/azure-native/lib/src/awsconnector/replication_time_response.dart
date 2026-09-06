@@ -6,9 +6,9 @@ import 'replication_time_value_response.dart';
 /// Definition of ReplicationTime
 class ReplicationTimeResponse {
   /// Specifies whether the replication time is enabled.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// A container specifying the time by which replication should be complete for all objects and operations on objects. A container specifying the time value for S3 Replication Time Control (S3 RTC) and replication metrics ``EventThreshold``.
-  final pulumi.Input<ReplicationTimeValueResponse>? time;
+  final pulumi.Input<ReplicationTimeValueResponse?>? time;
 
   /// Creates a new [ReplicationTimeResponse].
   /// [status] Specifies whether the replication time is enabled.

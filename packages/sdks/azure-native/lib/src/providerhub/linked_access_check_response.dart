@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinkedAccessCheckResponse {
   /// The action name.
-  final pulumi.Input<String>? actionName;
+  final pulumi.Input<String?>? actionName;
   /// The linked action.
-  final pulumi.Input<String>? linkedAction;
+  final pulumi.Input<String?>? linkedAction;
   /// The linked action verb.
-  final pulumi.Input<String>? linkedActionVerb;
+  final pulumi.Input<String?>? linkedActionVerb;
   /// The linked property.
-  final pulumi.Input<String>? linkedProperty;
+  final pulumi.Input<String?>? linkedProperty;
   /// The linked type.
-  final pulumi.Input<String>? linkedType;
+  final pulumi.Input<String?>? linkedType;
 
   /// Creates a new [LinkedAccessCheckResponse].
   /// [actionName] The action name.

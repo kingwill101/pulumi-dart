@@ -197,4 +197,21 @@ class IpFirewallRule extends pulumi.CustomResource {
     startIpAddress = registerOutput<String?>('startIpAddress');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [IpFirewallRule] resource.
+  IpFirewallRule.reference(String urn)
+    : super(
+        'azure-native:synapse:IpFirewallRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    endIpAddress = registerOutput<String?>('endIpAddress');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    startIpAddress = registerOutput<String?>('startIpAddress');
+    type = registerOutput<String>('type');
+  }
 }

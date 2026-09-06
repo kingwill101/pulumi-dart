@@ -7,11 +7,11 @@ import 'http_route_target_response.dart';
 /// Http Route rule.
 class HttpRouteRuleResponse {
   /// Description of rule. Optional.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Routing configuration that will allow matches on specific paths/headers.
-  final pulumi.Input<List<HttpRouteResponse>>? routes;
+  final pulumi.Input<List<HttpRouteResponse>?>? routes;
   /// Targets- container apps, revisions, labels
-  final pulumi.Input<List<HttpRouteTargetResponse>>? targets;
+  final pulumi.Input<List<HttpRouteTargetResponse>?>? targets;
 
   /// Creates a new [HttpRouteRuleResponse].
   /// [description] Description of rule. Optional.

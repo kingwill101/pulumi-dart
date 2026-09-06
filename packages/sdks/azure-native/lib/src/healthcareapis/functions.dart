@@ -36,6 +36,17 @@ Future<GetAnalyticsConnectorResult> getAnalyticsConnector(
   return GetAnalyticsConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetAnalyticsConnectorResult> getAnalyticsConnectorOutput(
+  GetAnalyticsConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:healthcareapis:getAnalyticsConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAnalyticsConnectorResult.fromMap);
+}
+
 /// Gets the properties of the specified DICOM Service.
 ///
 /// Uses Azure REST API version 2024-03-31.
@@ -54,6 +65,17 @@ Future<GetDicomServiceResult> getDicomService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDicomServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetDicomServiceResult> getDicomServiceOutput(
+  GetDicomServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:healthcareapis:getDicomService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDicomServiceResult.fromMap);
 }
 
 /// Gets the properties of the specified FHIR Service.
@@ -76,6 +98,17 @@ Future<GetFhirServiceResult> getFhirService(
   return GetFhirServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetFhirServiceResult> getFhirServiceOutput(
+  GetFhirServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:healthcareapis:getFhirService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFhirServiceResult.fromMap);
+}
+
 /// Gets the properties of the specified IoT Connector.
 ///
 /// Uses Azure REST API version 2024-03-31.
@@ -94,6 +127,17 @@ Future<GetIotConnectorResult> getIotConnector(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIotConnectorResult.fromMap(result);
+}
+
+pulumi.Output<GetIotConnectorResult> getIotConnectorOutput(
+  GetIotConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:healthcareapis:getIotConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIotConnectorResult.fromMap);
 }
 
 /// Gets the properties of the specified Iot Connector FHIR destination.
@@ -116,6 +160,17 @@ Future<GetIotConnectorFhirDestinationResult> getIotConnectorFhirDestination(
   return GetIotConnectorFhirDestinationResult.fromMap(result);
 }
 
+pulumi.Output<GetIotConnectorFhirDestinationResult> getIotConnectorFhirDestinationOutput(
+  GetIotConnectorFhirDestinationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:healthcareapis:getIotConnectorFhirDestination',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIotConnectorFhirDestinationResult.fromMap);
+}
+
 /// Gets the specified private endpoint connection associated with the service.
 ///
 /// Uses Azure REST API version 2024-03-31.
@@ -134,6 +189,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:healthcareapis:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Get the metadata of a service instance.
@@ -156,6 +222,17 @@ Future<GetServiceResult> getService(
   return GetServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:healthcareapis:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
+}
+
 /// Gets the properties of the specified workspace.
 ///
 /// Uses Azure REST API version 2024-03-31.
@@ -176,6 +253,17 @@ Future<GetWorkspaceResult> getWorkspace(
   return GetWorkspaceResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:healthcareapis:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
+}
+
 /// Gets the specified private endpoint connection associated with the workspace.
 ///
 /// Uses Azure REST API version 2024-03-31.
@@ -194,4 +282,15 @@ Future<GetWorkspacePrivateEndpointConnectionResult> getWorkspacePrivateEndpointC
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspacePrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspacePrivateEndpointConnectionResult> getWorkspacePrivateEndpointConnectionOutput(
+  GetWorkspacePrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:healthcareapis:getWorkspacePrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspacePrivateEndpointConnectionResult.fromMap);
 }

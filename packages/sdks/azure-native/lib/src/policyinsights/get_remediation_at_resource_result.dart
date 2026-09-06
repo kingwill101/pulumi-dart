@@ -8,23 +8,23 @@ import 'system_data_response.dart';
 /// Result data returned by getRemediationAtResource.
 class GetRemediationAtResourceResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The remediation correlation Id. Can be used to find events related to the remediation in the activity log.
-  final String correlationId;
+  final String? correlationId;
   /// The time at which the remediation was created.
-  final String createdOn;
+  final String? createdOn;
   /// The deployment status summary for all deployments created by the remediation.
-  final RemediationDeploymentSummaryResponse deploymentStatus;
+  final RemediationDeploymentSummaryResponse? deploymentStatus;
   /// The remediation failure threshold settings
   final RemediationPropertiesFailureThresholdResponse? failureThreshold;
   /// The filters that will be applied to determine which resources to remediate.
   final RemediationFiltersResponse? filters;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The time at which the remediation was last updated.
-  final String lastUpdatedOn;
+  final String? lastUpdatedOn;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Determines how many resources to remediate at any given time. Can be used to increase or reduce the pace of the remediation. If not provided, the default parallel deployments value is used.
   final int? parallelDeployments;
   /// The resource ID of the policy assignment that should be remediated.
@@ -32,17 +32,17 @@ class GetRemediationAtResourceResult {
   /// The policy definition reference ID of the individual definition that should be remediated. Required when the policy assignment being remediated assigns a policy set definition.
   final String? policyDefinitionReferenceId;
   /// The status of the remediation. This refers to the entire remediation task, not individual deployments. Allowed values are Evaluating, Canceled, Cancelling, Failed, Complete, or Succeeded.
-  final String provisioningState;
+  final String? provisioningState;
   /// Determines the max number of resources that can be remediated by the remediation job. If not provided, the default resource count is used.
   final int? resourceCount;
   /// The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified.
   final String? resourceDiscoveryMode;
   /// The remediation status message. Provides additional details regarding the state of the remediation.
-  final String statusMessage;
+  final String? statusMessage;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetRemediationAtResourceResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -64,69 +64,69 @@ class GetRemediationAtResourceResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetRemediationAtResourceResult({
-    required this.azureApiVersion,
-    required this.correlationId,
-    required this.createdOn,
-    required this.deploymentStatus,
+    this.azureApiVersion,
+    this.correlationId,
+    this.createdOn,
+    this.deploymentStatus,
     this.failureThreshold,
     this.filters,
-    required this.id,
-    required this.lastUpdatedOn,
-    required this.name,
+    this.id,
+    this.lastUpdatedOn,
+    this.name,
     this.parallelDeployments,
     this.policyAssignmentId,
     this.policyDefinitionReferenceId,
-    required this.provisioningState,
+    this.provisioningState,
     this.resourceCount,
     this.resourceDiscoveryMode,
-    required this.statusMessage,
-    required this.systemData,
-    required this.type,
+    this.statusMessage,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'correlationId': correlationId,
-      'createdOn': createdOn,
-      'deploymentStatus': deploymentStatus.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'correlationId': ?correlationId,
+      'createdOn': ?createdOn,
+      'deploymentStatus': ?deploymentStatus?.toMap(),
       'failureThreshold': ?failureThreshold?.toMap(),
       'filters': ?filters?.toMap(),
-      'id': id,
-      'lastUpdatedOn': lastUpdatedOn,
-      'name': name,
+      'id': ?id,
+      'lastUpdatedOn': ?lastUpdatedOn,
+      'name': ?name,
       'parallelDeployments': ?parallelDeployments,
       'policyAssignmentId': ?policyAssignmentId,
       'policyDefinitionReferenceId': ?policyDefinitionReferenceId,
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'resourceCount': ?resourceCount,
       'resourceDiscoveryMode': ?resourceDiscoveryMode,
-      'statusMessage': statusMessage,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'statusMessage': ?statusMessage,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetRemediationAtResourceResult.fromMap(Map<String, dynamic> map) {
     return GetRemediationAtResourceResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      correlationId: map['correlationId'] as String,
-      createdOn: map['createdOn'] as String,
-      deploymentStatus: RemediationDeploymentSummaryResponse.fromMap((map['deploymentStatus']! as Map).cast<String, dynamic>()),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      correlationId: (() { final guardedValue = map['correlationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdOn: (() { final guardedValue = map['createdOn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deploymentStatus: (() { final guardedValue = map['deploymentStatus']; if (guardedValue == null) return null; return RemediationDeploymentSummaryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       failureThreshold: (() { final guardedValue = map['failureThreshold']; if (guardedValue == null) return null; return RemediationPropertiesFailureThresholdResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return RemediationFiltersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
-      lastUpdatedOn: map['lastUpdatedOn'] as String,
-      name: map['name'] as String,
-      parallelDeployments: (() { final guardedValue = map['parallelDeployments']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastUpdatedOn: (() { final guardedValue = map['lastUpdatedOn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parallelDeployments: (() { final guardedValue = map['parallelDeployments']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       policyAssignmentId: (() { final guardedValue = map['policyAssignmentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       policyDefinitionReferenceId: (() { final guardedValue = map['policyDefinitionReferenceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
-      resourceCount: (() { final guardedValue = map['resourceCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceCount: (() { final guardedValue = map['resourceCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       resourceDiscoveryMode: (() { final guardedValue = map['resourceDiscoveryMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      statusMessage: map['statusMessage'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      statusMessage: (() { final guardedValue = map['statusMessage']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

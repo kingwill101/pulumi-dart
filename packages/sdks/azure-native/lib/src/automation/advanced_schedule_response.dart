@@ -6,11 +6,11 @@ import 'advanced_schedule_monthly_occurrence_response.dart';
 /// The properties of the create Advanced Schedule.
 class AdvancedScheduleResponse {
   /// Days of the month that the job should execute on. Must be between 1 and 31.
-  final pulumi.Input<List<int>>? monthDays;
+  final pulumi.Input<List<int>?>? monthDays;
   /// Occurrences of days within a month.
-  final pulumi.Input<List<AdvancedScheduleMonthlyOccurrenceResponse>>? monthlyOccurrences;
+  final pulumi.Input<List<AdvancedScheduleMonthlyOccurrenceResponse>?>? monthlyOccurrences;
   /// Days of the week that the job should execute on.
-  final pulumi.Input<List<String>>? weekDays;
+  final pulumi.Input<List<String>?>? weekDays;
 
   /// Creates a new [AdvancedScheduleResponse].
   /// [monthDays] Days of the month that the job should execute on. Must be between 1 and 31.

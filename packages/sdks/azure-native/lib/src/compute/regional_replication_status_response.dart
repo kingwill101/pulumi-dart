@@ -37,7 +37,7 @@ class RegionalReplicationStatusResponse {
   factory RegionalReplicationStatusResponse.fromMap(Map<String, dynamic> map) {
     return RegionalReplicationStatusResponse(
       details: pulumi.Input.fromValue(map['details'] as String),
-      progress: pulumi.Input.fromValue(map['progress'] as int),
+      progress: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['progress'])),
       region: pulumi.Input.fromValue(map['region'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
     );

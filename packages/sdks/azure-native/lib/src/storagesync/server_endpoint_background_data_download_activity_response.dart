@@ -36,8 +36,8 @@ class ServerEndpointBackgroundDataDownloadActivityResponse {
 
   factory ServerEndpointBackgroundDataDownloadActivityResponse.fromMap(Map<String, dynamic> map) {
     return ServerEndpointBackgroundDataDownloadActivityResponse(
-      downloadedBytes: pulumi.Input.fromValue(map['downloadedBytes'] as double),
-      percentProgress: pulumi.Input.fromValue(map['percentProgress'] as int),
+      downloadedBytes: pulumi.Input.fromValue((map['downloadedBytes'] as num).toDouble()),
+      percentProgress: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['percentProgress'])),
       startedTimestamp: pulumi.Input.fromValue(map['startedTimestamp'] as String),
       timestamp: pulumi.Input.fromValue(map['timestamp'] as String),
     );

@@ -7,15 +7,15 @@ import 'managed_disk_response.dart';
 /// Settings for the operating system disk of the virtual machine.
 class OSDiskResponse {
   /// The type of caching to enable for the disk.
-  final pulumi.Input<String>? caching;
+  final pulumi.Input<String?>? caching;
   /// The initial disk size in GB when creating new OS disk.
-  final pulumi.Input<int>? diskSizeGB;
+  final pulumi.Input<int?>? diskSizeGB;
   /// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
-  final pulumi.Input<DiffDiskSettingsResponse>? ephemeralOSDiskSettings;
+  final pulumi.Input<DiffDiskSettingsResponse?>? ephemeralOSDiskSettings;
   /// The managed disk parameters.
-  final pulumi.Input<ManagedDiskResponse>? managedDisk;
+  final pulumi.Input<ManagedDiskResponse?>? managedDisk;
   /// Specifies whether writeAccelerator should be enabled or disabled on the disk.
-  final pulumi.Input<bool>? writeAcceleratorEnabled;
+  final pulumi.Input<bool?>? writeAcceleratorEnabled;
 
   /// Creates a new [OSDiskResponse].
   /// [caching] The type of caching to enable for the disk.
@@ -44,7 +44,7 @@ class OSDiskResponse {
   factory OSDiskResponse.fromMap(Map<String, dynamic> map) {
     return OSDiskResponse(
       caching: (() { final guardedValue = map['caching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      diskSizeGB: (() { final guardedValue = map['diskSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      diskSizeGB: (() { final guardedValue = map['diskSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ephemeralOSDiskSettings: (() { final guardedValue = map['ephemeralOSDiskSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiffDiskSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       managedDisk: (() { final guardedValue = map['managedDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedDiskResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       writeAcceleratorEnabled: (() { final guardedValue = map['writeAcceleratorEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

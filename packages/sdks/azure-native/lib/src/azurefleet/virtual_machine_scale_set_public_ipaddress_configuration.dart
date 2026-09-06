@@ -11,10 +11,10 @@ class VirtualMachineScaleSetPublicIPAddressConfiguration {
   final pulumi.Input<String> name;
   /// Describes a virtual machines scale set IP Configuration's PublicIPAddress
   /// configuration
-  final pulumi.Input<VirtualMachineScaleSetPublicIPAddressConfigurationProperties>? properties;
+  final pulumi.Input<VirtualMachineScaleSetPublicIPAddressConfigurationProperties?>? properties;
   /// Describes the public IP Sku. It can only be set with OrchestrationMode as
   /// Flexible.
-  final pulumi.Input<PublicIPAddressSku>? sku;
+  final pulumi.Input<PublicIPAddressSku?>? sku;
 
   /// Creates a new [VirtualMachineScaleSetPublicIPAddressConfiguration].
   /// [name] The publicIP address configuration name.

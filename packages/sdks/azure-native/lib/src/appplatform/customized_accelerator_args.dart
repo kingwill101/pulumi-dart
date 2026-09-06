@@ -12,15 +12,15 @@ class CustomizedAcceleratorArgs {
   /// The name of the application accelerator.
   final pulumi.Input<String> applicationAcceleratorName;
   /// The name of the customized accelerator.
-  final pulumi.Input<String>? customizedAcceleratorName;
+  final pulumi.Input<String?>? customizedAcceleratorName;
   /// Customized accelerator properties payload
-  final pulumi.Input<CustomizedAcceleratorProperties>? properties;
+  final pulumi.Input<CustomizedAcceleratorProperties?>? properties;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
   /// Sku of the customized accelerator resource
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
 
   /// Creates a new [CustomizedAcceleratorArgs].
   /// [applicationAcceleratorName] The name of the application accelerator.

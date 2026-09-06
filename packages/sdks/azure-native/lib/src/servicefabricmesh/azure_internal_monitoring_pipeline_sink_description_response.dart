@@ -5,22 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Diagnostics settings for Geneva.
 class AzureInternalMonitoringPipelineSinkDescriptionResponse {
   /// Azure Internal monitoring pipeline account.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// Azure Internal monitoring pipeline autokey associated with the certificate.
-  final pulumi.Input<String>? autoKeyConfigUrl;
+  final pulumi.Input<String?>? autoKeyConfigUrl;
   /// A description of the sink.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Azure Internal monitoring agent fluentd configuration.
   final pulumi.Input<dynamic>? fluentdConfigUrl;
   /// The kind of DiagnosticsSink.
   /// Expected value is 'AzureInternalMonitoringPipeline'.
   final pulumi.Input<String> kind;
   /// Azure Internal monitoring agent configuration.
-  final pulumi.Input<String>? maConfigUrl;
+  final pulumi.Input<String?>? maConfigUrl;
   /// Name of the sink. This value is referenced by DiagnosticsReferenceDescription
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Azure Internal monitoring pipeline account namespace.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
 
   /// Creates a new [AzureInternalMonitoringPipelineSinkDescriptionResponse].
   /// [accountName] Azure Internal monitoring pipeline account.

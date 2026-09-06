@@ -11,11 +11,11 @@ class UserArgs {
   /// The name of the mongo cluster.
   final pulumi.Input<String> mongoClusterName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<UserProperties>? properties;
+  final pulumi.Input<UserProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the mongo cluster user.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [UserArgs].
   /// [mongoClusterName] The name of the mongo cluster.

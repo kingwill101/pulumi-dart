@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The gcpOrganization data for the member account
 class GcpOrganizationalDataMember {
   /// The GCP management project number from organizational onboarding
-  final pulumi.Input<String>? managementProjectNumber;
+  final pulumi.Input<String?>? managementProjectNumber;
   /// The multi cloud account's membership type in the organization
   /// Expected value is 'Member'.
   final pulumi.Input<String> organizationMembershipType;
   /// If the multi cloud account is not of membership type organization, this will be the ID of the project's parent
-  final pulumi.Input<String>? parentHierarchyId;
+  final pulumi.Input<String?>? parentHierarchyId;
 
   /// Creates a new [GcpOrganizationalDataMember].
   /// [managementProjectNumber] The GCP management project number from organizational onboarding

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ArtifactsType {
+enum ArtifactsType implements pulumi.PulumiEnum<String> {
   cODEPIPELINE("CODEPIPELINE"),
   nOARTIFACTS("NO_ARTIFACTS"),
   s3("S3");
 
   const ArtifactsType(this.wireValue);
+  @override
   final String wireValue;
 
   static ArtifactsType fromValue(String value) {

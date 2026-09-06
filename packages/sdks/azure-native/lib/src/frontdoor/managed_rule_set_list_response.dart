@@ -7,9 +7,9 @@ import 'managed_rule_set_response.dart';
 /// Defines the list of managed rule sets for the policy.
 class ManagedRuleSetListResponse {
   /// List of exceptions applied on the managed rule sets.
-  final pulumi.Input<ManagedRuleSetExceptionListResponse>? exceptionsList;
+  final pulumi.Input<ManagedRuleSetExceptionListResponse?>? exceptionsList;
   /// List of rule sets.
-  final pulumi.Input<List<ManagedRuleSetResponse>>? managedRuleSets;
+  final pulumi.Input<List<ManagedRuleSetResponse>?>? managedRuleSets;
 
   /// Creates a new [ManagedRuleSetListResponse].
   /// [exceptionsList] List of exceptions applied on the managed rule sets.

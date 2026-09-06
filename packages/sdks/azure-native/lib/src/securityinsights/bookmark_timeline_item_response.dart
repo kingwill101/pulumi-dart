@@ -8,22 +8,22 @@ class BookmarkTimelineItemResponse {
   /// The bookmark azure resource id.
   final pulumi.Input<String> azureResourceId;
   /// Describes a user that created the bookmark
-  final pulumi.Input<UserInfoResponse>? createdBy;
+  final pulumi.Input<UserInfoResponse?>? createdBy;
   /// The bookmark display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The bookmark end time.
-  final pulumi.Input<String>? endTimeUtc;
+  final pulumi.Input<String?>? endTimeUtc;
   /// The bookmark event time.
-  final pulumi.Input<String>? eventTime;
+  final pulumi.Input<String?>? eventTime;
   /// The entity query kind
   /// Expected value is 'Bookmark'.
   final pulumi.Input<String> kind;
   /// List of labels relevant to this bookmark
-  final pulumi.Input<List<String>>? labels;
+  final pulumi.Input<List<String>?>? labels;
   /// The notes of the bookmark
-  final pulumi.Input<String>? notes;
+  final pulumi.Input<String?>? notes;
   /// The bookmark start time.
-  final pulumi.Input<String>? startTimeUtc;
+  final pulumi.Input<String?>? startTimeUtc;
 
   /// Creates a new [BookmarkTimelineItemResponse].
   /// [azureResourceId] The bookmark azure resource id.

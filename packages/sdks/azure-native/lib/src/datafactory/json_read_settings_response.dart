@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'tar_gzip_read_settings_response.dart';
 
 /// Json read settings.
 class JsonReadSettingsResponse {
   /// Compression settings.
-  final pulumi.Input<TarGZipReadSettingsResponse>? compressionProperties;
+  final pulumi.Input<dynamic>? compressionProperties;
   /// The read setting type.
   /// Expected value is 'JsonReadSettings'.
   final pulumi.Input<String> type;
@@ -21,14 +20,14 @@ class JsonReadSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compressionProperties': ?pulumi.Input.mapOptionalInputValue<TarGZipReadSettingsResponse, Map<String, dynamic>>(compressionProperties, (value) => value.toMap()),
+      'compressionProperties': ?compressionProperties,
       'type': type,
     };
   }
 
   factory JsonReadSettingsResponse.fromMap(Map<String, dynamic> map) {
     return JsonReadSettingsResponse(
-      compressionProperties: (() { final guardedValue = map['compressionProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TarGZipReadSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      compressionProperties: (() { final guardedValue = map['compressionProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

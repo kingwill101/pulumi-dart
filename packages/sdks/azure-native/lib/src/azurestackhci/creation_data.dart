@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Data used when creating a disk or snapshot
 class CreationData {
   /// This enumerates the possible sources of a disk's creation
-  final pulumi.Input<String> createOption;
+  final pulumi.Input<dynamic> createOption;
   /// ARM ID of the source resource used for disk creation. Required when createOption is Copy
-  final pulumi.Input<String>? sourceResourceId;
+  final pulumi.Input<String?>? sourceResourceId;
 
   /// Creates a new [CreationData].
   /// [createOption] This enumerates the possible sources of a disk's creation
@@ -26,7 +26,7 @@ class CreationData {
 
   factory CreationData.fromMap(Map<String, dynamic> map) {
     return CreationData(
-      createOption: pulumi.Input.fromValue(map['createOption'] as String),
+      createOption: pulumi.Input.fromValue(map['createOption']),
       sourceResourceId: (() { final guardedValue = map['sourceResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Contains the IP tag associated with the public IP address.
 class VirtualMachineScaleSetIpTagResponse {
   /// IP tag type. Example: FirstPartyUsage.
-  final pulumi.Input<String>? ipTagType;
+  final pulumi.Input<String?>? ipTagType;
   /// IP tag associated with the public IP. Example: SQL, Storage etc.
-  final pulumi.Input<String>? tag;
+  final pulumi.Input<String?>? tag;
 
   /// Creates a new [VirtualMachineScaleSetIpTagResponse].
   /// [ipTagType] IP tag type. Example: FirstPartyUsage.

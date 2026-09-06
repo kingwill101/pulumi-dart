@@ -9,27 +9,27 @@ import 'virtual_machine_image.dart';
 /// AML Compute properties
 class AmlComputeProperties {
   /// Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
-  final pulumi.Input<bool>? enableNodePublicIp;
+  final pulumi.Input<bool?>? enableNodePublicIp;
   /// Network is isolated or not
-  final pulumi.Input<bool>? isolatedNetwork;
+  final pulumi.Input<bool?>? isolatedNetwork;
   /// Compute OS Type
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<dynamic>? osType;
   /// A property bag containing additional properties.
   final pulumi.Input<dynamic>? propertyBag;
   /// State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on all nodes of the cluster. Enabled - Indicates that the public ssh port is open on all nodes of the cluster. NotSpecified - Indicates that the public ssh port is closed on all nodes of the cluster if VNet is defined, else is open all public nodes. It can be default only during cluster creation time, after creation it will be either enabled or disabled.
-  final pulumi.Input<String>? remoteLoginPortPublicAccess;
+  final pulumi.Input<dynamic>? remoteLoginPortPublicAccess;
   /// Scale settings for AML Compute
-  final pulumi.Input<ScaleSettings>? scaleSettings;
+  final pulumi.Input<ScaleSettings?>? scaleSettings;
   /// Virtual network subnet resource ID the compute nodes belong to.
-  final pulumi.Input<ResourceId>? subnet;
+  final pulumi.Input<ResourceId?>? subnet;
   /// Credentials for an administrator user account that will be created on each compute node.
-  final pulumi.Input<UserAccountCredentials>? userAccountCredentials;
+  final pulumi.Input<UserAccountCredentials?>? userAccountCredentials;
   /// Virtual Machine image for AML Compute - windows only
-  final pulumi.Input<VirtualMachineImage>? virtualMachineImage;
+  final pulumi.Input<VirtualMachineImage?>? virtualMachineImage;
   /// Virtual Machine priority
-  final pulumi.Input<String>? vmPriority;
+  final pulumi.Input<dynamic>? vmPriority;
   /// Virtual Machine Size
-  final pulumi.Input<String>? vmSize;
+  final pulumi.Input<String?>? vmSize;
 
   /// Creates a new [AmlComputeProperties].
   /// [enableNodePublicIp] Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
@@ -43,19 +43,19 @@ class AmlComputeProperties {
   /// [virtualMachineImage] Virtual Machine image for AML Compute - windows only
   /// [vmPriority] Virtual Machine priority
   /// [vmSize] Virtual Machine Size
-  const AmlComputeProperties({
-    this.enableNodePublicIp,
+  AmlComputeProperties({
+    pulumi.Input<bool?>? enableNodePublicIp,
     this.isolatedNetwork,
-    this.osType,
+    pulumi.Input<dynamic>? osType,
     this.propertyBag,
-    this.remoteLoginPortPublicAccess,
+    pulumi.Input<dynamic>? remoteLoginPortPublicAccess,
     this.scaleSettings,
     this.subnet,
     this.userAccountCredentials,
     this.virtualMachineImage,
     this.vmPriority,
     this.vmSize,
-  });
+  }) : enableNodePublicIp = enableNodePublicIp ?? pulumi.Input.fromValue(true), osType = osType ?? pulumi.Input.fromValue('Linux'), remoteLoginPortPublicAccess = remoteLoginPortPublicAccess ?? pulumi.Input.fromValue('NotSpecified');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,14 +77,14 @@ class AmlComputeProperties {
     return AmlComputeProperties(
       enableNodePublicIp: (() { final guardedValue = map['enableNodePublicIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isolatedNetwork: (() { final guardedValue = map['isolatedNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       propertyBag: (() { final guardedValue = map['propertyBag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      remoteLoginPortPublicAccess: (() { final guardedValue = map['remoteLoginPortPublicAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      remoteLoginPortPublicAccess: (() { final guardedValue = map['remoteLoginPortPublicAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       scaleSettings: (() { final guardedValue = map['scaleSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceId.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       userAccountCredentials: (() { final guardedValue = map['userAccountCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UserAccountCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       virtualMachineImage: (() { final guardedValue = map['virtualMachineImage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineImage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      vmPriority: (() { final guardedValue = map['vmPriority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vmPriority: (() { final guardedValue = map['vmPriority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       vmSize: (() { final guardedValue = map['vmSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

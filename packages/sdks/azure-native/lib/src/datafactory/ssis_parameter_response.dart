@@ -5,29 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Ssis parameter.
 class SsisParameterResponse {
   /// Parameter type.
-  final pulumi.Input<String>? dataType;
+  final pulumi.Input<String?>? dataType;
   /// Default value of parameter.
-  final pulumi.Input<String>? defaultValue;
+  final pulumi.Input<String?>? defaultValue;
   /// Parameter description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Design default value of parameter.
-  final pulumi.Input<String>? designDefaultValue;
+  final pulumi.Input<String?>? designDefaultValue;
   /// Parameter id.
-  final pulumi.Input<double>? id;
+  final pulumi.Input<double?>? id;
   /// Parameter name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether parameter is required.
-  final pulumi.Input<bool>? required;
+  final pulumi.Input<bool?>? required;
   /// Whether parameter is sensitive.
-  final pulumi.Input<bool>? sensitive;
+  final pulumi.Input<bool?>? sensitive;
   /// Default sensitive value of parameter.
-  final pulumi.Input<String>? sensitiveDefaultValue;
+  final pulumi.Input<String?>? sensitiveDefaultValue;
   /// Parameter value set.
-  final pulumi.Input<bool>? valueSet;
+  final pulumi.Input<bool?>? valueSet;
   /// Parameter value type.
-  final pulumi.Input<String>? valueType;
+  final pulumi.Input<String?>? valueType;
   /// Parameter reference variable.
-  final pulumi.Input<String>? variable;
+  final pulumi.Input<String?>? variable;
 
   /// Creates a new [SsisParameterResponse].
   /// [dataType] Parameter type.
@@ -80,7 +80,7 @@ class SsisParameterResponse {
       defaultValue: (() { final guardedValue = map['defaultValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       designDefaultValue: (() { final guardedValue = map['designDefaultValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       required: (() { final guardedValue = map['required']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sensitive: (() { final guardedValue = map['sensitive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

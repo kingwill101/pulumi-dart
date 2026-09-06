@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enable zone redundancy for all databases in this tier.
-enum ZoneRedundancy {
+enum ZoneRedundancy implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const ZoneRedundancy(this.wireValue);
+  @override
   final String wireValue;
 
   static ZoneRedundancy fromValue(String value) {

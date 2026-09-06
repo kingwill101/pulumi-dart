@@ -8,11 +8,11 @@ class WaveProperties {
   /// ARG query and other details to create workloads within a wave
   final pulumi.Input<Arg> arg;
   /// Description of the wave.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display Name of the wave.
   final pulumi.Input<String> displayName;
   /// Planned completion date of the wave.
-  final pulumi.Input<String>? plannedCompletionDate;
+  final pulumi.Input<String?>? plannedCompletionDate;
   /// Planned start date of the wave.
   final pulumi.Input<String> plannedStartDate;
 

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Links to product icons.
 class IconUrisResponse {
   /// URI to hero icon.
-  final pulumi.Input<String>? hero;
+  final pulumi.Input<String?>? hero;
   /// URI to large icon.
-  final pulumi.Input<String>? large;
+  final pulumi.Input<String?>? large;
   /// URI to medium icon.
-  final pulumi.Input<String>? medium;
+  final pulumi.Input<String?>? medium;
   /// URI to small icon.
-  final pulumi.Input<String>? small;
+  final pulumi.Input<String?>? small;
   /// URI to wide icon.
-  final pulumi.Input<String>? wide;
+  final pulumi.Input<String?>? wide;
 
   /// Creates a new [IconUrisResponse].
   /// [hero] URI to hero icon.

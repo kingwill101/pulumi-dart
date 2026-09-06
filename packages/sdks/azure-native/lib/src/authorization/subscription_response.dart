@@ -7,23 +7,23 @@ import 'subscription_policies_response.dart';
 /// Subscription information.
 class SubscriptionResponse {
   /// The authorization source of the request.
-  final pulumi.Input<String>? authorizationSource;
+  final pulumi.Input<String?>? authorizationSource;
   /// The subscription display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The fully qualified ID for the subscription.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// An array containing the tenants managing the subscription.
-  final pulumi.Input<List<ManagedByTenantResponse>>? managedByTenants;
+  final pulumi.Input<List<ManagedByTenantResponse>?>? managedByTenants;
   /// The subscription state. Possible values are Enabled, Warned, PastDue, Disabled, and Deleted.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The subscription ID.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// The subscription policies.
-  final pulumi.Input<SubscriptionPoliciesResponse>? subscriptionPolicies;
+  final pulumi.Input<SubscriptionPoliciesResponse?>? subscriptionPolicies;
   /// The tags attached to the subscription.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The subscription tenant ID.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [SubscriptionResponse].
   /// [authorizationSource] The authorization source of the request.

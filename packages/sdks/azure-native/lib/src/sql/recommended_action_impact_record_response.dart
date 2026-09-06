@@ -41,9 +41,9 @@ class RecommendedActionImpactRecordResponse {
 
   factory RecommendedActionImpactRecordResponse.fromMap(Map<String, dynamic> map) {
     return RecommendedActionImpactRecordResponse(
-      absoluteValue: pulumi.Input.fromValue(map['absoluteValue'] as double),
-      changeValueAbsolute: pulumi.Input.fromValue(map['changeValueAbsolute'] as double),
-      changeValueRelative: pulumi.Input.fromValue(map['changeValueRelative'] as double),
+      absoluteValue: pulumi.Input.fromValue((map['absoluteValue'] as num).toDouble()),
+      changeValueAbsolute: pulumi.Input.fromValue((map['changeValueAbsolute'] as num).toDouble()),
+      changeValueRelative: pulumi.Input.fromValue((map['changeValueRelative'] as num).toDouble()),
       dimensionName: pulumi.Input.fromValue(map['dimensionName'] as String),
       unit: pulumi.Input.fromValue(map['unit'] as String),
     );

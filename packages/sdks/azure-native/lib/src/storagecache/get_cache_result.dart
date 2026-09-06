@@ -17,7 +17,7 @@ import 'system_data_response.dart';
 /// Result data returned by getCache.
 class GetCacheResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The size of this Cache, in GB.
   final int? cacheSizeGB;
   /// Specifies Directory Services settings of the cache.
@@ -25,41 +25,41 @@ class GetCacheResult {
   /// Specifies encryption settings of the cache.
   final CacheEncryptionSettingsResponse? encryptionSettings;
   /// Health of the cache.
-  final CacheHealthResponse health;
+  final CacheHealthResponse? health;
   /// Resource ID of the cache.
-  final String id;
+  final String? id;
   /// The identity of the cache, if configured.
   final CacheIdentityResponse? identity;
   /// Region name string.
   final String? location;
   /// Array of IPv4 addresses that can be used by clients mounting this cache.
-  final List<String> mountAddresses;
+  final List<String>? mountAddresses;
   /// Name of cache.
-  final String name;
+  final String? name;
   /// Specifies network settings of the cache.
   final CacheNetworkSettingsResponse? networkSettings;
   /// Specifies the priming jobs defined in the cache.
-  final List<PrimingJobResponse> primingJobs;
+  final List<PrimingJobResponse>? primingJobs;
   /// ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-  final String provisioningState;
+  final String? provisioningState;
   /// Specifies security settings of the cache.
   final CacheSecuritySettingsResponse? securitySettings;
   /// SKU for the cache.
   final CacheResponseSku? sku;
   /// Specifies the space allocation percentage for each storage target in the cache.
-  final List<StorageTargetSpaceAllocationResponse> spaceAllocation;
+  final List<StorageTargetSpaceAllocationResponse>? spaceAllocation;
   /// Subnet used for the cache.
   final String? subnet;
   /// The system meta data relating to this resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Type of the cache; Microsoft.StorageCache/Cache
-  final String type;
+  final String? type;
   /// Upgrade settings of the cache.
   final CacheUpgradeSettingsResponse? upgradeSettings;
   /// Upgrade status of the cache.
-  final CacheUpgradeStatusResponse upgradeStatus;
+  final CacheUpgradeStatusResponse? upgradeStatus;
   /// Availability zones for resources. This field should only contain a single element in the array.
   final List<String>? zones;
 
@@ -88,83 +88,83 @@ class GetCacheResult {
   /// [upgradeStatus] Upgrade status of the cache.
   /// [zones] Availability zones for resources. This field should only contain a single element in the array.
   const GetCacheResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.cacheSizeGB,
     this.directoryServicesSettings,
     this.encryptionSettings,
-    required this.health,
-    required this.id,
+    this.health,
+    this.id,
     this.identity,
     this.location,
-    required this.mountAddresses,
-    required this.name,
+    this.mountAddresses,
+    this.name,
     this.networkSettings,
-    required this.primingJobs,
-    required this.provisioningState,
+    this.primingJobs,
+    this.provisioningState,
     this.securitySettings,
     this.sku,
-    required this.spaceAllocation,
+    this.spaceAllocation,
     this.subnet,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
     this.upgradeSettings,
-    required this.upgradeStatus,
+    this.upgradeStatus,
     this.zones,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'cacheSizeGB': ?cacheSizeGB,
       'directoryServicesSettings': ?directoryServicesSettings?.toMap(),
       'encryptionSettings': ?encryptionSettings?.toMap(),
-      'health': health.toMap(),
-      'id': id,
+      'health': ?health?.toMap(),
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'location': ?location,
-      'mountAddresses': mountAddresses,
-      'name': name,
+      'mountAddresses': ?mountAddresses,
+      'name': ?name,
       'networkSettings': ?networkSettings?.toMap(),
-      'primingJobs': pulumi.Input.encodeList<PrimingJobResponse, Map<String, dynamic>>(primingJobs, (value) => value.toMap()),
-      'provisioningState': provisioningState,
+      'primingJobs': ?(() { final guardedValue = primingJobs; if (guardedValue == null) return null; return pulumi.Input.encodeList<PrimingJobResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'provisioningState': ?provisioningState,
       'securitySettings': ?securitySettings?.toMap(),
       'sku': ?sku?.toMap(),
-      'spaceAllocation': pulumi.Input.encodeList<StorageTargetSpaceAllocationResponse, Map<String, dynamic>>(spaceAllocation, (value) => value.toMap()),
+      'spaceAllocation': ?(() { final guardedValue = spaceAllocation; if (guardedValue == null) return null; return pulumi.Input.encodeList<StorageTargetSpaceAllocationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'subnet': ?subnet,
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'upgradeSettings': ?upgradeSettings?.toMap(),
-      'upgradeStatus': upgradeStatus.toMap(),
+      'upgradeStatus': ?upgradeStatus?.toMap(),
       'zones': ?zones,
     };
   }
 
   factory GetCacheResult.fromMap(Map<String, dynamic> map) {
     return GetCacheResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      cacheSizeGB: (() { final guardedValue = map['cacheSizeGB']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      cacheSizeGB: (() { final guardedValue = map['cacheSizeGB']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       directoryServicesSettings: (() { final guardedValue = map['directoryServicesSettings']; if (guardedValue == null) return null; return CacheDirectorySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       encryptionSettings: (() { final guardedValue = map['encryptionSettings']; if (guardedValue == null) return null; return CacheEncryptionSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      health: CacheHealthResponse.fromMap((map['health']! as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
+      health: (() { final guardedValue = map['health']; if (guardedValue == null) return null; return CacheHealthResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return CacheIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      mountAddresses: (map['mountAddresses'] as List).cast<String>(),
-      name: map['name'] as String,
+      mountAddresses: (() { final guardedValue = map['mountAddresses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkSettings: (() { final guardedValue = map['networkSettings']; if (guardedValue == null) return null; return CacheNetworkSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      primingJobs: pulumi.Input.decodeList<PrimingJobResponse>(map['primingJobs']!, (value) => PrimingJobResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
+      primingJobs: (() { final guardedValue = map['primingJobs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrimingJobResponse>(guardedValue, (value) => PrimingJobResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       securitySettings: (() { final guardedValue = map['securitySettings']; if (guardedValue == null) return null; return CacheSecuritySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return CacheResponseSku.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      spaceAllocation: pulumi.Input.decodeList<StorageTargetSpaceAllocationResponse>(map['spaceAllocation']!, (value) => StorageTargetSpaceAllocationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      spaceAllocation: (() { final guardedValue = map['spaceAllocation']; if (guardedValue == null) return null; return pulumi.Input.decodeList<StorageTargetSpaceAllocationResponse>(guardedValue, (value) => StorageTargetSpaceAllocationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       upgradeSettings: (() { final guardedValue = map['upgradeSettings']; if (guardedValue == null) return null; return CacheUpgradeSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      upgradeStatus: CacheUpgradeStatusResponse.fromMap((map['upgradeStatus']! as Map).cast<String, dynamic>()),
+      upgradeStatus: (() { final guardedValue = map['upgradeStatus']; if (guardedValue == null) return null; return CacheUpgradeStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }

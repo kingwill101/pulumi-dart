@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'registry_endpoint_trusted_signing_key_config_map_response.dart';
 
 /// RegistryEndpointTrustedSettings properties
 class RegistryEndpointTrustedSettingsResponse {
   /// The trust properties for the registry endpoint.
-  final pulumi.Input<RegistryEndpointTrustedSigningKeyConfigMapResponse> trustedSigningKeys;
+  final pulumi.Input<dynamic> trustedSigningKeys;
 
   /// Creates a new [RegistryEndpointTrustedSettingsResponse].
   /// [trustedSigningKeys] The trust properties for the registry endpoint.
@@ -16,13 +15,13 @@ class RegistryEndpointTrustedSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'trustedSigningKeys': pulumi.Input.mapInputValue<RegistryEndpointTrustedSigningKeyConfigMapResponse, Map<String, dynamic>>(trustedSigningKeys, (value) => value.toMap()),
+      'trustedSigningKeys': trustedSigningKeys,
     };
   }
 
   factory RegistryEndpointTrustedSettingsResponse.fromMap(Map<String, dynamic> map) {
     return RegistryEndpointTrustedSettingsResponse(
-      trustedSigningKeys: pulumi.Input.fromValue(RegistryEndpointTrustedSigningKeyConfigMapResponse.fromMap((map['trustedSigningKeys']! as Map).cast<String, dynamic>())),
+      trustedSigningKeys: pulumi.Input.fromValue(map['trustedSigningKeys']),
     );
   }
 }

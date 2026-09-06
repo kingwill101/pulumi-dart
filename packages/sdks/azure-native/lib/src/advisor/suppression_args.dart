@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_advisor_suppression_args_doc}
 class SuppressionArgs {
   /// The name of the suppression.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The recommendation ID.
   final pulumi.Input<String> recommendationId;
   /// The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
   final pulumi.Input<String> resourceUri;
   /// The GUID of the suppression.
-  final pulumi.Input<String>? suppressionId;
+  final pulumi.Input<String?>? suppressionId;
   /// The duration for which the suppression is valid.
-  final pulumi.Input<String>? ttl;
+  final pulumi.Input<String?>? ttl;
 
   /// Creates a new [SuppressionArgs].
   /// [name] The name of the suppression.

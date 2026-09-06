@@ -10,25 +10,25 @@ import 'mongo_migration_collection.dart';
 /// {@macro pulumi_datamigration_database_migrations_mongo_to_cosmos_db_rumongo_args_doc}
 class DatabaseMigrationsMongoToCosmosDbRUMongoArgs {
   /// List of Mongo Collections to be migrated.
-  final pulumi.Input<List<MongoMigrationCollection>>? collectionList;
+  final pulumi.Input<List<MongoMigrationCollection>?>? collectionList;
   /// Expected value is 'MongoToCosmosDbMongo'.
   final pulumi.Input<String> kind;
   /// Name of the migration.
-  final pulumi.Input<String>? migrationName;
+  final pulumi.Input<String?>? migrationName;
   /// ID for current migration operation.
-  final pulumi.Input<String>? migrationOperationId;
+  final pulumi.Input<String?>? migrationOperationId;
   /// Resource Id of the Migration Service.
-  final pulumi.Input<String>? migrationService;
+  final pulumi.Input<String?>? migrationService;
   /// Error message for migration provisioning failure, if any.
-  final pulumi.Input<String>? provisioningError;
+  final pulumi.Input<String?>? provisioningError;
   /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// Resource Id of the target resource.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// Source Mongo connection details.
-  final pulumi.Input<MongoConnectionInformation>? sourceMongoConnection;
+  final pulumi.Input<MongoConnectionInformation?>? sourceMongoConnection;
   /// Target Cosmos DB Mongo connection details.
-  final pulumi.Input<MongoConnectionInformation>? targetMongoConnection;
+  final pulumi.Input<MongoConnectionInformation?>? targetMongoConnection;
   /// The name of the target resource/account.
   final pulumi.Input<String> targetResourceName;
 

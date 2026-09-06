@@ -6,9 +6,9 @@ import 'connect_to_target_sql_sql_db_sync_task_input.dart';
 /// Properties for the task that validates connection to SQL DB and target server requirements for online migration
 class ConnectToTargetSqlSqlDbSyncTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// Task input
-  final pulumi.Input<ConnectToTargetSqlSqlDbSyncTaskInput>? input;
+  final pulumi.Input<ConnectToTargetSqlSqlDbSyncTaskInput?>? input;
   /// Task type.
   /// Expected value is 'ConnectToTarget.SqlDb.Sync'.
   final pulumi.Input<String> taskType;

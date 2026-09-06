@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The unit to assign to the metric. If you omit this, the unit is set as ``None``.
-enum MetricTransformationUnit {
+enum MetricTransformationUnit implements pulumi.PulumiEnum<String> {
   bits("Bits"),
   bitsSecond("Bits/Second"),
   bytes("Bytes"),
@@ -29,6 +31,7 @@ enum MetricTransformationUnit {
   terabytesSecond("Terabytes/Second");
 
   const MetricTransformationUnit(this.wireValue);
+  @override
   final String wireValue;
 
   static MetricTransformationUnit fromValue(String value) {

@@ -11,45 +11,45 @@ import 'role_types.dart';
 /// {@macro pulumi_customerinsights_role_assignment_args_doc}
 class RoleAssignmentArgs {
   /// The assignment name
-  final pulumi.Input<String>? assignmentName;
+  final pulumi.Input<String?>? assignmentName;
   /// Widget types set for the assignment.
-  final pulumi.Input<ResourceSetDescription>? conflationPolicies;
+  final pulumi.Input<ResourceSetDescription?>? conflationPolicies;
   /// Connectors set for the assignment.
-  final pulumi.Input<ResourceSetDescription>? connectors;
+  final pulumi.Input<ResourceSetDescription?>? connectors;
   /// Localized description for the metadata.
-  final pulumi.Input<Map<String, String>>? description;
+  final pulumi.Input<Map<String, String>?>? description;
   /// Localized display names for the metadata.
-  final pulumi.Input<Map<String, String>>? displayName;
+  final pulumi.Input<Map<String, String>?>? displayName;
   /// The name of the hub.
   final pulumi.Input<String> hubName;
   /// Interactions set for the assignment.
-  final pulumi.Input<ResourceSetDescription>? interactions;
+  final pulumi.Input<ResourceSetDescription?>? interactions;
   /// Kpis set for the assignment.
-  final pulumi.Input<ResourceSetDescription>? kpis;
+  final pulumi.Input<ResourceSetDescription?>? kpis;
   /// Links set for the assignment.
-  final pulumi.Input<ResourceSetDescription>? links;
+  final pulumi.Input<ResourceSetDescription?>? links;
   /// The principals being assigned to.
   final pulumi.Input<List<AssignmentPrincipal>> principals;
   /// Profiles set for the assignment.
-  final pulumi.Input<ResourceSetDescription>? profiles;
+  final pulumi.Input<ResourceSetDescription?>? profiles;
   /// The Role assignments set for the relationship links.
-  final pulumi.Input<ResourceSetDescription>? relationshipLinks;
+  final pulumi.Input<ResourceSetDescription?>? relationshipLinks;
   /// The Role assignments set for the relationships.
-  final pulumi.Input<ResourceSetDescription>? relationships;
+  final pulumi.Input<ResourceSetDescription?>? relationships;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Type of roles.
   final pulumi.Input<RoleTypes> role;
   /// The Role assignments set for the assignment.
-  final pulumi.Input<ResourceSetDescription>? roleAssignments;
+  final pulumi.Input<ResourceSetDescription?>? roleAssignments;
   /// Sas Policies set for the assignment.
-  final pulumi.Input<ResourceSetDescription>? sasPolicies;
+  final pulumi.Input<ResourceSetDescription?>? sasPolicies;
   /// The Role assignments set for the assignment.
-  final pulumi.Input<ResourceSetDescription>? segments;
+  final pulumi.Input<ResourceSetDescription?>? segments;
   /// Views set for the assignment.
-  final pulumi.Input<ResourceSetDescription>? views;
+  final pulumi.Input<ResourceSetDescription?>? views;
   /// Widget types set for the assignment.
-  final pulumi.Input<ResourceSetDescription>? widgetTypes;
+  final pulumi.Input<ResourceSetDescription?>? widgetTypes;
 
   /// Creates a new [RoleAssignmentArgs].
   /// [assignmentName] The assignment name

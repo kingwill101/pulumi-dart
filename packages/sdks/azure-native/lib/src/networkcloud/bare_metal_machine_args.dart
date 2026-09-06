@@ -10,7 +10,7 @@ import 'extended_location.dart';
 /// {@macro pulumi_networkcloud_bare_metal_machine_args_doc}
 class BareMetalMachineArgs {
   /// The name of the bare metal machine.
-  final pulumi.Input<String>? bareMetalMachineName;
+  final pulumi.Input<String?>? bareMetalMachineName;
   /// The connection string for the baseboard management controller including IP address and protocol.
   final pulumi.Input<String> bmcConnectionString;
   /// The credentials of the baseboard management controller on this bare metal machine.
@@ -22,9 +22,9 @@ class BareMetalMachineArgs {
   /// The extended location of the cluster associated with the resource.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The cluster version that has been applied to this machine during deployment or a version update.
-  final pulumi.Input<String>? machineClusterVersion;
+  final pulumi.Input<String?>? machineClusterVersion;
   /// The custom details provided by the customer.
   final pulumi.Input<String> machineDetails;
   /// The OS-level hostname assigned to this machine.
@@ -40,7 +40,7 @@ class BareMetalMachineArgs {
   /// The serial number of the bare metal machine.
   final pulumi.Input<String> serialNumber;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [BareMetalMachineArgs].
   /// [bareMetalMachineName] The name of the bare metal machine.
@@ -113,7 +113,7 @@ class BareMetalMachineArgs {
       machineName: pulumi.Input.fromValue(map['machineName'] as String),
       machineSkuId: pulumi.Input.fromValue(map['machineSkuId'] as String),
       rackId: pulumi.Input.fromValue(map['rackId'] as String),
-      rackSlot: pulumi.Input.fromValue(map['rackSlot'] as double),
+      rackSlot: pulumi.Input.fromValue((map['rackSlot'] as num).toDouble()),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serialNumber: pulumi.Input.fromValue(map['serialNumber'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

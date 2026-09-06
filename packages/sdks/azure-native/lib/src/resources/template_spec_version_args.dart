@@ -9,11 +9,11 @@ import 'linked_template_artifact.dart';
 /// {@macro pulumi_resources_template_spec_version_args_doc}
 class TemplateSpecVersionArgs {
   /// Template Spec version description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// An array of linked template artifacts.
-  final pulumi.Input<List<LinkedTemplateArtifact>>? linkedTemplates;
+  final pulumi.Input<List<LinkedTemplateArtifact>?>? linkedTemplates;
   /// The location of the Template Spec Version. It must match the location of the parent Template Spec.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The main Azure Resource Manager template content.
   final pulumi.Input<dynamic>? mainTemplate;
   /// The version metadata. Metadata is an open-ended object and is typically a collection of key-value pairs.
@@ -21,11 +21,11 @@ class TemplateSpecVersionArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Name of the Template Spec.
   final pulumi.Input<String> templateSpecName;
   /// The version of the Template Spec.
-  final pulumi.Input<String>? templateSpecVersion;
+  final pulumi.Input<String?>? templateSpecVersion;
   /// The Azure Resource Manager template UI definition content.
   final pulumi.Input<dynamic>? uiFormDefinition;
 

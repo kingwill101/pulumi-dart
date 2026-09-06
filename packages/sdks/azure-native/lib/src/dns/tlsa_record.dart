@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A TLSA record. For more information about the TLSA record format, see RFC 6698: https://www.rfc-editor.org/rfc/rfc6698
 class TlsaRecord {
   /// This specifies the certificate association data to be matched.
-  final pulumi.Input<String>? certAssociationData;
+  final pulumi.Input<String?>? certAssociationData;
   /// The matching type specifies how the certificate association is presented.
-  final pulumi.Input<int>? matchingType;
+  final pulumi.Input<int?>? matchingType;
   /// The selector specifies which part of the TLS certificate presented by the server will be matched against the association data.
-  final pulumi.Input<int>? selector;
+  final pulumi.Input<int?>? selector;
   /// The usage specifies the provided association that will be used to match the certificate presented in the TLS handshake.
-  final pulumi.Input<int>? usage;
+  final pulumi.Input<int?>? usage;
 
   /// Creates a new [TlsaRecord].
   /// [certAssociationData] This specifies the certificate association data to be matched.
@@ -37,9 +37,9 @@ class TlsaRecord {
   factory TlsaRecord.fromMap(Map<String, dynamic> map) {
     return TlsaRecord(
       certAssociationData: (() { final guardedValue = map['certAssociationData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      matchingType: (() { final guardedValue = map['matchingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      selector: (() { final guardedValue = map['selector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      usage: (() { final guardedValue = map['usage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      matchingType: (() { final guardedValue = map['matchingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      selector: (() { final guardedValue = map['selector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      usage: (() { final guardedValue = map['usage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

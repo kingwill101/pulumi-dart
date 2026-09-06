@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The appliance package support URLs.
 class ApplicationPackageSupportUrlsResponse {
   /// The government cloud support URL.
-  final pulumi.Input<String>? governmentCloud;
+  final pulumi.Input<String?>? governmentCloud;
   /// The public azure support URL.
-  final pulumi.Input<String>? publicAzure;
+  final pulumi.Input<String?>? publicAzure;
 
   /// Creates a new [ApplicationPackageSupportUrlsResponse].
   /// [governmentCloud] The government cloud support URL.

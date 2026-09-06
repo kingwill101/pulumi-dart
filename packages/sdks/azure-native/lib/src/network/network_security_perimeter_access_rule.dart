@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_security_perimeter_access_rule_args.dart';
+import 'perimeter_based_access_rule_response.dart';
+import 'subscription_id_response.dart';
 
 /// The NSP access rule resource
 ///
@@ -202,7 +204,7 @@ class NetworkSecurityPerimeterAccessRule extends pulumi.CustomResource {
   /// Resource name.
   late final pulumi.Output<String> name;
   /// Rule specified by the perimeter id.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkSecurityPerimeters;
+  late final pulumi.Output<List<PerimeterBasedAccessRuleResponse>> networkSecurityPerimeters;
   /// Outbound rules phone number format.
   late final pulumi.Output<List<String>?> phoneNumbers;
   /// The provisioning state of the scope assignment resource.
@@ -210,7 +212,7 @@ class NetworkSecurityPerimeterAccessRule extends pulumi.CustomResource {
   /// Inbound rules service tag names.
   late final pulumi.Output<List<String>?> serviceTags;
   /// List of subscription ids
-  late final pulumi.Output<List<Map<String, dynamic>>?> subscriptions;
+  late final pulumi.Output<List<SubscriptionIdResponse>?> subscriptions;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Resource type.
@@ -230,19 +232,44 @@ class NetworkSecurityPerimeterAccessRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
+    addressPrefixes = registerOutput<List<String>?>('addressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     direction = registerOutput<String?>('direction');
-    emailAddresses = registerOutput<List<String>?>('emailAddresses');
-    fullyQualifiedDomainNames = registerOutput<List<String>?>('fullyQualifiedDomainNames');
+    emailAddresses = registerOutput<List<String>?>('emailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    fullyQualifiedDomainNames = registerOutput<List<String>?>('fullyQualifiedDomainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    networkSecurityPerimeters = registerOutput<List<Map<String, dynamic>>>('networkSecurityPerimeters');
-    phoneNumbers = registerOutput<List<String>?>('phoneNumbers');
+    networkSecurityPerimeters = registerOutput<List<PerimeterBasedAccessRuleResponse>>('networkSecurityPerimeters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PerimeterBasedAccessRuleResponse>(guardedValue, (value) => PerimeterBasedAccessRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    phoneNumbers = registerOutput<List<String>?>('phoneNumbers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     provisioningState = registerOutput<String>('provisioningState');
-    serviceTags = registerOutput<List<String>?>('serviceTags');
-    subscriptions = registerOutput<List<Map<String, dynamic>>?>('subscriptions');
-    tags = registerOutput<Map<String, String>?>('tags');
+    serviceTags = registerOutput<List<String>?>('serviceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subscriptions = registerOutput<List<SubscriptionIdResponse>?>('subscriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubscriptionIdResponse>(guardedValue, (value) => SubscriptionIdResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [NetworkSecurityPerimeterAccessRule] resource.
+  NetworkSecurityPerimeterAccessRule.reference(String urn)
+    : super(
+        'azure-native:network:NetworkSecurityPerimeterAccessRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressPrefixes = registerOutput<List<String>?>('addressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    direction = registerOutput<String?>('direction');
+    emailAddresses = registerOutput<List<String>?>('emailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    fullyQualifiedDomainNames = registerOutput<List<String>?>('fullyQualifiedDomainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    networkSecurityPerimeters = registerOutput<List<PerimeterBasedAccessRuleResponse>>('networkSecurityPerimeters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PerimeterBasedAccessRuleResponse>(guardedValue, (value) => PerimeterBasedAccessRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    phoneNumbers = registerOutput<List<String>?>('phoneNumbers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    provisioningState = registerOutput<String>('provisioningState');
+    serviceTags = registerOutput<List<String>?>('serviceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subscriptions = registerOutput<List<SubscriptionIdResponse>?>('subscriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubscriptionIdResponse>(guardedValue, (value) => SubscriptionIdResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

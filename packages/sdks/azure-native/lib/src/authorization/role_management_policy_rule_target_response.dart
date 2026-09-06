@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The role management policy rule target.
 class RoleManagementPolicyRuleTargetResponse {
   /// The caller of the setting.
-  final pulumi.Input<String>? caller;
+  final pulumi.Input<String?>? caller;
   /// The list of enforced settings.
-  final pulumi.Input<List<String>>? enforcedSettings;
+  final pulumi.Input<List<String>?>? enforcedSettings;
   /// The list of inheritable settings.
-  final pulumi.Input<List<String>>? inheritableSettings;
+  final pulumi.Input<List<String>?>? inheritableSettings;
   /// The assignment level to which rule is applied.
-  final pulumi.Input<String>? level;
+  final pulumi.Input<String?>? level;
   /// The type of operation.
-  final pulumi.Input<List<String>>? operations;
+  final pulumi.Input<List<String>?>? operations;
   /// The list of target objects.
-  final pulumi.Input<List<String>>? targetObjects;
+  final pulumi.Input<List<String>?>? targetObjects;
 
   /// Creates a new [RoleManagementPolicyRuleTargetResponse].
   /// [caller] The caller of the setting.

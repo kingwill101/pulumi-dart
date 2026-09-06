@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deployment_args.dart';
+import 'image_response.dart';
 import 'system_data_response.dart';
 
 /// An deployment resource belonging to a device group resource.
@@ -165,7 +166,7 @@ class DeploymentType extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Images deployed
-  late final pulumi.Output<List<Map<String, dynamic>>?> deployedImages;
+  late final pulumi.Output<List<ImageResponse>?> deployedImages;
   /// Deployment date UTC
   late final pulumi.Output<String> deploymentDateUtc;
   /// Deployment ID
@@ -194,7 +195,26 @@ class DeploymentType extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    deployedImages = registerOutput<List<Map<String, dynamic>>?>('deployedImages');
+    deployedImages = registerOutput<List<ImageResponse>?>('deployedImages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageResponse>(guardedValue, (value) => ImageResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    deploymentDateUtc = registerOutput<String>('deploymentDateUtc');
+    deploymentId = registerOutput<String?>('deploymentId');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DeploymentType] resource.
+  DeploymentType.reference(String urn)
+    : super(
+        'azure-native:azuresphere:Deployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deployedImages = registerOutput<List<ImageResponse>?>('deployedImages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageResponse>(guardedValue, (value) => ImageResponse.fromMap((value as Map).cast<String, dynamic>())); });
     deploymentDateUtc = registerOutput<String>('deploymentDateUtc');
     deploymentId = registerOutput<String?>('deploymentId');
     this.name = registerOutput<String>('name');

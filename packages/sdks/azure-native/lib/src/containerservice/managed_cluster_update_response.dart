@@ -7,7 +7,7 @@ import 'node_image_selection_response.dart';
 /// The update to be applied to the ManagedClusters.
 class ManagedClusterUpdateResponse {
   /// The node image upgrade to be applied to the target nodes in update run.
-  final pulumi.Input<NodeImageSelectionResponse>? nodeImageSelection;
+  final pulumi.Input<NodeImageSelectionResponse?>? nodeImageSelection;
   /// The upgrade to apply to the ManagedClusters.
   final pulumi.Input<ManagedClusterUpgradeSpecResponse> upgrade;
 

@@ -6,11 +6,11 @@ import 'azure_resource_error_info_response.dart';
 /// The expression.
 class ExpressionResponse {
   /// The azure resource error info.
-  final pulumi.Input<AzureResourceErrorInfoResponse>? error;
+  final pulumi.Input<AzureResourceErrorInfoResponse?>? error;
   /// The sub expressions.
-  final pulumi.Input<List<ExpressionResponse>>? subexpressions;
+  final pulumi.Input<List<ExpressionResponse>?>? subexpressions;
   /// The text.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
   final pulumi.Input<dynamic>? value;
 
   /// Creates a new [ExpressionResponse].

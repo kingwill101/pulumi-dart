@@ -6,13 +6,13 @@ import 'gateway_resiliency_recommendation_response.dart';
 /// Gateway Resiliency based Recommendations
 class ResiliencyRecommendationComponentsResponse {
   /// Current Score of the gateway
-  final pulumi.Input<String>? currentScore;
+  final pulumi.Input<String?>? currentScore;
   /// Max score that the gateway can achieve if the specified recommendation is applied
-  final pulumi.Input<String>? maxScore;
+  final pulumi.Input<String?>? maxScore;
   /// Name of the Resiliency based Recommendation Component
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of Gateway Resiliency based Recommendations
-  final pulumi.Input<List<GatewayResiliencyRecommendationResponse>>? recommendations;
+  final pulumi.Input<List<GatewayResiliencyRecommendationResponse>?>? recommendations;
 
   /// Creates a new [ResiliencyRecommendationComponentsResponse].
   /// [currentScore] Current Score of the gateway

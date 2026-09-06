@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets Azure Pricing Tier - Free, Basic, etc.
-enum AzurePricingTier {
+enum AzurePricingTier implements pulumi.PulumiEnum<String> {
   standard("Standard"),
   basic("Basic");
 
   const AzurePricingTier(this.wireValue);
+  @override
   final String wireValue;
 
   static AzurePricingTier fromValue(String value) {

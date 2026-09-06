@@ -7,21 +7,21 @@ import 'l2_service_load_balancer_configuration_response.dart';
 
 class NetworkConfigurationResponse {
   /// The configuration of networks being attached to the cluster for use by the workloads that run on this Kubernetes cluster.
-  final pulumi.Input<AttachedNetworkConfigurationResponse>? attachedNetworkConfiguration;
+  final pulumi.Input<AttachedNetworkConfigurationResponse?>? attachedNetworkConfiguration;
   /// The configuration of the BGP service load balancer for this Kubernetes cluster. A maximum of one service load balancer may be specified, either Layer 2 or BGP.
-  final pulumi.Input<BgpServiceLoadBalancerConfigurationResponse>? bgpServiceLoadBalancerConfiguration;
+  final pulumi.Input<BgpServiceLoadBalancerConfigurationResponse?>? bgpServiceLoadBalancerConfiguration;
   /// The resource ID of the associated Cloud Services network.
   final pulumi.Input<String> cloudServicesNetworkId;
   /// The resource ID of the Layer 3 network that is used for creation of the Container Networking Interface network.
   final pulumi.Input<String> cniNetworkId;
   /// The IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in service CIDR.
-  final pulumi.Input<String>? dnsServiceIp;
+  final pulumi.Input<String?>? dnsServiceIp;
   /// The configuration of the Layer 2 service load balancer for this Kubernetes cluster. A maximum of one service load balancer may be specified, either Layer 2 or BGP.
-  final pulumi.Input<L2ServiceLoadBalancerConfigurationResponse>? l2ServiceLoadBalancerConfiguration;
+  final pulumi.Input<L2ServiceLoadBalancerConfigurationResponse?>? l2ServiceLoadBalancerConfiguration;
   /// The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
-  final pulumi.Input<List<String>>? podCidrs;
+  final pulumi.Input<List<String>?>? podCidrs;
   /// The CIDR notation IP ranges from which to assign service IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
-  final pulumi.Input<List<String>>? serviceCidrs;
+  final pulumi.Input<List<String>?>? serviceCidrs;
 
   /// Creates a new [NetworkConfigurationResponse].
   /// [attachedNetworkConfiguration] The configuration of networks being attached to the cluster for use by the workloads that run on this Kubernetes cluster.

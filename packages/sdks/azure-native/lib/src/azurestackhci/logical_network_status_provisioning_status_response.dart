@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the status of the provisioning.
 class LogicalNetworkStatusProvisioningStatusResponse {
   /// The ID of the operation performed on the logical network
-  final pulumi.Input<String>? operationId;
+  final pulumi.Input<String?>? operationId;
   /// The status of the operation performed on the logical network [Succeeded, Failed, InProgress]
   final pulumi.Input<String> status;
 

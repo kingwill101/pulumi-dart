@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for action
 class ActionConfigurationResponse {
   /// The access level of the action
-  final pulumi.Input<String>? accessLevel;
+  final pulumi.Input<String?>? accessLevel;
   /// The identity used by the action
-  final pulumi.Input<String>? identity;
+  final pulumi.Input<String?>? identity;
   /// The mode of the action
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
 
   /// Creates a new [ActionConfigurationResponse].
   /// [accessLevel] The access level of the action

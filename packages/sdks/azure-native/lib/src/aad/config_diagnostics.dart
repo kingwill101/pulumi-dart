@@ -6,9 +6,9 @@ import 'config_diagnostics_validator_result.dart';
 /// Configuration Diagnostics
 class ConfigDiagnostics {
   /// Last domain configuration diagnostics DateTime
-  final pulumi.Input<String>? lastExecuted;
+  final pulumi.Input<String?>? lastExecuted;
   /// List of Configuration Diagnostics validator results.
-  final pulumi.Input<List<ConfigDiagnosticsValidatorResult>>? validatorResults;
+  final pulumi.Input<List<ConfigDiagnosticsValidatorResult>?>? validatorResults;
 
   /// Creates a new [ConfigDiagnostics].
   /// [lastExecuted] Last domain configuration diagnostics DateTime

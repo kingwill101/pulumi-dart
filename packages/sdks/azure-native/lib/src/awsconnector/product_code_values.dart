@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ProductCodeValues {
+enum ProductCodeValues implements pulumi.PulumiEnum<String> {
   devpay("devpay"),
   marketplace("marketplace");
 
   const ProductCodeValues(this.wireValue);
+  @override
   final String wireValue;
 
   static ProductCodeValues fromValue(String value) {

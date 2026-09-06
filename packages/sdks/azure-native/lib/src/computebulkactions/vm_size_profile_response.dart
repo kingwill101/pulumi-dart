@@ -8,7 +8,7 @@ class VmSizeProfileResponse {
   final pulumi.Input<String> name;
   /// The rank of the VM size. This is used with 'AllocationStrategy.Prioritized'
   /// The lower the number, the higher the priority. Starting with 0.
-  final pulumi.Input<int>? rank;
+  final pulumi.Input<int?>? rank;
 
   /// Creates a new [VmSizeProfileResponse].
   /// [name] The Sku name (e.g. 'Standard_DS1_v2')
@@ -28,7 +28,7 @@ class VmSizeProfileResponse {
   factory VmSizeProfileResponse.fromMap(Map<String, dynamic> map) {
     return VmSizeProfileResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
-      rank: (() { final guardedValue = map['rank']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rank: (() { final guardedValue = map['rank']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

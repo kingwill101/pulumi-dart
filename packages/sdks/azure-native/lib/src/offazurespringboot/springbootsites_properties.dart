@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The springbootsites resource definition.
 class SpringbootsitesProperties {
   /// The master site ID from Azure Migrate.
-  final pulumi.Input<String>? masterSiteId;
+  final pulumi.Input<String?>? masterSiteId;
   /// The migrate project ID from Azure Migrate.
-  final pulumi.Input<String>? migrateProjectId;
+  final pulumi.Input<String?>? migrateProjectId;
   /// The resource provisioning state.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<dynamic>? provisioningState;
 
   /// Creates a new [SpringbootsitesProperties].
   /// [masterSiteId] The master site ID from Azure Migrate.
@@ -33,7 +33,7 @@ class SpringbootsitesProperties {
     return SpringbootsitesProperties(
       masterSiteId: (() { final guardedValue = map['masterSiteId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       migrateProjectId: (() { final guardedValue = map['migrateProjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

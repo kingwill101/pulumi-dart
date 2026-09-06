@@ -8,7 +8,7 @@ class TeradataSinkResponse {
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? disableMetricsCollection;
   /// Teradata import settings.
-  final pulumi.Input<TeradataImportCommandResponse>? importSettings;
+  final pulumi.Input<TeradataImportCommandResponse?>? importSettings;
   /// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Sink retry count. Type: integer (or Expression with resultType integer).

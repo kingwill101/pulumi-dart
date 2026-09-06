@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomModelJobInput {
   /// Description for the input.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Enum to determine the Job Input Type.
   /// Expected value is 'custom_model'.
   final pulumi.Input<String> jobInputType;
   /// Enum to determine the input data delivery mode.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<dynamic>? mode;
   /// [Required] Input Asset URI.
   final pulumi.Input<String> uri;
 
@@ -18,12 +18,12 @@ class CustomModelJobInput {
   /// [jobInputType] Enum to determine the Job Input Type.
   /// [mode] Enum to determine the input data delivery mode.
   /// [uri] [Required] Input Asset URI.
-  const CustomModelJobInput({
+  CustomModelJobInput({
     this.description,
     required this.jobInputType,
-    this.mode,
+    pulumi.Input<dynamic>? mode,
     required this.uri,
-  });
+  }) : mode = mode ?? pulumi.Input.fromValue('ReadOnlyMount');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,7 +38,7 @@ class CustomModelJobInput {
     return CustomModelJobInput(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       jobInputType: pulumi.Input.fromValue(map['jobInputType'] as String),
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }

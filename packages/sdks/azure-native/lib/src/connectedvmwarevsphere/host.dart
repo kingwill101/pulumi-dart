@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
 import 'host_args.dart';
+import 'resource_status_response.dart';
 import 'system_data_response.dart';
 
 /// Define the host.
@@ -227,7 +228,7 @@ class Host extends pulumi.CustomResource {
   /// Gets the provisioning state.
   late final pulumi.Output<String> provisioningState;
   /// The resource status information.
-  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+  late final pulumi.Output<List<ResourceStatusResponse>> statuses;
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Gets or sets the Resource tags.
@@ -256,7 +257,7 @@ class Host extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     cpuMhz = registerOutput<double>('cpuMhz');
     customResourceName = registerOutput<String>('customResourceName');
-    datastoreIds = registerOutput<List<String>>('datastoreIds');
+    datastoreIds = registerOutput<List<String>>('datastoreIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inventoryItemId = registerOutput<String?>('inventoryItemId');
     kind = registerOutput<String?>('kind');
@@ -265,13 +266,46 @@ class Host extends pulumi.CustomResource {
     moName = registerOutput<String>('moName');
     moRefId = registerOutput<String?>('moRefId');
     this.name = registerOutput<String>('name');
-    networkIds = registerOutput<List<String>>('networkIds');
+    networkIds = registerOutput<List<String>>('networkIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     overallCpuUsageMHz = registerOutput<double>('overallCpuUsageMHz');
     overallMemoryUsageGB = registerOutput<double>('overallMemoryUsageGB');
     provisioningState = registerOutput<String>('provisioningState');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<ResourceStatusResponse>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceStatusResponse>(guardedValue, (value) => ResourceStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String>('uuid');
+    vCenterId = registerOutput<String?>('vCenterId');
+  }
+
+  /// Creates a typed reference to an existing [Host] resource.
+  Host.reference(String urn)
+    : super(
+        'azure-native:connectedvmwarevsphere:Host',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cpuMhz = registerOutput<double>('cpuMhz');
+    customResourceName = registerOutput<String>('customResourceName');
+    datastoreIds = registerOutput<List<String>>('datastoreIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inventoryItemId = registerOutput<String?>('inventoryItemId');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    memorySizeGB = registerOutput<double>('memorySizeGB');
+    moName = registerOutput<String>('moName');
+    moRefId = registerOutput<String?>('moRefId');
+    this.name = registerOutput<String>('name');
+    networkIds = registerOutput<List<String>>('networkIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    overallCpuUsageMHz = registerOutput<double>('overallCpuUsageMHz');
+    overallMemoryUsageGB = registerOutput<double>('overallMemoryUsageGB');
+    provisioningState = registerOutput<String>('provisioningState');
+    statuses = registerOutput<List<ResourceStatusResponse>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceStatusResponse>(guardedValue, (value) => ResourceStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');
     vCenterId = registerOutput<String?>('vCenterId');

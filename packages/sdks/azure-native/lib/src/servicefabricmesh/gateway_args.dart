@@ -11,23 +11,23 @@ import 'tcp_config.dart';
 /// {@macro pulumi_servicefabricmesh_gateway_args_doc}
 class GatewayArgs {
   /// User readable description of the gateway.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Network that the Application is using.
   final pulumi.Input<NetworkRef> destinationNetwork;
   /// The identity of the gateway.
-  final pulumi.Input<String>? gatewayResourceName;
+  final pulumi.Input<String?>? gatewayResourceName;
   /// Configuration for http connectivity for this gateway.
-  final pulumi.Input<List<HttpConfig>>? http;
+  final pulumi.Input<List<HttpConfig>?>? http;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Azure resource group name
   final pulumi.Input<String> resourceGroupName;
   /// Network the gateway should listen on for requests.
   final pulumi.Input<NetworkRef> sourceNetwork;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Configuration for tcp connectivity for this gateway.
-  final pulumi.Input<List<TcpConfig>>? tcp;
+  final pulumi.Input<List<TcpConfig>?>? tcp;
 
   /// Creates a new [GatewayArgs].
   /// [description] User readable description of the gateway.

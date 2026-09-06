@@ -8,13 +8,13 @@ import 'suppression_config.dart';
 /// Action rule with suppression configuration
 class Suppression {
   /// conditions on which alerts will be filtered
-  final pulumi.Input<Conditions>? conditions;
+  final pulumi.Input<Conditions?>? conditions;
   /// Description of action rule
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// scope on which action rule will apply
-  final pulumi.Input<Scope>? scope;
+  final pulumi.Input<Scope?>? scope;
   /// Indicates if the given action rule is enabled or disabled
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// suppression configuration for the action rule
   final pulumi.Input<SuppressionConfig> suppressionConfig;
   /// Indicates type of action rule
@@ -53,7 +53,7 @@ class Suppression {
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Conditions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Scope.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       suppressionConfig: pulumi.Input.fromValue(SuppressionConfig.fromMap((map['suppressionConfig']! as Map).cast<String, dynamic>())),
       type: pulumi.Input.fromValue(map['type'] as String),
     );

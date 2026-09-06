@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of a Service Fabric container network.
-enum NetworkKind {
+enum NetworkKind implements pulumi.PulumiEnum<String> {
   valueLocal("Local");
 
   const NetworkKind(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkKind fromValue(String value) {

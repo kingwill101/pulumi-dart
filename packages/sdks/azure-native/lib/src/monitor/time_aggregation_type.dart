@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// time aggregation type. How the data that is collected should be combined over time. The default value is Average.
-enum TimeAggregationType {
+enum TimeAggregationType implements pulumi.PulumiEnum<String> {
   valueAverage("Average"),
   valueMinimum("Minimum"),
   valueMaximum("Maximum"),
@@ -8,6 +10,7 @@ enum TimeAggregationType {
   valueLast("Last");
 
   const TimeAggregationType(this.wireValue);
+  @override
   final String wireValue;
 
   static TimeAggregationType fromValue(String value) {

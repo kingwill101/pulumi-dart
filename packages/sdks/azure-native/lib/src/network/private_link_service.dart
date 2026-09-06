@@ -10,27 +10,27 @@ import 'private_link_service_properties_visibility.dart';
 /// Private link service resource.
 class PrivateLinkService {
   /// The auto-approval list of the private link service.
-  final pulumi.Input<PrivateLinkServicePropertiesAutoApproval>? autoApproval;
+  final pulumi.Input<PrivateLinkServicePropertiesAutoApproval?>? autoApproval;
   /// The destination IP address of the private link service.
-  final pulumi.Input<String>? destinationIPAddress;
+  final pulumi.Input<String?>? destinationIPAddress;
   /// Whether the private link service is enabled for proxy protocol or not.
-  final pulumi.Input<bool>? enableProxyProtocol;
+  final pulumi.Input<bool?>? enableProxyProtocol;
   /// The extended location of the load balancer.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// The list of Fqdn.
-  final pulumi.Input<List<String>>? fqdns;
+  final pulumi.Input<List<String>?>? fqdns;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// An array of private link service IP configurations.
-  final pulumi.Input<List<PrivateLinkServiceIpConfiguration>>? ipConfigurations;
+  final pulumi.Input<List<PrivateLinkServiceIpConfiguration>?>? ipConfigurations;
   /// An array of references to the load balancer IP configurations.
-  final pulumi.Input<List<FrontendIPConfiguration>>? loadBalancerFrontendIpConfigurations;
+  final pulumi.Input<List<FrontendIPConfiguration>?>? loadBalancerFrontendIpConfigurations;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The visibility list of the private link service.
-  final pulumi.Input<PrivateLinkServicePropertiesVisibility>? visibility;
+  final pulumi.Input<PrivateLinkServicePropertiesVisibility?>? visibility;
 
   /// Creates a new [PrivateLinkService].
   /// [autoApproval] The auto-approval list of the private link service.

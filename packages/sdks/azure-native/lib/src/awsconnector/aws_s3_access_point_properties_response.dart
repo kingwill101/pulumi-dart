@@ -7,23 +7,23 @@ import 'vpc_configuration_response.dart';
 /// Definition of awsS3AccessPoint
 class AwsS3AccessPointPropertiesResponse {
   /// The alias of this Access Point. This alias can be used for compatibility purposes with other AWS services and third-party applications.
-  final pulumi.Input<String>? alias;
+  final pulumi.Input<String?>? alias;
   /// The Amazon Resource Name (ARN) of the specified accesspoint. the Amazon Resource Name (ARN) of the specified accesspoint.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The name of the bucket that you want to associate this Access Point with.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// The AWS account ID associated with the S3 bucket associated with this access point.
-  final pulumi.Input<String>? bucketAccountId;
+  final pulumi.Input<String?>? bucketAccountId;
   /// The name you want to assign to this Access Point. If you don't specify a name, AWS CloudFormation generates a unique ID and uses that ID for the access point name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Indicates whether this Access Point allows access from the public Internet. If VpcConfiguration is specified for this Access Point, then NetworkOrigin is VPC, and the Access Point doesn't allow access from the public Internet. Otherwise, NetworkOrigin is Internet, and the Access Point allows access from the public Internet, subject to the Access Point and bucket access policies.
-  final pulumi.Input<String>? networkOrigin;
+  final pulumi.Input<String?>? networkOrigin;
   /// The Access Point Policy you want to apply to this access point.
   final pulumi.Input<dynamic>? policy;
   /// The PublicAccessBlock configuration that you want to apply to this Access Point. You can enable the configuration options in any combination. For more information about when Amazon S3 considers a bucket or object public, see https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status 'The Meaning of Public' in the Amazon Simple Storage Service Developer Guide.
-  final pulumi.Input<PublicAccessBlockConfigurationResponse>? publicAccessBlockConfiguration;
+  final pulumi.Input<PublicAccessBlockConfigurationResponse?>? publicAccessBlockConfiguration;
   /// If you include this field, Amazon S3 restricts access to this Access Point to requests from the specified Virtual Private Cloud (VPC). The Virtual Private Cloud (VPC) configuration for a bucket access point.
-  final pulumi.Input<VpcConfigurationResponse>? vpcConfiguration;
+  final pulumi.Input<VpcConfigurationResponse?>? vpcConfiguration;
 
   /// Creates a new [AwsS3AccessPointPropertiesResponse].
   /// [alias] The alias of this Access Point. This alias can be used for compatibility purposes with other AWS services and third-party applications.

@@ -10,9 +10,9 @@ class ProductArgs {
   /// Name of catalog
   final pulumi.Input<String> catalogName;
   /// Description of the product
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of product.
-  final pulumi.Input<String>? productName;
+  final pulumi.Input<String?>? productName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

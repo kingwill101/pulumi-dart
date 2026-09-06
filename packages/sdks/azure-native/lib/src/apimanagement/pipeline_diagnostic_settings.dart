@@ -6,9 +6,9 @@ import 'http_message_diagnostic.dart';
 /// Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
 class PipelineDiagnosticSettings {
   /// Diagnostic settings for request.
-  final pulumi.Input<HttpMessageDiagnostic>? request;
+  final pulumi.Input<HttpMessageDiagnostic?>? request;
   /// Diagnostic settings for response.
-  final pulumi.Input<HttpMessageDiagnostic>? response;
+  final pulumi.Input<HttpMessageDiagnostic?>? response;
 
   /// Creates a new [PipelineDiagnosticSettings].
   /// [request] Diagnostic settings for request.

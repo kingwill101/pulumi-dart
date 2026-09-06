@@ -6,7 +6,7 @@ import 'resource_identity_type.dart';
 /// Identity for the resource.
 class Identity {
   /// The identity type.
-  final pulumi.Input<ResourceIdentityType>? type;
+  final pulumi.Input<ResourceIdentityType?>? type;
 
   /// Creates a new [Identity].
   /// [type] The identity type.

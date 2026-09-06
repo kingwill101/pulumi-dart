@@ -654,7 +654,31 @@ class IntegrationAccountMap extends pulumi.CustomResource {
     metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
     parametersSchema = registerOutput<IntegrationAccountMapPropertiesResponseParametersSchema?>('parametersSchema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationAccountMapPropertiesResponseParametersSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [IntegrationAccountMap] resource.
+  IntegrationAccountMap.reference(String urn)
+    : super(
+        'azure-native:logic:IntegrationAccountMap',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    changedTime = registerOutput<String>('changedTime');
+    content = registerOutput<String?>('content');
+    contentLink = registerOutput<ContentLinkResponse>('contentLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContentLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    contentType = registerOutput<String?>('contentType');
+    createdTime = registerOutput<String>('createdTime');
+    location = registerOutput<String?>('location');
+    mapType = registerOutput<String>('mapType');
+    metadata = registerOutput<dynamic>('metadata');
+    this.name = registerOutput<String>('name');
+    parametersSchema = registerOutput<IntegrationAccountMapPropertiesResponseParametersSchema?>('parametersSchema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationAccountMapPropertiesResponseParametersSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

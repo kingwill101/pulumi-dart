@@ -9,7 +9,7 @@ class VirtualMachineScaleSetIPConfigurationResponse {
   final pulumi.Input<String> name;
   /// Describes a virtual machine scale set network profile's IP configuration
   /// properties.
-  final pulumi.Input<VirtualMachineScaleSetIPConfigurationPropertiesResponse>? properties;
+  final pulumi.Input<VirtualMachineScaleSetIPConfigurationPropertiesResponse?>? properties;
 
   /// Creates a new [VirtualMachineScaleSetIPConfigurationResponse].
   /// [name] The IP configuration name.

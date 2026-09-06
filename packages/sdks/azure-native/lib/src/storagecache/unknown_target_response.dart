@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties pertaining to the UnknownTarget
 class UnknownTargetResponse {
   /// Dictionary of string-&gt;string pairs containing information about the Storage Target.
-  final pulumi.Input<Map<String, String>>? attributes;
+  final pulumi.Input<Map<String, String>?>? attributes;
 
   /// Creates a new [UnknownTargetResponse].
   /// [attributes] Dictionary of string-&gt;string pairs containing information about the Storage Target.

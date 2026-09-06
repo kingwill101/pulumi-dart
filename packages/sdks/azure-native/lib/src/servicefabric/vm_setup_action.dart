@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// action to be performed on the vms before bootstrapping the service fabric runtime.
-enum VmSetupAction {
+enum VmSetupAction implements pulumi.PulumiEnum<String> {
   valueEnableContainers("EnableContainers"),
   valueEnableHyperV("EnableHyperV");
 
   const VmSetupAction(this.wireValue);
+  @override
   final String wireValue;
 
   static VmSetupAction fromValue(String value) {

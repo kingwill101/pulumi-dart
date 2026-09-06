@@ -7,7 +7,7 @@ class UrlRewriteActionParameters {
   /// Define the relative URL to which the above requests will be rewritten by.
   final pulumi.Input<String> destination;
   /// Whether to preserve unmatched path. Default value is true.
-  final pulumi.Input<bool>? preserveUnmatchedPath;
+  final pulumi.Input<bool?>? preserveUnmatchedPath;
   /// define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.
   final pulumi.Input<String> sourcePattern;
   /// Expected value is 'DeliveryRuleUrlRewriteActionParameters'.

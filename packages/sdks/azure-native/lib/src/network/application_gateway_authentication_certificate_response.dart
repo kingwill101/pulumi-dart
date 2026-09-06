@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Authentication certificates of an application gateway.
 class ApplicationGatewayAuthenticationCertificateResponse {
   /// Certificate public data.
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the authentication certificate that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The provisioning state of the authentication certificate resource.
   final pulumi.Input<String> provisioningState;
   /// Type of the resource.

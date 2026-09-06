@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies whether OS Disk should be deleted or detached upon VM deletion. Possible values are: Delete, Detach. The default value is set to Detach. For an ephemeral OS Disk, the default value is set to Delete. The user cannot change the delete option for an ephemeral OS Disk.
-enum DiskDeleteOptionTypes {
+enum DiskDeleteOptionTypes implements pulumi.PulumiEnum<String> {
   delete("Delete"),
   detach("Detach");
 
   const DiskDeleteOptionTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static DiskDeleteOptionTypes fromValue(String value) {

@@ -11,15 +11,15 @@ class OutboundEndpointArgs {
   /// The name of the DNS resolver.
   final pulumi.Input<String> dnsResolverName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the outbound endpoint for the DNS resolver.
-  final pulumi.Input<String>? outboundEndpointName;
+  final pulumi.Input<String?>? outboundEndpointName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The reference to the subnet used for the outbound endpoint.
   final pulumi.Input<SubResource> subnet;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [OutboundEndpointArgs].
   /// [dnsResolverName] The name of the DNS resolver.

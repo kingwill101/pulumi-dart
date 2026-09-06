@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Azure Core NFVI detail.
 class AzureCoreNFVIDetailsResponse {
   /// Location of the Azure core.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the nfvi.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The NFVI type.
   /// Expected value is 'AzureCore'.
   final pulumi.Input<String> nfviType;

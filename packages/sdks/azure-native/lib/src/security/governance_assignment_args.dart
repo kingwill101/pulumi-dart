@@ -11,21 +11,21 @@ import 'remediation_eta.dart';
 /// {@macro pulumi_security_governance_assignment_args_doc}
 class GovernanceAssignmentArgs {
   /// The additional data for the governance assignment - e.g. links to ticket (optional), see example
-  final pulumi.Input<GovernanceAssignmentAdditionalData>? additionalData;
+  final pulumi.Input<GovernanceAssignmentAdditionalData?>? additionalData;
   /// The assessment key of the governance assignment.
   final pulumi.Input<String> assessmentName;
   /// The governance assignment key.
-  final pulumi.Input<String>? assignmentKey;
+  final pulumi.Input<String?>? assignmentKey;
   /// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
-  final pulumi.Input<GovernanceEmailNotification>? governanceEmailNotification;
+  final pulumi.Input<GovernanceEmailNotification?>? governanceEmailNotification;
   /// Defines whether there is a grace period on the governance assignment
-  final pulumi.Input<bool>? isGracePeriod;
+  final pulumi.Input<bool?>? isGracePeriod;
   /// The Owner for the governance assignment - e.g. user@contoso.com - see example
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// The remediation due-date - after this date Secure Score will be affected (in case of  active grace-period)
   final pulumi.Input<String> remediationDueDate;
   /// The ETA (estimated time of arrival) for remediation (optional), see example
-  final pulumi.Input<RemediationEta>? remediationEta;
+  final pulumi.Input<RemediationEta?>? remediationEta;
   /// The scope of the governance assignment.
   final pulumi.Input<String> scope;
 

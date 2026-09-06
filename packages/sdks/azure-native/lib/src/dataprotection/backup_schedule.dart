@@ -36,7 +36,7 @@ class BackupSchedule {
   /// - 2023-10-15T14:30:45Z
   /// - 2023-10-15T14:30:45.123+05:30
   /// - 2023-10-15T14:30-08:00
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [BackupSchedule].
   /// [repeatingTimeIntervals] Repeating time intervals that define the backup schedule.

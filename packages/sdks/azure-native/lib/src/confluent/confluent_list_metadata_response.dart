@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Metadata of the list
 class ConfluentListMetadataResponse {
   /// First page of the list
-  final pulumi.Input<String>? first;
+  final pulumi.Input<String?>? first;
   /// Last page of the list
-  final pulumi.Input<String>? last;
+  final pulumi.Input<String?>? last;
   /// Next page of the list
-  final pulumi.Input<String>? next;
+  final pulumi.Input<String?>? next;
   /// Previous page of the list
-  final pulumi.Input<String>? prev;
+  final pulumi.Input<String?>? prev;
   /// Total size of the list
-  final pulumi.Input<int>? totalSize;
+  final pulumi.Input<int?>? totalSize;
 
   /// Creates a new [ConfluentListMetadataResponse].
   /// [first] First page of the list
@@ -45,7 +45,7 @@ class ConfluentListMetadataResponse {
       last: (() { final guardedValue = map['last']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       next: (() { final guardedValue = map['next']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       prev: (() { final guardedValue = map['prev']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      totalSize: (() { final guardedValue = map['totalSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      totalSize: (() { final guardedValue = map['totalSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

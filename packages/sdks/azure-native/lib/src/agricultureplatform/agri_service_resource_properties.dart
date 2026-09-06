@@ -7,9 +7,9 @@ import 'installed_solution_map.dart';
 /// Details of the Agriculture AgriDataManager.
 class AgriServiceResourceProperties {
   /// Data connector credentials of AgriService instance.
-  final pulumi.Input<List<DataConnectorCredentialMap>>? dataConnectorCredentials;
+  final pulumi.Input<List<DataConnectorCredentialMap>?>? dataConnectorCredentials;
   /// AgriService installed solutions.
-  final pulumi.Input<List<InstalledSolutionMap>>? installedSolutions;
+  final pulumi.Input<List<InstalledSolutionMap>?>? installedSolutions;
 
   /// Creates a new [AgriServiceResourceProperties].
   /// [dataConnectorCredentials] Data connector credentials of AgriService instance.

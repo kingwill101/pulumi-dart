@@ -7,11 +7,11 @@ import 'elastic_key_vault_properties.dart';
 /// Encryption settings
 class ElasticEncryption {
   /// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
-  final pulumi.Input<ElasticEncryptionIdentity>? identity;
+  final pulumi.Input<ElasticEncryptionIdentity?>? identity;
   /// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault
-  final pulumi.Input<String>? keySource;
+  final pulumi.Input<dynamic>? keySource;
   /// Properties provided by KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
-  final pulumi.Input<ElasticKeyVaultProperties>? keyVaultProperties;
+  final pulumi.Input<ElasticKeyVaultProperties?>? keyVaultProperties;
 
   /// Creates a new [ElasticEncryption].
   /// [identity] Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
@@ -34,7 +34,7 @@ class ElasticEncryption {
   factory ElasticEncryption.fromMap(Map<String, dynamic> map) {
     return ElasticEncryption(
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ElasticEncryptionIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      keySource: (() { final guardedValue = map['keySource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keySource: (() { final guardedValue = map['keySource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       keyVaultProperties: (() { final guardedValue = map['keyVaultProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ElasticKeyVaultProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

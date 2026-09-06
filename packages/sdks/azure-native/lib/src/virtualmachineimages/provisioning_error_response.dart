@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the error happened when create or update an image template
 class ProvisioningErrorResponse {
   /// Verbose error message about the provisioning failure
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Error code of the provisioning failure
-  final pulumi.Input<String>? provisioningErrorCode;
+  final pulumi.Input<String?>? provisioningErrorCode;
 
   /// Creates a new [ProvisioningErrorResponse].
   /// [message] Verbose error message about the provisioning failure

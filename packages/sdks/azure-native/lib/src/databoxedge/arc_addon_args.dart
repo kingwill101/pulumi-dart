@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_databoxedge_arc_addon_args_doc}
 class ArcAddonArgs {
   /// The addon name.
-  final pulumi.Input<String>? addonName;
+  final pulumi.Input<String?>? addonName;
   /// The device name.
   final pulumi.Input<String> deviceName;
   /// Addon type.

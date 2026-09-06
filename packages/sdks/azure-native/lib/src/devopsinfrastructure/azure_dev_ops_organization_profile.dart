@@ -12,7 +12,7 @@ class AzureDevOpsOrganizationProfile {
   /// The list of Azure DevOps organizations the pool should be present in.
   final pulumi.Input<List<Organization>> organizations;
   /// The type of permission which determines which accounts are admins on the Azure DevOps pool.
-  final pulumi.Input<AzureDevOpsPermissionProfile>? permissionProfile;
+  final pulumi.Input<AzureDevOpsPermissionProfile?>? permissionProfile;
 
   /// Creates a new [AzureDevOpsOrganizationProfile].
   /// [kind] Discriminator property for OrganizationProfile.

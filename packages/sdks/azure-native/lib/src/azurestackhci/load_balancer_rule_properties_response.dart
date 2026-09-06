@@ -16,11 +16,11 @@ class LoadBalancerRulePropertiesResponse {
   /// Frontend port to accept connections
   final pulumi.Input<int> frontendPort;
   /// Time for which connections are preserved before being torn down.
-  final pulumi.Input<int>? idleTimeoutInMinutes;
+  final pulumi.Input<int?>? idleTimeoutInMinutes;
   /// SessionPersistence: Default (5-tuple), SourceIP(2-tuple), sourceIPProtocol(3-tuple)
-  final pulumi.Input<String>? loadDistribution;
+  final pulumi.Input<String?>? loadDistribution;
   /// Reference for the health probe for this connection
-  final pulumi.Input<LoadBalancerProbeReferenceResponse>? probe;
+  final pulumi.Input<LoadBalancerProbeReferenceResponse?>? probe;
   /// IP Protocol that the rule must load-balance
   final pulumi.Input<String> protocol;
 
@@ -33,16 +33,16 @@ class LoadBalancerRulePropertiesResponse {
   /// [loadDistribution] SessionPersistence: Default (5-tuple), SourceIP(2-tuple), sourceIPProtocol(3-tuple)
   /// [probe] Reference for the health probe for this connection
   /// [protocol] IP Protocol that the rule must load-balance
-  const LoadBalancerRulePropertiesResponse({
+  LoadBalancerRulePropertiesResponse({
     required this.backendAddressPool,
     required this.backendPort,
     required this.frontendIPConfiguration,
     required this.frontendPort,
     this.idleTimeoutInMinutes,
-    this.loadDistribution,
+    pulumi.Input<String?>? loadDistribution,
     this.probe,
     required this.protocol,
-  });
+  }) : loadDistribution = loadDistribution ?? pulumi.Input.fromValue('Default');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,10 +60,10 @@ class LoadBalancerRulePropertiesResponse {
   factory LoadBalancerRulePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerRulePropertiesResponse(
       backendAddressPool: pulumi.Input.fromValue(LoadBalancerBackendAddressPoolReferenceResponse.fromMap((map['backendAddressPool']! as Map).cast<String, dynamic>())),
-      backendPort: pulumi.Input.fromValue(map['backendPort'] as int),
+      backendPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['backendPort'])),
       frontendIPConfiguration: pulumi.Input.fromValue(LoadBalancerFrontendIPConfigurationReferenceResponse.fromMap((map['frontendIPConfiguration']! as Map).cast<String, dynamic>())),
-      frontendPort: pulumi.Input.fromValue(map['frontendPort'] as int),
-      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      frontendPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['frontendPort'])),
+      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       loadDistribution: (() { final guardedValue = map['loadDistribution']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       probe: (() { final guardedValue = map['probe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoadBalancerProbeReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),

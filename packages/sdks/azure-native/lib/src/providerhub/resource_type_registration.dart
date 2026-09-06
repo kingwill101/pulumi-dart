@@ -6,16 +6,16 @@ import 'resource_type_registration_properties.dart';
 /// Concrete proxy resource types can be created by aliasing this type using a specific property type.
 class ResourceTypeRegistration {
   /// Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
-  final pulumi.Input<String>? kind;
-  final pulumi.Input<ResourceTypeRegistrationProperties>? properties;
+  final pulumi.Input<dynamic>? kind;
+  final pulumi.Input<ResourceTypeRegistrationProperties?>? properties;
 
   /// Creates a new [ResourceTypeRegistration].
   /// [kind] Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
   /// [properties] Optional.
-  const ResourceTypeRegistration({
-    this.kind,
+  ResourceTypeRegistration({
+    pulumi.Input<dynamic>? kind,
     this.properties,
-  });
+  }) : kind = kind ?? pulumi.Input.fromValue('Managed');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,7 +26,7 @@ class ResourceTypeRegistration {
 
   factory ResourceTypeRegistration.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistration(
-      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeRegistrationProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

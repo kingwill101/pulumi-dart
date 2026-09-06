@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Single sign-on related configuration
 class DevToolPortalSsoPropertiesResponse {
   /// The public identifier for the application
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The secret known only to the application and the authorization server
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// The URI of a JSON file with generic OIDC provider configuration.
-  final pulumi.Input<String>? metadataUrl;
+  final pulumi.Input<String?>? metadataUrl;
   /// It defines the specific actions applications can be allowed to do on a user's behalf
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
 
   /// Creates a new [DevToolPortalSsoPropertiesResponse].
   /// [clientId] The public identifier for the application

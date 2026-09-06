@@ -516,4 +516,31 @@ class RoleAssignment extends pulumi.CustomResource {
     updatedBy = registerOutput<String>('updatedBy');
     updatedOn = registerOutput<String>('updatedOn');
   }
+
+  /// Creates a typed reference to an existing [RoleAssignment] resource.
+  RoleAssignment.reference(String urn)
+    : super(
+        'azure-native:authorization:RoleAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    condition = registerOutput<String?>('condition');
+    conditionVersion = registerOutput<String?>('conditionVersion');
+    createdBy = registerOutput<String>('createdBy');
+    createdOn = registerOutput<String>('createdOn');
+    delegatedManagedIdentityResourceId = registerOutput<String?>('delegatedManagedIdentityResourceId');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String?>('principalType');
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+    scope = registerOutput<String>('scope');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    updatedBy = registerOutput<String>('updatedBy');
+    updatedOn = registerOutput<String>('updatedOn');
+  }
 }

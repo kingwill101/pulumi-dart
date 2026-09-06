@@ -32,6 +32,17 @@ Future<GetClusterResult> getCluster(
   return GetClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:streamanalytics:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
+}
+
 /// Gets details about the specified function.
 ///
 /// Uses Azure REST API version 2020-03-01.
@@ -50,6 +61,17 @@ Future<GetFunctionResult> getFunction(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFunctionResult.fromMap(result);
+}
+
+pulumi.Output<GetFunctionResult> getFunctionOutput(
+  GetFunctionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:streamanalytics:getFunction',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFunctionResult.fromMap);
 }
 
 /// Gets details about the specified input.
@@ -72,6 +94,17 @@ Future<GetInputResult> getInput(
   return GetInputResult.fromMap(result);
 }
 
+pulumi.Output<GetInputResult> getInputOutput(
+  GetInputArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:streamanalytics:getInput',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInputResult.fromMap);
+}
+
 /// Gets details about the specified output.
 ///
 /// Uses Azure REST API version 2020-03-01.
@@ -92,6 +125,17 @@ Future<GetOutputResult> getOutput(
   return GetOutputResult.fromMap(result);
 }
 
+pulumi.Output<GetOutputResult> getOutputOutput(
+  GetOutputArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:streamanalytics:getOutput',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOutputResult.fromMap);
+}
+
 /// Gets information about the specified Private Endpoint.
 ///
 /// Uses Azure REST API version 2020-03-01.
@@ -108,6 +152,17 @@ Future<GetPrivateEndpointResult> getPrivateEndpoint(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointResult> getPrivateEndpointOutput(
+  GetPrivateEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:streamanalytics:getPrivateEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointResult.fromMap);
 }
 
 /// Gets details about the specified streaming job.
@@ -130,6 +185,17 @@ Future<GetStreamingJobResult> getStreamingJob(
   return GetStreamingJobResult.fromMap(result);
 }
 
+pulumi.Output<GetStreamingJobResult> getStreamingJobOutput(
+  GetStreamingJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:streamanalytics:getStreamingJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStreamingJobResult.fromMap);
+}
+
 /// Lists all of the streaming jobs in the given cluster.
 ///
 /// Uses Azure REST API version 2020-03-01.
@@ -146,4 +212,15 @@ Future<ListClusterStreamingJobsResult> listClusterStreamingJobs(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListClusterStreamingJobsResult.fromMap(result);
+}
+
+pulumi.Output<ListClusterStreamingJobsResult> listClusterStreamingJobsOutput(
+  ListClusterStreamingJobsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:streamanalytics:listClusterStreamingJobs',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListClusterStreamingJobsResult.fromMap);
 }

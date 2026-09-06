@@ -1,3 +1,5 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion
 /// (This feature is available for VMSS with Flexible OrchestrationMode only).
 /// &lt;br&gt;&lt;br&gt; Possible values: &lt;br&gt;&lt;br&gt; **Delete** If this value is used, the OS
@@ -6,11 +8,12 @@
 /// default value is set to **Delete**. For an Ephemeral OS Disk, the default value
 /// is set to **Delete**. User cannot change the delete option for Ephemeral OS
 /// Disk.
-enum DiskDeleteOptionTypes {
+enum DiskDeleteOptionTypes implements pulumi.PulumiEnum<String> {
   delete("Delete"),
   detach("Detach");
 
   const DiskDeleteOptionTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static DiskDeleteOptionTypes fromValue(String value) {

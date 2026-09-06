@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The preview of the operations for creation
 class DryrunOperationPreviewResponse {
   /// The action defined by RBAC, refer https://docs.microsoft.com/azure/role-based-access-control/role-definitions#actions-format
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// The description of the operation
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The operation name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The operation type
-  final pulumi.Input<String>? operationType;
+  final pulumi.Input<String?>? operationType;
   /// The scope of the operation, refer https://docs.microsoft.com/azure/role-based-access-control/scope-overview
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
 
   /// Creates a new [DryrunOperationPreviewResponse].
   /// [action] The action defined by RBAC, refer https://docs.microsoft.com/azure/role-based-access-control/role-definitions#actions-format

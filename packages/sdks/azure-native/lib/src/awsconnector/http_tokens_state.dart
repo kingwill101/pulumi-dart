@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum HttpTokensState {
+enum HttpTokensState implements pulumi.PulumiEnum<String> {
   optional("optional"),
   required("required");
 
   const HttpTokensState(this.wireValue);
+  @override
   final String wireValue;
 
   static HttpTokensState fromValue(String value) {

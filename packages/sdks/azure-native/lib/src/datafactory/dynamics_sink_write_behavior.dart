@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The write behavior for the operation.
-enum DynamicsSinkWriteBehavior {
+enum DynamicsSinkWriteBehavior implements pulumi.PulumiEnum<String> {
   upsert("Upsert");
 
   const DynamicsSinkWriteBehavior(this.wireValue);
+  @override
   final String wireValue;
 
   static DynamicsSinkWriteBehavior fromValue(String value) {

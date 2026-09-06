@@ -8,27 +8,27 @@ class ListRemediationDeploymentsAtManagementGroupResult {
   /// The link to the next page of items
   final String? nextLink;
   /// The RemediationDeployment items on this page
-  final List<RemediationDeploymentResponse> value;
+  final List<RemediationDeploymentResponse>? value;
 
   /// Creates a new [ListRemediationDeploymentsAtManagementGroupResult].
   /// [nextLink] The link to the next page of items
   /// [value] The RemediationDeployment items on this page
   const ListRemediationDeploymentsAtManagementGroupResult({
     this.nextLink,
-    required this.value,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': pulumi.Input.encodeList<RemediationDeploymentResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<RemediationDeploymentResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory ListRemediationDeploymentsAtManagementGroupResult.fromMap(Map<String, dynamic> map) {
     return ListRemediationDeploymentsAtManagementGroupResult(
       nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      value: pulumi.Input.decodeList<RemediationDeploymentResponse>(map['value']!, (value) => RemediationDeploymentResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RemediationDeploymentResponse>(guardedValue, (value) => RemediationDeploymentResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

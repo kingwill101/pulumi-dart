@@ -9,11 +9,11 @@ import 'collector_agent_properties_base.dart';
 /// {@macro pulumi_migrate_web_app_collector_operation_args_doc}
 class WebAppCollectorOperationArgs {
   /// Gets or sets the collector agent properties.
-  final pulumi.Input<CollectorAgentPropertiesBase>? agentProperties;
+  final pulumi.Input<CollectorAgentPropertiesBase?>? agentProperties;
   /// Web app collector ARM name.
-  final pulumi.Input<String>? collectorName;
+  final pulumi.Input<String?>? collectorName;
   /// Gets the discovery site id.
-  final pulumi.Input<String>? discoverySiteId;
+  final pulumi.Input<String?>? discoverySiteId;
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
   /// The name of the resource group. The name is case insensitive.

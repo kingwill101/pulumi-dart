@@ -6,13 +6,13 @@ import 'error.dart';
 /// Monitoring Setting properties payload
 class MonitoringSettingProperties {
   /// Target application insight instrumentation key, null or whitespace include empty will disable monitoringSettings
-  final pulumi.Input<String>? appInsightsInstrumentationKey;
+  final pulumi.Input<String?>? appInsightsInstrumentationKey;
   /// Indicates the sampling rate of application insight agent, should be in range [0.0, 100.0]
-  final pulumi.Input<double>? appInsightsSamplingRate;
+  final pulumi.Input<double?>? appInsightsSamplingRate;
   /// Error when apply Monitoring Setting changes.
-  final pulumi.Input<Error>? error;
+  final pulumi.Input<Error?>? error;
   /// Indicates whether enable the trace functionality, which will be deprecated since api version 2020-11-01-preview. Please leverage appInsightsInstrumentationKey to indicate if monitoringSettings enabled or not
-  final pulumi.Input<bool>? traceEnabled;
+  final pulumi.Input<bool?>? traceEnabled;
 
   /// Creates a new [MonitoringSettingProperties].
   /// [appInsightsInstrumentationKey] Target application insight instrumentation key, null or whitespace include empty will disable monitoringSettings
@@ -38,7 +38,7 @@ class MonitoringSettingProperties {
   factory MonitoringSettingProperties.fromMap(Map<String, dynamic> map) {
     return MonitoringSettingProperties(
       appInsightsInstrumentationKey: (() { final guardedValue = map['appInsightsInstrumentationKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      appInsightsSamplingRate: (() { final guardedValue = map['appInsightsSamplingRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      appInsightsSamplingRate: (() { final guardedValue = map['appInsightsSamplingRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Error.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       traceEnabled: (() { final guardedValue = map['traceEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

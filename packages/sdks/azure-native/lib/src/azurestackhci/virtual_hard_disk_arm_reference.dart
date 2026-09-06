@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Azure Resource ID for a Virtual Hard Disk.
 class VirtualHardDiskArmReference {
   /// The Azure Resource ID for a Virtual Hard Disk.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [VirtualHardDiskArmReference].
   /// [id] The Azure Resource ID for a Virtual Hard Disk.

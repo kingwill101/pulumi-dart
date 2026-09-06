@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The sku type.
-enum SkuType {
+enum SkuType implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueEvolvedPacketCore("EvolvedPacketCore"),
   valueSDWAN("SDWAN"),
   valueFirewall("Firewall");
 
   const SkuType(this.wireValue);
+  @override
   final String wireValue;
 
   static SkuType fromValue(String value) {

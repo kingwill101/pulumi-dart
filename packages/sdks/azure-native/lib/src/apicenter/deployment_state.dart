@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// State of API deployment.
-enum DeploymentState {
+enum DeploymentState implements pulumi.PulumiEnum<String> {
   active("active"),
   inactive("inactive");
 
   const DeploymentState(this.wireValue);
+  @override
   final String wireValue;
 
   static DeploymentState fromValue(String value) {

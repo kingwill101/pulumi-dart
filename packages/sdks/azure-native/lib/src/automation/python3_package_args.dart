@@ -13,11 +13,11 @@ class Python3PackageArgs {
   /// Gets or sets the module content link.
   final pulumi.Input<ContentLink> contentLink;
   /// The python package name.
-  final pulumi.Input<String>? packageName;
+  final pulumi.Input<String?>? packageName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the tags attached to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [Python3PackageArgs].
   /// [automationAccountName] The name of the automation account.

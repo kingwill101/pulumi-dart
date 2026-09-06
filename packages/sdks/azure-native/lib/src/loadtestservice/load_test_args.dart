@@ -10,19 +10,19 @@ import 'managed_service_identity.dart';
 /// {@macro pulumi_loadtestservice_load_test_args_doc}
 class LoadTestArgs {
   /// Description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// CMK Encryption property.
-  final pulumi.Input<EncryptionProperties>? encryption;
+  final pulumi.Input<EncryptionProperties?>? encryption;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// Load Test name
-  final pulumi.Input<String>? loadTestName;
+  final pulumi.Input<String?>? loadTestName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [LoadTestArgs].
   /// [description] Description of the resource.

@@ -8,73 +8,73 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_machinelearningservices_machine_learning_datastore_args_doc}
 class MachineLearningDatastoreArgs {
   /// Account Key of storage account.
-  final pulumi.Input<String>? accountKey;
+  final pulumi.Input<String?>? accountKey;
   /// The name of the storage account.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// The resource group the ADLS store belongs to. Defaults to selected resource group.
-  final pulumi.Input<String>? adlsResourceGroup;
+  final pulumi.Input<String?>? adlsResourceGroup;
   /// The ID of the subscription the ADLS store belongs to. Defaults to selected subscription.
-  final pulumi.Input<String>? adlsSubscriptionId;
+  final pulumi.Input<String?>? adlsSubscriptionId;
   /// Authority url used to authenticate the user.
-  final pulumi.Input<String>? authorityUrl;
+  final pulumi.Input<String?>? authorityUrl;
   /// The service principal's client/application ID.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The service principal's secret.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// The name of the azure blob container.
-  final pulumi.Input<String>? containerName;
+  final pulumi.Input<String?>? containerName;
   /// Specifies datastore type.
-  final pulumi.Input<String> dataStoreType;
+  final pulumi.Input<dynamic> dataStoreType;
   /// The database name.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// The Datastore name.
-  final pulumi.Input<String>? datastoreName;
+  final pulumi.Input<String?>? datastoreName;
   /// The description of the datastore.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The endpoint of the server.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// This sets the ssl value of the server. Defaults to true if not set.
-  final pulumi.Input<bool>? enforceSSL;
+  final pulumi.Input<bool?>? enforceSSL;
   /// The file system name of the ADLS Gen2.
-  final pulumi.Input<String>? fileSystem;
+  final pulumi.Input<String?>? fileSystem;
   /// Include datastore secret in response.
-  final pulumi.Input<bool>? includeSecret;
+  final pulumi.Input<bool?>? includeSecret;
   /// The name of the datastore.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The password.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The port number.
-  final pulumi.Input<String>? port;
+  final pulumi.Input<String?>? port;
   /// The protocol to be used
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Name of the resource group in which workspace is located.
   final pulumi.Input<String> resourceGroupName;
   /// Determines what operations will be performed.
-  final pulumi.Input<String>? resourceUrl;
+  final pulumi.Input<String?>? resourceUrl;
   /// Sas Token of storage account.
-  final pulumi.Input<String>? sasToken;
+  final pulumi.Input<String?>? sasToken;
   /// The SQL/MySQL/PostgreSQL server name
-  final pulumi.Input<String>? serverName;
+  final pulumi.Input<String?>? serverName;
   /// The name of the file share.
-  final pulumi.Input<String>? shareName;
+  final pulumi.Input<String?>? shareName;
   /// Skip validation that ensures data can be loaded from the dataset before registration.
-  final pulumi.Input<bool>? skipValidation;
+  final pulumi.Input<bool?>? skipValidation;
   /// The resource group of the storage account. Defaults to selected resource group
-  final pulumi.Input<String>? storageAccountResourceGroup;
+  final pulumi.Input<String?>? storageAccountResourceGroup;
   /// The subscription ID of the storage account. Defaults to selected subscription
-  final pulumi.Input<String>? storageAccountSubscriptionId;
+  final pulumi.Input<String?>? storageAccountSubscriptionId;
   /// The ADLS store name.
-  final pulumi.Input<String>? storeName;
+  final pulumi.Input<String?>? storeName;
   /// The service principal Tenant ID.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// The user ID.
-  final pulumi.Input<String>? userId;
+  final pulumi.Input<String?>? userId;
   /// The username of the database user.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
   /// If set to true, datastore support data access authenticated with Workspace MSI.
-  final pulumi.Input<bool>? workspaceSystemAssignedIdentity;
+  final pulumi.Input<bool?>? workspaceSystemAssignedIdentity;
 
   /// Creates a new [MachineLearningDatastoreArgs].
   /// [accountKey] Account Key of storage account.
@@ -111,7 +111,7 @@ class MachineLearningDatastoreArgs {
   /// [userName] The username of the database user.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   /// [workspaceSystemAssignedIdentity] If set to true, datastore support data access authenticated with Workspace MSI.
-  const MachineLearningDatastoreArgs({
+  MachineLearningDatastoreArgs({
     this.accountKey,
     this.accountName,
     this.adlsResourceGroup,
@@ -125,9 +125,9 @@ class MachineLearningDatastoreArgs {
     this.datastoreName,
     this.description,
     this.endpoint,
-    this.enforceSSL,
+    pulumi.Input<bool?>? enforceSSL,
     this.fileSystem,
-    this.includeSecret,
+    pulumi.Input<bool?>? includeSecret,
     this.name,
     this.password,
     this.port,
@@ -146,7 +146,7 @@ class MachineLearningDatastoreArgs {
     this.userName,
     required this.workspaceName,
     this.workspaceSystemAssignedIdentity,
-  });
+  }) : enforceSSL = enforceSSL ?? pulumi.Input.fromValue(true), includeSecret = includeSecret ?? pulumi.Input.fromValue(true);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -197,7 +197,7 @@ class MachineLearningDatastoreArgs {
       clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientSecret: (() { final guardedValue = map['clientSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       containerName: (() { final guardedValue = map['containerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dataStoreType: pulumi.Input.fromValue(map['dataStoreType'] as String),
+      dataStoreType: pulumi.Input.fromValue(map['dataStoreType']),
       databaseName: (() { final guardedValue = map['databaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       datastoreName: (() { final guardedValue = map['datastoreName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

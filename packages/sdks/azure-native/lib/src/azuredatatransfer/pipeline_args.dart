@@ -9,15 +9,15 @@ import 'pipeline_properties.dart';
 /// {@macro pulumi_azuredatatransfer_pipeline_args_doc}
 class PipelineArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name for the pipeline that is to be requested.
-  final pulumi.Input<String>? pipelineName;
+  final pulumi.Input<String?>? pipelineName;
   /// Properties of pipeline
-  final pulumi.Input<PipelineProperties>? properties;
+  final pulumi.Input<PipelineProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PipelineArgs].
   /// [location] The geo-location where the resource lives

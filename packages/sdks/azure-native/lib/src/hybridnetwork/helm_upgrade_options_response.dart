@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The helm deployment install options
 class HelmUpgradeOptionsResponse {
   /// The helm deployment atomic options
-  final pulumi.Input<String>? atomic;
+  final pulumi.Input<String?>? atomic;
   /// The helm deployment timeout options
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
   /// The helm deployment wait options
-  final pulumi.Input<String>? wait;
+  final pulumi.Input<String?>? wait;
 
   /// Creates a new [HelmUpgradeOptionsResponse].
   /// [atomic] The helm deployment atomic options

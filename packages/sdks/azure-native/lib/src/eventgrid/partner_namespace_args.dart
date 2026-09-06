@@ -9,28 +9,28 @@ import 'inbound_ip_rule.dart';
 /// {@macro pulumi_eventgrid_partner_namespace_args_doc}
 class PartnerNamespaceArgs {
   /// This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the partner namespace.
-  final pulumi.Input<bool>? disableLocalAuth;
+  final pulumi.Input<bool?>? disableLocalAuth;
   /// This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
-  final pulumi.Input<List<InboundIpRule>>? inboundIpRules;
+  final pulumi.Input<List<InboundIpRule>?>? inboundIpRules;
   /// Location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Minimum TLS version of the publisher allowed to publish to this partner namespace
-  final pulumi.Input<String>? minimumTlsVersionAllowed;
+  final pulumi.Input<dynamic>? minimumTlsVersionAllowed;
   /// Name of the partner namespace.
-  final pulumi.Input<String>? partnerNamespaceName;
+  final pulumi.Input<String?>? partnerNamespaceName;
   /// The fully qualified ARM Id of the partner registration that should be associated with this partner namespace. This takes the following format:
   /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}.
-  final pulumi.Input<String>? partnerRegistrationFullyQualifiedId;
+  final pulumi.Input<String?>? partnerRegistrationFullyQualifiedId;
   /// This determines if events published to this partner namespace should use the source attribute in the event payload
   /// or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic.
-  final pulumi.Input<String>? partnerTopicRoutingMode;
+  final pulumi.Input<dynamic>? partnerTopicRoutingMode;
   /// This determines if traffic is allowed over public network. By default it is enabled.
   /// You can further restrict to specific IPs by configuring &lt;seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceProperties.InboundIpRules" /&gt;
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
   /// Tags of the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PartnerNamespaceArgs].
   /// [disableLocalAuth] This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the partner namespace.
@@ -43,18 +43,18 @@ class PartnerNamespaceArgs {
   /// [publicNetworkAccess] This determines if traffic is allowed over public network. By default it is enabled.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [tags] Tags of the resource.
-  const PartnerNamespaceArgs({
-    this.disableLocalAuth,
+  PartnerNamespaceArgs({
+    pulumi.Input<bool?>? disableLocalAuth,
     this.inboundIpRules,
     this.location,
     this.minimumTlsVersionAllowed,
     this.partnerNamespaceName,
     this.partnerRegistrationFullyQualifiedId,
-    this.partnerTopicRoutingMode,
-    this.publicNetworkAccess,
+    pulumi.Input<dynamic>? partnerTopicRoutingMode,
+    pulumi.Input<dynamic>? publicNetworkAccess,
     required this.resourceGroupName,
     this.tags,
-  });
+  }) : disableLocalAuth = disableLocalAuth ?? pulumi.Input.fromValue(false), partnerTopicRoutingMode = partnerTopicRoutingMode ?? pulumi.Input.fromValue('SourceEventAttribute'), publicNetworkAccess = publicNetworkAccess ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,11 +76,11 @@ class PartnerNamespaceArgs {
       disableLocalAuth: (() { final guardedValue = map['disableLocalAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       inboundIpRules: (() { final guardedValue = map['inboundIpRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InboundIpRule>(guardedValue, (value) => InboundIpRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      minimumTlsVersionAllowed: (() { final guardedValue = map['minimumTlsVersionAllowed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      minimumTlsVersionAllowed: (() { final guardedValue = map['minimumTlsVersionAllowed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       partnerNamespaceName: (() { final guardedValue = map['partnerNamespaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       partnerRegistrationFullyQualifiedId: (() { final guardedValue = map['partnerRegistrationFullyQualifiedId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      partnerTopicRoutingMode: (() { final guardedValue = map['partnerTopicRoutingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      partnerTopicRoutingMode: (() { final guardedValue = map['partnerTopicRoutingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

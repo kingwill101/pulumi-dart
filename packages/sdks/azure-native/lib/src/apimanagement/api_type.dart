@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of API.
-enum ApiType {
+enum ApiType implements pulumi.PulumiEnum<String> {
   valueHttp("http"),
   valueSoap("soap"),
   valueWebsocket("websocket"),
@@ -8,6 +10,7 @@ enum ApiType {
   valueGrpc("grpc");
 
   const ApiType(this.wireValue);
+  @override
   final String wireValue;
 
   static ApiType fromValue(String value) {

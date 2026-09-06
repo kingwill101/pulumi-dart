@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The active state
-enum EdgeActionIsDefaultVersion {
+enum EdgeActionIsDefaultVersion implements pulumi.PulumiEnum<String> {
   true_("True"),
   false_("False");
 
   const EdgeActionIsDefaultVersion(this.wireValue);
+  @override
   final String wireValue;
 
   static EdgeActionIsDefaultVersion fromValue(String value) {

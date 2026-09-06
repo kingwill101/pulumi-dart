@@ -16,28 +16,28 @@ class DataBoxCustomerDiskJobDetails {
   /// Contact details for notification and shipping.
   final pulumi.Input<ContactDetails> contactDetails;
   /// Details of the data to be exported from azure.
-  final pulumi.Input<List<DataExportDetails>>? dataExportDetails;
+  final pulumi.Input<List<DataExportDetails>?>? dataExportDetails;
   /// Details of the data to be imported into azure.
-  final pulumi.Input<List<DataImportDetails>>? dataImportDetails;
+  final pulumi.Input<List<DataImportDetails>?>? dataImportDetails;
   /// Flag to indicate if disk manifest should be backed-up in the Storage Account.
-  final pulumi.Input<bool>? enableManifestBackup;
+  final pulumi.Input<bool?>? enableManifestBackup;
   /// The expected size of the data, which needs to be transferred in this job, in terabytes.
-  final pulumi.Input<int>? expectedDataSizeInTeraBytes;
+  final pulumi.Input<int?>? expectedDataSizeInTeraBytes;
   /// Contains the map of disk serial number to the disk details for import jobs.
-  final pulumi.Input<Map<String, ImportDiskDetails>>? importDiskDetailsCollection;
+  final pulumi.Input<Map<String, ImportDiskDetails>?>? importDiskDetailsCollection;
   /// Indicates the type of job details.
   /// Expected value is 'DataBoxCustomerDisk'.
   final pulumi.Input<String> jobDetailsType;
   /// Details about which key encryption type is being used.
-  final pulumi.Input<KeyEncryptionKey>? keyEncryptionKey;
+  final pulumi.Input<KeyEncryptionKey?>? keyEncryptionKey;
   /// Preferences for the order.
-  final pulumi.Input<Preferences>? preferences;
+  final pulumi.Input<Preferences?>? preferences;
   /// Return package shipping details.
   final pulumi.Input<PackageCarrierDetails> returnToCustomerPackageDetails;
   /// Optional Reverse Shipping details for order.
-  final pulumi.Input<ReverseShippingDetails>? reverseShippingDetails;
+  final pulumi.Input<ReverseShippingDetails?>? reverseShippingDetails;
   /// Shipping address of the customer.
-  final pulumi.Input<ShippingAddress>? shippingAddress;
+  final pulumi.Input<ShippingAddress?>? shippingAddress;
 
   /// Creates a new [DataBoxCustomerDiskJobDetails].
   /// [contactDetails] Contact details for notification and shipping.
@@ -52,11 +52,11 @@ class DataBoxCustomerDiskJobDetails {
   /// [returnToCustomerPackageDetails] Return package shipping details.
   /// [reverseShippingDetails] Optional Reverse Shipping details for order.
   /// [shippingAddress] Shipping address of the customer.
-  const DataBoxCustomerDiskJobDetails({
+  DataBoxCustomerDiskJobDetails({
     required this.contactDetails,
     this.dataExportDetails,
     this.dataImportDetails,
-    this.enableManifestBackup,
+    pulumi.Input<bool?>? enableManifestBackup,
     this.expectedDataSizeInTeraBytes,
     this.importDiskDetailsCollection,
     required this.jobDetailsType,
@@ -65,7 +65,7 @@ class DataBoxCustomerDiskJobDetails {
     required this.returnToCustomerPackageDetails,
     this.reverseShippingDetails,
     this.shippingAddress,
-  });
+  }) : enableManifestBackup = enableManifestBackup ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -90,7 +90,7 @@ class DataBoxCustomerDiskJobDetails {
       dataExportDetails: (() { final guardedValue = map['dataExportDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataExportDetails>(guardedValue, (value) => DataExportDetails.fromMap((value as Map).cast<String, dynamic>()))); })(),
       dataImportDetails: (() { final guardedValue = map['dataImportDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataImportDetails>(guardedValue, (value) => DataImportDetails.fromMap((value as Map).cast<String, dynamic>()))); })(),
       enableManifestBackup: (() { final guardedValue = map['enableManifestBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      expectedDataSizeInTeraBytes: (() { final guardedValue = map['expectedDataSizeInTeraBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      expectedDataSizeInTeraBytes: (() { final guardedValue = map['expectedDataSizeInTeraBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       importDiskDetailsCollection: (() { final guardedValue = map['importDiskDetailsCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ImportDiskDetails>(guardedValue, (value) => ImportDiskDetails.fromMap((value as Map).cast<String, dynamic>()))); })(),
       jobDetailsType: pulumi.Input.fromValue(map['jobDetailsType'] as String),
       keyEncryptionKey: (() { final guardedValue = map['keyEncryptionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

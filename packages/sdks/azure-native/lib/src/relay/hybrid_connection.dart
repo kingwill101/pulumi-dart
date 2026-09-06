@@ -203,4 +203,25 @@ class HybridConnection extends pulumi.CustomResource {
     updatedAt = registerOutput<String>('updatedAt');
     userMetadata = registerOutput<String?>('userMetadata');
   }
+
+  /// Creates a typed reference to an existing [HybridConnection] resource.
+  HybridConnection.reference(String urn)
+    : super(
+        'azure-native:relay:HybridConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdAt = registerOutput<String>('createdAt');
+    listenerCount = registerOutput<int>('listenerCount');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    requiresClientAuthorization = registerOutput<bool?>('requiresClientAuthorization');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    updatedAt = registerOutput<String>('updatedAt');
+    userMetadata = registerOutput<String?>('userMetadata');
+  }
 }

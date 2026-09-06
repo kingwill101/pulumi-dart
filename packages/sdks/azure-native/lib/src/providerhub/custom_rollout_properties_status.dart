@@ -7,11 +7,11 @@ import 'extended_error_info.dart';
 /// The status.
 class CustomRolloutPropertiesStatus {
   /// The completed regions.
-  final pulumi.Input<List<String>>? completedRegions;
+  final pulumi.Input<List<String>?>? completedRegions;
   /// The failed or skipped regions.
-  final pulumi.Input<Map<String, ExtendedErrorInfo>>? failedOrSkippedRegions;
+  final pulumi.Input<Map<String, ExtendedErrorInfo>?>? failedOrSkippedRegions;
   /// The manifest checkin status.
-  final pulumi.Input<CustomRolloutStatusManifestCheckinStatus>? manifestCheckinStatus;
+  final pulumi.Input<CustomRolloutStatusManifestCheckinStatus?>? manifestCheckinStatus;
 
   /// Creates a new [CustomRolloutPropertiesStatus].
   /// [completedRegions] The completed regions.

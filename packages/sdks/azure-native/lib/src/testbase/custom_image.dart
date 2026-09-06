@@ -244,4 +244,32 @@ class CustomImage extends pulumi.CustomResource {
     vhdFileName = registerOutput<String>('vhdFileName');
     vhdId = registerOutput<String?>('vhdId');
   }
+
+  /// Creates a typed reference to an existing [CustomImage] resource.
+  CustomImage.reference(String urn)
+    : super(
+        'azure-native:testbase:CustomImage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationTime = registerOutput<String>('creationTime');
+    definitionName = registerOutput<String>('definitionName');
+    this.name = registerOutput<String>('name');
+    osDiskImageSizeInGB = registerOutput<double>('osDiskImageSizeInGB');
+    product = registerOutput<String>('product');
+    provisioningState = registerOutput<String>('provisioningState');
+    release = registerOutput<String>('release');
+    releaseVersionDate = registerOutput<String>('releaseVersionDate');
+    source = registerOutput<String>('source');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    validationResults = registerOutput<ImageValidationResultsResponse>('validationResults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageValidationResultsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    versionName = registerOutput<String>('versionName');
+    vhdFileName = registerOutput<String>('vhdFileName');
+    vhdId = registerOutput<String?>('vhdId');
+  }
 }

@@ -7,11 +7,11 @@ import 'open_id_connect_registration_response.dart';
 /// The configuration settings of the custom Open ID Connect provider.
 class CustomOpenIdConnectProviderResponse {
   /// &lt;code&gt;false&lt;/code&gt; if the custom Open ID provider provider should not be enabled; otherwise, &lt;code&gt;true&lt;/code&gt;.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The configuration settings of the login flow of the custom Open ID Connect provider.
-  final pulumi.Input<OpenIdConnectLoginResponse>? login;
+  final pulumi.Input<OpenIdConnectLoginResponse?>? login;
   /// The configuration settings of the app registration for the custom Open ID Connect provider.
-  final pulumi.Input<OpenIdConnectRegistrationResponse>? registration;
+  final pulumi.Input<OpenIdConnectRegistrationResponse?>? registration;
 
   /// Creates a new [CustomOpenIdConnectProviderResponse].
   /// [enabled] &lt;code&gt;false&lt;/code&gt; if the custom Open ID provider provider should not be enabled; otherwise, &lt;code&gt;true&lt;/code&gt;.

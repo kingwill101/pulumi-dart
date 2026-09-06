@@ -7,13 +7,13 @@ import 'sub_resource.dart';
 /// Describes Forwarding Route.
 class ForwardingConfiguration {
   /// A reference to the BackendPool which this rule routes to.
-  final pulumi.Input<SubResource>? backendPool;
+  final pulumi.Input<SubResource?>? backendPool;
   /// The caching configuration associated with this rule.
-  final pulumi.Input<CacheConfiguration>? cacheConfiguration;
+  final pulumi.Input<CacheConfiguration?>? cacheConfiguration;
   /// A custom path used to rewrite resource paths matched by this rule. Leave empty to use incoming path.
-  final pulumi.Input<String>? customForwardingPath;
+  final pulumi.Input<String?>? customForwardingPath;
   /// Protocol this rule will use when forwarding traffic to backends.
-  final pulumi.Input<String>? forwardingProtocol;
+  final pulumi.Input<dynamic>? forwardingProtocol;
   /// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration'.
   final pulumi.Input<String> odataType;
 
@@ -46,7 +46,7 @@ class ForwardingConfiguration {
       backendPool: (() { final guardedValue = map['backendPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cacheConfiguration: (() { final guardedValue = map['cacheConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CacheConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       customForwardingPath: (() { final guardedValue = map['customForwardingPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      forwardingProtocol: (() { final guardedValue = map['forwardingProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      forwardingProtocol: (() { final guardedValue = map['forwardingProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       odataType: pulumi.Input.fromValue(map['odataType'] as String),
     );
   }

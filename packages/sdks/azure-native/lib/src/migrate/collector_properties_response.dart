@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'collector_agent_properties_response.dart';
 
 class CollectorPropertiesResponse {
-  final pulumi.Input<CollectorAgentPropertiesResponse>? agentProperties;
+  final pulumi.Input<CollectorAgentPropertiesResponse?>? agentProperties;
   /// Time when this collector was created. Date-Time represented in ISO-8601 format.
   final pulumi.Input<String> createdTimestamp;
   /// The ARM id of the discovery service site.
-  final pulumi.Input<String>? discoverySiteId;
+  final pulumi.Input<String?>? discoverySiteId;
   /// Time when this collector was updated. Date-Time represented in ISO-8601 format.
   final pulumi.Input<String> updatedTimestamp;
 

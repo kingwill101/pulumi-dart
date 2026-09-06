@@ -6,7 +6,7 @@ import 'monitoring_state_enum_value.dart';
 /// Definition of Monitoring
 class Monitoring {
   /// &lt;p&gt;Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.&lt;/p&gt;
-  final pulumi.Input<MonitoringStateEnumValue>? state;
+  final pulumi.Input<MonitoringStateEnumValue?>? state;
 
   /// Creates a new [Monitoring].
   /// [state] &lt;p&gt;Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.&lt;/p&gt;

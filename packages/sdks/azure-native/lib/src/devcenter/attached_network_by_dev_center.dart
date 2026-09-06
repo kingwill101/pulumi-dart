@@ -200,4 +200,24 @@ class AttachedNetworkByDevCenter extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [AttachedNetworkByDevCenter] resource.
+  AttachedNetworkByDevCenter.reference(String urn)
+    : super(
+        'azure-native:devcenter:AttachedNetworkByDevCenter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    domainJoinType = registerOutput<String>('domainJoinType');
+    healthCheckStatus = registerOutput<String>('healthCheckStatus');
+    this.name = registerOutput<String>('name');
+    networkConnectionId = registerOutput<String>('networkConnectionId');
+    networkConnectionLocation = registerOutput<String>('networkConnectionLocation');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

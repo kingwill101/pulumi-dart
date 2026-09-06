@@ -12,7 +12,7 @@ class ListAccessRoleBindingNameArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Search filters for the request
-  final pulumi.Input<Map<String, String>>? searchFilters;
+  final pulumi.Input<Map<String, String>?>? searchFilters;
 
   /// Creates a new [ListAccessRoleBindingNameArgs].
   /// [organizationName] Organization resource name

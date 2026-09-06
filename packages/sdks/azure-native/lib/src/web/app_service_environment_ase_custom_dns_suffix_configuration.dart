@@ -208,4 +208,25 @@ class AppServiceEnvironmentAseCustomDnsSuffixConfiguration extends pulumi.Custom
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [AppServiceEnvironmentAseCustomDnsSuffixConfiguration] resource.
+  AppServiceEnvironmentAseCustomDnsSuffixConfiguration.reference(String urn)
+    : super(
+        'azure-native:web:AppServiceEnvironmentAseCustomDnsSuffixConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    certificateUrl = registerOutput<String?>('certificateUrl');
+    dnsSuffix = registerOutput<String?>('dnsSuffix');
+    keyVaultReferenceIdentity = registerOutput<String?>('keyVaultReferenceIdentity');
+    kind = registerOutput<String?>('kind');
+    this.name = registerOutput<String>('name');
+    provisioningDetails = registerOutput<String>('provisioningDetails');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

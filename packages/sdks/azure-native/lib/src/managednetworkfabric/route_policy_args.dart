@@ -9,23 +9,23 @@ import 'route_policy_statement_properties.dart';
 /// {@macro pulumi_managednetworkfabric_route_policy_args_doc}
 class RoutePolicyArgs {
   /// AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy.
-  final pulumi.Input<String>? addressFamilyType;
+  final pulumi.Input<dynamic>? addressFamilyType;
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
-  final pulumi.Input<String>? defaultAction;
+  final pulumi.Input<dynamic>? defaultAction;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Arm Resource ID of Network Fabric.
   final pulumi.Input<String> networkFabricId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the Route Policy.
-  final pulumi.Input<String>? routePolicyName;
+  final pulumi.Input<String?>? routePolicyName;
   /// Route Policy statements.
   final pulumi.Input<List<RoutePolicyStatementProperties>> statements;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RoutePolicyArgs].
   /// [addressFamilyType] AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy.
@@ -37,17 +37,17 @@ class RoutePolicyArgs {
   /// [routePolicyName] Name of the Route Policy.
   /// [statements] Route Policy statements.
   /// [tags] Resource tags.
-  const RoutePolicyArgs({
-    this.addressFamilyType,
+  RoutePolicyArgs({
+    pulumi.Input<dynamic>? addressFamilyType,
     this.annotation,
-    this.defaultAction,
+    pulumi.Input<dynamic>? defaultAction,
     this.location,
     required this.networkFabricId,
     required this.resourceGroupName,
     this.routePolicyName,
     required this.statements,
     this.tags,
-  });
+  }) : addressFamilyType = addressFamilyType ?? pulumi.Input.fromValue('IPv4'), defaultAction = defaultAction ?? pulumi.Input.fromValue('Deny');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,9 +65,9 @@ class RoutePolicyArgs {
 
   factory RoutePolicyArgs.fromMap(Map<String, dynamic> map) {
     return RoutePolicyArgs(
-      addressFamilyType: (() { final guardedValue = map['addressFamilyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      addressFamilyType: (() { final guardedValue = map['addressFamilyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       annotation: (() { final guardedValue = map['annotation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      defaultAction: (() { final guardedValue = map['defaultAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defaultAction: (() { final guardedValue = map['defaultAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkFabricId: pulumi.Input.fromValue(map['networkFabricId'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

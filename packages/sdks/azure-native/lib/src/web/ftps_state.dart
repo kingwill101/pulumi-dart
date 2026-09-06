@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// State of FTP / FTPS service
-enum FtpsState {
+enum FtpsState implements pulumi.PulumiEnum<String> {
   allAllowed("AllAllowed"),
   ftpsOnly("FtpsOnly"),
   disabled("Disabled");
 
   const FtpsState(this.wireValue);
+  @override
   final String wireValue;
 
   static FtpsState fromValue(String value) {

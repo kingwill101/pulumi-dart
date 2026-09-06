@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// MigrationConfiguration properties.
 class MigrationConfigurationResponse {
   /// Gets or sets the key vault resource Id.
-  final pulumi.Input<String>? keyVaultResourceId;
+  final pulumi.Input<String?>? keyVaultResourceId;
   /// Gets or sets the migration solution resource Id.
-  final pulumi.Input<String>? migrationSolutionResourceId;
+  final pulumi.Input<String?>? migrationSolutionResourceId;
   /// Gets or sets the storage account resource Id.
-  final pulumi.Input<String>? storageAccountResourceId;
+  final pulumi.Input<String?>? storageAccountResourceId;
 
   /// Creates a new [MigrationConfigurationResponse].
   /// [keyVaultResourceId] Gets or sets the key vault resource Id.

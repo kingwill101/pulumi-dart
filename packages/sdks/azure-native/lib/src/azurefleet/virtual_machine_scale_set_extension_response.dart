@@ -8,9 +8,9 @@ class VirtualMachineScaleSetExtensionResponse {
   /// Resource Id
   final pulumi.Input<String> id;
   /// The name of the extension.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Describes the properties of a Virtual Machine Scale Set Extension.
-  final pulumi.Input<VirtualMachineScaleSetExtensionPropertiesResponse>? properties;
+  final pulumi.Input<VirtualMachineScaleSetExtensionPropertiesResponse?>? properties;
   /// Resource type
   final pulumi.Input<String> type;
 

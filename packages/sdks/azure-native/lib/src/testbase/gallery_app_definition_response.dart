@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of the definition of a gallery application used in Test Base package.
 class GalleryAppDefinitionResponse {
   /// Whether the disclaimer of the gallery application is accepted.
-  final pulumi.Input<bool>? isConsented;
+  final pulumi.Input<bool?>? isConsented;
   /// The SKU id of the gallery application.
   final pulumi.Input<String> skuId;
 
   /// Creates a new [GalleryAppDefinitionResponse].
   /// [isConsented] Whether the disclaimer of the gallery application is accepted.
   /// [skuId] The SKU id of the gallery application.
-  const GalleryAppDefinitionResponse({
-    this.isConsented,
+  GalleryAppDefinitionResponse({
+    pulumi.Input<bool?>? isConsented,
     required this.skuId,
-  });
+  }) : isConsented = isConsented ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

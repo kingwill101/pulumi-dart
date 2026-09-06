@@ -9,9 +9,9 @@ class RulesEngineRule {
   /// Actions to perform on the request and response if all of the match conditions are met.
   final pulumi.Input<RulesEngineAction> action;
   /// A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run.
-  final pulumi.Input<List<RulesEngineMatchCondition>>? matchConditions;
+  final pulumi.Input<List<RulesEngineMatchCondition>?>? matchConditions;
   /// If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
-  final pulumi.Input<String>? matchProcessingBehavior;
+  final pulumi.Input<dynamic>? matchProcessingBehavior;
   /// A name to refer to this specific rule.
   final pulumi.Input<String> name;
   /// A priority assigned to this rule.
@@ -45,9 +45,9 @@ class RulesEngineRule {
     return RulesEngineRule(
       action: pulumi.Input.fromValue(RulesEngineAction.fromMap((map['action']! as Map).cast<String, dynamic>())),
       matchConditions: (() { final guardedValue = map['matchConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RulesEngineMatchCondition>(guardedValue, (value) => RulesEngineMatchCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      matchProcessingBehavior: (() { final guardedValue = map['matchProcessingBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      matchProcessingBehavior: (() { final guardedValue = map['matchProcessingBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
     );
   }
 }

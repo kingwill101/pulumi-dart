@@ -6,16 +6,16 @@ import 'scale_rule_auth.dart';
 /// Scaling rule.
 class JobScaleRule {
   /// Authentication secrets for the scale rule.
-  final pulumi.Input<List<ScaleRuleAuth>>? auth;
+  final pulumi.Input<List<ScaleRuleAuth>?>? auth;
   /// The resource ID of a user-assigned managed identity that is assigned to the job, or 'system' for system-assigned identity.
-  final pulumi.Input<String>? identity;
+  final pulumi.Input<String?>? identity;
   /// Metadata properties to describe the scale rule.
   final pulumi.Input<dynamic>? metadata;
   /// Scale Rule Name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Type of the scale rule
   /// eg: azure-servicebus, redis etc.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [JobScaleRule].
   /// [auth] Authentication secrets for the scale rule.

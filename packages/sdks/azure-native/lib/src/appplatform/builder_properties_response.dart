@@ -7,11 +7,11 @@ import 'stack_properties_response.dart';
 /// KPack Builder properties payload
 class BuilderPropertiesResponse {
   /// Builder buildpack groups.
-  final pulumi.Input<List<BuildpacksGroupPropertiesResponse>>? buildpackGroups;
+  final pulumi.Input<List<BuildpacksGroupPropertiesResponse>?>? buildpackGroups;
   /// Builder provision status.
   final pulumi.Input<String> provisioningState;
   /// Builder cluster stack property.
-  final pulumi.Input<StackPropertiesResponse>? stack;
+  final pulumi.Input<StackPropertiesResponse?>? stack;
 
   /// Creates a new [BuilderPropertiesResponse].
   /// [buildpackGroups] Builder buildpack groups.

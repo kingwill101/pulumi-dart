@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Qos Traffic Profiler Port range properties.
 class QosPortRange {
   /// Qos Port Range end.
-  final pulumi.Input<int>? end;
+  final pulumi.Input<int?>? end;
   /// Qos Port Range start.
-  final pulumi.Input<int>? start;
+  final pulumi.Input<int?>? start;
 
   /// Creates a new [QosPortRange].
   /// [end] Qos Port Range end.
@@ -26,8 +26,8 @@ class QosPortRange {
 
   factory QosPortRange.fromMap(Map<String, dynamic> map) {
     return QosPortRange(
-      end: (() { final guardedValue = map['end']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      start: (() { final guardedValue = map['start']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      end: (() { final guardedValue = map['end']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      start: (() { final guardedValue = map['start']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

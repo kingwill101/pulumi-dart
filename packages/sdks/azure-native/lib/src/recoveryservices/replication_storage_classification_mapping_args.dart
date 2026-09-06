@@ -11,13 +11,13 @@ class ReplicationStorageClassificationMappingArgs {
   /// Fabric name.
   final pulumi.Input<String> fabricName;
   /// Storage mapping input properties.
-  final pulumi.Input<StorageMappingInputProperties>? properties;
+  final pulumi.Input<StorageMappingInputProperties?>? properties;
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the recovery services vault.
   final pulumi.Input<String> resourceName;
   /// Storage classification mapping name.
-  final pulumi.Input<String>? storageClassificationMappingName;
+  final pulumi.Input<String?>? storageClassificationMappingName;
   /// Storage classification name.
   final pulumi.Input<String> storageClassificationName;
 

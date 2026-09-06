@@ -8,11 +8,11 @@ import 'session_registry_credentials.dart';
 /// Custom container configuration.
 class CustomContainerTemplate {
   /// List of container definitions for the sessions of the session pool.
-  final pulumi.Input<List<SessionContainer>>? containers;
+  final pulumi.Input<List<SessionContainer>?>? containers;
   /// Session pool ingress configuration.
-  final pulumi.Input<SessionIngress>? ingress;
+  final pulumi.Input<SessionIngress?>? ingress;
   /// Private container registry credentials for containers used by the sessions of the session pool.
-  final pulumi.Input<SessionRegistryCredentials>? registryCredentials;
+  final pulumi.Input<SessionRegistryCredentials?>? registryCredentials;
 
   /// Creates a new [CustomContainerTemplate].
   /// [containers] List of container definitions for the sessions of the session pool.

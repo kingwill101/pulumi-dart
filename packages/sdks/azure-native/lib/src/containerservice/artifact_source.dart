@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The artifact source. The source where the artifacts are downloaded from.
-enum ArtifactSource {
+enum ArtifactSource implements pulumi.PulumiEnum<String> {
   valueCache("Cache"),
   valueDirect("Direct");
 
   const ArtifactSource(this.wireValue);
+  @override
   final String wireValue;
 
   static ArtifactSource fromValue(String value) {

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Condition to trigger an alert processing rule.
 class ConditionAlertProcessingRuleByNameResponse {
   /// Field for a given condition.
-  final pulumi.Input<String>? field;
+  final pulumi.Input<String?>? field;
   /// Operator for a given condition.
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
   /// List of values to match for a given condition.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [ConditionAlertProcessingRuleByNameResponse].
   /// [field] Field for a given condition.

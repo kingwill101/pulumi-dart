@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes a Service Bus Queue output data source.
 class ServiceBusQueueOutputDataSourceResponse {
   /// Authentication Mode.
-  final pulumi.Input<String>? authenticationMode;
+  final pulumi.Input<String?>? authenticationMode;
   /// A string array of the names of output columns to be attached to Service Bus messages as custom properties.
-  final pulumi.Input<List<String>>? propertyColumns;
+  final pulumi.Input<List<String>?>? propertyColumns;
   /// The name of the Service Bus Queue. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? queueName;
+  final pulumi.Input<String?>? queueName;
   /// The namespace that is associated with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? serviceBusNamespace;
+  final pulumi.Input<String?>? serviceBusNamespace;
   /// The shared access policy key for the specified shared access policy. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? sharedAccessPolicyKey;
+  final pulumi.Input<String?>? sharedAccessPolicyKey;
   /// The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? sharedAccessPolicyName;
+  final pulumi.Input<String?>? sharedAccessPolicyName;
   /// The system properties associated with the Service Bus Queue. The following system properties are supported: ReplyToSessionId, ContentType, To, Subject, CorrelationId, TimeToLive, PartitionKey, SessionId, ScheduledEnqueueTime, MessageId, ReplyTo, Label, ScheduledEnqueueTimeUtc.
   final pulumi.Input<dynamic>? systemPropertyColumns;
   /// Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.

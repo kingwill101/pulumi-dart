@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Hyper-V Managed disk details.
 class HyperVReplicaAzureManagedDiskDetailsResponse {
   /// The disk encryption set ARM Id.
-  final pulumi.Input<String>? diskEncryptionSetId;
+  final pulumi.Input<String?>? diskEncryptionSetId;
   /// The disk Id.
-  final pulumi.Input<String>? diskId;
+  final pulumi.Input<String?>? diskId;
   /// The replica disk type.
-  final pulumi.Input<String>? replicaDiskType;
+  final pulumi.Input<String?>? replicaDiskType;
   /// The logical sector size (in bytes), 512 by default.
-  final pulumi.Input<int>? sectorSizeInBytes;
+  final pulumi.Input<int?>? sectorSizeInBytes;
   /// Seed managed disk Id.
-  final pulumi.Input<String>? seedManagedDiskId;
+  final pulumi.Input<String?>? seedManagedDiskId;
   /// The disk type.
-  final pulumi.Input<String>? targetDiskAccountType;
+  final pulumi.Input<String?>? targetDiskAccountType;
 
   /// Creates a new [HyperVReplicaAzureManagedDiskDetailsResponse].
   /// [diskEncryptionSetId] The disk encryption set ARM Id.
@@ -49,7 +49,7 @@ class HyperVReplicaAzureManagedDiskDetailsResponse {
       diskEncryptionSetId: (() { final guardedValue = map['diskEncryptionSetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskId: (() { final guardedValue = map['diskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       replicaDiskType: (() { final guardedValue = map['replicaDiskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sectorSizeInBytes: (() { final guardedValue = map['sectorSizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sectorSizeInBytes: (() { final guardedValue = map['sectorSizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       seedManagedDiskId: (() { final guardedValue = map['seedManagedDiskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetDiskAccountType: (() { final guardedValue = map['targetDiskAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

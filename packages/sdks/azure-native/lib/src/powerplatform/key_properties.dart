@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Url and version of the KeyVault Secret
 class KeyProperties {
   /// The identifier of the key vault key used to encrypt data.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The version of the identity which will be used to access key vault.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [KeyProperties].
   /// [name] The identifier of the key vault key used to encrypt data.

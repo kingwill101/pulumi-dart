@@ -7,11 +7,11 @@ import 'managed_rule_group_override.dart';
 /// Defines a managed rule set.
 class ManagedRuleSet {
   /// Describes the exclusions that are applied to all rules in the set.
-  final pulumi.Input<List<ManagedRuleExclusion>>? exclusions;
+  final pulumi.Input<List<ManagedRuleExclusion>?>? exclusions;
   /// Defines the rule group overrides to apply to the rule set.
-  final pulumi.Input<List<ManagedRuleGroupOverride>>? ruleGroupOverrides;
+  final pulumi.Input<List<ManagedRuleGroupOverride>?>? ruleGroupOverrides;
   /// Defines the rule set action.
-  final pulumi.Input<String>? ruleSetAction;
+  final pulumi.Input<dynamic>? ruleSetAction;
   /// Defines the rule set type to use.
   final pulumi.Input<String> ruleSetType;
   /// Defines the version of the rule set to use.
@@ -45,7 +45,7 @@ class ManagedRuleSet {
     return ManagedRuleSet(
       exclusions: (() { final guardedValue = map['exclusions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedRuleExclusion>(guardedValue, (value) => ManagedRuleExclusion.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ruleGroupOverrides: (() { final guardedValue = map['ruleGroupOverrides']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedRuleGroupOverride>(guardedValue, (value) => ManagedRuleGroupOverride.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      ruleSetAction: (() { final guardedValue = map['ruleSetAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ruleSetAction: (() { final guardedValue = map['ruleSetAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       ruleSetType: pulumi.Input.fromValue(map['ruleSetType'] as String),
       ruleSetVersion: pulumi.Input.fromValue(map['ruleSetVersion'] as String),
     );

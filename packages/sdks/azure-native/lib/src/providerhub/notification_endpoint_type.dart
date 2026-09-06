@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The endpoint type.
-enum NotificationEndpointType {
+enum NotificationEndpointType implements pulumi.PulumiEnum<String> {
   webhook("Webhook"),
   eventhub("Eventhub");
 
   const NotificationEndpointType(this.wireValue);
+  @override
   final String wireValue;
 
   static NotificationEndpointType fromValue(String value) {

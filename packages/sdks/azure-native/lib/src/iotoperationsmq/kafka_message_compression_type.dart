@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The compression to use for kafka messages.
-enum KafkaMessageCompressionType {
+enum KafkaMessageCompressionType implements pulumi.PulumiEnum<String> {
   none("none"),
   gzip("gzip"),
   snappy("snappy"),
   lz4("lz4");
 
   const KafkaMessageCompressionType(this.wireValue);
+  @override
   final String wireValue;
 
   static KafkaMessageCompressionType fromValue(String value) {

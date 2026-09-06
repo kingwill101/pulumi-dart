@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Issue contract Update Properties.
 class KeyVaultLastAccessStatusContractPropertiesResponse {
   /// Last status code for sync and refresh of secret from key vault.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// Details of the error else empty.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Last time secret was accessed. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
-  final pulumi.Input<String>? timeStampUtc;
+  final pulumi.Input<String?>? timeStampUtc;
 
   /// Creates a new [KeyVaultLastAccessStatusContractPropertiesResponse].
   /// [code] Last status code for sync and refresh of secret from key vault.

@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
-enum ScrubbingRuleEntryMatchOperator {
+enum ScrubbingRuleEntryMatchOperator implements pulumi.PulumiEnum<String> {
   equalsAny("EqualsAny");
 
   const ScrubbingRuleEntryMatchOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static ScrubbingRuleEntryMatchOperator fromValue(String value) {

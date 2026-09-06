@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the security level for the driver connection to the data store. PreferredUnSecured : prefer unsecured, allow fallback to secured connection if required. OnlyUnSecured : strictly unsecured, no fallback.
-enum NetezzaSecurityLevelType {
+enum NetezzaSecurityLevelType implements pulumi.PulumiEnum<String> {
   preferredUnSecured("PreferredUnSecured"),
   onlyUnSecured("OnlyUnSecured");
 
   const NetezzaSecurityLevelType(this.wireValue);
+  @override
   final String wireValue;
 
   static NetezzaSecurityLevelType fromValue(String value) {

@@ -919,7 +919,7 @@ class GovernanceRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The governance rule conditionSets - see examples
-  late final pulumi.Output<List<Map<String, dynamic>>> conditionSets;
+  late final pulumi.Output<List<dynamic>> conditionSets;
   /// Description of the governance rule
   late final pulumi.Output<String?> description;
   /// Display name of the governance rule
@@ -970,10 +970,40 @@ class GovernanceRule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    conditionSets = registerOutput<List<Map<String, dynamic>>>('conditionSets');
+    conditionSets = registerOutput<List<dynamic>>('conditionSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    excludedScopes = registerOutput<List<String>?>('excludedScopes');
+    excludedScopes = registerOutput<List<String>?>('excludedScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    governanceEmailNotification = registerOutput<GovernanceRuleEmailNotificationResponse?>('governanceEmailNotification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GovernanceRuleEmailNotificationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    includeMemberScopes = registerOutput<bool?>('includeMemberScopes');
+    isDisabled = registerOutput<bool?>('isDisabled');
+    isGracePeriod = registerOutput<bool?>('isGracePeriod');
+    metadata = registerOutput<GovernanceRuleMetadataResponse?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GovernanceRuleMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    ownerSource = registerOutput<GovernanceRuleOwnerSourceResponse>('ownerSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GovernanceRuleOwnerSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    remediationTimeframe = registerOutput<String?>('remediationTimeframe');
+    rulePriority = registerOutput<int>('rulePriority');
+    ruleType = registerOutput<String>('ruleType');
+    sourceResourceType = registerOutput<String>('sourceResourceType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [GovernanceRule] resource.
+  GovernanceRule.reference(String urn)
+    : super(
+        'azure-native:security:GovernanceRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    conditionSets = registerOutput<List<dynamic>>('conditionSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    excludedScopes = registerOutput<List<String>?>('excludedScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     governanceEmailNotification = registerOutput<GovernanceRuleEmailNotificationResponse?>('governanceEmailNotification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GovernanceRuleEmailNotificationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     includeMemberScopes = registerOutput<bool?>('includeMemberScopes');
     isDisabled = registerOutput<bool?>('isDisabled');

@@ -9,13 +9,13 @@ import 'functions_site_update_strategy_response.dart';
 /// Function app configuration.
 class FunctionAppConfigResponse {
   /// Function app deployment configuration.
-  final pulumi.Input<FunctionsDeploymentResponse>? deployment;
+  final pulumi.Input<FunctionsDeploymentResponse?>? deployment;
   /// Function app runtime settings.
-  final pulumi.Input<FunctionsRuntimeResponse>? runtime;
+  final pulumi.Input<FunctionsRuntimeResponse?>? runtime;
   /// Function app scale and concurrency settings.
-  final pulumi.Input<FunctionsScaleAndConcurrencyResponse>? scaleAndConcurrency;
+  final pulumi.Input<FunctionsScaleAndConcurrencyResponse?>? scaleAndConcurrency;
   /// Function app site update strategy configuration.
-  final pulumi.Input<FunctionsSiteUpdateStrategyResponse>? siteUpdateStrategy;
+  final pulumi.Input<FunctionsSiteUpdateStrategyResponse?>? siteUpdateStrategy;
 
   /// Creates a new [FunctionAppConfigResponse].
   /// [deployment] Function app deployment configuration.

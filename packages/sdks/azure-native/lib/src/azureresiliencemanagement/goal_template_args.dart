@@ -9,9 +9,9 @@ import 'goal_template_properties.dart';
 /// {@macro pulumi_azureresiliencemanagement_goal_template_args_doc}
 class GoalTemplateArgs {
   /// The name of the goalTemplate
-  final pulumi.Input<String>? goalTemplateName;
+  final pulumi.Input<String?>? goalTemplateName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<GoalTemplateProperties>? properties;
+  final pulumi.Input<GoalTemplateProperties?>? properties;
   /// The name of the service group.
   final pulumi.Input<String> serviceGroupName;
 

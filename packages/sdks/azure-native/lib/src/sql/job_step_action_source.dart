@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The source of the action to execute.
-enum JobStepActionSource {
+enum JobStepActionSource implements pulumi.PulumiEnum<String> {
   valueInline("Inline");
 
   const JobStepActionSource(this.wireValue);
+  @override
   final String wireValue;
 
   static JobStepActionSource fromValue(String value) {

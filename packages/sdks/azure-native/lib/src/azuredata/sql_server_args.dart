@@ -8,21 +8,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_azuredata_sql_server_args_doc}
 class SqlServerArgs {
   /// Cores of the Sql Server.
-  final pulumi.Input<int>? cores;
+  final pulumi.Input<int?>? cores;
   /// Sql Server Edition.
-  final pulumi.Input<String>? edition;
+  final pulumi.Input<String?>? edition;
   /// Sql Server Json Property Bag.
-  final pulumi.Input<String>? propertyBag;
+  final pulumi.Input<String?>? propertyBag;
   /// ID for Parent Sql Server Registration.
-  final pulumi.Input<String>? registrationID;
+  final pulumi.Input<String?>? registrationID;
   /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the SQL Server.
-  final pulumi.Input<String>? sqlServerName;
+  final pulumi.Input<String?>? sqlServerName;
   /// Name of the SQL Server registration.
   final pulumi.Input<String> sqlServerRegistrationName;
   /// Version of the Sql Server.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [SqlServerArgs].
   /// [cores] Cores of the Sql Server.
@@ -59,7 +59,7 @@ class SqlServerArgs {
 
   factory SqlServerArgs.fromMap(Map<String, dynamic> map) {
     return SqlServerArgs(
-      cores: (() { final guardedValue = map['cores']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cores: (() { final guardedValue = map['cores']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       edition: (() { final guardedValue = map['edition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       propertyBag: (() { final guardedValue = map['propertyBag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       registrationID: (() { final guardedValue = map['registrationID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

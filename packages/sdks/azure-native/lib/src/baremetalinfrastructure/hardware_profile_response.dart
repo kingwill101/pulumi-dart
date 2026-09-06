@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies the hardware settings for the Azure Bare Metal Instance.
 class HardwareProfileResponse {
   /// Specifies the Azure Bare Metal Instance SKU.
-  final pulumi.Input<String>? azureBareMetalInstanceSize;
+  final pulumi.Input<String?>? azureBareMetalInstanceSize;
   /// Name of the hardware type (vendor and/or their product name)
-  final pulumi.Input<String>? hardwareType;
+  final pulumi.Input<String?>? hardwareType;
 
   /// Creates a new [HardwareProfileResponse].
   /// [azureBareMetalInstanceSize] Specifies the Azure Bare Metal Instance SKU.

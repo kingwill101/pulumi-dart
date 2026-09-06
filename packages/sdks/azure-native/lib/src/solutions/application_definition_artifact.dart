@@ -6,7 +6,7 @@ import 'application_artifact_type.dart';
 /// Application definition artifact.
 class ApplicationDefinitionArtifact {
   /// The managed application definition artifact name.
-  final pulumi.Input<String> name;
+  final pulumi.Input<dynamic> name;
   /// The managed application definition artifact type.
   final pulumi.Input<ApplicationArtifactType> type;
   /// The managed application definition artifact blob uri.
@@ -32,7 +32,7 @@ class ApplicationDefinitionArtifact {
 
   factory ApplicationDefinitionArtifact.fromMap(Map<String, dynamic> map) {
     return ApplicationDefinitionArtifact(
-      name: pulumi.Input.fromValue(map['name'] as String),
+      name: pulumi.Input.fromValue(map['name']),
       type: pulumi.Input.fromValue(ApplicationArtifactType.fromValue(map['type']! as String)),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );

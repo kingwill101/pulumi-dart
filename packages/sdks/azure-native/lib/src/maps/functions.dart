@@ -32,6 +32,17 @@ Future<GetAccountResult> getAccount(
   return GetAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountResult> getAccountOutput(
+  GetAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:maps:getAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountResult.fromMap);
+}
+
 /// Get a Maps Creator resource.
 ///
 /// Uses Azure REST API version 2024-07-01-preview.
@@ -52,6 +63,17 @@ Future<GetCreatorResult> getCreator(
   return GetCreatorResult.fromMap(result);
 }
 
+pulumi.Output<GetCreatorResult> getCreatorOutput(
+  GetCreatorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:maps:getCreator',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCreatorResult.fromMap);
+}
+
 /// [Deprecated] Get a Private Atlas resource.
 ///
 /// Uses Azure REST API version 2020-02-01-preview.
@@ -68,6 +90,17 @@ Future<GetPrivateAtlaseResult> getPrivateAtlase(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateAtlaseResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateAtlaseResult> getPrivateAtlaseOutput(
+  GetPrivateAtlaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:maps:getPrivateAtlase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateAtlaseResult.fromMap);
 }
 
 /// Gets the specified private endpoint connection associated with the Maps Account.
@@ -90,6 +123,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:maps:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Get the keys to use with the Maps APIs. A key is used to authenticate and authorize access to the Maps REST APIs. Only one key is needed at a time; two are given to provide seamless key regeneration.
 ///
 /// Uses Azure REST API version 2024-07-01-preview.
@@ -108,6 +152,17 @@ Future<ListAccountKeysResult> listAccountKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListAccountKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListAccountKeysResult> listAccountKeysOutput(
+  ListAccountKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:maps:listAccountKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAccountKeysResult.fromMap);
 }
 
 /// Create and list an account shared access signature token. Use this SAS token for authentication to Azure Maps REST APIs through various Azure Maps SDKs. As prerequisite to create a SAS Token.
@@ -132,4 +187,15 @@ Future<ListAccountSasResult> listAccountSas(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListAccountSasResult.fromMap(result);
+}
+
+pulumi.Output<ListAccountSasResult> listAccountSasOutput(
+  ListAccountSasArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:maps:listAccountSas',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAccountSasResult.fromMap);
 }

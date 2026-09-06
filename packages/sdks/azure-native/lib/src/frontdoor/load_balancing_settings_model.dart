@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Load balancing settings for a backend pool
 class LoadBalancingSettingsModel {
   /// The additional latency in milliseconds for probes to fall into the lowest latency bucket
-  final pulumi.Input<int>? additionalLatencyMilliseconds;
+  final pulumi.Input<int?>? additionalLatencyMilliseconds;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The number of samples to consider for load balancing decisions
-  final pulumi.Input<int>? sampleSize;
+  final pulumi.Input<int?>? sampleSize;
   /// The number of samples within the sample period that must succeed
-  final pulumi.Input<int>? successfulSamplesRequired;
+  final pulumi.Input<int?>? successfulSamplesRequired;
 
   /// Creates a new [LoadBalancingSettingsModel].
   /// [additionalLatencyMilliseconds] The additional latency in milliseconds for probes to fall into the lowest latency bucket
@@ -41,11 +41,11 @@ class LoadBalancingSettingsModel {
 
   factory LoadBalancingSettingsModel.fromMap(Map<String, dynamic> map) {
     return LoadBalancingSettingsModel(
-      additionalLatencyMilliseconds: (() { final guardedValue = map['additionalLatencyMilliseconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      additionalLatencyMilliseconds: (() { final guardedValue = map['additionalLatencyMilliseconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sampleSize: (() { final guardedValue = map['sampleSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      successfulSamplesRequired: (() { final guardedValue = map['successfulSamplesRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sampleSize: (() { final guardedValue = map['sampleSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      successfulSamplesRequired: (() { final guardedValue = map['successfulSamplesRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

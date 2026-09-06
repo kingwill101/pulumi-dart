@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The operation for the patch on the resource.
-enum Operation {
+enum Operation implements pulumi.PulumiEnum<String> {
   valueAddBegin("AddBegin"),
   valueAddComplete("AddComplete"),
   valueDeleteBegin("DeleteBegin"),
@@ -7,6 +9,7 @@ enum Operation {
   valueActive("Active");
 
   const Operation(this.wireValue);
+  @override
   final String wireValue;
 
   static Operation fromValue(String value) {

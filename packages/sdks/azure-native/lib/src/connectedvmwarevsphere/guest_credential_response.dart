@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Username / Password Credentials to connect to guest.
 class GuestCredentialResponse {
   /// Gets or sets username to connect with the guest.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GuestCredentialResponse].
   /// [username] Gets or sets username to connect with the guest.

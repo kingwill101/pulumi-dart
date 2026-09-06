@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_target_group_args.dart';
+import 'job_target_response.dart';
 
 /// A group of job targets.
 ///
@@ -492,7 +493,7 @@ class JobTargetGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Members of the target group.
-  late final pulumi.Output<List<Map<String, dynamic>>> members;
+  late final pulumi.Output<List<JobTargetResponse>> members;
   /// Resource name.
   late final pulumi.Output<String> name;
   /// Resource type.
@@ -513,7 +514,22 @@ class JobTargetGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    members = registerOutput<List<Map<String, dynamic>>>('members');
+    members = registerOutput<List<JobTargetResponse>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobTargetResponse>(guardedValue, (value) => JobTargetResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [JobTargetGroup] resource.
+  JobTargetGroup.reference(String urn)
+    : super(
+        'azure-native:sql:JobTargetGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    members = registerOutput<List<JobTargetResponse>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobTargetResponse>(guardedValue, (value) => JobTargetResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }

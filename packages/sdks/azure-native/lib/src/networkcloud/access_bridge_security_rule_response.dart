@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AccessBridgeSecurityRule captures an individual access rule enforced by the bridge.
 class AccessBridgeSecurityRuleResponse {
   /// The user provided value describing this rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The direction of allowed network traffic based on the rule.
   final pulumi.Input<String> direction;
   /// The set of IPv4 addresses permitted as the source or destination of the security rule. For as single address, utilize a /32 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 10.10.10.10-10.10.10.20 or 10.10.10.10/24.
-  final pulumi.Input<List<String>>? ipv4Addresses;
+  final pulumi.Input<List<String>?>? ipv4Addresses;
   /// The set of IPv6 addresses permitted as the source or destination of the security rule. For as single address, utilize a /128 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 2001:db8:abcd::1-2001:db8:abcd::ff or 2001:db8:abcd::1/64.
-  final pulumi.Input<List<String>>? ipv6Addresses;
+  final pulumi.Input<List<String>?>? ipv6Addresses;
   /// The source or destination port or port range. Example 24562 or 24562-24570.
   final pulumi.Input<String> port;
 

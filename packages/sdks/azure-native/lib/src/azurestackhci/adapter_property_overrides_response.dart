@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The AdapterPropertyOverrides of a cluster.
 class AdapterPropertyOverridesResponse {
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-  final pulumi.Input<String>? jumboPacket;
+  final pulumi.Input<String?>? jumboPacket;
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-  final pulumi.Input<String>? networkDirect;
+  final pulumi.Input<String?>? networkDirect;
   /// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
-  final pulumi.Input<String>? networkDirectTechnology;
+  final pulumi.Input<String?>? networkDirectTechnology;
 
   /// Creates a new [AdapterPropertyOverridesResponse].
   /// [jumboPacket] This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.

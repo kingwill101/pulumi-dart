@@ -6,13 +6,13 @@ import 'resource_id.dart';
 /// Properties of a Managed Network Peering Policy
 class ManagedNetworkPeeringPolicyProperties {
   /// Gets or sets the hub virtual network ID
-  final pulumi.Input<ResourceId>? hub;
+  final pulumi.Input<ResourceId?>? hub;
   /// Gets or sets the mesh group IDs
-  final pulumi.Input<List<ResourceId>>? mesh;
+  final pulumi.Input<List<ResourceId>?>? mesh;
   /// Gets or sets the spokes group IDs
-  final pulumi.Input<List<ResourceId>>? spokes;
+  final pulumi.Input<List<ResourceId>?>? spokes;
   /// Gets or sets the connectivity type of a network structure policy
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [ManagedNetworkPeeringPolicyProperties].
   /// [hub] Gets or sets the hub virtual network ID
@@ -40,7 +40,7 @@ class ManagedNetworkPeeringPolicyProperties {
       hub: (() { final guardedValue = map['hub']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceId.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       mesh: (() { final guardedValue = map['mesh']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResourceId>(guardedValue, (value) => ResourceId.fromMap((value as Map).cast<String, dynamic>()))); })(),
       spokes: (() { final guardedValue = map['spokes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResourceId>(guardedValue, (value) => ResourceId.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

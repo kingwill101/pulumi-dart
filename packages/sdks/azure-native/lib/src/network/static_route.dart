@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// List of all Static Routes.
 class StaticRoute {
   /// List of all address prefixes.
-  final pulumi.Input<List<String>>? addressPrefixes;
+  final pulumi.Input<List<String>?>? addressPrefixes;
   /// The name of the StaticRoute that is unique within a VnetRoute.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ip address of the next hop.
-  final pulumi.Input<String>? nextHopIpAddress;
+  final pulumi.Input<String?>? nextHopIpAddress;
 
   /// Creates a new [StaticRoute].
   /// [addressPrefixes] List of all address prefixes.

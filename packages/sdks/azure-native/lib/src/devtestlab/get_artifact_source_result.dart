@@ -7,23 +7,23 @@ class GetArtifactSourceResult {
   /// The folder containing Azure Resource Manager templates.
   final String? armTemplateFolderPath;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The artifact source's branch reference.
   final String? branchRef;
   /// The artifact source's creation date.
-  final String createdDate;
+  final String? createdDate;
   /// The artifact source's display name.
   final String? displayName;
   /// The folder containing artifacts.
   final String? folderPath;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
   final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The provisioning status of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The security token to authenticate to the artifact source.
   final String? securityToken;
   /// The artifact source's type.
@@ -31,13 +31,13 @@ class GetArtifactSourceResult {
   /// Indicates if the artifact source is enabled (values: Enabled, Disabled).
   final String? status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// The unique immutable identifier of a resource (Guid).
-  final String uniqueIdentifier;
+  final String? uniqueIdentifier;
   /// The artifact source's URI.
   final String? uri;
 
@@ -62,44 +62,44 @@ class GetArtifactSourceResult {
   /// [uri] The artifact source's URI.
   const GetArtifactSourceResult({
     this.armTemplateFolderPath,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.branchRef,
-    required this.createdDate,
+    this.createdDate,
     this.displayName,
     this.folderPath,
-    required this.id,
+    this.id,
     this.location,
-    required this.name,
-    required this.provisioningState,
+    this.name,
+    this.provisioningState,
     this.securityToken,
     this.sourceType,
     this.status,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.uniqueIdentifier,
+    this.type,
+    this.uniqueIdentifier,
     this.uri,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'armTemplateFolderPath': ?armTemplateFolderPath,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'branchRef': ?branchRef,
-      'createdDate': createdDate,
+      'createdDate': ?createdDate,
       'displayName': ?displayName,
       'folderPath': ?folderPath,
-      'id': id,
+      'id': ?id,
       'location': ?location,
-      'name': name,
-      'provisioningState': provisioningState,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'securityToken': ?securityToken,
       'sourceType': ?sourceType,
       'status': ?status,
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'uniqueIdentifier': uniqueIdentifier,
+      'type': ?type,
+      'uniqueIdentifier': ?uniqueIdentifier,
       'uri': ?uri,
     };
   }
@@ -107,22 +107,22 @@ class GetArtifactSourceResult {
   factory GetArtifactSourceResult.fromMap(Map<String, dynamic> map) {
     return GetArtifactSourceResult(
       armTemplateFolderPath: (() { final guardedValue = map['armTemplateFolderPath']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       branchRef: (() { final guardedValue = map['branchRef']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      createdDate: map['createdDate'] as String,
+      createdDate: (() { final guardedValue = map['createdDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       folderPath: (() { final guardedValue = map['folderPath']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       securityToken: (() { final guardedValue = map['securityToken']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sourceType: (() { final guardedValue = map['sourceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      uniqueIdentifier: map['uniqueIdentifier'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uniqueIdentifier: (() { final guardedValue = map['uniqueIdentifier']; if (guardedValue == null) return null; return guardedValue as String; })(),
       uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

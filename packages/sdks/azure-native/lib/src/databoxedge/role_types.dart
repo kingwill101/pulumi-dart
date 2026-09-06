@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Role type.
-enum RoleTypes {
+enum RoleTypes implements pulumi.PulumiEnum<String> {
   valueIOT("IOT"),
   valueASA("ASA"),
   valueFunctions("Functions"),
@@ -9,6 +11,7 @@ enum RoleTypes {
   valueKubernetes("Kubernetes");
 
   const RoleTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static RoleTypes fromValue(String value) {

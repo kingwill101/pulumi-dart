@@ -6,11 +6,11 @@ import 'ip_community_id_list.dart';
 /// IP Community Properties.
 class ActionIpCommunityProperties {
   /// List of IP Community IDs.
-  final pulumi.Input<IpCommunityIdList>? add;
+  final pulumi.Input<IpCommunityIdList?>? add;
   /// List of IP Community IDs.
-  final pulumi.Input<IpCommunityIdList>? delete;
+  final pulumi.Input<IpCommunityIdList?>? delete;
   /// List of IP Community IDs.
-  final pulumi.Input<IpCommunityIdList>? set;
+  final pulumi.Input<IpCommunityIdList?>? set;
 
   /// Creates a new [ActionIpCommunityProperties].
   /// [add] List of IP Community IDs.

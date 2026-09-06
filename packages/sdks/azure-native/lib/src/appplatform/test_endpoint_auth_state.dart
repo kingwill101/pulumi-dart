@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// State of test endpoint auth.
-enum TestEndpointAuthState {
+enum TestEndpointAuthState implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const TestEndpointAuthState(this.wireValue);
+  @override
   final String wireValue;
 
   static TestEndpointAuthState fromValue(String value) {

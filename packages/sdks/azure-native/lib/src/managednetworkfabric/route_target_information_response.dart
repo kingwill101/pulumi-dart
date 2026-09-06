@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Route Target Configuration.
 class RouteTargetInformationResponse {
   /// Route Targets to be applied for outgoing routes into CE.
-  final pulumi.Input<List<String>>? exportIpv4RouteTargets;
+  final pulumi.Input<List<String>?>? exportIpv4RouteTargets;
   /// Route Targets to be applied for outgoing routes from CE.
-  final pulumi.Input<List<String>>? exportIpv6RouteTargets;
+  final pulumi.Input<List<String>?>? exportIpv6RouteTargets;
   /// Route Targets to be applied for incoming routes into CE.
-  final pulumi.Input<List<String>>? importIpv4RouteTargets;
+  final pulumi.Input<List<String>?>? importIpv4RouteTargets;
   /// Route Targets to be applied for incoming routes from CE.
-  final pulumi.Input<List<String>>? importIpv6RouteTargets;
+  final pulumi.Input<List<String>?>? importIpv6RouteTargets;
 
   /// Creates a new [RouteTargetInformationResponse].
   /// [exportIpv4RouteTargets] Route Targets to be applied for outgoing routes into CE.

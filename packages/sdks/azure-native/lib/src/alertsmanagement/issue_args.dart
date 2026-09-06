@@ -9,9 +9,9 @@ import 'issue_properties.dart';
 /// {@macro pulumi_alertsmanagement_issue_args_doc}
 class IssueArgs {
   /// The name of the IssueResource
-  final pulumi.Input<String>? issueName;
+  final pulumi.Input<String?>? issueName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<IssueProperties>? properties;
+  final pulumi.Input<IssueProperties?>? properties;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 

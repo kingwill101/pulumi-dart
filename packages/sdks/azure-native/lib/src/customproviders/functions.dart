@@ -22,6 +22,17 @@ Future<GetAssociationResult> getAssociation(
   return GetAssociationResult.fromMap(result);
 }
 
+pulumi.Output<GetAssociationResult> getAssociationOutput(
+  GetAssociationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:customproviders:getAssociation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAssociationResult.fromMap);
+}
+
 /// Gets the custom resource provider manifest.
 ///
 /// Uses Azure REST API version 2018-09-01-preview.
@@ -38,4 +49,15 @@ Future<GetCustomResourceProviderResult> getCustomResourceProvider(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCustomResourceProviderResult.fromMap(result);
+}
+
+pulumi.Output<GetCustomResourceProviderResult> getCustomResourceProviderOutput(
+  GetCustomResourceProviderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:customproviders:getCustomResourceProvider',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomResourceProviderResult.fromMap);
 }

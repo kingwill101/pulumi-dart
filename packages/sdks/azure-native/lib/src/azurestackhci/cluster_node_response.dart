@@ -91,12 +91,12 @@ class ClusterNodeResponse {
 
   factory ClusterNodeResponse.fromMap(Map<String, dynamic> map) {
     return ClusterNodeResponse(
-      coreCount: pulumi.Input.fromValue(map['coreCount'] as double),
+      coreCount: pulumi.Input.fromValue((map['coreCount'] as num).toDouble()),
       ehcResourceId: pulumi.Input.fromValue(map['ehcResourceId'] as String),
-      id: pulumi.Input.fromValue(map['id'] as double),
+      id: pulumi.Input.fromValue((map['id'] as num).toDouble()),
       lastLicensingTimestamp: pulumi.Input.fromValue(map['lastLicensingTimestamp'] as String),
       manufacturer: pulumi.Input.fromValue(map['manufacturer'] as String),
-      memoryInGiB: pulumi.Input.fromValue(map['memoryInGiB'] as double),
+      memoryInGiB: pulumi.Input.fromValue((map['memoryInGiB'] as num).toDouble()),
       model: pulumi.Input.fromValue(map['model'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       nodeType: pulumi.Input.fromValue(map['nodeType'] as String),

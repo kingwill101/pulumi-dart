@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Distribute via VHD in a storage account.
 class ImageTemplateVhdDistributorResponse {
   /// Tags that will be applied to the artifact once it has been created/updated by the distributor.
-  final pulumi.Input<Map<String, String>>? artifactTags;
+  final pulumi.Input<Map<String, String>?>? artifactTags;
   /// The name to be used for the associated RunOutput.
   final pulumi.Input<String> runOutputName;
   /// Type of distribution.
   /// Expected value is 'VHD'.
   final pulumi.Input<String> type;
   /// Optional Azure Storage URI for the distributed VHD blob. Omit to use the default (empty string) in which case VHD would be published to the storage account in the staging resource group.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [ImageTemplateVhdDistributorResponse].
   /// [artifactTags] Tags that will be applied to the artifact once it has been created/updated by the distributor.

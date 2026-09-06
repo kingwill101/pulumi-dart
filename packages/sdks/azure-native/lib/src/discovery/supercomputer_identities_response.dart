@@ -13,7 +13,7 @@ class SupercomputerIdentitiesResponse {
   /// This identity must have ManagedIdentityOperator role on the clusterIdentity.
   final pulumi.Input<IdentityResponse> kubeletIdentity;
   /// User assigned identity IDs to be used by workloads as federated credentials running on supercomputer. The key value must be the resource ID of the identity resource.
-  final pulumi.Input<Map<String, UserAssignedIdentityResponse>>? workloadIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentityResponse>?>? workloadIdentities;
 
   /// Creates a new [SupercomputerIdentitiesResponse].
   /// [clusterIdentity] Cluster identity ID.

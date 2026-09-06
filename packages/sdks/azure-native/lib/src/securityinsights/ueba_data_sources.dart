@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The data source that enriched by ueba.
-enum UebaDataSources {
+enum UebaDataSources implements pulumi.PulumiEnum<String> {
   valueAuditLogs("AuditLogs"),
   valueAzureActivity("AzureActivity"),
   valueSecurityEvent("SecurityEvent"),
   valueSigninLogs("SigninLogs");
 
   const UebaDataSources(this.wireValue);
+  @override
   final String wireValue;
 
   static UebaDataSources fromValue(String value) {

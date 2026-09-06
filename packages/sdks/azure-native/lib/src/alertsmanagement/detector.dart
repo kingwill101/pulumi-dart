@@ -7,7 +7,7 @@ class Detector {
   /// The detector id.
   final pulumi.Input<String> id;
   /// The detector's parameters.'
-  final pulumi.Input<Map<String, dynamic>>? parameters;
+  final pulumi.Input<Map<String, dynamic>?>? parameters;
 
   /// Creates a new [Detector].
   /// [id] The detector id.

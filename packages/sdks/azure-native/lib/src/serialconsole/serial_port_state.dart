@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies whether the port is enabled for a serial console connection.
-enum SerialPortState {
+enum SerialPortState implements pulumi.PulumiEnum<String> {
   valueEnabled("enabled"),
   valueDisabled("disabled");
 
   const SerialPortState(this.wireValue);
+  @override
   final String wireValue;
 
   static SerialPortState fromValue(String value) {

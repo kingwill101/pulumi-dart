@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'recovery_group_custom_runbook_action_response.dart';
 
 /// Properties of the recovery orchestration group.
 class RecoveryGroupPropertiesResponse {
@@ -12,9 +11,9 @@ class RecoveryGroupPropertiesResponse {
   /// The order ID of the recovery orchestration group.
   final pulumi.Input<int> orderId;
   /// Post-actions for the recovery orchestration group.
-  final pulumi.Input<List<RecoveryGroupCustomRunbookActionResponse>>? postActions;
+  final pulumi.Input<List<dynamic>?>? postActions;
   /// Pre-actions for the recovery orchestration group.
-  final pulumi.Input<List<RecoveryGroupCustomRunbookActionResponse>>? preActions;
+  final pulumi.Input<List<dynamic>?>? preActions;
 
   /// Creates a new [RecoveryGroupPropertiesResponse].
   /// [description] A description of the recovery orchestration group.
@@ -35,8 +34,8 @@ class RecoveryGroupPropertiesResponse {
       'description': description,
       'groupUniqueId': groupUniqueId,
       'orderId': orderId,
-      'postActions': ?pulumi.Input.mapOptionalInputValue<List<RecoveryGroupCustomRunbookActionResponse>, List<Map<String, dynamic>>>(postActions, (value) => pulumi.Input.encodeList<RecoveryGroupCustomRunbookActionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'preActions': ?pulumi.Input.mapOptionalInputValue<List<RecoveryGroupCustomRunbookActionResponse>, List<Map<String, dynamic>>>(preActions, (value) => pulumi.Input.encodeList<RecoveryGroupCustomRunbookActionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'postActions': ?postActions,
+      'preActions': ?preActions,
     };
   }
 
@@ -44,9 +43,9 @@ class RecoveryGroupPropertiesResponse {
     return RecoveryGroupPropertiesResponse(
       description: pulumi.Input.fromValue(map['description'] as String),
       groupUniqueId: pulumi.Input.fromValue(map['groupUniqueId'] as String),
-      orderId: pulumi.Input.fromValue(map['orderId'] as int),
-      postActions: (() { final guardedValue = map['postActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RecoveryGroupCustomRunbookActionResponse>(guardedValue, (value) => RecoveryGroupCustomRunbookActionResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      preActions: (() { final guardedValue = map['preActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RecoveryGroupCustomRunbookActionResponse>(guardedValue, (value) => RecoveryGroupCustomRunbookActionResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      orderId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['orderId'])),
+      postActions: (() { final guardedValue = map['postActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      preActions: (() { final guardedValue = map['preActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
     );
   }
 }

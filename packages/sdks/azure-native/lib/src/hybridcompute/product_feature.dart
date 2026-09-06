@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Product Feature
 class ProductFeature {
   /// Product feature name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Indicates the current status of the product features.
-  final pulumi.Input<String>? subscriptionStatus;
+  final pulumi.Input<dynamic>? subscriptionStatus;
 
   /// Creates a new [ProductFeature].
   /// [name] Product feature name.
@@ -27,7 +27,7 @@ class ProductFeature {
   factory ProductFeature.fromMap(Map<String, dynamic> map) {
     return ProductFeature(
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      subscriptionStatus: (() { final guardedValue = map['subscriptionStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      subscriptionStatus: (() { final guardedValue = map['subscriptionStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

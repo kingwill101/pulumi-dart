@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Azure FirstParty Managed Certificate provided by other first party resource providers to enable HTTPS.
 class AzureFirstPartyManagedCertificateParameters {
   /// The list of SANs.
-  final pulumi.Input<List<String>>? subjectAlternativeNames;
+  final pulumi.Input<List<String>?>? subjectAlternativeNames;
   /// The type of the secret resource.
   /// Expected value is 'AzureFirstPartyManagedCertificate'.
   final pulumi.Input<String> type;

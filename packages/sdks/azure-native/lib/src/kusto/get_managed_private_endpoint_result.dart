@@ -5,25 +5,25 @@ import 'system_data_response.dart';
 /// Result data returned by getManagedPrivateEndpoint.
 class GetManagedPrivateEndpointResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The groupId in which the managed private endpoint is created.
-  final String groupId;
+  final String? groupId;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The ARM resource ID of the resource for which the managed private endpoint is created.
-  final String privateLinkResourceId;
+  final String? privateLinkResourceId;
   /// The region of the resource to which the managed private endpoint is created.
   final String? privateLinkResourceRegion;
   /// The provisioned state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The user request message.
   final String? requestMessage;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetManagedPrivateEndpointResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -37,45 +37,45 @@ class GetManagedPrivateEndpointResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetManagedPrivateEndpointResult({
-    required this.azureApiVersion,
-    required this.groupId,
-    required this.id,
-    required this.name,
-    required this.privateLinkResourceId,
+    this.azureApiVersion,
+    this.groupId,
+    this.id,
+    this.name,
+    this.privateLinkResourceId,
     this.privateLinkResourceRegion,
-    required this.provisioningState,
+    this.provisioningState,
     this.requestMessage,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'groupId': groupId,
-      'id': id,
-      'name': name,
-      'privateLinkResourceId': privateLinkResourceId,
+      'azureApiVersion': ?azureApiVersion,
+      'groupId': ?groupId,
+      'id': ?id,
+      'name': ?name,
+      'privateLinkResourceId': ?privateLinkResourceId,
       'privateLinkResourceRegion': ?privateLinkResourceRegion,
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'requestMessage': ?requestMessage,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetManagedPrivateEndpointResult.fromMap(Map<String, dynamic> map) {
     return GetManagedPrivateEndpointResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      groupId: map['groupId'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      privateLinkResourceId: map['privateLinkResourceId'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      groupId: (() { final guardedValue = map['groupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateLinkResourceId: (() { final guardedValue = map['privateLinkResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       privateLinkResourceRegion: (() { final guardedValue = map['privateLinkResourceRegion']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       requestMessage: (() { final guardedValue = map['requestMessage']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

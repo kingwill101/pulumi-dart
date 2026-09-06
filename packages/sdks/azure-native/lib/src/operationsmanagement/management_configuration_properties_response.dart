@@ -6,7 +6,7 @@ import 'arm_template_parameter_response.dart';
 /// ManagementConfiguration properties supported by the OperationsManagement resource provider.
 class ManagementConfigurationPropertiesResponse {
   /// The applicationId of the appliance for this Management.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// Parameters to run the ARM template
   final pulumi.Input<List<ArmTemplateParameterResponse>> parameters;
   /// The type of the parent resource.

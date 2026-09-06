@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The quarantine policy for a container registry.
 class QuarantinePolicyResponse {
   /// The value that indicates whether the policy is enabled or not.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [QuarantinePolicyResponse].
   /// [status] The value that indicates whether the policy is enabled or not.
-  const QuarantinePolicyResponse({
-    this.status,
-  });
+  QuarantinePolicyResponse({
+    pulumi.Input<String?>? status,
+  }) : status = status ?? pulumi.Input.fromValue('disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

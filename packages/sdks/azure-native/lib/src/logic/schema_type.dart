@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The schema type.
-enum SchemaType {
+enum SchemaType implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueXml("Xml");
 
   const SchemaType(this.wireValue);
+  @override
   final String wireValue;
 
   static SchemaType fromValue(String value) {

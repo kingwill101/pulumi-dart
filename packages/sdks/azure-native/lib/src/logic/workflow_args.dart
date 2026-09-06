@@ -13,29 +13,29 @@ import 'workflow_parameter.dart';
 /// {@macro pulumi_logic_workflow_args_doc}
 class WorkflowArgs {
   /// The access control configuration.
-  final pulumi.Input<FlowAccessControlConfiguration>? accessControl;
+  final pulumi.Input<FlowAccessControlConfiguration?>? accessControl;
   /// The definition.
   final pulumi.Input<dynamic>? definition;
   /// The endpoints configuration.
-  final pulumi.Input<FlowEndpointsConfiguration>? endpointsConfiguration;
+  final pulumi.Input<FlowEndpointsConfiguration?>? endpointsConfiguration;
   /// Managed service identity properties.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The integration account.
-  final pulumi.Input<ResourceReference>? integrationAccount;
+  final pulumi.Input<ResourceReference?>? integrationAccount;
   /// The integration service environment.
-  final pulumi.Input<ResourceReference>? integrationServiceEnvironment;
+  final pulumi.Input<ResourceReference?>? integrationServiceEnvironment;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The parameters.
-  final pulumi.Input<Map<String, WorkflowParameter>>? parameters;
+  final pulumi.Input<Map<String, WorkflowParameter>?>? parameters;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// The state.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The workflow name.
-  final pulumi.Input<String>? workflowName;
+  final pulumi.Input<String?>? workflowName;
 
   /// Creates a new [WorkflowArgs].
   /// [accessControl] The access control configuration.
@@ -93,7 +93,7 @@ class WorkflowArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<WorkflowParameter>(guardedValue, (value) => WorkflowParameter.fromMap((value as Map).cast<String, dynamic>()))); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       workflowName: (() { final guardedValue = map['workflowName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

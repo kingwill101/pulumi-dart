@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'prometheus_rule_group_args.dart';
+import 'prometheus_rule_response.dart';
 import 'system_data_response.dart';
 
 /// The Prometheus rule group resource.
@@ -789,7 +790,7 @@ class PrometheusRuleGroup extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Defines the rules in the Prometheus rule group.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<PrometheusRuleResponse>> rules;
   /// Target Azure Monitor workspaces resource ids. This api-version is currently limited to creating with one scope. This may change in future.
   late final pulumi.Output<List<String>> scopes;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -820,10 +821,33 @@ class PrometheusRuleGroup extends pulumi.CustomResource {
     interval = registerOutput<String?>('interval');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
-    scopes = registerOutput<List<String>>('scopes');
+    rules = registerOutput<List<PrometheusRuleResponse>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrometheusRuleResponse>(guardedValue, (value) => PrometheusRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [PrometheusRuleGroup] resource.
+  PrometheusRuleGroup.reference(String urn)
+    : super(
+        'azure-native:alertsmanagement:PrometheusRuleGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterName = registerOutput<String?>('clusterName');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    interval = registerOutput<String?>('interval');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    rules = registerOutput<List<PrometheusRuleResponse>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrometheusRuleResponse>(guardedValue, (value) => PrometheusRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

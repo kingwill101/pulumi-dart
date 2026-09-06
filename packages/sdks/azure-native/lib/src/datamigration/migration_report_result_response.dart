@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Migration validation report result, contains the url for downloading the generated report.
 class MigrationReportResultResponse {
   /// Migration validation result identifier
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The url of the report.
-  final pulumi.Input<String>? reportUrl;
+  final pulumi.Input<String?>? reportUrl;
 
   /// Creates a new [MigrationReportResultResponse].
   /// [id] Migration validation result identifier

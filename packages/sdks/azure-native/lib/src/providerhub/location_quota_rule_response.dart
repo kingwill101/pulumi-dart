@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LocationQuotaRuleResponse {
   /// The location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The policy.
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
   /// The quota id.
-  final pulumi.Input<String>? quotaId;
+  final pulumi.Input<String?>? quotaId;
 
   /// Creates a new [LocationQuotaRuleResponse].
   /// [location] The location.

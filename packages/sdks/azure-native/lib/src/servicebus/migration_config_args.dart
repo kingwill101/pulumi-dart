@@ -7,8 +7,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_servicebus_migration_config_args_doc}
 class MigrationConfigArgs {
-  /// The configuration name. Should always be "$default".
-  final pulumi.Input<String>? configName;
+  /// The configuration name. Should always be $default.
+  final pulumi.Input<String?>? configName;
   /// The namespace name
   final pulumi.Input<String> namespaceName;
   /// Name to access Standard Namespace after migration
@@ -19,7 +19,7 @@ class MigrationConfigArgs {
   final pulumi.Input<String> targetNamespace;
 
   /// Creates a new [MigrationConfigArgs].
-  /// [configName] The configuration name. Should always be "$default".
+  /// [configName] The configuration name. Should always be $default.
   /// [namespaceName] The namespace name
   /// [postMigrationName] Name to access Standard Namespace after migration
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.

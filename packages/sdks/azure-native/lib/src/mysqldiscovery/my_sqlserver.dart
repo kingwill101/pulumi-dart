@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'error_response.dart';
 import 'my_sqlserver_args.dart';
 import 'system_data_response.dart';
 
@@ -219,7 +220,7 @@ class MySQLServer extends pulumi.CustomResource {
   /// mysql server edition.
   late final pulumi.Output<String?> edition;
   /// The list of errors.
-  late final pulumi.Output<List<Map<String, dynamic>>?> errors;
+  late final pulumi.Output<List<ErrorResponse>?> errors;
   /// The Server IP/host name.
   late final pulumi.Output<List<String>?> hostIp;
   /// The Server IP/host name.
@@ -265,10 +266,10 @@ class MySQLServer extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     edition = registerOutput<String?>('edition');
-    errors = registerOutput<List<Map<String, dynamic>>?>('errors');
-    hostIp = registerOutput<List<String>?>('hostIp');
+    errors = registerOutput<List<ErrorResponse>?>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ErrorResponse>(guardedValue, (value) => ErrorResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    hostIp = registerOutput<List<String>?>('hostIp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     hostName = registerOutput<String>('hostName');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     machineId = registerOutput<String?>('machineId');
     mysqlVersion = registerOutput<String?>('mysqlVersion');
     this.name = registerOutput<String>('name');
@@ -278,7 +279,35 @@ class MySQLServer extends pulumi.CustomResource {
     supportEndIn = registerOutput<String?>('supportEndIn');
     supportStatus = registerOutput<String?>('supportStatus');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [MySQLServer] resource.
+  MySQLServer.reference(String urn)
+    : super(
+        'azure-native:mysqldiscovery:MySQLServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    edition = registerOutput<String?>('edition');
+    errors = registerOutput<List<ErrorResponse>?>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ErrorResponse>(guardedValue, (value) => ErrorResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    hostIp = registerOutput<List<String>?>('hostIp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    hostName = registerOutput<String>('hostName');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    machineId = registerOutput<String?>('machineId');
+    mysqlVersion = registerOutput<String?>('mysqlVersion');
+    this.name = registerOutput<String>('name');
+    numberOfDatabase = registerOutput<double?>('numberOfDatabase');
+    portNumber = registerOutput<String>('portNumber');
+    provisioningState = registerOutput<String?>('provisioningState');
+    supportEndIn = registerOutput<String?>('supportEndIn');
+    supportStatus = registerOutput<String?>('supportStatus');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

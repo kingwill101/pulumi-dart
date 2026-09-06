@@ -6,15 +6,15 @@ class TrunkedNetworkAttachmentConfiguration {
   /// The resource ID of the network that is being configured for attachment.
   final pulumi.Input<String> networkId;
   /// The indicator of how this network will be utilized by the Kubernetes cluster.
-  final pulumi.Input<String>? pluginType;
+  final pulumi.Input<dynamic>? pluginType;
 
   /// Creates a new [TrunkedNetworkAttachmentConfiguration].
   /// [networkId] The resource ID of the network that is being configured for attachment.
   /// [pluginType] The indicator of how this network will be utilized by the Kubernetes cluster.
-  const TrunkedNetworkAttachmentConfiguration({
+  TrunkedNetworkAttachmentConfiguration({
     required this.networkId,
-    this.pluginType,
-  });
+    pulumi.Input<dynamic>? pluginType,
+  }) : pluginType = pluginType ?? pulumi.Input.fromValue('SRIOV');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,7 +26,7 @@ class TrunkedNetworkAttachmentConfiguration {
   factory TrunkedNetworkAttachmentConfiguration.fromMap(Map<String, dynamic> map) {
     return TrunkedNetworkAttachmentConfiguration(
       networkId: pulumi.Input.fromValue(map['networkId'] as String),
-      pluginType: (() { final guardedValue = map['pluginType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pluginType: (() { final guardedValue = map['pluginType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

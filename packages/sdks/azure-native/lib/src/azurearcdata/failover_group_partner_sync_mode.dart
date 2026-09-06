@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The partner sync mode of the SQL managed instance.
-enum FailoverGroupPartnerSyncMode {
+enum FailoverGroupPartnerSyncMode implements pulumi.PulumiEnum<String> {
   valueAsync("async"),
   valueSync("sync");
 
   const FailoverGroupPartnerSyncMode(this.wireValue);
+  @override
   final String wireValue;
 
   static FailoverGroupPartnerSyncMode fromValue(String value) {

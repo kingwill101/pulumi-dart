@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The protocol for the outbound rule in load balancer.
-enum LoadBalancerOutboundRuleProtocol {
+enum LoadBalancerOutboundRuleProtocol implements pulumi.PulumiEnum<String> {
   valueTcp("Tcp"),
   valueUdp("Udp"),
   valueAll("All");
 
   const LoadBalancerOutboundRuleProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static LoadBalancerOutboundRuleProtocol fromValue(String value) {

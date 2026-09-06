@@ -7,7 +7,7 @@ class DeviceDetailResponse {
   /// Resource Id of group device belongs to.
   final pulumi.Input<String> claimedBy;
   /// Resource Id of the device.
-  final pulumi.Input<String>? deviceResourceId;
+  final pulumi.Input<String?>? deviceResourceId;
 
   /// Creates a new [DeviceDetailResponse].
   /// [claimedBy] Resource Id of group device belongs to.

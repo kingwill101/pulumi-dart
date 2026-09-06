@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Caching settings for a caching-type route. To disable caching, do not provide a cacheConfiguration object.
 class CacheConfiguration {
   /// The duration for which the content needs to be cached. Allowed format is in ISO 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations). HTTP requires the value to be no more than a year
-  final pulumi.Input<String>? cacheDuration;
+  final pulumi.Input<String?>? cacheDuration;
   /// Whether to use dynamic compression for cached content
-  final pulumi.Input<String>? dynamicCompression;
+  final pulumi.Input<dynamic>? dynamicCompression;
   /// Treatment of URL query terms when forming the cache key.
-  final pulumi.Input<String>? queryParameterStripDirective;
+  final pulumi.Input<dynamic>? queryParameterStripDirective;
   /// query parameters to include or exclude (comma separated).
-  final pulumi.Input<String>? queryParameters;
+  final pulumi.Input<String?>? queryParameters;
 
   /// Creates a new [CacheConfiguration].
   /// [cacheDuration] The duration for which the content needs to be cached. Allowed format is in ISO 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations). HTTP requires the value to be no more than a year
@@ -37,8 +37,8 @@ class CacheConfiguration {
   factory CacheConfiguration.fromMap(Map<String, dynamic> map) {
     return CacheConfiguration(
       cacheDuration: (() { final guardedValue = map['cacheDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dynamicCompression: (() { final guardedValue = map['dynamicCompression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      queryParameterStripDirective: (() { final guardedValue = map['queryParameterStripDirective']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dynamicCompression: (() { final guardedValue = map['dynamicCompression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      queryParameterStripDirective: (() { final guardedValue = map['queryParameterStripDirective']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       queryParameters: (() { final guardedValue = map['queryParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

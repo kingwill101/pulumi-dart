@@ -5,28 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties for contributor conditional credit.
 class ContributorConditionalCreditProperties {
   /// The billing account resource ID
-  final pulumi.Input<String>? billingAccountResourceId;
+  final pulumi.Input<String?>? billingAccountResourceId;
   /// Display name for the conditional credit
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// End date of the conditional credit (derived from last milestone)
-  final pulumi.Input<String>? endAt;
+  final pulumi.Input<String?>? endAt;
   /// Type of conditional credit entity
   /// Expected value is 'Contributor'.
   final pulumi.Input<String> entityType;
   /// Fully-qualified billing account resource identifier of the primary CACO. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}.
-  final pulumi.Input<String>? primaryBillingAccountResourceId;
+  final pulumi.Input<String?>? primaryBillingAccountResourceId;
   /// Resource ID of the primary conditional credit (required for contributors)
-  final pulumi.Input<String>? primaryResourceId;
+  final pulumi.Input<String?>? primaryResourceId;
   /// Product code for the conditional credit
-  final pulumi.Input<String>? productCode;
+  final pulumi.Input<String?>? productCode;
   /// Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Start date of the conditional credit
-  final pulumi.Input<String>? startAt;
+  final pulumi.Input<String?>? startAt;
   /// The status of the conditional credit
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// System identifier shared between primary and contributor conditional credits representing the same conditional credit program
-  final pulumi.Input<String>? systemId;
+  final pulumi.Input<String?>? systemId;
 
   /// Creates a new [ContributorConditionalCreditProperties].
   /// [billingAccountResourceId] The billing account resource ID
@@ -81,7 +81,7 @@ class ContributorConditionalCreditProperties {
       productCode: (() { final guardedValue = map['productCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startAt: (() { final guardedValue = map['startAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       systemId: (() { final guardedValue = map['systemId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

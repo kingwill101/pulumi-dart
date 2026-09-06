@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defender CSPM Permissions Management discovery configuration
 class DefenderCspmAwsOfferingCiemCiemDiscovery {
   /// The cloud role ARN in AWS for Permissions Management discovery
-  final pulumi.Input<String>? cloudRoleArn;
+  final pulumi.Input<String?>? cloudRoleArn;
 
   /// Creates a new [DefenderCspmAwsOfferingCiemCiemDiscovery].
   /// [cloudRoleArn] The cloud role ARN in AWS for Permissions Management discovery

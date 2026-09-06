@@ -10,27 +10,27 @@ class UpdateSummaryArgs {
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
   /// Current OEM Version.
-  final pulumi.Input<String>? currentOemVersion;
+  final pulumi.Input<String?>? currentOemVersion;
   /// Current Sbe version of the stamp.
-  final pulumi.Input<String>? currentSbeVersion;
+  final pulumi.Input<String?>? currentSbeVersion;
   /// Current Solution Bundle version of the stamp.
-  final pulumi.Input<String>? currentVersion;
+  final pulumi.Input<String?>? currentVersion;
   /// Name of the hardware model.
-  final pulumi.Input<String>? hardwareModel;
+  final pulumi.Input<String?>? hardwareModel;
   /// Last time the package-specific checks were run.
-  final pulumi.Input<String>? healthCheckDate;
+  final pulumi.Input<String?>? healthCheckDate;
   /// Last time the update service successfully checked for updates
-  final pulumi.Input<String>? lastChecked;
+  final pulumi.Input<String?>? lastChecked;
   /// Last time an update installation completed successfully.
-  final pulumi.Input<String>? lastUpdated;
+  final pulumi.Input<String?>? lastUpdated;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// OEM family name.
-  final pulumi.Input<String>? oemFamily;
+  final pulumi.Input<String?>? oemFamily;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Overall update state of the stamp.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
 
   /// Creates a new [UpdateSummaryArgs].
   /// [clusterName] The name of the cluster.
@@ -90,7 +90,7 @@ class UpdateSummaryArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       oemFamily: (() { final guardedValue = map['oemFamily']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

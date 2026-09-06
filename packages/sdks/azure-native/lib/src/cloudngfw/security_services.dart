@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// security services
 class SecurityServices {
   /// Anti spyware Profile data
-  final pulumi.Input<String>? antiSpywareProfile;
+  final pulumi.Input<String?>? antiSpywareProfile;
   /// anti virus profile data
-  final pulumi.Input<String>? antiVirusProfile;
+  final pulumi.Input<String?>? antiVirusProfile;
   /// DNS Subscription profile data
-  final pulumi.Input<String>? dnsSubscription;
+  final pulumi.Input<String?>? dnsSubscription;
   /// File blocking profile data
-  final pulumi.Input<String>? fileBlockingProfile;
+  final pulumi.Input<String?>? fileBlockingProfile;
   /// Trusted Egress Decryption profile data
-  final pulumi.Input<String>? outboundTrustCertificate;
+  final pulumi.Input<String?>? outboundTrustCertificate;
   /// Untrusted Egress Decryption profile data
-  final pulumi.Input<String>? outboundUnTrustCertificate;
+  final pulumi.Input<String?>? outboundUnTrustCertificate;
   /// URL filtering profile data
-  final pulumi.Input<String>? urlFilteringProfile;
+  final pulumi.Input<String?>? urlFilteringProfile;
   /// IPs Vulnerability Profile Data
-  final pulumi.Input<String>? vulnerabilityProfile;
+  final pulumi.Input<String?>? vulnerabilityProfile;
 
   /// Creates a new [SecurityServices].
   /// [antiSpywareProfile] Anti spyware Profile data

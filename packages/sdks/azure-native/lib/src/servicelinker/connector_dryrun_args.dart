@@ -9,15 +9,15 @@ import 'create_or_update_dryrun_parameters.dart';
 /// {@macro pulumi_servicelinker_connector_dryrun_args_doc}
 class ConnectorDryrunArgs {
   /// The name of dryrun.
-  final pulumi.Input<String>? dryrunName;
+  final pulumi.Input<String?>? dryrunName;
   /// The name of Azure region.
   final pulumi.Input<String> location;
   /// The parameters of the dryrun
-  final pulumi.Input<CreateOrUpdateDryrunParameters>? parameters;
+  final pulumi.Input<CreateOrUpdateDryrunParameters?>? parameters;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The ID of the target subscription.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [ConnectorDryrunArgs].
   /// [dryrunName] The name of dryrun.

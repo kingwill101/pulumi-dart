@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// User details for an organization
 class UserDetailsResponse {
   /// Email address of the user
-  final pulumi.Input<String>? emailAddress;
+  final pulumi.Input<String?>? emailAddress;
   /// First name of the user
-  final pulumi.Input<String>? firstName;
+  final pulumi.Input<String?>? firstName;
   /// Last name of the user
-  final pulumi.Input<String>? lastName;
+  final pulumi.Input<String?>? lastName;
   /// User's phone number
-  final pulumi.Input<String>? phoneNumber;
+  final pulumi.Input<String?>? phoneNumber;
   /// User's principal name
-  final pulumi.Input<String>? upn;
+  final pulumi.Input<String?>? upn;
 
   /// Creates a new [UserDetailsResponse].
   /// [emailAddress] Email address of the user

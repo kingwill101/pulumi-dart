@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Extended location pointing to the underlying infrastructure
 class VirtualNetworkResponseExtendedLocation {
   /// ARM Id of the extended location.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The extended location type. Allowed value: 'CustomLocation'
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [VirtualNetworkResponseExtendedLocation].
   /// [name] ARM Id of the extended location.

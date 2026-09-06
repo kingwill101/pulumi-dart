@@ -9,15 +9,15 @@ import 'public_certificate_location.dart';
 /// {@macro pulumi_web_web_app_public_certificate_args_doc}
 class WebAppPublicCertificateArgs {
   /// Public Certificate byte array
-  final pulumi.Input<String>? blob;
+  final pulumi.Input<String?>? blob;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
   /// Public Certificate Location
-  final pulumi.Input<PublicCertificateLocation>? publicCertificateLocation;
+  final pulumi.Input<PublicCertificateLocation?>? publicCertificateLocation;
   /// Public certificate name.
-  final pulumi.Input<String>? publicCertificateName;
+  final pulumi.Input<String?>? publicCertificateName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

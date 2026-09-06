@@ -7,11 +7,11 @@ import 'login_scopes_response.dart';
 /// The configuration settings of the GitHub provider.
 class GitHubResponse {
   /// &lt;code&gt;false&lt;/code&gt; if the GitHub provider should not be enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The configuration settings of the login flow.
-  final pulumi.Input<LoginScopesResponse>? login;
+  final pulumi.Input<LoginScopesResponse?>? login;
   /// The configuration settings of the app registration for the GitHub provider.
-  final pulumi.Input<ClientRegistrationResponse>? registration;
+  final pulumi.Input<ClientRegistrationResponse?>? registration;
 
   /// Creates a new [GitHubResponse].
   /// [enabled] &lt;code&gt;false&lt;/code&gt; if the GitHub provider should not be enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.

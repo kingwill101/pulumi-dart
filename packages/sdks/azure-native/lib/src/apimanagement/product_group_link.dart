@@ -191,4 +191,19 @@ class ProductGroupLink extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ProductGroupLink] resource.
+  ProductGroupLink.reference(String urn)
+    : super(
+        'azure-native:apimanagement:ProductGroupLink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    groupId = registerOutput<String>('groupId');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+  }
 }

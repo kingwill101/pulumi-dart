@@ -8,23 +8,23 @@ class DatabaseMigrationPropertiesSqlDb {
   /// Expected value is 'SqlDb'.
   final pulumi.Input<String> kind;
   /// ID for current migration operation.
-  final pulumi.Input<String>? migrationOperationId;
+  final pulumi.Input<String?>? migrationOperationId;
   /// Resource Id of the Migration Service.
-  final pulumi.Input<String>? migrationService;
+  final pulumi.Input<String?>? migrationService;
   /// Error message for migration provisioning failure, if any.
-  final pulumi.Input<String>? provisioningError;
+  final pulumi.Input<String?>? provisioningError;
   /// Resource Id of the target resource.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// Name of the source database.
-  final pulumi.Input<String>? sourceDatabaseName;
+  final pulumi.Input<String?>? sourceDatabaseName;
   /// Source SQL Server connection details.
-  final pulumi.Input<SqlConnectionInformation>? sourceSqlConnection;
+  final pulumi.Input<SqlConnectionInformation?>? sourceSqlConnection;
   /// List of tables to copy.
-  final pulumi.Input<List<String>>? tableList;
+  final pulumi.Input<List<String>?>? tableList;
   /// Database collation to be used for the target database.
-  final pulumi.Input<String>? targetDatabaseCollation;
+  final pulumi.Input<String?>? targetDatabaseCollation;
   /// Target SQL DB connection details.
-  final pulumi.Input<SqlConnectionInformation>? targetSqlConnection;
+  final pulumi.Input<SqlConnectionInformation?>? targetSqlConnection;
 
   /// Creates a new [DatabaseMigrationPropertiesSqlDb].
   /// [kind] Expected value is 'SqlDb'.

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details of the resource scope
 class ExpandedPropertiesResponseScope {
   /// Display name of the resource
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Scope id of the resource
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Type of the resource
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ExpandedPropertiesResponseScope].
   /// [displayName] Display name of the resource

@@ -8,19 +8,19 @@ import 'virtual_machine_public_ipaddress_dns_settings_configuration_response.dar
 /// Describes a virtual machines IP Configuration's PublicIPAddress configuration
 class VirtualMachinePublicIPAddressConfigurationPropertiesResponse {
   /// Specify what happens to the public IP address when the VM is deleted
-  final pulumi.Input<String>? deleteOption;
+  final pulumi.Input<String?>? deleteOption;
   /// The dns settings to be applied on the publicIP addresses .
-  final pulumi.Input<VirtualMachinePublicIPAddressDnsSettingsConfigurationResponse>? dnsSettings;
+  final pulumi.Input<VirtualMachinePublicIPAddressDnsSettingsConfigurationResponse?>? dnsSettings;
   /// The idle timeout of the public IP address.
-  final pulumi.Input<int>? idleTimeoutInMinutes;
+  final pulumi.Input<int?>? idleTimeoutInMinutes;
   /// The list of IP tags associated with the public IP address.
-  final pulumi.Input<List<VirtualMachineIpTagResponse>>? ipTags;
+  final pulumi.Input<List<VirtualMachineIpTagResponse>?>? ipTags;
   /// Available from Api-Version 2019-07-01 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible values are: 'IPv4' and 'IPv6'.
-  final pulumi.Input<String>? publicIPAddressVersion;
+  final pulumi.Input<String?>? publicIPAddressVersion;
   /// Specify the public IP allocation type
-  final pulumi.Input<String>? publicIPAllocationMethod;
+  final pulumi.Input<String?>? publicIPAllocationMethod;
   /// The PublicIPPrefix from which to allocate publicIP addresses.
-  final pulumi.Input<SubResourceResponse>? publicIPPrefix;
+  final pulumi.Input<SubResourceResponse?>? publicIPPrefix;
 
   /// Creates a new [VirtualMachinePublicIPAddressConfigurationPropertiesResponse].
   /// [deleteOption] Specify what happens to the public IP address when the VM is deleted
@@ -56,7 +56,7 @@ class VirtualMachinePublicIPAddressConfigurationPropertiesResponse {
     return VirtualMachinePublicIPAddressConfigurationPropertiesResponse(
       deleteOption: (() { final guardedValue = map['deleteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dnsSettings: (() { final guardedValue = map['dnsSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachinePublicIPAddressDnsSettingsConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipTags: (() { final guardedValue = map['ipTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualMachineIpTagResponse>(guardedValue, (value) => VirtualMachineIpTagResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       publicIPAddressVersion: (() { final guardedValue = map['publicIPAddressVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publicIPAllocationMethod: (() { final guardedValue = map['publicIPAllocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

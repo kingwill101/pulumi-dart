@@ -6,7 +6,7 @@ import 'predictive_autoscale_policy_scale_mode.dart';
 /// The parameters for enabling predictive autoscale.
 class PredictiveAutoscalePolicy {
   /// the amount of time to specify by which instances are launched in advance. It must be between 1 minute and 60 minutes in ISO 8601 format.
-  final pulumi.Input<String>? scaleLookAheadTime;
+  final pulumi.Input<String?>? scaleLookAheadTime;
   /// the predictive autoscale mode
   final pulumi.Input<PredictiveAutoscalePolicyScaleMode> scaleMode;
 

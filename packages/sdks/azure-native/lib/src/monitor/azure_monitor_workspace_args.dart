@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_monitor_azure_monitor_workspace_args_doc}
 class AzureMonitorWorkspaceArgs {
   /// The name of the Azure Monitor Workspace. The name is case insensitive
-  final pulumi.Input<String>? azureMonitorWorkspaceName;
+  final pulumi.Input<String?>? azureMonitorWorkspaceName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Gets or sets allow or disallow public network access to Azure Monitor Workspace
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AzureMonitorWorkspaceArgs].
   /// [azureMonitorWorkspaceName] The name of the Azure Monitor Workspace. The name is case insensitive
@@ -46,7 +46,7 @@ class AzureMonitorWorkspaceArgs {
     return AzureMonitorWorkspaceArgs(
       azureMonitorWorkspaceName: (() { final guardedValue = map['azureMonitorWorkspaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

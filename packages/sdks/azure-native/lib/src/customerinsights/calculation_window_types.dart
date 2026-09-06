@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The calculation window.
-enum CalculationWindowTypes {
+enum CalculationWindowTypes implements pulumi.PulumiEnum<String> {
   valueLifetime("Lifetime"),
   valueHour("Hour"),
   valueDay("Day"),
@@ -7,6 +9,7 @@ enum CalculationWindowTypes {
   valueMonth("Month");
 
   const CalculationWindowTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static CalculationWindowTypes fromValue(String value) {

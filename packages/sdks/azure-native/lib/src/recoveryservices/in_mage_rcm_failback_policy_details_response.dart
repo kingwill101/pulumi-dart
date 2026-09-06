@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// InMageRcm failback specific policy details.
 class InMageRcmFailbackPolicyDetailsResponse {
   /// The app consistent snapshot frequency in minutes.
-  final pulumi.Input<int>? appConsistentFrequencyInMinutes;
+  final pulumi.Input<int?>? appConsistentFrequencyInMinutes;
   /// The crash consistent snapshot frequency in minutes.
-  final pulumi.Input<int>? crashConsistentFrequencyInMinutes;
+  final pulumi.Input<int?>? crashConsistentFrequencyInMinutes;
   /// Gets the class type. Overridden in derived classes.
   /// Expected value is 'InMageRcmFailback'.
   final pulumi.Input<String> instanceType;
@@ -32,8 +32,8 @@ class InMageRcmFailbackPolicyDetailsResponse {
 
   factory InMageRcmFailbackPolicyDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmFailbackPolicyDetailsResponse(
-      appConsistentFrequencyInMinutes: (() { final guardedValue = map['appConsistentFrequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      crashConsistentFrequencyInMinutes: (() { final guardedValue = map['crashConsistentFrequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      appConsistentFrequencyInMinutes: (() { final guardedValue = map['appConsistentFrequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      crashConsistentFrequencyInMinutes: (() { final guardedValue = map['crashConsistentFrequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
     );
   }

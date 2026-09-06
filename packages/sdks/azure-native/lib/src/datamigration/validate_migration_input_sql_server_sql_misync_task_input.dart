@@ -12,7 +12,7 @@ class ValidateMigrationInputSqlServerSqlMISyncTaskInput {
   /// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
   final pulumi.Input<AzureActiveDirectoryApp> azureApp;
   /// Backup file share information for all selected databases.
-  final pulumi.Input<FileShare>? backupFileShare;
+  final pulumi.Input<FileShare?>? backupFileShare;
   /// Databases to migrate
   final pulumi.Input<List<MigrateSqlServerSqlMIDatabaseInput>> selectedDatabases;
   /// Connection information for source SQL Server

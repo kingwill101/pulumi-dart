@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Networking route configuration.
 class NetworkingRouteResponse {
   /// Route path.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// The port that will be configured externally. If not specified, it will use the port from the receiver definition.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// The name of the previously defined receiver.
   final pulumi.Input<String> receiver;
   /// Route subdomain.
-  final pulumi.Input<String>? subdomain;
+  final pulumi.Input<String?>? subdomain;
 
   /// Creates a new [NetworkingRouteResponse].
   /// [path] Route path.
@@ -37,7 +37,7 @@ class NetworkingRouteResponse {
   factory NetworkingRouteResponse.fromMap(Map<String, dynamic> map) {
     return NetworkingRouteResponse(
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       receiver: pulumi.Input.fromValue(map['receiver'] as String),
       subdomain: (() { final guardedValue = map['subdomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

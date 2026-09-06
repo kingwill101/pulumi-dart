@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_azurearcdata_get_sql_server_instance_jobs_status_args_doc}
 class GetSqlServerInstanceJobsStatusArgs {
   /// The name of the feature to retrieve the job status for.
-  final pulumi.Input<String>? featureName;
+  final pulumi.Input<String?>? featureName;
   /// The type of the job to retrieve the status for.
-  final pulumi.Input<String>? jobType;
+  final pulumi.Input<String?>? jobType;
   /// The name of the Azure resource group
   final pulumi.Input<String> resourceGroupName;
   /// Name of SQL Server Instance

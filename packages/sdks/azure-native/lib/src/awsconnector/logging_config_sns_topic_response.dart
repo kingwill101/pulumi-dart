@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of LoggingConfig
 class LoggingConfigSnsTopicResponse {
   /// Property failureFeedbackRoleArn
-  final pulumi.Input<String>? failureFeedbackRoleArn;
+  final pulumi.Input<String?>? failureFeedbackRoleArn;
   /// Property protocol
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Property successFeedbackRoleArn
-  final pulumi.Input<String>? successFeedbackRoleArn;
+  final pulumi.Input<String?>? successFeedbackRoleArn;
   /// Property successFeedbackSampleRate
-  final pulumi.Input<String>? successFeedbackSampleRate;
+  final pulumi.Input<String?>? successFeedbackSampleRate;
 
   /// Creates a new [LoggingConfigSnsTopicResponse].
   /// [failureFeedbackRoleArn] Property failureFeedbackRoleArn

@@ -8,23 +8,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_web_web_app_deployment_slot_args_doc}
 class WebAppDeploymentSlotArgs {
   /// True if deployment is currently active, false if completed and null if not started.
-  final pulumi.Input<bool>? active;
+  final pulumi.Input<bool?>? active;
   /// Who authored the deployment.
-  final pulumi.Input<String>? author;
+  final pulumi.Input<String?>? author;
   /// Author email.
-  final pulumi.Input<String>? authorEmail;
+  final pulumi.Input<String?>? authorEmail;
   /// Who performed the deployment.
-  final pulumi.Input<String>? deployer;
+  final pulumi.Input<String?>? deployer;
   /// Details on deployment.
-  final pulumi.Input<String>? details;
+  final pulumi.Input<String?>? details;
   /// End time.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Deployment ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Details about deployment status.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Name of the app.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
@@ -32,9 +32,9 @@ class WebAppDeploymentSlotArgs {
   /// Name of the deployment slot. If a slot is not specified, the API gets a deployment for the production slot.
   final pulumi.Input<String> slot;
   /// Start time.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Deployment status.
-  final pulumi.Input<int>? status;
+  final pulumi.Input<int?>? status;
 
   /// Creates a new [WebAppDeploymentSlotArgs].
   /// [active] True if deployment is currently active, false if completed and null if not started.
@@ -102,7 +102,7 @@ class WebAppDeploymentSlotArgs {
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       slot: pulumi.Input.fromValue(map['slot'] as String),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

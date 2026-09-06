@@ -9,11 +9,11 @@ import 'conn_string_value_type_pair.dart';
 /// {@macro pulumi_web_web_app_connection_strings_slot_args_doc}
 class WebAppConnectionStringsSlotArgs {
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
   /// Connection strings.
-  final pulumi.Input<Map<String, ConnStringValueTypePair>>? properties;
+  final pulumi.Input<Map<String, ConnStringValueTypePair>?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the deployment slot. By default, this API returns the production slot.

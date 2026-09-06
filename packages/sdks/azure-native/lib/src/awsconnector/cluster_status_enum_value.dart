@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ClusterStatusEnumValue
 class ClusterStatusEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [ClusterStatusEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class ClusterStatusEnumValue {
 
   factory ClusterStatusEnumValue.fromMap(Map<String, dynamic> map) {
     return ClusterStatusEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

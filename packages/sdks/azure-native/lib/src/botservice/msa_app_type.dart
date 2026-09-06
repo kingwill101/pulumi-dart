@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Microsoft App Type for the bot
-enum MsaAppType {
+enum MsaAppType implements pulumi.PulumiEnum<String> {
   userAssignedMSI("UserAssignedMSI"),
   singleTenant("SingleTenant"),
   multiTenant("MultiTenant");
 
   const MsaAppType(this.wireValue);
+  @override
   final String wireValue;
 
   static MsaAppType fromValue(String value) {

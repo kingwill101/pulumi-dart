@@ -6,21 +6,21 @@ import 'resource_restore_parameters_response.dart';
 
 class MongoDBCollectionGetPropertiesResponseResource {
   /// Analytical TTL.
-  final pulumi.Input<int>? analyticalStorageTtl;
+  final pulumi.Input<int?>? analyticalStorageTtl;
   /// Enum to indicate the mode of resource creation.
-  final pulumi.Input<String>? createMode;
+  final pulumi.Input<String?>? createMode;
   /// A system generated property representing the resource etag required for optimistic concurrency control.
   final pulumi.Input<String> etag;
   /// Name of the Cosmos DB MongoDB collection
   final pulumi.Input<String> id;
   /// List of index keys
-  final pulumi.Input<List<MongoIndexResponse>>? indexes;
+  final pulumi.Input<List<MongoIndexResponse>?>? indexes;
   /// Parameters to indicate the information about the restore
-  final pulumi.Input<ResourceRestoreParametersResponse>? restoreParameters;
+  final pulumi.Input<ResourceRestoreParametersResponse?>? restoreParameters;
   /// A system generated property. A unique identifier.
   final pulumi.Input<String> rid;
   /// A key-value pair of shard keys to be applied for the request.
-  final pulumi.Input<Map<String, String>>? shardKey;
+  final pulumi.Input<Map<String, String>?>? shardKey;
   /// A system generated property that denotes the last updated timestamp of the resource.
   final pulumi.Input<double> ts;
 
@@ -62,7 +62,7 @@ class MongoDBCollectionGetPropertiesResponseResource {
 
   factory MongoDBCollectionGetPropertiesResponseResource.fromMap(Map<String, dynamic> map) {
     return MongoDBCollectionGetPropertiesResponseResource(
-      analyticalStorageTtl: (() { final guardedValue = map['analyticalStorageTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      analyticalStorageTtl: (() { final guardedValue = map['analyticalStorageTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: pulumi.Input.fromValue(map['etag'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
@@ -70,7 +70,7 @@ class MongoDBCollectionGetPropertiesResponseResource {
       restoreParameters: (() { final guardedValue = map['restoreParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceRestoreParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rid: pulumi.Input.fromValue(map['rid'] as String),
       shardKey: (() { final guardedValue = map['shardKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      ts: pulumi.Input.fromValue(map['ts'] as double),
+      ts: pulumi.Input.fromValue((map['ts'] as num).toDouble()),
     );
   }
 }

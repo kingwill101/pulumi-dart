@@ -7,9 +7,9 @@ import 'open_authentication_access_policies_response.dart';
 /// The access control configuration policy.
 class FlowAccessControlConfigurationPolicyResponse {
   /// The allowed caller IP address ranges.
-  final pulumi.Input<List<IpAddressRangeResponse>>? allowedCallerIpAddresses;
+  final pulumi.Input<List<IpAddressRangeResponse>?>? allowedCallerIpAddresses;
   /// The authentication policies for workflow.
-  final pulumi.Input<OpenAuthenticationAccessPoliciesResponse>? openAuthenticationPolicies;
+  final pulumi.Input<OpenAuthenticationAccessPoliciesResponse?>? openAuthenticationPolicies;
 
   /// Creates a new [FlowAccessControlConfigurationPolicyResponse].
   /// [allowedCallerIpAddresses] The allowed caller IP address ranges.

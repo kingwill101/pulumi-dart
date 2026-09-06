@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Protected parameters list stored in keyvault.
 class EceDeploymentSecrets {
   /// Secret name expected for Enterprise Cloud Engine (ECE) deployment.
-  final pulumi.Input<String>? eceSecretName;
+  final pulumi.Input<dynamic>? eceSecretName;
   /// Secret URI stored in keyvault.
-  final pulumi.Input<String>? secretLocation;
+  final pulumi.Input<String?>? secretLocation;
   /// Secret name stored in keyvault.
-  final pulumi.Input<String>? secretName;
+  final pulumi.Input<String?>? secretName;
 
   /// Creates a new [EceDeploymentSecrets].
   /// [eceSecretName] Secret name expected for Enterprise Cloud Engine (ECE) deployment.
@@ -31,7 +31,7 @@ class EceDeploymentSecrets {
 
   factory EceDeploymentSecrets.fromMap(Map<String, dynamic> map) {
     return EceDeploymentSecrets(
-      eceSecretName: (() { final guardedValue = map['eceSecretName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eceSecretName: (() { final guardedValue = map['eceSecretName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       secretLocation: (() { final guardedValue = map['secretLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretName: (() { final guardedValue = map['secretName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Credentials to access the event streaming service attached to the purview account.
 class CredentialsResponse {
   /// Identity identifier for UserAssign type.
-  final pulumi.Input<String>? identityId;
+  final pulumi.Input<String?>? identityId;
   /// Identity Type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [CredentialsResponse].
   /// [identityId] Identity identifier for UserAssign type.

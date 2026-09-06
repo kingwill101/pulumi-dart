@@ -6,17 +6,17 @@ import 'event_code_enum_value_response.dart';
 /// Definition of InstanceStatusEvent
 class InstanceStatusEventResponse {
   /// &lt;p&gt;The event code.&lt;/p&gt;
-  final pulumi.Input<EventCodeEnumValueResponse>? code;
+  final pulumi.Input<EventCodeEnumValueResponse?>? code;
   /// &lt;p&gt;A description of the event.&lt;/p&gt; &lt;p&gt;After a scheduled event is completed, it can still be described for up to a week. If the event has been completed, this description starts with the following text: [Completed].&lt;/p&gt;
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// &lt;p&gt;The ID of the event.&lt;/p&gt;
-  final pulumi.Input<String>? instanceEventId;
+  final pulumi.Input<String?>? instanceEventId;
   /// &lt;p&gt;The latest scheduled end time for the event.&lt;/p&gt;
-  final pulumi.Input<String>? notAfter;
+  final pulumi.Input<String?>? notAfter;
   /// &lt;p&gt;The earliest scheduled start time for the event.&lt;/p&gt;
-  final pulumi.Input<String>? notBefore;
+  final pulumi.Input<String?>? notBefore;
   /// &lt;p&gt;The deadline for starting the event.&lt;/p&gt;
-  final pulumi.Input<String>? notBeforeDeadline;
+  final pulumi.Input<String?>? notBeforeDeadline;
 
   /// Creates a new [InstanceStatusEventResponse].
   /// [code] &lt;p&gt;The event code.&lt;/p&gt;

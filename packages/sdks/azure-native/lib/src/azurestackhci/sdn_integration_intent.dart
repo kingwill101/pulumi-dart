@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines the customer's intent for configuring SDN integration
-enum SdnIntegrationIntent {
+enum SdnIntegrationIntent implements pulumi.PulumiEnum<String> {
   enable("Enable"),
   disable("Disable");
 
   const SdnIntegrationIntent(this.wireValue);
+  @override
   final String wireValue;
 
   static SdnIntegrationIntent fromValue(String value) {

@@ -19,31 +19,31 @@ class DeploymentStacksWhatIfResultPropertiesResponse {
   /// The correlation id of the last Deployment stack upsert or delete operation. It is in GUID format and is used for tracing.
   final pulumi.Input<String> correlationId;
   /// The debug setting of the deployment.
-  final pulumi.Input<DeploymentStacksDebugSettingResponse>? debugSetting;
+  final pulumi.Input<DeploymentStacksDebugSettingResponse?>? debugSetting;
   /// Defines how resources deployed by the stack are locked.
   final pulumi.Input<DenySettingsResponse> denySettings;
   /// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
-  final pulumi.Input<String>? deploymentScope;
+  final pulumi.Input<String?>? deploymentScope;
   /// The timestamp for when the deployment stack was last modified. This can be used to determine if the what-if data is still current.
   final pulumi.Input<String> deploymentStackLastModified;
   /// The deployment stack id to use as the basis for comparison.
   final pulumi.Input<String> deploymentStackResourceId;
   /// Deployment stack description. Max length of 4096 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of resource diagnostics detected by What-If operation.
   final pulumi.Input<List<DeploymentStacksDiagnosticResponse>> diagnostics;
   /// The error detail.
   final pulumi.Input<ErrorDetailResponse> error;
   /// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
-  final pulumi.Input<Map<String, DeploymentParameterResponse>>? parameters;
+  final pulumi.Input<Map<String, DeploymentParameterResponse>?>? parameters;
   /// The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
-  final pulumi.Input<DeploymentStacksParametersLinkResponse>? parametersLink;
+  final pulumi.Input<DeploymentStacksParametersLinkResponse?>? parametersLink;
   /// State of the deployment stack.
   final pulumi.Input<String> provisioningState;
   /// The interval to persist the deployment stack what-if result in ISO 8601 format.
   final pulumi.Input<String> retentionInterval;
   /// The validation level of the deployment stack
-  final pulumi.Input<String>? validationLevel;
+  final pulumi.Input<String?>? validationLevel;
 
   /// Creates a new [DeploymentStacksWhatIfResultPropertiesResponse].
   /// [actionOnUnmanage] Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.

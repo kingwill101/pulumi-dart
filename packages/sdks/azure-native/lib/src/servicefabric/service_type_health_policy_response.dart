@@ -46,9 +46,9 @@ class ServiceTypeHealthPolicyResponse {
 
   factory ServiceTypeHealthPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ServiceTypeHealthPolicyResponse(
-      maxPercentUnhealthyPartitionsPerService: pulumi.Input.fromValue(map['maxPercentUnhealthyPartitionsPerService'] as int),
-      maxPercentUnhealthyReplicasPerPartition: pulumi.Input.fromValue(map['maxPercentUnhealthyReplicasPerPartition'] as int),
-      maxPercentUnhealthyServices: pulumi.Input.fromValue(map['maxPercentUnhealthyServices'] as int),
+      maxPercentUnhealthyPartitionsPerService: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxPercentUnhealthyPartitionsPerService'])),
+      maxPercentUnhealthyReplicasPerPartition: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxPercentUnhealthyReplicasPerPartition'])),
+      maxPercentUnhealthyServices: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxPercentUnhealthyServices'])),
     );
   }
 }

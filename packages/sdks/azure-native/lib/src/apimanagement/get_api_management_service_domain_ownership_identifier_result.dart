@@ -4,23 +4,23 @@
 /// Result data returned by getApiManagementServiceDomainOwnershipIdentifier.
 class GetApiManagementServiceDomainOwnershipIdentifierResult {
   /// The domain ownership identifier value.
-  final String domainOwnershipIdentifier;
+  final String? domainOwnershipIdentifier;
 
   /// Creates a new [GetApiManagementServiceDomainOwnershipIdentifierResult].
   /// [domainOwnershipIdentifier] The domain ownership identifier value.
   const GetApiManagementServiceDomainOwnershipIdentifierResult({
-    required this.domainOwnershipIdentifier,
+    this.domainOwnershipIdentifier,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'domainOwnershipIdentifier': domainOwnershipIdentifier,
+      'domainOwnershipIdentifier': ?domainOwnershipIdentifier,
     };
   }
 
   factory GetApiManagementServiceDomainOwnershipIdentifierResult.fromMap(Map<String, dynamic> map) {
     return GetApiManagementServiceDomainOwnershipIdentifierResult(
-      domainOwnershipIdentifier: map['domainOwnershipIdentifier'] as String,
+      domainOwnershipIdentifier: (() { final guardedValue = map['domainOwnershipIdentifier']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

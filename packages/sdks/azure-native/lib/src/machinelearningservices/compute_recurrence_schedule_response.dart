@@ -8,9 +8,9 @@ class ComputeRecurrenceScheduleResponse {
   /// [Required] List of minutes for the schedule.
   final pulumi.Input<List<int>> minutes;
   /// List of month days for the schedule
-  final pulumi.Input<List<int>>? monthDays;
+  final pulumi.Input<List<int>?>? monthDays;
   /// List of days for the schedule.
-  final pulumi.Input<List<String>>? weekDays;
+  final pulumi.Input<List<String>?>? weekDays;
 
   /// Creates a new [ComputeRecurrenceScheduleResponse].
   /// [hours] [Required] List of hours for the schedule.

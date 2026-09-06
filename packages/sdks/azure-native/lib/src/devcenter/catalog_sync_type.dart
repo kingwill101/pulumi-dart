@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates the type of sync that is configured for the catalog.
-enum CatalogSyncType {
+enum CatalogSyncType implements pulumi.PulumiEnum<String> {
   valueManual("Manual"),
   valueScheduled("Scheduled");
 
   const CatalogSyncType(this.wireValue);
+  @override
   final String wireValue;
 
   static CatalogSyncType fromValue(String value) {

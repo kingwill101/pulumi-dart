@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enclave Endpoint Protocol Enum
-enum EnclaveEndpointProtocol {
+enum EnclaveEndpointProtocol implements pulumi.PulumiEnum<String> {
   aNY("ANY"),
   tCP("TCP"),
   uDP("UDP"),
@@ -8,6 +10,7 @@ enum EnclaveEndpointProtocol {
   aH("AH");
 
   const EnclaveEndpointProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static EnclaveEndpointProtocol fromValue(String value) {

@@ -7,15 +7,15 @@ class FrontendResponse {
   /// The desired number of frontend instances (pods).
   final pulumi.Input<int> replicas;
   /// Number of logical frontend workers per instance (pod).
-  final pulumi.Input<int>? workers;
+  final pulumi.Input<int?>? workers;
 
   /// Creates a new [FrontendResponse].
   /// [replicas] The desired number of frontend instances (pods).
   /// [workers] Number of logical frontend workers per instance (pod).
-  const FrontendResponse({
+  FrontendResponse({
     required this.replicas,
-    this.workers,
-  });
+    pulumi.Input<int?>? workers,
+  }) : workers = workers ?? pulumi.Input.fromValue(2);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,8 +26,8 @@ class FrontendResponse {
 
   factory FrontendResponse.fromMap(Map<String, dynamic> map) {
     return FrontendResponse(
-      replicas: pulumi.Input.fromValue(map['replicas'] as int),
-      workers: (() { final guardedValue = map['workers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicas: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['replicas'])),
+      workers: (() { final guardedValue = map['workers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

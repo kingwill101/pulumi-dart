@@ -16,7 +16,7 @@ class TagByOperationArgs {
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
   /// Tag identifier. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? tagId;
+  final pulumi.Input<String?>? tagId;
 
   /// Creates a new [TagByOperationArgs].
   /// [apiId] API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.

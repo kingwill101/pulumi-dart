@@ -6,9 +6,9 @@ import 'replication_rule_response.dart';
 /// Definition of ReplicationConfiguration
 class ReplicationConfigurationS3BucketResponse {
   /// The Amazon Resource Name (ARN) of the IAMlong (IAM) role that Amazon S3 assumes when replicating objects. For more information, see [How to Set Up Replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html) in the *Amazon S3 User Guide*.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// A container for one or more replication rules. A replication configuration must have at least one rule and can contain a maximum of 1,000 rules.
-  final pulumi.Input<List<ReplicationRuleResponse>>? rules;
+  final pulumi.Input<List<ReplicationRuleResponse>?>? rules;
 
   /// Creates a new [ReplicationConfigurationS3BucketResponse].
   /// [role] The Amazon Resource Name (ARN) of the IAMlong (IAM) role that Amazon S3 assumes when replicating objects. For more information, see [How to Set Up Replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html) in the *Amazon S3 User Guide*.

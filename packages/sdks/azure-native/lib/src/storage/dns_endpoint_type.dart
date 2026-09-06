@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Allows you to specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier.
-enum DnsEndpointType {
+enum DnsEndpointType implements pulumi.PulumiEnum<String> {
   valueStandard("Standard"),
   valueAzureDnsZone("AzureDnsZone");
 
   const DnsEndpointType(this.wireValue);
+  @override
   final String wireValue;
 
   static DnsEndpointType fromValue(String value) {

@@ -11,17 +11,17 @@ import 'parent_properties.dart';
 /// {@macro pulumi_containerregistry_connected_registry_args_doc}
 class ConnectedRegistryArgs {
   /// The list of the ACR token resource IDs used to authenticate clients to the connected registry.
-  final pulumi.Input<List<String>>? clientTokenIds;
+  final pulumi.Input<List<String>?>? clientTokenIds;
   /// The name of the connected registry.
-  final pulumi.Input<String>? connectedRegistryName;
+  final pulumi.Input<String?>? connectedRegistryName;
   /// The garbage collection properties of the connected registry.
-  final pulumi.Input<GarbageCollectionProperties>? garbageCollection;
+  final pulumi.Input<GarbageCollectionProperties?>? garbageCollection;
   /// The logging properties of the connected registry.
-  final pulumi.Input<LoggingProperties>? logging;
+  final pulumi.Input<LoggingProperties?>? logging;
   /// The mode of the connected registry resource that indicates the permissions of the registry.
-  final pulumi.Input<String> mode;
+  final pulumi.Input<dynamic> mode;
   /// The list of notifications subscription information for the connected registry.
-  final pulumi.Input<List<String>>? notificationsList;
+  final pulumi.Input<List<String>?>? notificationsList;
   /// The parent of the connected registry.
   final pulumi.Input<ParentProperties> parent;
   /// The name of the container registry.
@@ -71,7 +71,7 @@ class ConnectedRegistryArgs {
       connectedRegistryName: (() { final guardedValue = map['connectedRegistryName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       garbageCollection: (() { final guardedValue = map['garbageCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GarbageCollectionProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       logging: (() { final guardedValue = map['logging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoggingProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      mode: pulumi.Input.fromValue(map['mode'] as String),
+      mode: pulumi.Input.fromValue(map['mode']),
       notificationsList: (() { final guardedValue = map['notificationsList']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       parent: pulumi.Input.fromValue(ParentProperties.fromMap((map['parent']! as Map).cast<String, dynamic>())),
       registryName: pulumi.Input.fromValue(map['registryName'] as String),

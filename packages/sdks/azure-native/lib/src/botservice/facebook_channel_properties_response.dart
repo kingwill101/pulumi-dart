@@ -8,13 +8,13 @@ class FacebookChannelPropertiesResponse {
   /// Facebook application id
   final pulumi.Input<String> appId;
   /// Facebook application secret. Value only returned through POST to the action Channel List API, otherwise empty.
-  final pulumi.Input<String>? appSecret;
+  final pulumi.Input<String?>? appSecret;
   /// Callback Url
   final pulumi.Input<String> callbackUrl;
   /// Whether this channel is enabled for the bot
   final pulumi.Input<bool> isEnabled;
   /// The list of Facebook pages
-  final pulumi.Input<List<FacebookPageResponse>>? pages;
+  final pulumi.Input<List<FacebookPageResponse>?>? pages;
   /// Verify token. Value only returned through POST to the action Channel List API, otherwise empty.
   final pulumi.Input<String> verifyToken;
 

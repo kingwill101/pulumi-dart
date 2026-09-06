@@ -218,4 +218,25 @@ class LoadBalancer extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [LoadBalancer] resource.
+  LoadBalancer.reference(String urn)
+    : super(
+        'azure-native:containerservice:LoadBalancer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowServicePlacement = registerOutput<bool?>('allowServicePlacement');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    nodeSelector = registerOutput<LabelSelectorLoadBalancerResponse?>('nodeSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabelSelectorLoadBalancerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    primaryAgentPoolName = registerOutput<String>('primaryAgentPoolName');
+    provisioningState = registerOutput<String>('provisioningState');
+    serviceLabelSelector = registerOutput<LabelSelectorLoadBalancerResponse?>('serviceLabelSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabelSelectorLoadBalancerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceNamespaceSelector = registerOutput<LabelSelectorLoadBalancerResponse?>('serviceNamespaceSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabelSelectorLoadBalancerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

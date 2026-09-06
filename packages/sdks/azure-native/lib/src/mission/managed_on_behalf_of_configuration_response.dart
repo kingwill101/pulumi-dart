@@ -6,7 +6,7 @@ import 'mobo_broker_resource_response.dart';
 /// Managed-On-Behalf-Of configuration properties. This configuration exists for the resources where a resource provider manages those resources on behalf of the resource owner.
 class ManagedOnBehalfOfConfigurationResponse {
   /// Managed-On-Behalf-Of broker resources
-  final pulumi.Input<List<MoboBrokerResourceResponse>>? moboBrokerResources;
+  final pulumi.Input<List<MoboBrokerResourceResponse>?>? moboBrokerResources;
 
   /// Creates a new [ManagedOnBehalfOfConfigurationResponse].
   /// [moboBrokerResources] Managed-On-Behalf-Of broker resources

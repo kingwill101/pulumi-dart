@@ -6,21 +6,21 @@ import 'settings_properties_response_cache.dart';
 /// Result data returned by getSetting.
 class GetSettingResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Array of scopes with additional details used by Cost Management in the Azure portal.
   final List<SettingsPropertiesResponseCache>? cache;
   /// Resource Id.
-  final String id;
+  final String? id;
   /// Resource kind.
-  final String kind;
+  final String? kind;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Sets the default scope the current user will see when they sign into Azure Cost Management in the Azure portal.
-  final String scope;
+  final String? scope;
   /// Indicates what scope Cost Management in the Azure portal should default to. Allowed values: LastUsed.
   final String? startOn;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetSettingResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -32,39 +32,39 @@ class GetSettingResult {
   /// [startOn] Indicates what scope Cost Management in the Azure portal should default to. Allowed values: LastUsed.
   /// [type] Resource type.
   const GetSettingResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.cache,
-    required this.id,
-    required this.kind,
-    required this.name,
-    required this.scope,
+    this.id,
+    this.kind,
+    this.name,
+    this.scope,
     this.startOn,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'cache': ?(() { final guardedValue = cache; if (guardedValue == null) return null; return pulumi.Input.encodeList<SettingsPropertiesResponseCache, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
-      'kind': kind,
-      'name': name,
-      'scope': scope,
+      'id': ?id,
+      'kind': ?kind,
+      'name': ?name,
+      'scope': ?scope,
       'startOn': ?startOn,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetSettingResult.fromMap(Map<String, dynamic> map) {
     return GetSettingResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       cache: (() { final guardedValue = map['cache']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SettingsPropertiesResponseCache>(guardedValue, (value) => SettingsPropertiesResponseCache.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
-      scope: map['scope'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return guardedValue as String; })(),
       startOn: (() { final guardedValue = map['startOn']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

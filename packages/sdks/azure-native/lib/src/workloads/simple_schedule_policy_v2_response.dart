@@ -8,16 +8,16 @@ import 'weekly_schedule_response.dart';
 /// The V2 policy schedule for IaaS that supports hourly backups.
 class SimpleSchedulePolicyV2Response {
   /// Daily schedule of this policy
-  final pulumi.Input<DailyScheduleResponse>? dailySchedule;
+  final pulumi.Input<DailyScheduleResponse?>? dailySchedule;
   /// hourly schedule of this policy
-  final pulumi.Input<HourlyScheduleResponse>? hourlySchedule;
+  final pulumi.Input<HourlyScheduleResponse?>? hourlySchedule;
   /// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
   /// Expected value is 'SimpleSchedulePolicyV2'.
   final pulumi.Input<String> schedulePolicyType;
   /// Frequency of the schedule operation of this policy.
-  final pulumi.Input<String>? scheduleRunFrequency;
+  final pulumi.Input<String?>? scheduleRunFrequency;
   /// Weekly schedule of this policy
-  final pulumi.Input<WeeklyScheduleResponse>? weeklySchedule;
+  final pulumi.Input<WeeklyScheduleResponse?>? weeklySchedule;
 
   /// Creates a new [SimpleSchedulePolicyV2Response].
   /// [dailySchedule] Daily schedule of this policy

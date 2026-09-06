@@ -6,9 +6,9 @@ import 'connect_to_target_oracle_azure_db_for_postgre_sql_sync_task_input.dart';
 /// Properties for the task that validates connection to Azure Database For PostgreSQL server and target server requirements for online migration for Oracle source.
 class ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// Task input
-  final pulumi.Input<ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInput>? input;
+  final pulumi.Input<ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInput?>? input;
   /// Task type.
   /// Expected value is 'ConnectToTarget.Oracle.AzureDbForPostgreSql.Sync'.
   final pulumi.Input<String> taskType;

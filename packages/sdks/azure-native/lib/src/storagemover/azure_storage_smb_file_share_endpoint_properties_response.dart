@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of Azure Storage SMB file share endpoint.
 class AzureStorageSmbFileShareEndpointPropertiesResponse {
   /// A description for the Endpoint.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Endpoint resource type.
   /// Expected value is 'AzureStorageSmbFileShare'.
   final pulumi.Input<String> endpointType;

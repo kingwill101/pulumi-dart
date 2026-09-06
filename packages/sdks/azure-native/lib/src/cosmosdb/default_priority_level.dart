@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enum to indicate default Priority Level of request for Priority Based Execution.
-enum DefaultPriorityLevel {
+enum DefaultPriorityLevel implements pulumi.PulumiEnum<String> {
   valueHigh("High"),
   valueLow("Low");
 
   const DefaultPriorityLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static DefaultPriorityLevel fromValue(String value) {

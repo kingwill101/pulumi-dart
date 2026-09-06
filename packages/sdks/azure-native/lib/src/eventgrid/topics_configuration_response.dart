@@ -6,7 +6,7 @@ import 'custom_domain_configuration_response.dart';
 /// Properties of the Topics Configuration.
 class TopicsConfigurationResponse {
   /// List of custom domain configurations for the namespace.
-  final pulumi.Input<List<CustomDomainConfigurationResponse>>? customDomains;
+  final pulumi.Input<List<CustomDomainConfigurationResponse>?>? customDomains;
   /// The hostname for the topics configuration. This is a read-only property.
   final pulumi.Input<String> hostname;
 

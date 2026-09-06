@@ -7,23 +7,23 @@ import 'sku_machine_learning_dataset_response.dart';
 /// Result data returned by getMachineLearningDataset.
 class GetMachineLearningDatasetResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Specifies the resource ID.
-  final String id;
+  final String? id;
   /// The identity of the resource.
   final IdentityMachineLearningDatasetResponse? identity;
   /// Specifies the location of the resource.
   final String? location;
   /// Specifies the name of the resource.
-  final String name;
+  final String? name;
   /// Dataset properties
-  final DatasetResponse properties;
+  final DatasetResponse? properties;
   /// The sku of the workspace.
   final SkuMachineLearningDatasetResponse? sku;
   /// Contains resource tags defined as key/value pairs.
   final Map<String, String>? tags;
   /// Specifies the type of the resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetMachineLearningDatasetResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -36,42 +36,42 @@ class GetMachineLearningDatasetResult {
   /// [tags] Contains resource tags defined as key/value pairs.
   /// [type] Specifies the type of the resource.
   const GetMachineLearningDatasetResult({
-    required this.azureApiVersion,
-    required this.id,
+    this.azureApiVersion,
+    this.id,
     this.identity,
     this.location,
-    required this.name,
-    required this.properties,
+    this.name,
+    this.properties,
     this.sku,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'location': ?location,
-      'name': name,
-      'properties': properties.toMap(),
+      'name': ?name,
+      'properties': ?properties?.toMap(),
       'sku': ?sku?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetMachineLearningDatasetResult.fromMap(Map<String, dynamic> map) {
     return GetMachineLearningDatasetResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityMachineLearningDatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      properties: DatasetResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return DatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuMachineLearningDatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

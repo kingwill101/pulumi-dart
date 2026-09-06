@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'diagnostic_setting_args.dart';
+import 'diagnostics_log_settings_response.dart';
+import 'diagnostics_metric_settings_response.dart';
 import 'system_data_response.dart';
 
 /// The diagnostic setting resource.
@@ -607,11 +609,11 @@ class DiagnosticSetting extends pulumi.CustomResource {
   /// A string indicating whether the export to Log Analytics should use the default destination type, i.e. AzureDiagnostics, or use a destination type constructed as follows: &lt;normalized service identity&gt;_&lt;normalized category name&gt;. Possible values are: Dedicated and null (null is default.)
   late final pulumi.Output<String?> logAnalyticsDestinationType;
   /// The list of logs settings.
-  late final pulumi.Output<List<Map<String, dynamic>>?> logs;
+  late final pulumi.Output<List<DiagnosticsLogSettingsResponse>?> logs;
   /// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
   late final pulumi.Output<String?> marketplacePartnerId;
   /// The list of metric settings.
-  late final pulumi.Output<List<Map<String, dynamic>>?> metrics;
+  late final pulumi.Output<List<DiagnosticsMetricSettingsResponse>?> metrics;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
@@ -643,9 +645,33 @@ class DiagnosticSetting extends pulumi.CustomResource {
     eventHubAuthorizationRuleId = registerOutput<String?>('eventHubAuthorizationRuleId');
     eventHubName = registerOutput<String?>('eventHubName');
     logAnalyticsDestinationType = registerOutput<String?>('logAnalyticsDestinationType');
-    logs = registerOutput<List<Map<String, dynamic>>?>('logs');
+    logs = registerOutput<List<DiagnosticsLogSettingsResponse>?>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiagnosticsLogSettingsResponse>(guardedValue, (value) => DiagnosticsLogSettingsResponse.fromMap((value as Map).cast<String, dynamic>())); });
     marketplacePartnerId = registerOutput<String?>('marketplacePartnerId');
-    metrics = registerOutput<List<Map<String, dynamic>>?>('metrics');
+    metrics = registerOutput<List<DiagnosticsMetricSettingsResponse>?>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiagnosticsMetricSettingsResponse>(guardedValue, (value) => DiagnosticsMetricSettingsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    serviceBusRuleId = registerOutput<String?>('serviceBusRuleId');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    workspaceId = registerOutput<String?>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [DiagnosticSetting] resource.
+  DiagnosticSetting.reference(String urn)
+    : super(
+        'azure-native:monitor:DiagnosticSetting',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eventHubAuthorizationRuleId = registerOutput<String?>('eventHubAuthorizationRuleId');
+    eventHubName = registerOutput<String?>('eventHubName');
+    logAnalyticsDestinationType = registerOutput<String?>('logAnalyticsDestinationType');
+    logs = registerOutput<List<DiagnosticsLogSettingsResponse>?>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiagnosticsLogSettingsResponse>(guardedValue, (value) => DiagnosticsLogSettingsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    marketplacePartnerId = registerOutput<String?>('marketplacePartnerId');
+    metrics = registerOutput<List<DiagnosticsMetricSettingsResponse>?>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiagnosticsMetricSettingsResponse>(guardedValue, (value) => DiagnosticsMetricSettingsResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     serviceBusRuleId = registerOutput<String?>('serviceBusRuleId');
     storageAccountId = registerOutput<String?>('storageAccountId');

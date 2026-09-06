@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The service account provisioning mode for this Active Directory connector.
-enum AccountProvisioningMode {
+enum AccountProvisioningMode implements pulumi.PulumiEnum<String> {
   valueAutomatic("automatic"),
   valueManual("manual");
 
   const AccountProvisioningMode(this.wireValue);
+  @override
   final String wireValue;
 
   static AccountProvisioningMode fromValue(String value) {

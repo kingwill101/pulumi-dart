@@ -1,9 +1,12 @@
-enum AutomationRulePropertyChangedConditionSupportedPropertyType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum AutomationRulePropertyChangedConditionSupportedPropertyType implements pulumi.PulumiEnum<String> {
   valueIncidentSeverity("IncidentSeverity"),
   valueIncidentStatus("IncidentStatus"),
   valueIncidentOwner("IncidentOwner");
 
   const AutomationRulePropertyChangedConditionSupportedPropertyType(this.wireValue);
+  @override
   final String wireValue;
 
   static AutomationRulePropertyChangedConditionSupportedPropertyType fromValue(String value) {

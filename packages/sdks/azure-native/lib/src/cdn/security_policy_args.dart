@@ -9,13 +9,13 @@ import 'security_policy_web_application_firewall_parameters.dart';
 /// {@macro pulumi_cdn_security_policy_args_doc}
 class SecurityPolicyArgs {
   /// object which contains security policy parameters
-  final pulumi.Input<SecurityPolicyWebApplicationFirewallParameters>? parameters;
+  final pulumi.Input<SecurityPolicyWebApplicationFirewallParameters?>? parameters;
   /// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   final pulumi.Input<String> profileName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the security policy under the profile.
-  final pulumi.Input<String>? securityPolicyName;
+  final pulumi.Input<String?>? securityPolicyName;
 
   /// Creates a new [SecurityPolicyArgs].
   /// [parameters] object which contains security policy parameters

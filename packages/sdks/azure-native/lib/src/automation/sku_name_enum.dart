@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the SKU name of the account.
-enum SkuNameEnum {
+enum SkuNameEnum implements pulumi.PulumiEnum<String> {
   free("Free"),
   basic("Basic");
 
   const SkuNameEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static SkuNameEnum fromValue(String value) {

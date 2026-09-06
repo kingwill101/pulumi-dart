@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Entity Uptime.
 class EntityUptimeResponse {
   /// Gets the days per month.
-  final pulumi.Input<int>? daysPerMonth;
+  final pulumi.Input<int?>? daysPerMonth;
   /// Gets the hours per day.
-  final pulumi.Input<int>? hoursPerDay;
+  final pulumi.Input<int?>? hoursPerDay;
 
   /// Creates a new [EntityUptimeResponse].
   /// [daysPerMonth] Gets the days per month.
@@ -26,8 +26,8 @@ class EntityUptimeResponse {
 
   factory EntityUptimeResponse.fromMap(Map<String, dynamic> map) {
     return EntityUptimeResponse(
-      daysPerMonth: (() { final guardedValue = map['daysPerMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      hoursPerDay: (() { final guardedValue = map['hoursPerDay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      daysPerMonth: (() { final guardedValue = map['daysPerMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      hoursPerDay: (() { final guardedValue = map['hoursPerDay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

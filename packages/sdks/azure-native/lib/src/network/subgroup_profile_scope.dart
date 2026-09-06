@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Scope of the subgroup profile.
-enum SubgroupProfileScope {
+enum SubgroupProfileScope implements pulumi.PulumiEnum<String> {
   none("None"),
   verticalConnect("VerticalConnect");
 
   const SubgroupProfileScope(this.wireValue);
+  @override
   final String wireValue;
 
   static SubgroupProfileScope fromValue(String value) {

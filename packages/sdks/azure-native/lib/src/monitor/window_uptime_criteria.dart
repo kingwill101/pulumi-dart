@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents criteria for determining uptime in window-based SLIs.
 class WindowUptimeCriteria {
   /// Comparison operator used for uptime evaluation.
-  final pulumi.Input<String> comparator;
+  final pulumi.Input<dynamic> comparator;
   /// Threshold value used to determine uptime.
   final pulumi.Input<double> target;
 
@@ -26,8 +26,8 @@ class WindowUptimeCriteria {
 
   factory WindowUptimeCriteria.fromMap(Map<String, dynamic> map) {
     return WindowUptimeCriteria(
-      comparator: pulumi.Input.fromValue(map['comparator'] as String),
-      target: pulumi.Input.fromValue(map['target'] as double),
+      comparator: pulumi.Input.fromValue(map['comparator']),
+      target: pulumi.Input.fromValue((map['target'] as num).toDouble()),
     );
   }
 }

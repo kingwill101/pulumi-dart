@@ -9,7 +9,7 @@ class VolumeReference {
   /// Name of the volume being referenced.
   final pulumi.Input<String> name;
   /// The flag indicating whether the volume is read only. Default is 'false'.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
 
   /// Creates a new [VolumeReference].
   /// [destinationPath] The path within the container at which the volume should be mounted. Only valid path characters are allowed.

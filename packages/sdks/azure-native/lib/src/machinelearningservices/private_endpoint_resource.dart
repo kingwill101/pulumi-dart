@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The PE network resource that is linked to this PE connection.
 class PrivateEndpointResource {
   /// The subnetId that the private endpoint is connected to.
-  final pulumi.Input<String>? subnetArmId;
+  final pulumi.Input<String?>? subnetArmId;
 
   /// Creates a new [PrivateEndpointResource].
   /// [subnetArmId] The subnetId that the private endpoint is connected to.

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of payment term.
 class PaymentTermResponse {
   /// The date on when the defined 'Payment Term' will end and is always in UTC.
-  final pulumi.Input<String>? endDate;
+  final pulumi.Input<String?>? endDate;
   /// Indicates payment term is the standard payment term.
   final pulumi.Input<bool> isDefault;
   /// The date on when the defined 'Payment Term' will be effective from and is always in UTC.
-  final pulumi.Input<String>? startDate;
+  final pulumi.Input<String?>? startDate;
   /// Represents duration in netXX format. Always in days.
-  final pulumi.Input<String>? term;
+  final pulumi.Input<String?>? term;
 
   /// Creates a new [PaymentTermResponse].
   /// [endDate] The date on when the defined 'Payment Term' will end and is always in UTC.

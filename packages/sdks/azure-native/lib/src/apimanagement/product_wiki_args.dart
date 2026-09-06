@@ -9,7 +9,7 @@ import 'wiki_documentation_contract.dart';
 /// {@macro pulumi_apimanagement_product_wiki_args_doc}
 class ProductWikiArgs {
   /// Collection wiki documents included into this wiki.
-  final pulumi.Input<List<WikiDocumentationContract>>? documents;
+  final pulumi.Input<List<WikiDocumentationContract>?>? documents;
   /// Product identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> productId;
   /// The name of the resource group. The name is case insensitive.

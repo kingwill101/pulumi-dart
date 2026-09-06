@@ -6,9 +6,9 @@ import 'my_workbook_user_assigned_identities_response.dart';
 /// Customer Managed Identity
 class MyWorkbookManagedIdentityResponse {
   /// The identity type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Customer Managed Identity
-  final pulumi.Input<MyWorkbookUserAssignedIdentitiesResponse>? userAssignedIdentities;
+  final pulumi.Input<MyWorkbookUserAssignedIdentitiesResponse?>? userAssignedIdentities;
 
   /// Creates a new [MyWorkbookManagedIdentityResponse].
   /// [type] The identity type.

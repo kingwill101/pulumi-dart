@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Status of automated cluster updates feature.
 class AutomaticClusterUpdateDefinition {
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [AutomaticClusterUpdateDefinition].
   /// [value] Optional.
@@ -20,7 +20,7 @@ class AutomaticClusterUpdateDefinition {
 
   factory AutomaticClusterUpdateDefinition.fromMap(Map<String, dynamic> map) {
     return AutomaticClusterUpdateDefinition(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

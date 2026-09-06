@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of PartitionedPrefix
 class PartitionedPrefix {
   /// Specifies the partition date source for the partitioned prefix. PartitionDateSource can be EventTime or DeliveryTime.
-  final pulumi.Input<String>? partitionDateSource;
+  final pulumi.Input<dynamic>? partitionDateSource;
 
   /// Creates a new [PartitionedPrefix].
   /// [partitionDateSource] Specifies the partition date source for the partitioned prefix. PartitionDateSource can be EventTime or DeliveryTime.
@@ -21,7 +21,7 @@ class PartitionedPrefix {
 
   factory PartitionedPrefix.fromMap(Map<String, dynamic> map) {
     return PartitionedPrefix(
-      partitionDateSource: (() { final guardedValue = map['partitionDateSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      partitionDateSource: (() { final guardedValue = map['partitionDateSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -6,11 +6,11 @@ import 'provider.dart';
 /// Properties of a Workspace
 class WorkspaceResourceProperties {
   /// Indicator of enablement of the Quantum workspace Api keys.
-  final pulumi.Input<bool>? apiKeyEnabled;
+  final pulumi.Input<bool?>? apiKeyEnabled;
   /// List of Providers selected for this Workspace
-  final pulumi.Input<List<Provider>>? providers;
+  final pulumi.Input<List<Provider>?>? providers;
   /// ARM Resource Id of the storage account associated with this workspace.
-  final pulumi.Input<String>? storageAccount;
+  final pulumi.Input<String?>? storageAccount;
 
   /// Creates a new [WorkspaceResourceProperties].
   /// [apiKeyEnabled] Indicator of enablement of the Quantum workspace Api keys.

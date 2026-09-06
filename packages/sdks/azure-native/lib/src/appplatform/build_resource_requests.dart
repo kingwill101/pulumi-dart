@@ -6,18 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BuildResourceRequests {
   /// Optional Cpu allocated to the build resource. 1 core can be represented by 1 or 1000m.
   /// The default value is 1, this should not exceed build service agent pool cpu size.
-  final pulumi.Input<String>? cpu;
+  final pulumi.Input<String?>? cpu;
   /// Optional Memory allocated to the build resource. 1 GB can be represented by 1Gi or 1024Mi.
   /// The default value is 2Gi, this should not exceed build service agent pool memory size.
-  final pulumi.Input<String>? memory;
+  final pulumi.Input<String?>? memory;
 
   /// Creates a new [BuildResourceRequests].
   /// [cpu] Optional Cpu allocated to the build resource. 1 core can be represented by 1 or 1000m.
   /// [memory] Optional Memory allocated to the build resource. 1 GB can be represented by 1Gi or 1024Mi.
-  const BuildResourceRequests({
-    this.cpu,
-    this.memory,
-  });
+  BuildResourceRequests({
+    pulumi.Input<String?>? cpu,
+    pulumi.Input<String?>? memory,
+  }) : cpu = cpu ?? pulumi.Input.fromValue('1'), memory = memory ?? pulumi.Input.fromValue('2Gi');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

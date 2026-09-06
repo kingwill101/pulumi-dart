@@ -8,21 +8,21 @@ class PrivateLinkServiceIpConfigurationResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of private link service ip configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether the ip configuration is primary or not.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
   /// The private IP address of the IP configuration.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// Whether the specific IP configuration is IPv4 or IPv6. Default is IPv4.
-  final pulumi.Input<String>? privateIPAddressVersion;
+  final pulumi.Input<String?>? privateIPAddressVersion;
   /// The private IP address allocation method.
-  final pulumi.Input<String>? privateIPAllocationMethod;
+  final pulumi.Input<String?>? privateIPAllocationMethod;
   /// The provisioning state of the private link service IP configuration resource.
   final pulumi.Input<String> provisioningState;
   /// The reference to the subnet resource.
-  final pulumi.Input<SubnetResponse>? subnet;
+  final pulumi.Input<SubnetResponse?>? subnet;
   /// The resource type.
   final pulumi.Input<String> type;
 

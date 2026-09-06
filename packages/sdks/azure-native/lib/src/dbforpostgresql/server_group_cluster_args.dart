@@ -12,61 +12,61 @@ import 'server_group_cluster_maintenance_window.dart';
 /// {@macro pulumi_dbforpostgresql_server_group_cluster_args_doc}
 class ServerGroupClusterArgs {
   /// The password of the administrator login. Required for creation.
-  final pulumi.Input<String>? administratorLoginPassword;
+  final pulumi.Input<String?>? administratorLoginPassword;
   /// Authentication configuration of a cluster.
-  final pulumi.Input<ServerGroupClusterAuthConfig>? authConfig;
+  final pulumi.Input<ServerGroupClusterAuthConfig?>? authConfig;
   /// The Citus extension version on all cluster servers.
-  final pulumi.Input<String>? citusVersion;
+  final pulumi.Input<String?>? citusVersion;
   /// The name of the cluster.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// If public access is enabled on coordinator.
-  final pulumi.Input<bool>? coordinatorEnablePublicIpAccess;
+  final pulumi.Input<bool?>? coordinatorEnablePublicIpAccess;
   /// The edition of a coordinator server (default: GeneralPurpose). Required for creation.
-  final pulumi.Input<String>? coordinatorServerEdition;
+  final pulumi.Input<String?>? coordinatorServerEdition;
   /// The storage of a server in MB. Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-  final pulumi.Input<int>? coordinatorStorageQuotaInMb;
+  final pulumi.Input<int?>? coordinatorStorageQuotaInMb;
   /// The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-  final pulumi.Input<int>? coordinatorVCores;
+  final pulumi.Input<int?>? coordinatorVCores;
   /// The data encryption properties of a cluster.
-  final pulumi.Input<ServerGroupClusterDataEncryption>? dataEncryption;
+  final pulumi.Input<ServerGroupClusterDataEncryption?>? dataEncryption;
   /// The database name of the cluster. Only one database per cluster is supported.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// If cluster backup is stored in another Azure region in addition to the copy of the backup stored in the cluster's region. Enabled only at the time of cluster creation.
-  final pulumi.Input<bool>? enableGeoBackup;
+  final pulumi.Input<bool?>? enableGeoBackup;
   /// If high availability (HA) is enabled or not for the cluster.
-  final pulumi.Input<bool>? enableHa;
+  final pulumi.Input<bool?>? enableHa;
   /// If distributed tables are placed on coordinator or not. Should be set to 'true' on single node clusters. Requires shard rebalancing after value is changed.
-  final pulumi.Input<bool>? enableShardsOnCoordinator;
+  final pulumi.Input<bool?>? enableShardsOnCoordinator;
   /// Describes the identity of the cluster.
-  final pulumi.Input<IdentityProperties>? identity;
+  final pulumi.Input<IdentityProperties?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Maintenance window of a cluster.
-  final pulumi.Input<ServerGroupClusterMaintenanceWindow>? maintenanceWindow;
+  final pulumi.Input<ServerGroupClusterMaintenanceWindow?>? maintenanceWindow;
   /// Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1. Required for creation.
-  final pulumi.Input<int>? nodeCount;
+  final pulumi.Input<int?>? nodeCount;
   /// If public access is enabled on worker nodes.
-  final pulumi.Input<bool>? nodeEnablePublicIpAccess;
+  final pulumi.Input<bool?>? nodeEnablePublicIpAccess;
   /// The edition of a node server (default: MemoryOptimized).
-  final pulumi.Input<String>? nodeServerEdition;
+  final pulumi.Input<String?>? nodeServerEdition;
   /// The storage in MB on each worker node. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-  final pulumi.Input<int>? nodeStorageQuotaInMb;
+  final pulumi.Input<int?>? nodeStorageQuotaInMb;
   /// The compute in vCores on each worker node (max: 104). See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
-  final pulumi.Input<int>? nodeVCores;
+  final pulumi.Input<int?>? nodeVCores;
   /// Date and time in UTC (ISO8601 format) for cluster restore.
-  final pulumi.Input<String>? pointInTimeUTC;
+  final pulumi.Input<String?>? pointInTimeUTC;
   /// The major PostgreSQL version on all cluster servers.
-  final pulumi.Input<String>? postgresqlVersion;
+  final pulumi.Input<String?>? postgresqlVersion;
   /// Preferred primary availability zone (AZ) for all cluster servers.
-  final pulumi.Input<String>? preferredPrimaryZone;
+  final pulumi.Input<String?>? preferredPrimaryZone;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The Azure region of source cluster for read replica clusters.
-  final pulumi.Input<String>? sourceLocation;
+  final pulumi.Input<String?>? sourceLocation;
   /// The resource id of source cluster for read replica clusters.
-  final pulumi.Input<String>? sourceResourceId;
+  final pulumi.Input<String?>? sourceResourceId;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ServerGroupClusterArgs].
   /// [administratorLoginPassword] The password of the administrator login. Required for creation.
@@ -169,8 +169,8 @@ class ServerGroupClusterArgs {
       clusterName: (() { final guardedValue = map['clusterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       coordinatorEnablePublicIpAccess: (() { final guardedValue = map['coordinatorEnablePublicIpAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       coordinatorServerEdition: (() { final guardedValue = map['coordinatorServerEdition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      coordinatorStorageQuotaInMb: (() { final guardedValue = map['coordinatorStorageQuotaInMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      coordinatorVCores: (() { final guardedValue = map['coordinatorVCores']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      coordinatorStorageQuotaInMb: (() { final guardedValue = map['coordinatorStorageQuotaInMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      coordinatorVCores: (() { final guardedValue = map['coordinatorVCores']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       dataEncryption: (() { final guardedValue = map['dataEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServerGroupClusterDataEncryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       databaseName: (() { final guardedValue = map['databaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableGeoBackup: (() { final guardedValue = map['enableGeoBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -179,11 +179,11 @@ class ServerGroupClusterArgs {
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IdentityProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maintenanceWindow: (() { final guardedValue = map['maintenanceWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServerGroupClusterMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nodeEnablePublicIpAccess: (() { final guardedValue = map['nodeEnablePublicIpAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       nodeServerEdition: (() { final guardedValue = map['nodeServerEdition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      nodeStorageQuotaInMb: (() { final guardedValue = map['nodeStorageQuotaInMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      nodeVCores: (() { final guardedValue = map['nodeVCores']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeStorageQuotaInMb: (() { final guardedValue = map['nodeStorageQuotaInMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      nodeVCores: (() { final guardedValue = map['nodeVCores']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       pointInTimeUTC: (() { final guardedValue = map['pointInTimeUTC']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       postgresqlVersion: (() { final guardedValue = map['postgresqlVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       preferredPrimaryZone: (() { final guardedValue = map['preferredPrimaryZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

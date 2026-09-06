@@ -2,11 +2,11 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_info.dart';
-import 'function_streamanalytics.dart';
+import 'function_type.dart';
 import 'identity.dart';
-import 'input_streamanalytics.dart';
+import 'input_type.dart';
 import 'job_storage_account.dart';
-import 'output_streamanalytics.dart';
+import 'output_type.dart';
 import 'sku.dart';
 import 'transformation.dart';
 
@@ -16,49 +16,49 @@ import 'transformation.dart';
 /// {@macro pulumi_streamanalytics_streaming_job_args_doc}
 class StreamingJobArgs {
   /// The cluster which streaming jobs will run on.
-  final pulumi.Input<ClusterInfo>? cluster;
+  final pulumi.Input<ClusterInfo?>? cluster;
   /// Controls certain runtime behaviors of the streaming job.
-  final pulumi.Input<String>? compatibilityLevel;
+  final pulumi.Input<dynamic>? compatibilityLevel;
   /// Valid values are JobStorageAccount and SystemAccount. If set to JobStorageAccount, this requires the user to also specify jobStorageAccount property. .
-  final pulumi.Input<String>? contentStoragePolicy;
+  final pulumi.Input<dynamic>? contentStoragePolicy;
   /// The data locale of the stream analytics job. Value should be the name of a supported .NET Culture from the set https://msdn.microsoft.com/en-us/library/system.globalization.culturetypes(v=vs.110).aspx. Defaults to 'en-US' if none specified.
-  final pulumi.Input<String>? dataLocale;
+  final pulumi.Input<String?>? dataLocale;
   /// The maximum tolerable delay in seconds where events arriving late could be included.  Supported range is -1 to 1814399 (20.23:59:59 days) and -1 is used to specify wait indefinitely. If the property is absent, it is interpreted to have a value of -1.
-  final pulumi.Input<int>? eventsLateArrivalMaxDelayInSeconds;
+  final pulumi.Input<int?>? eventsLateArrivalMaxDelayInSeconds;
   /// The maximum tolerable delay in seconds where out-of-order events can be adjusted to be back in order.
-  final pulumi.Input<int>? eventsOutOfOrderMaxDelayInSeconds;
+  final pulumi.Input<int?>? eventsOutOfOrderMaxDelayInSeconds;
   /// Indicates the policy to apply to events that arrive out of order in the input event stream.
-  final pulumi.Input<String>? eventsOutOfOrderPolicy;
+  final pulumi.Input<dynamic>? eventsOutOfOrderPolicy;
   /// A list of one or more functions for the streaming job. The name property for each function is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation.
-  final pulumi.Input<List<FunctionStreamanalytics>>? functions;
+  final pulumi.Input<List<FunctionType>?>? functions;
   /// Describes the system-assigned managed identity assigned to this job that can be used to authenticate with inputs and outputs.
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// A list of one or more inputs to the streaming job. The name property for each input is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual input.
-  final pulumi.Input<List<InputStreamanalytics>>? inputs;
+  final pulumi.Input<List<InputType>?>? inputs;
   /// The name of the streaming job.
-  final pulumi.Input<String>? jobName;
+  final pulumi.Input<String?>? jobName;
   /// The properties that are associated with an Azure Storage account with MSI
-  final pulumi.Input<JobStorageAccount>? jobStorageAccount;
+  final pulumi.Input<JobStorageAccount?>? jobStorageAccount;
   /// Describes the type of the job. Valid modes are `Cloud` and 'Edge'.
-  final pulumi.Input<String>? jobType;
+  final pulumi.Input<dynamic>? jobType;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Indicates the policy to apply to events that arrive at the output and cannot be written to the external storage due to being malformed (missing column values, column values of wrong type or size).
-  final pulumi.Input<String>? outputErrorPolicy;
+  final pulumi.Input<dynamic>? outputErrorPolicy;
   /// This property should only be utilized when it is desired that the job be started immediately upon creation. Value may be JobStartTime, CustomTime, or LastOutputEventTime to indicate whether the starting point of the output event stream should start whenever the job is started, start at a custom user time stamp specified via the outputStartTime property, or start from the last event output time.
-  final pulumi.Input<String>? outputStartMode;
+  final pulumi.Input<dynamic>? outputStartMode;
   /// Value is either an ISO-8601 formatted time stamp that indicates the starting point of the output event stream, or null to indicate that the output event stream will start whenever the streaming job is started. This property must have a value if outputStartMode is set to CustomTime.
-  final pulumi.Input<String>? outputStartTime;
+  final pulumi.Input<String?>? outputStartTime;
   /// A list of one or more outputs for the streaming job. The name property for each output is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual output.
-  final pulumi.Input<List<OutputStreamanalytics>>? outputs;
+  final pulumi.Input<List<OutputType>?>? outputs;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Describes the SKU of the streaming job. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Indicates the query and the number of streaming units to use for the streaming job. The name property of the transformation is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation.
-  final pulumi.Input<Transformation>? transformation;
+  final pulumi.Input<Transformation?>? transformation;
 
   /// Creates a new [StreamingJobArgs].
   /// [cluster] The cluster which streaming jobs will run on.
@@ -117,9 +117,9 @@ class StreamingJobArgs {
       'eventsLateArrivalMaxDelayInSeconds': ?eventsLateArrivalMaxDelayInSeconds,
       'eventsOutOfOrderMaxDelayInSeconds': ?eventsOutOfOrderMaxDelayInSeconds,
       'eventsOutOfOrderPolicy': ?eventsOutOfOrderPolicy,
-      'functions': ?functions,
+      'functions': ?pulumi.Input.mapOptionalInputValue<List<FunctionType>, List<Map<String, dynamic>>>(functions, (value) => pulumi.Input.encodeList<FunctionType, Map<String, dynamic>>(value, (value) => value.toMap())),
       'identity': ?pulumi.Input.mapOptionalInputValue<Identity, Map<String, dynamic>>(identity, (value) => value.toMap()),
-      'inputs': ?inputs,
+      'inputs': ?pulumi.Input.mapOptionalInputValue<List<InputType>, List<Map<String, dynamic>>>(inputs, (value) => pulumi.Input.encodeList<InputType, Map<String, dynamic>>(value, (value) => value.toMap())),
       'jobName': ?jobName,
       'jobStorageAccount': ?pulumi.Input.mapOptionalInputValue<JobStorageAccount, Map<String, dynamic>>(jobStorageAccount, (value) => value.toMap()),
       'jobType': ?jobType,
@@ -127,7 +127,7 @@ class StreamingJobArgs {
       'outputErrorPolicy': ?outputErrorPolicy,
       'outputStartMode': ?outputStartMode,
       'outputStartTime': ?outputStartTime,
-      'outputs': ?outputs,
+      'outputs': ?pulumi.Input.mapOptionalInputValue<List<OutputType>, List<Map<String, dynamic>>>(outputs, (value) => pulumi.Input.encodeList<OutputType, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceGroupName': resourceGroupName,
       'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
       'tags': ?tags,
@@ -138,23 +138,23 @@ class StreamingJobArgs {
   factory StreamingJobArgs.fromMap(Map<String, dynamic> map) {
     return StreamingJobArgs(
       cluster: (() { final guardedValue = map['cluster']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      compatibilityLevel: (() { final guardedValue = map['compatibilityLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      contentStoragePolicy: (() { final guardedValue = map['contentStoragePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      compatibilityLevel: (() { final guardedValue = map['compatibilityLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      contentStoragePolicy: (() { final guardedValue = map['contentStoragePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       dataLocale: (() { final guardedValue = map['dataLocale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      eventsLateArrivalMaxDelayInSeconds: (() { final guardedValue = map['eventsLateArrivalMaxDelayInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      eventsOutOfOrderMaxDelayInSeconds: (() { final guardedValue = map['eventsOutOfOrderMaxDelayInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      eventsOutOfOrderPolicy: (() { final guardedValue = map['eventsOutOfOrderPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      functions: (() { final guardedValue = map['functions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<FunctionStreamanalytics>()); })(),
+      eventsLateArrivalMaxDelayInSeconds: (() { final guardedValue = map['eventsLateArrivalMaxDelayInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      eventsOutOfOrderMaxDelayInSeconds: (() { final guardedValue = map['eventsOutOfOrderMaxDelayInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      eventsOutOfOrderPolicy: (() { final guardedValue = map['eventsOutOfOrderPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      functions: (() { final guardedValue = map['functions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FunctionType>(guardedValue, (value) => FunctionType.fromMap((value as Map).cast<String, dynamic>()))); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Identity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      inputs: (() { final guardedValue = map['inputs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<InputStreamanalytics>()); })(),
+      inputs: (() { final guardedValue = map['inputs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InputType>(guardedValue, (value) => InputType.fromMap((value as Map).cast<String, dynamic>()))); })(),
       jobName: (() { final guardedValue = map['jobName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       jobStorageAccount: (() { final guardedValue = map['jobStorageAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobStorageAccount.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      jobType: (() { final guardedValue = map['jobType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      jobType: (() { final guardedValue = map['jobType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      outputErrorPolicy: (() { final guardedValue = map['outputErrorPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      outputStartMode: (() { final guardedValue = map['outputStartMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputErrorPolicy: (() { final guardedValue = map['outputErrorPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      outputStartMode: (() { final guardedValue = map['outputStartMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       outputStartTime: (() { final guardedValue = map['outputStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      outputs: (() { final guardedValue = map['outputs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<OutputStreamanalytics>()); })(),
+      outputs: (() { final guardedValue = map['outputs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<OutputType>(guardedValue, (value) => OutputType.fromMap((value as Map).cast<String, dynamic>()))); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Sku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum NetworkInterfaceStatus {
+enum NetworkInterfaceStatus implements pulumi.PulumiEnum<String> {
   associated("associated"),
   attaching("attaching"),
   available("available"),
@@ -7,6 +9,7 @@ enum NetworkInterfaceStatus {
   inUse("in-use");
 
   const NetworkInterfaceStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkInterfaceStatus fromValue(String value) {

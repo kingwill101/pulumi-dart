@@ -8,12 +8,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_redhatopenshift_sync_identity_provider_args_doc}
 class SyncIdentityProviderArgs {
   /// The name of the SyncIdentityProvider resource.
-  final pulumi.Input<String>? childResourceName;
+  final pulumi.Input<String?>? childResourceName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the OpenShift cluster resource.
   final pulumi.Input<String> resourceName;
-  final pulumi.Input<String>? resources;
+  final pulumi.Input<String?>? resources;
 
   /// Creates a new [SyncIdentityProviderArgs].
   /// [childResourceName] The name of the SyncIdentityProvider resource.

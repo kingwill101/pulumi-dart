@@ -10,17 +10,17 @@ class VariableArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
   /// Gets or sets the description of the variable.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Gets or sets the encrypted flag of the variable.
-  final pulumi.Input<bool>? isEncrypted;
+  final pulumi.Input<bool?>? isEncrypted;
   /// Gets or sets the name of the variable.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the value of the variable.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
   /// The name of variable.
-  final pulumi.Input<String>? variableName;
+  final pulumi.Input<String?>? variableName;
 
   /// Creates a new [VariableArgs].
   /// [automationAccountName] The name of the automation account.

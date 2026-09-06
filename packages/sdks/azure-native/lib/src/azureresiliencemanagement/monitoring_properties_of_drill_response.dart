@@ -8,7 +8,7 @@ class MonitoringPropertiesOfDrillResponse {
   /// Full ARM Id of the Data collection endpoint created by Resiliency service which will route data for service group and its resources.
   final pulumi.Input<String> dataCollectionEndpointId;
   /// Identity to use for Drill monitoring operations.
-  final pulumi.Input<AssociatedIdentityResponse>? identity;
+  final pulumi.Input<AssociatedIdentityResponse?>? identity;
   /// Full ARM Id of the Log analytics workspace created by Resiliency service where health data is collected.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
   /// Full ARM Id of the Data collection rule created by Resiliency service which will route data for RAW health data for service group resources.

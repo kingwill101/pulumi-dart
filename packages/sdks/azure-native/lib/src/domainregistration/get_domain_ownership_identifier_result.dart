@@ -4,17 +4,17 @@
 /// Result data returned by getDomainOwnershipIdentifier.
 class GetDomainOwnershipIdentifierResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Resource Id.
-  final String id;
+  final String? id;
   /// Kind of resource.
   final String? kind;
   /// Resource Name.
-  final String name;
+  final String? name;
   /// Ownership Id.
   final String? ownershipId;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetDomainOwnershipIdentifierResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -24,33 +24,33 @@ class GetDomainOwnershipIdentifierResult {
   /// [ownershipId] Ownership Id.
   /// [type] Resource type.
   const GetDomainOwnershipIdentifierResult({
-    required this.azureApiVersion,
-    required this.id,
+    this.azureApiVersion,
+    this.id,
     this.kind,
-    required this.name,
+    this.name,
     this.ownershipId,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
       'kind': ?kind,
-      'name': name,
+      'name': ?name,
       'ownershipId': ?ownershipId,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetDomainOwnershipIdentifierResult.fromMap(Map<String, dynamic> map) {
     return GetDomainOwnershipIdentifierResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ownershipId: (() { final guardedValue = map['ownershipId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

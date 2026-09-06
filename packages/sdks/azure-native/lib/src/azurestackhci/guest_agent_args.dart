@@ -9,9 +9,9 @@ import 'guest_credential.dart';
 /// {@macro pulumi_azurestackhci_guest_agent_args_doc}
 class GuestAgentArgs {
   /// Username / Password Credentials to provision guest agent.
-  final pulumi.Input<GuestCredential>? credentials;
+  final pulumi.Input<GuestCredential?>? credentials;
   /// The guest agent provisioning action.
-  final pulumi.Input<String>? provisioningAction;
+  final pulumi.Input<dynamic>? provisioningAction;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -36,7 +36,7 @@ class GuestAgentArgs {
   factory GuestAgentArgs.fromMap(Map<String, dynamic> map) {
     return GuestAgentArgs(
       credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GuestCredential.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      provisioningAction: (() { final guardedValue = map['provisioningAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningAction: (() { final guardedValue = map['provisioningAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }

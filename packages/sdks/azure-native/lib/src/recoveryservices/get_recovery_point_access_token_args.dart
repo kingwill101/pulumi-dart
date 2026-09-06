@@ -11,13 +11,13 @@ class GetRecoveryPointAccessTokenArgs {
   /// Name of the container.
   final pulumi.Input<String> containerName;
   /// Optional ETag.
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// Fabric name associated with the container.
   final pulumi.Input<String> fabricName;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// AADPropertiesResource properties
-  final pulumi.Input<AADProperties>? properties;
+  final pulumi.Input<AADProperties?>? properties;
   /// Name of the Protected Item.
   final pulumi.Input<String> protectedItemName;
   /// Recovery Point Id
@@ -25,7 +25,7 @@ class GetRecoveryPointAccessTokenArgs {
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the recovery services vault.
   final pulumi.Input<String> vaultName;
 

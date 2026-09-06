@@ -10,7 +10,7 @@ class DefaultAdminRuleArgs {
   /// The name of the network manager Security Configuration.
   final pulumi.Input<String> configurationName;
   /// Default rule flag.
-  final pulumi.Input<String>? flag;
+  final pulumi.Input<String?>? flag;
   /// Whether the rule is custom or default.
   /// Expected value is 'Default'.
   final pulumi.Input<String> kind;
@@ -21,7 +21,7 @@ class DefaultAdminRuleArgs {
   /// The name of the network manager security Configuration rule collection.
   final pulumi.Input<String> ruleCollectionName;
   /// The name of the rule.
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
 
   /// Creates a new [DefaultAdminRuleArgs].
   /// [configurationName] The name of the network manager Security Configuration.

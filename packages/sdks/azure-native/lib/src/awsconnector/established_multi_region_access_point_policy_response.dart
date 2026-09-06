@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of EstablishedMultiRegionAccessPointPolicy
 class EstablishedMultiRegionAccessPointPolicyResponse {
   /// &lt;p&gt;The details of the last established policy.&lt;/p&gt;
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
 
   /// Creates a new [EstablishedMultiRegionAccessPointPolicyResponse].
   /// [policy] &lt;p&gt;The details of the last established policy.&lt;/p&gt;

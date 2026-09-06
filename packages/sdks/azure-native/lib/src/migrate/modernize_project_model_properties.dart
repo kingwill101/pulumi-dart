@@ -6,7 +6,7 @@ import 'migration_configuration.dart';
 /// ModernizeProject properties.
 class ModernizeProjectModelProperties {
   /// MigrationConfiguration properties.
-  final pulumi.Input<MigrationConfiguration>? migrationConfiguration;
+  final pulumi.Input<MigrationConfiguration?>? migrationConfiguration;
 
   /// Creates a new [ModernizeProjectModelProperties].
   /// [migrationConfiguration] MigrationConfiguration properties.

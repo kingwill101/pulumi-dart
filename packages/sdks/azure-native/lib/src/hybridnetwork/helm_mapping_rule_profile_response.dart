@@ -6,15 +6,15 @@ import 'helm_mapping_rule_profile_response_options.dart';
 /// Helm mapping rule profile
 class HelmMappingRuleProfileResponse {
   /// Helm package version.
-  final pulumi.Input<String>? helmPackageVersion;
+  final pulumi.Input<String?>? helmPackageVersion;
   /// The helm deployment options
-  final pulumi.Input<HelmMappingRuleProfileResponseOptions>? options;
+  final pulumi.Input<HelmMappingRuleProfileResponseOptions?>? options;
   /// Helm release name.
-  final pulumi.Input<String>? releaseName;
+  final pulumi.Input<String?>? releaseName;
   /// Helm release namespace.
-  final pulumi.Input<String>? releaseNamespace;
+  final pulumi.Input<String?>? releaseNamespace;
   /// Helm release values.
-  final pulumi.Input<String>? values;
+  final pulumi.Input<String?>? values;
 
   /// Creates a new [HelmMappingRuleProfileResponse].
   /// [helmPackageVersion] Helm package version.

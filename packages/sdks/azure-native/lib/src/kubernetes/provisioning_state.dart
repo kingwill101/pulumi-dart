@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Provisioning state of the connected cluster resource.
-enum ProvisioningState {
+enum ProvisioningState implements pulumi.PulumiEnum<String> {
   valueSucceeded("Succeeded"),
   valueFailed("Failed"),
   valueCanceled("Canceled"),
@@ -9,6 +11,7 @@ enum ProvisioningState {
   valueAccepted("Accepted");
 
   const ProvisioningState(this.wireValue);
+  @override
   final String wireValue;
 
   static ProvisioningState fromValue(String value) {

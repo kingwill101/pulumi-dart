@@ -11,25 +11,25 @@ import 'relationship_type_mapping.dart';
 /// {@macro pulumi_customerinsights_relationship_args_doc}
 class RelationshipArgs {
   /// The Relationship Cardinality.
-  final pulumi.Input<CardinalityTypes>? cardinality;
+  final pulumi.Input<CardinalityTypes?>? cardinality;
   /// Localized descriptions for the Relationship.
-  final pulumi.Input<Map<String, String>>? description;
+  final pulumi.Input<Map<String, String>?>? description;
   /// Localized display name for the Relationship.
-  final pulumi.Input<Map<String, String>>? displayName;
+  final pulumi.Input<Map<String, String>?>? displayName;
   /// The expiry date time in UTC.
-  final pulumi.Input<String>? expiryDateTimeUtc;
+  final pulumi.Input<String?>? expiryDateTimeUtc;
   /// The properties of the Relationship.
-  final pulumi.Input<List<PropertyDefinition>>? fields;
+  final pulumi.Input<List<PropertyDefinition>?>? fields;
   /// The name of the hub.
   final pulumi.Input<String> hubName;
   /// Optional property to be used to map fields in profile to their strong ids in related profile.
-  final pulumi.Input<List<RelationshipTypeMapping>>? lookupMappings;
+  final pulumi.Input<List<RelationshipTypeMapping>?>? lookupMappings;
   /// Profile type.
   final pulumi.Input<String> profileType;
   /// Related profile being referenced.
   final pulumi.Input<String> relatedProfileType;
   /// The name of the Relationship.
-  final pulumi.Input<String>? relationshipName;
+  final pulumi.Input<String?>? relationshipName;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 

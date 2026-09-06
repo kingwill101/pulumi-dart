@@ -6,13 +6,13 @@ import 'retention_policy_response.dart';
 /// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular metric.
 class DiagnosticsMetricSettingsResponse {
   /// Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// a value indicating whether this category is enabled.
   final pulumi.Input<bool> enabled;
   /// the retention policy for this category.
-  final pulumi.Input<RetentionPolicyResponse>? retentionPolicy;
+  final pulumi.Input<RetentionPolicyResponse?>? retentionPolicy;
   /// the timegrain of the metric in ISO8601 format.
-  final pulumi.Input<String>? timeGrain;
+  final pulumi.Input<String?>? timeGrain;
 
   /// Creates a new [DiagnosticsMetricSettingsResponse].
   /// [category] Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.

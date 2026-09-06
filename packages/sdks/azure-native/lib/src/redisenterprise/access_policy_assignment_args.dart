@@ -9,7 +9,7 @@ import 'access_policy_assignment_properties_user.dart';
 /// {@macro pulumi_redisenterprise_access_policy_assignment_args_doc}
 class AccessPolicyAssignmentArgs {
   /// The name of the Redis Enterprise database access policy assignment.
-  final pulumi.Input<String>? accessPolicyAssignmentName;
+  final pulumi.Input<String?>? accessPolicyAssignmentName;
   /// Name of access policy under specific access policy assignment. Only "default" policy is supported for now.
   final pulumi.Input<String> accessPolicyName;
   /// The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens

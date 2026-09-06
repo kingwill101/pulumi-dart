@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the orchestration mode for the virtual machine scale set.
-enum OrchestrationMode {
+enum OrchestrationMode implements pulumi.PulumiEnum<String> {
   uniform("Uniform"),
   flexible("Flexible");
 
   const OrchestrationMode(this.wireValue);
+  @override
   final String wireValue;
 
   static OrchestrationMode fromValue(String value) {

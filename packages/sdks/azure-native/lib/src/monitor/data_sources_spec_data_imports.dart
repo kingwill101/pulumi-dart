@@ -6,7 +6,7 @@ import 'data_import_sources_event_hub.dart';
 /// Specifications of pull based data sources
 class DataSourcesSpecDataImports {
   /// Definition of Event Hub configuration.
-  final pulumi.Input<DataImportSourcesEventHub>? eventHub;
+  final pulumi.Input<DataImportSourcesEventHub?>? eventHub;
 
   /// Creates a new [DataSourcesSpecDataImports].
   /// [eventHub] Definition of Event Hub configuration.

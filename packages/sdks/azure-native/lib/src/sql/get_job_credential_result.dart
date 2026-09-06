@@ -4,15 +4,15 @@
 /// Result data returned by getJobCredential.
 class GetJobCredentialResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Resource type.
-  final String type;
+  final String? type;
   /// The credential user name.
-  final String username;
+  final String? username;
 
   /// Creates a new [GetJobCredentialResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -21,30 +21,30 @@ class GetJobCredentialResult {
   /// [type] Resource type.
   /// [username] The credential user name.
   const GetJobCredentialResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
-    required this.type,
-    required this.username,
+    this.azureApiVersion,
+    this.id,
+    this.name,
+    this.type,
+    this.username,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
-      'type': type,
-      'username': username,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
+      'type': ?type,
+      'username': ?username,
     };
   }
 
   factory GetJobCredentialResult.fromMap(Map<String, dynamic> map) {
     return GetJobCredentialResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      type: map['type'] as String,
-      username: map['username'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

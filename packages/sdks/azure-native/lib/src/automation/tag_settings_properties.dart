@@ -6,9 +6,9 @@ import 'tag_operators.dart';
 /// Tag filter information for the VM.
 class TagSettingsProperties {
   /// Filter VMs by Any or All specified tags.
-  final pulumi.Input<TagOperators>? filterOperator;
+  final pulumi.Input<TagOperators?>? filterOperator;
   /// Dictionary of tags with its list of values.
-  final pulumi.Input<Map<String, List<String>>>? tags;
+  final pulumi.Input<Map<String, List<String>>?>? tags;
 
   /// Creates a new [TagSettingsProperties].
   /// [filterOperator] Filter VMs by Any or All specified tags.
@@ -28,7 +28,7 @@ class TagSettingsProperties {
   factory TagSettingsProperties.fromMap(Map<String, dynamic> map) {
     return TagSettingsProperties(
       filterOperator: (() { final guardedValue = map['filterOperator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TagOperators.fromValue(guardedValue as String)); })(),
-      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, List<String>>()); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>())); })(),
     );
   }
 }

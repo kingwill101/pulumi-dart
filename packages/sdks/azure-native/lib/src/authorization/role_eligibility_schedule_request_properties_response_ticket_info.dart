@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Ticket Info of the role eligibility
 class RoleEligibilityScheduleRequestPropertiesResponseTicketInfo {
   /// Ticket number for the role eligibility
-  final pulumi.Input<String>? ticketNumber;
+  final pulumi.Input<String?>? ticketNumber;
   /// Ticket system name for the role eligibility
-  final pulumi.Input<String>? ticketSystem;
+  final pulumi.Input<String?>? ticketSystem;
 
   /// Creates a new [RoleEligibilityScheduleRequestPropertiesResponseTicketInfo].
   /// [ticketNumber] Ticket number for the role eligibility

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Cosmos DB SQL userDefinedFunction resource object
 class SqlUserDefinedFunctionResource {
   /// Body of the User Defined Function
-  final pulumi.Input<String>? body;
+  final pulumi.Input<String?>? body;
   /// Name of the Cosmos DB SQL userDefinedFunction
   final pulumi.Input<String> id;
 

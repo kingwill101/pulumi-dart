@@ -8,7 +8,7 @@ class DeploymentConfiguration {
   /// Scale units will contains list of deployment data
   final pulumi.Input<List<ScaleUnits>> scaleUnits;
   /// deployment template version
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [DeploymentConfiguration].
   /// [scaleUnits] Scale units will contains list of deployment data

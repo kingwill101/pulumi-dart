@@ -14,7 +14,7 @@ class ListShareSubscriptionSourceShareSynchronizationSettingsArgs {
   /// The name of the shareSubscription.
   final pulumi.Input<String> shareSubscriptionName;
   /// Continuation token
-  final pulumi.Input<String>? skipToken;
+  final pulumi.Input<String?>? skipToken;
 
   /// Creates a new [ListShareSubscriptionSourceShareSynchronizationSettingsArgs].
   /// [accountName] The name of the share account.

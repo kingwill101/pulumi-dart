@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Action to be taken when the operation is successful for a object.
-enum OnSuccess {
+enum OnSuccess implements pulumi.PulumiEnum<String> {
   continue_("continue");
 
   const OnSuccess(this.wireValue);
+  @override
   final String wireValue;
 
   static OnSuccess fromValue(String value) {

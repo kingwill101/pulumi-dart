@@ -11,19 +11,19 @@ import 'vault_properties.dart';
 /// {@macro pulumi_recoveryservices_vault_args_doc}
 class VaultArgs {
   /// Identity for the resource.
-  final pulumi.Input<IdentityData>? identity;
+  final pulumi.Input<IdentityData?>? identity;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Properties of the vault.
-  final pulumi.Input<VaultProperties>? properties;
+  final pulumi.Input<VaultProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Identifies the unique system identifier for each Azure resource.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the recovery services vault.
-  final pulumi.Input<String>? vaultName;
+  final pulumi.Input<String?>? vaultName;
 
   /// Creates a new [VaultArgs].
   /// [identity] Identity for the resource.

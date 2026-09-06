@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Class representing the databases solution summary.
 class DatabasesSolutionSummaryResponse {
   /// Gets or sets the count of database instances assessed.
-  final pulumi.Input<int>? databaseInstancesAssessedCount;
+  final pulumi.Input<int?>? databaseInstancesAssessedCount;
   /// Gets or sets the count of databases assessed.
-  final pulumi.Input<int>? databasesAssessedCount;
+  final pulumi.Input<int?>? databasesAssessedCount;
   /// Gets the Instance type.
   /// Expected value is 'Databases'.
   final pulumi.Input<String> instanceType;
   /// Gets or sets the count of databases ready for migration.
-  final pulumi.Input<int>? migrationReadyCount;
+  final pulumi.Input<int?>? migrationReadyCount;
 
   /// Creates a new [DatabasesSolutionSummaryResponse].
   /// [databaseInstancesAssessedCount] Gets or sets the count of database instances assessed.
@@ -37,10 +37,10 @@ class DatabasesSolutionSummaryResponse {
 
   factory DatabasesSolutionSummaryResponse.fromMap(Map<String, dynamic> map) {
     return DatabasesSolutionSummaryResponse(
-      databaseInstancesAssessedCount: (() { final guardedValue = map['databaseInstancesAssessedCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      databasesAssessedCount: (() { final guardedValue = map['databasesAssessedCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      databaseInstancesAssessedCount: (() { final guardedValue = map['databaseInstancesAssessedCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      databasesAssessedCount: (() { final guardedValue = map['databasesAssessedCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      migrationReadyCount: (() { final guardedValue = map['migrationReadyCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      migrationReadyCount: (() { final guardedValue = map['migrationReadyCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

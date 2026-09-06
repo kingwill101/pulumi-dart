@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// State of instance
-enum ActiveState {
+enum ActiveState implements pulumi.PulumiEnum<String> {
   active("active"),
   inactive("inactive");
 
   const ActiveState(this.wireValue);
+  @override
   final String wireValue;
 
   static ActiveState fromValue(String value) {

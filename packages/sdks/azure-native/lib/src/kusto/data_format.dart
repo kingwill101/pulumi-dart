@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The data format of the message. Optionally the data format can be added to each message.
-enum DataFormat {
+enum DataFormat implements pulumi.PulumiEnum<String> {
   valueMULTIJSON("MULTIJSON"),
   valueJSON("JSON"),
   valueCSV("CSV");
 
   const DataFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static DataFormat fromValue(String value) {

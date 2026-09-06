@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The detail of a subject.
 class UsersOrServicePrincipalSet {
   /// The display Name of the entity.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The object id of the entity.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The type of user.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [UsersOrServicePrincipalSet].
   /// [displayName] The display Name of the entity.
@@ -33,7 +33,7 @@ class UsersOrServicePrincipalSet {
     return UsersOrServicePrincipalSet(
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

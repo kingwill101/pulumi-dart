@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties that describe a base image dependency.
 class BaseImageDependencyResponse {
   /// The sha256-based digest of the image manifest.
-  final pulumi.Input<String>? digest;
+  final pulumi.Input<String?>? digest;
   /// The registry login server.
-  final pulumi.Input<String>? registry;
+  final pulumi.Input<String?>? registry;
   /// The repository name.
-  final pulumi.Input<String>? repository;
+  final pulumi.Input<String?>? repository;
   /// The tag name.
-  final pulumi.Input<String>? tag;
+  final pulumi.Input<String?>? tag;
   /// The type of the base image dependency.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [BaseImageDependencyResponse].
   /// [digest] The sha256-based digest of the image manifest.

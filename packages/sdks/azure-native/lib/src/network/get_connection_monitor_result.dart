@@ -13,35 +13,35 @@ class GetConnectionMonitorResult {
   /// Determines if the connection monitor will start automatically once created.
   final bool? autoStart;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Type of connection monitor.
-  final String connectionMonitorType;
+  final String? connectionMonitorType;
   /// Describes the destination of connection monitor.
   final ConnectionMonitorDestinationResponse? destination;
   /// List of connection monitor endpoints.
   final List<ConnectionMonitorEndpointResponse>? endpoints;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// ID of the connection monitor.
-  final String id;
+  final String? id;
   /// Connection monitor location.
   final String? location;
   /// Monitoring interval in seconds.
   final int? monitoringIntervalInSeconds;
   /// The monitoring status of the connection monitor.
-  final String monitoringStatus;
+  final String? monitoringStatus;
   /// Name of the connection monitor.
-  final String name;
+  final String? name;
   /// Optional notes to be associated with the connection monitor.
   final String? notes;
   /// List of connection monitor outputs.
   final List<ConnectionMonitorOutputResponse>? outputs;
   /// The provisioning state of the connection monitor.
-  final String provisioningState;
+  final String? provisioningState;
   /// Describes the source of connection monitor.
   final ConnectionMonitorSourceResponse? source;
   /// The date and time when the connection monitor was started.
-  final String startTime;
+  final String? startTime;
   /// Connection monitor tags.
   final Map<String, String>? tags;
   /// List of connection monitor test configurations.
@@ -49,7 +49,7 @@ class GetConnectionMonitorResult {
   /// List of connection monitor test groups.
   final List<ConnectionMonitorTestGroupResponse>? testGroups;
   /// Connection monitor type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetConnectionMonitorResult].
   /// [autoStart] Determines if the connection monitor will start automatically once created.
@@ -72,76 +72,76 @@ class GetConnectionMonitorResult {
   /// [testConfigurations] List of connection monitor test configurations.
   /// [testGroups] List of connection monitor test groups.
   /// [type] Connection monitor type.
-  const GetConnectionMonitorResult({
-    this.autoStart,
-    required this.azureApiVersion,
-    required this.connectionMonitorType,
+  GetConnectionMonitorResult({
+    bool? autoStart,
+    this.azureApiVersion,
+    this.connectionMonitorType,
     this.destination,
     this.endpoints,
-    required this.etag,
-    required this.id,
+    this.etag,
+    this.id,
     this.location,
-    this.monitoringIntervalInSeconds,
-    required this.monitoringStatus,
-    required this.name,
+    int? monitoringIntervalInSeconds,
+    this.monitoringStatus,
+    this.name,
     this.notes,
     this.outputs,
-    required this.provisioningState,
+    this.provisioningState,
     this.source,
-    required this.startTime,
+    this.startTime,
     this.tags,
     this.testConfigurations,
     this.testGroups,
-    required this.type,
-  });
+    this.type,
+  }) : autoStart = autoStart ?? true, monitoringIntervalInSeconds = monitoringIntervalInSeconds ?? 60;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoStart': ?autoStart,
-      'azureApiVersion': azureApiVersion,
-      'connectionMonitorType': connectionMonitorType,
+      'azureApiVersion': ?azureApiVersion,
+      'connectionMonitorType': ?connectionMonitorType,
       'destination': ?destination?.toMap(),
       'endpoints': ?(() { final guardedValue = endpoints; if (guardedValue == null) return null; return pulumi.Input.encodeList<ConnectionMonitorEndpointResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'etag': etag,
-      'id': id,
+      'etag': ?etag,
+      'id': ?id,
       'location': ?location,
       'monitoringIntervalInSeconds': ?monitoringIntervalInSeconds,
-      'monitoringStatus': monitoringStatus,
-      'name': name,
+      'monitoringStatus': ?monitoringStatus,
+      'name': ?name,
       'notes': ?notes,
       'outputs': ?(() { final guardedValue = outputs; if (guardedValue == null) return null; return pulumi.Input.encodeList<ConnectionMonitorOutputResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'source': ?source?.toMap(),
-      'startTime': startTime,
+      'startTime': ?startTime,
       'tags': ?tags,
       'testConfigurations': ?(() { final guardedValue = testConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<ConnectionMonitorTestConfigurationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'testGroups': ?(() { final guardedValue = testGroups; if (guardedValue == null) return null; return pulumi.Input.encodeList<ConnectionMonitorTestGroupResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetConnectionMonitorResult.fromMap(Map<String, dynamic> map) {
     return GetConnectionMonitorResult(
       autoStart: (() { final guardedValue = map['autoStart']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      connectionMonitorType: map['connectionMonitorType'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      connectionMonitorType: (() { final guardedValue = map['connectionMonitorType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return ConnectionMonitorDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       endpoints: (() { final guardedValue = map['endpoints']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionMonitorEndpointResponse>(guardedValue, (value) => ConnectionMonitorEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      etag: map['etag'] as String,
-      id: map['id'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      monitoringIntervalInSeconds: (() { final guardedValue = map['monitoringIntervalInSeconds']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      monitoringStatus: map['monitoringStatus'] as String,
-      name: map['name'] as String,
+      monitoringIntervalInSeconds: (() { final guardedValue = map['monitoringIntervalInSeconds']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      monitoringStatus: (() { final guardedValue = map['monitoringStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       notes: (() { final guardedValue = map['notes']; if (guardedValue == null) return null; return guardedValue as String; })(),
       outputs: (() { final guardedValue = map['outputs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionMonitorOutputResponse>(guardedValue, (value) => ConnectionMonitorOutputResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return ConnectionMonitorSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      startTime: map['startTime'] as String,
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       testConfigurations: (() { final guardedValue = map['testConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionMonitorTestConfigurationResponse>(guardedValue, (value) => ConnectionMonitorTestConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       testGroups: (() { final guardedValue = map['testGroups']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionMonitorTestGroupResponse>(guardedValue, (value) => ConnectionMonitorTestGroupResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Action Groups information, used by the alert rule.
 class ActionGroupsInformationResponse {
   /// An optional custom email subject to use in email notifications.
-  final pulumi.Input<String>? customEmailSubject;
+  final pulumi.Input<String?>? customEmailSubject;
   /// An optional custom web-hook payload to use in web-hook notifications.
-  final pulumi.Input<String>? customWebhookPayload;
+  final pulumi.Input<String?>? customWebhookPayload;
   /// The Action Group resource IDs.
   final pulumi.Input<List<String>> groupIds;
 

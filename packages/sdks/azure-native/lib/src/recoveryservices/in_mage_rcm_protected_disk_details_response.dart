@@ -8,7 +8,7 @@ class InMageRcmProtectedDiskDetailsResponse {
   /// The disk capacity in bytes.
   final pulumi.Input<double> capacityInBytes;
   /// The custom target Azure disk name.
-  final pulumi.Input<String>? customTargetDiskName;
+  final pulumi.Input<String?>? customTargetDiskName;
   /// The data pending at source agent in MB.
   final pulumi.Input<double> dataPendingAtSourceAgentInMB;
   /// The data pending in log data store in MB.
@@ -22,9 +22,9 @@ class InMageRcmProtectedDiskDetailsResponse {
   /// The disk state.
   final pulumi.Input<String> diskState;
   /// The disk type.
-  final pulumi.Input<String>? diskType;
+  final pulumi.Input<String?>? diskType;
   /// The initial replication details.
-  final pulumi.Input<InMageRcmSyncDetailsResponse>? irDetails;
+  final pulumi.Input<InMageRcmSyncDetailsResponse?>? irDetails;
   /// A value indicating whether initial replication is complete or not.
   final pulumi.Input<String> isInitialReplicationComplete;
   /// A value indicating whether the disk is the OS disk.
@@ -32,9 +32,9 @@ class InMageRcmProtectedDiskDetailsResponse {
   /// The log storage account ARM Id.
   final pulumi.Input<String> logStorageAccountId;
   /// The resync details.
-  final pulumi.Input<InMageRcmSyncDetailsResponse>? resyncDetails;
+  final pulumi.Input<InMageRcmSyncDetailsResponse?>? resyncDetails;
   /// The logical sector size (in bytes), 512 by default.
-  final pulumi.Input<int>? sectorSizeInBytes;
+  final pulumi.Input<int?>? sectorSizeInBytes;
   /// The uri of the seed blob.
   final pulumi.Input<String> seedBlobUri;
   /// The ARM Id of the seed managed disk.
@@ -107,10 +107,10 @@ class InMageRcmProtectedDiskDetailsResponse {
 
   factory InMageRcmProtectedDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmProtectedDiskDetailsResponse(
-      capacityInBytes: pulumi.Input.fromValue(map['capacityInBytes'] as double),
+      capacityInBytes: pulumi.Input.fromValue((map['capacityInBytes'] as num).toDouble()),
       customTargetDiskName: (() { final guardedValue = map['customTargetDiskName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dataPendingAtSourceAgentInMB: pulumi.Input.fromValue(map['dataPendingAtSourceAgentInMB'] as double),
-      dataPendingInLogDataStoreInMB: pulumi.Input.fromValue(map['dataPendingInLogDataStoreInMB'] as double),
+      dataPendingAtSourceAgentInMB: pulumi.Input.fromValue((map['dataPendingAtSourceAgentInMB'] as num).toDouble()),
+      dataPendingInLogDataStoreInMB: pulumi.Input.fromValue((map['dataPendingInLogDataStoreInMB'] as num).toDouble()),
       diskEncryptionSetId: pulumi.Input.fromValue(map['diskEncryptionSetId'] as String),
       diskId: pulumi.Input.fromValue(map['diskId'] as String),
       diskName: pulumi.Input.fromValue(map['diskName'] as String),
@@ -121,7 +121,7 @@ class InMageRcmProtectedDiskDetailsResponse {
       isOSDisk: pulumi.Input.fromValue(map['isOSDisk'] as String),
       logStorageAccountId: pulumi.Input.fromValue(map['logStorageAccountId'] as String),
       resyncDetails: (() { final guardedValue = map['resyncDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InMageRcmSyncDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      sectorSizeInBytes: (() { final guardedValue = map['sectorSizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sectorSizeInBytes: (() { final guardedValue = map['sectorSizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       seedBlobUri: pulumi.Input.fromValue(map['seedBlobUri'] as String),
       seedManagedDiskId: pulumi.Input.fromValue(map['seedManagedDiskId'] as String),
       targetManagedDiskId: pulumi.Input.fromValue(map['targetManagedDiskId'] as String),

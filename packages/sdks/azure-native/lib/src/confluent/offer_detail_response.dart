@@ -11,15 +11,15 @@ class OfferDetailResponse {
   /// Offer Plan Name
   final pulumi.Input<String> planName;
   /// Private Offer Id
-  final pulumi.Input<String>? privateOfferId;
+  final pulumi.Input<String?>? privateOfferId;
   /// Array of Private Offer Ids
-  final pulumi.Input<List<String>>? privateOfferIds;
+  final pulumi.Input<List<String>?>? privateOfferIds;
   /// Publisher Id
   final pulumi.Input<String> publisherId;
   /// SaaS Offer Status
   final pulumi.Input<String> status;
   /// Offer Plan Term Id
-  final pulumi.Input<String>? termId;
+  final pulumi.Input<String?>? termId;
   /// Offer Plan Term unit
   final pulumi.Input<String> termUnit;
 

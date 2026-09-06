@@ -6,19 +6,19 @@ import 'commitment_period_response.dart';
 /// Properties of Cognitive Services account commitment plan.
 class CommitmentPlanPropertiesResponse {
   /// AutoRenew commitment plan.
-  final pulumi.Input<bool>? autoRenew;
+  final pulumi.Input<bool?>? autoRenew;
   /// Commitment plan guid.
-  final pulumi.Input<String>? commitmentPlanGuid;
+  final pulumi.Input<String?>? commitmentPlanGuid;
   /// Cognitive Services account commitment period.
-  final pulumi.Input<CommitmentPeriodResponse>? current;
+  final pulumi.Input<CommitmentPeriodResponse?>? current;
   /// Account hosting model.
-  final pulumi.Input<String>? hostingModel;
+  final pulumi.Input<String?>? hostingModel;
   /// Cognitive Services account commitment period.
   final pulumi.Input<CommitmentPeriodResponse> last;
   /// Cognitive Services account commitment period.
-  final pulumi.Input<CommitmentPeriodResponse>? next;
+  final pulumi.Input<CommitmentPeriodResponse?>? next;
   /// Commitment plan type.
-  final pulumi.Input<String>? planType;
+  final pulumi.Input<String?>? planType;
   /// The list of ProvisioningIssue.
   final pulumi.Input<List<String>> provisioningIssues;
   /// Gets the status of the resource at the time the operation was called.

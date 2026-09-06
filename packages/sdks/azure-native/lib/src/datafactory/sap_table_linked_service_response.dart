@@ -1,22 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_key_vault_secret_reference_response.dart';
 import 'integration_runtime_reference_response.dart';
 import 'parameter_specification_response.dart';
 
 /// SAP Table Linked Service.
 class SapTableLinkedServiceResponse {
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// Client ID of the client on the SAP system where the table is located. (Usually a three-digit decimal number represented as a string) Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? clientId;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse?>? connectVia;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// Language of the SAP system where the table is located. The default value is EN. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? language;
   /// The Logon Group for the SAP System. Type: string (or Expression with resultType string).
@@ -26,9 +25,9 @@ class SapTableLinkedServiceResponse {
   /// The service name or port number of the Message Server. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? messageServerService;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>?>? parameters;
   /// Password to access the SAP server where the table is located.
-  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? password;
+  final pulumi.Input<dynamic>? password;
   /// Host name of the SAP instance where the table is located. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? server;
   /// External security product's library to access the SAP server where the table is located. Type: string (or Expression with resultType string).
@@ -51,7 +50,7 @@ class SapTableLinkedServiceResponse {
   /// Username to access the SAP server where the table is located. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? userName;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [SapTableLinkedServiceResponse].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -113,7 +112,7 @@ class SapTableLinkedServiceResponse {
       'messageServer': ?messageServer,
       'messageServerService': ?messageServerService,
       'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
+      'password': ?password,
       'server': ?server,
       'sncLibraryPath': ?sncLibraryPath,
       'sncMode': ?sncMode,
@@ -140,7 +139,7 @@ class SapTableLinkedServiceResponse {
       messageServer: (() { final guardedValue = map['messageServer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       messageServerService: (() { final guardedValue = map['messageServerService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(guardedValue, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       server: (() { final guardedValue = map['server']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sncLibraryPath: (() { final guardedValue = map['sncLibraryPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sncMode: (() { final guardedValue = map['sncMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

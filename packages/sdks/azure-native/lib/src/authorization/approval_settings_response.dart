@@ -6,15 +6,15 @@ import 'approval_stage_response.dart';
 /// The approval settings.
 class ApprovalSettingsResponse {
   /// The type of rule
-  final pulumi.Input<String>? approvalMode;
+  final pulumi.Input<String?>? approvalMode;
   /// The approval stages of the request.
-  final pulumi.Input<List<ApprovalStageResponse>>? approvalStages;
+  final pulumi.Input<List<ApprovalStageResponse>?>? approvalStages;
   /// Determines whether approval is required or not.
-  final pulumi.Input<bool>? isApprovalRequired;
+  final pulumi.Input<bool?>? isApprovalRequired;
   /// Determines whether approval is required for assignment extension.
-  final pulumi.Input<bool>? isApprovalRequiredForExtension;
+  final pulumi.Input<bool?>? isApprovalRequiredForExtension;
   /// Determine whether requestor justification is required.
-  final pulumi.Input<bool>? isRequestorJustificationRequired;
+  final pulumi.Input<bool?>? isRequestorJustificationRequired;
 
   /// Creates a new [ApprovalSettingsResponse].
   /// [approvalMode] The type of rule

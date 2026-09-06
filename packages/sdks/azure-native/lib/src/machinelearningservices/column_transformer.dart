@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Column transformer parameters.
 class ColumnTransformer {
   /// Fields to apply transformer logic on.
-  final pulumi.Input<List<String>>? fields;
+  final pulumi.Input<List<String>?>? fields;
   /// Different properties to be passed to transformer.
   /// Input expected is dictionary of key,value pairs in JSON format.
   final pulumi.Input<dynamic>? parameters;

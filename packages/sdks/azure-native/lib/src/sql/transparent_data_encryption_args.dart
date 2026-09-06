@@ -17,7 +17,7 @@ class TransparentDataEncryptionArgs {
   /// Specifies the state of the transparent data encryption.
   final pulumi.Input<TransparentDataEncryptionState> state;
   /// The name of the transparent data encryption configuration.
-  final pulumi.Input<String>? tdeName;
+  final pulumi.Input<String?>? tdeName;
 
   /// Creates a new [TransparentDataEncryptionArgs].
   /// [databaseName] The name of the logical database for which the security alert policy is defined.

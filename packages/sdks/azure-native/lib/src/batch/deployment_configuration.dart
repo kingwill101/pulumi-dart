@@ -6,7 +6,7 @@ import 'virtual_machine_configuration.dart';
 /// Deployment configuration properties.
 class DeploymentConfiguration {
   /// The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
-  final pulumi.Input<VirtualMachineConfiguration>? virtualMachineConfiguration;
+  final pulumi.Input<VirtualMachineConfiguration?>? virtualMachineConfiguration;
 
   /// Creates a new [DeploymentConfiguration].
   /// [virtualMachineConfiguration] The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.

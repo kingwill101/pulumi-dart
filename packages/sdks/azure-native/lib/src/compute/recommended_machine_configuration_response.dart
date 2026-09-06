@@ -6,9 +6,9 @@ import 'resource_range_response.dart';
 /// The properties describe the recommended machine configuration for this Image Definition. These properties are updatable.
 class RecommendedMachineConfigurationResponse {
   /// Describes the resource range.
-  final pulumi.Input<ResourceRangeResponse>? memory;
+  final pulumi.Input<ResourceRangeResponse?>? memory;
   /// Describes the resource range.
-  final pulumi.Input<ResourceRangeResponse>? vCPUs;
+  final pulumi.Input<ResourceRangeResponse?>? vCPUs;
 
   /// Creates a new [RecommendedMachineConfigurationResponse].
   /// [memory] Describes the resource range.

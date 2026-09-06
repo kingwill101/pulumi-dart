@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Additional information on Azure IaaS VM specific backup item.
 class AzureIaaSVMProtectedItemExtendedInfoResponse {
   /// The latest backup copy available for this backup item in archive tier
-  final pulumi.Input<String>? newestRecoveryPointInArchive;
+  final pulumi.Input<String?>? newestRecoveryPointInArchive;
   /// The oldest backup copy available for this backup item across all tiers.
-  final pulumi.Input<String>? oldestRecoveryPoint;
+  final pulumi.Input<String?>? oldestRecoveryPoint;
   /// The oldest backup copy available for this backup item in archive tier
-  final pulumi.Input<String>? oldestRecoveryPointInArchive;
+  final pulumi.Input<String?>? oldestRecoveryPointInArchive;
   /// The oldest backup copy available for this backup item in vault tier
-  final pulumi.Input<String>? oldestRecoveryPointInVault;
+  final pulumi.Input<String?>? oldestRecoveryPointInVault;
   /// Specifies if backup policy associated with the backup item is inconsistent.
-  final pulumi.Input<bool>? policyInconsistent;
+  final pulumi.Input<bool?>? policyInconsistent;
   /// Number of backup copies available for this backup item.
-  final pulumi.Input<int>? recoveryPointCount;
+  final pulumi.Input<int?>? recoveryPointCount;
 
   /// Creates a new [AzureIaaSVMProtectedItemExtendedInfoResponse].
   /// [newestRecoveryPointInArchive] The latest backup copy available for this backup item in archive tier
@@ -51,7 +51,7 @@ class AzureIaaSVMProtectedItemExtendedInfoResponse {
       oldestRecoveryPointInArchive: (() { final guardedValue = map['oldestRecoveryPointInArchive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       oldestRecoveryPointInVault: (() { final guardedValue = map['oldestRecoveryPointInVault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyInconsistent: (() { final guardedValue = map['policyInconsistent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      recoveryPointCount: (() { final guardedValue = map['recoveryPointCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      recoveryPointCount: (() { final guardedValue = map['recoveryPointCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -14,35 +14,35 @@ import 'connection_monitor_test_group.dart';
 /// {@macro pulumi_network_connection_monitor_args_doc}
 class ConnectionMonitorArgs {
   /// Determines if the connection monitor will start automatically once created.
-  final pulumi.Input<bool>? autoStart;
+  final pulumi.Input<bool?>? autoStart;
   /// The name of the connection monitor.
-  final pulumi.Input<String>? connectionMonitorName;
+  final pulumi.Input<String?>? connectionMonitorName;
   /// Describes the destination of connection monitor.
-  final pulumi.Input<ConnectionMonitorDestination>? destination;
+  final pulumi.Input<ConnectionMonitorDestination?>? destination;
   /// List of connection monitor endpoints.
-  final pulumi.Input<List<ConnectionMonitorEndpoint>>? endpoints;
+  final pulumi.Input<List<ConnectionMonitorEndpoint>?>? endpoints;
   /// Connection monitor location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Value indicating whether connection monitor V1 should be migrated to V2 format.
-  final pulumi.Input<String>? migrate;
+  final pulumi.Input<String?>? migrate;
   /// Monitoring interval in seconds.
-  final pulumi.Input<int>? monitoringIntervalInSeconds;
+  final pulumi.Input<int?>? monitoringIntervalInSeconds;
   /// The name of the Network Watcher resource.
   final pulumi.Input<String> networkWatcherName;
   /// Optional notes to be associated with the connection monitor.
-  final pulumi.Input<String>? notes;
+  final pulumi.Input<String?>? notes;
   /// List of connection monitor outputs.
-  final pulumi.Input<List<ConnectionMonitorOutput>>? outputs;
+  final pulumi.Input<List<ConnectionMonitorOutput>?>? outputs;
   /// The name of the resource group containing Network Watcher.
   final pulumi.Input<String> resourceGroupName;
   /// Describes the source of connection monitor.
-  final pulumi.Input<ConnectionMonitorSource>? source;
+  final pulumi.Input<ConnectionMonitorSource?>? source;
   /// Connection monitor tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// List of connection monitor test configurations.
-  final pulumi.Input<List<ConnectionMonitorTestConfiguration>>? testConfigurations;
+  final pulumi.Input<List<ConnectionMonitorTestConfiguration>?>? testConfigurations;
   /// List of connection monitor test groups.
-  final pulumi.Input<List<ConnectionMonitorTestGroup>>? testGroups;
+  final pulumi.Input<List<ConnectionMonitorTestGroup>?>? testGroups;
 
   /// Creates a new [ConnectionMonitorArgs].
   /// [autoStart] Determines if the connection monitor will start automatically once created.
@@ -60,14 +60,14 @@ class ConnectionMonitorArgs {
   /// [tags] Connection monitor tags.
   /// [testConfigurations] List of connection monitor test configurations.
   /// [testGroups] List of connection monitor test groups.
-  const ConnectionMonitorArgs({
-    this.autoStart,
+  ConnectionMonitorArgs({
+    pulumi.Input<bool?>? autoStart,
     this.connectionMonitorName,
     this.destination,
     this.endpoints,
     this.location,
     this.migrate,
-    this.monitoringIntervalInSeconds,
+    pulumi.Input<int?>? monitoringIntervalInSeconds,
     required this.networkWatcherName,
     this.notes,
     this.outputs,
@@ -76,7 +76,7 @@ class ConnectionMonitorArgs {
     this.tags,
     this.testConfigurations,
     this.testGroups,
-  });
+  }) : autoStart = autoStart ?? pulumi.Input.fromValue(true), monitoringIntervalInSeconds = monitoringIntervalInSeconds ?? pulumi.Input.fromValue(60);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,7 +106,7 @@ class ConnectionMonitorArgs {
       endpoints: (() { final guardedValue = map['endpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectionMonitorEndpoint>(guardedValue, (value) => ConnectionMonitorEndpoint.fromMap((value as Map).cast<String, dynamic>()))); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       migrate: (() { final guardedValue = map['migrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      monitoringIntervalInSeconds: (() { final guardedValue = map['monitoringIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      monitoringIntervalInSeconds: (() { final guardedValue = map['monitoringIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       networkWatcherName: pulumi.Input.fromValue(map['networkWatcherName'] as String),
       notes: (() { final guardedValue = map['notes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       outputs: (() { final guardedValue = map['outputs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectionMonitorOutput>(guardedValue, (value) => ConnectionMonitorOutput.fromMap((value as Map).cast<String, dynamic>()))); })(),

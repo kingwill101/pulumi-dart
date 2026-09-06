@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_managednetworkfabric_network_bootstrap_interface_args_doc}
 class NetworkBootstrapInterfaceArgs {
   /// Additional description of the interface.
-  final pulumi.Input<String>? additionalDescription;
+  final pulumi.Input<String?>? additionalDescription;
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// Name of the Network Bootstrap Device.
   final pulumi.Input<String> networkBootstrapDeviceName;
   /// Name of the Network Bootstrap Interface.
-  final pulumi.Input<String>? networkBootstrapInterfaceName;
+  final pulumi.Input<String?>? networkBootstrapInterfaceName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Serial number of the interface. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.
-  final pulumi.Input<String>? serialNumber;
+  final pulumi.Input<String?>? serialNumber;
 
   /// Creates a new [NetworkBootstrapInterfaceArgs].
   /// [additionalDescription] Additional description of the interface.

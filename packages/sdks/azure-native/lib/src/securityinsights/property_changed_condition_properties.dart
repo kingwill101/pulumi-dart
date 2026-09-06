@@ -5,7 +5,7 @@ import 'automation_rule_property_values_changed_condition.dart';
 
 /// Describes an automation rule condition that evaluates a property's value change
 class PropertyChangedConditionProperties {
-  final pulumi.Input<AutomationRulePropertyValuesChangedCondition>? conditionProperties;
+  final pulumi.Input<AutomationRulePropertyValuesChangedCondition?>? conditionProperties;
   /// Expected value is 'PropertyChanged'.
   final pulumi.Input<String> conditionType;
 

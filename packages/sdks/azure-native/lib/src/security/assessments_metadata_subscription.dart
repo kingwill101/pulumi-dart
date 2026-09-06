@@ -268,7 +268,7 @@ class AssessmentsMetadataSubscription extends pulumi.CustomResource {
         ) {
     assessmentType = registerOutput<String>('assessmentType');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    categories = registerOutput<List<String>?>('categories');
+    categories = registerOutput<List<String>?>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     implementationEffort = registerOutput<String?>('implementationEffort');
@@ -277,7 +277,32 @@ class AssessmentsMetadataSubscription extends pulumi.CustomResource {
     preview = registerOutput<bool?>('preview');
     remediationDescription = registerOutput<String?>('remediationDescription');
     severity = registerOutput<String>('severity');
-    threats = registerOutput<List<String>?>('threats');
+    threats = registerOutput<List<String>?>('threats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String>('type');
+    userImpact = registerOutput<String?>('userImpact');
+  }
+
+  /// Creates a typed reference to an existing [AssessmentsMetadataSubscription] resource.
+  AssessmentsMetadataSubscription.reference(String urn)
+    : super(
+        'azure-native:security:AssessmentsMetadataSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assessmentType = registerOutput<String>('assessmentType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    categories = registerOutput<List<String>?>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    implementationEffort = registerOutput<String?>('implementationEffort');
+    this.name = registerOutput<String>('name');
+    policyDefinitionId = registerOutput<String>('policyDefinitionId');
+    preview = registerOutput<bool?>('preview');
+    remediationDescription = registerOutput<String?>('remediationDescription');
+    severity = registerOutput<String>('severity');
+    threats = registerOutput<List<String>?>('threats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
     userImpact = registerOutput<String?>('userImpact');
   }

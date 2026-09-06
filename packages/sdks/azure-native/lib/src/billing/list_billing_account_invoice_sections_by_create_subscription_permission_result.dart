@@ -8,27 +8,27 @@ class ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult {
   /// The link to the next page of items
   final String? nextLink;
   /// The InvoiceSectionWithCreateSubPermission items on this page
-  final List<InvoiceSectionWithCreateSubPermissionResponse> value;
+  final List<InvoiceSectionWithCreateSubPermissionResponse>? value;
 
   /// Creates a new [ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult].
   /// [nextLink] The link to the next page of items
   /// [value] The InvoiceSectionWithCreateSubPermission items on this page
   const ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult({
     this.nextLink,
-    required this.value,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': pulumi.Input.encodeList<InvoiceSectionWithCreateSubPermissionResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<InvoiceSectionWithCreateSubPermissionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult.fromMap(Map<String, dynamic> map) {
     return ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult(
       nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      value: pulumi.Input.decodeList<InvoiceSectionWithCreateSubPermissionResponse>(map['value']!, (value) => InvoiceSectionWithCreateSubPermissionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<InvoiceSectionWithCreateSubPermissionResponse>(guardedValue, (value) => InvoiceSectionWithCreateSubPermissionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

@@ -6,13 +6,13 @@ import 'microsoft_common_retention_policy.dart';
 /// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular log.
 class DiagnosticsLogSettings {
   /// Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// Name of a Diagnostic Log category group for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
-  final pulumi.Input<String>? categoryGroup;
+  final pulumi.Input<String?>? categoryGroup;
   /// a value indicating whether this log is enabled.
   final pulumi.Input<bool> enabled;
   /// the retention policy for this log.
-  final pulumi.Input<MicrosoftCommonRetentionPolicy>? retentionPolicy;
+  final pulumi.Input<MicrosoftCommonRetentionPolicy?>? retentionPolicy;
 
   /// Creates a new [DiagnosticsLogSettings].
   /// [category] Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.

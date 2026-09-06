@@ -11,9 +11,9 @@ class StageSpecResponse {
   /// Stage specification
   final pulumi.Input<dynamic>? specification;
   /// Task option for the stage
-  final pulumi.Input<TaskOptionResponse>? taskOption;
+  final pulumi.Input<TaskOptionResponse?>? taskOption;
   /// List of tasks in the stage
-  final pulumi.Input<List<TaskSpecResponse>>? tasks;
+  final pulumi.Input<List<TaskSpecResponse>?>? tasks;
 
   /// Creates a new [StageSpecResponse].
   /// [name] Name of Stage

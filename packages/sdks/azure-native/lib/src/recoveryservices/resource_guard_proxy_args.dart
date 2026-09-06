@@ -9,16 +9,16 @@ import 'resource_guard_proxy_base.dart';
 /// {@macro pulumi_recoveryservices_resource_guard_proxy_args_doc}
 class ResourceGuardProxyArgs {
   /// Optional ETag.
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// ResourceGuardProxyBaseResource properties
-  final pulumi.Input<ResourceGuardProxyBase>? properties;
+  final pulumi.Input<ResourceGuardProxyBase?>? properties;
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
-  final pulumi.Input<String>? resourceGuardProxyName;
+  final pulumi.Input<String?>? resourceGuardProxyName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the recovery services vault.
   final pulumi.Input<String> vaultName;
 

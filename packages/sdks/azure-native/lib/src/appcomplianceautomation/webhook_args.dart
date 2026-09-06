@@ -8,25 +8,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_appcomplianceautomation_webhook_args_doc}
 class WebhookArgs {
   /// content type
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<dynamic>? contentType;
   /// whether to enable ssl verification
-  final pulumi.Input<String>? enableSslVerification;
+  final pulumi.Input<dynamic>? enableSslVerification;
   /// under which event notification should be sent.
-  final pulumi.Input<List<String>>? events;
+  final pulumi.Input<List<dynamic>?>? events;
   /// webhook payload url
-  final pulumi.Input<String>? payloadUrl;
+  final pulumi.Input<String?>? payloadUrl;
   /// Report Name.
   final pulumi.Input<String> reportName;
   /// whether to send notification under any event.
-  final pulumi.Input<String>? sendAllEvents;
+  final pulumi.Input<dynamic>? sendAllEvents;
   /// Webhook status.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// whether to update webhookKey.
-  final pulumi.Input<String>? updateWebhookKey;
+  final pulumi.Input<dynamic>? updateWebhookKey;
   /// webhook secret token. If not set, this field value is null; otherwise, please set a string value.
-  final pulumi.Input<String>? webhookKey;
+  final pulumi.Input<String?>? webhookKey;
   /// Webhook Name.
-  final pulumi.Input<String>? webhookName;
+  final pulumi.Input<String?>? webhookName;
 
   /// Creates a new [WebhookArgs].
   /// [contentType] content type
@@ -69,14 +69,14 @@ class WebhookArgs {
 
   factory WebhookArgs.fromMap(Map<String, dynamic> map) {
     return WebhookArgs(
-      contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      enableSslVerification: (() { final guardedValue = map['enableSslVerification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      events: (() { final guardedValue = map['events']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      enableSslVerification: (() { final guardedValue = map['enableSslVerification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      events: (() { final guardedValue = map['events']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       payloadUrl: (() { final guardedValue = map['payloadUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       reportName: pulumi.Input.fromValue(map['reportName'] as String),
-      sendAllEvents: (() { final guardedValue = map['sendAllEvents']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      updateWebhookKey: (() { final guardedValue = map['updateWebhookKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sendAllEvents: (() { final guardedValue = map['sendAllEvents']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      updateWebhookKey: (() { final guardedValue = map['updateWebhookKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       webhookKey: (() { final guardedValue = map['webhookKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       webhookName: (() { final guardedValue = map['webhookName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

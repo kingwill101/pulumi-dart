@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Trigger Kind.
-enum TriggerEventType {
+enum TriggerEventType implements pulumi.PulumiEnum<String> {
   valueFileEvent("FileEvent"),
   valuePeriodicTimerEvent("PeriodicTimerEvent");
 
   const TriggerEventType(this.wireValue);
+  @override
   final String wireValue;
 
   static TriggerEventType fromValue(String value) {

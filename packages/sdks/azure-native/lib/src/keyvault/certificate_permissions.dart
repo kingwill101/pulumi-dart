@@ -1,4 +1,6 @@
-enum CertificatePermissions {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum CertificatePermissions implements pulumi.PulumiEnum<String> {
   valueAll("all"),
   valueGet("get"),
   valueList("list"),
@@ -18,6 +20,7 @@ enum CertificatePermissions {
   valueRestore("restore");
 
   const CertificatePermissions(this.wireValue);
+  @override
   final String wireValue;
 
   static CertificatePermissions fromValue(String value) {

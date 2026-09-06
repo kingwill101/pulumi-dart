@@ -11,20 +11,20 @@ import 'defender_cspm_aws_offering_vm_scanners.dart';
 /// The CSPM P1 for AWS offering
 class DefenderCspmAwsOffering {
   /// Defenders CSPM Permissions Management offering configurations
-  final pulumi.Input<DefenderCspmAwsOfferingCiem>? ciem;
+  final pulumi.Input<DefenderCspmAwsOfferingCiem?>? ciem;
   /// The Microsoft Defender Data Sensitivity discovery configuration
-  final pulumi.Input<DefenderCspmAwsOfferingDataSensitivityDiscovery>? dataSensitivityDiscovery;
+  final pulumi.Input<DefenderCspmAwsOfferingDataSensitivityDiscovery?>? dataSensitivityDiscovery;
   /// The databases DSPM configuration
-  final pulumi.Input<DefenderCspmAwsOfferingDatabasesDspm>? databasesDspm;
+  final pulumi.Input<DefenderCspmAwsOfferingDatabasesDspm?>? databasesDspm;
   /// The Microsoft Defender container agentless discovery K8s configuration
-  final pulumi.Input<DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8S>? mdcContainersAgentlessDiscoveryK8S;
+  final pulumi.Input<DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8S?>? mdcContainersAgentlessDiscoveryK8S;
   /// The Microsoft Defender container image assessment configuration
-  final pulumi.Input<DefenderCspmAwsOfferingMdcContainersImageAssessment>? mdcContainersImageAssessment;
+  final pulumi.Input<DefenderCspmAwsOfferingMdcContainersImageAssessment?>? mdcContainersImageAssessment;
   /// The type of the security offering.
   /// Expected value is 'DefenderCspmAws'.
   final pulumi.Input<String> offeringType;
   /// The Microsoft Defender for CSPM offering VM scanning configuration
-  final pulumi.Input<DefenderCspmAwsOfferingVmScanners>? vmScanners;
+  final pulumi.Input<DefenderCspmAwsOfferingVmScanners?>? vmScanners;
 
   /// Creates a new [DefenderCspmAwsOffering].
   /// [ciem] Defenders CSPM Permissions Management offering configurations

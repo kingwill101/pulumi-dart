@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'email_template_args.dart';
+import 'email_template_parameters_contract_properties_response.dart';
 
 /// Email Template details.
 ///
@@ -167,7 +168,7 @@ class EmailTemplate extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Email Template Parameter values.
-  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+  late final pulumi.Output<List<EmailTemplateParametersContractPropertiesResponse>?> parameters;
   /// Subject of the Template.
   late final pulumi.Output<String> subject;
   /// Title of the Template.
@@ -194,7 +195,27 @@ class EmailTemplate extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     isDefault = registerOutput<bool>('isDefault');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<EmailTemplateParametersContractPropertiesResponse>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailTemplateParametersContractPropertiesResponse>(guardedValue, (value) => EmailTemplateParametersContractPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    subject = registerOutput<String>('subject');
+    title = registerOutput<String?>('title');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [EmailTemplate] resource.
+  EmailTemplate.reference(String urn)
+    : super(
+        'azure-native:apimanagement:EmailTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    body = registerOutput<String>('body');
+    description = registerOutput<String?>('description');
+    isDefault = registerOutput<bool>('isDefault');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<List<EmailTemplateParametersContractPropertiesResponse>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailTemplateParametersContractPropertiesResponse>(guardedValue, (value) => EmailTemplateParametersContractPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     subject = registerOutput<String>('subject');
     title = registerOutput<String?>('title');
     type = registerOutput<String>('type');

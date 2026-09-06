@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
-enum L3NetworkConfigurationIpamEnabled {
+enum L3NetworkConfigurationIpamEnabled implements pulumi.PulumiEnum<String> {
   valueTrue("True"),
   valueFalse("False");
 
   const L3NetworkConfigurationIpamEnabled(this.wireValue);
+  @override
   final String wireValue;
 
   static L3NetworkConfigurationIpamEnabled fromValue(String value) {

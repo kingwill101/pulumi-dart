@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Settings properties for Active Directory (AD).
 class ActiveDirectoryPropertiesResponse {
   /// Specifies the Active Directory account type for Azure Storage.
-  final pulumi.Input<String>? accountType;
+  final pulumi.Input<String?>? accountType;
   /// Specifies the security identifier (SID) for Azure Storage.
-  final pulumi.Input<String>? azureStorageSid;
+  final pulumi.Input<String?>? azureStorageSid;
   /// Specifies the domain GUID.
   final pulumi.Input<String> domainGuid;
   /// Specifies the primary domain that the AD DNS server is authoritative for.
   final pulumi.Input<String> domainName;
   /// Specifies the security identifier (SID).
-  final pulumi.Input<String>? domainSid;
+  final pulumi.Input<String?>? domainSid;
   /// Specifies the Active Directory forest to get.
-  final pulumi.Input<String>? forestName;
+  final pulumi.Input<String?>? forestName;
   /// Specifies the NetBIOS domain name.
-  final pulumi.Input<String>? netBiosDomainName;
+  final pulumi.Input<String?>? netBiosDomainName;
   /// Specifies the Active Directory SAMAccountName for Azure Storage.
-  final pulumi.Input<String>? samAccountName;
+  final pulumi.Input<String?>? samAccountName;
 
   /// Creates a new [ActiveDirectoryPropertiesResponse].
   /// [accountType] Specifies the Active Directory account type for Azure Storage.

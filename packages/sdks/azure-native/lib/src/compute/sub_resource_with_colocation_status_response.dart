@@ -5,9 +5,9 @@ import 'instance_view_status_response.dart';
 
 class SubResourceWithColocationStatusResponse {
   /// Describes colocation status of a resource in the Proximity Placement Group.
-  final pulumi.Input<InstanceViewStatusResponse>? colocationStatus;
+  final pulumi.Input<InstanceViewStatusResponse?>? colocationStatus;
   /// Resource Id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [SubResourceWithColocationStatusResponse].
   /// [colocationStatus] Describes colocation status of a resource in the Proximity Placement Group.

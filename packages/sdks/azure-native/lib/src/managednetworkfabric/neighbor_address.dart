@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Neighbor Address properties.
 class NeighborAddress {
   /// IP Address.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
 
   /// Creates a new [NeighborAddress].
   /// [address] IP Address.

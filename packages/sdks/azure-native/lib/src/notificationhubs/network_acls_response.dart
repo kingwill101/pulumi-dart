@@ -7,9 +7,9 @@ import 'public_internet_authorization_rule_response.dart';
 /// A collection of network authorization rules.
 class NetworkAclsResponse {
   /// List of IP rules.
-  final pulumi.Input<List<IpRuleResponse>>? ipRules;
+  final pulumi.Input<List<IpRuleResponse>?>? ipRules;
   /// A default (public Internet) network authorization rule, which contains rights if no other network rule matches.
-  final pulumi.Input<PublicInternetAuthorizationRuleResponse>? publicNetworkRule;
+  final pulumi.Input<PublicInternetAuthorizationRuleResponse?>? publicNetworkRule;
 
   /// Creates a new [NetworkAclsResponse].
   /// [ipRules] List of IP rules.

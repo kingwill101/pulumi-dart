@@ -7,9 +7,9 @@ class SecretStoreResourceResponse {
   /// Gets or sets the type of secret store
   final pulumi.Input<String> secretStoreType;
   /// Uri to get to the resource
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
   /// Gets or sets value stored in secret store resource
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [SecretStoreResourceResponse].
   /// [secretStoreType] Gets or sets the type of secret store

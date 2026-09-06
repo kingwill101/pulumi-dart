@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_managednetworkfabric_network_rack_args_doc}
 class NetworkRackArgs {
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// ARM resource ID of the Network Fabric.
   final pulumi.Input<String> networkFabricId;
   /// Name of the Network Rack.
-  final pulumi.Input<String>? networkRackName;
+  final pulumi.Input<String?>? networkRackName;
   /// Network Rack SKU name.
-  final pulumi.Input<String>? networkRackType;
+  final pulumi.Input<dynamic>? networkRackType;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkRackArgs].
   /// [annotation] Switch configuration description.
@@ -58,7 +58,7 @@ class NetworkRackArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkFabricId: pulumi.Input.fromValue(map['networkFabricId'] as String),
       networkRackName: (() { final guardedValue = map['networkRackName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      networkRackType: (() { final guardedValue = map['networkRackType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkRackType: (() { final guardedValue = map['networkRackType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

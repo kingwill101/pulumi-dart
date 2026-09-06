@@ -9,12 +9,12 @@ import 'resource_sku.dart';
 /// {@macro pulumi_webpubsub_web_pub_sub_replica_args_doc}
 class WebPubSubReplicaArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Enable or disable the regional endpoint. Default to "Enabled".
   /// When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected.
-  final pulumi.Input<String>? regionEndpointEnabled;
+  final pulumi.Input<String?>? regionEndpointEnabled;
   /// The name of the replica.
-  final pulumi.Input<String>? replicaName;
+  final pulumi.Input<String?>? replicaName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the resource.
@@ -22,11 +22,11 @@ class WebPubSubReplicaArgs {
   /// Stop or start the resource.  Default to "false".
   /// When it's true, the data plane of the resource is shutdown.
   /// When it's false, the data plane of the resource is started.
-  final pulumi.Input<String>? resourceStopped;
+  final pulumi.Input<String?>? resourceStopped;
   /// The billing information of the resource.
-  final pulumi.Input<ResourceSku>? sku;
+  final pulumi.Input<ResourceSku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [WebPubSubReplicaArgs].
   /// [location] The geo-location where the resource lives
@@ -37,16 +37,16 @@ class WebPubSubReplicaArgs {
   /// [resourceStopped] Stop or start the resource.  Default to "false".
   /// [sku] The billing information of the resource.
   /// [tags] Resource tags.
-  const WebPubSubReplicaArgs({
+  WebPubSubReplicaArgs({
     this.location,
-    this.regionEndpointEnabled,
+    pulumi.Input<String?>? regionEndpointEnabled,
     this.replicaName,
     required this.resourceGroupName,
     required this.resourceName,
-    this.resourceStopped,
+    pulumi.Input<String?>? resourceStopped,
     this.sku,
     this.tags,
-  });
+  }) : regionEndpointEnabled = regionEndpointEnabled ?? pulumi.Input.fromValue('Enabled'), resourceStopped = resourceStopped ?? pulumi.Input.fromValue('false');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

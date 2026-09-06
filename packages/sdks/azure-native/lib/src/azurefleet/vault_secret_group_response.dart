@@ -8,9 +8,9 @@ import 'vault_certificate_response.dart';
 class VaultSecretGroupResponse {
   /// The relative URL of the Key Vault containing all of the certificates in
   /// VaultCertificates.
-  final pulumi.Input<SubResourceResponse>? sourceVault;
+  final pulumi.Input<SubResourceResponse?>? sourceVault;
   /// The list of key vault references in SourceVault which contain certificates.
-  final pulumi.Input<List<VaultCertificateResponse>>? vaultCertificates;
+  final pulumi.Input<List<VaultCertificateResponse>?>? vaultCertificates;
 
   /// Creates a new [VaultSecretGroupResponse].
   /// [sourceVault] The relative URL of the Key Vault containing all of the certificates in

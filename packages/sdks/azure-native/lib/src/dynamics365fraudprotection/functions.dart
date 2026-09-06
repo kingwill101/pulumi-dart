@@ -19,3 +19,14 @@ Future<GetInstanceDetailsResult> getInstanceDetails(
   );
   return GetInstanceDetailsResult.fromMap(result);
 }
+
+pulumi.Output<GetInstanceDetailsResult> getInstanceDetailsOutput(
+  GetInstanceDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dynamics365fraudprotection:getInstanceDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceDetailsResult.fromMap);
+}

@@ -7,27 +7,27 @@ import 'synapse_spark_properties_response.dart';
 /// A SynapseSpark compute.
 class SynapseSparkResponse {
   /// Location for the underlying compute
-  final pulumi.Input<String>? computeLocation;
+  final pulumi.Input<String?>? computeLocation;
   /// The type of compute
   /// Expected value is 'SynapseSpark'.
   final pulumi.Input<String> computeType;
   /// The time at which the compute was created.
   final pulumi.Input<String> createdOn;
   /// The description of the Machine Learning compute.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-  final pulumi.Input<bool>? disableLocalAuth;
+  final pulumi.Input<bool?>? disableLocalAuth;
   /// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
   final pulumi.Input<bool> isAttachedCompute;
   /// The time at which the compute was last modified.
   final pulumi.Input<String> modifiedOn;
-  final pulumi.Input<SynapseSparkPropertiesResponse>? properties;
+  final pulumi.Input<SynapseSparkPropertiesResponse?>? properties;
   /// Errors during provisioning
   final pulumi.Input<List<ErrorResponseResponse>> provisioningErrors;
   /// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
   final pulumi.Input<String> provisioningState;
   /// ARM resource id of the underlying compute
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [SynapseSparkResponse].
   /// [computeLocation] Location for the underlying compute

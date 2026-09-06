@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Network manager security group item.
 class NetworkManagerSecurityGroupItemlistNetworkManagerEffectiveSecurityAdminRuleResponse {
   /// Network manager group Id.
-  final pulumi.Input<String>? networkGroupId;
+  final pulumi.Input<String?>? networkGroupId;
 
   /// Creates a new [NetworkManagerSecurityGroupItemlistNetworkManagerEffectiveSecurityAdminRuleResponse].
   /// [networkGroupId] Network manager group Id.

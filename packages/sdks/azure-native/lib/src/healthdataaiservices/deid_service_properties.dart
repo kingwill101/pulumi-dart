@@ -6,7 +6,7 @@ import 'public_network_access.dart';
 /// Details of the HealthDataAIServices DeidService.
 class DeidServiceProperties {
   /// Gets or sets allow or disallow public network access to resource
-  final pulumi.Input<PublicNetworkAccess>? publicNetworkAccess;
+  final pulumi.Input<PublicNetworkAccess?>? publicNetworkAccess;
 
   /// Creates a new [DeidServiceProperties].
   /// [publicNetworkAccess] Gets or sets allow or disallow public network access to resource

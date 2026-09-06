@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the Alert Query Parameter.
 class AlertQueryParameter {
   /// The name of the alert query parameter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value of the alert query parameter.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [AlertQueryParameter].
   /// [name] The name of the alert query parameter.

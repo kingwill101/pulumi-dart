@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'volume_group_args.dart';
 import 'volume_group_meta_data_response.dart';
+import 'volume_group_volume_properties_response.dart';
 
 /// Volume group resource for create
 ///
@@ -4217,7 +4218,7 @@ class VolumeGroup extends pulumi.CustomResource {
   /// Resource type
   late final pulumi.Output<String> type;
   /// List of volumes from group
-  late final pulumi.Output<List<Map<String, dynamic>>?> volumes;
+  late final pulumi.Output<List<VolumeGroupVolumePropertiesResponse>?> volumes;
 
   /// Creates a new [VolumeGroup].
   /// [name] The Pulumi resource name.
@@ -4239,6 +4240,24 @@ class VolumeGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     type = registerOutput<String>('type');
-    volumes = registerOutput<List<Map<String, dynamic>>?>('volumes');
+    volumes = registerOutput<List<VolumeGroupVolumePropertiesResponse>?>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeGroupVolumePropertiesResponse>(guardedValue, (value) => VolumeGroupVolumePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [VolumeGroup] resource.
+  VolumeGroup.reference(String urn)
+    : super(
+        'azure-native:netapp:VolumeGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    groupMetaData = registerOutput<VolumeGroupMetaDataResponse?>('groupMetaData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeGroupMetaDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
+    volumes = registerOutput<List<VolumeGroupVolumePropertiesResponse>?>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeGroupVolumePropertiesResponse>(guardedValue, (value) => VolumeGroupVolumePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

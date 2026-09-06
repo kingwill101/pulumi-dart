@@ -6,19 +6,19 @@ import 'routing_configuration_network_virtual_appliance_connection_response.dart
 /// Properties of the NetworkVirtualApplianceConnection subresource.
 class NetworkVirtualApplianceConnectionPropertiesResponse {
   /// Network Virtual Appliance ASN.
-  final pulumi.Input<double>? asn;
+  final pulumi.Input<double?>? asn;
   /// List of bgpPeerAddresses for the NVA instances
-  final pulumi.Input<List<String>>? bgpPeerAddress;
+  final pulumi.Input<List<String>?>? bgpPeerAddress;
   /// Enable internet security.
-  final pulumi.Input<bool>? enableInternetSecurity;
+  final pulumi.Input<bool?>? enableInternetSecurity;
   /// The name of the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The provisioning state of the NetworkVirtualApplianceConnection resource.
   final pulumi.Input<String> provisioningState;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  final pulumi.Input<RoutingConfigurationNetworkVirtualApplianceConnectionResponse>? routingConfiguration;
+  final pulumi.Input<RoutingConfigurationNetworkVirtualApplianceConnectionResponse?>? routingConfiguration;
   /// Unique identifier for the connection.
-  final pulumi.Input<double>? tunnelIdentifier;
+  final pulumi.Input<double?>? tunnelIdentifier;
 
   /// Creates a new [NetworkVirtualApplianceConnectionPropertiesResponse].
   /// [asn] Network Virtual Appliance ASN.
@@ -52,13 +52,13 @@ class NetworkVirtualApplianceConnectionPropertiesResponse {
 
   factory NetworkVirtualApplianceConnectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NetworkVirtualApplianceConnectionPropertiesResponse(
-      asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       bgpPeerAddress: (() { final guardedValue = map['bgpPeerAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       enableInternetSecurity: (() { final guardedValue = map['enableInternetSecurity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutingConfigurationNetworkVirtualApplianceConnectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      tunnelIdentifier: (() { final guardedValue = map['tunnelIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      tunnelIdentifier: (() { final guardedValue = map['tunnelIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

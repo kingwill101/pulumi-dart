@@ -6,7 +6,7 @@ import 'web_chat_site.dart';
 /// The parameters to provide for the Web Chat channel.
 class WebChatChannelProperties {
   /// The list of Web Chat sites
-  final pulumi.Input<List<WebChatSite>>? sites;
+  final pulumi.Input<List<WebChatSite>?>? sites;
 
   /// Creates a new [WebChatChannelProperties].
   /// [sites] The list of Web Chat sites

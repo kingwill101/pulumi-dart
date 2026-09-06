@@ -11,37 +11,37 @@ import 'run_command_managed_identity.dart';
 /// {@macro pulumi_hybridcompute_machine_run_command_args_doc}
 class MachineRunCommandArgs {
   /// Optional. If set to true, provisioning will complete as soon as script starts and will not wait for script to complete.
-  final pulumi.Input<bool>? asyncExecution;
+  final pulumi.Input<bool?>? asyncExecution;
   /// User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
-  final pulumi.Input<RunCommandManagedIdentity>? errorBlobManagedIdentity;
+  final pulumi.Input<RunCommandManagedIdentity?>? errorBlobManagedIdentity;
   /// Specifies the Azure storage blob where script error stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer errorBlobManagedIdentity parameter.
-  final pulumi.Input<String>? errorBlobUri;
+  final pulumi.Input<String?>? errorBlobUri;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the hybrid machine.
   final pulumi.Input<String> machineName;
   /// User-assigned managed identity that has access to outputBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
-  final pulumi.Input<RunCommandManagedIdentity>? outputBlobManagedIdentity;
+  final pulumi.Input<RunCommandManagedIdentity?>? outputBlobManagedIdentity;
   /// Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter.
-  final pulumi.Input<String>? outputBlobUri;
+  final pulumi.Input<String?>? outputBlobUri;
   /// The parameters used by the script.
-  final pulumi.Input<List<RunCommandInputParameter>>? parameters;
+  final pulumi.Input<List<RunCommandInputParameter>?>? parameters;
   /// The parameters used by the script.
-  final pulumi.Input<List<RunCommandInputParameter>>? protectedParameters;
+  final pulumi.Input<List<RunCommandInputParameter>?>? protectedParameters;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the user account password on the machine when executing the run command.
-  final pulumi.Input<String>? runAsPassword;
+  final pulumi.Input<String?>? runAsPassword;
   /// Specifies the user account on the machine when executing the run command.
-  final pulumi.Input<String>? runAsUser;
+  final pulumi.Input<String?>? runAsUser;
   /// The name of the run command.
-  final pulumi.Input<String>? runCommandName;
+  final pulumi.Input<String?>? runCommandName;
   /// The source of the run command script.
-  final pulumi.Input<MachineRunCommandScriptSource>? source;
+  final pulumi.Input<MachineRunCommandScriptSource?>? source;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The timeout in seconds to execute the run command.
-  final pulumi.Input<int>? timeoutInSeconds;
+  final pulumi.Input<int?>? timeoutInSeconds;
 
   /// Creates a new [MachineRunCommandArgs].
   /// [asyncExecution] Optional. If set to true, provisioning will complete as soon as script starts and will not wait for script to complete.
@@ -60,8 +60,8 @@ class MachineRunCommandArgs {
   /// [source] The source of the run command script.
   /// [tags] Resource tags.
   /// [timeoutInSeconds] The timeout in seconds to execute the run command.
-  const MachineRunCommandArgs({
-    this.asyncExecution,
+  MachineRunCommandArgs({
+    pulumi.Input<bool?>? asyncExecution,
     this.errorBlobManagedIdentity,
     this.errorBlobUri,
     this.location,
@@ -77,7 +77,7 @@ class MachineRunCommandArgs {
     this.source,
     this.tags,
     this.timeoutInSeconds,
-  });
+  }) : asyncExecution = asyncExecution ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -117,7 +117,7 @@ class MachineRunCommandArgs {
       runCommandName: (() { final guardedValue = map['runCommandName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MachineRunCommandScriptSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

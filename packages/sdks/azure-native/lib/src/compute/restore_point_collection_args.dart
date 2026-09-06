@@ -9,15 +9,15 @@ import 'restore_point_collection_source_properties.dart';
 /// {@macro pulumi_compute_restore_point_collection_args_doc}
 class RestorePointCollectionArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the restore point collection.
-  final pulumi.Input<String>? restorePointCollectionName;
+  final pulumi.Input<String?>? restorePointCollectionName;
   /// The properties of the source resource that this restore point collection is created from.
-  final pulumi.Input<RestorePointCollectionSourceProperties>? source;
+  final pulumi.Input<RestorePointCollectionSourceProperties?>? source;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RestorePointCollectionArgs].
   /// [location] The geo-location where the resource lives

@@ -5,7 +5,7 @@ import 'pipeline_source_trigger_properties.dart';
 
 class PipelineTriggerProperties {
   /// The source trigger properties of the pipeline.
-  final pulumi.Input<PipelineSourceTriggerProperties>? sourceTrigger;
+  final pulumi.Input<PipelineSourceTriggerProperties?>? sourceTrigger;
 
   /// Creates a new [PipelineTriggerProperties].
   /// [sourceTrigger] The source trigger properties of the pipeline.

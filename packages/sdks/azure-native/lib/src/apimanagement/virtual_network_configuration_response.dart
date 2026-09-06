@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration of a virtual network to which API Management service is deployed.
 class VirtualNetworkConfigurationResponse {
   /// The full resource ID of a subnet in a virtual network to deploy the API Management service in.
-  final pulumi.Input<String>? subnetResourceId;
+  final pulumi.Input<String?>? subnetResourceId;
   /// The name of the subnet.
   final pulumi.Input<String> subnetname;
   /// The virtual network ID. This is typically a GUID. Expect a null GUID by default.

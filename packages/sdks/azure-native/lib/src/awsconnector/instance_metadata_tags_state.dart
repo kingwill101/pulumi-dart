@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum InstanceMetadataTagsState {
+enum InstanceMetadataTagsState implements pulumi.PulumiEnum<String> {
   disabled("disabled"),
   enabled("enabled");
 
   const InstanceMetadataTagsState(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceMetadataTagsState fromValue(String value) {

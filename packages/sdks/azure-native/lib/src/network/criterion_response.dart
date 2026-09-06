@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A matching criteria which matches routes based on route prefix, community, and AS path.
 class CriterionResponse {
   /// List of AS paths which this criteria matches.
-  final pulumi.Input<List<String>>? asPath;
+  final pulumi.Input<List<String>?>? asPath;
   /// List of BGP communities which this criteria matches.
-  final pulumi.Input<List<String>>? community;
+  final pulumi.Input<List<String>?>? community;
   /// Match condition to apply RouteMap rules.
-  final pulumi.Input<String>? matchCondition;
+  final pulumi.Input<String?>? matchCondition;
   /// List of route prefixes which this criteria matches.
-  final pulumi.Input<List<String>>? routePrefix;
+  final pulumi.Input<List<String>?>? routePrefix;
 
   /// Creates a new [CriterionResponse].
   /// [asPath] List of AS paths which this criteria matches.

@@ -6,7 +6,7 @@ import 'job_reported_properties_response.dart';
 /// Properties for configuring SDN integration intent for the cluster.
 class HciConfigureSdnIntegrationJobPropertiesResponse {
   /// Deployment mode to trigger job.
-  final pulumi.Input<String>? deploymentMode;
+  final pulumi.Input<String?>? deploymentMode;
   /// The UTC date and time at which the job completed.
   final pulumi.Input<String> endTimeUtc;
   /// Unique, immutable job id.
@@ -21,7 +21,7 @@ class HciConfigureSdnIntegrationJobPropertiesResponse {
   /// Defines the customer's intent for configuring SDN integration
   final pulumi.Input<String> sdnIntegrationIntent;
   /// A string identifier used to construct the Network Controller (NC) REST resource name. This prefix helps group and distinguish SDN-managed network components and must follow specific formatting rules.
-  final pulumi.Input<String>? sdnPrefix;
+  final pulumi.Input<String?>? sdnPrefix;
   /// The UTC date and time at which the job started.
   final pulumi.Input<String> startTimeUtc;
   /// Status of Cluster job.
@@ -38,8 +38,8 @@ class HciConfigureSdnIntegrationJobPropertiesResponse {
   /// [sdnPrefix] A string identifier used to construct the Network Controller (NC) REST resource name. This prefix helps group and distinguish SDN-managed network components and must follow specific formatting rules.
   /// [startTimeUtc] The UTC date and time at which the job started.
   /// [status] Status of Cluster job.
-  const HciConfigureSdnIntegrationJobPropertiesResponse({
-    this.deploymentMode,
+  HciConfigureSdnIntegrationJobPropertiesResponse({
+    pulumi.Input<String?>? deploymentMode,
     required this.endTimeUtc,
     required this.jobId,
     required this.jobType,
@@ -49,7 +49,7 @@ class HciConfigureSdnIntegrationJobPropertiesResponse {
     this.sdnPrefix,
     required this.startTimeUtc,
     required this.status,
-  });
+  }) : deploymentMode = deploymentMode ?? pulumi.Input.fromValue('Deploy');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

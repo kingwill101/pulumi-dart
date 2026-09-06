@@ -6,13 +6,13 @@ import 'virtual_network_properties_response_routes.dart';
 /// RouteTable for the subnet
 class VirtualNetworkPropertiesResponseRouteTable {
   /// Etag - Gets a unique read-only string that changes whenever the resource is updated.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name - READ-ONLY; Resource name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Routes - Collection of routes contained within a route table.
-  final pulumi.Input<List<VirtualNetworkPropertiesResponseRoutes>>? routes;
+  final pulumi.Input<List<VirtualNetworkPropertiesResponseRoutes>?>? routes;
   /// Type - READ-ONLY; Resource type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [VirtualNetworkPropertiesResponseRouteTable].
   /// [id] Etag - Gets a unique read-only string that changes whenever the resource is updated.

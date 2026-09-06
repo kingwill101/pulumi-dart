@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The profile-level monitoring status of the Traffic Manager profile.
-enum ProfileMonitorStatus {
+enum ProfileMonitorStatus implements pulumi.PulumiEnum<String> {
   checkingEndpoints("CheckingEndpoints"),
   online("Online"),
   degraded("Degraded"),
@@ -7,6 +9,7 @@ enum ProfileMonitorStatus {
   inactive("Inactive");
 
   const ProfileMonitorStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static ProfileMonitorStatus fromValue(String value) {

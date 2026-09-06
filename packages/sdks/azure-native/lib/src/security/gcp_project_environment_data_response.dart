@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'gcp_organizational_data_member_response.dart';
 import 'gcp_project_details_response.dart';
 
 /// The GCP project connector environment data
@@ -10,11 +9,11 @@ class GcpProjectEnvironmentDataResponse {
   /// Expected value is 'GcpProject'.
   final pulumi.Input<String> environmentType;
   /// The Gcp project's organizational data
-  final pulumi.Input<GcpOrganizationalDataMemberResponse>? organizationalData;
+  final pulumi.Input<dynamic>? organizationalData;
   /// The Gcp project's details
-  final pulumi.Input<GcpProjectDetailsResponse>? projectDetails;
+  final pulumi.Input<GcpProjectDetailsResponse?>? projectDetails;
   /// Scan interval in hours (value should be between 1-hour to 24-hours)
-  final pulumi.Input<double>? scanInterval;
+  final pulumi.Input<double?>? scanInterval;
 
   /// Creates a new [GcpProjectEnvironmentDataResponse].
   /// [environmentType] The type of the environment data.
@@ -31,7 +30,7 @@ class GcpProjectEnvironmentDataResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'environmentType': environmentType,
-      'organizationalData': ?pulumi.Input.mapOptionalInputValue<GcpOrganizationalDataMemberResponse, Map<String, dynamic>>(organizationalData, (value) => value.toMap()),
+      'organizationalData': ?organizationalData,
       'projectDetails': ?pulumi.Input.mapOptionalInputValue<GcpProjectDetailsResponse, Map<String, dynamic>>(projectDetails, (value) => value.toMap()),
       'scanInterval': ?scanInterval,
     };
@@ -40,9 +39,9 @@ class GcpProjectEnvironmentDataResponse {
   factory GcpProjectEnvironmentDataResponse.fromMap(Map<String, dynamic> map) {
     return GcpProjectEnvironmentDataResponse(
       environmentType: pulumi.Input.fromValue(map['environmentType'] as String),
-      organizationalData: (() { final guardedValue = map['organizationalData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GcpOrganizationalDataMemberResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      organizationalData: (() { final guardedValue = map['organizationalData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       projectDetails: (() { final guardedValue = map['projectDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GcpProjectDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      scanInterval: (() { final guardedValue = map['scanInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      scanInterval: (() { final guardedValue = map['scanInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

@@ -9,11 +9,11 @@ import 'compound_assessment_properties.dart';
 /// {@macro pulumi_migrate_compound_assessment_operation_args_doc}
 class CompoundAssessmentOperationArgs {
   /// Compound Assessment ARM name
-  final pulumi.Input<String>? compoundAssessmentName;
+  final pulumi.Input<String?>? compoundAssessmentName;
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<CompoundAssessmentProperties>? properties;
+  final pulumi.Input<CompoundAssessmentProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

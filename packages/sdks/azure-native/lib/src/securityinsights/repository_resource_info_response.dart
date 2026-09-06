@@ -12,7 +12,7 @@ class RepositoryResourceInfoResponse {
   /// Resources created in GitHub for this source-control.
   final pulumi.Input<GitHubResourceInfoResponse> gitHubResourceInfo;
   /// The webhook object created for the source-control.
-  final pulumi.Input<WebhookResponse>? webhook;
+  final pulumi.Input<WebhookResponse?>? webhook;
 
   /// Creates a new [RepositoryResourceInfoResponse].
   /// [azureDevOpsResourceInfo] Resources created in Azure DevOps for this source-control.

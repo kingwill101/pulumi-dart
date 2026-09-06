@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// mysql version support status.
-enum SupportStatus {
+enum SupportStatus implements pulumi.PulumiEnum<String> {
   valueOutOfSupport("OutOfSupport"),
   valueExtended("Extended"),
   valueMainstream("Mainstream");
 
   const SupportStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static SupportStatus fromValue(String value) {

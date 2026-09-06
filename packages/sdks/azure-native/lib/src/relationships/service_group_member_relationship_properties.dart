@@ -7,7 +7,7 @@ class ServiceGroupMemberRelationshipProperties {
   /// The relationship target resource id.
   final pulumi.Input<String> targetId;
   /// The relationship target tenant id.
-  final pulumi.Input<String>? targetTenant;
+  final pulumi.Input<String?>? targetTenant;
 
   /// Creates a new [ServiceGroupMemberRelationshipProperties].
   /// [targetId] The relationship target resource id.

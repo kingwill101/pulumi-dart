@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The capabilities to add or drop from a container.
 class SecurityContextCapabilitiesDefinitionResponse {
   /// The capabilities to add to the container.
-  final pulumi.Input<List<String>>? add;
+  final pulumi.Input<List<String>?>? add;
   /// The capabilities to drop from the container.
-  final pulumi.Input<List<String>>? drop;
+  final pulumi.Input<List<String>?>? drop;
 
   /// Creates a new [SecurityContextCapabilitiesDefinitionResponse].
   /// [add] The capabilities to add to the container.

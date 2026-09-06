@@ -9,8 +9,8 @@ import 'subscription_feature_registration_properties.dart';
 /// {@macro pulumi_features_subscription_feature_registration_args_doc}
 class SubscriptionFeatureRegistrationArgs {
   /// The feature name.
-  final pulumi.Input<String>? featureName;
-  final pulumi.Input<SubscriptionFeatureRegistrationProperties>? properties;
+  final pulumi.Input<String?>? featureName;
+  final pulumi.Input<SubscriptionFeatureRegistrationProperties?>? properties;
   /// The provider namespace.
   final pulumi.Input<String> providerNamespace;
 

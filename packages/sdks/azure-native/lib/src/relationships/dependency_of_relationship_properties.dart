@@ -7,7 +7,7 @@ class DependencyOfRelationshipProperties {
   /// The relationship target resource id.
   final pulumi.Input<String> targetId;
   /// The relationship target tenant id.
-  final pulumi.Input<String>? targetTenant;
+  final pulumi.Input<String?>? targetTenant;
 
   /// Creates a new [DependencyOfRelationshipProperties].
   /// [targetId] The relationship target resource id.

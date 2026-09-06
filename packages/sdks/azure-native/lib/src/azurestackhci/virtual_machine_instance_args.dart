@@ -16,27 +16,27 @@ import 'virtual_machine_instance_properties_storage_profile.dart';
 /// {@macro pulumi_azurestackhci_virtual_machine_instance_args_doc}
 class VirtualMachineInstanceArgs {
   /// Boolean indicating whether this is an existing local virtual machine or if one should be created.
-  final pulumi.Input<bool>? createFromLocal;
+  final pulumi.Input<bool?>? createFromLocal;
   /// The extendedLocation of the resource.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// HardwareProfile - Specifies the hardware settings for the virtual machine instance.
-  final pulumi.Input<VirtualMachineInstancePropertiesHardwareProfile>? hardwareProfile;
+  final pulumi.Input<VirtualMachineInstancePropertiesHardwareProfile?>? hardwareProfile;
   /// HTTP Proxy configuration for the VM.
-  final pulumi.Input<HttpProxyConfiguration>? httpProxyConfig;
+  final pulumi.Input<HttpProxyConfiguration?>? httpProxyConfig;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// NetworkProfile - describes the network configuration the virtual machine instance
-  final pulumi.Input<VirtualMachineInstancePropertiesNetworkProfile>? networkProfile;
+  final pulumi.Input<VirtualMachineInstancePropertiesNetworkProfile?>? networkProfile;
   /// OsProfile - describes the configuration of the operating system and sets login data
-  final pulumi.Input<VirtualMachineInstancePropertiesOsProfile>? osProfile;
+  final pulumi.Input<VirtualMachineInstancePropertiesOsProfile?>? osProfile;
   /// Unique identifier defined by ARC to identify the guest of the VM.
-  final pulumi.Input<String>? resourceUid;
+  final pulumi.Input<String?>? resourceUid;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
   /// SecurityProfile - Specifies the security settings for the virtual machine instance.
-  final pulumi.Input<VirtualMachineInstancePropertiesSecurityProfile>? securityProfile;
+  final pulumi.Input<VirtualMachineInstancePropertiesSecurityProfile?>? securityProfile;
   /// StorageProfile - contains information about the disks and storage information for the virtual machine instance
-  final pulumi.Input<VirtualMachineInstancePropertiesStorageProfile>? storageProfile;
+  final pulumi.Input<VirtualMachineInstancePropertiesStorageProfile?>? storageProfile;
 
   /// Creates a new [VirtualMachineInstanceArgs].
   /// [createFromLocal] Boolean indicating whether this is an existing local virtual machine or if one should be created.
@@ -50,8 +50,8 @@ class VirtualMachineInstanceArgs {
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [securityProfile] SecurityProfile - Specifies the security settings for the virtual machine instance.
   /// [storageProfile] StorageProfile - contains information about the disks and storage information for the virtual machine instance
-  const VirtualMachineInstanceArgs({
-    this.createFromLocal,
+  VirtualMachineInstanceArgs({
+    pulumi.Input<bool?>? createFromLocal,
     this.extendedLocation,
     this.hardwareProfile,
     this.httpProxyConfig,
@@ -62,7 +62,7 @@ class VirtualMachineInstanceArgs {
     required this.resourceUri,
     this.securityProfile,
     this.storageProfile,
-  });
+  }) : createFromLocal = createFromLocal ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

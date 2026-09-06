@@ -6,23 +6,23 @@ import 'managed_identity_response.dart';
 /// The properties related to service bus topic endpoint types.
 class RoutingServiceBusTopicEndpointPropertiesResponse {
   /// Method used to authenticate against the service bus topic endpoint
-  final pulumi.Input<String>? authenticationType;
+  final pulumi.Input<String?>? authenticationType;
   /// The connection string of the service bus topic endpoint.
-  final pulumi.Input<String>? connectionString;
+  final pulumi.Input<String?>? connectionString;
   /// The url of the service bus topic endpoint. It must include the protocol sb://
-  final pulumi.Input<String>? endpointUri;
+  final pulumi.Input<String?>? endpointUri;
   /// Queue name on the service bus topic
-  final pulumi.Input<String>? entityPath;
+  final pulumi.Input<String?>? entityPath;
   /// Id of the service bus topic endpoint
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Managed identity properties of routing service bus topic endpoint.
-  final pulumi.Input<ManagedIdentityResponse>? identity;
+  final pulumi.Input<ManagedIdentityResponse?>? identity;
   /// The name that identifies this endpoint. The name can only include alphanumeric characters, periods, underscores, hyphens and has a maximum length of 64 characters. The following names are reserved:  events, fileNotifications, $default. Endpoint names must be unique across endpoint types.  The name need not be the same as the actual topic name.
   final pulumi.Input<String> name;
   /// The name of the resource group of the service bus topic endpoint.
-  final pulumi.Input<String>? resourceGroup;
+  final pulumi.Input<String?>? resourceGroup;
   /// The subscription identifier of the service bus topic endpoint.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [RoutingServiceBusTopicEndpointPropertiesResponse].
   /// [authenticationType] Method used to authenticate against the service bus topic endpoint

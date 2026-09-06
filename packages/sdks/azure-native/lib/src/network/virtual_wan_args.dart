@@ -8,23 +8,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_virtual_wan_args_doc}
 class VirtualWanArgs {
   /// True if branch to branch traffic is allowed.
-  final pulumi.Input<bool>? allowBranchToBranchTraffic;
+  final pulumi.Input<bool?>? allowBranchToBranchTraffic;
   /// True if Vnet to Vnet traffic is allowed.
-  final pulumi.Input<bool>? allowVnetToVnetTraffic;
+  final pulumi.Input<bool?>? allowVnetToVnetTraffic;
   /// Vpn encryption to be disabled or not.
-  final pulumi.Input<bool>? disableVpnEncryption;
+  final pulumi.Input<bool?>? disableVpnEncryption;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource group name of the VirtualWan.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The type of the VirtualWAN.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The name of the VirtualWAN being created or updated.
-  final pulumi.Input<String>? virtualWANName;
+  final pulumi.Input<String?>? virtualWANName;
 
   /// Creates a new [VirtualWanArgs].
   /// [allowBranchToBranchTraffic] True if branch to branch traffic is allowed.

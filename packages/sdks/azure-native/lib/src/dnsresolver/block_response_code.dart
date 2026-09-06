@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The response code for block actions.
-enum BlockResponseCode {
+enum BlockResponseCode implements pulumi.PulumiEnum<String> {
   valueSERVFAIL("SERVFAIL");
 
   const BlockResponseCode(this.wireValue);
+  @override
   final String wireValue;
 
   static BlockResponseCode fromValue(String value) {

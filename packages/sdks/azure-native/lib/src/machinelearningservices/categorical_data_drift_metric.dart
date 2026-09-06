@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] The categorical data drift metric to calculate.
-enum CategoricalDataDriftMetric {
+enum CategoricalDataDriftMetric implements pulumi.PulumiEnum<String> {
   jensenShannonDistance("JensenShannonDistance"),
   populationStabilityIndex("PopulationStabilityIndex"),
   pearsonsChiSquaredTest("PearsonsChiSquaredTest");
 
   const CategoricalDataDriftMetric(this.wireValue);
+  @override
   final String wireValue;
 
   static CategoricalDataDriftMetric fromValue(String value) {

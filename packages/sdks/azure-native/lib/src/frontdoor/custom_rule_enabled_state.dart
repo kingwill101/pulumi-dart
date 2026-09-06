@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
-enum CustomRuleEnabledState {
+enum CustomRuleEnabledState implements pulumi.PulumiEnum<String> {
   disabled("Disabled"),
   enabled("Enabled");
 
   const CustomRuleEnabledState(this.wireValue);
+  @override
   final String wireValue;
 
   static CustomRuleEnabledState fromValue(String value) {

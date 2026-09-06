@@ -28,6 +28,17 @@ Future<GetLabResult> getLab(
   return GetLabResult.fromMap(result);
 }
 
+pulumi.Output<GetLabResult> getLabOutput(
+  GetLabArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:labservices:getLab',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLabResult.fromMap);
+}
+
 /// Retrieves the properties of a Lab Plan.
 ///
 /// Uses Azure REST API version 2023-06-07.
@@ -46,6 +57,17 @@ Future<GetLabPlanResult> getLabPlan(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLabPlanResult.fromMap(result);
+}
+
+pulumi.Output<GetLabPlanResult> getLabPlanOutput(
+  GetLabPlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:labservices:getLabPlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLabPlanResult.fromMap);
 }
 
 /// Returns the properties of a lab Schedule.
@@ -68,6 +90,17 @@ Future<GetScheduleResult> getSchedule(
   return GetScheduleResult.fromMap(result);
 }
 
+pulumi.Output<GetScheduleResult> getScheduleOutput(
+  GetScheduleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:labservices:getSchedule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScheduleResult.fromMap);
+}
+
 /// Returns the properties of a lab user.
 ///
 /// Uses Azure REST API version 2023-06-07.
@@ -86,4 +119,15 @@ Future<GetUserResult> getUser(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserResult.fromMap(result);
+}
+
+pulumi.Output<GetUserResult> getUserOutput(
+  GetUserArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:labservices:getUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserResult.fromMap);
 }

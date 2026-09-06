@@ -24,6 +24,17 @@ Future<GetDatasetResult> getDataset(
   return GetDatasetResult.fromMap(result);
 }
 
+pulumi.Output<GetDatasetResult> getDatasetOutput(
+  GetDatasetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperationsdataprocessor:getDataset',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatasetResult.fromMap);
+}
+
 /// Get a Instance
 ///
 /// Uses Azure REST API version 2023-10-04-preview.
@@ -42,6 +53,17 @@ Future<GetInstanceResult> getInstance(
   return GetInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperationsdataprocessor:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
+}
+
 /// Get a Pipeline
 ///
 /// Uses Azure REST API version 2023-10-04-preview.
@@ -58,4 +80,15 @@ Future<GetPipelineResult> getPipeline(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPipelineResult.fromMap(result);
+}
+
+pulumi.Output<GetPipelineResult> getPipelineOutput(
+  GetPipelineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperationsdataprocessor:getPipeline',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPipelineResult.fromMap);
 }

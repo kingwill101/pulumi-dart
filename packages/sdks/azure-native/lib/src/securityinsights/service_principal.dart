@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Service principal metadata.
 class ServicePrincipal {
   /// Expiration time of service principal credentials.
-  final pulumi.Input<String>? credentialsExpireOn;
+  final pulumi.Input<String?>? credentialsExpireOn;
 
   /// Creates a new [ServicePrincipal].
   /// [credentialsExpireOn] Expiration time of service principal credentials.

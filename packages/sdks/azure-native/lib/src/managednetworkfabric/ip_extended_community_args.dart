@@ -9,17 +9,17 @@ import 'ip_extended_community_rule.dart';
 /// {@macro pulumi_managednetworkfabric_ip_extended_community_args_doc}
 class IpExtendedCommunityArgs {
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// Name of the IP Extended Community.
-  final pulumi.Input<String>? ipExtendedCommunityName;
+  final pulumi.Input<String?>? ipExtendedCommunityName;
   /// List of IP Extended Community Rules.
   final pulumi.Input<List<IpExtendedCommunityRule>> ipExtendedCommunityRules;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [IpExtendedCommunityArgs].
   /// [annotation] Switch configuration description.

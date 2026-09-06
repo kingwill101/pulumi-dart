@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum AuthenticationType {
+enum AuthenticationType implements pulumi.PulumiEnum<String> {
   aMAZONCOGNITOUSERPOOLS("AMAZON_COGNITO_USER_POOLS"),
   aPIKEY("API_KEY"),
   aWSIAM("AWS_IAM"),
@@ -7,6 +9,7 @@ enum AuthenticationType {
   oPENIDCONNECT("OPENID_CONNECT");
 
   const AuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthenticationType fromValue(String value) {

@@ -7,38 +7,38 @@ import 'system_data_response.dart';
 /// Result data returned by getDefaultUserRule.
 class GetDefaultUserRuleResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// A description for this rule. Restricted to 140 chars.
-  final String description;
+  final String? description;
   /// The destination port ranges.
-  final List<String> destinationPortRanges;
+  final List<String>? destinationPortRanges;
   /// The destination address prefixes. CIDR or destination IP ranges.
-  final List<AddressPrefixItemResponse> destinations;
+  final List<AddressPrefixItemResponse>? destinations;
   /// Indicates if the traffic matched against the rule in inbound or outbound.
-  final String direction;
+  final String? direction;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Default rule flag.
   final String? flag;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Whether the rule is custom or default.
   /// Expected value is 'Default'.
-  final String kind;
+  final String? kind;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Network protocol this rule applies to.
-  final String protocol;
+  final String? protocol;
   /// The provisioning state of the security configuration user rule resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The source port ranges.
-  final List<String> sourcePortRanges;
+  final List<String>? sourcePortRanges;
   /// The CIDR or source IP ranges.
-  final List<AddressPrefixItemResponse> sources;
+  final List<AddressPrefixItemResponse>? sources;
   /// The system metadata related to this resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetDefaultUserRuleResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -58,63 +58,63 @@ class GetDefaultUserRuleResult {
   /// [systemData] The system metadata related to this resource.
   /// [type] Resource type.
   const GetDefaultUserRuleResult({
-    required this.azureApiVersion,
-    required this.description,
-    required this.destinationPortRanges,
-    required this.destinations,
-    required this.direction,
-    required this.etag,
+    this.azureApiVersion,
+    this.description,
+    this.destinationPortRanges,
+    this.destinations,
+    this.direction,
+    this.etag,
     this.flag,
-    required this.id,
-    required this.kind,
-    required this.name,
-    required this.protocol,
-    required this.provisioningState,
-    required this.sourcePortRanges,
-    required this.sources,
-    required this.systemData,
-    required this.type,
+    this.id,
+    this.kind,
+    this.name,
+    this.protocol,
+    this.provisioningState,
+    this.sourcePortRanges,
+    this.sources,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'description': description,
-      'destinationPortRanges': destinationPortRanges,
-      'destinations': pulumi.Input.encodeList<AddressPrefixItemResponse, Map<String, dynamic>>(destinations, (value) => value.toMap()),
-      'direction': direction,
-      'etag': etag,
+      'azureApiVersion': ?azureApiVersion,
+      'description': ?description,
+      'destinationPortRanges': ?destinationPortRanges,
+      'destinations': ?(() { final guardedValue = destinations; if (guardedValue == null) return null; return pulumi.Input.encodeList<AddressPrefixItemResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'direction': ?direction,
+      'etag': ?etag,
       'flag': ?flag,
-      'id': id,
-      'kind': kind,
-      'name': name,
-      'protocol': protocol,
-      'provisioningState': provisioningState,
-      'sourcePortRanges': sourcePortRanges,
-      'sources': pulumi.Input.encodeList<AddressPrefixItemResponse, Map<String, dynamic>>(sources, (value) => value.toMap()),
-      'systemData': systemData.toMap(),
-      'type': type,
+      'id': ?id,
+      'kind': ?kind,
+      'name': ?name,
+      'protocol': ?protocol,
+      'provisioningState': ?provisioningState,
+      'sourcePortRanges': ?sourcePortRanges,
+      'sources': ?(() { final guardedValue = sources; if (guardedValue == null) return null; return pulumi.Input.encodeList<AddressPrefixItemResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetDefaultUserRuleResult.fromMap(Map<String, dynamic> map) {
     return GetDefaultUserRuleResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] as String,
-      destinationPortRanges: (map['destinationPortRanges'] as List).cast<String>(),
-      destinations: pulumi.Input.decodeList<AddressPrefixItemResponse>(map['destinations']!, (value) => AddressPrefixItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      direction: map['direction'] as String,
-      etag: map['etag'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      destinationPortRanges: (() { final guardedValue = map['destinationPortRanges']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      destinations: (() { final guardedValue = map['destinations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<AddressPrefixItemResponse>(guardedValue, (value) => AddressPrefixItemResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       flag: (() { final guardedValue = map['flag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
-      protocol: map['protocol'] as String,
-      provisioningState: map['provisioningState'] as String,
-      sourcePortRanges: (map['sourcePortRanges'] as List).cast<String>(),
-      sources: pulumi.Input.decodeList<AddressPrefixItemResponse>(map['sources']!, (value) => AddressPrefixItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourcePortRanges: (() { final guardedValue = map['sourcePortRanges']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      sources: (() { final guardedValue = map['sources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<AddressPrefixItemResponse>(guardedValue, (value) => AddressPrefixItemResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

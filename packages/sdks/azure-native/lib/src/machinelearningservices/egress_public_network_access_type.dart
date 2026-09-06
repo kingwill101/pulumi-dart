@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enum to determine whether PublicNetworkAccess is Enabled or Disabled for egress of a deployment.
-enum EgressPublicNetworkAccessType {
+enum EgressPublicNetworkAccessType implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const EgressPublicNetworkAccessType(this.wireValue);
+  @override
   final String wireValue;
 
   static EgressPublicNetworkAccessType fromValue(String value) {

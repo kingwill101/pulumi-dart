@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sql_workload_classifier_args_doc}
 class WorkloadClassifierArgs {
   /// The workload classifier context.
-  final pulumi.Input<String>? context;
+  final pulumi.Input<String?>? context;
   /// The name of the database.
   final pulumi.Input<String> databaseName;
   /// The workload classifier end time for classification.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// The workload classifier importance.
-  final pulumi.Input<String>? importance;
+  final pulumi.Input<String?>? importance;
   /// The workload classifier label.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// The workload classifier member name.
   final pulumi.Input<String> memberName;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
@@ -24,9 +24,9 @@ class WorkloadClassifierArgs {
   /// The name of the server.
   final pulumi.Input<String> serverName;
   /// The workload classifier start time for classification.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// The name of the workload classifier to create/update.
-  final pulumi.Input<String>? workloadClassifierName;
+  final pulumi.Input<String?>? workloadClassifierName;
   /// The name of the workload group from which to receive the classifier from.
   final pulumi.Input<String> workloadGroupName;
 

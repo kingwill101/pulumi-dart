@@ -434,4 +434,25 @@ class ExpressRouteConnectionNetwork extends pulumi.CustomResource {
     routingConfiguration = registerOutput<RoutingConfigurationExpressRouteConnectionResponse?>('routingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutingConfigurationExpressRouteConnectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     routingWeight = registerOutput<int?>('routingWeight');
   }
+
+  /// Creates a typed reference to an existing [ExpressRouteConnectionNetwork] resource.
+  ExpressRouteConnectionNetwork.reference(String urn)
+    : super(
+        'azure-native:network:ExpressRouteConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authorizationKey = registerOutput<String?>('authorizationKey');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    enableInternetSecurity = registerOutput<bool?>('enableInternetSecurity');
+    enablePrivateLinkFastPath = registerOutput<bool?>('enablePrivateLinkFastPath');
+    expressRouteCircuitPeering = registerOutput<ExpressRouteCircuitPeeringIdResponse>('expressRouteCircuitPeering', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteCircuitPeeringIdResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    expressRouteGatewayBypass = registerOutput<bool?>('expressRouteGatewayBypass');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    routingConfiguration = registerOutput<RoutingConfigurationExpressRouteConnectionResponse?>('routingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutingConfigurationExpressRouteConnectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    routingWeight = registerOutput<int?>('routingWeight');
+  }
 }

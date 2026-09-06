@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SKU of a public IP address.
 class PublicIPAddressSku {
   /// Name of a public IP address SKU.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<dynamic>? name;
   /// Tier of a public IP address SKU.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<dynamic>? tier;
 
   /// Creates a new [PublicIPAddressSku].
   /// [name] Name of a public IP address SKU.
@@ -26,8 +26,8 @@ class PublicIPAddressSku {
 
   factory PublicIPAddressSku.fromMap(Map<String, dynamic> map) {
     return PublicIPAddressSku(
-      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

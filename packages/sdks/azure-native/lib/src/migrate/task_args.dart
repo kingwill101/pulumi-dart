@@ -11,11 +11,11 @@ class TaskArgs {
   /// Migrate Project Name
   final pulumi.Input<String> projectName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<TaskProperties>? properties;
+  final pulumi.Input<TaskProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Task ARM name
-  final pulumi.Input<String>? taskName;
+  final pulumi.Input<String?>? taskName;
 
   /// Creates a new [TaskArgs].
   /// [projectName] Migrate Project Name

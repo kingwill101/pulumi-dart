@@ -10,15 +10,15 @@ class LoadBalancerArgs {
   /// IP Range
   final pulumi.Input<List<String>> addresses;
   /// Advertise Mode
-  final pulumi.Input<String> advertiseMode;
+  final pulumi.Input<dynamic> advertiseMode;
   /// The list of BGP peers it should advertise to. Null or empty means to advertise to all peers.
-  final pulumi.Input<List<String>>? bgpPeers;
+  final pulumi.Input<List<String>?>? bgpPeers;
   /// The name of the LoadBalancer
-  final pulumi.Input<String>? loadBalancerName;
+  final pulumi.Input<String?>? loadBalancerName;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
   /// A dynamic label mapping to select related services. For instance, if you want to create a load balancer only for services with label "a=b", then please specify {"a": "b"} in the field.
-  final pulumi.Input<Map<String, String>>? serviceSelector;
+  final pulumi.Input<Map<String, String>?>? serviceSelector;
 
   /// Creates a new [LoadBalancerArgs].
   /// [addresses] IP Range
@@ -50,7 +50,7 @@ class LoadBalancerArgs {
   factory LoadBalancerArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerArgs(
       addresses: pulumi.Input.fromValue((map['addresses'] as List).cast<String>()),
-      advertiseMode: pulumi.Input.fromValue(map['advertiseMode'] as String),
+      advertiseMode: pulumi.Input.fromValue(map['advertiseMode']),
       bgpPeers: (() { final guardedValue = map['bgpPeers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       loadBalancerName: (() { final guardedValue = map['loadBalancerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),

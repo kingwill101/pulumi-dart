@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Preferences related to the double encryption.
 class EncryptionPreferences {
   /// Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
-  final pulumi.Input<String>? doubleEncryptionStatus;
+  final pulumi.Input<dynamic>? doubleEncryptionStatus;
 
   /// Creates a new [EncryptionPreferences].
   /// [doubleEncryptionStatus] Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
@@ -21,7 +21,7 @@ class EncryptionPreferences {
 
   factory EncryptionPreferences.fromMap(Map<String, dynamic> map) {
     return EncryptionPreferences(
-      doubleEncryptionStatus: (() { final guardedValue = map['doubleEncryptionStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      doubleEncryptionStatus: (() { final guardedValue = map['doubleEncryptionStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

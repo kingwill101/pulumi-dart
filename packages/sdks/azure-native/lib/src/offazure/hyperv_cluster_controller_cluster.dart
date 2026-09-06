@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'health_error_details_response.dart';
 import 'hyperv_cluster_controller_cluster_args.dart';
 import 'system_data_response.dart';
 
@@ -189,7 +190,7 @@ class HypervClusterControllerCluster extends pulumi.CustomResource {
   /// Gets the timestamp marking Hyper-V cluster creation.
   late final pulumi.Output<String> createdTimestamp;
   /// Gets the errors.
-  late final pulumi.Output<List<Map<String, dynamic>>> errors;
+  late final pulumi.Output<List<HealthErrorDetailsResponse>> errors;
   /// Gets or sets the FQDN/IPAddress of the Hyper-V cluster.
   late final pulumi.Output<String?> fqdn;
   /// Gets the functional level of the Hyper-V cluster.
@@ -227,10 +228,34 @@ class HypervClusterControllerCluster extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdTimestamp = registerOutput<String>('createdTimestamp');
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
+    errors = registerOutput<List<HealthErrorDetailsResponse>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HealthErrorDetailsResponse>(guardedValue, (value) => HealthErrorDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); });
     fqdn = registerOutput<String?>('fqdn');
     functionalLevel = registerOutput<int>('functionalLevel');
-    hostFqdnList = registerOutput<List<String>?>('hostFqdnList');
+    hostFqdnList = registerOutput<List<String>?>('hostFqdnList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String?>('provisioningState');
+    runAsAccountId = registerOutput<String?>('runAsAccountId');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    updatedTimestamp = registerOutput<String>('updatedTimestamp');
+  }
+
+  /// Creates a typed reference to an existing [HypervClusterControllerCluster] resource.
+  HypervClusterControllerCluster.reference(String urn)
+    : super(
+        'azure-native:offazure:HypervClusterControllerCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    errors = registerOutput<List<HealthErrorDetailsResponse>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HealthErrorDetailsResponse>(guardedValue, (value) => HealthErrorDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    fqdn = registerOutput<String?>('fqdn');
+    functionalLevel = registerOutput<int>('functionalLevel');
+    hostFqdnList = registerOutput<List<String>?>('hostFqdnList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String?>('provisioningState');
     runAsAccountId = registerOutput<String?>('runAsAccountId');

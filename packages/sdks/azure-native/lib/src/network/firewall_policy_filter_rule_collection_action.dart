@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of the FirewallPolicyFilterRuleCollectionAction.
 class FirewallPolicyFilterRuleCollectionAction {
   /// The type of action.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [FirewallPolicyFilterRuleCollectionAction].
   /// [type] The type of action.
@@ -21,7 +21,7 @@ class FirewallPolicyFilterRuleCollectionAction {
 
   factory FirewallPolicyFilterRuleCollectionAction.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyFilterRuleCollectionAction(
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

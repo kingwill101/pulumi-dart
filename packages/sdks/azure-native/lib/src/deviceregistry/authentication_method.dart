@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The method to authenticate the user of the client at the server.
-enum AuthenticationMethod {
+enum AuthenticationMethod implements pulumi.PulumiEnum<String> {
   anonymous("Anonymous"),
   certificate("Certificate"),
   usernamePassword("UsernamePassword");
 
   const AuthenticationMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthenticationMethod fromValue(String value) {

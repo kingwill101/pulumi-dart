@@ -10,37 +10,37 @@ class WebAppFunctionArgs {
   /// Config information.
   final pulumi.Input<dynamic>? config;
   /// Config URI.
-  final pulumi.Input<String>? configHref;
+  final pulumi.Input<String?>? configHref;
   /// File list.
-  final pulumi.Input<Map<String, String>>? files;
+  final pulumi.Input<Map<String, String>?>? files;
   /// Function App ID.
-  final pulumi.Input<String>? functionAppId;
+  final pulumi.Input<String?>? functionAppId;
   /// Function name.
-  final pulumi.Input<String>? functionName;
+  final pulumi.Input<String?>? functionName;
   /// Function URI.
-  final pulumi.Input<String>? href;
+  final pulumi.Input<String?>? href;
   /// The invocation URL
-  final pulumi.Input<String>? invokeUrlTemplate;
+  final pulumi.Input<String?>? invokeUrlTemplate;
   /// Gets or sets a value indicating whether the function is disabled
-  final pulumi.Input<bool>? isDisabled;
+  final pulumi.Input<bool?>? isDisabled;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The function language
-  final pulumi.Input<String>? language;
+  final pulumi.Input<String?>? language;
   /// Site name.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Script URI.
-  final pulumi.Input<String>? scriptHref;
+  final pulumi.Input<String?>? scriptHref;
   /// Script root path URI.
-  final pulumi.Input<String>? scriptRootPathHref;
+  final pulumi.Input<String?>? scriptRootPathHref;
   /// Secrets file URI.
-  final pulumi.Input<String>? secretsFileHref;
+  final pulumi.Input<String?>? secretsFileHref;
   /// Test data used when testing via the Azure Portal.
-  final pulumi.Input<String>? testData;
+  final pulumi.Input<String?>? testData;
   /// Test data URI.
-  final pulumi.Input<String>? testDataHref;
+  final pulumi.Input<String?>? testDataHref;
 
   /// Creates a new [WebAppFunctionArgs].
   /// [config] Config information.

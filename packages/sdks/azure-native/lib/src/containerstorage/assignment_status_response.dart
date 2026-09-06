@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Status of the assignment resource
 class AssignmentStatusResponse {
   /// Reason for the status
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// State of the assignment resource
   final pulumi.Input<String> state;
 

@@ -6,7 +6,7 @@ import 'gallery_image_version_uefi_settings_response.dart';
 /// The security profile of a gallery image version
 class ImageVersionSecurityProfileResponse {
   /// Contains UEFI settings for the image version.
-  final pulumi.Input<GalleryImageVersionUefiSettingsResponse>? uefiSettings;
+  final pulumi.Input<GalleryImageVersionUefiSettingsResponse?>? uefiSettings;
 
   /// Creates a new [ImageVersionSecurityProfileResponse].
   /// [uefiSettings] Contains UEFI settings for the image version.

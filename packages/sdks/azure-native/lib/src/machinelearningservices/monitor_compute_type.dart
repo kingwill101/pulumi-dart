@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] Specifies the type of signal to monitor.
-enum MonitorComputeType {
+enum MonitorComputeType implements pulumi.PulumiEnum<String> {
   serverlessSpark("ServerlessSpark");
 
   const MonitorComputeType(this.wireValue);
+  @override
   final String wireValue;
 
   static MonitorComputeType fromValue(String value) {

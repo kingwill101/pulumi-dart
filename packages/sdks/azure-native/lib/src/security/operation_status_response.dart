@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A status describing the success/failure of the enablement/disablement operation.
 class OperationStatusResponse {
   /// The operation status code.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// Additional information regarding the success/failure of the operation.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [OperationStatusResponse].
   /// [code] The operation status code.

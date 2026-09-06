@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of the source resource that this restore point collection is created from.
 class RestorePointCollectionSourceProperties {
   /// Resource Id of the source resource used to create this restore point collection
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [RestorePointCollectionSourceProperties].
   /// [id] Resource Id of the source resource used to create this restore point collection

@@ -7,13 +7,13 @@ import 'string_string_key_value_pair_response.dart';
 /// Inference pool configuration
 class InferencePoolResponse {
   /// Description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Property dictionary. Properties can be added, but not removed or altered.
-  final pulumi.Input<List<StringStringKeyValuePairResponse>>? properties;
+  final pulumi.Input<List<StringStringKeyValuePairResponse>?>? properties;
   /// Provisioning state for the pool.
   final pulumi.Input<String> provisioningState;
   /// Gets or sets ScaleUnitConfiguration for the inference pool. Used if PoolType=ScaleUnit.
-  final pulumi.Input<ScaleUnitConfigurationResponse>? scaleUnitConfiguration;
+  final pulumi.Input<ScaleUnitConfigurationResponse?>? scaleUnitConfiguration;
 
   /// Creates a new [InferencePoolResponse].
   /// [description] Description of the resource.

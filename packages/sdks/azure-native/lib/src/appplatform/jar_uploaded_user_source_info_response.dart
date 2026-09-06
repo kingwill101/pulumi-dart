@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Uploaded Jar binary for a deployment
 class JarUploadedUserSourceInfoResponse {
   /// JVM parameter
-  final pulumi.Input<String>? jvmOptions;
+  final pulumi.Input<String?>? jvmOptions;
   /// Relative path of the storage which stores the source
-  final pulumi.Input<String>? relativePath;
+  final pulumi.Input<String?>? relativePath;
   /// Runtime version of the Jar file
-  final pulumi.Input<String>? runtimeVersion;
+  final pulumi.Input<String?>? runtimeVersion;
   /// Type of the source uploaded
   /// Expected value is 'Jar'.
   final pulumi.Input<String> type;
   /// Version of the source
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [JarUploadedUserSourceInfoResponse].
   /// [jvmOptions] JVM parameter

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SQL server license.
-enum SqlServerLicense {
+enum SqlServerLicense implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   yes("Yes"),
   no("No");
 
   const SqlServerLicense(this.wireValue);
+  @override
   final String wireValue;
 
   static SqlServerLicense fromValue(String value) {

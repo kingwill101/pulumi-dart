@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The SQL Server license type.
-enum SqlServerLicenseType {
+enum SqlServerLicenseType implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueNoLicenseType("NoLicenseType"),
   valuePAYG("PAYG"),
   valueAHUB("AHUB");
 
   const SqlServerLicenseType(this.wireValue);
+  @override
   final String wireValue;
 
   static SqlServerLicenseType fromValue(String value) {

@@ -9,45 +9,45 @@ import 'stream_source_addresses.dart';
 /// Properties of flow
 class FlowProperties {
   /// The connection associated with this flow
-  final pulumi.Input<SelectedResource>? connection;
+  final pulumi.Input<SelectedResource?>? connection;
   /// The URI to the customer managed key for this flow
-  final pulumi.Input<String>? customerManagedKeyVaultUri;
+  final pulumi.Input<String?>? customerManagedKeyVaultUri;
   /// Transfer Storage Blobs or Tables
-  final pulumi.Input<String>? dataType;
+  final pulumi.Input<dynamic>? dataType;
   /// The destination endpoint ports of the stream
-  final pulumi.Input<List<double>>? destinationEndpointPorts;
+  final pulumi.Input<List<double>?>? destinationEndpointPorts;
   /// The destination endpoints of the stream
-  final pulumi.Input<List<String>>? destinationEndpoints;
+  final pulumi.Input<List<String>?>? destinationEndpoints;
   /// The flow type for this flow
-  final pulumi.Input<String>? flowType;
+  final pulumi.Input<dynamic>? flowType;
   /// AME, PME, or TORUS only! AKV Chain Containing SAS Token
-  final pulumi.Input<String>? keyVaultUri;
+  final pulumi.Input<String?>? keyVaultUri;
   /// The messaging options for this flow
-  final pulumi.Input<MessagingOptions>? messagingOptions;
+  final pulumi.Input<MessagingOptions?>? messagingOptions;
   /// The passphrase used for SRT streams
-  final pulumi.Input<String>? passphrase;
+  final pulumi.Input<String?>? passphrase;
   /// The policies for this flow
-  final pulumi.Input<List<String>>? policies;
+  final pulumi.Input<List<String>?>? policies;
   /// The selected schema for this flow
-  final pulumi.Input<Schema>? schema;
+  final pulumi.Input<Schema?>? schema;
   /// Service Bus Queue ID
-  final pulumi.Input<String>? serviceBusQueueId;
+  final pulumi.Input<String?>? serviceBusQueueId;
   /// The source IP address and CIDR ranges of the stream
-  final pulumi.Input<StreamSourceAddresses>? sourceAddresses;
+  final pulumi.Input<StreamSourceAddresses?>? sourceAddresses;
   /// Status of the current flow
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// Storage Account ID
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// Storage Account
-  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String?>? storageAccountName;
   /// Storage Container Name
-  final pulumi.Input<String>? storageContainerName;
+  final pulumi.Input<String?>? storageContainerName;
   /// The flow stream identifier
-  final pulumi.Input<String>? streamId;
+  final pulumi.Input<String?>? streamId;
   /// The latency of the stream in milliseconds
-  final pulumi.Input<double>? streamLatency;
+  final pulumi.Input<double?>? streamLatency;
   /// The protocol of the stream
-  final pulumi.Input<String>? streamProtocol;
+  final pulumi.Input<dynamic>? streamProtocol;
 
   /// Creates a new [FlowProperties].
   /// [connection] The connection associated with this flow
@@ -122,10 +122,10 @@ class FlowProperties {
     return FlowProperties(
       connection: (() { final guardedValue = map['connection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SelectedResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       customerManagedKeyVaultUri: (() { final guardedValue = map['customerManagedKeyVaultUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dataType: (() { final guardedValue = map['dataType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataType: (() { final guardedValue = map['dataType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       destinationEndpointPorts: (() { final guardedValue = map['destinationEndpointPorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<double>()); })(),
       destinationEndpoints: (() { final guardedValue = map['destinationEndpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      flowType: (() { final guardedValue = map['flowType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      flowType: (() { final guardedValue = map['flowType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       keyVaultUri: (() { final guardedValue = map['keyVaultUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       messagingOptions: (() { final guardedValue = map['messagingOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MessagingOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       passphrase: (() { final guardedValue = map['passphrase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -133,13 +133,13 @@ class FlowProperties {
       schema: (() { final guardedValue = map['schema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Schema.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serviceBusQueueId: (() { final guardedValue = map['serviceBusQueueId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceAddresses: (() { final guardedValue = map['sourceAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StreamSourceAddresses.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       storageAccountId: (() { final guardedValue = map['storageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageAccountName: (() { final guardedValue = map['storageAccountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageContainerName: (() { final guardedValue = map['storageContainerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       streamId: (() { final guardedValue = map['streamId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      streamLatency: (() { final guardedValue = map['streamLatency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      streamProtocol: (() { final guardedValue = map['streamProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      streamLatency: (() { final guardedValue = map['streamLatency']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      streamProtocol: (() { final guardedValue = map['streamProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

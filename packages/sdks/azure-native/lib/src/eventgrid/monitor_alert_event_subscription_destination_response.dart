@@ -6,15 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitorAlertEventSubscriptionDestinationResponse {
   /// The list of ARM Ids of Action Groups that will be triggered on every Alert fired through this event subscription.
   /// Each resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Insights/actionGroups/{ActionGroupName}.
-  final pulumi.Input<List<String>>? actionGroups;
+  final pulumi.Input<List<String>?>? actionGroups;
   /// The description that will be attached to every Alert fired through this event subscription.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Type of the endpoint for the event subscription destination.
   /// Expected value is 'MonitorAlert'.
   final pulumi.Input<String> endpointType;
   /// The severity that will be attached to every Alert fired through this event subscription.
   /// This field must be provided.
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<String?>? severity;
 
   /// Creates a new [MonitorAlertEventSubscriptionDestinationResponse].
   /// [actionGroups] The list of ARM Ids of Action Groups that will be triggered on every Alert fired through this event subscription.

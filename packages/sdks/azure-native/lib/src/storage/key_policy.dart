@@ -21,7 +21,7 @@ class KeyPolicy {
 
   factory KeyPolicy.fromMap(Map<String, dynamic> map) {
     return KeyPolicy(
-      keyExpirationPeriodInDays: pulumi.Input.fromValue(map['keyExpirationPeriodInDays'] as int),
+      keyExpirationPeriodInDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['keyExpirationPeriodInDays'])),
     );
   }
 }

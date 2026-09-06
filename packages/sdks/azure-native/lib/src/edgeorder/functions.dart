@@ -28,6 +28,17 @@ Future<GetAddressResult> getAddress(
   return GetAddressResult.fromMap(result);
 }
 
+pulumi.Output<GetAddressResult> getAddressOutput(
+  GetAddressArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edgeorder:getAddress',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAddressResult.fromMap);
+}
+
 /// Get an order item.
 ///
 /// Uses Azure REST API version 2024-02-01.
@@ -46,6 +57,17 @@ Future<GetOrderItemResult> getOrderItem(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrderItemResult.fromMap(result);
+}
+
+pulumi.Output<GetOrderItemResult> getOrderItemOutput(
+  GetOrderItemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edgeorder:getOrderItem',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrderItemResult.fromMap);
 }
 
 /// List product families for the given subscription.
@@ -68,6 +90,17 @@ Future<ListProductsAndConfigurationProductFamiliesResult> listProductsAndConfigu
   return ListProductsAndConfigurationProductFamiliesResult.fromMap(result);
 }
 
+pulumi.Output<ListProductsAndConfigurationProductFamiliesResult> listProductsAndConfigurationProductFamiliesOutput(
+  ListProductsAndConfigurationProductFamiliesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edgeorder:listProductsAndConfigurationProductFamilies',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListProductsAndConfigurationProductFamiliesResult.fromMap);
+}
+
 /// List configurations for the given product family, product line and product for the given subscription.
 ///
 /// Uses Azure REST API version 2024-02-01.
@@ -86,4 +119,15 @@ Future<ListProductsAndConfigurationsResult> listProductsAndConfigurations(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListProductsAndConfigurationsResult.fromMap(result);
+}
+
+pulumi.Output<ListProductsAndConfigurationsResult> listProductsAndConfigurationsOutput(
+  ListProductsAndConfigurationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edgeorder:listProductsAndConfigurations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListProductsAndConfigurationsResult.fromMap);
 }

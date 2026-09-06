@@ -11,7 +11,7 @@ class DatabaseAccountMongoDBCollectionArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
   /// Cosmos DB collection name.
-  final pulumi.Input<String>? collectionName;
+  final pulumi.Input<String?>? collectionName;
   /// Cosmos DB database name.
   final pulumi.Input<String> databaseName;
   /// A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request.

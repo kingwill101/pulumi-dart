@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of SoftwareUpdateOptions
 class SoftwareUpdateOptionsResponse {
   /// &lt;p&gt;Whether automatic service software updates are enabled for the domain.&lt;/p&gt;
-  final pulumi.Input<bool>? autoSoftwareUpdateEnabled;
+  final pulumi.Input<bool?>? autoSoftwareUpdateEnabled;
 
   /// Creates a new [SoftwareUpdateOptionsResponse].
   /// [autoSoftwareUpdateEnabled] &lt;p&gt;Whether automatic service software updates are enabled for the domain.&lt;/p&gt;

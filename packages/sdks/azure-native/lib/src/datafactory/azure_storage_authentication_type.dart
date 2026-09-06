@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type used for authentication. Type: string.
-enum AzureStorageAuthenticationType {
+enum AzureStorageAuthenticationType implements pulumi.PulumiEnum<String> {
   anonymous("Anonymous"),
   accountKey("AccountKey"),
   sasUri("SasUri"),
@@ -7,6 +9,7 @@ enum AzureStorageAuthenticationType {
   msi("Msi");
 
   const AzureStorageAuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureStorageAuthenticationType fromValue(String value) {

@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_aad_ou_container_args_doc}
 class OuContainerArgs {
   /// The account name
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// The name of the domain service.
   final pulumi.Input<String> domainServiceName;
   /// The name of the OuContainer.
-  final pulumi.Input<String>? ouContainerName;
+  final pulumi.Input<String?>? ouContainerName;
   /// The account password
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The account spn
-  final pulumi.Input<String>? spn;
+  final pulumi.Input<String?>? spn;
 
   /// Creates a new [OuContainerArgs].
   /// [accountName] The account name

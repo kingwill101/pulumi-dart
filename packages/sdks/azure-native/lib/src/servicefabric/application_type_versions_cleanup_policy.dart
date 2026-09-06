@@ -21,7 +21,7 @@ class ApplicationTypeVersionsCleanupPolicy {
 
   factory ApplicationTypeVersionsCleanupPolicy.fromMap(Map<String, dynamic> map) {
     return ApplicationTypeVersionsCleanupPolicy(
-      maxUnusedVersionsToKeep: pulumi.Input.fromValue(map['maxUnusedVersionsToKeep'] as int),
+      maxUnusedVersionsToKeep: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxUnusedVersionsToKeep'])),
     );
   }
 }

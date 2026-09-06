@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_get_express_route_gateway_routes_information_args_doc}
 class GetExpressRouteGatewayRoutesInformationArgs {
   /// Whether to attempt a refresh of the route sets.
-  final pulumi.Input<bool>? attemptRefresh;
+  final pulumi.Input<bool?>? attemptRefresh;
   /// The name of the ExpressRoute gateway.
   final pulumi.Input<String> expressRouteGatewayName;
   /// The name of the resource group. The name is case insensitive.

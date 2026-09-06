@@ -6,7 +6,7 @@ import 'publish_metric_action_response.dart';
 /// Definition of ActionDefinition
 class ActionDefinitionResponse {
   /// Property publishMetricAction
-  final pulumi.Input<PublishMetricActionResponse>? publishMetricAction;
+  final pulumi.Input<PublishMetricActionResponse?>? publishMetricAction;
 
   /// Creates a new [ActionDefinitionResponse].
   /// [publishMetricAction] Property publishMetricAction

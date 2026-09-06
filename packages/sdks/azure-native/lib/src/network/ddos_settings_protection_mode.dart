@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The DDoS protection mode of the public IP
-enum DdosSettingsProtectionMode {
+enum DdosSettingsProtectionMode implements pulumi.PulumiEnum<String> {
   valueVirtualNetworkInherited("VirtualNetworkInherited"),
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const DdosSettingsProtectionMode(this.wireValue);
+  @override
   final String wireValue;
 
   static DdosSettingsProtectionMode fromValue(String value) {

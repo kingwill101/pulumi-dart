@@ -9,25 +9,25 @@ import 'parameter_definitions_value.dart';
 /// {@macro pulumi_authorization_policy_definition_version_args_doc}
 class PolicyDefinitionVersionArgs {
   /// The policy definition description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the policy definition.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The policy definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
   final pulumi.Input<dynamic>? metadata;
   /// The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
-  final pulumi.Input<Map<String, ParameterDefinitionsValue>>? parameters;
+  final pulumi.Input<Map<String, ParameterDefinitionsValue>?>? parameters;
   /// The name of the policy definition.
   final pulumi.Input<String> policyDefinitionName;
   /// The policy definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
-  final pulumi.Input<String>? policyDefinitionVersion;
+  final pulumi.Input<String?>? policyDefinitionVersion;
   /// The policy rule.
   final pulumi.Input<dynamic>? policyRule;
   /// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
-  final pulumi.Input<String>? policyType;
+  final pulumi.Input<dynamic>? policyType;
   /// The policy definition version in #.#.# format.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [PolicyDefinitionVersionArgs].
   /// [description] The policy definition description.
@@ -40,18 +40,18 @@ class PolicyDefinitionVersionArgs {
   /// [policyRule] The policy rule.
   /// [policyType] The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
   /// [version] The policy definition version in #.#.# format.
-  const PolicyDefinitionVersionArgs({
+  PolicyDefinitionVersionArgs({
     this.description,
     this.displayName,
     this.metadata,
-    this.mode,
+    pulumi.Input<String?>? mode,
     this.parameters,
     required this.policyDefinitionName,
     this.policyDefinitionVersion,
     this.policyRule,
     this.policyType,
     this.version,
-  });
+  }) : mode = mode ?? pulumi.Input.fromValue('Indexed');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,7 +78,7 @@ class PolicyDefinitionVersionArgs {
       policyDefinitionName: pulumi.Input.fromValue(map['policyDefinitionName'] as String),
       policyDefinitionVersion: (() { final guardedValue = map['policyDefinitionVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyRule: (() { final guardedValue = map['policyRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      policyType: (() { final guardedValue = map['policyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyType: (() { final guardedValue = map['policyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -7,7 +7,7 @@ class BigDataPoolParametrizationReference {
   /// Reference big data pool name. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> referenceName;
   /// Big data pool reference type.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [BigDataPoolParametrizationReference].
   /// [referenceName] Reference big data pool name. Type: string (or Expression with resultType string).
@@ -27,7 +27,7 @@ class BigDataPoolParametrizationReference {
   factory BigDataPoolParametrizationReference.fromMap(Map<String, dynamic> map) {
     return BigDataPoolParametrizationReference(
       referenceName: pulumi.Input.fromValue(map['referenceName']),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

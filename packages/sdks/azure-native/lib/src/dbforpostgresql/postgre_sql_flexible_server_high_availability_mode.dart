@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// High availability mode for a server.
-enum PostgreSqlFlexibleServerHighAvailabilityMode {
+enum PostgreSqlFlexibleServerHighAvailabilityMode implements pulumi.PulumiEnum<String> {
   disabled("Disabled"),
   zoneRedundant("ZoneRedundant"),
   sameZone("SameZone");
 
   const PostgreSqlFlexibleServerHighAvailabilityMode(this.wireValue);
+  @override
   final String wireValue;
 
   static PostgreSqlFlexibleServerHighAvailabilityMode fromValue(String value) {

@@ -6,22 +6,22 @@ import 'content_link.dart';
 /// The assembly properties definition.
 class AssemblyProperties {
   /// The assembly culture.
-  final pulumi.Input<String>? assemblyCulture;
+  final pulumi.Input<String?>? assemblyCulture;
   /// The assembly name.
   final pulumi.Input<String> assemblyName;
   /// The assembly public key token.
-  final pulumi.Input<String>? assemblyPublicKeyToken;
+  final pulumi.Input<String?>? assemblyPublicKeyToken;
   /// The assembly version.
-  final pulumi.Input<String>? assemblyVersion;
+  final pulumi.Input<String?>? assemblyVersion;
   /// The artifact changed time.
-  final pulumi.Input<String>? changedTime;
+  final pulumi.Input<String?>? changedTime;
   final pulumi.Input<dynamic>? content;
   /// The content link.
-  final pulumi.Input<ContentLink>? contentLink;
+  final pulumi.Input<ContentLink?>? contentLink;
   /// The content type.
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// The artifact creation time.
-  final pulumi.Input<String>? createdTime;
+  final pulumi.Input<String?>? createdTime;
   final pulumi.Input<dynamic>? metadata;
 
   /// Creates a new [AssemblyProperties].

@@ -346,6 +346,17 @@ Future<GetActiveSessionsResult> getActiveSessions(
   return GetActiveSessionsResult.fromMap(result);
 }
 
+pulumi.Output<GetActiveSessionsResult> getActiveSessionsOutput(
+  GetActiveSessionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getActiveSessions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetActiveSessionsResult.fromMap);
+}
+
 /// Gets a network manager security configuration admin rule.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -364,6 +375,17 @@ Future<GetAdminRuleResult> getAdminRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAdminRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetAdminRuleResult> getAdminRuleOutput(
+  GetAdminRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getAdminRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAdminRuleResult.fromMap);
 }
 
 /// Gets a network manager security admin configuration rule collection.
@@ -386,6 +408,17 @@ Future<GetAdminRuleCollectionResult> getAdminRuleCollection(
   return GetAdminRuleCollectionResult.fromMap(result);
 }
 
+pulumi.Output<GetAdminRuleCollectionResult> getAdminRuleCollectionOutput(
+  GetAdminRuleCollectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getAdminRuleCollection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAdminRuleCollectionResult.fromMap);
+}
+
 /// Gets the specified application gateway.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -404,6 +437,17 @@ Future<GetApplicationGatewayResult> getApplicationGateway(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApplicationGatewayResult.fromMap(result);
+}
+
+pulumi.Output<GetApplicationGatewayResult> getApplicationGatewayOutput(
+  GetApplicationGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getApplicationGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationGatewayResult.fromMap);
 }
 
 /// Gets the backend health for given combination of backend pool and http setting of the specified application gateway in a resource group.
@@ -426,6 +470,17 @@ Future<GetApplicationGatewayBackendHealthOnDemandResult> getApplicationGatewayBa
   return GetApplicationGatewayBackendHealthOnDemandResult.fromMap(result);
 }
 
+pulumi.Output<GetApplicationGatewayBackendHealthOnDemandResult> getApplicationGatewayBackendHealthOnDemandOutput(
+  GetApplicationGatewayBackendHealthOnDemandArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getApplicationGatewayBackendHealthOnDemand',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationGatewayBackendHealthOnDemandResult.fromMap);
+}
+
 /// Gets the specified private endpoint connection on application gateway.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -444,6 +499,17 @@ Future<GetApplicationGatewayPrivateEndpointConnectionResult> getApplicationGatew
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApplicationGatewayPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetApplicationGatewayPrivateEndpointConnectionResult> getApplicationGatewayPrivateEndpointConnectionOutput(
+  GetApplicationGatewayPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getApplicationGatewayPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationGatewayPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Gets information about the specified application security group.
@@ -466,6 +532,17 @@ Future<GetApplicationSecurityGroupResult> getApplicationSecurityGroup(
   return GetApplicationSecurityGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetApplicationSecurityGroupResult> getApplicationSecurityGroupOutput(
+  GetApplicationSecurityGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getApplicationSecurityGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationSecurityGroupResult.fromMap);
+}
+
 /// Gets the specified Azure Firewall.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -484,6 +561,17 @@ Future<GetAzureFirewallResult> getAzureFirewall(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAzureFirewallResult.fromMap(result);
+}
+
+pulumi.Output<GetAzureFirewallResult> getAzureFirewallOutput(
+  GetAzureFirewallArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getAzureFirewall',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAzureFirewallResult.fromMap);
 }
 
 /// Gets the specified Bastion Host.
@@ -506,6 +594,17 @@ Future<GetBastionHostResult> getBastionHost(
   return GetBastionHostResult.fromMap(result);
 }
 
+pulumi.Output<GetBastionHostResult> getBastionHostOutput(
+  GetBastionHostArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getBastionHost',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBastionHostResult.fromMap);
+}
+
 /// Return the Bastion Shareable Links for all the VMs specified in the request.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -526,6 +625,17 @@ Future<GetBastionShareableLinkResult> getBastionShareableLink(
   return GetBastionShareableLinkResult.fromMap(result);
 }
 
+pulumi.Output<GetBastionShareableLinkResult> getBastionShareableLinkOutput(
+  GetBastionShareableLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getBastionShareableLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBastionShareableLinkResult.fromMap);
+}
+
 /// Gets the specified commit.
 ///
 /// Uses Azure REST API version 2025-07-01.
@@ -542,6 +652,17 @@ Future<GetCommitResult> getCommit(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCommitResult.fromMap(result);
+}
+
+pulumi.Output<GetCommitResult> getCommitOutput(
+  GetCommitArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getCommit',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCommitResult.fromMap);
 }
 
 /// Retrieves the details of a ConfigurationPolicyGroup.
@@ -564,6 +685,17 @@ Future<GetConfigurationPolicyGroupResult> getConfigurationPolicyGroup(
   return GetConfigurationPolicyGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigurationPolicyGroupResult> getConfigurationPolicyGroupOutput(
+  GetConfigurationPolicyGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getConfigurationPolicyGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationPolicyGroupResult.fromMap);
+}
+
 /// Gets a connection monitor by name.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -584,6 +716,17 @@ Future<GetConnectionMonitorResult> getConnectionMonitor(
   return GetConnectionMonitorResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectionMonitorResult> getConnectionMonitorOutput(
+  GetConnectionMonitorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getConnectionMonitor',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionMonitorResult.fromMap);
+}
+
 /// Retrieves the details of a ConnectionPolicy.
 ///
 /// Uses Azure REST API version 2025-07-01.
@@ -600,6 +743,17 @@ Future<GetConnectionPolicyResult> getConnectionPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectionPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetConnectionPolicyResult> getConnectionPolicyOutput(
+  GetConnectionPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getConnectionPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionPolicyResult.fromMap);
 }
 
 /// Gets a Network Connectivity Configuration, specified by the resource group, network manager name, and connectivity Configuration name
@@ -622,6 +776,17 @@ Future<GetConnectivityConfigurationResult> getConnectivityConfiguration(
   return GetConnectivityConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectivityConfigurationResult> getConnectivityConfigurationOutput(
+  GetConnectivityConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getConnectivityConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectivityConfigurationResult.fromMap);
+}
+
 /// Gets the specified custom IP prefix in a specified resource group.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -640,6 +805,17 @@ Future<GetCustomIPPrefixResult> getCustomIPPrefix(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCustomIPPrefixResult.fromMap(result);
+}
+
+pulumi.Output<GetCustomIPPrefixResult> getCustomIPPrefixOutput(
+  GetCustomIPPrefixArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getCustomIPPrefix',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomIPPrefixResult.fromMap);
 }
 
 /// Gets information about the specified DDoS custom policy.
@@ -662,6 +838,17 @@ Future<GetDdosCustomPolicyResult> getDdosCustomPolicy(
   return GetDdosCustomPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetDdosCustomPolicyResult> getDdosCustomPolicyOutput(
+  GetDdosCustomPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getDdosCustomPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDdosCustomPolicyResult.fromMap);
+}
+
 /// Gets information about the specified DDoS protection plan.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -682,6 +869,17 @@ Future<GetDdosProtectionPlanResult> getDdosProtectionPlan(
   return GetDdosProtectionPlanResult.fromMap(result);
 }
 
+pulumi.Output<GetDdosProtectionPlanResult> getDdosProtectionPlanOutput(
+  GetDdosProtectionPlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getDdosProtectionPlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDdosProtectionPlanResult.fromMap);
+}
+
 /// Gets a network manager security configuration admin rule.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -700,6 +898,17 @@ Future<GetDefaultAdminRuleResult> getDefaultAdminRule(
   return GetDefaultAdminRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetDefaultAdminRuleResult> getDefaultAdminRuleOutput(
+  GetDefaultAdminRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getDefaultAdminRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDefaultAdminRuleResult.fromMap);
+}
+
 /// Gets a user rule.
 ///
 /// Uses Azure REST API version 2022-04-01-preview.
@@ -716,6 +925,17 @@ Future<GetDefaultUserRuleResult> getDefaultUserRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDefaultUserRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetDefaultUserRuleResult> getDefaultUserRuleOutput(
+  GetDefaultUserRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getDefaultUserRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDefaultUserRuleResult.fromMap);
 }
 
 /// Gets a DSCP Configuration.
@@ -738,6 +958,17 @@ Future<GetDscpConfigurationResult> getDscpConfiguration(
   return GetDscpConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetDscpConfigurationResult> getDscpConfigurationOutput(
+  GetDscpConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getDscpConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDscpConfigurationResult.fromMap);
+}
+
 /// Gets information about the specified express route circuit.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -756,6 +987,17 @@ Future<GetExpressRouteCircuitResult> getExpressRouteCircuit(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExpressRouteCircuitResult.fromMap(result);
+}
+
+pulumi.Output<GetExpressRouteCircuitResult> getExpressRouteCircuitOutput(
+  GetExpressRouteCircuitArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getExpressRouteCircuit',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExpressRouteCircuitResult.fromMap);
 }
 
 /// Gets the specified authorization from the specified express route circuit.
@@ -778,6 +1020,17 @@ Future<GetExpressRouteCircuitAuthorizationResult> getExpressRouteCircuitAuthoriz
   return GetExpressRouteCircuitAuthorizationResult.fromMap(result);
 }
 
+pulumi.Output<GetExpressRouteCircuitAuthorizationResult> getExpressRouteCircuitAuthorizationOutput(
+  GetExpressRouteCircuitAuthorizationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getExpressRouteCircuitAuthorization',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExpressRouteCircuitAuthorizationResult.fromMap);
+}
+
 /// Gets the specified Express Route Circuit Connection from the specified express route circuit.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -796,6 +1049,17 @@ Future<GetExpressRouteCircuitConnectionResult> getExpressRouteCircuitConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExpressRouteCircuitConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetExpressRouteCircuitConnectionResult> getExpressRouteCircuitConnectionOutput(
+  GetExpressRouteCircuitConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getExpressRouteCircuitConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExpressRouteCircuitConnectionResult.fromMap);
 }
 
 /// Gets the specified peering for the express route circuit.
@@ -818,6 +1082,17 @@ Future<GetExpressRouteCircuitPeeringResult> getExpressRouteCircuitPeering(
   return GetExpressRouteCircuitPeeringResult.fromMap(result);
 }
 
+pulumi.Output<GetExpressRouteCircuitPeeringResult> getExpressRouteCircuitPeeringOutput(
+  GetExpressRouteCircuitPeeringArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getExpressRouteCircuitPeering',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExpressRouteCircuitPeeringResult.fromMap);
+}
+
 /// Gets the specified ExpressRouteConnection.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -836,6 +1111,17 @@ Future<GetExpressRouteConnectionResult> getExpressRouteConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExpressRouteConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetExpressRouteConnectionResult> getExpressRouteConnectionOutput(
+  GetExpressRouteConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getExpressRouteConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExpressRouteConnectionResult.fromMap);
 }
 
 /// Gets the specified peering for the ExpressRouteCrossConnection.
@@ -858,6 +1144,17 @@ Future<GetExpressRouteCrossConnectionPeeringResult> getExpressRouteCrossConnecti
   return GetExpressRouteCrossConnectionPeeringResult.fromMap(result);
 }
 
+pulumi.Output<GetExpressRouteCrossConnectionPeeringResult> getExpressRouteCrossConnectionPeeringOutput(
+  GetExpressRouteCrossConnectionPeeringArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getExpressRouteCrossConnectionPeering',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExpressRouteCrossConnectionPeeringResult.fromMap);
+}
+
 /// Fetches the details of a ExpressRoute gateway in a resource group.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -878,6 +1175,17 @@ Future<GetExpressRouteGatewayResult> getExpressRouteGateway(
   return GetExpressRouteGatewayResult.fromMap(result);
 }
 
+pulumi.Output<GetExpressRouteGatewayResult> getExpressRouteGatewayOutput(
+  GetExpressRouteGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getExpressRouteGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExpressRouteGatewayResult.fromMap);
+}
+
 /// Retrieves the resiliency information for the ExpressRoute gateway.
 ///
 /// Uses Azure REST API version 2025-07-01.
@@ -896,6 +1204,17 @@ Future<GetExpressRouteGatewayResiliencyInformationResult> getExpressRouteGateway
   return GetExpressRouteGatewayResiliencyInformationResult.fromMap(result);
 }
 
+pulumi.Output<GetExpressRouteGatewayResiliencyInformationResult> getExpressRouteGatewayResiliencyInformationOutput(
+  GetExpressRouteGatewayResiliencyInformationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getExpressRouteGatewayResiliencyInformation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExpressRouteGatewayResiliencyInformationResult.fromMap);
+}
+
 /// Retrieves the route sets information for the ExpressRoute gateway.
 ///
 /// Uses Azure REST API version 2025-07-01.
@@ -912,6 +1231,17 @@ Future<GetExpressRouteGatewayRoutesInformationResult> getExpressRouteGatewayRout
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExpressRouteGatewayRoutesInformationResult.fromMap(result);
+}
+
+pulumi.Output<GetExpressRouteGatewayRoutesInformationResult> getExpressRouteGatewayRoutesInformationOutput(
+  GetExpressRouteGatewayRoutesInformationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getExpressRouteGatewayRoutesInformation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExpressRouteGatewayRoutesInformationResult.fromMap);
 }
 
 /// Retrieves the requested ExpressRoutePort resource.
@@ -934,6 +1264,17 @@ Future<GetExpressRoutePortResult> getExpressRoutePort(
   return GetExpressRoutePortResult.fromMap(result);
 }
 
+pulumi.Output<GetExpressRoutePortResult> getExpressRoutePortOutput(
+  GetExpressRoutePortArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getExpressRoutePort',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExpressRoutePortResult.fromMap);
+}
+
 /// Gets the specified authorization from the specified express route port.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -952,6 +1293,17 @@ Future<GetExpressRoutePortAuthorizationResult> getExpressRoutePortAuthorization(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExpressRoutePortAuthorizationResult.fromMap(result);
+}
+
+pulumi.Output<GetExpressRoutePortAuthorizationResult> getExpressRoutePortAuthorizationOutput(
+  GetExpressRoutePortAuthorizationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getExpressRoutePortAuthorization',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExpressRoutePortAuthorizationResult.fromMap);
 }
 
 /// Gets the specified Firewall Policy.
@@ -974,6 +1326,17 @@ Future<GetFirewallPolicyResult> getFirewallPolicy(
   return GetFirewallPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallPolicyResult> getFirewallPolicyOutput(
+  GetFirewallPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getFirewallPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallPolicyResult.fromMap);
+}
+
 /// Get a draft Firewall Policy.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -992,6 +1355,17 @@ Future<GetFirewallPolicyDraftResult> getFirewallPolicyDraft(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFirewallPolicyDraftResult.fromMap(result);
+}
+
+pulumi.Output<GetFirewallPolicyDraftResult> getFirewallPolicyDraftOutput(
+  GetFirewallPolicyDraftArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getFirewallPolicyDraft',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallPolicyDraftResult.fromMap);
 }
 
 /// Gets the specified FirewallPolicyRuleCollectionGroup.
@@ -1014,6 +1388,17 @@ Future<GetFirewallPolicyRuleCollectionGroupResult> getFirewallPolicyRuleCollecti
   return GetFirewallPolicyRuleCollectionGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallPolicyRuleCollectionGroupResult> getFirewallPolicyRuleCollectionGroupOutput(
+  GetFirewallPolicyRuleCollectionGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getFirewallPolicyRuleCollectionGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallPolicyRuleCollectionGroupResult.fromMap);
+}
+
 /// Get Rule Collection Group Draft.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -1032,6 +1417,17 @@ Future<GetFirewallPolicyRuleCollectionGroupDraftResult> getFirewallPolicyRuleCol
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFirewallPolicyRuleCollectionGroupDraftResult.fromMap(result);
+}
+
+pulumi.Output<GetFirewallPolicyRuleCollectionGroupDraftResult> getFirewallPolicyRuleCollectionGroupDraftOutput(
+  GetFirewallPolicyRuleCollectionGroupDraftArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getFirewallPolicyRuleCollectionGroupDraft',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallPolicyRuleCollectionGroupDraftResult.fromMap);
 }
 
 /// Gets the specified FirewallPolicyRuleGroup.
@@ -1054,6 +1450,17 @@ Future<GetFirewallPolicyRuleGroupResult> getFirewallPolicyRuleGroup(
   return GetFirewallPolicyRuleGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallPolicyRuleGroupResult> getFirewallPolicyRuleGroupOutput(
+  GetFirewallPolicyRuleGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getFirewallPolicyRuleGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallPolicyRuleGroupResult.fromMap);
+}
+
 /// Gets a flow log resource by name.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -1072,6 +1479,17 @@ Future<GetFlowLogResult> getFlowLog(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFlowLogResult.fromMap(result);
+}
+
+pulumi.Output<GetFlowLogResult> getFlowLogOutput(
+  GetFlowLogArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getFlowLog',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFlowLogResult.fromMap);
 }
 
 /// Retrieves the details of a RouteTable.
@@ -1094,6 +1512,17 @@ Future<GetHubRouteTableResult> getHubRouteTable(
   return GetHubRouteTableResult.fromMap(result);
 }
 
+pulumi.Output<GetHubRouteTableResult> getHubRouteTableOutput(
+  GetHubRouteTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getHubRouteTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHubRouteTableResult.fromMap);
+}
+
 /// Retrieves the details of a HubVirtualNetworkConnection.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -1112,6 +1541,17 @@ Future<GetHubVirtualNetworkConnectionResult> getHubVirtualNetworkConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHubVirtualNetworkConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetHubVirtualNetworkConnectionResult> getHubVirtualNetworkConnectionOutput(
+  GetHubVirtualNetworkConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getHubVirtualNetworkConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHubVirtualNetworkConnectionResult.fromMap);
 }
 
 /// Gets the specified load balancer inbound NAT rule.
@@ -1134,6 +1574,17 @@ Future<GetInboundNatRuleResult> getInboundNatRule(
   return GetInboundNatRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetInboundNatRuleResult> getInboundNatRuleOutput(
+  GetInboundNatRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getInboundNatRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInboundNatRuleResult.fromMap);
+}
+
 /// Gets information about the specified interconnect group.
 ///
 /// Uses Azure REST API version 2025-07-01.
@@ -1150,6 +1601,17 @@ Future<GetInterconnectGroupResult> getInterconnectGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInterconnectGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetInterconnectGroupResult> getInterconnectGroupOutput(
+  GetInterconnectGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getInterconnectGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInterconnectGroupResult.fromMap);
 }
 
 /// Gets the specified interface endpoint by resource group.
@@ -1172,6 +1634,17 @@ Future<GetInterfaceEndpointResult> getInterfaceEndpoint(
   return GetInterfaceEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetInterfaceEndpointResult> getInterfaceEndpointOutput(
+  GetInterfaceEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getInterfaceEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInterfaceEndpointResult.fromMap);
+}
+
 /// Gets the specified IpAllocation by resource group.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -1190,6 +1663,17 @@ Future<GetIpAllocationResult> getIpAllocation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIpAllocationResult.fromMap(result);
+}
+
+pulumi.Output<GetIpAllocationResult> getIpAllocationOutput(
+  GetIpAllocationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getIpAllocation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIpAllocationResult.fromMap);
 }
 
 /// Gets the specified ipGroups.
@@ -1212,6 +1696,17 @@ Future<GetIpGroupResult> getIpGroup(
   return GetIpGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetIpGroupResult> getIpGroupOutput(
+  GetIpGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getIpGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIpGroupResult.fromMap);
+}
+
 /// Instance of Pool resource.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -1230,6 +1725,17 @@ Future<GetIpamPoolResult> getIpamPool(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIpamPoolResult.fromMap(result);
+}
+
+pulumi.Output<GetIpamPoolResult> getIpamPoolOutput(
+  GetIpamPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getIpamPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIpamPoolResult.fromMap);
 }
 
 /// IpamPool usage information.
@@ -1252,6 +1758,17 @@ Future<GetIpamPoolUsageResult> getIpamPoolUsage(
   return GetIpamPoolUsageResult.fromMap(result);
 }
 
+pulumi.Output<GetIpamPoolUsageResult> getIpamPoolUsageOutput(
+  GetIpamPoolUsageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getIpamPoolUsage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIpamPoolUsageResult.fromMap);
+}
+
 /// Gets the specified load balancer.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -1270,6 +1787,17 @@ Future<GetLoadBalancerResult> getLoadBalancer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLoadBalancerResult.fromMap(result);
+}
+
+pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
+  GetLoadBalancerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getLoadBalancer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLoadBalancerResult.fromMap);
 }
 
 /// Gets load balancer backend address pool.
@@ -1292,6 +1820,17 @@ Future<GetLoadBalancerBackendAddressPoolResult> getLoadBalancerBackendAddressPoo
   return GetLoadBalancerBackendAddressPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetLoadBalancerBackendAddressPoolResult> getLoadBalancerBackendAddressPoolOutput(
+  GetLoadBalancerBackendAddressPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getLoadBalancerBackendAddressPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLoadBalancerBackendAddressPoolResult.fromMap);
+}
+
 /// Gets the specified local network gateway in a resource group.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -1310,6 +1849,17 @@ Future<GetLocalNetworkGatewayResult> getLocalNetworkGateway(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLocalNetworkGatewayResult.fromMap(result);
+}
+
+pulumi.Output<GetLocalNetworkGatewayResult> getLocalNetworkGatewayOutput(
+  GetLocalNetworkGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getLocalNetworkGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLocalNetworkGatewayResult.fromMap);
 }
 
 /// Get a specified connection created by this management group.
@@ -1332,6 +1882,17 @@ Future<GetManagementGroupNetworkManagerConnectionResult> getManagementGroupNetwo
   return GetManagementGroupNetworkManagerConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetManagementGroupNetworkManagerConnectionResult> getManagementGroupNetworkManagerConnectionOutput(
+  GetManagementGroupNetworkManagerConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getManagementGroupNetworkManagerConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagementGroupNetworkManagerConnectionResult.fromMap);
+}
+
 /// Gets the specified nat gateway in a specified resource group.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -1350,6 +1911,17 @@ Future<GetNatGatewayResult> getNatGateway(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNatGatewayResult.fromMap(result);
+}
+
+pulumi.Output<GetNatGatewayResult> getNatGatewayOutput(
+  GetNatGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNatGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNatGatewayResult.fromMap);
 }
 
 /// Retrieves the details of a nat ruleGet.
@@ -1372,6 +1944,17 @@ Future<GetNatRuleResult> getNatRule(
   return GetNatRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetNatRuleResult> getNatRuleOutput(
+  GetNatRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNatRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNatRuleResult.fromMap);
+}
+
 /// Gets the specified network group.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -1390,6 +1973,17 @@ Future<GetNetworkGroupResult> getNetworkGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkGroupResult> getNetworkGroupOutput(
+  GetNetworkGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNetworkGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkGroupResult.fromMap);
 }
 
 /// Gets information about the specified network interface.
@@ -1412,6 +2006,17 @@ Future<GetNetworkInterfaceResult> getNetworkInterface(
   return GetNetworkInterfaceResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkInterfaceResult> getNetworkInterfaceOutput(
+  GetNetworkInterfaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNetworkInterface',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkInterfaceResult.fromMap);
+}
+
 /// Get the specified tap configuration on a network interface.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -1430,6 +2035,17 @@ Future<GetNetworkInterfaceTapConfigurationResult> getNetworkInterfaceTapConfigur
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkInterfaceTapConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkInterfaceTapConfigurationResult> getNetworkInterfaceTapConfigurationOutput(
+  GetNetworkInterfaceTapConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNetworkInterfaceTapConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkInterfaceTapConfigurationResult.fromMap);
 }
 
 /// Gets the specified Network Manager.
@@ -1452,6 +2068,17 @@ Future<GetNetworkManagerResult> getNetworkManager(
   return GetNetworkManagerResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkManagerResult> getNetworkManagerOutput(
+  GetNetworkManagerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNetworkManager',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkManagerResult.fromMap);
+}
+
 /// Retrieves a network manager routing configuration.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -1470,6 +2097,17 @@ Future<GetNetworkManagerRoutingConfigurationResult> getNetworkManagerRoutingConf
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkManagerRoutingConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkManagerRoutingConfigurationResult> getNetworkManagerRoutingConfigurationOutput(
+  GetNetworkManagerRoutingConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNetworkManagerRoutingConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkManagerRoutingConfigurationResult.fromMap);
 }
 
 /// Gets the specified network profile in a specified resource group.
@@ -1492,6 +2130,17 @@ Future<GetNetworkProfileResult> getNetworkProfile(
   return GetNetworkProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkProfileResult> getNetworkProfileOutput(
+  GetNetworkProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNetworkProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkProfileResult.fromMap);
+}
+
 /// Gets the specified network security group.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -1510,6 +2159,17 @@ Future<GetNetworkSecurityGroupResult> getNetworkSecurityGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkSecurityGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkSecurityGroupResult> getNetworkSecurityGroupOutput(
+  GetNetworkSecurityGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNetworkSecurityGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkSecurityGroupResult.fromMap);
 }
 
 /// Gets the specified network security perimeter by the name.
@@ -1532,6 +2192,17 @@ Future<GetNetworkSecurityPerimeterResult> getNetworkSecurityPerimeter(
   return GetNetworkSecurityPerimeterResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkSecurityPerimeterResult> getNetworkSecurityPerimeterOutput(
+  GetNetworkSecurityPerimeterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNetworkSecurityPerimeter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkSecurityPerimeterResult.fromMap);
+}
+
 /// Gets the specified NSP access rule by name.
 ///
 /// Uses Azure REST API version 2024-06-01-preview.
@@ -1550,6 +2221,17 @@ Future<GetNetworkSecurityPerimeterAccessRuleResult> getNetworkSecurityPerimeterA
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkSecurityPerimeterAccessRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkSecurityPerimeterAccessRuleResult> getNetworkSecurityPerimeterAccessRuleOutput(
+  GetNetworkSecurityPerimeterAccessRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNetworkSecurityPerimeterAccessRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkSecurityPerimeterAccessRuleResult.fromMap);
 }
 
 /// Gets the specified NSP association by name.
@@ -1572,6 +2254,17 @@ Future<GetNetworkSecurityPerimeterAssociationResult> getNetworkSecurityPerimeter
   return GetNetworkSecurityPerimeterAssociationResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkSecurityPerimeterAssociationResult> getNetworkSecurityPerimeterAssociationOutput(
+  GetNetworkSecurityPerimeterAssociationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNetworkSecurityPerimeterAssociation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkSecurityPerimeterAssociationResult.fromMap);
+}
+
 /// Gets the specified NSP link resource.
 ///
 /// Uses Azure REST API version 2024-06-01-preview.
@@ -1590,6 +2283,17 @@ Future<GetNetworkSecurityPerimeterLinkResult> getNetworkSecurityPerimeterLink(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkSecurityPerimeterLinkResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkSecurityPerimeterLinkResult> getNetworkSecurityPerimeterLinkOutput(
+  GetNetworkSecurityPerimeterLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNetworkSecurityPerimeterLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkSecurityPerimeterLinkResult.fromMap);
 }
 
 /// Gets the NSP logging configuration.
@@ -1612,6 +2316,17 @@ Future<GetNetworkSecurityPerimeterLoggingConfigurationResult> getNetworkSecurity
   return GetNetworkSecurityPerimeterLoggingConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkSecurityPerimeterLoggingConfigurationResult> getNetworkSecurityPerimeterLoggingConfigurationOutput(
+  GetNetworkSecurityPerimeterLoggingConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNetworkSecurityPerimeterLoggingConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkSecurityPerimeterLoggingConfigurationResult.fromMap);
+}
+
 /// Gets the specified NSP profile.
 ///
 /// Uses Azure REST API version 2024-06-01-preview.
@@ -1630,6 +2345,17 @@ Future<GetNetworkSecurityPerimeterProfileResult> getNetworkSecurityPerimeterProf
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkSecurityPerimeterProfileResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkSecurityPerimeterProfileResult> getNetworkSecurityPerimeterProfileOutput(
+  GetNetworkSecurityPerimeterProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNetworkSecurityPerimeterProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkSecurityPerimeterProfileResult.fromMap);
 }
 
 /// Gets the specified Network Virtual Appliance.
@@ -1652,6 +2378,17 @@ Future<GetNetworkVirtualApplianceResult> getNetworkVirtualAppliance(
   return GetNetworkVirtualApplianceResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkVirtualApplianceResult> getNetworkVirtualApplianceOutput(
+  GetNetworkVirtualApplianceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNetworkVirtualAppliance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkVirtualApplianceResult.fromMap);
+}
+
 /// Retrieves the boot diagnostic logs for a VM instance belonging to the specified Network Virtual Appliance.
 ///
 /// Uses Azure REST API version 2024-07-01.
@@ -1670,6 +2407,17 @@ Future<GetNetworkVirtualApplianceBootDiagnosticLogsResult> getNetworkVirtualAppl
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkVirtualApplianceBootDiagnosticLogsResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkVirtualApplianceBootDiagnosticLogsResult> getNetworkVirtualApplianceBootDiagnosticLogsOutput(
+  GetNetworkVirtualApplianceBootDiagnosticLogsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNetworkVirtualApplianceBootDiagnosticLogs',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkVirtualApplianceBootDiagnosticLogsResult.fromMap);
 }
 
 /// Retrieves the details of specified NVA connection.
@@ -1692,6 +2440,17 @@ Future<GetNetworkVirtualApplianceConnectionResult> getNetworkVirtualApplianceCon
   return GetNetworkVirtualApplianceConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkVirtualApplianceConnectionResult> getNetworkVirtualApplianceConnectionOutput(
+  GetNetworkVirtualApplianceConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNetworkVirtualApplianceConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkVirtualApplianceConnectionResult.fromMap);
+}
+
 /// Gets the specified network watcher by resource group.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -1710,6 +2469,17 @@ Future<GetNetworkWatcherResult> getNetworkWatcher(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkWatcherResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkWatcherResult> getNetworkWatcherOutput(
+  GetNetworkWatcherArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNetworkWatcher',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkWatcherResult.fromMap);
 }
 
 /// Gets the specified NSP access rule by name.
@@ -1732,6 +2502,17 @@ Future<GetNspAccessRuleResult> getNspAccessRule(
   return GetNspAccessRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetNspAccessRuleResult> getNspAccessRuleOutput(
+  GetNspAccessRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNspAccessRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNspAccessRuleResult.fromMap);
+}
+
 /// Gets the specified NSP association by name.
 ///
 /// Uses Azure REST API version 2023-08-01-preview.
@@ -1750,6 +2531,17 @@ Future<GetNspAssociationResult> getNspAssociation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNspAssociationResult.fromMap(result);
+}
+
+pulumi.Output<GetNspAssociationResult> getNspAssociationOutput(
+  GetNspAssociationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNspAssociation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNspAssociationResult.fromMap);
 }
 
 /// Gets the specified NSP link resource.
@@ -1772,6 +2564,17 @@ Future<GetNspLinkResult> getNspLink(
   return GetNspLinkResult.fromMap(result);
 }
 
+pulumi.Output<GetNspLinkResult> getNspLinkOutput(
+  GetNspLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNspLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNspLinkResult.fromMap);
+}
+
 /// Gets the specified NSP profile.
 ///
 /// Uses Azure REST API version 2023-08-01-preview.
@@ -1790,6 +2593,17 @@ Future<GetNspProfileResult> getNspProfile(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNspProfileResult.fromMap(result);
+}
+
+pulumi.Output<GetNspProfileResult> getNspProfileOutput(
+  GetNspProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getNspProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNspProfileResult.fromMap);
 }
 
 /// Retrieves the details of a virtual wan p2s vpn gateway.
@@ -1812,6 +2626,17 @@ Future<GetP2sVpnGatewayResult> getP2sVpnGateway(
   return GetP2sVpnGatewayResult.fromMap(result);
 }
 
+pulumi.Output<GetP2sVpnGatewayResult> getP2sVpnGatewayOutput(
+  GetP2sVpnGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getP2sVpnGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetP2sVpnGatewayResult.fromMap);
+}
+
 /// Gets the connection health of P2S clients of the virtual wan P2SVpnGateway in the specified resource group.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -1830,6 +2655,17 @@ Future<GetP2sVpnGatewayP2sVpnConnectionHealthResult> getP2sVpnGatewayP2sVpnConne
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetP2sVpnGatewayP2sVpnConnectionHealthResult.fromMap(result);
+}
+
+pulumi.Output<GetP2sVpnGatewayP2sVpnConnectionHealthResult> getP2sVpnGatewayP2sVpnConnectionHealthOutput(
+  GetP2sVpnGatewayP2sVpnConnectionHealthArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getP2sVpnGatewayP2sVpnConnectionHealth',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetP2sVpnGatewayP2sVpnConnectionHealthResult.fromMap);
 }
 
 /// Gets the sas url to get the connection health detail of P2S clients of the virtual wan P2SVpnGateway in the specified resource group.
@@ -1852,6 +2688,17 @@ Future<GetP2sVpnGatewayP2sVpnConnectionHealthDetailedResult> getP2sVpnGatewayP2s
   return GetP2sVpnGatewayP2sVpnConnectionHealthDetailedResult.fromMap(result);
 }
 
+pulumi.Output<GetP2sVpnGatewayP2sVpnConnectionHealthDetailedResult> getP2sVpnGatewayP2sVpnConnectionHealthDetailedOutput(
+  GetP2sVpnGatewayP2sVpnConnectionHealthDetailedArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getP2sVpnGatewayP2sVpnConnectionHealthDetailed',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetP2sVpnGatewayP2sVpnConnectionHealthDetailedResult.fromMap);
+}
+
 /// Retrieves the details of a P2SVpnServerConfiguration.
 ///
 /// Uses Azure REST API version 2019-07-01.
@@ -1870,6 +2717,17 @@ Future<GetP2sVpnServerConfigurationResult> getP2sVpnServerConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetP2sVpnServerConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetP2sVpnServerConfigurationResult> getP2sVpnServerConfigurationOutput(
+  GetP2sVpnServerConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getP2sVpnServerConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetP2sVpnServerConfigurationResult.fromMap);
 }
 
 /// Gets a packet capture session by name.
@@ -1892,6 +2750,17 @@ Future<GetPacketCaptureResult> getPacketCapture(
   return GetPacketCaptureResult.fromMap(result);
 }
 
+pulumi.Output<GetPacketCaptureResult> getPacketCaptureOutput(
+  GetPacketCaptureArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getPacketCapture',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPacketCaptureResult.fromMap);
+}
+
 /// Gets the private dns zone group resource by specified private dns zone group name.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -1910,6 +2779,17 @@ Future<GetPrivateDnsZoneGroupResult> getPrivateDnsZoneGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateDnsZoneGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateDnsZoneGroupResult> getPrivateDnsZoneGroupOutput(
+  GetPrivateDnsZoneGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getPrivateDnsZoneGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateDnsZoneGroupResult.fromMap);
 }
 
 /// Gets the specified private endpoint by resource group.
@@ -1932,6 +2812,17 @@ Future<GetPrivateEndpointResult> getPrivateEndpoint(
   return GetPrivateEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointResult> getPrivateEndpointOutput(
+  GetPrivateEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getPrivateEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointResult.fromMap);
+}
+
 /// Gets the specified private link service by resource group.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -1950,6 +2841,17 @@ Future<GetPrivateLinkServiceResult> getPrivateLinkService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateLinkServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateLinkServiceResult> getPrivateLinkServiceOutput(
+  GetPrivateLinkServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getPrivateLinkService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateLinkServiceResult.fromMap);
 }
 
 /// Get the specific private end point connection by specific private link service in the resource group.
@@ -1972,6 +2874,17 @@ Future<GetPrivateLinkServicePrivateEndpointConnectionResult> getPrivateLinkServi
   return GetPrivateLinkServicePrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateLinkServicePrivateEndpointConnectionResult> getPrivateLinkServicePrivateEndpointConnectionOutput(
+  GetPrivateLinkServicePrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getPrivateLinkServicePrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateLinkServicePrivateEndpointConnectionResult.fromMap);
+}
+
 /// Gets the specified public IP address in a specified resource group.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -1990,6 +2903,17 @@ Future<GetPublicIPAddressResult> getPublicIPAddress(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPublicIPAddressResult.fromMap(result);
+}
+
+pulumi.Output<GetPublicIPAddressResult> getPublicIPAddressOutput(
+  GetPublicIPAddressArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getPublicIPAddress',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPublicIPAddressResult.fromMap);
 }
 
 /// Gets the specified public IP prefix in a specified resource group.
@@ -2012,6 +2936,17 @@ Future<GetPublicIPPrefixResult> getPublicIPPrefix(
   return GetPublicIPPrefixResult.fromMap(result);
 }
 
+pulumi.Output<GetPublicIPPrefixResult> getPublicIPPrefixOutput(
+  GetPublicIPPrefixArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getPublicIPPrefix',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPublicIPPrefixResult.fromMap);
+}
+
 /// Configuration information or intent on which to do the analysis on.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2030,6 +2965,17 @@ Future<GetReachabilityAnalysisIntentResult> getReachabilityAnalysisIntent(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReachabilityAnalysisIntentResult.fromMap(result);
+}
+
+pulumi.Output<GetReachabilityAnalysisIntentResult> getReachabilityAnalysisIntentOutput(
+  GetReachabilityAnalysisIntentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getReachabilityAnalysisIntent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReachabilityAnalysisIntentResult.fromMap);
 }
 
 /// Configuration information for analysis run.
@@ -2052,6 +2998,17 @@ Future<GetReachabilityAnalysisRunResult> getReachabilityAnalysisRun(
   return GetReachabilityAnalysisRunResult.fromMap(result);
 }
 
+pulumi.Output<GetReachabilityAnalysisRunResult> getReachabilityAnalysisRunOutput(
+  GetReachabilityAnalysisRunArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getReachabilityAnalysisRun',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReachabilityAnalysisRunResult.fromMap);
+}
+
 /// Gets the specified route from a route table.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2070,6 +3027,17 @@ Future<GetRouteResult> getRoute(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRouteResult.fromMap(result);
+}
+
+pulumi.Output<GetRouteResult> getRouteOutput(
+  GetRouteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getRoute',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouteResult.fromMap);
 }
 
 /// Gets the specified route filter.
@@ -2092,6 +3060,17 @@ Future<GetRouteFilterResult> getRouteFilter(
   return GetRouteFilterResult.fromMap(result);
 }
 
+pulumi.Output<GetRouteFilterResult> getRouteFilterOutput(
+  GetRouteFilterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getRouteFilter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouteFilterResult.fromMap);
+}
+
 /// Gets the specified rule from a route filter.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2110,6 +3089,17 @@ Future<GetRouteFilterRuleResult> getRouteFilterRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRouteFilterRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetRouteFilterRuleResult> getRouteFilterRuleOutput(
+  GetRouteFilterRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getRouteFilterRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouteFilterRuleResult.fromMap);
 }
 
 /// Retrieves the details of a RouteMap.
@@ -2132,6 +3122,17 @@ Future<GetRouteMapResult> getRouteMap(
   return GetRouteMapResult.fromMap(result);
 }
 
+pulumi.Output<GetRouteMapResult> getRouteMapOutput(
+  GetRouteMapArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getRouteMap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouteMapResult.fromMap);
+}
+
 /// Gets the specified route table.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2152,6 +3153,17 @@ Future<GetRouteTableResult> getRouteTable(
   return GetRouteTableResult.fromMap(result);
 }
 
+pulumi.Output<GetRouteTableResult> getRouteTableOutput(
+  GetRouteTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getRouteTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouteTableResult.fromMap);
+}
+
 /// Retrieves a network manager routing configuration.
 ///
 /// Uses Azure REST API version 2023-03-01-preview.
@@ -2168,6 +3180,17 @@ Future<GetRoutingConfigurationResult> getRoutingConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRoutingConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetRoutingConfigurationResult> getRoutingConfigurationOutput(
+  GetRoutingConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getRoutingConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoutingConfigurationResult.fromMap);
 }
 
 /// Retrieves the details of a RoutingIntent.
@@ -2190,6 +3213,17 @@ Future<GetRoutingIntentResult> getRoutingIntent(
   return GetRoutingIntentResult.fromMap(result);
 }
 
+pulumi.Output<GetRoutingIntentResult> getRoutingIntentOutput(
+  GetRoutingIntentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getRoutingIntent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoutingIntentResult.fromMap);
+}
+
 /// Gets a network manager routing configuration routing rule.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2208,6 +3242,17 @@ Future<GetRoutingRuleResult> getRoutingRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRoutingRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetRoutingRuleResult> getRoutingRuleOutput(
+  GetRoutingRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getRoutingRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoutingRuleResult.fromMap);
 }
 
 /// Gets a network manager routing configuration rule collection.
@@ -2230,6 +3275,17 @@ Future<GetRoutingRuleCollectionResult> getRoutingRuleCollection(
   return GetRoutingRuleCollectionResult.fromMap(result);
 }
 
+pulumi.Output<GetRoutingRuleCollectionResult> getRoutingRuleCollectionOutput(
+  GetRoutingRuleCollectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getRoutingRuleCollection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoutingRuleCollectionResult.fromMap);
+}
+
 /// Get specified scope connection created by this Network Manager.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2248,6 +3304,17 @@ Future<GetScopeConnectionResult> getScopeConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetScopeConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetScopeConnectionResult> getScopeConnectionOutput(
+  GetScopeConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getScopeConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScopeConnectionResult.fromMap);
 }
 
 /// Retrieves a network manager security admin configuration.
@@ -2270,6 +3337,17 @@ Future<GetSecurityAdminConfigurationResult> getSecurityAdminConfiguration(
   return GetSecurityAdminConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetSecurityAdminConfigurationResult> getSecurityAdminConfigurationOutput(
+  GetSecurityAdminConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getSecurityAdminConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityAdminConfigurationResult.fromMap);
+}
+
 /// Gets the specified Security Partner Provider.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2288,6 +3366,17 @@ Future<GetSecurityPartnerProviderResult> getSecurityPartnerProvider(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecurityPartnerProviderResult.fromMap(result);
+}
+
+pulumi.Output<GetSecurityPartnerProviderResult> getSecurityPartnerProviderOutput(
+  GetSecurityPartnerProviderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getSecurityPartnerProvider',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityPartnerProviderResult.fromMap);
 }
 
 /// Get the specified network security rule.
@@ -2310,6 +3399,17 @@ Future<GetSecurityRuleResult> getSecurityRule(
   return GetSecurityRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetSecurityRuleResult> getSecurityRuleOutput(
+  GetSecurityRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getSecurityRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityRuleResult.fromMap);
+}
+
 /// Retrieves a network manager security user configuration.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2328,6 +3428,17 @@ Future<GetSecurityUserConfigurationResult> getSecurityUserConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecurityUserConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetSecurityUserConfigurationResult> getSecurityUserConfigurationOutput(
+  GetSecurityUserConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getSecurityUserConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityUserConfigurationResult.fromMap);
 }
 
 /// Gets a security user rule.
@@ -2350,6 +3461,17 @@ Future<GetSecurityUserRuleResult> getSecurityUserRule(
   return GetSecurityUserRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetSecurityUserRuleResult> getSecurityUserRuleOutput(
+  GetSecurityUserRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getSecurityUserRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityUserRuleResult.fromMap);
+}
+
 /// Gets a network manager security user configuration rule collection.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2368,6 +3490,17 @@ Future<GetSecurityUserRuleCollectionResult> getSecurityUserRuleCollection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecurityUserRuleCollectionResult.fromMap(result);
+}
+
+pulumi.Output<GetSecurityUserRuleCollectionResult> getSecurityUserRuleCollectionOutput(
+  GetSecurityUserRuleCollectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getSecurityUserRuleCollection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityUserRuleCollectionResult.fromMap);
 }
 
 /// Gets the specified service Endpoint Policies in a specified resource group.
@@ -2390,6 +3523,17 @@ Future<GetServiceEndpointPolicyResult> getServiceEndpointPolicy(
   return GetServiceEndpointPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceEndpointPolicyResult> getServiceEndpointPolicyOutput(
+  GetServiceEndpointPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getServiceEndpointPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceEndpointPolicyResult.fromMap);
+}
+
 /// Get the specified service endpoint policy definitions from service endpoint policy.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2408,6 +3552,17 @@ Future<GetServiceEndpointPolicyDefinitionResult> getServiceEndpointPolicyDefinit
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceEndpointPolicyDefinitionResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceEndpointPolicyDefinitionResult> getServiceEndpointPolicyDefinitionOutput(
+  GetServiceEndpointPolicyDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getServiceEndpointPolicyDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceEndpointPolicyDefinitionResult.fromMap);
 }
 
 /// Gets the specified service gateway.
@@ -2430,6 +3585,17 @@ Future<GetServiceGatewayResult> getServiceGateway(
   return GetServiceGatewayResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceGatewayResult> getServiceGatewayOutput(
+  GetServiceGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getServiceGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceGatewayResult.fromMap);
+}
+
 /// Instance of StaticCidr resource.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2448,6 +3614,17 @@ Future<GetStaticCidrResult> getStaticCidr(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStaticCidrResult.fromMap(result);
+}
+
+pulumi.Output<GetStaticCidrResult> getStaticCidrOutput(
+  GetStaticCidrArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getStaticCidr',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStaticCidrResult.fromMap);
 }
 
 /// Gets the specified static member.
@@ -2470,6 +3647,17 @@ Future<GetStaticMemberResult> getStaticMember(
   return GetStaticMemberResult.fromMap(result);
 }
 
+pulumi.Output<GetStaticMemberResult> getStaticMemberOutput(
+  GetStaticMemberArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getStaticMember',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStaticMemberResult.fromMap);
+}
+
 /// Gets the specified subnet by virtual network and resource group.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2488,6 +3676,17 @@ Future<GetSubnetResult> getSubnet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSubnetResult.fromMap(result);
+}
+
+pulumi.Output<GetSubnetResult> getSubnetOutput(
+  GetSubnetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getSubnet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubnetResult.fromMap);
 }
 
 /// Get a specified connection created by this subscription.
@@ -2510,6 +3709,17 @@ Future<GetSubscriptionNetworkManagerConnectionResult> getSubscriptionNetworkMana
   return GetSubscriptionNetworkManagerConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetSubscriptionNetworkManagerConnectionResult> getSubscriptionNetworkManagerConnectionOutput(
+  GetSubscriptionNetworkManagerConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getSubscriptionNetworkManagerConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscriptionNetworkManagerConnectionResult.fromMap);
+}
+
 /// Gets a user rule.
 ///
 /// Uses Azure REST API version 2022-04-01-preview.
@@ -2528,6 +3738,17 @@ Future<GetUserRuleResult> getUserRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetUserRuleResult> getUserRuleOutput(
+  GetUserRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getUserRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserRuleResult.fromMap);
 }
 
 /// Gets a network manager security user configuration rule collection.
@@ -2550,6 +3771,17 @@ Future<GetUserRuleCollectionResult> getUserRuleCollection(
   return GetUserRuleCollectionResult.fromMap(result);
 }
 
+pulumi.Output<GetUserRuleCollectionResult> getUserRuleCollectionOutput(
+  GetUserRuleCollectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getUserRuleCollection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserRuleCollectionResult.fromMap);
+}
+
 /// Instance of Verifier Workspace.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2568,6 +3800,17 @@ Future<GetVerifierWorkspaceResult> getVerifierWorkspace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVerifierWorkspaceResult.fromMap(result);
+}
+
+pulumi.Output<GetVerifierWorkspaceResult> getVerifierWorkspaceOutput(
+  GetVerifierWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVerifierWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVerifierWorkspaceResult.fromMap);
 }
 
 /// Gets the specified Virtual Appliance Site.
@@ -2590,6 +3833,17 @@ Future<GetVirtualApplianceSiteResult> getVirtualApplianceSite(
   return GetVirtualApplianceSiteResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualApplianceSiteResult> getVirtualApplianceSiteOutput(
+  GetVirtualApplianceSiteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualApplianceSite',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualApplianceSiteResult.fromMap);
+}
+
 /// Retrieves the details of a VirtualHub.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2608,6 +3862,17 @@ Future<GetVirtualHubResult> getVirtualHub(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualHubResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualHubResult> getVirtualHubOutput(
+  GetVirtualHubArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualHub',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualHubResult.fromMap);
 }
 
 /// Retrieves the details of a Virtual Hub Bgp Connection.
@@ -2630,6 +3895,17 @@ Future<GetVirtualHubBgpConnectionResult> getVirtualHubBgpConnection(
   return GetVirtualHubBgpConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualHubBgpConnectionResult> getVirtualHubBgpConnectionOutput(
+  GetVirtualHubBgpConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualHubBgpConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualHubBgpConnectionResult.fromMap);
+}
+
 /// Retrieves the details of a Virtual Hub Ip configuration.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2648,6 +3924,17 @@ Future<GetVirtualHubIpConfigurationResult> getVirtualHubIpConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualHubIpConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualHubIpConfigurationResult> getVirtualHubIpConfigurationOutput(
+  GetVirtualHubIpConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualHubIpConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualHubIpConfigurationResult.fromMap);
 }
 
 /// Retrieves the details of a VirtualHubRouteTableV2.
@@ -2670,6 +3957,17 @@ Future<GetVirtualHubRouteTableV2Result> getVirtualHubRouteTableV2(
   return GetVirtualHubRouteTableV2Result.fromMap(result);
 }
 
+pulumi.Output<GetVirtualHubRouteTableV2Result> getVirtualHubRouteTableV2Output(
+  GetVirtualHubRouteTableV2Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualHubRouteTableV2',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualHubRouteTableV2Result.fromMap);
+}
+
 /// Gets the specified virtual network by resource group.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2688,6 +3986,17 @@ Future<GetVirtualNetworkResult> getVirtualNetwork(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualNetworkResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualNetworkResult> getVirtualNetworkOutput(
+  GetVirtualNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkResult.fromMap);
 }
 
 /// Gets information about the specified virtual network appliance.
@@ -2710,6 +4019,17 @@ Future<GetVirtualNetworkApplianceResult> getVirtualNetworkAppliance(
   return GetVirtualNetworkApplianceResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualNetworkApplianceResult> getVirtualNetworkApplianceOutput(
+  GetVirtualNetworkApplianceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualNetworkAppliance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkApplianceResult.fromMap);
+}
+
 /// Gets the specified virtual network gateway by resource group.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2728,6 +4048,17 @@ Future<GetVirtualNetworkGatewayResult> getVirtualNetworkGateway(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualNetworkGatewayResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualNetworkGatewayResult> getVirtualNetworkGatewayOutput(
+  GetVirtualNetworkGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualNetworkGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkGatewayResult.fromMap);
 }
 
 /// This operation retrieves a list of routes the virtual network gateway is advertising to the specified peer.
@@ -2750,6 +4081,17 @@ Future<GetVirtualNetworkGatewayAdvertisedRoutesResult> getVirtualNetworkGatewayA
   return GetVirtualNetworkGatewayAdvertisedRoutesResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualNetworkGatewayAdvertisedRoutesResult> getVirtualNetworkGatewayAdvertisedRoutesOutput(
+  GetVirtualNetworkGatewayAdvertisedRoutesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualNetworkGatewayAdvertisedRoutes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkGatewayAdvertisedRoutesResult.fromMap);
+}
+
 /// The GetBgpPeerStatus operation retrieves the status of all BGP peers.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2768,6 +4110,17 @@ Future<GetVirtualNetworkGatewayBgpPeerStatusResult> getVirtualNetworkGatewayBgpP
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualNetworkGatewayBgpPeerStatusResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualNetworkGatewayBgpPeerStatusResult> getVirtualNetworkGatewayBgpPeerStatusOutput(
+  GetVirtualNetworkGatewayBgpPeerStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualNetworkGatewayBgpPeerStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkGatewayBgpPeerStatusResult.fromMap);
 }
 
 /// Gets the specified virtual network gateway connection by resource group.
@@ -2790,6 +4143,17 @@ Future<GetVirtualNetworkGatewayConnectionResult> getVirtualNetworkGatewayConnect
   return GetVirtualNetworkGatewayConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualNetworkGatewayConnectionResult> getVirtualNetworkGatewayConnectionOutput(
+  GetVirtualNetworkGatewayConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualNetworkGatewayConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkGatewayConnectionResult.fromMap);
+}
+
 /// Lists IKE Security Associations for the virtual network gateway connection in the specified resource group.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2808,6 +4172,17 @@ Future<GetVirtualNetworkGatewayConnectionIkeSasResult> getVirtualNetworkGatewayC
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualNetworkGatewayConnectionIkeSasResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualNetworkGatewayConnectionIkeSasResult> getVirtualNetworkGatewayConnectionIkeSasOutput(
+  GetVirtualNetworkGatewayConnectionIkeSasArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualNetworkGatewayConnectionIkeSas',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkGatewayConnectionIkeSasResult.fromMap);
 }
 
 /// This operation retrieves a list of routes the virtual network gateway has learned, including routes learned from BGP peers.
@@ -2830,6 +4205,17 @@ Future<GetVirtualNetworkGatewayLearnedRoutesResult> getVirtualNetworkGatewayLear
   return GetVirtualNetworkGatewayLearnedRoutesResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualNetworkGatewayLearnedRoutesResult> getVirtualNetworkGatewayLearnedRoutesOutput(
+  GetVirtualNetworkGatewayLearnedRoutesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualNetworkGatewayLearnedRoutes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkGatewayLearnedRoutesResult.fromMap);
+}
+
 /// Retrieves the details of a nat rule.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2848,6 +4234,17 @@ Future<GetVirtualNetworkGatewayNatRuleResult> getVirtualNetworkGatewayNatRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualNetworkGatewayNatRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualNetworkGatewayNatRuleResult> getVirtualNetworkGatewayNatRuleOutput(
+  GetVirtualNetworkGatewayNatRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualNetworkGatewayNatRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkGatewayNatRuleResult.fromMap);
 }
 
 /// This operation retrieves the resiliency information for an Express Route Gateway, including the gateway's current resiliency score and recommendations to further improve the score
@@ -2870,6 +4267,17 @@ Future<GetVirtualNetworkGatewayResiliencyInformationResult> getVirtualNetworkGat
   return GetVirtualNetworkGatewayResiliencyInformationResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualNetworkGatewayResiliencyInformationResult> getVirtualNetworkGatewayResiliencyInformationOutput(
+  GetVirtualNetworkGatewayResiliencyInformationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualNetworkGatewayResiliencyInformation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkGatewayResiliencyInformationResult.fromMap);
+}
+
 /// This operation retrieves the route set information for an Express Route Gateway based on their resiliency
 ///
 /// Uses Azure REST API version 2024-07-01.
@@ -2888,6 +4296,17 @@ Future<GetVirtualNetworkGatewayRoutesInformationResult> getVirtualNetworkGateway
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualNetworkGatewayRoutesInformationResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualNetworkGatewayRoutesInformationResult> getVirtualNetworkGatewayRoutesInformationOutput(
+  GetVirtualNetworkGatewayRoutesInformationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualNetworkGatewayRoutesInformation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkGatewayRoutesInformationResult.fromMap);
 }
 
 /// Gets pre-generated VPN profile for P2S client of the virtual network gateway in the specified resource group. The profile needs to be generated first using generateVpnProfile.
@@ -2910,6 +4329,17 @@ Future<GetVirtualNetworkGatewayVpnProfilePackageUrlResult> getVirtualNetworkGate
   return GetVirtualNetworkGatewayVpnProfilePackageUrlResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualNetworkGatewayVpnProfilePackageUrlResult> getVirtualNetworkGatewayVpnProfilePackageUrlOutput(
+  GetVirtualNetworkGatewayVpnProfilePackageUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualNetworkGatewayVpnProfilePackageUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkGatewayVpnProfilePackageUrlResult.fromMap);
+}
+
 /// Get VPN client connection health detail per P2S client connection of the virtual network gateway in the specified resource group.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2928,6 +4358,17 @@ Future<GetVirtualNetworkGatewayVpnclientConnectionHealthResult> getVirtualNetwor
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualNetworkGatewayVpnclientConnectionHealthResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualNetworkGatewayVpnclientConnectionHealthResult> getVirtualNetworkGatewayVpnclientConnectionHealthOutput(
+  GetVirtualNetworkGatewayVpnclientConnectionHealthArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualNetworkGatewayVpnclientConnectionHealth',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkGatewayVpnclientConnectionHealthResult.fromMap);
 }
 
 /// The Get VpnclientIpsecParameters operation retrieves information about the vpnclient ipsec policy for P2S client of virtual network gateway in the specified resource group through Network resource provider.
@@ -2950,6 +4391,17 @@ Future<GetVirtualNetworkGatewayVpnclientIpsecParametersResult> getVirtualNetwork
   return GetVirtualNetworkGatewayVpnclientIpsecParametersResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualNetworkGatewayVpnclientIpsecParametersResult> getVirtualNetworkGatewayVpnclientIpsecParametersOutput(
+  GetVirtualNetworkGatewayVpnclientIpsecParametersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualNetworkGatewayVpnclientIpsecParameters',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkGatewayVpnclientIpsecParametersResult.fromMap);
+}
+
 /// Gets the specified virtual network peering.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -2968,6 +4420,17 @@ Future<GetVirtualNetworkPeeringResult> getVirtualNetworkPeering(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualNetworkPeeringResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualNetworkPeeringResult> getVirtualNetworkPeeringOutput(
+  GetVirtualNetworkPeeringArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualNetworkPeering',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkPeeringResult.fromMap);
 }
 
 /// Gets information about the specified virtual network tap.
@@ -2990,6 +4453,17 @@ Future<GetVirtualNetworkTapResult> getVirtualNetworkTap(
   return GetVirtualNetworkTapResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualNetworkTapResult> getVirtualNetworkTapOutput(
+  GetVirtualNetworkTapArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualNetworkTap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkTapResult.fromMap);
+}
+
 /// Gets the specified Virtual Router.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -3008,6 +4482,17 @@ Future<GetVirtualRouterResult> getVirtualRouter(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualRouterResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualRouterResult> getVirtualRouterOutput(
+  GetVirtualRouterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualRouter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualRouterResult.fromMap);
 }
 
 /// Gets the specified Virtual Router Peering.
@@ -3030,6 +4515,17 @@ Future<GetVirtualRouterPeeringResult> getVirtualRouterPeering(
   return GetVirtualRouterPeeringResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualRouterPeeringResult> getVirtualRouterPeeringOutput(
+  GetVirtualRouterPeeringArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualRouterPeering',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualRouterPeeringResult.fromMap);
+}
+
 /// Retrieves the details of a VirtualWAN.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -3048,6 +4544,17 @@ Future<GetVirtualWanResult> getVirtualWan(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualWanResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualWanResult> getVirtualWanOutput(
+  GetVirtualWanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVirtualWan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualWanResult.fromMap);
 }
 
 /// Retrieves the details of a vpn connection.
@@ -3070,6 +4577,17 @@ Future<GetVpnConnectionResult> getVpnConnection(
   return GetVpnConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetVpnConnectionResult> getVpnConnectionOutput(
+  GetVpnConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVpnConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpnConnectionResult.fromMap);
+}
+
 /// Retrieves the details of a virtual wan vpn gateway.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -3088,6 +4606,17 @@ Future<GetVpnGatewayResult> getVpnGateway(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVpnGatewayResult.fromMap(result);
+}
+
+pulumi.Output<GetVpnGatewayResult> getVpnGatewayOutput(
+  GetVpnGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVpnGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpnGatewayResult.fromMap);
 }
 
 /// Lists IKE Security Associations for Vpn Site Link Connection in the specified resource group.
@@ -3110,6 +4639,17 @@ Future<GetVpnLinkConnectionIkeSasResult> getVpnLinkConnectionIkeSas(
   return GetVpnLinkConnectionIkeSasResult.fromMap(result);
 }
 
+pulumi.Output<GetVpnLinkConnectionIkeSasResult> getVpnLinkConnectionIkeSasOutput(
+  GetVpnLinkConnectionIkeSasArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVpnLinkConnectionIkeSas',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpnLinkConnectionIkeSasResult.fromMap);
+}
+
 /// Retrieves the details of a VpnServerConfiguration.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -3128,6 +4668,17 @@ Future<GetVpnServerConfigurationResult> getVpnServerConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVpnServerConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetVpnServerConfigurationResult> getVpnServerConfigurationOutput(
+  GetVpnServerConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVpnServerConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpnServerConfigurationResult.fromMap);
 }
 
 /// Retrieves the details of a VPN site.
@@ -3150,6 +4701,17 @@ Future<GetVpnSiteResult> getVpnSite(
   return GetVpnSiteResult.fromMap(result);
 }
 
+pulumi.Output<GetVpnSiteResult> getVpnSiteOutput(
+  GetVpnSiteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getVpnSite',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpnSiteResult.fromMap);
+}
+
 /// Retrieve protection policy with specified name within a resource group.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -3170,6 +4732,17 @@ Future<GetWebApplicationFirewallPolicyResult> getWebApplicationFirewallPolicy(
   return GetWebApplicationFirewallPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetWebApplicationFirewallPolicyResult> getWebApplicationFirewallPolicyOutput(
+  GetWebApplicationFirewallPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:getWebApplicationFirewallPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebApplicationFirewallPolicyResult.fromMap);
+}
+
 /// Lists active connectivity configurations in a network manager.
 ///
 /// Uses Azure REST API version 2021-02-01-preview.
@@ -3186,6 +4759,17 @@ Future<ListActiveConnectivityConfigurationResult> listActiveConnectivityConfigur
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListActiveConnectivityConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<ListActiveConnectivityConfigurationResult> listActiveConnectivityConfigurationOutput(
+  ListActiveConnectivityConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:listActiveConnectivityConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListActiveConnectivityConfigurationResult.fromMap);
 }
 
 /// Lists active connectivity configurations in a network manager.
@@ -3208,6 +4792,17 @@ Future<ListActiveConnectivityConfigurationsResult> listActiveConnectivityConfigu
   return ListActiveConnectivityConfigurationsResult.fromMap(result);
 }
 
+pulumi.Output<ListActiveConnectivityConfigurationsResult> listActiveConnectivityConfigurationsOutput(
+  ListActiveConnectivityConfigurationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:listActiveConnectivityConfigurations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListActiveConnectivityConfigurationsResult.fromMap);
+}
+
 /// Lists active security admin rules in a network manager.
 ///
 /// Uses Azure REST API version 2021-02-01-preview.
@@ -3224,6 +4819,17 @@ Future<ListActiveSecurityAdminRuleResult> listActiveSecurityAdminRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListActiveSecurityAdminRuleResult.fromMap(result);
+}
+
+pulumi.Output<ListActiveSecurityAdminRuleResult> listActiveSecurityAdminRuleOutput(
+  ListActiveSecurityAdminRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:listActiveSecurityAdminRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListActiveSecurityAdminRuleResult.fromMap);
 }
 
 /// Lists active security admin rules in a network manager.
@@ -3246,6 +4852,17 @@ Future<ListActiveSecurityAdminRulesResult> listActiveSecurityAdminRules(
   return ListActiveSecurityAdminRulesResult.fromMap(result);
 }
 
+pulumi.Output<ListActiveSecurityAdminRulesResult> listActiveSecurityAdminRulesOutput(
+  ListActiveSecurityAdminRulesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:listActiveSecurityAdminRules',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListActiveSecurityAdminRulesResult.fromMap);
+}
+
 /// Lists Active Security User Rules in a network manager.
 ///
 /// Uses Azure REST API version 2021-02-01-preview.
@@ -3262,6 +4879,17 @@ Future<ListActiveSecurityUserRuleResult> listActiveSecurityUserRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListActiveSecurityUserRuleResult.fromMap(result);
+}
+
+pulumi.Output<ListActiveSecurityUserRuleResult> listActiveSecurityUserRuleOutput(
+  ListActiveSecurityUserRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:listActiveSecurityUserRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListActiveSecurityUserRuleResult.fromMap);
 }
 
 /// Lists Active Security User Rules in a network manager.
@@ -3284,6 +4912,17 @@ Future<ListActiveSecurityUserRulesResult> listActiveSecurityUserRules(
   return ListActiveSecurityUserRulesResult.fromMap(result);
 }
 
+pulumi.Output<ListActiveSecurityUserRulesResult> listActiveSecurityUserRulesOutput(
+  ListActiveSecurityUserRulesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:listActiveSecurityUserRules',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListActiveSecurityUserRulesResult.fromMap);
+}
+
 /// List all effective connectivity configurations applied on a virtual network.
 ///
 /// Uses Azure REST API version 2021-02-01-preview.
@@ -3302,6 +4941,17 @@ Future<ListEffectiveConnectivityConfigurationResult> listEffectiveConnectivityCo
   return ListEffectiveConnectivityConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<ListEffectiveConnectivityConfigurationResult> listEffectiveConnectivityConfigurationOutput(
+  ListEffectiveConnectivityConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:listEffectiveConnectivityConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListEffectiveConnectivityConfigurationResult.fromMap);
+}
+
 /// Lists all effective virtual networks by specified network group.
 ///
 /// Uses Azure REST API version 2021-02-01-preview.
@@ -3318,6 +4968,17 @@ Future<ListEffectiveVirtualNetworkByNetworkGroupResult> listEffectiveVirtualNetw
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListEffectiveVirtualNetworkByNetworkGroupResult.fromMap(result);
+}
+
+pulumi.Output<ListEffectiveVirtualNetworkByNetworkGroupResult> listEffectiveVirtualNetworkByNetworkGroupOutput(
+  ListEffectiveVirtualNetworkByNetworkGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:listEffectiveVirtualNetworkByNetworkGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListEffectiveVirtualNetworkByNetworkGroupResult.fromMap);
 }
 
 /// List effective virtual networks in a network manager.
@@ -3340,6 +5001,17 @@ Future<ListEffectiveVirtualNetworkByNetworkManagerResult> listEffectiveVirtualNe
   return ListEffectiveVirtualNetworkByNetworkManagerResult.fromMap(result);
 }
 
+pulumi.Output<ListEffectiveVirtualNetworkByNetworkManagerResult> listEffectiveVirtualNetworkByNetworkManagerOutput(
+  ListEffectiveVirtualNetworkByNetworkManagerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:listEffectiveVirtualNetworkByNetworkManager',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListEffectiveVirtualNetworkByNetworkManagerResult.fromMap);
+}
+
 /// Retrieves the current status of IDPS signatures for the relevant policy. Maximal amount of returned signatures is 1000.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -3358,6 +5030,17 @@ Future<ListFirewallPolicyIdpsSignatureResult> listFirewallPolicyIdpsSignature(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListFirewallPolicyIdpsSignatureResult.fromMap(result);
+}
+
+pulumi.Output<ListFirewallPolicyIdpsSignatureResult> listFirewallPolicyIdpsSignatureOutput(
+  ListFirewallPolicyIdpsSignatureArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:listFirewallPolicyIdpsSignature',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListFirewallPolicyIdpsSignatureResult.fromMap);
 }
 
 /// Retrieves the current filter values for the signatures overrides
@@ -3380,6 +5063,17 @@ Future<ListFirewallPolicyIdpsSignaturesFilterValueResult> listFirewallPolicyIdps
   return ListFirewallPolicyIdpsSignaturesFilterValueResult.fromMap(result);
 }
 
+pulumi.Output<ListFirewallPolicyIdpsSignaturesFilterValueResult> listFirewallPolicyIdpsSignaturesFilterValueOutput(
+  ListFirewallPolicyIdpsSignaturesFilterValueArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:listFirewallPolicyIdpsSignaturesFilterValue',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListFirewallPolicyIdpsSignaturesFilterValueResult.fromMap);
+}
+
 /// List of PoolAssociation
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -3398,6 +5092,17 @@ Future<ListIpamPoolAssociatedResourcesResult> listIpamPoolAssociatedResources(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListIpamPoolAssociatedResourcesResult.fromMap(result);
+}
+
+pulumi.Output<ListIpamPoolAssociatedResourcesResult> listIpamPoolAssociatedResourcesOutput(
+  ListIpamPoolAssociatedResourcesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:listIpamPoolAssociatedResources',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListIpamPoolAssociatedResourcesResult.fromMap);
 }
 
 /// Lists all effective virtual networks by specified network group.
@@ -3420,6 +5125,17 @@ Future<ListListEffectiveVirtualNetworkByNetworkGroupResult> listListEffectiveVir
   return ListListEffectiveVirtualNetworkByNetworkGroupResult.fromMap(result);
 }
 
+pulumi.Output<ListListEffectiveVirtualNetworkByNetworkGroupResult> listListEffectiveVirtualNetworkByNetworkGroupOutput(
+  ListListEffectiveVirtualNetworkByNetworkGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:listListEffectiveVirtualNetworkByNetworkGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListListEffectiveVirtualNetworkByNetworkGroupResult.fromMap);
+}
+
 /// Post to List of Network Manager Deployment Status.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -3438,6 +5154,17 @@ Future<ListNetworkManagerDeploymentStatusResult> listNetworkManagerDeploymentSta
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListNetworkManagerDeploymentStatusResult.fromMap(result);
+}
+
+pulumi.Output<ListNetworkManagerDeploymentStatusResult> listNetworkManagerDeploymentStatusOutput(
+  ListNetworkManagerDeploymentStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:listNetworkManagerDeploymentStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListNetworkManagerDeploymentStatusResult.fromMap);
 }
 
 /// List all effective connectivity configurations applied on a virtual network.
@@ -3460,6 +5187,17 @@ Future<ListNetworkManagerEffectiveConnectivityConfigurationsResult> listNetworkM
   return ListNetworkManagerEffectiveConnectivityConfigurationsResult.fromMap(result);
 }
 
+pulumi.Output<ListNetworkManagerEffectiveConnectivityConfigurationsResult> listNetworkManagerEffectiveConnectivityConfigurationsOutput(
+  ListNetworkManagerEffectiveConnectivityConfigurationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:listNetworkManagerEffectiveConnectivityConfigurations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListNetworkManagerEffectiveConnectivityConfigurationsResult.fromMap);
+}
+
 /// List all effective security admin rules applied on a virtual network.
 ///
 /// Uses Azure REST API version 2021-02-01-preview.
@@ -3476,6 +5214,17 @@ Future<ListNetworkManagerEffectiveSecurityAdminRuleResult> listNetworkManagerEff
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListNetworkManagerEffectiveSecurityAdminRuleResult.fromMap(result);
+}
+
+pulumi.Output<ListNetworkManagerEffectiveSecurityAdminRuleResult> listNetworkManagerEffectiveSecurityAdminRuleOutput(
+  ListNetworkManagerEffectiveSecurityAdminRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:listNetworkManagerEffectiveSecurityAdminRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListNetworkManagerEffectiveSecurityAdminRuleResult.fromMap);
 }
 
 /// List all effective security admin rules applied on a virtual network.
@@ -3498,6 +5247,17 @@ Future<ListNetworkManagerEffectiveSecurityAdminRulesResult> listNetworkManagerEf
   return ListNetworkManagerEffectiveSecurityAdminRulesResult.fromMap(result);
 }
 
+pulumi.Output<ListNetworkManagerEffectiveSecurityAdminRulesResult> listNetworkManagerEffectiveSecurityAdminRulesOutput(
+  ListNetworkManagerEffectiveSecurityAdminRulesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:listNetworkManagerEffectiveSecurityAdminRules',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListNetworkManagerEffectiveSecurityAdminRulesResult.fromMap);
+}
+
 /// List all Radius servers with respective radius secrets from virtual network gateway VpnClientConfiguration.
 ///
 /// Uses Azure REST API version 2024-10-01.
@@ -3516,6 +5276,17 @@ Future<ListVirtualNetworkGatewayRadiusSecretsResult> listVirtualNetworkGatewayRa
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListVirtualNetworkGatewayRadiusSecretsResult.fromMap(result);
+}
+
+pulumi.Output<ListVirtualNetworkGatewayRadiusSecretsResult> listVirtualNetworkGatewayRadiusSecretsOutput(
+  ListVirtualNetworkGatewayRadiusSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:listVirtualNetworkGatewayRadiusSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListVirtualNetworkGatewayRadiusSecretsResult.fromMap);
 }
 
 /// Gets the value of the shared key of VpnLink connection specified.
@@ -3538,6 +5309,17 @@ Future<ListVpnLinkConnectionDefaultSharedKeyResult> listVpnLinkConnectionDefault
   return ListVpnLinkConnectionDefaultSharedKeyResult.fromMap(result);
 }
 
+pulumi.Output<ListVpnLinkConnectionDefaultSharedKeyResult> listVpnLinkConnectionDefaultSharedKeyOutput(
+  ListVpnLinkConnectionDefaultSharedKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:listVpnLinkConnectionDefaultSharedKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListVpnLinkConnectionDefaultSharedKeyResult.fromMap);
+}
+
 /// List all Radius servers with respective radius secrets from VpnServerConfiguration.
 ///
 /// Uses Azure REST API version 2024-10-01.
@@ -3556,4 +5338,15 @@ Future<ListVpnServerConfigurationRadiusSecretsResult> listVpnServerConfiguration
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListVpnServerConfigurationRadiusSecretsResult.fromMap(result);
+}
+
+pulumi.Output<ListVpnServerConfigurationRadiusSecretsResult> listVpnServerConfigurationRadiusSecretsOutput(
+  ListVpnServerConfigurationRadiusSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:network:listVpnServerConfigurationRadiusSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListVpnServerConfigurationRadiusSecretsResult.fromMap);
 }

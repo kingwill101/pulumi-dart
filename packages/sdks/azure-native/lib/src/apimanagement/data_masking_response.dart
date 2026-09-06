@@ -5,9 +5,9 @@ import 'data_masking_entity_response.dart';
 
 class DataMaskingResponse {
   /// Masking settings for headers
-  final pulumi.Input<List<DataMaskingEntityResponse>>? headers;
+  final pulumi.Input<List<DataMaskingEntityResponse>?>? headers;
   /// Masking settings for Url query parameters
-  final pulumi.Input<List<DataMaskingEntityResponse>>? queryParams;
+  final pulumi.Input<List<DataMaskingEntityResponse>?>? queryParams;
 
   /// Creates a new [DataMaskingResponse].
   /// [headers] Masking settings for headers

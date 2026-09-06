@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The parameters to provide for the Microsoft Teams channel.
 class SkypeChannelProperties {
   /// Calling web hook for Skype channel
-  final pulumi.Input<String>? callingWebHook;
+  final pulumi.Input<String?>? callingWebHook;
   /// Enable calling for Skype channel
-  final pulumi.Input<bool>? enableCalling;
+  final pulumi.Input<bool?>? enableCalling;
   /// Enable groups for Skype channel
-  final pulumi.Input<bool>? enableGroups;
+  final pulumi.Input<bool?>? enableGroups;
   /// Enable media cards for Skype channel
-  final pulumi.Input<bool>? enableMediaCards;
+  final pulumi.Input<bool?>? enableMediaCards;
   /// Enable messaging for Skype channel
-  final pulumi.Input<bool>? enableMessaging;
+  final pulumi.Input<bool?>? enableMessaging;
   /// Enable screen sharing for Skype channel
-  final pulumi.Input<bool>? enableScreenSharing;
+  final pulumi.Input<bool?>? enableScreenSharing;
   /// Enable video for Skype channel
-  final pulumi.Input<bool>? enableVideo;
+  final pulumi.Input<bool?>? enableVideo;
   /// Group mode for Skype channel
-  final pulumi.Input<String>? groupsMode;
+  final pulumi.Input<String?>? groupsMode;
   /// Incoming call route for Skype channel
-  final pulumi.Input<String>? incomingCallRoute;
+  final pulumi.Input<String?>? incomingCallRoute;
   /// Whether this channel is enabled for the bot
   final pulumi.Input<bool> isEnabled;
 
@@ -36,9 +36,9 @@ class SkypeChannelProperties {
   /// [groupsMode] Group mode for Skype channel
   /// [incomingCallRoute] Incoming call route for Skype channel
   /// [isEnabled] Whether this channel is enabled for the bot
-  const SkypeChannelProperties({
+  SkypeChannelProperties({
     this.callingWebHook,
-    this.enableCalling,
+    pulumi.Input<bool?>? enableCalling,
     this.enableGroups,
     this.enableMediaCards,
     this.enableMessaging,
@@ -47,7 +47,7 @@ class SkypeChannelProperties {
     this.groupsMode,
     this.incomingCallRoute,
     required this.isEnabled,
-  });
+  }) : enableCalling = enableCalling ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

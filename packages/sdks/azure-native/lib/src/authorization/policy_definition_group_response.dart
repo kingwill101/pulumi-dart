@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The policy definition group.
 class PolicyDefinitionGroupResponse {
   /// A resource ID of a resource that contains additional metadata about the group.
-  final pulumi.Input<String>? additionalMetadataId;
+  final pulumi.Input<String?>? additionalMetadataId;
   /// The group's category.
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// The group's description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The group's display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The name of the group.
   final pulumi.Input<String> name;
 

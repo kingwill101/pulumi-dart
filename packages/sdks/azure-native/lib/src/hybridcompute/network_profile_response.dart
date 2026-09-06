@@ -6,7 +6,7 @@ import 'network_interface_response.dart';
 /// Describes the network information on this machine.
 class NetworkProfileResponse {
   /// The list of network interfaces.
-  final pulumi.Input<List<NetworkInterfaceResponse>>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterfaceResponse>?>? networkInterfaces;
 
   /// Creates a new [NetworkProfileResponse].
   /// [networkInterfaces] The list of network interfaces.

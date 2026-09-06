@@ -24,6 +24,17 @@ Future<ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult> lis
   return ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult.fromMap(result);
 }
 
+pulumi.Output<ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult> listSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdOutput(
+  ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resourcehealth:listSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventId',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult.fromMap);
+}
+
 /// Lists impacted resources in the tenant by an event (Security Advisory).
 ///
 /// Uses Azure REST API version 2024-02-01.
@@ -42,4 +53,15 @@ Future<ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult> listSecur
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult.fromMap(result);
+}
+
+pulumi.Output<ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult> listSecurityAdvisoryImpactedResourceByTenantIdAndEventIdOutput(
+  ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resourcehealth:listSecurityAdvisoryImpactedResourceByTenantIdAndEventId',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult.fromMap);
 }

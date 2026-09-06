@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_content_item_args_doc}
 class ContentItemArgs {
   /// Content item identifier.
-  final pulumi.Input<String>? contentItemId;
+  final pulumi.Input<String?>? contentItemId;
   /// Content type identifier.
   final pulumi.Input<String> contentTypeId;
   /// Properties of the content item.

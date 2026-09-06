@@ -8,21 +8,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_authorization_access_policy_args_doc}
 class AuthorizationAccessPolicyArgs {
   /// The allowed Azure Active Directory Application IDs
-  final pulumi.Input<List<String>>? appIds;
+  final pulumi.Input<List<String>?>? appIds;
   /// Identifier of the authorization access policy.
-  final pulumi.Input<String>? authorizationAccessPolicyId;
+  final pulumi.Input<String?>? authorizationAccessPolicyId;
   /// Identifier of the authorization.
   final pulumi.Input<String> authorizationId;
   /// Identifier of the authorization provider.
   final pulumi.Input<String> authorizationProviderId;
   /// The Object Id
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
   /// The Tenant Id
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [AuthorizationAccessPolicyArgs].
   /// [appIds] The allowed Azure Active Directory Application IDs

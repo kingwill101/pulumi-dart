@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Instance view status.
 class MachineExtensionInstanceViewStatus {
   /// The status code.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// The short localizable label for the status.
-  final pulumi.Input<String>? displayStatus;
+  final pulumi.Input<String?>? displayStatus;
   /// The level code.
-  final pulumi.Input<String>? level;
+  final pulumi.Input<dynamic>? level;
   /// The detailed status message, including for alerts and error messages.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The time of the status.
-  final pulumi.Input<String>? time;
+  final pulumi.Input<String?>? time;
 
   /// Creates a new [MachineExtensionInstanceViewStatus].
   /// [code] The status code.
@@ -43,7 +43,7 @@ class MachineExtensionInstanceViewStatus {
     return MachineExtensionInstanceViewStatus(
       code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayStatus: (() { final guardedValue = map['displayStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      level: (() { final guardedValue = map['level']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      level: (() { final guardedValue = map['level']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       time: (() { final guardedValue = map['time']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

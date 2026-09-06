@@ -7,9 +7,9 @@ class GetCertificateObjectGlobalRulestackResult {
   /// comment for this object
   final String? auditComment;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// use certificate self signed
-  final String certificateSelfSigned;
+  final String? certificateSelfSigned;
   /// Resource Id of certificate signer, to be populated only when certificateSelfSigned is false
   final String? certificateSignerResourceId;
   /// user description for this object
@@ -17,15 +17,15 @@ class GetCertificateObjectGlobalRulestackResult {
   /// read only string representing last create or update
   final String? etag;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetCertificateObjectGlobalRulestackResult].
   /// [auditComment] comment for this object
@@ -41,47 +41,47 @@ class GetCertificateObjectGlobalRulestackResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetCertificateObjectGlobalRulestackResult({
     this.auditComment,
-    required this.azureApiVersion,
-    required this.certificateSelfSigned,
+    this.azureApiVersion,
+    this.certificateSelfSigned,
     this.certificateSignerResourceId,
     this.description,
     this.etag,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
-    required this.type,
+    this.id,
+    this.name,
+    this.provisioningState,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'auditComment': ?auditComment,
-      'azureApiVersion': azureApiVersion,
-      'certificateSelfSigned': certificateSelfSigned,
+      'azureApiVersion': ?azureApiVersion,
+      'certificateSelfSigned': ?certificateSelfSigned,
       'certificateSignerResourceId': ?certificateSignerResourceId,
       'description': ?description,
       'etag': ?etag,
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetCertificateObjectGlobalRulestackResult.fromMap(Map<String, dynamic> map) {
     return GetCertificateObjectGlobalRulestackResult(
       auditComment: (() { final guardedValue = map['auditComment']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      certificateSelfSigned: map['certificateSelfSigned'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      certificateSelfSigned: (() { final guardedValue = map['certificateSelfSigned']; if (guardedValue == null) return null; return guardedValue as String; })(),
       certificateSignerResourceId: (() { final guardedValue = map['certificateSignerResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

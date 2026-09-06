@@ -7,20 +7,20 @@ import 'json_field_with_default_response.dart';
 /// This enables publishing to Event Grid using a custom input schema. This can be used to map properties from a custom input JSON schema to the Event Grid event schema.
 class JsonInputSchemaMappingResponse {
   /// The mapping information for the DataVersion property of the Event Grid Event.
-  final pulumi.Input<JsonFieldWithDefaultResponse>? dataVersion;
+  final pulumi.Input<JsonFieldWithDefaultResponse?>? dataVersion;
   /// The mapping information for the EventTime property of the Event Grid Event.
-  final pulumi.Input<JsonFieldResponse>? eventTime;
+  final pulumi.Input<JsonFieldResponse?>? eventTime;
   /// The mapping information for the EventType property of the Event Grid Event.
-  final pulumi.Input<JsonFieldWithDefaultResponse>? eventType;
+  final pulumi.Input<JsonFieldWithDefaultResponse?>? eventType;
   /// The mapping information for the Id property of the Event Grid Event.
-  final pulumi.Input<JsonFieldResponse>? id;
+  final pulumi.Input<JsonFieldResponse?>? id;
   /// Type of the custom mapping
   /// Expected value is 'Json'.
   final pulumi.Input<String> inputSchemaMappingType;
   /// The mapping information for the Subject property of the Event Grid Event.
-  final pulumi.Input<JsonFieldWithDefaultResponse>? subject;
+  final pulumi.Input<JsonFieldWithDefaultResponse?>? subject;
   /// The mapping information for the Topic property of the Event Grid Event.
-  final pulumi.Input<JsonFieldResponse>? topic;
+  final pulumi.Input<JsonFieldResponse?>? topic;
 
   /// Creates a new [JsonInputSchemaMappingResponse].
   /// [dataVersion] The mapping information for the DataVersion property of the Event Grid Event.

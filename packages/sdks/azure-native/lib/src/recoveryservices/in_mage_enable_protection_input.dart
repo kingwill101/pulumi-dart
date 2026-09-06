@@ -6,11 +6,11 @@ import 'in_mage_disk_exclusion_input.dart';
 /// VMware Azure specific enable protection input.
 class InMageEnableProtectionInput {
   /// The target datastore name.
-  final pulumi.Input<String>? datastoreName;
+  final pulumi.Input<String?>? datastoreName;
   /// The enable disk exclusion input.
-  final pulumi.Input<InMageDiskExclusionInput>? diskExclusionInput;
+  final pulumi.Input<InMageDiskExclusionInput?>? diskExclusionInput;
   /// The disks to include list.
-  final pulumi.Input<List<String>>? disksToInclude;
+  final pulumi.Input<List<String>?>? disksToInclude;
   /// The class type.
   /// Expected value is 'InMage'.
   final pulumi.Input<String> instanceType;
@@ -25,9 +25,9 @@ class InMageEnableProtectionInput {
   /// The retention drive to use on the MT.
   final pulumi.Input<String> retentionDrive;
   /// The CS account Id.
-  final pulumi.Input<String>? runAsAccountId;
+  final pulumi.Input<String?>? runAsAccountId;
   /// The VM Name.
-  final pulumi.Input<String>? vmFriendlyName;
+  final pulumi.Input<String?>? vmFriendlyName;
 
   /// Creates a new [InMageEnableProtectionInput].
   /// [datastoreName] The target datastore name.

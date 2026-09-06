@@ -6,29 +6,29 @@ import 'schema.dart';
 /// Properties of connection
 class ConnectionProperties {
   /// Direction of data movement
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<dynamic>? direction;
   /// The flow types being requested for this connection
-  final pulumi.Input<List<String>>? flowTypes;
+  final pulumi.Input<List<dynamic>?>? flowTypes;
   /// Justification for the connection request
-  final pulumi.Input<String>? justification;
+  final pulumi.Input<String?>? justification;
   /// PIN to link requests together
-  final pulumi.Input<String>? pin;
+  final pulumi.Input<String?>? pin;
   /// Pipeline to use to transfer data
   final pulumi.Input<String> pipeline;
   /// The policies for this connection
-  final pulumi.Input<List<String>>? policies;
+  final pulumi.Input<List<String>?>? policies;
   /// The primary contact for this connection request
-  final pulumi.Input<String>? primaryContact;
+  final pulumi.Input<String?>? primaryContact;
   /// Subscription ID to link cloud subscriptions together
-  final pulumi.Input<String>? remoteSubscriptionId;
+  final pulumi.Input<String?>? remoteSubscriptionId;
   /// Requirement ID of the connection
-  final pulumi.Input<String>? requirementId;
+  final pulumi.Input<String?>? requirementId;
   /// The schema URIs for this connection
-  final pulumi.Input<List<String>>? schemaUris;
+  final pulumi.Input<List<String>?>? schemaUris;
   /// The schemas for this connection
-  final pulumi.Input<List<Schema>>? schemas;
+  final pulumi.Input<List<Schema>?>? schemas;
   /// The secondary contacts for this connection request
-  final pulumi.Input<List<String>>? secondaryContacts;
+  final pulumi.Input<List<String>?>? secondaryContacts;
 
   /// Creates a new [ConnectionProperties].
   /// [direction] Direction of data movement
@@ -77,8 +77,8 @@ class ConnectionProperties {
 
   factory ConnectionProperties.fromMap(Map<String, dynamic> map) {
     return ConnectionProperties(
-      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      flowTypes: (() { final guardedValue = map['flowTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      flowTypes: (() { final guardedValue = map['flowTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       justification: (() { final guardedValue = map['justification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pin: (() { final guardedValue = map['pin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pipeline: pulumi.Input.fromValue(map['pipeline'] as String),

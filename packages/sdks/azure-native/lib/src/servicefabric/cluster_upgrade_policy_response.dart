@@ -8,18 +8,18 @@ import 'cluster_upgrade_delta_health_policy_response.dart';
 /// Describes the policy used when upgrading the cluster.
 class ClusterUpgradePolicyResponse {
   /// The cluster delta health policy defines a health policy used to evaluate the health of the cluster during a cluster upgrade.
-  final pulumi.Input<ClusterUpgradeDeltaHealthPolicyResponse>? deltaHealthPolicy;
+  final pulumi.Input<ClusterUpgradeDeltaHealthPolicyResponse?>? deltaHealthPolicy;
   /// If true, then processes are forcefully restarted during upgrade even when the code version has not changed (the upgrade only changes configuration or data).
-  final pulumi.Input<bool>? forceRestart;
+  final pulumi.Input<bool?>? forceRestart;
   /// The cluster health policy defines a health policy used to evaluate the health of the cluster during a cluster upgrade.
-  final pulumi.Input<ClusterHealthPolicyResponse>? healthPolicy;
+  final pulumi.Input<ClusterHealthPolicyResponse?>? healthPolicy;
   /// The cluster monitoring policy describes the parameters for monitoring an upgrade in Monitored mode.
-  final pulumi.Input<ClusterMonitoringPolicyResponse>? monitoringPolicy;
+  final pulumi.Input<ClusterMonitoringPolicyResponse?>? monitoringPolicy;
   /// The maximum amount of time to block processing of an upgrade domain and prevent loss of availability when there are unexpected issues.
   /// When this timeout expires, processing of the upgrade domain will proceed regardless of availability loss issues.
   /// The timeout is reset at the start of each upgrade domain. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
   /// This value must be between 00:00:00 and 49710.06:28:15 (unsigned 32 bit integer for seconds)
-  final pulumi.Input<String>? upgradeReplicaSetCheckTimeout;
+  final pulumi.Input<String?>? upgradeReplicaSetCheckTimeout;
 
   /// Creates a new [ClusterUpgradePolicyResponse].
   /// [deltaHealthPolicy] The cluster delta health policy defines a health policy used to evaluate the health of the cluster during a cluster upgrade.

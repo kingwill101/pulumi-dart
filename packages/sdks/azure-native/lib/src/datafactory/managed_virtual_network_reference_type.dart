@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Managed Virtual Network reference type.
-enum ManagedVirtualNetworkReferenceType {
+enum ManagedVirtualNetworkReferenceType implements pulumi.PulumiEnum<String> {
   managedVirtualNetworkReference("ManagedVirtualNetworkReference");
 
   const ManagedVirtualNetworkReferenceType(this.wireValue);
+  @override
   final String wireValue;
 
   static ManagedVirtualNetworkReferenceType fromValue(String value) {

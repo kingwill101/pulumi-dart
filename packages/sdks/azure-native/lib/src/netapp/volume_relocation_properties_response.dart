@@ -7,7 +7,7 @@ class VolumeRelocationPropertiesResponse {
   /// Has relocation finished and is ready to be cleaned up
   final pulumi.Input<bool> readyToBeFinalized;
   /// Has relocation been requested for this volume
-  final pulumi.Input<bool>? relocationRequested;
+  final pulumi.Input<bool?>? relocationRequested;
 
   /// Creates a new [VolumeRelocationPropertiesResponse].
   /// [readyToBeFinalized] Has relocation finished and is ready to be cleaned up

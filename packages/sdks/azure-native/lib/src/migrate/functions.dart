@@ -114,6 +114,17 @@ Future<GetAksAssessmentOperationResult> getAksAssessmentOperation(
   return GetAksAssessmentOperationResult.fromMap(result);
 }
 
+pulumi.Output<GetAksAssessmentOperationResult> getAksAssessmentOperationOutput(
+  GetAksAssessmentOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getAksAssessmentOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAksAssessmentOperationResult.fromMap);
+}
+
 /// Get an existing assessment with the specified name. Returns a json object of type 'assessment' as specified in Models section.
 ///
 /// Uses Azure REST API version 2019-10-01.
@@ -130,6 +141,17 @@ Future<GetAssessmentResult> getAssessment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAssessmentResult.fromMap(result);
+}
+
+pulumi.Output<GetAssessmentResult> getAssessmentOutput(
+  GetAssessmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getAssessment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAssessmentResult.fromMap);
 }
 
 /// Get a AssessmentProject
@@ -152,6 +174,17 @@ Future<GetAssessmentProjectsOperationResult> getAssessmentProjectsOperation(
   return GetAssessmentProjectsOperationResult.fromMap(result);
 }
 
+pulumi.Output<GetAssessmentProjectsOperationResult> getAssessmentProjectsOperationOutput(
+  GetAssessmentProjectsOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getAssessmentProjectsOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAssessmentProjectsOperationResult.fromMap);
+}
+
 /// Get a Assessment
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -170,6 +203,17 @@ Future<GetAssessmentsOperationResult> getAssessmentsOperation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAssessmentsOperationResult.fromMap(result);
+}
+
+pulumi.Output<GetAssessmentsOperationResult> getAssessmentsOperationOutput(
+  GetAssessmentsOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getAssessmentsOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAssessmentsOperationResult.fromMap);
 }
 
 /// Get a AvsAssessment
@@ -192,6 +236,17 @@ Future<GetAvsAssessmentsOperationResult> getAvsAssessmentsOperation(
   return GetAvsAssessmentsOperationResult.fromMap(result);
 }
 
+pulumi.Output<GetAvsAssessmentsOperationResult> getAvsAssessmentsOperationOutput(
+  GetAvsAssessmentsOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getAvsAssessmentsOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAvsAssessmentsOperationResult.fromMap);
+}
+
 /// Get a AvsAssessmentV2
 ///
 /// Uses Azure REST API version 2024-03-03-preview.
@@ -208,6 +263,17 @@ Future<GetAvsAssessmentsV2OperationResult> getAvsAssessmentsV2Operation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAvsAssessmentsV2OperationResult.fromMap(result);
+}
+
+pulumi.Output<GetAvsAssessmentsV2OperationResult> getAvsAssessmentsV2OperationOutput(
+  GetAvsAssessmentsV2OperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getAvsAssessmentsV2Operation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAvsAssessmentsV2OperationResult.fromMap);
 }
 
 /// Get a BusinessCase
@@ -230,6 +296,17 @@ Future<GetBusinessCaseOperationResult> getBusinessCaseOperation(
   return GetBusinessCaseOperationResult.fromMap(result);
 }
 
+pulumi.Output<GetBusinessCaseOperationResult> getBusinessCaseOperationOutput(
+  GetBusinessCaseOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getBusinessCaseOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBusinessCaseOperationResult.fromMap);
+}
+
 /// Get the URL for downloading the business case in a report format.
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -250,6 +327,17 @@ Future<GetBusinessCaseOperationReportDownloadUrlResult> getBusinessCaseOperation
   return GetBusinessCaseOperationReportDownloadUrlResult.fromMap(result);
 }
 
+pulumi.Output<GetBusinessCaseOperationReportDownloadUrlResult> getBusinessCaseOperationReportDownloadUrlOutput(
+  GetBusinessCaseOperationReportDownloadUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getBusinessCaseOperationReportDownloadUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBusinessCaseOperationReportDownloadUrlResult.fromMap);
+}
+
 /// Get a CompoundAssessment
 ///
 /// Uses Azure REST API version 2024-03-03-preview.
@@ -268,6 +356,17 @@ Future<GetCompoundAssessmentOperationResult> getCompoundAssessmentOperation(
   return GetCompoundAssessmentOperationResult.fromMap(result);
 }
 
+pulumi.Output<GetCompoundAssessmentOperationResult> getCompoundAssessmentOperationOutput(
+  GetCompoundAssessmentOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getCompoundAssessmentOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCompoundAssessmentOperationResult.fromMap);
+}
+
 /// Get information related to a specific group in the project. Returns a json object of type 'group' as specified in the models section.
 ///
 /// Uses Azure REST API version 2019-10-01.
@@ -284,6 +383,17 @@ Future<GetGroupResult> getGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetGroupResult> getGroupOutput(
+  GetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupResult.fromMap);
 }
 
 /// Get a Group
@@ -306,6 +416,17 @@ Future<GetGroupsOperationResult> getGroupsOperation(
   return GetGroupsOperationResult.fromMap(result);
 }
 
+pulumi.Output<GetGroupsOperationResult> getGroupsOperationOutput(
+  GetGroupsOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getGroupsOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupsOperationResult.fromMap);
+}
+
 /// Get a HeterogeneousAssessment
 ///
 /// Uses Azure REST API version 2024-03-03-preview.
@@ -324,6 +445,17 @@ Future<GetHeterogeneousAssessmentOperationResult> getHeterogeneousAssessmentOper
   return GetHeterogeneousAssessmentOperationResult.fromMap(result);
 }
 
+pulumi.Output<GetHeterogeneousAssessmentOperationResult> getHeterogeneousAssessmentOperationOutput(
+  GetHeterogeneousAssessmentOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getHeterogeneousAssessmentOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHeterogeneousAssessmentOperationResult.fromMap);
+}
+
 /// Get a Hyper-V collector.
 ///
 /// Uses Azure REST API version 2019-10-01.
@@ -340,6 +472,17 @@ Future<GetHyperVCollectorResult> getHyperVCollector(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHyperVCollectorResult.fromMap(result);
+}
+
+pulumi.Output<GetHyperVCollectorResult> getHyperVCollectorOutput(
+  GetHyperVCollectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getHyperVCollector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHyperVCollectorResult.fromMap);
 }
 
 /// Get a HypervCollector
@@ -362,6 +505,17 @@ Future<GetHypervCollectorsOperationResult> getHypervCollectorsOperation(
   return GetHypervCollectorsOperationResult.fromMap(result);
 }
 
+pulumi.Output<GetHypervCollectorsOperationResult> getHypervCollectorsOperationOutput(
+  GetHypervCollectorsOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getHypervCollectorsOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHypervCollectorsOperationResult.fromMap);
+}
+
 /// Get a Import collector.
 ///
 /// Uses Azure REST API version 2019-10-01.
@@ -378,6 +532,17 @@ Future<GetImportCollectorResult> getImportCollector(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImportCollectorResult.fromMap(result);
+}
+
+pulumi.Output<GetImportCollectorResult> getImportCollectorOutput(
+  GetImportCollectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getImportCollector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImportCollectorResult.fromMap);
 }
 
 /// Get a ImportCollector
@@ -400,6 +565,17 @@ Future<GetImportCollectorsOperationResult> getImportCollectorsOperation(
   return GetImportCollectorsOperationResult.fromMap(result);
 }
 
+pulumi.Output<GetImportCollectorsOperationResult> getImportCollectorsOperationOutput(
+  GetImportCollectorsOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getImportCollectorsOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImportCollectorsOperationResult.fromMap);
+}
+
 /// Get a ImportSqlCollector
 ///
 /// Uses Azure REST API version 2024-03-03-preview.
@@ -416,6 +592,17 @@ Future<GetImportSqlCollectorOperationResult> getImportSqlCollectorOperation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImportSqlCollectorOperationResult.fromMap(result);
+}
+
+pulumi.Output<GetImportSqlCollectorOperationResult> getImportSqlCollectorOperationOutput(
+  GetImportSqlCollectorOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getImportSqlCollectorOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImportSqlCollectorOperationResult.fromMap);
 }
 
 /// Get a MachineAssessmentV2
@@ -436,6 +623,17 @@ Future<GetMachineAssessmentsV2OperationResult> getMachineAssessmentsV2Operation(
   return GetMachineAssessmentsV2OperationResult.fromMap(result);
 }
 
+pulumi.Output<GetMachineAssessmentsV2OperationResult> getMachineAssessmentsV2OperationOutput(
+  GetMachineAssessmentsV2OperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getMachineAssessmentsV2Operation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMachineAssessmentsV2OperationResult.fromMap);
+}
+
 /// Gets the details of the modernizeProject agent.
 ///
 /// Uses Azure REST API version 2022-05-01-preview.
@@ -454,6 +652,17 @@ Future<GetMigrateAgentResult> getMigrateAgent(
   return GetMigrateAgentResult.fromMap(result);
 }
 
+pulumi.Output<GetMigrateAgentResult> getMigrateAgentOutput(
+  GetMigrateAgentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getMigrateAgent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMigrateAgentResult.fromMap);
+}
+
 /// Migrate Project REST Resource.
 ///
 /// Uses Azure REST API version 2018-09-01-preview.
@@ -470,6 +679,17 @@ Future<GetMigrateProjectResult> getMigrateProject(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMigrateProjectResult.fromMap(result);
+}
+
+pulumi.Output<GetMigrateProjectResult> getMigrateProjectOutput(
+  GetMigrateProjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getMigrateProject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMigrateProjectResult.fromMap);
 }
 
 /// Get information related to a specific migrate project. Returns a json object of type 'migrateProject' as specified in the models section.
@@ -492,6 +712,17 @@ Future<GetMigrateProjectsControllerMigrateProjectResult> getMigrateProjectsContr
   return GetMigrateProjectsControllerMigrateProjectResult.fromMap(result);
 }
 
+pulumi.Output<GetMigrateProjectsControllerMigrateProjectResult> getMigrateProjectsControllerMigrateProjectOutput(
+  GetMigrateProjectsControllerMigrateProjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getMigrateProjectsControllerMigrateProject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMigrateProjectsControllerMigrateProjectResult.fromMap);
+}
+
 /// Get a MigrationEntity
 ///
 /// Uses Azure REST API version 2025-03-30-preview.
@@ -510,6 +741,17 @@ Future<GetMigrationEntityResult> getMigrationEntity(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMigrationEntityResult.fromMap(result);
+}
+
+pulumi.Output<GetMigrationEntityResult> getMigrationEntityOutput(
+  GetMigrationEntityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getMigrationEntity',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMigrationEntityResult.fromMap);
 }
 
 /// Get a MigrationEntityGroup
@@ -532,6 +774,17 @@ Future<GetMigrationEntityGroupResult> getMigrationEntityGroup(
   return GetMigrationEntityGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetMigrationEntityGroupResult> getMigrationEntityGroupOutput(
+  GetMigrationEntityGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getMigrationEntityGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMigrationEntityGroupResult.fromMap);
+}
+
 /// Gets the details of the modernize project.
 ///
 /// Uses Azure REST API version 2022-05-01-preview.
@@ -548,6 +801,17 @@ Future<GetModernizeProjectResult> getModernizeProject(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetModernizeProjectResult.fromMap(result);
+}
+
+pulumi.Output<GetModernizeProjectResult> getModernizeProjectOutput(
+  GetModernizeProjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getModernizeProject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetModernizeProjectResult.fromMap);
 }
 
 /// Gets the move collection.
@@ -570,6 +834,17 @@ Future<GetMoveCollectionResult> getMoveCollection(
   return GetMoveCollectionResult.fromMap(result);
 }
 
+pulumi.Output<GetMoveCollectionResult> getMoveCollectionOutput(
+  GetMoveCollectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getMoveCollection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMoveCollectionResult.fromMap);
+}
+
 /// Gets the Move Resource.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -590,6 +865,17 @@ Future<GetMoveResourceResult> getMoveResource(
   return GetMoveResourceResult.fromMap(result);
 }
 
+pulumi.Output<GetMoveResourceResult> getMoveResourceOutput(
+  GetMoveResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getMoveResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMoveResourceResult.fromMap);
+}
+
 /// Get information related to a specific private endpoint connection in the project. Returns a json object of type 'privateEndpointConnections' as specified in the models section.
 ///
 /// Uses Azure REST API version 2019-10-01.
@@ -606,6 +892,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Get the private endpoint with the specified name.
@@ -628,6 +925,17 @@ Future<GetPrivateEndpointConnectionControllerPrivateEndpointConnectionResult> ge
   return GetPrivateEndpointConnectionControllerPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionControllerPrivateEndpointConnectionResult> getPrivateEndpointConnectionControllerPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionControllerPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getPrivateEndpointConnectionControllerPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionControllerPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Get a PrivateEndpointConnection
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -648,6 +956,17 @@ Future<GetPrivateEndpointConnectionOperationResult> getPrivateEndpointConnection
   return GetPrivateEndpointConnectionOperationResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionOperationResult> getPrivateEndpointConnectionOperationOutput(
+  GetPrivateEndpointConnectionOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getPrivateEndpointConnectionOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionOperationResult.fromMap);
+}
+
 /// Get the project with the specified name.
 ///
 /// Uses Azure REST API version 2019-10-01.
@@ -666,6 +985,17 @@ Future<GetProjectResult> getProject(
   return GetProjectResult.fromMap(result);
 }
 
+pulumi.Output<GetProjectResult> getProjectOutput(
+  GetProjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getProject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectResult.fromMap);
+}
+
 /// Get a Server collector.
 ///
 /// Uses Azure REST API version 2019-10-01.
@@ -682,6 +1012,17 @@ Future<GetServerCollectorResult> getServerCollector(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerCollectorResult.fromMap(result);
+}
+
+pulumi.Output<GetServerCollectorResult> getServerCollectorOutput(
+  GetServerCollectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getServerCollector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerCollectorResult.fromMap);
 }
 
 /// Get a ServerCollector
@@ -704,6 +1045,17 @@ Future<GetServerCollectorsOperationResult> getServerCollectorsOperation(
   return GetServerCollectorsOperationResult.fromMap(result);
 }
 
+pulumi.Output<GetServerCollectorsOperationResult> getServerCollectorsOperationOutput(
+  GetServerCollectorsOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getServerCollectorsOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerCollectorsOperationResult.fromMap);
+}
+
 /// Solution REST Resource.
 ///
 /// Uses Azure REST API version 2018-09-01-preview.
@@ -722,6 +1074,17 @@ Future<GetSolutionResult> getSolution(
   return GetSolutionResult.fromMap(result);
 }
 
+pulumi.Output<GetSolutionResult> getSolutionOutput(
+  GetSolutionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getSolution',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSolutionResult.fromMap);
+}
+
 /// Class representing the config for the solution in the migrate project.
 ///
 /// Uses Azure REST API version 2018-09-01-preview.
@@ -738,6 +1101,17 @@ Future<GetSolutionConfigResult> getSolutionConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSolutionConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetSolutionConfigResult> getSolutionConfigOutput(
+  GetSolutionConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getSolutionConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSolutionConfigResult.fromMap);
 }
 
 /// Get a SqlAssessmentV2
@@ -760,6 +1134,17 @@ Future<GetSqlAssessmentV2OperationResult> getSqlAssessmentV2Operation(
   return GetSqlAssessmentV2OperationResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlAssessmentV2OperationResult> getSqlAssessmentV2OperationOutput(
+  GetSqlAssessmentV2OperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getSqlAssessmentV2Operation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlAssessmentV2OperationResult.fromMap);
+}
+
 /// Get a SqlAssessmentV3
 ///
 /// Uses Azure REST API version 2024-03-03-preview.
@@ -776,6 +1161,17 @@ Future<GetSqlAssessmentV3OperationResult> getSqlAssessmentV3Operation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSqlAssessmentV3OperationResult.fromMap(result);
+}
+
+pulumi.Output<GetSqlAssessmentV3OperationResult> getSqlAssessmentV3OperationOutput(
+  GetSqlAssessmentV3OperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getSqlAssessmentV3Operation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlAssessmentV3OperationResult.fromMap);
 }
 
 /// Get a SqlCollector
@@ -798,6 +1194,17 @@ Future<GetSqlCollectorOperationResult> getSqlCollectorOperation(
   return GetSqlCollectorOperationResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlCollectorOperationResult> getSqlCollectorOperationOutput(
+  GetSqlCollectorOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getSqlCollectorOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlCollectorOperationResult.fromMap);
+}
+
 /// Get a Task
 ///
 /// Uses Azure REST API version 2025-03-30-preview.
@@ -818,6 +1225,17 @@ Future<GetTaskResult> getTask(
   return GetTaskResult.fromMap(result);
 }
 
+pulumi.Output<GetTaskResult> getTaskOutput(
+  GetTaskArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getTask',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTaskResult.fromMap);
+}
+
 /// Get a VMware collector.
 ///
 /// Uses Azure REST API version 2019-10-01.
@@ -834,6 +1252,17 @@ Future<GetVMwareCollectorResult> getVMwareCollector(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVMwareCollectorResult.fromMap(result);
+}
+
+pulumi.Output<GetVMwareCollectorResult> getVMwareCollectorOutput(
+  GetVMwareCollectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getVMwareCollector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVMwareCollectorResult.fromMap);
 }
 
 /// Get a VmwareCollector
@@ -856,6 +1285,17 @@ Future<GetVmwareCollectorsOperationResult> getVmwareCollectorsOperation(
   return GetVmwareCollectorsOperationResult.fromMap(result);
 }
 
+pulumi.Output<GetVmwareCollectorsOperationResult> getVmwareCollectorsOperationOutput(
+  GetVmwareCollectorsOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getVmwareCollectorsOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVmwareCollectorsOperationResult.fromMap);
+}
+
 /// Get a Wave
 ///
 /// Uses Azure REST API version 2025-03-30-preview.
@@ -874,6 +1314,17 @@ Future<GetWaveResult> getWave(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWaveResult.fromMap(result);
+}
+
+pulumi.Output<GetWaveResult> getWaveOutput(
+  GetWaveArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getWave',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWaveResult.fromMap);
 }
 
 /// Get a WebAppAssessmentV2
@@ -896,6 +1347,17 @@ Future<GetWebAppAssessmentV2OperationResult> getWebAppAssessmentV2Operation(
   return GetWebAppAssessmentV2OperationResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppAssessmentV2OperationResult> getWebAppAssessmentV2OperationOutput(
+  GetWebAppAssessmentV2OperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getWebAppAssessmentV2Operation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppAssessmentV2OperationResult.fromMap);
+}
+
 /// Get a WebAppAssessmentV3
 ///
 /// Uses Azure REST API version 2024-03-03-preview.
@@ -912,6 +1374,17 @@ Future<GetWebAppAssessmentV3OperationResult> getWebAppAssessmentV3Operation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppAssessmentV3OperationResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppAssessmentV3OperationResult> getWebAppAssessmentV3OperationOutput(
+  GetWebAppAssessmentV3OperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getWebAppAssessmentV3Operation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppAssessmentV3OperationResult.fromMap);
 }
 
 /// Get a WebAppCollector
@@ -934,6 +1407,17 @@ Future<GetWebAppCollectorOperationResult> getWebAppCollectorOperation(
   return GetWebAppCollectorOperationResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppCollectorOperationResult> getWebAppCollectorOperationOutput(
+  GetWebAppCollectorOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getWebAppCollectorOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppCollectorOperationResult.fromMap);
+}
+
 /// Gets the details of the workload deployment.
 ///
 /// Uses Azure REST API version 2022-05-01-preview.
@@ -950,6 +1434,17 @@ Future<GetWorkloadDeploymentResult> getWorkloadDeployment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkloadDeploymentResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkloadDeploymentResult> getWorkloadDeploymentOutput(
+  GetWorkloadDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getWorkloadDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadDeploymentResult.fromMap);
 }
 
 /// Gets the secrets of the workload deployment.
@@ -970,6 +1465,17 @@ Future<GetWorkloadDeploymentSecretConfigurationsResult> getWorkloadDeploymentSec
   return GetWorkloadDeploymentSecretConfigurationsResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkloadDeploymentSecretConfigurationsResult> getWorkloadDeploymentSecretConfigurationsOutput(
+  GetWorkloadDeploymentSecretConfigurationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getWorkloadDeploymentSecretConfigurations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadDeploymentSecretConfigurationsResult.fromMap);
+}
+
 /// Gets the details of the workload instance.
 ///
 /// Uses Azure REST API version 2022-05-01-preview.
@@ -986,4 +1492,15 @@ Future<GetWorkloadInstanceResult> getWorkloadInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkloadInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkloadInstanceResult> getWorkloadInstanceOutput(
+  GetWorkloadInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:migrate:getWorkloadInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadInstanceResult.fromMap);
 }

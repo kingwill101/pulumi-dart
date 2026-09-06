@@ -6,9 +6,9 @@ import 'automation_rule_set.dart';
 /// The source event types which evaluate the security automation set of rules. For example - security alerts and security assessments. To learn more about the supported security events data models schemas - please visit https://aka.ms/ASCAutomationSchemas.
 class AutomationSource {
   /// A valid event source type.
-  final pulumi.Input<String>? eventSource;
+  final pulumi.Input<dynamic>? eventSource;
   /// A set of rules which evaluate upon event interception. A logical disjunction is applied between defined rule sets (logical 'or').
-  final pulumi.Input<List<AutomationRuleSet>>? ruleSets;
+  final pulumi.Input<List<AutomationRuleSet>?>? ruleSets;
 
   /// Creates a new [AutomationSource].
   /// [eventSource] A valid event source type.
@@ -27,7 +27,7 @@ class AutomationSource {
 
   factory AutomationSource.fromMap(Map<String, dynamic> map) {
     return AutomationSource(
-      eventSource: (() { final guardedValue = map['eventSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eventSource: (() { final guardedValue = map['eventSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       ruleSets: (() { final guardedValue = map['ruleSets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AutomationRuleSet>(guardedValue, (value) => AutomationRuleSet.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

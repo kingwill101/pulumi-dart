@@ -2,7 +2,6 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dbbackup_policy_properties_response.dart';
-import 'existing_recovery_services_vault_response.dart';
 import 'sslconfiguration_response.dart';
 
 /// Defines the HANA Backup data for a virtual instance for SAP.
@@ -13,15 +12,15 @@ class HanaBackupDataResponse {
   /// Expected value is 'HANA'.
   final pulumi.Input<String> backupType;
   /// Defines the policy properties for database backup.
-  final pulumi.Input<DBBackupPolicyPropertiesResponse>? dbInstanceSnapshotBackupPolicy;
+  final pulumi.Input<DBBackupPolicyPropertiesResponse?>? dbInstanceSnapshotBackupPolicy;
   /// Name of the HANA Database User Store Key.
   final pulumi.Input<String> hdbuserstoreKeyName;
   /// Gets or sets the database instance number.
-  final pulumi.Input<String>? instanceNumber;
+  final pulumi.Input<String?>? instanceNumber;
   /// The properties of the recovery services vault used for backup.
-  final pulumi.Input<ExistingRecoveryServicesVaultResponse> recoveryServicesVault;
+  final pulumi.Input<dynamic> recoveryServicesVault;
   /// Path of the SSL key store.
-  final pulumi.Input<SSLConfigurationResponse>? sslConfiguration;
+  final pulumi.Input<SSLConfigurationResponse?>? sslConfiguration;
 
   /// Creates a new [HanaBackupDataResponse].
   /// [backupPolicy] Defines the policy properties for database backup.
@@ -48,7 +47,7 @@ class HanaBackupDataResponse {
       'dbInstanceSnapshotBackupPolicy': ?pulumi.Input.mapOptionalInputValue<DBBackupPolicyPropertiesResponse, Map<String, dynamic>>(dbInstanceSnapshotBackupPolicy, (value) => value.toMap()),
       'hdbuserstoreKeyName': hdbuserstoreKeyName,
       'instanceNumber': ?instanceNumber,
-      'recoveryServicesVault': pulumi.Input.mapInputValue<ExistingRecoveryServicesVaultResponse, Map<String, dynamic>>(recoveryServicesVault, (value) => value.toMap()),
+      'recoveryServicesVault': recoveryServicesVault,
       'sslConfiguration': ?pulumi.Input.mapOptionalInputValue<SSLConfigurationResponse, Map<String, dynamic>>(sslConfiguration, (value) => value.toMap()),
     };
   }
@@ -60,7 +59,7 @@ class HanaBackupDataResponse {
       dbInstanceSnapshotBackupPolicy: (() { final guardedValue = map['dbInstanceSnapshotBackupPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DBBackupPolicyPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       hdbuserstoreKeyName: pulumi.Input.fromValue(map['hdbuserstoreKeyName'] as String),
       instanceNumber: (() { final guardedValue = map['instanceNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      recoveryServicesVault: pulumi.Input.fromValue(ExistingRecoveryServicesVaultResponse.fromMap((map['recoveryServicesVault']! as Map).cast<String, dynamic>())),
+      recoveryServicesVault: pulumi.Input.fromValue(map['recoveryServicesVault']),
       sslConfiguration: (() { final guardedValue = map['sslConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SSLConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

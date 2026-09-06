@@ -8,31 +8,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_devtestlab_artifact_source_args_doc}
 class ArtifactSourceArgs {
   /// The folder containing Azure Resource Manager templates.
-  final pulumi.Input<String>? armTemplateFolderPath;
+  final pulumi.Input<String?>? armTemplateFolderPath;
   /// The artifact source's branch reference.
-  final pulumi.Input<String>? branchRef;
+  final pulumi.Input<String?>? branchRef;
   /// The artifact source's display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The folder containing artifacts.
-  final pulumi.Input<String>? folderPath;
+  final pulumi.Input<String?>? folderPath;
   /// The name of the lab.
   final pulumi.Input<String> labName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the artifact source.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The security token to authenticate to the artifact source.
-  final pulumi.Input<String>? securityToken;
+  final pulumi.Input<String?>? securityToken;
   /// The artifact source's type.
-  final pulumi.Input<String>? sourceType;
+  final pulumi.Input<dynamic>? sourceType;
   /// Indicates if the artifact source is enabled (values: Enabled, Disabled).
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The artifact source's URI.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [ArtifactSourceArgs].
   /// [armTemplateFolderPath] The folder containing Azure Resource Manager templates.
@@ -93,8 +93,8 @@ class ArtifactSourceArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       securityToken: (() { final guardedValue = map['securityToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sourceType: (() { final guardedValue = map['sourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceType: (() { final guardedValue = map['sourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

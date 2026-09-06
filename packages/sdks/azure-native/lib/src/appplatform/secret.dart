@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Secret definition.
 class Secret {
   /// Secret Name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Secret Value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [Secret].
   /// [name] Secret Name.

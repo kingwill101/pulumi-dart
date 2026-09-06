@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the endpoint for the event subscription destination.
-enum EndpointType {
+enum EndpointType implements pulumi.PulumiEnum<String> {
   valueWebHook("WebHook"),
   valueEventHub("EventHub"),
   valueStorageQueue("StorageQueue"),
@@ -11,6 +13,7 @@ enum EndpointType {
   valueNamespaceTopic("NamespaceTopic");
 
   const EndpointType(this.wireValue);
+  @override
   final String wireValue;
 
   static EndpointType fromValue(String value) {

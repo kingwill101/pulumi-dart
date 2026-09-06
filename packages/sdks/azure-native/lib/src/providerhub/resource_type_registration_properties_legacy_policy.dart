@@ -5,8 +5,8 @@ import 'legacy_disallowed_condition.dart';
 
 /// The legacy policy.
 class ResourceTypeRegistrationPropertiesLegacyPolicy {
-  final pulumi.Input<List<LegacyDisallowedCondition>>? disallowedConditions;
-  final pulumi.Input<List<String>>? disallowedLegacyOperations;
+  final pulumi.Input<List<LegacyDisallowedCondition>?>? disallowedConditions;
+  final pulumi.Input<List<dynamic>?>? disallowedLegacyOperations;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesLegacyPolicy].
   /// [disallowedConditions] Optional.
@@ -26,7 +26,7 @@ class ResourceTypeRegistrationPropertiesLegacyPolicy {
   factory ResourceTypeRegistrationPropertiesLegacyPolicy.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesLegacyPolicy(
       disallowedConditions: (() { final guardedValue = map['disallowedConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LegacyDisallowedCondition>(guardedValue, (value) => LegacyDisallowedCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      disallowedLegacyOperations: (() { final guardedValue = map['disallowedLegacyOperations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      disallowedLegacyOperations: (() { final guardedValue = map['disallowedLegacyOperations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
     );
   }
 }

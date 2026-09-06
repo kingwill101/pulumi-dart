@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The tag mutability setting for the repository. If this parameter is omitted, the default setting of ``MUTABLE`` will be used which will allow image tags to be overwritten. If ``IMMUTABLE`` is specified, all image tags within the repository will be immutable which will prevent them from being overwritten.
-enum ImageTagMutability {
+enum ImageTagMutability implements pulumi.PulumiEnum<String> {
   iMMUTABLE("IMMUTABLE"),
   mUTABLE("MUTABLE");
 
   const ImageTagMutability(this.wireValue);
+  @override
   final String wireValue;
 
   static ImageTagMutability fromValue(String value) {

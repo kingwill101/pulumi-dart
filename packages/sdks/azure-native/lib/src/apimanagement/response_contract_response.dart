@@ -7,11 +7,11 @@ import 'representation_contract_response.dart';
 /// Operation response details.
 class ResponseContractResponse {
   /// Operation response description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Collection of operation response headers.
-  final pulumi.Input<List<ParameterContractResponse>>? headers;
+  final pulumi.Input<List<ParameterContractResponse>?>? headers;
   /// Collection of operation response representations.
-  final pulumi.Input<List<RepresentationContractResponse>>? representations;
+  final pulumi.Input<List<RepresentationContractResponse>?>? representations;
   /// Operation response HTTP status code.
   final pulumi.Input<int> statusCode;
 
@@ -41,7 +41,7 @@ class ResponseContractResponse {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       headers: (() { final guardedValue = map['headers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ParameterContractResponse>(guardedValue, (value) => ParameterContractResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       representations: (() { final guardedValue = map['representations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RepresentationContractResponse>(guardedValue, (value) => RepresentationContractResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      statusCode: pulumi.Input.fromValue(map['statusCode'] as int),
+      statusCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['statusCode'])),
     );
   }
 }

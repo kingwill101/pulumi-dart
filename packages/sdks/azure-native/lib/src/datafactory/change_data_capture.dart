@@ -2,6 +2,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'change_data_capture_args.dart';
 import 'change_data_capture_folder_response.dart';
 import 'mapper_policy_response.dart';
+import 'mapper_source_connections_info_response.dart';
+import 'mapper_target_connections_info_response.dart';
 import 'system_data_response.dart';
 
 /// Change data capture resource type.
@@ -9044,13 +9046,13 @@ class ChangeDataCapture extends pulumi.CustomResource {
   /// CDC policy
   late final pulumi.Output<MapperPolicyResponse> policy;
   /// List of sources connections that can be used as sources in the CDC.
-  late final pulumi.Output<List<Map<String, dynamic>>> sourceConnectionsInfo;
+  late final pulumi.Output<List<MapperSourceConnectionsInfoResponse>> sourceConnectionsInfo;
   /// Status of the CDC as to if it is running or stopped.
   late final pulumi.Output<String?> status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// List of target connections that can be used as sources in the CDC.
-  late final pulumi.Output<List<Map<String, dynamic>>> targetConnectionsInfo;
+  late final pulumi.Output<List<MapperTargetConnectionsInfoResponse>> targetConnectionsInfo;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -9075,10 +9077,33 @@ class ChangeDataCapture extends pulumi.CustomResource {
     folder = registerOutput<ChangeDataCaptureFolderResponse?>('folder', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChangeDataCaptureFolderResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     policy = registerOutput<MapperPolicyResponse>('policy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MapperPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sourceConnectionsInfo = registerOutput<List<Map<String, dynamic>>>('sourceConnectionsInfo');
+    sourceConnectionsInfo = registerOutput<List<MapperSourceConnectionsInfoResponse>>('sourceConnectionsInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MapperSourceConnectionsInfoResponse>(guardedValue, (value) => MapperSourceConnectionsInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
     status = registerOutput<String?>('status');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    targetConnectionsInfo = registerOutput<List<Map<String, dynamic>>>('targetConnectionsInfo');
+    targetConnectionsInfo = registerOutput<List<MapperTargetConnectionsInfoResponse>>('targetConnectionsInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MapperTargetConnectionsInfoResponse>(guardedValue, (value) => MapperTargetConnectionsInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ChangeDataCapture] resource.
+  ChangeDataCapture.reference(String urn)
+    : super(
+        'azure-native:datafactory:ChangeDataCapture',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowVNetOverride = registerOutput<bool?>('allowVNetOverride');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    folder = registerOutput<ChangeDataCaptureFolderResponse?>('folder', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChangeDataCaptureFolderResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    policy = registerOutput<MapperPolicyResponse>('policy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MapperPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceConnectionsInfo = registerOutput<List<MapperSourceConnectionsInfoResponse>>('sourceConnectionsInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MapperSourceConnectionsInfoResponse>(guardedValue, (value) => MapperSourceConnectionsInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetConnectionsInfo = registerOutput<List<MapperTargetConnectionsInfoResponse>>('targetConnectionsInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MapperTargetConnectionsInfoResponse>(guardedValue, (value) => MapperTargetConnectionsInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
 }

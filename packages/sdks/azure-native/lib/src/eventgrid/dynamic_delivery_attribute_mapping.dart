@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Dynamic delivery attribute mapping details.
 class DynamicDeliveryAttributeMapping {
   /// Name of the delivery attribute or header.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// JSON path in the event which contains attribute value.
-  final pulumi.Input<String>? sourceField;
+  final pulumi.Input<String?>? sourceField;
   /// Type of the delivery attribute or header name.
   /// Expected value is 'Dynamic'.
   final pulumi.Input<String> type;

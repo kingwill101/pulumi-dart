@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Role type.
-enum NetworkFunctionRoleConfigurationType {
+enum NetworkFunctionRoleConfigurationType implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueVirtualMachine("VirtualMachine");
 
   const NetworkFunctionRoleConfigurationType(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkFunctionRoleConfigurationType fromValue(String value) {

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'disk_pool_args.dart';
+import 'disk_response.dart';
 import 'system_metadata_response.dart';
 
 /// Response for Disk Pool request.
@@ -275,7 +276,7 @@ class DiskPool extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// List of Azure Managed Disks to attach to a Disk Pool.
-  late final pulumi.Output<List<Map<String, dynamic>>?> disks;
+  late final pulumi.Output<List<DiskResponse>?> disks;
   /// The geo-location where the resource lives.
   late final pulumi.Output<String> location;
   /// Azure resource id. Indicates if this resource is managed by another Azure resource.
@@ -313,19 +314,45 @@ class DiskPool extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalCapabilities = registerOutput<List<String>?>('additionalCapabilities');
-    availabilityZones = registerOutput<List<String>>('availabilityZones');
+    additionalCapabilities = registerOutput<List<String>?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    disks = registerOutput<List<Map<String, dynamic>>?>('disks');
+    disks = registerOutput<List<DiskResponse>?>('disks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiskResponse>(guardedValue, (value) => DiskResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     managedBy = registerOutput<String>('managedBy');
-    managedByExtended = registerOutput<List<String>>('managedByExtended');
+    managedByExtended = registerOutput<List<String>>('managedByExtended', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String>('status');
     subnetId = registerOutput<String>('subnetId');
     systemData = registerOutput<SystemMetadataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tier = registerOutput<String?>('tier');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DiskPool] resource.
+  DiskPool.reference(String urn)
+    : super(
+        'azure-native:storagepool:DiskPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalCapabilities = registerOutput<List<String>?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    disks = registerOutput<List<DiskResponse>?>('disks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiskResponse>(guardedValue, (value) => DiskResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    managedBy = registerOutput<String>('managedBy');
+    managedByExtended = registerOutput<List<String>>('managedByExtended', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<String>('status');
+    subnetId = registerOutput<String>('subnetId');
+    systemData = registerOutput<SystemMetadataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tier = registerOutput<String?>('tier');
     type = registerOutput<String>('type');
   }

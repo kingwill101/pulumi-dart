@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the environment data.
-enum EnvironmentType {
+enum EnvironmentType implements pulumi.PulumiEnum<String> {
   awsAccount("AwsAccount"),
   gcpProject("GcpProject"),
   githubScope("GithubScope"),
@@ -9,6 +11,7 @@ enum EnvironmentType {
   jFrogArtifactory("JFrogArtifactory");
 
   const EnvironmentType(this.wireValue);
+  @override
   final String wireValue;
 
   static EnvironmentType fromValue(String value) {

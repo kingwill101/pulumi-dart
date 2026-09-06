@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Solution properties supported by the OperationsManagement resource provider.
 class SolutionProperties {
   /// The azure resources that will be contained within the solutions. They will be locked and gets deleted automatically when the solution is deleted.
-  final pulumi.Input<List<String>>? containedResources;
+  final pulumi.Input<List<String>?>? containedResources;
   /// The resources that will be referenced from this solution. Deleting any of those solution out of band will break the solution.
-  final pulumi.Input<List<String>>? referencedResources;
+  final pulumi.Input<List<String>?>? referencedResources;
   /// The azure resourceId for the workspace where the solution will be deployed/enabled.
   final pulumi.Input<String> workspaceResourceId;
 

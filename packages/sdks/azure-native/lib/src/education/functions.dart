@@ -22,6 +22,17 @@ Future<GetLabResult> getLab(
   return GetLabResult.fromMap(result);
 }
 
+pulumi.Output<GetLabResult> getLabOutput(
+  GetLabArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:education:getLab',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLabResult.fromMap);
+}
+
 /// Get the details for a specific student in the specified lab by student alias
 ///
 /// Uses Azure REST API version 2021-12-01-preview.
@@ -38,4 +49,15 @@ Future<GetStudentResult> getStudent(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStudentResult.fromMap(result);
+}
+
+pulumi.Output<GetStudentResult> getStudentOutput(
+  GetStudentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:education:getStudent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStudentResult.fromMap);
 }

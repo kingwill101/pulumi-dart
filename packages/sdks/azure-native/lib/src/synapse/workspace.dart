@@ -4,6 +4,7 @@ import 'data_lake_storage_account_details_response.dart';
 import 'encryption_details_response.dart';
 import 'managed_identity_response.dart';
 import 'managed_virtual_network_settings_response.dart';
+import 'private_endpoint_connection_response.dart';
 import 'purview_configuration_response.dart';
 import 'virtual_network_profile_response.dart';
 import 'workspace_args.dart';
@@ -49,7 +50,7 @@ class Workspace extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Private endpoint connections to the workspace
-  late final pulumi.Output<List<Map<String, dynamic>>?> privateEndpointConnections;
+  late final pulumi.Output<List<PrivateEndpointConnectionResponse>?> privateEndpointConnections;
   /// Resource provisioning state
   late final pulumi.Output<String> provisioningState;
   /// Enable or Disable public network access to workspace
@@ -91,7 +92,7 @@ class Workspace extends pulumi.CustomResource {
         ) {
     adlaResourceId = registerOutput<String>('adlaResourceId');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    connectivityEndpoints = registerOutput<Map<String, String>>('connectivityEndpoints');
+    connectivityEndpoints = registerOutput<Map<String, String>>('connectivityEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     cspWorkspaceAdminProperties = registerOutput<CspWorkspaceAdminPropertiesResponse?>('cspWorkspaceAdminProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CspWorkspaceAdminPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultDataLakeStorage = registerOutput<DataLakeStorageAccountDetailsResponse?>('defaultDataLakeStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataLakeStorageAccountDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     encryption = registerOutput<EncryptionDetailsResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -102,14 +103,51 @@ class Workspace extends pulumi.CustomResource {
     managedVirtualNetwork = registerOutput<String?>('managedVirtualNetwork');
     managedVirtualNetworkSettings = registerOutput<ManagedVirtualNetworkSettingsResponse?>('managedVirtualNetworkSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedVirtualNetworkSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>?>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     purviewConfiguration = registerOutput<PurviewConfigurationResponse?>('purviewConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PurviewConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    settings = registerOutput<Map<String, dynamic>>('settings');
+    settings = registerOutput<Map<String, dynamic>>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); });
     sqlAdministratorLogin = registerOutput<String?>('sqlAdministratorLogin');
     sqlAdministratorLoginPassword = registerOutput<String?>('sqlAdministratorLoginPassword');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trustedServiceBypassEnabled = registerOutput<bool?>('trustedServiceBypassEnabled');
+    type = registerOutput<String>('type');
+    virtualNetworkProfile = registerOutput<VirtualNetworkProfileResponse?>('virtualNetworkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workspaceRepositoryConfiguration = registerOutput<WorkspaceRepositoryConfigurationResponse?>('workspaceRepositoryConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceRepositoryConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workspaceUID = registerOutput<String>('workspaceUID');
+  }
+
+  /// Creates a typed reference to an existing [Workspace] resource.
+  Workspace.reference(String urn)
+    : super(
+        'azure-native:synapse:Workspace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    adlaResourceId = registerOutput<String>('adlaResourceId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectivityEndpoints = registerOutput<Map<String, String>>('connectivityEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    cspWorkspaceAdminProperties = registerOutput<CspWorkspaceAdminPropertiesResponse?>('cspWorkspaceAdminProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CspWorkspaceAdminPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultDataLakeStorage = registerOutput<DataLakeStorageAccountDetailsResponse?>('defaultDataLakeStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataLakeStorageAccountDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryption = registerOutput<EncryptionDetailsResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extraProperties = registerOutput<dynamic>('extraProperties');
+    identity = registerOutput<ManagedIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    managedResourceGroupName = registerOutput<String?>('managedResourceGroupName');
+    managedVirtualNetwork = registerOutput<String?>('managedVirtualNetwork');
+    managedVirtualNetworkSettings = registerOutput<ManagedVirtualNetworkSettingsResponse?>('managedVirtualNetworkSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedVirtualNetworkSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>?>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    purviewConfiguration = registerOutput<PurviewConfigurationResponse?>('purviewConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PurviewConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    settings = registerOutput<Map<String, dynamic>>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); });
+    sqlAdministratorLogin = registerOutput<String?>('sqlAdministratorLogin');
+    sqlAdministratorLoginPassword = registerOutput<String?>('sqlAdministratorLoginPassword');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trustedServiceBypassEnabled = registerOutput<bool?>('trustedServiceBypassEnabled');
     type = registerOutput<String>('type');
     virtualNetworkProfile = registerOutput<VirtualNetworkProfileResponse?>('virtualNetworkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

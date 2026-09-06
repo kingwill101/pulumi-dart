@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// package carrier info
 class PackageCarrierInfoResponse {
   /// Name of the carrier.
-  final pulumi.Input<String>? carrierName;
+  final pulumi.Input<String?>? carrierName;
   /// Tracking Id of shipment.
-  final pulumi.Input<String>? trackingId;
+  final pulumi.Input<String?>? trackingId;
 
   /// Creates a new [PackageCarrierInfoResponse].
   /// [carrierName] Name of the carrier.

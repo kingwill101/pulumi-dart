@@ -7,7 +7,7 @@ import 'dashboard_parts_position.dart';
 /// A dashboard part.
 class DashboardParts {
   /// The dashboard's part metadata.
-  final pulumi.Input<DashboardPartMetadata>? metadata;
+  final pulumi.Input<DashboardPartMetadata?>? metadata;
   /// The dashboard's part position.
   final pulumi.Input<DashboardPartsPosition> position;
 

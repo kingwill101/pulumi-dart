@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes operator to be matched
-enum ClientPortOperator {
+enum ClientPortOperator implements pulumi.PulumiEnum<String> {
   any("Any"),
   equal("Equal"),
   contains("Contains"),
@@ -12,6 +14,7 @@ enum ClientPortOperator {
   regEx("RegEx");
 
   const ClientPortOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static ClientPortOperator fromValue(String value) {

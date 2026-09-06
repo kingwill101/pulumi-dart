@@ -56,6 +56,17 @@ Future<GetHyperVSiteResult> getHyperVSite(
   return GetHyperVSiteResult.fromMap(result);
 }
 
+pulumi.Output<GetHyperVSiteResult> getHyperVSiteOutput(
+  GetHyperVSiteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazure:getHyperVSite',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHyperVSiteResult.fromMap);
+}
+
 /// Method to get a Hyper-V cluster.
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -74,6 +85,17 @@ Future<GetHypervClusterControllerClusterResult> getHypervClusterControllerCluste
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHypervClusterControllerClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetHypervClusterControllerClusterResult> getHypervClusterControllerClusterOutput(
+  GetHypervClusterControllerClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazure:getHypervClusterControllerCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHypervClusterControllerClusterResult.fromMap);
 }
 
 /// Get a HypervHost
@@ -96,6 +118,17 @@ Future<GetHypervHostControllerResult> getHypervHostController(
   return GetHypervHostControllerResult.fromMap(result);
 }
 
+pulumi.Output<GetHypervHostControllerResult> getHypervHostControllerOutput(
+  GetHypervHostControllerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazure:getHypervHostController',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHypervHostControllerResult.fromMap);
+}
+
 /// Get a HypervSite
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -114,6 +147,17 @@ Future<GetHypervSitesControllerResult> getHypervSitesController(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHypervSitesControllerResult.fromMap(result);
+}
+
+pulumi.Output<GetHypervSitesControllerResult> getHypervSitesControllerOutput(
+  GetHypervSitesControllerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazure:getHypervSitesController',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHypervSitesControllerResult.fromMap);
 }
 
 /// Get a ImportSite
@@ -136,6 +180,17 @@ Future<GetImportSitesControllerResult> getImportSitesController(
   return GetImportSitesControllerResult.fromMap(result);
 }
 
+pulumi.Output<GetImportSitesControllerResult> getImportSitesControllerOutput(
+  GetImportSitesControllerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazure:getImportSitesController',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImportSitesControllerResult.fromMap);
+}
+
 /// Get a MasterSite
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -156,6 +211,17 @@ Future<GetMasterSitesControllerResult> getMasterSitesController(
   return GetMasterSitesControllerResult.fromMap(result);
 }
 
+pulumi.Output<GetMasterSitesControllerResult> getMasterSitesControllerOutput(
+  GetMasterSitesControllerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazure:getMasterSitesController',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMasterSitesControllerResult.fromMap);
+}
+
 /// REST model used to encapsulate the user visible state of a PrivateEndpoint.
 ///
 /// Uses Azure REST API version 2020-07-07.
@@ -172,6 +238,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazure:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Gets the private link resource.
@@ -194,6 +271,17 @@ Future<GetPrivateEndpointConnectionControllerResult> getPrivateEndpointConnectio
   return GetPrivateEndpointConnectionControllerResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionControllerResult> getPrivateEndpointConnectionControllerOutput(
+  GetPrivateEndpointConnectionControllerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazure:getPrivateEndpointConnectionController',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionControllerResult.fromMap);
+}
+
 /// Get a ServerSiteResource
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -214,6 +302,17 @@ Future<GetServerSitesControllerResult> getServerSitesController(
   return GetServerSitesControllerResult.fromMap(result);
 }
 
+pulumi.Output<GetServerSitesControllerResult> getServerSitesControllerOutput(
+  GetServerSitesControllerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazure:getServerSitesController',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerSitesControllerResult.fromMap);
+}
+
 /// Site REST Resource.
 ///
 /// Uses Azure REST API version 2020-07-07.
@@ -230,6 +329,17 @@ Future<GetSiteResult> getSite(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSiteResult.fromMap(result);
+}
+
+pulumi.Output<GetSiteResult> getSiteOutput(
+  GetSiteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazure:getSite',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSiteResult.fromMap);
 }
 
 /// Get a VmwareSite
@@ -252,6 +362,17 @@ Future<GetSitesControllerResult> getSitesController(
   return GetSitesControllerResult.fromMap(result);
 }
 
+pulumi.Output<GetSitesControllerResult> getSitesControllerOutput(
+  GetSitesControllerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazure:getSitesController',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSitesControllerResult.fromMap);
+}
+
 /// Get a SqlDiscoverySiteDataSource
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -270,6 +391,17 @@ Future<GetSqlDiscoverySiteDataSourceControllerResult> getSqlDiscoverySiteDataSou
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSqlDiscoverySiteDataSourceControllerResult.fromMap(result);
+}
+
+pulumi.Output<GetSqlDiscoverySiteDataSourceControllerResult> getSqlDiscoverySiteDataSourceControllerOutput(
+  GetSqlDiscoverySiteDataSourceControllerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazure:getSqlDiscoverySiteDataSourceController',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlDiscoverySiteDataSourceControllerResult.fromMap);
 }
 
 /// Method to get a site.
@@ -292,6 +424,17 @@ Future<GetSqlSitesControllerResult> getSqlSitesController(
   return GetSqlSitesControllerResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlSitesControllerResult> getSqlSitesControllerOutput(
+  GetSqlSitesControllerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazure:getSqlSitesController',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlSitesControllerResult.fromMap);
+}
+
 /// Get a Vcenter
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -310,6 +453,17 @@ Future<GetVcenterControllerResult> getVcenterController(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVcenterControllerResult.fromMap(result);
+}
+
+pulumi.Output<GetVcenterControllerResult> getVcenterControllerOutput(
+  GetVcenterControllerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazure:getVcenterController',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVcenterControllerResult.fromMap);
 }
 
 /// Method to get a Web app data source in site.
@@ -332,6 +486,17 @@ Future<GetWebAppDiscoverySiteDataSourcesControllerResult> getWebAppDiscoverySite
   return GetWebAppDiscoverySiteDataSourcesControllerResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppDiscoverySiteDataSourcesControllerResult> getWebAppDiscoverySiteDataSourcesControllerOutput(
+  GetWebAppDiscoverySiteDataSourcesControllerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazure:getWebAppDiscoverySiteDataSourcesController',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppDiscoverySiteDataSourcesControllerResult.fromMap);
+}
+
 /// Method to get a site.
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -350,6 +515,17 @@ Future<GetWebAppSitesControllerResult> getWebAppSitesController(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppSitesControllerResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppSitesControllerResult> getWebAppSitesControllerOutput(
+  GetWebAppSitesControllerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazure:getWebAppSitesController',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppSitesControllerResult.fromMap);
 }
 
 /// Method to get site health summary.
@@ -372,6 +548,17 @@ Future<ListHypervSitesControllerHealthSummaryResult> listHypervSitesControllerHe
   return ListHypervSitesControllerHealthSummaryResult.fromMap(result);
 }
 
+pulumi.Output<ListHypervSitesControllerHealthSummaryResult> listHypervSitesControllerHealthSummaryOutput(
+  ListHypervSitesControllerHealthSummaryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazure:listHypervSitesControllerHealthSummary',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListHypervSitesControllerHealthSummaryResult.fromMap);
+}
+
 /// Method to get site health summary.
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -392,6 +579,17 @@ Future<ListServerSitesControllerHealthSummaryResult> listServerSitesControllerHe
   return ListServerSitesControllerHealthSummaryResult.fromMap(result);
 }
 
+pulumi.Output<ListServerSitesControllerHealthSummaryResult> listServerSitesControllerHealthSummaryOutput(
+  ListServerSitesControllerHealthSummaryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazure:listServerSitesControllerHealthSummary',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListServerSitesControllerHealthSummaryResult.fromMap);
+}
+
 /// Method to get site health summary.
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -410,4 +608,15 @@ Future<ListSitesControllerHealthSummaryResult> listSitesControllerHealthSummary(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListSitesControllerHealthSummaryResult.fromMap(result);
+}
+
+pulumi.Output<ListSitesControllerHealthSummaryResult> listSitesControllerHealthSummaryOutput(
+  ListSitesControllerHealthSummaryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazure:listSitesControllerHealthSummary',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListSitesControllerHealthSummaryResult.fromMap);
 }

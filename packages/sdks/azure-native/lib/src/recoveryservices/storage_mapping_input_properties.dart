@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Storage mapping input properties.
 class StorageMappingInputProperties {
   /// The ID of the storage object.
-  final pulumi.Input<String>? targetStorageClassificationId;
+  final pulumi.Input<String?>? targetStorageClassificationId;
 
   /// Creates a new [StorageMappingInputProperties].
   /// [targetStorageClassificationId] The ID of the storage object.

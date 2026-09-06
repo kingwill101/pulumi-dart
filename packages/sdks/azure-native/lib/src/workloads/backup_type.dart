@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of backup, VM, SQL or HANA.
-enum BackupType {
+enum BackupType implements pulumi.PulumiEnum<String> {
   valueVM("VM"),
   valueSQL("SQL"),
   valueHANA("HANA");
 
   const BackupType(this.wireValue);
+  @override
   final String wireValue;
 
   static BackupType fromValue(String value) {

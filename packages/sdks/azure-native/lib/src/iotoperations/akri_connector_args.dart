@@ -11,9 +11,9 @@ class AkriConnectorArgs {
   /// Name of AkriConnectorTemplate resource.
   final pulumi.Input<String> akriConnectorTemplateName;
   /// Name of AkriConnector resource.
-  final pulumi.Input<String>? connectorName;
+  final pulumi.Input<String?>? connectorName;
   /// Edge location of the resource.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// Name of instance.
   final pulumi.Input<String> instanceName;
   /// The name of the resource group. The name is case insensitive.

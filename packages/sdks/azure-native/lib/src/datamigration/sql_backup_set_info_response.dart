@@ -76,7 +76,7 @@ class SqlBackupSetInfoResponse {
       backupSetId: pulumi.Input.fromValue(map['backupSetId'] as String),
       backupStartDate: pulumi.Input.fromValue(map['backupStartDate'] as String),
       backupType: pulumi.Input.fromValue(map['backupType'] as String),
-      familyCount: pulumi.Input.fromValue(map['familyCount'] as int),
+      familyCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['familyCount'])),
       firstLSN: pulumi.Input.fromValue(map['firstLSN'] as String),
       hasBackupChecksums: pulumi.Input.fromValue(map['hasBackupChecksums'] as bool),
       ignoreReasons: pulumi.Input.fromValue((map['ignoreReasons'] as List).cast<String>()),

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The ownership role the application has on the resource types. The service owner role gives the application owner permissions. The limited owner role gives elevated permissions but does not allow all the permissions of a service owner, such as read/write on internal metadata.
-enum Role {
+enum Role implements pulumi.PulumiEnum<String> {
   serviceOwner("ServiceOwner"),
   limitedOwner("LimitedOwner");
 
   const Role(this.wireValue);
+  @override
   final String wireValue;
 
   static Role fromValue(String value) {

@@ -9,15 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GlobalReachConnectionArgs {
   /// Authorization key from the peer express route used for the global reach
   /// connection
-  final pulumi.Input<String>? authorizationKey;
+  final pulumi.Input<String?>? authorizationKey;
   /// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the
   /// global reach connection
-  final pulumi.Input<String>? expressRouteId;
+  final pulumi.Input<String?>? expressRouteId;
   /// Name of the global reach connection
-  final pulumi.Input<String>? globalReachConnectionName;
+  final pulumi.Input<String?>? globalReachConnectionName;
   /// Identifier of the ExpressRoute Circuit to peer with in the global reach
   /// connection
-  final pulumi.Input<String>? peerExpressRouteCircuit;
+  final pulumi.Input<String?>? peerExpressRouteCircuit;
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
   /// The name of the resource group. The name is case insensitive.

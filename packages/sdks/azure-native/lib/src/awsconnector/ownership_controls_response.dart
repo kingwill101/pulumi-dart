@@ -6,7 +6,7 @@ import 'ownership_controls_rule_response.dart';
 /// Definition of OwnershipControls
 class OwnershipControlsResponse {
   /// Specifies the container element for Object Ownership rules.
-  final pulumi.Input<List<OwnershipControlsRuleResponse>>? rules;
+  final pulumi.Input<List<OwnershipControlsRuleResponse>?>? rules;
 
   /// Creates a new [OwnershipControlsResponse].
   /// [rules] Specifies the container element for Object Ownership rules.

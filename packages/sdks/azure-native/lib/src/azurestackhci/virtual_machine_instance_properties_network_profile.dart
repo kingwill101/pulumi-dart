@@ -6,7 +6,7 @@ import 'network_interface_arm_reference.dart';
 /// NetworkProfile - describes the network configuration the virtual machine instance
 class VirtualMachineInstancePropertiesNetworkProfile {
   /// NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
-  final pulumi.Input<List<NetworkInterfaceArmReference>>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterfaceArmReference>?>? networkInterfaces;
 
   /// Creates a new [VirtualMachineInstancePropertiesNetworkProfile].
   /// [networkInterfaces] NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance

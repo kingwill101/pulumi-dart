@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'controller_services_response.dart';
+import 'express_route_connection_information_response.dart';
 import 'managed_resource_group_configuration_response.dart';
 import 'network_fabric_controller_args.dart';
 import 'system_data_response.dart';
@@ -288,7 +289,7 @@ class NetworkFabricController extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute)
-  late final pulumi.Output<List<Map<String, dynamic>>?> infrastructureExpressRouteConnections;
+  late final pulumi.Output<List<ExpressRouteConnectionInformationResponse>?> infrastructureExpressRouteConnections;
   /// InfrastructureServices IP ranges.
   late final pulumi.Output<ControllerServicesResponse> infrastructureServices;
   /// IPv4 Network Fabric Controller Address Space.
@@ -318,7 +319,7 @@ class NetworkFabricController extends pulumi.CustomResource {
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute).
-  late final pulumi.Output<List<Map<String, dynamic>>?> workloadExpressRouteConnections;
+  late final pulumi.Output<List<ExpressRouteConnectionInformationResponse>?> workloadExpressRouteConnections;
   /// A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints. This is used for the backward compatibility.
   late final pulumi.Output<bool> workloadManagementNetwork;
   /// WorkloadServices IP ranges.
@@ -340,7 +341,7 @@ class NetworkFabricController extends pulumi.CustomResource {
         ) {
     annotation = registerOutput<String?>('annotation');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    infrastructureExpressRouteConnections = registerOutput<List<Map<String, dynamic>>?>('infrastructureExpressRouteConnections');
+    infrastructureExpressRouteConnections = registerOutput<List<ExpressRouteConnectionInformationResponse>?>('infrastructureExpressRouteConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressRouteConnectionInformationResponse>(guardedValue, (value) => ExpressRouteConnectionInformationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     infrastructureServices = registerOutput<ControllerServicesResponse>('infrastructureServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControllerServicesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipv4AddressSpace = registerOutput<String?>('ipv4AddressSpace');
     ipv6AddressSpace = registerOutput<String?>('ipv6AddressSpace');
@@ -348,14 +349,45 @@ class NetworkFabricController extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     managedResourceGroupConfiguration = registerOutput<ManagedResourceGroupConfigurationResponse?>('managedResourceGroupConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedResourceGroupConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networkFabricIds = registerOutput<List<String>>('networkFabricIds');
+    networkFabricIds = registerOutput<List<String>>('networkFabricIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     nfcSku = registerOutput<String?>('nfcSku');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tenantInternetGatewayIds = registerOutput<List<String>>('tenantInternetGatewayIds');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantInternetGatewayIds = registerOutput<List<String>>('tenantInternetGatewayIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
-    workloadExpressRouteConnections = registerOutput<List<Map<String, dynamic>>?>('workloadExpressRouteConnections');
+    workloadExpressRouteConnections = registerOutput<List<ExpressRouteConnectionInformationResponse>?>('workloadExpressRouteConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressRouteConnectionInformationResponse>(guardedValue, (value) => ExpressRouteConnectionInformationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    workloadManagementNetwork = registerOutput<bool>('workloadManagementNetwork');
+    workloadServices = registerOutput<ControllerServicesResponse>('workloadServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControllerServicesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [NetworkFabricController] resource.
+  NetworkFabricController.reference(String urn)
+    : super(
+        'azure-native:managednetworkfabric:NetworkFabricController',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotation = registerOutput<String?>('annotation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    infrastructureExpressRouteConnections = registerOutput<List<ExpressRouteConnectionInformationResponse>?>('infrastructureExpressRouteConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressRouteConnectionInformationResponse>(guardedValue, (value) => ExpressRouteConnectionInformationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    infrastructureServices = registerOutput<ControllerServicesResponse>('infrastructureServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControllerServicesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipv4AddressSpace = registerOutput<String?>('ipv4AddressSpace');
+    ipv6AddressSpace = registerOutput<String?>('ipv6AddressSpace');
+    isWorkloadManagementNetworkEnabled = registerOutput<String?>('isWorkloadManagementNetworkEnabled');
+    location = registerOutput<String>('location');
+    managedResourceGroupConfiguration = registerOutput<ManagedResourceGroupConfigurationResponse?>('managedResourceGroupConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedResourceGroupConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networkFabricIds = registerOutput<List<String>>('networkFabricIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    nfcSku = registerOutput<String?>('nfcSku');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantInternetGatewayIds = registerOutput<List<String>>('tenantInternetGatewayIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String>('type');
+    workloadExpressRouteConnections = registerOutput<List<ExpressRouteConnectionInformationResponse>?>('workloadExpressRouteConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressRouteConnectionInformationResponse>(guardedValue, (value) => ExpressRouteConnectionInformationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     workloadManagementNetwork = registerOutput<bool>('workloadManagementNetwork');
     workloadServices = registerOutput<ControllerServicesResponse>('workloadServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControllerServicesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

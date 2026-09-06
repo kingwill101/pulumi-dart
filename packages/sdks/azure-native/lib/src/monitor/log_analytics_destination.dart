@@ -6,9 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogAnalyticsDestination {
   /// A friendly name for the destination.
   /// This name should be unique across all destinations (regardless of type) within the data collection rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource ID of the Log Analytics workspace.
-  final pulumi.Input<String>? workspaceResourceId;
+  final pulumi.Input<String?>? workspaceResourceId;
 
   /// Creates a new [LogAnalyticsDestination].
   /// [name] A friendly name for the destination.

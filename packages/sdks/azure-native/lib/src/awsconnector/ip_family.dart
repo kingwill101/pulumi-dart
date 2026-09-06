@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum IpFamily {
+enum IpFamily implements pulumi.PulumiEnum<String> {
   ipv4("ipv4"),
   ipv6("ipv6");
 
   const IpFamily(this.wireValue);
+  @override
   final String wireValue;
 
   static IpFamily fromValue(String value) {

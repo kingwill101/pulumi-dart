@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Text settings
 class LogFileSettingsText {
   /// One of the supported timestamp formats
-  final pulumi.Input<String> recordStartTimestampFormat;
+  final pulumi.Input<dynamic> recordStartTimestampFormat;
 
   /// Creates a new [LogFileSettingsText].
   /// [recordStartTimestampFormat] One of the supported timestamp formats
@@ -21,7 +21,7 @@ class LogFileSettingsText {
 
   factory LogFileSettingsText.fromMap(Map<String, dynamic> map) {
     return LogFileSettingsText(
-      recordStartTimestampFormat: pulumi.Input.fromValue(map['recordStartTimestampFormat'] as String),
+      recordStartTimestampFormat: pulumi.Input.fromValue(map['recordStartTimestampFormat']),
     );
   }
 }

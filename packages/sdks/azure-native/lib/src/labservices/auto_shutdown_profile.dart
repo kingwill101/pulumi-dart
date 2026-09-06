@@ -7,17 +7,17 @@ import 'shutdown_on_idle_mode.dart';
 /// Profile for how to handle shutting down virtual machines.
 class AutoShutdownProfile {
   /// The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-  final pulumi.Input<String>? disconnectDelay;
+  final pulumi.Input<String?>? disconnectDelay;
   /// The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-  final pulumi.Input<String>? idleDelay;
+  final pulumi.Input<String?>? idleDelay;
   /// The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  final pulumi.Input<String>? noConnectDelay;
+  final pulumi.Input<String?>? noConnectDelay;
   /// Whether shutdown on disconnect is enabled
-  final pulumi.Input<EnableState>? shutdownOnDisconnect;
+  final pulumi.Input<EnableState?>? shutdownOnDisconnect;
   /// Whether a VM will get shutdown when it has idled for a period of time.
-  final pulumi.Input<ShutdownOnIdleMode>? shutdownOnIdle;
+  final pulumi.Input<ShutdownOnIdleMode?>? shutdownOnIdle;
   /// Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  final pulumi.Input<EnableState>? shutdownWhenNotConnected;
+  final pulumi.Input<EnableState?>? shutdownWhenNotConnected;
 
   /// Creates a new [AutoShutdownProfile].
   /// [disconnectDelay] The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
@@ -26,14 +26,14 @@ class AutoShutdownProfile {
   /// [shutdownOnDisconnect] Whether shutdown on disconnect is enabled
   /// [shutdownOnIdle] Whether a VM will get shutdown when it has idled for a period of time.
   /// [shutdownWhenNotConnected] Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  const AutoShutdownProfile({
+  AutoShutdownProfile({
     this.disconnectDelay,
     this.idleDelay,
     this.noConnectDelay,
-    this.shutdownOnDisconnect,
-    this.shutdownOnIdle,
-    this.shutdownWhenNotConnected,
-  });
+    pulumi.Input<EnableState?>? shutdownOnDisconnect,
+    pulumi.Input<ShutdownOnIdleMode?>? shutdownOnIdle,
+    pulumi.Input<EnableState?>? shutdownWhenNotConnected,
+  }) : shutdownOnDisconnect = shutdownOnDisconnect ?? pulumi.Input.fromValue(EnableState.fromValue('Disabled')), shutdownOnIdle = shutdownOnIdle ?? pulumi.Input.fromValue(ShutdownOnIdleMode.fromValue('None')), shutdownWhenNotConnected = shutdownWhenNotConnected ?? pulumi.Input.fromValue(EnableState.fromValue('Disabled'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

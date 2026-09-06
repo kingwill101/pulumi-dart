@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Managed application policy.
 class ApplicationPolicy {
   /// The policy name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The policy parameters.
-  final pulumi.Input<String>? parameters;
+  final pulumi.Input<String?>? parameters;
   /// The policy definition Id.
-  final pulumi.Input<String>? policyDefinitionId;
+  final pulumi.Input<String?>? policyDefinitionId;
 
   /// Creates a new [ApplicationPolicy].
   /// [name] The policy name

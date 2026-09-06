@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of PrivateIpAddressSpecification
 class PrivateIpAddressSpecificationResponse {
   /// Property primary
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
   /// Property privateIpAddress
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
 
   /// Creates a new [PrivateIpAddressSpecificationResponse].
   /// [primary] Property primary

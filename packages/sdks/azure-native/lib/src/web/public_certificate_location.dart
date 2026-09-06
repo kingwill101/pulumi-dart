@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Public Certificate Location
-enum PublicCertificateLocation {
+enum PublicCertificateLocation implements pulumi.PulumiEnum<String> {
   valueCurrentUserMy("CurrentUserMy"),
   valueLocalMachineMy("LocalMachineMy"),
   valueUnknown("Unknown");
 
   const PublicCertificateLocation(this.wireValue);
+  @override
   final String wireValue;
 
   static PublicCertificateLocation fromValue(String value) {

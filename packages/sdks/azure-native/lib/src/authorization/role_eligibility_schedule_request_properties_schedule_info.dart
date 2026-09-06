@@ -6,9 +6,9 @@ import 'role_eligibility_schedule_request_properties_expiration.dart';
 /// Schedule info of the role eligibility schedule
 class RoleEligibilityScheduleRequestPropertiesScheduleInfo {
   /// Expiration of the role eligibility schedule
-  final pulumi.Input<RoleEligibilityScheduleRequestPropertiesExpiration>? expiration;
+  final pulumi.Input<RoleEligibilityScheduleRequestPropertiesExpiration?>? expiration;
   /// Start DateTime of the role eligibility schedule.
-  final pulumi.Input<String>? startDateTime;
+  final pulumi.Input<String?>? startDateTime;
 
   /// Creates a new [RoleEligibilityScheduleRequestPropertiesScheduleInfo].
   /// [expiration] Expiration of the role eligibility schedule

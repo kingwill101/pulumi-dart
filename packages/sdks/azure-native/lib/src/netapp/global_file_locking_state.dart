@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Flag indicating whether the global file lock is enabled for the cache.
-enum GlobalFileLockingState {
+enum GlobalFileLockingState implements pulumi.PulumiEnum<String> {
   disabled("Disabled"),
   enabled("Enabled");
 
   const GlobalFileLockingState(this.wireValue);
+  @override
   final String wireValue;
 
   static GlobalFileLockingState fromValue(String value) {

@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The api properties for special APIs.
 class ApiPropertiesResponse {
   /// (Metrics Advisor Only) The Azure AD Client Id (Application Id).
-  final pulumi.Input<String>? aadClientId;
+  final pulumi.Input<String?>? aadClientId;
   /// (Metrics Advisor Only) The Azure AD Tenant Id.
-  final pulumi.Input<String>? aadTenantId;
+  final pulumi.Input<String?>? aadTenantId;
   /// (Personalization Only) The flag to enable statistics of Bing Search.
-  final pulumi.Input<String>? eventHubConnectionString;
+  final pulumi.Input<String?>? eventHubConnectionString;
   /// (QnAMaker Only) The Azure Search endpoint id of QnAMaker.
-  final pulumi.Input<String>? qnaAzureSearchEndpointId;
+  final pulumi.Input<String?>? qnaAzureSearchEndpointId;
   /// (QnAMaker Only) The Azure Search endpoint key of QnAMaker.
-  final pulumi.Input<String>? qnaAzureSearchEndpointKey;
+  final pulumi.Input<String?>? qnaAzureSearchEndpointKey;
   /// (QnAMaker Only) The runtime endpoint of QnAMaker.
-  final pulumi.Input<String>? qnaRuntimeEndpoint;
+  final pulumi.Input<String?>? qnaRuntimeEndpoint;
   /// (Bing Search Only) The flag to enable statistics of Bing Search.
-  final pulumi.Input<bool>? statisticsEnabled;
+  final pulumi.Input<bool?>? statisticsEnabled;
   /// (Personalization Only) The storage account connection string.
-  final pulumi.Input<String>? storageAccountConnectionString;
+  final pulumi.Input<String?>? storageAccountConnectionString;
   /// (Metrics Advisor Only) The super user of Metrics Advisor.
-  final pulumi.Input<String>? superUser;
+  final pulumi.Input<String?>? superUser;
   /// (Metrics Advisor Only) The website name of Metrics Advisor.
-  final pulumi.Input<String>? websiteName;
+  final pulumi.Input<String?>? websiteName;
 
   /// Creates a new [ApiPropertiesResponse].
   /// [aadClientId] (Metrics Advisor Only) The Azure AD Client Id (Application Id).

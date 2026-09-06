@@ -363,4 +363,26 @@ class EncryptionProtector extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     uri = registerOutput<String>('uri');
   }
+
+  /// Creates a typed reference to an existing [EncryptionProtector] resource.
+  EncryptionProtector.reference(String urn)
+    : super(
+        'azure-native:sql:EncryptionProtector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoRotationEnabled = registerOutput<bool?>('autoRotationEnabled');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    serverKeyName = registerOutput<String?>('serverKeyName');
+    serverKeyType = registerOutput<String>('serverKeyType');
+    subregion = registerOutput<String>('subregion');
+    thumbprint = registerOutput<String>('thumbprint');
+    type = registerOutput<String>('type');
+    uri = registerOutput<String>('uri');
+  }
 }

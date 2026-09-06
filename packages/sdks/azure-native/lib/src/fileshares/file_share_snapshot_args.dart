@@ -9,9 +9,9 @@ import 'file_share_snapshot_properties.dart';
 /// {@macro pulumi_fileshares_file_share_snapshot_args_doc}
 class FileShareSnapshotArgs {
   /// The name of the FileShareSnapshot
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<FileShareSnapshotProperties>? properties;
+  final pulumi.Input<FileShareSnapshotProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The resource name of the file share, as seen by the administrator through Azure Resource Manager.

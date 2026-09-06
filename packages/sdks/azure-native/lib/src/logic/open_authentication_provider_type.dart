@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of provider for OAuth.
-enum OpenAuthenticationProviderType {
+enum OpenAuthenticationProviderType implements pulumi.PulumiEnum<String> {
   valueAAD("AAD");
 
   const OpenAuthenticationProviderType(this.wireValue);
+  @override
   final String wireValue;
 
   static OpenAuthenticationProviderType fromValue(String value) {

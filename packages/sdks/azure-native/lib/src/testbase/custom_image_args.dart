@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_testbase_custom_image_args_doc}
 class CustomImageArgs {
   /// The resource name of the test base custom image.
-  final pulumi.Input<String>? customImageName;
+  final pulumi.Input<String?>? customImageName;
   /// Image definition name.
   final pulumi.Input<String> definitionName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Custom image source type.
-  final pulumi.Input<String> source;
+  final pulumi.Input<dynamic> source;
   /// The resource name of the Test Base Account.
   final pulumi.Input<String> testBaseAccountName;
   /// Image version name.
   final pulumi.Input<String> versionName;
   /// The Id of the associated VHD resource.
-  final pulumi.Input<String>? vhdId;
+  final pulumi.Input<String?>? vhdId;
 
   /// Creates a new [CustomImageArgs].
   /// [customImageName] The resource name of the test base custom image.
@@ -30,15 +30,15 @@ class CustomImageArgs {
   /// [testBaseAccountName] The resource name of the Test Base Account.
   /// [versionName] Image version name.
   /// [vhdId] The Id of the associated VHD resource.
-  const CustomImageArgs({
+  CustomImageArgs({
     this.customImageName,
     required this.definitionName,
     required this.resourceGroupName,
-    required this.source,
+    pulumi.Input<dynamic>? source,
     required this.testBaseAccountName,
     required this.versionName,
     this.vhdId,
-  });
+  }) : source = source ?? pulumi.Input.fromValue('VHD');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,7 +57,7 @@ class CustomImageArgs {
       customImageName: (() { final guardedValue = map['customImageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       definitionName: pulumi.Input.fromValue(map['definitionName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      source: pulumi.Input.fromValue(map['source'] as String),
+      source: pulumi.Input.fromValue(map['source']),
       testBaseAccountName: pulumi.Input.fromValue(map['testBaseAccountName'] as String),
       versionName: pulumi.Input.fromValue(map['versionName'] as String),
       vhdId: (() { final guardedValue = map['vhdId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

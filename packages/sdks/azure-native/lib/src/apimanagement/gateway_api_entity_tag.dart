@@ -250,7 +250,43 @@ class GatewayApiEntityTag extends pulumi.CustomResource {
     license = registerOutput<ApiLicenseInformationResponse?>('license', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiLicenseInformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     path = registerOutput<String>('path');
-    protocols = registerOutput<List<String>?>('protocols');
+    protocols = registerOutput<List<String>?>('protocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    provisioningState = registerOutput<String>('provisioningState');
+    serviceUrl = registerOutput<String?>('serviceUrl');
+    sourceApiId = registerOutput<String?>('sourceApiId');
+    subscriptionKeyParameterNames = registerOutput<SubscriptionKeyParameterNamesContractResponse?>('subscriptionKeyParameterNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionKeyParameterNamesContractResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subscriptionRequired = registerOutput<bool?>('subscriptionRequired');
+    termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [GatewayApiEntityTag] resource.
+  GatewayApiEntityTag.reference(String urn)
+    : super(
+        'azure-native:apimanagement:GatewayApiEntityTag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiRevision = registerOutput<String?>('apiRevision');
+    apiRevisionDescription = registerOutput<String?>('apiRevisionDescription');
+    apiType = registerOutput<String?>('apiType');
+    apiVersion = registerOutput<String?>('apiVersion');
+    apiVersionDescription = registerOutput<String?>('apiVersionDescription');
+    apiVersionSet = registerOutput<ApiVersionSetContractDetailsResponse?>('apiVersionSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiVersionSetContractDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    apiVersionSetId = registerOutput<String?>('apiVersionSetId');
+    authenticationSettings = registerOutput<AuthenticationSettingsContractResponse?>('authenticationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthenticationSettingsContractResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contact = registerOutput<ApiContactInformationResponse?>('contact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiContactInformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    isCurrent = registerOutput<bool?>('isCurrent');
+    isOnline = registerOutput<bool>('isOnline');
+    license = registerOutput<ApiLicenseInformationResponse?>('license', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiLicenseInformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    path = registerOutput<String>('path');
+    protocols = registerOutput<List<String>?>('protocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     provisioningState = registerOutput<String>('provisioningState');
     serviceUrl = registerOutput<String?>('serviceUrl');
     sourceApiId = registerOutput<String?>('sourceApiId');

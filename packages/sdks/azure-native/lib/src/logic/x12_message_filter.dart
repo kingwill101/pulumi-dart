@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The X12 message filter for odata query.
 class X12MessageFilter {
   /// The message filter type.
-  final pulumi.Input<String> messageFilterType;
+  final pulumi.Input<dynamic> messageFilterType;
 
   /// Creates a new [X12MessageFilter].
   /// [messageFilterType] The message filter type.
@@ -21,7 +21,7 @@ class X12MessageFilter {
 
   factory X12MessageFilter.fromMap(Map<String, dynamic> map) {
     return X12MessageFilter(
-      messageFilterType: pulumi.Input.fromValue(map['messageFilterType'] as String),
+      messageFilterType: pulumi.Input.fromValue(map['messageFilterType']),
     );
   }
 }

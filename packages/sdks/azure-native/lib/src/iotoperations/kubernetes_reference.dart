@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Kubernetes reference
 class KubernetesReference {
   /// APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
-  final pulumi.Input<String>? apiGroup;
+  final pulumi.Input<String?>? apiGroup;
   /// Kind is the type of resource being referenced
   final pulumi.Input<String> kind;
   /// Name is the name of resource being referenced
   final pulumi.Input<String> name;
   /// Namespace is the namespace of the resource being referenced. This field is required when the resource has a namespace.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
 
   /// Creates a new [KubernetesReference].
   /// [apiGroup] APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.

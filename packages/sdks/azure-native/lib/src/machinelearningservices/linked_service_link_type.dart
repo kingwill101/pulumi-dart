@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the link target.
-enum LinkedServiceLinkType {
+enum LinkedServiceLinkType implements pulumi.PulumiEnum<String> {
   valueSynapse("Synapse");
 
   const LinkedServiceLinkType(this.wireValue);
+  @override
   final String wireValue;
 
   static LinkedServiceLinkType fromValue(String value) {

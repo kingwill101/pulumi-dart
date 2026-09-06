@@ -9,7 +9,7 @@ class CapabilityResponse {
   /// Name of Capability
   final pulumi.Input<String> name;
   /// State of resource
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [CapabilityResponse].
   /// [description] Description of Capability

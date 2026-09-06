@@ -13,11 +13,11 @@ class DaprComponentResiliencyPolicyArgs {
   /// Name of the Managed Environment.
   final pulumi.Input<String> environmentName;
   /// The optional inbound component resiliency policy configuration
-  final pulumi.Input<DaprComponentResiliencyPolicyConfiguration>? inboundPolicy;
+  final pulumi.Input<DaprComponentResiliencyPolicyConfiguration?>? inboundPolicy;
   /// Name of the Dapr Component Resiliency Policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The optional outbound component resiliency policy configuration
-  final pulumi.Input<DaprComponentResiliencyPolicyConfiguration>? outboundPolicy;
+  final pulumi.Input<DaprComponentResiliencyPolicyConfiguration?>? outboundPolicy;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

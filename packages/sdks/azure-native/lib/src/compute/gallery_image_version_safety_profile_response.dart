@@ -6,9 +6,9 @@ import 'policy_violation_response.dart';
 /// This is the safety profile of the Gallery Image Version.
 class GalleryImageVersionSafetyProfileResponse {
   /// Indicates whether or not removing this Gallery Image Version from replicated regions is allowed.
-  final pulumi.Input<bool>? allowDeletionOfReplicatedLocations;
+  final pulumi.Input<bool?>? allowDeletionOfReplicatedLocations;
   /// Indicates whether or not the deletion is blocked for this Gallery Image Version if its End Of Life has not expired.
-  final pulumi.Input<bool>? blockDeletionBeforeEndOfLife;
+  final pulumi.Input<bool?>? blockDeletionBeforeEndOfLife;
   /// A list of Policy Violations that have been reported for this Gallery Image Version.
   final pulumi.Input<List<PolicyViolationResponse>> policyViolations;
   /// Indicates whether this image has been reported as violating Microsoft's policies.

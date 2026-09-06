@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The event grouping aggregation kinds
-enum EventGroupingAggregationKind {
+enum EventGroupingAggregationKind implements pulumi.PulumiEnum<String> {
   valueSingleAlert("SingleAlert"),
   valueAlertPerResult("AlertPerResult");
 
   const EventGroupingAggregationKind(this.wireValue);
+  @override
   final String wireValue;
 
   static EventGroupingAggregationKind fromValue(String value) {

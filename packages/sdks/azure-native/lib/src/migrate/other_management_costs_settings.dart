@@ -31,9 +31,9 @@ class OtherManagementCostsSettings {
 
   factory OtherManagementCostsSettings.fromMap(Map<String, dynamic> map) {
     return OtherManagementCostsSettings(
-      dataProtectionCostPerServerPerYear: pulumi.Input.fromValue(map['dataProtectionCostPerServerPerYear'] as double),
-      monitoringCostPerServerPerYear: pulumi.Input.fromValue(map['monitoringCostPerServerPerYear'] as double),
-      patchingCostPerServerPerYear: pulumi.Input.fromValue(map['patchingCostPerServerPerYear'] as double),
+      dataProtectionCostPerServerPerYear: pulumi.Input.fromValue((map['dataProtectionCostPerServerPerYear'] as num).toDouble()),
+      monitoringCostPerServerPerYear: pulumi.Input.fromValue((map['monitoringCostPerServerPerYear'] as num).toDouble()),
+      patchingCostPerServerPerYear: pulumi.Input.fromValue((map['patchingCostPerServerPerYear'] as num).toDouble()),
     );
   }
 }

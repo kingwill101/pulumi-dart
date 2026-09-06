@@ -8,11 +8,11 @@ import 'vmware_migrate_agent_model_custom_properties_response.dart';
 /// MigrateAgent model properties.
 class MigrateAgentModelPropertiesResponse {
   /// Identity model.
-  final pulumi.Input<IdentityModelResponse>? authenticationIdentity;
+  final pulumi.Input<IdentityModelResponse?>? authenticationIdentity;
   /// Gets or sets the MigrateAgent correlation Id.
   final pulumi.Input<String> correlationId;
   /// MigrateAgent model custom properties.
-  final pulumi.Input<VMwareMigrateAgentModelCustomPropertiesResponse>? customProperties;
+  final pulumi.Input<VMwareMigrateAgentModelCustomPropertiesResponse?>? customProperties;
   /// Gets or sets the list of health errors.
   final pulumi.Input<List<HealthErrorModelResponse>> healthErrors;
   /// Gets or sets a value indicating whether MigrateAgent is responsive.
@@ -20,9 +20,9 @@ class MigrateAgentModelPropertiesResponse {
   /// Gets or sets the time when last heartbeat was sent by the MigrateAgent.
   final pulumi.Input<String> lastHeartbeat;
   /// Gets or sets the machine Id where MigrateAgent is running.
-  final pulumi.Input<String>? machineId;
+  final pulumi.Input<String?>? machineId;
   /// Gets or sets the machine name where MigrateAgent is running.
-  final pulumi.Input<String>? machineName;
+  final pulumi.Input<String?>? machineName;
   /// Gets or sets the provisioning state of the MigrateAgent.
   final pulumi.Input<String> provisioningState;
   /// Gets or sets the MigrateAgent version.

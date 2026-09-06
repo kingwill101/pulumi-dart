@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of backing data source for this Storage Connector.
-enum StorageConnectorDataSourceType {
+enum StorageConnectorDataSourceType implements pulumi.PulumiEnum<String> {
   azureDataShare("Azure_DataShare");
 
   const StorageConnectorDataSourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageConnectorDataSourceType fromValue(String value) {

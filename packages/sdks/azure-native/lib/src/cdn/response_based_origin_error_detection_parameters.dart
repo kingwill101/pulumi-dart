@@ -7,11 +7,11 @@ import 'response_based_detected_error_types.dart';
 /// The JSON object that contains the properties to determine origin health using real requests/responses.
 class ResponseBasedOriginErrorDetectionParameters {
   /// The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
-  final pulumi.Input<List<HttpErrorRangeParameters>>? httpErrorRanges;
+  final pulumi.Input<List<HttpErrorRangeParameters>?>? httpErrorRanges;
   /// Type of response errors for real user requests for which origin will be deemed unhealthy
-  final pulumi.Input<ResponseBasedDetectedErrorTypes>? responseBasedDetectedErrorTypes;
+  final pulumi.Input<ResponseBasedDetectedErrorTypes?>? responseBasedDetectedErrorTypes;
   /// The percentage of failed requests in the sample where failover should trigger.
-  final pulumi.Input<int>? responseBasedFailoverThresholdPercentage;
+  final pulumi.Input<int?>? responseBasedFailoverThresholdPercentage;
 
   /// Creates a new [ResponseBasedOriginErrorDetectionParameters].
   /// [httpErrorRanges] The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
@@ -35,7 +35,7 @@ class ResponseBasedOriginErrorDetectionParameters {
     return ResponseBasedOriginErrorDetectionParameters(
       httpErrorRanges: (() { final guardedValue = map['httpErrorRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HttpErrorRangeParameters>(guardedValue, (value) => HttpErrorRangeParameters.fromMap((value as Map).cast<String, dynamic>()))); })(),
       responseBasedDetectedErrorTypes: (() { final guardedValue = map['responseBasedDetectedErrorTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResponseBasedDetectedErrorTypes.fromValue(guardedValue as String)); })(),
-      responseBasedFailoverThresholdPercentage: (() { final guardedValue = map['responseBasedFailoverThresholdPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      responseBasedFailoverThresholdPercentage: (() { final guardedValue = map['responseBasedFailoverThresholdPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

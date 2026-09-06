@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
 class WeeklySchedule {
   /// Specifies on which day of the week the maintenance occurs.
-  final pulumi.Input<String> dayOfWeek;
+  final pulumi.Input<dynamic> dayOfWeek;
   /// Specifies the number of weeks between each set of occurrences.
   final pulumi.Input<int> intervalWeeks;
 
@@ -26,8 +26,8 @@ class WeeklySchedule {
 
   factory WeeklySchedule.fromMap(Map<String, dynamic> map) {
     return WeeklySchedule(
-      dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
-      intervalWeeks: pulumi.Input.fromValue(map['intervalWeeks'] as int),
+      dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek']),
+      intervalWeeks: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['intervalWeeks'])),
     );
   }
 }

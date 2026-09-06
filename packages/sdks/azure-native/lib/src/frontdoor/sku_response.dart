@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The pricing tier of the web application firewall policy.
 class SkuResponse {
   /// Name of the pricing tier.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [SkuResponse].
   /// [name] Name of the pricing tier.

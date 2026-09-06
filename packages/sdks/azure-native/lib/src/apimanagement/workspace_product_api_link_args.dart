@@ -10,7 +10,7 @@ class WorkspaceProductApiLinkArgs {
   /// Full resource Id of an API.
   final pulumi.Input<String> apiId;
   /// Product-API link identifier. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? apiLinkId;
+  final pulumi.Input<String?>? apiLinkId;
   /// Product identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> productId;
   /// The name of the resource group. The name is case insensitive.

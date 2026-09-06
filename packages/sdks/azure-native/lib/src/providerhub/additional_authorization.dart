@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AdditionalAuthorization {
-  final pulumi.Input<String>? applicationId;
-  final pulumi.Input<String>? roleDefinitionId;
+  final pulumi.Input<String?>? applicationId;
+  final pulumi.Input<String?>? roleDefinitionId;
 
   /// Creates a new [AdditionalAuthorization].
   /// [applicationId] Optional.

@@ -11,23 +11,23 @@ import 'resources.dart';
 /// {@macro pulumi_containerstorage_pool_args_doc}
 class PoolArgs {
   /// List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.
-  final pulumi.Input<List<Assignment>>? assignments;
+  final pulumi.Input<List<Assignment>?>? assignments;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Pool Object
-  final pulumi.Input<String>? poolName;
+  final pulumi.Input<String?>? poolName;
   /// Type of the Pool: ephemeralDisk, azureDisk, or elasticsan.
   final pulumi.Input<PoolType> poolType;
   /// ReclaimPolicy defines what happens to the backend storage when StoragePool is deleted
-  final pulumi.Input<String>? reclaimPolicy;
+  final pulumi.Input<dynamic>? reclaimPolicy;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resources represent the resources the pool should have.
-  final pulumi.Input<Resources>? resources;
+  final pulumi.Input<Resources?>? resources;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// List of availability zones that resources can be created in.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<dynamic>?>? zones;
 
   /// Creates a new [PoolArgs].
   /// [assignments] List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.
@@ -71,11 +71,11 @@ class PoolArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       poolName: (() { final guardedValue = map['poolName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       poolType: pulumi.Input.fromValue(PoolType.fromMap((map['poolType']! as Map).cast<String, dynamic>())),
-      reclaimPolicy: (() { final guardedValue = map['reclaimPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      reclaimPolicy: (() { final guardedValue = map['reclaimPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Resources.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
     );
   }
 }

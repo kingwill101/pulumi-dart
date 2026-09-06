@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Ssl cipher suites enums.
-enum ApplicationGatewaySslCipherSuite {
+enum ApplicationGatewaySslCipherSuite implements pulumi.PulumiEnum<String> {
   valueTLSECDHERSAWITHAES256CBCSHA384("TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384"),
   valueTLSECDHERSAWITHAES128CBCSHA256("TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256"),
   valueTLSECDHERSAWITHAES256CBCSHA("TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"),
@@ -30,6 +32,7 @@ enum ApplicationGatewaySslCipherSuite {
   valueTLSECDHERSAWITHAES256GCMSHA384("TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384");
 
   const ApplicationGatewaySslCipherSuite(this.wireValue);
+  @override
   final String wireValue;
 
   static ApplicationGatewaySslCipherSuite fromValue(String value) {

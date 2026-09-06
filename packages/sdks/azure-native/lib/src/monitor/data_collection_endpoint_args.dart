@@ -10,23 +10,23 @@ import 'data_collection_endpoint_resource_identity.dart';
 /// {@macro pulumi_monitor_data_collection_endpoint_args_doc}
 class DataCollectionEndpointArgs {
   /// The name of the data collection endpoint. The name is case insensitive.
-  final pulumi.Input<String>? dataCollectionEndpointName;
+  final pulumi.Input<String?>? dataCollectionEndpointName;
   /// Description of the data collection endpoint.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Managed service identity of the resource.
-  final pulumi.Input<DataCollectionEndpointResourceIdentity>? identity;
+  final pulumi.Input<DataCollectionEndpointResourceIdentity?>? identity;
   /// The immutable ID of this data collection endpoint resource. This property is READ-ONLY.
-  final pulumi.Input<String>? immutableId;
+  final pulumi.Input<String?>? immutableId;
   /// The kind of the resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<dynamic>? kind;
   /// The geo-location where the resource lives.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Network access control rules for the endpoints.
-  final pulumi.Input<DataCollectionEndpointNetworkAcls>? networkAcls;
+  final pulumi.Input<DataCollectionEndpointNetworkAcls?>? networkAcls;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DataCollectionEndpointArgs].
   /// [dataCollectionEndpointName] The name of the data collection endpoint. The name is case insensitive.
@@ -70,7 +70,7 @@ class DataCollectionEndpointArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataCollectionEndpointResourceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       immutableId: (() { final guardedValue = map['immutableId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkAcls: (() { final guardedValue = map['networkAcls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataCollectionEndpointNetworkAcls.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

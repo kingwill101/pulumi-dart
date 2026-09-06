@@ -9,17 +9,17 @@ import 'batch_configuration_properties.dart';
 /// {@macro pulumi_logic_integration_account_batch_configuration_args_doc}
 class IntegrationAccountBatchConfigurationArgs {
   /// The batch configuration name.
-  final pulumi.Input<String>? batchConfigurationName;
+  final pulumi.Input<String?>? batchConfigurationName;
   /// The integration account name.
   final pulumi.Input<String> integrationAccountName;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The batch configuration properties.
   final pulumi.Input<BatchConfigurationProperties> properties;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [IntegrationAccountBatchConfigurationArgs].
   /// [batchConfigurationName] The batch configuration name.

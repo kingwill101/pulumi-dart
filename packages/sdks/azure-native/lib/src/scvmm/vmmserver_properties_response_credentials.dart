@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Credentials to connect to VMMServer.
 class VMMServerPropertiesResponseCredentials {
   /// Username to use to connect to VMMServer.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [VMMServerPropertiesResponseCredentials].
   /// [username] Username to use to connect to VMMServer.

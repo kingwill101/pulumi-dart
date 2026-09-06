@@ -6,7 +6,7 @@ import 'watchlist_user_info_response.dart';
 /// Result data returned by getWatchlist.
 class GetWatchlistResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The content type of the raw content. Example : text/csv or text/tsv
   final String? contentType;
   /// The time the watchlist was created
@@ -18,25 +18,25 @@ class GetWatchlistResult {
   /// A description of the watchlist
   final String? description;
   /// The display name of the watchlist
-  final String displayName;
+  final String? displayName;
   /// Etag of the azure resource
   final String? etag;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// A flag that indicates if the watchlist is deleted or not
   final bool? isDeleted;
   /// The search key is used to optimize query performance when using watchlists for joins with other data. For example, enable a column with IP addresses to be the designated SearchKey field, then use this field as the key field when joining to other event data by IP address.
-  final String itemsSearchKey;
+  final String? itemsSearchKey;
   /// List of labels relevant to this watchlist
   final List<String>? labels;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The number of lines in a csv/tsv content to skip before the header
   final int? numberOfLinesToSkip;
   /// The provider of the watchlist
-  final String provider;
+  final String? provider;
   /// Describes provisioning state
-  final String provisioningState;
+  final String? provisioningState;
   /// The raw content that represents to watchlist items to create. In case of csv/tsv content type, it's the content of the file that will parsed by the endpoint
   final String? rawContent;
   /// The filename of the watchlist, called 'source'
@@ -44,11 +44,11 @@ class GetWatchlistResult {
   /// The sourceType of the watchlist
   final String? sourceType;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The tenantId where the watchlist belongs to
   final String? tenantId;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// The last time the watchlist was updated
   final String? updated;
   /// Describes a user that updated the watchlist
@@ -92,28 +92,28 @@ class GetWatchlistResult {
   /// [watchlistId] The id (a Guid) of the watchlist
   /// [watchlistType] The type of the watchlist
   const GetWatchlistResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.contentType,
     this.created,
     this.createdBy,
     this.defaultDuration,
     this.description,
-    required this.displayName,
+    this.displayName,
     this.etag,
-    required this.id,
+    this.id,
     this.isDeleted,
-    required this.itemsSearchKey,
+    this.itemsSearchKey,
     this.labels,
-    required this.name,
+    this.name,
     this.numberOfLinesToSkip,
-    required this.provider,
-    required this.provisioningState,
+    this.provider,
+    this.provisioningState,
     this.rawContent,
     this.source,
     this.sourceType,
-    required this.systemData,
+    this.systemData,
     this.tenantId,
-    required this.type,
+    this.type,
     this.updated,
     this.updatedBy,
     this.uploadStatus,
@@ -124,28 +124,28 @@ class GetWatchlistResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'contentType': ?contentType,
       'created': ?created,
       'createdBy': ?createdBy?.toMap(),
       'defaultDuration': ?defaultDuration,
       'description': ?description,
-      'displayName': displayName,
+      'displayName': ?displayName,
       'etag': ?etag,
-      'id': id,
+      'id': ?id,
       'isDeleted': ?isDeleted,
-      'itemsSearchKey': itemsSearchKey,
+      'itemsSearchKey': ?itemsSearchKey,
       'labels': ?labels,
-      'name': name,
+      'name': ?name,
       'numberOfLinesToSkip': ?numberOfLinesToSkip,
-      'provider': provider,
-      'provisioningState': provisioningState,
+      'provider': ?provider,
+      'provisioningState': ?provisioningState,
       'rawContent': ?rawContent,
       'source': ?source,
       'sourceType': ?sourceType,
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tenantId': ?tenantId,
-      'type': type,
+      'type': ?type,
       'updated': ?updated,
       'updatedBy': ?updatedBy?.toMap(),
       'uploadStatus': ?uploadStatus,
@@ -157,28 +157,28 @@ class GetWatchlistResult {
 
   factory GetWatchlistResult.fromMap(Map<String, dynamic> map) {
     return GetWatchlistResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       created: (() { final guardedValue = map['created']; if (guardedValue == null) return null; return guardedValue as String; })(),
       createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return WatchlistUserInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       defaultDuration: (() { final guardedValue = map['defaultDuration']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      displayName: map['displayName'] as String,
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isDeleted: (() { final guardedValue = map['isDeleted']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      itemsSearchKey: map['itemsSearchKey'] as String,
+      itemsSearchKey: (() { final guardedValue = map['itemsSearchKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      name: map['name'] as String,
-      numberOfLinesToSkip: (() { final guardedValue = map['numberOfLinesToSkip']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      provider: map['provider'] as String,
-      provisioningState: map['provisioningState'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      numberOfLinesToSkip: (() { final guardedValue = map['numberOfLinesToSkip']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      provider: (() { final guardedValue = map['provider']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       rawContent: (() { final guardedValue = map['rawContent']; if (guardedValue == null) return null; return guardedValue as String; })(),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sourceType: (() { final guardedValue = map['sourceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       updated: (() { final guardedValue = map['updated']; if (guardedValue == null) return null; return guardedValue as String; })(),
       updatedBy: (() { final guardedValue = map['updatedBy']; if (guardedValue == null) return null; return WatchlistUserInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       uploadStatus: (() { final guardedValue = map['uploadStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),

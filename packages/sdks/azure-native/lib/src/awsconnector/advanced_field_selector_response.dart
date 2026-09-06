@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of AdvancedFieldSelector
 class AdvancedFieldSelectorResponse {
   /// An operator that includes events that match the last few characters of the event record field specified as the value of Field.
-  final pulumi.Input<List<String>>? endsWith;
+  final pulumi.Input<List<String>?>? endsWith;
   /// An operator that includes events that match the exact value of the event record field specified as the value of Field. This is the only valid operator that you can use with the readOnly, eventCategory, and resources.type fields.
-  final pulumi.Input<List<String>>? equals;
+  final pulumi.Input<List<String>?>? equals;
   /// A field in an event record on which to filter events to be logged. Supported fields include readOnly, eventCategory, eventSource (for management events), eventName, resources.type, and resources.ARN.
-  final pulumi.Input<String>? field;
+  final pulumi.Input<String?>? field;
   /// An operator that excludes events that match the last few characters of the event record field specified as the value of Field.
-  final pulumi.Input<List<String>>? notEndsWith;
+  final pulumi.Input<List<String>?>? notEndsWith;
   /// An operator that excludes events that match the exact value of the event record field specified as the value of Field.
-  final pulumi.Input<List<String>>? notEquals;
+  final pulumi.Input<List<String>?>? notEquals;
   /// An operator that excludes events that match the first few characters of the event record field specified as the value of Field.
-  final pulumi.Input<List<String>>? notStartsWith;
+  final pulumi.Input<List<String>?>? notStartsWith;
   /// An operator that includes events that match the first few characters of the event record field specified as the value of Field.
-  final pulumi.Input<List<String>>? startsWith;
+  final pulumi.Input<List<String>?>? startsWith;
 
   /// Creates a new [AdvancedFieldSelectorResponse].
   /// [endsWith] An operator that includes events that match the last few characters of the event record field specified as the value of Field.

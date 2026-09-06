@@ -7,23 +7,23 @@ import 'eligible_authorization_response.dart';
 /// The properties of the registration definition associated with the registration assignment.
 class RegistrationAssignmentPropertiesResponseProperties {
   /// The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
-  final pulumi.Input<List<AuthorizationResponse>>? authorizations;
+  final pulumi.Input<List<AuthorizationResponse>?>? authorizations;
   /// The description of the registration definition.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
-  final pulumi.Input<List<EligibleAuthorizationResponse>>? eligibleAuthorizations;
+  final pulumi.Input<List<EligibleAuthorizationResponse>?>? eligibleAuthorizations;
   /// The identifier of the managedBy tenant.
-  final pulumi.Input<String>? managedByTenantId;
+  final pulumi.Input<String?>? managedByTenantId;
   /// The name of the managedBy tenant.
-  final pulumi.Input<String>? managedByTenantName;
+  final pulumi.Input<String?>? managedByTenantName;
   /// The identifier of the managed tenant.
-  final pulumi.Input<String>? manageeTenantId;
+  final pulumi.Input<String?>? manageeTenantId;
   /// The name of the managed tenant.
-  final pulumi.Input<String>? manageeTenantName;
+  final pulumi.Input<String?>? manageeTenantName;
   /// The current provisioning state of the registration definition.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// The name of the registration definition.
-  final pulumi.Input<String>? registrationDefinitionName;
+  final pulumi.Input<String?>? registrationDefinitionName;
 
   /// Creates a new [RegistrationAssignmentPropertiesResponseProperties].
   /// [authorizations] The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.

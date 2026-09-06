@@ -5,17 +5,17 @@ import 'connection_gateway_reference_response.dart';
 
 class ConnectionGatewayDefinitionResponseProperties {
   /// The URI of the backend
-  final pulumi.Input<String>? backendUri;
+  final pulumi.Input<String?>? backendUri;
   /// The gateway installation reference
-  final pulumi.Input<ConnectionGatewayReferenceResponse>? connectionGatewayInstallation;
+  final pulumi.Input<ConnectionGatewayReferenceResponse?>? connectionGatewayInstallation;
   /// The gateway admin
-  final pulumi.Input<List<String>>? contactInformation;
+  final pulumi.Input<List<String>?>? contactInformation;
   /// The gateway description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The gateway display name
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The machine name of the gateway
-  final pulumi.Input<String>? machineName;
+  final pulumi.Input<String?>? machineName;
   /// The gateway status
   final pulumi.Input<dynamic>? status;
 

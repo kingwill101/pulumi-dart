@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Cluster type
-enum ClusterType {
+enum ClusterType implements pulumi.PulumiEnum<String> {
   aKS("AKS");
 
   const ClusterType(this.wireValue);
+  @override
   final String wireValue;
 
   static ClusterType fromValue(String value) {

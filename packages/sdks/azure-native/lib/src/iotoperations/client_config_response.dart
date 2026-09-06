@@ -6,17 +6,17 @@ import 'subscriber_queue_limit_response.dart';
 /// The settings of Client Config.
 class ClientConfigResponse {
   /// Upper bound of a client's Keep Alive, in seconds.
-  final pulumi.Input<int>? maxKeepAliveSeconds;
+  final pulumi.Input<int?>? maxKeepAliveSeconds;
   /// Upper bound of Message Expiry Interval, in seconds.
-  final pulumi.Input<int>? maxMessageExpirySeconds;
+  final pulumi.Input<int?>? maxMessageExpirySeconds;
   /// Max message size for a packet in Bytes.
-  final pulumi.Input<int>? maxPacketSizeBytes;
+  final pulumi.Input<int?>? maxPacketSizeBytes;
   /// Upper bound of Receive Maximum that a client can request in the CONNECT packet.
-  final pulumi.Input<int>? maxReceiveMaximum;
+  final pulumi.Input<int?>? maxReceiveMaximum;
   /// Upper bound of Session Expiry Interval, in seconds.
-  final pulumi.Input<int>? maxSessionExpirySeconds;
+  final pulumi.Input<int?>? maxSessionExpirySeconds;
   /// The limit on the number of queued messages for a subscriber.
-  final pulumi.Input<SubscriberQueueLimitResponse>? subscriberQueueLimit;
+  final pulumi.Input<SubscriberQueueLimitResponse?>? subscriberQueueLimit;
 
   /// Creates a new [ClientConfigResponse].
   /// [maxKeepAliveSeconds] Upper bound of a client's Keep Alive, in seconds.
@@ -47,11 +47,11 @@ class ClientConfigResponse {
 
   factory ClientConfigResponse.fromMap(Map<String, dynamic> map) {
     return ClientConfigResponse(
-      maxKeepAliveSeconds: (() { final guardedValue = map['maxKeepAliveSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxMessageExpirySeconds: (() { final guardedValue = map['maxMessageExpirySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxPacketSizeBytes: (() { final guardedValue = map['maxPacketSizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxReceiveMaximum: (() { final guardedValue = map['maxReceiveMaximum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxSessionExpirySeconds: (() { final guardedValue = map['maxSessionExpirySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxKeepAliveSeconds: (() { final guardedValue = map['maxKeepAliveSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxMessageExpirySeconds: (() { final guardedValue = map['maxMessageExpirySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxPacketSizeBytes: (() { final guardedValue = map['maxPacketSizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxReceiveMaximum: (() { final guardedValue = map['maxReceiveMaximum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxSessionExpirySeconds: (() { final guardedValue = map['maxSessionExpirySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       subscriberQueueLimit: (() { final guardedValue = map['subscriberQueueLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubscriberQueueLimitResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

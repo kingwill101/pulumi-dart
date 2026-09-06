@@ -255,7 +255,33 @@ class Webhook extends pulumi.CustomResource {
     lastModifiedBy = registerOutput<String?>('lastModifiedBy');
     lastModifiedTime = registerOutput<String?>('lastModifiedTime');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    runOn = registerOutput<String?>('runOn');
+    runbook = registerOutput<RunbookAssociationPropertyResponse?>('runbook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunbookAssociationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    uri = registerOutput<String?>('uri');
+  }
+
+  /// Creates a typed reference to an existing [Webhook] resource.
+  Webhook.reference(String urn)
+    : super(
+        'azure-native:automation:Webhook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationTime = registerOutput<String?>('creationTime');
+    description = registerOutput<String?>('description');
+    expiryTime = registerOutput<String?>('expiryTime');
+    isEnabled = registerOutput<bool?>('isEnabled');
+    lastInvokedTime = registerOutput<String?>('lastInvokedTime');
+    lastModifiedBy = registerOutput<String?>('lastModifiedBy');
+    lastModifiedTime = registerOutput<String?>('lastModifiedTime');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     runOn = registerOutput<String?>('runOn');
     runbook = registerOutput<RunbookAssociationPropertyResponse?>('runbook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunbookAssociationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

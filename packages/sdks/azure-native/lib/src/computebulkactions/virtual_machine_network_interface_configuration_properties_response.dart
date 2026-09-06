@@ -8,29 +8,29 @@ import 'virtual_machine_network_interface_ipconfiguration_response.dart';
 /// Describes a virtual machine network profile's IP configuration.
 class VirtualMachineNetworkInterfaceConfigurationPropertiesResponse {
   /// Specifies whether the Auxiliary mode is enabled for the Network Interface resource.
-  final pulumi.Input<String>? auxiliaryMode;
+  final pulumi.Input<String?>? auxiliaryMode;
   /// Specifies whether the Auxiliary sku is enabled for the Network Interface resource.
-  final pulumi.Input<String>? auxiliarySku;
+  final pulumi.Input<String?>? auxiliarySku;
   /// Specify what happens to the network interface when the VM is deleted
-  final pulumi.Input<String>? deleteOption;
+  final pulumi.Input<String?>? deleteOption;
   /// Specifies whether the network interface is disabled for tcp state tracking.
-  final pulumi.Input<bool>? disableTcpStateTracking;
+  final pulumi.Input<bool?>? disableTcpStateTracking;
   /// The dns settings to be applied on the network interfaces.
-  final pulumi.Input<VirtualMachineNetworkInterfaceDnsSettingsConfigurationResponse>? dnsSettings;
+  final pulumi.Input<VirtualMachineNetworkInterfaceDnsSettingsConfigurationResponse?>? dnsSettings;
   /// The DSCP configuration for the network interface.
-  final pulumi.Input<SubResourceResponse>? dscpConfiguration;
+  final pulumi.Input<SubResourceResponse?>? dscpConfiguration;
   /// Specifies whether the network interface is accelerated networking-enabled.
-  final pulumi.Input<bool>? enableAcceleratedNetworking;
+  final pulumi.Input<bool?>? enableAcceleratedNetworking;
   /// Specifies whether the network interface is FPGA networking-enabled.
-  final pulumi.Input<bool>? enableFpga;
+  final pulumi.Input<bool?>? enableFpga;
   /// Whether IP forwarding enabled on this NIC.
-  final pulumi.Input<bool>? enableIPForwarding;
+  final pulumi.Input<bool?>? enableIPForwarding;
   /// Specifies the IP configurations of the network interface.
   final pulumi.Input<List<VirtualMachineNetworkInterfaceIPConfigurationResponse>> ipConfigurations;
   /// The network security group.
-  final pulumi.Input<SubResourceResponse>? networkSecurityGroup;
+  final pulumi.Input<SubResourceResponse?>? networkSecurityGroup;
   /// Specifies the primary network interface in case the virtual machine has more than 1 network interface.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
 
   /// Creates a new [VirtualMachineNetworkInterfaceConfigurationPropertiesResponse].
   /// [auxiliaryMode] Specifies whether the Auxiliary mode is enabled for the Network Interface resource.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_machinelearningservices_list_inference_group_delta_models_async_args_doc}
 class ListInferenceGroupDeltaModelsAsyncArgs {
   /// Gets or sets number of delta models to return. Default: -1, means that all will be returned.
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
   /// InferenceGroup name.
   final pulumi.Input<String> groupName;
   /// InferencePool name.
@@ -16,9 +16,9 @@ class ListInferenceGroupDeltaModelsAsyncArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets skip token for paginated response.
-  final pulumi.Input<String>? skipToken;
+  final pulumi.Input<String?>? skipToken;
   /// Gets or sets target base model.
-  final pulumi.Input<String>? targetBaseModel;
+  final pulumi.Input<String?>? targetBaseModel;
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -30,15 +30,15 @@ class ListInferenceGroupDeltaModelsAsyncArgs {
   /// [skipToken] Gets or sets skip token for paginated response.
   /// [targetBaseModel] Gets or sets target base model.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  const ListInferenceGroupDeltaModelsAsyncArgs({
-    this.count,
+  ListInferenceGroupDeltaModelsAsyncArgs({
+    pulumi.Input<int?>? count,
     required this.groupName,
     required this.poolName,
     required this.resourceGroupName,
     this.skipToken,
     this.targetBaseModel,
     required this.workspaceName,
-  });
+  }) : count = count ?? pulumi.Input.fromValue(-1);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,7 +54,7 @@ class ListInferenceGroupDeltaModelsAsyncArgs {
 
   factory ListInferenceGroupDeltaModelsAsyncArgs.fromMap(Map<String, dynamic> map) {
     return ListInferenceGroupDeltaModelsAsyncArgs(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       groupName: pulumi.Input.fromValue(map['groupName'] as String),
       poolName: pulumi.Input.fromValue(map['poolName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

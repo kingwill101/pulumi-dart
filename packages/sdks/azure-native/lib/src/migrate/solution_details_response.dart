@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Class representing the details of the solution.
 class SolutionDetailsResponse {
   /// Gets or sets the count of assessments reported by the solution.
-  final pulumi.Input<int>? assessmentCount;
+  final pulumi.Input<int?>? assessmentCount;
   /// Gets or sets the extended details reported by the solution.
-  final pulumi.Input<Map<String, String>>? extendedDetails;
+  final pulumi.Input<Map<String, String>?>? extendedDetails;
   /// Gets or sets the count of groups reported by the solution.
-  final pulumi.Input<int>? groupCount;
+  final pulumi.Input<int?>? groupCount;
 
   /// Creates a new [SolutionDetailsResponse].
   /// [assessmentCount] Gets or sets the count of assessments reported by the solution.
@@ -31,9 +31,9 @@ class SolutionDetailsResponse {
 
   factory SolutionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return SolutionDetailsResponse(
-      assessmentCount: (() { final guardedValue = map['assessmentCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      assessmentCount: (() { final guardedValue = map['assessmentCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       extendedDetails: (() { final guardedValue = map['extendedDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      groupCount: (() { final guardedValue = map['groupCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      groupCount: (() { final guardedValue = map['groupCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

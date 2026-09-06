@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines a managed rule group override setting.
 class ManagedRuleOverride {
   /// Describes the override action to be applied when rule matches.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<dynamic>? action;
   /// Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
-  final pulumi.Input<String>? enabledState;
+  final pulumi.Input<dynamic>? enabledState;
   /// Identifier for the managed rule.
   final pulumi.Input<String> ruleId;
 
@@ -31,8 +31,8 @@ class ManagedRuleOverride {
 
   factory ManagedRuleOverride.fromMap(Map<String, dynamic> map) {
     return ManagedRuleOverride(
-      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       ruleId: pulumi.Input.fromValue(map['ruleId'] as String),
     );
   }

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_get_workspace_policy_fragment_args_doc}
 class GetWorkspacePolicyFragmentArgs {
   /// Policy fragment content format.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// A resource identifier.
   final pulumi.Input<String> id;
   /// The name of the resource group. The name is case insensitive.

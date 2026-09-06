@@ -9,41 +9,41 @@ import 'system_data_response.dart';
 /// Result data returned by getAccessBridge.
 class GetAccessBridgeResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The detailed status reported by the access bridge.
-  final String detailedStatus;
+  final String? detailedStatus;
   /// The descriptive message that accompanies the detailed status.
-  final String detailedStatusMessage;
+  final String? detailedStatusMessage;
   /// The observed endpoints that clients should use to reach the access bridge.
-  final List<AccessBridgeEndpointResponse> endpoints;
+  final List<AccessBridgeEndpointResponse>? endpoints;
   /// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
-  final String etag;
+  final String? etag;
   /// The extended location of the resource. This property is required when creating the resource.
-  final ExtendedLocationResponse extendedLocation;
+  final ExtendedLocationResponse? extendedLocation;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The IPv4 subnet from which the access bridge allocates an address. This subnet must be part of the internal network specified by networkId.
   final String? ipv4ConnectedPrefix;
   /// The IPv6 subnet from which the access bridge allocates an address. This subnet must be part of the internal network specified by networkId.
   final String? ipv6ConnectedPrefix;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The resource ID of the internal network in a layer 3 isolation domain containing the IP subnets to use.
-  final String networkId;
+  final String? networkId;
   /// The protocol advertised by the access bridge endpoints.
-  final String protocol;
+  final String? protocol;
   /// The provisioning state of the access bridge.
-  final String provisioningState;
+  final String? provisioningState;
   /// The list of security rules enforced by the access bridge.
   final List<AccessBridgeSecurityRuleResponse>? securityRules;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetAccessBridgeResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -65,69 +65,69 @@ class GetAccessBridgeResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetAccessBridgeResult({
-    required this.azureApiVersion,
-    required this.detailedStatus,
-    required this.detailedStatusMessage,
-    required this.endpoints,
-    required this.etag,
-    required this.extendedLocation,
-    required this.id,
+    this.azureApiVersion,
+    this.detailedStatus,
+    this.detailedStatusMessage,
+    this.endpoints,
+    this.etag,
+    this.extendedLocation,
+    this.id,
     this.ipv4ConnectedPrefix,
     this.ipv6ConnectedPrefix,
-    required this.location,
-    required this.name,
-    required this.networkId,
-    required this.protocol,
-    required this.provisioningState,
+    this.location,
+    this.name,
+    this.networkId,
+    this.protocol,
+    this.provisioningState,
     this.securityRules,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'detailedStatus': detailedStatus,
-      'detailedStatusMessage': detailedStatusMessage,
-      'endpoints': pulumi.Input.encodeList<AccessBridgeEndpointResponse, Map<String, dynamic>>(endpoints, (value) => value.toMap()),
-      'etag': etag,
-      'extendedLocation': extendedLocation.toMap(),
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'detailedStatus': ?detailedStatus,
+      'detailedStatusMessage': ?detailedStatusMessage,
+      'endpoints': ?(() { final guardedValue = endpoints; if (guardedValue == null) return null; return pulumi.Input.encodeList<AccessBridgeEndpointResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'etag': ?etag,
+      'extendedLocation': ?extendedLocation?.toMap(),
+      'id': ?id,
       'ipv4ConnectedPrefix': ?ipv4ConnectedPrefix,
       'ipv6ConnectedPrefix': ?ipv6ConnectedPrefix,
-      'location': location,
-      'name': name,
-      'networkId': networkId,
-      'protocol': protocol,
-      'provisioningState': provisioningState,
+      'location': ?location,
+      'name': ?name,
+      'networkId': ?networkId,
+      'protocol': ?protocol,
+      'provisioningState': ?provisioningState,
       'securityRules': ?(() { final guardedValue = securityRules; if (guardedValue == null) return null; return pulumi.Input.encodeList<AccessBridgeSecurityRuleResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetAccessBridgeResult.fromMap(Map<String, dynamic> map) {
     return GetAccessBridgeResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      detailedStatus: map['detailedStatus'] as String,
-      detailedStatusMessage: map['detailedStatusMessage'] as String,
-      endpoints: pulumi.Input.decodeList<AccessBridgeEndpointResponse>(map['endpoints']!, (value) => AccessBridgeEndpointResponse.fromMap((value as Map).cast<String, dynamic>())),
-      etag: map['etag'] as String,
-      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      detailedStatus: (() { final guardedValue = map['detailedStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      detailedStatusMessage: (() { final guardedValue = map['detailedStatusMessage']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endpoints: (() { final guardedValue = map['endpoints']; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessBridgeEndpointResponse>(guardedValue, (value) => AccessBridgeEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipv4ConnectedPrefix: (() { final guardedValue = map['ipv4ConnectedPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipv6ConnectedPrefix: (() { final guardedValue = map['ipv6ConnectedPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      networkId: map['networkId'] as String,
-      protocol: map['protocol'] as String,
-      provisioningState: map['provisioningState'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkId: (() { final guardedValue = map['networkId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       securityRules: (() { final guardedValue = map['securityRules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessBridgeSecurityRuleResponse>(guardedValue, (value) => AccessBridgeSecurityRuleResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

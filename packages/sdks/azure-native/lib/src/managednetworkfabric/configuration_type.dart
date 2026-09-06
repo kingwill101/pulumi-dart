@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Input method to configure Network Tap Rule.
-enum ConfigurationType {
+enum ConfigurationType implements pulumi.PulumiEnum<String> {
   valueFile("File"),
   valueInline("Inline");
 
   const ConfigurationType(this.wireValue);
+  @override
   final String wireValue;
 
   static ConfigurationType fromValue(String value) {

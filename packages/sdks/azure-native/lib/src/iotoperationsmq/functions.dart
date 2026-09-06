@@ -42,6 +42,17 @@ Future<GetBrokerResult> getBroker(
   return GetBrokerResult.fromMap(result);
 }
 
+pulumi.Output<GetBrokerResult> getBrokerOutput(
+  GetBrokerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperationsmq:getBroker',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBrokerResult.fromMap);
+}
+
 /// Get a BrokerAuthenticationResource
 ///
 /// Uses Azure REST API version 2023-10-04-preview.
@@ -58,6 +69,17 @@ Future<GetBrokerAuthenticationResult> getBrokerAuthentication(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBrokerAuthenticationResult.fromMap(result);
+}
+
+pulumi.Output<GetBrokerAuthenticationResult> getBrokerAuthenticationOutput(
+  GetBrokerAuthenticationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperationsmq:getBrokerAuthentication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBrokerAuthenticationResult.fromMap);
 }
 
 /// Get a BrokerAuthorizationResource
@@ -78,6 +100,17 @@ Future<GetBrokerAuthorizationResult> getBrokerAuthorization(
   return GetBrokerAuthorizationResult.fromMap(result);
 }
 
+pulumi.Output<GetBrokerAuthorizationResult> getBrokerAuthorizationOutput(
+  GetBrokerAuthorizationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperationsmq:getBrokerAuthorization',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBrokerAuthorizationResult.fromMap);
+}
+
 /// Get a BrokerListenerResource
 ///
 /// Uses Azure REST API version 2023-10-04-preview.
@@ -94,6 +127,17 @@ Future<GetBrokerListenerResult> getBrokerListener(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBrokerListenerResult.fromMap(result);
+}
+
+pulumi.Output<GetBrokerListenerResult> getBrokerListenerOutput(
+  GetBrokerListenerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperationsmq:getBrokerListener',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBrokerListenerResult.fromMap);
 }
 
 /// Get a DataLakeConnectorResource
@@ -114,6 +158,17 @@ Future<GetDataLakeConnectorResult> getDataLakeConnector(
   return GetDataLakeConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetDataLakeConnectorResult> getDataLakeConnectorOutput(
+  GetDataLakeConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperationsmq:getDataLakeConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataLakeConnectorResult.fromMap);
+}
+
 /// Get a DataLakeTopicMapResource
 ///
 /// Uses Azure REST API version 2023-10-04-preview.
@@ -130,6 +185,17 @@ Future<GetDataLakeConnectorTopicMapResult> getDataLakeConnectorTopicMap(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDataLakeConnectorTopicMapResult.fromMap(result);
+}
+
+pulumi.Output<GetDataLakeConnectorTopicMapResult> getDataLakeConnectorTopicMapOutput(
+  GetDataLakeConnectorTopicMapArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperationsmq:getDataLakeConnectorTopicMap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataLakeConnectorTopicMapResult.fromMap);
 }
 
 /// Get a DiagnosticServiceResource
@@ -150,6 +216,17 @@ Future<GetDiagnosticServiceResult> getDiagnosticService(
   return GetDiagnosticServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetDiagnosticServiceResult> getDiagnosticServiceOutput(
+  GetDiagnosticServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperationsmq:getDiagnosticService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiagnosticServiceResult.fromMap);
+}
+
 /// Get a KafkaConnectorResource
 ///
 /// Uses Azure REST API version 2023-10-04-preview.
@@ -166,6 +243,17 @@ Future<GetKafkaConnectorResult> getKafkaConnector(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKafkaConnectorResult.fromMap(result);
+}
+
+pulumi.Output<GetKafkaConnectorResult> getKafkaConnectorOutput(
+  GetKafkaConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperationsmq:getKafkaConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKafkaConnectorResult.fromMap);
 }
 
 /// Get a KafkaTopicMapResource
@@ -186,6 +274,17 @@ Future<GetKafkaConnectorTopicMapResult> getKafkaConnectorTopicMap(
   return GetKafkaConnectorTopicMapResult.fromMap(result);
 }
 
+pulumi.Output<GetKafkaConnectorTopicMapResult> getKafkaConnectorTopicMapOutput(
+  GetKafkaConnectorTopicMapArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperationsmq:getKafkaConnectorTopicMap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKafkaConnectorTopicMapResult.fromMap);
+}
+
 /// Get a MqResource
 ///
 /// Uses Azure REST API version 2023-10-04-preview.
@@ -202,6 +301,17 @@ Future<GetMqResult> getMq(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMqResult.fromMap(result);
+}
+
+pulumi.Output<GetMqResult> getMqOutput(
+  GetMqArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperationsmq:getMq',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMqResult.fromMap);
 }
 
 /// Get a MqttBridgeConnectorResource
@@ -222,6 +332,17 @@ Future<GetMqttBridgeConnectorResult> getMqttBridgeConnector(
   return GetMqttBridgeConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetMqttBridgeConnectorResult> getMqttBridgeConnectorOutput(
+  GetMqttBridgeConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperationsmq:getMqttBridgeConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMqttBridgeConnectorResult.fromMap);
+}
+
 /// Get a MqttBridgeTopicMapResource
 ///
 /// Uses Azure REST API version 2023-10-04-preview.
@@ -238,4 +359,15 @@ Future<GetMqttBridgeTopicMapResult> getMqttBridgeTopicMap(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMqttBridgeTopicMapResult.fromMap(result);
+}
+
+pulumi.Output<GetMqttBridgeTopicMapResult> getMqttBridgeTopicMapOutput(
+  GetMqttBridgeTopicMapArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperationsmq:getMqttBridgeTopicMap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMqttBridgeTopicMapResult.fromMap);
 }

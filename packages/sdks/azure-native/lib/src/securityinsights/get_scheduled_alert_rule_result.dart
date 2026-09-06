@@ -14,15 +14,15 @@ class GetScheduledAlertRuleResult {
   /// The Name of the alert rule template used to create this rule.
   final String? alertRuleTemplateName;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Dictionary of string key-value pairs of columns to be attached to the alert
   final Map<String, String>? customDetails;
   /// The description of the alert rule.
   final String? description;
   /// The display name for alerts created by this alert rule.
-  final String displayName;
+  final String? displayName;
   /// Determines whether this alert rule is enabled or disabled.
-  final bool enabled;
+  final bool? enabled;
   /// Array of the entity mappings of the alert rule
   final List<EntityMappingResponse>? entityMappings;
   /// Etag of the azure resource
@@ -30,30 +30,30 @@ class GetScheduledAlertRuleResult {
   /// The event grouping settings.
   final EventGroupingSettingsResponse? eventGroupingSettings;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The settings of the incidents that created from alerts triggered by this analytics rule
   final IncidentConfigurationResponse? incidentConfiguration;
   /// The kind of the alert rule
   /// Expected value is 'Scheduled'.
-  final String kind;
+  final String? kind;
   /// The last time that this alert rule has been modified.
-  final String lastModifiedUtc;
+  final String? lastModifiedUtc;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The query that creates alerts for this rule.
-  final String query;
+  final String? query;
   /// The frequency (in ISO 8601 duration format) for this alert rule to run.
-  final String queryFrequency;
+  final String? queryFrequency;
   /// The period (in ISO 8601 duration format) that this alert rule looks at.
-  final String queryPeriod;
+  final String? queryPeriod;
   /// The severity for alerts created by this alert rule.
-  final String severity;
+  final String? severity;
   /// The suppression (in ISO 8601 duration format) to wait since last time this alert rule been triggered.
-  final String suppressionDuration;
+  final String? suppressionDuration;
   /// Determines whether the suppression for this alert rule is enabled or disabled.
-  final bool suppressionEnabled;
+  final bool? suppressionEnabled;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The tactics of the alert rule
   final List<String>? tactics;
   /// The techniques of the alert rule
@@ -61,11 +61,11 @@ class GetScheduledAlertRuleResult {
   /// The version of the alert rule template used to create this rule - in format &lt;a.b.c&gt;, where all are numbers, for example 0 &lt;1.0.2&gt;
   final String? templateVersion;
   /// The operation against the threshold that triggers alert rule.
-  final String triggerOperator;
+  final String? triggerOperator;
   /// The threshold triggers this alert rule.
-  final int triggerThreshold;
+  final int? triggerThreshold;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetScheduledAlertRuleResult].
   /// [alertDetailsOverride] The alert details override settings
@@ -99,64 +99,64 @@ class GetScheduledAlertRuleResult {
   const GetScheduledAlertRuleResult({
     this.alertDetailsOverride,
     this.alertRuleTemplateName,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.customDetails,
     this.description,
-    required this.displayName,
-    required this.enabled,
+    this.displayName,
+    this.enabled,
     this.entityMappings,
     this.etag,
     this.eventGroupingSettings,
-    required this.id,
+    this.id,
     this.incidentConfiguration,
-    required this.kind,
-    required this.lastModifiedUtc,
-    required this.name,
-    required this.query,
-    required this.queryFrequency,
-    required this.queryPeriod,
-    required this.severity,
-    required this.suppressionDuration,
-    required this.suppressionEnabled,
-    required this.systemData,
+    this.kind,
+    this.lastModifiedUtc,
+    this.name,
+    this.query,
+    this.queryFrequency,
+    this.queryPeriod,
+    this.severity,
+    this.suppressionDuration,
+    this.suppressionEnabled,
+    this.systemData,
     this.tactics,
     this.techniques,
     this.templateVersion,
-    required this.triggerOperator,
-    required this.triggerThreshold,
-    required this.type,
+    this.triggerOperator,
+    this.triggerThreshold,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'alertDetailsOverride': ?alertDetailsOverride?.toMap(),
       'alertRuleTemplateName': ?alertRuleTemplateName,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'customDetails': ?customDetails,
       'description': ?description,
-      'displayName': displayName,
-      'enabled': enabled,
+      'displayName': ?displayName,
+      'enabled': ?enabled,
       'entityMappings': ?(() { final guardedValue = entityMappings; if (guardedValue == null) return null; return pulumi.Input.encodeList<EntityMappingResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'etag': ?etag,
       'eventGroupingSettings': ?eventGroupingSettings?.toMap(),
-      'id': id,
+      'id': ?id,
       'incidentConfiguration': ?incidentConfiguration?.toMap(),
-      'kind': kind,
-      'lastModifiedUtc': lastModifiedUtc,
-      'name': name,
-      'query': query,
-      'queryFrequency': queryFrequency,
-      'queryPeriod': queryPeriod,
-      'severity': severity,
-      'suppressionDuration': suppressionDuration,
-      'suppressionEnabled': suppressionEnabled,
-      'systemData': systemData.toMap(),
+      'kind': ?kind,
+      'lastModifiedUtc': ?lastModifiedUtc,
+      'name': ?name,
+      'query': ?query,
+      'queryFrequency': ?queryFrequency,
+      'queryPeriod': ?queryPeriod,
+      'severity': ?severity,
+      'suppressionDuration': ?suppressionDuration,
+      'suppressionEnabled': ?suppressionEnabled,
+      'systemData': ?systemData?.toMap(),
       'tactics': ?tactics,
       'techniques': ?techniques,
       'templateVersion': ?templateVersion,
-      'triggerOperator': triggerOperator,
-      'triggerThreshold': triggerThreshold,
-      'type': type,
+      'triggerOperator': ?triggerOperator,
+      'triggerThreshold': ?triggerThreshold,
+      'type': ?type,
     };
   }
 
@@ -164,32 +164,32 @@ class GetScheduledAlertRuleResult {
     return GetScheduledAlertRuleResult(
       alertDetailsOverride: (() { final guardedValue = map['alertDetailsOverride']; if (guardedValue == null) return null; return AlertDetailsOverrideResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       alertRuleTemplateName: (() { final guardedValue = map['alertRuleTemplateName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       customDetails: (() { final guardedValue = map['customDetails']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      displayName: map['displayName'] as String,
-      enabled: map['enabled'] as bool,
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       entityMappings: (() { final guardedValue = map['entityMappings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntityMappingResponse>(guardedValue, (value) => EntityMappingResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       eventGroupingSettings: (() { final guardedValue = map['eventGroupingSettings']; if (guardedValue == null) return null; return EventGroupingSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       incidentConfiguration: (() { final guardedValue = map['incidentConfiguration']; if (guardedValue == null) return null; return IncidentConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      kind: map['kind'] as String,
-      lastModifiedUtc: map['lastModifiedUtc'] as String,
-      name: map['name'] as String,
-      query: map['query'] as String,
-      queryFrequency: map['queryFrequency'] as String,
-      queryPeriod: map['queryPeriod'] as String,
-      severity: map['severity'] as String,
-      suppressionDuration: map['suppressionDuration'] as String,
-      suppressionEnabled: map['suppressionEnabled'] as bool,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastModifiedUtc: (() { final guardedValue = map['lastModifiedUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      query: (() { final guardedValue = map['query']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      queryFrequency: (() { final guardedValue = map['queryFrequency']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      queryPeriod: (() { final guardedValue = map['queryPeriod']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      suppressionDuration: (() { final guardedValue = map['suppressionDuration']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      suppressionEnabled: (() { final guardedValue = map['suppressionEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tactics: (() { final guardedValue = map['tactics']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       techniques: (() { final guardedValue = map['techniques']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       templateVersion: (() { final guardedValue = map['templateVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      triggerOperator: map['triggerOperator'] as String,
-      triggerThreshold: map['triggerThreshold'] as int,
-      type: map['type'] as String,
+      triggerOperator: (() { final guardedValue = map['triggerOperator']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      triggerThreshold: (() { final guardedValue = map['triggerThreshold']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

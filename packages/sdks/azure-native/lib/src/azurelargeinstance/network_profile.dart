@@ -6,9 +6,9 @@ import 'ip_address.dart';
 /// Specifies the network settings for the Azure Large Instance disks.
 class NetworkProfile {
   /// Specifies the circuit id for connecting to express route.
-  final pulumi.Input<String>? circuitId;
+  final pulumi.Input<String?>? circuitId;
   /// Specifies the network interfaces for the Azure Large Instance.
-  final pulumi.Input<List<IpAddress>>? networkInterfaces;
+  final pulumi.Input<List<IpAddress>?>? networkInterfaces;
 
   /// Creates a new [NetworkProfile].
   /// [circuitId] Specifies the circuit id for connecting to express route.

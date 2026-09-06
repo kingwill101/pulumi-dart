@@ -6,9 +6,9 @@ import 'flow_endpoints_response.dart';
 /// The endpoints configuration.
 class FlowEndpointsConfigurationResponse {
   /// The connector endpoints.
-  final pulumi.Input<FlowEndpointsResponse>? connector;
+  final pulumi.Input<FlowEndpointsResponse?>? connector;
   /// The workflow endpoints.
-  final pulumi.Input<FlowEndpointsResponse>? workflow;
+  final pulumi.Input<FlowEndpointsResponse?>? workflow;
 
   /// Creates a new [FlowEndpointsConfigurationResponse].
   /// [connector] The connector endpoints.

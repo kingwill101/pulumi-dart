@@ -9,7 +9,7 @@ class LocationProfileResponse {
   final pulumi.Input<String> location;
   /// An override for computeProfile.baseVirtualMachineProfile specific to this region.
   /// This override is merged with the base virtual machine profile to define the final virtual machine profile for the resources deployed in this location.
-  final pulumi.Input<BaseVirtualMachineProfileResponse>? virtualMachineProfileOverride;
+  final pulumi.Input<BaseVirtualMachineProfileResponse?>? virtualMachineProfileOverride;
 
   /// Creates a new [LocationProfileResponse].
   /// [location] The ARM location name of the additional region. If LocationProfile is specified, then location is required.

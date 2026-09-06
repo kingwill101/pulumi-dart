@@ -9,21 +9,21 @@ import 'transformation.dart';
 /// Mapping data flow.
 class MappingDataFlow {
   /// List of tags that can be used for describing the data flow.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The description of the data flow.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The folder that this data flow is in. If not specified, Data flow will appear at the root level.
-  final pulumi.Input<DataFlowFolder>? folder;
+  final pulumi.Input<DataFlowFolder?>? folder;
   /// DataFlow script.
-  final pulumi.Input<String>? script;
+  final pulumi.Input<String?>? script;
   /// Data flow script lines.
-  final pulumi.Input<List<String>>? scriptLines;
+  final pulumi.Input<List<String>?>? scriptLines;
   /// List of sinks in data flow.
-  final pulumi.Input<List<DataFlowSink>>? sinks;
+  final pulumi.Input<List<DataFlowSink>?>? sinks;
   /// List of sources in data flow.
-  final pulumi.Input<List<DataFlowSource>>? sources;
+  final pulumi.Input<List<DataFlowSource>?>? sources;
   /// List of transformations in data flow.
-  final pulumi.Input<List<Transformation>>? transformations_;
+  final pulumi.Input<List<Transformation>?>? transformations_;
   /// Type of data flow.
   /// Expected value is 'MappingDataFlow'.
   final pulumi.Input<String> type;

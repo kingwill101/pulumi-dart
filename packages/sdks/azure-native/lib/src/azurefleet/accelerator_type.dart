@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Accelerator types supported by Azure VMs.
-enum AcceleratorType {
+enum AcceleratorType implements pulumi.PulumiEnum<String> {
   gPU("GPU"),
   fPGA("FPGA");
 
   const AcceleratorType(this.wireValue);
+  @override
   final String wireValue;
 
   static AcceleratorType fromValue(String value) {

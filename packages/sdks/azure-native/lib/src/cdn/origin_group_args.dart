@@ -13,19 +13,19 @@ class OriginGroupArgs {
   /// Name of the endpoint under the profile which is unique globally.
   final pulumi.Input<String> endpointName;
   /// Health probe settings to the origin that is used to determine the health of the origin.
-  final pulumi.Input<HealthProbeParameters>? healthProbeSettings;
+  final pulumi.Input<HealthProbeParameters?>? healthProbeSettings;
   /// Name of the origin group which is unique within the endpoint.
-  final pulumi.Input<String>? originGroupName;
+  final pulumi.Input<String?>? originGroupName;
   /// The source of the content being delivered via CDN within given origin group.
-  final pulumi.Input<List<ResourceReference>>? origins;
+  final pulumi.Input<List<ResourceReference>?>? origins;
   /// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   final pulumi.Input<String> profileName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported.
-  final pulumi.Input<ResponseBasedOriginErrorDetectionParameters>? responseBasedOriginErrorDetectionSettings;
+  final pulumi.Input<ResponseBasedOriginErrorDetectionParameters?>? responseBasedOriginErrorDetectionSettings;
   /// Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
-  final pulumi.Input<int>? trafficRestorationTimeToHealedOrNewEndpointsInMinutes;
+  final pulumi.Input<int?>? trafficRestorationTimeToHealedOrNewEndpointsInMinutes;
 
   /// Creates a new [OriginGroupArgs].
   /// [endpointName] Name of the endpoint under the profile which is unique globally.
@@ -69,7 +69,7 @@ class OriginGroupArgs {
       profileName: pulumi.Input.fromValue(map['profileName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       responseBasedOriginErrorDetectionSettings: (() { final guardedValue = map['responseBasedOriginErrorDetectionSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResponseBasedOriginErrorDetectionParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: (() { final guardedValue = map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: (() { final guardedValue = map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

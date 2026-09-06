@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The alert rule severity.
-enum Severity {
+enum Severity implements pulumi.PulumiEnum<String> {
   valueSev0("Sev0"),
   valueSev1("Sev1"),
   valueSev2("Sev2"),
@@ -7,6 +9,7 @@ enum Severity {
   valueSev4("Sev4");
 
   const Severity(this.wireValue);
+  @override
   final String wireValue;
 
   static Severity fromValue(String value) {

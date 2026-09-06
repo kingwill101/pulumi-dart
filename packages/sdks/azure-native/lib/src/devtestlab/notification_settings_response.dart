@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Notification settings for a schedule.
 class NotificationSettingsResponse {
   /// The email recipient to send notifications to (can be a list of semi-colon separated email addresses).
-  final pulumi.Input<String>? emailRecipient;
+  final pulumi.Input<String?>? emailRecipient;
   /// The locale to use when sending a notification (fallback for unsupported languages is EN).
-  final pulumi.Input<String>? notificationLocale;
+  final pulumi.Input<String?>? notificationLocale;
   /// If notifications are enabled for this schedule (i.e. Enabled, Disabled).
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Time in minutes before event at which notification will be sent.
-  final pulumi.Input<int>? timeInMinutes;
+  final pulumi.Input<int?>? timeInMinutes;
   /// The webhook URL to which the notification will be sent.
-  final pulumi.Input<String>? webhookUrl;
+  final pulumi.Input<String?>? webhookUrl;
 
   /// Creates a new [NotificationSettingsResponse].
   /// [emailRecipient] The email recipient to send notifications to (can be a list of semi-colon separated email addresses).
@@ -21,13 +21,13 @@ class NotificationSettingsResponse {
   /// [status] If notifications are enabled for this schedule (i.e. Enabled, Disabled).
   /// [timeInMinutes] Time in minutes before event at which notification will be sent.
   /// [webhookUrl] The webhook URL to which the notification will be sent.
-  const NotificationSettingsResponse({
+  NotificationSettingsResponse({
     this.emailRecipient,
     this.notificationLocale,
-    this.status,
+    pulumi.Input<String?>? status,
     this.timeInMinutes,
     this.webhookUrl,
-  });
+  }) : status = status ?? pulumi.Input.fromValue('Disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,7 +44,7 @@ class NotificationSettingsResponse {
       emailRecipient: (() { final guardedValue = map['emailRecipient']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notificationLocale: (() { final guardedValue = map['notificationLocale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      timeInMinutes: (() { final guardedValue = map['timeInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeInMinutes: (() { final guardedValue = map['timeInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       webhookUrl: (() { final guardedValue = map['webhookUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

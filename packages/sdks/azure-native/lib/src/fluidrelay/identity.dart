@@ -6,9 +6,9 @@ import 'resource_identity_type.dart';
 /// Identity for the resource.
 class Identity {
   /// The identity type.
-  final pulumi.Input<ResourceIdentityType>? type;
+  final pulumi.Input<ResourceIdentityType?>? type;
   /// The list of user identities associated with the resource.
-  final pulumi.Input<List<String>>? userAssignedIdentities;
+  final pulumi.Input<List<String>?>? userAssignedIdentities;
 
   /// Creates a new [Identity].
   /// [type] The identity type.

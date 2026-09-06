@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the day. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
-enum JobScheduleDay {
+enum JobScheduleDay implements pulumi.PulumiEnum<String> {
   valueMonday("Monday"),
   valueTuesday("Tuesday"),
   valueWednesday("Wednesday"),
@@ -9,6 +11,7 @@ enum JobScheduleDay {
   valueSunday("Sunday");
 
   const JobScheduleDay(this.wireValue);
+  @override
   final String wireValue;
 
   static JobScheduleDay fromValue(String value) {

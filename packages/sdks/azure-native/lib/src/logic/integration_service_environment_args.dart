@@ -11,19 +11,19 @@ import 'managed_service_identity.dart';
 /// {@macro pulumi_logic_integration_service_environment_args_doc}
 class IntegrationServiceEnvironmentArgs {
   /// Managed service identity properties.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The integration service environment name.
-  final pulumi.Input<String>? integrationServiceEnvironmentName;
+  final pulumi.Input<String?>? integrationServiceEnvironmentName;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The integration service environment properties.
-  final pulumi.Input<IntegrationServiceEnvironmentProperties>? properties;
+  final pulumi.Input<IntegrationServiceEnvironmentProperties?>? properties;
   /// The resource group.
   final pulumi.Input<String> resourceGroup;
   /// The sku.
-  final pulumi.Input<IntegrationServiceEnvironmentSku>? sku;
+  final pulumi.Input<IntegrationServiceEnvironmentSku?>? sku;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [IntegrationServiceEnvironmentArgs].
   /// [identity] Managed service identity properties.

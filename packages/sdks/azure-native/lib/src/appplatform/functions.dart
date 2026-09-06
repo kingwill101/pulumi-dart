@@ -96,6 +96,17 @@ Future<GetApiPortalResult> getApiPortal(
   return GetApiPortalResult.fromMap(result);
 }
 
+pulumi.Output<GetApiPortalResult> getApiPortalOutput(
+  GetApiPortalArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getApiPortal',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiPortalResult.fromMap);
+}
+
 /// Get the API portal custom domain.
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -114,6 +125,17 @@ Future<GetApiPortalCustomDomainResult> getApiPortalCustomDomain(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApiPortalCustomDomainResult.fromMap(result);
+}
+
+pulumi.Output<GetApiPortalCustomDomainResult> getApiPortalCustomDomainOutput(
+  GetApiPortalCustomDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getApiPortalCustomDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiPortalCustomDomainResult.fromMap);
 }
 
 /// Get the APM by name.
@@ -136,6 +158,17 @@ Future<GetApmResult> getApm(
   return GetApmResult.fromMap(result);
 }
 
+pulumi.Output<GetApmResult> getApmOutput(
+  GetApmArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getApm',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApmResult.fromMap);
+}
+
 /// Get an App and its properties.
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -154,6 +187,17 @@ Future<GetAppResult> getApp(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAppResult.fromMap(result);
+}
+
+pulumi.Output<GetAppResult> getAppOutput(
+  GetAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppResult.fromMap);
 }
 
 /// Get an resource upload URL for an App, which may be artifacts or source archive.
@@ -176,6 +220,17 @@ Future<GetAppResourceUploadUrlResult> getAppResourceUploadUrl(
   return GetAppResourceUploadUrlResult.fromMap(result);
 }
 
+pulumi.Output<GetAppResourceUploadUrlResult> getAppResourceUploadUrlOutput(
+  GetAppResourceUploadUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getAppResourceUploadUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppResourceUploadUrlResult.fromMap);
+}
+
 /// Get the application accelerator.
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -194,6 +249,17 @@ Future<GetApplicationAcceleratorResult> getApplicationAccelerator(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApplicationAcceleratorResult.fromMap(result);
+}
+
+pulumi.Output<GetApplicationAcceleratorResult> getApplicationAcceleratorOutput(
+  GetApplicationAcceleratorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getApplicationAccelerator',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationAcceleratorResult.fromMap);
 }
 
 /// Get the Application Live  and its properties.
@@ -216,6 +282,17 @@ Future<GetApplicationLiveViewResult> getApplicationLiveView(
   return GetApplicationLiveViewResult.fromMap(result);
 }
 
+pulumi.Output<GetApplicationLiveViewResult> getApplicationLiveViewOutput(
+  GetApplicationLiveViewArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getApplicationLiveView',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationLiveViewResult.fromMap);
+}
+
 /// Get a Binding and its properties.
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -234,6 +311,17 @@ Future<GetBindingResult> getBinding(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBindingResult.fromMap(result);
+}
+
+pulumi.Output<GetBindingResult> getBindingOutput(
+  GetBindingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getBinding',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBindingResult.fromMap);
 }
 
 /// Get build service agent pool.
@@ -256,6 +344,17 @@ Future<GetBuildServiceAgentPoolResult> getBuildServiceAgentPool(
   return GetBuildServiceAgentPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetBuildServiceAgentPoolResult> getBuildServiceAgentPoolOutput(
+  GetBuildServiceAgentPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getBuildServiceAgentPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBuildServiceAgentPoolResult.fromMap);
+}
+
 /// Get a KPack build.
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -274,6 +373,17 @@ Future<GetBuildServiceBuildResult> getBuildServiceBuild(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBuildServiceBuildResult.fromMap(result);
+}
+
+pulumi.Output<GetBuildServiceBuildResult> getBuildServiceBuildOutput(
+  GetBuildServiceBuildArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getBuildServiceBuild',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBuildServiceBuildResult.fromMap);
 }
 
 /// Get a KPack build result log download URL.
@@ -296,6 +406,17 @@ Future<GetBuildServiceBuildResultLogResult> getBuildServiceBuildResultLog(
   return GetBuildServiceBuildResultLogResult.fromMap(result);
 }
 
+pulumi.Output<GetBuildServiceBuildResultLogResult> getBuildServiceBuildResultLogOutput(
+  GetBuildServiceBuildResultLogArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getBuildServiceBuildResultLog',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBuildServiceBuildResultLogResult.fromMap);
+}
+
 /// Get a KPack builder.
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -314,6 +435,17 @@ Future<GetBuildServiceBuilderResult> getBuildServiceBuilder(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBuildServiceBuilderResult.fromMap(result);
+}
+
+pulumi.Output<GetBuildServiceBuilderResult> getBuildServiceBuilderOutput(
+  GetBuildServiceBuilderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getBuildServiceBuilder',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBuildServiceBuilderResult.fromMap);
 }
 
 /// Get an resource upload URL for build service, which may be artifacts or source archive.
@@ -336,6 +468,17 @@ Future<GetBuildServiceResourceUploadUrlResult> getBuildServiceResourceUploadUrl(
   return GetBuildServiceResourceUploadUrlResult.fromMap(result);
 }
 
+pulumi.Output<GetBuildServiceResourceUploadUrlResult> getBuildServiceResourceUploadUrlOutput(
+  GetBuildServiceResourceUploadUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getBuildServiceResourceUploadUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBuildServiceResourceUploadUrlResult.fromMap);
+}
+
 /// Get a buildpack binding by name.
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -354,6 +497,17 @@ Future<GetBuildpackBindingResult> getBuildpackBinding(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBuildpackBindingResult.fromMap(result);
+}
+
+pulumi.Output<GetBuildpackBindingResult> getBuildpackBindingOutput(
+  GetBuildpackBindingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getBuildpackBinding',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBuildpackBindingResult.fromMap);
 }
 
 /// Get the certificate resource.
@@ -376,6 +530,17 @@ Future<GetCertificateResult> getCertificate(
   return GetCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateResult> getCertificateOutput(
+  GetCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateResult.fromMap);
+}
+
 /// Get the config server and its properties.
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -394,6 +559,17 @@ Future<GetConfigServerResult> getConfigServer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConfigServerResult.fromMap(result);
+}
+
+pulumi.Output<GetConfigServerResult> getConfigServerOutput(
+  GetConfigServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getConfigServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigServerResult.fromMap);
 }
 
 /// Get the Application Configuration Service and its properties.
@@ -416,6 +592,17 @@ Future<GetConfigurationServiceResult> getConfigurationService(
   return GetConfigurationServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigurationServiceResult> getConfigurationServiceOutput(
+  GetConfigurationServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getConfigurationService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationServiceResult.fromMap);
+}
+
 /// Get the container registries resource.
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -434,6 +621,17 @@ Future<GetContainerRegistryResult> getContainerRegistry(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetContainerRegistryResult.fromMap(result);
+}
+
+pulumi.Output<GetContainerRegistryResult> getContainerRegistryOutput(
+  GetContainerRegistryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getContainerRegistry',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContainerRegistryResult.fromMap);
 }
 
 /// Get the custom domain of one lifecycle application.
@@ -456,6 +654,17 @@ Future<GetCustomDomainResult> getCustomDomain(
   return GetCustomDomainResult.fromMap(result);
 }
 
+pulumi.Output<GetCustomDomainResult> getCustomDomainOutput(
+  GetCustomDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getCustomDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomDomainResult.fromMap);
+}
+
 /// Get the customized accelerator.
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -474,6 +683,17 @@ Future<GetCustomizedAcceleratorResult> getCustomizedAccelerator(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCustomizedAcceleratorResult.fromMap(result);
+}
+
+pulumi.Output<GetCustomizedAcceleratorResult> getCustomizedAcceleratorOutput(
+  GetCustomizedAcceleratorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getCustomizedAccelerator',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomizedAcceleratorResult.fromMap);
 }
 
 /// Get a Deployment and its properties.
@@ -496,6 +716,17 @@ Future<GetDeploymentResult> getDeployment(
   return GetDeploymentResult.fromMap(result);
 }
 
+pulumi.Output<GetDeploymentResult> getDeploymentOutput(
+  GetDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentResult.fromMap);
+}
+
 /// Get deployment log file URL
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -514,6 +745,17 @@ Future<GetDeploymentLogFileUrlResult> getDeploymentLogFileUrl(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeploymentLogFileUrlResult.fromMap(result);
+}
+
+pulumi.Output<GetDeploymentLogFileUrlResult> getDeploymentLogFileUrlOutput(
+  GetDeploymentLogFileUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getDeploymentLogFileUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentLogFileUrlResult.fromMap);
 }
 
 /// Get remote debugging config.
@@ -536,6 +778,17 @@ Future<GetDeploymentRemoteDebuggingConfigResult> getDeploymentRemoteDebuggingCon
   return GetDeploymentRemoteDebuggingConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetDeploymentRemoteDebuggingConfigResult> getDeploymentRemoteDebuggingConfigOutput(
+  GetDeploymentRemoteDebuggingConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getDeploymentRemoteDebuggingConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentRemoteDebuggingConfigResult.fromMap);
+}
+
 /// Get the Application Live  and its properties.
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -554,6 +807,17 @@ Future<GetDevToolPortalResult> getDevToolPortal(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDevToolPortalResult.fromMap(result);
+}
+
+pulumi.Output<GetDevToolPortalResult> getDevToolPortalOutput(
+  GetDevToolPortalArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getDevToolPortal',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDevToolPortalResult.fromMap);
 }
 
 /// Get the Spring Cloud Gateway and its properties.
@@ -576,6 +840,17 @@ Future<GetGatewayResult> getGateway(
   return GetGatewayResult.fromMap(result);
 }
 
+pulumi.Output<GetGatewayResult> getGatewayOutput(
+  GetGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGatewayResult.fromMap);
+}
+
 /// Get the Spring Cloud Gateway custom domain.
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -594,6 +869,17 @@ Future<GetGatewayCustomDomainResult> getGatewayCustomDomain(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGatewayCustomDomainResult.fromMap(result);
+}
+
+pulumi.Output<GetGatewayCustomDomainResult> getGatewayCustomDomainOutput(
+  GetGatewayCustomDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getGatewayCustomDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGatewayCustomDomainResult.fromMap);
 }
 
 /// Get the Spring Cloud Gateway route configs.
@@ -616,6 +902,17 @@ Future<GetGatewayRouteConfigResult> getGatewayRouteConfig(
   return GetGatewayRouteConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetGatewayRouteConfigResult> getGatewayRouteConfigOutput(
+  GetGatewayRouteConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getGatewayRouteConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGatewayRouteConfigResult.fromMap);
+}
+
 /// Get a Job and its properties.
 ///
 /// Uses Azure REST API version 2024-05-01-preview.
@@ -632,6 +929,17 @@ Future<GetJobResult> getJob(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetJobResult.fromMap(result);
+}
+
+pulumi.Output<GetJobResult> getJobOutput(
+  GetJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobResult.fromMap);
 }
 
 /// Get the Monitoring Setting and its properties.
@@ -654,6 +962,17 @@ Future<GetMonitoringSettingResult> getMonitoringSetting(
   return GetMonitoringSettingResult.fromMap(result);
 }
 
+pulumi.Output<GetMonitoringSettingResult> getMonitoringSettingOutput(
+  GetMonitoringSettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getMonitoringSetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMonitoringSettingResult.fromMap);
+}
+
 /// Get a Service and its properties.
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -672,6 +991,17 @@ Future<GetServiceResult> getService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
 }
 
 /// Get the Service Registry and its properties.
@@ -694,6 +1024,17 @@ Future<GetServiceRegistryResult> getServiceRegistry(
   return GetServiceRegistryResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceRegistryResult> getServiceRegistryOutput(
+  GetServiceRegistryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getServiceRegistry',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceRegistryResult.fromMap);
+}
+
 /// Get the storage resource.
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -712,6 +1053,17 @@ Future<GetStorageResult> getStorage(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStorageResult.fromMap(result);
+}
+
+pulumi.Output<GetStorageResult> getStorageOutput(
+  GetStorageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:getStorage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageResult.fromMap);
 }
 
 /// List keys of APM sensitive properties.
@@ -734,6 +1086,17 @@ Future<ListApmSecretKeysResult> listApmSecretKeys(
   return ListApmSecretKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListApmSecretKeysResult> listApmSecretKeysOutput(
+  ListApmSecretKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:listApmSecretKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListApmSecretKeysResult.fromMap);
+}
+
 /// List deployments that are using the builder.
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -754,6 +1117,17 @@ Future<ListBuildServiceBuilderDeploymentsResult> listBuildServiceBuilderDeployme
   return ListBuildServiceBuilderDeploymentsResult.fromMap(result);
 }
 
+pulumi.Output<ListBuildServiceBuilderDeploymentsResult> listBuildServiceBuilderDeploymentsOutput(
+  ListBuildServiceBuilderDeploymentsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:listBuildServiceBuilderDeployments',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListBuildServiceBuilderDeploymentsResult.fromMap);
+}
+
 /// List sensitive environment variables of the Job.
 ///
 /// Uses Azure REST API version 2024-05-01-preview.
@@ -772,6 +1146,17 @@ Future<ListJobEnvSecretsResult> listJobEnvSecrets(
   return ListJobEnvSecretsResult.fromMap(result);
 }
 
+pulumi.Output<ListJobEnvSecretsResult> listJobEnvSecretsOutput(
+  ListJobEnvSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:listJobEnvSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListJobEnvSecretsResult.fromMap);
+}
+
 /// List sensitive environment variables of Job execution.
 ///
 /// Uses Azure REST API version 2024-05-01-preview.
@@ -788,6 +1173,17 @@ Future<ListJobExecutionEnvSecretsResult> listJobExecutionEnvSecrets(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListJobExecutionEnvSecretsResult.fromMap(result);
+}
+
+pulumi.Output<ListJobExecutionEnvSecretsResult> listJobExecutionEnvSecretsOutput(
+  ListJobExecutionEnvSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:listJobExecutionEnvSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListJobExecutionEnvSecretsResult.fromMap);
 }
 
 /// List globally enabled APMs for a Service.
@@ -810,6 +1206,17 @@ Future<ListServiceGloballyEnabledApmsResult> listServiceGloballyEnabledApms(
   return ListServiceGloballyEnabledApmsResult.fromMap(result);
 }
 
+pulumi.Output<ListServiceGloballyEnabledApmsResult> listServiceGloballyEnabledApmsOutput(
+  ListServiceGloballyEnabledApmsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:listServiceGloballyEnabledApms',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListServiceGloballyEnabledApmsResult.fromMap);
+}
+
 /// List test keys for a Service.
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -828,4 +1235,15 @@ Future<ListServiceTestKeysResult> listServiceTestKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListServiceTestKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListServiceTestKeysResult> listServiceTestKeysOutput(
+  ListServiceTestKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appplatform:listServiceTestKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListServiceTestKeysResult.fromMap);
 }

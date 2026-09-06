@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kind of service (Stateless or Stateful).
-enum ServiceKind {
+enum ServiceKind implements pulumi.PulumiEnum<String> {
   valueStateless("Stateless"),
   valueStateful("Stateful");
 
   const ServiceKind(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceKind fromValue(String value) {

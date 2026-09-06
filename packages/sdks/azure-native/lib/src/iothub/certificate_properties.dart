@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The description of an X509 CA Certificate.
 class CertificateProperties {
   /// The certificate content
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// Determines whether certificate has been verified.
-  final pulumi.Input<bool>? isVerified;
+  final pulumi.Input<bool?>? isVerified;
 
   /// Creates a new [CertificateProperties].
   /// [certificate] The certificate content

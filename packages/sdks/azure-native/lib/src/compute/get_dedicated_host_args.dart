@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_get_dedicated_host_args_doc}
 class GetDedicatedHostArgs {
   /// The expand expression to apply on the operation. 'InstanceView' will retrieve the list of instance views of the dedicated host. 'UserData' is not supported for dedicated host.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the dedicated host group.
   final pulumi.Input<String> hostGroupName;
   /// The name of the dedicated host.

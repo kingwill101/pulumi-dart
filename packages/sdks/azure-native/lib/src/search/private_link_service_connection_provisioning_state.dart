@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The provisioning state of the private link service connection. Valid values are Updating, Deleting, Failed, Succeeded, Incomplete, or Canceled.
-enum PrivateLinkServiceConnectionProvisioningState {
+enum PrivateLinkServiceConnectionProvisioningState implements pulumi.PulumiEnum<String> {
   updating("Updating"),
   deleting("Deleting"),
   failed("Failed"),
@@ -8,6 +10,7 @@ enum PrivateLinkServiceConnectionProvisioningState {
   canceled("Canceled");
 
   const PrivateLinkServiceConnectionProvisioningState(this.wireValue);
+  @override
   final String wireValue;
 
   static PrivateLinkServiceConnectionProvisioningState fromValue(String value) {

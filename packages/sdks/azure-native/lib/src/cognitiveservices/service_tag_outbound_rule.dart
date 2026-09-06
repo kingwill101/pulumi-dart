@@ -6,11 +6,11 @@ import 'service_tag_outbound_rule_destination.dart';
 /// Service Tag outbound rule for the managed network of a cognitive services account.
 class ServiceTagOutboundRule {
   /// Category of a managed network Outbound Rule of a cognitive services account.
-  final pulumi.Input<String>? category;
+  final pulumi.Input<dynamic>? category;
   /// Service Tag destination.
-  final pulumi.Input<ServiceTagOutboundRuleDestination>? destination;
+  final pulumi.Input<ServiceTagOutboundRuleDestination?>? destination;
   /// Type of a managed network Outbound Rule of a cognitive services account.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// Type of a managed network Outbound Rule of a cognitive services account.
   /// Expected value is 'ServiceTag'.
   final pulumi.Input<String> type;
@@ -38,9 +38,9 @@ class ServiceTagOutboundRule {
 
   factory ServiceTagOutboundRule.fromMap(Map<String, dynamic> map) {
     return ServiceTagOutboundRule(
-      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTagOutboundRuleDestination.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

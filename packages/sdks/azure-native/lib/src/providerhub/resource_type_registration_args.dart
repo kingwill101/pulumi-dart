@@ -9,24 +9,24 @@ import 'resource_type_registration_properties.dart';
 /// {@macro pulumi_providerhub_resource_type_registration_args_doc}
 class ResourceTypeRegistrationArgs {
   /// Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
-  final pulumi.Input<String>? kind;
-  final pulumi.Input<ResourceTypeRegistrationProperties>? properties;
+  final pulumi.Input<dynamic>? kind;
+  final pulumi.Input<ResourceTypeRegistrationProperties?>? properties;
   /// The name of the resource provider hosted within ProviderHub.
   final pulumi.Input<String> providerNamespace;
   /// The resource type.
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
 
   /// Creates a new [ResourceTypeRegistrationArgs].
   /// [kind] Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
   /// [properties] Optional.
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
   /// [resourceType] The resource type.
-  const ResourceTypeRegistrationArgs({
-    this.kind,
+  ResourceTypeRegistrationArgs({
+    pulumi.Input<dynamic>? kind,
     this.properties,
     required this.providerNamespace,
     this.resourceType,
-  });
+  }) : kind = kind ?? pulumi.Input.fromValue('Managed');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,7 +39,7 @@ class ResourceTypeRegistrationArgs {
 
   factory ResourceTypeRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationArgs(
-      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeRegistrationProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       providerNamespace: pulumi.Input.fromValue(map['providerNamespace'] as String),
       resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

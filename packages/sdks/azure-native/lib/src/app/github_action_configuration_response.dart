@@ -8,25 +8,25 @@ import 'registry_info_response.dart';
 /// Configuration properties that define the mutable settings of a Container App SourceControl
 class GithubActionConfigurationResponse {
   /// AzureCredentials configurations.
-  final pulumi.Input<AzureCredentialsResponse>? azureCredentials;
+  final pulumi.Input<AzureCredentialsResponse?>? azureCredentials;
   /// List of environment variables to be passed to the build.
-  final pulumi.Input<List<EnvironmentVariableResponse>>? buildEnvironmentVariables;
+  final pulumi.Input<List<EnvironmentVariableResponse>?>? buildEnvironmentVariables;
   /// Context path
-  final pulumi.Input<String>? contextPath;
+  final pulumi.Input<String?>? contextPath;
   /// Dockerfile path
-  final pulumi.Input<String>? dockerfilePath;
+  final pulumi.Input<String?>? dockerfilePath;
   /// Image name
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// Operation system
-  final pulumi.Input<String>? os;
+  final pulumi.Input<String?>? os;
   /// Code or Image
-  final pulumi.Input<String>? publishType;
+  final pulumi.Input<String?>? publishType;
   /// Registry configurations.
-  final pulumi.Input<RegistryInfoResponse>? registryInfo;
+  final pulumi.Input<RegistryInfoResponse?>? registryInfo;
   /// Runtime stack
-  final pulumi.Input<String>? runtimeStack;
+  final pulumi.Input<String?>? runtimeStack;
   /// Runtime version
-  final pulumi.Input<String>? runtimeVersion;
+  final pulumi.Input<String?>? runtimeVersion;
 
   /// Creates a new [GithubActionConfigurationResponse].
   /// [azureCredentials] AzureCredentials configurations.

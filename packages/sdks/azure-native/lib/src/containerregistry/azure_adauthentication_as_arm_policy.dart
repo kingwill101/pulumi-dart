@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The policy for using ARM audience token for a container registry.
 class AzureADAuthenticationAsArmPolicy {
   /// The value that indicates whether the policy is enabled or not.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [AzureADAuthenticationAsArmPolicy].
   /// [status] The value that indicates whether the policy is enabled or not.
-  const AzureADAuthenticationAsArmPolicy({
-    this.status,
-  });
+  AzureADAuthenticationAsArmPolicy({
+    pulumi.Input<dynamic>? status,
+  }) : status = status ?? pulumi.Input.fromValue('enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,7 +21,7 @@ class AzureADAuthenticationAsArmPolicy {
 
   factory AzureADAuthenticationAsArmPolicy.fromMap(Map<String, dynamic> map) {
     return AzureADAuthenticationAsArmPolicy(
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

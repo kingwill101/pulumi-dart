@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] The numerical data drift metric to calculate.
-enum NumericalDataDriftMetric {
+enum NumericalDataDriftMetric implements pulumi.PulumiEnum<String> {
   jensenShannonDistance("JensenShannonDistance"),
   populationStabilityIndex("PopulationStabilityIndex"),
   normalizedWassersteinDistance("NormalizedWassersteinDistance"),
   twoSampleKolmogorovSmirnovTest("TwoSampleKolmogorovSmirnovTest");
 
   const NumericalDataDriftMetric(this.wireValue);
+  @override
   final String wireValue;
 
   static NumericalDataDriftMetric fromValue(String value) {

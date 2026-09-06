@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets a value indicating whether to enable dynamic memory or not.
-enum DynamicMemoryEnabled {
+enum DynamicMemoryEnabled implements pulumi.PulumiEnum<String> {
   valueFalse("false"),
   valueTrue("true");
 
   const DynamicMemoryEnabled(this.wireValue);
+  @override
   final String wireValue;
 
   static DynamicMemoryEnabled fromValue(String value) {

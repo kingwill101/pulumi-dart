@@ -10,7 +10,7 @@ class ApiVersionArgs {
   /// The name of the API.
   final pulumi.Input<String> apiName;
   /// Current lifecycle stage of the API.
-  final pulumi.Input<String> lifecycleStage;
+  final pulumi.Input<dynamic> lifecycleStage;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of Azure API Center service.
@@ -18,7 +18,7 @@ class ApiVersionArgs {
   /// API version title.
   final pulumi.Input<String> title;
   /// The name of the API version.
-  final pulumi.Input<String>? versionName;
+  final pulumi.Input<String?>? versionName;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -55,7 +55,7 @@ class ApiVersionArgs {
   factory ApiVersionArgs.fromMap(Map<String, dynamic> map) {
     return ApiVersionArgs(
       apiName: pulumi.Input.fromValue(map['apiName'] as String),
-      lifecycleStage: pulumi.Input.fromValue(map['lifecycleStage'] as String),
+      lifecycleStage: pulumi.Input.fromValue(map['lifecycleStage']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
       title: pulumi.Input.fromValue(map['title'] as String),

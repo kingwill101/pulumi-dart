@@ -6,9 +6,9 @@ import 'notification_receiver_value.dart';
 /// A notification event receivers.
 class NotificationEventReceiver {
   /// The type of the notification event receiver.
-  final pulumi.Input<String>? receiverType;
+  final pulumi.Input<String?>? receiverType;
   /// The notification event receiver value.
-  final pulumi.Input<NotificationReceiverValue>? receiverValue;
+  final pulumi.Input<NotificationReceiverValue?>? receiverValue;
 
   /// Creates a new [NotificationEventReceiver].
   /// [receiverType] The type of the notification event receiver.

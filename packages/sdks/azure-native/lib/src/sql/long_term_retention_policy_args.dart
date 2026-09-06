@@ -10,19 +10,19 @@ class LongTermRetentionPolicyArgs {
   /// The name of the database.
   final pulumi.Input<String> databaseName;
   /// The monthly retention policy for an LTR backup in an ISO 8601 format.
-  final pulumi.Input<String>? monthlyRetention;
+  final pulumi.Input<String?>? monthlyRetention;
   /// The policy name. Should always be Default.
-  final pulumi.Input<String>? policyName;
+  final pulumi.Input<String?>? policyName;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the server.
   final pulumi.Input<String> serverName;
   /// The week of year to take the yearly backup in an ISO 8601 format.
-  final pulumi.Input<int>? weekOfYear;
+  final pulumi.Input<int?>? weekOfYear;
   /// The weekly retention policy for an LTR backup in an ISO 8601 format.
-  final pulumi.Input<String>? weeklyRetention;
+  final pulumi.Input<String?>? weeklyRetention;
   /// The yearly retention policy for an LTR backup in an ISO 8601 format.
-  final pulumi.Input<String>? yearlyRetention;
+  final pulumi.Input<String?>? yearlyRetention;
 
   /// Creates a new [LongTermRetentionPolicyArgs].
   /// [databaseName] The name of the database.
@@ -64,7 +64,7 @@ class LongTermRetentionPolicyArgs {
       policyName: (() { final guardedValue = map['policyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
-      weekOfYear: (() { final guardedValue = map['weekOfYear']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      weekOfYear: (() { final guardedValue = map['weekOfYear']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       weeklyRetention: (() { final guardedValue = map['weeklyRetention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       yearlyRetention: (() { final guardedValue = map['yearlyRetention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -7,19 +7,19 @@ class BrokerAuthenticatorMethodSvid {
   /// Mounted socket path for spiffe agent.
   final pulumi.Input<String> agentSocketPath;
   /// Maximum number of re-tries to fetch identity.
-  final pulumi.Input<double>? identityMaxRetry;
+  final pulumi.Input<double?>? identityMaxRetry;
   /// Maximum time to wait before fetching identity again.
-  final pulumi.Input<double>? identityWaitRetryMs;
+  final pulumi.Input<double?>? identityWaitRetryMs;
 
   /// Creates a new [BrokerAuthenticatorMethodSvid].
   /// [agentSocketPath] Mounted socket path for spiffe agent.
   /// [identityMaxRetry] Maximum number of re-tries to fetch identity.
   /// [identityWaitRetryMs] Maximum time to wait before fetching identity again.
-  const BrokerAuthenticatorMethodSvid({
+  BrokerAuthenticatorMethodSvid({
     required this.agentSocketPath,
-    this.identityMaxRetry,
-    this.identityWaitRetryMs,
-  });
+    pulumi.Input<double?>? identityMaxRetry,
+    pulumi.Input<double?>? identityWaitRetryMs,
+  }) : identityMaxRetry = identityMaxRetry ?? pulumi.Input.fromValue(3), identityWaitRetryMs = identityWaitRetryMs ?? pulumi.Input.fromValue(5000);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +32,8 @@ class BrokerAuthenticatorMethodSvid {
   factory BrokerAuthenticatorMethodSvid.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethodSvid(
       agentSocketPath: pulumi.Input.fromValue(map['agentSocketPath'] as String),
-      identityMaxRetry: (() { final guardedValue = map['identityMaxRetry']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      identityWaitRetryMs: (() { final guardedValue = map['identityWaitRetryMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      identityMaxRetry: (() { final guardedValue = map['identityMaxRetry']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      identityWaitRetryMs: (() { final guardedValue = map['identityWaitRetryMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

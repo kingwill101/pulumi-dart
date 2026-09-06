@@ -10,7 +10,7 @@ class LogAnalyticsSignalGroup {
   /// Log Analytics Workspace resource ID
   final pulumi.Input<String> logAnalyticsWorkspaceResourceId;
   /// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
-  final pulumi.Input<List<SignalAssignment>>? signalAssignments;
+  final pulumi.Input<List<SignalAssignment>?>? signalAssignments;
 
   /// Creates a new [LogAnalyticsSignalGroup].
   /// [authenticationSetting] Reference to the name of the authentication setting which is used for querying the data source

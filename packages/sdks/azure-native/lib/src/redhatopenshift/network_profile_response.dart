@@ -6,15 +6,15 @@ import 'load_balancer_profile_response.dart';
 /// NetworkProfile represents a network profile.
 class NetworkProfileResponse {
   /// The cluster load balancer profile.
-  final pulumi.Input<LoadBalancerProfileResponse>? loadBalancerProfile;
+  final pulumi.Input<LoadBalancerProfileResponse?>? loadBalancerProfile;
   /// The OutboundType used for egress traffic.
-  final pulumi.Input<String>? outboundType;
+  final pulumi.Input<String?>? outboundType;
   /// The CIDR used for OpenShift/Kubernetes Pods.
-  final pulumi.Input<String>? podCidr;
+  final pulumi.Input<String?>? podCidr;
   /// Specifies whether subnets are pre-attached with an NSG
-  final pulumi.Input<String>? preconfiguredNSG;
+  final pulumi.Input<String?>? preconfiguredNSG;
   /// The CIDR used for OpenShift/Kubernetes Services.
-  final pulumi.Input<String>? serviceCidr;
+  final pulumi.Input<String?>? serviceCidr;
 
   /// Creates a new [NetworkProfileResponse].
   /// [loadBalancerProfile] The cluster load balancer profile.

@@ -1,4 +1,6 @@
-enum AfdCustomizedCipherSuiteForTls12 {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum AfdCustomizedCipherSuiteForTls12 implements pulumi.PulumiEnum<String> {
   eCDHERSAAES128GCMSHA256("ECDHE_RSA_AES128_GCM_SHA256"),
   eCDHERSAAES256GCMSHA384("ECDHE_RSA_AES256_GCM_SHA384"),
   dHERSAAES256GCMSHA384("DHE_RSA_AES256_GCM_SHA384"),
@@ -7,6 +9,7 @@ enum AfdCustomizedCipherSuiteForTls12 {
   eCDHERSAAES256SHA384("ECDHE_RSA_AES256_SHA384");
 
   const AfdCustomizedCipherSuiteForTls12(this.wireValue);
+  @override
   final String wireValue;
 
   static AfdCustomizedCipherSuiteForTls12 fromValue(String value) {

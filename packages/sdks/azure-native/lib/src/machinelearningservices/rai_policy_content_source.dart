@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Content source to apply the Content Filters.
-enum RaiPolicyContentSource {
+enum RaiPolicyContentSource implements pulumi.PulumiEnum<String> {
   valuePrompt("Prompt"),
   valueCompletion("Completion");
 
   const RaiPolicyContentSource(this.wireValue);
+  @override
   final String wireValue;
 
   static RaiPolicyContentSource fromValue(String value) {

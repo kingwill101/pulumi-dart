@@ -8,19 +8,19 @@ import 'site_details.dart';
 /// Properties for edge machine.
 class EdgeMachineProperties {
   /// Link to Arc Gateway ARM resource Id
-  final pulumi.Input<String>? arcGatewayResourceId;
+  final pulumi.Input<String?>? arcGatewayResourceId;
   /// Optional property to create arc machine in custom resource group.
-  final pulumi.Input<String>? arcMachineResourceGroupId;
+  final pulumi.Input<String?>? arcMachineResourceGroupId;
   /// Arc machine instance resource id.
-  final pulumi.Input<String>? arcMachineResourceId;
+  final pulumi.Input<String?>? arcMachineResourceId;
   /// Edge Machine type.
-  final pulumi.Input<String>? edgeMachineKind;
+  final pulumi.Input<dynamic>? edgeMachineKind;
   /// Ownership voucher details for provisioned machine.
-  final pulumi.Input<OwnershipVoucherDetails>? ownershipVoucherDetails;
+  final pulumi.Input<OwnershipVoucherDetails?>? ownershipVoucherDetails;
   /// Details for device provisioning.
-  final pulumi.Input<ProvisioningDetails>? provisioningDetails;
+  final pulumi.Input<ProvisioningDetails?>? provisioningDetails;
   /// Service fetches common configuration from site.
-  final pulumi.Input<SiteDetails>? siteDetails;
+  final pulumi.Input<SiteDetails?>? siteDetails;
 
   /// Creates a new [EdgeMachineProperties].
   /// [arcGatewayResourceId] Link to Arc Gateway ARM resource Id
@@ -57,7 +57,7 @@ class EdgeMachineProperties {
       arcGatewayResourceId: (() { final guardedValue = map['arcGatewayResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       arcMachineResourceGroupId: (() { final guardedValue = map['arcMachineResourceGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       arcMachineResourceId: (() { final guardedValue = map['arcMachineResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      edgeMachineKind: (() { final guardedValue = map['edgeMachineKind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      edgeMachineKind: (() { final guardedValue = map['edgeMachineKind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       ownershipVoucherDetails: (() { final guardedValue = map['ownershipVoucherDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OwnershipVoucherDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       provisioningDetails: (() { final guardedValue = map['provisioningDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProvisioningDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       siteDetails: (() { final guardedValue = map['siteDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SiteDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Database specific information for SQL to Azure SQL DB sync migration task inputs
 class MigrateSqlServerSqlDbSyncDatabaseInput {
   /// Unique identifier for database
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Migration settings which tune the migration behavior
-  final pulumi.Input<Map<String, String>>? migrationSetting;
+  final pulumi.Input<Map<String, String>?>? migrationSetting;
   /// Name of database
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Schema name to be migrated
-  final pulumi.Input<String>? schemaName;
+  final pulumi.Input<String?>? schemaName;
   /// Source settings to tune source endpoint migration behavior
-  final pulumi.Input<Map<String, String>>? sourceSetting;
+  final pulumi.Input<Map<String, String>?>? sourceSetting;
   /// Mapping of source to target tables
-  final pulumi.Input<Map<String, String>>? tableMap;
+  final pulumi.Input<Map<String, String>?>? tableMap;
   /// Target database name
-  final pulumi.Input<String>? targetDatabaseName;
+  final pulumi.Input<String?>? targetDatabaseName;
   /// Target settings to tune target endpoint migration behavior
-  final pulumi.Input<Map<String, String>>? targetSetting;
+  final pulumi.Input<Map<String, String>?>? targetSetting;
 
   /// Creates a new [MigrateSqlServerSqlDbSyncDatabaseInput].
   /// [id] Unique identifier for database

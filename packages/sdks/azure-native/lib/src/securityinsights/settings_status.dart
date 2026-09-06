@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The anomaly SecurityMLAnalyticsSettings status
-enum SettingsStatus {
+enum SettingsStatus implements pulumi.PulumiEnum<String> {
   valueProduction("Production"),
   valueFlighting("Flighting");
 
   const SettingsStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static SettingsStatus fromValue(String value) {

@@ -11,28 +11,28 @@ import 'resource_model_with_allowed_property_set_sku.dart';
 /// {@macro pulumi_desktopvirtualization_workspace_args_doc}
 class WorkspaceArgs {
   /// List of applicationGroup resource Ids.
-  final pulumi.Input<List<String>>? applicationGroupReferences;
+  final pulumi.Input<List<String>?>? applicationGroupReferences;
   /// Description of Workspace.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Friendly name of Workspace.
-  final pulumi.Input<String>? friendlyName;
-  final pulumi.Input<ResourceModelWithAllowedPropertySetIdentity>? identity;
+  final pulumi.Input<String?>? friendlyName;
+  final pulumi.Input<ResourceModelWithAllowedPropertySetIdentity?>? identity;
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
-  final pulumi.Input<String>? managedBy;
-  final pulumi.Input<ResourceModelWithAllowedPropertySetPlan>? plan;
+  final pulumi.Input<String?>? managedBy;
+  final pulumi.Input<ResourceModelWithAllowedPropertySetPlan?>? plan;
   /// Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  final pulumi.Input<ResourceModelWithAllowedPropertySetSku>? sku;
+  final pulumi.Input<ResourceModelWithAllowedPropertySetSku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the workspace
-  final pulumi.Input<String>? workspaceName;
+  final pulumi.Input<String?>? workspaceName;
 
   /// Creates a new [WorkspaceArgs].
   /// [applicationGroupReferences] List of applicationGroup resource Ids.
@@ -92,7 +92,7 @@ class WorkspaceArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedBy: (() { final guardedValue = map['managedBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       plan: (() { final guardedValue = map['plan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceModelWithAllowedPropertySetPlan.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceModelWithAllowedPropertySetSku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

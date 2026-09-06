@@ -12,19 +12,19 @@ import 'volume_response.dart';
 /// Any changes to this section Will result in a new revision being created
 class TemplateResponse {
   /// List of container definitions for the Container App.
-  final pulumi.Input<List<ContainerResponse>>? containers;
+  final pulumi.Input<List<ContainerResponse>?>? containers;
   /// List of specialized containers that run before app containers.
-  final pulumi.Input<List<InitContainerResponse>>? initContainers;
+  final pulumi.Input<List<InitContainerResponse>?>? initContainers;
   /// User friendly suffix that is appended to the revision name
-  final pulumi.Input<String>? revisionSuffix;
+  final pulumi.Input<String?>? revisionSuffix;
   /// Scaling properties for the Container App.
-  final pulumi.Input<ScaleResponse>? scale;
+  final pulumi.Input<ScaleResponse?>? scale;
   /// List of container app services bound to the app
-  final pulumi.Input<List<ServiceBindResponse>>? serviceBinds;
+  final pulumi.Input<List<ServiceBindResponse>?>? serviceBinds;
   /// Optional duration in seconds the Container App Instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). If this value is nil, the default grace period will be used instead. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.
-  final pulumi.Input<double>? terminationGracePeriodSeconds;
+  final pulumi.Input<double?>? terminationGracePeriodSeconds;
   /// List of volume definitions for the Container App.
-  final pulumi.Input<List<VolumeResponse>>? volumes;
+  final pulumi.Input<List<VolumeResponse>?>? volumes;
 
   /// Creates a new [TemplateResponse].
   /// [containers] List of container definitions for the Container App.
@@ -63,7 +63,7 @@ class TemplateResponse {
       revisionSuffix: (() { final guardedValue = map['revisionSuffix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scale: (() { final guardedValue = map['scale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScaleResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serviceBinds: (() { final guardedValue = map['serviceBinds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceBindResponse>(guardedValue, (value) => ServiceBindResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      terminationGracePeriodSeconds: (() { final guardedValue = map['terminationGracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      terminationGracePeriodSeconds: (() { final guardedValue = map['terminationGracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       volumes: (() { final guardedValue = map['volumes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VolumeResponse>(guardedValue, (value) => VolumeResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

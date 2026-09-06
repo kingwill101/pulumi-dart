@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of a storage blob to be created.
-enum BlobType {
+enum BlobType implements pulumi.PulumiEnum<String> {
   valueBlock("Block"),
   valueAppend("Append");
 
   const BlobType(this.wireValue);
+  @override
   final String wireValue;
 
   static BlobType fromValue(String value) {

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// High availability properties of a server
 class HighAvailability {
   /// High availability mode for a server.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<dynamic>? mode;
   /// Availability zone of the standby server.
-  final pulumi.Input<String>? standbyAvailabilityZone;
+  final pulumi.Input<String?>? standbyAvailabilityZone;
 
   /// Creates a new [HighAvailability].
   /// [mode] High availability mode for a server.
@@ -26,7 +26,7 @@ class HighAvailability {
 
   factory HighAvailability.fromMap(Map<String, dynamic> map) {
     return HighAvailability(
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       standbyAvailabilityZone: (() { final guardedValue = map['standbyAvailabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

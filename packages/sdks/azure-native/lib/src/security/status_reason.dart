@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// A description of why the `status` has its value
-enum StatusReason {
+enum StatusReason implements pulumi.PulumiEnum<String> {
   expired("Expired"),
   userRequested("UserRequested"),
   newerRequestInitiated("NewerRequestInitiated");
 
   const StatusReason(this.wireValue);
+  @override
   final String wireValue;
 
   static StatusReason fromValue(String value) {

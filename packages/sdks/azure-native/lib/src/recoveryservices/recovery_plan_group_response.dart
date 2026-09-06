@@ -7,13 +7,13 @@ import 'recovery_plan_protected_item_response.dart';
 /// Recovery plan group details.
 class RecoveryPlanGroupResponse {
   /// The end group actions.
-  final pulumi.Input<List<RecoveryPlanActionResponse>>? endGroupActions;
+  final pulumi.Input<List<RecoveryPlanActionResponse>?>? endGroupActions;
   /// The group type.
   final pulumi.Input<String> groupType;
   /// The list of protected items.
-  final pulumi.Input<List<RecoveryPlanProtectedItemResponse>>? replicationProtectedItems;
+  final pulumi.Input<List<RecoveryPlanProtectedItemResponse>?>? replicationProtectedItems;
   /// The start group actions.
-  final pulumi.Input<List<RecoveryPlanActionResponse>>? startGroupActions;
+  final pulumi.Input<List<RecoveryPlanActionResponse>?>? startGroupActions;
 
   /// Creates a new [RecoveryPlanGroupResponse].
   /// [endGroupActions] The end group actions.

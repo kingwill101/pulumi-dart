@@ -7,7 +7,7 @@ class TaskPropertiesResponse {
   /// Task completion Date
   final pulumi.Input<String> completionDate;
   /// Task Description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Task Dislay Name
   final pulumi.Input<String> displayName;
   /// Indicates whether the task is editable.
@@ -19,7 +19,7 @@ class TaskPropertiesResponse {
   /// associated Wave Id
   final pulumi.Input<String> scopeId;
   /// Task Stage
-  final pulumi.Input<String>? stage;
+  final pulumi.Input<String?>? stage;
   /// Task Status
   final pulumi.Input<String> status;
   /// Task Type

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Operator used for list of dependencies in criteria array.
-enum Operator {
+enum Operator implements pulumi.PulumiEnum<String> {
   valueAND("AND"),
   valueOR("OR");
 
   const Operator(this.wireValue);
+  @override
   final String wireValue;
 
   static Operator fromValue(String value) {

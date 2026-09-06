@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties specific to the NFS protocol.
 class NfsProtocolProperties {
   /// Root squash defines how root users on clients are mapped to the NFS share.
-  final pulumi.Input<String>? rootSquash;
+  final pulumi.Input<dynamic>? rootSquash;
 
   /// Creates a new [NfsProtocolProperties].
   /// [rootSquash] Root squash defines how root users on clients are mapped to the NFS share.
@@ -21,7 +21,7 @@ class NfsProtocolProperties {
 
   factory NfsProtocolProperties.fromMap(Map<String, dynamic> map) {
     return NfsProtocolProperties(
-      rootSquash: (() { final guardedValue = map['rootSquash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rootSquash: (() { final guardedValue = map['rootSquash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

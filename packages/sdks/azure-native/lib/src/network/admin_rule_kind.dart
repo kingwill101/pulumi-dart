@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether the rule is custom or default.
-enum AdminRuleKind {
+enum AdminRuleKind implements pulumi.PulumiEnum<String> {
   valueCustom("Custom"),
   valueDefault("Default");
 
   const AdminRuleKind(this.wireValue);
+  @override
   final String wireValue;
 
   static AdminRuleKind fromValue(String value) {

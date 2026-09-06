@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Initial replication details.
 class InitialReplicationDetailsResponse {
   /// The initial replication progress percentage.
-  final pulumi.Input<String>? initialReplicationProgressPercentage;
+  final pulumi.Input<String?>? initialReplicationProgressPercentage;
   /// Initial replication type.
-  final pulumi.Input<String>? initialReplicationType;
+  final pulumi.Input<String?>? initialReplicationType;
 
   /// Creates a new [InitialReplicationDetailsResponse].
   /// [initialReplicationProgressPercentage] The initial replication progress percentage.

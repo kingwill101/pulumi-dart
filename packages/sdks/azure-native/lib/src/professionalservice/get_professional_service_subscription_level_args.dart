@@ -12,7 +12,7 @@ class GetProfessionalServiceSubscriptionLevelArgs {
   /// The name of the resource.
   final pulumi.Input<String> resourceName;
   /// The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [GetProfessionalServiceSubscriptionLevelArgs].
   /// [resourceGroupName] The name of the resource group.

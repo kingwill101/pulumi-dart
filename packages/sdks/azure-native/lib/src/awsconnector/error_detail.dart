@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ErrorDetail
 class ErrorDetail {
   /// &lt;p&gt;The name or code associated with the error.&lt;/p&gt;
-  final pulumi.Input<String>? errorCode;
+  final pulumi.Input<String?>? errorCode;
   /// &lt;p&gt;A list of key value pairs that provides contextual information about why an error occured.&lt;/p&gt;
-  final pulumi.Input<List<dynamic>>? errorData;
+  final pulumi.Input<List<dynamic>?>? errorData;
   /// &lt;p&gt;A message that describes the error.&lt;/p&gt;
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
 
   /// Creates a new [ErrorDetail].
   /// [errorCode] &lt;p&gt;The name or code associated with the error.&lt;/p&gt;

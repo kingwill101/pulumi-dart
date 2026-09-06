@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Progress representation of the update run steps.
 class Step {
   /// More detailed description of the step.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// When the step reached a terminal state.
-  final pulumi.Input<String>? endTimeUtc;
+  final pulumi.Input<String?>? endTimeUtc;
   /// Error message, specified if the step is in a failed state.
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// Expected execution time of a given step. This is optionally authored in the update action plan and can be empty.
-  final pulumi.Input<String>? expectedExecutionTime;
+  final pulumi.Input<String?>? expectedExecutionTime;
   /// Completion time of this step or the last completed sub-step.
-  final pulumi.Input<String>? lastUpdatedTimeUtc;
+  final pulumi.Input<String?>? lastUpdatedTimeUtc;
   /// Name of the step.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// When the step started, or empty if it has not started executing.
-  final pulumi.Input<String>? startTimeUtc;
+  final pulumi.Input<String?>? startTimeUtc;
   /// Status of the step, bubbled up from the ECE action plan for installation attempts. Values are: 'Success', 'Error', 'InProgress', and 'Unknown status'.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Recursive model for child steps of this step.
-  final pulumi.Input<List<Step>>? steps;
+  final pulumi.Input<List<Step>?>? steps;
 
   /// Creates a new [Step].
   /// [description] More detailed description of the step.

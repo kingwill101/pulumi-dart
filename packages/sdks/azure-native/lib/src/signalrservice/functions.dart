@@ -34,6 +34,17 @@ Future<GetSignalRResult> getSignalR(
   return GetSignalRResult.fromMap(result);
 }
 
+pulumi.Output<GetSignalRResult> getSignalROutput(
+  GetSignalRArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:signalrservice:getSignalR',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSignalRResult.fromMap);
+}
+
 /// Get a custom certificate.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -52,6 +63,17 @@ Future<GetSignalRCustomCertificateResult> getSignalRCustomCertificate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSignalRCustomCertificateResult.fromMap(result);
+}
+
+pulumi.Output<GetSignalRCustomCertificateResult> getSignalRCustomCertificateOutput(
+  GetSignalRCustomCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:signalrservice:getSignalRCustomCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSignalRCustomCertificateResult.fromMap);
 }
 
 /// Get a custom domain.
@@ -74,6 +96,17 @@ Future<GetSignalRCustomDomainResult> getSignalRCustomDomain(
   return GetSignalRCustomDomainResult.fromMap(result);
 }
 
+pulumi.Output<GetSignalRCustomDomainResult> getSignalRCustomDomainOutput(
+  GetSignalRCustomDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:signalrservice:getSignalRCustomDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSignalRCustomDomainResult.fromMap);
+}
+
 /// Get the specified private endpoint connection
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -92,6 +125,17 @@ Future<GetSignalRPrivateEndpointConnectionResult> getSignalRPrivateEndpointConne
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSignalRPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetSignalRPrivateEndpointConnectionResult> getSignalRPrivateEndpointConnectionOutput(
+  GetSignalRPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:signalrservice:getSignalRPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSignalRPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Get the replica and its properties.
@@ -114,6 +158,17 @@ Future<GetSignalRReplicaResult> getSignalRReplica(
   return GetSignalRReplicaResult.fromMap(result);
 }
 
+pulumi.Output<GetSignalRReplicaResult> getSignalRReplicaOutput(
+  GetSignalRReplicaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:signalrservice:getSignalRReplica',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSignalRReplicaResult.fromMap);
+}
+
 /// Get the specified shared private link resource
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -134,6 +189,17 @@ Future<GetSignalRSharedPrivateLinkResourceResult> getSignalRSharedPrivateLinkRes
   return GetSignalRSharedPrivateLinkResourceResult.fromMap(result);
 }
 
+pulumi.Output<GetSignalRSharedPrivateLinkResourceResult> getSignalRSharedPrivateLinkResourceOutput(
+  GetSignalRSharedPrivateLinkResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:signalrservice:getSignalRSharedPrivateLinkResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSignalRSharedPrivateLinkResourceResult.fromMap);
+}
+
 /// Get the access keys of the resource.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -152,4 +218,15 @@ Future<ListSignalRKeysResult> listSignalRKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListSignalRKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListSignalRKeysResult> listSignalRKeysOutput(
+  ListSignalRKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:signalrservice:listSignalRKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListSignalRKeysResult.fromMap);
 }

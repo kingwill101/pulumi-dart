@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dns_config.dart';
-import 'endpoint_trafficmanager.dart';
+import 'endpoint.dart';
 import 'monitor_config.dart';
 
 /// {@template pulumi_trafficmanager_profile_args_doc}
@@ -11,36 +11,36 @@ import 'monitor_config.dart';
 /// {@macro pulumi_trafficmanager_profile_args_doc}
 class ProfileArgs {
   /// The list of allowed endpoint record types.
-  final pulumi.Input<List<String>>? allowedEndpointRecordTypes;
+  final pulumi.Input<List<dynamic>?>? allowedEndpointRecordTypes;
   /// The DNS settings of the Traffic Manager profile.
-  final pulumi.Input<DnsConfig>? dnsConfig;
+  final pulumi.Input<DnsConfig?>? dnsConfig;
   /// The list of endpoints in the Traffic Manager profile.
   /// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
-  final pulumi.Input<List<EndpointTrafficmanager>>? endpoints;
+  final pulumi.Input<List<Endpoint>?>? endpoints;
   /// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The Azure Region where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Maximum number of endpoints to be returned for MultiValue routing type.
-  final pulumi.Input<double>? maxReturn;
+  final pulumi.Input<double?>? maxReturn;
   /// The endpoint monitoring settings of the Traffic Manager profile.
-  final pulumi.Input<MonitorConfig>? monitorConfig;
+  final pulumi.Input<MonitorConfig?>? monitorConfig;
   /// The name of the resource
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Traffic Manager profile.
-  final pulumi.Input<String>? profileName;
+  final pulumi.Input<String?>? profileName;
   /// The status of the Traffic Manager profile.
-  final pulumi.Input<String>? profileStatus;
+  final pulumi.Input<dynamic>? profileStatus;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The traffic routing method of the Traffic Manager profile.
-  final pulumi.Input<String>? trafficRoutingMethod;
+  final pulumi.Input<dynamic>? trafficRoutingMethod;
   /// Indicates whether Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile. Null, indicates 'Disabled'. Enabling this feature will increase the cost of the Traffic Manage profile.
-  final pulumi.Input<String>? trafficViewEnrollmentStatus;
+  final pulumi.Input<dynamic>? trafficViewEnrollmentStatus;
   /// The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ProfileArgs].
   /// [allowedEndpointRecordTypes] The list of allowed endpoint record types.
@@ -80,7 +80,7 @@ class ProfileArgs {
     return <String, dynamic>{
       'allowedEndpointRecordTypes': ?allowedEndpointRecordTypes,
       'dnsConfig': ?pulumi.Input.mapOptionalInputValue<DnsConfig, Map<String, dynamic>>(dnsConfig, (value) => value.toMap()),
-      'endpoints': ?endpoints,
+      'endpoints': ?pulumi.Input.mapOptionalInputValue<List<Endpoint>, List<Map<String, dynamic>>>(endpoints, (value) => pulumi.Input.encodeList<Endpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'id': ?id,
       'location': ?location,
       'maxReturn': ?maxReturn,
@@ -98,20 +98,20 @@ class ProfileArgs {
 
   factory ProfileArgs.fromMap(Map<String, dynamic> map) {
     return ProfileArgs(
-      allowedEndpointRecordTypes: (() { final guardedValue = map['allowedEndpointRecordTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      allowedEndpointRecordTypes: (() { final guardedValue = map['allowedEndpointRecordTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       dnsConfig: (() { final guardedValue = map['dnsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      endpoints: (() { final guardedValue = map['endpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<EndpointTrafficmanager>()); })(),
+      endpoints: (() { final guardedValue = map['endpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Endpoint>(guardedValue, (value) => Endpoint.fromMap((value as Map).cast<String, dynamic>()))); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxReturn: (() { final guardedValue = map['maxReturn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maxReturn: (() { final guardedValue = map['maxReturn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       monitorConfig: (() { final guardedValue = map['monitorConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MonitorConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       profileName: (() { final guardedValue = map['profileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      profileStatus: (() { final guardedValue = map['profileStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      profileStatus: (() { final guardedValue = map['profileStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      trafficRoutingMethod: (() { final guardedValue = map['trafficRoutingMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      trafficViewEnrollmentStatus: (() { final guardedValue = map['trafficViewEnrollmentStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      trafficRoutingMethod: (() { final guardedValue = map['trafficRoutingMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      trafficViewEnrollmentStatus: (() { final guardedValue = map['trafficViewEnrollmentStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

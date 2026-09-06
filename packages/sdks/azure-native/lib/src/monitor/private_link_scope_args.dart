@@ -11,13 +11,13 @@ class PrivateLinkScopeArgs {
   /// Access mode settings
   final pulumi.Input<AccessModeSettings> accessModeSettings;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Azure Monitor PrivateLinkScope resource.
-  final pulumi.Input<String>? scopeName;
+  final pulumi.Input<String?>? scopeName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PrivateLinkScopeArgs].
   /// [accessModeSettings] Access mode settings

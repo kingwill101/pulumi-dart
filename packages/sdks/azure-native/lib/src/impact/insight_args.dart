@@ -9,9 +9,9 @@ import 'insight_properties.dart';
 /// {@macro pulumi_impact_insight_args_doc}
 class InsightArgs {
   /// Name of the insight
-  final pulumi.Input<String>? insightName;
+  final pulumi.Input<String?>? insightName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<InsightProperties>? properties;
+  final pulumi.Input<InsightProperties?>? properties;
   /// workloadImpact resource
   final pulumi.Input<String> workloadImpactName;
 

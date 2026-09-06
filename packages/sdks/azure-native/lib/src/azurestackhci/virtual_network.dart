@@ -3,6 +3,7 @@ import 'extended_location_response.dart';
 import 'system_data_response.dart';
 import 'virtual_network_args.dart';
 import 'virtual_network_properties_response_dhcp_options.dart';
+import 'virtual_network_properties_response_subnets.dart';
 import 'virtual_network_status_response.dart';
 
 /// The virtual network resource definition.
@@ -206,7 +207,7 @@ class VirtualNetwork extends pulumi.CustomResource {
   /// The observed state of virtual networks
   late final pulumi.Output<VirtualNetworkStatusResponse> status;
   /// Subnet - list of subnets under the virtual network
-  late final pulumi.Output<List<Map<String, dynamic>>?> subnets;
+  late final pulumi.Output<List<VirtualNetworkPropertiesResponseSubnets>?> subnets;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
@@ -238,9 +239,33 @@ class VirtualNetwork extends pulumi.CustomResource {
     networkType = registerOutput<String?>('networkType');
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<VirtualNetworkStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    subnets = registerOutput<List<Map<String, dynamic>>?>('subnets');
+    subnets = registerOutput<List<VirtualNetworkPropertiesResponseSubnets>?>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkPropertiesResponseSubnets>(guardedValue, (value) => VirtualNetworkPropertiesResponseSubnets.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    vmSwitchName = registerOutput<String?>('vmSwitchName');
+  }
+
+  /// Creates a typed reference to an existing [VirtualNetwork] resource.
+  VirtualNetwork.reference(String urn)
+    : super(
+        'azure-native:azurestackhci:VirtualNetwork',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dhcpOptions = registerOutput<VirtualNetworkPropertiesResponseDhcpOptions?>('dhcpOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkPropertiesResponseDhcpOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkType = registerOutput<String?>('networkType');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<VirtualNetworkStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subnets = registerOutput<List<VirtualNetworkPropertiesResponseSubnets>?>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkPropertiesResponseSubnets>(guardedValue, (value) => VirtualNetworkPropertiesResponseSubnets.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     vmSwitchName = registerOutput<String?>('vmSwitchName');
   }

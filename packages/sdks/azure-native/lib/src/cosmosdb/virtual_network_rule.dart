@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Virtual Network ACL Rule object
 class VirtualNetworkRule {
   /// Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Create firewall rule before the virtual network has vnet service endpoint enabled.
-  final pulumi.Input<bool>? ignoreMissingVNetServiceEndpoint;
+  final pulumi.Input<bool?>? ignoreMissingVNetServiceEndpoint;
 
   /// Creates a new [VirtualNetworkRule].
   /// [id] Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}.

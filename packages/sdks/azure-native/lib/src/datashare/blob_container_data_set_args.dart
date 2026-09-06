@@ -12,7 +12,7 @@ class BlobContainerDataSetArgs {
   /// BLOB Container name.
   final pulumi.Input<String> containerName;
   /// The name of the dataSet.
-  final pulumi.Input<String>? dataSetName;
+  final pulumi.Input<String?>? dataSetName;
   /// Kind of data set.
   /// Expected value is 'Container'.
   final pulumi.Input<String> kind;

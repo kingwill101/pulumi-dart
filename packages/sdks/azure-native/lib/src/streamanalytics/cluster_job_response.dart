@@ -33,7 +33,7 @@ class ClusterJobResponse {
     return ClusterJobResponse(
       id: pulumi.Input.fromValue(map['id'] as String),
       jobState: pulumi.Input.fromValue(map['jobState'] as String),
-      streamingUnits: pulumi.Input.fromValue(map['streamingUnits'] as int),
+      streamingUnits: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['streamingUnits'])),
     );
   }
 }

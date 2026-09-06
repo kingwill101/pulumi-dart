@@ -6,9 +6,9 @@ import 'selector_response.dart';
 /// The resource selector to filter policies by resource properties.
 class ResourceSelectorResponse {
   /// The name of the resource selector.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The list of the selector expressions.
-  final pulumi.Input<List<SelectorResponse>>? selectors;
+  final pulumi.Input<List<SelectorResponse>?>? selectors;
 
   /// Creates a new [ResourceSelectorResponse].
   /// [name] The name of the resource selector.

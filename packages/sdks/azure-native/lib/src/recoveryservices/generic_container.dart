@@ -6,7 +6,7 @@ import 'generic_container_extended_info.dart';
 /// Base class for generic container of backup items
 class GenericContainer {
   /// Type of backup management for the container.
-  final pulumi.Input<String>? backupManagementType;
+  final pulumi.Input<dynamic>? backupManagementType;
   /// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
   /// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
   /// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
@@ -14,17 +14,17 @@ class GenericContainer {
   /// Expected value is 'GenericContainer'.
   final pulumi.Input<String> containerType;
   /// Extended information (not returned in List container API calls)
-  final pulumi.Input<GenericContainerExtendedInfo>? extendedInformation;
+  final pulumi.Input<GenericContainerExtendedInfo?>? extendedInformation;
   /// Name of the container's fabric
-  final pulumi.Input<String>? fabricName;
+  final pulumi.Input<String?>? fabricName;
   /// Friendly name of the container.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// Status of health of the container.
-  final pulumi.Input<String>? healthStatus;
+  final pulumi.Input<String?>? healthStatus;
   /// Type of the protectable object associated with this container
-  final pulumi.Input<String>? protectableObjectType;
+  final pulumi.Input<String?>? protectableObjectType;
   /// Status of registration of the container with the Recovery Services Vault.
-  final pulumi.Input<String>? registrationStatus;
+  final pulumi.Input<String?>? registrationStatus;
 
   /// Creates a new [GenericContainer].
   /// [backupManagementType] Type of backup management for the container.
@@ -61,7 +61,7 @@ class GenericContainer {
 
   factory GenericContainer.fromMap(Map<String, dynamic> map) {
     return GenericContainer(
-      backupManagementType: (() { final guardedValue = map['backupManagementType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      backupManagementType: (() { final guardedValue = map['backupManagementType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       containerType: pulumi.Input.fromValue(map['containerType'] as String),
       extendedInformation: (() { final guardedValue = map['extendedInformation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GenericContainerExtendedInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       fabricName: (() { final guardedValue = map['fabricName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

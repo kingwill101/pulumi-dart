@@ -6,27 +6,27 @@ import 'sub_resource_response.dart';
 /// Path rule of URL path map of an application gateway.
 class ApplicationGatewayPathRuleResponse {
   /// Backend address pool resource of URL path map path rule.
-  final pulumi.Input<SubResourceResponse>? backendAddressPool;
+  final pulumi.Input<SubResourceResponse?>? backendAddressPool;
   /// Backend http settings resource of URL path map path rule.
-  final pulumi.Input<SubResourceResponse>? backendHttpSettings;
+  final pulumi.Input<SubResourceResponse?>? backendHttpSettings;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Reference to the FirewallPolicy resource.
-  final pulumi.Input<SubResourceResponse>? firewallPolicy;
+  final pulumi.Input<SubResourceResponse?>? firewallPolicy;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Load Distribution Policy resource of URL path map path rule.
-  final pulumi.Input<SubResourceResponse>? loadDistributionPolicy;
+  final pulumi.Input<SubResourceResponse?>? loadDistributionPolicy;
   /// Name of the path rule that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Path rules of URL path map.
-  final pulumi.Input<List<String>>? paths;
+  final pulumi.Input<List<String>?>? paths;
   /// The provisioning state of the path rule resource.
   final pulumi.Input<String> provisioningState;
   /// Redirect configuration resource of URL path map path rule.
-  final pulumi.Input<SubResourceResponse>? redirectConfiguration;
+  final pulumi.Input<SubResourceResponse?>? redirectConfiguration;
   /// Rewrite rule set resource of URL path map path rule.
-  final pulumi.Input<SubResourceResponse>? rewriteRuleSet;
+  final pulumi.Input<SubResourceResponse?>? rewriteRuleSet;
   /// Type of the resource.
   final pulumi.Input<String> type;
 

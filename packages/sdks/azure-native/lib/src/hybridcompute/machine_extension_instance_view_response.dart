@@ -6,13 +6,13 @@ import 'machine_extension_instance_view_response_status.dart';
 /// Describes the Machine Extension Instance View.
 class MachineExtensionInstanceViewResponse {
   /// The machine extension name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Instance view status.
-  final pulumi.Input<MachineExtensionInstanceViewResponseStatus>? status;
+  final pulumi.Input<MachineExtensionInstanceViewResponseStatus?>? status;
   /// Specifies the type of the extension; an example is "CustomScriptExtension".
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Specifies the version of the script handler.
-  final pulumi.Input<String>? typeHandlerVersion;
+  final pulumi.Input<String?>? typeHandlerVersion;
 
   /// Creates a new [MachineExtensionInstanceViewResponse].
   /// [name] The machine extension name.

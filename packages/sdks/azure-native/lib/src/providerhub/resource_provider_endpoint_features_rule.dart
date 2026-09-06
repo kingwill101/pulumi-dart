@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The feature rules.
 class ResourceProviderEndpointFeaturesRule {
   /// The required feature policy.
-  final pulumi.Input<String> requiredFeaturesPolicy;
+  final pulumi.Input<dynamic> requiredFeaturesPolicy;
 
   /// Creates a new [ResourceProviderEndpointFeaturesRule].
   /// [requiredFeaturesPolicy] The required feature policy.
@@ -21,7 +21,7 @@ class ResourceProviderEndpointFeaturesRule {
 
   factory ResourceProviderEndpointFeaturesRule.fromMap(Map<String, dynamic> map) {
     return ResourceProviderEndpointFeaturesRule(
-      requiredFeaturesPolicy: pulumi.Input.fromValue(map['requiredFeaturesPolicy'] as String),
+      requiredFeaturesPolicy: pulumi.Input.fromValue(map['requiredFeaturesPolicy']),
     );
   }
 }

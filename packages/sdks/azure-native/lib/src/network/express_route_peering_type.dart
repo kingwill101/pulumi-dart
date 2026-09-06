@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The peering type.
-enum ExpressRoutePeeringType {
+enum ExpressRoutePeeringType implements pulumi.PulumiEnum<String> {
   valueAzurePublicPeering("AzurePublicPeering"),
   valueAzurePrivatePeering("AzurePrivatePeering"),
   valueMicrosoftPeering("MicrosoftPeering");
 
   const ExpressRoutePeeringType(this.wireValue);
+  @override
   final String wireValue;
 
   static ExpressRoutePeeringType fromValue(String value) {

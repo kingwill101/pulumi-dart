@@ -6,7 +6,7 @@ import 'aws_vpc_configuration_response.dart';
 /// Definition of NetworkConfiguration
 class NetworkConfigurationResponse {
   /// The VPC subnets and security groups that are associated with a task.  All specified subnets and security groups must be from the same VPC. An object representing the networking details for a task or service. For example ``awsvpcConfiguration={subnets=['subnet-12344321'],securityGroups=['sg-12344321']}``
-  final pulumi.Input<AwsVpcConfigurationResponse>? awsvpcConfiguration;
+  final pulumi.Input<AwsVpcConfigurationResponse?>? awsvpcConfiguration;
 
   /// Creates a new [NetworkConfigurationResponse].
   /// [awsvpcConfiguration] The VPC subnets and security groups that are associated with a task.  All specified subnets and security groups must be from the same VPC. An object representing the networking details for a task or service. For example ``awsvpcConfiguration={subnets=['subnet-12344321'],securityGroups=['sg-12344321']}``

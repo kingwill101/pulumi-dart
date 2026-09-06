@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Client certificate definition.
 class ClientCertificate {
   /// Certificate common name.
-  final pulumi.Input<String>? commonName;
+  final pulumi.Input<String?>? commonName;
   /// Indicates if the client certificate has admin access to the cluster. Non admin clients can perform only read only operations on the cluster.
   final pulumi.Input<bool> isAdmin;
   /// Issuer thumbprint for the certificate. Only used together with CommonName.
-  final pulumi.Input<String>? issuerThumbprint;
+  final pulumi.Input<String?>? issuerThumbprint;
   /// Certificate thumbprint.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [ClientCertificate].
   /// [commonName] Certificate common name.

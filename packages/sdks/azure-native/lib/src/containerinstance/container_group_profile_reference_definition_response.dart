@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The container group profile reference.
 class ContainerGroupProfileReferenceDefinitionResponse {
   /// The container group profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}'.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The container group profile reference revision.
-  final pulumi.Input<int>? revision;
+  final pulumi.Input<int?>? revision;
 
   /// Creates a new [ContainerGroupProfileReferenceDefinitionResponse].
   /// [id] The container group profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}'.
@@ -27,7 +27,7 @@ class ContainerGroupProfileReferenceDefinitionResponse {
   factory ContainerGroupProfileReferenceDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ContainerGroupProfileReferenceDefinitionResponse(
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

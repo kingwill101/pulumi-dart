@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// configuration for Vulnerability Assessment autoprovisioning
 class DefenderForServersGcpOfferingVaAutoProvisioningConfigurationResponse {
   /// The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DefenderForServersGcpOfferingVaAutoProvisioningConfigurationResponse].
   /// [type] The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'

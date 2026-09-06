@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProgressPropertiesResponse {
   /// The percentage complete of the copy operation.
-  final pulumi.Input<String>? percentage;
+  final pulumi.Input<String?>? percentage;
 
   /// Creates a new [ProgressPropertiesResponse].
   /// [percentage] The percentage complete of the copy operation.

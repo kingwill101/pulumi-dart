@@ -12,7 +12,7 @@ class GetBlobServicePropertiesResult {
   /// Deprecated in favor of isVersioningEnabled property.
   final bool? automaticSnapshotPolicyEnabled;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The blob service properties for change feed events.
   final ChangeFeedResponse? changeFeed;
   /// The blob service properties for container soft delete.
@@ -24,19 +24,19 @@ class GetBlobServicePropertiesResult {
   /// The blob service properties for blob soft delete.
   final DeleteRetentionPolicyResponse? deleteRetentionPolicy;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Versioning is enabled if set to true.
   final bool? isVersioningEnabled;
   /// The blob service property to configure last access time based tracking policy.
   final LastAccessTimeTrackingPolicyResponse? lastAccessTimeTrackingPolicy;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The blob service properties for blob restore policy.
   final RestorePolicyPropertiesResponse? restorePolicy;
   /// Sku name and tier.
-  final SkuResponse sku;
+  final SkuResponse? sku;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetBlobServicePropertiesResult].
   /// [automaticSnapshotPolicyEnabled] Deprecated in favor of isVersioningEnabled property.
@@ -55,56 +55,56 @@ class GetBlobServicePropertiesResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetBlobServicePropertiesResult({
     this.automaticSnapshotPolicyEnabled,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.changeFeed,
     this.containerDeleteRetentionPolicy,
     this.cors,
     this.defaultServiceVersion,
     this.deleteRetentionPolicy,
-    required this.id,
+    this.id,
     this.isVersioningEnabled,
     this.lastAccessTimeTrackingPolicy,
-    required this.name,
+    this.name,
     this.restorePolicy,
-    required this.sku,
-    required this.type,
+    this.sku,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'automaticSnapshotPolicyEnabled': ?automaticSnapshotPolicyEnabled,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'changeFeed': ?changeFeed?.toMap(),
       'containerDeleteRetentionPolicy': ?containerDeleteRetentionPolicy?.toMap(),
       'cors': ?cors?.toMap(),
       'defaultServiceVersion': ?defaultServiceVersion,
       'deleteRetentionPolicy': ?deleteRetentionPolicy?.toMap(),
-      'id': id,
+      'id': ?id,
       'isVersioningEnabled': ?isVersioningEnabled,
       'lastAccessTimeTrackingPolicy': ?lastAccessTimeTrackingPolicy?.toMap(),
-      'name': name,
+      'name': ?name,
       'restorePolicy': ?restorePolicy?.toMap(),
-      'sku': sku.toMap(),
-      'type': type,
+      'sku': ?sku?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetBlobServicePropertiesResult.fromMap(Map<String, dynamic> map) {
     return GetBlobServicePropertiesResult(
       automaticSnapshotPolicyEnabled: (() { final guardedValue = map['automaticSnapshotPolicyEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       changeFeed: (() { final guardedValue = map['changeFeed']; if (guardedValue == null) return null; return ChangeFeedResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       containerDeleteRetentionPolicy: (() { final guardedValue = map['containerDeleteRetentionPolicy']; if (guardedValue == null) return null; return DeleteRetentionPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       cors: (() { final guardedValue = map['cors']; if (guardedValue == null) return null; return CorsRulesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       defaultServiceVersion: (() { final guardedValue = map['defaultServiceVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deleteRetentionPolicy: (() { final guardedValue = map['deleteRetentionPolicy']; if (guardedValue == null) return null; return DeleteRetentionPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isVersioningEnabled: (() { final guardedValue = map['isVersioningEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       lastAccessTimeTrackingPolicy: (() { final guardedValue = map['lastAccessTimeTrackingPolicy']; if (guardedValue == null) return null; return LastAccessTimeTrackingPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       restorePolicy: (() { final guardedValue = map['restorePolicy']; if (guardedValue == null) return null; return RestorePolicyPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      sku: SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

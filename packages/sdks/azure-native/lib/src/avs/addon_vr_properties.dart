@@ -28,7 +28,7 @@ class AddonVrProperties {
   factory AddonVrProperties.fromMap(Map<String, dynamic> map) {
     return AddonVrProperties(
       addonType: pulumi.Input.fromValue(map['addonType'] as String),
-      vrsCount: pulumi.Input.fromValue(map['vrsCount'] as int),
+      vrsCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vrsCount'])),
     );
   }
 }

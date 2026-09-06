@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of managed identity for the resource.
-enum ManagedIdentityType {
+enum ManagedIdentityType implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueSystemAssigned("SystemAssigned"),
   valueUserAssigned("UserAssigned"),
   valueSystemAssignedUserAssigned("SystemAssigned, UserAssigned");
 
   const ManagedIdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static ManagedIdentityType fromValue(String value) {

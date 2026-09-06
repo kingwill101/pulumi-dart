@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional: Specifies the update channel for the monthly Redis updates your Redis Cache will receive. Caches using 'Preview' update channel get latest Redis updates at least 4 weeks ahead of 'Stable' channel caches. Default value is 'Stable'.
-enum UpdateChannel {
+enum UpdateChannel implements pulumi.PulumiEnum<String> {
   stable("Stable"),
   preview("Preview");
 
   const UpdateChannel(this.wireValue);
+  @override
   final String wireValue;
 
   static UpdateChannel fromValue(String value) {

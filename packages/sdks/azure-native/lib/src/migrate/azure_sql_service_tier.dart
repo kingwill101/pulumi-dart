@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the azure SQL service tier.
-enum AzureSqlServiceTier {
+enum AzureSqlServiceTier implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueAutomatic("Automatic"),
   valueGeneralPurpose("GeneralPurpose"),
@@ -7,6 +9,7 @@ enum AzureSqlServiceTier {
   valueHyperScale("HyperScale");
 
   const AzureSqlServiceTier(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureSqlServiceTier fromValue(String value) {

@@ -2,10 +2,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'address_space_response.dart';
 import 'dhcp_options_response.dart';
 import 'extended_location_response.dart';
+import 'flow_log_response.dart';
 import 'sub_resource_response.dart';
+import 'subnet_response.dart';
 import 'virtual_network_args.dart';
 import 'virtual_network_bgp_communities_response.dart';
 import 'virtual_network_encryption_response.dart';
+import 'virtual_network_peering_virtual_network_response.dart';
 
 /// Virtual Network resource.
 ///
@@ -1972,11 +1975,11 @@ class VirtualNetworkNetwork extends pulumi.CustomResource {
   /// The extended location of the virtual network.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
   /// A collection of references to flow log resources.
-  late final pulumi.Output<List<Map<String, dynamic>>> flowLogs;
+  late final pulumi.Output<List<FlowLogResponse>> flowLogs;
   /// The FlowTimeout value (in minutes) for the Virtual Network
   late final pulumi.Output<int?> flowTimeoutInMinutes;
   /// Array of IpAllocation which reference this VNET.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ipAllocations;
+  late final pulumi.Output<List<SubResourceResponse>?> ipAllocations;
   /// Resource location.
   late final pulumi.Output<String?> location;
   /// Resource name.
@@ -1988,13 +1991,13 @@ class VirtualNetworkNetwork extends pulumi.CustomResource {
   /// The resourceGuid property of the Virtual Network resource.
   late final pulumi.Output<String> resourceGuid;
   /// A list of subnets in a Virtual Network.
-  late final pulumi.Output<List<Map<String, dynamic>>?> subnets;
+  late final pulumi.Output<List<SubnetResponse>?> subnets;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Resource type.
   late final pulumi.Output<String> type;
   /// A list of peerings in a Virtual Network.
-  late final pulumi.Output<List<Map<String, dynamic>>?> virtualNetworkPeerings;
+  late final pulumi.Output<List<VirtualNetworkPeeringVirtualNetworkResponse>?> virtualNetworkPeerings;
 
   /// Creates a new [VirtualNetworkNetwork].
   /// [name] The Pulumi resource name.
@@ -2020,17 +2023,50 @@ class VirtualNetworkNetwork extends pulumi.CustomResource {
     encryption = registerOutput<VirtualNetworkEncryptionResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkEncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    flowLogs = registerOutput<List<Map<String, dynamic>>>('flowLogs');
+    flowLogs = registerOutput<List<FlowLogResponse>>('flowLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlowLogResponse>(guardedValue, (value) => FlowLogResponse.fromMap((value as Map).cast<String, dynamic>())); });
     flowTimeoutInMinutes = registerOutput<int?>('flowTimeoutInMinutes');
-    ipAllocations = registerOutput<List<Map<String, dynamic>>?>('ipAllocations');
+    ipAllocations = registerOutput<List<SubResourceResponse>?>('ipAllocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     privateEndpointVNetPolicies = registerOutput<String?>('privateEndpointVNetPolicies');
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
-    subnets = registerOutput<List<Map<String, dynamic>>?>('subnets');
-    tags = registerOutput<Map<String, String>?>('tags');
+    subnets = registerOutput<List<SubnetResponse>?>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetResponse>(guardedValue, (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    virtualNetworkPeerings = registerOutput<List<Map<String, dynamic>>?>('virtualNetworkPeerings');
+    virtualNetworkPeerings = registerOutput<List<VirtualNetworkPeeringVirtualNetworkResponse>?>('virtualNetworkPeerings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkPeeringVirtualNetworkResponse>(guardedValue, (value) => VirtualNetworkPeeringVirtualNetworkResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [VirtualNetworkNetwork] resource.
+  VirtualNetworkNetwork.reference(String urn)
+    : super(
+        'azure-native:network:VirtualNetwork',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressSpace = registerOutput<AddressSpaceResponse?>('addressSpace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddressSpaceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bgpCommunities = registerOutput<VirtualNetworkBgpCommunitiesResponse?>('bgpCommunities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkBgpCommunitiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ddosProtectionPlan = registerOutput<SubResourceResponse?>('ddosProtectionPlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dhcpOptions = registerOutput<DhcpOptionsResponse?>('dhcpOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DhcpOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enableDdosProtection = registerOutput<bool?>('enableDdosProtection');
+    enableVmProtection = registerOutput<bool?>('enableVmProtection');
+    encryption = registerOutput<VirtualNetworkEncryptionResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkEncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    flowLogs = registerOutput<List<FlowLogResponse>>('flowLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlowLogResponse>(guardedValue, (value) => FlowLogResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    flowTimeoutInMinutes = registerOutput<int?>('flowTimeoutInMinutes');
+    ipAllocations = registerOutput<List<SubResourceResponse>?>('ipAllocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    privateEndpointVNetPolicies = registerOutput<String?>('privateEndpointVNetPolicies');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    subnets = registerOutput<List<SubnetResponse>?>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetResponse>(guardedValue, (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    virtualNetworkPeerings = registerOutput<List<VirtualNetworkPeeringVirtualNetworkResponse>?>('virtualNetworkPeerings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkPeeringVirtualNetworkResponse>(guardedValue, (value) => VirtualNetworkPeeringVirtualNetworkResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

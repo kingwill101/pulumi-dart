@@ -5,13 +5,13 @@ import 'arm_resource_id_response.dart';
 
 class SystemCreatedStorageAccountResponse {
   /// Public blob access allowed
-  final pulumi.Input<bool>? allowBlobPublicAccess;
+  final pulumi.Input<bool?>? allowBlobPublicAccess;
   /// This is populated once the storage account is created.
-  final pulumi.Input<ArmResourceIdResponse>? armResourceId;
+  final pulumi.Input<ArmResourceIdResponse?>? armResourceId;
   /// HNS enabled for storage account
-  final pulumi.Input<bool>? storageAccountHnsEnabled;
+  final pulumi.Input<bool?>? storageAccountHnsEnabled;
   /// Name of the storage account
-  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String?>? storageAccountName;
   /// Allowed values:
   /// "Standard_LRS",
   /// "Standard_GRS",
@@ -21,7 +21,7 @@ class SystemCreatedStorageAccountResponse {
   /// "Standard_RAGZRS",
   /// "Premium_LRS",
   /// "Premium_ZRS"
-  final pulumi.Input<String>? storageAccountType;
+  final pulumi.Input<String?>? storageAccountType;
 
   /// Creates a new [SystemCreatedStorageAccountResponse].
   /// [allowBlobPublicAccess] Public blob access allowed

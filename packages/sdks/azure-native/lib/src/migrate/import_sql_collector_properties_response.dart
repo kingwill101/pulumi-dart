@@ -7,7 +7,7 @@ class ImportSqlCollectorPropertiesResponse {
   /// When was import SQL collector first created.
   final pulumi.Input<String> createdTimestamp;
   /// The sql db extended details.
-  final pulumi.Input<String>? discoverySiteId;
+  final pulumi.Input<String?>? discoverySiteId;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// When was import SQL collector last updated.

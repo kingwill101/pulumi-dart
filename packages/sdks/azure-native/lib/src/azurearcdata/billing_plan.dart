@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SQL Server license type.
-enum BillingPlan {
+enum BillingPlan implements pulumi.PulumiEnum<String> {
   valuePAYG("PAYG"),
   valuePaid("Paid");
 
   const BillingPlan(this.wireValue);
+  @override
   final String wireValue;
 
   static BillingPlan fromValue(String value) {

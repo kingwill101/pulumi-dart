@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// This is used to represent the various nodes of the distributed container.
 class DistributedNodesInfo {
   /// Name of the node under a distributed container.
-  final pulumi.Input<String>? nodeName;
+  final pulumi.Input<String?>? nodeName;
   /// ARM resource id of the node
-  final pulumi.Input<String>? sourceResourceId;
+  final pulumi.Input<String?>? sourceResourceId;
   /// Status of this Node.
   /// Failed | Succeeded
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [DistributedNodesInfo].
   /// [nodeName] Name of the node under a distributed container.

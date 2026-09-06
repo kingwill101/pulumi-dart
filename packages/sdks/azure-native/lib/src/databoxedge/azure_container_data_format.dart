@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Storage format used for the file represented by the share.
-enum AzureContainerDataFormat {
+enum AzureContainerDataFormat implements pulumi.PulumiEnum<String> {
   valueBlockBlob("BlockBlob"),
   valuePageBlob("PageBlob"),
   valueAzureFile("AzureFile");
 
   const AzureContainerDataFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureContainerDataFormat fromValue(String value) {

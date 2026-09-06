@@ -13,13 +13,13 @@ class GetPreRuleCountersResult {
   /// last updated timestamp
   final String? lastUpdatedTimestamp;
   /// priority number
-  final String priority;
+  final String? priority;
   /// timestamp of request
   final String? requestTimestamp;
   /// rule list name
   final String? ruleListName;
   /// rule name
-  final String ruleName;
+  final String? ruleName;
   /// rule Stack Name
   final String? ruleStackName;
   /// timestamp of response
@@ -41,10 +41,10 @@ class GetPreRuleCountersResult {
     this.firewallName,
     this.hitCount,
     this.lastUpdatedTimestamp,
-    required this.priority,
+    this.priority,
     this.requestTimestamp,
     this.ruleListName,
-    required this.ruleName,
+    this.ruleName,
     this.ruleStackName,
     this.timestamp,
   });
@@ -55,10 +55,10 @@ class GetPreRuleCountersResult {
       'firewallName': ?firewallName,
       'hitCount': ?hitCount,
       'lastUpdatedTimestamp': ?lastUpdatedTimestamp,
-      'priority': priority,
+      'priority': ?priority,
       'requestTimestamp': ?requestTimestamp,
       'ruleListName': ?ruleListName,
-      'ruleName': ruleName,
+      'ruleName': ?ruleName,
       'ruleStackName': ?ruleStackName,
       'timestamp': ?timestamp,
     };
@@ -68,12 +68,12 @@ class GetPreRuleCountersResult {
     return GetPreRuleCountersResult(
       appSeen: (() { final guardedValue = map['appSeen']; if (guardedValue == null) return null; return AppSeenDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       firewallName: (() { final guardedValue = map['firewallName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      hitCount: (() { final guardedValue = map['hitCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      hitCount: (() { final guardedValue = map['hitCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       lastUpdatedTimestamp: (() { final guardedValue = map['lastUpdatedTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      priority: map['priority'] as String,
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return guardedValue as String; })(),
       requestTimestamp: (() { final guardedValue = map['requestTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ruleListName: (() { final guardedValue = map['ruleListName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      ruleName: map['ruleName'] as String,
+      ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ruleStackName: (() { final guardedValue = map['ruleStackName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       timestamp: (() { final guardedValue = map['timestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

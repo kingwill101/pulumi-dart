@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Guest OS Customization properties
 class GuestOSCustomizationResponse {
   /// List of dns servers to use
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// Virtual Machine hostname
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// Password for login
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// id of customization policy
-  final pulumi.Input<String>? policyId;
+  final pulumi.Input<String?>? policyId;
   /// Username for login
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GuestOSCustomizationResponse].
   /// [dnsServers] List of dns servers to use

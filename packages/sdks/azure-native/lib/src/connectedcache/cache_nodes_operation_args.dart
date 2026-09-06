@@ -9,15 +9,15 @@ import 'cache_node_old_response.dart';
 /// {@macro pulumi_connectedcache_cache_nodes_operation_args_doc}
 class CacheNodesOperationArgs {
   /// Name of the Customer resource
-  final pulumi.Input<String>? customerResourceName;
+  final pulumi.Input<String?>? customerResourceName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<CacheNodeOldResponse>? properties;
+  final pulumi.Input<CacheNodeOldResponse?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CacheNodesOperationArgs].
   /// [customerResourceName] Name of the Customer resource

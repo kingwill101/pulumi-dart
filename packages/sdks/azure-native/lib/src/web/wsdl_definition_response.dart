@@ -6,13 +6,13 @@ import 'wsdl_service_response.dart';
 /// The WSDL definition
 class WsdlDefinitionResponse {
   /// The WSDL content
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The WSDL import method
-  final pulumi.Input<String>? importMethod;
+  final pulumi.Input<String?>? importMethod;
   /// The service with name and endpoint names
-  final pulumi.Input<WsdlServiceResponse>? service;
+  final pulumi.Input<WsdlServiceResponse?>? service;
   /// The WSDL URL
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [WsdlDefinitionResponse].
   /// [content] The WSDL content

@@ -56,13 +56,13 @@ class BgpPeerStatusResponse {
 
   factory BgpPeerStatusResponse.fromMap(Map<String, dynamic> map) {
     return BgpPeerStatusResponse(
-      asn: pulumi.Input.fromValue(map['asn'] as double),
+      asn: pulumi.Input.fromValue((map['asn'] as num).toDouble()),
       connectedDuration: pulumi.Input.fromValue(map['connectedDuration'] as String),
       localAddress: pulumi.Input.fromValue(map['localAddress'] as String),
-      messagesReceived: pulumi.Input.fromValue(map['messagesReceived'] as double),
-      messagesSent: pulumi.Input.fromValue(map['messagesSent'] as double),
+      messagesReceived: pulumi.Input.fromValue((map['messagesReceived'] as num).toDouble()),
+      messagesSent: pulumi.Input.fromValue((map['messagesSent'] as num).toDouble()),
       neighbor: pulumi.Input.fromValue(map['neighbor'] as String),
-      routesReceived: pulumi.Input.fromValue(map['routesReceived'] as double),
+      routesReceived: pulumi.Input.fromValue((map['routesReceived'] as num).toDouble()),
       state: pulumi.Input.fromValue(map['state'] as String),
     );
   }

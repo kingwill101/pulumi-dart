@@ -11,7 +11,7 @@ class InMageRcmFailbackReplicationDetailsResponse {
   /// The ARM Id of the azure VM.
   final pulumi.Input<String> azureVirtualMachineId;
   /// The discovered VM information.
-  final pulumi.Input<InMageRcmFailbackDiscoveredProtectedVmDetailsResponse>? discoveredVmDetails;
+  final pulumi.Input<InMageRcmFailbackDiscoveredProtectedVmDetailsResponse?>? discoveredVmDetails;
   /// The initial replication processed bytes. This includes sum of total bytes transferred and matched bytes on all selected disks in source VM.
   final pulumi.Input<double> initialReplicationProcessedBytes;
   /// The initial replication progress health.
@@ -38,13 +38,13 @@ class InMageRcmFailbackReplicationDetailsResponse {
   /// The log storage account ARM Id.
   final pulumi.Input<String> logStorageAccountId;
   /// The mobility agent information.
-  final pulumi.Input<InMageRcmFailbackMobilityAgentDetailsResponse>? mobilityAgentDetails;
+  final pulumi.Input<InMageRcmFailbackMobilityAgentDetailsResponse?>? mobilityAgentDetails;
   /// The multi VM group name.
   final pulumi.Input<String> multiVmGroupName;
   /// The type of the OS on the VM.
   final pulumi.Input<String> osType;
   /// The list of protected disks.
-  final pulumi.Input<List<InMageRcmFailbackProtectedDiskDetailsResponse>>? protectedDisks;
+  final pulumi.Input<List<InMageRcmFailbackProtectedDiskDetailsResponse>?>? protectedDisks;
   /// The reprotect agent Id.
   final pulumi.Input<String> reprotectAgentId;
   /// The reprotect agent name.
@@ -68,7 +68,7 @@ class InMageRcmFailbackReplicationDetailsResponse {
   /// The target vCenter Id.
   final pulumi.Input<String> targetvCenterId;
   /// The network details.
-  final pulumi.Input<List<InMageRcmFailbackNicDetailsResponse>>? vmNics;
+  final pulumi.Input<List<InMageRcmFailbackNicDetailsResponse>?>? vmNics;
 
   /// Creates a new [InMageRcmFailbackReplicationDetailsResponse].
   /// [azureVirtualMachineId] The ARM Id of the azure VM.
@@ -173,10 +173,10 @@ class InMageRcmFailbackReplicationDetailsResponse {
     return InMageRcmFailbackReplicationDetailsResponse(
       azureVirtualMachineId: pulumi.Input.fromValue(map['azureVirtualMachineId'] as String),
       discoveredVmDetails: (() { final guardedValue = map['discoveredVmDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InMageRcmFailbackDiscoveredProtectedVmDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      initialReplicationProcessedBytes: pulumi.Input.fromValue(map['initialReplicationProcessedBytes'] as double),
+      initialReplicationProcessedBytes: pulumi.Input.fromValue((map['initialReplicationProcessedBytes'] as num).toDouble()),
       initialReplicationProgressHealth: pulumi.Input.fromValue(map['initialReplicationProgressHealth'] as String),
-      initialReplicationProgressPercentage: pulumi.Input.fromValue(map['initialReplicationProgressPercentage'] as int),
-      initialReplicationTransferredBytes: pulumi.Input.fromValue(map['initialReplicationTransferredBytes'] as double),
+      initialReplicationProgressPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['initialReplicationProgressPercentage'])),
+      initialReplicationTransferredBytes: pulumi.Input.fromValue((map['initialReplicationTransferredBytes'] as num).toDouble()),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       internalIdentifier: pulumi.Input.fromValue(map['internalIdentifier'] as String),
       isAgentRegistrationSuccessfulAfterFailover: pulumi.Input.fromValue(map['isAgentRegistrationSuccessfulAfterFailover'] as bool),
@@ -191,12 +191,12 @@ class InMageRcmFailbackReplicationDetailsResponse {
       protectedDisks: (() { final guardedValue = map['protectedDisks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InMageRcmFailbackProtectedDiskDetailsResponse>(guardedValue, (value) => InMageRcmFailbackProtectedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       reprotectAgentId: pulumi.Input.fromValue(map['reprotectAgentId'] as String),
       reprotectAgentName: pulumi.Input.fromValue(map['reprotectAgentName'] as String),
-      resyncProcessedBytes: pulumi.Input.fromValue(map['resyncProcessedBytes'] as double),
+      resyncProcessedBytes: pulumi.Input.fromValue((map['resyncProcessedBytes'] as num).toDouble()),
       resyncProgressHealth: pulumi.Input.fromValue(map['resyncProgressHealth'] as String),
-      resyncProgressPercentage: pulumi.Input.fromValue(map['resyncProgressPercentage'] as int),
+      resyncProgressPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['resyncProgressPercentage'])),
       resyncRequired: pulumi.Input.fromValue(map['resyncRequired'] as String),
       resyncState: pulumi.Input.fromValue(map['resyncState'] as String),
-      resyncTransferredBytes: pulumi.Input.fromValue(map['resyncTransferredBytes'] as double),
+      resyncTransferredBytes: pulumi.Input.fromValue((map['resyncTransferredBytes'] as num).toDouble()),
       targetDataStoreName: pulumi.Input.fromValue(map['targetDataStoreName'] as String),
       targetVmName: pulumi.Input.fromValue(map['targetVmName'] as String),
       targetvCenterId: pulumi.Input.fromValue(map['targetvCenterId'] as String),

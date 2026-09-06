@@ -13,19 +13,19 @@ class FlowArgs {
   /// The name for the connection that is to be requested.
   final pulumi.Input<String> connectionName;
   /// The name for the flow that is to be onboarded.
-  final pulumi.Input<String>? flowName;
+  final pulumi.Input<String?>? flowName;
   /// The managed identity of the flow resource, if configured.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Plan for the resource.
-  final pulumi.Input<Plan>? plan;
+  final pulumi.Input<Plan?>? plan;
   /// Properties of flow
-  final pulumi.Input<FlowProperties>? properties;
+  final pulumi.Input<FlowProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FlowArgs].
   /// [connectionName] The name for the connection that is to be requested.

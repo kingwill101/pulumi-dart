@@ -13,9 +13,9 @@ class HorizonDbReplicaArgs {
   /// The name of the HorizonDB pool.
   final pulumi.Input<String> poolName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<HorizonDbReplicaProperties>? properties;
+  final pulumi.Input<HorizonDbReplicaProperties?>? properties;
   /// The name of the HorizonDB replica.
-  final pulumi.Input<String>? replicaName;
+  final pulumi.Input<String?>? replicaName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

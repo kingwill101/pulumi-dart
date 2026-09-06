@@ -6,15 +6,15 @@ class CronTriggerResponse {
   /// Specifies end time of schedule in ISO 8601, but without a UTC offset. Refer https://en.wikipedia.org/wiki/ISO_8601.
   /// Recommented format would be "2022-06-01T00:00:01"
   /// If not present, the schedule will run indefinitely
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// [Required] Specifies cron expression of schedule.
   /// The expression should follow NCronTab format.
   final pulumi.Input<String> expression;
   /// Specifies start time of schedule in ISO 8601 format, but without a UTC offset.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Specifies time zone in which the schedule runs.
   /// TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   /// Expected value is 'Cron'.
   final pulumi.Input<String> triggerType;
 
@@ -24,13 +24,13 @@ class CronTriggerResponse {
   /// [startTime] Specifies start time of schedule in ISO 8601 format, but without a UTC offset.
   /// [timeZone] Specifies time zone in which the schedule runs.
   /// [triggerType] Expected value is 'Cron'.
-  const CronTriggerResponse({
+  CronTriggerResponse({
     this.endTime,
     required this.expression,
     this.startTime,
-    this.timeZone,
+    pulumi.Input<String?>? timeZone,
     required this.triggerType,
-  });
+  }) : timeZone = timeZone ?? pulumi.Input.fromValue('UTC');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

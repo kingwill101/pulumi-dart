@@ -6,16 +6,16 @@ import 'secret_store_details_response.dart';
 /// Class for app insight monitoring properties.
 class AppInsightMonitoringPropertiesResponse {
   /// Gets or sets the app insights name.
-  final pulumi.Input<String>? appInsightsName;
+  final pulumi.Input<String?>? appInsightsName;
   /// Gets or sets a value indicating whether monitoring is enabled.
-  final pulumi.Input<bool>? isEnabled;
+  final pulumi.Input<bool?>? isEnabled;
   /// Gets or sets the region.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Gets or sets the resource group of the resource.
-  final pulumi.Input<String>? resourceGroup;
-  final pulumi.Input<SecretStoreDetailsResponse>? secretStoreDetails;
+  final pulumi.Input<String?>? resourceGroup;
+  final pulumi.Input<SecretStoreDetailsResponse?>? secretStoreDetails;
   /// Gets or sets the subscription id of the resource.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [AppInsightMonitoringPropertiesResponse].
   /// [appInsightsName] Gets or sets the app insights name.

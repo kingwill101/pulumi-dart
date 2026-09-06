@@ -360,4 +360,22 @@ class Certificate extends pulumi.CustomResource {
     thumbprint = registerOutput<String>('thumbprint');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [Certificate] resource.
+  Certificate.reference(String urn)
+    : super(
+        'azure-native:apimanagement:Certificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    expirationDate = registerOutput<String>('expirationDate');
+    keyVault = registerOutput<KeyVaultContractPropertiesResponse?>('keyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyVaultContractPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    subject = registerOutput<String>('subject');
+    thumbprint = registerOutput<String>('thumbprint');
+    type = registerOutput<String>('type');
+  }
 }

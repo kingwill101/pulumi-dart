@@ -2,7 +2,6 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dbbackup_policy_properties_response.dart';
-import 'existing_recovery_services_vault_response.dart';
 
 /// Defines the SQL Backup data for a virtual instance for SAP.
 class SqlBackupDataResponse {
@@ -12,7 +11,7 @@ class SqlBackupDataResponse {
   /// Expected value is 'SQL'.
   final pulumi.Input<String> backupType;
   /// The properties of the recovery services vault used for backup.
-  final pulumi.Input<ExistingRecoveryServicesVaultResponse> recoveryServicesVault;
+  final pulumi.Input<dynamic> recoveryServicesVault;
 
   /// Creates a new [SqlBackupDataResponse].
   /// [backupPolicy] Defines the policy properties for database backup.
@@ -28,7 +27,7 @@ class SqlBackupDataResponse {
     return <String, dynamic>{
       'backupPolicy': pulumi.Input.mapInputValue<DBBackupPolicyPropertiesResponse, Map<String, dynamic>>(backupPolicy, (value) => value.toMap()),
       'backupType': backupType,
-      'recoveryServicesVault': pulumi.Input.mapInputValue<ExistingRecoveryServicesVaultResponse, Map<String, dynamic>>(recoveryServicesVault, (value) => value.toMap()),
+      'recoveryServicesVault': recoveryServicesVault,
     };
   }
 
@@ -36,7 +35,7 @@ class SqlBackupDataResponse {
     return SqlBackupDataResponse(
       backupPolicy: pulumi.Input.fromValue(DBBackupPolicyPropertiesResponse.fromMap((map['backupPolicy']! as Map).cast<String, dynamic>())),
       backupType: pulumi.Input.fromValue(map['backupType'] as String),
-      recoveryServicesVault: pulumi.Input.fromValue(ExistingRecoveryServicesVaultResponse.fromMap((map['recoveryServicesVault']! as Map).cast<String, dynamic>())),
+      recoveryServicesVault: pulumi.Input.fromValue(map['recoveryServicesVault']),
     );
   }
 }

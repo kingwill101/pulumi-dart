@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The protocol to use for the connection. Currently only `mqtt` is supported.
-enum AkriConnectorsMqttProtocolType {
+enum AkriConnectorsMqttProtocolType implements pulumi.PulumiEnum<String> {
   mqtt("Mqtt");
 
   const AkriConnectorsMqttProtocolType(this.wireValue);
+  @override
   final String wireValue;
 
   static AkriConnectorsMqttProtocolType fromValue(String value) {

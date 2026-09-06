@@ -13,32 +13,32 @@ import 'scaling_schedule.dart';
 /// {@macro pulumi_desktopvirtualization_scaling_plan_args_doc}
 class ScalingPlanArgs {
   /// Description of scaling plan.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Exclusion tag for scaling plan.
-  final pulumi.Input<String>? exclusionTag;
+  final pulumi.Input<String?>? exclusionTag;
   /// User friendly name of scaling plan.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// List of ScalingHostPoolReference definitions.
-  final pulumi.Input<List<ScalingHostPoolReference>>? hostPoolReferences;
+  final pulumi.Input<List<ScalingHostPoolReference>?>? hostPoolReferences;
   /// HostPool type for desktop.
-  final pulumi.Input<String>? hostPoolType;
-  final pulumi.Input<ResourceModelWithAllowedPropertySetIdentity>? identity;
+  final pulumi.Input<dynamic>? hostPoolType;
+  final pulumi.Input<ResourceModelWithAllowedPropertySetIdentity?>? identity;
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
-  final pulumi.Input<String>? managedBy;
-  final pulumi.Input<ResourceModelWithAllowedPropertySetPlan>? plan;
+  final pulumi.Input<String?>? managedBy;
+  final pulumi.Input<ResourceModelWithAllowedPropertySetPlan?>? plan;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the scaling plan.
-  final pulumi.Input<String>? scalingPlanName;
+  final pulumi.Input<String?>? scalingPlanName;
   /// List of ScalingPlanPooledSchedule definitions.
-  final pulumi.Input<List<ScalingSchedule>>? schedules;
-  final pulumi.Input<ResourceModelWithAllowedPropertySetSku>? sku;
+  final pulumi.Input<List<ScalingSchedule>?>? schedules;
+  final pulumi.Input<ResourceModelWithAllowedPropertySetSku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Timezone of the scaling plan.
   final pulumi.Input<String> timeZone;
 
@@ -59,12 +59,12 @@ class ScalingPlanArgs {
   /// [sku] Optional.
   /// [tags] Resource tags.
   /// [timeZone] Timezone of the scaling plan.
-  const ScalingPlanArgs({
+  ScalingPlanArgs({
     this.description,
     this.exclusionTag,
     this.friendlyName,
     this.hostPoolReferences,
-    this.hostPoolType,
+    pulumi.Input<dynamic>? hostPoolType,
     this.identity,
     this.kind,
     this.location,
@@ -76,7 +76,7 @@ class ScalingPlanArgs {
     this.sku,
     this.tags,
     required this.timeZone,
-  });
+  }) : hostPoolType = hostPoolType ?? pulumi.Input.fromValue('Pooled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,7 +105,7 @@ class ScalingPlanArgs {
       exclusionTag: (() { final guardedValue = map['exclusionTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hostPoolReferences: (() { final guardedValue = map['hostPoolReferences']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ScalingHostPoolReference>(guardedValue, (value) => ScalingHostPoolReference.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      hostPoolType: (() { final guardedValue = map['hostPoolType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostPoolType: (() { final guardedValue = map['hostPoolType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceModelWithAllowedPropertySetIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

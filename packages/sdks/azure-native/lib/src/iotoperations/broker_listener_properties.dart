@@ -8,19 +8,19 @@ class BrokerListenerProperties {
   /// Ports on which this listener accepts client connections.
   final pulumi.Input<List<ListenerPort>> ports;
   /// Kubernetes Service name of this listener.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
   /// Kubernetes Service type of this listener.
-  final pulumi.Input<String>? serviceType;
+  final pulumi.Input<dynamic>? serviceType;
 
   /// Creates a new [BrokerListenerProperties].
   /// [ports] Ports on which this listener accepts client connections.
   /// [serviceName] Kubernetes Service name of this listener.
   /// [serviceType] Kubernetes Service type of this listener.
-  const BrokerListenerProperties({
+  BrokerListenerProperties({
     required this.ports,
     this.serviceName,
-    this.serviceType,
-  });
+    pulumi.Input<dynamic>? serviceType,
+  }) : serviceType = serviceType ?? pulumi.Input.fromValue('ClusterIp');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,7 +34,7 @@ class BrokerListenerProperties {
     return BrokerListenerProperties(
       ports: pulumi.Input.fromValue(pulumi.Input.decodeList<ListenerPort>(map['ports']!, (value) => ListenerPort.fromMap((value as Map).cast<String, dynamic>()))),
       serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      serviceType: (() { final guardedValue = map['serviceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceType: (() { final guardedValue = map['serviceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

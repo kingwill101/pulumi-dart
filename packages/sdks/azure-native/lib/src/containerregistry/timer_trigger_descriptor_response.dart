@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TimerTriggerDescriptorResponse {
   /// The occurrence that triggered the run.
-  final pulumi.Input<String>? scheduleOccurrence;
+  final pulumi.Input<String?>? scheduleOccurrence;
   /// The timer trigger name that caused the run.
-  final pulumi.Input<String>? timerTriggerName;
+  final pulumi.Input<String?>? timerTriggerName;
 
   /// Creates a new [TimerTriggerDescriptorResponse].
   /// [scheduleOccurrence] The occurrence that triggered the run.

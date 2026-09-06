@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Connectivity to internet is enabled or disabled
-enum InternetEnum {
+enum InternetEnum implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const InternetEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static InternetEnum fromValue(String value) {

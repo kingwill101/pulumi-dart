@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_security_security_connector_application_args_doc}
 class SecurityConnectorApplicationArgs {
   /// The security Application key - unique key for the standard application
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// The application conditionSets - see examples
   final pulumi.Input<List<dynamic>> conditionSets;
   /// description of the application
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// display name of the application
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The security connector name.
   final pulumi.Input<String> securityConnectorName;
   /// The application source, what it affects, e.g. Assessments
-  final pulumi.Input<String> sourceResourceType;
+  final pulumi.Input<dynamic> sourceResourceType;
 
   /// Creates a new [SecurityConnectorApplicationArgs].
   /// [applicationId] The security Application key - unique key for the standard application
@@ -60,7 +60,7 @@ class SecurityConnectorApplicationArgs {
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       securityConnectorName: pulumi.Input.fromValue(map['securityConnectorName'] as String),
-      sourceResourceType: pulumi.Input.fromValue(map['sourceResourceType'] as String),
+      sourceResourceType: pulumi.Input.fromValue(map['sourceResourceType']),
     );
   }
 }

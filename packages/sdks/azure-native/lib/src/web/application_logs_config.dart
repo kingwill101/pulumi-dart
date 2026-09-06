@@ -8,11 +8,11 @@ import 'file_system_application_logs_config.dart';
 /// Application logs configuration.
 class ApplicationLogsConfig {
   /// Application logs to blob storage configuration.
-  final pulumi.Input<AzureBlobStorageApplicationLogsConfig>? azureBlobStorage;
+  final pulumi.Input<AzureBlobStorageApplicationLogsConfig?>? azureBlobStorage;
   /// Application logs to azure table storage configuration.
-  final pulumi.Input<AzureTableStorageApplicationLogsConfig>? azureTableStorage;
+  final pulumi.Input<AzureTableStorageApplicationLogsConfig?>? azureTableStorage;
   /// Application logs to file system configuration.
-  final pulumi.Input<FileSystemApplicationLogsConfig>? fileSystem;
+  final pulumi.Input<FileSystemApplicationLogsConfig?>? fileSystem;
 
   /// Creates a new [ApplicationLogsConfig].
   /// [azureBlobStorage] Application logs to blob storage configuration.

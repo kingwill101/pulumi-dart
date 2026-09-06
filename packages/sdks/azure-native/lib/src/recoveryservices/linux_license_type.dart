@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The license type for Linux VM's.
-enum LinuxLicenseType {
+enum LinuxLicenseType implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueNoLicenseType("NoLicenseType"),
   valueLinuxServer("LinuxServer");
 
   const LinuxLicenseType(this.wireValue);
+  @override
   final String wireValue;
 
   static LinuxLicenseType fromValue(String value) {

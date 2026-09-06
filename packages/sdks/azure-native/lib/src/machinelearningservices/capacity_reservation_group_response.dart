@@ -5,7 +5,7 @@ import 'serverless_offer_response.dart';
 
 class CapacityReservationGroupResponse {
   /// Offer used by this capacity reservation group.
-  final pulumi.Input<ServerlessOfferResponse>? offer;
+  final pulumi.Input<ServerlessOfferResponse?>? offer;
   /// [Required] Specifies the amount of capacity to reserve.
   final pulumi.Input<int> reservedCapacity;
 
@@ -27,7 +27,7 @@ class CapacityReservationGroupResponse {
   factory CapacityReservationGroupResponse.fromMap(Map<String, dynamic> map) {
     return CapacityReservationGroupResponse(
       offer: (() { final guardedValue = map['offer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServerlessOfferResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      reservedCapacity: pulumi.Input.fromValue(map['reservedCapacity'] as int),
+      reservedCapacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['reservedCapacity'])),
     );
   }
 }

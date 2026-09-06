@@ -6,11 +6,11 @@ import 'component_status_response.dart';
 /// Target Status
 class TargetStatusResponse {
   /// Component statuses
-  final pulumi.Input<List<ComponentStatusResponse>>? componentStatuses;
+  final pulumi.Input<List<ComponentStatusResponse>?>? componentStatuses;
   /// Target name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Target status
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [TargetStatusResponse].
   /// [componentStatuses] Component statuses

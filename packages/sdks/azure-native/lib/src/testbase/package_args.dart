@@ -15,31 +15,31 @@ class PackageArgs {
   /// Application name
   final pulumi.Input<String> applicationName;
   /// The file path of the package.
-  final pulumi.Input<String>? blobPath;
+  final pulumi.Input<String?>? blobPath;
   /// The id of draft package. Used to create or update this package from a draft package.
-  final pulumi.Input<String>? draftPackageId;
+  final pulumi.Input<String?>? draftPackageId;
   /// The list of first party applications to test along with user application.
-  final pulumi.Input<List<FirstPartyAppDefinition>>? firstPartyApps;
+  final pulumi.Input<List<FirstPartyAppDefinition>?>? firstPartyApps;
   /// The flighting ring for feature update.
-  final pulumi.Input<String>? flightingRing;
+  final pulumi.Input<String?>? flightingRing;
   /// Specifies the baseline os and target os for inplace upgrade.
-  final pulumi.Input<InplaceUpgradeOSInfo>? inplaceUpgradeOSPair;
+  final pulumi.Input<InplaceUpgradeOSInfo?>? inplaceUpgradeOSPair;
   /// The metadata of Intune enrollment.
-  final pulumi.Input<IntuneEnrollmentMetadata>? intuneEnrollmentMetadata;
+  final pulumi.Input<IntuneEnrollmentMetadata?>? intuneEnrollmentMetadata;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the Test Base Package.
-  final pulumi.Input<String>? packageName;
+  final pulumi.Input<String?>? packageName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the target OSs of specific OS Update types.
-  final pulumi.Input<List<TargetOSInfo>>? targetOSList;
+  final pulumi.Input<List<TargetOSInfo>?>? targetOSList;
   /// The resource name of the Test Base Account.
   final pulumi.Input<String> testBaseAccountName;
   /// The detailed test information.
-  final pulumi.Input<List<Test>>? tests;
+  final pulumi.Input<List<Test>?>? tests;
   /// Application version
   final pulumi.Input<String> version;
 

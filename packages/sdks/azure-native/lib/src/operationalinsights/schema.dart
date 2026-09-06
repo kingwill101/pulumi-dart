@@ -6,13 +6,13 @@ import 'column.dart';
 /// Table's schema.
 class Schema {
   /// A list of table custom columns.
-  final pulumi.Input<List<Column>>? columns;
+  final pulumi.Input<List<Column>?>? columns;
   /// Table description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Table display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Table name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [Schema].
   /// [columns] A list of table custom columns.

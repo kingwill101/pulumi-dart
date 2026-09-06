@@ -11,7 +11,7 @@ class GitHubOwnerResponse {
   /// The name of the resource
   final pulumi.Input<String> name;
   /// GitHub Owner properties.
-  final pulumi.Input<GitHubOwnerPropertiesResponse>? properties;
+  final pulumi.Input<GitHubOwnerPropertiesResponse?>? properties;
   /// Metadata pertaining to creation and last modification of the resource.
   final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

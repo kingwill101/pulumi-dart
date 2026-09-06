@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Load Balancer Type
-enum LoadBalancerType {
+enum LoadBalancerType implements pulumi.PulumiEnum<String> {
   publicIp("PublicIp"),
   internalLoadBalancer("InternalLoadBalancer");
 
   const LoadBalancerType(this.wireValue);
+  @override
   final String wireValue;
 
   static LoadBalancerType fromValue(String value) {

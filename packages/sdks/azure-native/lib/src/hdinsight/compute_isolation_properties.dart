@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The compute isolation properties.
 class ComputeIsolationProperties {
   /// The flag indicates whether enable compute isolation or not.
-  final pulumi.Input<bool>? enableComputeIsolation;
+  final pulumi.Input<bool?>? enableComputeIsolation;
   /// The host sku.
-  final pulumi.Input<String>? hostSku;
+  final pulumi.Input<String?>? hostSku;
 
   /// Creates a new [ComputeIsolationProperties].
   /// [enableComputeIsolation] The flag indicates whether enable compute isolation or not.
   /// [hostSku] The host sku.
-  const ComputeIsolationProperties({
-    this.enableComputeIsolation,
+  ComputeIsolationProperties({
+    pulumi.Input<bool?>? enableComputeIsolation,
     this.hostSku,
-  });
+  }) : enableComputeIsolation = enableComputeIsolation ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

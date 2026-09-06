@@ -9,25 +9,25 @@ import 'service_sku.dart';
 /// {@macro pulumi_datamigration_service_args_doc}
 class ServiceArgs {
   /// The time delay before the service is auto-stopped when idle.
-  final pulumi.Input<String>? autoStopDelay;
+  final pulumi.Input<String?>? autoStopDelay;
   /// Whether service resources should be deleted when stopped. (Turned on by default)
-  final pulumi.Input<bool>? deleteResourcesOnStop;
+  final pulumi.Input<bool?>? deleteResourcesOnStop;
   /// Name of the resource group
   final pulumi.Input<String> groupName;
   /// The resource kind. Only 'vm' (the default) is supported.
-  final pulumi.Input<String>? kind;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? kind;
+  final pulumi.Input<String?>? location;
   /// The public key of the service, used to encrypt secrets sent to the service
-  final pulumi.Input<String>? publicKey;
+  final pulumi.Input<String?>? publicKey;
   /// Name of the service
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
   /// Service SKU
-  final pulumi.Input<ServiceSku>? sku;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<ServiceSku?>? sku;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The ID of the Microsoft.Network/networkInterfaces resource which the service have
-  final pulumi.Input<String>? virtualNicId;
+  final pulumi.Input<String?>? virtualNicId;
   /// The ID of the Microsoft.Network/virtualNetworks/subnets resource to which the service should be joined
-  final pulumi.Input<String>? virtualSubnetId;
+  final pulumi.Input<String?>? virtualSubnetId;
 
   /// Creates a new [ServiceArgs].
   /// [autoStopDelay] The time delay before the service is auto-stopped when idle.

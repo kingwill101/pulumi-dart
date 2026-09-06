@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The availability zone rule.
 class ResourceTypeRegistrationPropertiesAvailabilityZoneRuleResponse {
-  final pulumi.Input<String>? availabilityZonePolicy;
+  final pulumi.Input<String?>? availabilityZonePolicy;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesAvailabilityZoneRuleResponse].
   /// [availabilityZonePolicy] Optional.

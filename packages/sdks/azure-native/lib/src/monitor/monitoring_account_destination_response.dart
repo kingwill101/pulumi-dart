@@ -7,10 +7,10 @@ class MonitoringAccountDestinationResponse {
   /// The immutable ID  of the account.
   final pulumi.Input<String> accountId;
   /// The resource ID of the monitoring account.
-  final pulumi.Input<String>? accountResourceId;
+  final pulumi.Input<String?>? accountResourceId;
   /// A friendly name for the destination.
   /// This name should be unique across all destinations (regardless of type) within the data collection rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [MonitoringAccountDestinationResponse].
   /// [accountId] The immutable ID  of the account.

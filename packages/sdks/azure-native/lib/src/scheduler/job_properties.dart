@@ -7,13 +7,13 @@ import 'job_state.dart';
 
 class JobProperties {
   /// Gets or sets the job action.
-  final pulumi.Input<JobAction>? action;
+  final pulumi.Input<JobAction?>? action;
   /// Gets or sets the job recurrence.
-  final pulumi.Input<JobRecurrence>? recurrence;
+  final pulumi.Input<JobRecurrence?>? recurrence;
   /// Gets or sets the job start time.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Gets or set the job state.
-  final pulumi.Input<JobState>? state;
+  final pulumi.Input<JobState?>? state;
 
   /// Creates a new [JobProperties].
   /// [action] Gets or sets the job action.

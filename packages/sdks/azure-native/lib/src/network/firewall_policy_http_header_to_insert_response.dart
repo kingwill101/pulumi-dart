@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// name and value of HTTP/S header to insert
 class FirewallPolicyHttpHeaderToInsertResponse {
   /// Contains the name of the header
-  final pulumi.Input<String>? headerName;
+  final pulumi.Input<String?>? headerName;
   /// Contains the value of the header
-  final pulumi.Input<String>? headerValue;
+  final pulumi.Input<String?>? headerValue;
 
   /// Creates a new [FirewallPolicyHttpHeaderToInsertResponse].
   /// [headerName] Contains the name of the header

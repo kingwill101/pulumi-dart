@@ -386,7 +386,26 @@ class Authorization extends pulumi.CustomResource {
     error = registerOutput<AuthorizationErrorResponse?>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorizationErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     oAuth2GrantType = registerOutput<String?>('oAuth2GrantType');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    status = registerOutput<String?>('status');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Authorization] resource.
+  Authorization.reference(String urn)
+    : super(
+        'azure-native:apimanagement:Authorization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authorizationType = registerOutput<String?>('authorizationType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    error = registerOutput<AuthorizationErrorResponse?>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorizationErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    oAuth2GrantType = registerOutput<String?>('oAuth2GrantType');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     status = registerOutput<String?>('status');
     type = registerOutput<String>('type');
   }

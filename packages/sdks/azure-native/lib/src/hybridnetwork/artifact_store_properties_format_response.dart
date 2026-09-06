@@ -6,16 +6,16 @@ import 'artifact_store_properties_format_response_managed_resource_group_configu
 /// Artifact store properties.
 class ArtifactStorePropertiesFormatResponse {
   /// The artifact store backing resource network access type
-  final pulumi.Input<String>? backingResourcePublicNetworkAccess;
-  final pulumi.Input<ArtifactStorePropertiesFormatResponseManagedResourceGroupConfiguration>? managedResourceGroupConfiguration;
+  final pulumi.Input<String?>? backingResourcePublicNetworkAccess;
+  final pulumi.Input<ArtifactStorePropertiesFormatResponseManagedResourceGroupConfiguration?>? managedResourceGroupConfiguration;
   /// The provisioning state of the application groups resource.
   final pulumi.Input<String> provisioningState;
   /// The replication strategy.
-  final pulumi.Input<String>? replicationStrategy;
+  final pulumi.Input<String?>? replicationStrategy;
   /// The created storage resource id
   final pulumi.Input<String> storageResourceId;
   /// The artifact store type.
-  final pulumi.Input<String>? storeType;
+  final pulumi.Input<String?>? storeType;
 
   /// Creates a new [ArtifactStorePropertiesFormatResponse].
   /// [backingResourcePublicNetworkAccess] The artifact store backing resource network access type

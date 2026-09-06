@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
-enum EncryptionKeySource {
+enum EncryptionKeySource implements pulumi.PulumiEnum<String> {
   microsoftKeyvault("Microsoft.Keyvault");
 
   const EncryptionKeySource(this.wireValue);
+  @override
   final String wireValue;
 
   static EncryptionKeySource fromValue(String value) {

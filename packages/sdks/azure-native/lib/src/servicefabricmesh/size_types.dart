@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Volume size
-enum SizeTypes {
+enum SizeTypes implements pulumi.PulumiEnum<String> {
   valueSmall("Small"),
   valueMedium("Medium"),
   valueLarge("Large");
 
   const SizeTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static SizeTypes fromValue(String value) {

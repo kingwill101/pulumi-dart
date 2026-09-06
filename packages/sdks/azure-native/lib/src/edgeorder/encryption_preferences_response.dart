@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Preferences related to the double encryption.
 class EncryptionPreferencesResponse {
   /// Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
-  final pulumi.Input<String>? doubleEncryptionStatus;
+  final pulumi.Input<String?>? doubleEncryptionStatus;
 
   /// Creates a new [EncryptionPreferencesResponse].
   /// [doubleEncryptionStatus] Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.

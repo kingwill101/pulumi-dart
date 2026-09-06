@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Description of the current status of the OperatorApiConnection resource.
 class StatusResponse {
   /// Explanation of the current state of the OperatorApiConnection resource.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// Current state of the OperatorApiConnection resource.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [StatusResponse].
   /// [reason] Explanation of the current state of the OperatorApiConnection resource.

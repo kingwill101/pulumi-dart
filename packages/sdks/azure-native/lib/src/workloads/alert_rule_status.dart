@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates whether the alert is in an enabled state.
-enum AlertRuleStatus {
+enum AlertRuleStatus implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const AlertRuleStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static AlertRuleStatus fromValue(String value) {

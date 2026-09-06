@@ -7,7 +7,7 @@ class CreationDataResponse {
   /// This enumerates the possible sources of a disk's creation
   final pulumi.Input<String> createOption;
   /// ARM ID of the source resource used for disk creation. Required when createOption is Copy
-  final pulumi.Input<String>? sourceResourceId;
+  final pulumi.Input<String?>? sourceResourceId;
   /// Unique ID of the source resource used for disk creation. Read-only and not required for disk creation.
   final pulumi.Input<String> sourceUniqueId;
 

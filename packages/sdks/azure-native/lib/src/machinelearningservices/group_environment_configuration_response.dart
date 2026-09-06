@@ -7,15 +7,15 @@ import 'string_string_key_value_pair_response.dart';
 /// Environment configuration options.
 class GroupEnvironmentConfigurationResponse {
   /// ARM resource ID of the environment specification for the inference pool.
-  final pulumi.Input<String>? environmentId;
+  final pulumi.Input<String?>? environmentId;
   /// Environment variables configuration for the inference pool.
-  final pulumi.Input<List<StringStringKeyValuePairResponse>>? environmentVariables;
+  final pulumi.Input<List<StringStringKeyValuePairResponse>?>? environmentVariables;
   /// Liveness probe monitors the health of the container regularly.
-  final pulumi.Input<ProbeSettingsResponse>? livenessProbe;
+  final pulumi.Input<ProbeSettingsResponse?>? livenessProbe;
   /// Readiness probe validates if the container is ready to serve traffic. The properties and defaults are the same as liveness probe.
-  final pulumi.Input<ProbeSettingsResponse>? readinessProbe;
+  final pulumi.Input<ProbeSettingsResponse?>? readinessProbe;
   /// This verifies whether the application within a container is started. Startup probes run before any other probe, and, unless it finishes successfully, disables other probes.
-  final pulumi.Input<ProbeSettingsResponse>? startupProbe;
+  final pulumi.Input<ProbeSettingsResponse?>? startupProbe;
 
   /// Creates a new [GroupEnvironmentConfigurationResponse].
   /// [environmentId] ARM resource ID of the environment specification for the inference pool.

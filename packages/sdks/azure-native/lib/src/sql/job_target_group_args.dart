@@ -17,7 +17,7 @@ class JobTargetGroupArgs {
   /// The name of the server.
   final pulumi.Input<String> serverName;
   /// The name of the target group.
-  final pulumi.Input<String>? targetGroupName;
+  final pulumi.Input<String?>? targetGroupName;
 
   /// Creates a new [JobTargetGroupArgs].
   /// [jobAgentName] The name of the job agent.

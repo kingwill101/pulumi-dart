@@ -6,10 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// is selected in Linux patch settings.
 class LinuxVMGuestPatchAutomaticByPlatformSettingsResponse {
   /// Enables customer to schedule patching without accidental upgrades
-  final pulumi.Input<bool>? bypassPlatformSafetyChecksOnUserSchedule;
+  final pulumi.Input<bool?>? bypassPlatformSafetyChecksOnUserSchedule;
   /// Specifies the reboot setting for all AutomaticByPlatform patch installation
   /// operations.
-  final pulumi.Input<String>? rebootSetting;
+  final pulumi.Input<String?>? rebootSetting;
 
   /// Creates a new [LinuxVMGuestPatchAutomaticByPlatformSettingsResponse].
   /// [bypassPlatformSafetyChecksOnUserSchedule] Enables customer to schedule patching without accidental upgrades

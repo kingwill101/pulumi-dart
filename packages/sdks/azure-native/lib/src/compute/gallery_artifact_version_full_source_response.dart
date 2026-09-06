@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The source of the gallery artifact version.
 class GalleryArtifactVersionFullSourceResponse {
   /// The resource Id of the source Community Gallery Image.  Only required when using Community Gallery Image as a source.
-  final pulumi.Input<String>? communityGalleryImageId;
+  final pulumi.Input<String?>? communityGalleryImageId;
   /// The id of the gallery artifact version source.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The resource Id of the source virtual machine.  Only required when capturing a virtual machine to source this Gallery Image Version.
-  final pulumi.Input<String>? virtualMachineId;
+  final pulumi.Input<String?>? virtualMachineId;
 
   /// Creates a new [GalleryArtifactVersionFullSourceResponse].
   /// [communityGalleryImageId] The resource Id of the source Community Gallery Image.  Only required when using Community Gallery Image as a source.

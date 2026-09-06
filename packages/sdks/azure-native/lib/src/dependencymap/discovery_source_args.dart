@@ -9,17 +9,17 @@ import 'off_azure_discovery_source_resource_properties.dart';
 /// {@macro pulumi_dependencymap_discovery_source_args_doc}
 class DiscoverySourceArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Maps resource name
   final pulumi.Input<String> mapName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<OffAzureDiscoverySourceResourceProperties>? properties;
+  final pulumi.Input<OffAzureDiscoverySourceResourceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// discovery source resource
-  final pulumi.Input<String>? sourceName;
+  final pulumi.Input<String?>? sourceName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DiscoverySourceArgs].
   /// [location] The geo-location where the resource lives

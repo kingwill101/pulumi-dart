@@ -9,7 +9,7 @@ class ServicesResourceResponseIdentity {
   /// The tenant ID of the resource.
   final pulumi.Input<String> tenantId;
   /// Type of identity being specified, currently SystemAssigned and None are allowed.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ServicesResourceResponseIdentity].
   /// [principalId] The principal ID of the resource identity.

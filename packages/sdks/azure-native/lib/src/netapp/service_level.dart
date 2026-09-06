@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The service level of the file system
-enum ServiceLevel {
+enum ServiceLevel implements pulumi.PulumiEnum<String> {
   valueStandard("Standard"),
   valuePremium("Premium"),
   valueUltra("Ultra"),
   valueStandardZRS("StandardZRS");
 
   const ServiceLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceLevel fromValue(String value) {

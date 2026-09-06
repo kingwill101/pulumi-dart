@@ -9,19 +9,19 @@ import 'professional_service_creation_properties.dart';
 /// {@macro pulumi_professionalservice_professional_service_subscription_level_args_doc}
 class ProfessionalServiceSubscriptionLevelArgs {
   /// Resource location. Only value allowed for ProfessionalService is 'global'
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Properties of the ProfessionalService resource that are relevant for creation.
-  final pulumi.Input<ProfessionalServiceCreationProperties>? properties;
+  final pulumi.Input<ProfessionalServiceCreationProperties?>? properties;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the resource.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// the resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ProfessionalServiceSubscriptionLevelArgs].
   /// [location] Resource location. Only value allowed for ProfessionalService is 'global'

@@ -10,7 +10,7 @@ class AzureResourceSignalGroupResponse {
   /// Azure resource ID
   final pulumi.Input<String> azureResourceId;
   /// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
-  final pulumi.Input<List<SignalAssignmentResponse>>? signalAssignments;
+  final pulumi.Input<List<SignalAssignmentResponse>?>? signalAssignments;
 
   /// Creates a new [AzureResourceSignalGroupResponse].
   /// [authenticationSetting] Reference to the name of the authentication setting which is used for querying the data source

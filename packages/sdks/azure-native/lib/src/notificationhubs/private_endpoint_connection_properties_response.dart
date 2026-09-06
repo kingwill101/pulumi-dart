@@ -9,11 +9,11 @@ class PrivateEndpointConnectionPropertiesResponse {
   /// List of group ids. For Notification Hubs, it always contains a single "namespace" element.
   final pulumi.Input<List<String>> groupIds;
   /// Represents a Private Endpoint that is connected to Notification Hubs namespace using Private Endpoint Connection.
-  final pulumi.Input<RemotePrivateEndpointConnectionResponse>? privateEndpoint;
+  final pulumi.Input<RemotePrivateEndpointConnectionResponse?>? privateEndpoint;
   /// State of the Private Link Service connection.
-  final pulumi.Input<RemotePrivateLinkServiceConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<RemotePrivateLinkServiceConnectionStateResponse?>? privateLinkServiceConnectionState;
   /// State of Private Endpoint Connection.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
 
   /// Creates a new [PrivateEndpointConnectionPropertiesResponse].
   /// [groupIds] List of group ids. For Notification Hubs, it always contains a single "namespace" element.

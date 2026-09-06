@@ -10,17 +10,17 @@ import 'extended_location.dart';
 /// {@macro pulumi_azurearcdata_data_controller_args_doc}
 class DataControllerArgs {
   /// The name of the data controller
-  final pulumi.Input<String>? dataControllerName;
+  final pulumi.Input<String?>? dataControllerName;
   /// The extendedLocation of the resource.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The data controller's properties
   final pulumi.Input<DataControllerProperties> properties;
   /// The name of the Azure resource group
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DataControllerArgs].
   /// [dataControllerName] The name of the data controller

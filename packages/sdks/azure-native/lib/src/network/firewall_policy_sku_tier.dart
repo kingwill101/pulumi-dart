@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Tier of Firewall Policy.
-enum FirewallPolicySkuTier {
+enum FirewallPolicySkuTier implements pulumi.PulumiEnum<String> {
   valueStandard("Standard"),
   valuePremium("Premium"),
   valueBasic("Basic");
 
   const FirewallPolicySkuTier(this.wireValue);
+  @override
   final String wireValue;
 
   static FirewallPolicySkuTier fromValue(String value) {

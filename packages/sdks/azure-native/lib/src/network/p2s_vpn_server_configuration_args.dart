@@ -9,13 +9,13 @@ import 'p2_svpn_server_configuration_properties.dart';
 /// {@macro pulumi_network_p2s_vpn_server_configuration_args_doc}
 class P2sVpnServerConfigurationArgs {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the P2SVpnServerConfiguration.
-  final pulumi.Input<String>? p2SVpnServerConfigurationName;
+  final pulumi.Input<String?>? p2SVpnServerConfigurationName;
   /// Properties of the P2SVpnServer configuration.
-  final pulumi.Input<P2SVpnServerConfigurationProperties>? properties;
+  final pulumi.Input<P2SVpnServerConfigurationProperties?>? properties;
   /// The resource group name of the VirtualWan.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the VirtualWan.

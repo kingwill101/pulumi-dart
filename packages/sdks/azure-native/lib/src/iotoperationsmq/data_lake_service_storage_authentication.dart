@@ -6,9 +6,9 @@ import 'managed_identity_authentication.dart';
 /// DataLake Service Storage authentication details. NOTE - Enum only one method is supported.
 class DataLakeServiceStorageAuthentication {
   /// Access token secret name.
-  final pulumi.Input<String>? accessTokenSecretName;
+  final pulumi.Input<String?>? accessTokenSecretName;
   /// Configuration for managed identity authentication.
-  final pulumi.Input<ManagedIdentityAuthentication>? systemAssignedManagedIdentity;
+  final pulumi.Input<ManagedIdentityAuthentication?>? systemAssignedManagedIdentity;
 
   /// Creates a new [DataLakeServiceStorageAuthentication].
   /// [accessTokenSecretName] Access token secret name.

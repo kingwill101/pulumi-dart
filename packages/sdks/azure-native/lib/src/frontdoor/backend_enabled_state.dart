@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether to enable use of this backend. Permitted values are 'Enabled' or 'Disabled'
-enum BackendEnabledState {
+enum BackendEnabledState implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const BackendEnabledState(this.wireValue);
+  @override
   final String wireValue;
 
   static BackendEnabledState fromValue(String value) {

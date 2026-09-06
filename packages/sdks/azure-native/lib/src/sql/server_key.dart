@@ -206,4 +206,24 @@ class ServerKey extends pulumi.CustomResource {
     thumbprint = registerOutput<String>('thumbprint');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ServerKey] resource.
+  ServerKey.reference(String urn)
+    : super(
+        'azure-native:sql:ServerKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoRotationEnabled = registerOutput<bool>('autoRotationEnabled');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationDate = registerOutput<String>('creationDate');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    subregion = registerOutput<String>('subregion');
+    thumbprint = registerOutput<String>('thumbprint');
+    type = registerOutput<String>('type');
+  }
 }

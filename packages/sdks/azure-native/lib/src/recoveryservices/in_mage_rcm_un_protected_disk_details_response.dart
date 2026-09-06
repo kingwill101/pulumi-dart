@@ -31,7 +31,7 @@ class InMageRcmUnProtectedDiskDetailsResponse {
 
   factory InMageRcmUnProtectedDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmUnProtectedDiskDetailsResponse(
-      capacityInBytes: pulumi.Input.fromValue(map['capacityInBytes'] as double),
+      capacityInBytes: pulumi.Input.fromValue((map['capacityInBytes'] as num).toDouble()),
       diskId: pulumi.Input.fromValue(map['diskId'] as String),
       diskName: pulumi.Input.fromValue(map['diskName'] as String),
     );

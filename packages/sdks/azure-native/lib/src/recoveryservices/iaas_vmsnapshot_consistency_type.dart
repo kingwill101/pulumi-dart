@@ -1,7 +1,10 @@
-enum IaasVMSnapshotConsistencyType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum IaasVMSnapshotConsistencyType implements pulumi.PulumiEnum<String> {
   valueOnlyCrashConsistent("OnlyCrashConsistent");
 
   const IaasVMSnapshotConsistencyType(this.wireValue);
+  @override
   final String wireValue;
 
   static IaasVMSnapshotConsistencyType fromValue(String value) {

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// DataLake database format to use.
-enum DataLakeDatabaseFormat {
+enum DataLakeDatabaseFormat implements pulumi.PulumiEnum<String> {
   delta("delta"),
   parquet("parquet");
 
   const DataLakeDatabaseFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static DataLakeDatabaseFormat fromValue(String value) {

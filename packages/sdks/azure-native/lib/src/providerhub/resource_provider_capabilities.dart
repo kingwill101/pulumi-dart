@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceProviderCapabilities {
   /// The effect.
-  final pulumi.Input<String> effect;
+  final pulumi.Input<dynamic> effect;
   /// The quota id.
   final pulumi.Input<String> quotaId;
   /// The required features.
-  final pulumi.Input<List<String>>? requiredFeatures;
+  final pulumi.Input<List<String>?>? requiredFeatures;
 
   /// Creates a new [ResourceProviderCapabilities].
   /// [effect] The effect.
@@ -30,7 +30,7 @@ class ResourceProviderCapabilities {
 
   factory ResourceProviderCapabilities.fromMap(Map<String, dynamic> map) {
     return ResourceProviderCapabilities(
-      effect: pulumi.Input.fromValue(map['effect'] as String),
+      effect: pulumi.Input.fromValue(map['effect']),
       quotaId: pulumi.Input.fromValue(map['quotaId'] as String),
       requiredFeatures: (() { final guardedValue = map['requiredFeatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

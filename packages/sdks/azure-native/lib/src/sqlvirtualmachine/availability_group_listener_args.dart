@@ -11,19 +11,19 @@ import 'multi_subnet_ip_configuration.dart';
 /// {@macro pulumi_sqlvirtualmachine_availability_group_listener_args_doc}
 class AvailabilityGroupListenerArgs {
   /// Availability Group configuration.
-  final pulumi.Input<AgConfiguration>? availabilityGroupConfiguration;
+  final pulumi.Input<AgConfiguration?>? availabilityGroupConfiguration;
   /// Name of the availability group listener.
-  final pulumi.Input<String>? availabilityGroupListenerName;
+  final pulumi.Input<String?>? availabilityGroupListenerName;
   /// Name of the availability group.
-  final pulumi.Input<String>? availabilityGroupName;
+  final pulumi.Input<String?>? availabilityGroupName;
   /// Create a default availability group if it does not exist.
-  final pulumi.Input<bool>? createDefaultAvailabilityGroupIfNotExist;
+  final pulumi.Input<bool?>? createDefaultAvailabilityGroupIfNotExist;
   /// List of load balancer configurations for an availability group listener.
-  final pulumi.Input<List<LoadBalancerConfiguration>>? loadBalancerConfigurations;
+  final pulumi.Input<List<LoadBalancerConfiguration>?>? loadBalancerConfigurations;
   /// List of multi subnet IP configurations for an AG listener.
-  final pulumi.Input<List<MultiSubnetIpConfiguration>>? multiSubnetIpConfigurations;
+  final pulumi.Input<List<MultiSubnetIpConfiguration>?>? multiSubnetIpConfigurations;
   /// Listener port.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the SQL virtual machine group.
@@ -73,7 +73,7 @@ class AvailabilityGroupListenerArgs {
       createDefaultAvailabilityGroupIfNotExist: (() { final guardedValue = map['createDefaultAvailabilityGroupIfNotExist']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       loadBalancerConfigurations: (() { final guardedValue = map['loadBalancerConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LoadBalancerConfiguration>(guardedValue, (value) => LoadBalancerConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       multiSubnetIpConfigurations: (() { final guardedValue = map['multiSubnetIpConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MultiSubnetIpConfiguration>(guardedValue, (value) => MultiSubnetIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sqlVirtualMachineGroupName: pulumi.Input.fromValue(map['sqlVirtualMachineGroupName'] as String),
     );

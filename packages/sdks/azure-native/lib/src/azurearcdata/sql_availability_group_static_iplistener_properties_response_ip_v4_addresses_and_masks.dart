@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks {
   /// IPV4 address
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// IPV4 netmask
-  final pulumi.Input<String>? mask;
+  final pulumi.Input<String?>? mask;
 
   /// Creates a new [SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks].
   /// [ipAddress] IPV4 address

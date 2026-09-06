@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The VirtualSwitchConfigurationOverrides of a cluster.
 class VirtualSwitchConfigurationOverridesResponse {
   /// Enable IoV for Virtual Switch
-  final pulumi.Input<String>? enableIov;
+  final pulumi.Input<String?>? enableIov;
   /// Load Balancing Algorithm for Virtual Switch
-  final pulumi.Input<String>? loadBalancingAlgorithm;
+  final pulumi.Input<String?>? loadBalancingAlgorithm;
 
   /// Creates a new [VirtualSwitchConfigurationOverridesResponse].
   /// [enableIov] Enable IoV for Virtual Switch

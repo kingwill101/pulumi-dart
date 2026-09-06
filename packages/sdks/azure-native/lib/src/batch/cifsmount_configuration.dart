@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information used to connect to a CIFS file system.
 class CIFSMountConfiguration {
   /// These are 'net use' options in Windows and 'mount' options in Linux.
-  final pulumi.Input<String>? mountOptions;
+  final pulumi.Input<String?>? mountOptions;
   /// The password to use for authentication against the CIFS file system.
   final pulumi.Input<String> password;
   /// All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.

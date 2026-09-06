@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
-enum ServiceTier {
+enum ServiceTier implements pulumi.PulumiEnum<String> {
   valueGeneralPurpose("GeneralPurpose"),
   valueBusinessCritical("BusinessCritical");
 
   const ServiceTier(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceTier fromValue(String value) {

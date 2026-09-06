@@ -12,9 +12,9 @@ class GetCustomImageResult {
   /// The author of the custom image.
   final String? author;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The creation date of the custom image.
-  final String creationDate;
+  final String? creationDate;
   /// Storage information about the plan related to this custom image
   final CustomImagePropertiesFromPlanResponse? customImagePlan;
   /// Storage information about the data disks present in the custom image
@@ -22,7 +22,7 @@ class GetCustomImageResult {
   /// The description of the custom image.
   final String? description;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Whether or not the custom images underlying offer/plan has been enabled for programmatic deployment
   final bool? isPlanAuthorized;
   /// The geo-location where the resource lives
@@ -32,17 +32,17 @@ class GetCustomImageResult {
   /// The Managed Snapshot Id backing the custom image.
   final String? managedSnapshotId;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The provisioning status of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// The unique immutable identifier of a resource (Guid).
-  final String uniqueIdentifier;
+  final String? uniqueIdentifier;
   /// The VHD from which the image is to be created.
   final CustomImagePropertiesCustomResponse? vhd;
   /// The virtual machine from which the image is to be created.
@@ -70,22 +70,22 @@ class GetCustomImageResult {
   /// [vm] The virtual machine from which the image is to be created.
   const GetCustomImageResult({
     this.author,
-    required this.azureApiVersion,
-    required this.creationDate,
+    this.azureApiVersion,
+    this.creationDate,
     this.customImagePlan,
     this.dataDiskStorageInfo,
     this.description,
-    required this.id,
+    this.id,
     this.isPlanAuthorized,
     this.location,
     this.managedImageId,
     this.managedSnapshotId,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
+    this.name,
+    this.provisioningState,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.uniqueIdentifier,
+    this.type,
+    this.uniqueIdentifier,
     this.vhd,
     this.vm,
   });
@@ -93,22 +93,22 @@ class GetCustomImageResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'author': ?author,
-      'azureApiVersion': azureApiVersion,
-      'creationDate': creationDate,
+      'azureApiVersion': ?azureApiVersion,
+      'creationDate': ?creationDate,
       'customImagePlan': ?customImagePlan?.toMap(),
       'dataDiskStorageInfo': ?(() { final guardedValue = dataDiskStorageInfo; if (guardedValue == null) return null; return pulumi.Input.encodeList<DataDiskStorageTypeInfoResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'description': ?description,
-      'id': id,
+      'id': ?id,
       'isPlanAuthorized': ?isPlanAuthorized,
       'location': ?location,
       'managedImageId': ?managedImageId,
       'managedSnapshotId': ?managedSnapshotId,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'uniqueIdentifier': uniqueIdentifier,
+      'type': ?type,
+      'uniqueIdentifier': ?uniqueIdentifier,
       'vhd': ?vhd?.toMap(),
       'vm': ?vm?.toMap(),
     };
@@ -117,22 +117,22 @@ class GetCustomImageResult {
   factory GetCustomImageResult.fromMap(Map<String, dynamic> map) {
     return GetCustomImageResult(
       author: (() { final guardedValue = map['author']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      creationDate: map['creationDate'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      creationDate: (() { final guardedValue = map['creationDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
       customImagePlan: (() { final guardedValue = map['customImagePlan']; if (guardedValue == null) return null; return CustomImagePropertiesFromPlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       dataDiskStorageInfo: (() { final guardedValue = map['dataDiskStorageInfo']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataDiskStorageTypeInfoResponse>(guardedValue, (value) => DataDiskStorageTypeInfoResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isPlanAuthorized: (() { final guardedValue = map['isPlanAuthorized']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       managedImageId: (() { final guardedValue = map['managedImageId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       managedSnapshotId: (() { final guardedValue = map['managedSnapshotId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      uniqueIdentifier: map['uniqueIdentifier'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uniqueIdentifier: (() { final guardedValue = map['uniqueIdentifier']; if (guardedValue == null) return null; return guardedValue as String; })(),
       vhd: (() { final guardedValue = map['vhd']; if (guardedValue == null) return null; return CustomImagePropertiesCustomResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       vm: (() { final guardedValue = map['vm']; if (guardedValue == null) return null; return CustomImagePropertiesFromVmResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );

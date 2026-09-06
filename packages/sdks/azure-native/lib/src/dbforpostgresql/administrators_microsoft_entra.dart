@@ -211,4 +211,23 @@ class AdministratorsMicrosoftEntra extends pulumi.CustomResource {
     tenantId = registerOutput<String?>('tenantId');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [AdministratorsMicrosoftEntra] resource.
+  AdministratorsMicrosoftEntra.reference(String urn)
+    : super(
+        'azure-native:dbforpostgresql:AdministratorsMicrosoftEntra',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    objectId = registerOutput<String?>('objectId');
+    principalName = registerOutput<String?>('principalName');
+    principalType = registerOutput<String?>('principalType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tenantId = registerOutput<String?>('tenantId');
+    type = registerOutput<String>('type');
+  }
 }

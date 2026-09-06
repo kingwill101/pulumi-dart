@@ -5,31 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A site for the Webchat channel
 class WebChatSiteResponse {
   /// DirectLine application id
-  final pulumi.Input<String>? appId;
+  final pulumi.Input<String?>? appId;
   /// Entity Tag
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// Whether this site is enabled for block user upload.
-  final pulumi.Input<bool>? isBlockUserUploadEnabled;
+  final pulumi.Input<bool?>? isBlockUserUploadEnabled;
   /// Whether this site is disabled detailed logging for
-  final pulumi.Input<bool>? isDetailedLoggingEnabled;
+  final pulumi.Input<bool?>? isDetailedLoggingEnabled;
   /// Whether this site is enabled for DirectLine channel
   final pulumi.Input<bool> isEnabled;
   /// Whether this site is EndpointParameters enabled for channel
-  final pulumi.Input<bool>? isEndpointParametersEnabled;
+  final pulumi.Input<bool?>? isEndpointParametersEnabled;
   /// Whether this no-storage site is disabled detailed logging for
-  final pulumi.Input<bool>? isNoStorageEnabled;
+  final pulumi.Input<bool?>? isNoStorageEnabled;
   /// Whether this site is enabled for authentication with Bot Framework.
-  final pulumi.Input<bool>? isSecureSiteEnabled;
+  final pulumi.Input<bool?>? isSecureSiteEnabled;
   /// Whether this site is token enabled for channel
   final pulumi.Input<bool> isTokenEnabled;
   /// Whether this site is enabled for Bot Framework V1 protocol.
-  final pulumi.Input<bool>? isV1Enabled;
+  final pulumi.Input<bool?>? isV1Enabled;
   /// Whether this site is enabled for Bot Framework V3 protocol.
-  final pulumi.Input<bool>? isV3Enabled;
+  final pulumi.Input<bool?>? isV3Enabled;
   /// Whether this site is enabled for Webchat Speech
-  final pulumi.Input<bool>? isWebChatSpeechEnabled;
+  final pulumi.Input<bool?>? isWebChatSpeechEnabled;
   /// Whether this site is enabled for preview versions of Webchat
-  final pulumi.Input<bool>? isWebchatPreviewEnabled;
+  final pulumi.Input<bool?>? isWebchatPreviewEnabled;
   /// Primary key. Value only returned through POST to the action Channel List API, otherwise empty.
   final pulumi.Input<String> key;
   /// Secondary key. Value only returned through POST to the action Channel List API, otherwise empty.
@@ -39,9 +39,9 @@ class WebChatSiteResponse {
   /// Site name
   final pulumi.Input<String> siteName;
   /// Tenant Id
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True.
-  final pulumi.Input<List<String>>? trustedOrigins;
+  final pulumi.Input<List<String>?>? trustedOrigins;
 
   /// Creates a new [WebChatSiteResponse].
   /// [appId] DirectLine application id
@@ -63,7 +63,7 @@ class WebChatSiteResponse {
   /// [siteName] Site name
   /// [tenantId] Tenant Id
   /// [trustedOrigins] List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True.
-  const WebChatSiteResponse({
+  WebChatSiteResponse({
     this.appId,
     this.eTag,
     this.isBlockUserUploadEnabled,
@@ -75,15 +75,15 @@ class WebChatSiteResponse {
     required this.isTokenEnabled,
     this.isV1Enabled,
     this.isV3Enabled,
-    this.isWebChatSpeechEnabled,
-    this.isWebchatPreviewEnabled,
+    pulumi.Input<bool?>? isWebChatSpeechEnabled,
+    pulumi.Input<bool?>? isWebchatPreviewEnabled,
     required this.key,
     required this.key2,
     required this.siteId,
     required this.siteName,
     this.tenantId,
     this.trustedOrigins,
-  });
+  }) : isWebChatSpeechEnabled = isWebChatSpeechEnabled ?? pulumi.Input.fromValue(false), isWebchatPreviewEnabled = isWebchatPreviewEnabled ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

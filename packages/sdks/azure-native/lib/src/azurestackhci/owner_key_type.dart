@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Owner key type
-enum OwnerKeyType {
+enum OwnerKeyType implements pulumi.PulumiEnum<String> {
   microsoftManaged("MicrosoftManaged");
 
   const OwnerKeyType(this.wireValue);
+  @override
   final String wireValue;
 
   static OwnerKeyType fromValue(String value) {

@@ -7,7 +7,7 @@ import 'user_assigned_identity_managed_cluster_response.dart';
 /// Details about the pod identity assigned to the Managed Cluster.
 class ManagedClusterPodIdentityResponse {
   /// The binding selector to use for the AzureIdentityBinding resource.
-  final pulumi.Input<String>? bindingSelector;
+  final pulumi.Input<String?>? bindingSelector;
   /// The user assigned identity details.
   final pulumi.Input<UserAssignedIdentityManagedClusterResponse> identity;
   /// The name of the pod identity.

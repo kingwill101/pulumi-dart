@@ -8,11 +8,11 @@ class AzureBlobStorageSinkConnectorServiceInfo {
   /// Expected value is 'AzureBlobStorageSinkConnector'.
   final pulumi.Input<String> connectorServiceType;
   /// Azure Blob Storage Account Key
-  final pulumi.Input<String>? storageAccountKey;
+  final pulumi.Input<String?>? storageAccountKey;
   /// Azure Blob Storage Account Name
-  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String?>? storageAccountName;
   /// Azure Blob Storage Account Container Name
-  final pulumi.Input<String>? storageContainerName;
+  final pulumi.Input<String?>? storageContainerName;
 
   /// Creates a new [AzureBlobStorageSinkConnectorServiceInfo].
   /// [connectorServiceType] The connector service type.

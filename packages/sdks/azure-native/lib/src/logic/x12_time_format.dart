@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The group header time format.
-enum X12TimeFormat {
+enum X12TimeFormat implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueHHMM("HHMM"),
   valueHHMMSS("HHMMSS"),
@@ -7,6 +9,7 @@ enum X12TimeFormat {
   valueHHMMSSd("HHMMSSd");
 
   const X12TimeFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static X12TimeFormat fromValue(String value) {

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ResolverLevelMetricsBehavior {
+enum ResolverLevelMetricsBehavior implements pulumi.PulumiEnum<String> {
   fULLREQUESTRESOLVERMETRICS("FULL_REQUEST_RESOLVER_METRICS"),
   pERRESOLVERMETRICS("PER_RESOLVER_METRICS");
 
   const ResolverLevelMetricsBehavior(this.wireValue);
+  @override
   final String wireValue;
 
   static ResolverLevelMetricsBehavior fromValue(String value) {

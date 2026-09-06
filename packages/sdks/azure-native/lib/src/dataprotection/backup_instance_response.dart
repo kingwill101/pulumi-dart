@@ -16,14 +16,14 @@ class BackupInstanceResponse {
   /// Gets or sets the data source information.
   final pulumi.Input<DatasourceResponse> dataSourceInfo;
   /// Gets or sets the data source set information.
-  final pulumi.Input<DatasourceSetResponse>? dataSourceSetInfo;
+  final pulumi.Input<DatasourceSetResponse?>? dataSourceSetInfo;
   /// Credentials to use to authenticate with data source provider.
-  final pulumi.Input<SecretStoreBasedAuthCredentialsResponse>? datasourceAuthCredentials;
+  final pulumi.Input<SecretStoreBasedAuthCredentialsResponse?>? datasourceAuthCredentials;
   /// Gets or sets the Backup Instance friendly name.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// Contains information of the Identity Details for the BI.
   /// If it is null, default will be considered as System Assigned.
-  final pulumi.Input<IdentityDetailsResponse>? identityDetails;
+  final pulumi.Input<IdentityDetailsResponse?>? identityDetails;
   final pulumi.Input<String> objectType;
   /// Gets or sets the policy information.
   final pulumi.Input<PolicyInfoResponse> policyInfo;
@@ -34,9 +34,9 @@ class BackupInstanceResponse {
   /// Specifies the provisioning state of the resource i.e. provisioning/updating/Succeeded/Failed
   final pulumi.Input<String> provisioningState;
   /// ResourceGuardOperationRequests on which LAC check will be performed
-  final pulumi.Input<List<String>>? resourceGuardOperationRequests;
+  final pulumi.Input<List<String>?>? resourceGuardOperationRequests;
   /// Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
-  final pulumi.Input<String>? validationType;
+  final pulumi.Input<String?>? validationType;
 
   /// Creates a new [BackupInstanceResponse].
   /// [currentProtectionState] Specifies the current protection state of the resource

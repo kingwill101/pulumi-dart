@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property to select Azure Storage type. Available options: blobContainer.
-enum FunctionsDeploymentStorageType {
+enum FunctionsDeploymentStorageType implements pulumi.PulumiEnum<String> {
   blobContainer("blobContainer");
 
   const FunctionsDeploymentStorageType(this.wireValue);
+  @override
   final String wireValue;
 
   static FunctionsDeploymentStorageType fromValue(String value) {

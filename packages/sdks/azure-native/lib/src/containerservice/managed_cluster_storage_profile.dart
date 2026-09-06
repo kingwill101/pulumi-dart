@@ -9,13 +9,13 @@ import 'managed_cluster_storage_profile_snapshot_controller.dart';
 /// Storage profile for the container service cluster.
 class ManagedClusterStorageProfile {
   /// AzureBlob CSI Driver settings for the storage profile.
-  final pulumi.Input<ManagedClusterStorageProfileBlobCSIDriver>? blobCSIDriver;
+  final pulumi.Input<ManagedClusterStorageProfileBlobCSIDriver?>? blobCSIDriver;
   /// AzureDisk CSI Driver settings for the storage profile.
-  final pulumi.Input<ManagedClusterStorageProfileDiskCSIDriver>? diskCSIDriver;
+  final pulumi.Input<ManagedClusterStorageProfileDiskCSIDriver?>? diskCSIDriver;
   /// AzureFile CSI Driver settings for the storage profile.
-  final pulumi.Input<ManagedClusterStorageProfileFileCSIDriver>? fileCSIDriver;
+  final pulumi.Input<ManagedClusterStorageProfileFileCSIDriver?>? fileCSIDriver;
   /// Snapshot Controller settings for the storage profile.
-  final pulumi.Input<ManagedClusterStorageProfileSnapshotController>? snapshotController;
+  final pulumi.Input<ManagedClusterStorageProfileSnapshotController?>? snapshotController;
 
   /// Creates a new [ManagedClusterStorageProfile].
   /// [blobCSIDriver] AzureBlob CSI Driver settings for the storage profile.

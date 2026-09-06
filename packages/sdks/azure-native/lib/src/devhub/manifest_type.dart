@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Determines the type of manifests within the repository.
-enum ManifestType {
+enum ManifestType implements pulumi.PulumiEnum<String> {
   valueHelm("helm"),
   valueKube("kube");
 
   const ManifestType(this.wireValue);
+  @override
   final String wireValue;
 
   static ManifestType fromValue(String value) {

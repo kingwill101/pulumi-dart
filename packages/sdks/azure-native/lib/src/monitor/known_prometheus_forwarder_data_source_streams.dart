@@ -1,7 +1,10 @@
-enum KnownPrometheusForwarderDataSourceStreams {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum KnownPrometheusForwarderDataSourceStreams implements pulumi.PulumiEnum<String> {
   valueMicrosoftPrometheusMetrics("Microsoft-PrometheusMetrics");
 
   const KnownPrometheusForwarderDataSourceStreams(this.wireValue);
+  @override
   final String wireValue;
 
   static KnownPrometheusForwarderDataSourceStreams fromValue(String value) {

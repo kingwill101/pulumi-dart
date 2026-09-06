@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of InstanceMetadataTagsStateEnumValue
 class InstanceMetadataTagsStateEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [InstanceMetadataTagsStateEnumValueResponse].
   /// [value] Property value

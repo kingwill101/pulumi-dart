@@ -8,9 +8,9 @@ class DiskEncryptionSetResourceSettingsResponse {
   /// Expected value is 'Microsoft.Compute/diskEncryptionSets'.
   final pulumi.Input<String> resourceType;
   /// Gets or sets the target resource group name.
-  final pulumi.Input<String>? targetResourceGroupName;
+  final pulumi.Input<String?>? targetResourceGroupName;
   /// Gets or sets the target Resource name.
-  final pulumi.Input<String>? targetResourceName;
+  final pulumi.Input<String?>? targetResourceName;
 
   /// Creates a new [DiskEncryptionSetResourceSettingsResponse].
   /// [resourceType] The resource type. For example, the value can be Microsoft.Compute/virtualMachines.

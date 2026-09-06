@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// System assigned managed identity properties
 class RegistryEndpointSystemAssignedManagedIdentitySettingsResponse {
   /// Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
-  final pulumi.Input<String>? audience;
+  final pulumi.Input<String?>? audience;
 
   /// Creates a new [RegistryEndpointSystemAssignedManagedIdentitySettingsResponse].
   /// [audience] Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.

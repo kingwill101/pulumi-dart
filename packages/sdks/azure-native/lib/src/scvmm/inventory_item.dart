@@ -203,4 +203,25 @@ class InventoryItem extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');
   }
+
+  /// Creates a typed reference to an existing [InventoryItem] resource.
+  InventoryItem.reference(String urn)
+    : super(
+        'azure-native:scvmm:InventoryItem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    inventoryItemName = registerOutput<String>('inventoryItemName');
+    inventoryType = registerOutput<String>('inventoryType');
+    kind = registerOutput<String?>('kind');
+    managedResourceId = registerOutput<String>('managedResourceId');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String>('uuid');
+  }
 }

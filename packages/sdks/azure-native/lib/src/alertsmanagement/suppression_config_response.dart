@@ -8,7 +8,7 @@ class SuppressionConfigResponse {
   /// Specifies when the suppression should be applied
   final pulumi.Input<String> recurrenceType;
   /// suppression schedule configuration
-  final pulumi.Input<SuppressionScheduleResponse>? schedule;
+  final pulumi.Input<SuppressionScheduleResponse?>? schedule;
 
   /// Creates a new [SuppressionConfigResponse].
   /// [recurrenceType] Specifies when the suppression should be applied

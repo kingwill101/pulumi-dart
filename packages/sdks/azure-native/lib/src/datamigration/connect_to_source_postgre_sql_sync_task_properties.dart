@@ -6,9 +6,9 @@ import 'connect_to_source_postgre_sql_sync_task_input.dart';
 /// Properties for the task that validates connection to PostgreSQL server and source server requirements for online migration
 class ConnectToSourcePostgreSqlSyncTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// Task input
-  final pulumi.Input<ConnectToSourcePostgreSqlSyncTaskInput>? input;
+  final pulumi.Input<ConnectToSourcePostgreSqlSyncTaskInput?>? input;
   /// Task type.
   /// Expected value is 'ConnectToSource.PostgreSql.Sync'.
   final pulumi.Input<String> taskType;

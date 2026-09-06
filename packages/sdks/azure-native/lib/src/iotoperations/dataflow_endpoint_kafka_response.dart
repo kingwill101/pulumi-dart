@@ -10,23 +10,23 @@ class DataflowEndpointKafkaResponse {
   /// Authentication configuration. NOTE - only authentication property is allowed per entry.
   final pulumi.Input<DataflowEndpointKafkaAuthenticationResponse> authentication;
   /// Batching configuration.
-  final pulumi.Input<DataflowEndpointKafkaBatchingResponse>? batching;
+  final pulumi.Input<DataflowEndpointKafkaBatchingResponse?>? batching;
   /// Cloud event mapping config.
-  final pulumi.Input<String>? cloudEventAttributes;
+  final pulumi.Input<String?>? cloudEventAttributes;
   /// Compression. Can be none, gzip, lz4, or snappy. No effect if the endpoint is used as a source.
-  final pulumi.Input<String>? compression;
+  final pulumi.Input<String?>? compression;
   /// Consumer group ID.
-  final pulumi.Input<String>? consumerGroupId;
+  final pulumi.Input<String?>? consumerGroupId;
   /// Copy Broker properties. No effect if the endpoint is used as a source or if the dataflow doesn't have an Broker source.
-  final pulumi.Input<String>? copyMqttProperties;
+  final pulumi.Input<String?>? copyMqttProperties;
   /// Kafka endpoint host.
   final pulumi.Input<String> host;
   /// Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
-  final pulumi.Input<String>? kafkaAcks;
+  final pulumi.Input<String?>? kafkaAcks;
   /// Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source.
-  final pulumi.Input<String>? partitionStrategy;
+  final pulumi.Input<String?>? partitionStrategy;
   /// TLS configuration.
-  final pulumi.Input<TlsPropertiesResponse>? tls;
+  final pulumi.Input<TlsPropertiesResponse?>? tls;
 
   /// Creates a new [DataflowEndpointKafkaResponse].
   /// [authentication] Authentication configuration. NOTE - only authentication property is allowed per entry.
@@ -39,18 +39,18 @@ class DataflowEndpointKafkaResponse {
   /// [kafkaAcks] Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
   /// [partitionStrategy] Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source.
   /// [tls] TLS configuration.
-  const DataflowEndpointKafkaResponse({
+  DataflowEndpointKafkaResponse({
     required this.authentication,
     this.batching,
     this.cloudEventAttributes,
-    this.compression,
+    pulumi.Input<String?>? compression,
     this.consumerGroupId,
-    this.copyMqttProperties,
+    pulumi.Input<String?>? copyMqttProperties,
     required this.host,
-    this.kafkaAcks,
-    this.partitionStrategy,
+    pulumi.Input<String?>? kafkaAcks,
+    pulumi.Input<String?>? partitionStrategy,
     this.tls,
-  });
+  }) : compression = compression ?? pulumi.Input.fromValue('None'), copyMqttProperties = copyMqttProperties ?? pulumi.Input.fromValue('Enabled'), kafkaAcks = kafkaAcks ?? pulumi.Input.fromValue('All'), partitionStrategy = partitionStrategy ?? pulumi.Input.fromValue('Default');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'aggregate_function_properties.dart';
 
 /// {@template pulumi_streamanalytics_function_args_doc}
 /// The set of arguments for Function.
@@ -9,13 +8,13 @@ import 'aggregate_function_properties.dart';
 /// {@macro pulumi_streamanalytics_function_args_doc}
 class FunctionArgs {
   /// The name of the function.
-  final pulumi.Input<String>? functionName;
+  final pulumi.Input<String?>? functionName;
   /// The name of the streaming job.
   final pulumi.Input<String> jobName;
   /// Resource name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The properties that are associated with a function.
-  final pulumi.Input<AggregateFunctionProperties>? properties;
+  final pulumi.Input<dynamic>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,7 +37,7 @@ class FunctionArgs {
       'functionName': ?functionName,
       'jobName': jobName,
       'name': ?name,
-      'properties': ?pulumi.Input.mapOptionalInputValue<AggregateFunctionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': ?properties,
       'resourceGroupName': resourceGroupName,
     };
   }
@@ -48,7 +47,7 @@ class FunctionArgs {
       functionName: (() { final guardedValue = map['functionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       jobName: pulumi.Input.fromValue(map['jobName'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AggregateFunctionProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }

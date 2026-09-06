@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Deny assignment permissions.
 class DenyAssignmentPermissionResponse {
   /// Actions to which the deny assignment does not grant access.
-  final pulumi.Input<List<String>>? actions;
+  final pulumi.Input<List<String>?>? actions;
   /// The conditions on the Deny assignment permission. This limits the resources it applies to.
-  final pulumi.Input<String>? condition;
+  final pulumi.Input<String?>? condition;
   /// Version of the condition.
-  final pulumi.Input<String>? conditionVersion;
+  final pulumi.Input<String?>? conditionVersion;
   /// Data actions to which the deny assignment does not grant access.
-  final pulumi.Input<List<String>>? dataActions;
+  final pulumi.Input<List<String>?>? dataActions;
   /// Actions to exclude from that the deny assignment does not grant access.
-  final pulumi.Input<List<String>>? notActions;
+  final pulumi.Input<List<String>?>? notActions;
   /// Data actions to exclude from that the deny assignment does not grant access.
-  final pulumi.Input<List<String>>? notDataActions;
+  final pulumi.Input<List<String>?>? notDataActions;
 
   /// Creates a new [DenyAssignmentPermissionResponse].
   /// [actions] Actions to which the deny assignment does not grant access.

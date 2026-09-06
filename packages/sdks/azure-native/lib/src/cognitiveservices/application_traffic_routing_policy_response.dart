@@ -6,9 +6,9 @@ import 'traffic_routing_rule_response.dart';
 /// Type representing an application traffic policy as a property of an agentic application.
 class ApplicationTrafficRoutingPolicyResponse {
   /// Methodology used to route traffic to the application's deployments.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Gets or sets the collection of traffic routing rules.
-  final pulumi.Input<List<TrafficRoutingRuleResponse>>? rules;
+  final pulumi.Input<List<TrafficRoutingRuleResponse>?>? rules;
 
   /// Creates a new [ApplicationTrafficRoutingPolicyResponse].
   /// [protocol] Methodology used to route traffic to the application's deployments.

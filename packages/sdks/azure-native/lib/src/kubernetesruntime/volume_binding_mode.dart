@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Binding mode of volumes: Immediate, WaitForFirstConsumer
-enum VolumeBindingMode {
+enum VolumeBindingMode implements pulumi.PulumiEnum<String> {
   immediate("Immediate"),
   waitForFirstConsumer("WaitForFirstConsumer");
 
   const VolumeBindingMode(this.wireValue);
+  @override
   final String wireValue;
 
   static VolumeBindingMode fromValue(String value) {

@@ -712,11 +712,33 @@ class DaprSubscription extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     bulkSubscribe = registerOutput<DaprSubscriptionBulkSubscribeOptionsResponse?>('bulkSubscribe', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DaprSubscriptionBulkSubscribeOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deadLetterTopic = registerOutput<String?>('deadLetterTopic');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     pubsubName = registerOutput<String?>('pubsubName');
     routes = registerOutput<DaprSubscriptionRoutesResponse?>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DaprSubscriptionRoutesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    scopes = registerOutput<List<String>?>('scopes');
+    scopes = registerOutput<List<String>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    topic = registerOutput<String?>('topic');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DaprSubscription] resource.
+  DaprSubscription.reference(String urn)
+    : super(
+        'azure-native:app:DaprSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bulkSubscribe = registerOutput<DaprSubscriptionBulkSubscribeOptionsResponse?>('bulkSubscribe', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DaprSubscriptionBulkSubscribeOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deadLetterTopic = registerOutput<String?>('deadLetterTopic');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    pubsubName = registerOutput<String?>('pubsubName');
+    routes = registerOutput<DaprSubscriptionRoutesResponse?>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DaprSubscriptionRoutesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scopes = registerOutput<List<String>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     topic = registerOutput<String?>('topic');
     type = registerOutput<String>('type');

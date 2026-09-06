@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of StatefulRuleOptions
 class StatefulRuleOptionsResponse {
   /// Property ruleOrder
-  final pulumi.Input<String>? ruleOrder;
+  final pulumi.Input<String?>? ruleOrder;
 
   /// Creates a new [StatefulRuleOptionsResponse].
   /// [ruleOrder] Property ruleOrder

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resource tag input.
 class UserCreatedResourceTag {
   /// The tag name. Please read for more information: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources#limitations
-  final pulumi.Input<String>? tagName;
+  final pulumi.Input<String?>? tagName;
   /// The tag value. Please read her for more information: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources#limitations
-  final pulumi.Input<String>? tagValue;
+  final pulumi.Input<String?>? tagValue;
 
   /// Creates a new [UserCreatedResourceTag].
   /// [tagName] The tag name. Please read for more information: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources#limitations

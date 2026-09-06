@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'hci_collect_log_job_properties.dart';
 
 /// {@template pulumi_azurestackhci_hci_edge_device_job_args_doc}
 /// The set of arguments for HciEdgeDeviceJob.
@@ -11,12 +10,12 @@ class HciEdgeDeviceJobArgs {
   /// The name of the EdgeDevice
   final pulumi.Input<String> edgeDeviceName;
   /// Name of EdgeDevice Job
-  final pulumi.Input<String>? jobsName;
+  final pulumi.Input<String?>? jobsName;
   /// Edge device kind.
   /// Expected value is 'HCI'.
   final pulumi.Input<String> kind;
   /// HCI Edge device job properties
-  final pulumi.Input<HciCollectLogJobProperties> properties;
+  final pulumi.Input<dynamic> properties;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 
@@ -39,7 +38,7 @@ class HciEdgeDeviceJobArgs {
       'edgeDeviceName': edgeDeviceName,
       'jobsName': ?jobsName,
       'kind': kind,
-      'properties': pulumi.Input.mapInputValue<HciCollectLogJobProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': properties,
       'resourceUri': resourceUri,
     };
   }
@@ -49,7 +48,7 @@ class HciEdgeDeviceJobArgs {
       edgeDeviceName: pulumi.Input.fromValue(map['edgeDeviceName'] as String),
       jobsName: (() { final guardedValue = map['jobsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      properties: pulumi.Input.fromValue(HciCollectLogJobProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.fromValue(map['properties']),
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
     );
   }

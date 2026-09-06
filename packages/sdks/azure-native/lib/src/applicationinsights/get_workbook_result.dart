@@ -6,43 +6,43 @@ import 'workbook_resource_identity_response.dart';
 /// Result data returned by getWorkbook.
 class GetWorkbookResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Workbook category, as defined by the user at creation time.
-  final String category;
+  final String? category;
   /// The description of the workbook.
   final String? description;
   /// The user-defined name (display name) of the workbook.
-  final String displayName;
+  final String? displayName;
   /// Resource etag
   final String? etag;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Identity used for BYOS
   final WorkbookResourceIdentityResponse? identity;
   /// The kind of workbook. Only valid value is shared.
   final String? kind;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The unique revision id for this workbook definition
-  final String revision;
+  final String? revision;
   /// Configuration of this particular workbook. Configuration data is a string containing valid JSON
-  final String serializedData;
+  final String? serializedData;
   /// ResourceId for a source resource.
   final String? sourceId;
   /// The resourceId to the storage account when bring your own storage is used
   final String? storageUri;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Date and time in UTC of the last modification that was made to this workbook definition.
-  final String timeModified;
+  final String? timeModified;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Unique user id of the specific user that owns this workbook.
-  final String userId;
+  final String? userId;
   /// Workbook schema version format, like 'Notebook/1.0', which should match the workbook in serializedData
   final String? version;
 
@@ -68,74 +68,74 @@ class GetWorkbookResult {
   /// [userId] Unique user id of the specific user that owns this workbook.
   /// [version] Workbook schema version format, like 'Notebook/1.0', which should match the workbook in serializedData
   const GetWorkbookResult({
-    required this.azureApiVersion,
-    required this.category,
+    this.azureApiVersion,
+    this.category,
     this.description,
-    required this.displayName,
+    this.displayName,
     this.etag,
-    required this.id,
+    this.id,
     this.identity,
     this.kind,
-    required this.location,
-    required this.name,
-    required this.revision,
-    required this.serializedData,
+    this.location,
+    this.name,
+    this.revision,
+    this.serializedData,
     this.sourceId,
     this.storageUri,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.timeModified,
-    required this.type,
-    required this.userId,
+    this.timeModified,
+    this.type,
+    this.userId,
     this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'category': category,
+      'azureApiVersion': ?azureApiVersion,
+      'category': ?category,
       'description': ?description,
-      'displayName': displayName,
+      'displayName': ?displayName,
       'etag': ?etag,
-      'id': id,
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'kind': ?kind,
-      'location': location,
-      'name': name,
-      'revision': revision,
-      'serializedData': serializedData,
+      'location': ?location,
+      'name': ?name,
+      'revision': ?revision,
+      'serializedData': ?serializedData,
       'sourceId': ?sourceId,
       'storageUri': ?storageUri,
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'timeModified': timeModified,
-      'type': type,
-      'userId': userId,
+      'timeModified': ?timeModified,
+      'type': ?type,
+      'userId': ?userId,
       'version': ?version,
     };
   }
 
   factory GetWorkbookResult.fromMap(Map<String, dynamic> map) {
     return GetWorkbookResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      category: map['category'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      displayName: map['displayName'] as String,
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return WorkbookResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      revision: map['revision'] as String,
-      serializedData: map['serializedData'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serializedData: (() { final guardedValue = map['serializedData']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sourceId: (() { final guardedValue = map['sourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storageUri: (() { final guardedValue = map['storageUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      timeModified: map['timeModified'] as String,
-      type: map['type'] as String,
-      userId: map['userId'] as String,
+      timeModified: (() { final guardedValue = map['timeModified']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userId: (() { final guardedValue = map['userId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

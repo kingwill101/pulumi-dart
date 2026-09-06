@@ -1,6 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
+import 'network_interface_response.dart';
+import 'resource_status_response.dart';
 import 'system_data_response.dart';
+import 'virtual_disk_response.dart';
 import 'virtual_machine_template_args.dart';
 
 /// Define the virtualMachineTemplate.
@@ -199,7 +202,7 @@ class VirtualMachineTemplate extends pulumi.CustomResource {
   /// Gets the name of the corresponding resource in Kubernetes.
   late final pulumi.Output<String> customResourceName;
   /// Gets or sets the disks the template.
-  late final pulumi.Output<List<Map<String, dynamic>>> disks;
+  late final pulumi.Output<List<VirtualDiskResponse>> disks;
   /// Gets or sets the extended location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
   /// Firmware type
@@ -222,7 +225,7 @@ class VirtualMachineTemplate extends pulumi.CustomResource {
   /// Gets or sets the name.
   late final pulumi.Output<String> name;
   /// Gets or sets the network interfaces of the template.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
+  late final pulumi.Output<List<NetworkInterfaceResponse>> networkInterfaces;
   /// Gets or sets the number of vCPUs for the template.
   late final pulumi.Output<int> numCPUs;
   /// Gets or sets the number of cores per socket for the template.
@@ -235,7 +238,7 @@ class VirtualMachineTemplate extends pulumi.CustomResource {
   /// Gets the provisioning state.
   late final pulumi.Output<String> provisioningState;
   /// The resource status information.
-  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+  late final pulumi.Output<List<ResourceStatusResponse>> statuses;
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Gets or sets the Resource tags.
@@ -267,7 +270,7 @@ class VirtualMachineTemplate extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     customResourceName = registerOutput<String>('customResourceName');
-    disks = registerOutput<List<Map<String, dynamic>>>('disks');
+    disks = registerOutput<List<VirtualDiskResponse>>('disks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualDiskResponse>(guardedValue, (value) => VirtualDiskResponse.fromMap((value as Map).cast<String, dynamic>())); });
     extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     firmwareType = registerOutput<String>('firmwareType');
     folderPath = registerOutput<String>('folderPath');
@@ -278,15 +281,53 @@ class VirtualMachineTemplate extends pulumi.CustomResource {
     moName = registerOutput<String>('moName');
     moRefId = registerOutput<String?>('moRefId');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
+    networkInterfaces = registerOutput<List<NetworkInterfaceResponse>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceResponse>(guardedValue, (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     numCPUs = registerOutput<int>('numCPUs');
     numCoresPerSocket = registerOutput<int>('numCoresPerSocket');
     osName = registerOutput<String>('osName');
     osType = registerOutput<String>('osType');
     provisioningState = registerOutput<String>('provisioningState');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<ResourceStatusResponse>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceStatusResponse>(guardedValue, (value) => ResourceStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    toolsVersion = registerOutput<String>('toolsVersion');
+    toolsVersionStatus = registerOutput<String>('toolsVersionStatus');
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String>('uuid');
+    vCenterId = registerOutput<String?>('vCenterId');
+  }
+
+  /// Creates a typed reference to an existing [VirtualMachineTemplate] resource.
+  VirtualMachineTemplate.reference(String urn)
+    : super(
+        'azure-native:connectedvmwarevsphere:VirtualMachineTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customResourceName = registerOutput<String>('customResourceName');
+    disks = registerOutput<List<VirtualDiskResponse>>('disks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualDiskResponse>(guardedValue, (value) => VirtualDiskResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    firmwareType = registerOutput<String>('firmwareType');
+    folderPath = registerOutput<String>('folderPath');
+    inventoryItemId = registerOutput<String?>('inventoryItemId');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    memorySizeMB = registerOutput<int>('memorySizeMB');
+    moName = registerOutput<String>('moName');
+    moRefId = registerOutput<String?>('moRefId');
+    this.name = registerOutput<String>('name');
+    networkInterfaces = registerOutput<List<NetworkInterfaceResponse>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceResponse>(guardedValue, (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    numCPUs = registerOutput<int>('numCPUs');
+    numCoresPerSocket = registerOutput<int>('numCoresPerSocket');
+    osName = registerOutput<String>('osName');
+    osType = registerOutput<String>('osType');
+    provisioningState = registerOutput<String>('provisioningState');
+    statuses = registerOutput<List<ResourceStatusResponse>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceStatusResponse>(guardedValue, (value) => ResourceStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     toolsVersion = registerOutput<String>('toolsVersion');
     toolsVersionStatus = registerOutput<String>('toolsVersionStatus');
     type = registerOutput<String>('type');

@@ -6,12 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class License {
   /// SPDX license information for the API. The identifier field is mutually
   /// exclusive of the URL field.
-  final pulumi.Input<String>? identifier;
+  final pulumi.Input<String?>? identifier;
   /// Name of the license.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// URL pointing to the license details. The URL field is mutually exclusive of the
   /// identifier field.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [License].
   /// [identifier] SPDX license information for the API. The identifier field is mutually

@@ -4,7 +4,7 @@
 /// Result data returned by getOfferAccessToken.
 class GetOfferAccessTokenResult {
   /// The access token.
-  final String accessToken;
+  final String? accessToken;
   /// The disk id.
   final String? diskId;
   /// The access token creation status.
@@ -15,14 +15,14 @@ class GetOfferAccessTokenResult {
   /// [diskId] The disk id.
   /// [status] The access token creation status.
   const GetOfferAccessTokenResult({
-    required this.accessToken,
+    this.accessToken,
     this.diskId,
     this.status,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessToken': accessToken,
+      'accessToken': ?accessToken,
       'diskId': ?diskId,
       'status': ?status,
     };
@@ -30,7 +30,7 @@ class GetOfferAccessTokenResult {
 
   factory GetOfferAccessTokenResult.fromMap(Map<String, dynamic> map) {
     return GetOfferAccessTokenResult(
-      accessToken: map['accessToken'] as String,
+      accessToken: (() { final guardedValue = map['accessToken']; if (guardedValue == null) return null; return guardedValue as String; })(),
       diskId: (() { final guardedValue = map['diskId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

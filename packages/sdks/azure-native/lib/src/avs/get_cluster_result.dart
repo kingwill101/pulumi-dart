@@ -6,25 +6,25 @@ import 'system_data_response.dart';
 /// Result data returned by getCluster.
 class GetClusterResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The identity
-  final int clusterId;
+  final int? clusterId;
   /// The cluster size
   final int? clusterSize;
   /// The hosts
   final List<String>? hosts;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The state of the cluster provisioning
-  final String provisioningState;
+  final String? provisioningState;
   /// The SKU (Stock Keeping Unit) assigned to this resource.
-  final SkuResponse sku;
+  final SkuResponse? sku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Name of the vsan datastore associated with the cluster
   final String? vsanDatastoreName;
 
@@ -41,47 +41,47 @@ class GetClusterResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [vsanDatastoreName] Name of the vsan datastore associated with the cluster
   const GetClusterResult({
-    required this.azureApiVersion,
-    required this.clusterId,
+    this.azureApiVersion,
+    this.clusterId,
     this.clusterSize,
     this.hosts,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
-    required this.sku,
-    required this.systemData,
-    required this.type,
+    this.id,
+    this.name,
+    this.provisioningState,
+    this.sku,
+    this.systemData,
+    this.type,
     this.vsanDatastoreName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'clusterId': clusterId,
+      'azureApiVersion': ?azureApiVersion,
+      'clusterId': ?clusterId,
       'clusterSize': ?clusterSize,
       'hosts': ?hosts,
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
-      'sku': sku.toMap(),
-      'systemData': systemData.toMap(),
-      'type': type,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'sku': ?sku?.toMap(),
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
       'vsanDatastoreName': ?vsanDatastoreName,
     };
   }
 
   factory GetClusterResult.fromMap(Map<String, dynamic> map) {
     return GetClusterResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      clusterId: map['clusterId'] as int,
-      clusterSize: (() { final guardedValue = map['clusterSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      clusterId: (() { final guardedValue = map['clusterId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      clusterSize: (() { final guardedValue = map['clusterSize']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       hosts: (() { final guardedValue = map['hosts']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      sku: SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       vsanDatastoreName: (() { final guardedValue = map['vsanDatastoreName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

@@ -11,17 +11,17 @@ class SuppressionListArgs {
   final pulumi.Input<String> domainName;
   /// The name of the EmailService resource.
   final pulumi.Input<String> emailServiceName;
-  /// The the name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
-  final pulumi.Input<String>? listName;
+  /// The name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
+  final pulumi.Input<String?>? listName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the suppression list.
-  final pulumi.Input<String>? suppressionListName;
+  final pulumi.Input<String?>? suppressionListName;
 
   /// Creates a new [SuppressionListArgs].
   /// [domainName] The name of the Domains resource.
   /// [emailServiceName] The name of the EmailService resource.
-  /// [listName] The the name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
+  /// [listName] The name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [suppressionListName] The name of the suppression list.
   const SuppressionListArgs({

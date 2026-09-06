@@ -7,11 +7,11 @@ class LoggingRule {
   /// The action.
   final pulumi.Input<String> action;
   /// The detail level.
-  final pulumi.Input<String> detailLevel;
+  final pulumi.Input<dynamic> detailLevel;
   /// The direction.
-  final pulumi.Input<String> direction;
+  final pulumi.Input<dynamic> direction;
   /// The hidden property paths.
-  final pulumi.Input<LoggingRuleHiddenPropertyPaths>? hiddenPropertyPaths;
+  final pulumi.Input<LoggingRuleHiddenPropertyPaths?>? hiddenPropertyPaths;
 
   /// Creates a new [LoggingRule].
   /// [action] The action.
@@ -37,8 +37,8 @@ class LoggingRule {
   factory LoggingRule.fromMap(Map<String, dynamic> map) {
     return LoggingRule(
       action: pulumi.Input.fromValue(map['action'] as String),
-      detailLevel: pulumi.Input.fromValue(map['detailLevel'] as String),
-      direction: pulumi.Input.fromValue(map['direction'] as String),
+      detailLevel: pulumi.Input.fromValue(map['detailLevel']),
+      direction: pulumi.Input.fromValue(map['direction']),
       hiddenPropertyPaths: (() { final guardedValue = map['hiddenPropertyPaths']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoggingRuleHiddenPropertyPaths.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -19,70 +19,70 @@ import 'storage_mount.dart';
 class AppServicePlanArgs {
   /// If &lt;code&gt;true&lt;/code&gt;, this App Service Plan will attempt to scale asynchronously if there are insufficient workers to scale synchronously.
   /// If &lt;code&gt;false&lt;/code&gt;, this App Service Plan will only attempt sync scaling.
-  final pulumi.Input<bool>? asyncScalingEnabled;
+  final pulumi.Input<bool?>? asyncScalingEnabled;
   /// ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku
-  final pulumi.Input<bool>? elasticScaleEnabled;
+  final pulumi.Input<bool?>? elasticScaleEnabled;
   /// Extended Location.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// The time when the server farm free offer expires.
-  final pulumi.Input<String>? freeOfferExpirationTime;
+  final pulumi.Input<String?>? freeOfferExpirationTime;
   /// Specification for the App Service Environment to use for the App Service plan.
-  final pulumi.Input<HostingEnvironmentProfile>? hostingEnvironmentProfile;
+  final pulumi.Input<HostingEnvironmentProfile?>? hostingEnvironmentProfile;
   /// If Hyper-V container app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
-  final pulumi.Input<bool>? hyperV;
+  final pulumi.Input<bool?>? hyperV;
   /// Managed service identity.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// Install scripts associated with this App Service plan.
-  final pulumi.Input<List<InstallScript>>? installScripts;
+  final pulumi.Input<List<InstallScript>?>? installScripts;
   /// Whether this server farm is in custom mode.
-  final pulumi.Input<bool>? isCustomMode;
+  final pulumi.Input<bool?>? isCustomMode;
   /// If &lt;code&gt;true&lt;/code&gt;, this App Service Plan owns spot instances.
-  final pulumi.Input<bool>? isSpot;
+  final pulumi.Input<bool?>? isSpot;
   /// Obsolete: If Hyper-V container app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
-  final pulumi.Input<bool>? isXenon;
+  final pulumi.Input<bool?>? isXenon;
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Specification for the Kubernetes Environment to use for the App Service plan.
-  final pulumi.Input<KubeEnvironmentProfile>? kubeEnvironmentProfile;
+  final pulumi.Input<KubeEnvironmentProfile?>? kubeEnvironmentProfile;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
-  final pulumi.Input<int>? maximumElasticWorkerCount;
+  final pulumi.Input<int?>? maximumElasticWorkerCount;
   /// Name of the App Service plan.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// All network settings for the server farm.
-  final pulumi.Input<ServerFarmNetworkSettings>? network;
+  final pulumi.Input<ServerFarmNetworkSettings?>? network;
   /// If &lt;code&gt;true&lt;/code&gt;, apps assigned to this App Service plan can be scaled independently.
   /// If &lt;code&gt;false&lt;/code&gt;, apps assigned to this App Service plan will scale to all instances of the plan.
-  final pulumi.Input<bool>? perSiteScaling;
+  final pulumi.Input<bool?>? perSiteScaling;
   /// Identity to use by platform for various features and integrations using managed identity.
-  final pulumi.Input<DefaultIdentity>? planDefaultIdentity;
+  final pulumi.Input<DefaultIdentity?>? planDefaultIdentity;
   /// If &lt;code&gt;true&lt;/code&gt;, RDP access is enabled for this App Service plan. Only applicable for IsCustomMode ASPs.
   /// If &lt;code&gt;false&lt;/code&gt;, RDP access is disabled.
-  final pulumi.Input<bool>? rdpEnabled;
+  final pulumi.Input<bool?>? rdpEnabled;
   /// Registry adapters associated with this App Service plan.
-  final pulumi.Input<List<RegistryAdapter>>? registryAdapters;
+  final pulumi.Input<List<RegistryAdapter>?>? registryAdapters;
   /// If Linux app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
-  final pulumi.Input<bool>? reserved;
+  final pulumi.Input<bool?>? reserved;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Description of a SKU for a scalable resource.
-  final pulumi.Input<SkuDescription>? sku;
+  final pulumi.Input<SkuDescription?>? sku;
   /// The time when the server farm expires. Valid only if it is a spot server farm.
-  final pulumi.Input<String>? spotExpirationTime;
+  final pulumi.Input<String?>? spotExpirationTime;
   /// Storage mounts associated with this App Service plan.
-  final pulumi.Input<List<StorageMount>>? storageMounts;
+  final pulumi.Input<List<StorageMount>?>? storageMounts;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Scaling worker count.
-  final pulumi.Input<int>? targetWorkerCount;
+  final pulumi.Input<int?>? targetWorkerCount;
   /// Scaling worker size ID.
-  final pulumi.Input<int>? targetWorkerSizeId;
+  final pulumi.Input<int?>? targetWorkerSizeId;
   /// Target worker tier assigned to the App Service plan.
-  final pulumi.Input<String>? workerTierName;
+  final pulumi.Input<String?>? workerTierName;
   /// If &lt;code&gt;true&lt;/code&gt;, this App Service Plan will perform availability zone balancing.
   /// If &lt;code&gt;false&lt;/code&gt;, this App Service Plan will not perform availability zone balancing.
-  final pulumi.Input<bool>? zoneRedundant;
+  final pulumi.Input<bool?>? zoneRedundant;
 
   /// Creates a new [AppServicePlanArgs].
   /// [asyncScalingEnabled] If &lt;code&gt;true&lt;/code&gt;, this App Service Plan will attempt to scale asynchronously if there are insufficient workers to scale synchronously.
@@ -202,7 +202,7 @@ class AppServicePlanArgs {
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kubeEnvironmentProfile: (() { final guardedValue = map['kubeEnvironmentProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KubeEnvironmentProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maximumElasticWorkerCount: (() { final guardedValue = map['maximumElasticWorkerCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maximumElasticWorkerCount: (() { final guardedValue = map['maximumElasticWorkerCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServerFarmNetworkSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       perSiteScaling: (() { final guardedValue = map['perSiteScaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -215,8 +215,8 @@ class AppServicePlanArgs {
       spotExpirationTime: (() { final guardedValue = map['spotExpirationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageMounts: (() { final guardedValue = map['storageMounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<StorageMount>(guardedValue, (value) => StorageMount.fromMap((value as Map).cast<String, dynamic>()))); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      targetWorkerCount: (() { final guardedValue = map['targetWorkerCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      targetWorkerSizeId: (() { final guardedValue = map['targetWorkerSizeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetWorkerCount: (() { final guardedValue = map['targetWorkerCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      targetWorkerSizeId: (() { final guardedValue = map['targetWorkerSizeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       workerTierName: (() { final guardedValue = map['workerTierName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zoneRedundant: (() { final guardedValue = map['zoneRedundant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

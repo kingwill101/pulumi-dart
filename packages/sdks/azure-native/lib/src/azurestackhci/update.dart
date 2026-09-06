@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'system_data_response.dart';
 import 'update_args.dart';
+import 'update_prerequisite_response.dart';
 
 /// Update details
 ///
@@ -318,7 +319,7 @@ class Update extends pulumi.CustomResource {
   /// Customer-visible type of the update.
   late final pulumi.Output<String?> packageType;
   /// If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty.
-  late final pulumi.Output<List<Map<String, dynamic>>?> prerequisites;
+  late final pulumi.Output<List<UpdatePrerequisiteResponse>?> prerequisites;
   /// Progress percentage of ongoing operation. Currently this property is only valid when the update is in the Downloading state, where it maps to how much of the update content has been downloaded.
   late final pulumi.Output<double?> progressPercentage;
   /// Provisioning state of the Updates proxy resource.
@@ -364,7 +365,41 @@ class Update extends pulumi.CustomResource {
     packagePath = registerOutput<String?>('packagePath');
     packageSizeInMb = registerOutput<double?>('packageSizeInMb');
     packageType = registerOutput<String?>('packageType');
-    prerequisites = registerOutput<List<Map<String, dynamic>>?>('prerequisites');
+    prerequisites = registerOutput<List<UpdatePrerequisiteResponse>?>('prerequisites', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UpdatePrerequisiteResponse>(guardedValue, (value) => UpdatePrerequisiteResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    progressPercentage = registerOutput<double?>('progressPercentage');
+    provisioningState = registerOutput<String>('provisioningState');
+    publisher = registerOutput<String?>('publisher');
+    releaseLink = registerOutput<String?>('releaseLink');
+    state = registerOutput<String?>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [Update] resource.
+  Update.reference(String urn)
+    : super(
+        'azure-native:azurestackhci:Update',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<String?>('additionalProperties');
+    availabilityType = registerOutput<String?>('availabilityType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    healthCheckDate = registerOutput<String?>('healthCheckDate');
+    installedDate = registerOutput<String?>('installedDate');
+    location = registerOutput<String?>('location');
+    minSbeVersionRequired = registerOutput<String?>('minSbeVersionRequired');
+    this.name = registerOutput<String>('name');
+    notifyMessage = registerOutput<String?>('notifyMessage');
+    packagePath = registerOutput<String?>('packagePath');
+    packageSizeInMb = registerOutput<double?>('packageSizeInMb');
+    packageType = registerOutput<String?>('packageType');
+    prerequisites = registerOutput<List<UpdatePrerequisiteResponse>?>('prerequisites', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UpdatePrerequisiteResponse>(guardedValue, (value) => UpdatePrerequisiteResponse.fromMap((value as Map).cast<String, dynamic>())); });
     progressPercentage = registerOutput<double?>('progressPercentage');
     provisioningState = registerOutput<String>('provisioningState');
     publisher = registerOutput<String?>('publisher');

@@ -13,9 +13,9 @@ class EndpointsResponse {
   /// Gets the file endpoint.
   final pulumi.Input<String> file;
   /// Gets the internet routing storage endpoints
-  final pulumi.Input<StorageAccountInternetEndpointsResponse>? internetEndpoints;
+  final pulumi.Input<StorageAccountInternetEndpointsResponse?>? internetEndpoints;
   /// Gets the microsoft routing storage endpoints.
-  final pulumi.Input<StorageAccountMicrosoftEndpointsResponse>? microsoftEndpoints;
+  final pulumi.Input<StorageAccountMicrosoftEndpointsResponse?>? microsoftEndpoints;
   /// Gets the queue endpoint.
   final pulumi.Input<String> queue;
   /// Gets the table endpoint.

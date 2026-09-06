@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Volume relocation properties
 class VolumeRelocationProperties {
   /// Has relocation been requested for this volume
-  final pulumi.Input<bool>? relocationRequested;
+  final pulumi.Input<bool?>? relocationRequested;
 
   /// Creates a new [VolumeRelocationProperties].
   /// [relocationRequested] Has relocation been requested for this volume

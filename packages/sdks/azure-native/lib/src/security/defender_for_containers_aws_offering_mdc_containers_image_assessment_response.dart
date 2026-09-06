@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Microsoft Defender container image assessment configuration
 class DefenderForContainersAwsOfferingMdcContainersImageAssessmentResponse {
   /// The cloud role ARN in AWS for this feature
-  final pulumi.Input<String>? cloudRoleArn;
+  final pulumi.Input<String?>? cloudRoleArn;
   /// Is Microsoft Defender container image assessment enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [DefenderForContainersAwsOfferingMdcContainersImageAssessmentResponse].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature

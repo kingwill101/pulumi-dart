@@ -6,7 +6,7 @@ import 'mcc_cache_node_auto_update_info_response.dart';
 /// Mcc cache node resource auto update history properties.
 class MccCacheNodeAutoUpdateHistoryPropertiesResponse {
   /// Cache node resource auto update history information.
-  final pulumi.Input<List<MccCacheNodeAutoUpdateInfoResponse>>? autoUpdateHistory;
+  final pulumi.Input<List<MccCacheNodeAutoUpdateInfoResponse>?>? autoUpdateHistory;
   /// Mcc cache node resource Id.
   final pulumi.Input<String> cacheNodeId;
   /// Mcc customer resource Id.

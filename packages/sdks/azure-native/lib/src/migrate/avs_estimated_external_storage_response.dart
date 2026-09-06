@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details on the Estimated External Storage for AVS Assessment.
 class AvsEstimatedExternalStorageResponse {
   /// Total monthly cost for type of storage.
-  final pulumi.Input<double>? monthlyPrice;
+  final pulumi.Input<double?>? monthlyPrice;
   /// Recommended External Storage.
-  final pulumi.Input<String>? storageType;
+  final pulumi.Input<String?>? storageType;
   /// Predicted storage utilization.
-  final pulumi.Input<double>? storageUtilization;
+  final pulumi.Input<double?>? storageUtilization;
   /// Predicted total Storage used in GB.
-  final pulumi.Input<double>? totalStorageInGB;
+  final pulumi.Input<double?>? totalStorageInGB;
 
   /// Creates a new [AvsEstimatedExternalStorageResponse].
   /// [monthlyPrice] Total monthly cost for type of storage.
@@ -36,10 +36,10 @@ class AvsEstimatedExternalStorageResponse {
 
   factory AvsEstimatedExternalStorageResponse.fromMap(Map<String, dynamic> map) {
     return AvsEstimatedExternalStorageResponse(
-      monthlyPrice: (() { final guardedValue = map['monthlyPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      monthlyPrice: (() { final guardedValue = map['monthlyPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       storageType: (() { final guardedValue = map['storageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageUtilization: (() { final guardedValue = map['storageUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      totalStorageInGB: (() { final guardedValue = map['totalStorageInGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      storageUtilization: (() { final guardedValue = map['storageUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      totalStorageInGB: (() { final guardedValue = map['totalStorageInGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

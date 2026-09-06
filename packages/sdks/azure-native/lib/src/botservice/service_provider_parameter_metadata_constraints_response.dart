@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// the constraints of the bot meta data.
 class ServiceProviderParameterMetadataConstraintsResponse {
   /// Whether required the constraints of the bot meta data.
-  final pulumi.Input<bool>? required;
+  final pulumi.Input<bool?>? required;
 
   /// Creates a new [ServiceProviderParameterMetadataConstraintsResponse].
   /// [required] Whether required the constraints of the bot meta data.

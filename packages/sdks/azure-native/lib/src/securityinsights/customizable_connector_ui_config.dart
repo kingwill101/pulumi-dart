@@ -11,7 +11,7 @@ import 'instruction_step.dart';
 /// The UiConfig for 'Customizable' connector definition kind.
 class CustomizableConnectorUiConfig {
   /// The exposure status of the connector to the customers.
-  final pulumi.Input<ConnectorDefinitionsAvailability>? availability;
+  final pulumi.Input<ConnectorDefinitionsAvailability?>? availability;
   /// Gets or sets the way the connector checks whether the connector is connected.
   final pulumi.Input<List<ConnectivityCriterion>> connectivityCriteria;
   /// Gets or sets the data types to check for last data received.
@@ -21,14 +21,14 @@ class CustomizableConnectorUiConfig {
   /// Gets or sets the graph queries to show the current data volume over time.
   final pulumi.Input<List<GraphQuery>> graphQueries;
   /// Gets or sets custom connector id. optional field.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Gets or sets the instruction steps to enable the connector.
   final pulumi.Input<List<InstructionStep>> instructionSteps;
   /// Gets or sets a value indicating whether to use 'OR'(SOME) or 'AND' between ConnectivityCriteria items.
-  final pulumi.Input<bool>? isConnectivityCriteriasMatchSome;
+  final pulumi.Input<bool?>? isConnectivityCriteriasMatchSome;
   /// Gets or sets the connector logo to be used when displaying the connector within Azure Sentinel's connector's gallery.
   /// The logo value should be in SVG format.
-  final pulumi.Input<String>? logo;
+  final pulumi.Input<String?>? logo;
   /// The required Permissions for the connector.
   final pulumi.Input<ConnectorDefinitionsPermissions> permissions;
   /// Gets or sets the connector publisher name.

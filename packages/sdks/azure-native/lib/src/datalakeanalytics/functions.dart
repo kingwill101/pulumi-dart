@@ -26,6 +26,17 @@ Future<GetAccountResult> getAccount(
   return GetAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountResult> getAccountOutput(
+  GetAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datalakeanalytics:getAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountResult.fromMap);
+}
+
 /// Gets the specified Data Lake Analytics compute policy.
 ///
 /// Uses Azure REST API version 2019-11-01-preview.
@@ -42,6 +53,17 @@ Future<GetComputePolicyResult> getComputePolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetComputePolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetComputePolicyResult> getComputePolicyOutput(
+  GetComputePolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datalakeanalytics:getComputePolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetComputePolicyResult.fromMap);
 }
 
 /// Gets the specified Data Lake Analytics firewall rule.
@@ -62,6 +84,17 @@ Future<GetFirewallRuleResult> getFirewallRule(
   return GetFirewallRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallRuleResult> getFirewallRuleOutput(
+  GetFirewallRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datalakeanalytics:getFirewallRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallRuleResult.fromMap);
+}
+
 /// Gets the SAS token associated with the specified Data Lake Analytics and Azure Storage account and container combination.
 ///
 /// Uses Azure REST API version 2019-11-01-preview.
@@ -78,4 +111,15 @@ Future<ListStorageAccountSasTokensResult> listStorageAccountSasTokens(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListStorageAccountSasTokensResult.fromMap(result);
+}
+
+pulumi.Output<ListStorageAccountSasTokensResult> listStorageAccountSasTokensOutput(
+  ListStorageAccountSasTokensArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datalakeanalytics:listStorageAccountSasTokens',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListStorageAccountSasTokensResult.fromMap);
 }

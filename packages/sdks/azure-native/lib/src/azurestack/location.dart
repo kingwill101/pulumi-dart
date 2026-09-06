@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Location of the resource.
-enum Location {
+enum Location implements pulumi.PulumiEnum<String> {
   valueGlobal("global");
 
   const Location(this.wireValue);
+  @override
   final String wireValue;
 
   static Location fromValue(String value) {

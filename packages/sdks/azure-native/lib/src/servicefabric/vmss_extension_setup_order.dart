@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Vm extension setup order.
-enum VmssExtensionSetupOrder {
+enum VmssExtensionSetupOrder implements pulumi.PulumiEnum<String> {
   valueBeforeSFRuntime("BeforeSFRuntime");
 
   const VmssExtensionSetupOrder(this.wireValue);
+  @override
   final String wireValue;
 
   static VmssExtensionSetupOrder fromValue(String value) {

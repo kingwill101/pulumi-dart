@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deny_assignment_args.dart';
+import 'deny_assignment_permission_response.dart';
+import 'deny_assignment_principal_response.dart';
 import 'system_data_response.dart';
 
 /// Deny Assignment
@@ -309,15 +311,15 @@ class DenyAssignment extends pulumi.CustomResource {
   /// Determines if the deny assignment applies to child scopes. Default value is false.
   late final pulumi.Output<bool?> doNotApplyToChildScopes;
   /// Array of principals to which the deny assignment does not apply.
-  late final pulumi.Output<List<Map<String, dynamic>>?> excludePrincipals;
+  late final pulumi.Output<List<DenyAssignmentPrincipalResponse>?> excludePrincipals;
   /// Specifies whether this deny assignment was created by Azure and cannot be edited or deleted.
   late final pulumi.Output<bool?> isSystemProtected;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// An array of permissions that are denied by the deny assignment.
-  late final pulumi.Output<List<Map<String, dynamic>>?> permissions;
+  late final pulumi.Output<List<DenyAssignmentPermissionResponse>?> permissions;
   /// Array of principals to which the deny assignment applies.
-  late final pulumi.Output<List<Map<String, dynamic>>?> principals;
+  late final pulumi.Output<List<DenyAssignmentPrincipalResponse>?> principals;
   /// The deny assignment scope.
   late final pulumi.Output<String> scope;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -352,11 +354,41 @@ class DenyAssignment extends pulumi.CustomResource {
     denyAssignmentName = registerOutput<String?>('denyAssignmentName');
     description = registerOutput<String?>('description');
     doNotApplyToChildScopes = registerOutput<bool?>('doNotApplyToChildScopes');
-    excludePrincipals = registerOutput<List<Map<String, dynamic>>?>('excludePrincipals');
+    excludePrincipals = registerOutput<List<DenyAssignmentPrincipalResponse>?>('excludePrincipals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DenyAssignmentPrincipalResponse>(guardedValue, (value) => DenyAssignmentPrincipalResponse.fromMap((value as Map).cast<String, dynamic>())); });
     isSystemProtected = registerOutput<bool?>('isSystemProtected');
     this.name = registerOutput<String>('name');
-    permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
-    principals = registerOutput<List<Map<String, dynamic>>?>('principals');
+    permissions = registerOutput<List<DenyAssignmentPermissionResponse>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DenyAssignmentPermissionResponse>(guardedValue, (value) => DenyAssignmentPermissionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    principals = registerOutput<List<DenyAssignmentPrincipalResponse>?>('principals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DenyAssignmentPrincipalResponse>(guardedValue, (value) => DenyAssignmentPrincipalResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    scope = registerOutput<String>('scope');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    updatedBy = registerOutput<String>('updatedBy');
+    updatedOn = registerOutput<String>('updatedOn');
+  }
+
+  /// Creates a typed reference to an existing [DenyAssignment] resource.
+  DenyAssignment.reference(String urn)
+    : super(
+        'azure-native:authorization:DenyAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    condition = registerOutput<String?>('condition');
+    conditionVersion = registerOutput<String?>('conditionVersion');
+    createdBy = registerOutput<String>('createdBy');
+    createdOn = registerOutput<String>('createdOn');
+    denyAssignmentEffect = registerOutput<String?>('denyAssignmentEffect');
+    denyAssignmentName = registerOutput<String?>('denyAssignmentName');
+    description = registerOutput<String?>('description');
+    doNotApplyToChildScopes = registerOutput<bool?>('doNotApplyToChildScopes');
+    excludePrincipals = registerOutput<List<DenyAssignmentPrincipalResponse>?>('excludePrincipals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DenyAssignmentPrincipalResponse>(guardedValue, (value) => DenyAssignmentPrincipalResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    isSystemProtected = registerOutput<bool?>('isSystemProtected');
+    this.name = registerOutput<String>('name');
+    permissions = registerOutput<List<DenyAssignmentPermissionResponse>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DenyAssignmentPermissionResponse>(guardedValue, (value) => DenyAssignmentPermissionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    principals = registerOutput<List<DenyAssignmentPrincipalResponse>?>('principals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DenyAssignmentPrincipalResponse>(guardedValue, (value) => DenyAssignmentPrincipalResponse.fromMap((value as Map).cast<String, dynamic>())); });
     scope = registerOutput<String>('scope');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');

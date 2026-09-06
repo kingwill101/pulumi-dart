@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The message scope.
-enum MessageScope {
+enum MessageScope implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   registeredSubscriptions("RegisteredSubscriptions");
 
   const MessageScope(this.wireValue);
+  @override
   final String wireValue;
 
   static MessageScope fromValue(String value) {

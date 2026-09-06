@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of an assessment.
 class HeterogeneousAssessmentPropertiesResponse {
   /// Arm id of partner assessments.
-  final pulumi.Input<List<String>>? assessmentArmIds;
+  final pulumi.Input<List<String>?>? assessmentArmIds;
   /// Azure location for assessment.
   final pulumi.Input<String> azureLocation;
   /// Confidence rating in percentage.
@@ -58,7 +58,7 @@ class HeterogeneousAssessmentPropertiesResponse {
     return HeterogeneousAssessmentPropertiesResponse(
       assessmentArmIds: (() { final guardedValue = map['assessmentArmIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       azureLocation: pulumi.Input.fromValue(map['azureLocation'] as String),
-      confidenceRatingInPercentage: pulumi.Input.fromValue(map['confidenceRatingInPercentage'] as double),
+      confidenceRatingInPercentage: pulumi.Input.fromValue((map['confidenceRatingInPercentage'] as num).toDouble()),
       lastCalculatedOn: pulumi.Input.fromValue(map['lastCalculatedOn'] as String),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       schemaVersion: pulumi.Input.fromValue(map['schemaVersion'] as String),

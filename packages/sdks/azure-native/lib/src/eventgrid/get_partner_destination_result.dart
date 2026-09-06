@@ -7,7 +7,7 @@ class GetPartnerDestinationResult {
   /// Activation state of the partner destination.
   final String? activationState;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Endpoint Base URL of the partner destination
   final String? endpointBaseUrl;
   /// Endpoint context associated with this partner destination.
@@ -16,23 +16,23 @@ class GetPartnerDestinationResult {
   /// the partner destination and corresponding channel are deleted.
   final String? expirationTimeIfNotActivatedUtc;
   /// Fully qualified identifier of the resource.
-  final String id;
+  final String? id;
   /// Location of the resource.
-  final String location;
+  final String? location;
   /// Context or helpful message that can be used during the approval process.
   final String? messageForActivation;
   /// Name of the resource.
-  final String name;
+  final String? name;
   /// The immutable Id of the corresponding partner registration.
   final String? partnerRegistrationImmutableId;
   /// Provisioning state of the partner destination.
-  final String provisioningState;
+  final String? provisioningState;
   /// The system metadata relating to the Event Grid resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Tags of the resource.
   final Map<String, String>? tags;
   /// Type of the resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetPartnerDestinationResult].
   /// [activationState] Activation state of the partner destination.
@@ -51,56 +51,56 @@ class GetPartnerDestinationResult {
   /// [type] Type of the resource.
   const GetPartnerDestinationResult({
     this.activationState,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.endpointBaseUrl,
     this.endpointServiceContext,
     this.expirationTimeIfNotActivatedUtc,
-    required this.id,
-    required this.location,
+    this.id,
+    this.location,
     this.messageForActivation,
-    required this.name,
+    this.name,
     this.partnerRegistrationImmutableId,
-    required this.provisioningState,
-    required this.systemData,
+    this.provisioningState,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'activationState': ?activationState,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'endpointBaseUrl': ?endpointBaseUrl,
       'endpointServiceContext': ?endpointServiceContext,
       'expirationTimeIfNotActivatedUtc': ?expirationTimeIfNotActivatedUtc,
-      'id': id,
-      'location': location,
+      'id': ?id,
+      'location': ?location,
       'messageForActivation': ?messageForActivation,
-      'name': name,
+      'name': ?name,
       'partnerRegistrationImmutableId': ?partnerRegistrationImmutableId,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetPartnerDestinationResult.fromMap(Map<String, dynamic> map) {
     return GetPartnerDestinationResult(
       activationState: (() { final guardedValue = map['activationState']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       endpointBaseUrl: (() { final guardedValue = map['endpointBaseUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
       endpointServiceContext: (() { final guardedValue = map['endpointServiceContext']; if (guardedValue == null) return null; return guardedValue as String; })(),
       expirationTimeIfNotActivatedUtc: (() { final guardedValue = map['expirationTimeIfNotActivatedUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      location: map['location'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       messageForActivation: (() { final guardedValue = map['messageForActivation']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       partnerRegistrationImmutableId: (() { final guardedValue = map['partnerRegistrationImmutableId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

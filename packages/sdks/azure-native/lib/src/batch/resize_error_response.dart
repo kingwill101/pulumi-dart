@@ -7,7 +7,7 @@ class ResizeErrorResponse {
   /// An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
   final pulumi.Input<String> code;
   /// Additional details about the error.
-  final pulumi.Input<List<ResizeErrorResponse>>? details;
+  final pulumi.Input<List<ResizeErrorResponse>?>? details;
   /// A message describing the error, intended to be suitable for display in a user interface.
   final pulumi.Input<String> message;
 

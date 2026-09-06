@@ -16,25 +16,25 @@ import 'windows_firewall_logs_data_source_response.dart';
 /// This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
 class DataCollectionRuleResponseDataSources {
   /// Specifications of pull based data sources
-  final pulumi.Input<DataSourcesSpecResponseDataImports>? dataImports;
+  final pulumi.Input<DataSourcesSpecResponseDataImports?>? dataImports;
   /// The list of Azure VM extension data source configurations.
-  final pulumi.Input<List<ExtensionDataSourceResponse>>? extensions;
+  final pulumi.Input<List<ExtensionDataSourceResponse>?>? extensions;
   /// The list of IIS logs source configurations.
-  final pulumi.Input<List<IisLogsDataSourceResponse>>? iisLogs;
+  final pulumi.Input<List<IisLogsDataSourceResponse>?>? iisLogs;
   /// The list of Log files source configurations.
-  final pulumi.Input<List<LogFilesDataSourceResponse>>? logFiles;
+  final pulumi.Input<List<LogFilesDataSourceResponse>?>? logFiles;
   /// The list of performance counter data source configurations.
-  final pulumi.Input<List<PerfCounterDataSourceResponse>>? performanceCounters;
+  final pulumi.Input<List<PerfCounterDataSourceResponse>?>? performanceCounters;
   /// The list of platform telemetry configurations
-  final pulumi.Input<List<PlatformTelemetryDataSourceResponse>>? platformTelemetry;
+  final pulumi.Input<List<PlatformTelemetryDataSourceResponse>?>? platformTelemetry;
   /// The list of Prometheus forwarder data source configurations.
-  final pulumi.Input<List<PrometheusForwarderDataSourceResponse>>? prometheusForwarder;
+  final pulumi.Input<List<PrometheusForwarderDataSourceResponse>?>? prometheusForwarder;
   /// The list of Syslog data source configurations.
-  final pulumi.Input<List<SyslogDataSourceResponse>>? syslog;
+  final pulumi.Input<List<SyslogDataSourceResponse>?>? syslog;
   /// The list of Windows Event Log data source configurations.
-  final pulumi.Input<List<WindowsEventLogDataSourceResponse>>? windowsEventLogs;
+  final pulumi.Input<List<WindowsEventLogDataSourceResponse>?>? windowsEventLogs;
   /// The list of Windows Firewall logs source configurations.
-  final pulumi.Input<List<WindowsFirewallLogsDataSourceResponse>>? windowsFirewallLogs;
+  final pulumi.Input<List<WindowsFirewallLogsDataSourceResponse>?>? windowsFirewallLogs;
 
   /// Creates a new [DataCollectionRuleResponseDataSources].
   /// [dataImports] Specifications of pull based data sources

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kind of the service
-enum ServiceKind {
+enum ServiceKind implements pulumi.PulumiEnum<String> {
   valueWebPubSub("WebPubSub"),
   valueSocketIO("SocketIO");
 
   const ServiceKind(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceKind fromValue(String value) {

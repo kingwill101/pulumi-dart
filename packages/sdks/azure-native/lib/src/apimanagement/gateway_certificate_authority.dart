@@ -191,4 +191,19 @@ class GatewayCertificateAuthority extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [GatewayCertificateAuthority] resource.
+  GatewayCertificateAuthority.reference(String urn)
+    : super(
+        'azure-native:apimanagement:GatewayCertificateAuthority',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    isTrusted = registerOutput<bool?>('isTrusted');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+  }
 }

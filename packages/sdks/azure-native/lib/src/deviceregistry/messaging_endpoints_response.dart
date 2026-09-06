@@ -7,9 +7,9 @@ import 'outbound_endpoints_response.dart';
 /// Connection endpoint URL a device can use to connect to a service.
 class MessagingEndpointsResponse {
   /// Set of endpoints to connect to the device.
-  final pulumi.Input<Map<String, InboundEndpointsResponse>>? inbound;
+  final pulumi.Input<Map<String, InboundEndpointsResponse>?>? inbound;
   /// Set of endpoints a device can connect to.
-  final pulumi.Input<OutboundEndpointsResponse>? outbound;
+  final pulumi.Input<OutboundEndpointsResponse?>? outbound;
 
   /// Creates a new [MessagingEndpointsResponse].
   /// [inbound] Set of endpoints to connect to the device.

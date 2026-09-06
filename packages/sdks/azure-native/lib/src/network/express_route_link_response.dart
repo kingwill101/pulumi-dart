@@ -6,7 +6,7 @@ import 'express_route_link_mac_sec_config_response.dart';
 /// ExpressRouteLink child resource definition.
 class ExpressRouteLinkResponse {
   /// Administrative state of the physical port.
-  final pulumi.Input<String>? adminState;
+  final pulumi.Input<String?>? adminState;
   /// Cololocation for ExpressRoute Hybrid Direct.
   final pulumi.Input<String> coloLocation;
   /// Physical fiber port type.
@@ -14,13 +14,13 @@ class ExpressRouteLinkResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of Azure router interface.
   final pulumi.Input<String> interfaceName;
   /// MacSec configuration.
-  final pulumi.Input<ExpressRouteLinkMacSecConfigResponse>? macSecConfig;
+  final pulumi.Input<ExpressRouteLinkMacSecConfigResponse?>? macSecConfig;
   /// Name of child port resource that is unique among child port resources of the parent.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Mapping between physical port to patch panel port.
   final pulumi.Input<String> patchPanelId;
   /// The provisioning state of the express route link resource.

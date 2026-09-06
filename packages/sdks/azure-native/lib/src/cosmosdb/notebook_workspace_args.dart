@@ -10,7 +10,7 @@ class NotebookWorkspaceArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
   /// The name of the notebook workspace resource.
-  final pulumi.Input<String>? notebookWorkspaceName;
+  final pulumi.Input<String?>? notebookWorkspaceName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Rule results properties.
 class RuleResultsPropertiesResponse {
   /// Expected results in the baseline.
-  final pulumi.Input<List<List<String>>>? results;
+  final pulumi.Input<List<List<String>>?>? results;
 
   /// Creates a new [RuleResultsPropertiesResponse].
   /// [results] Expected results in the baseline.
@@ -21,7 +21,7 @@ class RuleResultsPropertiesResponse {
 
   factory RuleResultsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RuleResultsPropertiesResponse(
-      results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<List<String>>()); })(),
+      results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<List<String>>(guardedValue, (value) => (value as List).cast<String>())); })(),
     );
   }
 }

@@ -7,9 +7,9 @@ class Sku {
   /// The size of the Redis cache to deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium) family (1, 2, 3, 4).
   final pulumi.Input<int> capacity;
   /// The SKU family to use. Valid values: (C, P). (C = Basic/Standard, P = Premium).
-  final pulumi.Input<String> family;
+  final pulumi.Input<dynamic> family;
   /// The type of Redis cache to deploy. Valid values: (Basic, Standard, Premium)
-  final pulumi.Input<String> name;
+  final pulumi.Input<dynamic> name;
 
   /// Creates a new [Sku].
   /// [capacity] The size of the Redis cache to deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium) family (1, 2, 3, 4).
@@ -31,9 +31,9 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      capacity: pulumi.Input.fromValue(map['capacity'] as int),
-      family: pulumi.Input.fromValue(map['family'] as String),
-      name: pulumi.Input.fromValue(map['name'] as String),
+      capacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['capacity'])),
+      family: pulumi.Input.fromValue(map['family']),
+      name: pulumi.Input.fromValue(map['name']),
     );
   }
 }

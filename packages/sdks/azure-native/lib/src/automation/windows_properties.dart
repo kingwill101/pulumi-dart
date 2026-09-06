@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Windows specific update configuration.
 class WindowsProperties {
   /// KB numbers excluded from the software update configuration.
-  final pulumi.Input<List<String>>? excludedKbNumbers;
+  final pulumi.Input<List<String>?>? excludedKbNumbers;
   /// KB numbers included from the software update configuration.
-  final pulumi.Input<List<String>>? includedKbNumbers;
+  final pulumi.Input<List<String>?>? includedKbNumbers;
   /// Update classification included in the software update configuration. A comma separated string with required values
-  final pulumi.Input<String>? includedUpdateClassifications;
+  final pulumi.Input<dynamic>? includedUpdateClassifications;
   /// Reboot setting for the software update configuration.
-  final pulumi.Input<String>? rebootSetting;
+  final pulumi.Input<String?>? rebootSetting;
 
   /// Creates a new [WindowsProperties].
   /// [excludedKbNumbers] KB numbers excluded from the software update configuration.
@@ -38,7 +38,7 @@ class WindowsProperties {
     return WindowsProperties(
       excludedKbNumbers: (() { final guardedValue = map['excludedKbNumbers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       includedKbNumbers: (() { final guardedValue = map['includedKbNumbers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      includedUpdateClassifications: (() { final guardedValue = map['includedUpdateClassifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      includedUpdateClassifications: (() { final guardedValue = map['includedUpdateClassifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       rebootSetting: (() { final guardedValue = map['rebootSetting']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

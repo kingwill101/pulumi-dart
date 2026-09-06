@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of enclave requested on the elastic pool.
-enum AlwaysEncryptedEnclaveType {
+enum AlwaysEncryptedEnclaveType implements pulumi.PulumiEnum<String> {
   valueDefault("Default"),
   valueVBS("VBS");
 
   const AlwaysEncryptedEnclaveType(this.wireValue);
+  @override
   final String wireValue;
 
   static AlwaysEncryptedEnclaveType fromValue(String value) {

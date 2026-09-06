@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Ports and any VIF attached to segment.
 class WorkloadNetworkSegmentPortVifResponse {
   /// Name of port or VIF attached to segment.
-  final pulumi.Input<String>? portName;
+  final pulumi.Input<String?>? portName;
 
   /// Creates a new [WorkloadNetworkSegmentPortVifResponse].
   /// [portName] Name of port or VIF attached to segment.

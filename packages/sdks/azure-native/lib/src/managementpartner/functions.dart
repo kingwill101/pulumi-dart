@@ -19,3 +19,14 @@ Future<GetPartnerResult> getPartner(
   );
   return GetPartnerResult.fromMap(result);
 }
+
+pulumi.Output<GetPartnerResult> getPartnerOutput(
+  GetPartnerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managementpartner:getPartner',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPartnerResult.fromMap);
+}

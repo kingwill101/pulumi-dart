@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The source type that will trigger the notification
-enum SourceType {
+enum SourceType implements pulumi.PulumiEnum<String> {
   alert("Alert"),
   attackPath("AttackPath");
 
   const SourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static SourceType fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The ARM ID for a Network Security Group.
 class NatGatewayArmReferenceResponse {
   /// The ARM ID for a Network Security Group.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [NatGatewayArmReferenceResponse].
   /// [resourceId] The ARM ID for a Network Security Group.

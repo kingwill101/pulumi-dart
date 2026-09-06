@@ -7,11 +7,11 @@ import 'system_data_response.dart';
 /// An deployment resource belonging to a device group resource.
 class DeploymentResponse {
   /// Images deployed
-  final pulumi.Input<List<ImageResponse>>? deployedImages;
+  final pulumi.Input<List<ImageResponse>?>? deployedImages;
   /// Deployment date UTC
   final pulumi.Input<String> deploymentDateUtc;
   /// Deployment ID
-  final pulumi.Input<String>? deploymentId;
+  final pulumi.Input<String?>? deploymentId;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final pulumi.Input<String> id;
   /// The name of the resource

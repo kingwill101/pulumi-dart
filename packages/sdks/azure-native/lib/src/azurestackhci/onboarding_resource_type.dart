@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the onboarding resource to support polymorphic resource.
-enum OnboardingResourceType {
+enum OnboardingResourceType implements pulumi.PulumiEnum<String> {
   hybridComputeMachine("HybridComputeMachine");
 
   const OnboardingResourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static OnboardingResourceType fromValue(String value) {

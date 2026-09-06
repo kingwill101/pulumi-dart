@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Action that need to performed.
 class AccessControlListActionResponse {
   /// Name of the counter block to get match count information.
-  final pulumi.Input<String>? counterName;
+  final pulumi.Input<String?>? counterName;
   /// Type of actions that can be performed.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [AccessControlListActionResponse].
   /// [counterName] Name of the counter block to get match count information.

@@ -9,13 +9,13 @@ import 'private_dns_zone_config.dart';
 /// {@macro pulumi_network_private_dns_zone_group_args_doc}
 class PrivateDnsZoneGroupArgs {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A collection of private dns zone configurations of the private dns zone group.
-  final pulumi.Input<List<PrivateDnsZoneConfig>>? privateDnsZoneConfigs;
+  final pulumi.Input<List<PrivateDnsZoneConfig>?>? privateDnsZoneConfigs;
   /// The name of the private dns zone group.
-  final pulumi.Input<String>? privateDnsZoneGroupName;
+  final pulumi.Input<String?>? privateDnsZoneGroupName;
   /// The name of the private endpoint.
   final pulumi.Input<String> privateEndpointName;
   /// The name of the resource group.

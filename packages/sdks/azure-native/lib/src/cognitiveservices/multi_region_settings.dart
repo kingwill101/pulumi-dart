@@ -5,9 +5,9 @@ import 'region_setting.dart';
 
 /// The multiregion settings Cognitive Services account.
 class MultiRegionSettings {
-  final pulumi.Input<List<RegionSetting>>? regions;
+  final pulumi.Input<List<RegionSetting>?>? regions;
   /// Multiregion routing methods.
-  final pulumi.Input<String>? routingMethod;
+  final pulumi.Input<dynamic>? routingMethod;
 
   /// Creates a new [MultiRegionSettings].
   /// [regions] Optional.
@@ -27,7 +27,7 @@ class MultiRegionSettings {
   factory MultiRegionSettings.fromMap(Map<String, dynamic> map) {
     return MultiRegionSettings(
       regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionSetting>(guardedValue, (value) => RegionSetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      routingMethod: (() { final guardedValue = map['routingMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routingMethod: (() { final guardedValue = map['routingMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

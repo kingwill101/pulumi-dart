@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PrivateLinkScopedResourceResponse {
   /// The resourceId of the Azure Monitor Private Link Scope Scoped Resource through which this DCE is associated with a Azure Monitor Private Link Scope.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// The immutableId of the Azure Monitor Private Link Scope Resource to which the association is.
-  final pulumi.Input<String>? scopeId;
+  final pulumi.Input<String?>? scopeId;
 
   /// Creates a new [PrivateLinkScopedResourceResponse].
   /// [resourceId] The resourceId of the Azure Monitor Private Link Scope Scoped Resource through which this DCE is associated with a Azure Monitor Private Link Scope.

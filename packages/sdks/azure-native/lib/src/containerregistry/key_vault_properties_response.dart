@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KeyVaultPropertiesResponse {
   /// The client id of the identity which will be used to access key vault.
-  final pulumi.Input<String>? identity;
+  final pulumi.Input<String?>? identity;
   /// Key vault uri to access the encryption key.
-  final pulumi.Input<String>? keyIdentifier;
+  final pulumi.Input<String?>? keyIdentifier;
   /// Auto key rotation status for a CMK enabled registry.
   final pulumi.Input<bool> keyRotationEnabled;
   /// Timestamp of the last successful key rotation.

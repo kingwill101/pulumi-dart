@@ -10,9 +10,9 @@ class AzureMonitorWorkspaceLogsExporterResponse {
   /// API configurations for Azure Monitor workspace exporter.
   final pulumi.Input<AzureMonitorWorkspaceLogsApiConfigResponse> api;
   /// Cache configurations.
-  final pulumi.Input<CacheConfigurationResponse>? cache;
+  final pulumi.Input<CacheConfigurationResponse?>? cache;
   /// Concurrency configuration for the exporter.
-  final pulumi.Input<ConcurrencyConfigurationResponse>? concurrency;
+  final pulumi.Input<ConcurrencyConfigurationResponse?>? concurrency;
 
   /// Creates a new [AzureMonitorWorkspaceLogsExporterResponse].
   /// [api] API configurations for Azure Monitor workspace exporter.

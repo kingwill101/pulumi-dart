@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Nested provisioning support.
 class ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupport {
   /// Minimum API version.
-  final pulumi.Input<String>? minimumApiVersion;
+  final pulumi.Input<String?>? minimumApiVersion;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupport].
   /// [minimumApiVersion] Minimum API version.

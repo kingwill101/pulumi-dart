@@ -7,11 +7,11 @@ import 'queue_info.dart';
 /// Properties of the delivery configuration information of the event subscription.
 class DeliveryConfiguration {
   /// Delivery mode of the event subscription.
-  final pulumi.Input<String>? deliveryMode;
+  final pulumi.Input<dynamic>? deliveryMode;
   /// This property should be populated when deliveryMode is push and represents information about the push subscription.
-  final pulumi.Input<PushInfo>? push;
+  final pulumi.Input<PushInfo?>? push;
   /// This property should be populated when deliveryMode is queue and represents information about the queue subscription.
-  final pulumi.Input<QueueInfo>? queue;
+  final pulumi.Input<QueueInfo?>? queue;
 
   /// Creates a new [DeliveryConfiguration].
   /// [deliveryMode] Delivery mode of the event subscription.
@@ -33,7 +33,7 @@ class DeliveryConfiguration {
 
   factory DeliveryConfiguration.fromMap(Map<String, dynamic> map) {
     return DeliveryConfiguration(
-      deliveryMode: (() { final guardedValue = map['deliveryMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deliveryMode: (() { final guardedValue = map['deliveryMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       push: (() { final guardedValue = map['push']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PushInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       queue: (() { final guardedValue = map['queue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(QueueInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

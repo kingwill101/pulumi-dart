@@ -7,13 +7,13 @@ import 'metric_rules.dart';
 /// Definition of the properties for a TagRules resource.
 class MonitoringTagRulesProperties {
   /// Configuration to enable/disable auto-muting flag
-  final pulumi.Input<bool>? automuting;
+  final pulumi.Input<bool?>? automuting;
   /// Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.
-  final pulumi.Input<bool>? customMetrics;
+  final pulumi.Input<bool?>? customMetrics;
   /// Set of rules for sending logs for the Monitor resource.
-  final pulumi.Input<LogRules>? logRules;
+  final pulumi.Input<LogRules?>? logRules;
   /// Set of rules for sending metrics for the Monitor resource.
-  final pulumi.Input<MetricRules>? metricRules;
+  final pulumi.Input<MetricRules?>? metricRules;
 
   /// Creates a new [MonitoringTagRulesProperties].
   /// [automuting] Configuration to enable/disable auto-muting flag

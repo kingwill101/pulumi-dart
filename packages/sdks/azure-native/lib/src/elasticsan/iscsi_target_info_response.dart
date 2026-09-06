@@ -7,7 +7,7 @@ class IscsiTargetInfoResponse {
   /// State of the operation on the resource.
   final pulumi.Input<String> provisioningState;
   /// Operational status of the iSCSI Target.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// iSCSI Target IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:server".
   final pulumi.Input<String> targetIqn;
   /// iSCSI Target Portal Host Name
@@ -45,7 +45,7 @@ class IscsiTargetInfoResponse {
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetIqn: pulumi.Input.fromValue(map['targetIqn'] as String),
       targetPortalHostname: pulumi.Input.fromValue(map['targetPortalHostname'] as String),
-      targetPortalPort: pulumi.Input.fromValue(map['targetPortalPort'] as int),
+      targetPortalPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetPortalPort'])),
     );
   }
 }

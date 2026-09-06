@@ -6,15 +6,15 @@ import 'certificate_key_vault_properties_response.dart';
 /// Configuration properties for apps environment custom domain
 class CustomDomainConfigurationResponse {
   /// Certificate stored in Azure Key Vault.
-  final pulumi.Input<CertificateKeyVaultPropertiesResponse>? certificateKeyVaultProperties;
+  final pulumi.Input<CertificateKeyVaultPropertiesResponse?>? certificateKeyVaultProperties;
   /// Certificate password
-  final pulumi.Input<String>? certificatePassword;
+  final pulumi.Input<String?>? certificatePassword;
   /// PFX or PEM blob
-  final pulumi.Input<String>? certificateValue;
+  final pulumi.Input<String?>? certificateValue;
   /// Id used to verify domain name ownership
   final pulumi.Input<String> customDomainVerificationId;
   /// Dns suffix for the environment domain
-  final pulumi.Input<String>? dnsSuffix;
+  final pulumi.Input<String?>? dnsSuffix;
   /// Certificate expiration date.
   final pulumi.Input<String> expirationDate;
   /// Subject name of the certificate.

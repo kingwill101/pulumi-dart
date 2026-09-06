@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Is the schedule enabled or disabled?
-enum ScheduleStatus {
+enum ScheduleStatus implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const ScheduleStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static ScheduleStatus fromValue(String value) {

@@ -26,8 +26,8 @@ class ServerEndpointRecallErrorResponse {
 
   factory ServerEndpointRecallErrorResponse.fromMap(Map<String, dynamic> map) {
     return ServerEndpointRecallErrorResponse(
-      count: pulumi.Input.fromValue(map['count'] as double),
-      errorCode: pulumi.Input.fromValue(map['errorCode'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toDouble()),
+      errorCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['errorCode'])),
     );
   }
 }

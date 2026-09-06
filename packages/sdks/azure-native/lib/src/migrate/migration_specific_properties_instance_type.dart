@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Discriminator for migration specific properties.
-enum MigrationSpecificPropertiesInstanceType {
+enum MigrationSpecificPropertiesInstanceType implements pulumi.PulumiEnum<String> {
   serverMigration("ServerMigration");
 
   const MigrationSpecificPropertiesInstanceType(this.wireValue);
+  @override
   final String wireValue;
 
   static MigrationSpecificPropertiesInstanceType fromValue(String value) {

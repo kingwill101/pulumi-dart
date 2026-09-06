@@ -8,19 +8,19 @@ import 'sql_connection_info_response.dart';
 /// Input for the task that migrates on-prem SQL Server databases to Azure SQL Database
 class MigrateSqlServerSqlDbTaskInputResponse {
   /// encrypted key for secure fields
-  final pulumi.Input<String>? encryptedKeyForSecureFields;
+  final pulumi.Input<String?>? encryptedKeyForSecureFields;
   /// Databases to migrate
   final pulumi.Input<List<MigrateSqlServerSqlDbDatabaseInputResponse>> selectedDatabases;
   /// Information for connecting to source
   final pulumi.Input<SqlConnectionInfoResponse> sourceConnectionInfo;
   /// Date and time relative to UTC when the migration was started on
-  final pulumi.Input<String>? startedOn;
+  final pulumi.Input<String?>? startedOn;
   /// Information for connecting to target
   final pulumi.Input<SqlConnectionInfoResponse> targetConnectionInfo;
   /// Options for enabling various post migration validations. Available options,
   /// 1.) Data Integrity Check: Performs a checksum based comparison on source and target tables after the migration to ensure the correctness of the data.
   /// 2.) Schema Validation: Performs a thorough schema comparison between the source and target tables and provides a list of differences between the source and target database, 3.) Query Analysis: Executes a set of queries picked up automatically either from the Query Plan Cache or Query Store and execute them and compares the execution time between the source and target database.
-  final pulumi.Input<MigrationValidationOptionsResponse>? validationOptions;
+  final pulumi.Input<MigrationValidationOptionsResponse?>? validationOptions;
 
   /// Creates a new [MigrateSqlServerSqlDbTaskInputResponse].
   /// [encryptedKeyForSecureFields] encrypted key for secure fields

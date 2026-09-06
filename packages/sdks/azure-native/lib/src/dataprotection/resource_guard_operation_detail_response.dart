@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// VaultCritical Operation protected by a resource guard
 class ResourceGuardOperationDetailResponse {
-  final pulumi.Input<String>? defaultResourceRequest;
-  final pulumi.Input<String>? vaultCriticalOperation;
+  final pulumi.Input<String?>? defaultResourceRequest;
+  final pulumi.Input<String?>? vaultCriticalOperation;
 
   /// Creates a new [ResourceGuardOperationDetailResponse].
   /// [defaultResourceRequest] Optional.

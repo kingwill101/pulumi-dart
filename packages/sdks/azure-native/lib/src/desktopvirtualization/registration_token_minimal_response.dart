@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a Minimal set of properties for RegistrationToken definition.
 class RegistrationTokenMinimalResponse {
   /// Expiration time of registration token.
-  final pulumi.Input<String>? expirationTime;
+  final pulumi.Input<String?>? expirationTime;
   /// The registration token base64 encoded string.
-  final pulumi.Input<String>? token;
+  final pulumi.Input<String?>? token;
 
   /// Creates a new [RegistrationTokenMinimalResponse].
   /// [expirationTime] Expiration time of registration token.

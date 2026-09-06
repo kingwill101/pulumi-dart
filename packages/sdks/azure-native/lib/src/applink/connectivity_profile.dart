@@ -7,9 +7,9 @@ import 'private_connect_profile.dart';
 /// AppLinkMember connectivity profile.
 class ConnectivityProfile {
   /// East-West gateway profile.
-  final pulumi.Input<EastWestGatewayProfile>? eastWestGateway;
+  final pulumi.Input<EastWestGatewayProfile?>? eastWestGateway;
   /// Private connect profile.
-  final pulumi.Input<PrivateConnectProfile>? privateConnect;
+  final pulumi.Input<PrivateConnectProfile?>? privateConnect;
 
   /// Creates a new [ConnectivityProfile].
   /// [eastWestGateway] East-West gateway profile.

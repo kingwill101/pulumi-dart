@@ -10,9 +10,9 @@ import 'akri_connectors_secret.dart';
 /// AkriConnectorTemplateRuntimeImageConfiguration properties.
 class AkriConnectorTemplateRuntimeImageConfiguration {
   /// Additional configuration for the image of the managed configuration.
-  final pulumi.Input<Map<String, String>>? additionalConfiguration;
+  final pulumi.Input<Map<String, String>?>? additionalConfiguration;
   /// Allocation settings for the managed configuration.
-  final pulumi.Input<AkriConnectorTemplateBucketizedAllocation>? allocation;
+  final pulumi.Input<AkriConnectorTemplateBucketizedAllocation?>? allocation;
   /// The image configuration settings.
   final pulumi.Input<AkriConnectorTemplateRuntimeImageConfigurationSettings> imageConfigurationSettings;
   /// Managed configuration types.
@@ -20,13 +20,13 @@ class AkriConnectorTemplateRuntimeImageConfiguration {
   final pulumi.Input<String> managedConfigurationType;
   /// The persistent volume claim templates for the managed configuration.
   /// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
-  final pulumi.Input<List<dynamic>>? persistentVolumeClaimTemplates;
+  final pulumi.Input<List<dynamic>?>? persistentVolumeClaimTemplates;
   /// The persistent volume claims for the managed configuration.
-  final pulumi.Input<List<AkriConnectorTemplatePersistentVolumeClaim>>? persistentVolumeClaims;
+  final pulumi.Input<List<AkriConnectorTemplatePersistentVolumeClaim>?>? persistentVolumeClaims;
   /// Connector secrets that will be mounted onto all connector instances.
-  final pulumi.Input<List<AkriConnectorsSecret>>? secrets;
+  final pulumi.Input<List<AkriConnectorsSecret>?>? secrets;
   /// Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
-  final pulumi.Input<AkriConnectorTemplateTrustList>? trustSettings;
+  final pulumi.Input<AkriConnectorTemplateTrustList?>? trustSettings;
 
   /// Creates a new [AkriConnectorTemplateRuntimeImageConfiguration].
   /// [additionalConfiguration] Additional configuration for the image of the managed configuration.

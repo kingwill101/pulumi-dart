@@ -580,4 +580,23 @@ class AwsCloudTrailDataConnector extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [AwsCloudTrailDataConnector] resource.
+  AwsCloudTrailDataConnector.reference(String urn)
+    : super(
+        'azure-native:securityinsights:AwsCloudTrailDataConnector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    awsRoleArn = registerOutput<String?>('awsRoleArn');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataTypes = registerOutput<AwsCloudTrailDataConnectorDataTypesResponse>('dataTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsCloudTrailDataConnectorDataTypesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String?>('etag');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

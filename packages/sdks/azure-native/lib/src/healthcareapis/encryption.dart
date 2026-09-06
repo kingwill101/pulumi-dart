@@ -6,7 +6,7 @@ import 'encryption_customer_managed_key_encryption.dart';
 /// Settings to encrypt a service
 class Encryption {
   /// The encryption settings for the customer-managed key
-  final pulumi.Input<EncryptionCustomerManagedKeyEncryption>? customerManagedKeyEncryption;
+  final pulumi.Input<EncryptionCustomerManagedKeyEncryption?>? customerManagedKeyEncryption;
 
   /// Creates a new [Encryption].
   /// [customerManagedKeyEncryption] The encryption settings for the customer-managed key

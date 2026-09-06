@@ -5,18 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes an Azure Synapse output data source.
 class AzureSynapseOutputDataSource {
   /// The name of the Azure SQL database. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// The password that will be used to connect to the Azure SQL database. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The name of the SQL server containing the Azure SQL database. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? server;
+  final pulumi.Input<String?>? server;
   /// The name of the table in the Azure SQL database. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? table;
+  final pulumi.Input<String?>? table;
   /// Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'Microsoft.Sql/Server/DataWarehouse'.
   final pulumi.Input<String> type;
   /// The user name that will be used to connect to the Azure SQL database. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [AzureSynapseOutputDataSource].
   /// [database] The name of the Azure SQL database. Required on PUT (CreateOrReplace) requests.

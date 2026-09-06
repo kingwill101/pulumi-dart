@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_security_private_link_args_doc}
 class PrivateLinkArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the private link resource. Must be unique within the resource group and follow Azure naming conventions.
-  final pulumi.Input<String>? privateLinkName;
+  final pulumi.Input<String?>? privateLinkName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PrivateLinkArgs].
   /// [location] The geo-location where the resource lives

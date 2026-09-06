@@ -7,13 +7,13 @@ import 'vmware_migrate_agent_model_custom_properties.dart';
 /// MigrateAgent model properties.
 class MigrateAgentModelProperties {
   /// Identity model.
-  final pulumi.Input<IdentityModel>? authenticationIdentity;
+  final pulumi.Input<IdentityModel?>? authenticationIdentity;
   /// MigrateAgent model custom properties.
-  final pulumi.Input<VMwareMigrateAgentModelCustomProperties>? customProperties;
+  final pulumi.Input<VMwareMigrateAgentModelCustomProperties?>? customProperties;
   /// Gets or sets the machine Id where MigrateAgent is running.
-  final pulumi.Input<String>? machineId;
+  final pulumi.Input<String?>? machineId;
   /// Gets or sets the machine name where MigrateAgent is running.
-  final pulumi.Input<String>? machineName;
+  final pulumi.Input<String?>? machineName;
 
   /// Creates a new [MigrateAgentModelProperties].
   /// [authenticationIdentity] Identity model.

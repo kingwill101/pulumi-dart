@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// TLS settings for the resource
 class WebPubSubTlsSettings {
   /// Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier.
-  final pulumi.Input<bool>? clientCertEnabled;
+  final pulumi.Input<bool?>? clientCertEnabled;
 
   /// Creates a new [WebPubSubTlsSettings].
   /// [clientCertEnabled] Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier.
-  const WebPubSubTlsSettings({
-    this.clientCertEnabled,
-  });
+  WebPubSubTlsSettings({
+    pulumi.Input<bool?>? clientCertEnabled,
+  }) : clientCertEnabled = clientCertEnabled ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

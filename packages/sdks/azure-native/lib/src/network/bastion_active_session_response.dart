@@ -73,7 +73,7 @@ class BastionActiveSessionResponse {
     return BastionActiveSessionResponse(
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
-      sessionDurationInMins: pulumi.Input.fromValue(map['sessionDurationInMins'] as double),
+      sessionDurationInMins: pulumi.Input.fromValue((map['sessionDurationInMins'] as num).toDouble()),
       sessionId: pulumi.Input.fromValue(map['sessionId'] as String),
       startTime: pulumi.Input.fromValue(map['startTime']),
       targetHostName: pulumi.Input.fromValue(map['targetHostName'] as String),

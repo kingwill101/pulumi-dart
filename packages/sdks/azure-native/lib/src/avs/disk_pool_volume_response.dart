@@ -8,7 +8,7 @@ class DiskPoolVolumeResponse {
   final pulumi.Input<String> lunName;
   /// Mode that describes whether the LUN has to be mounted as a datastore or
   /// attached as a LUN
-  final pulumi.Input<String>? mountOption;
+  final pulumi.Input<String?>? mountOption;
   /// Device path
   final pulumi.Input<String> path;
   /// Azure resource ID of the iSCSI target
@@ -19,12 +19,12 @@ class DiskPoolVolumeResponse {
   /// [mountOption] Mode that describes whether the LUN has to be mounted as a datastore or
   /// [path] Device path
   /// [targetId] Azure resource ID of the iSCSI target
-  const DiskPoolVolumeResponse({
+  DiskPoolVolumeResponse({
     required this.lunName,
-    this.mountOption,
+    pulumi.Input<String?>? mountOption,
     required this.path,
     required this.targetId,
-  });
+  }) : mountOption = mountOption ?? pulumi.Input.fromValue('MOUNT');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

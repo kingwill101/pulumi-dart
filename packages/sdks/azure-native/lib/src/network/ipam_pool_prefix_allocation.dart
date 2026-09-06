@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// IpamPool prefix allocation reference.
 class IpamPoolPrefixAllocation {
   /// Resource id of the associated Azure IpamPool resource.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Number of IP addresses to allocate.
-  final pulumi.Input<String>? numberOfIpAddresses;
+  final pulumi.Input<String?>? numberOfIpAddresses;
 
   /// Creates a new [IpamPoolPrefixAllocation].
   /// [id] Resource id of the associated Azure IpamPool resource.

@@ -8,13 +8,13 @@ import 'k8s_settings.dart';
 /// The kubernetes spec information.
 class SqlManagedInstanceK8sSpec {
   /// This option specifies the number of SQL Managed Instance replicas that will be deployed in your Kubernetes cluster for high availability purposes. If sku.tier is BusinessCritical, allowed values are '2' or '3' with default of '3'. If sku.tier is GeneralPurpose, replicas must be '1'.
-  final pulumi.Input<int>? replicas;
+  final pulumi.Input<int?>? replicas;
   /// The kubernetes scheduling information.
-  final pulumi.Input<K8sScheduling>? scheduling;
+  final pulumi.Input<K8sScheduling?>? scheduling;
   /// The kubernetes security information.
-  final pulumi.Input<K8sSecurity>? security;
+  final pulumi.Input<K8sSecurity?>? security;
   /// The kubernetes settings information.
-  final pulumi.Input<K8sSettings>? settings;
+  final pulumi.Input<K8sSettings?>? settings;
 
   /// Creates a new [SqlManagedInstanceK8sSpec].
   /// [replicas] This option specifies the number of SQL Managed Instance replicas that will be deployed in your Kubernetes cluster for high availability purposes. If sku.tier is BusinessCritical, allowed values are '2' or '3' with default of '3'. If sku.tier is GeneralPurpose, replicas must be '1'.
@@ -39,7 +39,7 @@ class SqlManagedInstanceK8sSpec {
 
   factory SqlManagedInstanceK8sSpec.fromMap(Map<String, dynamic> map) {
     return SqlManagedInstanceK8sSpec(
-      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       scheduling: (() { final guardedValue = map['scheduling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(K8sScheduling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       security: (() { final guardedValue = map['security']; if (guardedValue == null) return null; return pulumi.Input.fromValue(K8sSecurity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       settings: (() { final guardedValue = map['settings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(K8sSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

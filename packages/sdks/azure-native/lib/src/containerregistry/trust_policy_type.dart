@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of trust policy.
-enum TrustPolicyType {
+enum TrustPolicyType implements pulumi.PulumiEnum<String> {
   valueNotary("Notary");
 
   const TrustPolicyType(this.wireValue);
+  @override
   final String wireValue;
 
   static TrustPolicyType fromValue(String value) {

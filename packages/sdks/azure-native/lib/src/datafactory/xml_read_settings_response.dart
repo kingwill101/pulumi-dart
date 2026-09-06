@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'tar_gzip_read_settings_response.dart';
 
 /// Xml read settings.
 class XmlReadSettingsResponse {
   /// Compression settings.
-  final pulumi.Input<TarGZipReadSettingsResponse>? compressionProperties;
+  final pulumi.Input<dynamic>? compressionProperties;
   /// Indicates whether type detection is enabled when reading the xml files. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? detectDataType;
   /// Namespace uri to prefix mappings to override the prefixes in column names when namespace is enabled, if no prefix is defined for a namespace uri, the prefix of xml element/attribute name in the xml data file will be used. Example: "{"http://www.example.com/xml":"prefix"}" Type: object (or Expression with resultType object).
@@ -37,7 +36,7 @@ class XmlReadSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compressionProperties': ?pulumi.Input.mapOptionalInputValue<TarGZipReadSettingsResponse, Map<String, dynamic>>(compressionProperties, (value) => value.toMap()),
+      'compressionProperties': ?compressionProperties,
       'detectDataType': ?detectDataType,
       'namespacePrefixes': ?namespacePrefixes,
       'namespaces': ?namespaces,
@@ -48,7 +47,7 @@ class XmlReadSettingsResponse {
 
   factory XmlReadSettingsResponse.fromMap(Map<String, dynamic> map) {
     return XmlReadSettingsResponse(
-      compressionProperties: (() { final guardedValue = map['compressionProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TarGZipReadSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      compressionProperties: (() { final guardedValue = map['compressionProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       detectDataType: (() { final guardedValue = map['detectDataType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       namespacePrefixes: (() { final guardedValue = map['namespacePrefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       namespaces: (() { final guardedValue = map['namespaces']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

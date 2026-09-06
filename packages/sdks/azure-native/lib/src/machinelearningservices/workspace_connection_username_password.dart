@@ -3,10 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspaceConnectionUsernamePassword {
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
-  final pulumi.Input<String>? securityToken;
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? securityToken;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [WorkspaceConnectionUsernamePassword].
   /// [password] Optional.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_resources_get_template_spec_args_doc}
 class GetTemplateSpecArgs {
   /// Allows for expansion of additional Template Spec details in the response. Optional.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the Template Spec.

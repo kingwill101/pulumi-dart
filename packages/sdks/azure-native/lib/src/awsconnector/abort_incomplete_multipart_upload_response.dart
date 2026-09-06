@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of AbortIncompleteMultipartUpload
 class AbortIncompleteMultipartUploadResponse {
   /// Specifies the number of days after which Amazon S3 stops an incomplete multipart upload.
-  final pulumi.Input<int>? daysAfterInitiation;
+  final pulumi.Input<int?>? daysAfterInitiation;
 
   /// Creates a new [AbortIncompleteMultipartUploadResponse].
   /// [daysAfterInitiation] Specifies the number of days after which Amazon S3 stops an incomplete multipart upload.
@@ -21,7 +21,7 @@ class AbortIncompleteMultipartUploadResponse {
 
   factory AbortIncompleteMultipartUploadResponse.fromMap(Map<String, dynamic> map) {
     return AbortIncompleteMultipartUploadResponse(
-      daysAfterInitiation: (() { final guardedValue = map['daysAfterInitiation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      daysAfterInitiation: (() { final guardedValue = map['daysAfterInitiation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Target helps provide filter parameters for the objects in the storage account and forms the execution context for the storage task
 class ExecutionTargetResponse {
   /// List of object prefixes to be excluded from task execution. If there is a conflict between include and exclude prefixes, the exclude prefix will be the determining factor
-  final pulumi.Input<List<String>>? excludePrefix;
+  final pulumi.Input<List<String>?>? excludePrefix;
   /// Required list of object prefixes to be included for task execution
-  final pulumi.Input<List<String>>? prefix;
+  final pulumi.Input<List<String>?>? prefix;
 
   /// Creates a new [ExecutionTargetResponse].
   /// [excludePrefix] List of object prefixes to be excluded from task execution. If there is a conflict between include and exclude prefixes, the exclude prefix will be the determining factor

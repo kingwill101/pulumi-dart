@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The description of an X509 CA Certificate.
 class CertificatePropertiesResponse {
   /// The certificate content
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// The certificate's create date and time.
   final pulumi.Input<String> created;
   /// The certificate's expiration date and time.
   final pulumi.Input<String> expiry;
   /// Determines whether certificate has been verified.
-  final pulumi.Input<bool>? isVerified;
+  final pulumi.Input<bool?>? isVerified;
   /// The certificate's subject name.
   final pulumi.Input<String> subject;
   /// The certificate's thumbprint.

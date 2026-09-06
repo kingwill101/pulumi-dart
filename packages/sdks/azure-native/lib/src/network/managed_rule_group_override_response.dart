@@ -8,7 +8,7 @@ class ManagedRuleGroupOverrideResponse {
   /// The managed rule group to override.
   final pulumi.Input<String> ruleGroupName;
   /// List of rules that will be disabled. If none specified, all rules in the group will be disabled.
-  final pulumi.Input<List<ManagedRuleOverrideResponse>>? rules;
+  final pulumi.Input<List<ManagedRuleOverrideResponse>?>? rules;
 
   /// Creates a new [ManagedRuleGroupOverrideResponse].
   /// [ruleGroupName] The managed rule group to override.

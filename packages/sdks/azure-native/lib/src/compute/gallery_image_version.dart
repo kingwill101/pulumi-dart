@@ -5059,7 +5059,32 @@ class GalleryImageVersion extends pulumi.CustomResource {
     securityProfile = registerOutput<ImageVersionSecurityProfileResponse?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageVersionSecurityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageProfile = registerOutput<GalleryImageVersionStorageProfileResponse>('storageProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryImageVersionStorageProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    validationsProfile = registerOutput<ValidationsProfileResponse>('validationsProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidationsProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [GalleryImageVersion] resource.
+  GalleryImageVersion.reference(String urn)
+    : super(
+        'azure-native:compute:GalleryImageVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    publishingProfile = registerOutput<GalleryImageVersionPublishingProfileResponse?>('publishingProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryImageVersionPublishingProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    replicationStatus = registerOutput<ReplicationStatusResponse>('replicationStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    restore = registerOutput<bool?>('restore');
+    safetyProfile = registerOutput<GalleryImageVersionSafetyProfileResponse?>('safetyProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryImageVersionSafetyProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityProfile = registerOutput<ImageVersionSecurityProfileResponse?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageVersionSecurityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageProfile = registerOutput<GalleryImageVersionStorageProfileResponse>('storageProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryImageVersionStorageProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     validationsProfile = registerOutput<ValidationsProfileResponse>('validationsProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidationsProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

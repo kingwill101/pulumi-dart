@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BatchEndpointDefaults {
   /// Name of the deployment that will be default for the endpoint.
   /// This deployment will end up getting 100% traffic when the endpoint scoring URL is invoked.
-  final pulumi.Input<String>? deploymentName;
+  final pulumi.Input<String?>? deploymentName;
 
   /// Creates a new [BatchEndpointDefaults].
   /// [deploymentName] Name of the deployment that will be default for the endpoint.

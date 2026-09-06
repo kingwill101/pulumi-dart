@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The billing configuration for the tenant.
 class B2CTenantResourcePropertiesResponseBillingConfig {
   /// The type of billing. Will be MAU for all new customers. If 'Auths', it can be updated to 'MAU'. Cannot be changed if value is 'MAU'. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cbilling).
-  final pulumi.Input<String>? billingType;
+  final pulumi.Input<String?>? billingType;
   /// The data from which the billing type took effect
   final pulumi.Input<String> effectiveStartDateUtc;
 

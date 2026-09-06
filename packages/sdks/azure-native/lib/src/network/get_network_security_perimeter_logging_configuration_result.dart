@@ -5,17 +5,17 @@ import 'nsp_logging_configuration_properties_response.dart';
 /// Result data returned by getNetworkSecurityPerimeterLoggingConfiguration.
 class GetNetworkSecurityPerimeterLoggingConfigurationResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Properties of the NSP logging configuration.
-  final NspLoggingConfigurationPropertiesResponse properties;
+  final NspLoggingConfigurationPropertiesResponse? properties;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetNetworkSecurityPerimeterLoggingConfigurationResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -25,33 +25,33 @@ class GetNetworkSecurityPerimeterLoggingConfigurationResult {
   /// [properties] Properties of the NSP logging configuration.
   /// [type] Resource type.
   const GetNetworkSecurityPerimeterLoggingConfigurationResult({
-    required this.azureApiVersion,
-    required this.etag,
-    required this.id,
-    required this.name,
-    required this.properties,
-    required this.type,
+    this.azureApiVersion,
+    this.etag,
+    this.id,
+    this.name,
+    this.properties,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'etag': etag,
-      'id': id,
-      'name': name,
-      'properties': properties.toMap(),
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'etag': ?etag,
+      'id': ?id,
+      'name': ?name,
+      'properties': ?properties?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetNetworkSecurityPerimeterLoggingConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkSecurityPerimeterLoggingConfigurationResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      properties: NspLoggingConfigurationPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return NspLoggingConfigurationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

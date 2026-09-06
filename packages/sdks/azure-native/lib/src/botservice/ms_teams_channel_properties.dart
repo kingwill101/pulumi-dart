@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The parameters to provide for the Microsoft Teams channel.
 class MsTeamsChannelProperties {
   /// Whether this channel accepted terms
-  final pulumi.Input<bool>? acceptedTerms;
+  final pulumi.Input<bool?>? acceptedTerms;
   /// Webhook for Microsoft Teams channel calls
-  final pulumi.Input<String>? callingWebhook;
+  final pulumi.Input<String?>? callingWebhook;
   /// Deployment environment for Microsoft Teams channel calls
-  final pulumi.Input<String>? deploymentEnvironment;
+  final pulumi.Input<String?>? deploymentEnvironment;
   /// Enable calling for Microsoft Teams channel
-  final pulumi.Input<bool>? enableCalling;
+  final pulumi.Input<bool?>? enableCalling;
   /// Webhook for Microsoft Teams channel calls
-  final pulumi.Input<String>? incomingCallRoute;
+  final pulumi.Input<String?>? incomingCallRoute;
   /// Whether this channel is enabled for the bot
   final pulumi.Input<bool> isEnabled;
 
@@ -24,14 +24,14 @@ class MsTeamsChannelProperties {
   /// [enableCalling] Enable calling for Microsoft Teams channel
   /// [incomingCallRoute] Webhook for Microsoft Teams channel calls
   /// [isEnabled] Whether this channel is enabled for the bot
-  const MsTeamsChannelProperties({
+  MsTeamsChannelProperties({
     this.acceptedTerms,
     this.callingWebhook,
-    this.deploymentEnvironment,
-    this.enableCalling,
+    pulumi.Input<String?>? deploymentEnvironment,
+    pulumi.Input<bool?>? enableCalling,
     this.incomingCallRoute,
     required this.isEnabled,
-  });
+  }) : deploymentEnvironment = deploymentEnvironment ?? pulumi.Input.fromValue('CommercialDeployment'), enableCalling = enableCalling ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

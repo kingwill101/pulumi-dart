@@ -8,23 +8,23 @@ class GetServerCollectorsOperationResult {
   /// Gets or sets the collector agent properties.
   final CollectorAgentPropertiesBaseResponse? agentProperties;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Gets the Timestamp when collector was created.
-  final String createdTimestamp;
+  final String? createdTimestamp;
   /// Gets the discovery site id.
   final String? discoverySiteId;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The status of the last operation.
   final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Timestamp when collector was last updated.
-  final String updatedTimestamp;
+  final String? updatedTimestamp;
 
   /// Creates a new [GetServerCollectorsOperationResult].
   /// [agentProperties] Gets or sets the collector agent properties.
@@ -39,44 +39,44 @@ class GetServerCollectorsOperationResult {
   /// [updatedTimestamp] Timestamp when collector was last updated.
   const GetServerCollectorsOperationResult({
     this.agentProperties,
-    required this.azureApiVersion,
-    required this.createdTimestamp,
+    this.azureApiVersion,
+    this.createdTimestamp,
     this.discoverySiteId,
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
     this.provisioningState,
-    required this.systemData,
-    required this.type,
-    required this.updatedTimestamp,
+    this.systemData,
+    this.type,
+    this.updatedTimestamp,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'agentProperties': ?agentProperties?.toMap(),
-      'azureApiVersion': azureApiVersion,
-      'createdTimestamp': createdTimestamp,
+      'azureApiVersion': ?azureApiVersion,
+      'createdTimestamp': ?createdTimestamp,
       'discoverySiteId': ?discoverySiteId,
-      'id': id,
-      'name': name,
+      'id': ?id,
+      'name': ?name,
       'provisioningState': ?provisioningState,
-      'systemData': systemData.toMap(),
-      'type': type,
-      'updatedTimestamp': updatedTimestamp,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
+      'updatedTimestamp': ?updatedTimestamp,
     };
   }
 
   factory GetServerCollectorsOperationResult.fromMap(Map<String, dynamic> map) {
     return GetServerCollectorsOperationResult(
       agentProperties: (() { final guardedValue = map['agentProperties']; if (guardedValue == null) return null; return CollectorAgentPropertiesBaseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      createdTimestamp: map['createdTimestamp'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdTimestamp: (() { final guardedValue = map['createdTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
       discoverySiteId: (() { final guardedValue = map['discoverySiteId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      updatedTimestamp: map['updatedTimestamp'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updatedTimestamp: (() { final guardedValue = map['updatedTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

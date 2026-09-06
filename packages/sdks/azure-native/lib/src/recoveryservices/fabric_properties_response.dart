@@ -1,28 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_fabric_specific_details_response.dart';
 import 'encryption_details_response.dart';
 import 'health_error_response.dart';
 
 /// Fabric properties.
 class FabricPropertiesResponse {
   /// BCDR state of the fabric.
-  final pulumi.Input<String>? bcdrState;
+  final pulumi.Input<String?>? bcdrState;
   /// Fabric specific settings.
-  final pulumi.Input<AzureFabricSpecificDetailsResponse>? customDetails;
+  final pulumi.Input<dynamic>? customDetails;
   /// Encryption details for the fabric.
-  final pulumi.Input<EncryptionDetailsResponse>? encryptionDetails;
+  final pulumi.Input<EncryptionDetailsResponse?>? encryptionDetails;
   /// Friendly name of the fabric.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// Health of fabric.
-  final pulumi.Input<String>? health;
+  final pulumi.Input<String?>? health;
   /// Fabric health error details.
-  final pulumi.Input<List<HealthErrorResponse>>? healthErrorDetails;
+  final pulumi.Input<List<HealthErrorResponse>?>? healthErrorDetails;
   /// Dra Registration Id.
-  final pulumi.Input<String>? internalIdentifier;
+  final pulumi.Input<String?>? internalIdentifier;
   /// Rollover encryption details for the fabric.
-  final pulumi.Input<EncryptionDetailsResponse>? rolloverEncryptionDetails;
+  final pulumi.Input<EncryptionDetailsResponse?>? rolloverEncryptionDetails;
 
   /// Creates a new [FabricPropertiesResponse].
   /// [bcdrState] BCDR state of the fabric.
@@ -47,7 +46,7 @@ class FabricPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bcdrState': ?bcdrState,
-      'customDetails': ?pulumi.Input.mapOptionalInputValue<AzureFabricSpecificDetailsResponse, Map<String, dynamic>>(customDetails, (value) => value.toMap()),
+      'customDetails': ?customDetails,
       'encryptionDetails': ?pulumi.Input.mapOptionalInputValue<EncryptionDetailsResponse, Map<String, dynamic>>(encryptionDetails, (value) => value.toMap()),
       'friendlyName': ?friendlyName,
       'health': ?health,
@@ -60,7 +59,7 @@ class FabricPropertiesResponse {
   factory FabricPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FabricPropertiesResponse(
       bcdrState: (() { final guardedValue = map['bcdrState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      customDetails: (() { final guardedValue = map['customDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureFabricSpecificDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      customDetails: (() { final guardedValue = map['customDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       encryptionDetails: (() { final guardedValue = map['encryptionDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EncryptionDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       health: (() { final guardedValue = map['health']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

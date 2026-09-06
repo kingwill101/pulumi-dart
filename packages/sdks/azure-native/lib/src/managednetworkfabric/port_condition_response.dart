@@ -7,11 +7,11 @@ class PortConditionResponse {
   /// Layer4 protocol type that needs to be matched.
   final pulumi.Input<String> layer4Protocol;
   /// List of the port Group Names that need to be matched.
-  final pulumi.Input<List<String>>? portGroupNames;
+  final pulumi.Input<List<String>?>? portGroupNames;
   /// Port type that needs to be matched.
-  final pulumi.Input<String>? portType;
+  final pulumi.Input<String?>? portType;
   /// List of the Ports that need to be matched.
-  final pulumi.Input<List<String>>? ports;
+  final pulumi.Input<List<String>?>? ports;
 
   /// Creates a new [PortConditionResponse].
   /// [layer4Protocol] Layer4 protocol type that needs to be matched.

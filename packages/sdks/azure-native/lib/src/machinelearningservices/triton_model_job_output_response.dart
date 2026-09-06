@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TritonModelJobOutputResponse {
   /// Output Asset Name.
-  final pulumi.Input<String>? assetName;
+  final pulumi.Input<String?>? assetName;
   /// Description for the output.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Enum to determine the Job Output Type.
   /// Expected value is 'triton_model'.
   final pulumi.Input<String> jobOutputType;
   /// Output data delivery mode enums.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Output Asset URI.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [TritonModelJobOutputResponse].
   /// [assetName] Output Asset Name.
@@ -21,13 +21,13 @@ class TritonModelJobOutputResponse {
   /// [jobOutputType] Enum to determine the Job Output Type.
   /// [mode] Output data delivery mode enums.
   /// [uri] Output Asset URI.
-  const TritonModelJobOutputResponse({
+  TritonModelJobOutputResponse({
     this.assetName,
     this.description,
     required this.jobOutputType,
-    this.mode,
+    pulumi.Input<String?>? mode,
     this.uri,
-  });
+  }) : mode = mode ?? pulumi.Input.fromValue('ReadWriteMount');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

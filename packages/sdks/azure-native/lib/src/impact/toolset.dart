@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Tool used to interact with Azure. SDK, AzPortal, etc.., Other
-enum Toolset {
+enum Toolset implements pulumi.PulumiEnum<String> {
   terraform("Terraform"),
   puppet("Puppet"),
   chef("Chef"),
@@ -11,6 +13,7 @@ enum Toolset {
   other("Other");
 
   const Toolset(this.wireValue);
+  @override
   final String wireValue;
 
   static Toolset fromValue(String value) {

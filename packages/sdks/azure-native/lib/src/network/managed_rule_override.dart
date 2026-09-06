@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines a managed rule group override setting.
 class ManagedRuleOverride {
   /// Describes the override action to be applied when rule matches.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<dynamic>? action;
   /// Identifier for the managed rule.
   final pulumi.Input<String> ruleId;
   /// Describes the override sensitivity to be applied when rule matches.
-  final pulumi.Input<String>? sensitivity;
+  final pulumi.Input<dynamic>? sensitivity;
   /// The state of the managed rule. Defaults to Disabled if not specified.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
 
   /// Creates a new [ManagedRuleOverride].
   /// [action] Describes the override action to be applied when rule matches.
@@ -36,10 +36,10 @@ class ManagedRuleOverride {
 
   factory ManagedRuleOverride.fromMap(Map<String, dynamic> map) {
     return ManagedRuleOverride(
-      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       ruleId: pulumi.Input.fromValue(map['ruleId'] as String),
-      sensitivity: (() { final guardedValue = map['sensitivity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sensitivity: (() { final guardedValue = map['sensitivity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

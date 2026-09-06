@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The name of the processor feature. Valid names are ``coreCount`` and ``threadsPerCore``.
-enum ProcessorFeatureName {
+enum ProcessorFeatureName implements pulumi.PulumiEnum<String> {
   coreCount("coreCount"),
   threadsPerCore("threadsPerCore");
 
   const ProcessorFeatureName(this.wireValue);
+  @override
   final String wireValue;
 
   static ProcessorFeatureName fromValue(String value) {

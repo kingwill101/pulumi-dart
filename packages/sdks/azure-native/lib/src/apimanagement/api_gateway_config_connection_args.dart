@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_api_gateway_config_connection_args_doc}
 class ApiGatewayConfigConnectionArgs {
   /// The name of the API Management gateway config connection.
-  final pulumi.Input<String>? configConnectionName;
+  final pulumi.Input<String?>? configConnectionName;
   /// The name of the API Management gateway.
   final pulumi.Input<String> gatewayName;
   /// The hostnames of the data-plane gateway to which requests can be sent.
-  final pulumi.Input<List<String>>? hostnames;
+  final pulumi.Input<List<String>?>? hostnames;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The link to the API Management service workspace.
-  final pulumi.Input<String>? sourceId;
+  final pulumi.Input<String?>? sourceId;
 
   /// Creates a new [ApiGatewayConfigConnectionArgs].
   /// [configConnectionName] The name of the API Management gateway config connection.

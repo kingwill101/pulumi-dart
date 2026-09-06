@@ -31,7 +31,7 @@ class SessionHostHealthCheckFailureDetailsResponse {
 
   factory SessionHostHealthCheckFailureDetailsResponse.fromMap(Map<String, dynamic> map) {
     return SessionHostHealthCheckFailureDetailsResponse(
-      errorCode: pulumi.Input.fromValue(map['errorCode'] as int),
+      errorCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['errorCode'])),
       lastHealthCheckDateTime: pulumi.Input.fromValue(map['lastHealthCheckDateTime'] as String),
       message: pulumi.Input.fromValue(map['message'] as String),
     );

@@ -8,7 +8,7 @@ class IdentityPropertiesResponse {
   /// The tenant ID of resource.
   final pulumi.Input<String> tenantId;
   /// Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [IdentityPropertiesResponse].
   /// [principalId] The identity ID.

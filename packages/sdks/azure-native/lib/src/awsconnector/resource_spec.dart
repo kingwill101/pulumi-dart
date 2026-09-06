@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ResourceSpec
 class ResourceSpec {
   /// The instance type that the image version runs on.
-  final pulumi.Input<String>? instanceType;
+  final pulumi.Input<dynamic>? instanceType;
   /// The ARN of the SageMaker image that the image version belongs to.
-  final pulumi.Input<String>? sageMakerImageArn;
+  final pulumi.Input<String?>? sageMakerImageArn;
   /// The ARN of the image version created on the instance.
-  final pulumi.Input<String>? sageMakerImageVersionArn;
+  final pulumi.Input<String?>? sageMakerImageVersionArn;
 
   /// Creates a new [ResourceSpec].
   /// [instanceType] The instance type that the image version runs on.
@@ -31,7 +31,7 @@ class ResourceSpec {
 
   factory ResourceSpec.fromMap(Map<String, dynamic> map) {
     return ResourceSpec(
-      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sageMakerImageArn: (() { final guardedValue = map['sageMakerImageArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sageMakerImageVersionArn: (() { final guardedValue = map['sageMakerImageVersionArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Sampling type.
-enum SamplingType {
+enum SamplingType implements pulumi.PulumiEnum<String> {
   valueFixed("fixed");
 
   const SamplingType(this.wireValue);
+  @override
   final String wireValue;
 
   static SamplingType fromValue(String value) {

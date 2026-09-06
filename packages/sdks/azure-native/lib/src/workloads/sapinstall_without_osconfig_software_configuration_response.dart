@@ -8,7 +8,7 @@ class SAPInstallWithoutOSConfigSoftwareConfigurationResponse {
   /// The URL to the SAP Build of Materials(BOM) file.
   final pulumi.Input<String> bomUrl;
   /// Gets or sets the HA software configuration.
-  final pulumi.Input<HighAvailabilitySoftwareConfigurationResponse>? highAvailabilitySoftwareConfiguration;
+  final pulumi.Input<HighAvailabilitySoftwareConfigurationResponse?>? highAvailabilitySoftwareConfiguration;
   /// The SAP bits storage account id.
   final pulumi.Input<String> sapBitsStorageAccountId;
   /// The SAP software installation Type.

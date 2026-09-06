@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the current state of an existing Azure Private Link service connection to the private endpoint.
 class PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse {
   /// A description of any extra actions that may be required.
-  final pulumi.Input<String>? actionsRequired;
+  final pulumi.Input<String?>? actionsRequired;
   /// The description for the private link service connection state.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Status of the the private link service connection. Valid values are Pending, Approved, Rejected, or Disconnected.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse].
   /// [actionsRequired] A description of any extra actions that may be required.
   /// [description] The description for the private link service connection state.
   /// [status] Status of the the private link service connection. Valid values are Pending, Approved, Rejected, or Disconnected.
-  const PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse({
-    this.actionsRequired,
+  PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse({
+    pulumi.Input<String?>? actionsRequired,
     this.description,
     this.status,
-  });
+  }) : actionsRequired = actionsRequired ?? pulumi.Input.fromValue('None');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -10,13 +10,13 @@ import 'http_proxy_configuration.dart';
 /// {@macro pulumi_scvmm_guest_agent_args_doc}
 class GuestAgentArgs {
   /// Username / Password Credentials to provision guest agent.
-  final pulumi.Input<GuestCredential>? credentials;
+  final pulumi.Input<GuestCredential?>? credentials;
   /// Name of the guestAgents.
-  final pulumi.Input<String>? guestAgentName;
+  final pulumi.Input<String?>? guestAgentName;
   /// HTTP Proxy configuration for the VM.
-  final pulumi.Input<HttpProxyConfiguration>? httpProxyConfig;
+  final pulumi.Input<HttpProxyConfiguration?>? httpProxyConfig;
   /// Gets or sets the guest agent provisioning action.
-  final pulumi.Input<String>? provisioningAction;
+  final pulumi.Input<dynamic>? provisioningAction;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the vm.
@@ -54,7 +54,7 @@ class GuestAgentArgs {
       credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GuestCredential.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       guestAgentName: (() { final guardedValue = map['guestAgentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       httpProxyConfig: (() { final guardedValue = map['httpProxyConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HttpProxyConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      provisioningAction: (() { final guardedValue = map['provisioningAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningAction: (() { final guardedValue = map['provisioningAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       virtualMachineName: pulumi.Input.fromValue(map['virtualMachineName'] as String),
     );

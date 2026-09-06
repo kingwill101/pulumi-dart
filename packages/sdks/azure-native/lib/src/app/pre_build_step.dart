@@ -6,11 +6,11 @@ import 'http_get.dart';
 /// Model representing a pre-build step.
 class PreBuildStep {
   /// Description of the pre-build step.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Http get request to send before the build.
-  final pulumi.Input<HttpGet>? httpGet;
+  final pulumi.Input<HttpGet?>? httpGet;
   /// List of custom commands to run.
-  final pulumi.Input<List<String>>? scripts;
+  final pulumi.Input<List<String>?>? scripts;
 
   /// Creates a new [PreBuildStep].
   /// [description] Description of the pre-build step.

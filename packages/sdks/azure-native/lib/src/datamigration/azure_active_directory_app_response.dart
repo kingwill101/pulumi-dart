@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Azure Active Directory Application
 class AzureActiveDirectoryAppResponse {
   /// Key used to authenticate to the Azure Active Directory Application
-  final pulumi.Input<String>? appKey;
+  final pulumi.Input<String?>? appKey;
   /// Application ID of the Azure Active Directory Application
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// Ignore checking azure permissions on the AAD app
-  final pulumi.Input<bool>? ignoreAzurePermissions;
+  final pulumi.Input<bool?>? ignoreAzurePermissions;
   /// Tenant id of the customer
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [AzureActiveDirectoryAppResponse].
   /// [appKey] Key used to authenticate to the Azure Active Directory Application

@@ -6,7 +6,7 @@ import 'kafka_remote_broker_authentication_types.dart';
 /// Kafka RemoteBrokerConnection Authentication methods
 class KafkaRemoteBrokerAuthenticationProperties {
   /// The type of authentication to use for Kafka remote broker.
-  final pulumi.Input<KafkaRemoteBrokerAuthenticationTypes>? authType;
+  final pulumi.Input<KafkaRemoteBrokerAuthenticationTypes?>? authType;
   /// If authentication is enabled for Kafka remote broker.
   final pulumi.Input<bool> enabled;
 

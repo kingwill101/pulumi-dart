@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Representation of the months available selection in a gregorian calendar
-enum Month {
+enum Month implements pulumi.PulumiEnum<String> {
   january("January"),
   february("February"),
   march("March"),
@@ -15,6 +17,7 @@ enum Month {
   all("All");
 
   const Month(this.wireValue);
+  @override
   final String wireValue;
 
   static Month fromValue(String value) {

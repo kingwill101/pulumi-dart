@@ -21,3 +21,14 @@ Future<GetOfferAccessTokenResult> getOfferAccessToken(
   );
   return GetOfferAccessTokenResult.fromMap(result);
 }
+
+pulumi.Output<GetOfferAccessTokenResult> getOfferAccessTokenOutput(
+  GetOfferAccessTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edgemarketplace:getOfferAccessToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOfferAccessTokenResult.fromMap);
+}

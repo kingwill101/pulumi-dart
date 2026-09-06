@@ -6,19 +6,19 @@ import 'elastic_traffic_filter_rule_response.dart';
 /// Elastic traffic filter object
 class ElasticTrafficFilterResponse {
   /// Description of the elastic filter
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Id of the elastic filter
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// IncludeByDefault for the elastic filter
-  final pulumi.Input<bool>? includeByDefault;
+  final pulumi.Input<bool?>? includeByDefault;
   /// Name of the elastic filter
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region of the elastic filter
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Rules in the elastic filter
-  final pulumi.Input<List<ElasticTrafficFilterRuleResponse>>? rules;
+  final pulumi.Input<List<ElasticTrafficFilterRuleResponse>?>? rules;
   /// Type of the elastic filter
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ElasticTrafficFilterResponse].
   /// [description] Description of the elastic filter

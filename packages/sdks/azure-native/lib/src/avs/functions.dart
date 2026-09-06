@@ -68,6 +68,17 @@ Future<GetAddonResult> getAddon(
   return GetAddonResult.fromMap(result);
 }
 
+pulumi.Output<GetAddonResult> getAddonOutput(
+  GetAddonArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getAddon',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAddonResult.fromMap);
+}
+
 /// Get a ExpressRouteAuthorization
 ///
 /// Uses Azure REST API version 2023-09-01.
@@ -86,6 +97,17 @@ Future<GetAuthorizationResult> getAuthorization(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAuthorizationResult.fromMap(result);
+}
+
+pulumi.Output<GetAuthorizationResult> getAuthorizationOutput(
+  GetAuthorizationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getAuthorization',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAuthorizationResult.fromMap);
 }
 
 /// Get a CloudLink
@@ -108,6 +130,17 @@ Future<GetCloudLinkResult> getCloudLink(
   return GetCloudLinkResult.fromMap(result);
 }
 
+pulumi.Output<GetCloudLinkResult> getCloudLinkOutput(
+  GetCloudLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getCloudLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudLinkResult.fromMap);
+}
+
 /// Get a Cluster
 ///
 /// Uses Azure REST API version 2023-09-01.
@@ -126,6 +159,17 @@ Future<GetClusterResult> getCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
 }
 
 /// Get a Datastore
@@ -148,6 +192,17 @@ Future<GetDatastoreResult> getDatastore(
   return GetDatastoreResult.fromMap(result);
 }
 
+pulumi.Output<GetDatastoreResult> getDatastoreOutput(
+  GetDatastoreArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getDatastore',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatastoreResult.fromMap);
+}
+
 /// Get a GlobalReachConnection
 ///
 /// Uses Azure REST API version 2023-09-01.
@@ -166,6 +221,17 @@ Future<GetGlobalReachConnectionResult> getGlobalReachConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGlobalReachConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetGlobalReachConnectionResult> getGlobalReachConnectionOutput(
+  GetGlobalReachConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getGlobalReachConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalReachConnectionResult.fromMap);
 }
 
 /// Get a HcxEnterpriseSite
@@ -188,6 +254,17 @@ Future<GetHcxEnterpriseSiteResult> getHcxEnterpriseSite(
   return GetHcxEnterpriseSiteResult.fromMap(result);
 }
 
+pulumi.Output<GetHcxEnterpriseSiteResult> getHcxEnterpriseSiteOutput(
+  GetHcxEnterpriseSiteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getHcxEnterpriseSite',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHcxEnterpriseSiteResult.fromMap);
+}
+
 /// Get a IscsiPath
 ///
 /// Uses Azure REST API version 2023-09-01.
@@ -208,6 +285,17 @@ Future<GetIscsiPathResult> getIscsiPath(
   return GetIscsiPathResult.fromMap(result);
 }
 
+pulumi.Output<GetIscsiPathResult> getIscsiPathOutput(
+  GetIscsiPathArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getIscsiPath',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIscsiPathResult.fromMap);
+}
+
 /// Just like ArmResourceActionSync, but with no request body.
 ///
 /// Uses Azure REST API version 2025-09-01.
@@ -224,6 +312,17 @@ Future<GetLicenseResult> getLicense(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLicenseResult.fromMap(result);
+}
+
+pulumi.Output<GetLicenseResult> getLicenseOutput(
+  GetLicenseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getLicense',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLicenseResult.fromMap);
 }
 
 /// Get a PlacementPolicy
@@ -246,6 +345,17 @@ Future<GetPlacementPolicyResult> getPlacementPolicy(
   return GetPlacementPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetPlacementPolicyResult> getPlacementPolicyOutput(
+  GetPlacementPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getPlacementPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPlacementPolicyResult.fromMap);
+}
+
 /// Get a PrivateCloud
 ///
 /// Uses Azure REST API version 2023-09-01.
@@ -266,6 +376,17 @@ Future<GetPrivateCloudResult> getPrivateCloud(
   return GetPrivateCloudResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateCloudResult> getPrivateCloudOutput(
+  GetPrivateCloudArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getPrivateCloud',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateCloudResult.fromMap);
+}
+
 /// Get the license for the private cloud
 ///
 /// Uses Azure REST API version 2025-09-01.
@@ -282,6 +403,17 @@ Future<GetPrivateCloudVcfLicenseResult> getPrivateCloudVcfLicense(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateCloudVcfLicenseResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateCloudVcfLicenseResult> getPrivateCloudVcfLicenseOutput(
+  GetPrivateCloudVcfLicenseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getPrivateCloudVcfLicense',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateCloudVcfLicenseResult.fromMap);
 }
 
 /// Get a PureStoragePolicy
@@ -304,6 +436,17 @@ Future<GetPureStoragePolicyResult> getPureStoragePolicy(
   return GetPureStoragePolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetPureStoragePolicyResult> getPureStoragePolicyOutput(
+  GetPureStoragePolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getPureStoragePolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPureStoragePolicyResult.fromMap);
+}
+
 /// Get a ScriptExecution
 ///
 /// Uses Azure REST API version 2023-09-01.
@@ -322,6 +465,17 @@ Future<GetScriptExecutionResult> getScriptExecution(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetScriptExecutionResult.fromMap(result);
+}
+
+pulumi.Output<GetScriptExecutionResult> getScriptExecutionOutput(
+  GetScriptExecutionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getScriptExecution',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScriptExecutionResult.fromMap);
 }
 
 /// Return the logs for a script execution resource
@@ -344,6 +498,17 @@ Future<GetScriptExecutionLogsResult> getScriptExecutionLogs(
   return GetScriptExecutionLogsResult.fromMap(result);
 }
 
+pulumi.Output<GetScriptExecutionLogsResult> getScriptExecutionLogsOutput(
+  GetScriptExecutionLogsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getScriptExecutionLogs',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScriptExecutionLogsResult.fromMap);
+}
+
 /// Get a WorkloadNetworkDhcp
 ///
 /// Uses Azure REST API version 2023-09-01.
@@ -362,6 +527,17 @@ Future<GetWorkloadNetworkDhcpResult> getWorkloadNetworkDhcp(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkloadNetworkDhcpResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkloadNetworkDhcpResult> getWorkloadNetworkDhcpOutput(
+  GetWorkloadNetworkDhcpArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getWorkloadNetworkDhcp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadNetworkDhcpResult.fromMap);
 }
 
 /// Get a WorkloadNetworkDnsService
@@ -384,6 +560,17 @@ Future<GetWorkloadNetworkDnsServiceResult> getWorkloadNetworkDnsService(
   return GetWorkloadNetworkDnsServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkloadNetworkDnsServiceResult> getWorkloadNetworkDnsServiceOutput(
+  GetWorkloadNetworkDnsServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getWorkloadNetworkDnsService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadNetworkDnsServiceResult.fromMap);
+}
+
 /// Get a WorkloadNetworkDnsZone
 ///
 /// Uses Azure REST API version 2023-09-01.
@@ -402,6 +589,17 @@ Future<GetWorkloadNetworkDnsZoneResult> getWorkloadNetworkDnsZone(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkloadNetworkDnsZoneResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkloadNetworkDnsZoneResult> getWorkloadNetworkDnsZoneOutput(
+  GetWorkloadNetworkDnsZoneArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getWorkloadNetworkDnsZone',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadNetworkDnsZoneResult.fromMap);
 }
 
 /// Get a WorkloadNetworkPortMirroring
@@ -424,6 +622,17 @@ Future<GetWorkloadNetworkPortMirroringResult> getWorkloadNetworkPortMirroring(
   return GetWorkloadNetworkPortMirroringResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkloadNetworkPortMirroringResult> getWorkloadNetworkPortMirroringOutput(
+  GetWorkloadNetworkPortMirroringArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getWorkloadNetworkPortMirroring',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadNetworkPortMirroringResult.fromMap);
+}
+
 /// Get a WorkloadNetworkPublicIP
 ///
 /// Uses Azure REST API version 2023-09-01.
@@ -442,6 +651,17 @@ Future<GetWorkloadNetworkPublicIPResult> getWorkloadNetworkPublicIP(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkloadNetworkPublicIPResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkloadNetworkPublicIPResult> getWorkloadNetworkPublicIPOutput(
+  GetWorkloadNetworkPublicIPArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getWorkloadNetworkPublicIP',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadNetworkPublicIPResult.fromMap);
 }
 
 /// Get a WorkloadNetworkSegment
@@ -464,6 +684,17 @@ Future<GetWorkloadNetworkSegmentResult> getWorkloadNetworkSegment(
   return GetWorkloadNetworkSegmentResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkloadNetworkSegmentResult> getWorkloadNetworkSegmentOutput(
+  GetWorkloadNetworkSegmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getWorkloadNetworkSegment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadNetworkSegmentResult.fromMap);
+}
+
 /// Get a WorkloadNetworkVMGroup
 ///
 /// Uses Azure REST API version 2023-09-01.
@@ -482,6 +713,17 @@ Future<GetWorkloadNetworkVMGroupResult> getWorkloadNetworkVMGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkloadNetworkVMGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkloadNetworkVMGroupResult> getWorkloadNetworkVMGroupOutput(
+  GetWorkloadNetworkVMGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:getWorkloadNetworkVMGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadNetworkVMGroupResult.fromMap);
 }
 
 /// List hosts by zone in a cluster
@@ -504,6 +746,17 @@ Future<ListClusterZonesResult> listClusterZones(
   return ListClusterZonesResult.fromMap(result);
 }
 
+pulumi.Output<ListClusterZonesResult> listClusterZonesOutput(
+  ListClusterZonesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:listClusterZones',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListClusterZonesResult.fromMap);
+}
+
 /// List the admin credentials for the private cloud
 ///
 /// Uses Azure REST API version 2023-09-01.
@@ -522,4 +775,15 @@ Future<ListPrivateCloudAdminCredentialsResult> listPrivateCloudAdminCredentials(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListPrivateCloudAdminCredentialsResult.fromMap(result);
+}
+
+pulumi.Output<ListPrivateCloudAdminCredentialsResult> listPrivateCloudAdminCredentialsOutput(
+  ListPrivateCloudAdminCredentialsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:avs:listPrivateCloudAdminCredentials',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListPrivateCloudAdminCredentialsResult.fromMap);
 }

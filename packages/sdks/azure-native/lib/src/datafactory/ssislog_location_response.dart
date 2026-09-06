@@ -6,7 +6,7 @@ import 'ssisaccess_credential_response.dart';
 /// SSIS package execution log location
 class SSISLogLocationResponse {
   /// The package execution log access credential.
-  final pulumi.Input<SSISAccessCredentialResponse>? accessCredential;
+  final pulumi.Input<SSISAccessCredentialResponse?>? accessCredential;
   /// The SSIS package execution log path. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> logPath;
   /// Specifies the interval to refresh log. The default interval is 5 minutes. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).

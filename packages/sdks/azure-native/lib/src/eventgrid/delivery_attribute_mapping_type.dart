@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the delivery attribute or header name.
-enum DeliveryAttributeMappingType {
+enum DeliveryAttributeMappingType implements pulumi.PulumiEnum<String> {
   valueStatic("Static"),
   valueDynamic("Dynamic");
 
   const DeliveryAttributeMappingType(this.wireValue);
+  @override
   final String wireValue;
 
   static DeliveryAttributeMappingType fromValue(String value) {

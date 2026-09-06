@@ -7,7 +7,7 @@ class ExtendedLocationProperty {
   /// The name of the extended location.
   final pulumi.Input<String> name;
   /// Type of ExtendedLocation.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [ExtendedLocationProperty].
   /// [name] The name of the extended location.
@@ -27,7 +27,7 @@ class ExtendedLocationProperty {
   factory ExtendedLocationProperty.fromMap(Map<String, dynamic> map) {
     return ExtendedLocationProperty(
       name: pulumi.Input.fromValue(map['name'] as String),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

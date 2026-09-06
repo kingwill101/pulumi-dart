@@ -13,7 +13,7 @@ class ReplicationRecoveryServicesProviderArgs {
   /// The properties of an add provider request.
   final pulumi.Input<AddRecoveryServicesProviderInputProperties> properties;
   /// Recovery services provider name.
-  final pulumi.Input<String>? providerName;
+  final pulumi.Input<String?>? providerName;
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the recovery services vault.

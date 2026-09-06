@@ -9,15 +9,15 @@ import 'config_service_configuration_recorder_properties.dart';
 /// {@macro pulumi_awsconnector_config_service_configuration_recorder_args_doc}
 class ConfigServiceConfigurationRecorderArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of ConfigServiceConfigurationRecorder
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ConfigServiceConfigurationRecorderProperties>? properties;
+  final pulumi.Input<ConfigServiceConfigurationRecorderProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ConfigServiceConfigurationRecorderArgs].
   /// [location] The geo-location where the resource lives

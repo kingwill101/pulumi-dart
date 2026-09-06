@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Gets or sets the tags.
 class MigrateProjectTags {
-  final pulumi.Input<String>? additionalProperties;
+  final pulumi.Input<String?>? additionalProperties;
 
   /// Creates a new [MigrateProjectTags].
   /// [additionalProperties] Optional.

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Uploads files to VMs (Linux, Windows). Corresponds to Packer file provisioner
 class ImageTemplateFileCustomizer {
   /// The absolute path to a file (with nested directory structures already created) where the file (from sourceUri) will be uploaded to in the VM
-  final pulumi.Input<String>? destination;
+  final pulumi.Input<String?>? destination;
   /// Friendly Name to provide context on what this customization step does
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// SHA256 checksum of the file provided in the sourceUri field above
-  final pulumi.Input<String>? sha256Checksum;
+  final pulumi.Input<String?>? sha256Checksum;
   /// The URI of the file to be uploaded for customizing the VM. It can be a github link, SAS URI for Azure Storage, etc
-  final pulumi.Input<String>? sourceUri;
+  final pulumi.Input<String?>? sourceUri;
   /// The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
   /// Expected value is 'File'.
   final pulumi.Input<String> type;
@@ -22,13 +22,13 @@ class ImageTemplateFileCustomizer {
   /// [sha256Checksum] SHA256 checksum of the file provided in the sourceUri field above
   /// [sourceUri] The URI of the file to be uploaded for customizing the VM. It can be a github link, SAS URI for Azure Storage, etc
   /// [type] The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
-  const ImageTemplateFileCustomizer({
+  ImageTemplateFileCustomizer({
     this.destination,
     this.name,
-    this.sha256Checksum,
+    pulumi.Input<String?>? sha256Checksum,
     this.sourceUri,
     required this.type,
-  });
+  }) : sha256Checksum = sha256Checksum ?? pulumi.Input.fromValue('');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

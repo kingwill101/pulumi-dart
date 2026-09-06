@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// MarketplaceDetails of PAN Firewall resource
 class MarketplaceDetails {
   /// Marketplace Subscription Status
-  final pulumi.Input<String>? marketplaceSubscriptionStatus;
+  final pulumi.Input<dynamic>? marketplaceSubscriptionStatus;
   /// Offer Id
   final pulumi.Input<String> offerId;
   /// Publisher Id
@@ -31,7 +31,7 @@ class MarketplaceDetails {
 
   factory MarketplaceDetails.fromMap(Map<String, dynamic> map) {
     return MarketplaceDetails(
-      marketplaceSubscriptionStatus: (() { final guardedValue = map['marketplaceSubscriptionStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      marketplaceSubscriptionStatus: (() { final guardedValue = map['marketplaceSubscriptionStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       offerId: pulumi.Input.fromValue(map['offerId'] as String),
       publisherId: pulumi.Input.fromValue(map['publisherId'] as String),
     );

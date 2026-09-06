@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Custom domain of app resource payload.
 class CustomDomainProperties {
   /// The bound certificate name of domain.
-  final pulumi.Input<String>? certName;
+  final pulumi.Input<String?>? certName;
   /// The thumbprint of bound certificate.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [CustomDomainProperties].
   /// [certName] The bound certificate name of domain.

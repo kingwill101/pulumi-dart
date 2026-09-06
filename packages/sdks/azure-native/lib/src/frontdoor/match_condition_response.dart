@@ -9,13 +9,13 @@ class MatchConditionResponse {
   /// Request variable to compare with.
   final pulumi.Input<String> matchVariable;
   /// Describes if the result of this condition should be negated.
-  final pulumi.Input<bool>? negateCondition;
+  final pulumi.Input<bool?>? negateCondition;
   /// Comparison type to use for matching with the variable value.
   final pulumi.Input<String> operator;
   /// Match against a specific key from the QueryString, PostArgs, RequestHeader or Cookies variables. Default is null.
-  final pulumi.Input<String>? selector;
+  final pulumi.Input<String?>? selector;
   /// List of transforms.
-  final pulumi.Input<List<String>>? transforms;
+  final pulumi.Input<List<String>?>? transforms;
 
   /// Creates a new [MatchConditionResponse].
   /// [matchValue] List of possible match values.

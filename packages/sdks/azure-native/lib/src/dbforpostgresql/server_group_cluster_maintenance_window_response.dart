@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Schedule settings for regular cluster updates.
 class ServerGroupClusterMaintenanceWindowResponse {
   /// Indicates whether custom maintenance window is enabled or not.
-  final pulumi.Input<String>? customWindow;
+  final pulumi.Input<String?>? customWindow;
   /// Preferred day of the week for maintenance window.
-  final pulumi.Input<int>? dayOfWeek;
+  final pulumi.Input<int?>? dayOfWeek;
   /// Start hour within preferred day of the week for maintenance window.
-  final pulumi.Input<int>? startHour;
+  final pulumi.Input<int?>? startHour;
   /// Start minute within the start hour for maintenance window.
-  final pulumi.Input<int>? startMinute;
+  final pulumi.Input<int?>? startMinute;
 
   /// Creates a new [ServerGroupClusterMaintenanceWindowResponse].
   /// [customWindow] Indicates whether custom maintenance window is enabled or not.
@@ -37,9 +37,9 @@ class ServerGroupClusterMaintenanceWindowResponse {
   factory ServerGroupClusterMaintenanceWindowResponse.fromMap(Map<String, dynamic> map) {
     return ServerGroupClusterMaintenanceWindowResponse(
       customWindow: (() { final guardedValue = map['customWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dayOfWeek: (() { final guardedValue = map['dayOfWeek']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      startHour: (() { final guardedValue = map['startHour']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      startMinute: (() { final guardedValue = map['startMinute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dayOfWeek: (() { final guardedValue = map['dayOfWeek']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      startHour: (() { final guardedValue = map['startHour']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      startMinute: (() { final guardedValue = map['startMinute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

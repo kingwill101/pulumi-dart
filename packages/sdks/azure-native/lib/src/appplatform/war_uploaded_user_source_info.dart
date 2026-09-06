@@ -5,18 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Uploaded War binary for a deployment
 class WarUploadedUserSourceInfo {
   /// JVM parameter
-  final pulumi.Input<String>? jvmOptions;
+  final pulumi.Input<String?>? jvmOptions;
   /// Relative path of the storage which stores the source
-  final pulumi.Input<String>? relativePath;
+  final pulumi.Input<String?>? relativePath;
   /// Runtime version of the war file
-  final pulumi.Input<String>? runtimeVersion;
+  final pulumi.Input<String?>? runtimeVersion;
   /// Server version, currently only Apache Tomcat is supported
-  final pulumi.Input<String>? serverVersion;
+  final pulumi.Input<String?>? serverVersion;
   /// Type of the source uploaded
   /// Expected value is 'War'.
   final pulumi.Input<String> type;
   /// Version of the source
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [WarUploadedUserSourceInfo].
   /// [jvmOptions] JVM parameter

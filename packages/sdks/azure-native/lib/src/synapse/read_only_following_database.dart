@@ -212,4 +212,28 @@ class ReadOnlyFollowingDatabase extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ReadOnlyFollowingDatabase] resource.
+  ReadOnlyFollowingDatabase.reference(String urn)
+    : super(
+        'azure-native:synapse:ReadOnlyFollowingDatabase',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attachedDatabaseConfigurationName = registerOutput<String>('attachedDatabaseConfigurationName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    hotCachePeriod = registerOutput<String?>('hotCachePeriod');
+    kind = registerOutput<String>('kind');
+    leaderClusterResourceId = registerOutput<String>('leaderClusterResourceId');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    principalsModificationKind = registerOutput<String>('principalsModificationKind');
+    provisioningState = registerOutput<String>('provisioningState');
+    softDeletePeriod = registerOutput<String>('softDeletePeriod');
+    statistics = registerOutput<DatabaseStatisticsResponse>('statistics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseStatisticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

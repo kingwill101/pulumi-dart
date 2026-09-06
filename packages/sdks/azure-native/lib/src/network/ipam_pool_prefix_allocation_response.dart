@@ -7,9 +7,9 @@ class IpamPoolPrefixAllocationResponse {
   /// List of assigned IP address prefixes in the IpamPool of the associated resource.
   final pulumi.Input<List<String>> allocatedAddressPrefixes;
   /// Resource id of the associated Azure IpamPool resource.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Number of IP addresses to allocate.
-  final pulumi.Input<String>? numberOfIpAddresses;
+  final pulumi.Input<String?>? numberOfIpAddresses;
 
   /// Creates a new [IpamPoolPrefixAllocationResponse].
   /// [allocatedAddressPrefixes] List of assigned IP address prefixes in the IpamPool of the associated resource.

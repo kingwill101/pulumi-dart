@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Redis eviction policy - default is VolatileLRU
-enum EvictionPolicy {
+enum EvictionPolicy implements pulumi.PulumiEnum<String> {
   valueAllKeysLFU("AllKeysLFU"),
   valueAllKeysLRU("AllKeysLRU"),
   valueAllKeysRandom("AllKeysRandom"),
@@ -10,6 +12,7 @@ enum EvictionPolicy {
   valueNoEviction("NoEviction");
 
   const EvictionPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static EvictionPolicy fromValue(String value) {

@@ -5,43 +5,43 @@ import 'connector_mapping_properties_response.dart';
 /// Result data returned by getConnectorMapping.
 class GetConnectorMappingResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The connector mapping name
-  final String connectorMappingName;
+  final String? connectorMappingName;
   /// The connector name.
-  final String connectorName;
+  final String? connectorName;
   /// Type of connector.
   final String? connectorType;
   /// The created time.
-  final String created;
+  final String? created;
   /// The DataFormat ID.
-  final String dataFormatId;
+  final String? dataFormatId;
   /// The description of the connector mapping.
   final String? description;
   /// Display name for the connector mapping.
   final String? displayName;
   /// Defines which entity type the file should map to.
-  final String entityType;
+  final String? entityType;
   /// The mapping entity name.
-  final String entityTypeName;
+  final String? entityTypeName;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// The last modified time.
-  final String lastModified;
+  final String? lastModified;
   /// The properties of the mapping.
-  final ConnectorMappingPropertiesResponse mappingProperties;
+  final ConnectorMappingPropertiesResponse? mappingProperties;
   /// Resource name.
-  final String name;
+  final String? name;
   /// The next run time based on customer's settings.
-  final String nextRunTime;
+  final String? nextRunTime;
   /// The RunId.
-  final String runId;
+  final String? runId;
   /// State of connector mapping.
-  final String state;
+  final String? state;
   /// The hub name.
-  final String tenantId;
+  final String? tenantId;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetConnectorMappingResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -64,72 +64,72 @@ class GetConnectorMappingResult {
   /// [tenantId] The hub name.
   /// [type] Resource type.
   const GetConnectorMappingResult({
-    required this.azureApiVersion,
-    required this.connectorMappingName,
-    required this.connectorName,
+    this.azureApiVersion,
+    this.connectorMappingName,
+    this.connectorName,
     this.connectorType,
-    required this.created,
-    required this.dataFormatId,
+    this.created,
+    this.dataFormatId,
     this.description,
     this.displayName,
-    required this.entityType,
-    required this.entityTypeName,
-    required this.id,
-    required this.lastModified,
-    required this.mappingProperties,
-    required this.name,
-    required this.nextRunTime,
-    required this.runId,
-    required this.state,
-    required this.tenantId,
-    required this.type,
+    this.entityType,
+    this.entityTypeName,
+    this.id,
+    this.lastModified,
+    this.mappingProperties,
+    this.name,
+    this.nextRunTime,
+    this.runId,
+    this.state,
+    this.tenantId,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'connectorMappingName': connectorMappingName,
-      'connectorName': connectorName,
+      'azureApiVersion': ?azureApiVersion,
+      'connectorMappingName': ?connectorMappingName,
+      'connectorName': ?connectorName,
       'connectorType': ?connectorType,
-      'created': created,
-      'dataFormatId': dataFormatId,
+      'created': ?created,
+      'dataFormatId': ?dataFormatId,
       'description': ?description,
       'displayName': ?displayName,
-      'entityType': entityType,
-      'entityTypeName': entityTypeName,
-      'id': id,
-      'lastModified': lastModified,
-      'mappingProperties': mappingProperties.toMap(),
-      'name': name,
-      'nextRunTime': nextRunTime,
-      'runId': runId,
-      'state': state,
-      'tenantId': tenantId,
-      'type': type,
+      'entityType': ?entityType,
+      'entityTypeName': ?entityTypeName,
+      'id': ?id,
+      'lastModified': ?lastModified,
+      'mappingProperties': ?mappingProperties?.toMap(),
+      'name': ?name,
+      'nextRunTime': ?nextRunTime,
+      'runId': ?runId,
+      'state': ?state,
+      'tenantId': ?tenantId,
+      'type': ?type,
     };
   }
 
   factory GetConnectorMappingResult.fromMap(Map<String, dynamic> map) {
     return GetConnectorMappingResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      connectorMappingName: map['connectorMappingName'] as String,
-      connectorName: map['connectorName'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      connectorMappingName: (() { final guardedValue = map['connectorMappingName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      connectorName: (() { final guardedValue = map['connectorName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       connectorType: (() { final guardedValue = map['connectorType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      created: map['created'] as String,
-      dataFormatId: map['dataFormatId'] as String,
+      created: (() { final guardedValue = map['created']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dataFormatId: (() { final guardedValue = map['dataFormatId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      entityType: map['entityType'] as String,
-      entityTypeName: map['entityTypeName'] as String,
-      id: map['id'] as String,
-      lastModified: map['lastModified'] as String,
-      mappingProperties: ConnectorMappingPropertiesResponse.fromMap((map['mappingProperties']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      nextRunTime: map['nextRunTime'] as String,
-      runId: map['runId'] as String,
-      state: map['state'] as String,
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      entityType: (() { final guardedValue = map['entityType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      entityTypeName: (() { final guardedValue = map['entityTypeName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastModified: (() { final guardedValue = map['lastModified']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      mappingProperties: (() { final guardedValue = map['mappingProperties']; if (guardedValue == null) return null; return ConnectorMappingPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nextRunTime: (() { final guardedValue = map['nextRunTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      runId: (() { final guardedValue = map['runId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

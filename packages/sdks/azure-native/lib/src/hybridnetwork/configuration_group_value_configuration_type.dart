@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The value which indicates if configuration values are secrets
-enum ConfigurationGroupValueConfigurationType {
+enum ConfigurationGroupValueConfigurationType implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueSecret("Secret"),
   valueOpen("Open");
 
   const ConfigurationGroupValueConfigurationType(this.wireValue);
+  @override
   final String wireValue;
 
   static ConfigurationGroupValueConfigurationType fromValue(String value) {

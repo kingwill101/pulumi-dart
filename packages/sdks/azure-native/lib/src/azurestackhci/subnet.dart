@@ -9,23 +9,23 @@ import 'subnet_ip_configuration_reference.dart';
 /// Properties of the subnet.
 class Subnet {
   /// The address prefix for the subnet: Cidr for this subnet - IPv4, IPv6.
-  final pulumi.Input<String>? addressPrefix;
+  final pulumi.Input<String?>? addressPrefix;
   /// List of address prefixes for the subnet.
-  final pulumi.Input<List<String>>? addressPrefixes;
+  final pulumi.Input<List<String>?>? addressPrefixes;
   /// IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic'
-  final pulumi.Input<String>? ipAllocationMethod;
+  final pulumi.Input<dynamic>? ipAllocationMethod;
   /// IPConfigurationReferences - list of IPConfigurationReferences
-  final pulumi.Input<List<SubnetIpConfigurationReference>>? ipConfigurationReferences;
+  final pulumi.Input<List<SubnetIpConfigurationReference>?>? ipConfigurationReferences;
   /// network associated pool of IP Addresses
-  final pulumi.Input<List<IPPool>>? ipPools;
+  final pulumi.Input<List<IPPool>?>? ipPools;
   /// Name - The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// NetworkSecurityGroup - Network Security Group attached to the logical network.
-  final pulumi.Input<NetworkSecurityGroupArmReference>? networkSecurityGroup;
+  final pulumi.Input<NetworkSecurityGroupArmReference?>? networkSecurityGroup;
   /// Route table resource.
-  final pulumi.Input<RouteTable>? routeTable;
+  final pulumi.Input<RouteTable?>? routeTable;
   /// Vlan to use for the subnet
-  final pulumi.Input<int>? vlan;
+  final pulumi.Input<int?>? vlan;
 
   /// Creates a new [Subnet].
   /// [addressPrefix] The address prefix for the subnet: Cidr for this subnet - IPv4, IPv6.
@@ -67,13 +67,13 @@ class Subnet {
     return Subnet(
       addressPrefix: (() { final guardedValue = map['addressPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       addressPrefixes: (() { final guardedValue = map['addressPrefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      ipAllocationMethod: (() { final guardedValue = map['ipAllocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipAllocationMethod: (() { final guardedValue = map['ipAllocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       ipConfigurationReferences: (() { final guardedValue = map['ipConfigurationReferences']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubnetIpConfigurationReference>(guardedValue, (value) => SubnetIpConfigurationReference.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipPools: (() { final guardedValue = map['ipPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IPPool>(guardedValue, (value) => IPPool.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkSecurityGroup: (() { final guardedValue = map['networkSecurityGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkSecurityGroupArmReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       routeTable: (() { final guardedValue = map['routeTable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouteTable.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

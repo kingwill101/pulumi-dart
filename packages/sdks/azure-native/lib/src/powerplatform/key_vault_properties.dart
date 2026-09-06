@@ -6,9 +6,9 @@ import 'key_properties.dart';
 /// Settings concerning key vault encryption for a configuration store.
 class KeyVaultProperties {
   /// Uri of KeyVault
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Identity of the secret that includes name and version.
-  final pulumi.Input<KeyProperties>? key;
+  final pulumi.Input<KeyProperties?>? key;
 
   /// Creates a new [KeyVaultProperties].
   /// [id] Uri of KeyVault

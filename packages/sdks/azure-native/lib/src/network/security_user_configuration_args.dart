@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_security_user_configuration_args_doc}
 class SecurityUserConfigurationArgs {
   /// The name of the network manager Security Configuration.
-  final pulumi.Input<String>? configurationName;
+  final pulumi.Input<String?>? configurationName;
   /// A description of the security user configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
   /// The name of the resource group. The name is case insensitive.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of Databricks
 class DatabricksProperties {
   /// Databricks access token
-  final pulumi.Input<String>? databricksAccessToken;
+  final pulumi.Input<String?>? databricksAccessToken;
   /// Workspace Url
-  final pulumi.Input<String>? workspaceUrl;
+  final pulumi.Input<String?>? workspaceUrl;
 
   /// Creates a new [DatabricksProperties].
   /// [databricksAccessToken] Databricks access token

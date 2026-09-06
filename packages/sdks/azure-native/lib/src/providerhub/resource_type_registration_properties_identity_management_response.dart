@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The identity management.
 class ResourceTypeRegistrationPropertiesIdentityManagementResponse {
   /// The application id.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// The application ids.
-  final pulumi.Input<List<String>>? applicationIds;
+  final pulumi.Input<List<String>?>? applicationIds;
   /// The delegation app ids.
-  final pulumi.Input<List<String>>? delegationAppIds;
+  final pulumi.Input<List<String>?>? delegationAppIds;
   /// The type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesIdentityManagementResponse].
   /// [applicationId] The application id.

@@ -6,35 +6,35 @@ import 'system_data_response.dart';
 /// Result data returned by getSnapshot.
 class GetSnapshotResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// CreationData to be used to specify the source agent pool resource ID to create this snapshot.
   final CreationDataResponse? creationData;
   /// Whether to use a FIPS-enabled OS.
-  final bool enableFIPS;
+  final bool? enableFIPS;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The version of Kubernetes.
-  final String kubernetesVersion;
+  final String? kubernetesVersion;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The version of node image.
-  final String nodeImageVersion;
+  final String? nodeImageVersion;
   /// Specifies the OS SKU used by the agent pool. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes &lt;= 1.24 or Windows2022 when Kubernetes &gt;= 1.25 if OSType is Windows.
-  final String osSku;
+  final String? osSku;
   /// The operating system type. The default is Linux.
-  final String osType;
+  final String? osType;
   /// The type of a snapshot. The default is NodePool.
   final String? snapshotType;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// The size of the VM.
-  final String vmSize;
+  final String? vmSize;
 
   /// Creates a new [GetSnapshotResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -53,60 +53,60 @@ class GetSnapshotResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [vmSize] The size of the VM.
   const GetSnapshotResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.creationData,
-    required this.enableFIPS,
-    required this.id,
-    required this.kubernetesVersion,
-    required this.location,
-    required this.name,
-    required this.nodeImageVersion,
-    required this.osSku,
-    required this.osType,
+    this.enableFIPS,
+    this.id,
+    this.kubernetesVersion,
+    this.location,
+    this.name,
+    this.nodeImageVersion,
+    this.osSku,
+    this.osType,
     this.snapshotType,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.vmSize,
+    this.type,
+    this.vmSize,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'creationData': ?creationData?.toMap(),
-      'enableFIPS': enableFIPS,
-      'id': id,
-      'kubernetesVersion': kubernetesVersion,
-      'location': location,
-      'name': name,
-      'nodeImageVersion': nodeImageVersion,
-      'osSku': osSku,
-      'osType': osType,
+      'enableFIPS': ?enableFIPS,
+      'id': ?id,
+      'kubernetesVersion': ?kubernetesVersion,
+      'location': ?location,
+      'name': ?name,
+      'nodeImageVersion': ?nodeImageVersion,
+      'osSku': ?osSku,
+      'osType': ?osType,
       'snapshotType': ?snapshotType,
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'vmSize': vmSize,
+      'type': ?type,
+      'vmSize': ?vmSize,
     };
   }
 
   factory GetSnapshotResult.fromMap(Map<String, dynamic> map) {
     return GetSnapshotResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       creationData: (() { final guardedValue = map['creationData']; if (guardedValue == null) return null; return CreationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      enableFIPS: map['enableFIPS'] as bool,
-      id: map['id'] as String,
-      kubernetesVersion: map['kubernetesVersion'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      nodeImageVersion: map['nodeImageVersion'] as String,
-      osSku: map['osSku'] as String,
-      osType: map['osType'] as String,
+      enableFIPS: (() { final guardedValue = map['enableFIPS']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kubernetesVersion: (() { final guardedValue = map['kubernetesVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nodeImageVersion: (() { final guardedValue = map['nodeImageVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      osSku: (() { final guardedValue = map['osSku']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       snapshotType: (() { final guardedValue = map['snapshotType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      vmSize: map['vmSize'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vmSize: (() { final guardedValue = map['vmSize']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

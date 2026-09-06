@@ -9,59 +9,59 @@ class VMAttributes {
   /// The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.
   /// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
   /// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
-  final pulumi.Input<VMAttributeMinMaxInteger>? acceleratorCount;
+  final pulumi.Input<VMAttributeMinMaxInteger?>? acceleratorCount;
   /// The accelerator manufacturers specified as a list.
   /// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
   /// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
-  final pulumi.Input<List<String>>? acceleratorManufacturers;
+  final pulumi.Input<List<dynamic>?>? acceleratorManufacturers;
   /// Specifies whether the VMSize supporting accelerator should be used to launch instances or not.
   /// acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
   /// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
-  final pulumi.Input<String>? acceleratorSupport;
+  final pulumi.Input<dynamic>? acceleratorSupport;
   /// The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
   /// If acceleratorSupport is "Excluded", this VMAttribute can not be used.
-  final pulumi.Input<List<String>>? acceleratorTypes;
+  final pulumi.Input<List<dynamic>?>? acceleratorTypes;
   /// Specifies which VMSizes should be allowed while filtering on VMAttributes. Cannot be specified together with excludedVMSizes. Maximum of 10 VM sizes allowed. Optional parameter.
-  final pulumi.Input<List<String>>? allowedVMSizes;
+  final pulumi.Input<List<String>?>? allowedVMSizes;
   /// The VM architecture types specified as a list. Must be specified if VMAttributes are specified. Must be compatible with image used.
-  final pulumi.Input<List<String>> architectureTypes;
+  final pulumi.Input<List<dynamic>> architectureTypes;
   /// Specifies whether the VMSize supporting burstable capability should be used to launch instances or not.
-  final pulumi.Input<String>? burstableSupport;
+  final pulumi.Input<dynamic>? burstableSupport;
   /// The VM CPU manufacturers specified as a list. Optional parameter.
-  final pulumi.Input<List<String>>? cpuManufacturers;
+  final pulumi.Input<List<dynamic>?>? cpuManufacturers;
   /// The range of data disk count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
-  final pulumi.Input<VMAttributeMinMaxInteger>? dataDiskCount;
+  final pulumi.Input<VMAttributeMinMaxInteger?>? dataDiskCount;
   /// Specifies which VMSizes should be excluded while filtering on VMAttributes. Cannot be specified together with allowedVMSizes. Maximum of 10 VM sizes allowed. Optional parameter.
-  final pulumi.Input<List<String>>? excludedVMSizes;
+  final pulumi.Input<List<String>?>? excludedVMSizes;
   /// The hyperV generations specified as a list. Optional parameter.
-  final pulumi.Input<List<String>>? hyperVGenerations;
+  final pulumi.Input<List<dynamic>?>? hyperVGenerations;
   /// The local storage disk types specified as a list. LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
   /// If localStorageSupport is "Excluded", this VMAttribute can not be used.
-  final pulumi.Input<List<String>>? localStorageDiskTypes;
+  final pulumi.Input<List<dynamic>?>? localStorageDiskTypes;
   /// LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
   /// If localStorageSupport is "Excluded", this VMAttribute can not be used.
-  final pulumi.Input<VMAttributeMinMaxDouble>? localStorageInGiB;
+  final pulumi.Input<VMAttributeMinMaxDouble?>? localStorageInGiB;
   /// Specifies whether the VMSize supporting local storage should be used to launch instances or not.
   /// Included - Default if not specified as most Azure VMs support local storage.
-  final pulumi.Input<String>? localStorageSupport;
+  final pulumi.Input<dynamic>? localStorageSupport;
   /// The range of memory specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
   final pulumi.Input<VMAttributeMinMaxDouble> memoryInGiB;
   /// The range of memory in GiB per vCPU specified from min to max. Optional parameter. Either Min or Max is required if specified.
-  final pulumi.Input<VMAttributeMinMaxDouble>? memoryInGiBPerVCpu;
+  final pulumi.Input<VMAttributeMinMaxDouble?>? memoryInGiBPerVCpu;
   /// The range of network bandwidth in Mbps specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
-  final pulumi.Input<VMAttributeMinMaxDouble>? networkBandwidthInMbps;
+  final pulumi.Input<VMAttributeMinMaxDouble?>? networkBandwidthInMbps;
   /// The range of network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
-  final pulumi.Input<VMAttributeMinMaxInteger>? networkInterfaceCount;
+  final pulumi.Input<VMAttributeMinMaxInteger?>? networkInterfaceCount;
   /// The range of RDMA (Remote Direct Memory Access) network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
   /// rdmaSupport should be set to "Included" or "Required" to use this VMAttribute.
   /// If rdmaSupport is "Excluded", this VMAttribute can not be used.
-  final pulumi.Input<VMAttributeMinMaxInteger>? rdmaNetworkInterfaceCount;
+  final pulumi.Input<VMAttributeMinMaxInteger?>? rdmaNetworkInterfaceCount;
   /// Specifies whether the VMSize supporting RDMA (Remote Direct Memory Access) should be used to build launch instances or not.
-  final pulumi.Input<String>? rdmaSupport;
+  final pulumi.Input<dynamic>? rdmaSupport;
   /// The range of vCpuCount specified from Min to Max. Must be specified if VMAttributes are specified, either Min or Max is required if specified.
   final pulumi.Input<VMAttributeMinMaxInteger> vCpuCount;
   /// The VM category specified as a list. Optional parameter.
-  final pulumi.Input<List<String>>? vmCategories;
+  final pulumi.Input<List<dynamic>?>? vmCategories;
 
   /// Creates a new [VMAttributes].
   /// [acceleratorCount] The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.
@@ -141,27 +141,27 @@ class VMAttributes {
   factory VMAttributes.fromMap(Map<String, dynamic> map) {
     return VMAttributes(
       acceleratorCount: (() { final guardedValue = map['acceleratorCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMAttributeMinMaxInteger.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      acceleratorManufacturers: (() { final guardedValue = map['acceleratorManufacturers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      acceleratorSupport: (() { final guardedValue = map['acceleratorSupport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      acceleratorTypes: (() { final guardedValue = map['acceleratorTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      acceleratorManufacturers: (() { final guardedValue = map['acceleratorManufacturers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      acceleratorSupport: (() { final guardedValue = map['acceleratorSupport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      acceleratorTypes: (() { final guardedValue = map['acceleratorTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       allowedVMSizes: (() { final guardedValue = map['allowedVMSizes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      architectureTypes: pulumi.Input.fromValue((map['architectureTypes'] as List).cast<String>()),
-      burstableSupport: (() { final guardedValue = map['burstableSupport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cpuManufacturers: (() { final guardedValue = map['cpuManufacturers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      architectureTypes: pulumi.Input.fromValue((map['architectureTypes'] as List).cast<dynamic>()),
+      burstableSupport: (() { final guardedValue = map['burstableSupport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      cpuManufacturers: (() { final guardedValue = map['cpuManufacturers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       dataDiskCount: (() { final guardedValue = map['dataDiskCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMAttributeMinMaxInteger.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       excludedVMSizes: (() { final guardedValue = map['excludedVMSizes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      hyperVGenerations: (() { final guardedValue = map['hyperVGenerations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      localStorageDiskTypes: (() { final guardedValue = map['localStorageDiskTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      hyperVGenerations: (() { final guardedValue = map['hyperVGenerations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      localStorageDiskTypes: (() { final guardedValue = map['localStorageDiskTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       localStorageInGiB: (() { final guardedValue = map['localStorageInGiB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMAttributeMinMaxDouble.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      localStorageSupport: (() { final guardedValue = map['localStorageSupport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      localStorageSupport: (() { final guardedValue = map['localStorageSupport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       memoryInGiB: pulumi.Input.fromValue(VMAttributeMinMaxDouble.fromMap((map['memoryInGiB']! as Map).cast<String, dynamic>())),
       memoryInGiBPerVCpu: (() { final guardedValue = map['memoryInGiBPerVCpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMAttributeMinMaxDouble.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       networkBandwidthInMbps: (() { final guardedValue = map['networkBandwidthInMbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMAttributeMinMaxDouble.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       networkInterfaceCount: (() { final guardedValue = map['networkInterfaceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMAttributeMinMaxInteger.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rdmaNetworkInterfaceCount: (() { final guardedValue = map['rdmaNetworkInterfaceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMAttributeMinMaxInteger.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      rdmaSupport: (() { final guardedValue = map['rdmaSupport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rdmaSupport: (() { final guardedValue = map['rdmaSupport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       vCpuCount: pulumi.Input.fromValue(VMAttributeMinMaxInteger.fromMap((map['vCpuCount']! as Map).cast<String, dynamic>())),
-      vmCategories: (() { final guardedValue = map['vmCategories']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      vmCategories: (() { final guardedValue = map['vmCategories']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
     );
   }
 }

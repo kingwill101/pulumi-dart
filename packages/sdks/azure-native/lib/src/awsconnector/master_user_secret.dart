@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of MasterUserSecret
 class MasterUserSecret {
   /// The AWS KMS key identifier that is used to encrypt the secret.
-  final pulumi.Input<String>? kmsKeyId;
+  final pulumi.Input<String?>? kmsKeyId;
   /// The Amazon Resource Name (ARN) of the secret.
-  final pulumi.Input<String>? secretArn;
+  final pulumi.Input<String?>? secretArn;
 
   /// Creates a new [MasterUserSecret].
   /// [kmsKeyId] The AWS KMS key identifier that is used to encrypt the secret.

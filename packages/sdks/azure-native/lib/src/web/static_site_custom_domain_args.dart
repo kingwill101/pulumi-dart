@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_web_static_site_custom_domain_args_doc}
 class StaticSiteCustomDomainArgs {
   /// The custom domain name.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the static site.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Validation method for adding a custom domain
-  final pulumi.Input<String>? validationMethod;
+  final pulumi.Input<String?>? validationMethod;
 
   /// Creates a new [StaticSiteCustomDomainArgs].
   /// [domainName] The custom domain name.
@@ -24,13 +24,13 @@ class StaticSiteCustomDomainArgs {
   /// [name] Name of the static site.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [validationMethod] Validation method for adding a custom domain
-  const StaticSiteCustomDomainArgs({
+  StaticSiteCustomDomainArgs({
     this.domainName,
     this.kind,
     required this.name,
     required this.resourceGroupName,
-    this.validationMethod,
-  });
+    pulumi.Input<String?>? validationMethod,
+  }) : validationMethod = validationMethod ?? pulumi.Input.fromValue('cname-delegation');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

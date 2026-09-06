@@ -9,15 +9,15 @@ import 'dataflow_endpoint_authentication_x509.dart';
 /// Mqtt endpoint Authentication properties. NOTE - only authentication property is allowed per entry.
 class DataflowEndpointMqttAuthentication {
   /// Mode of Authentication.
-  final pulumi.Input<String> method;
+  final pulumi.Input<dynamic> method;
   /// Kubernetes service account token authentication. Default audience if not set is aio-internal
-  final pulumi.Input<DataflowEndpointAuthenticationServiceAccountToken>? serviceAccountTokenSettings;
+  final pulumi.Input<DataflowEndpointAuthenticationServiceAccountToken?>? serviceAccountTokenSettings;
   /// System-assigned managed identity authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentity>? systemAssignedManagedIdentitySettings;
+  final pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentity?>? systemAssignedManagedIdentitySettings;
   /// User-assigned managed identity authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentity>? userAssignedManagedIdentitySettings;
+  final pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentity?>? userAssignedManagedIdentitySettings;
   /// X.509 certificate authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationX509>? x509CertificateSettings;
+  final pulumi.Input<DataflowEndpointAuthenticationX509?>? x509CertificateSettings;
 
   /// Creates a new [DataflowEndpointMqttAuthentication].
   /// [method] Mode of Authentication.
@@ -45,7 +45,7 @@ class DataflowEndpointMqttAuthentication {
 
   factory DataflowEndpointMqttAuthentication.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointMqttAuthentication(
-      method: pulumi.Input.fromValue(map['method'] as String),
+      method: pulumi.Input.fromValue(map['method']),
       serviceAccountTokenSettings: (() { final guardedValue = map['serviceAccountTokenSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataflowEndpointAuthenticationServiceAccountToken.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       systemAssignedManagedIdentitySettings: (() { final guardedValue = map['systemAssignedManagedIdentitySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataflowEndpointAuthenticationSystemAssignedManagedIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       userAssignedManagedIdentitySettings: (() { final guardedValue = map['userAssignedManagedIdentitySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataflowEndpointAuthenticationUserAssignedManagedIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

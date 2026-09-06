@@ -12,13 +12,13 @@ class GuestConfigurationAssignmentPropertiesResponse {
   /// A value indicating compliance status of the machine for the assigned guest configuration.
   final pulumi.Input<String> complianceStatus;
   /// The source which initiated the guest configuration assignment. Ex: Azure Policy
-  final pulumi.Input<String>? context;
+  final pulumi.Input<String?>? context;
   /// The guest configuration to assign.
-  final pulumi.Input<GuestConfigurationNavigationResponse>? guestConfiguration;
+  final pulumi.Input<GuestConfigurationNavigationResponse?>? guestConfiguration;
   /// Date and time when last compliance status was checked.
   final pulumi.Input<String> lastComplianceStatusChecked;
   /// Last reported guest configuration assignment report.
-  final pulumi.Input<AssignmentReportResponse>? latestAssignmentReport;
+  final pulumi.Input<AssignmentReportResponse?>? latestAssignmentReport;
   /// Id of the latest report for the guest configuration assignment.
   final pulumi.Input<String> latestReportId;
   /// parameter hash for the guest configuration assignment.
@@ -30,7 +30,7 @@ class GuestConfigurationAssignmentPropertiesResponse {
   /// VM resource Id.
   final pulumi.Input<String> targetResourceId;
   /// The list of VM Compliance data for VMSS
-  final pulumi.Input<List<VMSSVMInfoResponse>>? vmssVMList;
+  final pulumi.Input<List<VMSSVMInfoResponse>?>? vmssVMList;
 
   /// Creates a new [GuestConfigurationAssignmentPropertiesResponse].
   /// [assignmentHash] Combined hash of the configuration package and parameters.

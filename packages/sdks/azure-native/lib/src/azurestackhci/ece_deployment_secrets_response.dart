@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Protected parameters list stored in keyvault.
 class EceDeploymentSecretsResponse {
   /// Secret name expected for Enterprise Cloud Engine (ECE) deployment.
-  final pulumi.Input<String>? eceSecretName;
+  final pulumi.Input<String?>? eceSecretName;
   /// Secret URI stored in keyvault.
-  final pulumi.Input<String>? secretLocation;
+  final pulumi.Input<String?>? secretLocation;
   /// Secret name stored in keyvault.
-  final pulumi.Input<String>? secretName;
+  final pulumi.Input<String?>? secretName;
 
   /// Creates a new [EceDeploymentSecretsResponse].
   /// [eceSecretName] Secret name expected for Enterprise Cloud Engine (ECE) deployment.

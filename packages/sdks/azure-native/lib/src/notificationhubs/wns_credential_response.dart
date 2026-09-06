@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Description of a NotificationHub WnsCredential.
 class WnsCredentialResponse {
   /// Ges or sets the WNS Certificate Key.
-  final pulumi.Input<String>? certificateKey;
+  final pulumi.Input<String?>? certificateKey;
   /// Gets or sets the package ID for this credential.
-  final pulumi.Input<String>? packageSid;
+  final pulumi.Input<String?>? packageSid;
   /// Gets or sets the secret key.
-  final pulumi.Input<String>? secretKey;
+  final pulumi.Input<String?>? secretKey;
   /// Gets or sets the Windows Live endpoint.
-  final pulumi.Input<String>? windowsLiveEndpoint;
+  final pulumi.Input<String?>? windowsLiveEndpoint;
   /// Gets or sets the WNS Certificate.
-  final pulumi.Input<String>? wnsCertificate;
+  final pulumi.Input<String?>? wnsCertificate;
 
   /// Creates a new [WnsCredentialResponse].
   /// [certificateKey] Ges or sets the WNS Certificate Key.

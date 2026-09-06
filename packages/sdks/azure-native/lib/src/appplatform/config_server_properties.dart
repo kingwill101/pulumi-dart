@@ -7,11 +7,11 @@ import 'error.dart';
 /// Config server git properties payload
 class ConfigServerProperties {
   /// Settings of config server.
-  final pulumi.Input<ConfigServerSettings>? configServer;
+  final pulumi.Input<ConfigServerSettings?>? configServer;
   /// Enabled state of the config server. This is only used in Consumption tier.
-  final pulumi.Input<String>? enabledState;
+  final pulumi.Input<dynamic>? enabledState;
   /// Error when apply config server settings.
-  final pulumi.Input<Error>? error;
+  final pulumi.Input<Error?>? error;
 
   /// Creates a new [ConfigServerProperties].
   /// [configServer] Settings of config server.
@@ -34,7 +34,7 @@ class ConfigServerProperties {
   factory ConfigServerProperties.fromMap(Map<String, dynamic> map) {
     return ConfigServerProperties(
       configServer: (() { final guardedValue = map['configServer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigServerSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Error.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

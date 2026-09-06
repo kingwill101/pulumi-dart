@@ -31,9 +31,9 @@ class ResultStatisticsResponse {
 
   factory ResultStatisticsResponse.fromMap(Map<String, dynamic> map) {
     return ResultStatisticsResponse(
-      ingestedRecords: pulumi.Input.fromValue(map['ingestedRecords'] as int),
-      progress: pulumi.Input.fromValue(map['progress'] as double),
-      scannedGb: pulumi.Input.fromValue(map['scannedGb'] as double),
+      ingestedRecords: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ingestedRecords'])),
+      progress: pulumi.Input.fromValue((map['progress'] as num).toDouble()),
+      scannedGb: pulumi.Input.fromValue((map['scannedGb'] as num).toDouble()),
     );
   }
 }

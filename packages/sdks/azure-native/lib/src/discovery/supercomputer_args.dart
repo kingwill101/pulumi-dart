@@ -9,15 +9,15 @@ import 'supercomputer_properties.dart';
 /// {@macro pulumi_discovery_supercomputer_args_doc}
 class SupercomputerArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<SupercomputerProperties>? properties;
+  final pulumi.Input<SupercomputerProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Supercomputer
-  final pulumi.Input<String>? supercomputerName;
+  final pulumi.Input<String?>? supercomputerName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SupercomputerArgs].
   /// [location] The geo-location where the resource lives

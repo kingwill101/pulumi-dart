@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SqlServerDatabaseResourcePropertiesResponseBackupInformation {
   /// Date time of last full backup.
-  final pulumi.Input<String>? lastFullBackup;
+  final pulumi.Input<String?>? lastFullBackup;
   /// Date time of last log backup.
-  final pulumi.Input<String>? lastLogBackup;
+  final pulumi.Input<String?>? lastLogBackup;
 
   /// Creates a new [SqlServerDatabaseResourcePropertiesResponseBackupInformation].
   /// [lastFullBackup] Date time of last full backup.

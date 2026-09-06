@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Credentials for a user on a lab VM.
 class Credentials {
   /// The password for the user. This is required for the TemplateVM createOption.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The username to use when signing in to lab VMs.
   final pulumi.Input<String> username;
 

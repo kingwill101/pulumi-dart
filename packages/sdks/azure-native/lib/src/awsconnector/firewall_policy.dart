@@ -10,23 +10,23 @@ import 'stateless_rule_group_reference.dart';
 /// Definition of FirewallPolicy
 class FirewallPolicy {
   /// Property policyVariables
-  final pulumi.Input<RuleVariablesModel>? policyVariables;
+  final pulumi.Input<RuleVariablesModel?>? policyVariables;
   /// Property statefulDefaultActions
-  final pulumi.Input<List<String>>? statefulDefaultActions;
+  final pulumi.Input<List<String>?>? statefulDefaultActions;
   /// Property statefulEngineOptions
-  final pulumi.Input<StatefulEngineOptions>? statefulEngineOptions;
+  final pulumi.Input<StatefulEngineOptions?>? statefulEngineOptions;
   /// Property statefulRuleGroupReferences
-  final pulumi.Input<List<StatefulRuleGroupReference>>? statefulRuleGroupReferences;
+  final pulumi.Input<List<StatefulRuleGroupReference>?>? statefulRuleGroupReferences;
   /// Property statelessCustomActions
-  final pulumi.Input<List<CustomAction>>? statelessCustomActions;
+  final pulumi.Input<List<CustomAction>?>? statelessCustomActions;
   /// Property statelessDefaultActions
-  final pulumi.Input<List<String>>? statelessDefaultActions;
+  final pulumi.Input<List<String>?>? statelessDefaultActions;
   /// Property statelessFragmentDefaultActions
-  final pulumi.Input<List<String>>? statelessFragmentDefaultActions;
+  final pulumi.Input<List<String>?>? statelessFragmentDefaultActions;
   /// Property statelessRuleGroupReferences
-  final pulumi.Input<List<StatelessRuleGroupReference>>? statelessRuleGroupReferences;
+  final pulumi.Input<List<StatelessRuleGroupReference>?>? statelessRuleGroupReferences;
   /// A resource ARN.
-  final pulumi.Input<String>? tlsInspectionConfigurationArn;
+  final pulumi.Input<String?>? tlsInspectionConfigurationArn;
 
   /// Creates a new [FirewallPolicy].
   /// [policyVariables] Property policyVariables

@@ -9,23 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MasterSitesControllerArgs {
   /// Gets or sets a value indicating whether multiple sites per site type are
   /// allowed.
-  final pulumi.Input<bool>? allowMultipleSites;
+  final pulumi.Input<bool?>? allowMultipleSites;
   /// Gets or sets a value for customer storage account ARM id.
-  final pulumi.Input<String>? customerStorageAccountArmId;
+  final pulumi.Input<String?>? customerStorageAccountArmId;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Gets or sets the state of public network access.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Site name
-  final pulumi.Input<String>? siteName;
+  final pulumi.Input<String?>? siteName;
   /// Gets or sets the sites that are a part of Master Site.
   /// The key
   /// should contain the Site ARM name.
-  final pulumi.Input<List<String>>? sites;
+  final pulumi.Input<List<String>?>? sites;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [MasterSitesControllerArgs].
   /// [allowMultipleSites] Gets or sets a value indicating whether multiple sites per site type are
@@ -65,7 +65,7 @@ class MasterSitesControllerArgs {
       allowMultipleSites: (() { final guardedValue = map['allowMultipleSites']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       customerStorageAccountArmId: (() { final guardedValue = map['customerStorageAccountArmId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       siteName: (() { final guardedValue = map['siteName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sites: (() { final guardedValue = map['sites']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

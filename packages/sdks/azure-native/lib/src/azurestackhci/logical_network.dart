@@ -3,6 +3,7 @@ import 'extended_location_response.dart';
 import 'logical_network_args.dart';
 import 'logical_network_properties_dhcp_options_response.dart';
 import 'logical_network_status_response.dart';
+import 'subnet_response.dart';
 import 'system_data_response.dart';
 
 /// The logical network resource definition.
@@ -197,7 +198,7 @@ class LogicalNetwork extends pulumi.CustomResource {
   /// The observed state of logical networks
   late final pulumi.Output<LogicalNetworkStatusResponse> status;
   /// Subnet - list of subnets under the logical network
-  late final pulumi.Output<List<Map<String, dynamic>>?> subnets;
+  late final pulumi.Output<List<SubnetResponse>?> subnets;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
@@ -228,9 +229,32 @@ class LogicalNetwork extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<LogicalNetworkStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogicalNetworkStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    subnets = registerOutput<List<Map<String, dynamic>>?>('subnets');
+    subnets = registerOutput<List<SubnetResponse>?>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetResponse>(guardedValue, (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    vmSwitchName = registerOutput<String?>('vmSwitchName');
+  }
+
+  /// Creates a typed reference to an existing [LogicalNetwork] resource.
+  LogicalNetwork.reference(String urn)
+    : super(
+        'azure-native:azurestackhci:LogicalNetwork',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dhcpOptions = registerOutput<LogicalNetworkPropertiesDhcpOptionsResponse?>('dhcpOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogicalNetworkPropertiesDhcpOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<LogicalNetworkStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogicalNetworkStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subnets = registerOutput<List<SubnetResponse>?>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetResponse>(guardedValue, (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     vmSwitchName = registerOutput<String?>('vmSwitchName');
   }

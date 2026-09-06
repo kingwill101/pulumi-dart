@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Status of Enhanced Security Monitoring feature.
 class EnhancedSecurityMonitoringDefinitionResponse {
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [EnhancedSecurityMonitoringDefinitionResponse].
   /// [value] Optional.

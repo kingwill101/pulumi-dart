@@ -26,8 +26,8 @@ class SecuritySettingsResponse {
 
   factory SecuritySettingsResponse.fromMap(Map<String, dynamic> map) {
     return SecuritySettingsResponse(
-      serverSecurityCostPerServerPerYear: pulumi.Input.fromValue(map['serverSecurityCostPerServerPerYear'] as double),
-      sqlServerSecurityCostPerServerPerYear: pulumi.Input.fromValue(map['sqlServerSecurityCostPerServerPerYear'] as double),
+      serverSecurityCostPerServerPerYear: pulumi.Input.fromValue((map['serverSecurityCostPerServerPerYear'] as num).toDouble()),
+      sqlServerSecurityCostPerServerPerYear: pulumi.Input.fromValue((map['sqlServerSecurityCostPerServerPerYear'] as num).toDouble()),
     );
   }
 }

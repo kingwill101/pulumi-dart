@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_sql_outbound_firewall_rule_args_doc}
 class OutboundFirewallRuleArgs {
-  final pulumi.Input<String>? outboundRuleFqdn;
+  final pulumi.Input<String?>? outboundRuleFqdn;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the server.

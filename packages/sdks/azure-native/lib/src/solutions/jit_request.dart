@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_client_details_response.dart';
+import 'jit_authorization_policies_response.dart';
 import 'jit_request_args.dart';
 import 'jit_scheduling_policy_response.dart';
 import 'system_data_response.dart';
@@ -229,7 +230,7 @@ class JitRequest extends pulumi.CustomResource {
   /// The client entity that created the JIT request.
   late final pulumi.Output<ApplicationClientDetailsResponse> createdBy;
   /// The JIT authorization policies.
-  late final pulumi.Output<List<Map<String, dynamic>>> jitAuthorizationPolicies;
+  late final pulumi.Output<List<JitAuthorizationPoliciesResponse>> jitAuthorizationPolicies;
   /// The JIT request state.
   late final pulumi.Output<String> jitRequestState;
   /// The JIT request properties.
@@ -268,7 +269,7 @@ class JitRequest extends pulumi.CustomResource {
     applicationResourceId = registerOutput<String>('applicationResourceId');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdBy = registerOutput<ApplicationClientDetailsResponse>('createdBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationClientDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    jitAuthorizationPolicies = registerOutput<List<Map<String, dynamic>>>('jitAuthorizationPolicies');
+    jitAuthorizationPolicies = registerOutput<List<JitAuthorizationPoliciesResponse>>('jitAuthorizationPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JitAuthorizationPoliciesResponse>(guardedValue, (value) => JitAuthorizationPoliciesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     jitRequestState = registerOutput<String>('jitRequestState');
     jitSchedulingPolicy = registerOutput<JitSchedulingPolicyResponse>('jitSchedulingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JitSchedulingPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
@@ -276,7 +277,32 @@ class JitRequest extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     publisherTenantId = registerOutput<String>('publisherTenantId');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    updatedBy = registerOutput<ApplicationClientDetailsResponse>('updatedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationClientDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [JitRequest] resource.
+  JitRequest.reference(String urn)
+    : super(
+        'azure-native:solutions:JitRequest',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationResourceId = registerOutput<String>('applicationResourceId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdBy = registerOutput<ApplicationClientDetailsResponse>('createdBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationClientDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jitAuthorizationPolicies = registerOutput<List<JitAuthorizationPoliciesResponse>>('jitAuthorizationPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JitAuthorizationPoliciesResponse>(guardedValue, (value) => JitAuthorizationPoliciesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    jitRequestState = registerOutput<String>('jitRequestState');
+    jitSchedulingPolicy = registerOutput<JitSchedulingPolicyResponse>('jitSchedulingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JitSchedulingPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    publisherTenantId = registerOutput<String>('publisherTenantId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     updatedBy = registerOutput<ApplicationClientDetailsResponse>('updatedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationClientDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

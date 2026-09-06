@@ -8,33 +8,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_identity_provider_args_doc}
 class IdentityProviderArgs {
   /// List of Allowed Tenants when configuring Azure Active Directory login.
-  final pulumi.Input<List<String>>? allowedTenants;
+  final pulumi.Input<List<String>?>? allowedTenants;
   /// OpenID Connect discovery endpoint hostname for AAD or AAD B2C.
-  final pulumi.Input<String>? authority;
+  final pulumi.Input<String?>? authority;
   /// Client Id of the Application in the external Identity Provider. It is App ID for Facebook login, Client ID for Google login, App ID for Microsoft.
   final pulumi.Input<String> clientId;
   /// The client library to be used in the developer portal. Only applies to AAD and AAD B2C Identity Provider.
-  final pulumi.Input<String>? clientLibrary;
+  final pulumi.Input<String?>? clientLibrary;
   /// Client secret of the Application in external Identity Provider, used to authenticate login request. For example, it is App Secret for Facebook login, API Key for Google login, Public Key for Microsoft. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
   final pulumi.Input<String> clientSecret;
   /// Identity Provider Type identifier.
-  final pulumi.Input<String>? identityProviderName;
+  final pulumi.Input<String?>? identityProviderName;
   /// Password Reset Policy Name. Only applies to AAD B2C Identity Provider.
-  final pulumi.Input<String>? passwordResetPolicyName;
+  final pulumi.Input<String?>? passwordResetPolicyName;
   /// Profile Editing Policy Name. Only applies to AAD B2C Identity Provider.
-  final pulumi.Input<String>? profileEditingPolicyName;
+  final pulumi.Input<String?>? profileEditingPolicyName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
   /// Signin Policy Name. Only applies to AAD B2C Identity Provider.
-  final pulumi.Input<String>? signinPolicyName;
+  final pulumi.Input<String?>? signinPolicyName;
   /// The TenantId to use instead of Common when logging into Active Directory
-  final pulumi.Input<String>? signinTenant;
+  final pulumi.Input<String?>? signinTenant;
   /// Signup Policy Name. Only applies to AAD B2C Identity Provider.
-  final pulumi.Input<String>? signupPolicyName;
+  final pulumi.Input<String?>? signupPolicyName;
   /// Identity Provider Type identifier.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [IdentityProviderArgs].
   /// [allowedTenants] List of Allowed Tenants when configuring Azure Active Directory login.
@@ -102,7 +102,7 @@ class IdentityProviderArgs {
       signinPolicyName: (() { final guardedValue = map['signinPolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       signinTenant: (() { final guardedValue = map['signinTenant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       signupPolicyName: (() { final guardedValue = map['signupPolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

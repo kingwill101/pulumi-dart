@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An object for an IP range that will be allowed access.
 class NetworkRuleSetIpRule {
   /// The readable name of the IP rule.
-  final pulumi.Input<String>? filterName;
+  final pulumi.Input<String?>? filterName;
   /// The CIDR block defining the IP range.
-  final pulumi.Input<String>? ipMask;
+  final pulumi.Input<String?>? ipMask;
 
   /// Creates a new [NetworkRuleSetIpRule].
   /// [filterName] The readable name of the IP rule.

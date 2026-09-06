@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The network traffic is allowed or denied.
-enum SecurityRuleAccess {
+enum SecurityRuleAccess implements pulumi.PulumiEnum<String> {
   valueAllow("Allow"),
   valueDeny("Deny");
 
   const SecurityRuleAccess(this.wireValue);
+  @override
   final String wireValue;
 
   static SecurityRuleAccess fromValue(String value) {

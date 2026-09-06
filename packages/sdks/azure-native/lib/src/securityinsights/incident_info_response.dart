@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes related incident information for the bookmark
 class IncidentInfoResponse {
   /// Incident Id
-  final pulumi.Input<String>? incidentId;
+  final pulumi.Input<String?>? incidentId;
   /// Relation Name
-  final pulumi.Input<String>? relationName;
+  final pulumi.Input<String?>? relationName;
   /// The severity of the incident
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<String?>? severity;
   /// The title of the incident
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [IncidentInfoResponse].
   /// [incidentId] Incident Id

@@ -6,11 +6,11 @@ import 'dimension.dart';
 /// Definition of Metric
 class Metric {
   /// The metric dimensions that you want to be used for the metric that the alarm will watch.
-  final pulumi.Input<List<Dimension>>? dimensions;
+  final pulumi.Input<List<Dimension>?>? dimensions;
   /// The name of the metric that you want the alarm to watch. This is a required field.
-  final pulumi.Input<String>? metricName;
+  final pulumi.Input<String?>? metricName;
   /// The namespace of the metric that the alarm will watch.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
 
   /// Creates a new [Metric].
   /// [dimensions] The metric dimensions that you want to be used for the metric that the alarm will watch.

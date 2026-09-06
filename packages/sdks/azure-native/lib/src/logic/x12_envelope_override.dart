@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The X12 envelope override settings.
 class X12EnvelopeOverride {
   /// The date format.
-  final pulumi.Input<String> dateFormat;
+  final pulumi.Input<dynamic> dateFormat;
   /// The functional identifier code.
-  final pulumi.Input<String>? functionalIdentifierCode;
+  final pulumi.Input<String?>? functionalIdentifierCode;
   /// The header version.
   final pulumi.Input<String> headerVersion;
   /// The message id on which this envelope settings has to be applied.
@@ -23,7 +23,7 @@ class X12EnvelopeOverride {
   /// The target namespace on which this envelope settings has to be applied.
   final pulumi.Input<String> targetNamespace;
   /// The time format.
-  final pulumi.Input<String> timeFormat;
+  final pulumi.Input<dynamic> timeFormat;
 
   /// Creates a new [X12EnvelopeOverride].
   /// [dateFormat] The date format.
@@ -66,7 +66,7 @@ class X12EnvelopeOverride {
 
   factory X12EnvelopeOverride.fromMap(Map<String, dynamic> map) {
     return X12EnvelopeOverride(
-      dateFormat: pulumi.Input.fromValue(map['dateFormat'] as String),
+      dateFormat: pulumi.Input.fromValue(map['dateFormat']),
       functionalIdentifierCode: (() { final guardedValue = map['functionalIdentifierCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       headerVersion: pulumi.Input.fromValue(map['headerVersion'] as String),
       messageId: pulumi.Input.fromValue(map['messageId'] as String),
@@ -75,7 +75,7 @@ class X12EnvelopeOverride {
       responsibleAgencyCode: pulumi.Input.fromValue(map['responsibleAgencyCode'] as String),
       senderApplicationId: pulumi.Input.fromValue(map['senderApplicationId'] as String),
       targetNamespace: pulumi.Input.fromValue(map['targetNamespace'] as String),
-      timeFormat: pulumi.Input.fromValue(map['timeFormat'] as String),
+      timeFormat: pulumi.Input.fromValue(map['timeFormat']),
     );
   }
 }

@@ -8,21 +8,21 @@ class ApplicationGatewayFrontendIPConfigurationResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the frontend IP configuration that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// PrivateIPAddress of the network interface IP Configuration.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// The private IP address allocation method.
-  final pulumi.Input<String>? privateIPAllocationMethod;
+  final pulumi.Input<String?>? privateIPAllocationMethod;
   /// Reference to the application gateway private link configuration.
-  final pulumi.Input<SubResourceResponse>? privateLinkConfiguration;
+  final pulumi.Input<SubResourceResponse?>? privateLinkConfiguration;
   /// The provisioning state of the frontend IP configuration resource.
   final pulumi.Input<String> provisioningState;
   /// Reference to the PublicIP resource.
-  final pulumi.Input<SubResourceResponse>? publicIPAddress;
+  final pulumi.Input<SubResourceResponse?>? publicIPAddress;
   /// Reference to the subnet resource.
-  final pulumi.Input<SubResourceResponse>? subnet;
+  final pulumi.Input<SubResourceResponse?>? subnet;
   /// Type of the resource.
   final pulumi.Input<String> type;
 

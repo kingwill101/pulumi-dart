@@ -9,24 +9,24 @@ import 'zone_mapping_response.dart';
 /// Resource type managed by the resource provider.
 class ProviderResourceTypeResponse {
   /// The aliases that are supported by this resource type.
-  final pulumi.Input<List<AliasResponse>>? aliases;
+  final pulumi.Input<List<AliasResponse>?>? aliases;
   /// The API profiles for the resource provider.
   final pulumi.Input<List<ApiProfileResponse>> apiProfiles;
   /// The API version.
-  final pulumi.Input<List<String>>? apiVersions;
+  final pulumi.Input<List<String>?>? apiVersions;
   /// The additional capabilities offered by this resource type.
-  final pulumi.Input<String>? capabilities;
+  final pulumi.Input<String?>? capabilities;
   /// The default API version.
   final pulumi.Input<String> defaultApiVersion;
   /// The location mappings that are supported by this resource type.
-  final pulumi.Input<List<ProviderExtendedLocationResponse>>? locationMappings;
+  final pulumi.Input<List<ProviderExtendedLocationResponse>?>? locationMappings;
   /// The collection of locations where this resource type can be created.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// The properties.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// The resource type.
-  final pulumi.Input<String>? resourceType;
-  final pulumi.Input<List<ZoneMappingResponse>>? zoneMappings;
+  final pulumi.Input<String?>? resourceType;
+  final pulumi.Input<List<ZoneMappingResponse>?>? zoneMappings;
 
   /// Creates a new [ProviderResourceTypeResponse].
   /// [aliases] The aliases that are supported by this resource type.

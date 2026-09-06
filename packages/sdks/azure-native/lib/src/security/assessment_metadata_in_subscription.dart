@@ -278,7 +278,7 @@ class AssessmentMetadataInSubscription extends pulumi.CustomResource {
         ) {
     assessmentType = registerOutput<String>('assessmentType');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    categories = registerOutput<List<String>?>('categories');
+    categories = registerOutput<List<String>?>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     implementationEffort = registerOutput<String?>('implementationEffort');
@@ -290,9 +290,39 @@ class AssessmentMetadataInSubscription extends pulumi.CustomResource {
     publishDates = registerOutput<SecurityAssessmentMetadataPropertiesResponseResponsePublishDates?>('publishDates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityAssessmentMetadataPropertiesResponseResponsePublishDates.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     remediationDescription = registerOutput<String?>('remediationDescription');
     severity = registerOutput<String>('severity');
-    tactics = registerOutput<List<String>?>('tactics');
-    techniques = registerOutput<List<String>?>('techniques');
-    threats = registerOutput<List<String>?>('threats');
+    tactics = registerOutput<List<String>?>('tactics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    techniques = registerOutput<List<String>?>('techniques', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    threats = registerOutput<List<String>?>('threats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String>('type');
+    userImpact = registerOutput<String?>('userImpact');
+  }
+
+  /// Creates a typed reference to an existing [AssessmentMetadataInSubscription] resource.
+  AssessmentMetadataInSubscription.reference(String urn)
+    : super(
+        'azure-native:security:AssessmentMetadataInSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assessmentType = registerOutput<String>('assessmentType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    categories = registerOutput<List<String>?>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    implementationEffort = registerOutput<String?>('implementationEffort');
+    this.name = registerOutput<String>('name');
+    partnerData = registerOutput<SecurityAssessmentMetadataPartnerDataResponse?>('partnerData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityAssessmentMetadataPartnerDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    plannedDeprecationDate = registerOutput<String?>('plannedDeprecationDate');
+    policyDefinitionId = registerOutput<String>('policyDefinitionId');
+    preview = registerOutput<bool?>('preview');
+    publishDates = registerOutput<SecurityAssessmentMetadataPropertiesResponseResponsePublishDates?>('publishDates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityAssessmentMetadataPropertiesResponseResponsePublishDates.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    remediationDescription = registerOutput<String?>('remediationDescription');
+    severity = registerOutput<String>('severity');
+    tactics = registerOutput<List<String>?>('tactics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    techniques = registerOutput<List<String>?>('techniques', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    threats = registerOutput<List<String>?>('threats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
     userImpact = registerOutput<String?>('userImpact');
   }

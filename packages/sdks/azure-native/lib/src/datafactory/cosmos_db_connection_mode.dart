@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The connection mode used to access CosmosDB account. Type: string.
-enum CosmosDbConnectionMode {
+enum CosmosDbConnectionMode implements pulumi.PulumiEnum<String> {
   gateway("Gateway"),
   direct("Direct");
 
   const CosmosDbConnectionMode(this.wireValue);
+  @override
   final String wireValue;
 
   static CosmosDbConnectionMode fromValue(String value) {

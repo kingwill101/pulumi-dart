@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Server
 class DeploymentServerResponse {
   /// Base runtime URLs for this deployment.
-  final pulumi.Input<List<String>>? runtimeUri;
+  final pulumi.Input<List<String>?>? runtimeUri;
 
   /// Creates a new [DeploymentServerResponse].
   /// [runtimeUri] Base runtime URLs for this deployment.

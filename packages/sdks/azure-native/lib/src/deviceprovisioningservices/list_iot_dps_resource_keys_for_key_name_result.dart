@@ -4,11 +4,11 @@
 /// Result data returned by listIotDpsResourceKeysForKeyName.
 class ListIotDpsResourceKeysForKeyNameResult {
   /// Name of the key.
-  final String keyName;
+  final String? keyName;
   /// Primary SAS key value.
   final String? primaryKey;
   /// Rights that this key has.
-  final String rights;
+  final String? rights;
   /// Secondary SAS key value.
   final String? secondaryKey;
 
@@ -18,26 +18,26 @@ class ListIotDpsResourceKeysForKeyNameResult {
   /// [rights] Rights that this key has.
   /// [secondaryKey] Secondary SAS key value.
   const ListIotDpsResourceKeysForKeyNameResult({
-    required this.keyName,
+    this.keyName,
     this.primaryKey,
-    required this.rights,
+    this.rights,
     this.secondaryKey,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'keyName': keyName,
+      'keyName': ?keyName,
       'primaryKey': ?primaryKey,
-      'rights': rights,
+      'rights': ?rights,
       'secondaryKey': ?secondaryKey,
     };
   }
 
   factory ListIotDpsResourceKeysForKeyNameResult.fromMap(Map<String, dynamic> map) {
     return ListIotDpsResourceKeysForKeyNameResult(
-      keyName: map['keyName'] as String,
+      keyName: (() { final guardedValue = map['keyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       primaryKey: (() { final guardedValue = map['primaryKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      rights: map['rights'] as String,
+      rights: (() { final guardedValue = map['rights']; if (guardedValue == null) return null; return guardedValue as String; })(),
       secondaryKey: (() { final guardedValue = map['secondaryKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

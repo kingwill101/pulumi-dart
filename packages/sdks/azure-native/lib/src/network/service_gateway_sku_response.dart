@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SKU of a service gateway.
 class ServiceGatewaySkuResponse {
   /// Name of a service gateway SKU.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Tier of a service gateway SKU.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [ServiceGatewaySkuResponse].
   /// [name] Name of a service gateway SKU.

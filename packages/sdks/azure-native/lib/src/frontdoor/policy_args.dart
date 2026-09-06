@@ -12,21 +12,21 @@ import 'sku.dart';
 /// {@macro pulumi_frontdoor_policy_args_doc}
 class PolicyArgs {
   /// Describes custom rules inside the policy.
-  final pulumi.Input<CustomRuleList>? customRules;
+  final pulumi.Input<CustomRuleList?>? customRules;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Describes managed rules inside the policy.
-  final pulumi.Input<ManagedRuleSetList>? managedRules;
+  final pulumi.Input<ManagedRuleSetList?>? managedRules;
   /// The name of the Web Application Firewall Policy.
-  final pulumi.Input<String>? policyName;
+  final pulumi.Input<String?>? policyName;
   /// Describes settings for the policy.
-  final pulumi.Input<PolicySettings>? policySettings;
+  final pulumi.Input<PolicySettings?>? policySettings;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PolicyArgs].
   /// [customRules] Describes custom rules inside the policy.

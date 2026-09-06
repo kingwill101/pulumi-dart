@@ -11,21 +11,21 @@ import 'plan.dart';
 /// {@macro pulumi_computebulkactions_bulk_action_args_doc}
 class BulkActionArgs {
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The location name.
   final pulumi.Input<String> location;
   /// The name of the LaunchBulkInstancesOperation.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Details of the resource plan.
-  final pulumi.Input<Plan>? plan;
+  final pulumi.Input<Plan?>? plan;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<LaunchBulkInstancesOperationProperties>? properties;
+  final pulumi.Input<LaunchBulkInstancesOperationProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Zones in which the LaunchBulkInstancesOperation is available
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [BulkActionArgs].
   /// [identity] The managed service identities assigned to this resource.

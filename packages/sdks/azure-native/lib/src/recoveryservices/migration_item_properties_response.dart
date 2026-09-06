@@ -39,7 +39,7 @@ class MigrationItemPropertiesResponse {
   /// The ARM Id of policy governing this item.
   final pulumi.Input<String> policyId;
   /// The migration provider custom settings.
-  final pulumi.Input<VMwareCbtMigrationDetailsResponse>? providerSpecificDetails;
+  final pulumi.Input<VMwareCbtMigrationDetailsResponse?>? providerSpecificDetails;
   /// The recovery services provider ARM Id.
   final pulumi.Input<String> recoveryServicesProviderId;
   /// The replication status.

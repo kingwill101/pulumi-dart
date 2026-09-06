@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies login mode for the user. The default value is Interactive.
-enum LoginMode {
+enum LoginMode implements pulumi.PulumiEnum<String> {
   batch("Batch"),
   interactive("Interactive");
 
   const LoginMode(this.wireValue);
+  @override
   final String wireValue;
 
   static LoginMode fromValue(String value) {

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the capabilities/features allowed for a specific SKU.
 class CapabilityResponse {
   /// Name of the SKU capability.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Reason of the SKU capability.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// Value of the SKU capability.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [CapabilityResponse].
   /// [name] Name of the SKU capability.

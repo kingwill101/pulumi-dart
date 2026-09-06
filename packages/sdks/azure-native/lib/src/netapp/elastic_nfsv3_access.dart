@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Allows clients to access the volume with the NFSv3 protocol. Enable only for NFSv3 type volumes
-enum ElasticNfsv3Access {
+enum ElasticNfsv3Access implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const ElasticNfsv3Access(this.wireValue);
+  @override
   final String wireValue;
 
   static ElasticNfsv3Access fromValue(String value) {

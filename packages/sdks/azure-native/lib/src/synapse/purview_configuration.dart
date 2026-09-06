@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Purview Configuration
 class PurviewConfiguration {
   /// Purview Resource ID
-  final pulumi.Input<String>? purviewResourceId;
+  final pulumi.Input<String?>? purviewResourceId;
 
   /// Creates a new [PurviewConfiguration].
   /// [purviewResourceId] Purview Resource ID

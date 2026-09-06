@@ -7,30 +7,30 @@ import 'system_data_response.dart';
 /// Result data returned by getKubernetesRole.
 class GetKubernetesRoleResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Host OS supported by the Kubernetes role.
-  final String hostPlatform;
+  final String? hostPlatform;
   /// Platform where the runtime is hosted.
-  final String hostPlatformType;
+  final String? hostPlatformType;
   /// The path ID that uniquely identifies the object.
-  final String id;
+  final String? id;
   /// Role type.
   /// Expected value is 'Kubernetes'.
-  final String kind;
+  final String? kind;
   /// Kubernetes cluster configuration
-  final KubernetesClusterInfoResponse kubernetesClusterInfo;
+  final KubernetesClusterInfoResponse? kubernetesClusterInfo;
   /// Kubernetes role resources
-  final KubernetesRoleResourcesResponse kubernetesRoleResources;
+  final KubernetesRoleResourcesResponse? kubernetesRoleResources;
   /// The object name.
-  final String name;
+  final String? name;
   /// State of Kubernetes deployment
-  final String provisioningState;
+  final String? provisioningState;
   /// Role status.
-  final String roleStatus;
+  final String? roleStatus;
   /// Metadata pertaining to creation and last modification of Role
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The hierarchical type of the object.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetKubernetesRoleResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -46,51 +46,51 @@ class GetKubernetesRoleResult {
   /// [systemData] Metadata pertaining to creation and last modification of Role
   /// [type] The hierarchical type of the object.
   const GetKubernetesRoleResult({
-    required this.azureApiVersion,
-    required this.hostPlatform,
-    required this.hostPlatformType,
-    required this.id,
-    required this.kind,
-    required this.kubernetesClusterInfo,
-    required this.kubernetesRoleResources,
-    required this.name,
-    required this.provisioningState,
-    required this.roleStatus,
-    required this.systemData,
-    required this.type,
+    this.azureApiVersion,
+    this.hostPlatform,
+    this.hostPlatformType,
+    this.id,
+    this.kind,
+    this.kubernetesClusterInfo,
+    this.kubernetesRoleResources,
+    this.name,
+    this.provisioningState,
+    this.roleStatus,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'hostPlatform': hostPlatform,
-      'hostPlatformType': hostPlatformType,
-      'id': id,
-      'kind': kind,
-      'kubernetesClusterInfo': kubernetesClusterInfo.toMap(),
-      'kubernetesRoleResources': kubernetesRoleResources.toMap(),
-      'name': name,
-      'provisioningState': provisioningState,
-      'roleStatus': roleStatus,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'hostPlatform': ?hostPlatform,
+      'hostPlatformType': ?hostPlatformType,
+      'id': ?id,
+      'kind': ?kind,
+      'kubernetesClusterInfo': ?kubernetesClusterInfo?.toMap(),
+      'kubernetesRoleResources': ?kubernetesRoleResources?.toMap(),
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'roleStatus': ?roleStatus,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetKubernetesRoleResult.fromMap(Map<String, dynamic> map) {
     return GetKubernetesRoleResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      hostPlatform: map['hostPlatform'] as String,
-      hostPlatformType: map['hostPlatformType'] as String,
-      id: map['id'] as String,
-      kind: map['kind'] as String,
-      kubernetesClusterInfo: KubernetesClusterInfoResponse.fromMap((map['kubernetesClusterInfo']! as Map).cast<String, dynamic>()),
-      kubernetesRoleResources: KubernetesRoleResourcesResponse.fromMap((map['kubernetesRoleResources']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      roleStatus: map['roleStatus'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hostPlatform: (() { final guardedValue = map['hostPlatform']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hostPlatformType: (() { final guardedValue = map['hostPlatformType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kubernetesClusterInfo: (() { final guardedValue = map['kubernetesClusterInfo']; if (guardedValue == null) return null; return KubernetesClusterInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      kubernetesRoleResources: (() { final guardedValue = map['kubernetesRoleResources']; if (guardedValue == null) return null; return KubernetesRoleResourcesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      roleStatus: (() { final guardedValue = map['roleStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

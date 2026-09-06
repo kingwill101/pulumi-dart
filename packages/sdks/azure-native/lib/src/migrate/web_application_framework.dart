@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Framework specific data for a web application.
 class WebApplicationFramework {
   /// Gets or sets Name of the framework.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Gets or sets Version of the framework.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [WebApplicationFramework].
   /// [name] Gets or sets Name of the framework.

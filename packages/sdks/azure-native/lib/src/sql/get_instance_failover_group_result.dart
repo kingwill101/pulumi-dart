@@ -9,27 +9,27 @@ import 'partner_region_info_response.dart';
 /// Result data returned by getInstanceFailoverGroup.
 class GetInstanceFailoverGroupResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// List of managed instance pairs in the failover group.
-  final List<ManagedInstancePairInfoResponse> managedInstancePairs;
+  final List<ManagedInstancePairInfoResponse>? managedInstancePairs;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Partner region information for the failover group.
-  final List<PartnerRegionInfoResponse> partnerRegions;
+  final List<PartnerRegionInfoResponse>? partnerRegions;
   /// Read-only endpoint of the failover group instance.
   final InstanceFailoverGroupReadOnlyEndpointResponse? readOnlyEndpoint;
   /// Read-write endpoint of the failover group instance.
-  final InstanceFailoverGroupReadWriteEndpointResponse readWriteEndpoint;
+  final InstanceFailoverGroupReadWriteEndpointResponse? readWriteEndpoint;
   /// Local replication role of the failover group instance.
-  final String replicationRole;
+  final String? replicationRole;
   /// Replication state of the failover group instance.
-  final String replicationState;
+  final String? replicationState;
   /// Type of the geo-secondary instance. Set 'Standby' if the instance is used as a DR option only.
   final String? secondaryType;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetInstanceFailoverGroupResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -44,48 +44,48 @@ class GetInstanceFailoverGroupResult {
   /// [secondaryType] Type of the geo-secondary instance. Set 'Standby' if the instance is used as a DR option only.
   /// [type] Resource type.
   const GetInstanceFailoverGroupResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.managedInstancePairs,
-    required this.name,
-    required this.partnerRegions,
+    this.azureApiVersion,
+    this.id,
+    this.managedInstancePairs,
+    this.name,
+    this.partnerRegions,
     this.readOnlyEndpoint,
-    required this.readWriteEndpoint,
-    required this.replicationRole,
-    required this.replicationState,
+    this.readWriteEndpoint,
+    this.replicationRole,
+    this.replicationState,
     this.secondaryType,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'managedInstancePairs': pulumi.Input.encodeList<ManagedInstancePairInfoResponse, Map<String, dynamic>>(managedInstancePairs, (value) => value.toMap()),
-      'name': name,
-      'partnerRegions': pulumi.Input.encodeList<PartnerRegionInfoResponse, Map<String, dynamic>>(partnerRegions, (value) => value.toMap()),
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'managedInstancePairs': ?(() { final guardedValue = managedInstancePairs; if (guardedValue == null) return null; return pulumi.Input.encodeList<ManagedInstancePairInfoResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'name': ?name,
+      'partnerRegions': ?(() { final guardedValue = partnerRegions; if (guardedValue == null) return null; return pulumi.Input.encodeList<PartnerRegionInfoResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'readOnlyEndpoint': ?readOnlyEndpoint?.toMap(),
-      'readWriteEndpoint': readWriteEndpoint.toMap(),
-      'replicationRole': replicationRole,
-      'replicationState': replicationState,
+      'readWriteEndpoint': ?readWriteEndpoint?.toMap(),
+      'replicationRole': ?replicationRole,
+      'replicationState': ?replicationState,
       'secondaryType': ?secondaryType,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetInstanceFailoverGroupResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceFailoverGroupResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      managedInstancePairs: pulumi.Input.decodeList<ManagedInstancePairInfoResponse>(map['managedInstancePairs']!, (value) => ManagedInstancePairInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      partnerRegions: pulumi.Input.decodeList<PartnerRegionInfoResponse>(map['partnerRegions']!, (value) => PartnerRegionInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      managedInstancePairs: (() { final guardedValue = map['managedInstancePairs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedInstancePairInfoResponse>(guardedValue, (value) => ManagedInstancePairInfoResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      partnerRegions: (() { final guardedValue = map['partnerRegions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PartnerRegionInfoResponse>(guardedValue, (value) => PartnerRegionInfoResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       readOnlyEndpoint: (() { final guardedValue = map['readOnlyEndpoint']; if (guardedValue == null) return null; return InstanceFailoverGroupReadOnlyEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      readWriteEndpoint: InstanceFailoverGroupReadWriteEndpointResponse.fromMap((map['readWriteEndpoint']! as Map).cast<String, dynamic>()),
-      replicationRole: map['replicationRole'] as String,
-      replicationState: map['replicationState'] as String,
+      readWriteEndpoint: (() { final guardedValue = map['readWriteEndpoint']; if (guardedValue == null) return null; return InstanceFailoverGroupReadWriteEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      replicationRole: (() { final guardedValue = map['replicationRole']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      replicationState: (() { final guardedValue = map['replicationState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       secondaryType: (() { final guardedValue = map['secondaryType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -9,13 +9,13 @@ import 'guest_configuration_assignment_properties.dart';
 /// {@macro pulumi_guestconfiguration_guest_configuration_assignment_args_doc}
 class GuestConfigurationAssignmentArgs {
   /// The guest configuration assignment name.
-  final pulumi.Input<String>? guestConfigurationAssignmentName;
+  final pulumi.Input<String?>? guestConfigurationAssignmentName;
   /// Region where the VM is located.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The guest configuration assignment name.
   final pulumi.Input<String> name;
   /// Properties of the Guest configuration assignment.
-  final pulumi.Input<GuestConfigurationAssignmentProperties>? properties;
+  final pulumi.Input<GuestConfigurationAssignmentProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the virtual machine.

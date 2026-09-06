@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ExpressRoute circuit peering identifier.
 class ExpressRouteCircuitPeeringId {
   /// The ID of the ExpressRoute circuit peering.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [ExpressRouteCircuitPeeringId].
   /// [id] The ID of the ExpressRoute circuit peering.

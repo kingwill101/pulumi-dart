@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The status of firmware scan.
-enum Status {
+enum Status implements pulumi.PulumiEnum<String> {
   valuePending("Pending"),
   valueExtracting("Extracting"),
   valueAnalyzing("Analyzing"),
@@ -7,6 +9,7 @@ enum Status {
   valueError("Error");
 
   const Status(this.wireValue);
+  @override
   final String wireValue;
 
   static Status fromValue(String value) {

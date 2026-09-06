@@ -6,25 +6,25 @@ import 'network_rule_set_ip_rule_response.dart';
 /// Network Rule Set Properties of this IoT Central application.
 class NetworkRuleSetsResponse {
   /// Whether these rules apply for device connectivity to IoT Hub and Device Provisioning service associated with this application.
-  final pulumi.Input<bool>? applyToDevices;
+  final pulumi.Input<bool?>? applyToDevices;
   /// Whether these rules apply for connectivity via IoT Central web portal and APIs.
-  final pulumi.Input<bool>? applyToIoTCentral;
+  final pulumi.Input<bool?>? applyToIoTCentral;
   /// The default network action to apply.
-  final pulumi.Input<String>? defaultAction;
+  final pulumi.Input<String?>? defaultAction;
   /// List of IP rules.
-  final pulumi.Input<List<NetworkRuleSetIpRuleResponse>>? ipRules;
+  final pulumi.Input<List<NetworkRuleSetIpRuleResponse>?>? ipRules;
 
   /// Creates a new [NetworkRuleSetsResponse].
   /// [applyToDevices] Whether these rules apply for device connectivity to IoT Hub and Device Provisioning service associated with this application.
   /// [applyToIoTCentral] Whether these rules apply for connectivity via IoT Central web portal and APIs.
   /// [defaultAction] The default network action to apply.
   /// [ipRules] List of IP rules.
-  const NetworkRuleSetsResponse({
-    this.applyToDevices,
-    this.applyToIoTCentral,
+  NetworkRuleSetsResponse({
+    pulumi.Input<bool?>? applyToDevices,
+    pulumi.Input<bool?>? applyToIoTCentral,
     this.defaultAction,
     this.ipRules,
-  });
+  }) : applyToDevices = applyToDevices ?? pulumi.Input.fromValue(false), applyToIoTCentral = applyToIoTCentral ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

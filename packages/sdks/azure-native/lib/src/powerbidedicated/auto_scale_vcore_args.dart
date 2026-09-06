@@ -9,19 +9,19 @@ import 'auto_scale_vcore_sku.dart';
 /// {@macro pulumi_powerbidedicated_auto_scale_vcore_args_doc}
 class AutoScaleVCoreArgs {
   /// The maximum capacity of an auto scale v-core resource.
-  final pulumi.Input<int>? capacityLimit;
+  final pulumi.Input<int?>? capacityLimit;
   /// The object ID of the capacity resource associated with the auto scale v-core resource.
-  final pulumi.Input<String>? capacityObjectId;
+  final pulumi.Input<String?>? capacityObjectId;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU of the auto scale v-core resource.
   final pulumi.Input<AutoScaleVCoreSku> sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63.
-  final pulumi.Input<String>? vcoreName;
+  final pulumi.Input<String?>? vcoreName;
 
   /// Creates a new [AutoScaleVCoreArgs].
   /// [capacityLimit] The maximum capacity of an auto scale v-core resource.
@@ -55,7 +55,7 @@ class AutoScaleVCoreArgs {
 
   factory AutoScaleVCoreArgs.fromMap(Map<String, dynamic> map) {
     return AutoScaleVCoreArgs(
-      capacityLimit: (() { final guardedValue = map['capacityLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacityLimit: (() { final guardedValue = map['capacityLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       capacityObjectId: (() { final guardedValue = map['capacityObjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

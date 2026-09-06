@@ -6,9 +6,9 @@ import 'deployer_vm_packages_response.dart';
 /// Defines the OS and SAP Configurations for Deployment
 class OsSapConfigurationResponse {
   /// The url and storage account ID where deployer VM packages are uploaded
-  final pulumi.Input<DeployerVmPackagesResponse>? deployerVmPackages;
+  final pulumi.Input<DeployerVmPackagesResponse?>? deployerVmPackages;
   /// The FQDN to set for the SAP system
-  final pulumi.Input<String>? sapFqdn;
+  final pulumi.Input<String?>? sapFqdn;
 
   /// Creates a new [OsSapConfigurationResponse].
   /// [deployerVmPackages] The url and storage account ID where deployer VM packages are uploaded

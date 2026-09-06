@@ -336,4 +336,24 @@ class SyncAgent extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');
   }
+
+  /// Creates a typed reference to an existing [SyncAgent] resource.
+  SyncAgent.reference(String urn)
+    : super(
+        'azure-native:sql:SyncAgent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    expiryTime = registerOutput<String>('expiryTime');
+    isUpToDate = registerOutput<bool>('isUpToDate');
+    lastAliveTime = registerOutput<String>('lastAliveTime');
+    this.name = registerOutput<String>('name');
+    state = registerOutput<String>('state');
+    syncDatabaseId = registerOutput<String?>('syncDatabaseId');
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
+  }
 }

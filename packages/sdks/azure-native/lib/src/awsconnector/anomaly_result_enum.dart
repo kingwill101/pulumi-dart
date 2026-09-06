@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum AnomalyResultEnum {
+enum AnomalyResultEnum implements pulumi.PulumiEnum<String> {
   anomalous("anomalous"),
   normal("normal");
 
   const AnomalyResultEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static AnomalyResultEnum fromValue(String value) {

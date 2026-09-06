@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Database specific information for offline MySQL to Azure Database for MySQL migration task inputs
 class MigrateMySqlAzureDbForMySqlOfflineDatabaseInputResponse {
   /// Name of the database
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Mapping of source to target tables
-  final pulumi.Input<Map<String, String>>? tableMap;
+  final pulumi.Input<Map<String, String>?>? tableMap;
   /// Name of target database. Note: Target database will be truncated before starting migration.
-  final pulumi.Input<String>? targetDatabaseName;
+  final pulumi.Input<String?>? targetDatabaseName;
 
   /// Creates a new [MigrateMySqlAzureDbForMySqlOfflineDatabaseInputResponse].
   /// [name] Name of the database

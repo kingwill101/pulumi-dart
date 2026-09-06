@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Session network configuration.
 class SessionNetworkConfigurationResponse {
   /// Network status for the sessions.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [SessionNetworkConfigurationResponse].
   /// [status] Network status for the sessions.

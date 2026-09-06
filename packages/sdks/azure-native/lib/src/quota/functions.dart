@@ -24,6 +24,17 @@ Future<GetGroupQuotaResult> getGroupQuota(
   return GetGroupQuotaResult.fromMap(result);
 }
 
+pulumi.Output<GetGroupQuotaResult> getGroupQuotaOutput(
+  GetGroupQuotaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:quota:getGroupQuota',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupQuotaResult.fromMap);
+}
+
 /// Returns the subscriptionIds along with its provisioning state for being associated with the GroupQuota. If the subscription is not a member of GroupQuota, it will return 404, else 200.
 ///
 /// Uses Azure REST API version 2025-03-01.
@@ -42,4 +53,15 @@ Future<GetGroupQuotaSubscriptionResult> getGroupQuotaSubscription(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGroupQuotaSubscriptionResult.fromMap(result);
+}
+
+pulumi.Output<GetGroupQuotaSubscriptionResult> getGroupQuotaSubscriptionOutput(
+  GetGroupQuotaSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:quota:getGroupQuotaSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupQuotaSubscriptionResult.fromMap);
 }

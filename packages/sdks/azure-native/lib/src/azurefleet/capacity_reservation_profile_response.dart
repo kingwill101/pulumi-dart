@@ -9,7 +9,7 @@ class CapacityReservationProfileResponse {
   /// allocating the virtual machine or scaleset vm instances provided enough
   /// capacity has been reserved. Please refer to https://aka.ms/CapacityReservation
   /// for more details.
-  final pulumi.Input<SubResourceResponse>? capacityReservationGroup;
+  final pulumi.Input<SubResourceResponse?>? capacityReservationGroup;
 
   /// Creates a new [CapacityReservationProfileResponse].
   /// [capacityReservationGroup] Specifies the capacity reservation group resource id that should be used for

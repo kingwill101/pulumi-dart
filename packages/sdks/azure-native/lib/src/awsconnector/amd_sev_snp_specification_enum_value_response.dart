@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of AmdSevSnpSpecificationEnumValue
 class AmdSevSnpSpecificationEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [AmdSevSnpSpecificationEnumValueResponse].
   /// [value] Property value

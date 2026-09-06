@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A2A Cross-Cluster Migration enable protection input.
 class A2ACrossClusterMigrationEnableProtectionInput {
   /// The fabric specific object Id of the virtual machine.
-  final pulumi.Input<String>? fabricObjectId;
+  final pulumi.Input<String?>? fabricObjectId;
   /// The class type.
   /// Expected value is 'A2ACrossClusterMigration'.
   final pulumi.Input<String> instanceType;
   /// The recovery container Id.
-  final pulumi.Input<String>? recoveryContainerId;
+  final pulumi.Input<String?>? recoveryContainerId;
 
   /// Creates a new [A2ACrossClusterMigrationEnableProtectionInput].
   /// [fabricObjectId] The fabric specific object Id of the virtual machine.

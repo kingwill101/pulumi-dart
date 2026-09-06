@@ -12,57 +12,57 @@ import 'timer_trigger_descriptor_response.dart';
 /// Run resource properties
 class RunResponse {
   /// The machine configuration of the run agent.
-  final pulumi.Input<AgentPropertiesResponse>? agentConfiguration;
+  final pulumi.Input<AgentPropertiesResponse?>? agentConfiguration;
   /// The dedicated agent pool for the run.
-  final pulumi.Input<String>? agentPoolName;
+  final pulumi.Input<String?>? agentPoolName;
   /// The time the run was scheduled.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The list of custom registries that were logged in during this run.
-  final pulumi.Input<List<String>>? customRegistries;
+  final pulumi.Input<List<String>?>? customRegistries;
   /// The time the run finished.
-  final pulumi.Input<String>? finishTime;
+  final pulumi.Input<String?>? finishTime;
   /// The resource ID.
   final pulumi.Input<String> id;
   /// The image update trigger that caused the run. This is applicable if the task has base image trigger configured.
-  final pulumi.Input<ImageUpdateTriggerResponse>? imageUpdateTrigger;
+  final pulumi.Input<ImageUpdateTriggerResponse?>? imageUpdateTrigger;
   /// The value that indicates whether archiving is enabled or not.
-  final pulumi.Input<bool>? isArchiveEnabled;
+  final pulumi.Input<bool?>? isArchiveEnabled;
   /// The last updated time for the run.
-  final pulumi.Input<String>? lastUpdatedTime;
+  final pulumi.Input<String?>? lastUpdatedTime;
   /// The image description for the log artifact.
   final pulumi.Input<ImageDescriptorResponse> logArtifact;
   /// The name of the resource.
   final pulumi.Input<String> name;
   /// The list of all images that were generated from the run. This is applicable if the run generates base image dependencies.
-  final pulumi.Input<List<ImageDescriptorResponse>>? outputImages;
+  final pulumi.Input<List<ImageDescriptorResponse>?>? outputImages;
   /// The platform properties against which the run will happen.
-  final pulumi.Input<PlatformPropertiesResponse>? platform;
+  final pulumi.Input<PlatformPropertiesResponse?>? platform;
   /// The provisioning state of a run.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// The error message received from backend systems after the run is scheduled.
   final pulumi.Input<String> runErrorMessage;
   /// The unique identifier for the run.
-  final pulumi.Input<String>? runId;
+  final pulumi.Input<String?>? runId;
   /// The type of run.
-  final pulumi.Input<String>? runType;
+  final pulumi.Input<String?>? runType;
   /// The scope of the credentials that were used to login to the source registry during this run.
-  final pulumi.Input<String>? sourceRegistryAuth;
+  final pulumi.Input<String?>? sourceRegistryAuth;
   /// The source trigger that caused the run.
-  final pulumi.Input<SourceTriggerDescriptorResponse>? sourceTrigger;
+  final pulumi.Input<SourceTriggerDescriptorResponse?>? sourceTrigger;
   /// The time the run started.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// The current status of the run.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Metadata pertaining to creation and last modification of the resource.
   final pulumi.Input<SystemDataResponse> systemData;
   /// The task against which run was scheduled.
-  final pulumi.Input<String>? task;
+  final pulumi.Input<String?>? task;
   /// The timer trigger that caused the run.
-  final pulumi.Input<TimerTriggerDescriptorResponse>? timerTrigger;
+  final pulumi.Input<TimerTriggerDescriptorResponse?>? timerTrigger;
   /// The type of the resource.
   final pulumi.Input<String> type;
   /// The update trigger token passed for the Run.
-  final pulumi.Input<String>? updateTriggerToken;
+  final pulumi.Input<String?>? updateTriggerToken;
 
   /// Creates a new [RunResponse].
   /// [agentConfiguration] The machine configuration of the run agent.
@@ -91,7 +91,7 @@ class RunResponse {
   /// [timerTrigger] The timer trigger that caused the run.
   /// [type] The type of the resource.
   /// [updateTriggerToken] The update trigger token passed for the Run.
-  const RunResponse({
+  RunResponse({
     this.agentConfiguration,
     this.agentPoolName,
     this.createTime,
@@ -99,7 +99,7 @@ class RunResponse {
     this.finishTime,
     required this.id,
     this.imageUpdateTrigger,
-    this.isArchiveEnabled,
+    pulumi.Input<bool?>? isArchiveEnabled,
     this.lastUpdatedTime,
     required this.logArtifact,
     required this.name,
@@ -118,7 +118,7 @@ class RunResponse {
     this.timerTrigger,
     required this.type,
     this.updateTriggerToken,
-  });
+  }) : isArchiveEnabled = isArchiveEnabled ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information of the backup file
 class BackupFileInfoResponse {
   /// Sequence number of the backup file in the backup set
-  final pulumi.Input<int>? familySequenceNumber;
+  final pulumi.Input<int?>? familySequenceNumber;
   /// Location of the backup file in shared folder
-  final pulumi.Input<String>? fileLocation;
+  final pulumi.Input<String?>? fileLocation;
   /// Status of the backup file during migration
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [BackupFileInfoResponse].
   /// [familySequenceNumber] Sequence number of the backup file in the backup set
@@ -31,7 +31,7 @@ class BackupFileInfoResponse {
 
   factory BackupFileInfoResponse.fromMap(Map<String, dynamic> map) {
     return BackupFileInfoResponse(
-      familySequenceNumber: (() { final guardedValue = map['familySequenceNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      familySequenceNumber: (() { final guardedValue = map['familySequenceNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       fileLocation: (() { final guardedValue = map['fileLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

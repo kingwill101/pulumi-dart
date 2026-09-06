@@ -6,11 +6,11 @@ import 'network_interface_status_provisioning_status_response.dart';
 /// The observed state of network interfaces
 class NetworkInterfaceStatusResponse {
   /// NetworkInterface provisioning error code
-  final pulumi.Input<String>? errorCode;
+  final pulumi.Input<String?>? errorCode;
   /// Descriptive error message
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// Network interface provisioning status
-  final pulumi.Input<NetworkInterfaceStatusProvisioningStatusResponse>? provisioningStatus;
+  final pulumi.Input<NetworkInterfaceStatusProvisioningStatusResponse?>? provisioningStatus;
 
   /// Creates a new [NetworkInterfaceStatusResponse].
   /// [errorCode] NetworkInterface provisioning error code

@@ -7,15 +7,15 @@ import 'gallery_image_status_provisioning_status_response.dart';
 /// The observed state of gallery images
 class GalleryImageStatusResponse {
   /// The download status of the gallery image
-  final pulumi.Input<GalleryImageStatusDownloadStatusResponse>? downloadStatus;
+  final pulumi.Input<GalleryImageStatusDownloadStatusResponse?>? downloadStatus;
   /// GalleryImage provisioning error code
-  final pulumi.Input<String>? errorCode;
+  final pulumi.Input<String?>? errorCode;
   /// Descriptive error message
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// The progress of the operation in percentage
-  final pulumi.Input<double>? progressPercentage;
+  final pulumi.Input<double?>? progressPercentage;
   /// provisioning status of the gallery image
-  final pulumi.Input<GalleryImageStatusProvisioningStatusResponse>? provisioningStatus;
+  final pulumi.Input<GalleryImageStatusProvisioningStatusResponse?>? provisioningStatus;
 
   /// Creates a new [GalleryImageStatusResponse].
   /// [downloadStatus] The download status of the gallery image
@@ -46,7 +46,7 @@ class GalleryImageStatusResponse {
       downloadStatus: (() { final guardedValue = map['downloadStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GalleryImageStatusDownloadStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       errorCode: (() { final guardedValue = map['errorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       errorMessage: (() { final guardedValue = map['errorMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      progressPercentage: (() { final guardedValue = map['progressPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      progressPercentage: (() { final guardedValue = map['progressPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       provisioningStatus: (() { final guardedValue = map['provisioningStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GalleryImageStatusProvisioningStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

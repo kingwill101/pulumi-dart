@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Mode of the service mesh.
-enum ServiceMeshMode {
+enum ServiceMeshMode implements pulumi.PulumiEnum<String> {
   valueIstio("Istio"),
   valueDisabled("Disabled");
 
   const ServiceMeshMode(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceMeshMode fromValue(String value) {

@@ -8,23 +8,23 @@ import 'sso_properties_response.dart';
 /// API portal properties payload
 class ApiPortalPropertiesResponse {
   /// Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API.
-  final pulumi.Input<String>? apiTryOutEnabledState;
+  final pulumi.Input<String?>? apiTryOutEnabledState;
   /// The array of resource Ids of gateway to integrate with API portal.
-  final pulumi.Input<List<String>>? gatewayIds;
+  final pulumi.Input<List<String>?>? gatewayIds;
   /// Indicate if only https is allowed.
-  final pulumi.Input<bool>? httpsOnly;
+  final pulumi.Input<bool?>? httpsOnly;
   /// Collection of instances belong to API portal.
   final pulumi.Input<List<ApiPortalInstanceResponse>> instances;
   /// State of the API portal.
   final pulumi.Input<String> provisioningState;
   /// Indicates whether the API portal exposes endpoint.
-  final pulumi.Input<bool>? public;
+  final pulumi.Input<bool?>? public;
   /// The requested resource quantity for required CPU and Memory.
   final pulumi.Input<ApiPortalResourceRequestsResponse> resourceRequests;
   /// Collection of OpenAPI source URL locations.
-  final pulumi.Input<List<String>>? sourceUrls;
+  final pulumi.Input<List<String>?>? sourceUrls;
   /// Single sign-on related configuration
-  final pulumi.Input<SsoPropertiesResponse>? ssoProperties;
+  final pulumi.Input<SsoPropertiesResponse?>? ssoProperties;
   /// URL of the API portal, exposed when 'public' is true.
   final pulumi.Input<String> url;
 
@@ -39,18 +39,18 @@ class ApiPortalPropertiesResponse {
   /// [sourceUrls] Collection of OpenAPI source URL locations.
   /// [ssoProperties] Single sign-on related configuration
   /// [url] URL of the API portal, exposed when 'public' is true.
-  const ApiPortalPropertiesResponse({
-    this.apiTryOutEnabledState,
+  ApiPortalPropertiesResponse({
+    pulumi.Input<String?>? apiTryOutEnabledState,
     this.gatewayIds,
-    this.httpsOnly,
+    pulumi.Input<bool?>? httpsOnly,
     required this.instances,
     required this.provisioningState,
-    this.public,
+    pulumi.Input<bool?>? public,
     required this.resourceRequests,
     this.sourceUrls,
     this.ssoProperties,
     required this.url,
-  });
+  }) : apiTryOutEnabledState = apiTryOutEnabledState ?? pulumi.Input.fromValue('Enabled'), httpsOnly = httpsOnly ?? pulumi.Input.fromValue(false), public = public ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

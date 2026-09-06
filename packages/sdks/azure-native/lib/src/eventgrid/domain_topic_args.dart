@@ -10,7 +10,7 @@ class DomainTopicArgs {
   /// Name of the domain.
   final pulumi.Input<String> domainName;
   /// Name of the domain topic.
-  final pulumi.Input<String>? domainTopicName;
+  final pulumi.Input<String?>? domainTopicName;
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
 

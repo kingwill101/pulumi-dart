@@ -4,23 +4,23 @@
 /// Result data returned by getIntegrationAccountSession.
 class GetIntegrationAccountSessionResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The changed time.
-  final String changedTime;
+  final String? changedTime;
   /// The session content.
   final dynamic content;
   /// The created time.
-  final String createdTime;
+  final String? createdTime;
   /// The resource id.
-  final String id;
+  final String? id;
   /// The resource location.
   final String? location;
   /// Gets the resource name.
-  final String name;
+  final String? name;
   /// The resource tags.
   final Map<String, String>? tags;
   /// Gets the resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetIntegrationAccountSessionResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -33,42 +33,42 @@ class GetIntegrationAccountSessionResult {
   /// [tags] The resource tags.
   /// [type] Gets the resource type.
   const GetIntegrationAccountSessionResult({
-    required this.azureApiVersion,
-    required this.changedTime,
+    this.azureApiVersion,
+    this.changedTime,
     this.content,
-    required this.createdTime,
-    required this.id,
+    this.createdTime,
+    this.id,
     this.location,
-    required this.name,
+    this.name,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'changedTime': changedTime,
+      'azureApiVersion': ?azureApiVersion,
+      'changedTime': ?changedTime,
       'content': ?content,
-      'createdTime': createdTime,
-      'id': id,
+      'createdTime': ?createdTime,
+      'id': ?id,
       'location': ?location,
-      'name': name,
+      'name': ?name,
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetIntegrationAccountSessionResult.fromMap(Map<String, dynamic> map) {
     return GetIntegrationAccountSessionResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      changedTime: map['changedTime'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      changedTime: (() { final guardedValue = map['changedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return guardedValue; })(),
-      createdTime: map['createdTime'] as String,
-      id: map['id'] as String,
+      createdTime: (() { final guardedValue = map['createdTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -6,7 +6,7 @@ import 'azure_file_volume.dart';
 /// Contains information about the volumes that can be mounted by Containers in the Container Groups.
 class NGroupCGPropertyVolume {
   /// The Azure File volume.
-  final pulumi.Input<AzureFileVolume>? azureFile;
+  final pulumi.Input<AzureFileVolume?>? azureFile;
   /// The name of the volume.
   final pulumi.Input<String> name;
 

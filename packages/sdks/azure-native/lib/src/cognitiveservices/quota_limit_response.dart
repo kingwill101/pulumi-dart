@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'throttling_rule_response.dart';
 
 class QuotaLimitResponse {
-  final pulumi.Input<double>? count;
-  final pulumi.Input<double>? renewalPeriod;
-  final pulumi.Input<List<ThrottlingRuleResponse>>? rules;
+  final pulumi.Input<double?>? count;
+  final pulumi.Input<double?>? renewalPeriod;
+  final pulumi.Input<List<ThrottlingRuleResponse>?>? rules;
 
   /// Creates a new [QuotaLimitResponse].
   /// [count] Optional.
@@ -28,8 +28,8 @@ class QuotaLimitResponse {
 
   factory QuotaLimitResponse.fromMap(Map<String, dynamic> map) {
     return QuotaLimitResponse(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      renewalPeriod: (() { final guardedValue = map['renewalPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      renewalPeriod: (() { final guardedValue = map['renewalPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ThrottlingRuleResponse>(guardedValue, (value) => ThrottlingRuleResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

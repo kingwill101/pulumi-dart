@@ -6,17 +6,17 @@ import 'subnet_shared_public_ip_address_configuration_response.dart';
 /// Property overrides on a subnet of a virtual network.
 class SubnetOverrideResponse {
   /// The name given to the subnet within the lab.
-  final pulumi.Input<String>? labSubnetName;
+  final pulumi.Input<String?>? labSubnetName;
   /// The resource ID of the subnet.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Properties that virtual machines on this subnet will share.
-  final pulumi.Input<SubnetSharedPublicIpAddressConfigurationResponse>? sharedPublicIpAddressConfiguration;
+  final pulumi.Input<SubnetSharedPublicIpAddressConfigurationResponse?>? sharedPublicIpAddressConfiguration;
   /// Indicates whether this subnet can be used during virtual machine creation (i.e. Allow, Deny).
-  final pulumi.Input<String>? useInVmCreationPermission;
+  final pulumi.Input<String?>? useInVmCreationPermission;
   /// Indicates whether public IP addresses can be assigned to virtual machines on this subnet (i.e. Allow, Deny).
-  final pulumi.Input<String>? usePublicIpAddressPermission;
+  final pulumi.Input<String?>? usePublicIpAddressPermission;
   /// The virtual network pool associated with this subnet.
-  final pulumi.Input<String>? virtualNetworkPoolName;
+  final pulumi.Input<String?>? virtualNetworkPoolName;
 
   /// Creates a new [SubnetOverrideResponse].
   /// [labSubnetName] The name given to the subnet within the lab.

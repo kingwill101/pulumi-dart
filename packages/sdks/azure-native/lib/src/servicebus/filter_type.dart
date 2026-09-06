@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Filter type that is evaluated against a BrokeredMessage.
-enum FilterType {
+enum FilterType implements pulumi.PulumiEnum<String> {
   valueSqlFilter("SqlFilter"),
   valueCorrelationFilter("CorrelationFilter");
 
   const FilterType(this.wireValue);
+  @override
   final String wireValue;
 
   static FilterType fromValue(String value) {

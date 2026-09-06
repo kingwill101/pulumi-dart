@@ -32,7 +32,7 @@ class ListAppServicePlanServerFarmInstanceDetailsResult {
 
   factory ListAppServicePlanServerFarmInstanceDetailsResult.fromMap(Map<String, dynamic> map) {
     return ListAppServicePlanServerFarmInstanceDetailsResult(
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       instances: (() { final guardedValue = map['instances']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerFarmInstanceResponse>(guardedValue, (value) => ServerFarmInstanceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       serverFarmName: (() { final guardedValue = map['serverFarmName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

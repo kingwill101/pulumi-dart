@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of a gateway resource.
 class ManagedGatewayPropertiesResponse {
   /// ComputerName of the gateway to be monitored.
-  final pulumi.Input<String>? computerName;
+  final pulumi.Input<String?>? computerName;
   /// The connection status of the gateway resource.
   final pulumi.Input<String> connectionStatus;
   /// The domain name associated with the gateway to be monitored.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// The health status of the gateway resource.
   final pulumi.Input<String> healthStatus;
   /// Install type of gateway resource.
@@ -18,9 +18,9 @@ class ManagedGatewayPropertiesResponse {
   final pulumi.Input<String> managementServerEndpoint;
   final pulumi.Input<String> provisioningState;
   /// ArmId of the gateway to be monitored.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Location of the gateway to be monitored.
-  final pulumi.Input<String>? resourceLocation;
+  final pulumi.Input<String?>? resourceLocation;
   /// The version of the gateway resource.
   final pulumi.Input<String> version;
 

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Runtime configuration type for the Connector template.
-enum AkriConnectorTemplateRuntimeConfigurationType {
+enum AkriConnectorTemplateRuntimeConfigurationType implements pulumi.PulumiEnum<String> {
   helmConfiguration("HelmConfiguration"),
   managedConfiguration("ManagedConfiguration");
 
   const AkriConnectorTemplateRuntimeConfigurationType(this.wireValue);
+  @override
   final String wireValue;
 
   static AkriConnectorTemplateRuntimeConfigurationType fromValue(String value) {

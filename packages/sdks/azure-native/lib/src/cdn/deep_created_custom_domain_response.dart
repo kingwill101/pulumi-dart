@@ -9,7 +9,7 @@ class DeepCreatedCustomDomainResponse {
   /// Custom domain name.
   final pulumi.Input<String> name;
   /// Special validation or data may be required when delivering CDN to some regions due to local compliance reasons. E.g. ICP license number of a custom domain is required to deliver content in China.
-  final pulumi.Input<String>? validationData;
+  final pulumi.Input<String?>? validationData;
 
   /// Creates a new [DeepCreatedCustomDomainResponse].
   /// [hostName] The host name of the custom domain. Must be a domain name.

@@ -8,13 +8,13 @@ import 'broker_authenticator_method_x509_response.dart';
 /// Set of broker authentication policies. Only one method is supported for each entry.
 class BrokerAuthenticatorMethodsResponse {
   /// Custom authentication configuration.
-  final pulumi.Input<BrokerAuthenticatorMethodCustomResponse>? customSettings;
+  final pulumi.Input<BrokerAuthenticatorMethodCustomResponse?>? customSettings;
   /// Custom authentication configuration.
   final pulumi.Input<String> method;
   /// ServiceAccountToken authentication configuration.
-  final pulumi.Input<BrokerAuthenticatorMethodSatResponse>? serviceAccountTokenSettings;
+  final pulumi.Input<BrokerAuthenticatorMethodSatResponse?>? serviceAccountTokenSettings;
   /// X.509 authentication configuration.
-  final pulumi.Input<BrokerAuthenticatorMethodX509Response>? x509Settings;
+  final pulumi.Input<BrokerAuthenticatorMethodX509Response?>? x509Settings;
 
   /// Creates a new [BrokerAuthenticatorMethodsResponse].
   /// [customSettings] Custom authentication configuration.

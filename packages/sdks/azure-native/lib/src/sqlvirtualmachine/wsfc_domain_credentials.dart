@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
 class WsfcDomainCredentials {
   /// Cluster bootstrap account password.
-  final pulumi.Input<String>? clusterBootstrapAccountPassword;
+  final pulumi.Input<String?>? clusterBootstrapAccountPassword;
   /// Cluster operator account password.
-  final pulumi.Input<String>? clusterOperatorAccountPassword;
+  final pulumi.Input<String?>? clusterOperatorAccountPassword;
   /// SQL service account password.
-  final pulumi.Input<String>? sqlServiceAccountPassword;
+  final pulumi.Input<String?>? sqlServiceAccountPassword;
 
   /// Creates a new [WsfcDomainCredentials].
   /// [clusterBootstrapAccountPassword] Cluster bootstrap account password.

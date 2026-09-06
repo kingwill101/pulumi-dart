@@ -3,10 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateOrderContactResponse {
-  final pulumi.Input<String>? email;
-  final pulumi.Input<String>? nameFirst;
-  final pulumi.Input<String>? nameLast;
-  final pulumi.Input<String>? phone;
+  final pulumi.Input<String?>? email;
+  final pulumi.Input<String?>? nameFirst;
+  final pulumi.Input<String?>? nameLast;
+  final pulumi.Input<String?>? phone;
 
   /// Creates a new [CertificateOrderContactResponse].
   /// [email] Optional.

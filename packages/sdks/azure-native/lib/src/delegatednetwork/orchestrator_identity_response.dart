@@ -8,7 +8,7 @@ class OrchestratorIdentityResponse {
   /// The tenant id of the system assigned identity which is used by orchestrator.
   final pulumi.Input<String> tenantId;
   /// The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [OrchestratorIdentityResponse].
   /// [principalId] The principal id of the system assigned identity which is used by orchestrator.

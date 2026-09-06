@@ -11,19 +11,19 @@ import 'managed_service_identity.dart';
 /// {@macro pulumi_keyvault_managed_hsm_args_doc}
 class ManagedHsmArgs {
   /// Managed service identity (system assigned and/or user assigned identities)
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The supported Azure location where the managed HSM Pool should be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the managed HSM Pool
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Properties of the managed HSM
-  final pulumi.Input<ManagedHsmProperties>? properties;
+  final pulumi.Input<ManagedHsmProperties?>? properties;
   /// Name of the resource group that contains the managed HSM pool.
   final pulumi.Input<String> resourceGroupName;
   /// SKU details
-  final pulumi.Input<ManagedHsmSku>? sku;
+  final pulumi.Input<ManagedHsmSku?>? sku;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ManagedHsmArgs].
   /// [identity] Managed service identity (system assigned and/or user assigned identities)

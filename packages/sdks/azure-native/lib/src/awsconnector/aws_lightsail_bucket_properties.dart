@@ -7,25 +7,25 @@ import 'tag.dart';
 /// Definition of awsLightsailBucket
 class AwsLightsailBucketProperties {
   /// Indicates whether the bundle that is currently applied to a bucket can be changed to another bundle. You can update a bucket's bundle only one time within a monthly AWS billing cycle.
-  final pulumi.Input<bool>? ableToUpdateBundle;
+  final pulumi.Input<bool?>? ableToUpdateBundle;
   /// An object that sets the public accessibility of objects in the specified bucket.
-  final pulumi.Input<AccessRules>? accessRules;
+  final pulumi.Input<AccessRules?>? accessRules;
   /// Property bucketArn
-  final pulumi.Input<String>? bucketArn;
+  final pulumi.Input<String?>? bucketArn;
   /// The name for the bucket.
-  final pulumi.Input<String>? bucketName;
+  final pulumi.Input<String?>? bucketName;
   /// The ID of the bundle to use for the bucket.
-  final pulumi.Input<String>? bundleId;
+  final pulumi.Input<String?>? bundleId;
   /// Specifies whether to enable or disable versioning of objects in the bucket.
-  final pulumi.Input<bool>? objectVersioning;
+  final pulumi.Input<bool?>? objectVersioning;
   /// An array of strings to specify the AWS account IDs that can access the bucket.
-  final pulumi.Input<List<String>>? readOnlyAccessAccounts;
+  final pulumi.Input<List<String>?>? readOnlyAccessAccounts;
   /// The names of the Lightsail resources for which to set bucket access.
-  final pulumi.Input<List<String>>? resourcesReceivingAccess;
+  final pulumi.Input<List<String>?>? resourcesReceivingAccess;
   /// An array of key-value pairs to apply to this resource.
-  final pulumi.Input<List<Tag>>? tags;
+  final pulumi.Input<List<Tag>?>? tags;
   /// The URL of the bucket.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [AwsLightsailBucketProperties].
   /// [ableToUpdateBundle] Indicates whether the bundle that is currently applied to a bucket can be changed to another bundle. You can update a bucket's bundle only one time within a monthly AWS billing cycle.

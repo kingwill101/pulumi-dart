@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'express_route_connection_response.dart';
 import 'express_route_gateway_args.dart';
 import 'express_route_gateway_properties_response_auto_scale_configuration.dart';
 import 'virtual_hub_id_response.dart';
@@ -226,7 +227,7 @@ class ExpressRouteGateway extends pulumi.CustomResource {
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
   /// List of ExpressRoute connections to the ExpressRoute gateway.
-  late final pulumi.Output<List<Map<String, dynamic>>?> expressRouteConnections;
+  late final pulumi.Output<List<ExpressRouteConnectionResponse>?> expressRouteConnections;
   /// Resource location.
   late final pulumi.Output<String?> location;
   /// Resource name.
@@ -258,11 +259,33 @@ class ExpressRouteGateway extends pulumi.CustomResource {
     autoScaleConfiguration = registerOutput<ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration?>('autoScaleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
-    expressRouteConnections = registerOutput<List<Map<String, dynamic>>?>('expressRouteConnections');
+    expressRouteConnections = registerOutput<List<ExpressRouteConnectionResponse>?>('expressRouteConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressRouteConnectionResponse>(guardedValue, (value) => ExpressRouteConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    virtualHub = registerOutput<VirtualHubIdResponse>('virtualHub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualHubIdResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ExpressRouteGateway] resource.
+  ExpressRouteGateway.reference(String urn)
+    : super(
+        'azure-native:network:ExpressRouteGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowNonVirtualWanTraffic = registerOutput<bool?>('allowNonVirtualWanTraffic');
+    autoScaleConfiguration = registerOutput<ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration?>('autoScaleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    expressRouteConnections = registerOutput<List<ExpressRouteConnectionResponse>?>('expressRouteConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressRouteConnectionResponse>(guardedValue, (value) => ExpressRouteConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     virtualHub = registerOutput<VirtualHubIdResponse>('virtualHub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualHubIdResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

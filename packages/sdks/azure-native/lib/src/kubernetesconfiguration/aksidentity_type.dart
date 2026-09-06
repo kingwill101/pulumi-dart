@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The identity type.
-enum AKSIdentityType {
+enum AKSIdentityType implements pulumi.PulumiEnum<String> {
   valueSystemAssigned("SystemAssigned"),
   valueUserAssigned("UserAssigned");
 
   const AKSIdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static AKSIdentityType fromValue(String value) {

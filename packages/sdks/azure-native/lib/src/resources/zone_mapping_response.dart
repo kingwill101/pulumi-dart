@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ZoneMappingResponse {
   /// The location of the zone mapping.
-  final pulumi.Input<String>? location;
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [ZoneMappingResponse].
   /// [location] The location of the zone mapping.

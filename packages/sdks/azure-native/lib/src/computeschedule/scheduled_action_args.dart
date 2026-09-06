@@ -9,15 +9,15 @@ import 'scheduled_action_properties.dart';
 /// {@macro pulumi_computeschedule_scheduled_action_args_doc}
 class ScheduledActionArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ScheduledActionProperties>? properties;
+  final pulumi.Input<ScheduledActionProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the ScheduledAction
-  final pulumi.Input<String>? scheduledActionName;
+  final pulumi.Input<String?>? scheduledActionName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ScheduledActionArgs].
   /// [location] The geo-location where the resource lives

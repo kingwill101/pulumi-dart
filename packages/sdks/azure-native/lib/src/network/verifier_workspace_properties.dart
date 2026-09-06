@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of Verifier Workspace resource.
 class VerifierWorkspaceProperties {
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
 
   /// Creates a new [VerifierWorkspaceProperties].
   /// [description] Optional.

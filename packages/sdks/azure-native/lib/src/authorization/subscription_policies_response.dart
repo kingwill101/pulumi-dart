@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Subscription policies.
 class SubscriptionPoliciesResponse {
   /// The subscription location placement ID.
-  final pulumi.Input<String>? locationPlacementId;
+  final pulumi.Input<String?>? locationPlacementId;
   /// The subscription quota ID.
-  final pulumi.Input<String>? quotaId;
+  final pulumi.Input<String?>? quotaId;
   /// The subscription spending limit.
-  final pulumi.Input<String>? spendingLimit;
+  final pulumi.Input<String?>? spendingLimit;
 
   /// Creates a new [SubscriptionPoliciesResponse].
   /// [locationPlacementId] The subscription location placement ID.

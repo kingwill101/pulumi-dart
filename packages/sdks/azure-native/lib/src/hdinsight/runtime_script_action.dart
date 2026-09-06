@@ -7,7 +7,7 @@ class RuntimeScriptAction {
   /// The name of the script action.
   final pulumi.Input<String> name;
   /// The parameters for the script
-  final pulumi.Input<String>? parameters;
+  final pulumi.Input<String?>? parameters;
   /// The list of roles where script will be executed.
   final pulumi.Input<List<String>> roles;
   /// The URI to the script.

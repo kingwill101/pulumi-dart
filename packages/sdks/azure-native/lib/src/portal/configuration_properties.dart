@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Tenant Configuration Properties with Provisioning state
 class ConfigurationProperties {
   /// When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.
-  final pulumi.Input<bool>? enforcePrivateMarkdownStorage;
+  final pulumi.Input<bool?>? enforcePrivateMarkdownStorage;
 
   /// Creates a new [ConfigurationProperties].
   /// [enforcePrivateMarkdownStorage] When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.

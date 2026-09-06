@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SKU of nat gateway.
 class NatGatewaySkuResponse {
   /// Name of Nat Gateway SKU.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [NatGatewaySkuResponse].
   /// [name] Name of Nat Gateway SKU.

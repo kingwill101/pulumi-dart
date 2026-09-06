@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The set of data plane operations permitted through this Role Definition.
 class Permission {
   /// An array of data actions that are allowed.
-  final pulumi.Input<List<String>>? dataActions;
+  final pulumi.Input<List<String>?>? dataActions;
   /// The id for the permission.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// An array of data actions that are denied.
-  final pulumi.Input<List<String>>? notDataActions;
+  final pulumi.Input<List<String>?>? notDataActions;
 
   /// Creates a new [Permission].
   /// [dataActions] An array of data actions that are allowed.

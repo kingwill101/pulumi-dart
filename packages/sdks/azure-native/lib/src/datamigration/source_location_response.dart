@@ -7,9 +7,9 @@ import 'sql_file_share_response.dart';
 /// Source Location details of backups.
 class SourceLocationResponse {
   /// Source Azure Blob.
-  final pulumi.Input<AzureBlobResponse>? azureBlob;
+  final pulumi.Input<AzureBlobResponse?>? azureBlob;
   /// Source File share.
-  final pulumi.Input<SqlFileShareResponse>? fileShare;
+  final pulumi.Input<SqlFileShareResponse?>? fileShare;
   /// Backup storage Type.
   final pulumi.Input<String> fileStorageType;
 

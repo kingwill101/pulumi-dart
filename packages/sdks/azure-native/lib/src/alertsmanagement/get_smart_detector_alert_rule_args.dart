@@ -10,7 +10,7 @@ class GetSmartDetectorAlertRuleArgs {
   /// The name of the alert rule.
   final pulumi.Input<String> alertRuleName;
   /// Indicates if Smart Detector should be expanded.
-  final pulumi.Input<bool>? expandDetector;
+  final pulumi.Input<bool?>? expandDetector;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 

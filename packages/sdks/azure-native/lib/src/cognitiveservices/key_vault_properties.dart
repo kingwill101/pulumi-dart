@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties to configure keyVault Properties
 class KeyVaultProperties {
-  final pulumi.Input<String>? identityClientId;
+  final pulumi.Input<String?>? identityClientId;
   /// Name of the Key from KeyVault
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// Uri of KeyVault
-  final pulumi.Input<String>? keyVaultUri;
+  final pulumi.Input<String?>? keyVaultUri;
   /// Version of the Key from KeyVault
-  final pulumi.Input<String>? keyVersion;
+  final pulumi.Input<String?>? keyVersion;
 
   /// Creates a new [KeyVaultProperties].
   /// [identityClientId] Optional.

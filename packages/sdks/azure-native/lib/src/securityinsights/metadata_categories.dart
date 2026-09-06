@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ies for the solution content item
 class MetadataCategories {
   /// domain for the solution content item
-  final pulumi.Input<List<String>>? domains;
+  final pulumi.Input<List<String>?>? domains;
   /// Industry verticals for the solution content item
-  final pulumi.Input<List<String>>? verticals;
+  final pulumi.Input<List<String>?>? verticals;
 
   /// Creates a new [MetadataCategories].
   /// [domains] domain for the solution content item

@@ -9,7 +9,7 @@ class DataflowEndpointDataExplorer {
   /// Authentication configuration. NOTE - only authentication property is allowed per entry.
   final pulumi.Input<DataflowEndpointDataExplorerAuthentication> authentication;
   /// Azure Data Explorer endpoint batching configuration.
-  final pulumi.Input<BatchingConfiguration>? batching;
+  final pulumi.Input<BatchingConfiguration?>? batching;
   /// Database name.
   final pulumi.Input<String> database;
   /// Host of the Azure Data Explorer in the form of &lt;cluster&gt;.&lt;region&gt;.kusto.windows.net .

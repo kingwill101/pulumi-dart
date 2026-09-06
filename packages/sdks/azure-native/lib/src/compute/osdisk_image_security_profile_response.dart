@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Contains security profile for an OS disk image.
 class OSDiskImageSecurityProfileResponse {
   /// confidential VM encryption types
-  final pulumi.Input<String>? confidentialVMEncryptionType;
+  final pulumi.Input<String?>? confidentialVMEncryptionType;
   /// secure VM disk encryption set id
-  final pulumi.Input<String>? secureVMDiskEncryptionSetId;
+  final pulumi.Input<String?>? secureVMDiskEncryptionSetId;
 
   /// Creates a new [OSDiskImageSecurityProfileResponse].
   /// [confidentialVMEncryptionType] confidential VM encryption types

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The private resource provider configuration.
 class ProviderRegistrationPropertiesPrivateResourceProviderConfiguration {
   /// The allowed subscriptions.
-  final pulumi.Input<List<String>>? allowedSubscriptions;
+  final pulumi.Input<List<String>?>? allowedSubscriptions;
 
   /// Creates a new [ProviderRegistrationPropertiesPrivateResourceProviderConfiguration].
   /// [allowedSubscriptions] The allowed subscriptions.

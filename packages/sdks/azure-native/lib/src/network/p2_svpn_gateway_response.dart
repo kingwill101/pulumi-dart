@@ -8,33 +8,33 @@ import 'vpn_client_connection_health_response.dart';
 /// P2SVpnGateway Resource.
 class P2SVpnGatewayResponse {
   /// List of all customer specified DNS servers IP addresses.
-  final pulumi.Input<List<String>>? customDnsServers;
+  final pulumi.Input<List<String>?>? customDnsServers;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Enable Routing Preference property for the Public IP Interface of the P2SVpnGateway.
-  final pulumi.Input<bool>? isRoutingPreferenceInternet;
+  final pulumi.Input<bool?>? isRoutingPreferenceInternet;
   /// Resource location.
   final pulumi.Input<String> location;
   /// Resource name.
   final pulumi.Input<String> name;
   /// List of all p2s connection configurations of the gateway.
-  final pulumi.Input<List<P2SConnectionConfigurationVpnServerConfigurationResponse>>? p2SConnectionConfigurations;
+  final pulumi.Input<List<P2SConnectionConfigurationVpnServerConfigurationResponse>?>? p2SConnectionConfigurations;
   /// The provisioning state of the P2S VPN gateway resource.
   final pulumi.Input<String> provisioningState;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Resource type.
   final pulumi.Input<String> type;
   /// The VirtualHub to which the gateway belongs.
-  final pulumi.Input<SubResourceResponse>? virtualHub;
+  final pulumi.Input<SubResourceResponse?>? virtualHub;
   /// All P2S VPN clients' connection health status.
   final pulumi.Input<VpnClientConnectionHealthResponse> vpnClientConnectionHealth;
   /// The scale unit for this p2s vpn gateway.
-  final pulumi.Input<int>? vpnGatewayScaleUnit;
+  final pulumi.Input<int?>? vpnGatewayScaleUnit;
   /// The VpnServerConfiguration to which the p2sVpnGateway is attached to.
-  final pulumi.Input<SubResourceResponse>? vpnServerConfiguration;
+  final pulumi.Input<SubResourceResponse?>? vpnServerConfiguration;
 
   /// Creates a new [P2SVpnGatewayResponse].
   /// [customDnsServers] List of all customer specified DNS servers IP addresses.
@@ -101,7 +101,7 @@ class P2SVpnGatewayResponse {
       type: pulumi.Input.fromValue(map['type'] as String),
       virtualHub: (() { final guardedValue = map['virtualHub']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       vpnClientConnectionHealth: pulumi.Input.fromValue(VpnClientConnectionHealthResponse.fromMap((map['vpnClientConnectionHealth']! as Map).cast<String, dynamic>())),
-      vpnGatewayScaleUnit: (() { final guardedValue = map['vpnGatewayScaleUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vpnGatewayScaleUnit: (() { final guardedValue = map['vpnGatewayScaleUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       vpnServerConfiguration: (() { final guardedValue = map['vpnServerConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

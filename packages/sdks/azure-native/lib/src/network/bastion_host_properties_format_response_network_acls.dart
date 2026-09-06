@@ -5,7 +5,7 @@ import 'iprule_response.dart';
 
 class BastionHostPropertiesFormatResponseNetworkAcls {
   /// Sets the IP ACL rules for Developer Bastion Host.
-  final pulumi.Input<List<IPRuleResponse>>? ipRules;
+  final pulumi.Input<List<IPRuleResponse>?>? ipRules;
 
   /// Creates a new [BastionHostPropertiesFormatResponseNetworkAcls].
   /// [ipRules] Sets the IP ACL rules for Developer Bastion Host.

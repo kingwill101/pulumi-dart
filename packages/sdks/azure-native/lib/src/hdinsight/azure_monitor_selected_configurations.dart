@@ -6,11 +6,11 @@ import 'azure_monitor_table_configuration.dart';
 /// The selected configurations for azure monitor.
 class AzureMonitorSelectedConfigurations {
   /// The configuration version.
-  final pulumi.Input<String>? configurationVersion;
+  final pulumi.Input<String?>? configurationVersion;
   /// The global configurations of selected configurations.
-  final pulumi.Input<Map<String, String>>? globalConfigurations;
+  final pulumi.Input<Map<String, String>?>? globalConfigurations;
   /// The table list.
-  final pulumi.Input<List<AzureMonitorTableConfiguration>>? tableList;
+  final pulumi.Input<List<AzureMonitorTableConfiguration>?>? tableList;
 
   /// Creates a new [AzureMonitorSelectedConfigurations].
   /// [configurationVersion] The configuration version.

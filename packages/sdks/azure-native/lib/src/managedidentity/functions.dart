@@ -24,6 +24,17 @@ Future<GetFederatedIdentityCredentialResult> getFederatedIdentityCredential(
   return GetFederatedIdentityCredentialResult.fromMap(result);
 }
 
+pulumi.Output<GetFederatedIdentityCredentialResult> getFederatedIdentityCredentialOutput(
+  GetFederatedIdentityCredentialArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managedidentity:getFederatedIdentityCredential',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFederatedIdentityCredentialResult.fromMap);
+}
+
 /// Gets the identity.
 ///
 /// Uses Azure REST API version 2023-01-31.
@@ -42,4 +53,15 @@ Future<GetUserAssignedIdentityResult> getUserAssignedIdentity(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserAssignedIdentityResult.fromMap(result);
+}
+
+pulumi.Output<GetUserAssignedIdentityResult> getUserAssignedIdentityOutput(
+  GetUserAssignedIdentityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managedidentity:getUserAssignedIdentity',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserAssignedIdentityResult.fromMap);
 }

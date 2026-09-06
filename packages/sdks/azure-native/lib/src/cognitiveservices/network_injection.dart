@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies in AI Foundry where virtual network injection occurs to secure scenarios like Agents entirely within the user's private network, eliminating public internet exposure while maintaining control over network configurations and resources.
 class NetworkInjection {
   /// Specifies what features in AI Foundry network injection applies to. Currently only supports 'agent' for agent scenarios. 'none' means no network injection.
-  final pulumi.Input<String>? scenario;
+  final pulumi.Input<dynamic>? scenario;
   /// Specify the subnet for which your Agent Client is injected into.
-  final pulumi.Input<String>? subnetArmId;
+  final pulumi.Input<String?>? subnetArmId;
   /// Boolean to enable Microsoft Managed Network for subnet delegation
-  final pulumi.Input<bool>? useMicrosoftManagedNetwork;
+  final pulumi.Input<bool?>? useMicrosoftManagedNetwork;
 
   /// Creates a new [NetworkInjection].
   /// [scenario] Specifies what features in AI Foundry network injection applies to. Currently only supports 'agent' for agent scenarios. 'none' means no network injection.
@@ -31,7 +31,7 @@ class NetworkInjection {
 
   factory NetworkInjection.fromMap(Map<String, dynamic> map) {
     return NetworkInjection(
-      scenario: (() { final guardedValue = map['scenario']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scenario: (() { final guardedValue = map['scenario']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       subnetArmId: (() { final guardedValue = map['subnetArmId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       useMicrosoftManagedNetwork: (() { final guardedValue = map['useMicrosoftManagedNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

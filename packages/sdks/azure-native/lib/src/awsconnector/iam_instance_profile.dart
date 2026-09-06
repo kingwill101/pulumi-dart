@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of IamInstanceProfile
 class IamInstanceProfile {
   /// &lt;p&gt;The Amazon Resource Name (ARN) of the instance profile.&lt;/p&gt;
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// &lt;p&gt;The ID of the instance profile.&lt;/p&gt;
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [IamInstanceProfile].
   /// [arn] &lt;p&gt;The Amazon Resource Name (ARN) of the instance profile.&lt;/p&gt;

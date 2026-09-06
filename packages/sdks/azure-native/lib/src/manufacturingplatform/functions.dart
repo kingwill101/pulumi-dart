@@ -22,6 +22,17 @@ Future<GetManufacturingDataServiceResult> getManufacturingDataService(
   return GetManufacturingDataServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetManufacturingDataServiceResult> getManufacturingDataServiceOutput(
+  GetManufacturingDataServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:manufacturingplatform:getManufacturingDataService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManufacturingDataServiceResult.fromMap);
+}
+
 /// Returns the list of available versions
 ///
 /// Uses Azure REST API version 2025-03-01.
@@ -38,4 +49,15 @@ Future<ListManufacturingDataServiceAvailableVersionsResult> listManufacturingDat
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListManufacturingDataServiceAvailableVersionsResult.fromMap(result);
+}
+
+pulumi.Output<ListManufacturingDataServiceAvailableVersionsResult> listManufacturingDataServiceAvailableVersionsOutput(
+  ListManufacturingDataServiceAvailableVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:manufacturingplatform:listManufacturingDataServiceAvailableVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListManufacturingDataServiceAvailableVersionsResult.fromMap);
 }

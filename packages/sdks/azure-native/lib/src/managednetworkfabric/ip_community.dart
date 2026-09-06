@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ip_community_args.dart';
+import 'ip_community_rule_response.dart';
 import 'system_data_response.dart';
 
 /// The IP Community resource definition.
@@ -245,7 +246,7 @@ class IpCommunity extends pulumi.CustomResource {
   /// Configuration state of the resource.
   late final pulumi.Output<String> configurationState;
   /// List of IP Community Rules.
-  late final pulumi.Output<List<Map<String, dynamic>>> ipCommunityRules;
+  late final pulumi.Output<List<IpCommunityRuleResponse>> ipCommunityRules;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// The name of the resource
@@ -277,12 +278,34 @@ class IpCommunity extends pulumi.CustomResource {
     annotation = registerOutput<String?>('annotation');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     configurationState = registerOutput<String>('configurationState');
-    ipCommunityRules = registerOutput<List<Map<String, dynamic>>>('ipCommunityRules');
+    ipCommunityRules = registerOutput<List<IpCommunityRuleResponse>>('ipCommunityRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpCommunityRuleResponse>(guardedValue, (value) => IpCommunityRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [IpCommunity] resource.
+  IpCommunity.reference(String urn)
+    : super(
+        'azure-native:managednetworkfabric:IpCommunity',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    administrativeState = registerOutput<String>('administrativeState');
+    annotation = registerOutput<String?>('annotation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationState = registerOutput<String>('configurationState');
+    ipCommunityRules = registerOutput<List<IpCommunityRuleResponse>>('ipCommunityRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpCommunityRuleResponse>(guardedValue, (value) => IpCommunityRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

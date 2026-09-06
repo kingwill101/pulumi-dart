@@ -3,10 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataBaseMigrationAssessmentResponseDatabaseAssessments {
-  final pulumi.Input<String>? appliesToMigrationTargetPlatform;
-  final pulumi.Input<String>? featureId;
-  final pulumi.Input<String>? issueCategory;
-  final pulumi.Input<String>? moreInformation;
+  final pulumi.Input<String?>? appliesToMigrationTargetPlatform;
+  final pulumi.Input<String?>? featureId;
+  final pulumi.Input<String?>? issueCategory;
+  final pulumi.Input<String?>? moreInformation;
 
   /// Creates a new [DataBaseMigrationAssessmentResponseDatabaseAssessments].
   /// [appliesToMigrationTargetPlatform] Optional.

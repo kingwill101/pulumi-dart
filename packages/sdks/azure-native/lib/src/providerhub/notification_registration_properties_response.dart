@@ -5,13 +5,13 @@ import 'notification_endpoint_response.dart';
 
 class NotificationRegistrationPropertiesResponse {
   /// The included events.
-  final pulumi.Input<List<String>>? includedEvents;
+  final pulumi.Input<List<String>?>? includedEvents;
   /// The message scope.
-  final pulumi.Input<String>? messageScope;
+  final pulumi.Input<String?>? messageScope;
   /// The notification endpoints.
-  final pulumi.Input<List<NotificationEndpointResponse>>? notificationEndpoints;
+  final pulumi.Input<List<NotificationEndpointResponse>?>? notificationEndpoints;
   /// The notification mode.
-  final pulumi.Input<String>? notificationMode;
+  final pulumi.Input<String?>? notificationMode;
   /// The provisioned state of the resource.
   final pulumi.Input<String> provisioningState;
 

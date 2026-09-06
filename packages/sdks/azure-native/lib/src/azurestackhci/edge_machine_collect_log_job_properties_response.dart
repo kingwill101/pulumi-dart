@@ -7,7 +7,7 @@ import 'error_detail_response.dart';
 /// Properties for pausing a server in the cluster.
 class EdgeMachineCollectLogJobPropertiesResponse {
   /// Deployment mode to trigger job.
-  final pulumi.Input<String>? deploymentMode;
+  final pulumi.Input<String?>? deploymentMode;
   /// The UTC date and time at which the job completed.
   final pulumi.Input<String> endTimeUtc;
   /// error details.

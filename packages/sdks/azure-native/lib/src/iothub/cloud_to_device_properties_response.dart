@@ -6,11 +6,11 @@ import 'feedback_properties_response.dart';
 /// The IoT hub cloud-to-device messaging properties.
 class CloudToDevicePropertiesResponse {
   /// The default time to live for cloud-to-device messages in the device queue. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
-  final pulumi.Input<String>? defaultTtlAsIso8601;
+  final pulumi.Input<String?>? defaultTtlAsIso8601;
   /// The properties of the feedback queue for cloud-to-device messages.
-  final pulumi.Input<FeedbackPropertiesResponse>? feedback;
+  final pulumi.Input<FeedbackPropertiesResponse?>? feedback;
   /// The max delivery count for cloud-to-device messages in the device queue. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
-  final pulumi.Input<int>? maxDeliveryCount;
+  final pulumi.Input<int?>? maxDeliveryCount;
 
   /// Creates a new [CloudToDevicePropertiesResponse].
   /// [defaultTtlAsIso8601] The default time to live for cloud-to-device messages in the device queue. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
@@ -34,7 +34,7 @@ class CloudToDevicePropertiesResponse {
     return CloudToDevicePropertiesResponse(
       defaultTtlAsIso8601: (() { final guardedValue = map['defaultTtlAsIso8601']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       feedback: (() { final guardedValue = map['feedback']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeedbackPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxDeliveryCount: (() { final guardedValue = map['maxDeliveryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxDeliveryCount: (() { final guardedValue = map['maxDeliveryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

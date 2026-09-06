@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Action Performed by approver
-enum ActionPerformed {
+enum ActionPerformed implements pulumi.PulumiEnum<String> {
   approved("Approved"),
   rejected("Rejected");
 
   const ActionPerformed(this.wireValue);
+  @override
   final String wireValue;
 
   static ActionPerformed fromValue(String value) {

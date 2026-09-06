@@ -6,25 +6,25 @@ import 'system_data_response.dart';
 /// Result data returned by getReplication.
 class GetReplicationResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The resource ID.
-  final String id;
+  final String? id;
   /// The location of the resource. This cannot be changed after the resource is created.
-  final String location;
+  final String? location;
   /// The name of the resource.
-  final String name;
+  final String? name;
   /// The provisioning state of the replication at the time the operation was called.
-  final String provisioningState;
+  final String? provisioningState;
   /// Specifies whether the replication's regional endpoint is enabled. Requests will not be routed to a replication whose regional endpoint is disabled, however its data will continue to be synced with other replications.
   final bool? regionEndpointEnabled;
   /// The status of the replication at the time the operation was called.
-  final StatusResponse status;
+  final StatusResponse? status;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The tags of the resource.
   final Map<String, String>? tags;
   /// The type of the resource.
-  final String type;
+  final String? type;
   /// Whether or not zone redundancy is enabled for this container registry replication
   final String? zoneRedundancy;
 
@@ -40,48 +40,48 @@ class GetReplicationResult {
   /// [tags] The tags of the resource.
   /// [type] The type of the resource.
   /// [zoneRedundancy] Whether or not zone redundancy is enabled for this container registry replication
-  const GetReplicationResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.provisioningState,
-    this.regionEndpointEnabled,
-    required this.status,
-    required this.systemData,
+  GetReplicationResult({
+    this.azureApiVersion,
+    this.id,
+    this.location,
+    this.name,
+    this.provisioningState,
+    bool? regionEndpointEnabled,
+    this.status,
+    this.systemData,
     this.tags,
-    required this.type,
-    this.zoneRedundancy,
-  });
+    this.type,
+    String? zoneRedundancy,
+  }) : regionEndpointEnabled = regionEndpointEnabled ?? true, zoneRedundancy = zoneRedundancy ?? 'Disabled';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'location': location,
-      'name': name,
-      'provisioningState': provisioningState,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'regionEndpointEnabled': ?regionEndpointEnabled,
-      'status': status.toMap(),
-      'systemData': systemData.toMap(),
+      'status': ?status?.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'zoneRedundancy': ?zoneRedundancy,
     };
   }
 
   factory GetReplicationResult.fromMap(Map<String, dynamic> map) {
     return GetReplicationResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       regionEndpointEnabled: (() { final guardedValue = map['regionEndpointEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      status: StatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       zoneRedundancy: (() { final guardedValue = map['zoneRedundancy']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

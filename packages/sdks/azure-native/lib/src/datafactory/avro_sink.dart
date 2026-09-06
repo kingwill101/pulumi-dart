@@ -2,14 +2,13 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'avro_write_settings.dart';
-import 'azure_blob_fswrite_settings.dart';
 
 /// A copy activity Avro sink.
 class AvroSink {
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? disableMetricsCollection;
   /// Avro format settings.
-  final pulumi.Input<AvroWriteSettings>? formatSettings;
+  final pulumi.Input<AvroWriteSettings?>? formatSettings;
   /// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Sink retry count. Type: integer (or Expression with resultType integer).
@@ -17,7 +16,7 @@ class AvroSink {
   /// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? sinkRetryWait;
   /// Avro store settings.
-  final pulumi.Input<AzureBlobFSWriteSettings>? storeSettings;
+  final pulumi.Input<dynamic>? storeSettings;
   /// Copy sink type.
   /// Expected value is 'AvroSink'.
   final pulumi.Input<String> type;
@@ -55,7 +54,7 @@ class AvroSink {
       'maxConcurrentConnections': ?maxConcurrentConnections,
       'sinkRetryCount': ?sinkRetryCount,
       'sinkRetryWait': ?sinkRetryWait,
-      'storeSettings': ?pulumi.Input.mapOptionalInputValue<AzureBlobFSWriteSettings, Map<String, dynamic>>(storeSettings, (value) => value.toMap()),
+      'storeSettings': ?storeSettings,
       'type': type,
       'writeBatchSize': ?writeBatchSize,
       'writeBatchTimeout': ?writeBatchTimeout,
@@ -69,7 +68,7 @@ class AvroSink {
       maxConcurrentConnections: (() { final guardedValue = map['maxConcurrentConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sinkRetryCount: (() { final guardedValue = map['sinkRetryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sinkRetryWait: (() { final guardedValue = map['sinkRetryWait']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      storeSettings: (() { final guardedValue = map['storeSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureBlobFSWriteSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      storeSettings: (() { final guardedValue = map['storeSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       writeBatchSize: (() { final guardedValue = map['writeBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       writeBatchTimeout: (() { final guardedValue = map['writeBatchTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

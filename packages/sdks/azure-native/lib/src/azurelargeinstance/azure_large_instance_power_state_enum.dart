@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Resource power state
-enum AzureLargeInstancePowerStateEnum {
+enum AzureLargeInstancePowerStateEnum implements pulumi.PulumiEnum<String> {
   starting("starting"),
   started("started"),
   stopping("stopping"),
@@ -8,6 +10,7 @@ enum AzureLargeInstancePowerStateEnum {
   unknown("unknown");
 
   const AzureLargeInstancePowerStateEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureLargeInstancePowerStateEnum fromValue(String value) {

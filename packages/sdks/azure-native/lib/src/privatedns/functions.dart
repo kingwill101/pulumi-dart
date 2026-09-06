@@ -26,6 +26,17 @@ Future<GetPrivateRecordSetResult> getPrivateRecordSet(
   return GetPrivateRecordSetResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateRecordSetResult> getPrivateRecordSetOutput(
+  GetPrivateRecordSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:privatedns:getPrivateRecordSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateRecordSetResult.fromMap);
+}
+
 /// Gets a Private DNS zone. Retrieves the zone properties, but not the virtual networks links or the record sets within the zone.
 ///
 /// Uses Azure REST API version 2024-06-01.
@@ -46,6 +57,17 @@ Future<GetPrivateZoneResult> getPrivateZone(
   return GetPrivateZoneResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateZoneResult> getPrivateZoneOutput(
+  GetPrivateZoneArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:privatedns:getPrivateZone',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateZoneResult.fromMap);
+}
+
 /// Gets a virtual network link to the specified Private DNS zone.
 ///
 /// Uses Azure REST API version 2024-06-01.
@@ -64,4 +86,15 @@ Future<GetVirtualNetworkLinkResult> getVirtualNetworkLink(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualNetworkLinkResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualNetworkLinkResult> getVirtualNetworkLinkOutput(
+  GetVirtualNetworkLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:privatedns:getVirtualNetworkLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkLinkResult.fromMap);
 }

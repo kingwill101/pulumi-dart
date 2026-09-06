@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspaceConnectionSharedAccessSignature {
-  final pulumi.Input<String>? sas;
+  final pulumi.Input<String?>? sas;
 
   /// Creates a new [WorkspaceConnectionSharedAccessSignature].
   /// [sas] Optional.

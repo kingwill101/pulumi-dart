@@ -8,19 +8,19 @@ import 'virtual_network.dart';
 /// Virtual NIC model
 class VirtualNic {
   /// guest OS customization for nic
-  final pulumi.Input<GuestOSNICCustomization>? customization;
+  final pulumi.Input<GuestOSNICCustomization?>? customization;
   /// NIC ip address
-  final pulumi.Input<List<String>>? ipAddresses;
+  final pulumi.Input<List<String>?>? ipAddresses;
   /// NIC MAC address
-  final pulumi.Input<String>? macAddress;
+  final pulumi.Input<String?>? macAddress;
   /// Virtual Network
   final pulumi.Input<VirtualNetwork> network;
   /// NIC type
   final pulumi.Input<NICType> nicType;
   /// Is NIC powered on/off on boot
-  final pulumi.Input<bool>? powerOnBoot;
+  final pulumi.Input<bool?>? powerOnBoot;
   /// NIC id
-  final pulumi.Input<String>? virtualNicId;
+  final pulumi.Input<String?>? virtualNicId;
 
   /// Creates a new [VirtualNic].
   /// [customization] guest OS customization for nic

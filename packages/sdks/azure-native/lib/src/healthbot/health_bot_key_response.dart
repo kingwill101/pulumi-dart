@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An entry of HealthBotKeysResponse
 class HealthBotKeyResponse {
   /// The name of the key.
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// The value of the key.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [HealthBotKeyResponse].
   /// [keyName] The name of the key.

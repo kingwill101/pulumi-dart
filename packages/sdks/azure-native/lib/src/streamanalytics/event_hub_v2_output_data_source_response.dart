@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes an Event Hub output data source.
 class EventHubV2OutputDataSourceResponse {
   /// Authentication Mode.
-  final pulumi.Input<String>? authenticationMode;
+  final pulumi.Input<String?>? authenticationMode;
   /// The name of the Event Hub. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? eventHubName;
+  final pulumi.Input<String?>? eventHubName;
   /// The key/column that is used to determine to which partition to send event data.
-  final pulumi.Input<String>? partitionKey;
+  final pulumi.Input<String?>? partitionKey;
   /// The properties associated with this Event Hub output.
-  final pulumi.Input<List<String>>? propertyColumns;
+  final pulumi.Input<List<String>?>? propertyColumns;
   /// The namespace that is associated with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? serviceBusNamespace;
+  final pulumi.Input<String?>? serviceBusNamespace;
   /// The shared access policy key for the specified shared access policy. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? sharedAccessPolicyKey;
+  final pulumi.Input<String?>? sharedAccessPolicyKey;
   /// The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? sharedAccessPolicyName;
+  final pulumi.Input<String?>? sharedAccessPolicyName;
   /// Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'Microsoft.EventHub/EventHub'.
   final pulumi.Input<String> type;

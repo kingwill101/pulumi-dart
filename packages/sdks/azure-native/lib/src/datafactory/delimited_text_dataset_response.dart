@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'amazon_s3_compatible_location_response.dart';
 import 'dataset_folder_response.dart';
 import 'linked_service_reference_response.dart';
 import 'parameter_specification_response.dart';
@@ -9,7 +8,7 @@ import 'parameter_specification_response.dart';
 /// Delimited text dataset.
 class DelimitedTextDatasetResponse {
   /// List of tags that can be used for describing the Dataset.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The column delimiter. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? columnDelimiter;
   /// The data compressionCodec. Type: string (or Expression with resultType string).
@@ -17,7 +16,7 @@ class DelimitedTextDatasetResponse {
   /// The data compression method used for DelimitedText.
   final pulumi.Input<dynamic>? compressionLevel;
   /// Dataset description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The code page name of the preferred encoding. If miss, the default value is UTF-8, unless BOM denotes another Unicode encoding. Refer to the name column of the table in the following link to set supported values: https://msdn.microsoft.com/library/system.text.encoding.aspx. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? encodingName;
   /// The escape character. Type: string (or Expression with resultType string).
@@ -25,15 +24,15 @@ class DelimitedTextDatasetResponse {
   /// When used as input, treat the first row of data as headers. When used as output,write the headers into the output as the first row of data. The default value is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? firstRowAsHeader;
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-  final pulumi.Input<DatasetFolderResponse>? folder;
+  final pulumi.Input<DatasetFolderResponse?>? folder;
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReferenceResponse> linkedServiceName;
   /// The location of the delimited text storage.
-  final pulumi.Input<AmazonS3CompatibleLocationResponse> location;
+  final pulumi.Input<dynamic> location;
   /// The null value string. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? nullValue;
   /// Parameters for dataset.
-  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>?>? parameters;
   /// The quote character. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? quoteChar;
   /// The row delimiter. Type: string (or Expression with resultType string).
@@ -98,7 +97,7 @@ class DelimitedTextDatasetResponse {
       'firstRowAsHeader': ?firstRowAsHeader,
       'folder': ?pulumi.Input.mapOptionalInputValue<DatasetFolderResponse, Map<String, dynamic>>(folder, (value) => value.toMap()),
       'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
-      'location': pulumi.Input.mapInputValue<AmazonS3CompatibleLocationResponse, Map<String, dynamic>>(location, (value) => value.toMap()),
+      'location': location,
       'nullValue': ?nullValue,
       'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'quoteChar': ?quoteChar,
@@ -121,7 +120,7 @@ class DelimitedTextDatasetResponse {
       firstRowAsHeader: (() { final guardedValue = map['firstRowAsHeader']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetFolderResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       linkedServiceName: pulumi.Input.fromValue(LinkedServiceReferenceResponse.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())),
-      location: pulumi.Input.fromValue(AmazonS3CompatibleLocationResponse.fromMap((map['location']! as Map).cast<String, dynamic>())),
+      location: pulumi.Input.fromValue(map['location']),
       nullValue: (() { final guardedValue = map['nullValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(guardedValue, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       quoteChar: (() { final guardedValue = map['quoteChar']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

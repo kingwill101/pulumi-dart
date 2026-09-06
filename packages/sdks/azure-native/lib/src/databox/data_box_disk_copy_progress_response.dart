@@ -48,9 +48,9 @@ class DataBoxDiskCopyProgressResponse {
   factory DataBoxDiskCopyProgressResponse.fromMap(Map<String, dynamic> map) {
     return DataBoxDiskCopyProgressResponse(
       actions: pulumi.Input.fromValue((map['actions'] as List).cast<String>()),
-      bytesCopied: pulumi.Input.fromValue(map['bytesCopied'] as double),
+      bytesCopied: pulumi.Input.fromValue((map['bytesCopied'] as num).toDouble()),
       error: pulumi.Input.fromValue(CloudErrorResponse.fromMap((map['error']! as Map).cast<String, dynamic>())),
-      percentComplete: pulumi.Input.fromValue(map['percentComplete'] as int),
+      percentComplete: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['percentComplete'])),
       serialNumber: pulumi.Input.fromValue(map['serialNumber'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );

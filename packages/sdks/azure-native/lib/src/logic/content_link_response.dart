@@ -14,7 +14,7 @@ class ContentLinkResponse {
   /// The metadata.
   final pulumi.Input<dynamic> metadata;
   /// The content link URI.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [ContentLinkResponse].
   /// [contentHash] The content hash.
@@ -43,7 +43,7 @@ class ContentLinkResponse {
   factory ContentLinkResponse.fromMap(Map<String, dynamic> map) {
     return ContentLinkResponse(
       contentHash: pulumi.Input.fromValue(ContentHashResponse.fromMap((map['contentHash']! as Map).cast<String, dynamic>())),
-      contentSize: pulumi.Input.fromValue(map['contentSize'] as double),
+      contentSize: pulumi.Input.fromValue((map['contentSize'] as num).toDouble()),
       contentVersion: pulumi.Input.fromValue(map['contentVersion'] as String),
       metadata: pulumi.Input.fromValue(map['metadata']),
       uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

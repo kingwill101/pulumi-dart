@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Caching behavior for the requests
-enum CacheBehavior {
+enum CacheBehavior implements pulumi.PulumiEnum<String> {
   bypassCache("BypassCache"),
   override("Override"),
   setIfMissing("SetIfMissing");
 
   const CacheBehavior(this.wireValue);
+  @override
   final String wireValue;
 
   static CacheBehavior fromValue(String value) {

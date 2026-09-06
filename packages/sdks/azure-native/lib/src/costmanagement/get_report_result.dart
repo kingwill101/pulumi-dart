@@ -7,23 +7,23 @@ import 'report_schedule_response.dart';
 /// Result data returned by getReport.
 class GetReportResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Has definition for the report.
-  final ReportDefinitionResponse definition;
+  final ReportDefinitionResponse? definition;
   /// Has delivery information for the report.
-  final ReportDeliveryInfoResponse deliveryInfo;
+  final ReportDeliveryInfoResponse? deliveryInfo;
   /// The format of the report being delivered.
   final String? format;
   /// Resource Id.
-  final String id;
+  final String? id;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Has schedule information for the report.
   final ReportScheduleResponse? schedule;
   /// Resource tags.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetReportResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -36,42 +36,42 @@ class GetReportResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   const GetReportResult({
-    required this.azureApiVersion,
-    required this.definition,
-    required this.deliveryInfo,
+    this.azureApiVersion,
+    this.definition,
+    this.deliveryInfo,
     this.format,
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
     this.schedule,
-    required this.tags,
-    required this.type,
+    this.tags,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'definition': definition.toMap(),
-      'deliveryInfo': deliveryInfo.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'definition': ?definition?.toMap(),
+      'deliveryInfo': ?deliveryInfo?.toMap(),
       'format': ?format,
-      'id': id,
-      'name': name,
+      'id': ?id,
+      'name': ?name,
       'schedule': ?schedule?.toMap(),
-      'tags': tags,
-      'type': type,
+      'tags': ?tags,
+      'type': ?type,
     };
   }
 
   factory GetReportResult.fromMap(Map<String, dynamic> map) {
     return GetReportResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      definition: ReportDefinitionResponse.fromMap((map['definition']! as Map).cast<String, dynamic>()),
-      deliveryInfo: ReportDeliveryInfoResponse.fromMap((map['deliveryInfo']! as Map).cast<String, dynamic>()),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      definition: (() { final guardedValue = map['definition']; if (guardedValue == null) return null; return ReportDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      deliveryInfo: (() { final guardedValue = map['deliveryInfo']; if (guardedValue == null) return null; return ReportDeliveryInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return ReportScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      tags: (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

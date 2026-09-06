@@ -56,14 +56,14 @@ class InMageRcmFailbackSyncDetailsResponse {
 
   factory InMageRcmFailbackSyncDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmFailbackSyncDetailsResponse(
-      last15MinutesTransferredBytes: pulumi.Input.fromValue(map['last15MinutesTransferredBytes'] as double),
+      last15MinutesTransferredBytes: pulumi.Input.fromValue((map['last15MinutesTransferredBytes'] as num).toDouble()),
       lastDataTransferTimeUtc: pulumi.Input.fromValue(map['lastDataTransferTimeUtc'] as String),
       lastRefreshTime: pulumi.Input.fromValue(map['lastRefreshTime'] as String),
-      processedBytes: pulumi.Input.fromValue(map['processedBytes'] as double),
+      processedBytes: pulumi.Input.fromValue((map['processedBytes'] as num).toDouble()),
       progressHealth: pulumi.Input.fromValue(map['progressHealth'] as String),
-      progressPercentage: pulumi.Input.fromValue(map['progressPercentage'] as int),
+      progressPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['progressPercentage'])),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
-      transferredBytes: pulumi.Input.fromValue(map['transferredBytes'] as double),
+      transferredBytes: pulumi.Input.fromValue((map['transferredBytes'] as num).toDouble()),
     );
   }
 }

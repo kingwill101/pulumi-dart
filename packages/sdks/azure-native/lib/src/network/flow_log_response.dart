@@ -9,31 +9,31 @@ import 'traffic_analytics_properties_response.dart';
 /// A flow log resource.
 class FlowLogResponse {
   /// Flag to enable/disable flow logging.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Optional field to filter network traffic logs based on SrcIP, SrcPort, DstIP, DstPort, Protocol, Encryption, Direction and Action. If not specified, all network traffic will be logged.
-  final pulumi.Input<String>? enabledFilteringCriteria;
+  final pulumi.Input<String?>? enabledFilteringCriteria;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Parameters that define the configuration of traffic analytics.
-  final pulumi.Input<TrafficAnalyticsPropertiesResponse>? flowAnalyticsConfiguration;
+  final pulumi.Input<TrafficAnalyticsPropertiesResponse?>? flowAnalyticsConfiguration;
   /// Parameters that define the flow log format.
-  final pulumi.Input<FlowLogFormatParametersResponse>? format;
+  final pulumi.Input<FlowLogFormatParametersResponse?>? format;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// FlowLog resource Managed Identity
-  final pulumi.Input<ManagedServiceIdentityResponse>? identity;
+  final pulumi.Input<ManagedServiceIdentityResponse?>? identity;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource name.
   final pulumi.Input<String> name;
   /// The provisioning state of the flow log.
   final pulumi.Input<String> provisioningState;
   /// Parameters that define the retention policy for flow log.
-  final pulumi.Input<RetentionPolicyParametersResponse>? retentionPolicy;
+  final pulumi.Input<RetentionPolicyParametersResponse?>? retentionPolicy;
   /// ID of the storage account which is used to store the flow log.
   final pulumi.Input<String> storageId;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Guid of network security group to which flow log will be applied.
   final pulumi.Input<String> targetResourceGuid;
   /// ID of network security group to which flow log will be applied.

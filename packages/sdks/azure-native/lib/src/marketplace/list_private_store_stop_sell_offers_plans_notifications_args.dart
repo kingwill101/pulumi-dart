@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListPrivateStoreStopSellOffersPlansNotificationsArgs {
   /// The store ID - must use the tenant ID
   final pulumi.Input<String> privateStoreId;
-  final pulumi.Input<List<String>>? subscriptions;
+  final pulumi.Input<List<String>?>? subscriptions;
 
   /// Creates a new [ListPrivateStoreStopSellOffersPlansNotificationsArgs].
   /// [privateStoreId] The store ID - must use the tenant ID

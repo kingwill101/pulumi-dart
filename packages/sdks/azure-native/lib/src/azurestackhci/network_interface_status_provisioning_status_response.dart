@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Network interface provisioning status
 class NetworkInterfaceStatusProvisioningStatusResponse {
   /// The ID of the operation performed on the network interface
-  final pulumi.Input<String>? operationId;
+  final pulumi.Input<String?>? operationId;
   /// The status of the operation performed on the network interface [Succeeded, Failed, InProgress]
   final pulumi.Input<String> status;
 

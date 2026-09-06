@@ -9,7 +9,7 @@ class SecretStoreBasedAuthCredentialsResponse {
   /// Expected value is 'SecretStoreBasedAuthCredentials'.
   final pulumi.Input<String> objectType;
   /// Secret store resource
-  final pulumi.Input<SecretStoreResourceResponse>? secretStoreResource;
+  final pulumi.Input<SecretStoreResourceResponse?>? secretStoreResource;
 
   /// Creates a new [SecretStoreBasedAuthCredentialsResponse].
   /// [objectType] Type of the specific object - used for deserializing

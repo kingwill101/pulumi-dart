@@ -14,42 +14,42 @@ import 'user_property_response.dart';
 /// Execute data flow activity.
 class ExecuteDataFlowActivityResponse {
   /// Compute properties for data flow activity.
-  final pulumi.Input<ExecuteDataFlowActivityTypePropertiesComputeResponse>? compute;
+  final pulumi.Input<ExecuteDataFlowActivityTypePropertiesComputeResponse?>? compute;
   /// Continuation settings for execute data flow activity.
-  final pulumi.Input<ContinuationSettingsReferenceResponse>? continuationSettings;
+  final pulumi.Input<ContinuationSettingsReferenceResponse?>? continuationSettings;
   /// Continue on error setting used for data flow execution. Enables processing to continue if a sink fails. Type: boolean (or Expression with resultType boolean)
   final pulumi.Input<dynamic>? continueOnError;
   /// Data flow reference.
   final pulumi.Input<DataFlowReferenceResponse> dataFlow;
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReferenceResponse>? integrationRuntime;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse?>? integrationRuntime;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReferenceResponse?>? linkedServiceName;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<String?>? onInactiveMarkAs;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicyResponse>? policy;
+  final pulumi.Input<ActivityPolicyResponse?>? policy;
   /// Concurrent run setting used for data flow execution. Allows sinks with the same save order to be processed concurrently. Type: boolean (or Expression with resultType boolean)
   final pulumi.Input<dynamic>? runConcurrently;
   /// Specify number of parallel staging for sources applicable to the sink. Type: integer (or Expression with resultType integer)
   final pulumi.Input<dynamic>? sourceStagingConcurrency;
   /// Staging info for execute data flow activity.
-  final pulumi.Input<DataFlowStagingInfoResponse>? staging;
+  final pulumi.Input<DataFlowStagingInfoResponse?>? staging;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Trace level setting used for data flow monitoring output. Supported values are: 'coarse', 'fine', and 'none'. Type: string (or Expression with resultType string)
   final pulumi.Input<dynamic>? traceLevel;
   /// Type of activity.
   /// Expected value is 'ExecuteDataFlow'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>?>? userProperties;
 
   /// Creates a new [ExecuteDataFlowActivityResponse].
   /// [compute] Compute properties for data flow activity.

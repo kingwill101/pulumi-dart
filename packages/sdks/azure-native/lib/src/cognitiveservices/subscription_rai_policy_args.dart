@@ -9,11 +9,11 @@ import 'rai_policy_properties.dart';
 /// {@macro pulumi_cognitiveservices_subscription_rai_policy_args_doc}
 class SubscriptionRaiPolicyArgs {
   /// Properties of Cognitive Services RaiPolicy.
-  final pulumi.Input<RaiPolicyProperties>? properties;
+  final pulumi.Input<RaiPolicyProperties?>? properties;
   /// The name of the RaiPolicy associated with the Cognitive Services Account
-  final pulumi.Input<String>? raiPolicyName;
+  final pulumi.Input<String?>? raiPolicyName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SubscriptionRaiPolicyArgs].
   /// [properties] Properties of Cognitive Services RaiPolicy.

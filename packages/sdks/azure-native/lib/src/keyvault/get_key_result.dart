@@ -9,32 +9,32 @@ class GetKeyResult {
   /// The attributes of the key.
   final KeyAttributesResponse? attributes;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The elliptic curve name. For valid values, see JsonWebKeyCurveName. Default for EC and EC-HSM keys is P-256
   final String? curveName;
   /// Fully qualified identifier of the key vault resource.
-  final String id;
+  final String? id;
   final List<String>? keyOps;
   /// The key size in bits. For example: 2048, 3072, or 4096 for RSA. Default for RSA and RSA-HSM keys is 2048. Exception made for bring your own key (BYOK), key exchange keys default to 4096.
   final int? keySize;
   /// The URI to retrieve the current version of the key.
-  final String keyUri;
+  final String? keyUri;
   /// The URI to retrieve the specific version of the key.
-  final String keyUriWithVersion;
+  final String? keyUriWithVersion;
   /// The type of the key. For valid values, see JsonWebKeyType.
   final String? kty;
   /// Azure location of the key vault resource.
-  final String location;
+  final String? location;
   /// Name of the key vault resource.
-  final String name;
+  final String? name;
   /// Key release policy in response. It will be used for both output and input. Omitted if empty
   final KeyReleasePolicyResponse? releasePolicy;
   /// Key rotation policy in response. It will be used for both output and input. Omitted if empty
   final RotationPolicyResponse? rotationPolicy;
   /// Tags assigned to the key vault resource.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// Resource type of the key vault resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetKeyResult].
   /// [attributes] The attributes of the key.
@@ -54,59 +54,59 @@ class GetKeyResult {
   /// [type] Resource type of the key vault resource.
   const GetKeyResult({
     this.attributes,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.curveName,
-    required this.id,
+    this.id,
     this.keyOps,
     this.keySize,
-    required this.keyUri,
-    required this.keyUriWithVersion,
+    this.keyUri,
+    this.keyUriWithVersion,
     this.kty,
-    required this.location,
-    required this.name,
+    this.location,
+    this.name,
     this.releasePolicy,
     this.rotationPolicy,
-    required this.tags,
-    required this.type,
+    this.tags,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attributes': ?attributes?.toMap(),
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'curveName': ?curveName,
-      'id': id,
+      'id': ?id,
       'keyOps': ?keyOps,
       'keySize': ?keySize,
-      'keyUri': keyUri,
-      'keyUriWithVersion': keyUriWithVersion,
+      'keyUri': ?keyUri,
+      'keyUriWithVersion': ?keyUriWithVersion,
       'kty': ?kty,
-      'location': location,
-      'name': name,
+      'location': ?location,
+      'name': ?name,
       'releasePolicy': ?releasePolicy?.toMap(),
       'rotationPolicy': ?rotationPolicy?.toMap(),
-      'tags': tags,
-      'type': type,
+      'tags': ?tags,
+      'type': ?type,
     };
   }
 
   factory GetKeyResult.fromMap(Map<String, dynamic> map) {
     return GetKeyResult(
       attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return KeyAttributesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       curveName: (() { final guardedValue = map['curveName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       keyOps: (() { final guardedValue = map['keyOps']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      keySize: (() { final guardedValue = map['keySize']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      keyUri: map['keyUri'] as String,
-      keyUriWithVersion: map['keyUriWithVersion'] as String,
+      keySize: (() { final guardedValue = map['keySize']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      keyUri: (() { final guardedValue = map['keyUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      keyUriWithVersion: (() { final guardedValue = map['keyUriWithVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kty: (() { final guardedValue = map['kty']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      location: map['location'] as String,
-      name: map['name'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       releasePolicy: (() { final guardedValue = map['releasePolicy']; if (guardedValue == null) return null; return KeyReleasePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       rotationPolicy: (() { final guardedValue = map['rotationPolicy']; if (guardedValue == null) return null; return RotationPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      tags: (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] as String,
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

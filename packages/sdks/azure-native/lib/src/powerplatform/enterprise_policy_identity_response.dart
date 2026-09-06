@@ -9,7 +9,7 @@ class EnterprisePolicyIdentityResponse {
   /// The tenant id associated with the EnterprisePolicy.
   final pulumi.Input<String> tenantId;
   /// The type of identity used for the EnterprisePolicy. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [EnterprisePolicyIdentityResponse].
   /// [systemAssignedIdentityPrincipalId] The principal id of EnterprisePolicy identity.

@@ -8,11 +8,11 @@ class ManagementPolicyRule {
   /// An object that defines the Lifecycle rule.
   final pulumi.Input<ManagementPolicyDefinition> definition;
   /// Rule is enabled if set to true.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
   final pulumi.Input<String> name;
   /// The valid value is Lifecycle
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [ManagementPolicyRule].
   /// [definition] An object that defines the Lifecycle rule.
@@ -40,7 +40,7 @@ class ManagementPolicyRule {
       definition: pulumi.Input.fromValue(ManagementPolicyDefinition.fromMap((map['definition']! as Map).cast<String, dynamic>())),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

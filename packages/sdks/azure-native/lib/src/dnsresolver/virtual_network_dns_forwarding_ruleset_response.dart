@@ -6,9 +6,9 @@ import 'sub_resource_response.dart';
 /// Reference to DNS forwarding ruleset and associated virtual network link.
 class VirtualNetworkDnsForwardingRulesetResponse {
   /// DNS Forwarding Ruleset Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The reference to the virtual network link.
-  final pulumi.Input<SubResourceResponse>? virtualNetworkLink;
+  final pulumi.Input<SubResourceResponse?>? virtualNetworkLink;
 
   /// Creates a new [VirtualNetworkDnsForwardingRulesetResponse].
   /// [id] DNS Forwarding Ruleset Resource ID.

@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_customproviders_association_args_doc}
 class AssociationArgs {
   /// The name of the association.
-  final pulumi.Input<String>? associationName;
+  final pulumi.Input<String?>? associationName;
   /// The scope of the association. The scope can be any valid REST resource instance. For example, use '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}' for a virtual machine resource.
   final pulumi.Input<String> scope;
   /// The REST resource instance of the target resource for this association.
-  final pulumi.Input<String>? targetResourceId;
+  final pulumi.Input<String?>? targetResourceId;
 
   /// Creates a new [AssociationArgs].
   /// [associationName] The name of the association.

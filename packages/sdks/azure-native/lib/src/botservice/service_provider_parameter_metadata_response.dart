@@ -6,7 +6,7 @@ import 'service_provider_parameter_metadata_constraints_response.dart';
 /// Meta data for the Service Provider
 class ServiceProviderParameterMetadataResponse {
   /// the constraints of the bot meta data.
-  final pulumi.Input<ServiceProviderParameterMetadataConstraintsResponse>? constraints;
+  final pulumi.Input<ServiceProviderParameterMetadataConstraintsResponse?>? constraints;
 
   /// Creates a new [ServiceProviderParameterMetadataResponse].
   /// [constraints] the constraints of the bot meta data.

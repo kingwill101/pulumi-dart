@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of group resource.
 class GroupProperties {
   /// The type of group.
-  final pulumi.Input<String>? groupType;
+  final pulumi.Input<String?>? groupType;
 
   /// Creates a new [GroupProperties].
   /// [groupType] The type of group.

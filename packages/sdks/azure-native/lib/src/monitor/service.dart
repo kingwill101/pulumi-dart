@@ -7,7 +7,7 @@ import 'pipeline.dart';
 /// Service Info.
 class Service {
   /// Persistence options to all pipelines in the instance.
-  final pulumi.Input<PersistenceConfigurations>? persistence;
+  final pulumi.Input<PersistenceConfigurations?>? persistence;
   /// Pipelines belonging to a given pipeline group.
   final pulumi.Input<List<Pipeline>> pipelines;
 

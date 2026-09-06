@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Alert notification source
 class NotificationsSourceAlertResponse {
   /// Defines the minimal alert severity which will be sent as email notifications
-  final pulumi.Input<String>? minimalSeverity;
+  final pulumi.Input<String?>? minimalSeverity;
   /// The source type that will trigger the notification
   /// Expected value is 'Alert'.
   final pulumi.Input<String> sourceType;

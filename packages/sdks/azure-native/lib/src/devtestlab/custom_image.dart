@@ -3,6 +3,7 @@ import 'custom_image_args.dart';
 import 'custom_image_properties_custom_response.dart';
 import 'custom_image_properties_from_plan_response.dart';
 import 'custom_image_properties_from_vm_response.dart';
+import 'data_disk_storage_type_info_response.dart';
 import 'system_data_response.dart';
 
 /// A custom image.
@@ -230,7 +231,7 @@ class CustomImage extends pulumi.CustomResource {
   /// Storage information about the plan related to this custom image
   late final pulumi.Output<CustomImagePropertiesFromPlanResponse?> customImagePlan;
   /// Storage information about the data disks present in the custom image
-  late final pulumi.Output<List<Map<String, dynamic>>?> dataDiskStorageInfo;
+  late final pulumi.Output<List<DataDiskStorageTypeInfoResponse>?> dataDiskStorageInfo;
   /// The description of the custom image.
   late final pulumi.Output<String?> description;
   /// Whether or not the custom images underlying offer/plan has been enabled for programmatic deployment
@@ -276,7 +277,7 @@ class CustomImage extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationDate = registerOutput<String>('creationDate');
     customImagePlan = registerOutput<CustomImagePropertiesFromPlanResponse?>('customImagePlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomImagePropertiesFromPlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    dataDiskStorageInfo = registerOutput<List<Map<String, dynamic>>?>('dataDiskStorageInfo');
+    dataDiskStorageInfo = registerOutput<List<DataDiskStorageTypeInfoResponse>?>('dataDiskStorageInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataDiskStorageTypeInfoResponse>(guardedValue, (value) => DataDiskStorageTypeInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     isPlanAuthorized = registerOutput<bool?>('isPlanAuthorized');
     location = registerOutput<String?>('location');
@@ -285,7 +286,36 @@ class CustomImage extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+    vhd = registerOutput<CustomImagePropertiesCustomResponse?>('vhd', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomImagePropertiesCustomResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vm = registerOutput<CustomImagePropertiesFromVmResponse?>('vm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomImagePropertiesFromVmResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [CustomImage] resource.
+  CustomImage.reference(String urn)
+    : super(
+        'azure-native:devtestlab:CustomImage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    author = registerOutput<String?>('author');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationDate = registerOutput<String>('creationDate');
+    customImagePlan = registerOutput<CustomImagePropertiesFromPlanResponse?>('customImagePlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomImagePropertiesFromPlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataDiskStorageInfo = registerOutput<List<DataDiskStorageTypeInfoResponse>?>('dataDiskStorageInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataDiskStorageTypeInfoResponse>(guardedValue, (value) => DataDiskStorageTypeInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    isPlanAuthorized = registerOutput<bool?>('isPlanAuthorized');
+    location = registerOutput<String?>('location');
+    managedImageId = registerOutput<String?>('managedImageId');
+    managedSnapshotId = registerOutput<String?>('managedSnapshotId');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
     vhd = registerOutput<CustomImagePropertiesCustomResponse?>('vhd', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomImagePropertiesCustomResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

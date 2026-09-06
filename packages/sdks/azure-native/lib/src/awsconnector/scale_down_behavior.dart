@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ScaleDownBehavior {
+enum ScaleDownBehavior implements pulumi.PulumiEnum<String> {
   tERMINATEATINSTANCEHOUR("TERMINATE_AT_INSTANCE_HOUR"),
   tERMINATEATTASKCOMPLETION("TERMINATE_AT_TASK_COMPLETION");
 
   const ScaleDownBehavior(this.wireValue);
+  @override
   final String wireValue;
 
   static ScaleDownBehavior fromValue(String value) {

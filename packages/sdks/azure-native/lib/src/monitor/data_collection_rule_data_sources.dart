@@ -16,25 +16,25 @@ import 'windows_firewall_logs_data_source.dart';
 /// This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
 class DataCollectionRuleDataSources {
   /// Specifications of pull based data sources
-  final pulumi.Input<DataSourcesSpecDataImports>? dataImports;
+  final pulumi.Input<DataSourcesSpecDataImports?>? dataImports;
   /// The list of Azure VM extension data source configurations.
-  final pulumi.Input<List<ExtensionDataSource>>? extensions;
+  final pulumi.Input<List<ExtensionDataSource>?>? extensions;
   /// The list of IIS logs source configurations.
-  final pulumi.Input<List<IisLogsDataSource>>? iisLogs;
+  final pulumi.Input<List<IisLogsDataSource>?>? iisLogs;
   /// The list of Log files source configurations.
-  final pulumi.Input<List<LogFilesDataSource>>? logFiles;
+  final pulumi.Input<List<LogFilesDataSource>?>? logFiles;
   /// The list of performance counter data source configurations.
-  final pulumi.Input<List<PerfCounterDataSource>>? performanceCounters;
+  final pulumi.Input<List<PerfCounterDataSource>?>? performanceCounters;
   /// The list of platform telemetry configurations
-  final pulumi.Input<List<PlatformTelemetryDataSource>>? platformTelemetry;
+  final pulumi.Input<List<PlatformTelemetryDataSource>?>? platformTelemetry;
   /// The list of Prometheus forwarder data source configurations.
-  final pulumi.Input<List<PrometheusForwarderDataSource>>? prometheusForwarder;
+  final pulumi.Input<List<PrometheusForwarderDataSource>?>? prometheusForwarder;
   /// The list of Syslog data source configurations.
-  final pulumi.Input<List<SyslogDataSource>>? syslog;
+  final pulumi.Input<List<SyslogDataSource>?>? syslog;
   /// The list of Windows Event Log data source configurations.
-  final pulumi.Input<List<WindowsEventLogDataSource>>? windowsEventLogs;
+  final pulumi.Input<List<WindowsEventLogDataSource>?>? windowsEventLogs;
   /// The list of Windows Firewall logs source configurations.
-  final pulumi.Input<List<WindowsFirewallLogsDataSource>>? windowsFirewallLogs;
+  final pulumi.Input<List<WindowsFirewallLogsDataSource>?>? windowsFirewallLogs;
 
   /// Creates a new [DataCollectionRuleDataSources].
   /// [dataImports] Specifications of pull based data sources

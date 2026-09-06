@@ -9,17 +9,17 @@ import 'assembly_properties.dart';
 /// {@macro pulumi_logic_integration_account_assembly_args_doc}
 class IntegrationAccountAssemblyArgs {
   /// The assembly artifact name.
-  final pulumi.Input<String>? assemblyArtifactName;
+  final pulumi.Input<String?>? assemblyArtifactName;
   /// The integration account name.
   final pulumi.Input<String> integrationAccountName;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The assembly properties.
   final pulumi.Input<AssemblyProperties> properties;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [IntegrationAccountAssemblyArgs].
   /// [assemblyArtifactName] The assembly artifact name.

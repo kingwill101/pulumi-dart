@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of custom domain for API portal
 class ApiPortalCustomDomainProperties {
   /// The thumbprint of bound certificate.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [ApiPortalCustomDomainProperties].
   /// [thumbprint] The thumbprint of bound certificate.

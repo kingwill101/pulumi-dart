@@ -498,7 +498,7 @@ class ActivityCustomEntityQuery extends pulumi.CustomResource {
   /// The Activity query definitions
   late final pulumi.Output<ActivityEntityQueriesPropertiesResponseQueryDefinitions?> queryDefinitions;
   /// List of the fields of the source entity that are required to run the query
-  late final pulumi.Output<List<Map<String, dynamic>>?> requiredInputFieldsSets;
+  late final pulumi.Output<List<List<String>>?> requiredInputFieldsSets;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The template id this activity was created from
@@ -527,14 +527,42 @@ class ActivityCustomEntityQuery extends pulumi.CustomResource {
     createdTimeUtc = registerOutput<String>('createdTimeUtc');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
-    entitiesFilter = registerOutput<Map<String, List<String>>?>('entitiesFilter');
+    entitiesFilter = registerOutput<Map<String, List<String>>?>('entitiesFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });
     etag = registerOutput<String?>('etag');
     inputEntityType = registerOutput<String?>('inputEntityType');
     kind = registerOutput<String>('kind');
     lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
     this.name = registerOutput<String>('name');
     queryDefinitions = registerOutput<ActivityEntityQueriesPropertiesResponseQueryDefinitions?>('queryDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActivityEntityQueriesPropertiesResponseQueryDefinitions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    requiredInputFieldsSets = registerOutput<List<Map<String, dynamic>>?>('requiredInputFieldsSets');
+    requiredInputFieldsSets = registerOutput<List<List<String>>?>('requiredInputFieldsSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    templateName = registerOutput<String?>('templateName');
+    title = registerOutput<String?>('title');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ActivityCustomEntityQuery] resource.
+  ActivityCustomEntityQuery.reference(String urn)
+    : super(
+        'azure-native:securityinsights:ActivityCustomEntityQuery',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    content = registerOutput<String?>('content');
+    createdTimeUtc = registerOutput<String>('createdTimeUtc');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    entitiesFilter = registerOutput<Map<String, List<String>>?>('entitiesFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });
+    etag = registerOutput<String?>('etag');
+    inputEntityType = registerOutput<String?>('inputEntityType');
+    kind = registerOutput<String>('kind');
+    lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
+    this.name = registerOutput<String>('name');
+    queryDefinitions = registerOutput<ActivityEntityQueriesPropertiesResponseQueryDefinitions?>('queryDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActivityEntityQueriesPropertiesResponseQueryDefinitions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    requiredInputFieldsSets = registerOutput<List<List<String>>?>('requiredInputFieldsSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     templateName = registerOutput<String?>('templateName');
     title = registerOutput<String?>('title');

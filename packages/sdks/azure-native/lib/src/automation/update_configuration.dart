@@ -9,19 +9,19 @@ import 'windows_properties.dart';
 /// Update specific properties of the software update configuration.
 class UpdateConfiguration {
   /// List of azure resource Ids for azure virtual machines targeted by the software update configuration.
-  final pulumi.Input<List<String>>? azureVirtualMachines;
+  final pulumi.Input<List<String>?>? azureVirtualMachines;
   /// Maximum time allowed for the software update configuration run. Duration needs to be specified using the format PT[n]H[n]M[n]S as per ISO8601
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
   /// Linux specific update configuration.
-  final pulumi.Input<LinuxProperties>? linux;
+  final pulumi.Input<LinuxProperties?>? linux;
   /// List of names of non-azure machines targeted by the software update configuration.
-  final pulumi.Input<List<String>>? nonAzureComputerNames;
+  final pulumi.Input<List<String>?>? nonAzureComputerNames;
   /// operating system of target machines
   final pulumi.Input<OperatingSystemType> operatingSystem;
   /// Group targets for the software update configuration.
-  final pulumi.Input<TargetProperties>? targets;
+  final pulumi.Input<TargetProperties?>? targets;
   /// Windows specific update configuration.
-  final pulumi.Input<WindowsProperties>? windows;
+  final pulumi.Input<WindowsProperties?>? windows;
 
   /// Creates a new [UpdateConfiguration].
   /// [azureVirtualMachines] List of azure resource Ids for azure virtual machines targeted by the software update configuration.

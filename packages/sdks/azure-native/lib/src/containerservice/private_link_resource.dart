@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A private link resource
 class PrivateLinkResource {
   /// The group ID of the resource.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// The ID of the private link resource.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the private link resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The RequiredMembers of the resource
-  final pulumi.Input<List<String>>? requiredMembers;
+  final pulumi.Input<List<String>?>? requiredMembers;
   /// The resource type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [PrivateLinkResource].
   /// [groupId] The group ID of the resource.

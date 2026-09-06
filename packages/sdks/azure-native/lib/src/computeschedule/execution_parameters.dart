@@ -6,9 +6,9 @@ import 'retry_policy.dart';
 /// Extra details needed to run the user's request
 class ExecutionParameters {
   /// Details that could optimize the user's request
-  final pulumi.Input<String>? optimizationPreference;
+  final pulumi.Input<dynamic>? optimizationPreference;
   /// Retry policy the user can pass
-  final pulumi.Input<RetryPolicy>? retryPolicy;
+  final pulumi.Input<RetryPolicy?>? retryPolicy;
 
   /// Creates a new [ExecutionParameters].
   /// [optimizationPreference] Details that could optimize the user's request
@@ -27,7 +27,7 @@ class ExecutionParameters {
 
   factory ExecutionParameters.fromMap(Map<String, dynamic> map) {
     return ExecutionParameters(
-      optimizationPreference: (() { final guardedValue = map['optimizationPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      optimizationPreference: (() { final guardedValue = map['optimizationPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       retryPolicy: (() { final guardedValue = map['retryPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RetryPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

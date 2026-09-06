@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTreeInfoResponse {
   /// The component id.
-  final pulumi.Input<String>? componentId;
+  final pulumi.Input<String?>? componentId;
   /// The readiness.
-  final pulumi.Input<String>? readiness;
+  final pulumi.Input<String?>? readiness;
   /// The service id.
-  final pulumi.Input<String>? serviceId;
+  final pulumi.Input<String?>? serviceId;
 
   /// Creates a new [ServiceTreeInfoResponse].
   /// [componentId] The component id.

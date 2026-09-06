@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of VpcSecurityGroupMembership
 class VpcSecurityGroupMembershipResponse {
   /// &lt;p&gt;The status of the VPC security group.&lt;/p&gt;
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// &lt;p&gt;The VPC security group ID.&lt;/p&gt;
-  final pulumi.Input<String>? vpcSecurityGroupId;
+  final pulumi.Input<String?>? vpcSecurityGroupId;
 
   /// Creates a new [VpcSecurityGroupMembershipResponse].
   /// [status] &lt;p&gt;The status of the VPC security group.&lt;/p&gt;

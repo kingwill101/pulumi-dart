@@ -17,11 +17,11 @@ class ParameterPropertiesResponse {
   /// Whether the parameter is a read-only parameter.
   final pulumi.Input<bool> isReadOnly;
   /// The name of the parameter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The unit of measurement for the parameter.
   final pulumi.Input<String> unit;
   /// The value of the configuration.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ParameterPropertiesResponse].
   /// [allowedValues] The allowed values for the parameter.

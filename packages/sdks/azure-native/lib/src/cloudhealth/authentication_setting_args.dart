@@ -9,11 +9,11 @@ import 'managed_identity_authentication_setting_properties.dart';
 /// {@macro pulumi_cloudhealth_authentication_setting_args_doc}
 class AuthenticationSettingArgs {
   /// Name of the authentication setting. Must be unique within a health model.
-  final pulumi.Input<String>? authenticationSettingName;
+  final pulumi.Input<String?>? authenticationSettingName;
   /// Name of health model resource
   final pulumi.Input<String> healthModelName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ManagedIdentityAuthenticationSettingProperties>? properties;
+  final pulumi.Input<ManagedIdentityAuthenticationSettingProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

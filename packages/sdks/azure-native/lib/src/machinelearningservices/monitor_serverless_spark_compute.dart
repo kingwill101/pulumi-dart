@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'aml_token_compute_identity.dart';
 
 /// Monitor serverless spark compute definition.
 class MonitorServerlessSparkCompute {
   /// [Required] The identity scheme leveraged to by the spark jobs running on serverless Spark.
-  final pulumi.Input<AmlTokenComputeIdentity> computeIdentity;
+  final pulumi.Input<dynamic> computeIdentity;
   /// Monitor compute type enum.
   /// Expected value is 'ServerlessSpark'.
   final pulumi.Input<String> computeType;
@@ -29,7 +28,7 @@ class MonitorServerlessSparkCompute {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'computeIdentity': pulumi.Input.mapInputValue<AmlTokenComputeIdentity, Map<String, dynamic>>(computeIdentity, (value) => value.toMap()),
+      'computeIdentity': computeIdentity,
       'computeType': computeType,
       'instanceType': instanceType,
       'runtimeVersion': runtimeVersion,
@@ -38,7 +37,7 @@ class MonitorServerlessSparkCompute {
 
   factory MonitorServerlessSparkCompute.fromMap(Map<String, dynamic> map) {
     return MonitorServerlessSparkCompute(
-      computeIdentity: pulumi.Input.fromValue(AmlTokenComputeIdentity.fromMap((map['computeIdentity']! as Map).cast<String, dynamic>())),
+      computeIdentity: pulumi.Input.fromValue(map['computeIdentity']),
       computeType: pulumi.Input.fromValue(map['computeType'] as String),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       runtimeVersion: pulumi.Input.fromValue(map['runtimeVersion'] as String),

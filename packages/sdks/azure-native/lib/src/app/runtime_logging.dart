@@ -6,7 +6,7 @@ import 'logger_setting.dart';
 /// Capabilities on the java logging scenario.
 class RuntimeLogging {
   /// Settings of the logger for the java app.
-  final pulumi.Input<List<LoggerSetting>>? loggerSettings;
+  final pulumi.Input<List<LoggerSetting>?>? loggerSettings;
 
   /// Creates a new [RuntimeLogging].
   /// [loggerSettings] Settings of the logger for the java app.

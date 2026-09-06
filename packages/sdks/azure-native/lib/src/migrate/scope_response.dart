@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Scope of the assessment.
 class ScopeResponse {
   /// The ARG query.
-  final pulumi.Input<String>? azureResourceGraphQuery;
+  final pulumi.Input<String?>? azureResourceGraphQuery;
   /// The scope type
-  final pulumi.Input<String>? scopeType;
+  final pulumi.Input<String?>? scopeType;
   /// The server group arm id.
-  final pulumi.Input<String>? serverGroupId;
+  final pulumi.Input<String?>? serverGroupId;
 
   /// Creates a new [ScopeResponse].
   /// [azureResourceGraphQuery] The ARG query.

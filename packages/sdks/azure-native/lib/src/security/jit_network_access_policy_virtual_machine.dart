@@ -9,7 +9,7 @@ class JitNetworkAccessPolicyVirtualMachine {
   /// Port configurations for the virtual machine
   final pulumi.Input<List<JitNetworkAccessPortRule>> ports;
   /// Public IP address of the Azure Firewall that is linked to this policy, if applicable
-  final pulumi.Input<String>? publicIpAddress;
+  final pulumi.Input<String?>? publicIpAddress;
 
   /// Creates a new [JitNetworkAccessPolicyVirtualMachine].
   /// [id] Resource ID of the virtual machine that is linked to this policy

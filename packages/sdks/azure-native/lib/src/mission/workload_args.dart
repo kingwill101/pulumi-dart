@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_mission_workload_args_doc}
 class WorkloadArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// List of resource group ids.
-  final pulumi.Input<List<String>>? resourceGroupCollection;
+  final pulumi.Input<List<String>?>? resourceGroupCollection;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the enclaveResource Resource
   final pulumi.Input<String> virtualEnclaveName;
   /// The name of the workloadResource Resource
-  final pulumi.Input<String>? workloadName;
+  final pulumi.Input<String?>? workloadName;
 
   /// Creates a new [WorkloadArgs].
   /// [location] The geo-location where the resource lives

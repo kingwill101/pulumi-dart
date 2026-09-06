@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the frequency of the schedule.
-enum ScheduleFrequency {
+enum ScheduleFrequency implements pulumi.PulumiEnum<String> {
   oneTime("OneTime"),
   day("Day"),
   hour("Hour"),
@@ -8,6 +10,7 @@ enum ScheduleFrequency {
   minute("Minute");
 
   const ScheduleFrequency(this.wireValue);
+  @override
   final String wireValue;
 
   static ScheduleFrequency fromValue(String value) {

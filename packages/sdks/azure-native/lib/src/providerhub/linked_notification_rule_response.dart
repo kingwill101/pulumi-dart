@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinkedNotificationRuleResponse {
   /// The actions.
-  final pulumi.Input<List<String>>? actions;
+  final pulumi.Input<List<String>?>? actions;
   /// The actions on failed operation.
-  final pulumi.Input<List<String>>? actionsOnFailedOperation;
+  final pulumi.Input<List<String>?>? actionsOnFailedOperation;
   /// The fast path actions.
-  final pulumi.Input<List<String>>? fastPathActions;
+  final pulumi.Input<List<String>?>? fastPathActions;
   /// The fast path action on failed operation.
-  final pulumi.Input<List<String>>? fastPathActionsOnFailedOperation;
+  final pulumi.Input<List<String>?>? fastPathActionsOnFailedOperation;
   /// This is a TimeSpan property.
-  final pulumi.Input<String>? linkedNotificationTimeout;
+  final pulumi.Input<String?>? linkedNotificationTimeout;
 
   /// Creates a new [LinkedNotificationRuleResponse].
   /// [actions] The actions.

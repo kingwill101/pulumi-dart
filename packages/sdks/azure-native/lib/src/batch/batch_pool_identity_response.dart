@@ -8,7 +8,7 @@ class BatchPoolIdentityResponse {
   /// The type of identity used for the Batch Pool.
   final pulumi.Input<String> type;
   /// The list of user identities associated with the Batch pool.
-  final pulumi.Input<Map<String, UserAssignedIdentitiesResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentitiesResponse>?>? userAssignedIdentities;
 
   /// Creates a new [BatchPoolIdentityResponse].
   /// [type] The type of identity used for the Batch Pool.

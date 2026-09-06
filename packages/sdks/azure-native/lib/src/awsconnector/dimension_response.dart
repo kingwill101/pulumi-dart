@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Dimension
 class DimensionResponse {
   /// The name of the dimension, from 1–255 characters in length. This dimension name must have been included when the metric was published.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value for the dimension, from 1–255 characters in length.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [DimensionResponse].
   /// [name] The name of the dimension, from 1–255 characters in length. This dimension name must have been included when the metric was published.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Status of the IoT Security solution.
-enum SecuritySolutionStatus {
+enum SecuritySolutionStatus implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const SecuritySolutionStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static SecuritySolutionStatus fromValue(String value) {

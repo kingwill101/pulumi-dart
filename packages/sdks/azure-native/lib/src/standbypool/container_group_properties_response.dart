@@ -9,7 +9,7 @@ class ContainerGroupPropertiesResponse {
   /// Specifies container group profile of standby container groups.
   final pulumi.Input<ContainerGroupProfileResponse> containerGroupProfile;
   /// Specifies subnet Ids for container group.
-  final pulumi.Input<List<SubnetResponse>>? subnetIds;
+  final pulumi.Input<List<SubnetResponse>?>? subnetIds;
 
   /// Creates a new [ContainerGroupPropertiesResponse].
   /// [containerGroupProfile] Specifies container group profile of standby container groups.

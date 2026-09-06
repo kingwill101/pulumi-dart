@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The engine type
-enum EngineType {
+enum EngineType implements pulumi.PulumiEnum<String> {
   valueV2("V2"),
   valueV3("V3");
 
   const EngineType(this.wireValue);
+  @override
   final String wireValue;
 
   static EngineType fromValue(String value) {

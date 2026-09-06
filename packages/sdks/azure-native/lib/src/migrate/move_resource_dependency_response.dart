@@ -7,19 +7,19 @@ import 'manual_resolution_properties_response.dart';
 /// Defines the dependency of the move resource.
 class MoveResourceDependencyResponse {
   /// Defines the properties for automatic resolution.
-  final pulumi.Input<AutomaticResolutionPropertiesResponse>? automaticResolution;
+  final pulumi.Input<AutomaticResolutionPropertiesResponse?>? automaticResolution;
   /// Defines the dependency type.
-  final pulumi.Input<String>? dependencyType;
+  final pulumi.Input<String?>? dependencyType;
   /// Gets the source ARM ID of the dependent resource.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Gets or sets a value indicating whether the dependency is optional.
-  final pulumi.Input<String>? isOptional;
+  final pulumi.Input<String?>? isOptional;
   /// Defines the properties for manual resolution.
-  final pulumi.Input<ManualResolutionPropertiesResponse>? manualResolution;
+  final pulumi.Input<ManualResolutionPropertiesResponse?>? manualResolution;
   /// Gets the dependency resolution status.
-  final pulumi.Input<String>? resolutionStatus;
+  final pulumi.Input<String?>? resolutionStatus;
   /// Defines the resolution type.
-  final pulumi.Input<String>? resolutionType;
+  final pulumi.Input<String?>? resolutionType;
 
   /// Creates a new [MoveResourceDependencyResponse].
   /// [automaticResolution] Defines the properties for automatic resolution.

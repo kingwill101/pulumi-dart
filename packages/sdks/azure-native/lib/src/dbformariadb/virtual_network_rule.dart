@@ -195,4 +195,21 @@ class VirtualNetworkRule extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     virtualNetworkSubnetId = registerOutput<String>('virtualNetworkSubnetId');
   }
+
+  /// Creates a typed reference to an existing [VirtualNetworkRule] resource.
+  VirtualNetworkRule.reference(String urn)
+    : super(
+        'azure-native:dbformariadb:VirtualNetworkRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    ignoreMissingVnetServiceEndpoint = registerOutput<bool?>('ignoreMissingVnetServiceEndpoint');
+    this.name = registerOutput<String>('name');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+    virtualNetworkSubnetId = registerOutput<String>('virtualNetworkSubnetId');
+  }
 }

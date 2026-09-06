@@ -6,7 +6,7 @@ import 'ipset_response.dart';
 /// Definition of RuleVariables
 class RuleVariablesModelResponse {
   /// Property ruleVariables
-  final pulumi.Input<Map<String, IPSetResponse>>? ruleVariables;
+  final pulumi.Input<Map<String, IPSetResponse>?>? ruleVariables;
 
   /// Creates a new [RuleVariablesModelResponse].
   /// [ruleVariables] Property ruleVariables

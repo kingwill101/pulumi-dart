@@ -7,13 +7,13 @@ import 'virtual_machine_instance_properties_os_profile_windows_configuration_res
 /// OsProfile - describes the configuration of the operating system and sets login data
 class VirtualMachineInstancePropertiesOsProfileResponse {
   /// AdminUsername - admin username
-  final pulumi.Input<String>? adminUsername;
+  final pulumi.Input<String?>? adminUsername;
   /// ComputerName - name of the compute
-  final pulumi.Input<String>? computerName;
+  final pulumi.Input<String?>? computerName;
   /// LinuxConfiguration - linux specific configuration values for the virtual machine instance
-  final pulumi.Input<VirtualMachineInstancePropertiesOsProfileLinuxConfigurationResponse>? linuxConfiguration;
+  final pulumi.Input<VirtualMachineInstancePropertiesOsProfileLinuxConfigurationResponse?>? linuxConfiguration;
   /// Windows Configuration for the virtual machine instance
-  final pulumi.Input<VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse>? windowsConfiguration;
+  final pulumi.Input<VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse?>? windowsConfiguration;
 
   /// Creates a new [VirtualMachineInstancePropertiesOsProfileResponse].
   /// [adminUsername] AdminUsername - admin username

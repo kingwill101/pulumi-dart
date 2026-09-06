@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Protocol types for elastic volume
-enum ElasticProtocolType {
+enum ElasticProtocolType implements pulumi.PulumiEnum<String> {
   nFSv3("NFSv3"),
   nFSv4("NFSv4"),
   sMB("SMB");
 
   const ElasticProtocolType(this.wireValue);
+  @override
   final String wireValue;
 
   static ElasticProtocolType fromValue(String value) {

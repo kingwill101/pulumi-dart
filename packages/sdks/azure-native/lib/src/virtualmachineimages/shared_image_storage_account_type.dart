@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the storage account type to be used to store the image in this region. Omit to use the default (Standard_LRS).
-enum SharedImageStorageAccountType {
+enum SharedImageStorageAccountType implements pulumi.PulumiEnum<String> {
   valueStandardLRS("Standard_LRS"),
   valueStandardZRS("Standard_ZRS"),
   valuePremiumLRS("Premium_LRS");
 
   const SharedImageStorageAccountType(this.wireValue);
+  @override
   final String wireValue;
 
   static SharedImageStorageAccountType fromValue(String value) {

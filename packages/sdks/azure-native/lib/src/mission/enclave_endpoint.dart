@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enclave_endpoint_args.dart';
+import 'enclave_endpoint_destination_rule_response.dart';
 import 'system_data_response.dart';
 
 /// EnclaveEndpoint Model Resource
@@ -241,7 +242,7 @@ class EnclaveEndpoint extends pulumi.CustomResource {
   /// List of resource ids created by community endpoint.
   late final pulumi.Output<List<String>> resourceCollection;
   /// Enclave Endpoint Rule Collection.
-  late final pulumi.Output<List<Map<String, dynamic>>> ruleCollection;
+  late final pulumi.Output<List<EnclaveEndpointDestinationRuleResponse>> ruleCollection;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
@@ -267,10 +268,30 @@ class EnclaveEndpoint extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    resourceCollection = registerOutput<List<String>>('resourceCollection');
-    ruleCollection = registerOutput<List<Map<String, dynamic>>>('ruleCollection');
+    resourceCollection = registerOutput<List<String>>('resourceCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ruleCollection = registerOutput<List<EnclaveEndpointDestinationRuleResponse>>('ruleCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnclaveEndpointDestinationRuleResponse>(guardedValue, (value) => EnclaveEndpointDestinationRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [EnclaveEndpoint] resource.
+  EnclaveEndpoint.reference(String urn)
+    : super(
+        'azure-native:mission:EnclaveEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceCollection = registerOutput<List<String>>('resourceCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ruleCollection = registerOutput<List<EnclaveEndpointDestinationRuleResponse>>('ruleCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnclaveEndpointDestinationRuleResponse>(guardedValue, (value) => EnclaveEndpointDestinationRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

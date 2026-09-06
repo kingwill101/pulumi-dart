@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentPropertiesResponse {
   /// Helm chart directory path in repository.
-  final pulumi.Input<String>? helmChartPath;
+  final pulumi.Input<String?>? helmChartPath;
   /// Helm Values.yaml file location in repository.
-  final pulumi.Input<String>? helmValues;
-  final pulumi.Input<List<String>>? kubeManifestLocations;
+  final pulumi.Input<String?>? helmValues;
+  final pulumi.Input<List<String>?>? kubeManifestLocations;
   /// Determines the type of manifests within the repository.
-  final pulumi.Input<String>? manifestType;
+  final pulumi.Input<String?>? manifestType;
   /// Manifest override values.
-  final pulumi.Input<Map<String, String>>? overrides;
+  final pulumi.Input<Map<String, String>?>? overrides;
 
   /// Creates a new [DeploymentPropertiesResponse].
   /// [helmChartPath] Helm chart directory path in repository.

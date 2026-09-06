@@ -6,11 +6,11 @@ import 'sku_response.dart';
 
 class JobCollectionPropertiesResponse {
   /// Gets or sets the job collection quota.
-  final pulumi.Input<JobCollectionQuotaResponse>? quota;
+  final pulumi.Input<JobCollectionQuotaResponse?>? quota;
   /// Gets or sets the SKU.
-  final pulumi.Input<SkuResponse>? sku;
+  final pulumi.Input<SkuResponse?>? sku;
   /// Gets or sets the state.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [JobCollectionPropertiesResponse].
   /// [quota] Gets or sets the job collection quota.

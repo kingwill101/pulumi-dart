@@ -13,31 +13,31 @@ import 'vpn_server_configuration_policy_group.dart';
 /// Parameters for VpnServerConfiguration.
 class VpnServerConfigurationProperties {
   /// The set of aad vpn authentication parameters.
-  final pulumi.Input<AadAuthenticationParameters>? aadAuthenticationParameters;
+  final pulumi.Input<AadAuthenticationParameters?>? aadAuthenticationParameters;
   /// List of all VpnServerConfigurationPolicyGroups.
-  final pulumi.Input<List<VpnServerConfigurationPolicyGroup>>? configurationPolicyGroups;
+  final pulumi.Input<List<VpnServerConfigurationPolicyGroup>?>? configurationPolicyGroups;
   /// The name of the VpnServerConfiguration that is unique within a resource group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Radius client root certificate of VpnServerConfiguration.
-  final pulumi.Input<List<VpnServerConfigRadiusClientRootCertificate>>? radiusClientRootCertificates;
+  final pulumi.Input<List<VpnServerConfigRadiusClientRootCertificate>?>? radiusClientRootCertificates;
   /// The radius server address property of the VpnServerConfiguration resource for point to site client connection.
-  final pulumi.Input<String>? radiusServerAddress;
+  final pulumi.Input<String?>? radiusServerAddress;
   /// Radius Server root certificate of VpnServerConfiguration.
-  final pulumi.Input<List<VpnServerConfigRadiusServerRootCertificate>>? radiusServerRootCertificates;
+  final pulumi.Input<List<VpnServerConfigRadiusServerRootCertificate>?>? radiusServerRootCertificates;
   /// The radius secret property of the VpnServerConfiguration resource for point to site client connection.
-  final pulumi.Input<String>? radiusServerSecret;
+  final pulumi.Input<String?>? radiusServerSecret;
   /// Multiple Radius Server configuration for VpnServerConfiguration.
-  final pulumi.Input<List<RadiusServer>>? radiusServers;
+  final pulumi.Input<List<RadiusServer>?>? radiusServers;
   /// VPN authentication types for the VpnServerConfiguration.
-  final pulumi.Input<List<String>>? vpnAuthenticationTypes;
+  final pulumi.Input<List<dynamic>?>? vpnAuthenticationTypes;
   /// VpnClientIpsecPolicies for VpnServerConfiguration.
-  final pulumi.Input<List<IpsecPolicy>>? vpnClientIpsecPolicies;
+  final pulumi.Input<List<IpsecPolicy>?>? vpnClientIpsecPolicies;
   /// VPN client revoked certificate of VpnServerConfiguration.
-  final pulumi.Input<List<VpnServerConfigVpnClientRevokedCertificate>>? vpnClientRevokedCertificates;
+  final pulumi.Input<List<VpnServerConfigVpnClientRevokedCertificate>?>? vpnClientRevokedCertificates;
   /// VPN client root certificate of VpnServerConfiguration.
-  final pulumi.Input<List<VpnServerConfigVpnClientRootCertificate>>? vpnClientRootCertificates;
+  final pulumi.Input<List<VpnServerConfigVpnClientRootCertificate>?>? vpnClientRootCertificates;
   /// VPN protocols for the VpnServerConfiguration.
-  final pulumi.Input<List<String>>? vpnProtocols;
+  final pulumi.Input<List<dynamic>?>? vpnProtocols;
 
   /// Creates a new [VpnServerConfigurationProperties].
   /// [aadAuthenticationParameters] The set of aad vpn authentication parameters.
@@ -97,11 +97,11 @@ class VpnServerConfigurationProperties {
       radiusServerRootCertificates: (() { final guardedValue = map['radiusServerRootCertificates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VpnServerConfigRadiusServerRootCertificate>(guardedValue, (value) => VpnServerConfigRadiusServerRootCertificate.fromMap((value as Map).cast<String, dynamic>()))); })(),
       radiusServerSecret: (() { final guardedValue = map['radiusServerSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       radiusServers: (() { final guardedValue = map['radiusServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RadiusServer>(guardedValue, (value) => RadiusServer.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      vpnAuthenticationTypes: (() { final guardedValue = map['vpnAuthenticationTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      vpnAuthenticationTypes: (() { final guardedValue = map['vpnAuthenticationTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       vpnClientIpsecPolicies: (() { final guardedValue = map['vpnClientIpsecPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IpsecPolicy>(guardedValue, (value) => IpsecPolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
       vpnClientRevokedCertificates: (() { final guardedValue = map['vpnClientRevokedCertificates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VpnServerConfigVpnClientRevokedCertificate>(guardedValue, (value) => VpnServerConfigVpnClientRevokedCertificate.fromMap((value as Map).cast<String, dynamic>()))); })(),
       vpnClientRootCertificates: (() { final guardedValue = map['vpnClientRootCertificates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VpnServerConfigVpnClientRootCertificate>(guardedValue, (value) => VpnServerConfigVpnClientRootCertificate.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      vpnProtocols: (() { final guardedValue = map['vpnProtocols']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      vpnProtocols: (() { final guardedValue = map['vpnProtocols']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
     );
   }
 }

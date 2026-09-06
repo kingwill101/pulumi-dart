@@ -10,9 +10,9 @@ class StorageAccountStaticWebsiteArgs {
   /// The name of the storage account within the specified resource group.
   final pulumi.Input<String> accountName;
   /// The absolute path to a custom webpage that should be used when a request is made which does not correspond to an existing file.
-  final pulumi.Input<String>? error404Document;
+  final pulumi.Input<String?>? error404Document;
   /// The webpage that Azure Storage serves for requests to the root of a website or any sub-folder. For example, 'index.html'. The value is case-sensitive.
-  final pulumi.Input<String>? indexDocument;
+  final pulumi.Input<String?>? indexDocument;
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

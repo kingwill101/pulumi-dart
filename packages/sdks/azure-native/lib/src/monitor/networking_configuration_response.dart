@@ -8,7 +8,7 @@ class NetworkingConfigurationResponse {
   /// External networking mode.
   final pulumi.Input<String> externalNetworkingMode;
   /// The address exposed on the cluster. Example: azuremonitorpipeline.contoso.com.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// Networking routes configuration.
   final pulumi.Input<List<NetworkingRouteResponse>> routes;
 

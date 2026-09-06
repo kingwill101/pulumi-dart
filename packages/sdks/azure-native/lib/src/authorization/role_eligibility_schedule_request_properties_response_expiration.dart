@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Expiration of the role eligibility schedule
 class RoleEligibilityScheduleRequestPropertiesResponseExpiration {
   /// Duration of the role eligibility schedule in TimeSpan.
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
   /// End DateTime of the role eligibility schedule.
-  final pulumi.Input<String>? endDateTime;
+  final pulumi.Input<String?>? endDateTime;
   /// Type of the role eligibility schedule expiration
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [RoleEligibilityScheduleRequestPropertiesResponseExpiration].
   /// [duration] Duration of the role eligibility schedule in TimeSpan.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The SKU that defines the type of the peering service.
 class PeeringServiceSku {
   /// The name of the peering service SKU.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [PeeringServiceSku].
   /// [name] The name of the peering service SKU.

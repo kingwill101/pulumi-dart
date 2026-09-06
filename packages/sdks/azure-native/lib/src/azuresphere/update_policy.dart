@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Update policy of the device group.
-enum UpdatePolicy {
+enum UpdatePolicy implements pulumi.PulumiEnum<String> {
   updateAll("UpdateAll"),
   no3rdPartyAppUpdates("No3rdPartyAppUpdates");
 
   const UpdatePolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static UpdatePolicy fromValue(String value) {

@@ -18,19 +18,19 @@ class LicenseProfileMachineInstanceViewResponse {
   /// The errors that were encountered during the feature enrollment or disenrollment.
   final pulumi.Input<ErrorDetailResponse> error;
   /// Properties for the Machine ESU profile.
-  final pulumi.Input<LicenseProfileMachineInstanceViewEsuPropertiesResponse>? esuProfile;
+  final pulumi.Input<LicenseProfileMachineInstanceViewEsuPropertiesResponse?>? esuProfile;
   /// Indicates the license channel.
   final pulumi.Input<String> licenseChannel;
   /// Indicates the license status of the OS.
   final pulumi.Input<String> licenseStatus;
   /// The list of product features.
-  final pulumi.Input<List<ProductFeatureResponse>>? productFeatures;
+  final pulumi.Input<List<ProductFeatureResponse>?>? productFeatures;
   /// Indicates the product type of the license.
-  final pulumi.Input<String>? productType;
+  final pulumi.Input<String?>? productType;
   /// Specifies if this machine is licensed as part of a Software Assurance agreement.
-  final pulumi.Input<bool>? softwareAssuranceCustomer;
+  final pulumi.Input<bool?>? softwareAssuranceCustomer;
   /// Indicates the subscription status of the product.
-  final pulumi.Input<String>? subscriptionStatus;
+  final pulumi.Input<String?>? subscriptionStatus;
 
   /// Creates a new [LicenseProfileMachineInstanceViewResponse].
   /// [billingEndDate] The timestamp in UTC when the billing ends.

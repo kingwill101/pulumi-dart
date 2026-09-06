@@ -12,7 +12,7 @@ class BookmarkRelationArgs {
   /// The resource ID of the related resource
   final pulumi.Input<String> relatedResourceId;
   /// Relation Name
-  final pulumi.Input<String>? relationName;
+  final pulumi.Input<String?>? relationName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the workspace.

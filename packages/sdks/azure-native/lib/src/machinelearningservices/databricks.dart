@@ -6,18 +6,18 @@ import 'databricks_properties.dart';
 /// A DataFactory compute.
 class Databricks {
   /// Location for the underlying compute
-  final pulumi.Input<String>? computeLocation;
+  final pulumi.Input<String?>? computeLocation;
   /// The type of compute
   /// Expected value is 'Databricks'.
   final pulumi.Input<String> computeType;
   /// The description of the Machine Learning compute.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-  final pulumi.Input<bool>? disableLocalAuth;
+  final pulumi.Input<bool?>? disableLocalAuth;
   /// Properties of Databricks
-  final pulumi.Input<DatabricksProperties>? properties;
+  final pulumi.Input<DatabricksProperties?>? properties;
   /// ARM resource id of the underlying compute
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [Databricks].
   /// [computeLocation] Location for the underlying compute

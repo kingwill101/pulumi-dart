@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'device_args.dart';
+import 'sub_resource_response.dart';
 import 'system_data_response.dart';
 
 /// Device resource.
@@ -164,7 +165,7 @@ class Device extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The list of network functions deployed on the device.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkFunctions;
+  late final pulumi.Output<List<SubResourceResponse>> networkFunctions;
   /// The provisioning state of the device resource.
   late final pulumi.Output<String> provisioningState;
   /// The current device status.
@@ -194,11 +195,32 @@ class Device extends pulumi.CustomResource {
     deviceType = registerOutput<String>('deviceType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkFunctions = registerOutput<List<Map<String, dynamic>>>('networkFunctions');
+    networkFunctions = registerOutput<List<SubResourceResponse>>('networkFunctions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String>('status');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Device] resource.
+  Device.reference(String urn)
+    : super(
+        'azure-native:hybridnetwork:Device',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deviceType = registerOutput<String>('deviceType');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkFunctions = registerOutput<List<SubResourceResponse>>('networkFunctions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

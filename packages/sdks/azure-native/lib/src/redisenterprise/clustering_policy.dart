@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Clustering policy - default is OSSCluster. This property can be updated only if the current value is NoCluster. If the value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database.
-enum ClusteringPolicy {
+enum ClusteringPolicy implements pulumi.PulumiEnum<String> {
   enterpriseCluster("EnterpriseCluster"),
   oSSCluster("OSSCluster"),
   noCluster("NoCluster");
 
   const ClusteringPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static ClusteringPolicy fromValue(String value) {

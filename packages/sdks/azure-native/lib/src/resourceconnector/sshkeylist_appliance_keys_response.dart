@@ -42,8 +42,8 @@ class SSHKeylistApplianceKeysResponse {
   factory SSHKeylistApplianceKeysResponse.fromMap(Map<String, dynamic> map) {
     return SSHKeylistApplianceKeysResponse(
       certificate: pulumi.Input.fromValue(map['certificate'] as String),
-      creationTimeStamp: pulumi.Input.fromValue(map['creationTimeStamp'] as double),
-      expirationTimeStamp: pulumi.Input.fromValue(map['expirationTimeStamp'] as double),
+      creationTimeStamp: pulumi.Input.fromValue((map['creationTimeStamp'] as num).toDouble()),
+      expirationTimeStamp: pulumi.Input.fromValue((map['expirationTimeStamp'] as num).toDouble()),
       privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
       publicKey: pulumi.Input.fromValue(map['publicKey'] as String),
     );

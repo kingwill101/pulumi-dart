@@ -16,7 +16,7 @@ class DetectorResponse {
   /// The Smart Detector parameters definitions.'
   final pulumi.Input<List<DetectorParameterDefinitionResponse>> parameterDefinitions;
   /// The detector's parameters.'
-  final pulumi.Input<Map<String, dynamic>>? parameters;
+  final pulumi.Input<Map<String, dynamic>?>? parameters;
   /// The Smart Detector supported cadences.
   final pulumi.Input<List<int>> supportedCadences;
   /// The Smart Detector supported resource types.

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Application logs to file system configuration.
 class FileSystemApplicationLogsConfigResponse {
   /// Log level.
-  final pulumi.Input<String>? level;
+  final pulumi.Input<String?>? level;
 
   /// Creates a new [FileSystemApplicationLogsConfigResponse].
   /// [level] Log level.
-  const FileSystemApplicationLogsConfigResponse({
-    this.level,
-  });
+  FileSystemApplicationLogsConfigResponse({
+    pulumi.Input<String?>? level,
+  }) : level = level ?? pulumi.Input.fromValue('Off');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

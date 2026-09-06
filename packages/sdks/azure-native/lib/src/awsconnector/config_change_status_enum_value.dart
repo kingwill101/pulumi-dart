@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ConfigChangeStatusEnumValue
 class ConfigChangeStatusEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [ConfigChangeStatusEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class ConfigChangeStatusEnumValue {
 
   factory ConfigChangeStatusEnumValue.fromMap(Map<String, dynamic> map) {
     return ConfigChangeStatusEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

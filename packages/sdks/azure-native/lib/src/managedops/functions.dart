@@ -19,3 +19,14 @@ Future<GetManagedOpResult> getManagedOp(
   );
   return GetManagedOpResult.fromMap(result);
 }
+
+pulumi.Output<GetManagedOpResult> getManagedOpOutput(
+  GetManagedOpArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:managedops:getManagedOp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedOpResult.fromMap);
+}

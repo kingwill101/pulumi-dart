@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ImageScanFindingsSummary
 class ImageScanFindingsSummaryResponse {
   /// &lt;p&gt;The image vulnerability counts, sorted by severity.&lt;/p&gt;
-  final pulumi.Input<Map<String, int>>? findingSeverityCounts;
+  final pulumi.Input<Map<String, int>?>? findingSeverityCounts;
   /// &lt;p&gt;The time of the last completed image scan.&lt;/p&gt;
-  final pulumi.Input<String>? imageScanCompletedAt;
+  final pulumi.Input<String?>? imageScanCompletedAt;
   /// &lt;p&gt;The time when the vulnerability data was last scanned.&lt;/p&gt;
-  final pulumi.Input<String>? vulnerabilitySourceUpdatedAt;
+  final pulumi.Input<String?>? vulnerabilitySourceUpdatedAt;
 
   /// Creates a new [ImageScanFindingsSummaryResponse].
   /// [findingSeverityCounts] &lt;p&gt;The image vulnerability counts, sorted by severity.&lt;/p&gt;

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Partner Billing details associated with the resource.
 class PartnerBillingEntityResponse {
   /// The Elastic Organization Id.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The Elastic Organization Name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Link to the elastic organization page
-  final pulumi.Input<String>? partnerEntityUri;
+  final pulumi.Input<String?>? partnerEntityUri;
 
   /// Creates a new [PartnerBillingEntityResponse].
   /// [id] The Elastic Organization Id.

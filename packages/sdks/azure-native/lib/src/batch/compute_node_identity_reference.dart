@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The reference to a user assigned identity associated with the Batch pool which a compute node will use.
 class ComputeNodeIdentityReference {
   /// The ARM resource id of the user assigned identity.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [ComputeNodeIdentityReference].
   /// [resourceId] The ARM resource id of the user assigned identity.

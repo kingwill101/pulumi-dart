@@ -201,4 +201,20 @@ class BackupShortTermRetentionPolicy extends pulumi.CustomResource {
     retentionDays = registerOutput<int?>('retentionDays');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [BackupShortTermRetentionPolicy] resource.
+  BackupShortTermRetentionPolicy.reference(String urn)
+    : super(
+        'azure-native:sql:BackupShortTermRetentionPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    diffBackupIntervalInHours = registerOutput<int?>('diffBackupIntervalInHours');
+    this.name = registerOutput<String>('name');
+    retentionDays = registerOutput<int?>('retentionDays');
+    type = registerOutput<String>('type');
+  }
 }

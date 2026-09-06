@@ -7,9 +7,9 @@ import 'point_in_time_recovery_description.dart';
 /// Definition of awsDynamoDBContinuousBackupsDescription
 class AwsDynamoDBContinuousBackupsDescriptionProperties {
   /// &lt;p&gt; &lt;code&gt;ContinuousBackupsStatus&lt;/code&gt; can be one of the following states: ENABLED, DISABLED&lt;/p&gt;
-  final pulumi.Input<ContinuousBackupsStatusEnumValue>? continuousBackupsStatus;
+  final pulumi.Input<ContinuousBackupsStatusEnumValue?>? continuousBackupsStatus;
   /// &lt;p&gt;The description of the point in time recovery settings applied to the table.&lt;/p&gt;
-  final pulumi.Input<PointInTimeRecoveryDescription>? pointInTimeRecoveryDescription;
+  final pulumi.Input<PointInTimeRecoveryDescription?>? pointInTimeRecoveryDescription;
 
   /// Creates a new [AwsDynamoDBContinuousBackupsDescriptionProperties].
   /// [continuousBackupsStatus] &lt;p&gt; &lt;code&gt;ContinuousBackupsStatus&lt;/code&gt; can be one of the following states: ENABLED, DISABLED&lt;/p&gt;

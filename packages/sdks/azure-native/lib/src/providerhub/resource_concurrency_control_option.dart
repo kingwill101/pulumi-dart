@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceConcurrencyControlOption {
   /// The policy.
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<dynamic>? policy;
 
   /// Creates a new [ResourceConcurrencyControlOption].
   /// [policy] The policy.
@@ -20,7 +20,7 @@ class ResourceConcurrencyControlOption {
 
   factory ResourceConcurrencyControlOption.fromMap(Map<String, dynamic> map) {
     return ResourceConcurrencyControlOption(
-      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

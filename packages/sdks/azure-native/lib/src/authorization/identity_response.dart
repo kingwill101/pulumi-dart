@@ -10,9 +10,9 @@ class IdentityResponse {
   /// The tenant ID of the resource identity.  This property will only be provided for a system assigned identity
   final pulumi.Input<String> tenantId;
   /// The identity type. This is the only required field when adding a system or user assigned identity to a resource.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The user identity associated with the policy. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  final pulumi.Input<Map<String, IdentityResponseUserAssignedIdentities>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, IdentityResponseUserAssignedIdentities>?>? userAssignedIdentities;
 
   /// Creates a new [IdentityResponse].
   /// [principalId] The principal ID of the resource identity.  This property will only be provided for a system assigned identity

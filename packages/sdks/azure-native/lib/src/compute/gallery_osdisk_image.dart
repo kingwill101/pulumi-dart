@@ -7,9 +7,9 @@ import 'host_caching.dart';
 /// This is the OS disk image.
 class GalleryOSDiskImage {
   /// The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
-  final pulumi.Input<HostCaching>? hostCaching;
+  final pulumi.Input<HostCaching?>? hostCaching;
   /// The source for the disk image.
-  final pulumi.Input<GalleryDiskImageSource>? source;
+  final pulumi.Input<GalleryDiskImageSource?>? source;
 
   /// Creates a new [GalleryOSDiskImage].
   /// [hostCaching] The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'

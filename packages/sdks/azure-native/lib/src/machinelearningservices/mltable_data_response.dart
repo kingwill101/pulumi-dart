@@ -10,17 +10,17 @@ class MLTableDataResponse {
   /// [Required] Uri of the data. Example: https://go.microsoft.com/fwlink/?linkid=2202330
   final pulumi.Input<String> dataUri;
   /// The asset description text.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// If the name version are system generated (anonymous registration).
-  final pulumi.Input<bool>? isAnonymous;
+  final pulumi.Input<bool?>? isAnonymous;
   /// Is the asset archived?
-  final pulumi.Input<bool>? isArchived;
+  final pulumi.Input<bool?>? isArchived;
   /// The asset property dictionary.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Uris referenced in the MLTable definition (required for lineage)
-  final pulumi.Input<List<String>>? referencedUris;
+  final pulumi.Input<List<String>?>? referencedUris;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [MLTableDataResponse].
   /// [dataType] Enum to determine the type of data.
@@ -31,16 +31,16 @@ class MLTableDataResponse {
   /// [properties] The asset property dictionary.
   /// [referencedUris] Uris referenced in the MLTable definition (required for lineage)
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  const MLTableDataResponse({
+  MLTableDataResponse({
     required this.dataType,
     required this.dataUri,
     this.description,
-    this.isAnonymous,
-    this.isArchived,
+    pulumi.Input<bool?>? isAnonymous,
+    pulumi.Input<bool?>? isArchived,
     this.properties,
     this.referencedUris,
     this.tags,
-  });
+  }) : isAnonymous = isAnonymous ?? pulumi.Input.fromValue(false), isArchived = isArchived ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

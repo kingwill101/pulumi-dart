@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of IP Address. IPv4 or IPv6
-enum IPAddressType {
+enum IPAddressType implements pulumi.PulumiEnum<String> {
   valueIPv4("IPv4"),
   valueIPv6("IPv6");
 
   const IPAddressType(this.wireValue);
+  @override
   final String wireValue;
 
   static IPAddressType fromValue(String value) {

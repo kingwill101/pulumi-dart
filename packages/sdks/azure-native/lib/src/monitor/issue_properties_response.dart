@@ -54,7 +54,7 @@ class IssuePropertiesResponse {
     return IssuePropertiesResponse(
       impactTime: pulumi.Input.fromValue(map['impactTime'] as String),
       investigations: pulumi.Input.fromValue(pulumi.Input.decodeList<InvestigationMetadataResponse>(map['investigations']!, (value) => InvestigationMetadataResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      investigationsCount: pulumi.Input.fromValue(map['investigationsCount'] as int),
+      investigationsCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['investigationsCount'])),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       severity: pulumi.Input.fromValue(map['severity'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Connectivity topology type.
-enum ConnectivityTopology {
+enum ConnectivityTopology implements pulumi.PulumiEnum<String> {
   valueHubAndSpoke("HubAndSpoke"),
   valueMesh("Mesh");
 
   const ConnectivityTopology(this.wireValue);
+  @override
   final String wireValue;
 
   static ConnectivityTopology fromValue(String value) {

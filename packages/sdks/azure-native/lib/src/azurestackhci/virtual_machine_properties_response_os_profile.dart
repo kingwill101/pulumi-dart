@@ -7,15 +7,15 @@ import 'virtual_machine_properties_response_windows_configuration.dart';
 /// OsProfile - describes the configuration of the operating system and sets login data
 class VirtualMachinePropertiesResponseOsProfile {
   /// AdminUsername - admin username
-  final pulumi.Input<String>? adminUsername;
+  final pulumi.Input<String?>? adminUsername;
   /// ComputerName - name of the compute
-  final pulumi.Input<String>? computerName;
+  final pulumi.Input<String?>? computerName;
   /// LinuxConfiguration - linux specific configuration values for the virtual machine
-  final pulumi.Input<VirtualMachinePropertiesResponseLinuxConfiguration>? linuxConfiguration;
+  final pulumi.Input<VirtualMachinePropertiesResponseLinuxConfiguration?>? linuxConfiguration;
   /// OsType - string specifying whether the OS is Linux or Windows
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// Windows Configuration for the virtual machine
-  final pulumi.Input<VirtualMachinePropertiesResponseWindowsConfiguration>? windowsConfiguration;
+  final pulumi.Input<VirtualMachinePropertiesResponseWindowsConfiguration?>? windowsConfiguration;
 
   /// Creates a new [VirtualMachinePropertiesResponseOsProfile].
   /// [adminUsername] AdminUsername - admin username

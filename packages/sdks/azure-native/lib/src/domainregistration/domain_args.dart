@@ -10,9 +10,9 @@ import 'domain_purchase_consent.dart';
 /// {@endtemplate}
 /// {@macro pulumi_domainregistration_domain_args_doc}
 class DomainArgs {
-  final pulumi.Input<String>? authCode;
+  final pulumi.Input<String?>? authCode;
   /// &lt;code&gt;true&lt;/code&gt; if the domain should be automatically renewed; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? autoRenew;
+  final pulumi.Input<bool?>? autoRenew;
   /// Legal agreement consent.
   final pulumi.Input<DomainPurchaseConsent> consent;
   /// Administrative contact.
@@ -24,23 +24,23 @@ class DomainArgs {
   /// Technical contact.
   final pulumi.Input<Contact> contactTech;
   /// Current DNS type
-  final pulumi.Input<DnsType>? dnsType;
+  final pulumi.Input<DnsType?>? dnsType;
   /// Azure DNS Zone to use
-  final pulumi.Input<String>? dnsZoneId;
+  final pulumi.Input<String?>? dnsZoneId;
   /// Name of the domain.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Resource Location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// &lt;code&gt;true&lt;/code&gt; if domain privacy is enabled for this domain; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? privacy;
+  final pulumi.Input<bool?>? privacy;
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Target DNS type (would be used for migration)
-  final pulumi.Input<DnsType>? targetDnsType;
+  final pulumi.Input<DnsType?>? targetDnsType;
 
   /// Creates a new [DomainArgs].
   /// [authCode] Optional.
@@ -59,9 +59,9 @@ class DomainArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [tags] Resource tags.
   /// [targetDnsType] Target DNS type (would be used for migration)
-  const DomainArgs({
+  DomainArgs({
     this.authCode,
-    this.autoRenew,
+    pulumi.Input<bool?>? autoRenew,
     required this.consent,
     required this.contactAdmin,
     required this.contactBilling,
@@ -76,7 +76,7 @@ class DomainArgs {
     required this.resourceGroupName,
     this.tags,
     this.targetDnsType,
-  });
+  }) : autoRenew = autoRenew ?? pulumi.Input.fromValue(true);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

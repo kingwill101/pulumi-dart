@@ -28,6 +28,17 @@ Future<GetAlertRuleResourceResult> getAlertRuleResource(
   return GetAlertRuleResourceResult.fromMap(result);
 }
 
+pulumi.Output<GetAlertRuleResourceResult> getAlertRuleResourceOutput(
+  GetAlertRuleResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databasewatcher:getAlertRuleResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAlertRuleResourceResult.fromMap);
+}
+
 /// Get a SharedPrivateLinkResource
 ///
 /// Uses Azure REST API version 2024-10-01-preview.
@@ -46,6 +57,17 @@ Future<GetSharedPrivateLinkResourceResult> getSharedPrivateLinkResource(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSharedPrivateLinkResourceResult.fromMap(result);
+}
+
+pulumi.Output<GetSharedPrivateLinkResourceResult> getSharedPrivateLinkResourceOutput(
+  GetSharedPrivateLinkResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databasewatcher:getSharedPrivateLinkResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSharedPrivateLinkResourceResult.fromMap);
 }
 
 /// Get a Target
@@ -68,6 +90,17 @@ Future<GetTargetResult> getTarget(
   return GetTargetResult.fromMap(result);
 }
 
+pulumi.Output<GetTargetResult> getTargetOutput(
+  GetTargetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databasewatcher:getTarget',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetResult.fromMap);
+}
+
 /// Get a Watcher
 ///
 /// Uses Azure REST API version 2024-10-01-preview.
@@ -86,4 +119,15 @@ Future<GetWatcherResult> getWatcher(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWatcherResult.fromMap(result);
+}
+
+pulumi.Output<GetWatcherResult> getWatcherOutput(
+  GetWatcherArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databasewatcher:getWatcher',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWatcherResult.fromMap);
 }

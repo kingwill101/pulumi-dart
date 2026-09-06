@@ -7,11 +7,11 @@ import 'port_range_response.dart';
 /// Network settings of an agent pool.
 class AgentPoolNetworkProfileResponse {
   /// The port ranges that are allowed to access. The specified ranges are allowed to overlap.
-  final pulumi.Input<List<PortRangeResponse>>? allowedHostPorts;
+  final pulumi.Input<List<PortRangeResponse>?>? allowedHostPorts;
   /// The IDs of the application security groups which agent pool will associate when created.
-  final pulumi.Input<List<String>>? applicationSecurityGroups;
+  final pulumi.Input<List<String>?>? applicationSecurityGroups;
   /// IPTags of instance-level public IPs.
-  final pulumi.Input<List<IPTagResponse>>? nodePublicIPTags;
+  final pulumi.Input<List<IPTagResponse>?>? nodePublicIPTags;
 
   /// Creates a new [AgentPoolNetworkProfileResponse].
   /// [allowedHostPorts] The port ranges that are allowed to access. The specified ranges are allowed to overlap.

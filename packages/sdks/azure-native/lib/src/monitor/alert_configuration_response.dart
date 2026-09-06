@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Alert configuration details
 class AlertConfigurationResponse {
   /// Optional list of action group resource IDs to be notified when the alert is triggered.
-  final pulumi.Input<List<String>>? actionGroupIds;
+  final pulumi.Input<List<String>?>? actionGroupIds;
   /// The alert rule description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The severity of triggered alert.
   final pulumi.Input<String> severity;
 

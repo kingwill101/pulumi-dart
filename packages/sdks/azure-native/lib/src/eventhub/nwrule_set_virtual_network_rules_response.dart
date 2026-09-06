@@ -6,9 +6,9 @@ import 'subnet_response.dart';
 /// The response from the List namespace operation.
 class NWRuleSetVirtualNetworkRulesResponse {
   /// Value that indicates whether to ignore missing Vnet Service Endpoint
-  final pulumi.Input<bool>? ignoreMissingVnetServiceEndpoint;
+  final pulumi.Input<bool?>? ignoreMissingVnetServiceEndpoint;
   /// Subnet properties
-  final pulumi.Input<SubnetResponse>? subnet;
+  final pulumi.Input<SubnetResponse?>? subnet;
 
   /// Creates a new [NWRuleSetVirtualNetworkRulesResponse].
   /// [ignoreMissingVnetServiceEndpoint] Value that indicates whether to ignore missing Vnet Service Endpoint

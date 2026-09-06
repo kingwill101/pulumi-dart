@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of the connection fields.
 class FieldDefinition {
   /// Gets or sets the isEncrypted flag of the connection field definition.
-  final pulumi.Input<bool>? isEncrypted;
+  final pulumi.Input<bool?>? isEncrypted;
   /// Gets or sets the isOptional flag of the connection field definition.
-  final pulumi.Input<bool>? isOptional;
+  final pulumi.Input<bool?>? isOptional;
   /// Gets or sets the type of the connection field definition.
   final pulumi.Input<String> type;
 

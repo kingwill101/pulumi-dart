@@ -5,21 +5,21 @@ import 'system_data_response.dart';
 /// Result data returned by getHcxEnterpriseSite.
 class GetHcxEnterpriseSiteResult {
   /// The activation key
-  final String activationKey;
+  final String? activationKey;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The status of the HCX Enterprise Site
-  final String status;
+  final String? status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetHcxEnterpriseSiteResult].
   /// [activationKey] The activation key
@@ -31,39 +31,39 @@ class GetHcxEnterpriseSiteResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetHcxEnterpriseSiteResult({
-    required this.activationKey,
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
-    required this.status,
-    required this.systemData,
-    required this.type,
+    this.activationKey,
+    this.azureApiVersion,
+    this.id,
+    this.name,
+    this.provisioningState,
+    this.status,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activationKey': activationKey,
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
-      'status': status,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'activationKey': ?activationKey,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'status': ?status,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetHcxEnterpriseSiteResult.fromMap(Map<String, dynamic> map) {
     return GetHcxEnterpriseSiteResult(
-      activationKey: map['activationKey'] as String,
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      activationKey: (() { final guardedValue = map['activationKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

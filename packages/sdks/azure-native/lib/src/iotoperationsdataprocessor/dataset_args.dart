@@ -10,27 +10,27 @@ import 'extended_location.dart';
 /// {@macro pulumi_iotoperationsdataprocessor_dataset_args_doc}
 class DatasetArgs {
   /// Name of dataset.
-  final pulumi.Input<String>? datasetName;
+  final pulumi.Input<String?>? datasetName;
   /// Detailed description of the Dataset.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Edge location of the resource.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// Name of instance.
   final pulumi.Input<String> instanceName;
   /// List of keys that can be used for joining on enrich.
-  final pulumi.Input<Map<String, DatasetPropertyKey>>? keys;
+  final pulumi.Input<Map<String, DatasetPropertyKey>?>? keys;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Path to the payload in the message. Enrich will add only the payload to the enriched message, other fields will not be kept except for in the indexes.
-  final pulumi.Input<String>? payload;
+  final pulumi.Input<String?>? payload;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Path to an RFC3339 timestamp in the message. If no path is provided, the ingestion time of the record is used for time-based joins.
-  final pulumi.Input<String>? timestamp;
+  final pulumi.Input<String?>? timestamp;
   /// Time to live for individual records.
-  final pulumi.Input<String>? ttl;
+  final pulumi.Input<String?>? ttl;
 
   /// Creates a new [DatasetArgs].
   /// [datasetName] Name of dataset.

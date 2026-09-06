@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sqlvirtualmachine_get_sql_virtual_machine_args_doc}
 class GetSqlVirtualMachineArgs {
   /// The child resources to include in the response.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the SQL virtual machine.

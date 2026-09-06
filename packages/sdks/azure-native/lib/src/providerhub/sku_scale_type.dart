@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The scale type.
-enum SkuScaleType {
+enum SkuScaleType implements pulumi.PulumiEnum<String> {
   none("None"),
   manual("Manual"),
   automatic("Automatic");
 
   const SkuScaleType(this.wireValue);
+  @override
   final String wireValue;
 
   static SkuScaleType fromValue(String value) {

@@ -6,9 +6,9 @@ import 'parent_service_group_properties_response.dart';
 /// ServiceGroup creation request body parameters.
 class ServiceGroupPropertiesResponse {
   /// The display name of the serviceGroup. For example, ServiceGroupTest1
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The details of the parent serviceGroup.
-  final pulumi.Input<ParentServiceGroupPropertiesResponse>? parent;
+  final pulumi.Input<ParentServiceGroupPropertiesResponse?>? parent;
   /// The provisioning state of the serviceGroup. For example, Running
   final pulumi.Input<String> provisioningState;
 

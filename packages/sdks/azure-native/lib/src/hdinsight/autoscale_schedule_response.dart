@@ -6,9 +6,9 @@ import 'autoscale_time_and_capacity_response.dart';
 /// Parameters for a schedule-based autoscale rule, consisting of an array of days + a time and capacity
 class AutoscaleScheduleResponse {
   /// Days of the week for a schedule-based autoscale rule
-  final pulumi.Input<List<String>>? days;
+  final pulumi.Input<List<String>?>? days;
   /// Time and capacity for a schedule-based autoscale rule
-  final pulumi.Input<AutoscaleTimeAndCapacityResponse>? timeAndCapacity;
+  final pulumi.Input<AutoscaleTimeAndCapacityResponse?>? timeAndCapacity;
 
   /// Creates a new [AutoscaleScheduleResponse].
   /// [days] Days of the week for a schedule-based autoscale rule

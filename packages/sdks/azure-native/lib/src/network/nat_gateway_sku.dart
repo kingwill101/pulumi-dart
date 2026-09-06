@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SKU of nat gateway.
 class NatGatewaySku {
   /// Name of Nat Gateway SKU.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<dynamic>? name;
 
   /// Creates a new [NatGatewaySku].
   /// [name] Name of Nat Gateway SKU.
@@ -21,7 +21,7 @@ class NatGatewaySku {
 
   factory NatGatewaySku.fromMap(Map<String, dynamic> map) {
     return NatGatewaySku(
-      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

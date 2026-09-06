@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Value.
 class WorkspaceCustomStringParameter {
   /// The type of variable that this is
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
   /// The value which should be used for this field.
   final pulumi.Input<String> value;
 
@@ -26,7 +26,7 @@ class WorkspaceCustomStringParameter {
 
   factory WorkspaceCustomStringParameter.fromMap(Map<String, dynamic> map) {
     return WorkspaceCustomStringParameter(
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enable Storage Auto Grow.
-enum StorageAutogrow {
+enum StorageAutogrow implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const StorageAutogrow(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageAutogrow fromValue(String value) {

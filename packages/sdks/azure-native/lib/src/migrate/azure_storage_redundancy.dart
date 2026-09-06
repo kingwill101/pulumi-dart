@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the Azure Storage Redundancy. Example: Locally Redundant Storage.
-enum AzureStorageRedundancy {
+enum AzureStorageRedundancy implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   locallyRedundant("LocallyRedundant"),
   zoneRedundant("ZoneRedundant"),
@@ -7,6 +9,7 @@ enum AzureStorageRedundancy {
   readAccessGeoRedundant("ReadAccessGeoRedundant");
 
   const AzureStorageRedundancy(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureStorageRedundancy fromValue(String value) {

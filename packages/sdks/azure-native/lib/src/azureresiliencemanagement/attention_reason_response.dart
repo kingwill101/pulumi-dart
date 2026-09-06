@@ -6,69 +6,69 @@ import 'error_details_response.dart';
 /// Reason why the Drill is in NeedsAttention state, and not ready to run.
 class AttentionReasonResponse {
   /// User MSI associated with chaos experiment object is deleted.
-  final pulumi.Input<String>? chaosExperimentUserMsi;
+  final pulumi.Input<String?>? chaosExperimentUserMsi;
   /// Chaos resource for faulting exists or not.
-  final pulumi.Input<String>? chaosResource;
+  final pulumi.Input<String?>? chaosResource;
   /// Reason for Chaos Resource Creation failure
-  final pulumi.Input<List<String>>? chaosResourceCreationFailureReasons;
+  final pulumi.Input<List<String>?>? chaosResourceCreationFailureReasons;
   /// User MSI associated with chaos resource object is deleted.
-  final pulumi.Input<String>? chaosResourceUserMsi;
+  final pulumi.Input<String?>? chaosResourceUserMsi;
   /// Errors related to Drill Monitoring resources.
-  final pulumi.Input<List<ErrorDetailsResponse>>? drillMonitoringErrors;
+  final pulumi.Input<List<ErrorDetailsResponse>?>? drillMonitoringErrors;
   /// Monitoring Resources created for Drill
   final pulumi.Input<String> drillMonitoringResources;
   /// Drill object does not have the necessary RBAC to read the Azure Health Model.
-  final pulumi.Input<String>? drillRbacOnAzureHealthModel;
+  final pulumi.Input<String?>? drillRbacOnAzureHealthModel;
   /// Drill object does not have the necessary RBAC to read the Azure Monitoring Workspace account.
-  final pulumi.Input<String>? drillRbacOnAzureMonitoringWorkspace;
+  final pulumi.Input<String?>? drillRbacOnAzureMonitoringWorkspace;
   /// Drill object does not have the necessary RBAC to run the chaos resource.
-  final pulumi.Input<String>? drillRbacOnChaosResource;
+  final pulumi.Input<String?>? drillRbacOnChaosResource;
   /// Drill object does not have the necessary RBAC to run the chaos experiment.
-  final pulumi.Input<String>? drillRbacOnExperiment;
+  final pulumi.Input<String?>? drillRbacOnExperiment;
   /// Drill MSI does not have the necessary RBAC to read the Drill Monitoring resources.
-  final pulumi.Input<String>? drillRbacOnMonitoringResources;
+  final pulumi.Input<String?>? drillRbacOnMonitoringResources;
   /// Drill object does not have the necessary RBAC to run the Recovery Plan.
-  final pulumi.Input<String>? drillRbacOnRecoveryPlan;
+  final pulumi.Input<String?>? drillRbacOnRecoveryPlan;
   /// Drill object does not have the necessary RBAC to read the SLO object.
-  final pulumi.Input<String>? drillRbacOnSlo;
+  final pulumi.Input<String?>? drillRbacOnSlo;
   /// User MSI associated with Drill object is deleted.
-  final pulumi.Input<String>? drillUserMsi;
+  final pulumi.Input<String?>? drillUserMsi;
   /// RBAC required by Experiment MSI not setup on the target resources.
-  final pulumi.Input<String>? faultRbacOnTargets;
+  final pulumi.Input<String?>? faultRbacOnTargets;
   /// Included resource in Drill.
-  final pulumi.Input<String>? includedResourceInDrill;
+  final pulumi.Input<String?>? includedResourceInDrill;
   /// List of required required Azure resource providers that are not registered in the subscription specified for chaos resource.
-  final pulumi.Input<List<String>>? missingRequiredResourceProviders;
+  final pulumi.Input<List<String>?>? missingRequiredResourceProviders;
   /// Monitoring RBAC required by Drill MSI not setup on the target resources.
-  final pulumi.Input<String>? monitoringRbacOnDrillResources;
+  final pulumi.Input<String?>? monitoringRbacOnDrillResources;
   /// Permissions needed by the Drill MSI to read Azure Health Model.
-  final pulumi.Input<List<String>>? rbacNeededForDrillOnAzureHealthModel;
+  final pulumi.Input<List<String>?>? rbacNeededForDrillOnAzureHealthModel;
   /// Permissions needed by the Drill MSI to read Azure Monitoring Workspace account.
-  final pulumi.Input<List<String>>? rbacNeededForDrillOnAzureMonitoringWorkspace;
+  final pulumi.Input<List<String>?>? rbacNeededForDrillOnAzureMonitoringWorkspace;
   /// Permissions needed by the Drill MSI to run the chaos resource.
-  final pulumi.Input<List<String>>? rbacNeededForDrillOnChaosResource;
+  final pulumi.Input<List<String>?>? rbacNeededForDrillOnChaosResource;
   /// Permissions needed by the Drill MSI to Upload service group health data for monitoring.
-  final pulumi.Input<List<String>>? rbacNeededForDrillOnDrillMonitoringResources;
+  final pulumi.Input<List<String>?>? rbacNeededForDrillOnDrillMonitoringResources;
   /// Permissions needed by the Drill MSI to read health metrics data for resources in service group.
-  final pulumi.Input<List<String>>? rbacNeededForDrillOnDrillResources;
+  final pulumi.Input<List<String>?>? rbacNeededForDrillOnDrillResources;
   /// Permissions needed by the Drill MSI to run the chaos experiment.
-  final pulumi.Input<List<String>>? rbacNeededForDrillOnExperiment;
+  final pulumi.Input<List<String>?>? rbacNeededForDrillOnExperiment;
   /// Permissions needed by the Drill MSI to run the Recovery Plan.
-  final pulumi.Input<List<String>>? rbacNeededForDrillOnRecoveryPlan;
+  final pulumi.Input<List<String>?>? rbacNeededForDrillOnRecoveryPlan;
   /// Permissions needed by the Drill MSI to read SLO object.
-  final pulumi.Input<List<String>>? rbacNeededForDrillOnSlo;
+  final pulumi.Input<List<String>?>? rbacNeededForDrillOnSlo;
   /// RBAC required by Chaos Resource MSI not setup on the target resources.
-  final pulumi.Input<String>? rbacOnTargetResources;
+  final pulumi.Input<String?>? rbacOnTargetResources;
   /// Resources associated in Recovery Plan and Drill are out of sync.
-  final pulumi.Input<String>? recoveryPlanAndDrillResourcesState;
+  final pulumi.Input<String?>? recoveryPlanAndDrillResourcesState;
   /// Associated RO ready or not.
-  final pulumi.Input<String>? roReadiness;
+  final pulumi.Input<String?>? roReadiness;
   /// RBAC required by AutomationAccount for runbook MSI not setup on the target resources.
-  final pulumi.Input<String>? runbookFaultRbacOnTargets;
+  final pulumi.Input<String?>? runbookFaultRbacOnTargets;
   /// Resources in Service Group and Drill are out of sync.
-  final pulumi.Input<String>? serviceGroupAndDrillResourcesState;
+  final pulumi.Input<String?>? serviceGroupAndDrillResourcesState;
   /// One or more Target or Capability object is deleted.
-  final pulumi.Input<String>? targets;
+  final pulumi.Input<String?>? targets;
 
   /// Creates a new [AttentionReasonResponse].
   /// [chaosExperimentUserMsi] User MSI associated with chaos experiment object is deleted.

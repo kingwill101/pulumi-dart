@@ -9,23 +9,23 @@ import 'application_insights_component_proactive_detection_configuration_propert
 /// {@macro pulumi_applicationinsights_proactive_detection_configuration_args_doc}
 class ProactiveDetectionConfigurationArgs {
   /// The ProactiveDetection configuration ID. This is unique within a Application Insights component.
-  final pulumi.Input<String>? configurationId;
+  final pulumi.Input<String?>? configurationId;
   /// Custom email addresses for this rule notifications
-  final pulumi.Input<List<String>>? customEmails;
+  final pulumi.Input<List<String>?>? customEmails;
   /// A flag that indicates whether this rule is enabled by the user
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Resource location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Azure resource name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Application Insights component resource.
   final pulumi.Input<String> resourceName;
   /// Static definitions of the ProactiveDetection configuration rule (same values for all components).
-  final pulumi.Input<ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions>? ruleDefinitions;
+  final pulumi.Input<ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitions?>? ruleDefinitions;
   /// A flag that indicated whether notifications on this rule should be sent to subscription owners
-  final pulumi.Input<bool>? sendEmailsToSubscriptionOwners;
+  final pulumi.Input<bool?>? sendEmailsToSubscriptionOwners;
 
   /// Creates a new [ProactiveDetectionConfigurationArgs].
   /// [configurationId] The ProactiveDetection configuration ID. This is unique within a Application Insights component.

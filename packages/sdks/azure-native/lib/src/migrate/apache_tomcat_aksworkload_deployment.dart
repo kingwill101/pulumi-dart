@@ -14,31 +14,31 @@ import 'web_application_directory.dart';
 /// ApacheTomcat web application.
 class ApacheTomcatAKSWorkloadDeployment {
   /// Class for automation artifact.
-  final pulumi.Input<AutomationArtifact>? automationArtifactProperties;
+  final pulumi.Input<AutomationArtifact?>? automationArtifactProperties;
   /// Gets or sets the bindings for the application.
-  final pulumi.Input<List<Binding>>? bindings;
+  final pulumi.Input<List<Binding>?>? bindings;
   /// Gets or sets the build container images.
-  final pulumi.Input<List<ContainerImageProperties>>? buildContainerImages;
+  final pulumi.Input<List<ContainerImageProperties>?>? buildContainerImages;
   /// Class for AKSDeployment Properties.
-  final pulumi.Input<AKSDeploymentProperties>? clusterProperties;
+  final pulumi.Input<AKSDeploymentProperties?>? clusterProperties;
   /// Gets or sets application configuration.
-  final pulumi.Input<List<WebApplicationConfiguration>>? configurations;
+  final pulumi.Input<List<WebApplicationConfiguration>?>? configurations;
   /// Class for container image properties.
-  final pulumi.Input<ContainerImageProperties>? containerImageProperties;
+  final pulumi.Input<ContainerImageProperties?>? containerImageProperties;
   /// Gets or sets the deployment name prefix.
-  final pulumi.Input<String>? deploymentNamePrefix;
+  final pulumi.Input<String?>? deploymentNamePrefix;
   /// AKS Deployment Specification.
-  final pulumi.Input<AKSDeploymentSpecification>? deploymentSpec;
+  final pulumi.Input<AKSDeploymentSpecification?>? deploymentSpec;
   /// Gets or sets application directories.
-  final pulumi.Input<List<WebApplicationDirectory>>? directories;
+  final pulumi.Input<List<WebApplicationDirectory>?>? directories;
   /// Resource Requirements.
-  final pulumi.Input<ResourceRequirements>? limits;
+  final pulumi.Input<ResourceRequirements?>? limits;
   /// Class for app insight monitoring properties.
-  final pulumi.Input<AppInsightMonitoringProperties>? monitoringProperties;
+  final pulumi.Input<AppInsightMonitoringProperties?>? monitoringProperties;
   /// Resource Requirements.
-  final pulumi.Input<ResourceRequirements>? requests;
+  final pulumi.Input<ResourceRequirements?>? requests;
   /// Gets or sets the target platform managed identity.
-  final pulumi.Input<String>? targetPlatformIdentity;
+  final pulumi.Input<String?>? targetPlatformIdentity;
 
   /// Creates a new [ApacheTomcatAKSWorkloadDeployment].
   /// [automationArtifactProperties] Class for automation artifact.

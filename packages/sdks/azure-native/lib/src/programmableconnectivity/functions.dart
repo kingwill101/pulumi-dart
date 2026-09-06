@@ -24,6 +24,17 @@ Future<GetGatewayResult> getGateway(
   return GetGatewayResult.fromMap(result);
 }
 
+pulumi.Output<GetGatewayResult> getGatewayOutput(
+  GetGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:programmableconnectivity:getGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGatewayResult.fromMap);
+}
+
 /// Get an Operator API Connection.
 ///
 /// Uses Azure REST API version 2024-01-15-preview.
@@ -42,4 +53,15 @@ Future<GetOperatorApiConnectionResult> getOperatorApiConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOperatorApiConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetOperatorApiConnectionResult> getOperatorApiConnectionOutput(
+  GetOperatorApiConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:programmableconnectivity:getOperatorApiConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOperatorApiConnectionResult.fromMap);
 }

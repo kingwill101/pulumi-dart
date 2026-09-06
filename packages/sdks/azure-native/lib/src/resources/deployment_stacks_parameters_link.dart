@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Entity representing the reference to the deployment parameters.
 class DeploymentStacksParametersLink {
   /// If included, must match the ContentVersion in the template.
-  final pulumi.Input<String>? contentVersion;
+  final pulumi.Input<String?>? contentVersion;
   /// The URI of the parameters file.
   final pulumi.Input<String> uri;
 

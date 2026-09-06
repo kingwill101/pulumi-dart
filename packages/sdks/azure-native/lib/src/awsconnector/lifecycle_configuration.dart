@@ -6,7 +6,7 @@ import 'rule.dart';
 /// Definition of LifecycleConfiguration
 class LifecycleConfiguration {
   /// A lifecycle rule for individual objects in an Amazon S3 bucket.
-  final pulumi.Input<List<Rule>>? rules;
+  final pulumi.Input<List<Rule>?>? rules;
 
   /// Creates a new [LifecycleConfiguration].
   /// [rules] A lifecycle rule for individual objects in an Amazon S3 bucket.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Action to perform once matching of routes is done
 class HttpRouteAction {
   /// Rewrite prefix, default is no rewrites
-  final pulumi.Input<String>? prefixRewrite;
+  final pulumi.Input<String?>? prefixRewrite;
 
   /// Creates a new [HttpRouteAction].
   /// [prefixRewrite] Rewrite prefix, default is no rewrites

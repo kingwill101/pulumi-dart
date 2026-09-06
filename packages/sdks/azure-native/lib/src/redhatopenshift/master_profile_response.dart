@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// MasterProfile represents a master profile.
 class MasterProfileResponse {
   /// The resource ID of an associated DiskEncryptionSet, if applicable.
-  final pulumi.Input<String>? diskEncryptionSetId;
+  final pulumi.Input<String?>? diskEncryptionSetId;
   /// Whether master virtual machines are encrypted at host.
-  final pulumi.Input<String>? encryptionAtHost;
+  final pulumi.Input<String?>? encryptionAtHost;
   /// The Azure resource ID of the master subnet.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// The size of the master VMs.
-  final pulumi.Input<String>? vmSize;
+  final pulumi.Input<String?>? vmSize;
 
   /// Creates a new [MasterProfileResponse].
   /// [diskEncryptionSetId] The resource ID of an associated DiskEncryptionSet, if applicable.

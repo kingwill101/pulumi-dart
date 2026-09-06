@@ -15,9 +15,9 @@ class ServerTrustGroupArgs {
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the server trust group.
-  final pulumi.Input<String>? serverTrustGroupName;
+  final pulumi.Input<String?>? serverTrustGroupName;
   /// Trust scope of the server trust group.
-  final pulumi.Input<List<String>> trustScopes;
+  final pulumi.Input<List<dynamic>> trustScopes;
 
   /// Creates a new [ServerTrustGroupArgs].
   /// [groupMembers] Group members information for the server trust group.
@@ -49,7 +49,7 @@ class ServerTrustGroupArgs {
       locationName: pulumi.Input.fromValue(map['locationName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverTrustGroupName: (() { final guardedValue = map['serverTrustGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      trustScopes: pulumi.Input.fromValue((map['trustScopes'] as List).cast<String>()),
+      trustScopes: pulumi.Input.fromValue((map['trustScopes'] as List).cast<dynamic>()),
     );
   }
 }

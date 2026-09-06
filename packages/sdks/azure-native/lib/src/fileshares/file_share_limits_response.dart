@@ -66,16 +66,16 @@ class FileShareLimitsResponse {
 
   factory FileShareLimitsResponse.fromMap(Map<String, dynamic> map) {
     return FileShareLimitsResponse(
-      maxFileSharePrivateEndpointConnections: pulumi.Input.fromValue(map['maxFileSharePrivateEndpointConnections'] as int),
-      maxFileShareSnapshots: pulumi.Input.fromValue(map['maxFileShareSnapshots'] as int),
-      maxFileShareSubnets: pulumi.Input.fromValue(map['maxFileShareSubnets'] as int),
-      maxFileShares: pulumi.Input.fromValue(map['maxFileShares'] as int),
-      maxProvisionedIOPerSec: pulumi.Input.fromValue(map['maxProvisionedIOPerSec'] as int),
-      maxProvisionedStorageGiB: pulumi.Input.fromValue(map['maxProvisionedStorageGiB'] as int),
-      maxProvisionedThroughputMiBPerSec: pulumi.Input.fromValue(map['maxProvisionedThroughputMiBPerSec'] as int),
-      minProvisionedIOPerSec: pulumi.Input.fromValue(map['minProvisionedIOPerSec'] as int),
-      minProvisionedStorageGiB: pulumi.Input.fromValue(map['minProvisionedStorageGiB'] as int),
-      minProvisionedThroughputMiBPerSec: pulumi.Input.fromValue(map['minProvisionedThroughputMiBPerSec'] as int),
+      maxFileSharePrivateEndpointConnections: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxFileSharePrivateEndpointConnections'])),
+      maxFileShareSnapshots: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxFileShareSnapshots'])),
+      maxFileShareSubnets: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxFileShareSubnets'])),
+      maxFileShares: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxFileShares'])),
+      maxProvisionedIOPerSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxProvisionedIOPerSec'])),
+      maxProvisionedStorageGiB: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxProvisionedStorageGiB'])),
+      maxProvisionedThroughputMiBPerSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxProvisionedThroughputMiBPerSec'])),
+      minProvisionedIOPerSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minProvisionedIOPerSec'])),
+      minProvisionedStorageGiB: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minProvisionedStorageGiB'])),
+      minProvisionedThroughputMiBPerSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minProvisionedThroughputMiBPerSec'])),
     );
   }
 }

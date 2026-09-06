@@ -11,32 +11,32 @@ import 'user_artifact_source_response.dart';
 /// The publishing profile of a gallery image version.
 class GalleryApplicationVersionPublishingProfileResponse {
   /// Optional. Additional settings to pass to the vm-application-manager extension. For advanced use only.
-  final pulumi.Input<Map<String, String>>? advancedSettings;
+  final pulumi.Input<Map<String, String>?>? advancedSettings;
   /// A list of custom actions that can be performed with this Gallery Application Version.
-  final pulumi.Input<List<GalleryApplicationCustomActionResponse>>? customActions;
+  final pulumi.Input<List<GalleryApplicationCustomActionResponse>?>? customActions;
   /// Optional. Whether or not this application reports health.
-  final pulumi.Input<bool>? enableHealthCheck;
+  final pulumi.Input<bool?>? enableHealthCheck;
   /// The end of life date of the gallery image version. This property can be used for decommissioning purposes. This property is updatable.
-  final pulumi.Input<String>? endOfLifeDate;
+  final pulumi.Input<String?>? endOfLifeDate;
   /// If set to true, Virtual Machines deployed from the latest version of the Image Definition won't use this Image Version.
-  final pulumi.Input<bool>? excludeFromLatest;
-  final pulumi.Input<UserArtifactManageResponse>? manageActions;
+  final pulumi.Input<bool?>? excludeFromLatest;
+  final pulumi.Input<UserArtifactManageResponse?>? manageActions;
   /// The timestamp for when the gallery image version is published.
   final pulumi.Input<String> publishedDate;
   /// The number of replicas of the Image Version to be created per region. This property would take effect for a region when regionalReplicaCount is not specified. This property is updatable.
-  final pulumi.Input<int>? replicaCount;
+  final pulumi.Input<int?>? replicaCount;
   /// Optional parameter which specifies the mode to be used for replication. This property is not updatable.
-  final pulumi.Input<String>? replicationMode;
+  final pulumi.Input<String?>? replicationMode;
   /// Additional settings for the VM app that contains the target package and config file name when it is deployed to target VM or VM scale set.
-  final pulumi.Input<UserArtifactSettingsResponse>? settings;
+  final pulumi.Input<UserArtifactSettingsResponse?>? settings;
   /// The source image from which the Image Version is going to be created.
   final pulumi.Input<UserArtifactSourceResponse> source;
   /// Specifies the storage account type to be used to store the image. Cannot be specified along with storageAccountStrategy. This property is not updatable.
-  final pulumi.Input<String>? storageAccountType;
+  final pulumi.Input<String?>? storageAccountType;
   /// The target extended locations where the Image Version is going to be replicated to. This property is updatable.
-  final pulumi.Input<List<GalleryTargetExtendedLocationResponse>>? targetExtendedLocations;
+  final pulumi.Input<List<GalleryTargetExtendedLocationResponse>?>? targetExtendedLocations;
   /// The target regions where the Image Version is going to be replicated to. This property is updatable.
-  final pulumi.Input<List<TargetRegionResponse>>? targetRegions;
+  final pulumi.Input<List<TargetRegionResponse>?>? targetRegions;
 
   /// Creates a new [GalleryApplicationVersionPublishingProfileResponse].
   /// [advancedSettings] Optional. Additional settings to pass to the vm-application-manager extension. For advanced use only.
@@ -98,7 +98,7 @@ class GalleryApplicationVersionPublishingProfileResponse {
       excludeFromLatest: (() { final guardedValue = map['excludeFromLatest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       manageActions: (() { final guardedValue = map['manageActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UserArtifactManageResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       publishedDate: pulumi.Input.fromValue(map['publishedDate'] as String),
-      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       replicationMode: (() { final guardedValue = map['replicationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       settings: (() { final guardedValue = map['settings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UserArtifactSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       source: pulumi.Input.fromValue(UserArtifactSourceResponse.fromMap((map['source']! as Map).cast<String, dynamic>())),

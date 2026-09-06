@@ -7,7 +7,7 @@ class DatabaseRole {
   /// Database scope that the role is assigned to.
   final pulumi.Input<String> db;
   /// The role that is assigned to the user on the database scope.
-  final pulumi.Input<String> role;
+  final pulumi.Input<dynamic> role;
 
   /// Creates a new [DatabaseRole].
   /// [db] Database scope that the role is assigned to.
@@ -27,7 +27,7 @@ class DatabaseRole {
   factory DatabaseRole.fromMap(Map<String, dynamic> map) {
     return DatabaseRole(
       db: pulumi.Input.fromValue(map['db'] as String),
-      role: pulumi.Input.fromValue(map['role'] as String),
+      role: pulumi.Input.fromValue(map['role']),
     );
   }
 }

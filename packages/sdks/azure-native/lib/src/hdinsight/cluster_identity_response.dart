@@ -10,9 +10,9 @@ class ClusterIdentityResponse {
   /// The tenant id associated with the cluster. This property will only be provided for a system assigned identity.
   final pulumi.Input<String> tenantId;
   /// The type of identity used for the cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The list of user identities associated with the cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  final pulumi.Input<Map<String, UserAssignedIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [ClusterIdentityResponse].
   /// [principalId] The principal id of cluster identity. This property will only be provided for a system assigned identity.

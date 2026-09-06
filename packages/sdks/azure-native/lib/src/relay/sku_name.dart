@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Name of this SKU.
-enum SkuName {
+enum SkuName implements pulumi.PulumiEnum<String> {
   standard("Standard");
 
   const SkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static SkuName fromValue(String value) {

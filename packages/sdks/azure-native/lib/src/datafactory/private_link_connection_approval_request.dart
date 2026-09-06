@@ -7,9 +7,9 @@ import 'private_link_connection_state.dart';
 /// A request to approve or reject a private endpoint connection
 class PrivateLinkConnectionApprovalRequest {
   /// The resource of private endpoint.
-  final pulumi.Input<PrivateEndpoint>? privateEndpoint;
+  final pulumi.Input<PrivateEndpoint?>? privateEndpoint;
   /// The state of a private link connection
-  final pulumi.Input<PrivateLinkConnectionState>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkConnectionState?>? privateLinkServiceConnectionState;
 
   /// Creates a new [PrivateLinkConnectionApprovalRequest].
   /// [privateEndpoint] The resource of private endpoint.

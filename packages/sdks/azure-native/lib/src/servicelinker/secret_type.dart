@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The secret type.
-enum SecretType {
+enum SecretType implements pulumi.PulumiEnum<String> {
   valueRawValue("rawValue"),
   valueKeyVaultSecretUri("keyVaultSecretUri"),
   valueKeyVaultSecretReference("keyVaultSecretReference");
 
   const SecretType(this.wireValue);
+  @override
   final String wireValue;
 
   static SecretType fromValue(String value) {

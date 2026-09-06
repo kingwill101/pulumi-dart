@@ -7,11 +7,11 @@ import 'site_spn_properties_response.dart';
 /// Class for site appliance properties.
 class SiteAppliancePropertiesResponse {
   /// Gets or sets the on-premises agent details.
-  final pulumi.Input<SiteAgentPropertiesResponse>? agentDetails;
+  final pulumi.Input<SiteAgentPropertiesResponse?>? agentDetails;
   /// Gets or sets the Appliance Name.
-  final pulumi.Input<String>? applianceName;
+  final pulumi.Input<String?>? applianceName;
   /// Gets or sets the service principal identity details used by agent for  communication              to the service.
-  final pulumi.Input<SiteSpnPropertiesResponse>? servicePrincipalIdentityDetails;
+  final pulumi.Input<SiteSpnPropertiesResponse?>? servicePrincipalIdentityDetails;
 
   /// Creates a new [SiteAppliancePropertiesResponse].
   /// [agentDetails] Gets or sets the on-premises agent details.

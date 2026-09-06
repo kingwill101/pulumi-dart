@@ -17,7 +17,7 @@ class GetVirtualMachineResult {
   /// Availability Sets in vm.
   final List<VirtualMachinePropertiesResponseAvailabilitySets>? availabilitySets;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Type of checkpoint supported for the vm.
   final String? checkpointType;
   /// Checkpoints in the vm.
@@ -25,7 +25,7 @@ class GetVirtualMachineResult {
   /// ARM Id of the cloud resource to use for deploying the vm.
   final String? cloudId;
   /// The extended location.
-  final ExtendedLocationResponse extendedLocation;
+  final ExtendedLocationResponse? extendedLocation;
   /// Gets or sets the generation for the vm.
   final int? generation;
   /// Guest agent status properties.
@@ -33,35 +33,35 @@ class GetVirtualMachineResult {
   /// Hardware properties.
   final HardwareProfileResponse? hardwareProfile;
   /// Resource Id
-  final String id;
+  final String? id;
   /// The identity of the resource.
   final IdentityResponse? identity;
   /// Gets or sets the inventory Item ID for the resource.
   final String? inventoryItemId;
   /// Last restored checkpoint in the vm.
-  final CheckpointResponse lastRestoredVMCheckpoint;
+  final CheckpointResponse? lastRestoredVMCheckpoint;
   /// Gets or sets the location.
-  final String location;
+  final String? location;
   /// Resource Name
-  final String name;
+  final String? name;
   /// Network properties.
   final NetworkProfileResponse? networkProfile;
   /// OS properties.
   final OsProfileResponse? osProfile;
   /// Gets the power state of the virtual machine.
-  final String powerState;
+  final String? powerState;
   /// Gets or sets the provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// Storage properties.
   final StorageProfileResponse? storageProfile;
   /// The system data.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags
   final Map<String, String>? tags;
   /// ARM Id of the template resource to use for deploying the vm.
   final String? templateId;
   /// Resource Type
-  final String type;
+  final String? type;
   /// Unique ID of the virtual machine.
   final String? uuid;
   /// VMName is the name of VM on the SCVMM server.
@@ -99,29 +99,29 @@ class GetVirtualMachineResult {
   /// [vmmServerId] ARM Id of the vmmServer resource in which this resource resides.
   const GetVirtualMachineResult({
     this.availabilitySets,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.checkpointType,
     this.checkpoints,
     this.cloudId,
-    required this.extendedLocation,
+    this.extendedLocation,
     this.generation,
     this.guestAgentProfile,
     this.hardwareProfile,
-    required this.id,
+    this.id,
     this.identity,
     this.inventoryItemId,
-    required this.lastRestoredVMCheckpoint,
-    required this.location,
-    required this.name,
+    this.lastRestoredVMCheckpoint,
+    this.location,
+    this.name,
     this.networkProfile,
     this.osProfile,
-    required this.powerState,
-    required this.provisioningState,
+    this.powerState,
+    this.provisioningState,
     this.storageProfile,
-    required this.systemData,
+    this.systemData,
     this.tags,
     this.templateId,
-    required this.type,
+    this.type,
     this.uuid,
     this.vmName,
     this.vmmServerId,
@@ -130,29 +130,29 @@ class GetVirtualMachineResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'availabilitySets': ?(() { final guardedValue = availabilitySets; if (guardedValue == null) return null; return pulumi.Input.encodeList<VirtualMachinePropertiesResponseAvailabilitySets, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'checkpointType': ?checkpointType,
       'checkpoints': ?(() { final guardedValue = checkpoints; if (guardedValue == null) return null; return pulumi.Input.encodeList<CheckpointResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'cloudId': ?cloudId,
-      'extendedLocation': extendedLocation.toMap(),
+      'extendedLocation': ?extendedLocation?.toMap(),
       'generation': ?generation,
       'guestAgentProfile': ?guestAgentProfile?.toMap(),
       'hardwareProfile': ?hardwareProfile?.toMap(),
-      'id': id,
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'inventoryItemId': ?inventoryItemId,
-      'lastRestoredVMCheckpoint': lastRestoredVMCheckpoint.toMap(),
-      'location': location,
-      'name': name,
+      'lastRestoredVMCheckpoint': ?lastRestoredVMCheckpoint?.toMap(),
+      'location': ?location,
+      'name': ?name,
       'networkProfile': ?networkProfile?.toMap(),
       'osProfile': ?osProfile?.toMap(),
-      'powerState': powerState,
-      'provisioningState': provisioningState,
+      'powerState': ?powerState,
+      'provisioningState': ?provisioningState,
       'storageProfile': ?storageProfile?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
       'templateId': ?templateId,
-      'type': type,
+      'type': ?type,
       'uuid': ?uuid,
       'vmName': ?vmName,
       'vmmServerId': ?vmmServerId,
@@ -162,29 +162,29 @@ class GetVirtualMachineResult {
   factory GetVirtualMachineResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineResult(
       availabilitySets: (() { final guardedValue = map['availabilitySets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualMachinePropertiesResponseAvailabilitySets>(guardedValue, (value) => VirtualMachinePropertiesResponseAvailabilitySets.fromMap((value as Map).cast<String, dynamic>())); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       checkpointType: (() { final guardedValue = map['checkpointType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       checkpoints: (() { final guardedValue = map['checkpoints']; if (guardedValue == null) return null; return pulumi.Input.decodeList<CheckpointResponse>(guardedValue, (value) => CheckpointResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       cloudId: (() { final guardedValue = map['cloudId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
-      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       guestAgentProfile: (() { final guardedValue = map['guestAgentProfile']; if (guardedValue == null) return null; return GuestAgentProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       hardwareProfile: (() { final guardedValue = map['hardwareProfile']; if (guardedValue == null) return null; return HardwareProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       inventoryItemId: (() { final guardedValue = map['inventoryItemId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      lastRestoredVMCheckpoint: CheckpointResponse.fromMap((map['lastRestoredVMCheckpoint']! as Map).cast<String, dynamic>()),
-      location: map['location'] as String,
-      name: map['name'] as String,
+      lastRestoredVMCheckpoint: (() { final guardedValue = map['lastRestoredVMCheckpoint']; if (guardedValue == null) return null; return CheckpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkProfile: (() { final guardedValue = map['networkProfile']; if (guardedValue == null) return null; return NetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       osProfile: (() { final guardedValue = map['osProfile']; if (guardedValue == null) return null; return OsProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      powerState: map['powerState'] as String,
-      provisioningState: map['provisioningState'] as String,
+      powerState: (() { final guardedValue = map['powerState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storageProfile: (() { final guardedValue = map['storageProfile']; if (guardedValue == null) return null; return StorageProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       templateId: (() { final guardedValue = map['templateId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
       vmName: (() { final guardedValue = map['vmName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       vmmServerId: (() { final guardedValue = map['vmmServerId']; if (guardedValue == null) return null; return guardedValue as String; })(),

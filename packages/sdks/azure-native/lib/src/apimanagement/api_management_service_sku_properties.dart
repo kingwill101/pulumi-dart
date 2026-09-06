@@ -7,7 +7,7 @@ class ApiManagementServiceSkuProperties {
   /// Capacity of the SKU (number of deployed units of the SKU). For Consumption SKU capacity must be specified as 0.
   final pulumi.Input<int> capacity;
   /// Name of the Sku.
-  final pulumi.Input<String> name;
+  final pulumi.Input<dynamic> name;
 
   /// Creates a new [ApiManagementServiceSkuProperties].
   /// [capacity] Capacity of the SKU (number of deployed units of the SKU). For Consumption SKU capacity must be specified as 0.
@@ -26,8 +26,8 @@ class ApiManagementServiceSkuProperties {
 
   factory ApiManagementServiceSkuProperties.fromMap(Map<String, dynamic> map) {
     return ApiManagementServiceSkuProperties(
-      capacity: pulumi.Input.fromValue(map['capacity'] as int),
-      name: pulumi.Input.fromValue(map['name'] as String),
+      capacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['capacity'])),
+      name: pulumi.Input.fromValue(map['name']),
     );
   }
 }

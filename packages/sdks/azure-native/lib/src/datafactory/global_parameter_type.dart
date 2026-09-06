@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Global Parameter type.
-enum GlobalParameterType {
+enum GlobalParameterType implements pulumi.PulumiEnum<String> {
   object_("Object"),
   string_("String"),
   int_("Int"),
@@ -8,6 +10,7 @@ enum GlobalParameterType {
   array("Array");
 
   const GlobalParameterType(this.wireValue);
+  @override
   final String wireValue;
 
   static GlobalParameterType fromValue(String value) {

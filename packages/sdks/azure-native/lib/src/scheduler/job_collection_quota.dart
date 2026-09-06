@@ -5,11 +5,11 @@ import 'job_max_recurrence.dart';
 
 class JobCollectionQuota {
   /// Gets or set the maximum job count.
-  final pulumi.Input<int>? maxJobCount;
+  final pulumi.Input<int?>? maxJobCount;
   /// Gets or sets the maximum job occurrence.
-  final pulumi.Input<int>? maxJobOccurrence;
+  final pulumi.Input<int?>? maxJobOccurrence;
   /// Gets or set the maximum recurrence.
-  final pulumi.Input<JobMaxRecurrence>? maxRecurrence;
+  final pulumi.Input<JobMaxRecurrence?>? maxRecurrence;
 
   /// Creates a new [JobCollectionQuota].
   /// [maxJobCount] Gets or set the maximum job count.
@@ -31,8 +31,8 @@ class JobCollectionQuota {
 
   factory JobCollectionQuota.fromMap(Map<String, dynamic> map) {
     return JobCollectionQuota(
-      maxJobCount: (() { final guardedValue = map['maxJobCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxJobOccurrence: (() { final guardedValue = map['maxJobOccurrence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxJobCount: (() { final guardedValue = map['maxJobCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxJobOccurrence: (() { final guardedValue = map['maxJobOccurrence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       maxRecurrence: (() { final guardedValue = map['maxRecurrence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobMaxRecurrence.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

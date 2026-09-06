@@ -15,7 +15,7 @@ class LabArgs {
   /// Default monetary cap for each student in this lab
   final pulumi.Input<Amount> budgetPerStudent;
   /// The type of currency being used for the value.
-  final pulumi.Input<String>? currency;
+  final pulumi.Input<String?>? currency;
   /// Detail description of this lab
   final pulumi.Input<String> description;
   /// Lab Display Name
@@ -25,7 +25,7 @@ class LabArgs {
   /// The name of the invoice section.
   final pulumi.Input<String> invoiceSectionName;
   /// Amount value.
-  final pulumi.Input<double>? value;
+  final pulumi.Input<double?>? value;
 
   /// Creates a new [LabArgs].
   /// [billingAccountName] The name of the billing account.
@@ -73,7 +73,7 @@ class LabArgs {
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       expirationDate: pulumi.Input.fromValue(map['expirationDate'] as String),
       invoiceSectionName: pulumi.Input.fromValue(map['invoiceSectionName'] as String),
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

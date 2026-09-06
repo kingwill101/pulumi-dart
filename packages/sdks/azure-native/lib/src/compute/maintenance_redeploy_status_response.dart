@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Maintenance Operation Status.
 class MaintenanceRedeployStatusResponse {
   /// True, if customer is allowed to perform Maintenance.
-  final pulumi.Input<bool>? isCustomerInitiatedMaintenanceAllowed;
+  final pulumi.Input<bool?>? isCustomerInitiatedMaintenanceAllowed;
   /// Message returned for the last Maintenance Operation.
-  final pulumi.Input<String>? lastOperationMessage;
+  final pulumi.Input<String?>? lastOperationMessage;
   /// The Last Maintenance Operation Result Code.
-  final pulumi.Input<String>? lastOperationResultCode;
+  final pulumi.Input<String?>? lastOperationResultCode;
   /// End Time for the Maintenance Window.
-  final pulumi.Input<String>? maintenanceWindowEndTime;
+  final pulumi.Input<String?>? maintenanceWindowEndTime;
   /// Start Time for the Maintenance Window.
-  final pulumi.Input<String>? maintenanceWindowStartTime;
+  final pulumi.Input<String?>? maintenanceWindowStartTime;
   /// End Time for the Pre Maintenance Window.
-  final pulumi.Input<String>? preMaintenanceWindowEndTime;
+  final pulumi.Input<String?>? preMaintenanceWindowEndTime;
   /// Start Time for the Pre Maintenance Window.
-  final pulumi.Input<String>? preMaintenanceWindowStartTime;
+  final pulumi.Input<String?>? preMaintenanceWindowStartTime;
 
   /// Creates a new [MaintenanceRedeployStatusResponse].
   /// [isCustomerInitiatedMaintenanceAllowed] True, if customer is allowed to perform Maintenance.

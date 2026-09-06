@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The service endpoint properties.
 class ServiceEndpointPropertiesFormatInterfaceEndpointResponse {
   /// A list of locations.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// The provisioning state of the resource.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// The type of the endpoint service.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
 
   /// Creates a new [ServiceEndpointPropertiesFormatInterfaceEndpointResponse].
   /// [locations] A list of locations.

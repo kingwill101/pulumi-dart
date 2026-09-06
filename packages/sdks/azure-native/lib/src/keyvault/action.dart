@@ -5,7 +5,7 @@ import 'key_rotation_policy_action_type.dart';
 
 class Action {
   /// The type of action.
-  final pulumi.Input<KeyRotationPolicyActionType>? type;
+  final pulumi.Input<KeyRotationPolicyActionType?>? type;
 
   /// Creates a new [Action].
   /// [type] The type of action.

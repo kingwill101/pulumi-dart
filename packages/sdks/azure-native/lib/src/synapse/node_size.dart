@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The level of compute power that each node in the Big Data pool has.
-enum NodeSize {
+enum NodeSize implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueSmall("Small"),
   valueMedium("Medium"),
@@ -9,6 +11,7 @@ enum NodeSize {
   valueXXXLarge("XXXLarge");
 
   const NodeSize(this.wireValue);
+  @override
   final String wireValue;
 
   static NodeSize fromValue(String value) {

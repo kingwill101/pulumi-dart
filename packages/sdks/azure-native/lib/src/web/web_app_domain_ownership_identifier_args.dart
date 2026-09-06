@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_web_web_app_domain_ownership_identifier_args_doc}
 class WebAppDomainOwnershipIdentifierArgs {
   /// Name of domain ownership identifier.
-  final pulumi.Input<String>? domainOwnershipIdentifierName;
+  final pulumi.Input<String?>? domainOwnershipIdentifierName;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// String representation of the identity.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [WebAppDomainOwnershipIdentifierArgs].
   /// [domainOwnershipIdentifierName] Name of domain ownership identifier.

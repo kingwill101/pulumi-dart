@@ -5,39 +5,39 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Model representing Customer resource for ConnectedCache resource
 class CustomerEntityResponse {
   /// Customer resource client tenant Id of subscription.
-  final pulumi.Input<String>? clientTenantId;
+  final pulumi.Input<String?>? clientTenantId;
   /// Customer resource contact email.
-  final pulumi.Input<String>? contactEmail;
+  final pulumi.Input<String?>? contactEmail;
   /// Customer resource contact full name.
-  final pulumi.Input<String>? contactName;
+  final pulumi.Input<String?>? contactName;
   /// Customer resource contact phone.
-  final pulumi.Input<String>? contactPhone;
+  final pulumi.Input<String?>? contactPhone;
   /// Customer resource create async operation Id.
   final pulumi.Input<String> createAsyncOperationId;
   /// Customer resource Guid Id.
   final pulumi.Input<String> customerId;
   /// Customer resource name.
-  final pulumi.Input<String>? customerName;
+  final pulumi.Input<String?>? customerName;
   /// Customer resource deletion async operation Id.
   final pulumi.Input<String> deleteAsyncOperationId;
   /// Customer resource Azure fully qualified resource Id.
-  final pulumi.Input<String>? fullyQualifiedResourceId;
+  final pulumi.Input<String?>? fullyQualifiedResourceId;
   /// Customer resource flag for enterprise management as boolean.
-  final pulumi.Input<bool>? isEnterpriseManaged;
+  final pulumi.Input<bool?>? isEnterpriseManaged;
   /// Customer resource entitlement flag as boolean.
-  final pulumi.Input<bool>? isEntitled;
+  final pulumi.Input<bool?>? isEntitled;
   /// Customer resource last Azure sync timestamp.
   final pulumi.Input<String> lastSyncWithAzureTimestamp;
   /// Customer resource Mcc release version.
-  final pulumi.Input<int>? releaseVersion;
+  final pulumi.Input<int?>? releaseVersion;
   /// Customer resource flag for resending signup code as boolean.
-  final pulumi.Input<bool>? resendSignupCode;
+  final pulumi.Input<bool?>? resendSignupCode;
   /// Customer resource flag for migration.
-  final pulumi.Input<bool>? shouldMigrate;
+  final pulumi.Input<bool?>? shouldMigrate;
   /// Customer resource sync attempts.
   final pulumi.Input<int> synchWithAzureAttemptsCount;
   /// Customer resource flag for requiring verification of signup code as boolean.
-  final pulumi.Input<bool>? verifySignupCode;
+  final pulumi.Input<bool?>? verifySignupCode;
 
   /// Creates a new [CustomerEntityResponse].
   /// [clientTenantId] Customer resource client tenant Id of subscription.
@@ -113,10 +113,10 @@ class CustomerEntityResponse {
       isEnterpriseManaged: (() { final guardedValue = map['isEnterpriseManaged']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isEntitled: (() { final guardedValue = map['isEntitled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       lastSyncWithAzureTimestamp: pulumi.Input.fromValue(map['lastSyncWithAzureTimestamp'] as String),
-      releaseVersion: (() { final guardedValue = map['releaseVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      releaseVersion: (() { final guardedValue = map['releaseVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resendSignupCode: (() { final guardedValue = map['resendSignupCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       shouldMigrate: (() { final guardedValue = map['shouldMigrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      synchWithAzureAttemptsCount: pulumi.Input.fromValue(map['synchWithAzureAttemptsCount'] as int),
+      synchWithAzureAttemptsCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['synchWithAzureAttemptsCount'])),
       verifySignupCode: (() { final guardedValue = map['verifySignupCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

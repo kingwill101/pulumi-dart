@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies the IP address of the network interface.
 class IpAddress {
   /// Specifies the IP address of the network interface.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
 
   /// Creates a new [IpAddress].
   /// [ipAddress] Specifies the IP address of the network interface.

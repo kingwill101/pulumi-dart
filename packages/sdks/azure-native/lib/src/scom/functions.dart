@@ -24,6 +24,17 @@ Future<GetInstanceResult> getInstance(
   return GetInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:scom:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
+}
+
 /// Retrieve the details of the gateway resource.
 ///
 /// Uses Azure REST API version 2023-07-07-preview.
@@ -42,6 +53,17 @@ Future<GetManagedGatewayResult> getManagedGateway(
   return GetManagedGatewayResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedGatewayResult> getManagedGatewayOutput(
+  GetManagedGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:scom:getManagedGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedGatewayResult.fromMap);
+}
+
 /// Retrieve the details of the monitored resource.
 ///
 /// Uses Azure REST API version 2023-07-07-preview.
@@ -58,4 +80,15 @@ Future<GetMonitoredResourceResult> getMonitoredResource(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMonitoredResourceResult.fromMap(result);
+}
+
+pulumi.Output<GetMonitoredResourceResult> getMonitoredResourceOutput(
+  GetMonitoredResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:scom:getMonitoredResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMonitoredResourceResult.fromMap);
 }

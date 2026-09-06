@@ -79,7 +79,43 @@ class IoMAMPolicyByName extends pulumi.CustomResource {
     offlineWipeTimeout = registerOutput<String?>('offlineWipeTimeout');
     pin = registerOutput<String?>('pin');
     pinNumRetry = registerOutput<int?>('pinNumRetry');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    touchId = registerOutput<String?>('touchId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [IoMAMPolicyByName] resource.
+  IoMAMPolicyByName.reference(String urn)
+    : super(
+        'azure-native:intune:IoMAMPolicyByName',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessRecheckOfflineTimeout = registerOutput<String?>('accessRecheckOfflineTimeout');
+    accessRecheckOnlineTimeout = registerOutput<String?>('accessRecheckOnlineTimeout');
+    appSharingFromLevel = registerOutput<String?>('appSharingFromLevel');
+    appSharingToLevel = registerOutput<String?>('appSharingToLevel');
+    authentication = registerOutput<String?>('authentication');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clipboardSharingLevel = registerOutput<String?>('clipboardSharingLevel');
+    dataBackup = registerOutput<String?>('dataBackup');
+    description = registerOutput<String?>('description');
+    deviceCompliance = registerOutput<String?>('deviceCompliance');
+    fileEncryptionLevel = registerOutput<String?>('fileEncryptionLevel');
+    fileSharingSaveAs = registerOutput<String?>('fileSharingSaveAs');
+    friendlyName = registerOutput<String>('friendlyName');
+    groupStatus = registerOutput<String>('groupStatus');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    location = registerOutput<String?>('location');
+    managedBrowser = registerOutput<String?>('managedBrowser');
+    this.name = registerOutput<String>('name');
+    numOfApps = registerOutput<int>('numOfApps');
+    offlineWipeTimeout = registerOutput<String?>('offlineWipeTimeout');
+    pin = registerOutput<String?>('pin');
+    pinNumRetry = registerOutput<int?>('pinNumRetry');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     touchId = registerOutput<String?>('touchId');
     type = registerOutput<String>('type');
   }

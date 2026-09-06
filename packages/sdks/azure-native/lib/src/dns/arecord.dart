@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An A record.
 class ARecord {
   /// The IPv4 address of this A record.
-  final pulumi.Input<String>? ipv4Address;
+  final pulumi.Input<String?>? ipv4Address;
 
   /// Creates a new [ARecord].
   /// [ipv4Address] The IPv4 address of this A record.

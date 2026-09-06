@@ -8,27 +8,27 @@ class ListGlobalRulestackCountriesResult {
   /// next link
   final String? nextLink;
   /// List of countries
-  final List<CountryResponse> value;
+  final List<CountryResponse>? value;
 
   /// Creates a new [ListGlobalRulestackCountriesResult].
   /// [nextLink] next link
   /// [value] List of countries
   const ListGlobalRulestackCountriesResult({
     this.nextLink,
-    required this.value,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': pulumi.Input.encodeList<CountryResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<CountryResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory ListGlobalRulestackCountriesResult.fromMap(Map<String, dynamic> map) {
     return ListGlobalRulestackCountriesResult(
       nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      value: pulumi.Input.decodeList<CountryResponse>(map['value']!, (value) => CountryResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<CountryResponse>(guardedValue, (value) => CountryResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

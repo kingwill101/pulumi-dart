@@ -6,9 +6,9 @@ import 'user_assigned_identity_response.dart';
 /// Identity for the image template.
 class ImageTemplateIdentityResponse {
   /// The type of identity used for the image template. The type 'None' will remove any identities from the image template.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-  final pulumi.Input<Map<String, UserAssignedIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [ImageTemplateIdentityResponse].
   /// [type] The type of identity used for the image template. The type 'None' will remove any identities from the image template.

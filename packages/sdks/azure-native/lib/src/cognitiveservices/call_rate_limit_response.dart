@@ -6,10 +6,10 @@ import 'throttling_rule_response.dart';
 /// The call rate limit Cognitive Services account.
 class CallRateLimitResponse {
   /// The count value of Call Rate Limit.
-  final pulumi.Input<double>? count;
+  final pulumi.Input<double?>? count;
   /// The renewal period in seconds of Call Rate Limit.
-  final pulumi.Input<double>? renewalPeriod;
-  final pulumi.Input<List<ThrottlingRuleResponse>>? rules;
+  final pulumi.Input<double?>? renewalPeriod;
+  final pulumi.Input<List<ThrottlingRuleResponse>?>? rules;
 
   /// Creates a new [CallRateLimitResponse].
   /// [count] The count value of Call Rate Limit.
@@ -31,8 +31,8 @@ class CallRateLimitResponse {
 
   factory CallRateLimitResponse.fromMap(Map<String, dynamic> map) {
     return CallRateLimitResponse(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      renewalPeriod: (() { final guardedValue = map['renewalPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      renewalPeriod: (() { final guardedValue = map['renewalPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ThrottlingRuleResponse>(guardedValue, (value) => ThrottlingRuleResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

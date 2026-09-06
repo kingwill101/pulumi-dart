@@ -10,7 +10,7 @@ class KeyVaultParameterReferenceResponse {
   /// Azure Key Vault secret name.
   final pulumi.Input<String> secretName;
   /// Azure Key Vault secret version.
-  final pulumi.Input<String>? secretVersion;
+  final pulumi.Input<String?>? secretVersion;
 
   /// Creates a new [KeyVaultParameterReferenceResponse].
   /// [keyVault] Azure Key Vault reference.

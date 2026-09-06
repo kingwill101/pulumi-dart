@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of transformation.
-enum DataflowMappingType {
+enum DataflowMappingType implements pulumi.PulumiEnum<String> {
   newProperties("NewProperties"),
   rename("Rename"),
   compute("Compute"),
@@ -7,6 +9,7 @@ enum DataflowMappingType {
   builtInFunction("BuiltInFunction");
 
   const DataflowMappingType(this.wireValue);
+  @override
   final String wireValue;
 
   static DataflowMappingType fromValue(String value) {

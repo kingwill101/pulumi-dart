@@ -21,7 +21,7 @@ class StorageProfileResponse {
 
   factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return StorageProfileResponse(
-      poolableDisksCount: pulumi.Input.fromValue(map['poolableDisksCount'] as double),
+      poolableDisksCount: pulumi.Input.fromValue((map['poolableDisksCount'] as num).toDouble()),
     );
   }
 }

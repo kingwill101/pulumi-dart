@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the assessment mode.
-enum AssessmentModeTypes {
+enum AssessmentModeTypes implements pulumi.PulumiEnum<String> {
   valueImageDefault("ImageDefault"),
   valueAutomaticByPlatform("AutomaticByPlatform");
 
   const AssessmentModeTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static AssessmentModeTypes fromValue(String value) {

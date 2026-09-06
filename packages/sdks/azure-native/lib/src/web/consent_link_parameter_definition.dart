@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Consent link definition
 class ConsentLinkParameterDefinition {
   /// AAD OID (user or group) if the principal type is ActiveDirectory. MSA PUID if the principal type is MicrosoftAccount
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// Name of the parameter in the connection provider's OAuth settings
-  final pulumi.Input<String>? parameterName;
+  final pulumi.Input<String?>? parameterName;
   /// Name of the parameter in the connection provider's OAuth settings
-  final pulumi.Input<String>? redirectUrl;
+  final pulumi.Input<String?>? redirectUrl;
   /// The tenant id
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ConsentLinkParameterDefinition].
   /// [objectId] AAD OID (user or group) if the principal type is ActiveDirectory. MSA PUID if the principal type is MicrosoftAccount

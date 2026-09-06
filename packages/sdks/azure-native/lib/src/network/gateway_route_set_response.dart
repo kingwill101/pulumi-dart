@@ -5,11 +5,11 @@ import 'route_source_details_response.dart';
 
 class GatewayRouteSetResponse {
   /// List of different Route Sources
-  final pulumi.Input<Map<String, List<RouteSourceDetailsResponse>>>? details;
+  final pulumi.Input<Map<String, List<RouteSourceDetailsResponse>>?>? details;
   /// List of different locations from where the routes are learned
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// Route Set name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GatewayRouteSetResponse].
   /// [details] List of different Route Sources

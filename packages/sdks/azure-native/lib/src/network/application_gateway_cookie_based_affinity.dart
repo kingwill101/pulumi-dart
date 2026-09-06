@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Cookie based affinity.
-enum ApplicationGatewayCookieBasedAffinity {
+enum ApplicationGatewayCookieBasedAffinity implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const ApplicationGatewayCookieBasedAffinity(this.wireValue);
+  @override
   final String wireValue;
 
   static ApplicationGatewayCookieBasedAffinity fromValue(String value) {

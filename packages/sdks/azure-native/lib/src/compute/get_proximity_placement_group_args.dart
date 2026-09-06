@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_get_proximity_placement_group_args_doc}
 class GetProximityPlacementGroupArgs {
   /// includeColocationStatus=true enables fetching the colocation status of all the resources in the proximity placement group.
-  final pulumi.Input<String>? includeColocationStatus;
+  final pulumi.Input<String?>? includeColocationStatus;
   /// The name of the proximity placement group.
   final pulumi.Input<String> proximityPlacementGroupName;
   /// The name of the resource group. The name is case insensitive.

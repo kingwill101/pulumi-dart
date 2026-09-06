@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The name of the action for the delivery rule.
-enum DeliveryRuleActionName {
+enum DeliveryRuleActionName implements pulumi.PulumiEnum<String> {
   cacheExpiration("CacheExpiration"),
   cacheKeyQueryString("CacheKeyQueryString"),
   modifyRequestHeader("ModifyRequestHeader"),
@@ -11,6 +13,7 @@ enum DeliveryRuleActionName {
   routeConfigurationOverride("RouteConfigurationOverride");
 
   const DeliveryRuleActionName(this.wireValue);
+  @override
   final String wireValue;
 
   static DeliveryRuleActionName fromValue(String value) {

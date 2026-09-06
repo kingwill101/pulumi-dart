@@ -6,13 +6,13 @@ import 'resource_id_response.dart';
 /// Scope of a Managed Network
 class ScopeResponse {
   /// The collection of management groups covered by the Managed Network
-  final pulumi.Input<List<ResourceIdResponse>>? managementGroups;
+  final pulumi.Input<List<ResourceIdResponse>?>? managementGroups;
   /// The collection of  subnets covered by the Managed Network
-  final pulumi.Input<List<ResourceIdResponse>>? subnets;
+  final pulumi.Input<List<ResourceIdResponse>?>? subnets;
   /// The collection of subscriptions covered by the Managed Network
-  final pulumi.Input<List<ResourceIdResponse>>? subscriptions;
+  final pulumi.Input<List<ResourceIdResponse>?>? subscriptions;
   /// The collection of virtual nets covered by the Managed Network
-  final pulumi.Input<List<ResourceIdResponse>>? virtualNetworks;
+  final pulumi.Input<List<ResourceIdResponse>?>? virtualNetworks;
 
   /// Creates a new [ScopeResponse].
   /// [managementGroups] The collection of management groups covered by the Managed Network

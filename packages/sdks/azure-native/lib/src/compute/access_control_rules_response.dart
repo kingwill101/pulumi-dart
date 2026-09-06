@@ -9,13 +9,13 @@ import 'access_control_rules_role_response.dart';
 /// This is the Access Control Rules specification for an inVMAccessControlProfile version.
 class AccessControlRulesResponse {
   /// A list of identities.
-  final pulumi.Input<List<AccessControlRulesIdentityResponse>>? identities;
+  final pulumi.Input<List<AccessControlRulesIdentityResponse>?>? identities;
   /// A list of privileges.
-  final pulumi.Input<List<AccessControlRulesPrivilegeResponse>>? privileges;
+  final pulumi.Input<List<AccessControlRulesPrivilegeResponse>?>? privileges;
   /// A list of role assignments.
-  final pulumi.Input<List<AccessControlRulesRoleAssignmentResponse>>? roleAssignments;
+  final pulumi.Input<List<AccessControlRulesRoleAssignmentResponse>?>? roleAssignments;
   /// A list of roles.
-  final pulumi.Input<List<AccessControlRulesRoleResponse>>? roles;
+  final pulumi.Input<List<AccessControlRulesRoleResponse>?>? roles;
 
   /// Creates a new [AccessControlRulesResponse].
   /// [identities] A list of identities.

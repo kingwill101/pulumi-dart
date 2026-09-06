@@ -6,7 +6,7 @@ import 'upload_limit_weekly_recurrence.dart';
 /// The WAN-link upload limit schedule. Overlapping recurrences are not allowed.
 class UploadLimitSchedule {
   /// The set of weekly repeating recurrences of the WAN-link upload limit schedule.
-  final pulumi.Input<List<UploadLimitWeeklyRecurrence>>? weeklyRecurrences;
+  final pulumi.Input<List<UploadLimitWeeklyRecurrence>?>? weeklyRecurrences;
 
   /// Creates a new [UploadLimitSchedule].
   /// [weeklyRecurrences] The set of weekly repeating recurrences of the WAN-link upload limit schedule.

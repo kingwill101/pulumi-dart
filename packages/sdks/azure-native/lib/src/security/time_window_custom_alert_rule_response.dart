@@ -55,8 +55,8 @@ class TimeWindowCustomAlertRuleResponse {
       description: pulumi.Input.fromValue(map['description'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
-      maxThreshold: pulumi.Input.fromValue(map['maxThreshold'] as int),
-      minThreshold: pulumi.Input.fromValue(map['minThreshold'] as int),
+      maxThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxThreshold'])),
+      minThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minThreshold'])),
       ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
       timeWindowSize: pulumi.Input.fromValue(map['timeWindowSize'] as String),
     );

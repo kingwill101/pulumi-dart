@@ -156,6 +156,17 @@ Future<GetBackupLongTermRetentionPolicyResult> getBackupLongTermRetentionPolicy(
   return GetBackupLongTermRetentionPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupLongTermRetentionPolicyResult> getBackupLongTermRetentionPolicyOutput(
+  GetBackupLongTermRetentionPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getBackupLongTermRetentionPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupLongTermRetentionPolicyResult.fromMap);
+}
+
 /// Gets a database's short term retention policy.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -174,6 +185,17 @@ Future<GetBackupShortTermRetentionPolicyResult> getBackupShortTermRetentionPolic
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackupShortTermRetentionPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetBackupShortTermRetentionPolicyResult> getBackupShortTermRetentionPolicyOutput(
+  GetBackupShortTermRetentionPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getBackupShortTermRetentionPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupShortTermRetentionPolicyResult.fromMap);
 }
 
 /// Gets the database data masking policy.
@@ -196,6 +218,17 @@ Future<GetDataMaskingPolicyResult> getDataMaskingPolicy(
   return GetDataMaskingPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetDataMaskingPolicyResult> getDataMaskingPolicyOutput(
+  GetDataMaskingPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getDataMaskingPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataMaskingPolicyResult.fromMap);
+}
+
 /// Gets a database.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -214,6 +247,17 @@ Future<GetDatabaseResult> getDatabase(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseResult> getDatabaseOutput(
+  GetDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseResult.fromMap);
 }
 
 /// Gets a database advisor.
@@ -236,6 +280,17 @@ Future<GetDatabaseAdvisorResult> getDatabaseAdvisor(
   return GetDatabaseAdvisorResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseAdvisorResult> getDatabaseAdvisorOutput(
+  GetDatabaseAdvisorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getDatabaseAdvisor',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseAdvisorResult.fromMap);
+}
+
 /// Gets a database's blob auditing policy.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -254,6 +309,17 @@ Future<GetDatabaseBlobAuditingPolicyResult> getDatabaseBlobAuditingPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseBlobAuditingPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseBlobAuditingPolicyResult> getDatabaseBlobAuditingPolicyOutput(
+  GetDatabaseBlobAuditingPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getDatabaseBlobAuditingPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseBlobAuditingPolicyResult.fromMap);
 }
 
 /// Gets a database's security alert policy.
@@ -276,6 +342,17 @@ Future<GetDatabaseSecurityAlertPolicyResult> getDatabaseSecurityAlertPolicy(
   return GetDatabaseSecurityAlertPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseSecurityAlertPolicyResult> getDatabaseSecurityAlertPolicyOutput(
+  GetDatabaseSecurityAlertPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getDatabaseSecurityAlertPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseSecurityAlertPolicyResult.fromMap);
+}
+
 /// Gets a database's sql vulnerability assessment rule baseline.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -296,6 +373,17 @@ Future<GetDatabaseSqlVulnerabilityAssessmentRuleBaselineResult> getDatabaseSqlVu
   return GetDatabaseSqlVulnerabilityAssessmentRuleBaselineResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseSqlVulnerabilityAssessmentRuleBaselineResult> getDatabaseSqlVulnerabilityAssessmentRuleBaselineOutput(
+  GetDatabaseSqlVulnerabilityAssessmentRuleBaselineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getDatabaseSqlVulnerabilityAssessmentRuleBaseline',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseSqlVulnerabilityAssessmentRuleBaselineResult.fromMap);
+}
+
 /// Gets a database's threat detection policy.
 ///
 /// Uses Azure REST API version 2014-04-01.
@@ -312,6 +400,17 @@ Future<GetDatabaseThreatDetectionPolicyResult> getDatabaseThreatDetectionPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseThreatDetectionPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseThreatDetectionPolicyResult> getDatabaseThreatDetectionPolicyOutput(
+  GetDatabaseThreatDetectionPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getDatabaseThreatDetectionPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseThreatDetectionPolicyResult.fromMap);
 }
 
 /// Gets the database's vulnerability assessment.
@@ -334,6 +433,17 @@ Future<GetDatabaseVulnerabilityAssessmentResult> getDatabaseVulnerabilityAssessm
   return GetDatabaseVulnerabilityAssessmentResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseVulnerabilityAssessmentResult> getDatabaseVulnerabilityAssessmentOutput(
+  GetDatabaseVulnerabilityAssessmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getDatabaseVulnerabilityAssessment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseVulnerabilityAssessmentResult.fromMap);
+}
+
 /// Gets a database's vulnerability assessment rule baseline.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -354,6 +464,17 @@ Future<GetDatabaseVulnerabilityAssessmentRuleBaselineResult> getDatabaseVulnerab
   return GetDatabaseVulnerabilityAssessmentRuleBaselineResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseVulnerabilityAssessmentRuleBaselineResult> getDatabaseVulnerabilityAssessmentRuleBaselineOutput(
+  GetDatabaseVulnerabilityAssessmentRuleBaselineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getDatabaseVulnerabilityAssessmentRuleBaseline',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseVulnerabilityAssessmentRuleBaselineResult.fromMap);
+}
+
 /// Gets a disaster recovery configuration.
 ///
 /// Uses Azure REST API version 2014-04-01.
@@ -370,6 +491,17 @@ Future<GetDisasterRecoveryConfigurationResult> getDisasterRecoveryConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDisasterRecoveryConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetDisasterRecoveryConfigurationResult> getDisasterRecoveryConfigurationOutput(
+  GetDisasterRecoveryConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getDisasterRecoveryConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDisasterRecoveryConfigurationResult.fromMap);
 }
 
 /// Gets a distributed availability group info.
@@ -392,6 +524,17 @@ Future<GetDistributedAvailabilityGroupResult> getDistributedAvailabilityGroup(
   return GetDistributedAvailabilityGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetDistributedAvailabilityGroupResult> getDistributedAvailabilityGroupOutput(
+  GetDistributedAvailabilityGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getDistributedAvailabilityGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDistributedAvailabilityGroupResult.fromMap);
+}
+
 /// Gets an elastic pool.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -410,6 +553,17 @@ Future<GetElasticPoolResult> getElasticPool(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetElasticPoolResult.fromMap(result);
+}
+
+pulumi.Output<GetElasticPoolResult> getElasticPoolOutput(
+  GetElasticPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getElasticPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetElasticPoolResult.fromMap);
 }
 
 /// Gets a server encryption protector.
@@ -432,6 +586,17 @@ Future<GetEncryptionProtectorResult> getEncryptionProtector(
   return GetEncryptionProtectorResult.fromMap(result);
 }
 
+pulumi.Output<GetEncryptionProtectorResult> getEncryptionProtectorOutput(
+  GetEncryptionProtectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getEncryptionProtector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEncryptionProtectorResult.fromMap);
+}
+
 /// Gets an extended database's blob auditing policy.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -450,6 +615,17 @@ Future<GetExtendedDatabaseBlobAuditingPolicyResult> getExtendedDatabaseBlobAudit
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExtendedDatabaseBlobAuditingPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetExtendedDatabaseBlobAuditingPolicyResult> getExtendedDatabaseBlobAuditingPolicyOutput(
+  GetExtendedDatabaseBlobAuditingPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getExtendedDatabaseBlobAuditingPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExtendedDatabaseBlobAuditingPolicyResult.fromMap);
 }
 
 /// Gets an extended server's blob auditing policy.
@@ -472,6 +648,17 @@ Future<GetExtendedServerBlobAuditingPolicyResult> getExtendedServerBlobAuditingP
   return GetExtendedServerBlobAuditingPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetExtendedServerBlobAuditingPolicyResult> getExtendedServerBlobAuditingPolicyOutput(
+  GetExtendedServerBlobAuditingPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getExtendedServerBlobAuditingPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExtendedServerBlobAuditingPolicyResult.fromMap);
+}
+
 /// Gets a failover group.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -490,6 +677,17 @@ Future<GetFailoverGroupResult> getFailoverGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFailoverGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetFailoverGroupResult> getFailoverGroupOutput(
+  GetFailoverGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getFailoverGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFailoverGroupResult.fromMap);
 }
 
 /// Gets a firewall rule.
@@ -512,6 +710,17 @@ Future<GetFirewallRuleResult> getFirewallRule(
   return GetFirewallRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallRuleResult> getFirewallRuleOutput(
+  GetFirewallRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getFirewallRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallRuleResult.fromMap);
+}
+
 /// Gets a Geo backup policy for the given database resource.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -530,6 +739,17 @@ Future<GetGeoBackupPolicyResult> getGeoBackupPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGeoBackupPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetGeoBackupPolicyResult> getGeoBackupPolicyOutput(
+  GetGeoBackupPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getGeoBackupPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGeoBackupPolicyResult.fromMap);
 }
 
 /// Gets an IPv6 firewall rule.
@@ -552,6 +772,17 @@ Future<GetIPv6FirewallRuleResult> getIPv6FirewallRule(
   return GetIPv6FirewallRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetIPv6FirewallRuleResult> getIPv6FirewallRuleOutput(
+  GetIPv6FirewallRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getIPv6FirewallRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIPv6FirewallRuleResult.fromMap);
+}
+
 /// Gets a failover group.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -570,6 +801,17 @@ Future<GetInstanceFailoverGroupResult> getInstanceFailoverGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceFailoverGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceFailoverGroupResult> getInstanceFailoverGroupOutput(
+  GetInstanceFailoverGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getInstanceFailoverGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceFailoverGroupResult.fromMap);
 }
 
 /// Gets an instance pool.
@@ -592,6 +834,17 @@ Future<GetInstancePoolResult> getInstancePool(
   return GetInstancePoolResult.fromMap(result);
 }
 
+pulumi.Output<GetInstancePoolResult> getInstancePoolOutput(
+  GetInstancePoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getInstancePool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstancePoolResult.fromMap);
+}
+
 /// Gets a job.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -610,6 +863,17 @@ Future<GetJobResult> getJob(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetJobResult.fromMap(result);
+}
+
+pulumi.Output<GetJobResult> getJobOutput(
+  GetJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobResult.fromMap);
 }
 
 /// Gets a job agent.
@@ -632,6 +896,17 @@ Future<GetJobAgentResult> getJobAgent(
   return GetJobAgentResult.fromMap(result);
 }
 
+pulumi.Output<GetJobAgentResult> getJobAgentOutput(
+  GetJobAgentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getJobAgent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobAgentResult.fromMap);
+}
+
 /// Gets a jobs credential.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -650,6 +925,17 @@ Future<GetJobCredentialResult> getJobCredential(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetJobCredentialResult.fromMap(result);
+}
+
+pulumi.Output<GetJobCredentialResult> getJobCredentialOutput(
+  GetJobCredentialArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getJobCredential',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobCredentialResult.fromMap);
 }
 
 /// Gets a private endpoint.
@@ -672,6 +958,17 @@ Future<GetJobPrivateEndpointResult> getJobPrivateEndpoint(
   return GetJobPrivateEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetJobPrivateEndpointResult> getJobPrivateEndpointOutput(
+  GetJobPrivateEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getJobPrivateEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobPrivateEndpointResult.fromMap);
+}
+
 /// Gets a job step in a job's current version.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -690,6 +987,17 @@ Future<GetJobStepResult> getJobStep(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetJobStepResult.fromMap(result);
+}
+
+pulumi.Output<GetJobStepResult> getJobStepOutput(
+  GetJobStepArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getJobStep',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobStepResult.fromMap);
 }
 
 /// Gets a target group.
@@ -712,6 +1020,17 @@ Future<GetJobTargetGroupResult> getJobTargetGroup(
   return GetJobTargetGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetJobTargetGroupResult> getJobTargetGroupOutput(
+  GetJobTargetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getJobTargetGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobTargetGroupResult.fromMap);
+}
+
 /// Gets a database's long term retention policy.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -730,6 +1049,17 @@ Future<GetLongTermRetentionPolicyResult> getLongTermRetentionPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLongTermRetentionPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetLongTermRetentionPolicyResult> getLongTermRetentionPolicyOutput(
+  GetLongTermRetentionPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getLongTermRetentionPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLongTermRetentionPolicyResult.fromMap);
 }
 
 /// Gets a managed database.
@@ -752,6 +1082,17 @@ Future<GetManagedDatabaseResult> getManagedDatabase(
   return GetManagedDatabaseResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedDatabaseResult> getManagedDatabaseOutput(
+  GetManagedDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getManagedDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedDatabaseResult.fromMap);
+}
+
 /// Gets the sensitivity label of a given column
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -770,6 +1111,17 @@ Future<GetManagedDatabaseSensitivityLabelResult> getManagedDatabaseSensitivityLa
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedDatabaseSensitivityLabelResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedDatabaseSensitivityLabelResult> getManagedDatabaseSensitivityLabelOutput(
+  GetManagedDatabaseSensitivityLabelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getManagedDatabaseSensitivityLabel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedDatabaseSensitivityLabelResult.fromMap);
 }
 
 /// Gets the database's vulnerability assessment.
@@ -792,6 +1144,17 @@ Future<GetManagedDatabaseVulnerabilityAssessmentResult> getManagedDatabaseVulner
   return GetManagedDatabaseVulnerabilityAssessmentResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedDatabaseVulnerabilityAssessmentResult> getManagedDatabaseVulnerabilityAssessmentOutput(
+  GetManagedDatabaseVulnerabilityAssessmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getManagedDatabaseVulnerabilityAssessment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedDatabaseVulnerabilityAssessmentResult.fromMap);
+}
+
 /// Gets a database's vulnerability assessment rule baseline.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -810,6 +1173,17 @@ Future<GetManagedDatabaseVulnerabilityAssessmentRuleBaselineResult> getManagedDa
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedDatabaseVulnerabilityAssessmentRuleBaselineResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedDatabaseVulnerabilityAssessmentRuleBaselineResult> getManagedDatabaseVulnerabilityAssessmentRuleBaselineOutput(
+  GetManagedDatabaseVulnerabilityAssessmentRuleBaselineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getManagedDatabaseVulnerabilityAssessmentRuleBaseline',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedDatabaseVulnerabilityAssessmentRuleBaselineResult.fromMap);
 }
 
 /// Gets a managed instance.
@@ -832,6 +1206,17 @@ Future<GetManagedInstanceResult> getManagedInstance(
   return GetManagedInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedInstanceResult> getManagedInstanceOutput(
+  GetManagedInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getManagedInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedInstanceResult.fromMap);
+}
+
 /// Gets a managed instance administrator.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -850,6 +1235,17 @@ Future<GetManagedInstanceAdministratorResult> getManagedInstanceAdministrator(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedInstanceAdministratorResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedInstanceAdministratorResult> getManagedInstanceAdministratorOutput(
+  GetManagedInstanceAdministratorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getManagedInstanceAdministrator',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedInstanceAdministratorResult.fromMap);
 }
 
 /// Gets a specific Azure Active Directory only authentication property.
@@ -872,6 +1268,17 @@ Future<GetManagedInstanceAzureADOnlyAuthenticationResult> getManagedInstanceAzur
   return GetManagedInstanceAzureADOnlyAuthenticationResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedInstanceAzureADOnlyAuthenticationResult> getManagedInstanceAzureADOnlyAuthenticationOutput(
+  GetManagedInstanceAzureADOnlyAuthenticationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getManagedInstanceAzureADOnlyAuthentication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedInstanceAzureADOnlyAuthenticationResult.fromMap);
+}
+
 /// Gets a managed instance key.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -890,6 +1297,17 @@ Future<GetManagedInstanceKeyResult> getManagedInstanceKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedInstanceKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedInstanceKeyResult> getManagedInstanceKeyOutput(
+  GetManagedInstanceKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getManagedInstanceKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedInstanceKeyResult.fromMap);
 }
 
 /// Gets a managed database's long term retention policy.
@@ -912,6 +1330,17 @@ Future<GetManagedInstanceLongTermRetentionPolicyResult> getManagedInstanceLongTe
   return GetManagedInstanceLongTermRetentionPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedInstanceLongTermRetentionPolicyResult> getManagedInstanceLongTermRetentionPolicyOutput(
+  GetManagedInstanceLongTermRetentionPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getManagedInstanceLongTermRetentionPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedInstanceLongTermRetentionPolicyResult.fromMap);
+}
+
 /// Gets a private endpoint connection.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -930,6 +1359,17 @@ Future<GetManagedInstancePrivateEndpointConnectionResult> getManagedInstancePriv
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedInstancePrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedInstancePrivateEndpointConnectionResult> getManagedInstancePrivateEndpointConnectionOutput(
+  GetManagedInstancePrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getManagedInstancePrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedInstancePrivateEndpointConnectionResult.fromMap);
 }
 
 /// Gets the managed instance's vulnerability assessment.
@@ -952,6 +1392,17 @@ Future<GetManagedInstanceVulnerabilityAssessmentResult> getManagedInstanceVulner
   return GetManagedInstanceVulnerabilityAssessmentResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedInstanceVulnerabilityAssessmentResult> getManagedInstanceVulnerabilityAssessmentOutput(
+  GetManagedInstanceVulnerabilityAssessmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getManagedInstanceVulnerabilityAssessment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedInstanceVulnerabilityAssessmentResult.fromMap);
+}
+
 /// Gets a server DNS alias.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -970,6 +1421,17 @@ Future<GetManagedServerDnsAliasResult> getManagedServerDnsAlias(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedServerDnsAliasResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedServerDnsAliasResult> getManagedServerDnsAliasOutput(
+  GetManagedServerDnsAliasArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getManagedServerDnsAlias',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedServerDnsAliasResult.fromMap);
 }
 
 /// Gets an outbound firewall rule.
@@ -992,6 +1454,17 @@ Future<GetOutboundFirewallRuleResult> getOutboundFirewallRule(
   return GetOutboundFirewallRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetOutboundFirewallRuleResult> getOutboundFirewallRuleOutput(
+  GetOutboundFirewallRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getOutboundFirewallRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOutboundFirewallRuleResult.fromMap);
+}
+
 /// Gets a private endpoint connection.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -1010,6 +1483,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Gets a replication link.
@@ -1032,6 +1516,17 @@ Future<GetReplicationLinkResult> getReplicationLink(
   return GetReplicationLinkResult.fromMap(result);
 }
 
+pulumi.Output<GetReplicationLinkResult> getReplicationLinkOutput(
+  GetReplicationLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getReplicationLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationLinkResult.fromMap);
+}
+
 /// Gets the sensitivity label of a given column
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -1050,6 +1545,17 @@ Future<GetSensitivityLabelResult> getSensitivityLabel(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSensitivityLabelResult.fromMap(result);
+}
+
+pulumi.Output<GetSensitivityLabelResult> getSensitivityLabelOutput(
+  GetSensitivityLabelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getSensitivityLabel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSensitivityLabelResult.fromMap);
 }
 
 /// Gets a server.
@@ -1072,6 +1578,17 @@ Future<GetServerResult> getServer(
   return GetServerResult.fromMap(result);
 }
 
+pulumi.Output<GetServerResult> getServerOutput(
+  GetServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerResult.fromMap);
+}
+
 /// Gets a server advisor.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -1090,6 +1607,17 @@ Future<GetServerAdvisorResult> getServerAdvisor(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerAdvisorResult.fromMap(result);
+}
+
+pulumi.Output<GetServerAdvisorResult> getServerAdvisorOutput(
+  GetServerAdvisorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getServerAdvisor',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerAdvisorResult.fromMap);
 }
 
 /// Gets a Azure Active Directory administrator.
@@ -1112,6 +1640,17 @@ Future<GetServerAzureADAdministratorResult> getServerAzureADAdministrator(
   return GetServerAzureADAdministratorResult.fromMap(result);
 }
 
+pulumi.Output<GetServerAzureADAdministratorResult> getServerAzureADAdministratorOutput(
+  GetServerAzureADAdministratorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getServerAzureADAdministrator',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerAzureADAdministratorResult.fromMap);
+}
+
 /// Gets a specific Azure Active Directory only authentication property.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -1130,6 +1669,17 @@ Future<GetServerAzureADOnlyAuthenticationResult> getServerAzureADOnlyAuthenticat
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerAzureADOnlyAuthenticationResult.fromMap(result);
+}
+
+pulumi.Output<GetServerAzureADOnlyAuthenticationResult> getServerAzureADOnlyAuthenticationOutput(
+  GetServerAzureADOnlyAuthenticationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getServerAzureADOnlyAuthentication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerAzureADOnlyAuthenticationResult.fromMap);
 }
 
 /// Gets a server's blob auditing policy.
@@ -1152,6 +1702,17 @@ Future<GetServerBlobAuditingPolicyResult> getServerBlobAuditingPolicy(
   return GetServerBlobAuditingPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetServerBlobAuditingPolicyResult> getServerBlobAuditingPolicyOutput(
+  GetServerBlobAuditingPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getServerBlobAuditingPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerBlobAuditingPolicyResult.fromMap);
+}
+
 /// Returns a server communication link.
 ///
 /// Uses Azure REST API version 2014-04-01.
@@ -1168,6 +1729,17 @@ Future<GetServerCommunicationLinkResult> getServerCommunicationLink(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerCommunicationLinkResult.fromMap(result);
+}
+
+pulumi.Output<GetServerCommunicationLinkResult> getServerCommunicationLinkOutput(
+  GetServerCommunicationLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getServerCommunicationLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerCommunicationLinkResult.fromMap);
 }
 
 /// Gets a server DNS alias.
@@ -1190,6 +1762,17 @@ Future<GetServerDnsAliasResult> getServerDnsAlias(
   return GetServerDnsAliasResult.fromMap(result);
 }
 
+pulumi.Output<GetServerDnsAliasResult> getServerDnsAliasOutput(
+  GetServerDnsAliasArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getServerDnsAlias',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerDnsAliasResult.fromMap);
+}
+
 /// Gets a server key.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -1208,6 +1791,17 @@ Future<GetServerKeyResult> getServerKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetServerKeyResult> getServerKeyOutput(
+  GetServerKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getServerKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerKeyResult.fromMap);
 }
 
 /// Get a server's security alert policy.
@@ -1230,6 +1824,17 @@ Future<GetServerSecurityAlertPolicyResult> getServerSecurityAlertPolicy(
   return GetServerSecurityAlertPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetServerSecurityAlertPolicyResult> getServerSecurityAlertPolicyOutput(
+  GetServerSecurityAlertPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getServerSecurityAlertPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerSecurityAlertPolicyResult.fromMap);
+}
+
 /// Gets a server trust certificate that was uploaded from SQL Server to SQL Managed Instance.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -1248,6 +1853,17 @@ Future<GetServerTrustCertificateResult> getServerTrustCertificate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerTrustCertificateResult.fromMap(result);
+}
+
+pulumi.Output<GetServerTrustCertificateResult> getServerTrustCertificateOutput(
+  GetServerTrustCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getServerTrustCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerTrustCertificateResult.fromMap);
 }
 
 /// Gets a server trust group.
@@ -1270,6 +1886,17 @@ Future<GetServerTrustGroupResult> getServerTrustGroup(
   return GetServerTrustGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetServerTrustGroupResult> getServerTrustGroupOutput(
+  GetServerTrustGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getServerTrustGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerTrustGroupResult.fromMap);
+}
+
 /// Gets the server's vulnerability assessment.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -1288,6 +1915,17 @@ Future<GetServerVulnerabilityAssessmentResult> getServerVulnerabilityAssessment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerVulnerabilityAssessmentResult.fromMap(result);
+}
+
+pulumi.Output<GetServerVulnerabilityAssessmentResult> getServerVulnerabilityAssessmentOutput(
+  GetServerVulnerabilityAssessmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getServerVulnerabilityAssessment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerVulnerabilityAssessmentResult.fromMap);
 }
 
 /// Gets a system database's sql vulnerability assessment rule baseline.
@@ -1310,6 +1948,17 @@ Future<GetSqlVulnerabilityAssessmentRuleBaselineResult> getSqlVulnerabilityAsses
   return GetSqlVulnerabilityAssessmentRuleBaselineResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlVulnerabilityAssessmentRuleBaselineResult> getSqlVulnerabilityAssessmentRuleBaselineOutput(
+  GetSqlVulnerabilityAssessmentRuleBaselineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getSqlVulnerabilityAssessmentRuleBaseline',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlVulnerabilityAssessmentRuleBaselineResult.fromMap);
+}
+
 /// Gets SQL Vulnerability Assessment policy.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -1328,6 +1977,17 @@ Future<GetSqlVulnerabilityAssessmentsSettingResult> getSqlVulnerabilityAssessmen
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSqlVulnerabilityAssessmentsSettingResult.fromMap(result);
+}
+
+pulumi.Output<GetSqlVulnerabilityAssessmentsSettingResult> getSqlVulnerabilityAssessmentsSettingOutput(
+  GetSqlVulnerabilityAssessmentsSettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getSqlVulnerabilityAssessmentsSetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlVulnerabilityAssessmentsSettingResult.fromMap);
 }
 
 /// Gets the managed instance's Start/Stop schedule.
@@ -1350,6 +2010,17 @@ Future<GetStartStopManagedInstanceScheduleResult> getStartStopManagedInstanceSch
   return GetStartStopManagedInstanceScheduleResult.fromMap(result);
 }
 
+pulumi.Output<GetStartStopManagedInstanceScheduleResult> getStartStopManagedInstanceScheduleOutput(
+  GetStartStopManagedInstanceScheduleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getStartStopManagedInstanceSchedule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStartStopManagedInstanceScheduleResult.fromMap);
+}
+
 /// Gets a sync agent.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -1368,6 +2039,17 @@ Future<GetSyncAgentResult> getSyncAgent(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSyncAgentResult.fromMap(result);
+}
+
+pulumi.Output<GetSyncAgentResult> getSyncAgentOutput(
+  GetSyncAgentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getSyncAgent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSyncAgentResult.fromMap);
 }
 
 /// Gets a sync group.
@@ -1390,6 +2072,17 @@ Future<GetSyncGroupResult> getSyncGroup(
   return GetSyncGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetSyncGroupResult> getSyncGroupOutput(
+  GetSyncGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getSyncGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSyncGroupResult.fromMap);
+}
+
 /// Gets a sync member.
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -1408,6 +2101,17 @@ Future<GetSyncMemberResult> getSyncMember(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSyncMemberResult.fromMap(result);
+}
+
+pulumi.Output<GetSyncMemberResult> getSyncMemberOutput(
+  GetSyncMemberArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getSyncMember',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSyncMemberResult.fromMap);
 }
 
 /// Gets a logical database's transparent data encryption.
@@ -1430,6 +2134,17 @@ Future<GetTransparentDataEncryptionResult> getTransparentDataEncryption(
   return GetTransparentDataEncryptionResult.fromMap(result);
 }
 
+pulumi.Output<GetTransparentDataEncryptionResult> getTransparentDataEncryptionOutput(
+  GetTransparentDataEncryptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getTransparentDataEncryption',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTransparentDataEncryptionResult.fromMap);
+}
+
 /// Gets a virtual cluster.
 ///
 /// Uses Azure REST API version 2024-11-01-preview.
@@ -1448,6 +2163,17 @@ Future<GetVirtualClusterResult> getVirtualCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualClusterResult> getVirtualClusterOutput(
+  GetVirtualClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getVirtualCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualClusterResult.fromMap);
 }
 
 /// Gets a virtual network rule.
@@ -1470,6 +2196,17 @@ Future<GetVirtualNetworkRuleResult> getVirtualNetworkRule(
   return GetVirtualNetworkRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualNetworkRuleResult> getVirtualNetworkRuleOutput(
+  GetVirtualNetworkRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getVirtualNetworkRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkRuleResult.fromMap);
+}
+
 /// Gets a workload classifier
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -1490,6 +2227,17 @@ Future<GetWorkloadClassifierResult> getWorkloadClassifier(
   return GetWorkloadClassifierResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkloadClassifierResult> getWorkloadClassifierOutput(
+  GetWorkloadClassifierArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getWorkloadClassifier',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadClassifierResult.fromMap);
+}
+
 /// Gets a workload group
 ///
 /// Uses Azure REST API version 2023-08-01.
@@ -1508,4 +2256,15 @@ Future<GetWorkloadGroupResult> getWorkloadGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkloadGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkloadGroupResult> getWorkloadGroupOutput(
+  GetWorkloadGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sql:getWorkloadGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadGroupResult.fromMap);
 }

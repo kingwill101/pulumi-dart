@@ -6,11 +6,11 @@ import 'route_target_information_response.dart';
 /// Option B configuration.
 class L3OptionBPropertiesResponse {
   /// RouteTargets to be applied. This is used for the backward compatibility.
-  final pulumi.Input<List<String>>? exportRouteTargets;
+  final pulumi.Input<List<String>?>? exportRouteTargets;
   /// RouteTargets to be applied. This is used for the backward compatibility.
-  final pulumi.Input<List<String>>? importRouteTargets;
+  final pulumi.Input<List<String>?>? importRouteTargets;
   /// RouteTargets to be applied.
-  final pulumi.Input<RouteTargetInformationResponse>? routeTargets;
+  final pulumi.Input<RouteTargetInformationResponse?>? routeTargets;
 
   /// Creates a new [L3OptionBPropertiesResponse].
   /// [exportRouteTargets] RouteTargets to be applied. This is used for the backward compatibility.

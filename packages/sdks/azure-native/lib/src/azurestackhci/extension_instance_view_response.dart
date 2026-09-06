@@ -6,13 +6,13 @@ import 'extension_instance_view_response_status.dart';
 /// Describes the Extension Instance View.
 class ExtensionInstanceViewResponse {
   /// The extension name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Instance view status.
-  final pulumi.Input<ExtensionInstanceViewResponseStatus>? status;
+  final pulumi.Input<ExtensionInstanceViewResponseStatus?>? status;
   /// Specifies the type of the extension; an example is "MicrosoftMonitoringAgent".
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Specifies the version of the script handler.
-  final pulumi.Input<String>? typeHandlerVersion;
+  final pulumi.Input<String?>? typeHandlerVersion;
 
   /// Creates a new [ExtensionInstanceViewResponse].
   /// [name] The extension name.

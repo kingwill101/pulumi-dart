@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The parameter tier.
-enum Tier {
+enum Tier implements pulumi.PulumiEnum<String> {
   advanced("Advanced"),
   intelligentTiering("Intelligent-Tiering"),
   standard("Standard");
 
   const Tier(this.wireValue);
+  @override
   final String wireValue;
 
   static Tier fromValue(String value) {

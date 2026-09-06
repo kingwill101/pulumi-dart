@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Performance tier
-enum PerformanceTier {
+enum PerformanceTier implements pulumi.PulumiEnum<String> {
   undefined("Undefined"),
   basic("Basic"),
   standard("Standard"),
@@ -7,6 +9,7 @@ enum PerformanceTier {
   ultra("Ultra");
 
   const PerformanceTier(this.wireValue);
+  @override
   final String wireValue;
 
   static PerformanceTier fromValue(String value) {

@@ -6,17 +6,17 @@ import 'attachment_status_enum_value.dart';
 /// Definition of EbsInstanceBlockDevice
 class EbsInstanceBlockDevice {
   /// &lt;p&gt;The ARN of the Amazon ECS or Fargate task to which the volume is attached.&lt;/p&gt;
-  final pulumi.Input<String>? associatedResource;
+  final pulumi.Input<String?>? associatedResource;
   /// &lt;p&gt;The time stamp when the attachment initiated.&lt;/p&gt;
-  final pulumi.Input<String>? attachTime;
+  final pulumi.Input<String?>? attachTime;
   /// &lt;p&gt;Indicates whether the volume is deleted on instance termination.&lt;/p&gt;
-  final pulumi.Input<bool>? deleteOnTermination;
+  final pulumi.Input<bool?>? deleteOnTermination;
   /// &lt;p&gt;The attachment state.&lt;/p&gt;
-  final pulumi.Input<AttachmentStatusEnumValue>? status;
+  final pulumi.Input<AttachmentStatusEnumValue?>? status;
   /// &lt;p&gt;The ID of the EBS volume.&lt;/p&gt;
-  final pulumi.Input<String>? volumeId;
+  final pulumi.Input<String?>? volumeId;
   /// &lt;p&gt;The ID of the Amazon Web Services account that owns the volume.&lt;/p&gt; &lt;p&gt;This parameter is returned only for volumes that are attached to Fargate tasks.&lt;/p&gt;
-  final pulumi.Input<String>? volumeOwnerId;
+  final pulumi.Input<String?>? volumeOwnerId;
 
   /// Creates a new [EbsInstanceBlockDevice].
   /// [associatedResource] &lt;p&gt;The ARN of the Amazon ECS or Fargate task to which the volume is attached.&lt;/p&gt;

@@ -7,13 +7,13 @@ class ExportDeliveryDestinationResponse {
   /// The name of the container where exports will be uploaded. If the container does not exist it will be created.
   final pulumi.Input<String> container;
   /// The resource id of the storage account where exports will be delivered. This is not required if a sasToken and storageAccount are specified.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// The name of the directory where exports will be uploaded.
-  final pulumi.Input<String>? rootFolderPath;
+  final pulumi.Input<String?>? rootFolderPath;
   /// A SAS token for the storage account. For a restricted set of Azure customers this together with storageAccount can be specified instead of resourceId. Note: the value returned by the API for this property will always be obfuscated. Returning this same obfuscated value will not result in the SAS token being updated. To update this value a new SAS token must be specified.
-  final pulumi.Input<String>? sasToken;
+  final pulumi.Input<String?>? sasToken;
   /// The storage account where exports will be uploaded. For a restricted set of Azure customers this together with sasToken can be specified instead of resourceId.
-  final pulumi.Input<String>? storageAccount;
+  final pulumi.Input<String?>? storageAccount;
 
   /// Creates a new [ExportDeliveryDestinationResponse].
   /// [container] The name of the container where exports will be uploaded. If the container does not exist it will be created.

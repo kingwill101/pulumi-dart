@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Marketplace Subscription
 class MarketplaceSaaSInfoResponseMarketplaceSubscription {
   /// Marketplace Subscription Id. This is a GUID-formatted string.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [MarketplaceSaaSInfoResponseMarketplaceSubscription].
   /// [id] Marketplace Subscription Id. This is a GUID-formatted string.

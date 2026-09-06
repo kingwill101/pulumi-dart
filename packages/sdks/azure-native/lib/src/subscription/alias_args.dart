@@ -9,9 +9,9 @@ import 'put_alias_request_properties.dart';
 /// {@macro pulumi_subscription_alias_args_doc}
 class AliasArgs {
   /// AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
-  final pulumi.Input<String>? aliasName;
+  final pulumi.Input<String?>? aliasName;
   /// Put alias request properties.
-  final pulumi.Input<PutAliasRequestProperties>? properties;
+  final pulumi.Input<PutAliasRequestProperties?>? properties;
 
   /// Creates a new [AliasArgs].
   /// [aliasName] AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.

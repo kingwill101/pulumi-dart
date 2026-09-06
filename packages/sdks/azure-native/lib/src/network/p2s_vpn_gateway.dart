@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'p2_sconnection_configuration_response.dart';
 import 'p2s_vpn_gateway_args.dart';
 import 'sub_resource_response.dart';
 import 'vpn_client_connection_health_response.dart';
@@ -492,7 +493,7 @@ class P2sVpnGateway extends pulumi.CustomResource {
   /// Resource name.
   late final pulumi.Output<String> name;
   /// List of all p2s connection configurations of the gateway.
-  late final pulumi.Output<List<Map<String, dynamic>>?> p2SConnectionConfigurations;
+  late final pulumi.Output<List<P2SConnectionConfigurationResponse>?> p2SConnectionConfigurations;
   /// The provisioning state of the P2S VPN gateway resource.
   late final pulumi.Output<String> provisioningState;
   /// Resource tags.
@@ -523,14 +524,39 @@ class P2sVpnGateway extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    customDnsServers = registerOutput<List<String>?>('customDnsServers');
+    customDnsServers = registerOutput<List<String>?>('customDnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     etag = registerOutput<String>('etag');
     isRoutingPreferenceInternet = registerOutput<bool?>('isRoutingPreferenceInternet');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    p2SConnectionConfigurations = registerOutput<List<Map<String, dynamic>>?>('p2SConnectionConfigurations');
+    p2SConnectionConfigurations = registerOutput<List<P2SConnectionConfigurationResponse>?>('p2SConnectionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<P2SConnectionConfigurationResponse>(guardedValue, (value) => P2SConnectionConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    virtualHub = registerOutput<SubResourceResponse?>('virtualHub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpnClientConnectionHealth = registerOutput<VpnClientConnectionHealthResponse>('vpnClientConnectionHealth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnClientConnectionHealthResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vpnGatewayScaleUnit = registerOutput<int?>('vpnGatewayScaleUnit');
+    vpnServerConfiguration = registerOutput<SubResourceResponse?>('vpnServerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [P2sVpnGateway] resource.
+  P2sVpnGateway.reference(String urn)
+    : super(
+        'azure-native:network:P2sVpnGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customDnsServers = registerOutput<List<String>?>('customDnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    etag = registerOutput<String>('etag');
+    isRoutingPreferenceInternet = registerOutput<bool?>('isRoutingPreferenceInternet');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    p2SConnectionConfigurations = registerOutput<List<P2SConnectionConfigurationResponse>?>('p2SConnectionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<P2SConnectionConfigurationResponse>(guardedValue, (value) => P2SConnectionConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     virtualHub = registerOutput<SubResourceResponse?>('virtualHub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpnClientConnectionHealth = registerOutput<VpnClientConnectionHealthResponse>('vpnClientConnectionHealth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpnClientConnectionHealthResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

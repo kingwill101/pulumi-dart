@@ -6,11 +6,11 @@ import 'scale_rule_auth.dart';
 /// Azure Spring Apps App Instance Azure Queue based scaling rule.
 class QueueScaleRule {
   /// Authentication secrets for the queue scale rule.
-  final pulumi.Input<List<ScaleRuleAuth>>? auth;
+  final pulumi.Input<List<ScaleRuleAuth>?>? auth;
   /// Queue length.
-  final pulumi.Input<int>? queueLength;
+  final pulumi.Input<int?>? queueLength;
   /// Queue name.
-  final pulumi.Input<String>? queueName;
+  final pulumi.Input<String?>? queueName;
 
   /// Creates a new [QueueScaleRule].
   /// [auth] Authentication secrets for the queue scale rule.
@@ -33,7 +33,7 @@ class QueueScaleRule {
   factory QueueScaleRule.fromMap(Map<String, dynamic> map) {
     return QueueScaleRule(
       auth: (() { final guardedValue = map['auth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ScaleRuleAuth>(guardedValue, (value) => ScaleRuleAuth.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      queueLength: (() { final guardedValue = map['queueLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      queueLength: (() { final guardedValue = map['queueLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       queueName: (() { final guardedValue = map['queueName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

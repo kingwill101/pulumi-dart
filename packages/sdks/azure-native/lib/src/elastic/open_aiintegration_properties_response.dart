@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Open AI Integration details.
 class OpenAIIntegrationPropertiesResponse {
   /// Value of API key for Open AI resource
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Last Update Timestamp for key updation
   final pulumi.Input<String> lastRefreshAt;
   /// The API endpoint for Open AI resource
-  final pulumi.Input<String>? openAIResourceEndpoint;
+  final pulumi.Input<String?>? openAIResourceEndpoint;
   /// The resource name of Open AI resource
-  final pulumi.Input<String>? openAIResourceId;
+  final pulumi.Input<String?>? openAIResourceId;
 
   /// Creates a new [OpenAIIntegrationPropertiesResponse].
   /// [key] Value of API key for Open AI resource

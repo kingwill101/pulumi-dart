@@ -9,31 +9,31 @@ import 'system_data_response.dart';
 /// Result data returned by getPipeline.
 class GetPipelineResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Detailed description of the Pipeline.
   final String? description;
   /// Flag indicating whether the pipeline should be running or not.
-  final bool enabled;
+  final bool? enabled;
   /// Edge location of the resource.
-  final ExtendedLocationResponse extendedLocation;
+  final ExtendedLocationResponse? extendedLocation;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Information about where to pull input data from.
-  final PipelineInputResponse input;
+  final PipelineInputResponse? input;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The status of the last operation.
-  final String provisioningState;
+  final String? provisioningState;
   /// Map of stage ids to stage configurations for all pipeline processing and output stages.
-  final Map<String, PipelineStageResponse> stages;
+  final Map<String, PipelineStageResponse>? stages;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetPipelineResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -50,54 +50,54 @@ class GetPipelineResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetPipelineResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.description,
-    required this.enabled,
-    required this.extendedLocation,
-    required this.id,
-    required this.input,
-    required this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.stages,
-    required this.systemData,
+    this.enabled,
+    this.extendedLocation,
+    this.id,
+    this.input,
+    this.location,
+    this.name,
+    this.provisioningState,
+    this.stages,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
-      'enabled': enabled,
-      'extendedLocation': extendedLocation.toMap(),
-      'id': id,
-      'input': input.toMap(),
-      'location': location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'stages': pulumi.Input.encodeMapValues<PipelineStageResponse, Map<String, dynamic>>(stages, (value) => value.toMap()),
-      'systemData': systemData.toMap(),
+      'enabled': ?enabled,
+      'extendedLocation': ?extendedLocation?.toMap(),
+      'id': ?id,
+      'input': ?input?.toMap(),
+      'location': ?location,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'stages': ?(() { final guardedValue = stages; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<PipelineStageResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetPipelineResult.fromMap(Map<String, dynamic> map) {
     return GetPipelineResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      enabled: map['enabled'] as bool,
-      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      input: PipelineInputResponse.fromMap((map['input']! as Map).cast<String, dynamic>()),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      stages: pulumi.Input.decodeMapValues<PipelineStageResponse>(map['stages']!, (value) => PipelineStageResponse.fromMap((value as Map).cast<String, dynamic>())),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      input: (() { final guardedValue = map['input']; if (guardedValue == null) return null; return PipelineInputResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      stages: (() { final guardedValue = map['stages']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<PipelineStageResponse>(guardedValue, (value) => PipelineStageResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

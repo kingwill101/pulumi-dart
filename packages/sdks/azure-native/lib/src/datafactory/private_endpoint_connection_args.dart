@@ -11,9 +11,9 @@ class PrivateEndpointConnectionArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
   /// The private endpoint connection name.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// Core resource properties
-  final pulumi.Input<PrivateLinkConnectionApprovalRequest>? properties;
+  final pulumi.Input<PrivateLinkConnectionApprovalRequest?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

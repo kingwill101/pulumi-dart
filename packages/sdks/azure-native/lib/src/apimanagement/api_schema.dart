@@ -751,4 +751,23 @@ class ApiSchema extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     value = registerOutput<String?>('value');
   }
+
+  /// Creates a typed reference to an existing [ApiSchema] resource.
+  ApiSchema.reference(String urn)
+    : super(
+        'azure-native:apimanagement:ApiSchema',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    components = registerOutput<dynamic>('components');
+    contentType = registerOutput<String>('contentType');
+    definitions = registerOutput<dynamic>('definitions');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
+    value = registerOutput<String?>('value');
+  }
 }

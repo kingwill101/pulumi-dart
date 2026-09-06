@@ -11,7 +11,7 @@ class BudgetFilter {
   /// The logical "AND" expression. Must have at least 2 items.
   ///
   /// Supported for CategoryType(s): Cost.
-  final pulumi.Input<List<BudgetFilterProperties>>? and;
+  final pulumi.Input<List<BudgetFilterProperties>?>? and;
   /// Has comparison expression for a dimension.
   ///
   /// Supported for CategoryType(s): Cost, ReservationUtilization.
@@ -19,11 +19,11 @@ class BudgetFilter {
   /// Supported dimension names for **CategoryType: ReservationUtilization**
   /// - ReservationId
   /// - ReservedResourceType
-  final pulumi.Input<BudgetComparisonExpression>? dimensions;
+  final pulumi.Input<BudgetComparisonExpression?>? dimensions;
   /// Has comparison expression for a tag.
   ///
   /// Supported for CategoryType(s): Cost.
-  final pulumi.Input<BudgetComparisonExpression>? tags;
+  final pulumi.Input<BudgetComparisonExpression?>? tags;
 
   /// Creates a new [BudgetFilter].
   /// [and] The logical "AND" expression. Must have at least 2 items.

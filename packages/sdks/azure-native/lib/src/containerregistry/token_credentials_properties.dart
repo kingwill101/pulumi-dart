@@ -6,8 +6,8 @@ import 'token_password.dart';
 
 /// The properties of the credentials that can be used for authenticating the token.
 class TokenCredentialsProperties {
-  final pulumi.Input<List<TokenCertificate>>? certificates;
-  final pulumi.Input<List<TokenPassword>>? passwords;
+  final pulumi.Input<List<TokenCertificate>?>? certificates;
+  final pulumi.Input<List<TokenPassword>?>? passwords;
 
   /// Creates a new [TokenCredentialsProperties].
   /// [certificates] Optional.

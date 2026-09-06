@@ -7,9 +7,9 @@ class NetworkSecurityPerimeterResponse {
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
   /// Location of the Network Security Perimeter
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Guid of the Network Security Perimeter
-  final pulumi.Input<String>? perimeterGuid;
+  final pulumi.Input<String?>? perimeterGuid;
 
   /// Creates a new [NetworkSecurityPerimeterResponse].
   /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

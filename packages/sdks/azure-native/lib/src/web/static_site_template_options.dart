@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Template Options for the static site.
 class StaticSiteTemplateOptions {
   /// Description of the newly generated repository.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether or not the newly generated repository is a private repository. Defaults to false (i.e. public).
-  final pulumi.Input<bool>? isPrivate;
+  final pulumi.Input<bool?>? isPrivate;
   /// Owner of the newly generated repository.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// Name of the newly generated repository.
-  final pulumi.Input<String>? repositoryName;
+  final pulumi.Input<String?>? repositoryName;
   /// URL of the template repository. The newly generated repository will be based on this one.
-  final pulumi.Input<String>? templateRepositoryUrl;
+  final pulumi.Input<String?>? templateRepositoryUrl;
 
   /// Creates a new [StaticSiteTemplateOptions].
   /// [description] Description of the newly generated repository.

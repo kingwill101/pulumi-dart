@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An array of destination IPv4 Addresses or IPv6 Addresses.
 class NeighborGroupDestinationResponse {
   /// Array of IPv4 Addresses.
-  final pulumi.Input<List<String>>? ipv4Addresses;
+  final pulumi.Input<List<String>?>? ipv4Addresses;
   /// Array of IPv6 Addresses.
-  final pulumi.Input<List<String>>? ipv6Addresses;
+  final pulumi.Input<List<String>?>? ipv6Addresses;
 
   /// Creates a new [NeighborGroupDestinationResponse].
   /// [ipv4Addresses] Array of IPv4 Addresses.

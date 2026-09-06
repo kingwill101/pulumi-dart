@@ -6,21 +6,21 @@ import 'capture_identity_response.dart';
 /// Capture storage details for capture description
 class DestinationResponse {
   /// Blob naming convention for archive, e.g. {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}. Here all the parameters (Namespace,EventHub .. etc) are mandatory irrespective of order
-  final pulumi.Input<String>? archiveNameFormat;
+  final pulumi.Input<String?>? archiveNameFormat;
   /// Blob container Name
-  final pulumi.Input<String>? blobContainer;
+  final pulumi.Input<String?>? blobContainer;
   /// The Azure Data Lake Store name for the captured events
-  final pulumi.Input<String>? dataLakeAccountName;
+  final pulumi.Input<String?>? dataLakeAccountName;
   /// The destination folder path for the captured events
-  final pulumi.Input<String>? dataLakeFolderPath;
+  final pulumi.Input<String?>? dataLakeFolderPath;
   /// Subscription Id of Azure Data Lake Store
-  final pulumi.Input<String>? dataLakeSubscriptionId;
+  final pulumi.Input<String?>? dataLakeSubscriptionId;
   /// A value that indicates whether capture description is enabled.
-  final pulumi.Input<CaptureIdentityResponse>? identity;
+  final pulumi.Input<CaptureIdentityResponse?>? identity;
   /// Name for capture destination
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Resource id of the storage account to be used to create the blobs
-  final pulumi.Input<String>? storageAccountResourceId;
+  final pulumi.Input<String?>? storageAccountResourceId;
 
   /// Creates a new [DestinationResponse].
   /// [archiveNameFormat] Blob naming convention for archive, e.g. {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}. Here all the parameters (Namespace,EventHub .. etc) are mandatory irrespective of order

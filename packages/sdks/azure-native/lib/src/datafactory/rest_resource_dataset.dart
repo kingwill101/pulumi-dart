@@ -10,17 +10,17 @@ class RestResourceDataset {
   /// The additional HTTP headers in the request to the RESTful API.
   final pulumi.Input<dynamic>? additionalHeaders;
   /// List of tags that can be used for describing the Dataset.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// Dataset description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-  final pulumi.Input<DatasetFolder>? folder;
+  final pulumi.Input<DatasetFolder?>? folder;
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReference> linkedServiceName;
   /// The pagination rules to compose next page requests.
   final pulumi.Input<dynamic>? paginationRules;
   /// Parameters for dataset.
-  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>?>? parameters;
   /// The relative URL to the resource that the RESTful API provides. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? relativeUrl;
   /// The HTTP request body to the RESTful API if requestMethod is POST. Type: string (or Expression with resultType string).

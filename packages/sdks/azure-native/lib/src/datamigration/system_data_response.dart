@@ -3,12 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SystemDataResponse {
-  final pulumi.Input<String>? createdAt;
-  final pulumi.Input<String>? createdBy;
-  final pulumi.Input<String>? createdByType;
-  final pulumi.Input<String>? lastModifiedAt;
-  final pulumi.Input<String>? lastModifiedBy;
-  final pulumi.Input<String>? lastModifiedByType;
+  final pulumi.Input<String?>? createdAt;
+  final pulumi.Input<String?>? createdBy;
+  final pulumi.Input<String?>? createdByType;
+  final pulumi.Input<String?>? lastModifiedAt;
+  final pulumi.Input<String?>? lastModifiedBy;
+  final pulumi.Input<String?>? lastModifiedByType;
 
   /// Creates a new [SystemDataResponse].
   /// [createdAt] Optional.

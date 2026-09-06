@@ -8,25 +8,25 @@ import 'sql_connection_information.dart';
 /// Database Migration Resource properties for SQL Virtual Machine.
 class DatabaseMigrationPropertiesSqlVm {
   /// Backup configuration info.
-  final pulumi.Input<BackupConfiguration>? backupConfiguration;
+  final pulumi.Input<BackupConfiguration?>? backupConfiguration;
   /// Expected value is 'SqlVm'.
   final pulumi.Input<String> kind;
   /// ID for current migration operation.
-  final pulumi.Input<String>? migrationOperationId;
+  final pulumi.Input<String?>? migrationOperationId;
   /// Resource Id of the Migration Service.
-  final pulumi.Input<String>? migrationService;
+  final pulumi.Input<String?>? migrationService;
   /// Offline configuration.
-  final pulumi.Input<OfflineConfiguration>? offlineConfiguration;
+  final pulumi.Input<OfflineConfiguration?>? offlineConfiguration;
   /// Error message for migration provisioning failure, if any.
-  final pulumi.Input<String>? provisioningError;
+  final pulumi.Input<String?>? provisioningError;
   /// Resource Id of the target resource.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// Name of the source database.
-  final pulumi.Input<String>? sourceDatabaseName;
+  final pulumi.Input<String?>? sourceDatabaseName;
   /// Source SQL Server connection details.
-  final pulumi.Input<SqlConnectionInformation>? sourceSqlConnection;
+  final pulumi.Input<SqlConnectionInformation?>? sourceSqlConnection;
   /// Database collation to be used for the target database.
-  final pulumi.Input<String>? targetDatabaseCollation;
+  final pulumi.Input<String?>? targetDatabaseCollation;
 
   /// Creates a new [DatabaseMigrationPropertiesSqlVm].
   /// [backupConfiguration] Backup configuration info.

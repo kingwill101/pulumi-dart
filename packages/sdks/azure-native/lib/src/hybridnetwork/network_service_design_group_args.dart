@@ -9,17 +9,17 @@ import 'network_service_design_group_properties_format.dart';
 /// {@macro pulumi_hybridnetwork_network_service_design_group_args_doc}
 class NetworkServiceDesignGroupArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the network service design group.
-  final pulumi.Input<String>? networkServiceDesignGroupName;
+  final pulumi.Input<String?>? networkServiceDesignGroupName;
   /// network service design group properties.
-  final pulumi.Input<NetworkServiceDesignGroupPropertiesFormat>? properties;
+  final pulumi.Input<NetworkServiceDesignGroupPropertiesFormat?>? properties;
   /// The name of the publisher.
   final pulumi.Input<String> publisherName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkServiceDesignGroupArgs].
   /// [location] The geo-location where the resource lives

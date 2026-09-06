@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of a resource currently being monitored by the Elastic monitor resource.
 class MonitoredResourceResponse {
   /// The ARM id of the resource.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Reason for why the resource is sending logs (or why it is not sending).
-  final pulumi.Input<String>? reasonForLogsStatus;
+  final pulumi.Input<String?>? reasonForLogsStatus;
   /// Flag indicating the status of the resource for sending logs operation to Elastic.
-  final pulumi.Input<String>? sendingLogs;
+  final pulumi.Input<String?>? sendingLogs;
 
   /// Creates a new [MonitoredResourceResponse].
   /// [id] The ARM id of the resource.

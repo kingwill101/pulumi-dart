@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// RAI Custom Blocklist properties.
 class RaiBlocklistProperties {
   /// Description of the block list.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
 
   /// Creates a new [RaiBlocklistProperties].
   /// [description] Description of the block list.

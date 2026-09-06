@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'automatic_shortfall_suppress_reason_response.dart';
 import 'commitment_response.dart';
 import 'macc_args.dart';
+import 'macc_milestone_response.dart';
 import 'managed_service_identity_response.dart';
 import 'plan_response.dart';
 import 'shortfall_response.dart';
@@ -850,7 +851,7 @@ class Macc extends pulumi.CustomResource {
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
   late final pulumi.Output<String?> managedBy;
   /// List of milestones associated with this MACC.
-  late final pulumi.Output<List<Map<String, dynamic>>?> milestones;
+  late final pulumi.Output<List<MaccMilestoneResponse>?> milestones;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Plan for the resource.
@@ -910,7 +911,7 @@ class Macc extends pulumi.CustomResource {
     kind = registerOutput<String?>('kind');
     location = registerOutput<String>('location');
     managedBy = registerOutput<String?>('managedBy');
-    milestones = registerOutput<List<Map<String, dynamic>>?>('milestones');
+    milestones = registerOutput<List<MaccMilestoneResponse>?>('milestones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MaccMilestoneResponse>(guardedValue, (value) => MaccMilestoneResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     plan = registerOutput<PlanResponse?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     primaryBillingAccountResourceId = registerOutput<String?>('primaryBillingAccountResourceId');
@@ -924,7 +925,48 @@ class Macc extends pulumi.CustomResource {
     status = registerOutput<String?>('status');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemId = registerOutput<String?>('systemId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Macc] resource.
+  Macc.reference(String urn)
+    : super(
+        'azure-native:billingbenefits:Macc',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowContributors = registerOutput<bool?>('allowContributors');
+    automaticShortfall = registerOutput<String?>('automaticShortfall');
+    automaticShortfallSuppressReason = registerOutput<AutomaticShortfallSuppressReasonResponse?>('automaticShortfallSuppressReason', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomaticShortfallSuppressReasonResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    billingAccountResourceId = registerOutput<String?>('billingAccountResourceId');
+    commitment = registerOutput<CommitmentResponse?>('commitment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CommitmentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String?>('displayName');
+    endAt = registerOutput<String?>('endAt');
+    entityType = registerOutput<String>('entityType');
+    etag = registerOutput<String>('etag');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    managedBy = registerOutput<String?>('managedBy');
+    milestones = registerOutput<List<MaccMilestoneResponse>?>('milestones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MaccMilestoneResponse>(guardedValue, (value) => MaccMilestoneResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    plan = registerOutput<PlanResponse?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    primaryBillingAccountResourceId = registerOutput<String?>('primaryBillingAccountResourceId');
+    primaryResourceId = registerOutput<String?>('primaryResourceId');
+    productCode = registerOutput<String?>('productCode');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceId = registerOutput<String?>('resourceId');
+    shortfall = registerOutput<ShortfallResponse?>('shortfall', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ShortfallResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startAt = registerOutput<String?>('startAt');
+    status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemId = registerOutput<String?>('systemId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

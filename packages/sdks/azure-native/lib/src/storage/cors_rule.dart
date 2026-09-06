@@ -7,7 +7,7 @@ class CorsRule {
   /// Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request.
   final pulumi.Input<List<String>> allowedHeaders;
   /// Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin.
-  final pulumi.Input<List<String>> allowedMethods;
+  final pulumi.Input<List<dynamic>> allowedMethods;
   /// Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
   final pulumi.Input<List<String>> allowedOrigins;
   /// Required if CorsRule element is present. A list of response headers to expose to CORS clients.
@@ -42,10 +42,10 @@ class CorsRule {
   factory CorsRule.fromMap(Map<String, dynamic> map) {
     return CorsRule(
       allowedHeaders: pulumi.Input.fromValue((map['allowedHeaders'] as List).cast<String>()),
-      allowedMethods: pulumi.Input.fromValue((map['allowedMethods'] as List).cast<String>()),
+      allowedMethods: pulumi.Input.fromValue((map['allowedMethods'] as List).cast<dynamic>()),
       allowedOrigins: pulumi.Input.fromValue((map['allowedOrigins'] as List).cast<String>()),
       exposedHeaders: pulumi.Input.fromValue((map['exposedHeaders'] as List).cast<String>()),
-      maxAgeInSeconds: pulumi.Input.fromValue(map['maxAgeInSeconds'] as int),
+      maxAgeInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxAgeInSeconds'])),
     );
   }
 }

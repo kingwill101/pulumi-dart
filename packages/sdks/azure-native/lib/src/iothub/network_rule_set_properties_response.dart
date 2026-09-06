@@ -8,7 +8,7 @@ class NetworkRuleSetPropertiesResponse {
   /// If True, then Network Rule Set is also applied to BuiltIn EventHub EndPoint of IotHub
   final pulumi.Input<bool> applyToBuiltInEventHubEndpoint;
   /// Default Action for Network Rule Set
-  final pulumi.Input<String>? defaultAction;
+  final pulumi.Input<String?>? defaultAction;
   /// List of IP Rules
   final pulumi.Input<List<NetworkRuleSetIpRuleResponse>> ipRules;
 
@@ -16,11 +16,11 @@ class NetworkRuleSetPropertiesResponse {
   /// [applyToBuiltInEventHubEndpoint] If True, then Network Rule Set is also applied to BuiltIn EventHub EndPoint of IotHub
   /// [defaultAction] Default Action for Network Rule Set
   /// [ipRules] List of IP Rules
-  const NetworkRuleSetPropertiesResponse({
+  NetworkRuleSetPropertiesResponse({
     required this.applyToBuiltInEventHubEndpoint,
-    this.defaultAction,
+    pulumi.Input<String?>? defaultAction,
     required this.ipRules,
-  });
+  }) : defaultAction = defaultAction ?? pulumi.Input.fromValue('Deny');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

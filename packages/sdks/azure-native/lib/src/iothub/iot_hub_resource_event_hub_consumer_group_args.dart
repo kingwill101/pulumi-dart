@@ -11,7 +11,7 @@ class IotHubResourceEventHubConsumerGroupArgs {
   /// The name of the Event Hub-compatible endpoint in the IoT hub.
   final pulumi.Input<String> eventHubEndpointName;
   /// The name of the consumer group to add.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The EventHub consumer group name.
   final pulumi.Input<EventHubConsumerGroupName> properties;
   /// The name of the resource group that contains the IoT hub.

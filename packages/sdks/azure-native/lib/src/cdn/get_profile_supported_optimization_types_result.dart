@@ -4,23 +4,23 @@
 /// Result data returned by getProfileSupportedOptimizationTypes.
 class GetProfileSupportedOptimizationTypesResult {
   /// Supported optimization types for a profile.
-  final List<String> supportedOptimizationTypes;
+  final List<String>? supportedOptimizationTypes;
 
   /// Creates a new [GetProfileSupportedOptimizationTypesResult].
   /// [supportedOptimizationTypes] Supported optimization types for a profile.
   const GetProfileSupportedOptimizationTypesResult({
-    required this.supportedOptimizationTypes,
+    this.supportedOptimizationTypes,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'supportedOptimizationTypes': supportedOptimizationTypes,
+      'supportedOptimizationTypes': ?supportedOptimizationTypes,
     };
   }
 
   factory GetProfileSupportedOptimizationTypesResult.fromMap(Map<String, dynamic> map) {
     return GetProfileSupportedOptimizationTypesResult(
-      supportedOptimizationTypes: (map['supportedOptimizationTypes'] as List).cast<String>(),
+      supportedOptimizationTypes: (() { final guardedValue = map['supportedOptimizationTypes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }

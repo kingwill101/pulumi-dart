@@ -9,7 +9,7 @@ class AmlFilesystemResponseHsm {
   /// Archive status
   final pulumi.Input<List<AmlFilesystemArchiveResponse>> archiveStatus;
   /// Specifies HSM settings of the AML file system.
-  final pulumi.Input<AmlFilesystemHsmSettingsResponse>? settings;
+  final pulumi.Input<AmlFilesystemHsmSettingsResponse?>? settings;
 
   /// Creates a new [AmlFilesystemResponseHsm].
   /// [archiveStatus] Archive status

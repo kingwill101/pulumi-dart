@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Library requirements for a Big Data pool powered by Apache Spark
 class LibraryRequirements {
   /// The library requirements.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The filename of the library requirements file.
-  final pulumi.Input<String>? filename;
+  final pulumi.Input<String?>? filename;
 
   /// Creates a new [LibraryRequirements].
   /// [content] The library requirements.

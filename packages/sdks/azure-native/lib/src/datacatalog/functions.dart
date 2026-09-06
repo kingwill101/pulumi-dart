@@ -19,3 +19,14 @@ Future<GetADCCatalogResult> getADCCatalog(
   );
   return GetADCCatalogResult.fromMap(result);
 }
+
+pulumi.Output<GetADCCatalogResult> getADCCatalogOutput(
+  GetADCCatalogArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datacatalog:getADCCatalog',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetADCCatalogResult.fromMap);
+}

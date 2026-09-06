@@ -10,9 +10,9 @@ class DppIdentityDetailsResponse {
   /// A Globally Unique Identifier (GUID) that represents the Azure AD tenant where the resource is now a member.
   final pulumi.Input<String> tenantId;
   /// The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Gets or sets the user assigned identities.
-  final pulumi.Input<Map<String, UserAssignedIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [DppIdentityDetailsResponse].
   /// [principalId] The object ID of the service principal object for the managed identity that is used to grant role-based access to an Azure resource.

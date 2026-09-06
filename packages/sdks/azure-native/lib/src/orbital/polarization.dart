@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Polarization. e.g. (RHCP, LHCP).
-enum Polarization {
+enum Polarization implements pulumi.PulumiEnum<String> {
   valueRHCP("RHCP"),
   valueLHCP("LHCP"),
   valueLinearVertical("linearVertical"),
   valueLinearHorizontal("linearHorizontal");
 
   const Polarization(this.wireValue);
+  @override
   final String wireValue;
 
   static Polarization fromValue(String value) {

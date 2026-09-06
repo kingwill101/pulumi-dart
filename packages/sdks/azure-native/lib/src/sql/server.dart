@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_identity_response.dart';
 import 'server_args.dart';
 import 'server_external_administrator_response.dart';
+import 'server_private_endpoint_connection_response.dart';
 
 /// An Azure SQL Database server.
 ///
@@ -275,7 +276,7 @@ class Server extends pulumi.CustomResource {
   /// The resource id of a user assigned identity to be used by default.
   late final pulumi.Output<String?> primaryUserAssignedIdentityId;
   /// List of private endpoint connections on a server
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<ServerPrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// Whether or not public endpoint access is allowed for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled' or 'SecuredByPerimeter'
   late final pulumi.Output<String?> publicNetworkAccess;
   /// Whether or not to restrict outbound network access for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
@@ -319,11 +320,44 @@ class Server extends pulumi.CustomResource {
     minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
     this.name = registerOutput<String>('name');
     primaryUserAssignedIdentityId = registerOutput<String?>('primaryUserAssignedIdentityId');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<ServerPrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerPrivateEndpointConnectionResponse>(guardedValue, (value) => ServerPrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     restrictOutboundNetworkAccess = registerOutput<String?>('restrictOutboundNetworkAccess');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
+    workspaceFeature = registerOutput<String>('workspaceFeature');
+  }
+
+  /// Creates a typed reference to an existing [Server] resource.
+  Server.reference(String urn)
+    : super(
+        'azure-native:sql:Server',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    administratorLogin = registerOutput<String?>('administratorLogin');
+    administrators = registerOutput<ServerExternalAdministratorResponse?>('administrators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerExternalAdministratorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    externalGovernanceStatus = registerOutput<String>('externalGovernanceStatus');
+    federatedClientId = registerOutput<String?>('federatedClientId');
+    fullyQualifiedDomainName = registerOutput<String>('fullyQualifiedDomainName');
+    identity = registerOutput<ResourceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isIPv6Enabled = registerOutput<String?>('isIPv6Enabled');
+    keyId = registerOutput<String?>('keyId');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
+    this.name = registerOutput<String>('name');
+    primaryUserAssignedIdentityId = registerOutput<String?>('primaryUserAssignedIdentityId');
+    privateEndpointConnections = registerOutput<List<ServerPrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerPrivateEndpointConnectionResponse>(guardedValue, (value) => ServerPrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    restrictOutboundNetworkAccess = registerOutput<String?>('restrictOutboundNetworkAccess');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');
     workspaceFeature = registerOutput<String>('workspaceFeature');

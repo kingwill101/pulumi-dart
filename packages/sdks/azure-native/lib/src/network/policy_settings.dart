@@ -6,29 +6,29 @@ import 'policy_settings_log_scrubbing.dart';
 /// Defines contents of a web application firewall global configuration.
 class PolicySettings {
   /// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
-  final pulumi.Input<String>? customBlockResponseBody;
+  final pulumi.Input<String?>? customBlockResponseBody;
   /// If the action type is block, customer can override the response status code.
-  final pulumi.Input<int>? customBlockResponseStatusCode;
+  final pulumi.Input<int?>? customBlockResponseStatusCode;
   /// Whether allow WAF to enforce file upload limits.
-  final pulumi.Input<bool>? fileUploadEnforcement;
+  final pulumi.Input<bool?>? fileUploadEnforcement;
   /// Maximum file upload size in Mb for WAF.
-  final pulumi.Input<int>? fileUploadLimitInMb;
+  final pulumi.Input<int?>? fileUploadLimitInMb;
   /// Web Application Firewall JavaScript Challenge Cookie Expiration time in minutes.
-  final pulumi.Input<int>? jsChallengeCookieExpirationInMins;
+  final pulumi.Input<int?>? jsChallengeCookieExpirationInMins;
   /// To scrub sensitive log fields
-  final pulumi.Input<PolicySettingsLogScrubbing>? logScrubbing;
+  final pulumi.Input<PolicySettingsLogScrubbing?>? logScrubbing;
   /// Maximum request body size in Kb for WAF.
-  final pulumi.Input<int>? maxRequestBodySizeInKb;
+  final pulumi.Input<int?>? maxRequestBodySizeInKb;
   /// The mode of the policy.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<dynamic>? mode;
   /// Whether to allow WAF to check request Body.
-  final pulumi.Input<bool>? requestBodyCheck;
+  final pulumi.Input<bool?>? requestBodyCheck;
   /// Whether allow WAF to enforce request body limits.
-  final pulumi.Input<bool>? requestBodyEnforcement;
+  final pulumi.Input<bool?>? requestBodyEnforcement;
   /// Max inspection limit in KB for request body inspection for WAF.
-  final pulumi.Input<int>? requestBodyInspectLimitInKB;
+  final pulumi.Input<int?>? requestBodyInspectLimitInKB;
   /// The state of the policy.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
 
   /// Creates a new [PolicySettings].
   /// [customBlockResponseBody] If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
@@ -43,20 +43,20 @@ class PolicySettings {
   /// [requestBodyEnforcement] Whether allow WAF to enforce request body limits.
   /// [requestBodyInspectLimitInKB] Max inspection limit in KB for request body inspection for WAF.
   /// [state] The state of the policy.
-  const PolicySettings({
+  PolicySettings({
     this.customBlockResponseBody,
     this.customBlockResponseStatusCode,
-    this.fileUploadEnforcement,
+    pulumi.Input<bool?>? fileUploadEnforcement,
     this.fileUploadLimitInMb,
     this.jsChallengeCookieExpirationInMins,
     this.logScrubbing,
     this.maxRequestBodySizeInKb,
     this.mode,
     this.requestBodyCheck,
-    this.requestBodyEnforcement,
+    pulumi.Input<bool?>? requestBodyEnforcement,
     this.requestBodyInspectLimitInKB,
     this.state,
-  });
+  }) : fileUploadEnforcement = fileUploadEnforcement ?? pulumi.Input.fromValue(true), requestBodyEnforcement = requestBodyEnforcement ?? pulumi.Input.fromValue(true);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -78,17 +78,17 @@ class PolicySettings {
   factory PolicySettings.fromMap(Map<String, dynamic> map) {
     return PolicySettings(
       customBlockResponseBody: (() { final guardedValue = map['customBlockResponseBody']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      customBlockResponseStatusCode: (() { final guardedValue = map['customBlockResponseStatusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      customBlockResponseStatusCode: (() { final guardedValue = map['customBlockResponseStatusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       fileUploadEnforcement: (() { final guardedValue = map['fileUploadEnforcement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      fileUploadLimitInMb: (() { final guardedValue = map['fileUploadLimitInMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      jsChallengeCookieExpirationInMins: (() { final guardedValue = map['jsChallengeCookieExpirationInMins']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fileUploadLimitInMb: (() { final guardedValue = map['fileUploadLimitInMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      jsChallengeCookieExpirationInMins: (() { final guardedValue = map['jsChallengeCookieExpirationInMins']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       logScrubbing: (() { final guardedValue = map['logScrubbing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicySettingsLogScrubbing.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxRequestBodySizeInKb: (() { final guardedValue = map['maxRequestBodySizeInKb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxRequestBodySizeInKb: (() { final guardedValue = map['maxRequestBodySizeInKb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       requestBodyCheck: (() { final guardedValue = map['requestBodyCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       requestBodyEnforcement: (() { final guardedValue = map['requestBodyEnforcement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      requestBodyInspectLimitInKB: (() { final guardedValue = map['requestBodyInspectLimitInKB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestBodyInspectLimitInKB: (() { final guardedValue = map['requestBodyInspectLimitInKB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

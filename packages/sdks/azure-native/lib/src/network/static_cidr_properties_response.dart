@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of static CIDR resource.
 class StaticCidrPropertiesResponse {
   /// List of IP address prefixes of the resource.
-  final pulumi.Input<List<String>>? addressPrefixes;
-  final pulumi.Input<String>? description;
+  final pulumi.Input<List<String>?>? addressPrefixes;
+  final pulumi.Input<String?>? description;
   /// Number of IP addresses to allocate for a static CIDR resource. The IP addresses will be assigned based on IpamPools available space.
-  final pulumi.Input<String>? numberOfIPAddressesToAllocate;
+  final pulumi.Input<String?>? numberOfIPAddressesToAllocate;
   /// Provisioning states of a resource.
   final pulumi.Input<String> provisioningState;
   /// Total number of IP addresses allocated for the static CIDR resource.

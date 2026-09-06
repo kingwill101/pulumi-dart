@@ -11,25 +11,25 @@ import 'standard_assignment_properties_exemption_data.dart';
 /// {@macro pulumi_security_standard_assignment_args_doc}
 class StandardAssignmentArgs {
   /// Standard item with key as applied to this standard assignment over the given scope
-  final pulumi.Input<CommonAssignedStandardItem>? assignedStandard;
+  final pulumi.Input<CommonAssignedStandardItem?>? assignedStandard;
   /// Additional data about assignment that has Attest effect
-  final pulumi.Input<StandardAssignmentPropertiesAttestationData>? attestationData;
+  final pulumi.Input<StandardAssignmentPropertiesAttestationData?>? attestationData;
   /// Description of the standardAssignment
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name of the standardAssignment
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Expected effect of this assignment (Audit/Exempt/Attest)
-  final pulumi.Input<String>? effect;
+  final pulumi.Input<dynamic>? effect;
   /// Excluded scopes, filter out the descendants of the scope (on management scopes)
-  final pulumi.Input<List<String>>? excludedScopes;
+  final pulumi.Input<List<String>?>? excludedScopes;
   /// Additional data about assignment that has Exempt effect
-  final pulumi.Input<StandardAssignmentPropertiesExemptionData>? exemptionData;
+  final pulumi.Input<StandardAssignmentPropertiesExemptionData?>? exemptionData;
   /// Expiration date of this assignment as a full ISO date
-  final pulumi.Input<String>? expiresOn;
+  final pulumi.Input<String?>? expiresOn;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceId;
   /// The standard assignments assignment key - unique key for the standard assignment
-  final pulumi.Input<String>? standardAssignmentName;
+  final pulumi.Input<String?>? standardAssignmentName;
 
   /// Creates a new [StandardAssignmentArgs].
   /// [assignedStandard] Standard item with key as applied to this standard assignment over the given scope
@@ -76,7 +76,7 @@ class StandardAssignmentArgs {
       attestationData: (() { final guardedValue = map['attestationData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StandardAssignmentPropertiesAttestationData.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      effect: (() { final guardedValue = map['effect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      effect: (() { final guardedValue = map['effect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       excludedScopes: (() { final guardedValue = map['excludedScopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       exemptionData: (() { final guardedValue = map['exemptionData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StandardAssignmentPropertiesExemptionData.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       expiresOn: (() { final guardedValue = map['expiresOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

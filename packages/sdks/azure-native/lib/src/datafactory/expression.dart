@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Azure Data Factory expression definition.
 class Expression {
   /// Expression type.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
   /// Expression value.
   final pulumi.Input<String> value;
 
@@ -26,7 +26,7 @@ class Expression {
 
   factory Expression.fromMap(Map<String, dynamic> map) {
     return Expression(
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }

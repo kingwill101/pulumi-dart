@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The template deployment options.
 class ResourceProviderManifestPropertiesTemplateDeploymentOptionsResponse {
   /// The preflight options.
-  final pulumi.Input<List<String>>? preflightOptions;
+  final pulumi.Input<List<String>?>? preflightOptions;
   /// Whether preflight is supported.
-  final pulumi.Input<bool>? preflightSupported;
+  final pulumi.Input<bool?>? preflightSupported;
 
   /// Creates a new [ResourceProviderManifestPropertiesTemplateDeploymentOptionsResponse].
   /// [preflightOptions] The preflight options.

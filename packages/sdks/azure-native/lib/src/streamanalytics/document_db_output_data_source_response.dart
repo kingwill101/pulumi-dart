@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes a DocumentDB output data source.
 class DocumentDbOutputDataSourceResponse {
   /// The DocumentDB account name or ID. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// The account key for the DocumentDB account. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? accountKey;
+  final pulumi.Input<String?>? accountKey;
   /// The collection name pattern for the collections to be used. The collection name format can be constructed using the optional {partition} token, where partitions start from 0. See the DocumentDB section of https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for more information. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? collectionNamePattern;
+  final pulumi.Input<String?>? collectionNamePattern;
   /// The name of the DocumentDB database. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// The name of the field in output events used to specify the primary key which insert or update operations are based on.
-  final pulumi.Input<String>? documentId;
+  final pulumi.Input<String?>? documentId;
   /// The name of the field in output events used to specify the key for partitioning output across collections. If 'collectionNamePattern' contains the {partition} token, this property is required to be specified.
-  final pulumi.Input<String>? partitionKey;
+  final pulumi.Input<String?>? partitionKey;
   /// Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'Microsoft.Storage/DocumentDB'.
   final pulumi.Input<String> type;

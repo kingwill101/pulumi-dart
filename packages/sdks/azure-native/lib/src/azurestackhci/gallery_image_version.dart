@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies information about the gallery image version that you want to create or update.
 class GalleryImageVersion {
   /// This is the version of the gallery image.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GalleryImageVersion].
   /// [name] This is the version of the gallery image.

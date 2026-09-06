@@ -7,11 +7,11 @@ import 'soft_delete_settings_response.dart';
 /// Security Settings of the vault
 class SecuritySettingsResponse {
   /// Immutability Settings of a vault
-  final pulumi.Input<ImmutabilitySettingsResponse>? immutabilitySettings;
+  final pulumi.Input<ImmutabilitySettingsResponse?>? immutabilitySettings;
   /// MUA Settings of a vault
   final pulumi.Input<String> multiUserAuthorization;
   /// Soft delete Settings of a vault
-  final pulumi.Input<SoftDeleteSettingsResponse>? softDeleteSettings;
+  final pulumi.Input<SoftDeleteSettingsResponse?>? softDeleteSettings;
 
   /// Creates a new [SecuritySettingsResponse].
   /// [immutabilitySettings] Immutability Settings of a vault

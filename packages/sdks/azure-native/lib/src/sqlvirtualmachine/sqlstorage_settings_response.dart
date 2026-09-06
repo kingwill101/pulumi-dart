@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Set disk storage settings for SQL Server.
 class SQLStorageSettingsResponse {
   /// SQL Server default file path
-  final pulumi.Input<String>? defaultFilePath;
+  final pulumi.Input<String?>? defaultFilePath;
   /// Logical Unit Numbers for the disks.
-  final pulumi.Input<List<int>>? luns;
+  final pulumi.Input<List<int>?>? luns;
   /// Use storage pool to build a drive if true or not provided
-  final pulumi.Input<bool>? useStoragePool;
+  final pulumi.Input<bool?>? useStoragePool;
 
   /// Creates a new [SQLStorageSettingsResponse].
   /// [defaultFilePath] SQL Server default file path

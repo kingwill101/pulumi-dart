@@ -296,4 +296,25 @@ class Environment extends pulumi.CustomResource {
     title = registerOutput<String>('title');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [Environment] resource.
+  Environment.reference(String urn)
+    : super(
+        'azure-native:apicenter:Environment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customProperties = registerOutput<dynamic>('customProperties');
+    description = registerOutput<String?>('description');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    onboarding = registerOutput<OnboardingResponse?>('onboarding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OnboardingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    server = registerOutput<EnvironmentServerResponse?>('server', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentServerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    title = registerOutput<String>('title');
+    type = registerOutput<String>('type');
+  }
 }

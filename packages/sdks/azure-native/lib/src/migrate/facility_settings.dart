@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Facility settings.
 class FacilitySettings {
   /// The facilities cost.
-  final pulumi.Input<double>? facilitiesCostPerKwh;
+  final pulumi.Input<double?>? facilitiesCostPerKwh;
 
   /// Creates a new [FacilitySettings].
   /// [facilitiesCostPerKwh] The facilities cost.
@@ -21,7 +21,7 @@ class FacilitySettings {
 
   factory FacilitySettings.fromMap(Map<String, dynamic> map) {
     return FacilitySettings(
-      facilitiesCostPerKwh: (() { final guardedValue = map['facilitiesCostPerKwh']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      facilitiesCostPerKwh: (() { final guardedValue = map['facilitiesCostPerKwh']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

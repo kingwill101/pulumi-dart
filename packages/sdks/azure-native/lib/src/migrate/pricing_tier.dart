@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets pricing tier.
-enum PricingTier {
+enum PricingTier implements pulumi.PulumiEnum<String> {
   standard("Standard"),
   free("Free");
 
   const PricingTier(this.wireValue);
+  @override
   final String wireValue;
 
   static PricingTier fromValue(String value) {

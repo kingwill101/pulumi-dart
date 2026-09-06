@@ -6,9 +6,9 @@ import 'lifetime_action.dart';
 
 class RotationPolicy {
   /// The attributes of key rotation policy.
-  final pulumi.Input<KeyRotationPolicyAttributes>? attributes;
+  final pulumi.Input<KeyRotationPolicyAttributes?>? attributes;
   /// The lifetimeActions for key rotation action.
-  final pulumi.Input<List<LifetimeAction>>? lifetimeActions;
+  final pulumi.Input<List<LifetimeAction>?>? lifetimeActions;
 
   /// Creates a new [RotationPolicy].
   /// [attributes] The attributes of key rotation policy.

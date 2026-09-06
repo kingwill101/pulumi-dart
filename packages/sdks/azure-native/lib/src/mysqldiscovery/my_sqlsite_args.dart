@@ -11,19 +11,19 @@ class MySQLSiteArgs {
   /// The extended location.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The mapped master Site Id.
   final pulumi.Input<String> masterSiteId;
   /// The mapped migrate project Id.
   final pulumi.Input<String> migrateProjectId;
   /// Gets or sets the provisioning state.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<dynamic>? provisioningState;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of Site
-  final pulumi.Input<String>? siteName;
+  final pulumi.Input<String?>? siteName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [MySQLSiteArgs].
   /// [extendedLocation] The extended location.
@@ -64,7 +64,7 @@ class MySQLSiteArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       masterSiteId: pulumi.Input.fromValue(map['masterSiteId'] as String),
       migrateProjectId: pulumi.Input.fromValue(map['migrateProjectId'] as String),
-      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       siteName: (() { final guardedValue = map['siteName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

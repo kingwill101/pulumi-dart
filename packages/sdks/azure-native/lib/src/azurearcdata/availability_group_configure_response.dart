@@ -5,47 +5,47 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The specifications of the availability group replica configuration
 class AvailabilityGroupConfigureResponse {
   /// Property that determines whether a given availability replica can run in synchronous-commit mode
-  final pulumi.Input<String>? availabilityMode;
+  final pulumi.Input<String?>? availabilityMode;
   /// The Availability Synchronization mode of the availability group replica.
   final pulumi.Input<String> availabilityModeDescription;
   /// Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
-  final pulumi.Input<int>? backupPriority;
+  final pulumi.Input<int?>? backupPriority;
   /// Name of certificate to use for authentication. Required if any CERTIFICATE authentication modes are specified.
-  final pulumi.Input<String>? certificateName;
+  final pulumi.Input<String?>? certificateName;
   /// Permitted authentication modes for the mirroring endpoint.
-  final pulumi.Input<String>? endpointAuthenticationMode;
+  final pulumi.Input<String?>? endpointAuthenticationMode;
   /// The login which will connect to the mirroring endpoint.
-  final pulumi.Input<String>? endpointConnectLogin;
+  final pulumi.Input<String?>? endpointConnectLogin;
   /// Name of the mirroring endpoint URL
-  final pulumi.Input<String>? endpointName;
+  final pulumi.Input<String?>? endpointName;
   /// Mirroring endpoint URL of availability group replica
-  final pulumi.Input<String>? endpointUrl;
+  final pulumi.Input<String?>? endpointUrl;
   /// Property to set the failover mode of the availability group replica
-  final pulumi.Input<String>? failoverMode;
+  final pulumi.Input<String?>? failoverMode;
   /// The failover mode of the availability group replica.
   final pulumi.Input<String> failoverModeDescription;
   /// Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections)
-  final pulumi.Input<String>? primaryAllowConnections;
+  final pulumi.Input<String?>? primaryAllowConnections;
   /// Whether the availability allows all connections or only read-write connections.
   final pulumi.Input<String> primaryRoleAllowConnectionsDescription;
   /// Connectivity endpoint (URL) of the read only availability replica.
-  final pulumi.Input<String>? readOnlyRoutingUrl;
+  final pulumi.Input<String?>? readOnlyRoutingUrl;
   /// Connectivity endpoint (URL) of the read write availability replica.
-  final pulumi.Input<String>? readWriteRoutingUrl;
+  final pulumi.Input<String?>? readWriteRoutingUrl;
   /// Date that the replica was created.
   final pulumi.Input<String> replicaCreateDate;
   /// Date that the replica was modified.
   final pulumi.Input<String> replicaModifyDate;
   /// Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections.
-  final pulumi.Input<String>? secondaryAllowConnections;
+  final pulumi.Input<String?>? secondaryAllowConnections;
   /// Whether an availability replica that is performing the secondary role (that is, a secondary replica) can accept connections from clients.
   final pulumi.Input<String> secondaryRoleAllowConnectionsDescription;
   /// Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica.
-  final pulumi.Input<String>? seedingMode;
+  final pulumi.Input<String?>? seedingMode;
   /// Describes seeding mode.
   final pulumi.Input<String> seedingModeDescription;
   /// The time-out period of availability group session replica, in seconds.
-  final pulumi.Input<int>? sessionTimeout;
+  final pulumi.Input<int?>? sessionTimeout;
 
   /// Creates a new [AvailabilityGroupConfigureResponse].
   /// [availabilityMode] Property that determines whether a given availability replica can run in synchronous-commit mode
@@ -123,7 +123,7 @@ class AvailabilityGroupConfigureResponse {
     return AvailabilityGroupConfigureResponse(
       availabilityMode: (() { final guardedValue = map['availabilityMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       availabilityModeDescription: pulumi.Input.fromValue(map['availabilityModeDescription'] as String),
-      backupPriority: (() { final guardedValue = map['backupPriority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      backupPriority: (() { final guardedValue = map['backupPriority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       certificateName: (() { final guardedValue = map['certificateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpointAuthenticationMode: (() { final guardedValue = map['endpointAuthenticationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpointConnectLogin: (() { final guardedValue = map['endpointConnectLogin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -141,7 +141,7 @@ class AvailabilityGroupConfigureResponse {
       secondaryRoleAllowConnectionsDescription: pulumi.Input.fromValue(map['secondaryRoleAllowConnectionsDescription'] as String),
       seedingMode: (() { final guardedValue = map['seedingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       seedingModeDescription: pulumi.Input.fromValue(map['seedingModeDescription'] as String),
-      sessionTimeout: (() { final guardedValue = map['sessionTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sessionTimeout: (() { final guardedValue = map['sessionTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_chaos_capability_args_doc}
 class CapabilityArgs {
   /// String that represents a Capability resource name.
-  final pulumi.Input<String>? capabilityName;
+  final pulumi.Input<String?>? capabilityName;
   /// String that represents a resource provider namespace.
   final pulumi.Input<String> parentProviderNamespace;
   /// String that represents a resource name.

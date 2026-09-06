@@ -221,4 +221,22 @@ class LongTermRetentionPolicy extends pulumi.CustomResource {
     weeklyRetention = registerOutput<String?>('weeklyRetention');
     yearlyRetention = registerOutput<String?>('yearlyRetention');
   }
+
+  /// Creates a typed reference to an existing [LongTermRetentionPolicy] resource.
+  LongTermRetentionPolicy.reference(String urn)
+    : super(
+        'azure-native:sql:LongTermRetentionPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    monthlyRetention = registerOutput<String?>('monthlyRetention');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+    weekOfYear = registerOutput<int?>('weekOfYear');
+    weeklyRetention = registerOutput<String?>('weeklyRetention');
+    yearlyRetention = registerOutput<String?>('yearlyRetention');
+  }
 }

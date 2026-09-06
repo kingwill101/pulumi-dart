@@ -20,7 +20,7 @@ class AmazonRdsForOracleSourceResponse {
   /// The partition mechanism that will be used for AmazonRdsForOracle read in parallel. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? partitionOption;
   /// The settings that will be leveraged for AmazonRdsForOracle source partitioning.
-  final pulumi.Input<AmazonRdsForOraclePartitionSettingsResponse>? partitionSettings;
+  final pulumi.Input<AmazonRdsForOraclePartitionSettingsResponse?>? partitionSettings;
   /// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? queryTimeout;
   /// Source retry count. Type: integer (or Expression with resultType integer).

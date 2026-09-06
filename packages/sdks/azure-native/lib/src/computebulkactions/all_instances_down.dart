@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies if Scheduled Events should be auto-approved when all instances are down.
 class AllInstancesDown {
   /// Specifies if Scheduled Events should be auto-approved when all instances are down. Its default value is true.
-  final pulumi.Input<bool>? automaticallyApprove;
+  final pulumi.Input<bool?>? automaticallyApprove;
 
   /// Creates a new [AllInstancesDown].
   /// [automaticallyApprove] Specifies if Scheduled Events should be auto-approved when all instances are down. Its default value is true.

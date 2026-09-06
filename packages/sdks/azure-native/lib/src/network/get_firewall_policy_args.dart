@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_get_firewall_policy_args_doc}
 class GetFirewallPolicyArgs {
   /// Expands referenced resources.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the Firewall Policy.
   final pulumi.Input<String> firewallPolicyName;
   /// The name of the resource group.

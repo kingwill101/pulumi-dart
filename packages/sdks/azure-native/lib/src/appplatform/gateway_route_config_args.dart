@@ -11,11 +11,11 @@ class GatewayRouteConfigArgs {
   /// The name of Spring Cloud Gateway.
   final pulumi.Input<String> gatewayName;
   /// API route config of the Spring Cloud Gateway
-  final pulumi.Input<GatewayRouteConfigProperties>? properties;
+  final pulumi.Input<GatewayRouteConfigProperties?>? properties;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Spring Cloud Gateway route config.
-  final pulumi.Input<String>? routeConfigName;
+  final pulumi.Input<String?>? routeConfigName;
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
 

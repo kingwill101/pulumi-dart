@@ -11,21 +11,21 @@ import 'mhsmprivate_link_service_connection_state.dart';
 /// {@macro pulumi_keyvault_mhsmprivate_endpoint_connection_args_doc}
 class MHSMPrivateEndpointConnectionArgs {
   /// Managed service identity (system assigned and/or user assigned identities)
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The supported Azure location where the managed HSM Pool should be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the managed HSM Pool
   final pulumi.Input<String> name;
   /// Name of the private endpoint connection associated with the managed hsm pool.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// Approval state of the private link connection.
-  final pulumi.Input<MHSMPrivateLinkServiceConnectionState>? privateLinkServiceConnectionState;
+  final pulumi.Input<MHSMPrivateLinkServiceConnectionState?>? privateLinkServiceConnectionState;
   /// Name of the resource group that contains the managed HSM pool.
   final pulumi.Input<String> resourceGroupName;
   /// SKU details
-  final pulumi.Input<ManagedHsmSku>? sku;
+  final pulumi.Input<ManagedHsmSku?>? sku;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [MHSMPrivateEndpointConnectionArgs].
   /// [identity] Managed service identity (system assigned and/or user assigned identities)

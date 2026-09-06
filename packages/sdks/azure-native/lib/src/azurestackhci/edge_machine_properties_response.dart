@@ -10,11 +10,11 @@ import 'site_details_response.dart';
 /// Properties for edge machine.
 class EdgeMachinePropertiesResponse {
   /// Link to Arc Gateway ARM resource Id
-  final pulumi.Input<String>? arcGatewayResourceId;
+  final pulumi.Input<String?>? arcGatewayResourceId;
   /// Optional property to create arc machine in custom resource group.
-  final pulumi.Input<String>? arcMachineResourceGroupId;
+  final pulumi.Input<String?>? arcMachineResourceGroupId;
   /// Arc machine instance resource id.
-  final pulumi.Input<String>? arcMachineResourceId;
+  final pulumi.Input<String?>? arcMachineResourceId;
   /// Tracks the ID of the consuming resource, setting the machine as in-use.
   final pulumi.Input<String> claimedBy;
   /// Unique, immutable resource id.
@@ -24,7 +24,7 @@ class EdgeMachinePropertiesResponse {
   /// A machine can only be assigned to single device pool
   final pulumi.Input<String> devicePoolResourceId;
   /// Edge Machine type.
-  final pulumi.Input<String>? edgeMachineKind;
+  final pulumi.Input<String?>? edgeMachineKind;
   /// Last time data updated to service.
   final pulumi.Input<String> lastSyncTimestamp;
   /// OS configuration status details
@@ -32,15 +32,15 @@ class EdgeMachinePropertiesResponse {
   /// operation status details for edge machine.
   final pulumi.Input<List<OperationDetailResponse>> operationDetails;
   /// Ownership voucher details for provisioned machine.
-  final pulumi.Input<OwnershipVoucherDetailsResponse>? ownershipVoucherDetails;
+  final pulumi.Input<OwnershipVoucherDetailsResponse?>? ownershipVoucherDetails;
   /// Details for device provisioning.
-  final pulumi.Input<ProvisioningDetailsResponse>? provisioningDetails;
+  final pulumi.Input<ProvisioningDetailsResponse?>? provisioningDetails;
   /// The provisioning state of a resource.
   final pulumi.Input<String> provisioningState;
   /// Reported properties for edge machine.
   final pulumi.Input<EdgeMachineReportedPropertiesResponse> reportedProperties;
   /// Service fetches common configuration from site.
-  final pulumi.Input<SiteDetailsResponse>? siteDetails;
+  final pulumi.Input<SiteDetailsResponse?>? siteDetails;
 
   /// Creates a new [EdgeMachinePropertiesResponse].
   /// [arcGatewayResourceId] Link to Arc Gateway ARM resource Id

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Role of the replica.
-enum ReplicaRole {
+enum ReplicaRole implements pulumi.PulumiEnum<String> {
   read("Read"),
   readWrite("ReadWrite");
 
   const ReplicaRole(this.wireValue);
+  @override
   final String wireValue;
 
   static ReplicaRole fromValue(String value) {

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the Docker image details
 class ContainerImage {
   /// Image pull policy.
-  final pulumi.Input<String>? pullPolicy;
+  final pulumi.Input<String?>? pullPolicy;
   /// Image pull secrets.
-  final pulumi.Input<String>? pullSecrets;
+  final pulumi.Input<String?>? pullSecrets;
   /// The Docker image name.
   final pulumi.Input<String> repository;
   /// The Docker  image tag.

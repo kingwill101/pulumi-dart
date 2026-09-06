@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The scheme.
-enum Scheme {
+enum Scheme implements pulumi.PulumiEnum<String> {
   valueHttp("http"),
   valueHttps("https");
 
   const Scheme(this.wireValue);
+  @override
   final String wireValue;
 
   static Scheme fromValue(String value) {

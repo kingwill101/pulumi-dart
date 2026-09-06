@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Route resource.
 class RouteResponse {
   /// The destination CIDR to which the route applies.
-  final pulumi.Input<String>? addressPrefix;
+  final pulumi.Input<String?>? addressPrefix;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// A value indicating whether this route overrides overlapping BGP routes regardless of LPM.
   final pulumi.Input<bool> hasBgpOverride;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
-  final pulumi.Input<String>? nextHopIpAddress;
+  final pulumi.Input<String?>? nextHopIpAddress;
   /// The type of Azure hop the packet should be sent to.
   final pulumi.Input<String> nextHopType;
   /// The provisioning state of the route resource.
   final pulumi.Input<String> provisioningState;
   /// The type of the resource.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [RouteResponse].
   /// [addressPrefix] The destination CIDR to which the route applies.

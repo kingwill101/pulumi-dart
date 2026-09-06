@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CassandraErrorResponse {
   /// Additional information about the error.
-  final pulumi.Input<String>? additionalErrorInfo;
+  final pulumi.Input<String?>? additionalErrorInfo;
   /// The code of error that occurred.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// The message of the error.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The target resource of the error.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
 
   /// Creates a new [CassandraErrorResponse].
   /// [additionalErrorInfo] Additional information about the error.

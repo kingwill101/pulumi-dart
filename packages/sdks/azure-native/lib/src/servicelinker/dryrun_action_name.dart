@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The name of action for you dryrun job.
-enum DryrunActionName {
+enum DryrunActionName implements pulumi.PulumiEnum<String> {
   valueCreateOrUpdate("createOrUpdate");
 
   const DryrunActionName(this.wireValue);
+  @override
   final String wireValue;
 
   static DryrunActionName fromValue(String value) {

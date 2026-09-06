@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ProjectFleet
 class ProjectFleet {
   /// &lt;p&gt;Specifies the compute fleet ARN for the build project.&lt;/p&gt;
-  final pulumi.Input<String>? fleetArn;
+  final pulumi.Input<String?>? fleetArn;
 
   /// Creates a new [ProjectFleet].
   /// [fleetArn] &lt;p&gt;Specifies the compute fleet ARN for the build project.&lt;/p&gt;

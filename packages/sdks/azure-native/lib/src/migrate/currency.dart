@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Currency to report prices in.
-enum Currency {
+enum Currency implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueUSD("USD"),
   valueDKK("DKK"),
@@ -28,6 +30,7 @@ enum Currency {
   valueCNY("CNY");
 
   const Currency(this.wireValue);
+  @override
   final String wireValue;
 
   static Currency fromValue(String value) {

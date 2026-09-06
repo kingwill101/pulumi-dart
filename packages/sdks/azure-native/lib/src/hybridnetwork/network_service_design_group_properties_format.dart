@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// network service design group properties.
 class NetworkServiceDesignGroupPropertiesFormat {
   /// The network service design group description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
 
   /// Creates a new [NetworkServiceDesignGroupPropertiesFormat].
   /// [description] The network service design group description.

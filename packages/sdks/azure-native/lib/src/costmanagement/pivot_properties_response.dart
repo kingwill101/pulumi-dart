@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Each pivot must contain a 'type' and 'name'.
 class PivotPropertiesResponse {
   /// Data field to show in view.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Data type to show in view.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [PivotPropertiesResponse].
   /// [name] Data field to show in view.

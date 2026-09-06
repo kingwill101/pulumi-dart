@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Stop on disconnect configuration settings for Dev Boxes created in this pool.
 class StopOnDisconnectConfiguration {
   /// The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
-  final pulumi.Input<int>? gracePeriodMinutes;
+  final pulumi.Input<int?>? gracePeriodMinutes;
   /// Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [StopOnDisconnectConfiguration].
   /// [gracePeriodMinutes] The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
@@ -26,8 +26,8 @@ class StopOnDisconnectConfiguration {
 
   factory StopOnDisconnectConfiguration.fromMap(Map<String, dynamic> map) {
     return StopOnDisconnectConfiguration(
-      gracePeriodMinutes: (() { final guardedValue = map['gracePeriodMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      gracePeriodMinutes: (() { final guardedValue = map['gracePeriodMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

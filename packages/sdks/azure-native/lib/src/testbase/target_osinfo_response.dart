@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The information of the target OS to be tested.
 class TargetOSInfoResponse {
   /// Specifies the baseline OSs to be tested.
-  final pulumi.Input<List<String>>? baselineOSs;
+  final pulumi.Input<List<String>?>? baselineOSs;
   /// Insider Channel Ids. Only used for feature update.
-  final pulumi.Input<List<String>>? insiderChannelIds;
+  final pulumi.Input<List<String>?>? insiderChannelIds;
   /// Specifies the OS update type to test against, e.g., 'Security updates' or 'Feature updates'.
   final pulumi.Input<String> osUpdateType;
   /// Specifies the ids of the target OSs from Custom Images to be tested.
-  final pulumi.Input<List<String>>? targetOSImageIds;
+  final pulumi.Input<List<String>?>? targetOSImageIds;
   /// Specifies the target OSs to be tested.
-  final pulumi.Input<List<String>>? targetOSs;
+  final pulumi.Input<List<String>?>? targetOSs;
 
   /// Creates a new [TargetOSInfoResponse].
   /// [baselineOSs] Specifies the baseline OSs to be tested.

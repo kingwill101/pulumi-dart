@@ -7,21 +7,21 @@ import 'sku_capacity.dart';
 /// Description of a SKU for a scalable resource.
 class SkuDescription {
   /// Capabilities of the SKU, e.g., is traffic manager enabled?
-  final pulumi.Input<List<Capability>>? capabilities;
+  final pulumi.Input<List<Capability>?>? capabilities;
   /// Current number of instances assigned to the resource.
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
   /// Family code of the resource SKU.
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// Locations of the SKU.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// Name of the resource SKU.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Size specifier of the resource SKU.
-  final pulumi.Input<String>? size;
+  final pulumi.Input<String?>? size;
   /// Min, max, and default scale values of the SKU.
-  final pulumi.Input<SkuCapacity>? skuCapacity;
+  final pulumi.Input<SkuCapacity?>? skuCapacity;
   /// Service tier of the resource SKU.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [SkuDescription].
   /// [capabilities] Capabilities of the SKU, e.g., is traffic manager enabled?
@@ -59,7 +59,7 @@ class SkuDescription {
   factory SkuDescription.fromMap(Map<String, dynamic> map) {
     return SkuDescription(
       capabilities: (() { final guardedValue = map['capabilities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Capability>(guardedValue, (value) => Capability.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       family: (() { final guardedValue = map['family']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       locations: (() { final guardedValue = map['locations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

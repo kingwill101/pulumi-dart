@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Network related properties of a server
 class NetworkResponse {
   /// Delegated subnet resource id used to setup vnet for a server.
-  final pulumi.Input<String>? delegatedSubnetResourceId;
+  final pulumi.Input<String?>? delegatedSubnetResourceId;
   /// Private DNS zone resource id.
-  final pulumi.Input<String>? privateDnsZoneResourceId;
+  final pulumi.Input<String?>? privateDnsZoneResourceId;
   /// Whether or not public network access is allowed for this server. Value is 'Disabled' when server has VNet integration.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
 
   /// Creates a new [NetworkResponse].
   /// [delegatedSubnetResourceId] Delegated subnet resource id used to setup vnet for a server.

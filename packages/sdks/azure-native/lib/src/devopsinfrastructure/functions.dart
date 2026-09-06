@@ -21,3 +21,14 @@ Future<GetPoolResult> getPool(
   );
   return GetPoolResult.fromMap(result);
 }
+
+pulumi.Output<GetPoolResult> getPoolOutput(
+  GetPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devopsinfrastructure:getPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPoolResult.fromMap);
+}

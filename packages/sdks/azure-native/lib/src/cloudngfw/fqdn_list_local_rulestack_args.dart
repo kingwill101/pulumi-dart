@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudngfw_fqdn_list_local_rulestack_args_doc}
 class FqdnListLocalRulestackArgs {
   /// comment for this object
-  final pulumi.Input<String>? auditComment;
+  final pulumi.Input<String?>? auditComment;
   /// fqdn object description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// fqdn list
   final pulumi.Input<List<String>> fqdnList;
   /// LocalRulestack resource name
   final pulumi.Input<String> localRulestackName;
   /// fqdn list name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

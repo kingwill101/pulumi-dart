@@ -16,21 +16,21 @@ class AppResiliencyArgs {
   /// Name of the Container App.
   final pulumi.Input<String> appName;
   /// Policy that defines circuit breaker conditions
-  final pulumi.Input<CircuitBreakerPolicy>? circuitBreakerPolicy;
+  final pulumi.Input<CircuitBreakerPolicy?>? circuitBreakerPolicy;
   /// Defines parameters for http connection pooling
-  final pulumi.Input<HttpConnectionPool>? httpConnectionPool;
+  final pulumi.Input<HttpConnectionPool?>? httpConnectionPool;
   /// Policy that defines http request retry conditions
-  final pulumi.Input<HttpRetryPolicy>? httpRetryPolicy;
+  final pulumi.Input<HttpRetryPolicy?>? httpRetryPolicy;
   /// Name of the resiliency policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Defines parameters for tcp connection pooling
-  final pulumi.Input<TcpConnectionPool>? tcpConnectionPool;
+  final pulumi.Input<TcpConnectionPool?>? tcpConnectionPool;
   /// Policy that defines tcp request retry conditions
-  final pulumi.Input<TcpRetryPolicy>? tcpRetryPolicy;
+  final pulumi.Input<TcpRetryPolicy?>? tcpRetryPolicy;
   /// Policy to set request timeouts
-  final pulumi.Input<TimeoutPolicy>? timeoutPolicy;
+  final pulumi.Input<TimeoutPolicy?>? timeoutPolicy;
 
   /// Creates a new [AppResiliencyArgs].
   /// [appName] Name of the Container App.

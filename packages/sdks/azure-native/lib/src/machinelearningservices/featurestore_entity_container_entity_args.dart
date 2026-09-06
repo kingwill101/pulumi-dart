@@ -9,7 +9,7 @@ import 'featurestore_entity_container_properties.dart';
 /// {@macro pulumi_machinelearningservices_featurestore_entity_container_entity_args_doc}
 class FeaturestoreEntityContainerEntityArgs {
   /// Container name. This is case-sensitive.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// [Required] Additional attributes of the entity.
   final pulumi.Input<FeaturestoreEntityContainerProperties> properties;
   /// The name of the resource group. The name is case insensitive.

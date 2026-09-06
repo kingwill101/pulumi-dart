@@ -9,11 +9,11 @@ import 'build_properties.dart';
 /// {@macro pulumi_appplatform_build_service_build_args_doc}
 class BuildServiceBuildArgs {
   /// The name of the build resource.
-  final pulumi.Input<String>? buildName;
+  final pulumi.Input<String?>? buildName;
   /// The name of the build service resource.
   final pulumi.Input<String> buildServiceName;
   /// Properties of the build resource
-  final pulumi.Input<BuildProperties>? properties;
+  final pulumi.Input<BuildProperties?>? properties;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Service resource.

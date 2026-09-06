@@ -3,10 +3,13 @@ import 'app_service_plan_args.dart';
 import 'default_identity_response.dart';
 import 'extended_location_response.dart';
 import 'hosting_environment_profile_response.dart';
+import 'install_script_response.dart';
 import 'kube_environment_profile_response.dart';
 import 'managed_service_identity_response.dart';
+import 'registry_adapter_response.dart';
 import 'server_farm_network_settings_response.dart';
 import 'sku_description_response.dart';
+import 'storage_mount_response.dart';
 import 'system_data_response.dart';
 
 /// App Service plan.
@@ -234,7 +237,7 @@ class AppServicePlan extends pulumi.CustomResource {
   /// Managed service identity.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
   /// Install scripts associated with this App Service plan.
-  late final pulumi.Output<List<Map<String, dynamic>>?> installScripts;
+  late final pulumi.Output<List<InstallScriptResponse>?> installScripts;
   /// Whether this server farm is in custom mode.
   late final pulumi.Output<bool?> isCustomMode;
   /// If &lt;code&gt;true&lt;/code&gt;, this App Service Plan owns spot instances.
@@ -270,7 +273,7 @@ class AppServicePlan extends pulumi.CustomResource {
   /// If &lt;code&gt;false&lt;/code&gt;, RDP access is disabled.
   late final pulumi.Output<bool?> rdpEnabled;
   /// Registry adapters associated with this App Service plan.
-  late final pulumi.Output<List<Map<String, dynamic>>?> registryAdapters;
+  late final pulumi.Output<List<RegistryAdapterResponse>?> registryAdapters;
   /// If Linux app service plan &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt; otherwise.
   late final pulumi.Output<bool?> reserved;
   /// Resource group of the App Service plan.
@@ -282,7 +285,7 @@ class AppServicePlan extends pulumi.CustomResource {
   /// App Service plan status.
   late final pulumi.Output<String> status;
   /// Storage mounts associated with this App Service plan.
-  late final pulumi.Output<List<Map<String, dynamic>>?> storageMounts;
+  late final pulumi.Output<List<StorageMountResponse>?> storageMounts;
   /// App Service plan subscription.
   late final pulumi.Output<String> subscription;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -324,7 +327,7 @@ class AppServicePlan extends pulumi.CustomResource {
     hostingEnvironmentProfile = registerOutput<HostingEnvironmentProfileResponse?>('hostingEnvironmentProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HostingEnvironmentProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hyperV = registerOutput<bool?>('hyperV');
     identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    installScripts = registerOutput<List<Map<String, dynamic>>?>('installScripts');
+    installScripts = registerOutput<List<InstallScriptResponse>?>('installScripts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstallScriptResponse>(guardedValue, (value) => InstallScriptResponse.fromMap((value as Map).cast<String, dynamic>())); });
     isCustomMode = registerOutput<bool?>('isCustomMode');
     isSpot = registerOutput<bool?>('isSpot');
     isXenon = registerOutput<bool?>('isXenon');
@@ -341,16 +344,68 @@ class AppServicePlan extends pulumi.CustomResource {
     planDefaultIdentity = registerOutput<DefaultIdentityResponse?>('planDefaultIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DefaultIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     rdpEnabled = registerOutput<bool?>('rdpEnabled');
-    registryAdapters = registerOutput<List<Map<String, dynamic>>?>('registryAdapters');
+    registryAdapters = registerOutput<List<RegistryAdapterResponse>?>('registryAdapters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryAdapterResponse>(guardedValue, (value) => RegistryAdapterResponse.fromMap((value as Map).cast<String, dynamic>())); });
     reserved = registerOutput<bool?>('reserved');
     resourceGroup = registerOutput<String>('resourceGroup');
     sku = registerOutput<SkuDescriptionResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spotExpirationTime = registerOutput<String?>('spotExpirationTime');
     status = registerOutput<String>('status');
-    storageMounts = registerOutput<List<Map<String, dynamic>>?>('storageMounts');
+    storageMounts = registerOutput<List<StorageMountResponse>?>('storageMounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StorageMountResponse>(guardedValue, (value) => StorageMountResponse.fromMap((value as Map).cast<String, dynamic>())); });
     subscription = registerOutput<String>('subscription');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetWorkerCount = registerOutput<int?>('targetWorkerCount');
+    targetWorkerSizeId = registerOutput<int?>('targetWorkerSizeId');
+    type = registerOutput<String>('type');
+    workerTierName = registerOutput<String?>('workerTierName');
+    zoneRedundant = registerOutput<bool?>('zoneRedundant');
+  }
+
+  /// Creates a typed reference to an existing [AppServicePlan] resource.
+  AppServicePlan.reference(String urn)
+    : super(
+        'azure-native:web:AppServicePlan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    asyncScalingEnabled = registerOutput<bool?>('asyncScalingEnabled');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    elasticScaleEnabled = registerOutput<bool?>('elasticScaleEnabled');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    freeOfferExpirationTime = registerOutput<String?>('freeOfferExpirationTime');
+    geoRegion = registerOutput<String>('geoRegion');
+    hostingEnvironmentProfile = registerOutput<HostingEnvironmentProfileResponse?>('hostingEnvironmentProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HostingEnvironmentProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hyperV = registerOutput<bool?>('hyperV');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    installScripts = registerOutput<List<InstallScriptResponse>?>('installScripts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstallScriptResponse>(guardedValue, (value) => InstallScriptResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    isCustomMode = registerOutput<bool?>('isCustomMode');
+    isSpot = registerOutput<bool?>('isSpot');
+    isXenon = registerOutput<bool?>('isXenon');
+    kind = registerOutput<String?>('kind');
+    kubeEnvironmentProfile = registerOutput<KubeEnvironmentProfileResponse?>('kubeEnvironmentProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubeEnvironmentProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    maximumElasticWorkerCount = registerOutput<int?>('maximumElasticWorkerCount');
+    maximumNumberOfWorkers = registerOutput<int>('maximumNumberOfWorkers');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<ServerFarmNetworkSettingsResponse?>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerFarmNetworkSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    numberOfSites = registerOutput<int>('numberOfSites');
+    numberOfWorkers = registerOutput<int>('numberOfWorkers');
+    perSiteScaling = registerOutput<bool?>('perSiteScaling');
+    planDefaultIdentity = registerOutput<DefaultIdentityResponse?>('planDefaultIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DefaultIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    rdpEnabled = registerOutput<bool?>('rdpEnabled');
+    registryAdapters = registerOutput<List<RegistryAdapterResponse>?>('registryAdapters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryAdapterResponse>(guardedValue, (value) => RegistryAdapterResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    reserved = registerOutput<bool?>('reserved');
+    resourceGroup = registerOutput<String>('resourceGroup');
+    sku = registerOutput<SkuDescriptionResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spotExpirationTime = registerOutput<String?>('spotExpirationTime');
+    status = registerOutput<String>('status');
+    storageMounts = registerOutput<List<StorageMountResponse>?>('storageMounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StorageMountResponse>(guardedValue, (value) => StorageMountResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    subscription = registerOutput<String>('subscription');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetWorkerCount = registerOutput<int?>('targetWorkerCount');
     targetWorkerSizeId = registerOutput<int?>('targetWorkerSizeId');
     type = registerOutput<String>('type');

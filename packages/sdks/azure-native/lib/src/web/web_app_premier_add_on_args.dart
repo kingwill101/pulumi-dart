@@ -8,27 +8,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_web_web_app_premier_add_on_args_doc}
 class WebAppPremierAddOnArgs {
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Premier add on Marketplace offer.
-  final pulumi.Input<String>? marketplaceOffer;
+  final pulumi.Input<String?>? marketplaceOffer;
   /// Premier add on Marketplace publisher.
-  final pulumi.Input<String>? marketplacePublisher;
+  final pulumi.Input<String?>? marketplacePublisher;
   /// Name of the app.
   final pulumi.Input<String> name;
   /// Add-on name.
-  final pulumi.Input<String>? premierAddOnName;
+  final pulumi.Input<String?>? premierAddOnName;
   /// Premier add on Product.
-  final pulumi.Input<String>? product;
+  final pulumi.Input<String?>? product;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Premier add on SKU.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Premier add on Vendor.
-  final pulumi.Input<String>? vendor;
+  final pulumi.Input<String?>? vendor;
 
   /// Creates a new [WebAppPremierAddOnArgs].
   /// [kind] Kind of resource.

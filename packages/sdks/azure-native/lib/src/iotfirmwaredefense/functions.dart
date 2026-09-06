@@ -24,6 +24,17 @@ Future<GetFirmwareResult> getFirmware(
   return GetFirmwareResult.fromMap(result);
 }
 
+pulumi.Output<GetFirmwareResult> getFirmwareOutput(
+  GetFirmwareArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotfirmwaredefense:getFirmware',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirmwareResult.fromMap);
+}
+
 /// Get firmware analysis workspace.
 ///
 /// Uses Azure REST API version 2024-01-10.
@@ -42,4 +53,15 @@ Future<GetWorkspaceResult> getWorkspace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspaceResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotfirmwaredefense:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
 }

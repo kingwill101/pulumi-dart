@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// how to match value in the Uri
-enum PathMatchType {
+enum PathMatchType implements pulumi.PulumiEnum<String> {
   valuePrefix("prefix");
 
   const PathMatchType(this.wireValue);
+  @override
   final String wireValue;
 
   static PathMatchType fromValue(String value) {

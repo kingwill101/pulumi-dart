@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The format of the output data.
-enum DataflowGraphDestinationSchemaSerializationFormat {
+enum DataflowGraphDestinationSchemaSerializationFormat implements pulumi.PulumiEnum<String> {
   parquet("Parquet"),
   delta("Delta");
 
   const DataflowGraphDestinationSchemaSerializationFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static DataflowGraphDestinationSchemaSerializationFormat fromValue(String value) {

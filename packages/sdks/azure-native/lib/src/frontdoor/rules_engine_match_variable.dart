@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Match Variable
-enum RulesEngineMatchVariable {
+enum RulesEngineMatchVariable implements pulumi.PulumiEnum<String> {
   isMobile("IsMobile"),
   remoteAddr("RemoteAddr"),
   requestMethod("RequestMethod"),
@@ -14,6 +16,7 @@ enum RulesEngineMatchVariable {
   requestScheme("RequestScheme");
 
   const RulesEngineMatchVariable(this.wireValue);
+  @override
   final String wireValue;
 
   static RulesEngineMatchVariable fromValue(String value) {

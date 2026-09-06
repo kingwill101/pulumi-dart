@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The state of peering.
-enum ExpressRouteCircuitPeeringState {
+enum ExpressRouteCircuitPeeringState implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
   const ExpressRouteCircuitPeeringState(this.wireValue);
+  @override
   final String wireValue;
 
   static ExpressRouteCircuitPeeringState fromValue(String value) {

@@ -11,9 +11,9 @@ class InstanceProperties {
   /// Marketplace details of the resource.
   final pulumi.Input<LiftrBaseMarketplaceDetails> marketplace;
   /// partner properties
-  final pulumi.Input<PartnerProperties>? partnerProperties;
+  final pulumi.Input<PartnerProperties?>? partnerProperties;
   /// Single sign-on properties
-  final pulumi.Input<LiftrBaseSingleSignOnPropertiesV2>? singleSignOnProperties;
+  final pulumi.Input<LiftrBaseSingleSignOnPropertiesV2?>? singleSignOnProperties;
   /// Details of the user.
   final pulumi.Input<LiftrBaseUserDetails> user;
 

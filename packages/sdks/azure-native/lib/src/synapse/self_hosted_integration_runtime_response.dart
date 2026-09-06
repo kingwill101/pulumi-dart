@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'linked_integration_runtime_key_authorization_response.dart';
 
 /// Self-hosted integration runtime.
 class SelfHostedIntegrationRuntimeResponse {
   /// Integration runtime description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Linked integration runtime type from data factory
-  final pulumi.Input<LinkedIntegrationRuntimeKeyAuthorizationResponse>? linkedInfo;
+  final pulumi.Input<dynamic>? linkedInfo;
   /// The type of integration runtime.
   /// Expected value is 'SelfHosted'.
   final pulumi.Input<String> type;
@@ -26,7 +25,7 @@ class SelfHostedIntegrationRuntimeResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'linkedInfo': ?pulumi.Input.mapOptionalInputValue<LinkedIntegrationRuntimeKeyAuthorizationResponse, Map<String, dynamic>>(linkedInfo, (value) => value.toMap()),
+      'linkedInfo': ?linkedInfo,
       'type': type,
     };
   }
@@ -34,7 +33,7 @@ class SelfHostedIntegrationRuntimeResponse {
   factory SelfHostedIntegrationRuntimeResponse.fromMap(Map<String, dynamic> map) {
     return SelfHostedIntegrationRuntimeResponse(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      linkedInfo: (() { final guardedValue = map['linkedInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedIntegrationRuntimeKeyAuthorizationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      linkedInfo: (() { final guardedValue = map['linkedInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

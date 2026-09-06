@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Operator how to compare the signal value with the threshold
-enum SignalOperator {
+enum SignalOperator implements pulumi.PulumiEnum<String> {
   lessThan("LessThan"),
   lessThanOrEqual("LessThanOrEqual"),
   greaterThan("GreaterThan"),
@@ -7,6 +9,7 @@ enum SignalOperator {
   equal("Equal");
 
   const SignalOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static SignalOperator fromValue(String value) {

@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'metadata_assignment_response.dart';
 import 'metadata_schema_args.dart';
 import 'system_data_response.dart';
 
@@ -192,7 +193,7 @@ import 'system_data_response.dart';
 /// ```
 class MetadataSchema extends pulumi.CustomResource {
   /// The assignees
-  late final pulumi.Output<List<Map<String, dynamic>>?> assignedTo;
+  late final pulumi.Output<List<MetadataAssignmentResponse>?> assignedTo;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The name of the resource
@@ -218,7 +219,24 @@ class MetadataSchema extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    assignedTo = registerOutput<List<Map<String, dynamic>>?>('assignedTo');
+    assignedTo = registerOutput<List<MetadataAssignmentResponse>?>('assignedTo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetadataAssignmentResponse>(guardedValue, (value) => MetadataAssignmentResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    schema = registerOutput<String>('schema');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [MetadataSchema] resource.
+  MetadataSchema.reference(String urn)
+    : super(
+        'azure-native:apicenter:MetadataSchema',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assignedTo = registerOutput<List<MetadataAssignmentResponse>?>('assignedTo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetadataAssignmentResponse>(guardedValue, (value) => MetadataAssignmentResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
     schema = registerOutput<String>('schema');

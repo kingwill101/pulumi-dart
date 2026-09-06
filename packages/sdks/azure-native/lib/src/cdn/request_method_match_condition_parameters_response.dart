@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the parameters for RequestMethod match conditions
 class RequestMethodMatchConditionParametersResponse {
   /// The match value for the condition of the delivery rule
-  final pulumi.Input<List<String>>? matchValues;
+  final pulumi.Input<List<String>?>? matchValues;
   /// Describes if this is negate condition or not
-  final pulumi.Input<bool>? negateCondition;
+  final pulumi.Input<bool?>? negateCondition;
   /// Describes operator to be matched
   final pulumi.Input<String> operator;
   /// List of transforms
-  final pulumi.Input<List<String>>? transforms;
+  final pulumi.Input<List<String>?>? transforms;
   /// Expected value is 'DeliveryRuleRequestMethodConditionParameters'.
   final pulumi.Input<String> typeName;
 
@@ -21,13 +21,13 @@ class RequestMethodMatchConditionParametersResponse {
   /// [operator] Describes operator to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRuleRequestMethodConditionParameters'.
-  const RequestMethodMatchConditionParametersResponse({
+  RequestMethodMatchConditionParametersResponse({
     this.matchValues,
-    this.negateCondition,
+    pulumi.Input<bool?>? negateCondition,
     required this.operator,
     this.transforms,
     required this.typeName,
-  });
+  }) : negateCondition = negateCondition ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Recurrence Interval
-enum RecurrenceInterval {
+enum RecurrenceInterval implements pulumi.PulumiEnum<String> {
   valueHour("Hour"),
   valueDay("Day");
 
   const RecurrenceInterval(this.wireValue);
+  @override
   final String wireValue;
 
   static RecurrenceInterval fromValue(String value) {

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The operator to be matched.
-enum WebApplicationFirewallOperator {
+enum WebApplicationFirewallOperator implements pulumi.PulumiEnum<String> {
   valueIPMatch("IPMatch"),
   valueEqual("Equal"),
   valueContains("Contains"),
@@ -14,6 +16,7 @@ enum WebApplicationFirewallOperator {
   valueAny("Any");
 
   const WebApplicationFirewallOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static WebApplicationFirewallOperator fromValue(String value) {

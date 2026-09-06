@@ -11,41 +11,41 @@ import 'strong_id.dart';
 /// {@macro pulumi_customerinsights_profile_args_doc}
 class ProfileArgs {
   /// The api entity set name. This becomes the odata entity set name for the entity Type being referred in this object.
-  final pulumi.Input<String>? apiEntitySetName;
+  final pulumi.Input<String?>? apiEntitySetName;
   /// The attributes for the Type.
-  final pulumi.Input<Map<String, List<String>>>? attributes;
+  final pulumi.Input<Map<String, List<String>>?>? attributes;
   /// Localized descriptions for the property.
-  final pulumi.Input<Map<String, String>>? description;
+  final pulumi.Input<Map<String, String>?>? description;
   /// Localized display names for the property.
-  final pulumi.Input<Map<String, String>>? displayName;
+  final pulumi.Input<Map<String, String>?>? displayName;
   /// Type of entity.
-  final pulumi.Input<EntityTypes>? entityType;
+  final pulumi.Input<EntityTypes?>? entityType;
   /// The properties of the Profile.
-  final pulumi.Input<List<PropertyDefinition>>? fields;
+  final pulumi.Input<List<PropertyDefinition>?>? fields;
   /// The name of the hub.
   final pulumi.Input<String> hubName;
   /// The instance count.
-  final pulumi.Input<int>? instancesCount;
+  final pulumi.Input<int?>? instancesCount;
   /// Large Image associated with the Property or EntityType.
-  final pulumi.Input<String>? largeImage;
+  final pulumi.Input<String?>? largeImage;
   /// Any custom localized attributes for the Type.
-  final pulumi.Input<Map<String, Map<String, String>>>? localizedAttributes;
+  final pulumi.Input<Map<String, Map<String, String>>?>? localizedAttributes;
   /// Medium Image associated with the Property or EntityType.
-  final pulumi.Input<String>? mediumImage;
+  final pulumi.Input<String?>? mediumImage;
   /// The name of the profile.
-  final pulumi.Input<String>? profileName;
+  final pulumi.Input<String?>? profileName;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The schema org link. This helps ACI identify and suggest semantic models.
-  final pulumi.Input<String>? schemaItemTypeLink;
+  final pulumi.Input<String?>? schemaItemTypeLink;
   /// Small Image associated with the Property or EntityType.
-  final pulumi.Input<String>? smallImage;
+  final pulumi.Input<String?>? smallImage;
   /// The strong IDs.
-  final pulumi.Input<List<StrongId>>? strongIds;
+  final pulumi.Input<List<StrongId>?>? strongIds;
   /// The timestamp property name. Represents the time when the interaction or profile update happened.
-  final pulumi.Input<String>? timestampFieldName;
+  final pulumi.Input<String?>? timestampFieldName;
   /// The name of the entity.
-  final pulumi.Input<String>? typeName;
+  final pulumi.Input<String?>? typeName;
 
   /// Creates a new [ProfileArgs].
   /// [apiEntitySetName] The api entity set name. This becomes the odata entity set name for the entity Type being referred in this object.
@@ -113,15 +113,15 @@ class ProfileArgs {
   factory ProfileArgs.fromMap(Map<String, dynamic> map) {
     return ProfileArgs(
       apiEntitySetName: (() { final guardedValue = map['apiEntitySetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, List<String>>()); })(),
+      attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       entityType: (() { final guardedValue = map['entityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EntityTypes.fromValue(guardedValue as String)); })(),
       fields: (() { final guardedValue = map['fields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PropertyDefinition>(guardedValue, (value) => PropertyDefinition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       hubName: pulumi.Input.fromValue(map['hubName'] as String),
-      instancesCount: (() { final guardedValue = map['instancesCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instancesCount: (() { final guardedValue = map['instancesCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       largeImage: (() { final guardedValue = map['largeImage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      localizedAttributes: (() { final guardedValue = map['localizedAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, Map<String, String>>()); })(),
+      localizedAttributes: (() { final guardedValue = map['localizedAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<Map<String, String>>(guardedValue, (value) => (value as Map).cast<String, String>())); })(),
       mediumImage: (() { final guardedValue = map['mediumImage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       profileName: (() { final guardedValue = map['profileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

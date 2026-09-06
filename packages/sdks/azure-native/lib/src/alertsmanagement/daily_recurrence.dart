@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Daily recurrence object.
 class DailyRecurrence {
   /// End time for recurrence.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Specifies when the recurrence should be applied.
   /// Expected value is 'Daily'.
   final pulumi.Input<String> recurrenceType;
   /// Start time for recurrence.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [DailyRecurrence].
   /// [endTime] End time for recurrence.

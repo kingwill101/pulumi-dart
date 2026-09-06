@@ -9,9 +9,9 @@ import 'connector_properties.dart';
 /// {@macro pulumi_impact_connector_args_doc}
 class ConnectorArgs {
   /// The name of the connector
-  final pulumi.Input<String>? connectorName;
+  final pulumi.Input<String?>? connectorName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ConnectorProperties>? properties;
+  final pulumi.Input<ConnectorProperties?>? properties;
 
   /// Creates a new [ConnectorArgs].
   /// [connectorName] The name of the connector

@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_key_vault_secret_reference_response.dart';
 import 'integration_runtime_reference_response.dart';
 import 'parameter_specification_response.dart';
 
@@ -12,35 +11,35 @@ class HiveLinkedServiceResponse {
   /// Specifies whether to allow self-signed certificates from the server. The default value is false.
   final pulumi.Input<dynamic>? allowSelfSignedServerCert;
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The authentication method used to access the Hive server.
   final pulumi.Input<String> authenticationType;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse?>? connectVia;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies whether the connections to the server will validate server certificate, the default value is True. Only used for Version 2.0
   final pulumi.Input<dynamic>? enableServerCertificateValidation;
   /// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
   final pulumi.Input<dynamic>? enableSsl;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// IP address or host name of the Hive server, separated by ';' for multiple hosts (only when serviceDiscoveryMode is enable).
   final pulumi.Input<dynamic> host;
   /// The partial URL corresponding to the Hive server.
   final pulumi.Input<dynamic>? httpPath;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>?>? parameters;
   /// The password corresponding to the user name that you provided in the Username field
-  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? password;
+  final pulumi.Input<dynamic>? password;
   /// The TCP port that the Hive server uses to listen for client connections.
   final pulumi.Input<dynamic>? port;
   /// The type of Hive server.
-  final pulumi.Input<String>? serverType;
+  final pulumi.Input<String?>? serverType;
   /// true to indicate using the ZooKeeper service, false not.
   final pulumi.Input<dynamic>? serviceDiscoveryMode;
   /// The transport protocol to use in the Thrift layer.
-  final pulumi.Input<String>? thriftTransportProtocol;
+  final pulumi.Input<String?>? thriftTransportProtocol;
   /// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
   final pulumi.Input<dynamic>? trustedCertPath;
   /// Type of linked service.
@@ -53,7 +52,7 @@ class HiveLinkedServiceResponse {
   /// The user name that you use to access Hive Server.
   final pulumi.Input<dynamic>? username;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// The namespace on ZooKeeper under which Hive Server 2 nodes are added.
   final pulumi.Input<dynamic>? zooKeeperNameSpace;
 
@@ -123,7 +122,7 @@ class HiveLinkedServiceResponse {
       'host': host,
       'httpPath': ?httpPath,
       'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
+      'password': ?password,
       'port': ?port,
       'serverType': ?serverType,
       'serviceDiscoveryMode': ?serviceDiscoveryMode,
@@ -152,7 +151,7 @@ class HiveLinkedServiceResponse {
       host: pulumi.Input.fromValue(map['host']),
       httpPath: (() { final guardedValue = map['httpPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(guardedValue, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       serverType: (() { final guardedValue = map['serverType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceDiscoveryMode: (() { final guardedValue = map['serviceDiscoveryMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

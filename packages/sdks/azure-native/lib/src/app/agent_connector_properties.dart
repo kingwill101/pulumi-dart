@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Agent Connector Properties
 class AgentConnectorProperties {
   /// The type of the data connector
-  final pulumi.Input<String>? dataConnectorType;
+  final pulumi.Input<String?>? dataConnectorType;
   /// Data source connection string or endpoint
-  final pulumi.Input<String>? dataSource;
+  final pulumi.Input<String?>? dataSource;
   /// Endpoint of the connector
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// Additional properties for the data connector which can be used to store custom key-value pairs
   final pulumi.Input<dynamic>? extendedProperties;
   /// Identity used to access the data source
-  final pulumi.Input<String>? identity;
+  final pulumi.Input<String?>? identity;
 
   /// Creates a new [AgentConnectorProperties].
   /// [dataConnectorType] The type of the data connector

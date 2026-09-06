@@ -9,7 +9,7 @@ class IngestionStorageResponse {
   /// Gets or sets the primary endpoint.
   final pulumi.Input<String> primaryEndpoint;
   /// Gets or sets the public network access setting
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
 
   /// Creates a new [IngestionStorageResponse].
   /// [id] Gets or sets the Id.

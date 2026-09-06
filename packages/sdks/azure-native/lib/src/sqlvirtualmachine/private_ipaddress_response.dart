@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A private IP address bound to the availability group listener.
 class PrivateIPAddressResponse {
   /// Private IP address bound to the availability group listener.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// Subnet used to include private IP.
-  final pulumi.Input<String>? subnetResourceId;
+  final pulumi.Input<String?>? subnetResourceId;
 
   /// Creates a new [PrivateIPAddressResponse].
   /// [ipAddress] Private IP address bound to the availability group listener.

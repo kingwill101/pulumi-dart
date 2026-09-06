@@ -1,28 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'all_features_response.dart';
-import 'categorical_data_quality_metric_threshold_response.dart';
 import 'feature_importance_settings_response.dart';
-import 'fixed_input_data_response.dart';
 
 class DataQualityMonitoringSignalResponse {
   /// A dictionary that maps feature names to their respective data types.
-  final pulumi.Input<Map<String, String>>? featureDataTypeOverride;
+  final pulumi.Input<Map<String, String>?>? featureDataTypeOverride;
   /// The settings for computing feature importance.
-  final pulumi.Input<FeatureImportanceSettingsResponse>? featureImportanceSettings;
+  final pulumi.Input<FeatureImportanceSettingsResponse?>? featureImportanceSettings;
   /// The features to calculate drift over.
-  final pulumi.Input<AllFeaturesResponse>? features;
+  final pulumi.Input<dynamic>? features;
   /// [Required] A list of metrics to calculate and their associated thresholds.
-  final pulumi.Input<List<CategoricalDataQualityMetricThresholdResponse>> metricThresholds;
+  final pulumi.Input<List<dynamic>> metricThresholds;
   /// The current notification mode for this signal.
-  final pulumi.Input<List<String>>? notificationTypes;
+  final pulumi.Input<List<String>?>? notificationTypes;
   /// [Required] The data produced by the production service which drift will be calculated for.
-  final pulumi.Input<FixedInputDataResponse> productionData;
+  final pulumi.Input<dynamic> productionData;
   /// Property dictionary. Properties can be added, but not removed or altered.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// [Required] The data to calculate drift against.
-  final pulumi.Input<FixedInputDataResponse> referenceData;
+  final pulumi.Input<dynamic> referenceData;
   /// Expected value is 'DataQuality'.
   final pulumi.Input<String> signalType;
 
@@ -52,12 +49,12 @@ class DataQualityMonitoringSignalResponse {
     return <String, dynamic>{
       'featureDataTypeOverride': ?featureDataTypeOverride,
       'featureImportanceSettings': ?pulumi.Input.mapOptionalInputValue<FeatureImportanceSettingsResponse, Map<String, dynamic>>(featureImportanceSettings, (value) => value.toMap()),
-      'features': ?pulumi.Input.mapOptionalInputValue<AllFeaturesResponse, Map<String, dynamic>>(features, (value) => value.toMap()),
-      'metricThresholds': pulumi.Input.mapInputValue<List<CategoricalDataQualityMetricThresholdResponse>, List<Map<String, dynamic>>>(metricThresholds, (value) => pulumi.Input.encodeList<CategoricalDataQualityMetricThresholdResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'features': ?features,
+      'metricThresholds': metricThresholds,
       'notificationTypes': ?notificationTypes,
-      'productionData': pulumi.Input.mapInputValue<FixedInputDataResponse, Map<String, dynamic>>(productionData, (value) => value.toMap()),
+      'productionData': productionData,
       'properties': ?properties,
-      'referenceData': pulumi.Input.mapInputValue<FixedInputDataResponse, Map<String, dynamic>>(referenceData, (value) => value.toMap()),
+      'referenceData': referenceData,
       'signalType': signalType,
     };
   }
@@ -66,12 +63,12 @@ class DataQualityMonitoringSignalResponse {
     return DataQualityMonitoringSignalResponse(
       featureDataTypeOverride: (() { final guardedValue = map['featureDataTypeOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       featureImportanceSettings: (() { final guardedValue = map['featureImportanceSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeatureImportanceSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      features: (() { final guardedValue = map['features']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AllFeaturesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      metricThresholds: pulumi.Input.fromValue(pulumi.Input.decodeList<CategoricalDataQualityMetricThresholdResponse>(map['metricThresholds']!, (value) => CategoricalDataQualityMetricThresholdResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      features: (() { final guardedValue = map['features']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      metricThresholds: pulumi.Input.fromValue((map['metricThresholds'] as List).cast<dynamic>()),
       notificationTypes: (() { final guardedValue = map['notificationTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      productionData: pulumi.Input.fromValue(FixedInputDataResponse.fromMap((map['productionData']! as Map).cast<String, dynamic>())),
+      productionData: pulumi.Input.fromValue(map['productionData']),
       properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      referenceData: pulumi.Input.fromValue(FixedInputDataResponse.fromMap((map['referenceData']! as Map).cast<String, dynamic>())),
+      referenceData: pulumi.Input.fromValue(map['referenceData']),
       signalType: pulumi.Input.fromValue(map['signalType'] as String),
     );
   }

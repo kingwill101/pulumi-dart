@@ -73,4 +73,29 @@ class WebAppDeployment extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [WebAppDeployment] resource.
+  WebAppDeployment.reference(String urn)
+    : super(
+        'azure-native:web:WebAppDeployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    active = registerOutput<bool?>('active');
+    author = registerOutput<String?>('author');
+    authorEmail = registerOutput<String?>('authorEmail');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deployer = registerOutput<String?>('deployer');
+    details = registerOutput<String?>('details');
+    endTime = registerOutput<String?>('endTime');
+    kind = registerOutput<String?>('kind');
+    message = registerOutput<String?>('message');
+    this.name = registerOutput<String>('name');
+    startTime = registerOutput<String?>('startTime');
+    status = registerOutput<int?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

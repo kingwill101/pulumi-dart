@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cosmosdb_fleet_args_doc}
 class FleetArgs {
   /// Cosmos DB fleet name. Needs to be unique under a subscription.
-  final pulumi.Input<String>? fleetName;
+  final pulumi.Input<String?>? fleetName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FleetArgs].
   /// [fleetName] Cosmos DB fleet name. Needs to be unique under a subscription.

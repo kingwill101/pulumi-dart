@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'connect_to_mongo_db_task_properties_response.dart';
 import 'service_task_args.dart';
 import 'system_data_response.dart';
 
@@ -228,7 +227,7 @@ class ServiceTask extends pulumi.CustomResource {
   /// Resource name.
   late final pulumi.Output<String> name;
   /// Custom task properties
-  late final pulumi.Output<ConnectToMongoDbTaskPropertiesResponse> properties;
+  late final pulumi.Output<dynamic> properties;
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource type.
@@ -251,7 +250,24 @@ class ServiceTask extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String?>('etag');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ConnectToMongoDbTaskPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectToMongoDbTaskPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<dynamic>('properties');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ServiceTask] resource.
+  ServiceTask.reference(String urn)
+    : super(
+        'azure-native:datamigration:ServiceTask',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<dynamic>('properties');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

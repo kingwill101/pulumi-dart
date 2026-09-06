@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_timeseriesinsights_access_policy_args_doc}
 class AccessPolicyArgs {
   /// Name of the access policy.
-  final pulumi.Input<String>? accessPolicyName;
+  final pulumi.Input<String?>? accessPolicyName;
   /// An description of the access policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the Time Series Insights environment associated with the specified resource group.
   final pulumi.Input<String> environmentName;
   /// The objectId of the principal in Azure Active Directory.
-  final pulumi.Input<String>? principalObjectId;
+  final pulumi.Input<String?>? principalObjectId;
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The list of roles the principal is assigned on the environment.
-  final pulumi.Input<List<String>>? roles;
+  final pulumi.Input<List<dynamic>?>? roles;
 
   /// Creates a new [AccessPolicyArgs].
   /// [accessPolicyName] Name of the access policy.
@@ -54,7 +54,7 @@ class AccessPolicyArgs {
       environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
       principalObjectId: (() { final guardedValue = map['principalObjectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      roles: (() { final guardedValue = map['roles']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      roles: (() { final guardedValue = map['roles']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
     );
   }
 }

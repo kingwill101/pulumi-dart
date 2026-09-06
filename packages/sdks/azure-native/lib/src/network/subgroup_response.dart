@@ -6,13 +6,13 @@ import 'sub_resource_response.dart';
 /// A subgroup in an interconnect group.
 class SubgroupResponse {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The reference to an interconnect block resource.
   final pulumi.Input<SubResourceResponse> interconnectBlock;
   /// The unique identifier of the subgroup.
   final pulumi.Input<String> internalSubgroupId;
   /// Name of the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The provisioning state of the subgroup.
   final pulumi.Input<String> provisioningState;
   /// Resource type.

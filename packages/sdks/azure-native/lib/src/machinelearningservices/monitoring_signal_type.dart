@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] Specifies the type of signal to monitor.
-enum MonitoringSignalType {
+enum MonitoringSignalType implements pulumi.PulumiEnum<String> {
   dataDrift("DataDrift"),
   predictionDrift("PredictionDrift"),
   dataQuality("DataQuality"),
@@ -7,6 +9,7 @@ enum MonitoringSignalType {
   custom("Custom");
 
   const MonitoringSignalType(this.wireValue);
+  @override
   final String wireValue;
 
   static MonitoringSignalType fromValue(String value) {

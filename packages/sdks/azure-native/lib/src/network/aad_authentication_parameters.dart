@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AAD Vpn authentication type related parameters.
 class AadAuthenticationParameters {
   /// AAD Vpn authentication parameter AAD audience.
-  final pulumi.Input<String>? aadAudience;
+  final pulumi.Input<String?>? aadAudience;
   /// AAD Vpn authentication parameter AAD issuer.
-  final pulumi.Input<String>? aadIssuer;
+  final pulumi.Input<String?>? aadIssuer;
   /// AAD Vpn authentication parameter AAD tenant.
-  final pulumi.Input<String>? aadTenant;
+  final pulumi.Input<String?>? aadTenant;
 
   /// Creates a new [AadAuthenticationParameters].
   /// [aadAudience] AAD Vpn authentication parameter AAD audience.

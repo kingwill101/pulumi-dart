@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Auto Update Ring Type which is stable or beta as new values. slow or fast are legacy from version 2026-06-01.
-enum AutoUpdateRingType {
+enum AutoUpdateRingType implements pulumi.PulumiEnum<String> {
   preview("Preview"),
   slow("Slow"),
   fast("Fast");
 
   const AutoUpdateRingType(this.wireValue);
+  @override
   final String wireValue;
 
   static AutoUpdateRingType fromValue(String value) {

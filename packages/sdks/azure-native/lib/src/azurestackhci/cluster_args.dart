@@ -10,31 +10,31 @@ import 'software_assurance_properties.dart';
 /// {@macro pulumi_azurestackhci_cluster_args_doc}
 class ClusterArgs {
   /// Object id of cluster AAD identity.
-  final pulumi.Input<String>? aadApplicationObjectId;
+  final pulumi.Input<String?>? aadApplicationObjectId;
   /// App id of cluster AAD identity.
-  final pulumi.Input<String>? aadClientId;
+  final pulumi.Input<String?>? aadClientId;
   /// Id of cluster identity service principal.
-  final pulumi.Input<String>? aadServicePrincipalObjectId;
+  final pulumi.Input<String?>? aadServicePrincipalObjectId;
   /// Tenant id of cluster AAD identity.
-  final pulumi.Input<String>? aadTenantId;
+  final pulumi.Input<String?>? aadTenantId;
   /// Endpoint configured for management from the Azure portal.
-  final pulumi.Input<String>? cloudManagementEndpoint;
+  final pulumi.Input<String?>? cloudManagementEndpoint;
   /// The name of the cluster.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// Desired properties of the cluster.
-  final pulumi.Input<ClusterDesiredProperties>? desiredProperties;
+  final pulumi.Input<ClusterDesiredProperties?>? desiredProperties;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Software Assurance properties of the cluster.
-  final pulumi.Input<SoftwareAssuranceProperties>? softwareAssuranceProperties;
+  final pulumi.Input<SoftwareAssuranceProperties?>? softwareAssuranceProperties;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
   /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-  final pulumi.Input<List<String>>? userAssignedIdentities;
+  final pulumi.Input<List<String>?>? userAssignedIdentities;
 
   /// Creates a new [ClusterArgs].
   /// [aadApplicationObjectId] Object id of cluster AAD identity.
@@ -97,7 +97,7 @@ class ClusterArgs {
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       softwareAssuranceProperties: (() { final guardedValue = map['softwareAssuranceProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SoftwareAssuranceProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
       userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

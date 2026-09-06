@@ -22,6 +22,17 @@ Future<GetMySQLServerResult> getMySQLServer(
   return GetMySQLServerResult.fromMap(result);
 }
 
+pulumi.Output<GetMySQLServerResult> getMySQLServerOutput(
+  GetMySQLServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:mysqldiscovery:getMySQLServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMySQLServerResult.fromMap);
+}
+
 /// Gets the MySQLSites resource.
 ///
 /// Uses Azure REST API version 2024-09-30-preview.
@@ -38,4 +49,15 @@ Future<GetMySQLSiteResult> getMySQLSite(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMySQLSiteResult.fromMap(result);
+}
+
+pulumi.Output<GetMySQLSiteResult> getMySQLSiteOutput(
+  GetMySQLSiteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:mysqldiscovery:getMySQLSite',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMySQLSiteResult.fromMap);
 }

@@ -11,11 +11,11 @@ import 'topic_response.dart';
 /// Result data returned by getAsset.
 class GetAssetResult {
   /// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must provide asset endpoint profile name.
-  final String assetEndpointProfileRef;
+  final String? assetEndpointProfileRef;
   /// A set of key-value pairs that contain custom attributes set by the customer.
   final dynamic attributes;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Array of datasets that are part of the asset. Each dataset describes the data points that make up the set.
   final List<DatasetResponse>? datasets;
   /// Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here.
@@ -37,15 +37,15 @@ class GetAssetResult {
   /// Array of events that are part of the asset. Each event can have per-event configuration.
   final List<EventResponse>? events;
   /// The extended location.
-  final ExtendedLocationResponse extendedLocation;
+  final ExtendedLocationResponse? extendedLocation;
   /// Asset id provided by the customer.
   final String? externalAssetId;
   /// Revision number of the hardware.
   final String? hardwareRevision;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// Asset manufacturer name.
   final String? manufacturer;
   /// Asset manufacturer URI.
@@ -53,27 +53,27 @@ class GetAssetResult {
   /// Asset model name.
   final String? model;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Asset product code.
   final String? productCode;
   /// Provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Asset serial number.
   final String? serialNumber;
   /// Revision number of the software.
   final String? softwareRevision;
   /// Read only object to reflect changes that have occurred on the Edge. Similar to Kubernetes status property for custom resources.
-  final AssetStatusResponse status;
+  final AssetStatusResponse? status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Globally unique, immutable, non-reusable id.
-  final String uuid;
+  final String? uuid;
   /// An integer that is incremented each time the resource is modified.
-  final double version;
+  final double? version;
 
   /// Creates a new [GetAssetResult].
   /// [assetEndpointProfileRef] A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must provide asset endpoint profile name.
@@ -109,9 +109,9 @@ class GetAssetResult {
   /// [uuid] Globally unique, immutable, non-reusable id.
   /// [version] An integer that is incremented each time the resource is modified.
   const GetAssetResult({
-    required this.assetEndpointProfileRef,
+    this.assetEndpointProfileRef,
     this.attributes,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.datasets,
     this.defaultDatasetsConfiguration,
     this.defaultEventsConfiguration,
@@ -122,32 +122,32 @@ class GetAssetResult {
     this.documentationUri,
     this.enabled,
     this.events,
-    required this.extendedLocation,
+    this.extendedLocation,
     this.externalAssetId,
     this.hardwareRevision,
-    required this.id,
-    required this.location,
+    this.id,
+    this.location,
     this.manufacturer,
     this.manufacturerUri,
     this.model,
-    required this.name,
+    this.name,
     this.productCode,
-    required this.provisioningState,
+    this.provisioningState,
     this.serialNumber,
     this.softwareRevision,
-    required this.status,
-    required this.systemData,
+    this.status,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.uuid,
-    required this.version,
+    this.type,
+    this.uuid,
+    this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assetEndpointProfileRef': assetEndpointProfileRef,
+      'assetEndpointProfileRef': ?assetEndpointProfileRef,
       'attributes': ?attributes,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'datasets': ?(() { final guardedValue = datasets; if (guardedValue == null) return null; return pulumi.Input.encodeList<DatasetResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'defaultDatasetsConfiguration': ?defaultDatasetsConfiguration,
       'defaultEventsConfiguration': ?defaultEventsConfiguration,
@@ -158,33 +158,33 @@ class GetAssetResult {
       'documentationUri': ?documentationUri,
       'enabled': ?enabled,
       'events': ?(() { final guardedValue = events; if (guardedValue == null) return null; return pulumi.Input.encodeList<EventResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'extendedLocation': extendedLocation.toMap(),
+      'extendedLocation': ?extendedLocation?.toMap(),
       'externalAssetId': ?externalAssetId,
       'hardwareRevision': ?hardwareRevision,
-      'id': id,
-      'location': location,
+      'id': ?id,
+      'location': ?location,
       'manufacturer': ?manufacturer,
       'manufacturerUri': ?manufacturerUri,
       'model': ?model,
-      'name': name,
+      'name': ?name,
       'productCode': ?productCode,
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'serialNumber': ?serialNumber,
       'softwareRevision': ?softwareRevision,
-      'status': status.toMap(),
-      'systemData': systemData.toMap(),
+      'status': ?status?.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'uuid': uuid,
-      'version': version,
+      'type': ?type,
+      'uuid': ?uuid,
+      'version': ?version,
     };
   }
 
   factory GetAssetResult.fromMap(Map<String, dynamic> map) {
     return GetAssetResult(
-      assetEndpointProfileRef: map['assetEndpointProfileRef'] as String,
+      assetEndpointProfileRef: (() { final guardedValue = map['assetEndpointProfileRef']; if (guardedValue == null) return null; return guardedValue as String; })(),
       attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return guardedValue; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       datasets: (() { final guardedValue = map['datasets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetResponse>(guardedValue, (value) => DatasetResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       defaultDatasetsConfiguration: (() { final guardedValue = map['defaultDatasetsConfiguration']; if (guardedValue == null) return null; return guardedValue as String; })(),
       defaultEventsConfiguration: (() { final guardedValue = map['defaultEventsConfiguration']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -195,25 +195,25 @@ class GetAssetResult {
       documentationUri: (() { final guardedValue = map['documentationUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       events: (() { final guardedValue = map['events']; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventResponse>(guardedValue, (value) => EventResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       externalAssetId: (() { final guardedValue = map['externalAssetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       hardwareRevision: (() { final guardedValue = map['hardwareRevision']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      location: map['location'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       manufacturer: (() { final guardedValue = map['manufacturer']; if (guardedValue == null) return null; return guardedValue as String; })(),
       manufacturerUri: (() { final guardedValue = map['manufacturerUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
       model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       productCode: (() { final guardedValue = map['productCode']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serialNumber: (() { final guardedValue = map['serialNumber']; if (guardedValue == null) return null; return guardedValue as String; })(),
       softwareRevision: (() { final guardedValue = map['softwareRevision']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      status: AssetStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return AssetStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      uuid: map['uuid'] as String,
-      version: map['version'] as double,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
     );
   }
 }

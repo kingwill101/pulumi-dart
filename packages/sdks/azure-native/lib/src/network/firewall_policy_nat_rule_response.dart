@@ -1,26 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'application_rule_condition_response.dart';
 import 'firewall_policy_nat_rule_action_response.dart';
 
 /// Firewall Policy NAT Rule.
 class FirewallPolicyNatRuleResponse {
   /// The action type of a Nat rule.
-  final pulumi.Input<FirewallPolicyNatRuleActionResponse>? action;
+  final pulumi.Input<FirewallPolicyNatRuleActionResponse?>? action;
   /// The name of the rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Priority of the Firewall Policy Rule resource.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// The match conditions for incoming traffic.
-  final pulumi.Input<ApplicationRuleConditionResponse>? ruleCondition;
+  final pulumi.Input<dynamic>? ruleCondition;
   /// The type of the rule.
   /// Expected value is 'FirewallPolicyNatRule'.
   final pulumi.Input<String> ruleType;
   /// The translated address for this NAT rule.
-  final pulumi.Input<String>? translatedAddress;
+  final pulumi.Input<String?>? translatedAddress;
   /// The translated port for this NAT rule.
-  final pulumi.Input<String>? translatedPort;
+  final pulumi.Input<String?>? translatedPort;
 
   /// Creates a new [FirewallPolicyNatRuleResponse].
   /// [action] The action type of a Nat rule.
@@ -45,7 +44,7 @@ class FirewallPolicyNatRuleResponse {
       'action': ?pulumi.Input.mapOptionalInputValue<FirewallPolicyNatRuleActionResponse, Map<String, dynamic>>(action, (value) => value.toMap()),
       'name': ?name,
       'priority': ?priority,
-      'ruleCondition': ?pulumi.Input.mapOptionalInputValue<ApplicationRuleConditionResponse, Map<String, dynamic>>(ruleCondition, (value) => value.toMap()),
+      'ruleCondition': ?ruleCondition,
       'ruleType': ruleType,
       'translatedAddress': ?translatedAddress,
       'translatedPort': ?translatedPort,
@@ -56,8 +55,8 @@ class FirewallPolicyNatRuleResponse {
     return FirewallPolicyNatRuleResponse(
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallPolicyNatRuleActionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      ruleCondition: (() { final guardedValue = map['ruleCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationRuleConditionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      ruleCondition: (() { final guardedValue = map['ruleCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
       translatedAddress: (() { final guardedValue = map['translatedAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       translatedPort: (() { final guardedValue = map['translatedPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -9,7 +9,7 @@ class VirtualNetworkConfigurationResponse {
   /// Engine service's public IP address resource id.
   final pulumi.Input<String> enginePublicIpId;
   /// When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The subnet resource id.
   final pulumi.Input<String> subnetId;
 
@@ -18,12 +18,12 @@ class VirtualNetworkConfigurationResponse {
   /// [enginePublicIpId] Engine service's public IP address resource id.
   /// [state] When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet.
   /// [subnetId] The subnet resource id.
-  const VirtualNetworkConfigurationResponse({
+  VirtualNetworkConfigurationResponse({
     required this.dataManagementPublicIpId,
     required this.enginePublicIpId,
-    this.state,
+    pulumi.Input<String?>? state,
     required this.subnetId,
-  });
+  }) : state = state ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

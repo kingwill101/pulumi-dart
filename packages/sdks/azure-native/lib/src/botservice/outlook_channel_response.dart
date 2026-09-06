@@ -8,9 +8,9 @@ class OutlookChannelResponse {
   /// Expected value is 'OutlookChannel'.
   final pulumi.Input<String> channelName;
   /// Entity Tag of the resource
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Specifies the location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Provisioning state of the resource
   final pulumi.Input<String> provisioningState;
 
@@ -19,12 +19,12 @@ class OutlookChannelResponse {
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [provisioningState] Provisioning state of the resource
-  const OutlookChannelResponse({
+  OutlookChannelResponse({
     required this.channelName,
     this.etag,
-    this.location,
+    pulumi.Input<String?>? location,
     required this.provisioningState,
-  });
+  }) : location = location ?? pulumi.Input.fromValue('global');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

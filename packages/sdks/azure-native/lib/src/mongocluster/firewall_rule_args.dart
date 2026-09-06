@@ -9,11 +9,11 @@ import 'firewall_rule_properties.dart';
 /// {@macro pulumi_mongocluster_firewall_rule_args_doc}
 class FirewallRuleArgs {
   /// The name of the mongo cluster firewall rule.
-  final pulumi.Input<String>? firewallRuleName;
+  final pulumi.Input<String?>? firewallRuleName;
   /// The name of the mongo cluster.
   final pulumi.Input<String> mongoClusterName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<FirewallRuleProperties>? properties;
+  final pulumi.Input<FirewallRuleProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

@@ -6,25 +6,25 @@ import 'tag.dart';
 /// Definition of awsOrganizationsAccount
 class AwsOrganizationsAccountProperties {
   /// If the account was created successfully, the unique identifier (ID) of the new account.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// The friendly name of the member account.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// The Amazon Resource Name (ARN) of the account.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The email address of the owner to assign to the new member account.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The method by which the account joined the organization.
-  final pulumi.Input<String>? joinedMethod;
+  final pulumi.Input<dynamic>? joinedMethod;
   /// The date the account became a part of the organization.
-  final pulumi.Input<String>? joinedTimestamp;
+  final pulumi.Input<String?>? joinedTimestamp;
   /// List of parent nodes for the member account. Currently only one parent at a time is supported. Default is root.
-  final pulumi.Input<List<String>>? parentIds;
+  final pulumi.Input<List<String>?>? parentIds;
   /// The name of an IAM role that AWS Organizations automatically preconfigures in the new member account. Default name is OrganizationAccountAccessRole if not specified.
-  final pulumi.Input<String>? roleName;
+  final pulumi.Input<String?>? roleName;
   /// The status of the account in the organization.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// A list of tags that you want to attach to the newly created account. For each tag in the list, you must specify both a tag key and a value.
-  final pulumi.Input<List<Tag>>? tags;
+  final pulumi.Input<List<Tag>?>? tags;
 
   /// Creates a new [AwsOrganizationsAccountProperties].
   /// [accountId] If the account was created successfully, the unique identifier (ID) of the new account.
@@ -37,7 +37,7 @@ class AwsOrganizationsAccountProperties {
   /// [roleName] The name of an IAM role that AWS Organizations automatically preconfigures in the new member account. Default name is OrganizationAccountAccessRole if not specified.
   /// [status] The status of the account in the organization.
   /// [tags] A list of tags that you want to attach to the newly created account. For each tag in the list, you must specify both a tag key and a value.
-  const AwsOrganizationsAccountProperties({
+  AwsOrganizationsAccountProperties({
     this.accountId,
     this.accountName,
     this.arn,
@@ -45,10 +45,10 @@ class AwsOrganizationsAccountProperties {
     this.joinedMethod,
     this.joinedTimestamp,
     this.parentIds,
-    this.roleName,
+    pulumi.Input<String?>? roleName,
     this.status,
     this.tags,
-  });
+  }) : roleName = roleName ?? pulumi.Input.fromValue('OrganizationAccountAccessRole');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,11 +71,11 @@ class AwsOrganizationsAccountProperties {
       accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      joinedMethod: (() { final guardedValue = map['joinedMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      joinedMethod: (() { final guardedValue = map['joinedMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       joinedTimestamp: (() { final guardedValue = map['joinedTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parentIds: (() { final guardedValue = map['parentIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       roleName: (() { final guardedValue = map['roleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Tag>(guardedValue, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

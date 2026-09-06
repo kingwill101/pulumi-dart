@@ -6,23 +6,23 @@ import 'security_rule.dart';
 /// NetworkSecurityGroup resource.
 class NetworkSecurityGroup {
   /// The default security rules of network security group.
-  final pulumi.Input<List<SecurityRule>>? defaultSecurityRules;
+  final pulumi.Input<List<SecurityRule>?>? defaultSecurityRules;
   /// A unique read-only string that changes whenever the resource is updated.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
-  final pulumi.Input<bool>? flushConnection;
+  final pulumi.Input<bool?>? flushConnection;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// The resource GUID property of the network security group resource.
-  final pulumi.Input<String>? resourceGuid;
+  final pulumi.Input<String?>? resourceGuid;
   /// A collection of security rules of the network security group.
-  final pulumi.Input<List<SecurityRule>>? securityRules;
+  final pulumi.Input<List<SecurityRule>?>? securityRules;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkSecurityGroup].
   /// [defaultSecurityRules] The default security rules of network security group.

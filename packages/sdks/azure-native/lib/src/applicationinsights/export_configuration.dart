@@ -286,4 +286,35 @@ class ExportConfiguration extends pulumi.CustomResource {
     storageName = registerOutput<String>('storageName');
     subscriptionId = registerOutput<String>('subscriptionId');
   }
+
+  /// Creates a typed reference to an existing [ExportConfiguration] resource.
+  ExportConfiguration.reference(String urn)
+    : super(
+        'azure-native:applicationinsights:ExportConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationName = registerOutput<String>('applicationName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    containerName = registerOutput<String>('containerName');
+    destinationAccountId = registerOutput<String>('destinationAccountId');
+    destinationStorageLocationId = registerOutput<String>('destinationStorageLocationId');
+    destinationStorageSubscriptionId = registerOutput<String>('destinationStorageSubscriptionId');
+    destinationType = registerOutput<String>('destinationType');
+    exportId = registerOutput<String>('exportId');
+    exportStatus = registerOutput<String>('exportStatus');
+    instrumentationKey = registerOutput<String>('instrumentationKey');
+    isUserEnabled = registerOutput<String>('isUserEnabled');
+    lastGapTime = registerOutput<String>('lastGapTime');
+    lastSuccessTime = registerOutput<String>('lastSuccessTime');
+    lastUserUpdate = registerOutput<String>('lastUserUpdate');
+    notificationQueueEnabled = registerOutput<String?>('notificationQueueEnabled');
+    permanentErrorReason = registerOutput<String>('permanentErrorReason');
+    recordTypes = registerOutput<String?>('recordTypes');
+    resourceGroup = registerOutput<String>('resourceGroup');
+    storageName = registerOutput<String>('storageName');
+    subscriptionId = registerOutput<String>('subscriptionId');
+  }
 }

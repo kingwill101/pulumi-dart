@@ -6,25 +6,25 @@ import 'git_pattern_repository.dart';
 /// Property of git.
 class ConfigServerGitProperty {
   /// Public sshKey of git repository.
-  final pulumi.Input<String>? hostKey;
+  final pulumi.Input<String?>? hostKey;
   /// SshKey algorithm of git repository.
-  final pulumi.Input<String>? hostKeyAlgorithm;
+  final pulumi.Input<String?>? hostKeyAlgorithm;
   /// Label of the repository
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Password of git repository basic auth.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Private sshKey algorithm of git repository.
-  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String?>? privateKey;
   /// Repositories of git.
-  final pulumi.Input<List<GitPatternRepository>>? repositories;
+  final pulumi.Input<List<GitPatternRepository>?>? repositories;
   /// Searching path of the repository
-  final pulumi.Input<List<String>>? searchPaths;
+  final pulumi.Input<List<String>?>? searchPaths;
   /// Strict host key checking or not.
-  final pulumi.Input<bool>? strictHostKeyChecking;
+  final pulumi.Input<bool?>? strictHostKeyChecking;
   /// URI of the repository
   final pulumi.Input<String> uri;
   /// Username of git repository basic auth.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [ConfigServerGitProperty].
   /// [hostKey] Public sshKey of git repository.

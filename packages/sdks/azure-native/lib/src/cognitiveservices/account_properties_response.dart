@@ -22,14 +22,14 @@ class AccountPropertiesResponse {
   /// The abuse penalty.
   final pulumi.Input<AbusePenaltyResponse> abusePenalty;
   /// Specifies whether this resource support project management as child resources, used as containers for access management, data isolation and cost in AI Foundry.
-  final pulumi.Input<bool>? allowProjectManagement;
-  final pulumi.Input<List<String>>? allowedFqdnList;
+  final pulumi.Input<bool?>? allowProjectManagement;
+  final pulumi.Input<List<String>?>? allowedFqdnList;
   /// The user owned AML account properties.
-  final pulumi.Input<UserOwnedAmlWorkspaceResponse>? amlWorkspace;
+  final pulumi.Input<UserOwnedAmlWorkspaceResponse?>? amlWorkspace;
   /// The api properties for special APIs.
-  final pulumi.Input<ApiPropertiesResponse>? apiProperties;
+  final pulumi.Input<ApiPropertiesResponse?>? apiProperties;
   /// Specifies the projects, by project name, that are associated with this resource.
-  final pulumi.Input<List<String>>? associatedProjects;
+  final pulumi.Input<List<String>?>? associatedProjects;
   /// The call rate limit Cognitive Services account.
   final pulumi.Input<CallRateLimitResponse> callRateLimit;
   /// Gets the capabilities of the cognitive services account. Each item indicates the capability of a specific feature. The values are read-only and for reference only.
@@ -37,18 +37,18 @@ class AccountPropertiesResponse {
   /// The commitment plan associations of Cognitive Services account.
   final pulumi.Input<List<CommitmentPlanAssociationResponse>> commitmentPlanAssociations;
   /// Optional subdomain name used for token-based authentication.
-  final pulumi.Input<String>? customSubDomainName;
+  final pulumi.Input<String?>? customSubDomainName;
   /// Gets the date of cognitive services account creation.
   final pulumi.Input<String> dateCreated;
   /// Specifies the project, by project name, that is targeted when data plane endpoints are called without a project parameter.
-  final pulumi.Input<String>? defaultProject;
+  final pulumi.Input<String?>? defaultProject;
   /// The deletion date, only available for deleted account.
   final pulumi.Input<String> deletionDate;
-  final pulumi.Input<bool>? disableLocalAuth;
+  final pulumi.Input<bool?>? disableLocalAuth;
   /// The flag to enable dynamic throttling.
-  final pulumi.Input<bool>? dynamicThrottlingEnabled;
+  final pulumi.Input<bool?>? dynamicThrottlingEnabled;
   /// The encryption properties for this resource.
-  final pulumi.Input<EncryptionResponse>? encryption;
+  final pulumi.Input<EncryptionResponse?>? encryption;
   /// Endpoint of the created account.
   final pulumi.Input<String> endpoint;
   final pulumi.Input<Map<String, String>> endpoints;
@@ -57,28 +57,28 @@ class AccountPropertiesResponse {
   /// If the resource is migrated from an existing key.
   final pulumi.Input<bool> isMigrated;
   /// The multiregion settings of Cognitive Services account.
-  final pulumi.Input<MultiRegionSettingsResponse>? locations;
+  final pulumi.Input<MultiRegionSettingsResponse?>? locations;
   /// Resource migration token.
-  final pulumi.Input<String>? migrationToken;
+  final pulumi.Input<String?>? migrationToken;
   /// A collection of rules governing the accessibility from specific network locations.
-  final pulumi.Input<NetworkRuleSetResponse>? networkAcls;
-  final pulumi.Input<List<NetworkInjectionResponse>>? networkInjections;
+  final pulumi.Input<NetworkRuleSetResponse?>? networkAcls;
+  final pulumi.Input<List<NetworkInjectionResponse>?>? networkInjections;
   /// The private endpoint connection associated with the Cognitive Services account.
   final pulumi.Input<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// Gets the status of the cognitive services account at the time the operation was called.
   final pulumi.Input<String> provisioningState;
   /// Whether or not public endpoint access is allowed for this account.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   final pulumi.Input<QuotaLimitResponse> quotaLimit;
   /// Cognitive Services Rai Monitor Config.
-  final pulumi.Input<RaiMonitorConfigResponse>? raiMonitorConfig;
-  final pulumi.Input<bool>? restrictOutboundNetworkAccess;
+  final pulumi.Input<RaiMonitorConfigResponse?>? raiMonitorConfig;
+  final pulumi.Input<bool?>? restrictOutboundNetworkAccess;
   /// The scheduled purge date, only available for deleted account.
   final pulumi.Input<String> scheduledPurgeDate;
   /// Sku change info of account.
   final pulumi.Input<SkuChangeInfoResponse> skuChangeInfo;
   /// The storage accounts for this resource.
-  final pulumi.Input<List<UserOwnedStorageResponse>>? userOwnedStorage;
+  final pulumi.Input<List<UserOwnedStorageResponse>?>? userOwnedStorage;
 
   /// Creates a new [AccountPropertiesResponse].
   /// [abusePenalty] The abuse penalty.

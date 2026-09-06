@@ -10,19 +10,19 @@ import 'zone_type.dart';
 /// {@macro pulumi_dns_zone_args_doc}
 class ZoneArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private.
-  final pulumi.Input<List<SubResource>>? registrationVirtualNetworks;
+  final pulumi.Input<List<SubResource>?>? registrationVirtualNetworks;
   /// A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private.
-  final pulumi.Input<List<SubResource>>? resolutionVirtualNetworks;
+  final pulumi.Input<List<SubResource>?>? resolutionVirtualNetworks;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the DNS zone (without a terminating dot).
-  final pulumi.Input<String>? zoneName;
+  final pulumi.Input<String?>? zoneName;
   /// The type of this DNS zone (Public or Private).
-  final pulumi.Input<ZoneType>? zoneType;
+  final pulumi.Input<ZoneType?>? zoneType;
 
   /// Creates a new [ZoneArgs].
   /// [location] The geo-location where the resource lives
@@ -32,15 +32,15 @@ class ZoneArgs {
   /// [tags] Resource tags.
   /// [zoneName] The name of the DNS zone (without a terminating dot).
   /// [zoneType] The type of this DNS zone (Public or Private).
-  const ZoneArgs({
+  ZoneArgs({
     this.location,
     this.registrationVirtualNetworks,
     this.resolutionVirtualNetworks,
     required this.resourceGroupName,
     this.tags,
     this.zoneName,
-    this.zoneType,
-  });
+    pulumi.Input<ZoneType?>? zoneType,
+  }) : zoneType = zoneType ?? pulumi.Input.fromValue(ZoneType.fromValue('Public'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

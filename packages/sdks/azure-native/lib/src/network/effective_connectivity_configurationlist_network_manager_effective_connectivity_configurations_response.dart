@@ -10,19 +10,19 @@ class EffectiveConnectivityConfigurationlistNetworkManagerEffectiveConnectivityC
   /// Groups for configuration
   final pulumi.Input<List<ConnectivityGroupItemResponse>> appliesToGroups;
   /// Effective configuration groups.
-  final pulumi.Input<List<ConfigurationGrouplistNetworkManagerEffectiveConnectivityConfigurationsResponse>>? configurationGroups;
+  final pulumi.Input<List<ConfigurationGrouplistNetworkManagerEffectiveConnectivityConfigurationsResponse>?>? configurationGroups;
   /// Connectivity topology type.
   final pulumi.Input<String> connectivityTopology;
   /// Flag if need to remove current existing peerings.
-  final pulumi.Input<String>? deleteExistingPeering;
+  final pulumi.Input<String?>? deleteExistingPeering;
   /// A description of the connectivity configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of hubItems
-  final pulumi.Input<List<HubResponse>>? hubs;
+  final pulumi.Input<List<HubResponse>?>? hubs;
   /// Connectivity configuration ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Flag if global mesh is supported.
-  final pulumi.Input<String>? isGlobal;
+  final pulumi.Input<String?>? isGlobal;
   /// The provisioning state of the connectivity configuration resource.
   final pulumi.Input<String> provisioningState;
   /// Unique identifier for this resource.

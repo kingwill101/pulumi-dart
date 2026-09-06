@@ -8,22 +8,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_blueprint_role_assignment_artifact_args_doc}
 class RoleAssignmentArtifactArgs {
   /// Name of the blueprint artifact.
-  final pulumi.Input<String>? artifactName;
+  final pulumi.Input<String?>? artifactName;
   /// Name of the blueprint definition.
   final pulumi.Input<String> blueprintName;
   /// Artifacts which need to be deployed before the specified artifact.
-  final pulumi.Input<List<String>>? dependsOn;
+  final pulumi.Input<List<String>?>? dependsOn;
   /// Multi-line explain this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// One-liner string explain this resource.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Specifies the kind of blueprint artifact.
   /// Expected value is 'roleAssignment'.
   final pulumi.Input<String> kind;
   /// Array of user or group identities in Azure Active Directory. The roleDefinition will apply to each identity.
   final pulumi.Input<dynamic> principalIds;
   /// RoleAssignment will be scope to this resourceGroup. If empty, it scopes to the subscription.
-  final pulumi.Input<String>? resourceGroup;
+  final pulumi.Input<String?>? resourceGroup;
   /// The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   final pulumi.Input<String> resourceScope;
   /// Azure resource ID of the RoleDefinition.

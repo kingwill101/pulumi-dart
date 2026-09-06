@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Public Network Access Control for PrivateAccess resource.
-enum PublicNetworkAccessOption {
+enum PublicNetworkAccessOption implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const PublicNetworkAccessOption(this.wireValue);
+  @override
   final String wireValue;
 
   static PublicNetworkAccessOption fromValue(String value) {

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the threshold for declaring a test successful.
 class ConnectionMonitorSuccessThreshold {
   /// The maximum percentage of failed checks permitted for a test to evaluate as successful.
-  final pulumi.Input<int>? checksFailedPercent;
+  final pulumi.Input<int?>? checksFailedPercent;
   /// The maximum round-trip time in milliseconds permitted for a test to evaluate as successful.
-  final pulumi.Input<double>? roundTripTimeMs;
+  final pulumi.Input<double?>? roundTripTimeMs;
 
   /// Creates a new [ConnectionMonitorSuccessThreshold].
   /// [checksFailedPercent] The maximum percentage of failed checks permitted for a test to evaluate as successful.
@@ -26,8 +26,8 @@ class ConnectionMonitorSuccessThreshold {
 
   factory ConnectionMonitorSuccessThreshold.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorSuccessThreshold(
-      checksFailedPercent: (() { final guardedValue = map['checksFailedPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      roundTripTimeMs: (() { final guardedValue = map['roundTripTimeMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      checksFailedPercent: (() { final guardedValue = map['checksFailedPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      roundTripTimeMs: (() { final guardedValue = map['roundTripTimeMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

@@ -7,9 +7,9 @@ import 'referenced_resource_response.dart';
 /// Azure Operator Distributed Services vhd artifact profile properties.
 class AzureOperatorNexusArmTemplateArtifactProfileResponse {
   /// The reference to artifact store.
-  final pulumi.Input<ReferencedResourceResponse>? artifactStore;
+  final pulumi.Input<ReferencedResourceResponse?>? artifactStore;
   /// Template artifact profile.
-  final pulumi.Input<ArmTemplateArtifactProfileResponse>? templateArtifactProfile;
+  final pulumi.Input<ArmTemplateArtifactProfileResponse?>? templateArtifactProfile;
 
   /// Creates a new [AzureOperatorNexusArmTemplateArtifactProfileResponse].
   /// [artifactStore] The reference to artifact store.

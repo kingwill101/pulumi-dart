@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the backend. A backend can be either Single or Pool.
-enum BackendType {
+enum BackendType implements pulumi.PulumiEnum<String> {
   valueSingle("Single"),
   valuePool("Pool");
 
   const BackendType(this.wireValue);
+  @override
   final String wireValue;
 
   static BackendType fromValue(String value) {

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Advertise Static Routes. Ex: "True" | "False".
-enum RedistributeStaticRoutes {
+enum RedistributeStaticRoutes implements pulumi.PulumiEnum<String> {
   valueTrue("True"),
   valueFalse("False");
 
   const RedistributeStaticRoutes(this.wireValue);
+  @override
   final String wireValue;
 
   static RedistributeStaticRoutes fromValue(String value) {

@@ -9,15 +9,15 @@ import 'deployment_properties.dart';
 /// {@macro pulumi_resources_deployment_at_management_group_scope_args_doc}
 class DeploymentAtManagementGroupScopeArgs {
   /// The name of the deployment.
-  final pulumi.Input<String>? deploymentName;
+  final pulumi.Input<String?>? deploymentName;
   /// The management group ID.
   final pulumi.Input<String> groupId;
   /// The location to store the deployment data.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The deployment properties.
   final pulumi.Input<DeploymentProperties> properties;
   /// Deployment tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DeploymentAtManagementGroupScopeArgs].
   /// [deploymentName] The name of the deployment.

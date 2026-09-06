@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration settings of the endpoints used for the custom Open ID Connect provider.
 class OpenIdConnectConfig {
   /// The endpoint to be used to make an authorization request.
-  final pulumi.Input<String>? authorizationEndpoint;
+  final pulumi.Input<String?>? authorizationEndpoint;
   /// The endpoint that provides the keys necessary to validate the token.
-  final pulumi.Input<String>? certificationUri;
+  final pulumi.Input<String?>? certificationUri;
   /// The endpoint that issues the token.
-  final pulumi.Input<String>? issuer;
+  final pulumi.Input<String?>? issuer;
   /// The endpoint to be used to request a token.
-  final pulumi.Input<String>? tokenEndpoint;
+  final pulumi.Input<String?>? tokenEndpoint;
   /// The endpoint that contains all the configuration endpoints for the provider.
-  final pulumi.Input<String>? wellKnownOpenIdConfiguration;
+  final pulumi.Input<String?>? wellKnownOpenIdConfiguration;
 
   /// Creates a new [OpenIdConnectConfig].
   /// [authorizationEndpoint] The endpoint to be used to make an authorization request.

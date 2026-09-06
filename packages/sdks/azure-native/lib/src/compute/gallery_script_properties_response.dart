@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the properties of a gallery script definition.
 class GalleryScriptPropertiesResponse {
   /// The description of this gallery script definition resource. This property is updatable.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The end of life date of the gallery Script Definition. This property can be used for decommissioning purposes. This property is updatable.
-  final pulumi.Input<String>? endOfLifeDate;
+  final pulumi.Input<String?>? endOfLifeDate;
   /// The Eula agreement (End User License Agreement) for the gallery Script Definition.
-  final pulumi.Input<String>? eula;
+  final pulumi.Input<String?>? eula;
   /// The privacy statement uri.
-  final pulumi.Input<String>? privacyStatementUri;
+  final pulumi.Input<String?>? privacyStatementUri;
   /// The provisioning state, which only appears in the response.
   final pulumi.Input<String> provisioningState;
   /// The release note uri.
-  final pulumi.Input<String>? releaseNoteUri;
+  final pulumi.Input<String?>? releaseNoteUri;
   /// This property allows you to specify the supported type of the OS that application is built for. Possible values are: **Windows,** **Linux.**
   final pulumi.Input<String> supportedOSType;
 

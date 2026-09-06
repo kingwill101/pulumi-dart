@@ -10,17 +10,17 @@ import 'solution_properties.dart';
 /// {@macro pulumi_operationsmanagement_solution_args_doc}
 class SolutionArgs {
   /// Resource location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Plan for solution object supported by the OperationsManagement resource provider.
-  final pulumi.Input<SolutionPlan>? plan;
+  final pulumi.Input<SolutionPlan?>? plan;
   /// Properties for solution object supported by the OperationsManagement resource provider.
-  final pulumi.Input<SolutionProperties>? properties;
+  final pulumi.Input<SolutionProperties?>? properties;
   /// The name of the resource group to get. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// User Solution Name.
-  final pulumi.Input<String>? solutionName;
+  final pulumi.Input<String?>? solutionName;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SolutionArgs].
   /// [location] Resource location

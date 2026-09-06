@@ -5,6 +5,7 @@ import 'extended_location_response.dart';
 import 'hardware_inventory_response.dart';
 import 'hardware_validation_status_response.dart';
 import 'runtime_protection_status_response.dart';
+import 'secret_rotation_status_response.dart';
 import 'system_data_response.dart';
 
 /// Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
@@ -369,7 +370,7 @@ class BareMetalMachine extends pulumi.CustomResource {
   /// The runtime protection status of the bare metal machine.
   late final pulumi.Output<RuntimeProtectionStatusResponse> runtimeProtectionStatus;
   /// The list of statuses that represent secret rotation activity.
-  late final pulumi.Output<List<Map<String, dynamic>>> secretRotationStatus;
+  late final pulumi.Output<List<SecretRotationStatusResponse>> secretRotationStatus;
   /// The serial number of the bare metal machine.
   late final pulumi.Output<String> serialNumber;
   /// The discovered value of the machine's service tag.
@@ -397,7 +398,7 @@ class BareMetalMachine extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    associatedResourceIds = registerOutput<List<String>>('associatedResourceIds');
+    associatedResourceIds = registerOutput<List<String>>('associatedResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     bmcConnectionString = registerOutput<String>('bmcConnectionString');
     bmcCredentials = registerOutput<AdministrativeCredentialsResponse>('bmcCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AdministrativeCredentialsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -411,14 +412,14 @@ class BareMetalMachine extends pulumi.CustomResource {
     extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hardwareInventory = registerOutput<HardwareInventoryResponse>('hardwareInventory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HardwareInventoryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hardwareValidationStatus = registerOutput<HardwareValidationStatusResponse>('hardwareValidationStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HardwareValidationStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    hybridAksClustersAssociatedIds = registerOutput<List<String>>('hybridAksClustersAssociatedIds');
+    hybridAksClustersAssociatedIds = registerOutput<List<String>>('hybridAksClustersAssociatedIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kubernetesNodeName = registerOutput<String>('kubernetesNodeName');
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
     location = registerOutput<String>('location');
     machineClusterVersion = registerOutput<String?>('machineClusterVersion');
     machineDetails = registerOutput<String>('machineDetails');
     machineName = registerOutput<String>('machineName');
-    machineRoles = registerOutput<List<String>>('machineRoles');
+    machineRoles = registerOutput<List<String>>('machineRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     machineSkuId = registerOutput<String>('machineSkuId');
     this.name = registerOutput<String>('name');
     oamIpv4Address = registerOutput<String>('oamIpv4Address');
@@ -430,12 +431,63 @@ class BareMetalMachine extends pulumi.CustomResource {
     rackSlot = registerOutput<double>('rackSlot');
     readyState = registerOutput<String>('readyState');
     runtimeProtectionStatus = registerOutput<RuntimeProtectionStatusResponse>('runtimeProtectionStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeProtectionStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    secretRotationStatus = registerOutput<List<Map<String, dynamic>>>('secretRotationStatus');
+    secretRotationStatus = registerOutput<List<SecretRotationStatusResponse>>('secretRotationStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretRotationStatusResponse>(guardedValue, (value) => SecretRotationStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
     serialNumber = registerOutput<String>('serialNumber');
     serviceTag = registerOutput<String>('serviceTag');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    virtualMachinesAssociatedIds = registerOutput<List<String>>('virtualMachinesAssociatedIds');
+    virtualMachinesAssociatedIds = registerOutput<List<String>>('virtualMachinesAssociatedIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [BareMetalMachine] resource.
+  BareMetalMachine.reference(String urn)
+    : super(
+        'azure-native:networkcloud:BareMetalMachine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    associatedResourceIds = registerOutput<List<String>>('associatedResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bmcConnectionString = registerOutput<String>('bmcConnectionString');
+    bmcCredentials = registerOutput<AdministrativeCredentialsResponse>('bmcCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AdministrativeCredentialsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bmcMacAddress = registerOutput<String>('bmcMacAddress');
+    bootMacAddress = registerOutput<String>('bootMacAddress');
+    clusterId = registerOutput<String>('clusterId');
+    cordonStatus = registerOutput<String>('cordonStatus');
+    detailedStatus = registerOutput<String>('detailedStatus');
+    detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hardwareInventory = registerOutput<HardwareInventoryResponse>('hardwareInventory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HardwareInventoryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hardwareValidationStatus = registerOutput<HardwareValidationStatusResponse>('hardwareValidationStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HardwareValidationStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hybridAksClustersAssociatedIds = registerOutput<List<String>>('hybridAksClustersAssociatedIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    kubernetesNodeName = registerOutput<String>('kubernetesNodeName');
+    kubernetesVersion = registerOutput<String>('kubernetesVersion');
+    location = registerOutput<String>('location');
+    machineClusterVersion = registerOutput<String?>('machineClusterVersion');
+    machineDetails = registerOutput<String>('machineDetails');
+    machineName = registerOutput<String>('machineName');
+    machineRoles = registerOutput<List<String>>('machineRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    machineSkuId = registerOutput<String>('machineSkuId');
+    this.name = registerOutput<String>('name');
+    oamIpv4Address = registerOutput<String>('oamIpv4Address');
+    oamIpv6Address = registerOutput<String>('oamIpv6Address');
+    osImage = registerOutput<String>('osImage');
+    powerState = registerOutput<String>('powerState');
+    provisioningState = registerOutput<String>('provisioningState');
+    rackId = registerOutput<String>('rackId');
+    rackSlot = registerOutput<double>('rackSlot');
+    readyState = registerOutput<String>('readyState');
+    runtimeProtectionStatus = registerOutput<RuntimeProtectionStatusResponse>('runtimeProtectionStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeProtectionStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secretRotationStatus = registerOutput<List<SecretRotationStatusResponse>>('secretRotationStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretRotationStatusResponse>(guardedValue, (value) => SecretRotationStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    serialNumber = registerOutput<String>('serialNumber');
+    serviceTag = registerOutput<String>('serviceTag');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    virtualMachinesAssociatedIds = registerOutput<List<String>>('virtualMachinesAssociatedIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

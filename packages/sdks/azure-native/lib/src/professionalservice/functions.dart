@@ -19,3 +19,14 @@ Future<GetProfessionalServiceSubscriptionLevelResult> getProfessionalServiceSubs
   );
   return GetProfessionalServiceSubscriptionLevelResult.fromMap(result);
 }
+
+pulumi.Output<GetProfessionalServiceSubscriptionLevelResult> getProfessionalServiceSubscriptionLevelOutput(
+  GetProfessionalServiceSubscriptionLevelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:professionalservice:getProfessionalServiceSubscriptionLevel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProfessionalServiceSubscriptionLevelResult.fromMap);
+}

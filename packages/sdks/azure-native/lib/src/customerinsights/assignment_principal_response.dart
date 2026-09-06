@@ -7,7 +7,7 @@ class AssignmentPrincipalResponse {
   /// The principal id being assigned to.
   final pulumi.Input<String> principalId;
   /// Other metadata for the principal.
-  final pulumi.Input<Map<String, String>>? principalMetadata;
+  final pulumi.Input<Map<String, String>?>? principalMetadata;
   /// The Type of the principal ID.
   final pulumi.Input<String> principalType;
 

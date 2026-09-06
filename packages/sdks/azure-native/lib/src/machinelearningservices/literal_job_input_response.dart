@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Literal input type.
 class LiteralJobInputResponse {
   /// Description for the input.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Enum to determine the Job Input Type.
   /// Expected value is 'literal'.
   final pulumi.Input<String> jobInputType;

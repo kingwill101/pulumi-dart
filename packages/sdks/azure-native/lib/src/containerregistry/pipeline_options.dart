@@ -1,10 +1,13 @@
-enum PipelineOptions {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum PipelineOptions implements pulumi.PulumiEnum<String> {
   valueOverwriteTags("OverwriteTags"),
   valueOverwriteBlobs("OverwriteBlobs"),
   valueDeleteSourceBlobOnSuccess("DeleteSourceBlobOnSuccess"),
   valueContinueOnErrors("ContinueOnErrors");
 
   const PipelineOptions(this.wireValue);
+  @override
   final String wireValue;
 
   static PipelineOptions fromValue(String value) {

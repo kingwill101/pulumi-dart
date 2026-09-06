@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Backup state of this backup item.
-enum ProtectionState {
+enum ProtectionState implements pulumi.PulumiEnum<String> {
   valueInvalid("Invalid"),
   valueIRPending("IRPending"),
   valueProtected("Protected"),
@@ -9,6 +11,7 @@ enum ProtectionState {
   valueBackupsSuspended("BackupsSuspended");
 
   const ProtectionState(this.wireValue);
+  @override
   final String wireValue;
 
   static ProtectionState fromValue(String value) {

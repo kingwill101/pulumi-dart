@@ -7,9 +7,9 @@ import 'key_vault_properties.dart';
 /// Configures how customer data is encrypted inside the Batch account. By default, accounts are encrypted using a Microsoft managed key. For additional control, a customer-managed key can be used instead.
 class EncryptionProperties {
   /// Type of the key source.
-  final pulumi.Input<KeySource>? keySource;
+  final pulumi.Input<KeySource?>? keySource;
   /// Additional details when using Microsoft.KeyVault
-  final pulumi.Input<KeyVaultProperties>? keyVaultProperties;
+  final pulumi.Input<KeyVaultProperties?>? keyVaultProperties;
 
   /// Creates a new [EncryptionProperties].
   /// [keySource] Type of the key source.

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Programmatic code for the status of the assessment
-enum AssessmentStatusCode {
+enum AssessmentStatusCode implements pulumi.PulumiEnum<String> {
   valueHealthy("Healthy"),
   valueUnhealthy("Unhealthy"),
   valueNotApplicable("NotApplicable");
 
   const AssessmentStatusCode(this.wireValue);
+  @override
   final String wireValue;
 
   static AssessmentStatusCode fromValue(String value) {

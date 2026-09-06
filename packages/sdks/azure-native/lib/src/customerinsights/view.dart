@@ -219,7 +219,28 @@ class View extends pulumi.CustomResource {
     changed = registerOutput<String>('changed');
     created = registerOutput<String>('created');
     definition = registerOutput<String>('definition');
-    displayName = registerOutput<Map<String, String>?>('displayName');
+    displayName = registerOutput<Map<String, String>?>('displayName', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+    userId = registerOutput<String?>('userId');
+    viewName = registerOutput<String>('viewName');
+  }
+
+  /// Creates a typed reference to an existing [View] resource.
+  View.reference(String urn)
+    : super(
+        'azure-native:customerinsights:View',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    changed = registerOutput<String>('changed');
+    created = registerOutput<String>('created');
+    definition = registerOutput<String>('definition');
+    displayName = registerOutput<Map<String, String>?>('displayName', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');

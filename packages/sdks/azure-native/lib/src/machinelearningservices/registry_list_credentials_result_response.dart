@@ -6,7 +6,7 @@ import 'password_response.dart';
 class RegistryListCredentialsResultResponse {
   /// The location of the workspace ACR
   final pulumi.Input<String> location;
-  final pulumi.Input<List<PasswordResponse>>? passwords;
+  final pulumi.Input<List<PasswordResponse>?>? passwords;
   /// The username of the workspace ACR
   final pulumi.Input<String> username;
 

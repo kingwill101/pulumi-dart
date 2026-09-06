@@ -22,45 +22,45 @@ import 'txt_record.dart';
 /// {@macro pulumi_dns_record_set_args_doc}
 class RecordSetArgs {
   /// The list of A records in the record set.
-  final pulumi.Input<List<ARecord>>? aRecords;
+  final pulumi.Input<List<ARecord>?>? aRecords;
   /// The list of AAAA records in the record set.
-  final pulumi.Input<List<AaaaRecord>>? aaaaRecords;
+  final pulumi.Input<List<AaaaRecord>?>? aaaaRecords;
   /// The list of CAA records in the record set.
-  final pulumi.Input<List<CaaRecord>>? caaRecords;
+  final pulumi.Input<List<CaaRecord>?>? caaRecords;
   /// The CNAME record in the  record set.
-  final pulumi.Input<CnameRecord>? cnameRecord;
+  final pulumi.Input<CnameRecord?>? cnameRecord;
   /// The list of DS records in the record set.
-  final pulumi.Input<List<DsRecord>>? dsRecords;
+  final pulumi.Input<List<DsRecord>?>? dsRecords;
   /// The metadata attached to the record set.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The list of MX records in the record set.
-  final pulumi.Input<List<MxRecord>>? mxRecords;
+  final pulumi.Input<List<MxRecord>?>? mxRecords;
   /// The list of NAPTR records in the record set.
-  final pulumi.Input<List<NaptrRecord>>? naptrRecords;
+  final pulumi.Input<List<NaptrRecord>?>? naptrRecords;
   /// The list of NS records in the record set.
-  final pulumi.Input<List<NsRecord>>? nsRecords;
+  final pulumi.Input<List<NsRecord>?>? nsRecords;
   /// The list of PTR records in the record set.
-  final pulumi.Input<List<PtrRecord>>? ptrRecords;
+  final pulumi.Input<List<PtrRecord>?>? ptrRecords;
   /// The type of DNS record in this record set.
   final pulumi.Input<String> recordType;
   /// The name of the record set, relative to the name of the zone.
-  final pulumi.Input<String>? relativeRecordSetName;
+  final pulumi.Input<String?>? relativeRecordSetName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The SOA record in the record set.
-  final pulumi.Input<SoaRecord>? soaRecord;
+  final pulumi.Input<SoaRecord?>? soaRecord;
   /// The list of SRV records in the record set.
-  final pulumi.Input<List<SrvRecord>>? srvRecords;
+  final pulumi.Input<List<SrvRecord>?>? srvRecords;
   /// A reference to an azure resource from where the dns resource value is taken.
-  final pulumi.Input<SubResource>? targetResource;
+  final pulumi.Input<SubResource?>? targetResource;
   /// The list of TLSA records in the record set.
-  final pulumi.Input<List<TlsaRecord>>? tlsaRecords;
+  final pulumi.Input<List<TlsaRecord>?>? tlsaRecords;
   /// A reference to an azure traffic manager profile resource from where the dns resource value is taken.
-  final pulumi.Input<SubResource>? trafficManagementProfile;
+  final pulumi.Input<SubResource?>? trafficManagementProfile;
   /// The TTL (time-to-live) of the records in the record set.
-  final pulumi.Input<double>? ttl;
+  final pulumi.Input<double?>? ttl;
   /// The list of TXT records in the record set.
-  final pulumi.Input<List<TxtRecord>>? txtRecords;
+  final pulumi.Input<List<TxtRecord>?>? txtRecords;
   /// The name of the DNS zone (without a terminating dot).
   final pulumi.Input<String> zoneName;
 
@@ -156,7 +156,7 @@ class RecordSetArgs {
       targetResource: (() { final guardedValue = map['targetResource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tlsaRecords: (() { final guardedValue = map['tlsaRecords']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TlsaRecord>(guardedValue, (value) => TlsaRecord.fromMap((value as Map).cast<String, dynamic>()))); })(),
       trafficManagementProfile: (() { final guardedValue = map['trafficManagementProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       txtRecords: (() { final guardedValue = map['txtRecords']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TxtRecord>(guardedValue, (value) => TxtRecord.fromMap((value as Map).cast<String, dynamic>()))); })(),
       zoneName: pulumi.Input.fromValue(map['zoneName'] as String),
     );

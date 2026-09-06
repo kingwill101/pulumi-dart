@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines Hardware level encryption (Only for disk)
-enum HardwareEncryption {
+enum HardwareEncryption implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const HardwareEncryption(this.wireValue);
+  @override
   final String wireValue;
 
   static HardwareEncryption fromValue(String value) {

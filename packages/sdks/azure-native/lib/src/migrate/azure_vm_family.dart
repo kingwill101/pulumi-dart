@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Azure VM Family
-enum AzureVmFamily {
+enum AzureVmFamily implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   basicA0A4("Basic_A0_A4"),
   standardA0A7("Standard_A0_A7"),
@@ -54,6 +56,7 @@ enum AzureVmFamily {
   ebdsv5Series("Ebdsv5_series");
 
   const AzureVmFamily(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureVmFamily fromValue(String value) {

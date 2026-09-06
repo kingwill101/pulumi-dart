@@ -8,19 +8,19 @@ import 'integration_runtime_ssis_properties_response.dart';
 /// Managed integration runtime, including managed elastic and managed dedicated integration runtimes.
 class ManagedIntegrationRuntimeResponse {
   /// The compute resource for managed integration runtime.
-  final pulumi.Input<IntegrationRuntimeComputePropertiesResponse>? computeProperties;
+  final pulumi.Input<IntegrationRuntimeComputePropertiesResponse?>? computeProperties;
   /// The name of virtual network to which Azure-SSIS integration runtime will join
-  final pulumi.Input<IntegrationRuntimeCustomerVirtualNetworkResponse>? customerVirtualNetwork;
+  final pulumi.Input<IntegrationRuntimeCustomerVirtualNetworkResponse?>? customerVirtualNetwork;
   /// Integration runtime description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The id of the managed virtual network.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Integration runtime state, only valid for managed dedicated integration runtime.
   final pulumi.Input<String> provisioningState;
   /// The reference name of the managed virtual network
-  final pulumi.Input<String>? referenceName;
+  final pulumi.Input<String?>? referenceName;
   /// SSIS properties for managed integration runtime.
-  final pulumi.Input<IntegrationRuntimeSsisPropertiesResponse>? ssisProperties;
+  final pulumi.Input<IntegrationRuntimeSsisPropertiesResponse?>? ssisProperties;
   /// The type of integration runtime.
   /// Expected value is 'Managed'.
   final pulumi.Input<String> type;

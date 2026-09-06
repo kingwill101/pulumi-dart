@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualNetworkStatusResponseProvisioningStatus {
   /// The ID of the operation performed on the virtual network
-  final pulumi.Input<String>? operationId;
+  final pulumi.Input<String?>? operationId;
   /// The status of the operation performed on the virtual network [Succeeded, Failed, InProgress]
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [VirtualNetworkStatusResponseProvisioningStatus].
   /// [operationId] The ID of the operation performed on the virtual network

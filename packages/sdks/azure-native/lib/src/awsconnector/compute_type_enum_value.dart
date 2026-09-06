@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ComputeTypeEnumValue
 class ComputeTypeEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [ComputeTypeEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class ComputeTypeEnumValue {
 
   factory ComputeTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return ComputeTypeEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

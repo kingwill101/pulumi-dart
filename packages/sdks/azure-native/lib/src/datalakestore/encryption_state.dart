@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The current state of encryption for this Data Lake Store account.
-enum EncryptionState {
+enum EncryptionState implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const EncryptionState(this.wireValue);
+  @override
   final String wireValue;
 
   static EncryptionState fromValue(String value) {

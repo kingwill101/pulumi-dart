@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Category of the connection
-enum ConnectionCategory {
+enum ConnectionCategory implements pulumi.PulumiEnum<String> {
   pythonFeed("PythonFeed"),
   containerRegistry("ContainerRegistry"),
   git("Git"),
@@ -122,6 +124,7 @@ enum ConnectionCategory {
   remoteA2A("RemoteA2A");
 
   const ConnectionCategory(this.wireValue);
+  @override
   final String wireValue;
 
   static ConnectionCategory fromValue(String value) {

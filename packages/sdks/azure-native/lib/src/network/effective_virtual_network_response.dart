@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Effective Virtual Network
 class EffectiveVirtualNetworkResponse {
   /// Effective vnet Id.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Location of vnet.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Membership Type.
-  final pulumi.Input<String>? membershipType;
+  final pulumi.Input<String?>? membershipType;
 
   /// Creates a new [EffectiveVirtualNetworkResponse].
   /// [id] Effective vnet Id.

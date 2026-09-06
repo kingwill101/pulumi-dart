@@ -6,11 +6,11 @@ import 'route_target_information_response.dart';
 /// Option B configuration to be used for Management VPN.
 class FabricOptionBPropertiesResponse {
   /// Route Targets to be applied for outgoing routes from CE. This is for backward compatibility.
-  final pulumi.Input<List<String>>? exportRouteTargets;
+  final pulumi.Input<List<String>?>? exportRouteTargets;
   /// Route Targets to be applied for incoming routes into CE. This is for backward compatibility.
-  final pulumi.Input<List<String>>? importRouteTargets;
+  final pulumi.Input<List<String>?>? importRouteTargets;
   /// Route Targets to be applied.
-  final pulumi.Input<RouteTargetInformationResponse>? routeTargets;
+  final pulumi.Input<RouteTargetInformationResponse?>? routeTargets;
 
   /// Creates a new [FabricOptionBPropertiesResponse].
   /// [exportRouteTargets] Route Targets to be applied for outgoing routes from CE. This is for backward compatibility.

@@ -7,11 +7,11 @@ import 'transfer_configuration_response_transfer_filter_details.dart';
 /// Configuration for defining the transfer of data.
 class TransferConfigurationResponse {
   /// Map of filter type and the details to transfer all data. This field is required only if the TransferConfigurationType is given as TransferAll
-  final pulumi.Input<TransferConfigurationResponseTransferAllDetails>? transferAllDetails;
+  final pulumi.Input<TransferConfigurationResponseTransferAllDetails?>? transferAllDetails;
   /// Type of the configuration for transfer.
   final pulumi.Input<String> transferConfigurationType;
   /// Map of filter type and the details to filter. This field is required only if the TransferConfigurationType is given as TransferUsingFilter.
-  final pulumi.Input<TransferConfigurationResponseTransferFilterDetails>? transferFilterDetails;
+  final pulumi.Input<TransferConfigurationResponseTransferFilterDetails?>? transferFilterDetails;
 
   /// Creates a new [TransferConfigurationResponse].
   /// [transferAllDetails] Map of filter type and the details to transfer all data. This field is required only if the TransferConfigurationType is given as TransferAll

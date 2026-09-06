@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of AvailabilityZone
 class AvailabilityZone {
   /// &lt;p&gt;The name of the Availability Zone.&lt;/p&gt;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AvailabilityZone].
   /// [name] &lt;p&gt;The name of the Availability Zone.&lt;/p&gt;

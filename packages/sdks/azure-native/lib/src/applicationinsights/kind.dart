@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kind of workbook. Choices are user and shared.
-enum Kind {
+enum Kind implements pulumi.PulumiEnum<String> {
   valueUser("user"),
   valueShared("shared");
 
   const Kind(this.wireValue);
+  @override
   final String wireValue;
 
   static Kind fromValue(String value) {

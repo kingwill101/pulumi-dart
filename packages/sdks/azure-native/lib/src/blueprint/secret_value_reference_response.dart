@@ -10,7 +10,7 @@ class SecretValueReferenceResponse {
   /// Name of the secret.
   final pulumi.Input<String> secretName;
   /// The version of the secret to use. If left blank, the latest version of the secret is used.
-  final pulumi.Input<String>? secretVersion;
+  final pulumi.Input<String?>? secretVersion;
 
   /// Creates a new [SecretValueReferenceResponse].
   /// [keyVault] Specifies the reference to a given Azure Key Vault.

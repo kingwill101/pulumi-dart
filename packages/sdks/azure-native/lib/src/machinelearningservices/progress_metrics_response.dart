@@ -36,10 +36,10 @@ class ProgressMetricsResponse {
 
   factory ProgressMetricsResponse.fromMap(Map<String, dynamic> map) {
     return ProgressMetricsResponse(
-      completedDatapointCount: pulumi.Input.fromValue(map['completedDatapointCount'] as double),
+      completedDatapointCount: pulumi.Input.fromValue((map['completedDatapointCount'] as num).toDouble()),
       incrementalDataLastRefreshDateTime: pulumi.Input.fromValue(map['incrementalDataLastRefreshDateTime'] as String),
-      skippedDatapointCount: pulumi.Input.fromValue(map['skippedDatapointCount'] as double),
-      totalDatapointCount: pulumi.Input.fromValue(map['totalDatapointCount'] as double),
+      skippedDatapointCount: pulumi.Input.fromValue((map['skippedDatapointCount'] as num).toDouble()),
+      totalDatapointCount: pulumi.Input.fromValue((map['totalDatapointCount'] as num).toDouble()),
     );
   }
 }

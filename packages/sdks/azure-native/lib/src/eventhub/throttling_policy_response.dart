@@ -39,7 +39,7 @@ class ThrottlingPolicyResponse {
     return ThrottlingPolicyResponse(
       metricId: pulumi.Input.fromValue(map['metricId'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      rateLimitThreshold: pulumi.Input.fromValue(map['rateLimitThreshold'] as double),
+      rateLimitThreshold: pulumi.Input.fromValue((map['rateLimitThreshold'] as num).toDouble()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

@@ -9,7 +9,7 @@ class PrivateEndpointConnectionPropertiesResponse {
   /// ARM id for the private endpoint resource corresponding to the connection.
   final pulumi.Input<ResourceIdResponse> privateEndpoint;
   /// State of the private endpoint connection.
-  final pulumi.Input<PrivateLinkServiceConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStateResponse?>? privateLinkServiceConnectionState;
   /// Indicates whether there is an ongoing operation on the private endpoint.
   final pulumi.Input<String> provisioningState;
 

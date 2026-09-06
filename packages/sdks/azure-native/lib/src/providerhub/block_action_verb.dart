@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The action verb that will be blocked when the resource group is locked during move.
-enum BlockActionVerb {
+enum BlockActionVerb implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   read("Read"),
   write("Write"),
@@ -8,6 +10,7 @@ enum BlockActionVerb {
   unrecognized("Unrecognized");
 
   const BlockActionVerb(this.wireValue);
+  @override
   final String wireValue;
 
   static BlockActionVerb fromValue(String value) {

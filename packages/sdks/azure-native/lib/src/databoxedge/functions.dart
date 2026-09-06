@@ -56,6 +56,17 @@ Future<GetArcAddonResult> getArcAddon(
   return GetArcAddonResult.fromMap(result);
 }
 
+pulumi.Output<GetArcAddonResult> getArcAddonOutput(
+  GetArcAddonArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databoxedge:getArcAddon',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetArcAddonResult.fromMap);
+}
+
 /// Gets the properties of the specified bandwidth schedule.
 ///
 /// Uses Azure REST API version 2023-07-01.
@@ -76,6 +87,17 @@ Future<GetBandwidthScheduleResult> getBandwidthSchedule(
   return GetBandwidthScheduleResult.fromMap(result);
 }
 
+pulumi.Output<GetBandwidthScheduleResult> getBandwidthScheduleOutput(
+  GetBandwidthScheduleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databoxedge:getBandwidthSchedule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBandwidthScheduleResult.fromMap);
+}
+
 /// Gets a specific role by name.
 ///
 /// Uses Azure REST API version 2023-07-01.
@@ -92,6 +114,17 @@ Future<GetCloudEdgeManagementRoleResult> getCloudEdgeManagementRole(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCloudEdgeManagementRoleResult.fromMap(result);
+}
+
+pulumi.Output<GetCloudEdgeManagementRoleResult> getCloudEdgeManagementRoleOutput(
+  GetCloudEdgeManagementRoleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databoxedge:getCloudEdgeManagementRole',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudEdgeManagementRoleResult.fromMap);
 }
 
 /// Represents a container on the  Data Box Edge/Gateway device.
@@ -114,6 +147,17 @@ Future<GetContainerResult> getContainer(
   return GetContainerResult.fromMap(result);
 }
 
+pulumi.Output<GetContainerResult> getContainerOutput(
+  GetContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databoxedge:getContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContainerResult.fromMap);
+}
+
 /// Gets the properties of the Data Box Edge/Data Box Gateway device.
 ///
 /// Uses Azure REST API version 2023-07-01.
@@ -132,6 +176,17 @@ Future<GetDeviceResult> getDevice(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeviceResult.fromMap(result);
+}
+
+pulumi.Output<GetDeviceResult> getDeviceOutput(
+  GetDeviceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databoxedge:getDevice',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeviceResult.fromMap);
 }
 
 /// Gets additional information for the specified Azure Stack Edge/Data Box Gateway device.
@@ -154,6 +209,17 @@ Future<GetDeviceExtendedInformationResult> getDeviceExtendedInformation(
   return GetDeviceExtendedInformationResult.fromMap(result);
 }
 
+pulumi.Output<GetDeviceExtendedInformationResult> getDeviceExtendedInformationOutput(
+  GetDeviceExtendedInformationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databoxedge:getDeviceExtendedInformation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeviceExtendedInformationResult.fromMap);
+}
+
 /// Get a specific trigger by name.
 ///
 /// Uses Azure REST API version 2023-07-01.
@@ -170,6 +236,17 @@ Future<GetFileEventTriggerResult> getFileEventTrigger(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFileEventTriggerResult.fromMap(result);
+}
+
+pulumi.Output<GetFileEventTriggerResult> getFileEventTriggerOutput(
+  GetFileEventTriggerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databoxedge:getFileEventTrigger',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFileEventTriggerResult.fromMap);
 }
 
 /// Gets a specific addon by name.
@@ -190,6 +267,17 @@ Future<GetIoTAddonResult> getIoTAddon(
   return GetIoTAddonResult.fromMap(result);
 }
 
+pulumi.Output<GetIoTAddonResult> getIoTAddonOutput(
+  GetIoTAddonArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databoxedge:getIoTAddon',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIoTAddonResult.fromMap);
+}
+
 /// Gets a specific role by name.
 ///
 /// Uses Azure REST API version 2023-07-01.
@@ -206,6 +294,17 @@ Future<GetIoTRoleResult> getIoTRole(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIoTRoleResult.fromMap(result);
+}
+
+pulumi.Output<GetIoTRoleResult> getIoTRoleOutput(
+  GetIoTRoleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databoxedge:getIoTRole',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIoTRoleResult.fromMap);
 }
 
 /// Gets a specific role by name.
@@ -226,6 +325,17 @@ Future<GetKubernetesRoleResult> getKubernetesRole(
   return GetKubernetesRoleResult.fromMap(result);
 }
 
+pulumi.Output<GetKubernetesRoleResult> getKubernetesRoleOutput(
+  GetKubernetesRoleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databoxedge:getKubernetesRole',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKubernetesRoleResult.fromMap);
+}
+
 /// Gets a specific role by name.
 ///
 /// Uses Azure REST API version 2023-07-01.
@@ -242,6 +352,17 @@ Future<GetMECRoleResult> getMECRole(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMECRoleResult.fromMap(result);
+}
+
+pulumi.Output<GetMECRoleResult> getMECRoleOutput(
+  GetMECRoleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databoxedge:getMECRole',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMECRoleResult.fromMap);
 }
 
 /// The metric setting details for the role
@@ -264,6 +385,17 @@ Future<GetMonitoringConfigResult> getMonitoringConfig(
   return GetMonitoringConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetMonitoringConfigResult> getMonitoringConfigOutput(
+  GetMonitoringConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databoxedge:getMonitoringConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMonitoringConfigResult.fromMap);
+}
+
 /// The order details.
 ///
 /// Uses Azure REST API version 2023-07-01.
@@ -284,6 +416,17 @@ Future<GetOrderResult> getOrder(
   return GetOrderResult.fromMap(result);
 }
 
+pulumi.Output<GetOrderResult> getOrderOutput(
+  GetOrderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databoxedge:getOrder',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrderResult.fromMap);
+}
+
 /// Get a specific trigger by name.
 ///
 /// Uses Azure REST API version 2023-07-01.
@@ -300,6 +443,17 @@ Future<GetPeriodicTimerEventTriggerResult> getPeriodicTimerEventTrigger(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPeriodicTimerEventTriggerResult.fromMap(result);
+}
+
+pulumi.Output<GetPeriodicTimerEventTriggerResult> getPeriodicTimerEventTriggerOutput(
+  GetPeriodicTimerEventTriggerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databoxedge:getPeriodicTimerEventTrigger',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPeriodicTimerEventTriggerResult.fromMap);
 }
 
 /// Represents a share on the  Data Box Edge/Gateway device.
@@ -322,6 +476,17 @@ Future<GetShareResult> getShare(
   return GetShareResult.fromMap(result);
 }
 
+pulumi.Output<GetShareResult> getShareOutput(
+  GetShareArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databoxedge:getShare',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetShareResult.fromMap);
+}
+
 /// Represents a Storage Account on the  Data Box Edge/Gateway device.
 ///
 /// Uses Azure REST API version 2023-07-01.
@@ -340,6 +505,17 @@ Future<GetStorageAccountResult> getStorageAccount(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStorageAccountResult.fromMap(result);
+}
+
+pulumi.Output<GetStorageAccountResult> getStorageAccountOutput(
+  GetStorageAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databoxedge:getStorageAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageAccountResult.fromMap);
 }
 
 /// Gets the properties of the specified storage account credential.
@@ -362,6 +538,17 @@ Future<GetStorageAccountCredentialResult> getStorageAccountCredential(
   return GetStorageAccountCredentialResult.fromMap(result);
 }
 
+pulumi.Output<GetStorageAccountCredentialResult> getStorageAccountCredentialOutput(
+  GetStorageAccountCredentialArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databoxedge:getStorageAccountCredential',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageAccountCredentialResult.fromMap);
+}
+
 /// Gets the properties of the specified user.
 ///
 /// Uses Azure REST API version 2023-07-01.
@@ -382,6 +569,17 @@ Future<GetUserResult> getUser(
   return GetUserResult.fromMap(result);
 }
 
+pulumi.Output<GetUserResult> getUserOutput(
+  GetUserArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databoxedge:getUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserResult.fromMap);
+}
+
 /// DC Access code in the case of Self Managed Shipping.
 ///
 /// Uses Azure REST API version 2023-07-01.
@@ -400,4 +598,15 @@ Future<ListOrderDCAccessCodeResult> listOrderDCAccessCode(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListOrderDCAccessCodeResult.fromMap(result);
+}
+
+pulumi.Output<ListOrderDCAccessCodeResult> listOrderDCAccessCodeOutput(
+  ListOrderDCAccessCodeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databoxedge:listOrderDCAccessCode',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListOrderDCAccessCodeResult.fromMap);
 }

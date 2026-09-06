@@ -30,6 +30,17 @@ Future<GetApplicationResult> getApplication(
   return GetApplicationResult.fromMap(result);
 }
 
+pulumi.Output<GetApplicationResult> getApplicationOutput(
+  GetApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:solutions:getApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationResult.fromMap);
+}
+
 /// Gets the managed application definition.
 ///
 /// Uses Azure REST API version 2021-07-01.
@@ -48,6 +59,17 @@ Future<GetApplicationDefinitionResult> getApplicationDefinition(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApplicationDefinitionResult.fromMap(result);
+}
+
+pulumi.Output<GetApplicationDefinitionResult> getApplicationDefinitionOutput(
+  GetApplicationDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:solutions:getApplicationDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationDefinitionResult.fromMap);
 }
 
 /// Gets the JIT request.
@@ -70,6 +92,17 @@ Future<GetJitRequestResult> getJitRequest(
   return GetJitRequestResult.fromMap(result);
 }
 
+pulumi.Output<GetJitRequestResult> getJitRequestOutput(
+  GetJitRequestArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:solutions:getJitRequest',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJitRequestResult.fromMap);
+}
+
 /// List allowed upgrade plans for application.
 ///
 /// Uses Azure REST API version 2021-07-01.
@@ -90,6 +123,17 @@ Future<ListApplicationAllowedUpgradePlansResult> listApplicationAllowedUpgradePl
   return ListApplicationAllowedUpgradePlansResult.fromMap(result);
 }
 
+pulumi.Output<ListApplicationAllowedUpgradePlansResult> listApplicationAllowedUpgradePlansOutput(
+  ListApplicationAllowedUpgradePlansArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:solutions:listApplicationAllowedUpgradePlans',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListApplicationAllowedUpgradePlansResult.fromMap);
+}
+
 /// List tokens for application.
 ///
 /// Uses Azure REST API version 2021-07-01.
@@ -108,4 +152,15 @@ Future<ListApplicationTokensResult> listApplicationTokens(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListApplicationTokensResult.fromMap(result);
+}
+
+pulumi.Output<ListApplicationTokensResult> listApplicationTokensOutput(
+  ListApplicationTokensArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:solutions:listApplicationTokens',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListApplicationTokensResult.fromMap);
 }

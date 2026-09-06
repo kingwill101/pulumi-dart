@@ -8,11 +8,11 @@ import 'last_patch_installation_summary_response.dart';
 /// The status of virtual machine patch operations.
 class VirtualMachinePatchStatusResponse {
   /// The available patch summary of the latest assessment operation for the virtual machine.
-  final pulumi.Input<AvailablePatchSummaryResponse>? availablePatchSummary;
+  final pulumi.Input<AvailablePatchSummaryResponse?>? availablePatchSummary;
   /// The enablement status of the specified patchMode
   final pulumi.Input<List<InstanceViewStatusResponse>> configurationStatuses;
   /// The installation summary of the latest installation operation for the virtual machine.
-  final pulumi.Input<LastPatchInstallationSummaryResponse>? lastPatchInstallationSummary;
+  final pulumi.Input<LastPatchInstallationSummaryResponse?>? lastPatchInstallationSummary;
 
   /// Creates a new [VirtualMachinePatchStatusResponse].
   /// [availablePatchSummary] The available patch summary of the latest assessment operation for the virtual machine.

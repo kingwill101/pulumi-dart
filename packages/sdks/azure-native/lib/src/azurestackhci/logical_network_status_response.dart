@@ -6,11 +6,11 @@ import 'logical_network_status_provisioning_status_response.dart';
 /// The observed state of logical networks
 class LogicalNetworkStatusResponse {
   /// LogicalNetwork provisioning error code
-  final pulumi.Input<String>? errorCode;
+  final pulumi.Input<String?>? errorCode;
   /// Descriptive error message
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// Logical network provisioning status
-  final pulumi.Input<LogicalNetworkStatusProvisioningStatusResponse>? provisioningStatus;
+  final pulumi.Input<LogicalNetworkStatusProvisioningStatusResponse?>? provisioningStatus;
 
   /// Creates a new [LogicalNetworkStatusResponse].
   /// [errorCode] LogicalNetwork provisioning error code

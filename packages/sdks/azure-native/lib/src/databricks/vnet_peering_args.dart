@@ -11,25 +11,25 @@ import 'virtual_network_peering_properties_format_remote_virtual_network.dart';
 /// {@macro pulumi_databricks_vnet_peering_args_doc}
 class VNetPeeringArgs {
   /// Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
-  final pulumi.Input<bool>? allowForwardedTraffic;
+  final pulumi.Input<bool?>? allowForwardedTraffic;
   /// If gateway links can be used in remote virtual networking to link to this virtual network.
-  final pulumi.Input<bool>? allowGatewayTransit;
+  final pulumi.Input<bool?>? allowGatewayTransit;
   /// Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
-  final pulumi.Input<bool>? allowVirtualNetworkAccess;
+  final pulumi.Input<bool?>? allowVirtualNetworkAccess;
   /// The reference to the databricks virtual network address space.
-  final pulumi.Input<AddressSpace>? databricksAddressSpace;
+  final pulumi.Input<AddressSpace?>? databricksAddressSpace;
   /// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
-  final pulumi.Input<VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork>? databricksVirtualNetwork;
+  final pulumi.Input<VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork?>? databricksVirtualNetwork;
   /// The name of the workspace vNet peering.
-  final pulumi.Input<String>? peeringName;
+  final pulumi.Input<String?>? peeringName;
   /// The reference to the remote virtual network address space.
-  final pulumi.Input<AddressSpace>? remoteAddressSpace;
+  final pulumi.Input<AddressSpace?>? remoteAddressSpace;
   /// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
   final pulumi.Input<VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork> remoteVirtualNetwork;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
-  final pulumi.Input<bool>? useRemoteGateways;
+  final pulumi.Input<bool?>? useRemoteGateways;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 

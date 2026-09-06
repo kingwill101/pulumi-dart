@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties that define a BGP session.
 class BgpSession {
   /// The maximum number of prefixes advertised over the IPv4 session.
-  final pulumi.Input<int>? maxPrefixesAdvertisedV4;
+  final pulumi.Input<int?>? maxPrefixesAdvertisedV4;
   /// The maximum number of prefixes advertised over the IPv6 session.
-  final pulumi.Input<int>? maxPrefixesAdvertisedV6;
+  final pulumi.Input<int?>? maxPrefixesAdvertisedV6;
   /// The MD5 authentication key of the session.
-  final pulumi.Input<String>? md5AuthenticationKey;
+  final pulumi.Input<String?>? md5AuthenticationKey;
   /// The IPv4 session address on Microsoft's end.
-  final pulumi.Input<String>? microsoftSessionIPv4Address;
+  final pulumi.Input<String?>? microsoftSessionIPv4Address;
   /// The IPv6 session address on Microsoft's end.
-  final pulumi.Input<String>? microsoftSessionIPv6Address;
+  final pulumi.Input<String?>? microsoftSessionIPv6Address;
   /// The IPv4 session address on peer's end.
-  final pulumi.Input<String>? peerSessionIPv4Address;
+  final pulumi.Input<String?>? peerSessionIPv4Address;
   /// The IPv6 session address on peer's end.
-  final pulumi.Input<String>? peerSessionIPv6Address;
+  final pulumi.Input<String?>? peerSessionIPv6Address;
   /// The IPv4 prefix that contains both ends' IPv4 addresses.
-  final pulumi.Input<String>? sessionPrefixV4;
+  final pulumi.Input<String?>? sessionPrefixV4;
   /// The IPv6 prefix that contains both ends' IPv6 addresses.
-  final pulumi.Input<String>? sessionPrefixV6;
+  final pulumi.Input<String?>? sessionPrefixV6;
 
   /// Creates a new [BgpSession].
   /// [maxPrefixesAdvertisedV4] The maximum number of prefixes advertised over the IPv4 session.
@@ -61,8 +61,8 @@ class BgpSession {
 
   factory BgpSession.fromMap(Map<String, dynamic> map) {
     return BgpSession(
-      maxPrefixesAdvertisedV4: (() { final guardedValue = map['maxPrefixesAdvertisedV4']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxPrefixesAdvertisedV6: (() { final guardedValue = map['maxPrefixesAdvertisedV6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxPrefixesAdvertisedV4: (() { final guardedValue = map['maxPrefixesAdvertisedV4']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxPrefixesAdvertisedV6: (() { final guardedValue = map['maxPrefixesAdvertisedV6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       md5AuthenticationKey: (() { final guardedValue = map['md5AuthenticationKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       microsoftSessionIPv4Address: (() { final guardedValue = map['microsoftSessionIPv4Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       microsoftSessionIPv6Address: (() { final guardedValue = map['microsoftSessionIPv6Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

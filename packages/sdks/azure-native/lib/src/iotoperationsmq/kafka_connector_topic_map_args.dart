@@ -11,11 +11,11 @@ import 'kafka_topic_map_batching.dart';
 /// {@macro pulumi_iotoperationsmq_kafka_connector_topic_map_args_doc}
 class KafkaConnectorTopicMapArgs {
   /// The batching settings for kafka messages.
-  final pulumi.Input<KafkaTopicMapBatching>? batching;
+  final pulumi.Input<KafkaTopicMapBatching?>? batching;
   /// The compression to use for kafka messages.
-  final pulumi.Input<String>? compression;
+  final pulumi.Input<dynamic>? compression;
   /// The flag to copy Mqtt properties.
-  final pulumi.Input<String>? copyMqttProperties;
+  final pulumi.Input<String?>? copyMqttProperties;
   /// Extended Location
   final pulumi.Input<ExtendedLocationProperty> extendedLocation;
   /// Name of MQ kafkaConnector resource
@@ -23,21 +23,21 @@ class KafkaConnectorTopicMapArgs {
   /// The kafkaConnector CRD it refers to.
   final pulumi.Input<String> kafkaConnectorRef;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of MQ resource
   final pulumi.Input<String> mqName;
   /// The partition to use for Kafka.
-  final pulumi.Input<String>? partitionKeyProperty;
+  final pulumi.Input<String?>? partitionKeyProperty;
   /// The partition strategy to use for Kafka.
-  final pulumi.Input<String>? partitionStrategy;
+  final pulumi.Input<dynamic>? partitionStrategy;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The route details for Kafka connector.
   final pulumi.Input<List<KafkaRoutes>> routes;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Name of MQ kafka/topicMap resource
-  final pulumi.Input<String>? topicMapName;
+  final pulumi.Input<String?>? topicMapName;
 
   /// Creates a new [KafkaConnectorTopicMapArgs].
   /// [batching] The batching settings for kafka messages.
@@ -54,9 +54,9 @@ class KafkaConnectorTopicMapArgs {
   /// [routes] The route details for Kafka connector.
   /// [tags] Resource tags.
   /// [topicMapName] Name of MQ kafka/topicMap resource
-  const KafkaConnectorTopicMapArgs({
+  KafkaConnectorTopicMapArgs({
     this.batching,
-    this.compression,
+    pulumi.Input<dynamic>? compression,
     this.copyMqttProperties,
     required this.extendedLocation,
     required this.kafkaConnectorName,
@@ -64,12 +64,12 @@ class KafkaConnectorTopicMapArgs {
     this.location,
     required this.mqName,
     this.partitionKeyProperty,
-    this.partitionStrategy,
+    pulumi.Input<dynamic>? partitionStrategy,
     required this.resourceGroupName,
     required this.routes,
     this.tags,
     this.topicMapName,
-  });
+  }) : compression = compression ?? pulumi.Input.fromValue('none'), partitionStrategy = partitionStrategy ?? pulumi.Input.fromValue('default');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,7 +93,7 @@ class KafkaConnectorTopicMapArgs {
   factory KafkaConnectorTopicMapArgs.fromMap(Map<String, dynamic> map) {
     return KafkaConnectorTopicMapArgs(
       batching: (() { final guardedValue = map['batching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KafkaTopicMapBatching.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      compression: (() { final guardedValue = map['compression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      compression: (() { final guardedValue = map['compression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       copyMqttProperties: (() { final guardedValue = map['copyMqttProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       extendedLocation: pulumi.Input.fromValue(ExtendedLocationProperty.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())),
       kafkaConnectorName: pulumi.Input.fromValue(map['kafkaConnectorName'] as String),
@@ -101,7 +101,7 @@ class KafkaConnectorTopicMapArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mqName: pulumi.Input.fromValue(map['mqName'] as String),
       partitionKeyProperty: (() { final guardedValue = map['partitionKeyProperty']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      partitionStrategy: (() { final guardedValue = map['partitionStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      partitionStrategy: (() { final guardedValue = map['partitionStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       routes: pulumi.Input.fromValue(pulumi.Input.decodeList<KafkaRoutes>(map['routes']!, (value) => KafkaRoutes.fromMap((value as Map).cast<String, dynamic>()))),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

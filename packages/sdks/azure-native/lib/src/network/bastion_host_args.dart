@@ -12,44 +12,44 @@ import 'sub_resource.dart';
 /// {@macro pulumi_network_bastion_host_args_doc}
 class BastionHostArgs {
   /// The name of the Bastion Host.
-  final pulumi.Input<String>? bastionHostName;
+  final pulumi.Input<String?>? bastionHostName;
   /// Enable/Disable Copy/Paste feature of the Bastion Host resource.
-  final pulumi.Input<bool>? disableCopyPaste;
+  final pulumi.Input<bool?>? disableCopyPaste;
   /// FQDN for the endpoint on which bastion host is accessible.
-  final pulumi.Input<String>? dnsName;
+  final pulumi.Input<String?>? dnsName;
   /// Enable/Disable File Copy feature of the Bastion Host resource.
-  final pulumi.Input<bool>? enableFileCopy;
+  final pulumi.Input<bool?>? enableFileCopy;
   /// Enable/Disable IP Connect feature of the Bastion Host resource.
-  final pulumi.Input<bool>? enableIpConnect;
+  final pulumi.Input<bool?>? enableIpConnect;
   /// Enable/Disable Kerberos feature of the Bastion Host resource.
-  final pulumi.Input<bool>? enableKerberos;
+  final pulumi.Input<bool?>? enableKerberos;
   /// Enable/Disable Private Only feature of the Bastion Host resource.
-  final pulumi.Input<bool>? enablePrivateOnlyBastion;
+  final pulumi.Input<bool?>? enablePrivateOnlyBastion;
   /// Enable/Disable Session Recording feature of the Bastion Host resource.
-  final pulumi.Input<bool>? enableSessionRecording;
+  final pulumi.Input<bool?>? enableSessionRecording;
   /// Enable/Disable Shareable Link of the Bastion Host resource.
-  final pulumi.Input<bool>? enableShareableLink;
+  final pulumi.Input<bool?>? enableShareableLink;
   /// Enable/Disable Tunneling feature of the Bastion Host resource.
-  final pulumi.Input<bool>? enableTunneling;
+  final pulumi.Input<bool?>? enableTunneling;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// IP configuration of the Bastion Host resource.
-  final pulumi.Input<List<BastionHostIPConfiguration>>? ipConfigurations;
+  final pulumi.Input<List<BastionHostIPConfiguration>?>? ipConfigurations;
   /// Resource location.
-  final pulumi.Input<String>? location;
-  final pulumi.Input<BastionHostPropertiesFormatNetworkAcls>? networkAcls;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<BastionHostPropertiesFormatNetworkAcls?>? networkAcls;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The scale units for the Bastion Host resource.
-  final pulumi.Input<int>? scaleUnits;
+  final pulumi.Input<int?>? scaleUnits;
   /// The sku of this Bastion Host.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Reference to an existing virtual network required for Developer Bastion Host only.
-  final pulumi.Input<SubResource>? virtualNetwork;
+  final pulumi.Input<SubResource?>? virtualNetwork;
   /// A list of availability zones denoting where the resource needs to come from.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [BastionHostArgs].
   /// [bastionHostName] The name of the Bastion Host.
@@ -72,17 +72,17 @@ class BastionHostArgs {
   /// [tags] Resource tags.
   /// [virtualNetwork] Reference to an existing virtual network required for Developer Bastion Host only.
   /// [zones] A list of availability zones denoting where the resource needs to come from.
-  const BastionHostArgs({
+  BastionHostArgs({
     this.bastionHostName,
-    this.disableCopyPaste,
+    pulumi.Input<bool?>? disableCopyPaste,
     this.dnsName,
-    this.enableFileCopy,
-    this.enableIpConnect,
-    this.enableKerberos,
-    this.enablePrivateOnlyBastion,
-    this.enableSessionRecording,
-    this.enableShareableLink,
-    this.enableTunneling,
+    pulumi.Input<bool?>? enableFileCopy,
+    pulumi.Input<bool?>? enableIpConnect,
+    pulumi.Input<bool?>? enableKerberos,
+    pulumi.Input<bool?>? enablePrivateOnlyBastion,
+    pulumi.Input<bool?>? enableSessionRecording,
+    pulumi.Input<bool?>? enableShareableLink,
+    pulumi.Input<bool?>? enableTunneling,
     this.id,
     this.ipConfigurations,
     this.location,
@@ -93,7 +93,7 @@ class BastionHostArgs {
     this.tags,
     this.virtualNetwork,
     this.zones,
-  });
+  }) : disableCopyPaste = disableCopyPaste ?? pulumi.Input.fromValue(false), enableFileCopy = enableFileCopy ?? pulumi.Input.fromValue(false), enableIpConnect = enableIpConnect ?? pulumi.Input.fromValue(false), enableKerberos = enableKerberos ?? pulumi.Input.fromValue(false), enablePrivateOnlyBastion = enablePrivateOnlyBastion ?? pulumi.Input.fromValue(false), enableSessionRecording = enableSessionRecording ?? pulumi.Input.fromValue(false), enableShareableLink = enableShareableLink ?? pulumi.Input.fromValue(false), enableTunneling = enableTunneling ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -137,7 +137,7 @@ class BastionHostArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkAcls: (() { final guardedValue = map['networkAcls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BastionHostPropertiesFormatNetworkAcls.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      scaleUnits: (() { final guardedValue = map['scaleUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scaleUnits: (() { final guardedValue = map['scaleUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Sku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       virtualNetwork: (() { final guardedValue = map['virtualNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

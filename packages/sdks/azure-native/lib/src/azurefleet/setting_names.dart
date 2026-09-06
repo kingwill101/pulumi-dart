@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the name of the setting to which the content applies. Possible values
 /// are: FirstLogonCommands and AutoLogon.
-enum SettingNames {
+enum SettingNames implements pulumi.PulumiEnum<String> {
   autoLogon("AutoLogon"),
   firstLogonCommands("FirstLogonCommands");
 
   const SettingNames(this.wireValue);
+  @override
   final String wireValue;
 
   static SettingNames fromValue(String value) {

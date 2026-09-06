@@ -6,15 +6,15 @@ import 'basic_login_information_response.dart';
 /// Postgres Instance properties.
 class PostgresInstancePropertiesResponse {
   /// The instance admin
-  final pulumi.Input<String>? admin;
+  final pulumi.Input<String?>? admin;
   /// Username and password for basic authentication.
-  final pulumi.Input<BasicLoginInformationResponse>? basicLoginInformation;
+  final pulumi.Input<BasicLoginInformationResponse?>? basicLoginInformation;
   /// The data controller id
-  final pulumi.Input<String>? dataControllerId;
+  final pulumi.Input<String?>? dataControllerId;
   /// The raw kubernetes information
   final pulumi.Input<dynamic>? k8sRaw;
   /// Last uploaded date from Kubernetes cluster. Defaults to current date time
-  final pulumi.Input<String>? lastUploadedDate;
+  final pulumi.Input<String?>? lastUploadedDate;
   /// The provisioning state of the Azure Arc-enabled PostgreSQL instance.
   final pulumi.Input<String> provisioningState;
 

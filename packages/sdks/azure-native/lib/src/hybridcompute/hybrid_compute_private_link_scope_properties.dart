@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties that define a Azure Arc PrivateLinkScope resource.
 class HybridComputePrivateLinkScopeProperties {
   /// Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
 
   /// Creates a new [HybridComputePrivateLinkScopeProperties].
   /// [publicNetworkAccess] Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
@@ -21,7 +21,7 @@ class HybridComputePrivateLinkScopeProperties {
 
   factory HybridComputePrivateLinkScopeProperties.fromMap(Map<String, dynamic> map) {
     return HybridComputePrivateLinkScopeProperties(
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

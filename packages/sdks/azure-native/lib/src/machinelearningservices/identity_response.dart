@@ -10,9 +10,9 @@ class IdentityResponse {
   /// The tenant ID of resource.
   final pulumi.Input<String> tenantId;
   /// The identity type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The user assigned identities associated with the resource.
-  final pulumi.Input<Map<String, UserAssignedIdentityLinkedServiceResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentityLinkedServiceResponse>?>? userAssignedIdentities;
 
   /// Creates a new [IdentityResponse].
   /// [principalId] The principal ID of resource identity.

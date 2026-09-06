@@ -7,19 +7,19 @@ import 'system_data_response.dart';
 /// Access Review Instance.
 class AccessReviewInstanceResponse {
   /// This is the collection of backup reviewers.
-  final pulumi.Input<List<AccessReviewReviewerResponse>>? backupReviewers;
+  final pulumi.Input<List<AccessReviewReviewerResponse>?>? backupReviewers;
   /// The DateTime when the review instance is scheduled to end.
-  final pulumi.Input<String>? endDateTime;
+  final pulumi.Input<String?>? endDateTime;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
   /// The name of the resource
   final pulumi.Input<String> name;
   /// This is the collection of reviewers.
-  final pulumi.Input<List<AccessReviewReviewerResponse>>? reviewers;
+  final pulumi.Input<List<AccessReviewReviewerResponse>?>? reviewers;
   /// This field specifies the type of reviewers for a review. Usually for a review, reviewers are explicitly assigned. However, in some cases, the reviewers may not be assigned and instead be chosen dynamically. For example managers review or self review.
   final pulumi.Input<String> reviewersType;
   /// The DateTime when the review instance is scheduled to be start.
-  final pulumi.Input<String>? startDateTime;
+  final pulumi.Input<String?>? startDateTime;
   /// This read-only field specifies the status of an access review instance.
   final pulumi.Input<String> status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.

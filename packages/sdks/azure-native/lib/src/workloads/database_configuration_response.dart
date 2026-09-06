@@ -7,9 +7,9 @@ import 'virtual_machine_configuration_response.dart';
 /// Gets or sets the database configuration.
 class DatabaseConfigurationResponse {
   /// The database type.
-  final pulumi.Input<String>? databaseType;
+  final pulumi.Input<String?>? databaseType;
   /// Gets or sets the disk configuration.
-  final pulumi.Input<DiskConfigurationResponse>? diskConfiguration;
+  final pulumi.Input<DiskConfigurationResponse?>? diskConfiguration;
   /// The number of database VMs.
   final pulumi.Input<double> instanceCount;
   /// The subnet id.
@@ -45,7 +45,7 @@ class DatabaseConfigurationResponse {
     return DatabaseConfigurationResponse(
       databaseType: (() { final guardedValue = map['databaseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskConfiguration: (() { final guardedValue = map['diskConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiskConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      instanceCount: pulumi.Input.fromValue(map['instanceCount'] as double),
+      instanceCount: pulumi.Input.fromValue((map['instanceCount'] as num).toDouble()),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
       virtualMachineConfiguration: pulumi.Input.fromValue(VirtualMachineConfigurationResponse.fromMap((map['virtualMachineConfiguration']! as Map).cast<String, dynamic>())),
     );

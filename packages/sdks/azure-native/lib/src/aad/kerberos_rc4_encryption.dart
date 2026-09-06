@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// A flag to determine whether or not KerberosRc4Encryption is enabled or disabled.
-enum KerberosRc4Encryption {
+enum KerberosRc4Encryption implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const KerberosRc4Encryption(this.wireValue);
+  @override
   final String wireValue;
 
   static KerberosRc4Encryption fromValue(String value) {

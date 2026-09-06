@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Node type fault simulation object with status.
 class NodeTypeFaultSimulationResponse {
   /// Node type name.
-  final pulumi.Input<String>? nodeTypeName;
+  final pulumi.Input<String?>? nodeTypeName;
   /// Current or latest asynchronous operation identifier on the node type.
-  final pulumi.Input<String>? operationId;
+  final pulumi.Input<String?>? operationId;
   /// Current or latest asynchronous operation status on the node type
   final pulumi.Input<String> operationStatus;
   /// Fault simulation status
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [NodeTypeFaultSimulationResponse].
   /// [nodeTypeName] Node type name.

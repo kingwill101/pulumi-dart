@@ -516,7 +516,32 @@ class ExtendedServerBlobAuditingPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    auditActionsAndGroups = registerOutput<List<String>?>('auditActionsAndGroups');
+    auditActionsAndGroups = registerOutput<List<String>?>('auditActionsAndGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    isAzureMonitorTargetEnabled = registerOutput<bool?>('isAzureMonitorTargetEnabled');
+    isDevopsAuditEnabled = registerOutput<bool?>('isDevopsAuditEnabled');
+    isManagedIdentityInUse = registerOutput<bool?>('isManagedIdentityInUse');
+    isStorageSecondaryKeyInUse = registerOutput<bool?>('isStorageSecondaryKeyInUse');
+    this.name = registerOutput<String>('name');
+    predicateExpression = registerOutput<String?>('predicateExpression');
+    queueDelayMs = registerOutput<int?>('queueDelayMs');
+    retentionDays = registerOutput<int?>('retentionDays');
+    state = registerOutput<String>('state');
+    storageAccountSubscriptionId = registerOutput<String?>('storageAccountSubscriptionId');
+    storageEndpoint = registerOutput<String?>('storageEndpoint');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ExtendedServerBlobAuditingPolicy] resource.
+  ExtendedServerBlobAuditingPolicy.reference(String urn)
+    : super(
+        'azure-native:sql:ExtendedServerBlobAuditingPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    auditActionsAndGroups = registerOutput<List<String>?>('auditActionsAndGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     isAzureMonitorTargetEnabled = registerOutput<bool?>('isAzureMonitorTargetEnabled');
     isDevopsAuditEnabled = registerOutput<bool?>('isDevopsAuditEnabled');

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'management_lock_by_scope_args.dart';
+import 'management_lock_owner_response.dart';
 import 'system_data_response.dart';
 
 /// The lock information.
@@ -157,7 +158,7 @@ class ManagementLockByScope extends pulumi.CustomResource {
   /// Notes about the lock. Maximum of 512 characters.
   late final pulumi.Output<String?> notes;
   /// The owners of the lock.
-  late final pulumi.Output<List<Map<String, dynamic>>?> owners;
+  late final pulumi.Output<List<ManagementLockOwnerResponse>?> owners;
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The resource type of the lock - Microsoft.Authorization/locks.
@@ -181,7 +182,25 @@ class ManagementLockByScope extends pulumi.CustomResource {
     level = registerOutput<String>('level');
     this.name = registerOutput<String>('name');
     notes = registerOutput<String?>('notes');
-    owners = registerOutput<List<Map<String, dynamic>>?>('owners');
+    owners = registerOutput<List<ManagementLockOwnerResponse>?>('owners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagementLockOwnerResponse>(guardedValue, (value) => ManagementLockOwnerResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ManagementLockByScope] resource.
+  ManagementLockByScope.reference(String urn)
+    : super(
+        'azure-native:authorization:ManagementLockByScope',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    level = registerOutput<String>('level');
+    this.name = registerOutput<String>('name');
+    notes = registerOutput<String?>('notes');
+    owners = registerOutput<List<ManagementLockOwnerResponse>?>('owners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagementLockOwnerResponse>(guardedValue, (value) => ManagementLockOwnerResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

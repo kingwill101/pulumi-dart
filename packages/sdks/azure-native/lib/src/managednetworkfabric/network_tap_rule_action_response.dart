@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Action that need to performed.
 class NetworkTapRuleActionResponse {
   /// Destination Id. The ARM resource Id may be either Network To Network Interconnect or NeighborGroup.
-  final pulumi.Input<String>? destinationId;
+  final pulumi.Input<String?>? destinationId;
   /// The parameter to enable or disable the timestamp.
-  final pulumi.Input<String>? isTimestampEnabled;
+  final pulumi.Input<String?>? isTimestampEnabled;
   /// The name of the match configuration. This is used when Goto type is provided. If Goto type is selected and no match configuration name is provided. It goes to next configuration.
-  final pulumi.Input<String>? matchConfigurationName;
+  final pulumi.Input<String?>? matchConfigurationName;
   /// Truncate. 0 indicates do not truncate.
-  final pulumi.Input<String>? truncate;
+  final pulumi.Input<String?>? truncate;
   /// Type of actions that can be performed.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [NetworkTapRuleActionResponse].
   /// [destinationId] Destination Id. The ARM resource Id may be either Network To Network Interconnect or NeighborGroup.

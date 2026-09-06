@@ -86,6 +86,17 @@ Future<GetBigDataPoolResult> getBigDataPool(
   return GetBigDataPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetBigDataPoolResult> getBigDataPoolOutput(
+  GetBigDataPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getBigDataPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBigDataPoolResult.fromMap);
+}
+
 /// Gets a Kusto pool database principalAssignment.
 ///
 /// Uses Azure REST API version 2021-04-01-preview.
@@ -102,6 +113,17 @@ Future<GetDatabasePrincipalAssignmentResult> getDatabasePrincipalAssignment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabasePrincipalAssignmentResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabasePrincipalAssignmentResult> getDatabasePrincipalAssignmentOutput(
+  GetDatabasePrincipalAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getDatabasePrincipalAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabasePrincipalAssignmentResult.fromMap);
 }
 
 /// Returns a data connection.
@@ -122,6 +144,17 @@ Future<GetEventGridDataConnectionResult> getEventGridDataConnection(
   return GetEventGridDataConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetEventGridDataConnectionResult> getEventGridDataConnectionOutput(
+  GetEventGridDataConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getEventGridDataConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEventGridDataConnectionResult.fromMap);
+}
+
 /// Returns a data connection.
 ///
 /// Uses Azure REST API version 2021-06-01-preview.
@@ -138,6 +171,17 @@ Future<GetEventHubDataConnectionResult> getEventHubDataConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEventHubDataConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetEventHubDataConnectionResult> getEventHubDataConnectionOutput(
+  GetEventHubDataConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getEventHubDataConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEventHubDataConnectionResult.fromMap);
 }
 
 /// Get an integration runtime
@@ -160,6 +204,17 @@ Future<GetIntegrationRuntimeResult> getIntegrationRuntime(
   return GetIntegrationRuntimeResult.fromMap(result);
 }
 
+pulumi.Output<GetIntegrationRuntimeResult> getIntegrationRuntimeOutput(
+  GetIntegrationRuntimeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getIntegrationRuntime',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationRuntimeResult.fromMap);
+}
+
 /// Get connection info for an integration runtime
 ///
 /// Uses Azure REST API version 2021-06-01.
@@ -178,6 +233,17 @@ Future<GetIntegrationRuntimeConnectionInfoResult> getIntegrationRuntimeConnectio
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIntegrationRuntimeConnectionInfoResult.fromMap(result);
+}
+
+pulumi.Output<GetIntegrationRuntimeConnectionInfoResult> getIntegrationRuntimeConnectionInfoOutput(
+  GetIntegrationRuntimeConnectionInfoArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getIntegrationRuntimeConnectionInfo',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationRuntimeConnectionInfoResult.fromMap);
 }
 
 /// Get object metadata from an integration runtime
@@ -200,6 +266,17 @@ Future<GetIntegrationRuntimeObjectMetadatumResult> getIntegrationRuntimeObjectMe
   return GetIntegrationRuntimeObjectMetadatumResult.fromMap(result);
 }
 
+pulumi.Output<GetIntegrationRuntimeObjectMetadatumResult> getIntegrationRuntimeObjectMetadatumOutput(
+  GetIntegrationRuntimeObjectMetadatumArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getIntegrationRuntimeObjectMetadatum',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationRuntimeObjectMetadatumResult.fromMap);
+}
+
 /// Get the integration runtime status
 ///
 /// Uses Azure REST API version 2021-06-01.
@@ -220,6 +297,17 @@ Future<GetIntegrationRuntimeStatusResult> getIntegrationRuntimeStatus(
   return GetIntegrationRuntimeStatusResult.fromMap(result);
 }
 
+pulumi.Output<GetIntegrationRuntimeStatusResult> getIntegrationRuntimeStatusOutput(
+  GetIntegrationRuntimeStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getIntegrationRuntimeStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationRuntimeStatusResult.fromMap);
+}
+
 /// Returns a data connection.
 ///
 /// Uses Azure REST API version 2021-06-01-preview.
@@ -236,6 +324,17 @@ Future<GetIotHubDataConnectionResult> getIotHubDataConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIotHubDataConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetIotHubDataConnectionResult> getIotHubDataConnectionOutput(
+  GetIotHubDataConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getIotHubDataConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIotHubDataConnectionResult.fromMap);
 }
 
 /// Get a firewall rule
@@ -258,6 +357,17 @@ Future<GetIpFirewallRuleResult> getIpFirewallRule(
   return GetIpFirewallRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetIpFirewallRuleResult> getIpFirewallRuleOutput(
+  GetIpFirewallRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getIpFirewallRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIpFirewallRuleResult.fromMap);
+}
+
 /// Gets a workspace key
 ///
 /// Uses Azure REST API version 2021-06-01.
@@ -276,6 +386,17 @@ Future<GetKeyResult> getKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetKeyResult> getKeyOutput(
+  GetKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKeyResult.fromMap);
 }
 
 /// Gets a Kusto pool.
@@ -298,6 +419,17 @@ Future<GetKustoPoolResult> getKustoPool(
   return GetKustoPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetKustoPoolResult> getKustoPoolOutput(
+  GetKustoPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getKustoPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKustoPoolResult.fromMap);
+}
+
 /// Returns an attached database configuration.
 ///
 /// Uses Azure REST API version 2021-06-01-preview.
@@ -316,6 +448,17 @@ Future<GetKustoPoolAttachedDatabaseConfigurationResult> getKustoPoolAttachedData
   return GetKustoPoolAttachedDatabaseConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetKustoPoolAttachedDatabaseConfigurationResult> getKustoPoolAttachedDatabaseConfigurationOutput(
+  GetKustoPoolAttachedDatabaseConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getKustoPoolAttachedDatabaseConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKustoPoolAttachedDatabaseConfigurationResult.fromMap);
+}
+
 /// Gets a Kusto pool database principalAssignment.
 ///
 /// Uses Azure REST API version 2021-06-01-preview.
@@ -332,6 +475,17 @@ Future<GetKustoPoolDatabasePrincipalAssignmentResult> getKustoPoolDatabasePrinci
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKustoPoolDatabasePrincipalAssignmentResult.fromMap(result);
+}
+
+pulumi.Output<GetKustoPoolDatabasePrincipalAssignmentResult> getKustoPoolDatabasePrincipalAssignmentOutput(
+  GetKustoPoolDatabasePrincipalAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getKustoPoolDatabasePrincipalAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKustoPoolDatabasePrincipalAssignmentResult.fromMap);
 }
 
 /// Gets a Kusto pool principalAssignment.
@@ -354,6 +508,17 @@ Future<GetKustoPoolPrincipalAssignmentResult> getKustoPoolPrincipalAssignment(
   return GetKustoPoolPrincipalAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetKustoPoolPrincipalAssignmentResult> getKustoPoolPrincipalAssignmentOutput(
+  GetKustoPoolPrincipalAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getKustoPoolPrincipalAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKustoPoolPrincipalAssignmentResult.fromMap);
+}
+
 /// Gets a private endpoint connection.
 ///
 /// Uses Azure REST API version 2021-06-01.
@@ -372,6 +537,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Gets a privateLinkHub
@@ -394,6 +570,17 @@ Future<GetPrivateLinkHubResult> getPrivateLinkHub(
   return GetPrivateLinkHubResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateLinkHubResult> getPrivateLinkHubOutput(
+  GetPrivateLinkHubArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getPrivateLinkHub',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateLinkHubResult.fromMap);
+}
+
 /// Returns a database.
 ///
 /// Uses Azure REST API version 2021-06-01-preview.
@@ -412,6 +599,17 @@ Future<GetReadOnlyFollowingDatabaseResult> getReadOnlyFollowingDatabase(
   return GetReadOnlyFollowingDatabaseResult.fromMap(result);
 }
 
+pulumi.Output<GetReadOnlyFollowingDatabaseResult> getReadOnlyFollowingDatabaseOutput(
+  GetReadOnlyFollowingDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getReadOnlyFollowingDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReadOnlyFollowingDatabaseResult.fromMap);
+}
+
 /// Returns a database.
 ///
 /// Uses Azure REST API version 2021-06-01-preview.
@@ -428,6 +626,17 @@ Future<GetReadWriteDatabaseResult> getReadWriteDatabase(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReadWriteDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetReadWriteDatabaseResult> getReadWriteDatabaseOutput(
+  GetReadWriteDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getReadWriteDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReadWriteDatabaseResult.fromMap);
 }
 
 /// Get SQL pool properties
@@ -450,6 +659,17 @@ Future<GetSqlPoolResult> getSqlPool(
   return GetSqlPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlPoolResult> getSqlPoolOutput(
+  GetSqlPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getSqlPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlPoolResult.fromMap);
+}
+
 /// Gets the sensitivity label of a given column
 ///
 /// Uses Azure REST API version 2021-06-01.
@@ -468,6 +688,17 @@ Future<GetSqlPoolSensitivityLabelResult> getSqlPoolSensitivityLabel(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSqlPoolSensitivityLabelResult.fromMap(result);
+}
+
+pulumi.Output<GetSqlPoolSensitivityLabelResult> getSqlPoolSensitivityLabelOutput(
+  GetSqlPoolSensitivityLabelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getSqlPoolSensitivityLabel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlPoolSensitivityLabelResult.fromMap);
 }
 
 /// Get a SQL pool's transparent data encryption configuration.
@@ -490,6 +721,17 @@ Future<GetSqlPoolTransparentDataEncryptionResult> getSqlPoolTransparentDataEncry
   return GetSqlPoolTransparentDataEncryptionResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlPoolTransparentDataEncryptionResult> getSqlPoolTransparentDataEncryptionOutput(
+  GetSqlPoolTransparentDataEncryptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getSqlPoolTransparentDataEncryption',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlPoolTransparentDataEncryptionResult.fromMap);
+}
+
 /// Gets the Sql pool's vulnerability assessment.
 ///
 /// Uses Azure REST API version 2021-06-01.
@@ -508,6 +750,17 @@ Future<GetSqlPoolVulnerabilityAssessmentResult> getSqlPoolVulnerabilityAssessmen
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSqlPoolVulnerabilityAssessmentResult.fromMap(result);
+}
+
+pulumi.Output<GetSqlPoolVulnerabilityAssessmentResult> getSqlPoolVulnerabilityAssessmentOutput(
+  GetSqlPoolVulnerabilityAssessmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getSqlPoolVulnerabilityAssessment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlPoolVulnerabilityAssessmentResult.fromMap);
 }
 
 /// Gets a SqlPool's vulnerability assessment rule baseline.
@@ -530,6 +783,17 @@ Future<GetSqlPoolVulnerabilityAssessmentRuleBaselineResult> getSqlPoolVulnerabil
   return GetSqlPoolVulnerabilityAssessmentRuleBaselineResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlPoolVulnerabilityAssessmentRuleBaselineResult> getSqlPoolVulnerabilityAssessmentRuleBaselineOutput(
+  GetSqlPoolVulnerabilityAssessmentRuleBaselineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getSqlPoolVulnerabilityAssessmentRuleBaseline',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlPoolVulnerabilityAssessmentRuleBaselineResult.fromMap);
+}
+
 /// Get a workload classifier of Sql pool's workload group.
 ///
 /// Uses Azure REST API version 2021-06-01.
@@ -548,6 +812,17 @@ Future<GetSqlPoolWorkloadClassifierResult> getSqlPoolWorkloadClassifier(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSqlPoolWorkloadClassifierResult.fromMap(result);
+}
+
+pulumi.Output<GetSqlPoolWorkloadClassifierResult> getSqlPoolWorkloadClassifierOutput(
+  GetSqlPoolWorkloadClassifierArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getSqlPoolWorkloadClassifier',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlPoolWorkloadClassifierResult.fromMap);
 }
 
 /// Get a Sql pool's workload group.
@@ -570,6 +845,17 @@ Future<GetSqlPoolWorkloadGroupResult> getSqlPoolWorkloadGroup(
   return GetSqlPoolWorkloadGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlPoolWorkloadGroupResult> getSqlPoolWorkloadGroupOutput(
+  GetSqlPoolWorkloadGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getSqlPoolWorkloadGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlPoolWorkloadGroupResult.fromMap);
+}
+
 /// Gets a workspace
 ///
 /// Uses Azure REST API version 2021-06-01.
@@ -588,6 +874,17 @@ Future<GetWorkspaceResult> getWorkspace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspaceResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
 }
 
 /// Gets a workspace active directory admin
@@ -610,6 +907,17 @@ Future<GetWorkspaceAadAdminResult> getWorkspaceAadAdmin(
   return GetWorkspaceAadAdminResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkspaceAadAdminResult> getWorkspaceAadAdminOutput(
+  GetWorkspaceAadAdminArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getWorkspaceAadAdmin',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceAadAdminResult.fromMap);
+}
+
 /// Get workspace managed sql server's vulnerability assessment.
 ///
 /// Uses Azure REST API version 2021-06-01.
@@ -628,6 +936,17 @@ Future<GetWorkspaceManagedSqlServerVulnerabilityAssessmentResult> getWorkspaceMa
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspaceManagedSqlServerVulnerabilityAssessmentResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspaceManagedSqlServerVulnerabilityAssessmentResult> getWorkspaceManagedSqlServerVulnerabilityAssessmentOutput(
+  GetWorkspaceManagedSqlServerVulnerabilityAssessmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getWorkspaceManagedSqlServerVulnerabilityAssessment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceManagedSqlServerVulnerabilityAssessmentResult.fromMap);
 }
 
 /// Gets a workspace SQL active directory admin
@@ -650,6 +969,17 @@ Future<GetWorkspaceSqlAadAdminResult> getWorkspaceSqlAadAdmin(
   return GetWorkspaceSqlAadAdminResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkspaceSqlAadAdminResult> getWorkspaceSqlAadAdminOutput(
+  GetWorkspaceSqlAadAdminArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:getWorkspaceSqlAadAdmin',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceSqlAadAdminResult.fromMap);
+}
+
 /// List authentication keys in an integration runtime
 ///
 /// Uses Azure REST API version 2021-06-01.
@@ -670,6 +1000,17 @@ Future<ListIntegrationRuntimeAuthKeyResult> listIntegrationRuntimeAuthKey(
   return ListIntegrationRuntimeAuthKeyResult.fromMap(result);
 }
 
+pulumi.Output<ListIntegrationRuntimeAuthKeyResult> listIntegrationRuntimeAuthKeyOutput(
+  ListIntegrationRuntimeAuthKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:listIntegrationRuntimeAuthKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListIntegrationRuntimeAuthKeyResult.fromMap);
+}
+
 /// Returns a list of databases that are owned by this Kusto Pool and were followed by another Kusto Pool.
 ///
 /// Uses Azure REST API version 2021-06-01-preview.
@@ -688,6 +1029,17 @@ Future<ListKustoPoolFollowerDatabasesResult> listKustoPoolFollowerDatabases(
   return ListKustoPoolFollowerDatabasesResult.fromMap(result);
 }
 
+pulumi.Output<ListKustoPoolFollowerDatabasesResult> listKustoPoolFollowerDatabasesOutput(
+  ListKustoPoolFollowerDatabasesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:listKustoPoolFollowerDatabases',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListKustoPoolFollowerDatabasesResult.fromMap);
+}
+
 /// Returns a list of language extensions that can run within KQL queries.
 ///
 /// Uses Azure REST API version 2021-06-01-preview.
@@ -704,4 +1056,15 @@ Future<ListKustoPoolLanguageExtensionsResult> listKustoPoolLanguageExtensions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListKustoPoolLanguageExtensionsResult.fromMap(result);
+}
+
+pulumi.Output<ListKustoPoolLanguageExtensionsResult> listKustoPoolLanguageExtensionsOutput(
+  ListKustoPoolLanguageExtensionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:synapse:listKustoPoolLanguageExtensions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListKustoPoolLanguageExtensionsResult.fromMap);
 }

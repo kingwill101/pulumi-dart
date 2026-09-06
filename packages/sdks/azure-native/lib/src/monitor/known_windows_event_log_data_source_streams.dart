@@ -1,8 +1,11 @@
-enum KnownWindowsEventLogDataSourceStreams {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum KnownWindowsEventLogDataSourceStreams implements pulumi.PulumiEnum<String> {
   valueMicrosoftWindowsEvent("Microsoft-WindowsEvent"),
   valueMicrosoftEvent("Microsoft-Event");
 
   const KnownWindowsEventLogDataSourceStreams(this.wireValue);
+  @override
   final String wireValue;
 
   static KnownWindowsEventLogDataSourceStreams fromValue(String value) {

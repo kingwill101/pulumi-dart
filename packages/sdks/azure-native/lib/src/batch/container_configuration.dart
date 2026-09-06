@@ -6,11 +6,11 @@ import 'container_registry.dart';
 /// The configuration for container-enabled pools.
 class ContainerConfiguration {
   /// This is the full image reference, as would be specified to "docker pull". An image will be sourced from the default Docker registry unless the image is fully qualified with an alternative registry.
-  final pulumi.Input<List<String>>? containerImageNames;
+  final pulumi.Input<List<String>?>? containerImageNames;
   /// If any images must be downloaded from a private registry which requires credentials, then those credentials must be provided here.
-  final pulumi.Input<List<ContainerRegistry>>? containerRegistries;
+  final pulumi.Input<List<ContainerRegistry>?>? containerRegistries;
   /// The container technology to be used.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [ContainerConfiguration].
   /// [containerImageNames] This is the full image reference, as would be specified to "docker pull". An image will be sourced from the default Docker registry unless the image is fully qualified with an alternative registry.
@@ -34,7 +34,7 @@ class ContainerConfiguration {
     return ContainerConfiguration(
       containerImageNames: (() { final guardedValue = map['containerImageNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       containerRegistries: (() { final guardedValue = map['containerRegistries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerRegistry>(guardedValue, (value) => ContainerRegistry.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

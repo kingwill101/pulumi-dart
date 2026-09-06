@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'awsauth_model_response.dart';
 import 'ccp_response_config_response.dart';
 import 'dcrconfiguration_response.dart';
 import 'rest_api_poller_data_connector_args.dart';
@@ -546,7 +545,7 @@ class RestApiPollerDataConnector extends pulumi.CustomResource {
   /// The add on attributes. The key name will become attribute name (a column) and the value will become the attribute value in the payload.
   late final pulumi.Output<Map<String, String>?> addOnAttributes;
   /// The a authentication model.
-  late final pulumi.Output<AWSAuthModelResponse> auth;
+  late final pulumi.Output<dynamic> auth;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The connector definition name (the dataConnectorDefinition resource id).
@@ -589,8 +588,34 @@ class RestApiPollerDataConnector extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    addOnAttributes = registerOutput<Map<String, String>?>('addOnAttributes');
-    auth = registerOutput<AWSAuthModelResponse>('auth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AWSAuthModelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    addOnAttributes = registerOutput<Map<String, String>?>('addOnAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    auth = registerOutput<dynamic>('auth');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectorDefinitionName = registerOutput<String>('connectorDefinitionName');
+    dataType = registerOutput<String?>('dataType');
+    dcrConfig = registerOutput<DCRConfigurationResponse?>('dcrConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DCRConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String?>('etag');
+    isActive = registerOutput<bool?>('isActive');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    paging = registerOutput<RestApiPollerRequestPagingConfigResponse?>('paging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestApiPollerRequestPagingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    request = registerOutput<RestApiPollerRequestConfigResponse>('request', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestApiPollerRequestConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    response = registerOutput<CcpResponseConfigResponse?>('response', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CcpResponseConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [RestApiPollerDataConnector] resource.
+  RestApiPollerDataConnector.reference(String urn)
+    : super(
+        'azure-native:securityinsights:RestApiPollerDataConnector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addOnAttributes = registerOutput<Map<String, String>?>('addOnAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    auth = registerOutput<dynamic>('auth');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     connectorDefinitionName = registerOutput<String>('connectorDefinitionName');
     dataType = registerOutput<String?>('dataType');

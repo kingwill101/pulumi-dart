@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Update Cycle Type
-enum CycleType {
+enum CycleType implements pulumi.PulumiEnum<String> {
   preview("Preview"),
   slow("Slow"),
   fast("Fast");
 
   const CycleType(this.wireValue);
+  @override
   final String wireValue;
 
   static CycleType fromValue(String value) {

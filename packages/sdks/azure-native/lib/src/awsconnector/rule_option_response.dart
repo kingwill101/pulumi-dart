@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of RuleOption
 class RuleOptionResponse {
   /// Property keyword
-  final pulumi.Input<String>? keyword;
+  final pulumi.Input<String?>? keyword;
   /// Property settings
-  final pulumi.Input<List<String>>? settings;
+  final pulumi.Input<List<String>?>? settings;
 
   /// Creates a new [RuleOptionResponse].
   /// [keyword] Property keyword

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Session network configuration.
 class SessionNetworkConfiguration {
   /// Network status for the sessions.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [SessionNetworkConfiguration].
   /// [status] Network status for the sessions.
@@ -21,7 +21,7 @@ class SessionNetworkConfiguration {
 
   factory SessionNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return SessionNetworkConfiguration(
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

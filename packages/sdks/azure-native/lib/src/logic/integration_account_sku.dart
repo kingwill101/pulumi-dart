@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The integration account sku.
 class IntegrationAccountSku {
   /// The sku name.
-  final pulumi.Input<String> name;
+  final pulumi.Input<dynamic> name;
 
   /// Creates a new [IntegrationAccountSku].
   /// [name] The sku name.
@@ -21,7 +21,7 @@ class IntegrationAccountSku {
 
   factory IntegrationAccountSku.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountSku(
-      name: pulumi.Input.fromValue(map['name'] as String),
+      name: pulumi.Input.fromValue(map['name']),
     );
   }
 }

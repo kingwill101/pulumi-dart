@@ -9,9 +9,9 @@ import 'system_data_response.dart';
 /// The policy set definition version.
 class PolicySetDefinitionVersionResponse {
   /// The policy set definition description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the policy set definition.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The ID of the policy set definition version.
   final pulumi.Input<String> id;
   /// The policy set definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
@@ -19,19 +19,19 @@ class PolicySetDefinitionVersionResponse {
   /// The name of the policy set definition version.
   final pulumi.Input<String> name;
   /// The policy set definition parameters that can be used in policy definition references.
-  final pulumi.Input<Map<String, ParameterDefinitionsValueResponse>>? parameters;
+  final pulumi.Input<Map<String, ParameterDefinitionsValueResponse>?>? parameters;
   /// The metadata describing groups of policy definition references within the policy set definition.
-  final pulumi.Input<List<PolicyDefinitionGroupResponse>>? policyDefinitionGroups;
+  final pulumi.Input<List<PolicyDefinitionGroupResponse>?>? policyDefinitionGroups;
   /// An array of policy definition references.
   final pulumi.Input<List<PolicyDefinitionReferenceResponse>> policyDefinitions;
   /// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
-  final pulumi.Input<String>? policyType;
+  final pulumi.Input<String?>? policyType;
   /// The system metadata relating to this resource.
   final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource (Microsoft.Authorization/policySetDefinitions/versions).
   final pulumi.Input<String> type;
   /// The policy set definition version in #.#.# format.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [PolicySetDefinitionVersionResponse].
   /// [description] The policy set definition description.

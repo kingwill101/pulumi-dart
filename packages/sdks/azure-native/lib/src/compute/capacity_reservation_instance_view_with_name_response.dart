@@ -9,9 +9,9 @@ class CapacityReservationInstanceViewWithNameResponse {
   /// The name of the capacity reservation.
   final pulumi.Input<String> name;
   /// The resource status information.
-  final pulumi.Input<List<InstanceViewStatusResponse>>? statuses;
+  final pulumi.Input<List<InstanceViewStatusResponse>?>? statuses;
   /// Unutilized capacity of the capacity reservation.
-  final pulumi.Input<CapacityReservationUtilizationResponse>? utilizationInfo;
+  final pulumi.Input<CapacityReservationUtilizationResponse?>? utilizationInfo;
 
   /// Creates a new [CapacityReservationInstanceViewWithNameResponse].
   /// [name] The name of the capacity reservation.

@@ -5,26 +5,26 @@ import 'system_data_response.dart';
 /// Result data returned by getKustoClusterDataSet.
 class GetKustoClusterDataSetResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Unique id for identifying a data set resource
-  final String dataSetId;
+  final String? dataSetId;
   /// The resource id of the azure resource
-  final String id;
+  final String? id;
   /// Kind of data set.
   /// Expected value is 'KustoCluster'.
-  final String kind;
+  final String? kind;
   /// Resource id of the kusto cluster.
-  final String kustoClusterResourceId;
+  final String? kustoClusterResourceId;
   /// Location of the kusto cluster.
-  final String location;
+  final String? location;
   /// Name of the azure resource
-  final String name;
+  final String? name;
   /// Provisioning state of the kusto cluster data set.
-  final String provisioningState;
+  final String? provisioningState;
   /// System Data of the Azure resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Type of the azure resource
-  final String type;
+  final String? type;
 
   /// Creates a new [GetKustoClusterDataSetResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -38,45 +38,45 @@ class GetKustoClusterDataSetResult {
   /// [systemData] System Data of the Azure resource.
   /// [type] Type of the azure resource
   const GetKustoClusterDataSetResult({
-    required this.azureApiVersion,
-    required this.dataSetId,
-    required this.id,
-    required this.kind,
-    required this.kustoClusterResourceId,
-    required this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
-    required this.type,
+    this.azureApiVersion,
+    this.dataSetId,
+    this.id,
+    this.kind,
+    this.kustoClusterResourceId,
+    this.location,
+    this.name,
+    this.provisioningState,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'dataSetId': dataSetId,
-      'id': id,
-      'kind': kind,
-      'kustoClusterResourceId': kustoClusterResourceId,
-      'location': location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'dataSetId': ?dataSetId,
+      'id': ?id,
+      'kind': ?kind,
+      'kustoClusterResourceId': ?kustoClusterResourceId,
+      'location': ?location,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetKustoClusterDataSetResult.fromMap(Map<String, dynamic> map) {
     return GetKustoClusterDataSetResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      dataSetId: map['dataSetId'] as String,
-      id: map['id'] as String,
-      kind: map['kind'] as String,
-      kustoClusterResourceId: map['kustoClusterResourceId'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dataSetId: (() { final guardedValue = map['dataSetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kustoClusterResourceId: (() { final guardedValue = map['kustoClusterResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -17,63 +17,63 @@ import 'workspace_hub_config.dart';
 /// {@macro pulumi_machinelearningservices_workspace_args_doc}
 class WorkspaceArgs {
   /// The flag to indicate whether to allow public access when behind VNet.
-  final pulumi.Input<bool>? allowPublicAccessWhenBehindVnet;
+  final pulumi.Input<bool?>? allowPublicAccessWhenBehindVnet;
   /// ARM id of the application insights associated with this workspace.
-  final pulumi.Input<String>? applicationInsights;
-  final pulumi.Input<List<String>>? associatedWorkspaces;
+  final pulumi.Input<String?>? applicationInsights;
+  final pulumi.Input<List<String>?>? associatedWorkspaces;
   /// ARM id of the container registry associated with this workspace.
-  final pulumi.Input<String>? containerRegistry;
+  final pulumi.Input<String?>? containerRegistry;
   /// The description of this workspace.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Url for the discovery service to identify regional endpoints for machine learning experimentation services
-  final pulumi.Input<String>? discoveryUrl;
-  final pulumi.Input<bool>? enableDataIsolation;
-  final pulumi.Input<bool>? enableServiceSideCMKEncryption;
-  final pulumi.Input<EncryptionProperty>? encryption;
+  final pulumi.Input<String?>? discoveryUrl;
+  final pulumi.Input<bool?>? enableDataIsolation;
+  final pulumi.Input<bool?>? enableServiceSideCMKEncryption;
+  final pulumi.Input<EncryptionProperty?>? encryption;
   /// Settings for feature store type workspace.
-  final pulumi.Input<FeatureStoreSettings>? featureStoreSettings;
+  final pulumi.Input<FeatureStoreSettings?>? featureStoreSettings;
   /// The friendly name for this workspace. This name in mutable
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// The flag to signal HBI data in the workspace and reduce diagnostic data collected by the service
-  final pulumi.Input<bool>? hbiWorkspace;
-  final pulumi.Input<String>? hubResourceId;
+  final pulumi.Input<bool?>? hbiWorkspace;
+  final pulumi.Input<String?>? hubResourceId;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The compute name for image build
-  final pulumi.Input<String>? imageBuildCompute;
+  final pulumi.Input<String?>? imageBuildCompute;
   /// ARM id of the key vault associated with this workspace. This cannot be changed once the workspace has been created
-  final pulumi.Input<String>? keyVault;
-  final pulumi.Input<String>? kind;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? keyVault;
+  final pulumi.Input<String?>? kind;
+  final pulumi.Input<String?>? location;
   /// Managed Network settings for a machine learning workspace.
-  final pulumi.Input<ManagedNetworkSettings>? managedNetwork;
+  final pulumi.Input<ManagedNetworkSettings?>? managedNetwork;
   /// The user assigned identity resource id that represents the workspace identity.
-  final pulumi.Input<String>? primaryUserAssignedIdentity;
+  final pulumi.Input<String?>? primaryUserAssignedIdentity;
   /// Set to trigger the provisioning of the managed VNet with the default Options when creating a Workspace with the managed VNet enabled, or else it does nothing.
-  final pulumi.Input<bool>? provisionNetworkNow;
+  final pulumi.Input<bool?>? provisionNetworkNow;
   /// Whether requests from Public Network are allowed.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Settings for serverless compute in a workspace
-  final pulumi.Input<ServerlessComputeSettings>? serverlessComputeSettings;
+  final pulumi.Input<ServerlessComputeSettings?>? serverlessComputeSettings;
   /// The service managed resource settings.
-  final pulumi.Input<ServiceManagedResourcesSettings>? serviceManagedResourcesSettings;
+  final pulumi.Input<ServiceManagedResourcesSettings?>? serviceManagedResourcesSettings;
   /// The list of shared private link resources in this workspace.
-  final pulumi.Input<List<SharedPrivateLinkResource>>? sharedPrivateLinkResources;
+  final pulumi.Input<List<SharedPrivateLinkResource>?>? sharedPrivateLinkResources;
   /// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
-  final pulumi.Input<String>? storageAccount;
+  final pulumi.Input<String?>? storageAccount;
   /// The auth mode used for accessing the system datastores of the workspace.
-  final pulumi.Input<String>? systemDatastoresAuthMode;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<dynamic>? systemDatastoresAuthMode;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Enabling v1_legacy_mode may prevent you from using features provided by the v2 API.
-  final pulumi.Input<bool>? v1LegacyMode;
+  final pulumi.Input<bool?>? v1LegacyMode;
   /// WorkspaceHub's configuration object.
-  final pulumi.Input<WorkspaceHubConfig>? workspaceHubConfig;
+  final pulumi.Input<WorkspaceHubConfig?>? workspaceHubConfig;
   /// Azure Machine Learning Workspace Name
-  final pulumi.Input<String>? workspaceName;
+  final pulumi.Input<String?>? workspaceName;
 
   /// Creates a new [WorkspaceArgs].
   /// [allowPublicAccessWhenBehindVnet] The flag to indicate whether to allow public access when behind VNet.
@@ -206,14 +206,14 @@ class WorkspaceArgs {
       managedNetwork: (() { final guardedValue = map['managedNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedNetworkSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       primaryUserAssignedIdentity: (() { final guardedValue = map['primaryUserAssignedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       provisionNetworkNow: (() { final guardedValue = map['provisionNetworkNow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverlessComputeSettings: (() { final guardedValue = map['serverlessComputeSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServerlessComputeSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serviceManagedResourcesSettings: (() { final guardedValue = map['serviceManagedResourcesSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceManagedResourcesSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sharedPrivateLinkResources: (() { final guardedValue = map['sharedPrivateLinkResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SharedPrivateLinkResource>(guardedValue, (value) => SharedPrivateLinkResource.fromMap((value as Map).cast<String, dynamic>()))); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Sku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       storageAccount: (() { final guardedValue = map['storageAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      systemDatastoresAuthMode: (() { final guardedValue = map['systemDatastoresAuthMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      systemDatastoresAuthMode: (() { final guardedValue = map['systemDatastoresAuthMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       v1LegacyMode: (() { final guardedValue = map['v1LegacyMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       workspaceHubConfig: (() { final guardedValue = map['workspaceHubConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkspaceHubConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

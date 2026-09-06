@@ -5,7 +5,7 @@ import 'filter_rule.dart';
 
 class SubscriberSetting {
   /// The filter rules.
-  final pulumi.Input<List<FilterRule>>? filterRules;
+  final pulumi.Input<List<FilterRule>?>? filterRules;
 
   /// Creates a new [SubscriberSetting].
   /// [filterRules] The filter rules.

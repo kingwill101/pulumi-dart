@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_alertsmanagement_list_issue_alerts_args_doc}
 class ListIssueAlertsArgs {
   /// The filter to apply on the operation. For example, to filter by relevance, use "$filter=relevance eq 'Relevant'"
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The name of the IssueResource
   final pulumi.Input<String> issueName;
   /// The fully qualified Azure Resource manager identifier of the resource.

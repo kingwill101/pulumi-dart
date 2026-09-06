@@ -6,15 +6,15 @@ import 'private_ipaddress_response.dart';
 /// A load balancer configuration for an availability group listener.
 class LoadBalancerConfigurationResponse {
   /// Resource id of the load balancer.
-  final pulumi.Input<String>? loadBalancerResourceId;
+  final pulumi.Input<String?>? loadBalancerResourceId;
   /// Private IP address.
-  final pulumi.Input<PrivateIPAddressResponse>? privateIpAddress;
+  final pulumi.Input<PrivateIPAddressResponse?>? privateIpAddress;
   /// Probe port.
-  final pulumi.Input<int>? probePort;
+  final pulumi.Input<int?>? probePort;
   /// Resource id of the public IP.
-  final pulumi.Input<String>? publicIpAddressResourceId;
+  final pulumi.Input<String?>? publicIpAddressResourceId;
   /// List of the SQL virtual machine instance resource id's that are enrolled into the availability group listener.
-  final pulumi.Input<List<String>>? sqlVirtualMachineInstances;
+  final pulumi.Input<List<String>?>? sqlVirtualMachineInstances;
 
   /// Creates a new [LoadBalancerConfigurationResponse].
   /// [loadBalancerResourceId] Resource id of the load balancer.
@@ -44,7 +44,7 @@ class LoadBalancerConfigurationResponse {
     return LoadBalancerConfigurationResponse(
       loadBalancerResourceId: (() { final guardedValue = map['loadBalancerResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateIpAddress: (() { final guardedValue = map['privateIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrivateIPAddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      probePort: (() { final guardedValue = map['probePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      probePort: (() { final guardedValue = map['probePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       publicIpAddressResourceId: (() { final guardedValue = map['publicIpAddressResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sqlVirtualMachineInstances: (() { final guardedValue = map['sqlVirtualMachineInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

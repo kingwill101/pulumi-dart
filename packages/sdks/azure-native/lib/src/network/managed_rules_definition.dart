@@ -8,9 +8,9 @@ import 'owasp_crs_exclusion_entry.dart';
 /// Allow to exclude some variable satisfy the condition for the WAF check.
 class ManagedRulesDefinition {
   /// The exceptions that are applied on the policy.
-  final pulumi.Input<List<ExceptionEntry>>? exceptions;
+  final pulumi.Input<List<ExceptionEntry>?>? exceptions;
   /// The Exclusions that are applied on the policy.
-  final pulumi.Input<List<OwaspCrsExclusionEntry>>? exclusions;
+  final pulumi.Input<List<OwaspCrsExclusionEntry>?>? exclusions;
   /// The managed rule sets that are associated with the policy.
   final pulumi.Input<List<ManagedRuleSet>> managedRuleSets;
 

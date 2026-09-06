@@ -3,10 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InputEndpointResponse {
-  final pulumi.Input<String>? endpointName;
-  final pulumi.Input<int>? privatePort;
-  final pulumi.Input<String>? protocol;
-  final pulumi.Input<int>? publicPort;
+  final pulumi.Input<String?>? endpointName;
+  final pulumi.Input<int?>? privatePort;
+  final pulumi.Input<String?>? protocol;
+  final pulumi.Input<int?>? publicPort;
 
   /// Creates a new [InputEndpointResponse].
   /// [endpointName] Optional.
@@ -32,9 +32,9 @@ class InputEndpointResponse {
   factory InputEndpointResponse.fromMap(Map<String, dynamic> map) {
     return InputEndpointResponse(
       endpointName: (() { final guardedValue = map['endpointName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      privatePort: (() { final guardedValue = map['privatePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      privatePort: (() { final guardedValue = map['privatePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      publicPort: (() { final guardedValue = map['publicPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      publicPort: (() { final guardedValue = map['publicPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

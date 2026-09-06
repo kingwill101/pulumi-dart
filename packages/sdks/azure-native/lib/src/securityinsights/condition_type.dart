@@ -1,4 +1,6 @@
-enum ConditionType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ConditionType implements pulumi.PulumiEnum<String> {
   valueProperty("Property"),
   valuePropertyArray("PropertyArray"),
   valuePropertyChanged("PropertyChanged"),
@@ -6,6 +8,7 @@ enum ConditionType {
   valueBoolean("Boolean");
 
   const ConditionType(this.wireValue);
+  @override
   final String wireValue;
 
   static ConditionType fromValue(String value) {

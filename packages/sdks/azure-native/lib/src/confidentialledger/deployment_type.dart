@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Object representing DeploymentType for Managed CCF.
 class DeploymentType {
   /// Source Uri containing ManagedCCF code
-  final pulumi.Input<String>? appSourceUri;
+  final pulumi.Input<String?>? appSourceUri;
   /// Unique name for the Managed CCF.
-  final pulumi.Input<String>? languageRuntime;
+  final pulumi.Input<dynamic>? languageRuntime;
 
   /// Creates a new [DeploymentType].
   /// [appSourceUri] Source Uri containing ManagedCCF code
@@ -27,7 +27,7 @@ class DeploymentType {
   factory DeploymentType.fromMap(Map<String, dynamic> map) {
     return DeploymentType(
       appSourceUri: (() { final guardedValue = map['appSourceUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      languageRuntime: (() { final guardedValue = map['languageRuntime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      languageRuntime: (() { final guardedValue = map['languageRuntime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

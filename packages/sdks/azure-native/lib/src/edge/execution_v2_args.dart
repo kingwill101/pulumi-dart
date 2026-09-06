@@ -10,11 +10,11 @@ import 'execution_v2_properties.dart';
 /// {@macro pulumi_edge_execution_v2_args_doc}
 class ExecutionV2Args {
   /// The name of the ExecutionV2.
-  final pulumi.Input<String>? executionName;
+  final pulumi.Input<String?>? executionName;
   /// The complex type of the extended location.
-  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation>? extendedLocation;
+  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation?>? extendedLocation;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ExecutionV2Properties>? properties;
+  final pulumi.Input<ExecutionV2Properties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the WorkflowVersionV2.

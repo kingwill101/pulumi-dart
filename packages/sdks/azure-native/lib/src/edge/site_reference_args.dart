@@ -11,11 +11,11 @@ class SiteReferenceArgs {
   /// The name of the Context.
   final pulumi.Input<String> contextName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<SiteReferenceProperties>? properties;
+  final pulumi.Input<SiteReferenceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the SiteReference
-  final pulumi.Input<String>? siteReferenceName;
+  final pulumi.Input<String?>? siteReferenceName;
 
   /// Creates a new [SiteReferenceArgs].
   /// [contextName] The name of the Context.

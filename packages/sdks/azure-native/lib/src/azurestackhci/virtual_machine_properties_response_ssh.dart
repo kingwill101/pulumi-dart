@@ -6,7 +6,7 @@ import 'virtual_machine_properties_response_public_keys.dart';
 /// SSH - contains settings related to ssh configuration
 class VirtualMachinePropertiesResponseSsh {
   /// PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
-  final pulumi.Input<List<VirtualMachinePropertiesResponsePublicKeys>>? publicKeys;
+  final pulumi.Input<List<VirtualMachinePropertiesResponsePublicKeys>?>? publicKeys;
 
   /// Creates a new [VirtualMachinePropertiesResponseSsh].
   /// [publicKeys] PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.

@@ -16,47 +16,47 @@ class VirtualMachineArgs {
   /// The name of the administrator to which the ssh public keys will be added into the authorized keys.
   final pulumi.Input<String> adminUsername;
   /// Selects the boot method for the virtual machine.
-  final pulumi.Input<String>? bootMethod;
+  final pulumi.Input<dynamic>? bootMethod;
   /// The cloud service network that provides platform-level services for the virtual machine.
   final pulumi.Input<NetworkAttachment> cloudServicesNetworkAttachment;
   /// The extended location to use for creation of a VM console resource.
-  final pulumi.Input<ExtendedLocation>? consoleExtendedLocation;
+  final pulumi.Input<ExtendedLocation?>? consoleExtendedLocation;
   /// The number of CPU cores in the virtual machine.
   final pulumi.Input<double> cpuCores;
   /// The extended location of the cluster associated with the resource.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// Field Deprecated, the value will be ignored if provided. The indicator of whether one of the specified CPU cores is isolated to run the emulator thread for this virtual machine.
-  final pulumi.Input<String>? isolateEmulatorThread;
+  final pulumi.Input<dynamic>? isolateEmulatorThread;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The memory size of the virtual machine. Allocations are measured in gibibytes.
   final pulumi.Input<double> memorySizeGB;
   /// The list of network attachments to the virtual machine.
-  final pulumi.Input<List<NetworkAttachment>>? networkAttachments;
+  final pulumi.Input<List<NetworkAttachment>?>? networkAttachments;
   /// The Base64 encoded cloud-init network data.
-  final pulumi.Input<String>? networkData;
+  final pulumi.Input<String?>? networkData;
   /// The scheduling hints for the virtual machine.
-  final pulumi.Input<List<VirtualMachinePlacementHint>>? placementHints;
+  final pulumi.Input<List<VirtualMachinePlacementHint>?>? placementHints;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The list of ssh public keys. Each key will be added to the virtual machine using the cloud-init ssh_authorized_keys mechanism for the adminUsername.
-  final pulumi.Input<List<SshPublicKey>>? sshPublicKeys;
+  final pulumi.Input<List<SshPublicKey>?>? sshPublicKeys;
   /// The storage profile that specifies size and other parameters about the disks related to the virtual machine.
   final pulumi.Input<StorageProfile> storageProfile;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The Base64 encoded cloud-init user data.
-  final pulumi.Input<String>? userData;
+  final pulumi.Input<String?>? userData;
   /// Field Deprecated, use virtualizationModel instead. The type of the virtio interface.
-  final pulumi.Input<String>? virtioInterface;
+  final pulumi.Input<dynamic>? virtioInterface;
   /// The name of the virtual machine.
-  final pulumi.Input<String>? virtualMachineName;
+  final pulumi.Input<String?>? virtualMachineName;
   /// The type of the device model to use.
-  final pulumi.Input<String>? vmDeviceModel;
+  final pulumi.Input<dynamic>? vmDeviceModel;
   /// The virtual machine image that is currently provisioned to the OS disk, using the full url and tag notation used to pull the image.
   final pulumi.Input<String> vmImage;
   /// The credentials used to login to the image repository that has access to the specified image.
-  final pulumi.Input<ImageRepositoryCredentials>? vmImageRepositoryCredentials;
+  final pulumi.Input<ImageRepositoryCredentials?>? vmImageRepositoryCredentials;
 
   /// Creates a new [VirtualMachineArgs].
   /// [adminUsername] The name of the administrator to which the ssh public keys will be added into the authorized keys.
@@ -81,14 +81,14 @@ class VirtualMachineArgs {
   /// [vmDeviceModel] The type of the device model to use.
   /// [vmImage] The virtual machine image that is currently provisioned to the OS disk, using the full url and tag notation used to pull the image.
   /// [vmImageRepositoryCredentials] The credentials used to login to the image repository that has access to the specified image.
-  const VirtualMachineArgs({
+  VirtualMachineArgs({
     required this.adminUsername,
-    this.bootMethod,
+    pulumi.Input<dynamic>? bootMethod,
     required this.cloudServicesNetworkAttachment,
     this.consoleExtendedLocation,
     required this.cpuCores,
     required this.extendedLocation,
-    this.isolateEmulatorThread,
+    pulumi.Input<dynamic>? isolateEmulatorThread,
     this.location,
     required this.memorySizeGB,
     this.networkAttachments,
@@ -99,12 +99,12 @@ class VirtualMachineArgs {
     required this.storageProfile,
     this.tags,
     this.userData,
-    this.virtioInterface,
+    pulumi.Input<dynamic>? virtioInterface,
     this.virtualMachineName,
-    this.vmDeviceModel,
+    pulumi.Input<dynamic>? vmDeviceModel,
     required this.vmImage,
     this.vmImageRepositoryCredentials,
-  });
+  }) : bootMethod = bootMethod ?? pulumi.Input.fromValue('UEFI'), isolateEmulatorThread = isolateEmulatorThread ?? pulumi.Input.fromValue('True'), virtioInterface = virtioInterface ?? pulumi.Input.fromValue('Modern'), vmDeviceModel = vmDeviceModel ?? pulumi.Input.fromValue('T2');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -136,14 +136,14 @@ class VirtualMachineArgs {
   factory VirtualMachineArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineArgs(
       adminUsername: pulumi.Input.fromValue(map['adminUsername'] as String),
-      bootMethod: (() { final guardedValue = map['bootMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bootMethod: (() { final guardedValue = map['bootMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       cloudServicesNetworkAttachment: pulumi.Input.fromValue(NetworkAttachment.fromMap((map['cloudServicesNetworkAttachment']! as Map).cast<String, dynamic>())),
       consoleExtendedLocation: (() { final guardedValue = map['consoleExtendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      cpuCores: pulumi.Input.fromValue(map['cpuCores'] as double),
+      cpuCores: pulumi.Input.fromValue((map['cpuCores'] as num).toDouble()),
       extendedLocation: pulumi.Input.fromValue(ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())),
-      isolateEmulatorThread: (() { final guardedValue = map['isolateEmulatorThread']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isolateEmulatorThread: (() { final guardedValue = map['isolateEmulatorThread']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      memorySizeGB: pulumi.Input.fromValue(map['memorySizeGB'] as double),
+      memorySizeGB: pulumi.Input.fromValue((map['memorySizeGB'] as num).toDouble()),
       networkAttachments: (() { final guardedValue = map['networkAttachments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkAttachment>(guardedValue, (value) => NetworkAttachment.fromMap((value as Map).cast<String, dynamic>()))); })(),
       networkData: (() { final guardedValue = map['networkData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       placementHints: (() { final guardedValue = map['placementHints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualMachinePlacementHint>(guardedValue, (value) => VirtualMachinePlacementHint.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -152,9 +152,9 @@ class VirtualMachineArgs {
       storageProfile: pulumi.Input.fromValue(StorageProfile.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       userData: (() { final guardedValue = map['userData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      virtioInterface: (() { final guardedValue = map['virtioInterface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      virtioInterface: (() { final guardedValue = map['virtioInterface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       virtualMachineName: (() { final guardedValue = map['virtualMachineName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vmDeviceModel: (() { final guardedValue = map['vmDeviceModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      vmDeviceModel: (() { final guardedValue = map['vmDeviceModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       vmImage: pulumi.Input.fromValue(map['vmImage'] as String),
       vmImageRepositoryCredentials: (() { final guardedValue = map['vmImageRepositoryCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ImageRepositoryCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

@@ -9,11 +9,11 @@ import 'resource_location_data_contract.dart';
 /// {@macro pulumi_apimanagement_gateway_args_doc}
 class GatewayArgs {
   /// Gateway description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Gateway entity identifier. Must be unique in the current API Management service instance. Must not have value 'managed'
-  final pulumi.Input<String>? gatewayId;
+  final pulumi.Input<String?>? gatewayId;
   /// Gateway location.
-  final pulumi.Input<ResourceLocationDataContract>? locationData;
+  final pulumi.Input<ResourceLocationDataContract?>? locationData;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.

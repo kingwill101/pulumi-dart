@@ -7,7 +7,7 @@ class AssociatedIdentityResponse {
   /// Identity type linked with the resource
   final pulumi.Input<String> type;
   /// User assigned identity id linked with the resource
-  final pulumi.Input<String>? userAssignedIdentity;
+  final pulumi.Input<String?>? userAssignedIdentity;
 
   /// Creates a new [AssociatedIdentityResponse].
   /// [type] Identity type linked with the resource

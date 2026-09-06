@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
-enum AzureFileShareAccessType {
+enum AzureFileShareAccessType implements pulumi.PulumiEnum<String> {
   shared("Shared"),
   exclusive("Exclusive");
 
   const AzureFileShareAccessType(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureFileShareAccessType fromValue(String value) {

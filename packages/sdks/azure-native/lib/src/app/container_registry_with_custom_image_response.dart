@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Container registry that the final image will be uploaded to.
 class ContainerRegistryWithCustomImageResponse {
   /// Full name that the final image should be uploaded as, including both image name and tag.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// Login server of the container registry that the final image should be uploaded to. Builder resource needs to have this container registry defined along with an identity to use to access it.
   final pulumi.Input<String> server;
 

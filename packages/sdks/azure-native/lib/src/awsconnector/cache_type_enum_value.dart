@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of CacheTypeEnumValue
 class CacheTypeEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [CacheTypeEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class CacheTypeEnumValue {
 
   factory CacheTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return CacheTypeEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

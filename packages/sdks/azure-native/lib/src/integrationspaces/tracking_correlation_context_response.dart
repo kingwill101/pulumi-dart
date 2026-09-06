@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The tracking correlation context.
 class TrackingCorrelationContextResponse {
   /// The operation name for correlation context.
-  final pulumi.Input<String>? operationName;
+  final pulumi.Input<String?>? operationName;
   /// The operation type for correlation context.
-  final pulumi.Input<String>? operationType;
+  final pulumi.Input<String?>? operationType;
   /// The name of the correlation property.
-  final pulumi.Input<String>? propertyName;
+  final pulumi.Input<String?>? propertyName;
   /// The template expression for correlation context property value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TrackingCorrelationContextResponse].
   /// [operationName] The operation name for correlation context.

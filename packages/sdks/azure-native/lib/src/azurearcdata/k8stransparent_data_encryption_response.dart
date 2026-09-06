@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Transparent data encryption information.
 class K8stransparentDataEncryptionResponse {
   /// Transparent data encryption mode. Can be Service Managed, Customer managed or disabled
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Protector secret for customer managed Transparent data encryption mode
-  final pulumi.Input<String>? protectorSecret;
+  final pulumi.Input<String?>? protectorSecret;
 
   /// Creates a new [K8stransparentDataEncryptionResponse].
   /// [mode] Transparent data encryption mode. Can be Service Managed, Customer managed or disabled

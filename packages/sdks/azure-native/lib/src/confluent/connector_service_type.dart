@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The connector service type.
-enum ConnectorServiceType {
+enum ConnectorServiceType implements pulumi.PulumiEnum<String> {
   azureBlobStorageSinkConnector("AzureBlobStorageSinkConnector"),
   azureBlobStorageSourceConnector("AzureBlobStorageSourceConnector"),
   azureCosmosDBSinkConnector("AzureCosmosDBSinkConnector"),
@@ -7,6 +9,7 @@ enum ConnectorServiceType {
   azureSynapseAnalyticsSinkConnector("AzureSynapseAnalyticsSinkConnector");
 
   const ConnectorServiceType(this.wireValue);
+  @override
   final String wireValue;
 
   static ConnectorServiceType fromValue(String value) {

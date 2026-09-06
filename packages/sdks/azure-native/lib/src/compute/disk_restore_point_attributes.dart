@@ -7,9 +7,9 @@ import 'restore_point_encryption.dart';
 /// Disk Restore Point details.
 class DiskRestorePointAttributes {
   /// Encryption at rest settings for disk restore point. It is an optional property that can be specified in the input while creating a restore point.
-  final pulumi.Input<RestorePointEncryption>? encryption;
+  final pulumi.Input<RestorePointEncryption?>? encryption;
   /// Resource Id of the source disk restore point.
-  final pulumi.Input<ApiEntityReference>? sourceDiskRestorePoint;
+  final pulumi.Input<ApiEntityReference?>? sourceDiskRestorePoint;
 
   /// Creates a new [DiskRestorePointAttributes].
   /// [encryption] Encryption at rest settings for disk restore point. It is an optional property that can be specified in the input while creating a restore point.

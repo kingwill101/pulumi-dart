@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Dataflow BuiltIn Transformation map properties
 class DataflowBuiltInTransformationMapResponse {
   /// A user provided optional description of the mapping function.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Modify the inputs field(s) to the final output field. Example: $1 * 2.2 (Assuming inputs section $1 is provided)
-  final pulumi.Input<String>? expression;
+  final pulumi.Input<String?>? expression;
   /// List of fields for mapping in JSON path expression.
   final pulumi.Input<List<String>> inputs;
   /// Where and how the input fields to be organized in the output record.
   final pulumi.Input<String> output;
   /// Type of transformation.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DataflowBuiltInTransformationMapResponse].
   /// [description] A user provided optional description of the mapping function.

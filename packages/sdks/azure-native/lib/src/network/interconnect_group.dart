@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'interconnect_group_args.dart';
 import 'subgroup_profile_response.dart';
+import 'subgroup_response.dart';
 
 /// An interconnect group resource.
 ///
@@ -208,7 +209,7 @@ class InterconnectGroup extends pulumi.CustomResource {
   /// The subgroup profile of the interconnect group resource.
   late final pulumi.Output<SubgroupProfileResponse> subgroupProfile;
   /// A list of subgroups of the interconnect group.
-  late final pulumi.Output<List<Map<String, dynamic>>> subgroups;
+  late final pulumi.Output<List<SubgroupResponse>> subgroups;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Resource type.
@@ -236,8 +237,30 @@ class InterconnectGroup extends pulumi.CustomResource {
     resourceGuid = registerOutput<String>('resourceGuid');
     scope = registerOutput<String?>('scope');
     subgroupProfile = registerOutput<SubgroupProfileResponse>('subgroupProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubgroupProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    subgroups = registerOutput<List<Map<String, dynamic>>>('subgroups');
-    tags = registerOutput<Map<String, String>?>('tags');
+    subgroups = registerOutput<List<SubgroupResponse>>('subgroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubgroupResponse>(guardedValue, (value) => SubgroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [InterconnectGroup] resource.
+  InterconnectGroup.reference(String urn)
+    : super(
+        'azure-native:network:InterconnectGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    scope = registerOutput<String?>('scope');
+    subgroupProfile = registerOutput<SubgroupProfileResponse>('subgroupProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubgroupProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subgroups = registerOutput<List<SubgroupResponse>>('subgroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubgroupResponse>(guardedValue, (value) => SubgroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

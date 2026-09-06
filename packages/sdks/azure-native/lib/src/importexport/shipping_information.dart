@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Contains information about the Microsoft datacenter to which the drives should be shipped.
 class ShippingInformation {
   /// The city name to use when returning the drives.
-  final pulumi.Input<String>? city;
+  final pulumi.Input<String?>? city;
   /// The country or region to use when returning the drives.
-  final pulumi.Input<String>? countryOrRegion;
+  final pulumi.Input<String?>? countryOrRegion;
   /// Phone number of the recipient of the returned drives.
-  final pulumi.Input<String>? phone;
+  final pulumi.Input<String?>? phone;
   /// The postal code to use when returning the drives.
-  final pulumi.Input<String>? postalCode;
+  final pulumi.Input<String?>? postalCode;
   /// The name of the recipient who will receive the hard drives when they are returned.
-  final pulumi.Input<String>? recipientName;
+  final pulumi.Input<String?>? recipientName;
   /// The state or province to use when returning the drives.
-  final pulumi.Input<String>? stateOrProvince;
+  final pulumi.Input<String?>? stateOrProvince;
   /// The first line of the street address to use when returning the drives.
-  final pulumi.Input<String>? streetAddress1;
+  final pulumi.Input<String?>? streetAddress1;
   /// The second line of the street address to use when returning the drives.
-  final pulumi.Input<String>? streetAddress2;
+  final pulumi.Input<String?>? streetAddress2;
 
   /// Creates a new [ShippingInformation].
   /// [city] The city name to use when returning the drives.

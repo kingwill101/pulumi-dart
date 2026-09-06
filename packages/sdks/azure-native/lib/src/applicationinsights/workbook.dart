@@ -288,7 +288,37 @@ class Workbook extends pulumi.CustomResource {
     sourceId = registerOutput<String?>('sourceId');
     storageUri = registerOutput<String?>('storageUri');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeModified = registerOutput<String>('timeModified');
+    type = registerOutput<String>('type');
+    userId = registerOutput<String>('userId');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [Workbook] resource.
+  Workbook.reference(String urn)
+    : super(
+        'azure-native:applicationinsights:Workbook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    category = registerOutput<String>('category');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String?>('etag');
+    identity = registerOutput<WorkbookResourceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkbookResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    revision = registerOutput<String>('revision');
+    serializedData = registerOutput<String>('serializedData');
+    sourceId = registerOutput<String?>('sourceId');
+    storageUri = registerOutput<String?>('storageUri');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeModified = registerOutput<String>('timeModified');
     type = registerOutput<String>('type');
     userId = registerOutput<String>('userId');

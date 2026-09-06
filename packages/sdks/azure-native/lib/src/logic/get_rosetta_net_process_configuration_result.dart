@@ -6,37 +6,37 @@ import 'rosetta_net_pip_role_settings_response.dart';
 /// Result data returned by getRosettaNetProcessConfiguration.
 class GetRosettaNetProcessConfigurationResult {
   /// The RosettaNet process configuration activity settings.
-  final RosettaNetPipActivitySettingsResponse activitySettings;
+  final RosettaNetPipActivitySettingsResponse? activitySettings;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The changed time.
-  final String changedTime;
+  final String? changedTime;
   /// The created time.
-  final String createdTime;
+  final String? createdTime;
   /// The integration account RosettaNet ProcessConfiguration properties.
   final String? description;
   /// The resource id.
-  final String id;
+  final String? id;
   /// The RosettaNet initiator role settings.
-  final RosettaNetPipRoleSettingsResponse initiatorRoleSettings;
+  final RosettaNetPipRoleSettingsResponse? initiatorRoleSettings;
   /// The resource location.
   final String? location;
   /// The metadata.
   final Map<String, String>? metadata;
   /// Gets the resource name.
-  final String name;
+  final String? name;
   /// The integration account RosettaNet process code.
-  final String processCode;
+  final String? processCode;
   /// The integration account RosettaNet process name.
-  final String processName;
+  final String? processName;
   /// The integration account RosettaNet process version.
-  final String processVersion;
+  final String? processVersion;
   /// The RosettaNet responder role settings.
-  final RosettaNetPipRoleSettingsResponse responderRoleSettings;
+  final RosettaNetPipRoleSettingsResponse? responderRoleSettings;
   /// The resource tags.
   final Map<String, String>? tags;
   /// Gets the resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetRosettaNetProcessConfigurationResult].
   /// [activitySettings] The RosettaNet process configuration activity settings.
@@ -56,63 +56,63 @@ class GetRosettaNetProcessConfigurationResult {
   /// [tags] The resource tags.
   /// [type] Gets the resource type.
   const GetRosettaNetProcessConfigurationResult({
-    required this.activitySettings,
-    required this.azureApiVersion,
-    required this.changedTime,
-    required this.createdTime,
+    this.activitySettings,
+    this.azureApiVersion,
+    this.changedTime,
+    this.createdTime,
     this.description,
-    required this.id,
-    required this.initiatorRoleSettings,
+    this.id,
+    this.initiatorRoleSettings,
     this.location,
     this.metadata,
-    required this.name,
-    required this.processCode,
-    required this.processName,
-    required this.processVersion,
-    required this.responderRoleSettings,
+    this.name,
+    this.processCode,
+    this.processName,
+    this.processVersion,
+    this.responderRoleSettings,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activitySettings': activitySettings.toMap(),
-      'azureApiVersion': azureApiVersion,
-      'changedTime': changedTime,
-      'createdTime': createdTime,
+      'activitySettings': ?activitySettings?.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'changedTime': ?changedTime,
+      'createdTime': ?createdTime,
       'description': ?description,
-      'id': id,
-      'initiatorRoleSettings': initiatorRoleSettings.toMap(),
+      'id': ?id,
+      'initiatorRoleSettings': ?initiatorRoleSettings?.toMap(),
       'location': ?location,
       'metadata': ?metadata,
-      'name': name,
-      'processCode': processCode,
-      'processName': processName,
-      'processVersion': processVersion,
-      'responderRoleSettings': responderRoleSettings.toMap(),
+      'name': ?name,
+      'processCode': ?processCode,
+      'processName': ?processName,
+      'processVersion': ?processVersion,
+      'responderRoleSettings': ?responderRoleSettings?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetRosettaNetProcessConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetRosettaNetProcessConfigurationResult(
-      activitySettings: RosettaNetPipActivitySettingsResponse.fromMap((map['activitySettings']! as Map).cast<String, dynamic>()),
-      azureApiVersion: map['azureApiVersion'] as String,
-      changedTime: map['changedTime'] as String,
-      createdTime: map['createdTime'] as String,
+      activitySettings: (() { final guardedValue = map['activitySettings']; if (guardedValue == null) return null; return RosettaNetPipActivitySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      changedTime: (() { final guardedValue = map['changedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdTime: (() { final guardedValue = map['createdTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      initiatorRoleSettings: RosettaNetPipRoleSettingsResponse.fromMap((map['initiatorRoleSettings']! as Map).cast<String, dynamic>()),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      initiatorRoleSettings: (() { final guardedValue = map['initiatorRoleSettings']; if (guardedValue == null) return null; return RosettaNetPipRoleSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      name: map['name'] as String,
-      processCode: map['processCode'] as String,
-      processName: map['processName'] as String,
-      processVersion: map['processVersion'] as String,
-      responderRoleSettings: RosettaNetPipRoleSettingsResponse.fromMap((map['responderRoleSettings']! as Map).cast<String, dynamic>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      processCode: (() { final guardedValue = map['processCode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      processName: (() { final guardedValue = map['processName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      processVersion: (() { final guardedValue = map['processVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      responderRoleSettings: (() { final guardedValue = map['responderRoleSettings']; if (guardedValue == null) return null; return RosettaNetPipRoleSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

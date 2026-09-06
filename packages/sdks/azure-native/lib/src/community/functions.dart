@@ -19,3 +19,14 @@ Future<GetCommunityTrainingResult> getCommunityTraining(
   );
   return GetCommunityTrainingResult.fromMap(result);
 }
+
+pulumi.Output<GetCommunityTrainingResult> getCommunityTrainingOutput(
+  GetCommunityTrainingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:community:getCommunityTraining',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCommunityTrainingResult.fromMap);
+}

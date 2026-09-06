@@ -6,9 +6,9 @@ import 'connection_properties_private_link_service_connection_state.dart';
 /// The properties of a private endpoint connection.
 class ConnectionProperties {
   /// The list of group ids for the private endpoint connection.
-  final pulumi.Input<List<String>>? groupIds;
+  final pulumi.Input<List<String>?>? groupIds;
   /// The connection state.
-  final pulumi.Input<ConnectionPropertiesPrivateLinkServiceConnectionState>? privateLinkServiceConnectionState;
+  final pulumi.Input<ConnectionPropertiesPrivateLinkServiceConnectionState?>? privateLinkServiceConnectionState;
 
   /// Creates a new [ConnectionProperties].
   /// [groupIds] The list of group ids for the private endpoint connection.

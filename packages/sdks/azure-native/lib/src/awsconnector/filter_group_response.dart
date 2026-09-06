@@ -6,7 +6,7 @@ import 'webhook_filter_response.dart';
 /// Definition of FilterGroup
 class FilterGroupResponse {
   /// Property webhookFilter
-  final pulumi.Input<WebhookFilterResponse>? webhookFilter;
+  final pulumi.Input<WebhookFilterResponse?>? webhookFilter;
 
   /// Creates a new [FilterGroupResponse].
   /// [webhookFilter] Property webhookFilter

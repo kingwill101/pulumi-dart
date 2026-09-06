@@ -7,9 +7,9 @@ class DirectoryPathResponse {
   /// Gets the ID.
   final pulumi.Input<String> id;
   /// Gets or sets the physical path of the directory on the web server.
-  final pulumi.Input<String>? physical;
+  final pulumi.Input<String?>? physical;
   /// Gets or sets the virtual path for the directory.
-  final pulumi.Input<String>? virtual;
+  final pulumi.Input<String?>? virtual;
 
   /// Creates a new [DirectoryPathResponse].
   /// [id] Gets the ID.
