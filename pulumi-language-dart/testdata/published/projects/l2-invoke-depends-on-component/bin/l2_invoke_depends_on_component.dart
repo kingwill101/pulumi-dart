@@ -6,6 +6,7 @@ class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
+    pulumi.ResourceReferenceRegistry.register('component:index:Custom', (urn) => pulumi_component_index.Custom.reference(urn));
     final target = pulumi_component_index.ComponentCustomRefOutput('target', args: pulumi_component_index.ComponentCustomRefOutputArgs(value: pulumi.Input.asInput('checked'), ));
     final data = pulumi_component_index.identity2Output(pulumi_component_index.IdentityInvokeArgs(input: ('reachable').input()), options: pulumi.InvokeOutputOptions(dependsOn: [target]));
 

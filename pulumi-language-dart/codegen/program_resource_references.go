@@ -49,3 +49,49 @@ func (lowerer programLowerer) registerResourceReference(reference *schema.Resour
 	lowerer.addResourceReference(reference.Token, pkg, module, className)
 	return nil
 }
+
+// registerResourceReferencesFromType registers resource types nested inside a
+// resource output. Resource references are deserialized before generated output
+// casts run, so collection elements must be registered just like direct resource
+// outputs.
+func (lowerer programLowerer) registerResourceReferencesFromType(typ schema.Type, seen map[schema.Type]bool) error {
+	if typ == nil || seen[typ] {
+		return nil
+	}
+	seen[typ] = true
+	switch typ := typ.(type) {
+	case *schema.OptionalType:
+		return lowerer.registerResourceReferencesFromType(typ.ElementType, seen)
+	case *schema.InputType:
+		return lowerer.registerResourceReferencesFromType(typ.ElementType, seen)
+	case *schema.ArrayType:
+		return lowerer.registerResourceReferencesFromType(typ.ElementType, seen)
+	case *schema.MapType:
+		return lowerer.registerResourceReferencesFromType(typ.ElementType, seen)
+	case *schema.UnionType:
+		for _, element := range typ.ElementTypes {
+			if err := lowerer.registerResourceReferencesFromType(element, seen); err != nil {
+				return err
+			}
+		}
+	case *schema.ObjectType:
+		for _, property := range typ.Properties {
+			if err := lowerer.registerResourceReferencesFromType(property.Type, seen); err != nil {
+				return err
+			}
+		}
+	case *schema.ResourceType:
+		return lowerer.registerResourceReference(typ)
+	}
+	return nil
+}
+
+func (lowerer programLowerer) registerResourceOutputReferences(resource *schema.Resource) error {
+	seen := map[schema.Type]bool{}
+	for _, property := range resource.Properties {
+		if err := lowerer.registerResourceReferencesFromType(property.Type, seen); err != nil {
+			return err
+		}
+	}
+	return nil
+}
