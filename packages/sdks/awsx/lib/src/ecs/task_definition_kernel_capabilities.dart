@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskDefinitionKernelCapabilities {
-  final pulumi.Input<List<String>>? add;
-  final pulumi.Input<List<String>>? drop;
+  final pulumi.Input<List<String>?>? add;
+  final pulumi.Input<List<String>?>? drop;
 
   /// Creates a new [TaskDefinitionKernelCapabilities].
   /// [add] Optional.

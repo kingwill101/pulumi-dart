@@ -6,11 +6,11 @@ import 'security_group.dart';
 /// Security Group with default setup unless explicitly skipped or an existing security group id provided.
 class DefaultSecurityGroup {
   /// Args to use when creating the security group. Can't be specified if `securityGroupId` is used.
-  final pulumi.Input<SecurityGroup>? args;
+  final pulumi.Input<SecurityGroup?>? args;
   /// Id of existing security group to use instead of creating a new security group. Cannot be used in combination with `args` or `opts`.
-  final pulumi.Input<String>? securityGroupId;
+  final pulumi.Input<String?>? securityGroupId;
   /// Skips creation of the security group if set to `true`.
-  final pulumi.Input<bool>? skip;
+  final pulumi.Input<bool?>? skip;
 
   /// Creates a new [DefaultSecurityGroup].
   /// [args] Args to use when creating the security group. Can't be specified if `securityGroupId` is used.

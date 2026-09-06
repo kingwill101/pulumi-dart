@@ -7,11 +7,11 @@ import 'existing_bucket.dart';
 /// Bucket with default setup unless explicitly skipped.
 class DefaultBucket {
   /// Arguments to use instead of the default values during creation.
-  final pulumi.Input<Bucket>? args;
+  final pulumi.Input<Bucket?>? args;
   /// Identity of an existing bucket to use. Cannot be used in combination with `args`.
-  final pulumi.Input<ExistingBucket>? existing;
+  final pulumi.Input<ExistingBucket?>? existing;
   /// Skip creation of the bucket.
-  final pulumi.Input<bool>? skip;
+  final pulumi.Input<bool?>? skip;
 
   /// Creates a new [DefaultBucket].
   /// [args] Arguments to use instead of the default values during creation.

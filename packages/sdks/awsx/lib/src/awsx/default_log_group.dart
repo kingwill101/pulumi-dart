@@ -7,11 +7,11 @@ import 'log_group.dart';
 /// Log group with default setup unless explicitly skipped.
 class DefaultLogGroup {
   /// Arguments to use instead of the default values during creation.
-  final pulumi.Input<LogGroup>? args;
+  final pulumi.Input<LogGroup?>? args;
   /// Identity of an existing log group to use. Cannot be used in combination with `args` or `opts`.
-  final pulumi.Input<ExistingLogGroup>? existing;
+  final pulumi.Input<ExistingLogGroup?>? existing;
   /// Skip creation of the log group.
-  final pulumi.Input<bool>? skip;
+  final pulumi.Input<bool?>? skip;
 
   /// Creates a new [DefaultLogGroup].
   /// [args] Arguments to use instead of the default values during creation.

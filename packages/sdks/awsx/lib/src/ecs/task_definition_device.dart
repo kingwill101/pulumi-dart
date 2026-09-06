@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskDefinitionDevice {
-  final pulumi.Input<String>? containerPath;
-  final pulumi.Input<String>? hostPath;
-  final pulumi.Input<List<String>>? permissions;
+  final pulumi.Input<String?>? containerPath;
+  final pulumi.Input<String?>? hostPath;
+  final pulumi.Input<List<String>?>? permissions;
 
   /// Creates a new [TaskDefinitionDevice].
   /// [containerPath] Optional.

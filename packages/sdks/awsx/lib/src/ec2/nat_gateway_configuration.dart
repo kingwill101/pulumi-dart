@@ -6,7 +6,7 @@ import 'nat_gateway_strategy.dart';
 /// Configuration for NAT Gateways.
 class NatGatewayConfiguration {
   /// A list of EIP allocation IDs to assign to the NAT Gateways. Optional. If specified, the number of supplied values must match the chosen strategy (either one, or the number of availability zones).
-  final pulumi.Input<List<String>>? elasticIpAllocationIds;
+  final pulumi.Input<List<String>?>? elasticIpAllocationIds;
   /// The strategy for deploying NAT Gateways.
   final pulumi.Input<NatGatewayStrategy> strategy;
 

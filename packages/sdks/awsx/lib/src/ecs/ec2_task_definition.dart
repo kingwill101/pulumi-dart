@@ -11,7 +11,7 @@ class EC2TaskDefinition extends pulumi.ComponentResource {
   /// Auto-created IAM task execution role that the Amazon ECS container agent and the Docker daemon can assume.
   late final pulumi.Output<pulumi_aws_iam.Role?> executionRole;
   /// Computed load balancers from target groups specified of container port mappings.
-  late final pulumi.Output<List<Map<String, dynamic>>?> loadBalancers;
+  late final pulumi.Output<List<pulumi_aws_ecs.ServiceLoadBalancer>?> loadBalancers;
   /// Auto-created Log Group resource for use by containers.
   late final pulumi.Output<pulumi_aws_cloudwatch.LogGroup?> logGroup;
   /// Underlying ECS Task Definition resource
@@ -31,11 +31,11 @@ class EC2TaskDefinition extends pulumi.ComponentResource {
           'awsx:ecs:EC2TaskDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
+          pulumi.ComponentResourceOptions(version: '3.9.0').merge(options),
           remote: true,
         ) {
     executionRole = registerOutput<pulumi_aws_iam.Role?>('executionRole');
-    loadBalancers = registerOutput<List<Map<String, dynamic>>?>('loadBalancers');
+    loadBalancers = registerOutput<List<pulumi_aws_ecs.ServiceLoadBalancer>?>('loadBalancers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<pulumi_aws_ecs.ServiceLoadBalancer>(guardedValue, (value) => pulumi_aws_ecs.ServiceLoadBalancer.fromMap((value as Map).cast<String, dynamic>())); });
     logGroup = registerOutput<pulumi_aws_cloudwatch.LogGroup?>('logGroup');
     taskDefinition = registerOutput<pulumi_aws_ecs.TaskDefinition?>('taskDefinition');
     taskRole = registerOutput<pulumi_aws_iam.Role?>('taskRole');

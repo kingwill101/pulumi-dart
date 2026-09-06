@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Reference to an existing log group.
 class ExistingLogGroup {
   /// Arn of the log group. Only one of [arn] or [name] can be specified.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Name of the log group. Only one of [arn] or [name] can be specified.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region of the log group. If not specified, the provider region will be used.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ExistingLogGroup].
   /// [arn] Arn of the log group. Only one of [arn] or [name] can be specified.

@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Strategy for calculating subnet ranges from the subnet specifications.
-enum SubnetAllocationStrategy {
+enum SubnetAllocationStrategy implements pulumi.PulumiEnum<String> {
   valueLegacy("Legacy"),
   valueAuto("Auto"),
   valueAutoMerge("AutoMerge"),
   valueExact("Exact");
 
   const SubnetAllocationStrategy(this.wireValue);
+  @override
   final String wireValue;
 
   static SubnetAllocationStrategy fromValue(String value) {

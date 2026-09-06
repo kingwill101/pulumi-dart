@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskDefinitionMountPoint {
-  final pulumi.Input<String>? containerPath;
-  final pulumi.Input<bool>? readOnly;
-  final pulumi.Input<String>? sourceVolume;
+  final pulumi.Input<String?>? containerPath;
+  final pulumi.Input<bool?>? readOnly;
+  final pulumi.Input<String?>? sourceVolume;
 
   /// Creates a new [TaskDefinitionMountPoint].
   /// [containerPath] Optional.

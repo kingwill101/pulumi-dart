@@ -1,9 +1,12 @@
-enum LifecycleTagStatus {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum LifecycleTagStatus implements pulumi.PulumiEnum<String> {
   any("any"),
   untagged("untagged"),
   tagged("tagged");
 
   const LifecycleTagStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static LifecycleTagStatus fromValue(String value) {

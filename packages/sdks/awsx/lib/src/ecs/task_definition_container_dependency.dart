@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskDefinitionContainerDependency {
-  final pulumi.Input<String>? condition;
-  final pulumi.Input<String>? containerName;
+  final pulumi.Input<String?>? condition;
+  final pulumi.Input<String?>? containerName;
 
   /// Creates a new [TaskDefinitionContainerDependency].
   /// [condition] Optional.

@@ -6,11 +6,11 @@ import 'role_with_policy.dart';
 /// Role and policy attachments with default setup unless explicitly skipped or an existing role ARN provided.
 class DefaultRoleWithPolicy {
   /// Args to use when creating the role and policies. Can't be specified if `roleArn` is used.
-  final pulumi.Input<RoleWithPolicy>? args;
+  final pulumi.Input<RoleWithPolicy?>? args;
   /// ARN of existing role to use instead of creating a new role. Cannot be used in combination with `args` or `opts`.
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// Skips creation of the role if set to `true`.
-  final pulumi.Input<bool>? skip;
+  final pulumi.Input<bool?>? skip;
 
   /// Creates a new [DefaultRoleWithPolicy].
   /// [args] Args to use when creating the role and policies. Can't be specified if `roleArn` is used.

@@ -22,7 +22,7 @@ class FargateService extends pulumi.ComponentResource {
           'awsx:ecs:FargateService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
+          pulumi.ComponentResourceOptions(version: '3.9.0').merge(options),
           remote: true,
         ) {
     service = registerOutput<pulumi_aws_ecs.Service?>('service');

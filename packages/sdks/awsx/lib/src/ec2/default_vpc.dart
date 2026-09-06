@@ -17,11 +17,11 @@ class DefaultVpc extends pulumi.ComponentResource {
           'awsx:ec2:DefaultVpc',
           name,
           null,
-          options ?? pulumi.ComponentResourceOptions(),
+          pulumi.ComponentResourceOptions(version: '3.9.0').merge(options),
           remote: true,
         ) {
-    privateSubnetIds = registerOutput<List<String>?>('privateSubnetIds');
-    publicSubnetIds = registerOutput<List<String>?>('publicSubnetIds');
+    privateSubnetIds = registerOutput<List<String>?>('privateSubnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    publicSubnetIds = registerOutput<List<String>?>('publicSubnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     vpcId = registerOutput<String?>('vpcId');
   }
 }

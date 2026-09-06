@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskDefinitionRepositoryCredentials {
-  final pulumi.Input<String>? credentialsParameter;
+  final pulumi.Input<String?>? credentialsParameter;
 
   /// Creates a new [TaskDefinitionRepositoryCredentials].
   /// [credentialsParameter] Optional.

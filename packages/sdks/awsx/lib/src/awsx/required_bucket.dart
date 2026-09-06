@@ -7,9 +7,9 @@ import 'existing_bucket.dart';
 /// Bucket with default setup.
 class RequiredBucket {
   /// Arguments to use instead of the default values during creation.
-  final pulumi.Input<Bucket>? args;
+  final pulumi.Input<Bucket?>? args;
   /// Identity of an existing bucket to use. Cannot be used in combination with `args`.
-  final pulumi.Input<ExistingBucket>? existing;
+  final pulumi.Input<ExistingBucket?>? existing;
 
   /// Creates a new [RequiredBucket].
   /// [args] Arguments to use instead of the default values during creation.

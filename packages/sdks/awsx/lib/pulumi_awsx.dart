@@ -8,16 +8,16 @@ import 'package:pulumi_awsx/ecs.dart' as module_ecs;
 import 'package:pulumi_awsx/lb.dart' as module_lb;
 import 'package:pulumi_awsx/providers.dart' as module_providers;
 
-final awsx = const _AwsxModuleNamespace();
-final cloudtrail = const _CloudtrailModuleNamespace();
-final ec2 = const _Ec2ModuleNamespace();
-final ecr = const _EcrModuleNamespace();
-final ecs = const _EcsModuleNamespace();
-final lb = const _LbModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final awsx = _AwsxModuleNamespace();
+final cloudtrail = _CloudtrailModuleNamespace();
+final ec2 = _Ec2ModuleNamespace();
+final ecr = _EcrModuleNamespace();
+final ecs = _EcsModuleNamespace();
+final lb = _LbModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _AwsxModuleNamespace {
-  const _AwsxModuleNamespace();
+  _AwsxModuleNamespace();
   final Bucket = module_awsx.Bucket.new;
   final BucketArgs = module_awsx.Bucket.new;
   final DefaultBucket = module_awsx.DefaultBucket.new;
@@ -47,7 +47,7 @@ class _AwsxModuleNamespace {
 }
 
 class _CloudtrailModuleNamespace {
-  const _CloudtrailModuleNamespace();
+  _CloudtrailModuleNamespace();
   final LogGroup = module_cloudtrail.LogGroup.new;
   final LogGroupArgs = module_cloudtrail.LogGroup.new;
   final Trail = module_cloudtrail.Trail.new;
@@ -55,7 +55,7 @@ class _CloudtrailModuleNamespace {
 }
 
 class _Ec2ModuleNamespace {
-  const _Ec2ModuleNamespace();
+  _Ec2ModuleNamespace();
   final DefaultVpc = module_ec2.DefaultVpc.new;
   final GetDefaultVpcResult = module_ec2.GetDefaultVpcResult.new;
   final GetDefaultVpcResultArgs = module_ec2.GetDefaultVpcResult.new;
@@ -75,10 +75,11 @@ class _Ec2ModuleNamespace {
   final VpcEndpointSpecArgs = module_ec2.VpcEndpointSpec.new;
   final VpcEndpointStrategy = module_ec2.VpcEndpointStrategy.values;
   final getDefaultVpc = module_ec2.getDefaultVpc;
+  final getDefaultVpcOutput = module_ec2.getDefaultVpcOutput;
 }
 
 class _EcrModuleNamespace {
-  const _EcrModuleNamespace();
+  _EcrModuleNamespace();
   final BuilderVersion = module_ecr.BuilderVersion.values;
   final DockerBuild = module_ecr.DockerBuild.new;
   final DockerBuildArgs = module_ecr.DockerBuild.new;
@@ -96,7 +97,7 @@ class _EcrModuleNamespace {
 }
 
 class _EcsModuleNamespace {
-  const _EcsModuleNamespace();
+  _EcsModuleNamespace();
   final EC2Service = module_ecs.EC2Service.new;
   final EC2ServiceArgs = module_ecs.EC2ServiceArgs.new;
   final EC2ServiceTaskDefinition = module_ecs.EC2ServiceTaskDefinition.new;
@@ -153,7 +154,7 @@ class _EcsModuleNamespace {
 }
 
 class _LbModuleNamespace {
-  const _LbModuleNamespace();
+  _LbModuleNamespace();
   final ApplicationLoadBalancer = module_lb.ApplicationLoadBalancer.new;
   final ApplicationLoadBalancerArgs = module_lb.ApplicationLoadBalancerArgs.new;
   final Listener = module_lb.Listener.new;
@@ -167,6 +168,6 @@ class _LbModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Awsx = module_providers.ProviderProvider.new;
 }
