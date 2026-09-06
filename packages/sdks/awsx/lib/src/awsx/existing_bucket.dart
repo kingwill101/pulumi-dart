@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Reference to an existing bucket.
 class ExistingBucket {
   /// Arn of the bucket. Only one of [arn] or [name] can be specified.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Name of the bucket. Only one of [arn] or [name] can be specified.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ExistingBucket].
   /// [arn] Arn of the bucket. Only one of [arn] or [name] can be specified.

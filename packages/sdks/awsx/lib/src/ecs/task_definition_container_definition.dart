@@ -20,51 +20,51 @@ import 'task_definition_volume_from.dart';
 
 /// List of container definitions that are passed to the Docker daemon on a container instance
 class TaskDefinitionContainerDefinition {
-  final pulumi.Input<List<String>>? command;
-  final pulumi.Input<int>? cpu;
-  final pulumi.Input<List<TaskDefinitionContainerDependency>>? dependsOn;
-  final pulumi.Input<bool>? disableNetworking;
-  final pulumi.Input<List<String>>? dnsSearchDomains;
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? command;
+  final pulumi.Input<int?>? cpu;
+  final pulumi.Input<List<TaskDefinitionContainerDependency>?>? dependsOn;
+  final pulumi.Input<bool?>? disableNetworking;
+  final pulumi.Input<List<String>?>? dnsSearchDomains;
+  final pulumi.Input<List<String>?>? dnsServers;
   final pulumi.Input<dynamic>? dockerLabels;
-  final pulumi.Input<List<String>>? dockerSecurityOptions;
-  final pulumi.Input<List<String>>? entryPoint;
+  final pulumi.Input<List<String>?>? dockerSecurityOptions;
+  final pulumi.Input<List<String>?>? entryPoint;
   /// The environment variables to pass to a container
-  final pulumi.Input<List<TaskDefinitionKeyValuePair>>? environment;
+  final pulumi.Input<List<TaskDefinitionKeyValuePair>?>? environment;
   /// The list of one or more files that contain the environment variables to pass to a container
-  final pulumi.Input<List<TaskDefinitionEnvironmentFile>>? environmentFiles;
-  final pulumi.Input<bool>? essential;
-  final pulumi.Input<List<TaskDefinitionHostEntry>>? extraHosts;
-  final pulumi.Input<TaskDefinitionFirelensConfiguration>? firelensConfiguration;
-  final pulumi.Input<TaskDefinitionHealthCheck>? healthCheck;
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<List<TaskDefinitionEnvironmentFile>?>? environmentFiles;
+  final pulumi.Input<bool?>? essential;
+  final pulumi.Input<List<TaskDefinitionHostEntry>?>? extraHosts;
+  final pulumi.Input<TaskDefinitionFirelensConfiguration?>? firelensConfiguration;
+  final pulumi.Input<TaskDefinitionHealthCheck?>? healthCheck;
+  final pulumi.Input<String?>? hostname;
   /// The image used to start a container. This string is passed directly to the Docker daemon.
   final pulumi.Input<String> image;
-  final pulumi.Input<bool>? interactive;
-  final pulumi.Input<List<String>>? links;
-  final pulumi.Input<TaskDefinitionLinuxParameters>? linuxParameters;
-  final pulumi.Input<TaskDefinitionLogConfiguration>? logConfiguration;
+  final pulumi.Input<bool?>? interactive;
+  final pulumi.Input<List<String>?>? links;
+  final pulumi.Input<TaskDefinitionLinuxParameters?>? linuxParameters;
+  final pulumi.Input<TaskDefinitionLogConfiguration?>? logConfiguration;
   /// The amount (in MiB) of memory to present to the container. If your container attempts to exceed the memory specified here, the container is killed.
-  final pulumi.Input<int>? memory;
-  final pulumi.Input<int>? memoryReservation;
-  final pulumi.Input<List<TaskDefinitionMountPoint>>? mountPoints;
+  final pulumi.Input<int?>? memory;
+  final pulumi.Input<int?>? memoryReservation;
+  final pulumi.Input<List<TaskDefinitionMountPoint>?>? mountPoints;
   /// The name of a container. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed
   final pulumi.Input<String> name;
   /// Port mappings allow containers to access ports on the host container instance to send or receive traffic.
-  final pulumi.Input<List<TaskDefinitionPortMapping>>? portMappings;
-  final pulumi.Input<bool>? privileged;
-  final pulumi.Input<bool>? pseudoTerminal;
-  final pulumi.Input<bool>? readonlyRootFilesystem;
-  final pulumi.Input<TaskDefinitionRepositoryCredentials>? repositoryCredentials;
-  final pulumi.Input<List<TaskDefinitionResourceRequirement>>? resourceRequirements;
-  final pulumi.Input<List<TaskDefinitionSecret>>? secrets;
-  final pulumi.Input<int>? startTimeout;
-  final pulumi.Input<int>? stopTimeout;
-  final pulumi.Input<List<TaskDefinitionSystemControl>>? systemControls;
-  final pulumi.Input<List<TaskDefinitionUlimit>>? ulimits;
-  final pulumi.Input<String>? user;
-  final pulumi.Input<List<TaskDefinitionVolumeFrom>>? volumesFrom;
-  final pulumi.Input<String>? workingDirectory;
+  final pulumi.Input<List<TaskDefinitionPortMapping>?>? portMappings;
+  final pulumi.Input<bool?>? privileged;
+  final pulumi.Input<bool?>? pseudoTerminal;
+  final pulumi.Input<bool?>? readonlyRootFilesystem;
+  final pulumi.Input<TaskDefinitionRepositoryCredentials?>? repositoryCredentials;
+  final pulumi.Input<List<TaskDefinitionResourceRequirement>?>? resourceRequirements;
+  final pulumi.Input<List<TaskDefinitionSecret>?>? secrets;
+  final pulumi.Input<int?>? startTimeout;
+  final pulumi.Input<int?>? stopTimeout;
+  final pulumi.Input<List<TaskDefinitionSystemControl>?>? systemControls;
+  final pulumi.Input<List<TaskDefinitionUlimit>?>? ulimits;
+  final pulumi.Input<String?>? user;
+  final pulumi.Input<List<TaskDefinitionVolumeFrom>?>? volumesFrom;
+  final pulumi.Input<String?>? workingDirectory;
 
   /// Creates a new [TaskDefinitionContainerDefinition].
   /// [command] Optional.
@@ -195,7 +195,7 @@ class TaskDefinitionContainerDefinition {
   factory TaskDefinitionContainerDefinition.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionContainerDefinition(
       command: (() { final guardedValue = map['command']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TaskDefinitionContainerDependency>(guardedValue, (value) => TaskDefinitionContainerDependency.fromMap((value as Map).cast<String, dynamic>()))); })(),
       disableNetworking: (() { final guardedValue = map['disableNetworking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dnsSearchDomains: (() { final guardedValue = map['dnsSearchDomains']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -215,8 +215,8 @@ class TaskDefinitionContainerDefinition {
       links: (() { final guardedValue = map['links']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       linuxParameters: (() { final guardedValue = map['linuxParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TaskDefinitionLinuxParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       logConfiguration: (() { final guardedValue = map['logConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TaskDefinitionLogConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      memory: (() { final guardedValue = map['memory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      memoryReservation: (() { final guardedValue = map['memoryReservation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      memory: (() { final guardedValue = map['memory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      memoryReservation: (() { final guardedValue = map['memoryReservation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       mountPoints: (() { final guardedValue = map['mountPoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TaskDefinitionMountPoint>(guardedValue, (value) => TaskDefinitionMountPoint.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       portMappings: (() { final guardedValue = map['portMappings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TaskDefinitionPortMapping>(guardedValue, (value) => TaskDefinitionPortMapping.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -226,8 +226,8 @@ class TaskDefinitionContainerDefinition {
       repositoryCredentials: (() { final guardedValue = map['repositoryCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TaskDefinitionRepositoryCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceRequirements: (() { final guardedValue = map['resourceRequirements']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TaskDefinitionResourceRequirement>(guardedValue, (value) => TaskDefinitionResourceRequirement.fromMap((value as Map).cast<String, dynamic>()))); })(),
       secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TaskDefinitionSecret>(guardedValue, (value) => TaskDefinitionSecret.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      startTimeout: (() { final guardedValue = map['startTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      stopTimeout: (() { final guardedValue = map['stopTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      startTimeout: (() { final guardedValue = map['startTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      stopTimeout: (() { final guardedValue = map['stopTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       systemControls: (() { final guardedValue = map['systemControls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TaskDefinitionSystemControl>(guardedValue, (value) => TaskDefinitionSystemControl.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ulimits: (() { final guardedValue = map['ulimits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TaskDefinitionUlimit>(guardedValue, (value) => TaskDefinitionUlimit.fromMap((value as Map).cast<String, dynamic>()))); })(),
       user: (() { final guardedValue = map['user']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

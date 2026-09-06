@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskDefinitionVolumeFrom {
-  final pulumi.Input<bool>? readOnly;
-  final pulumi.Input<String>? sourceContainer;
+  final pulumi.Input<bool?>? readOnly;
+  final pulumi.Input<String?>? sourceContainer;
 
   /// Creates a new [TaskDefinitionVolumeFrom].
   /// [readOnly] Optional.

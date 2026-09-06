@@ -27,9 +27,9 @@ class TaskDefinitionUlimit {
 
   factory TaskDefinitionUlimit.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionUlimit(
-      hardLimit: pulumi.Input.fromValue(map['hardLimit'] as int),
+      hardLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['hardLimit'])),
       name: pulumi.Input.fromValue(map['name'] as String),
-      softLimit: pulumi.Input.fromValue(map['softLimit'] as int),
+      softLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['softLimit'])),
     );
   }
 }

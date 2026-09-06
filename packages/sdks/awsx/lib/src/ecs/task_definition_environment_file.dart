@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskDefinitionEnvironmentFile {
-  final pulumi.Input<String>? type;
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? type;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TaskDefinitionEnvironmentFile].
   /// [type] Optional.

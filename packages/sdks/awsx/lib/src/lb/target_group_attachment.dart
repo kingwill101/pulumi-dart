@@ -22,7 +22,7 @@ class TargetGroupAttachment extends pulumi.ComponentResource {
           'awsx:lb:TargetGroupAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
+          pulumi.ComponentResourceOptions(version: '3.9.0').merge(options),
           remote: true,
         ) {
     lambdaPermission = registerOutput<pulumi_aws_lambda.Permission?>('lambdaPermission');

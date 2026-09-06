@@ -15,3 +15,14 @@ Future<GetDefaultVpcResult> getDefaultVpc(
   );
   return GetDefaultVpcResult.fromMap(result);
 }
+
+pulumi.Output<GetDefaultVpcResult> getDefaultVpcOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'awsx:ec2:getDefaultVpc',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetDefaultVpcResult.fromMap);
+}

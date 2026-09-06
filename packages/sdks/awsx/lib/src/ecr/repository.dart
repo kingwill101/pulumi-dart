@@ -25,7 +25,7 @@ class Repository extends pulumi.ComponentResource {
           'awsx:ecr:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
+          pulumi.ComponentResourceOptions(version: '3.9.0').merge(options),
           remote: true,
         ) {
     lifecyclePolicy = registerOutput<pulumi_aws_ecr.LifecyclePolicy?>('lifecyclePolicy');

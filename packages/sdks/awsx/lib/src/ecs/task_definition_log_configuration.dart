@@ -6,7 +6,7 @@ import 'task_definition_secret.dart';
 class TaskDefinitionLogConfiguration {
   final pulumi.Input<String> logDriver;
   final pulumi.Input<dynamic>? options;
-  final pulumi.Input<List<TaskDefinitionSecret>>? secretOptions;
+  final pulumi.Input<List<TaskDefinitionSecret>?>? secretOptions;
 
   /// Creates a new [TaskDefinitionLogConfiguration].
   /// [logDriver] Required.

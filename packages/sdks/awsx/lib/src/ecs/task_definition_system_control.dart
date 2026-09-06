@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskDefinitionSystemControl {
-  final pulumi.Input<String>? namespace;
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? namespace;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TaskDefinitionSystemControl].
   /// [namespace] Optional.

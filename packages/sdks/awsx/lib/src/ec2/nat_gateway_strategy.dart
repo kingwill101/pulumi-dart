@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// A strategy for creating NAT Gateways for private subnets within a VPC.
-enum NatGatewayStrategy {
+enum NatGatewayStrategy implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueSingle("Single"),
   valueOnePerAz("OnePerAz");
 
   const NatGatewayStrategy(this.wireValue);
+  @override
   final String wireValue;
 
   static NatGatewayStrategy fromValue(String value) {

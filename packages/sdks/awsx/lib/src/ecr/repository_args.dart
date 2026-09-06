@@ -10,24 +10,24 @@ import 'package:pulumi_aws/ecr.dart' as pulumi_aws_ecr;
 /// {@macro pulumi_ecr_repository_args_doc}
 class RepositoryArgs {
   /// Encryption configuration for the repository. See below for schema.
-  final pulumi.Input<List<pulumi_aws_ecr.RepositoryEncryptionConfiguration>>? encryptionConfigurations;
+  final pulumi.Input<List<pulumi_aws_ecr.RepositoryEncryptionConfiguration>?>? encryptionConfigurations;
   /// If `true`, will delete the repository even if it contains images.
   /// Defaults to `false`.
-  final pulumi.Input<bool>? forceDelete;
+  final pulumi.Input<bool?>? forceDelete;
   /// Configuration block that defines image scanning configuration for the repository. By default, image scanning must be manually triggered. See the [ECR User Guide](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html) for more information about image scanning.
-  final pulumi.Input<pulumi_aws_ecr.RepositoryImageScanningConfiguration>? imageScanningConfiguration;
+  final pulumi.Input<pulumi_aws_ecr.RepositoryImageScanningConfiguration?>? imageScanningConfiguration;
   /// The tag mutability setting for the repository. Must be one of: `MUTABLE`, `IMMUTABLE`, `IMMUTABLE_WITH_EXCLUSION`, or `MUTABLE_WITH_EXCLUSION`. Defaults to `MUTABLE`.
-  final pulumi.Input<String>? imageTagMutability;
+  final pulumi.Input<String?>? imageTagMutability;
   /// Configuration block that defines filters to specify which image tags can override the default tag mutability setting. Only applicable when `imageTagMutability` is set to `IMMUTABLE_WITH_EXCLUSION` or `MUTABLE_WITH_EXCLUSION`. See below for schema.
-  final pulumi.Input<List<pulumi_aws_ecr.RepositoryImageTagMutabilityExclusionFilter>>? imageTagMutabilityExclusionFilters;
+  final pulumi.Input<List<pulumi_aws_ecr.RepositoryImageTagMutabilityExclusionFilter>?>? imageTagMutabilityExclusionFilters;
   /// A lifecycle policy consists of one or more rules that determine which images in a repository should be expired. If not provided, this will default to untagged images expiring after 1 day.
-  final pulumi.Input<LifecyclePolicy>? lifecyclePolicy;
+  final pulumi.Input<LifecyclePolicy?>? lifecyclePolicy;
   /// Name of the repository.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RepositoryArgs].
   /// [encryptionConfigurations] Encryption configuration for the repository. See below for schema.

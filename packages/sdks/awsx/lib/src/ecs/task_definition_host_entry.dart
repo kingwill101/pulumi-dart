@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskDefinitionHostEntry {
-  final pulumi.Input<String>? hostname;
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? hostname;
+  final pulumi.Input<String?>? ipAddress;
 
   /// Creates a new [TaskDefinitionHostEntry].
   /// [hostname] Optional.

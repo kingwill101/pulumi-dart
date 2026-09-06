@@ -6,13 +6,13 @@ import 'task_definition_kernel_capabilities.dart';
 import 'task_definition_tmpfs.dart';
 
 class TaskDefinitionLinuxParameters {
-  final pulumi.Input<TaskDefinitionKernelCapabilities>? capabilities;
-  final pulumi.Input<List<TaskDefinitionDevice>>? devices;
-  final pulumi.Input<bool>? initProcessEnabled;
-  final pulumi.Input<int>? maxSwap;
-  final pulumi.Input<int>? sharedMemorySize;
-  final pulumi.Input<int>? swappiness;
-  final pulumi.Input<List<TaskDefinitionTmpfs>>? tmpfs;
+  final pulumi.Input<TaskDefinitionKernelCapabilities?>? capabilities;
+  final pulumi.Input<List<TaskDefinitionDevice>?>? devices;
+  final pulumi.Input<bool?>? initProcessEnabled;
+  final pulumi.Input<int?>? maxSwap;
+  final pulumi.Input<int?>? sharedMemorySize;
+  final pulumi.Input<int?>? swappiness;
+  final pulumi.Input<List<TaskDefinitionTmpfs>?>? tmpfs;
 
   /// Creates a new [TaskDefinitionLinuxParameters].
   /// [capabilities] Optional.
@@ -49,9 +49,9 @@ class TaskDefinitionLinuxParameters {
       capabilities: (() { final guardedValue = map['capabilities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TaskDefinitionKernelCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       devices: (() { final guardedValue = map['devices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TaskDefinitionDevice>(guardedValue, (value) => TaskDefinitionDevice.fromMap((value as Map).cast<String, dynamic>()))); })(),
       initProcessEnabled: (() { final guardedValue = map['initProcessEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxSwap: (() { final guardedValue = map['maxSwap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      sharedMemorySize: (() { final guardedValue = map['sharedMemorySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      swappiness: (() { final guardedValue = map['swappiness']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxSwap: (() { final guardedValue = map['maxSwap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      sharedMemorySize: (() { final guardedValue = map['sharedMemorySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      swappiness: (() { final guardedValue = map['swappiness']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tmpfs: (() { final guardedValue = map['tmpfs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TaskDefinitionTmpfs>(guardedValue, (value) => TaskDefinitionTmpfs.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

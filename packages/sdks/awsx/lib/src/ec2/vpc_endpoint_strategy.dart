@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Strategy for applying VPC endpoint specs.
-enum VpcEndpointStrategy {
+enum VpcEndpointStrategy implements pulumi.PulumiEnum<String> {
   valueLegacy("Legacy"),
   valueAuto("Auto");
 
   const VpcEndpointStrategy(this.wireValue);
+  @override
   final String wireValue;
 
   static VpcEndpointStrategy fromValue(String value) {

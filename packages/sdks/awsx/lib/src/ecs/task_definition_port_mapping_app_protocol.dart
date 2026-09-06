@@ -1,9 +1,12 @@
-enum TaskDefinitionPortMappingAppProtocol {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum TaskDefinitionPortMappingAppProtocol implements pulumi.PulumiEnum<String> {
   http("http"),
   http2("http2"),
   grpc("grpc");
 
   const TaskDefinitionPortMappingAppProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static TaskDefinitionPortMappingAppProtocol fromValue(String value) {

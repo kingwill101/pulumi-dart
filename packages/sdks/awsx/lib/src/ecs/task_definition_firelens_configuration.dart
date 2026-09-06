@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskDefinitionFirelensConfiguration {
   final pulumi.Input<dynamic>? options;
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [TaskDefinitionFirelensConfiguration].
   /// [options] Optional.

@@ -7,7 +7,7 @@ class NetworkLoadBalancer extends pulumi.ComponentResource {
   /// Default target group, if auto-created
   late final pulumi.Output<pulumi_aws_lb.TargetGroup?> defaultTargetGroup;
   /// Listeners created as part of this load balancer
-  late final pulumi.Output<List<Map<String, dynamic>>?> listeners;
+  late final pulumi.Output<List<pulumi_aws_lb.Listener>?> listeners;
   /// Underlying Load Balancer resource
   late final pulumi.Output<pulumi_aws_lb.LoadBalancer?> loadBalancer;
   /// Id of the VPC in which this load balancer is operating
@@ -25,11 +25,11 @@ class NetworkLoadBalancer extends pulumi.ComponentResource {
           'awsx:lb:NetworkLoadBalancer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
+          pulumi.ComponentResourceOptions(version: '3.9.0').merge(options),
           remote: true,
         ) {
     defaultTargetGroup = registerOutput<pulumi_aws_lb.TargetGroup?>('defaultTargetGroup');
-    listeners = registerOutput<List<Map<String, dynamic>>?>('listeners');
+    listeners = registerOutput<List<pulumi_aws_lb.Listener>?>('listeners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<pulumi_aws_lb.Listener>(); });
     loadBalancer = registerOutput<pulumi_aws_lb.LoadBalancer?>('loadBalancer');
     vpcId = registerOutput<String?>('vpcId');
   }

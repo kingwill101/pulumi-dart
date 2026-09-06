@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TaskDefinitionTmpfs {
-  final pulumi.Input<String>? containerPath;
-  final pulumi.Input<List<String>>? mountOptions;
+  final pulumi.Input<String?>? containerPath;
+  final pulumi.Input<List<String>?>? mountOptions;
   final pulumi.Input<int> size;
 
   /// Creates a new [TaskDefinitionTmpfs].
@@ -29,7 +29,7 @@ class TaskDefinitionTmpfs {
     return TaskDefinitionTmpfs(
       containerPath: (() { final guardedValue = map['containerPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mountOptions: (() { final guardedValue = map['mountOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      size: pulumi.Input.fromValue(map['size'] as int),
+      size: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['size'])),
     );
   }
 }

@@ -7,11 +7,11 @@ import 'log_group.dart';
 /// Log group which is only created if enabled.
 class OptionalLogGroup {
   /// Arguments to use instead of the default values during creation.
-  final pulumi.Input<LogGroup>? args;
+  final pulumi.Input<LogGroup?>? args;
   /// Enable creation of the log group.
-  final pulumi.Input<bool>? enable;
+  final pulumi.Input<bool?>? enable;
   /// Identity of an existing log group to use. Cannot be used in combination with `args` or `opts`.
-  final pulumi.Input<ExistingLogGroup>? existing;
+  final pulumi.Input<ExistingLogGroup?>? existing;
 
   /// Creates a new [OptionalLogGroup].
   /// [args] Arguments to use instead of the default values during creation.

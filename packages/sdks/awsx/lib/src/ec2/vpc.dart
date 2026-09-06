@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'resolved_subnet_spec.dart';
 import 'vpc_args.dart';
 import 'package:pulumi_aws/ec2.dart' as pulumi_aws_ec2;
 
@@ -144,34 +145,34 @@ import 'package:pulumi_aws/ec2.dart' as pulumi_aws_ec2;
 /// The "Legacy" works similarly to the "Auto" strategy except that within each availability zone it allocates the private subnet first, followed by the public subnets, and lastly the isolated subnets. The order of subnet specifications of the same type can be changed, but the ordering of private, public, isolated is not overridable. For more flexibility we recommend moving to the "Auto" strategy. The output property `subnetLayout` shows the configuration required if specifying the "Auto" strategy to maintain the current layout.
 class Vpc extends pulumi.ComponentResource {
   /// The EIPs for any NAT Gateways for the VPC. If no NAT Gateways are specified, this will be an empty list.
-  late final pulumi.Output<List<Map<String, dynamic>>?> eips;
+  late final pulumi.Output<List<pulumi_aws_ec2.Eip>?> eips;
   /// The Internet Gateway for the VPC.
   late final pulumi.Output<pulumi_aws_ec2.InternetGateway?> internetGateway;
   late final pulumi.Output<List<String>?> isolatedSubnetIds;
   /// The VPC's isolated subnets.
-  late final pulumi.Output<List<Map<String, dynamic>>?> isolatedSubnets;
+  late final pulumi.Output<List<pulumi_aws_ec2.Subnet>?> isolatedSubnets;
   /// The NAT Gateways for the VPC. If no NAT Gateways are specified, this will be an empty list.
-  late final pulumi.Output<List<Map<String, dynamic>>?> natGateways;
+  late final pulumi.Output<List<pulumi_aws_ec2.NatGateway>?> natGateways;
   late final pulumi.Output<List<String>?> privateSubnetIds;
   /// The VPC's private subnets.
-  late final pulumi.Output<List<Map<String, dynamic>>?> privateSubnets;
+  late final pulumi.Output<List<pulumi_aws_ec2.Subnet>?> privateSubnets;
   late final pulumi.Output<List<String>?> publicSubnetIds;
   /// The VPC's public subnets.
-  late final pulumi.Output<List<Map<String, dynamic>>?> publicSubnets;
+  late final pulumi.Output<List<pulumi_aws_ec2.Subnet>?> publicSubnets;
   /// The Route Table Associations for the VPC.
-  late final pulumi.Output<List<Map<String, dynamic>>?> routeTableAssociations;
+  late final pulumi.Output<List<pulumi_aws_ec2.RouteTableAssociation>?> routeTableAssociations;
   /// The Route Tables for the VPC.
-  late final pulumi.Output<List<Map<String, dynamic>>?> routeTables;
+  late final pulumi.Output<List<pulumi_aws_ec2.RouteTable>?> routeTables;
   /// The Routes for the VPC.
-  late final pulumi.Output<List<Map<String, dynamic>>?> routes;
+  late final pulumi.Output<List<pulumi_aws_ec2.Route>?> routes;
   /// The resolved subnet specs layout deployed to each availability zone.
-  late final pulumi.Output<List<Map<String, dynamic>>?> subnetLayout;
+  late final pulumi.Output<List<ResolvedSubnetSpec>?> subnetLayout;
   /// The VPC's subnets.
-  late final pulumi.Output<List<Map<String, dynamic>>?> subnets;
+  late final pulumi.Output<List<pulumi_aws_ec2.Subnet>?> subnets;
   /// The VPC.
   late final pulumi.Output<pulumi_aws_ec2.Vpc?> vpc;
   /// The VPC Endpoints that are enabled
-  late final pulumi.Output<List<Map<String, dynamic>>?> vpcEndpoints;
+  late final pulumi.Output<List<pulumi_aws_ec2.VpcEndpoint>?> vpcEndpoints;
   late final pulumi.Output<String?> vpcId;
 
   /// Creates a new [Vpc].
@@ -186,25 +187,25 @@ class Vpc extends pulumi.ComponentResource {
           'awsx:ec2:Vpc',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
+          pulumi.ComponentResourceOptions(version: '3.9.0').merge(options),
           remote: true,
         ) {
-    eips = registerOutput<List<Map<String, dynamic>>?>('eips');
+    eips = registerOutput<List<pulumi_aws_ec2.Eip>?>('eips', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<pulumi_aws_ec2.Eip>(); });
     internetGateway = registerOutput<pulumi_aws_ec2.InternetGateway?>('internetGateway');
-    isolatedSubnetIds = registerOutput<List<String>?>('isolatedSubnetIds');
-    isolatedSubnets = registerOutput<List<Map<String, dynamic>>?>('isolatedSubnets');
-    natGateways = registerOutput<List<Map<String, dynamic>>?>('natGateways');
-    privateSubnetIds = registerOutput<List<String>?>('privateSubnetIds');
-    privateSubnets = registerOutput<List<Map<String, dynamic>>?>('privateSubnets');
-    publicSubnetIds = registerOutput<List<String>?>('publicSubnetIds');
-    publicSubnets = registerOutput<List<Map<String, dynamic>>?>('publicSubnets');
-    routeTableAssociations = registerOutput<List<Map<String, dynamic>>?>('routeTableAssociations');
-    routeTables = registerOutput<List<Map<String, dynamic>>?>('routeTables');
-    routes = registerOutput<List<Map<String, dynamic>>?>('routes');
-    subnetLayout = registerOutput<List<Map<String, dynamic>>?>('subnetLayout');
-    subnets = registerOutput<List<Map<String, dynamic>>?>('subnets');
+    isolatedSubnetIds = registerOutput<List<String>?>('isolatedSubnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    isolatedSubnets = registerOutput<List<pulumi_aws_ec2.Subnet>?>('isolatedSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<pulumi_aws_ec2.Subnet>(); });
+    natGateways = registerOutput<List<pulumi_aws_ec2.NatGateway>?>('natGateways', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<pulumi_aws_ec2.NatGateway>(); });
+    privateSubnetIds = registerOutput<List<String>?>('privateSubnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    privateSubnets = registerOutput<List<pulumi_aws_ec2.Subnet>?>('privateSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<pulumi_aws_ec2.Subnet>(); });
+    publicSubnetIds = registerOutput<List<String>?>('publicSubnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    publicSubnets = registerOutput<List<pulumi_aws_ec2.Subnet>?>('publicSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<pulumi_aws_ec2.Subnet>(); });
+    routeTableAssociations = registerOutput<List<pulumi_aws_ec2.RouteTableAssociation>?>('routeTableAssociations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<pulumi_aws_ec2.RouteTableAssociation>(); });
+    routeTables = registerOutput<List<pulumi_aws_ec2.RouteTable>?>('routeTables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<pulumi_aws_ec2.RouteTable>(); });
+    routes = registerOutput<List<pulumi_aws_ec2.Route>?>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<pulumi_aws_ec2.Route>(); });
+    subnetLayout = registerOutput<List<ResolvedSubnetSpec>?>('subnetLayout', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResolvedSubnetSpec>(guardedValue, (value) => ResolvedSubnetSpec.fromMap((value as Map).cast<String, dynamic>())); });
+    subnets = registerOutput<List<pulumi_aws_ec2.Subnet>?>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<pulumi_aws_ec2.Subnet>(); });
     vpc = registerOutput<pulumi_aws_ec2.Vpc?>('vpc');
-    vpcEndpoints = registerOutput<List<Map<String, dynamic>>?>('vpcEndpoints');
+    vpcEndpoints = registerOutput<List<pulumi_aws_ec2.VpcEndpoint>?>('vpcEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<pulumi_aws_ec2.VpcEndpoint>(); });
     vpcId = registerOutput<String?>('vpcId');
   }
 }

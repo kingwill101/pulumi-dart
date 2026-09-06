@@ -11,17 +11,17 @@ import 'package:pulumi_aws/lb.dart' as pulumi_aws_lb;
 /// {@macro pulumi_lb_target_group_attachment_args_doc}
 class TargetGroupAttachmentArgs {
   /// EC2 Instance to attach to the Target Group. Exactly 1 of [instance], [instanceId], [lambda] or [lambdaArn] must be provided.
-  final pulumi.Input<pulumi_aws_ec2.Instance>? instance;
+  final pulumi.Input<pulumi_aws_ec2.Instance?>? instance;
   /// ID of an EC2 Instance to attach to the Target Group. Exactly 1 of [instance], [instanceId], [lambda] or [lambdaArn] must be provided.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// Lambda Function to attach to the Target Group. Exactly 1 of [instance], [instanceId], [lambda] or [lambdaArn] must be provided.
-  final pulumi.Input<pulumi_aws_lambda.FunctionType>? lambda;
+  final pulumi.Input<pulumi_aws_lambda.FunctionType?>? lambda;
   /// ARN of a Lambda Function to attach to the Target Group. Exactly 1 of [instance], [instanceId], [lambda] or [lambdaArn] must be provided.
-  final pulumi.Input<String>? lambdaArn;
+  final pulumi.Input<String?>? lambdaArn;
   /// Target Group to attach to. Exactly one of [targetGroup] or [targetGroupArn] must be specified.
-  final pulumi.Input<pulumi_aws_lb.TargetGroup>? targetGroup;
+  final pulumi.Input<pulumi_aws_lb.TargetGroup?>? targetGroup;
   /// ARN of the Target Group to attach to. Exactly one of [targetGroup] or [targetGroupArn] must be specified.
-  final pulumi.Input<String>? targetGroupArn;
+  final pulumi.Input<String?>? targetGroupArn;
 
   /// Creates a new [TargetGroupAttachmentArgs].
   /// [instance] EC2 Instance to attach to the Target Group. Exactly 1 of [instance], [instanceId], [lambda] or [lambdaArn] must be provided.
